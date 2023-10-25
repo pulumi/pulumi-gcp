@@ -11,59 +11,6 @@ namespace Pulumi.Gcp.Firebase
 {
     /// <summary>
     /// ## Example Usage
-    /// ### Firebasehosting Site Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.Firebase.HostingSite("default", new()
-    ///     {
-    ///         Project = "my-project-name",
-    ///         SiteId = "site-no-app",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Firebasehosting Site Full
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.Firebase.WebApp("default", new()
-    ///     {
-    ///         Project = "my-project-name",
-    ///         DisplayName = "Test web app for Firebase Hosting",
-    ///         DeletionPolicy = "DELETE",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///     });
-    /// 
-    ///     var full = new Gcp.Firebase.HostingSite("full", new()
-    ///     {
-    ///         Project = "my-project-name",
-    ///         SiteId = "site-with-app",
-    ///         AppId = @default.AppId,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

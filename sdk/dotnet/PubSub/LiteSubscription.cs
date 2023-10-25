@@ -20,47 +20,6 @@ namespace Pulumi.Gcp.PubSub
     ///     * [Managing Subscriptions](https://cloud.google.com/pubsub/lite/docs/subscriptions)
     /// 
     /// ## Example Usage
-    /// ### Pubsub Lite Subscription Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    ///     var exampleLiteTopic = new Gcp.PubSub.LiteTopic("exampleLiteTopic", new()
-    ///     {
-    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.Number),
-    ///         PartitionConfig = new Gcp.PubSub.Inputs.LiteTopicPartitionConfigArgs
-    ///         {
-    ///             Count = 1,
-    ///             Capacity = new Gcp.PubSub.Inputs.LiteTopicPartitionConfigCapacityArgs
-    ///             {
-    ///                 PublishMibPerSec = 4,
-    ///                 SubscribeMibPerSec = 8,
-    ///             },
-    ///         },
-    ///         RetentionConfig = new Gcp.PubSub.Inputs.LiteTopicRetentionConfigArgs
-    ///         {
-    ///             PerPartitionBytes = "32212254720",
-    ///         },
-    ///     });
-    /// 
-    ///     var exampleLiteSubscription = new Gcp.PubSub.LiteSubscription("exampleLiteSubscription", new()
-    ///     {
-    ///         Topic = exampleLiteTopic.Name,
-    ///         DeliveryConfig = new Gcp.PubSub.Inputs.LiteSubscriptionDeliveryConfigArgs
-    ///         {
-    ///             DeliveryRequirement = "DELIVER_AFTER_STORED",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

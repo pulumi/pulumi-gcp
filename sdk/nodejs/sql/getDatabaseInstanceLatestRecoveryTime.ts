@@ -9,18 +9,6 @@ import * as utilities from "../utilities";
  * [official documentation](https://cloud.google.com/sql/)
  * and
  * [API](https://cloud.google.com/sql/docs/postgres/backup-recovery/pitr#get-the-latest-recovery-time).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const default = gcp.sql.getDatabaseInstanceLatestRecoveryTime({
- *     instance: "sample-instance",
- * });
- * export const latestRecoveryTime = _default;
- * ```
  */
 export function getDatabaseInstanceLatestRecoveryTime(args: GetDatabaseInstanceLatestRecoveryTimeArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseInstanceLatestRecoveryTimeResult> {
 
@@ -71,18 +59,6 @@ export interface GetDatabaseInstanceLatestRecoveryTimeResult {
  * [official documentation](https://cloud.google.com/sql/)
  * and
  * [API](https://cloud.google.com/sql/docs/postgres/backup-recovery/pitr#get-the-latest-recovery-time).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const default = gcp.sql.getDatabaseInstanceLatestRecoveryTime({
- *     instance: "sample-instance",
- * });
- * export const latestRecoveryTime = _default;
- * ```
  */
 export function getDatabaseInstanceLatestRecoveryTimeOutput(args: GetDatabaseInstanceLatestRecoveryTimeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseInstanceLatestRecoveryTimeResult> {
     return pulumi.output(args).apply((a: any) => getDatabaseInstanceLatestRecoveryTime(a, opts))

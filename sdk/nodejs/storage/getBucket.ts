@@ -11,17 +11,6 @@ import * as utilities from "../utilities";
  * See [the official documentation](https://cloud.google.com/storage/docs/key-terms#buckets)
  * and
  * [API](https://cloud.google.com/storage/docs/json_api/v1/buckets).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const my-bucket = gcp.storage.getBucket({
- *     name: "my-bucket",
- * });
- * ```
  */
 export function getBucket(args: GetBucketArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketResult> {
 
@@ -76,17 +65,6 @@ export interface GetBucketResult {
  * See [the official documentation](https://cloud.google.com/storage/docs/key-terms#buckets)
  * and
  * [API](https://cloud.google.com/storage/docs/json_api/v1/buckets).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const my-bucket = gcp.storage.getBucket({
- *     name: "my-bucket",
- * });
- * ```
  */
 export function getBucketOutput(args: GetBucketOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketResult> {
     return pulumi.output(args).apply((a: any) => getBucket(a, opts))

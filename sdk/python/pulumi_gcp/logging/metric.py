@@ -81,7 +81,7 @@ class MetricArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter: pulumi.Input[str],
+             filter: Optional[pulumi.Input[str]] = None,
              bucket_name: Optional[pulumi.Input[str]] = None,
              bucket_options: Optional[pulumi.Input['MetricBucketOptionsArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -91,7 +91,21 @@ class MetricArgs:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              value_extractor: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if filter is None:
+            raise TypeError("Missing 'filter' argument")
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if bucket_options is None and 'bucketOptions' in kwargs:
+            bucket_options = kwargs['bucketOptions']
+        if label_extractors is None and 'labelExtractors' in kwargs:
+            label_extractors = kwargs['labelExtractors']
+        if metric_descriptor is None and 'metricDescriptor' in kwargs:
+            metric_descriptor = kwargs['metricDescriptor']
+        if value_extractor is None and 'valueExtractor' in kwargs:
+            value_extractor = kwargs['valueExtractor']
+
         _setter("filter", filter)
         if bucket_name is not None:
             _setter("bucket_name", bucket_name)
@@ -337,7 +351,19 @@ class _MetricState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              value_extractor: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if bucket_options is None and 'bucketOptions' in kwargs:
+            bucket_options = kwargs['bucketOptions']
+        if label_extractors is None and 'labelExtractors' in kwargs:
+            label_extractors = kwargs['labelExtractors']
+        if metric_descriptor is None and 'metricDescriptor' in kwargs:
+            metric_descriptor = kwargs['metricDescriptor']
+        if value_extractor is None and 'valueExtractor' in kwargs:
+            value_extractor = kwargs['valueExtractor']
+
         if bucket_name is not None:
             _setter("bucket_name", bucket_name)
         if bucket_options is not None:
@@ -534,107 +560,6 @@ class Metric(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/logging/docs/apis)
 
         ## Example Usage
-        ### Logging Metric Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        logging_metric = gcp.logging.Metric("loggingMetric",
-            bucket_options=gcp.logging.MetricBucketOptionsArgs(
-                linear_buckets=gcp.logging.MetricBucketOptionsLinearBucketsArgs(
-                    num_finite_buckets=3,
-                    offset=1,
-                    width=1,
-                ),
-            ),
-            filter="resource.type=gae_app AND severity>=ERROR",
-            label_extractors={
-                "mass": "EXTRACT(jsonPayload.request)",
-                "sku": "EXTRACT(jsonPayload.id)",
-            },
-            metric_descriptor=gcp.logging.MetricMetricDescriptorArgs(
-                display_name="My metric",
-                labels=[
-                    gcp.logging.MetricMetricDescriptorLabelArgs(
-                        description="amount of matter",
-                        key="mass",
-                        value_type="STRING",
-                    ),
-                    gcp.logging.MetricMetricDescriptorLabelArgs(
-                        description="Identifying number for item",
-                        key="sku",
-                        value_type="INT64",
-                    ),
-                ],
-                metric_kind="DELTA",
-                unit="1",
-                value_type="DISTRIBUTION",
-            ),
-            value_extractor="EXTRACT(jsonPayload.request)")
-        ```
-        ### Logging Metric Counter Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        logging_metric = gcp.logging.Metric("loggingMetric",
-            filter="resource.type=gae_app AND severity>=ERROR",
-            metric_descriptor=gcp.logging.MetricMetricDescriptorArgs(
-                metric_kind="DELTA",
-                value_type="INT64",
-            ))
-        ```
-        ### Logging Metric Counter Labels
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        logging_metric = gcp.logging.Metric("loggingMetric",
-            filter="resource.type=gae_app AND severity>=ERROR",
-            label_extractors={
-                "mass": "EXTRACT(jsonPayload.request)",
-            },
-            metric_descriptor=gcp.logging.MetricMetricDescriptorArgs(
-                labels=[gcp.logging.MetricMetricDescriptorLabelArgs(
-                    description="amount of matter",
-                    key="mass",
-                    value_type="STRING",
-                )],
-                metric_kind="DELTA",
-                value_type="INT64",
-            ))
-        ```
-        ### Logging Metric Logging Bucket
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        logging_metric_project_bucket_config = gcp.logging.ProjectBucketConfig("loggingMetricProjectBucketConfig",
-            location="global",
-            project="my-project-name",
-            bucket_id="_Default")
-        logging_metric_metric = gcp.logging.Metric("loggingMetricMetric",
-            filter="resource.type=gae_app AND severity>=ERROR",
-            bucket_name=logging_metric_project_bucket_config.id)
-        ```
-        ### Logging Metric Disabled
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        logging_metric = gcp.logging.Metric("loggingMetric",
-            disabled=True,
-            filter="resource.type=gae_app AND severity>=ERROR",
-            metric_descriptor=gcp.logging.MetricMetricDescriptorArgs(
-                metric_kind="DELTA",
-                value_type="INT64",
-            ))
-        ```
 
         ## Import
 
@@ -705,107 +630,6 @@ class Metric(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/logging/docs/apis)
 
         ## Example Usage
-        ### Logging Metric Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        logging_metric = gcp.logging.Metric("loggingMetric",
-            bucket_options=gcp.logging.MetricBucketOptionsArgs(
-                linear_buckets=gcp.logging.MetricBucketOptionsLinearBucketsArgs(
-                    num_finite_buckets=3,
-                    offset=1,
-                    width=1,
-                ),
-            ),
-            filter="resource.type=gae_app AND severity>=ERROR",
-            label_extractors={
-                "mass": "EXTRACT(jsonPayload.request)",
-                "sku": "EXTRACT(jsonPayload.id)",
-            },
-            metric_descriptor=gcp.logging.MetricMetricDescriptorArgs(
-                display_name="My metric",
-                labels=[
-                    gcp.logging.MetricMetricDescriptorLabelArgs(
-                        description="amount of matter",
-                        key="mass",
-                        value_type="STRING",
-                    ),
-                    gcp.logging.MetricMetricDescriptorLabelArgs(
-                        description="Identifying number for item",
-                        key="sku",
-                        value_type="INT64",
-                    ),
-                ],
-                metric_kind="DELTA",
-                unit="1",
-                value_type="DISTRIBUTION",
-            ),
-            value_extractor="EXTRACT(jsonPayload.request)")
-        ```
-        ### Logging Metric Counter Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        logging_metric = gcp.logging.Metric("loggingMetric",
-            filter="resource.type=gae_app AND severity>=ERROR",
-            metric_descriptor=gcp.logging.MetricMetricDescriptorArgs(
-                metric_kind="DELTA",
-                value_type="INT64",
-            ))
-        ```
-        ### Logging Metric Counter Labels
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        logging_metric = gcp.logging.Metric("loggingMetric",
-            filter="resource.type=gae_app AND severity>=ERROR",
-            label_extractors={
-                "mass": "EXTRACT(jsonPayload.request)",
-            },
-            metric_descriptor=gcp.logging.MetricMetricDescriptorArgs(
-                labels=[gcp.logging.MetricMetricDescriptorLabelArgs(
-                    description="amount of matter",
-                    key="mass",
-                    value_type="STRING",
-                )],
-                metric_kind="DELTA",
-                value_type="INT64",
-            ))
-        ```
-        ### Logging Metric Logging Bucket
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        logging_metric_project_bucket_config = gcp.logging.ProjectBucketConfig("loggingMetricProjectBucketConfig",
-            location="global",
-            project="my-project-name",
-            bucket_id="_Default")
-        logging_metric_metric = gcp.logging.Metric("loggingMetricMetric",
-            filter="resource.type=gae_app AND severity>=ERROR",
-            bucket_name=logging_metric_project_bucket_config.id)
-        ```
-        ### Logging Metric Disabled
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        logging_metric = gcp.logging.Metric("loggingMetric",
-            disabled=True,
-            filter="resource.type=gae_app AND severity>=ERROR",
-            metric_descriptor=gcp.logging.MetricMetricDescriptorArgs(
-                metric_kind="DELTA",
-                value_type="INT64",
-            ))
-        ```
 
         ## Import
 
@@ -858,11 +682,7 @@ class Metric(pulumi.CustomResource):
             __props__ = MetricArgs.__new__(MetricArgs)
 
             __props__.__dict__["bucket_name"] = bucket_name
-            if bucket_options is not None and not isinstance(bucket_options, MetricBucketOptionsArgs):
-                bucket_options = bucket_options or {}
-                def _setter(key, value):
-                    bucket_options[key] = value
-                MetricBucketOptionsArgs._configure(_setter, **bucket_options)
+            bucket_options = _utilities.configure(bucket_options, MetricBucketOptionsArgs, True)
             __props__.__dict__["bucket_options"] = bucket_options
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled
@@ -870,11 +690,7 @@ class Metric(pulumi.CustomResource):
                 raise TypeError("Missing required property 'filter'")
             __props__.__dict__["filter"] = filter
             __props__.__dict__["label_extractors"] = label_extractors
-            if metric_descriptor is not None and not isinstance(metric_descriptor, MetricMetricDescriptorArgs):
-                metric_descriptor = metric_descriptor or {}
-                def _setter(key, value):
-                    metric_descriptor[key] = value
-                MetricMetricDescriptorArgs._configure(_setter, **metric_descriptor)
+            metric_descriptor = _utilities.configure(metric_descriptor, MetricMetricDescriptorArgs, True)
             __props__.__dict__["metric_descriptor"] = metric_descriptor
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

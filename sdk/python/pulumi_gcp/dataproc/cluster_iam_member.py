@@ -58,13 +58,21 @@ class ClusterIAMMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster: pulumi.Input[str],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
+             cluster: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['ClusterIAMMemberConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cluster is None:
+            raise TypeError("Missing 'cluster' argument")
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("cluster", cluster)
         _setter("member", member)
         _setter("role", role)
@@ -214,7 +222,9 @@ class _ClusterIAMMemberState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if cluster is not None:
             _setter("cluster", cluster)
         if condition is not None:
@@ -349,47 +359,6 @@ class ClusterIAMMember(pulumi.CustomResource):
 
         > **Note:** `dataproc.ClusterIAMBinding` resources **can be** used in conjunction with `dataproc.ClusterIAMMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataproc\\_cluster\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
-        editor = gcp.dataproc.ClusterIAMPolicy("editor",
-            project="your-project",
-            region="your-region",
-            cluster="your-dataproc-cluster",
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_dataproc\\_cluster\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        editor = gcp.dataproc.ClusterIAMBinding("editor",
-            cluster="your-dataproc-cluster",
-            members=["user:jane@example.com"],
-            role="roles/editor")
-        ```
-
-        ## google\\_dataproc\\_cluster\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        editor = gcp.dataproc.ClusterIAMMember("editor",
-            cluster="your-dataproc-cluster",
-            member="user:jane@example.com",
-            role="roles/editor")
-        ```
-
         ## Import
 
         Cluster IAM resources can be imported using the project, region, cluster name, role and/or member.
@@ -451,47 +420,6 @@ class ClusterIAMMember(pulumi.CustomResource):
 
         > **Note:** `dataproc.ClusterIAMBinding` resources **can be** used in conjunction with `dataproc.ClusterIAMMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataproc\\_cluster\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
-        editor = gcp.dataproc.ClusterIAMPolicy("editor",
-            project="your-project",
-            region="your-region",
-            cluster="your-dataproc-cluster",
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_dataproc\\_cluster\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        editor = gcp.dataproc.ClusterIAMBinding("editor",
-            cluster="your-dataproc-cluster",
-            members=["user:jane@example.com"],
-            role="roles/editor")
-        ```
-
-        ## google\\_dataproc\\_cluster\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        editor = gcp.dataproc.ClusterIAMMember("editor",
-            cluster="your-dataproc-cluster",
-            member="user:jane@example.com",
-            role="roles/editor")
-        ```
-
         ## Import
 
         Cluster IAM resources can be imported using the project, region, cluster name, role and/or member.
@@ -549,11 +477,7 @@ class ClusterIAMMember(pulumi.CustomResource):
             if cluster is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster'")
             __props__.__dict__["cluster"] = cluster
-            if condition is not None and not isinstance(condition, ClusterIAMMemberConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                ClusterIAMMemberConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, ClusterIAMMemberConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")

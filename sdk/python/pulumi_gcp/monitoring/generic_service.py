@@ -53,12 +53,24 @@ class GenericServiceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_id: pulumi.Input[str],
+             service_id: Optional[pulumi.Input[str]] = None,
              basic_service: Optional[pulumi.Input['GenericServiceBasicServiceArgs']] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if service_id is None:
+            raise TypeError("Missing 'service_id' argument")
+        if basic_service is None and 'basicService' in kwargs:
+            basic_service = kwargs['basicService']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if user_labels is None and 'userLabels' in kwargs:
+            user_labels = kwargs['userLabels']
+
         _setter("service_id", service_id)
         if basic_service is not None:
             _setter("basic_service", basic_service)
@@ -198,7 +210,17 @@ class _GenericServiceState:
              service_id: Optional[pulumi.Input[str]] = None,
              telemetries: Optional[pulumi.Input[Sequence[pulumi.Input['GenericServiceTelemetryArgs']]]] = None,
              user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if basic_service is None and 'basicService' in kwargs:
+            basic_service = kwargs['basicService']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if user_labels is None and 'userLabels' in kwargs:
+            user_labels = kwargs['userLabels']
+
         if basic_service is not None:
             _setter("basic_service", basic_service)
         if display_name is not None:
@@ -339,26 +361,6 @@ class GenericService(pulumi.CustomResource):
             * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
         ## Example Usage
-        ### Monitoring Service Example
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_service = gcp.monitoring.GenericService("myService",
-            basic_service=gcp.monitoring.GenericServiceBasicServiceArgs(
-                service_labels={
-                    "moduleId": "another-module-id",
-                },
-                service_type="APP_ENGINE",
-            ),
-            display_name="My Service my-service",
-            service_id="my-service",
-            user_labels={
-                "my_key": "my_value",
-                "my_other_key": "my_other_value",
-            })
-        ```
 
         ## Import
 
@@ -417,26 +419,6 @@ class GenericService(pulumi.CustomResource):
             * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
         ## Example Usage
-        ### Monitoring Service Example
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_service = gcp.monitoring.GenericService("myService",
-            basic_service=gcp.monitoring.GenericServiceBasicServiceArgs(
-                service_labels={
-                    "moduleId": "another-module-id",
-                },
-                service_type="APP_ENGINE",
-            ),
-            display_name="My Service my-service",
-            service_id="my-service",
-            user_labels={
-                "my_key": "my_value",
-                "my_other_key": "my_other_value",
-            })
-        ```
 
         ## Import
 
@@ -487,11 +469,7 @@ class GenericService(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GenericServiceArgs.__new__(GenericServiceArgs)
 
-            if basic_service is not None and not isinstance(basic_service, GenericServiceBasicServiceArgs):
-                basic_service = basic_service or {}
-                def _setter(key, value):
-                    basic_service[key] = value
-                GenericServiceBasicServiceArgs._configure(_setter, **basic_service)
+            basic_service = _utilities.configure(basic_service, GenericServiceBasicServiceArgs, True)
             __props__.__dict__["basic_service"] = basic_service
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["project"] = project

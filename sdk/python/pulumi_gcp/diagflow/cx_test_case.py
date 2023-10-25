@@ -50,13 +50,23 @@ class CxTestCaseArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              notes: Optional[pulumi.Input[str]] = None,
              parent: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              test_case_conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnArgs']]]] = None,
              test_config: Optional[pulumi.Input['CxTestCaseTestConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if test_case_conversation_turns is None and 'testCaseConversationTurns' in kwargs:
+            test_case_conversation_turns = kwargs['testCaseConversationTurns']
+        if test_config is None and 'testConfig' in kwargs:
+            test_config = kwargs['testConfig']
+
         _setter("display_name", display_name)
         if notes is not None:
             _setter("notes", notes)
@@ -206,7 +216,19 @@ class _CxTestCaseState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              test_case_conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnArgs']]]] = None,
              test_config: Optional[pulumi.Input['CxTestCaseTestConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if creation_time is None and 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if last_test_results is None and 'lastTestResults' in kwargs:
+            last_test_results = kwargs['lastTestResults']
+        if test_case_conversation_turns is None and 'testCaseConversationTurns' in kwargs:
+            test_case_conversation_turns = kwargs['testCaseConversationTurns']
+        if test_config is None and 'testConfig' in kwargs:
+            test_config = kwargs['testConfig']
+
         if creation_time is not None:
             _setter("creation_time", creation_time)
         if display_name is not None:
@@ -366,136 +388,6 @@ class CxTestCase(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 
         ## Example Usage
-        ### Dialogflowcx Test Case Full
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_gcp as gcp
-
-        agent = gcp.diagflow.CxAgent("agent",
-            display_name="dialogflowcx-agent",
-            location="global",
-            default_language_code="en",
-            supported_language_codes=[
-                "fr",
-                "de",
-                "es",
-            ],
-            time_zone="America/New_York",
-            description="Example description.",
-            avatar_uri="https://storage.cloud.google.com/dialogflow-test-host-image/cloud-logo.png",
-            enable_stackdriver_logging=True,
-            enable_spell_correction=True,
-            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
-                enable_speech_adaptation=True,
-            ))
-        intent = gcp.diagflow.CxIntent("intent",
-            parent=agent.id,
-            display_name="MyIntent",
-            priority=1,
-            training_phrases=[gcp.diagflow.CxIntentTrainingPhraseArgs(
-                parts=[gcp.diagflow.CxIntentTrainingPhrasePartArgs(
-                    text="training phrase",
-                )],
-                repeat_count=1,
-            )])
-        page = gcp.diagflow.CxPage("page",
-            parent=agent.start_flow,
-            display_name="MyPage",
-            transition_routes=[gcp.diagflow.CxPageTransitionRouteArgs(
-                intent=intent.id,
-                trigger_fulfillment=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentArgs(
-                    messages=[gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArgs(
-                        text=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageTextArgs(
-                            texts=["Training phrase response"],
-                        ),
-                    )],
-                ),
-            )],
-            event_handlers=[gcp.diagflow.CxPageEventHandlerArgs(
-                event="some-event",
-                trigger_fulfillment=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentArgs(
-                    messages=[gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArgs(
-                        text=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageTextArgs(
-                            texts=["Handling some event"],
-                        ),
-                    )],
-                ),
-            )])
-        basic_test_case = gcp.diagflow.CxTestCase("basicTestCase",
-            parent=agent.id,
-            display_name="MyTestCase",
-            tags=["#tag1"],
-            notes="demonstrates a simple training phrase response",
-            test_config=gcp.diagflow.CxTestCaseTestConfigArgs(
-                tracking_parameters=["some_param"],
-                page=page.id,
-            ),
-            test_case_conversation_turns=[
-                gcp.diagflow.CxTestCaseTestCaseConversationTurnArgs(
-                    user_input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputArgs(
-                        input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputArgs(
-                            language_code="en",
-                            text=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputTextArgs(
-                                text="training phrase",
-                            ),
-                        ),
-                        injected_parameters=json.dumps({
-                            "some_param": "1",
-                        }),
-                        is_webhook_enabled=True,
-                        enable_sentiment_analysis=True,
-                    ),
-                    virtual_agent_output=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs(
-                        session_parameters=json.dumps({
-                            "some_param": "1",
-                        }),
-                        triggered_intent=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs(
-                            name=intent.id,
-                        ),
-                        current_page=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs(
-                            name=page.id,
-                        ),
-                        text_responses=[gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs(
-                            texts=["Training phrase response"],
-                        )],
-                    ),
-                ),
-                gcp.diagflow.CxTestCaseTestCaseConversationTurnArgs(
-                    user_input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputArgs(
-                        input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputArgs(
-                            event=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputEventArgs(
-                                event="some-event",
-                            ),
-                        ),
-                    ),
-                    virtual_agent_output=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs(
-                        current_page=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs(
-                            name=page.id,
-                        ),
-                        text_responses=[gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs(
-                            texts=["Handling some event"],
-                        )],
-                    ),
-                ),
-                gcp.diagflow.CxTestCaseTestCaseConversationTurnArgs(
-                    user_input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputArgs(
-                        input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputArgs(
-                            dtmf=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs(
-                                digits="12",
-                                finish_digit="3",
-                            ),
-                        ),
-                    ),
-                    virtual_agent_output=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs(
-                        text_responses=[gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs(
-                            texts=["I didn't get that. Can you say it again?"],
-                        )],
-                    ),
-                ),
-            ])
-        ```
 
         ## Import
 
@@ -537,136 +429,6 @@ class CxTestCase(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 
         ## Example Usage
-        ### Dialogflowcx Test Case Full
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_gcp as gcp
-
-        agent = gcp.diagflow.CxAgent("agent",
-            display_name="dialogflowcx-agent",
-            location="global",
-            default_language_code="en",
-            supported_language_codes=[
-                "fr",
-                "de",
-                "es",
-            ],
-            time_zone="America/New_York",
-            description="Example description.",
-            avatar_uri="https://storage.cloud.google.com/dialogflow-test-host-image/cloud-logo.png",
-            enable_stackdriver_logging=True,
-            enable_spell_correction=True,
-            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
-                enable_speech_adaptation=True,
-            ))
-        intent = gcp.diagflow.CxIntent("intent",
-            parent=agent.id,
-            display_name="MyIntent",
-            priority=1,
-            training_phrases=[gcp.diagflow.CxIntentTrainingPhraseArgs(
-                parts=[gcp.diagflow.CxIntentTrainingPhrasePartArgs(
-                    text="training phrase",
-                )],
-                repeat_count=1,
-            )])
-        page = gcp.diagflow.CxPage("page",
-            parent=agent.start_flow,
-            display_name="MyPage",
-            transition_routes=[gcp.diagflow.CxPageTransitionRouteArgs(
-                intent=intent.id,
-                trigger_fulfillment=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentArgs(
-                    messages=[gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArgs(
-                        text=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageTextArgs(
-                            texts=["Training phrase response"],
-                        ),
-                    )],
-                ),
-            )],
-            event_handlers=[gcp.diagflow.CxPageEventHandlerArgs(
-                event="some-event",
-                trigger_fulfillment=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentArgs(
-                    messages=[gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArgs(
-                        text=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageTextArgs(
-                            texts=["Handling some event"],
-                        ),
-                    )],
-                ),
-            )])
-        basic_test_case = gcp.diagflow.CxTestCase("basicTestCase",
-            parent=agent.id,
-            display_name="MyTestCase",
-            tags=["#tag1"],
-            notes="demonstrates a simple training phrase response",
-            test_config=gcp.diagflow.CxTestCaseTestConfigArgs(
-                tracking_parameters=["some_param"],
-                page=page.id,
-            ),
-            test_case_conversation_turns=[
-                gcp.diagflow.CxTestCaseTestCaseConversationTurnArgs(
-                    user_input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputArgs(
-                        input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputArgs(
-                            language_code="en",
-                            text=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputTextArgs(
-                                text="training phrase",
-                            ),
-                        ),
-                        injected_parameters=json.dumps({
-                            "some_param": "1",
-                        }),
-                        is_webhook_enabled=True,
-                        enable_sentiment_analysis=True,
-                    ),
-                    virtual_agent_output=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs(
-                        session_parameters=json.dumps({
-                            "some_param": "1",
-                        }),
-                        triggered_intent=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs(
-                            name=intent.id,
-                        ),
-                        current_page=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs(
-                            name=page.id,
-                        ),
-                        text_responses=[gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs(
-                            texts=["Training phrase response"],
-                        )],
-                    ),
-                ),
-                gcp.diagflow.CxTestCaseTestCaseConversationTurnArgs(
-                    user_input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputArgs(
-                        input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputArgs(
-                            event=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputEventArgs(
-                                event="some-event",
-                            ),
-                        ),
-                    ),
-                    virtual_agent_output=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs(
-                        current_page=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs(
-                            name=page.id,
-                        ),
-                        text_responses=[gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs(
-                            texts=["Handling some event"],
-                        )],
-                    ),
-                ),
-                gcp.diagflow.CxTestCaseTestCaseConversationTurnArgs(
-                    user_input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputArgs(
-                        input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputArgs(
-                            dtmf=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs(
-                                digits="12",
-                                finish_digit="3",
-                            ),
-                        ),
-                    ),
-                    virtual_agent_output=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs(
-                        text_responses=[gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs(
-                            texts=["I didn't get that. Can you say it again?"],
-                        )],
-                    ),
-                ),
-            ])
-        ```
 
         ## Import
 
@@ -717,11 +479,7 @@ class CxTestCase(pulumi.CustomResource):
             __props__.__dict__["parent"] = parent
             __props__.__dict__["tags"] = tags
             __props__.__dict__["test_case_conversation_turns"] = test_case_conversation_turns
-            if test_config is not None and not isinstance(test_config, CxTestCaseTestConfigArgs):
-                test_config = test_config or {}
-                def _setter(key, value):
-                    test_config[key] = value
-                CxTestCaseTestConfigArgs._configure(_setter, **test_config)
+            test_config = _utilities.configure(test_config, CxTestCaseTestConfigArgs, True)
             __props__.__dict__["test_config"] = test_config
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["last_test_results"] = None

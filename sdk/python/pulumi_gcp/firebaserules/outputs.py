@@ -28,7 +28,9 @@ class RulesetMetadata(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              services: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if services is not None:
             _setter("services", services)
 
@@ -55,9 +57,13 @@ class RulesetSource(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             files: Sequence['outputs.RulesetSourceFile'],
+             files: Optional[Sequence['outputs.RulesetSourceFile']] = None,
              language: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if files is None:
+            raise TypeError("Missing 'files' argument")
+
         _setter("files", files)
         if language is not None:
             _setter("language", language)
@@ -101,10 +107,16 @@ class RulesetSourceFile(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             content: str,
-             name: str,
+             content: Optional[str] = None,
+             name: Optional[str] = None,
              fingerprint: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if content is None:
+            raise TypeError("Missing 'content' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("content", content)
         _setter("name", name)
         if fingerprint is not None:

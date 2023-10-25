@@ -190,7 +190,43 @@ class RegionBackendServiceArgs:
              session_affinity: Optional[pulumi.Input[str]] = None,
              subsetting: Optional[pulumi.Input['RegionBackendServiceSubsettingArgs']] = None,
              timeout_sec: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if affinity_cookie_ttl_sec is None and 'affinityCookieTtlSec' in kwargs:
+            affinity_cookie_ttl_sec = kwargs['affinityCookieTtlSec']
+        if cdn_policy is None and 'cdnPolicy' in kwargs:
+            cdn_policy = kwargs['cdnPolicy']
+        if circuit_breakers is None and 'circuitBreakers' in kwargs:
+            circuit_breakers = kwargs['circuitBreakers']
+        if connection_draining_timeout_sec is None and 'connectionDrainingTimeoutSec' in kwargs:
+            connection_draining_timeout_sec = kwargs['connectionDrainingTimeoutSec']
+        if connection_tracking_policy is None and 'connectionTrackingPolicy' in kwargs:
+            connection_tracking_policy = kwargs['connectionTrackingPolicy']
+        if consistent_hash is None and 'consistentHash' in kwargs:
+            consistent_hash = kwargs['consistentHash']
+        if enable_cdn is None and 'enableCdn' in kwargs:
+            enable_cdn = kwargs['enableCdn']
+        if failover_policy is None and 'failoverPolicy' in kwargs:
+            failover_policy = kwargs['failoverPolicy']
+        if health_checks is None and 'healthChecks' in kwargs:
+            health_checks = kwargs['healthChecks']
+        if load_balancing_scheme is None and 'loadBalancingScheme' in kwargs:
+            load_balancing_scheme = kwargs['loadBalancingScheme']
+        if locality_lb_policy is None and 'localityLbPolicy' in kwargs:
+            locality_lb_policy = kwargs['localityLbPolicy']
+        if log_config is None and 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if outlier_detection is None and 'outlierDetection' in kwargs:
+            outlier_detection = kwargs['outlierDetection']
+        if port_name is None and 'portName' in kwargs:
+            port_name = kwargs['portName']
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
+        if session_affinity is None and 'sessionAffinity' in kwargs:
+            session_affinity = kwargs['sessionAffinity']
+        if timeout_sec is None and 'timeoutSec' in kwargs:
+            timeout_sec = kwargs['timeoutSec']
+
         if affinity_cookie_ttl_sec is not None:
             _setter("affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
         if backends is not None:
@@ -808,7 +844,47 @@ class _RegionBackendServiceState:
              session_affinity: Optional[pulumi.Input[str]] = None,
              subsetting: Optional[pulumi.Input['RegionBackendServiceSubsettingArgs']] = None,
              timeout_sec: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if affinity_cookie_ttl_sec is None and 'affinityCookieTtlSec' in kwargs:
+            affinity_cookie_ttl_sec = kwargs['affinityCookieTtlSec']
+        if cdn_policy is None and 'cdnPolicy' in kwargs:
+            cdn_policy = kwargs['cdnPolicy']
+        if circuit_breakers is None and 'circuitBreakers' in kwargs:
+            circuit_breakers = kwargs['circuitBreakers']
+        if connection_draining_timeout_sec is None and 'connectionDrainingTimeoutSec' in kwargs:
+            connection_draining_timeout_sec = kwargs['connectionDrainingTimeoutSec']
+        if connection_tracking_policy is None and 'connectionTrackingPolicy' in kwargs:
+            connection_tracking_policy = kwargs['connectionTrackingPolicy']
+        if consistent_hash is None and 'consistentHash' in kwargs:
+            consistent_hash = kwargs['consistentHash']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if enable_cdn is None and 'enableCdn' in kwargs:
+            enable_cdn = kwargs['enableCdn']
+        if failover_policy is None and 'failoverPolicy' in kwargs:
+            failover_policy = kwargs['failoverPolicy']
+        if health_checks is None and 'healthChecks' in kwargs:
+            health_checks = kwargs['healthChecks']
+        if load_balancing_scheme is None and 'loadBalancingScheme' in kwargs:
+            load_balancing_scheme = kwargs['loadBalancingScheme']
+        if locality_lb_policy is None and 'localityLbPolicy' in kwargs:
+            locality_lb_policy = kwargs['localityLbPolicy']
+        if log_config is None and 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if outlier_detection is None and 'outlierDetection' in kwargs:
+            outlier_detection = kwargs['outlierDetection']
+        if port_name is None and 'portName' in kwargs:
+            port_name = kwargs['portName']
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if session_affinity is None and 'sessionAffinity' in kwargs:
+            session_affinity = kwargs['sessionAffinity']
+        if timeout_sec is None and 'timeoutSec' in kwargs:
+            timeout_sec = kwargs['timeoutSec']
+
         if affinity_cookie_ttl_sec is not None:
             _setter("affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
         if backends is not None:
@@ -1535,61 +1611,29 @@ class RegionBackendService(pulumi.CustomResource):
 
             __props__.__dict__["affinity_cookie_ttl_sec"] = affinity_cookie_ttl_sec
             __props__.__dict__["backends"] = backends
-            if cdn_policy is not None and not isinstance(cdn_policy, RegionBackendServiceCdnPolicyArgs):
-                cdn_policy = cdn_policy or {}
-                def _setter(key, value):
-                    cdn_policy[key] = value
-                RegionBackendServiceCdnPolicyArgs._configure(_setter, **cdn_policy)
+            cdn_policy = _utilities.configure(cdn_policy, RegionBackendServiceCdnPolicyArgs, True)
             __props__.__dict__["cdn_policy"] = cdn_policy
-            if circuit_breakers is not None and not isinstance(circuit_breakers, RegionBackendServiceCircuitBreakersArgs):
-                circuit_breakers = circuit_breakers or {}
-                def _setter(key, value):
-                    circuit_breakers[key] = value
-                RegionBackendServiceCircuitBreakersArgs._configure(_setter, **circuit_breakers)
+            circuit_breakers = _utilities.configure(circuit_breakers, RegionBackendServiceCircuitBreakersArgs, True)
             __props__.__dict__["circuit_breakers"] = circuit_breakers
             __props__.__dict__["connection_draining_timeout_sec"] = connection_draining_timeout_sec
-            if connection_tracking_policy is not None and not isinstance(connection_tracking_policy, RegionBackendServiceConnectionTrackingPolicyArgs):
-                connection_tracking_policy = connection_tracking_policy or {}
-                def _setter(key, value):
-                    connection_tracking_policy[key] = value
-                RegionBackendServiceConnectionTrackingPolicyArgs._configure(_setter, **connection_tracking_policy)
+            connection_tracking_policy = _utilities.configure(connection_tracking_policy, RegionBackendServiceConnectionTrackingPolicyArgs, True)
             __props__.__dict__["connection_tracking_policy"] = connection_tracking_policy
-            if consistent_hash is not None and not isinstance(consistent_hash, RegionBackendServiceConsistentHashArgs):
-                consistent_hash = consistent_hash or {}
-                def _setter(key, value):
-                    consistent_hash[key] = value
-                RegionBackendServiceConsistentHashArgs._configure(_setter, **consistent_hash)
+            consistent_hash = _utilities.configure(consistent_hash, RegionBackendServiceConsistentHashArgs, True)
             __props__.__dict__["consistent_hash"] = consistent_hash
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_cdn"] = enable_cdn
-            if failover_policy is not None and not isinstance(failover_policy, RegionBackendServiceFailoverPolicyArgs):
-                failover_policy = failover_policy or {}
-                def _setter(key, value):
-                    failover_policy[key] = value
-                RegionBackendServiceFailoverPolicyArgs._configure(_setter, **failover_policy)
+            failover_policy = _utilities.configure(failover_policy, RegionBackendServiceFailoverPolicyArgs, True)
             __props__.__dict__["failover_policy"] = failover_policy
             __props__.__dict__["health_checks"] = health_checks
-            if iap is not None and not isinstance(iap, RegionBackendServiceIapArgs):
-                iap = iap or {}
-                def _setter(key, value):
-                    iap[key] = value
-                RegionBackendServiceIapArgs._configure(_setter, **iap)
+            iap = _utilities.configure(iap, RegionBackendServiceIapArgs, True)
             __props__.__dict__["iap"] = iap
             __props__.__dict__["load_balancing_scheme"] = load_balancing_scheme
             __props__.__dict__["locality_lb_policy"] = locality_lb_policy
-            if log_config is not None and not isinstance(log_config, RegionBackendServiceLogConfigArgs):
-                log_config = log_config or {}
-                def _setter(key, value):
-                    log_config[key] = value
-                RegionBackendServiceLogConfigArgs._configure(_setter, **log_config)
+            log_config = _utilities.configure(log_config, RegionBackendServiceLogConfigArgs, True)
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
-            if outlier_detection is not None and not isinstance(outlier_detection, RegionBackendServiceOutlierDetectionArgs):
-                outlier_detection = outlier_detection or {}
-                def _setter(key, value):
-                    outlier_detection[key] = value
-                RegionBackendServiceOutlierDetectionArgs._configure(_setter, **outlier_detection)
+            outlier_detection = _utilities.configure(outlier_detection, RegionBackendServiceOutlierDetectionArgs, True)
             __props__.__dict__["outlier_detection"] = outlier_detection
             __props__.__dict__["port_name"] = port_name
             __props__.__dict__["project"] = project
@@ -1597,11 +1641,7 @@ class RegionBackendService(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["security_policy"] = security_policy
             __props__.__dict__["session_affinity"] = session_affinity
-            if subsetting is not None and not isinstance(subsetting, RegionBackendServiceSubsettingArgs):
-                subsetting = subsetting or {}
-                def _setter(key, value):
-                    subsetting[key] = value
-                RegionBackendServiceSubsettingArgs._configure(_setter, **subsetting)
+            subsetting = _utilities.configure(subsetting, RegionBackendServiceSubsettingArgs, True)
             __props__.__dict__["subsetting"] = subsetting
             __props__.__dict__["timeout_sec"] = timeout_sec
             __props__.__dict__["creation_timestamp"] = None

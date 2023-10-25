@@ -80,26 +80,6 @@ def get_v2_runtime_versions(project: Optional[str] = None,
     """
     Get runtime versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.runtimeVersions).
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    available = gcp.tpu.get_v2_runtime_versions()
-    ```
-    ### Configure Basic TPU VM With Available Version
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    available = gcp.tpu.get_v2_runtime_versions()
-    tpu = gcp.tpu.V2Vm("tpu",
-        zone="us-central1-b",
-        runtime_version=available.versions[0])
-    ```
-
 
     :param str project: The project to list versions for. If it
            is not provided, the provider project is used.
@@ -125,26 +105,6 @@ def get_v2_runtime_versions_output(project: Optional[pulumi.Input[Optional[str]]
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetV2RuntimeVersionsResult]:
     """
     Get runtime versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.runtimeVersions).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    available = gcp.tpu.get_v2_runtime_versions()
-    ```
-    ### Configure Basic TPU VM With Available Version
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    available = gcp.tpu.get_v2_runtime_versions()
-    tpu = gcp.tpu.V2Vm("tpu",
-        zone="us-central1-b",
-        runtime_version=available.versions[0])
-    ```
 
 
     :param str project: The project to list versions for. If it

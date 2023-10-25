@@ -66,7 +66,7 @@ class ApiConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             api: pulumi.Input[str],
+             api: Optional[pulumi.Input[str]] = None,
              api_config_id: Optional[pulumi.Input[str]] = None,
              api_config_id_prefix: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
@@ -76,7 +76,25 @@ class ApiConfigArgs:
              managed_service_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigManagedServiceConfigArgs']]]] = None,
              openapi_documents: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigOpenapiDocumentArgs']]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api is None:
+            raise TypeError("Missing 'api' argument")
+        if api_config_id is None and 'apiConfigId' in kwargs:
+            api_config_id = kwargs['apiConfigId']
+        if api_config_id_prefix is None and 'apiConfigIdPrefix' in kwargs:
+            api_config_id_prefix = kwargs['apiConfigIdPrefix']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if gateway_config is None and 'gatewayConfig' in kwargs:
+            gateway_config = kwargs['gatewayConfig']
+        if grpc_services is None and 'grpcServices' in kwargs:
+            grpc_services = kwargs['grpcServices']
+        if managed_service_configs is None and 'managedServiceConfigs' in kwargs:
+            managed_service_configs = kwargs['managedServiceConfigs']
+        if openapi_documents is None and 'openapiDocuments' in kwargs:
+            openapi_documents = kwargs['openapiDocuments']
+
         _setter("api", api)
         if api_config_id is not None:
             _setter("api_config_id", api_config_id)
@@ -300,7 +318,25 @@ class _ApiConfigState:
              openapi_documents: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigOpenapiDocumentArgs']]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              service_config_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api_config_id is None and 'apiConfigId' in kwargs:
+            api_config_id = kwargs['apiConfigId']
+        if api_config_id_prefix is None and 'apiConfigIdPrefix' in kwargs:
+            api_config_id_prefix = kwargs['apiConfigIdPrefix']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if gateway_config is None and 'gatewayConfig' in kwargs:
+            gateway_config = kwargs['gatewayConfig']
+        if grpc_services is None and 'grpcServices' in kwargs:
+            grpc_services = kwargs['grpcServices']
+        if managed_service_configs is None and 'managedServiceConfigs' in kwargs:
+            managed_service_configs = kwargs['managedServiceConfigs']
+        if openapi_documents is None and 'openapiDocuments' in kwargs:
+            openapi_documents = kwargs['openapiDocuments']
+        if service_config_id is None and 'serviceConfigId' in kwargs:
+            service_config_id = kwargs['serviceConfigId']
+
         if api is not None:
             _setter("api", api)
         if api_config_id is not None:
@@ -508,26 +544,6 @@ class ApiConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/api-gateway/docs/creating-api-config)
 
         ## Example Usage
-        ### Apigateway Api Config Basic
-
-        ```python
-        import pulumi
-        import base64
-        import pulumi_gcp as gcp
-
-        api_cfg_api = gcp.apigateway.Api("apiCfgApi", api_id="my-api",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        api_cfg_api_config = gcp.apigateway.ApiConfig("apiCfgApiConfig",
-            api=api_cfg_api.api_id,
-            api_config_id="my-config",
-            openapi_documents=[gcp.apigateway.ApiConfigOpenapiDocumentArgs(
-                document=gcp.apigateway.ApiConfigOpenapiDocumentDocumentArgs(
-                    path="spec.yaml",
-                    contents=(lambda path: base64.b64encode(open(path).read().encode()).decode())("test-fixtures/openapi.yaml"),
-                ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -585,26 +601,6 @@ class ApiConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/api-gateway/docs/creating-api-config)
 
         ## Example Usage
-        ### Apigateway Api Config Basic
-
-        ```python
-        import pulumi
-        import base64
-        import pulumi_gcp as gcp
-
-        api_cfg_api = gcp.apigateway.Api("apiCfgApi", api_id="my-api",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        api_cfg_api_config = gcp.apigateway.ApiConfig("apiCfgApiConfig",
-            api=api_cfg_api.api_id,
-            api_config_id="my-config",
-            openapi_documents=[gcp.apigateway.ApiConfigOpenapiDocumentArgs(
-                document=gcp.apigateway.ApiConfigOpenapiDocumentDocumentArgs(
-                    path="spec.yaml",
-                    contents=(lambda path: base64.b64encode(open(path).read().encode()).decode())("test-fixtures/openapi.yaml"),
-                ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -666,11 +662,7 @@ class ApiConfig(pulumi.CustomResource):
             __props__.__dict__["api_config_id"] = api_config_id
             __props__.__dict__["api_config_id_prefix"] = api_config_id_prefix
             __props__.__dict__["display_name"] = display_name
-            if gateway_config is not None and not isinstance(gateway_config, ApiConfigGatewayConfigArgs):
-                gateway_config = gateway_config or {}
-                def _setter(key, value):
-                    gateway_config[key] = value
-                ApiConfigGatewayConfigArgs._configure(_setter, **gateway_config)
+            gateway_config = _utilities.configure(gateway_config, ApiConfigGatewayConfigArgs, True)
             __props__.__dict__["gateway_config"] = gateway_config
             __props__.__dict__["grpc_services"] = grpc_services
             __props__.__dict__["labels"] = labels

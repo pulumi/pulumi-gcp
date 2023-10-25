@@ -32,7 +32,9 @@ class CaExternalAccountKeyArgs:
              _setter: Callable[[Any, Any], None],
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if location is not None:
             _setter("location", location)
         if project is not None:
@@ -100,7 +102,13 @@ class _CaExternalAccountKeyState:
              location: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if b64_mac_key is None and 'b64MacKey' in kwargs:
+            b64_mac_key = kwargs['b64MacKey']
+        if key_id is None and 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+
         if b64_mac_key is not None:
             _setter("b64_mac_key", b64_mac_key)
         if key_id is not None:
@@ -207,14 +215,6 @@ class CaExternalAccountKey(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
-        ### Public Ca External Account Key
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        prod = gcp.compute.CaExternalAccountKey("prod", project="my-project-name")
-        ```
 
         ## Import
 
@@ -254,14 +254,6 @@ class CaExternalAccountKey(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
-        ### Public Ca External Account Key
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        prod = gcp.compute.CaExternalAccountKey("prod", project="my-project-name")
-        ```
 
         ## Import
 

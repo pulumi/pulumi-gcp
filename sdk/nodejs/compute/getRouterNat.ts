@@ -12,18 +12,6 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/router/docs/)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const foo = gcp.compute.getRouterNat({
- *     name: "my-nat",
- *     router: "my-router",
- * });
- * ```
  */
 export function getRouterNat(args: GetRouterNatArgs, opts?: pulumi.InvokeOptions): Promise<GetRouterNatResult> {
 
@@ -97,18 +85,6 @@ export interface GetRouterNatResult {
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/router/docs/)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const foo = gcp.compute.getRouterNat({
- *     name: "my-nat",
- *     router: "my-router",
- * });
- * ```
  */
 export function getRouterNatOutput(args: GetRouterNatOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouterNatResult> {
     return pulumi.output(args).apply((a: any) => getRouterNat(a, opts))

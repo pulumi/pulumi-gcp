@@ -27,34 +27,6 @@ import (
 //   - [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 //
 // ## Example Usage
-// ### Monitoring Cluster Istio Service
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := monitoring.GetClusterIstioService(ctx, &monitoring.GetClusterIstioServiceArgs{
-//				ClusterName:      "west",
-//				Location:         "us-west2-a",
-//				ServiceName:      "istio-policy",
-//				ServiceNamespace: "istio-system",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetClusterIstioService(ctx *pulumi.Context, args *GetClusterIstioServiceArgs, opts ...pulumi.InvokeOption) (*GetClusterIstioServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClusterIstioServiceResult

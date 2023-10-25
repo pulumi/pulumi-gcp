@@ -45,13 +45,29 @@ class BillingAccountBucketConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             billing_account: pulumi.Input[str],
-             bucket_id: pulumi.Input[str],
-             location: pulumi.Input[str],
+             billing_account: Optional[pulumi.Input[str]] = None,
+             bucket_id: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
              cmek_settings: Optional[pulumi.Input['BillingAccountBucketConfigCmekSettingsArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              retention_days: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if billing_account is None and 'billingAccount' in kwargs:
+            billing_account = kwargs['billingAccount']
+        if billing_account is None:
+            raise TypeError("Missing 'billing_account' argument")
+        if bucket_id is None and 'bucketId' in kwargs:
+            bucket_id = kwargs['bucketId']
+        if bucket_id is None:
+            raise TypeError("Missing 'bucket_id' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if cmek_settings is None and 'cmekSettings' in kwargs:
+            cmek_settings = kwargs['cmekSettings']
+        if retention_days is None and 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+
         _setter("billing_account", billing_account)
         _setter("bucket_id", bucket_id)
         _setter("location", location)
@@ -183,7 +199,19 @@ class _BillingAccountBucketConfigState:
              location: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              retention_days: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if billing_account is None and 'billingAccount' in kwargs:
+            billing_account = kwargs['billingAccount']
+        if bucket_id is None and 'bucketId' in kwargs:
+            bucket_id = kwargs['bucketId']
+        if cmek_settings is None and 'cmekSettings' in kwargs:
+            cmek_settings = kwargs['cmekSettings']
+        if lifecycle_state is None and 'lifecycleState' in kwargs:
+            lifecycle_state = kwargs['lifecycleState']
+        if retention_days is None and 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+
         if billing_account is not None:
             _setter("billing_account", billing_account)
         if bucket_id is not None:
@@ -319,20 +347,6 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
 
         > **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.organizations.get_billing_account(billing_account="00AA00-000AAA-00AA0A")
-        basic = gcp.logging.BillingAccountBucketConfig("basic",
-            billing_account=default.billing_account,
-            location="global",
-            retention_days=30,
-            bucket_id="_Default")
-        ```
-
         ## Import
 
         This resource can be imported using the following format:
@@ -364,20 +378,6 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
         [Storing Logs](https://cloud.google.com/logging/docs/storage).
 
         > **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.organizations.get_billing_account(billing_account="00AA00-000AAA-00AA0A")
-        basic = gcp.logging.BillingAccountBucketConfig("basic",
-            billing_account=default.billing_account,
-            location="global",
-            retention_days=30,
-            bucket_id="_Default")
-        ```
 
         ## Import
 
@@ -427,11 +427,7 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
             if bucket_id is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket_id'")
             __props__.__dict__["bucket_id"] = bucket_id
-            if cmek_settings is not None and not isinstance(cmek_settings, BillingAccountBucketConfigCmekSettingsArgs):
-                cmek_settings = cmek_settings or {}
-                def _setter(key, value):
-                    cmek_settings[key] = value
-                BillingAccountBucketConfigCmekSettingsArgs._configure(_setter, **cmek_settings)
+            cmek_settings = _utilities.configure(cmek_settings, BillingAccountBucketConfigCmekSettingsArgs, True)
             __props__.__dict__["cmek_settings"] = cmek_settings
             __props__.__dict__["description"] = description
             if location is None and not opts.urn:

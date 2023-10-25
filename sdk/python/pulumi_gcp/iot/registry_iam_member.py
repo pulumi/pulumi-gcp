@@ -60,13 +60,19 @@ class RegistryIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['RegistryIamMemberConditionArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("member", member)
         _setter("role", role)
         if condition is not None:
@@ -221,7 +227,9 @@ class _RegistryIamMemberState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -362,48 +370,6 @@ class RegistryIamMember(pulumi.CustomResource):
 
         > **Note:** `iot.RegistryIamBinding` resources **can be** used in conjunction with `iot.RegistryIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_cloudiot\\_registry\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.iot.RegistryIamPolicy("policy",
-            project=google_cloudiot_registry["test-registry"]["project"],
-            region=google_cloudiot_registry["test-registry"]["region"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_cloudiot\\_registry\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.iot.RegistryIamBinding("binding",
-            project=google_cloudiot_registry["test-registry"]["project"],
-            region=google_cloudiot_registry["test-registry"]["region"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_cloudiot\\_registry\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.iot.RegistryIamMember("member",
-            project=google_cloudiot_registry["test-registry"]["project"],
-            region=google_cloudiot_registry["test-registry"]["region"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/registries/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud IoT Core deviceregistry IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -475,48 +441,6 @@ class RegistryIamMember(pulumi.CustomResource):
 
         > **Note:** `iot.RegistryIamBinding` resources **can be** used in conjunction with `iot.RegistryIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_cloudiot\\_registry\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.iot.RegistryIamPolicy("policy",
-            project=google_cloudiot_registry["test-registry"]["project"],
-            region=google_cloudiot_registry["test-registry"]["region"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_cloudiot\\_registry\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.iot.RegistryIamBinding("binding",
-            project=google_cloudiot_registry["test-registry"]["project"],
-            region=google_cloudiot_registry["test-registry"]["region"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_cloudiot\\_registry\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.iot.RegistryIamMember("member",
-            project=google_cloudiot_registry["test-registry"]["project"],
-            region=google_cloudiot_registry["test-registry"]["region"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/registries/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud IoT Core deviceregistry IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -575,11 +499,7 @@ class RegistryIamMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RegistryIamMemberArgs.__new__(RegistryIamMemberArgs)
 
-            if condition is not None and not isinstance(condition, RegistryIamMemberConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                RegistryIamMemberConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, RegistryIamMemberConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")

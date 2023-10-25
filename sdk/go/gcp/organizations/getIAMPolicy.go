@@ -17,62 +17,6 @@ import (
 //
 // **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				AuditConfigs: []organizations.GetIAMPolicyAuditConfig{
-//					{
-//						AuditLogConfigs: []organizations.GetIAMPolicyAuditConfigAuditLogConfig{
-//							{
-//								ExemptedMembers: []string{
-//									"user:you@domain.com",
-//								},
-//								LogType: "DATA_READ",
-//							},
-//							{
-//								LogType: "DATA_WRITE",
-//							},
-//							{
-//								LogType: "ADMIN_READ",
-//							},
-//						},
-//						Service: "cloudkms.googleapis.com",
-//					},
-//				},
-//				Bindings: []organizations.GetIAMPolicyBinding{
-//					{
-//						Members: []string{
-//							"serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com",
-//						},
-//						Role: "roles/compute.instanceAdmin",
-//					},
-//					{
-//						Members: []string{
-//							"user:alice@gmail.com",
-//						},
-//						Role: "roles/storage.objectViewer",
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // This data source is used to define IAM policies to apply to other resources.
 // Currently, defining a policy through a datasource and referencing that policy
 // from another resource is the only way to apply an IAM policy to a resource.

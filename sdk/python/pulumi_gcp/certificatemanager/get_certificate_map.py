@@ -114,15 +114,6 @@ def get_certificate_map(name: Optional[str] = None,
     """
     Get info about a Google Certificate Manager Certificate Map resource.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    default = gcp.certificatemanager.get_certificate_map(name="cert-map")
-    ```
-
 
     :param str name: The name of the certificate map.
            
@@ -153,15 +144,6 @@ def get_certificate_map_output(name: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateMapResult]:
     """
     Get info about a Google Certificate Manager Certificate Map resource.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    default = gcp.certificatemanager.get_certificate_map(name="cert-map")
-    ```
 
 
     :param str name: The name of the certificate map.

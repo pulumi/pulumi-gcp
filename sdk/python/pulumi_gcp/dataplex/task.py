@@ -63,8 +63,8 @@ class TaskArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             execution_spec: pulumi.Input['TaskExecutionSpecArgs'],
-             trigger_spec: pulumi.Input['TaskTriggerSpecArgs'],
+             execution_spec: Optional[pulumi.Input['TaskExecutionSpecArgs']] = None,
+             trigger_spec: Optional[pulumi.Input['TaskTriggerSpecArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -74,7 +74,21 @@ class TaskArgs:
              project: Optional[pulumi.Input[str]] = None,
              spark: Optional[pulumi.Input['TaskSparkArgs']] = None,
              task_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if execution_spec is None and 'executionSpec' in kwargs:
+            execution_spec = kwargs['executionSpec']
+        if execution_spec is None:
+            raise TypeError("Missing 'execution_spec' argument")
+        if trigger_spec is None and 'triggerSpec' in kwargs:
+            trigger_spec = kwargs['triggerSpec']
+        if trigger_spec is None:
+            raise TypeError("Missing 'trigger_spec' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if task_id is None and 'taskId' in kwargs:
+            task_id = kwargs['taskId']
+
         _setter("execution_spec", execution_spec)
         _setter("trigger_spec", trigger_spec)
         if description is not None:
@@ -324,7 +338,23 @@ class _TaskState:
              trigger_spec: Optional[pulumi.Input['TaskTriggerSpecArgs']] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if execution_spec is None and 'executionSpec' in kwargs:
+            execution_spec = kwargs['executionSpec']
+        if execution_statuses is None and 'executionStatuses' in kwargs:
+            execution_statuses = kwargs['executionStatuses']
+        if task_id is None and 'taskId' in kwargs:
+            task_id = kwargs['taskId']
+        if trigger_spec is None and 'triggerSpec' in kwargs:
+            trigger_spec = kwargs['triggerSpec']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:
@@ -712,36 +742,20 @@ class Task(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
-            if execution_spec is not None and not isinstance(execution_spec, TaskExecutionSpecArgs):
-                execution_spec = execution_spec or {}
-                def _setter(key, value):
-                    execution_spec[key] = value
-                TaskExecutionSpecArgs._configure(_setter, **execution_spec)
+            execution_spec = _utilities.configure(execution_spec, TaskExecutionSpecArgs, True)
             if execution_spec is None and not opts.urn:
                 raise TypeError("Missing required property 'execution_spec'")
             __props__.__dict__["execution_spec"] = execution_spec
             __props__.__dict__["labels"] = labels
             __props__.__dict__["lake"] = lake
             __props__.__dict__["location"] = location
-            if notebook is not None and not isinstance(notebook, TaskNotebookArgs):
-                notebook = notebook or {}
-                def _setter(key, value):
-                    notebook[key] = value
-                TaskNotebookArgs._configure(_setter, **notebook)
+            notebook = _utilities.configure(notebook, TaskNotebookArgs, True)
             __props__.__dict__["notebook"] = notebook
             __props__.__dict__["project"] = project
-            if spark is not None and not isinstance(spark, TaskSparkArgs):
-                spark = spark or {}
-                def _setter(key, value):
-                    spark[key] = value
-                TaskSparkArgs._configure(_setter, **spark)
+            spark = _utilities.configure(spark, TaskSparkArgs, True)
             __props__.__dict__["spark"] = spark
             __props__.__dict__["task_id"] = task_id
-            if trigger_spec is not None and not isinstance(trigger_spec, TaskTriggerSpecArgs):
-                trigger_spec = trigger_spec or {}
-                def _setter(key, value):
-                    trigger_spec[key] = value
-                TaskTriggerSpecArgs._configure(_setter, **trigger_spec)
+            trigger_spec = _utilities.configure(trigger_spec, TaskTriggerSpecArgs, True)
             if trigger_spec is None and not opts.urn:
                 raise TypeError("Missing required property 'trigger_spec'")
             __props__.__dict__["trigger_spec"] = trigger_spec

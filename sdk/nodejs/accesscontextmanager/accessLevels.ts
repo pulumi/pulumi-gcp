@@ -18,60 +18,6 @@ import * as utilities from "../utilities";
  *     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
  *
  * ## Example Usage
- * ### Access Context Manager Access Levels Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
- *     parent: "organizations/123456789",
- *     title: "my policy",
- * });
- * const access_levels = new gcp.accesscontextmanager.AccessLevels("access-levels", {
- *     accessLevels: [
- *         {
- *             basic: {
- *                 conditions: [{
- *                     devicePolicy: {
- *                         osConstraints: [{
- *                             osType: "DESKTOP_CHROME_OS",
- *                         }],
- *                         requireScreenLock: true,
- *                     },
- *                     regions: [
- *                         "CH",
- *                         "IT",
- *                         "US",
- *                     ],
- *                 }],
- *             },
- *             name: pulumi.interpolate`accessPolicies/${access_policy.name}/accessLevels/chromeos_no_lock`,
- *             title: "chromeos_no_lock",
- *         },
- *         {
- *             basic: {
- *                 conditions: [{
- *                     devicePolicy: {
- *                         osConstraints: [{
- *                             osType: "DESKTOP_MAC",
- *                         }],
- *                         requireScreenLock: true,
- *                     },
- *                     regions: [
- *                         "CH",
- *                         "IT",
- *                         "US",
- *                     ],
- *                 }],
- *             },
- *             name: pulumi.interpolate`accessPolicies/${access_policy.name}/accessLevels/mac_no_lock`,
- *             title: "mac_no_lock",
- *         },
- *     ],
- *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
- * });
- * ```
  *
  * ## Import
  *

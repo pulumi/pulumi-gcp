@@ -92,15 +92,6 @@ def get_dataset_iam_policy(dataset_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for a BigQuery dataset.
 
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.bigquery.get_dataset_iam_policy(dataset_id=google_bigquery_dataset["dataset"]["dataset_id"])
-    ```
-
 
     :param str dataset_id: The dataset ID.
     :param str project: The ID of the project in which the resource belongs.
@@ -126,15 +117,6 @@ def get_dataset_iam_policy_output(dataset_id: Optional[pulumi.Input[str]] = None
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatasetIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a BigQuery dataset.
-
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.bigquery.get_dataset_iam_policy(dataset_id=google_bigquery_dataset["dataset"]["dataset_id"])
-    ```
 
 
     :param str dataset_id: The dataset ID.

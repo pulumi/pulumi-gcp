@@ -47,12 +47,22 @@ class PublicAdvertisedPrefixArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dns_verification_ip: pulumi.Input[str],
-             ip_cidr_range: pulumi.Input[str],
+             dns_verification_ip: Optional[pulumi.Input[str]] = None,
+             ip_cidr_range: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dns_verification_ip is None and 'dnsVerificationIp' in kwargs:
+            dns_verification_ip = kwargs['dnsVerificationIp']
+        if dns_verification_ip is None:
+            raise TypeError("Missing 'dns_verification_ip' argument")
+        if ip_cidr_range is None and 'ipCidrRange' in kwargs:
+            ip_cidr_range = kwargs['ipCidrRange']
+        if ip_cidr_range is None:
+            raise TypeError("Missing 'ip_cidr_range' argument")
+
         _setter("dns_verification_ip", dns_verification_ip)
         _setter("ip_cidr_range", ip_cidr_range)
         if description is not None:
@@ -177,7 +187,15 @@ class _PublicAdvertisedPrefixState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dns_verification_ip is None and 'dnsVerificationIp' in kwargs:
+            dns_verification_ip = kwargs['dnsVerificationIp']
+        if ip_cidr_range is None and 'ipCidrRange' in kwargs:
+            ip_cidr_range = kwargs['ipCidrRange']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if description is not None:
             _setter("description", description)
         if dns_verification_ip is not None:
@@ -294,17 +312,6 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
             * [Using bring your own IP](https://cloud.google.com/vpc/docs/using-bring-your-own-ip)
 
         ## Example Usage
-        ### Public Advertised Prefixes Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        prefixes = gcp.compute.PublicAdvertisedPrefix("prefixes",
-            description="description",
-            dns_verification_ip="127.127.0.0",
-            ip_cidr_range="127.127.0.0/16")
-        ```
 
         ## Import
 
@@ -355,17 +362,6 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
             * [Using bring your own IP](https://cloud.google.com/vpc/docs/using-bring-your-own-ip)
 
         ## Example Usage
-        ### Public Advertised Prefixes Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        prefixes = gcp.compute.PublicAdvertisedPrefix("prefixes",
-            description="description",
-            dns_verification_ip="127.127.0.0",
-            ip_cidr_range="127.127.0.0/16")
-        ```
 
         ## Import
 

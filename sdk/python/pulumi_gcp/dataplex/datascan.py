@@ -61,17 +61,37 @@ class DatascanArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data: pulumi.Input['DatascanDataArgs'],
-             data_scan_id: pulumi.Input[str],
-             execution_spec: pulumi.Input['DatascanExecutionSpecArgs'],
-             location: pulumi.Input[str],
+             data: Optional[pulumi.Input['DatascanDataArgs']] = None,
+             data_scan_id: Optional[pulumi.Input[str]] = None,
+             execution_spec: Optional[pulumi.Input['DatascanExecutionSpecArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
              data_profile_spec: Optional[pulumi.Input['DatascanDataProfileSpecArgs']] = None,
              data_quality_spec: Optional[pulumi.Input['DatascanDataQualitySpecArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if data is None:
+            raise TypeError("Missing 'data' argument")
+        if data_scan_id is None and 'dataScanId' in kwargs:
+            data_scan_id = kwargs['dataScanId']
+        if data_scan_id is None:
+            raise TypeError("Missing 'data_scan_id' argument")
+        if execution_spec is None and 'executionSpec' in kwargs:
+            execution_spec = kwargs['executionSpec']
+        if execution_spec is None:
+            raise TypeError("Missing 'execution_spec' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if data_profile_spec is None and 'dataProfileSpec' in kwargs:
+            data_profile_spec = kwargs['dataProfileSpec']
+        if data_quality_spec is None and 'dataQualitySpec' in kwargs:
+            data_quality_spec = kwargs['dataQualitySpec']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("data", data)
         _setter("data_scan_id", data_scan_id)
         _setter("execution_spec", execution_spec)
@@ -319,7 +339,29 @@ class _DatascanState:
              type: Optional[pulumi.Input[str]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if data_profile_results is None and 'dataProfileResults' in kwargs:
+            data_profile_results = kwargs['dataProfileResults']
+        if data_profile_spec is None and 'dataProfileSpec' in kwargs:
+            data_profile_spec = kwargs['dataProfileSpec']
+        if data_quality_results is None and 'dataQualityResults' in kwargs:
+            data_quality_results = kwargs['dataQualityResults']
+        if data_quality_spec is None and 'dataQualitySpec' in kwargs:
+            data_quality_spec = kwargs['dataQualitySpec']
+        if data_scan_id is None and 'dataScanId' in kwargs:
+            data_scan_id = kwargs['dataScanId']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if execution_spec is None and 'executionSpec' in kwargs:
+            execution_spec = kwargs['executionSpec']
+        if execution_statuses is None and 'executionStatuses' in kwargs:
+            execution_statuses = kwargs['executionStatuses']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if data is not None:
@@ -641,202 +683,6 @@ class Datascan(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dataplex/docs)
 
         ## Example Usage
-        ### Dataplex Datascan Basic Profile
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic_profile = gcp.dataplex.Datascan("basicProfile",
-            data=gcp.dataplex.DatascanDataArgs(
-                resource="//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
-            ),
-            data_profile_spec=gcp.dataplex.DatascanDataProfileSpecArgs(),
-            data_scan_id="dataprofile-basic",
-            execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
-                trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
-                    on_demand=gcp.dataplex.DatascanExecutionSpecTriggerOnDemandArgs(),
-                ),
-            ),
-            location="us-central1",
-            project="my-project-name")
-        ```
-        ### Dataplex Datascan Full Profile
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        source = gcp.bigquery.Dataset("source",
-            dataset_id="dataplex_dataset",
-            friendly_name="test",
-            description="This is a test description",
-            location="US",
-            delete_contents_on_destroy=True)
-        full_profile = gcp.dataplex.Datascan("fullProfile",
-            location="us-central1",
-            display_name="Full Datascan Profile",
-            data_scan_id="dataprofile-full",
-            description="Example resource - Full Datascan Profile",
-            labels={
-                "author": "billing",
-            },
-            data=gcp.dataplex.DatascanDataArgs(
-                resource="//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
-            ),
-            execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
-                trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
-                    schedule=gcp.dataplex.DatascanExecutionSpecTriggerScheduleArgs(
-                        cron="TZ=America/New_York 1 1 * * *",
-                    ),
-                ),
-            ),
-            data_profile_spec=gcp.dataplex.DatascanDataProfileSpecArgs(
-                sampling_percent=80,
-                row_filter="word_count > 10",
-                include_fields=gcp.dataplex.DatascanDataProfileSpecIncludeFieldsArgs(
-                    field_names=["word_count"],
-                ),
-                exclude_fields=gcp.dataplex.DatascanDataProfileSpecExcludeFieldsArgs(
-                    field_names=["property_type"],
-                ),
-                post_scan_actions=gcp.dataplex.DatascanDataProfileSpecPostScanActionsArgs(
-                    bigquery_export=gcp.dataplex.DatascanDataProfileSpecPostScanActionsBigqueryExportArgs(
-                        results_table="//bigquery.googleapis.com/projects/my-project-name/datasets/dataplex_dataset/tables/profile_export",
-                    ),
-                ),
-            ),
-            project="my-project-name",
-            opts=pulumi.ResourceOptions(depends_on=[source]))
-        ```
-        ### Dataplex Datascan Basic Quality
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic_quality = gcp.dataplex.Datascan("basicQuality",
-            data=gcp.dataplex.DatascanDataArgs(
-                resource="//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
-            ),
-            data_quality_spec=gcp.dataplex.DatascanDataQualitySpecArgs(
-                rules=[gcp.dataplex.DatascanDataQualitySpecRuleArgs(
-                    description="rule 1 for validity dimension",
-                    dimension="VALIDITY",
-                    name="rule1",
-                    table_condition_expectation=gcp.dataplex.DatascanDataQualitySpecRuleTableConditionExpectationArgs(
-                        sql_expression="COUNT(*) > 0",
-                    ),
-                )],
-            ),
-            data_scan_id="dataquality-basic",
-            execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
-                trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
-                    on_demand=gcp.dataplex.DatascanExecutionSpecTriggerOnDemandArgs(),
-                ),
-            ),
-            location="us-central1",
-            project="my-project-name")
-        ```
-        ### Dataplex Datascan Full Quality
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        full_quality = gcp.dataplex.Datascan("fullQuality",
-            data=gcp.dataplex.DatascanDataArgs(
-                resource="//bigquery.googleapis.com/projects/bigquery-public-data/datasets/austin_bikeshare/tables/bikeshare_stations",
-            ),
-            data_quality_spec=gcp.dataplex.DatascanDataQualitySpecArgs(
-                row_filter="station_id > 1000",
-                rules=[
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
-                        column="address",
-                        dimension="VALIDITY",
-                        non_null_expectation=gcp.dataplex.DatascanDataQualitySpecRuleNonNullExpectationArgs(),
-                        threshold=0.99,
-                    ),
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
-                        column="council_district",
-                        dimension="VALIDITY",
-                        ignore_null=True,
-                        range_expectation=gcp.dataplex.DatascanDataQualitySpecRuleRangeExpectationArgs(
-                            max_value="10",
-                            min_value="1",
-                            strict_max_enabled=False,
-                            strict_min_enabled=True,
-                        ),
-                        threshold=0.9,
-                    ),
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
-                        column="power_type",
-                        dimension="VALIDITY",
-                        ignore_null=False,
-                        regex_expectation=gcp.dataplex.DatascanDataQualitySpecRuleRegexExpectationArgs(
-                            regex=".*solar.*",
-                        ),
-                    ),
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
-                        column="property_type",
-                        dimension="VALIDITY",
-                        ignore_null=False,
-                        set_expectation=gcp.dataplex.DatascanDataQualitySpecRuleSetExpectationArgs(
-                            values=[
-                                "sidewalk",
-                                "parkland",
-                            ],
-                        ),
-                    ),
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
-                        column="address",
-                        dimension="UNIQUENESS",
-                        uniqueness_expectation=gcp.dataplex.DatascanDataQualitySpecRuleUniquenessExpectationArgs(),
-                    ),
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
-                        column="number_of_docks",
-                        dimension="VALIDITY",
-                        statistic_range_expectation=gcp.dataplex.DatascanDataQualitySpecRuleStatisticRangeExpectationArgs(
-                            max_value="15",
-                            min_value="5",
-                            statistic="MEAN",
-                            strict_max_enabled=True,
-                            strict_min_enabled=True,
-                        ),
-                    ),
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
-                        column="footprint_length",
-                        dimension="VALIDITY",
-                        row_condition_expectation=gcp.dataplex.DatascanDataQualitySpecRuleRowConditionExpectationArgs(
-                            sql_expression="footprint_length > 0 AND footprint_length <= 10",
-                        ),
-                    ),
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
-                        dimension="VALIDITY",
-                        table_condition_expectation=gcp.dataplex.DatascanDataQualitySpecRuleTableConditionExpectationArgs(
-                            sql_expression="COUNT(*) > 0",
-                        ),
-                    ),
-                ],
-                sampling_percent=5,
-            ),
-            data_scan_id="dataquality-full",
-            description="Example resource - Full Datascan Quality",
-            display_name="Full Datascan Quality",
-            execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
-                field="modified_date",
-                trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
-                    schedule=gcp.dataplex.DatascanExecutionSpecTriggerScheduleArgs(
-                        cron="TZ=America/New_York 1 1 * * *",
-                    ),
-                ),
-            ),
-            labels={
-                "author": "billing",
-            },
-            location="us-central1",
-            project="my-project-name")
-        ```
 
         ## Import
 
@@ -893,202 +739,6 @@ class Datascan(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dataplex/docs)
 
         ## Example Usage
-        ### Dataplex Datascan Basic Profile
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic_profile = gcp.dataplex.Datascan("basicProfile",
-            data=gcp.dataplex.DatascanDataArgs(
-                resource="//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
-            ),
-            data_profile_spec=gcp.dataplex.DatascanDataProfileSpecArgs(),
-            data_scan_id="dataprofile-basic",
-            execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
-                trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
-                    on_demand=gcp.dataplex.DatascanExecutionSpecTriggerOnDemandArgs(),
-                ),
-            ),
-            location="us-central1",
-            project="my-project-name")
-        ```
-        ### Dataplex Datascan Full Profile
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        source = gcp.bigquery.Dataset("source",
-            dataset_id="dataplex_dataset",
-            friendly_name="test",
-            description="This is a test description",
-            location="US",
-            delete_contents_on_destroy=True)
-        full_profile = gcp.dataplex.Datascan("fullProfile",
-            location="us-central1",
-            display_name="Full Datascan Profile",
-            data_scan_id="dataprofile-full",
-            description="Example resource - Full Datascan Profile",
-            labels={
-                "author": "billing",
-            },
-            data=gcp.dataplex.DatascanDataArgs(
-                resource="//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
-            ),
-            execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
-                trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
-                    schedule=gcp.dataplex.DatascanExecutionSpecTriggerScheduleArgs(
-                        cron="TZ=America/New_York 1 1 * * *",
-                    ),
-                ),
-            ),
-            data_profile_spec=gcp.dataplex.DatascanDataProfileSpecArgs(
-                sampling_percent=80,
-                row_filter="word_count > 10",
-                include_fields=gcp.dataplex.DatascanDataProfileSpecIncludeFieldsArgs(
-                    field_names=["word_count"],
-                ),
-                exclude_fields=gcp.dataplex.DatascanDataProfileSpecExcludeFieldsArgs(
-                    field_names=["property_type"],
-                ),
-                post_scan_actions=gcp.dataplex.DatascanDataProfileSpecPostScanActionsArgs(
-                    bigquery_export=gcp.dataplex.DatascanDataProfileSpecPostScanActionsBigqueryExportArgs(
-                        results_table="//bigquery.googleapis.com/projects/my-project-name/datasets/dataplex_dataset/tables/profile_export",
-                    ),
-                ),
-            ),
-            project="my-project-name",
-            opts=pulumi.ResourceOptions(depends_on=[source]))
-        ```
-        ### Dataplex Datascan Basic Quality
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic_quality = gcp.dataplex.Datascan("basicQuality",
-            data=gcp.dataplex.DatascanDataArgs(
-                resource="//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
-            ),
-            data_quality_spec=gcp.dataplex.DatascanDataQualitySpecArgs(
-                rules=[gcp.dataplex.DatascanDataQualitySpecRuleArgs(
-                    description="rule 1 for validity dimension",
-                    dimension="VALIDITY",
-                    name="rule1",
-                    table_condition_expectation=gcp.dataplex.DatascanDataQualitySpecRuleTableConditionExpectationArgs(
-                        sql_expression="COUNT(*) > 0",
-                    ),
-                )],
-            ),
-            data_scan_id="dataquality-basic",
-            execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
-                trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
-                    on_demand=gcp.dataplex.DatascanExecutionSpecTriggerOnDemandArgs(),
-                ),
-            ),
-            location="us-central1",
-            project="my-project-name")
-        ```
-        ### Dataplex Datascan Full Quality
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        full_quality = gcp.dataplex.Datascan("fullQuality",
-            data=gcp.dataplex.DatascanDataArgs(
-                resource="//bigquery.googleapis.com/projects/bigquery-public-data/datasets/austin_bikeshare/tables/bikeshare_stations",
-            ),
-            data_quality_spec=gcp.dataplex.DatascanDataQualitySpecArgs(
-                row_filter="station_id > 1000",
-                rules=[
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
-                        column="address",
-                        dimension="VALIDITY",
-                        non_null_expectation=gcp.dataplex.DatascanDataQualitySpecRuleNonNullExpectationArgs(),
-                        threshold=0.99,
-                    ),
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
-                        column="council_district",
-                        dimension="VALIDITY",
-                        ignore_null=True,
-                        range_expectation=gcp.dataplex.DatascanDataQualitySpecRuleRangeExpectationArgs(
-                            max_value="10",
-                            min_value="1",
-                            strict_max_enabled=False,
-                            strict_min_enabled=True,
-                        ),
-                        threshold=0.9,
-                    ),
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
-                        column="power_type",
-                        dimension="VALIDITY",
-                        ignore_null=False,
-                        regex_expectation=gcp.dataplex.DatascanDataQualitySpecRuleRegexExpectationArgs(
-                            regex=".*solar.*",
-                        ),
-                    ),
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
-                        column="property_type",
-                        dimension="VALIDITY",
-                        ignore_null=False,
-                        set_expectation=gcp.dataplex.DatascanDataQualitySpecRuleSetExpectationArgs(
-                            values=[
-                                "sidewalk",
-                                "parkland",
-                            ],
-                        ),
-                    ),
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
-                        column="address",
-                        dimension="UNIQUENESS",
-                        uniqueness_expectation=gcp.dataplex.DatascanDataQualitySpecRuleUniquenessExpectationArgs(),
-                    ),
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
-                        column="number_of_docks",
-                        dimension="VALIDITY",
-                        statistic_range_expectation=gcp.dataplex.DatascanDataQualitySpecRuleStatisticRangeExpectationArgs(
-                            max_value="15",
-                            min_value="5",
-                            statistic="MEAN",
-                            strict_max_enabled=True,
-                            strict_min_enabled=True,
-                        ),
-                    ),
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
-                        column="footprint_length",
-                        dimension="VALIDITY",
-                        row_condition_expectation=gcp.dataplex.DatascanDataQualitySpecRuleRowConditionExpectationArgs(
-                            sql_expression="footprint_length > 0 AND footprint_length <= 10",
-                        ),
-                    ),
-                    gcp.dataplex.DatascanDataQualitySpecRuleArgs(
-                        dimension="VALIDITY",
-                        table_condition_expectation=gcp.dataplex.DatascanDataQualitySpecRuleTableConditionExpectationArgs(
-                            sql_expression="COUNT(*) > 0",
-                        ),
-                    ),
-                ],
-                sampling_percent=5,
-            ),
-            data_scan_id="dataquality-full",
-            description="Example resource - Full Datascan Quality",
-            display_name="Full Datascan Quality",
-            execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
-                field="modified_date",
-                trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
-                    schedule=gcp.dataplex.DatascanExecutionSpecTriggerScheduleArgs(
-                        cron="TZ=America/New_York 1 1 * * *",
-                    ),
-                ),
-            ),
-            labels={
-                "author": "billing",
-            },
-            location="us-central1",
-            project="my-project-name")
-        ```
 
         ## Import
 
@@ -1148,36 +798,20 @@ class Datascan(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatascanArgs.__new__(DatascanArgs)
 
-            if data is not None and not isinstance(data, DatascanDataArgs):
-                data = data or {}
-                def _setter(key, value):
-                    data[key] = value
-                DatascanDataArgs._configure(_setter, **data)
+            data = _utilities.configure(data, DatascanDataArgs, True)
             if data is None and not opts.urn:
                 raise TypeError("Missing required property 'data'")
             __props__.__dict__["data"] = data
-            if data_profile_spec is not None and not isinstance(data_profile_spec, DatascanDataProfileSpecArgs):
-                data_profile_spec = data_profile_spec or {}
-                def _setter(key, value):
-                    data_profile_spec[key] = value
-                DatascanDataProfileSpecArgs._configure(_setter, **data_profile_spec)
+            data_profile_spec = _utilities.configure(data_profile_spec, DatascanDataProfileSpecArgs, True)
             __props__.__dict__["data_profile_spec"] = data_profile_spec
-            if data_quality_spec is not None and not isinstance(data_quality_spec, DatascanDataQualitySpecArgs):
-                data_quality_spec = data_quality_spec or {}
-                def _setter(key, value):
-                    data_quality_spec[key] = value
-                DatascanDataQualitySpecArgs._configure(_setter, **data_quality_spec)
+            data_quality_spec = _utilities.configure(data_quality_spec, DatascanDataQualitySpecArgs, True)
             __props__.__dict__["data_quality_spec"] = data_quality_spec
             if data_scan_id is None and not opts.urn:
                 raise TypeError("Missing required property 'data_scan_id'")
             __props__.__dict__["data_scan_id"] = data_scan_id
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
-            if execution_spec is not None and not isinstance(execution_spec, DatascanExecutionSpecArgs):
-                execution_spec = execution_spec or {}
-                def _setter(key, value):
-                    execution_spec[key] = value
-                DatascanExecutionSpecArgs._configure(_setter, **execution_spec)
+            execution_spec = _utilities.configure(execution_spec, DatascanExecutionSpecArgs, True)
             if execution_spec is None and not opts.urn:
                 raise TypeError("Missing required property 'execution_spec'")
             __props__.__dict__["execution_spec"] = execution_spec

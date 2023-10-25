@@ -10,25 +10,6 @@ import * as utilities from "../utilities";
  * List IP addresses in a project. For more information see
  * the official API [list](https://cloud.google.com/compute/docs/reference/latest/addresses/list) and
  * [aggregated list](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const test = gcp.compute.getAddresses({
- *     filter: "name:test-*",
- * });
- * const prod = new gcp.dns.ManagedZone("prod", {dnsName: "prod.mydomain.com."});
- * const frontend = new gcp.dns.RecordSet("frontend", {
- *     name: pulumi.interpolate`frontend.${prod.dnsName}`,
- *     type: "A",
- *     ttl: 300,
- *     managedZone: prod.name,
- *     rrdatas: test.then(test => test.addresses.map(__item => __item.address)),
- * });
- * ```
  */
 export function getAddresses(args?: GetAddressesArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressesResult> {
     args = args || {};
@@ -105,25 +86,6 @@ export interface GetAddressesResult {
  * List IP addresses in a project. For more information see
  * the official API [list](https://cloud.google.com/compute/docs/reference/latest/addresses/list) and
  * [aggregated list](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const test = gcp.compute.getAddresses({
- *     filter: "name:test-*",
- * });
- * const prod = new gcp.dns.ManagedZone("prod", {dnsName: "prod.mydomain.com."});
- * const frontend = new gcp.dns.RecordSet("frontend", {
- *     name: pulumi.interpolate`frontend.${prod.dnsName}`,
- *     type: "A",
- *     ttl: 300,
- *     managedZone: prod.name,
- *     rrdatas: test.then(test => test.addresses.map(__item => __item.address)),
- * });
- * ```
  */
 export function getAddressesOutput(args?: GetAddressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAddressesResult> {
     return pulumi.output(args).apply((a: any) => getAddresses(a, opts))

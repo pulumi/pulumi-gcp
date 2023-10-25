@@ -184,7 +184,7 @@ class GlobalForwardingRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             target: pulumi.Input[str],
+             target: Optional[pulumi.Input[str]] = None,
              allow_psc_global_access: Optional[pulumi.Input[bool]] = None,
              description: Optional[pulumi.Input[str]] = None,
              ip_address: Optional[pulumi.Input[str]] = None,
@@ -200,7 +200,29 @@ class GlobalForwardingRuleArgs:
              project: Optional[pulumi.Input[str]] = None,
              source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if target is None:
+            raise TypeError("Missing 'target' argument")
+        if allow_psc_global_access is None and 'allowPscGlobalAccess' in kwargs:
+            allow_psc_global_access = kwargs['allowPscGlobalAccess']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ip_protocol is None and 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if ip_version is None and 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if load_balancing_scheme is None and 'loadBalancingScheme' in kwargs:
+            load_balancing_scheme = kwargs['loadBalancingScheme']
+        if metadata_filters is None and 'metadataFilters' in kwargs:
+            metadata_filters = kwargs['metadataFilters']
+        if no_automate_dns_zone is None and 'noAutomateDnsZone' in kwargs:
+            no_automate_dns_zone = kwargs['noAutomateDnsZone']
+        if port_range is None and 'portRange' in kwargs:
+            port_range = kwargs['portRange']
+        if source_ip_ranges is None and 'sourceIpRanges' in kwargs:
+            source_ip_ranges = kwargs['sourceIpRanges']
+
         _setter("target", target)
         if allow_psc_global_access is not None:
             _setter("allow_psc_global_access", allow_psc_global_access)
@@ -745,7 +767,37 @@ class _GlobalForwardingRuleState:
              source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
              target: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_psc_global_access is None and 'allowPscGlobalAccess' in kwargs:
+            allow_psc_global_access = kwargs['allowPscGlobalAccess']
+        if base_forwarding_rule is None and 'baseForwardingRule' in kwargs:
+            base_forwarding_rule = kwargs['baseForwardingRule']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ip_protocol is None and 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if ip_version is None and 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if label_fingerprint is None and 'labelFingerprint' in kwargs:
+            label_fingerprint = kwargs['labelFingerprint']
+        if load_balancing_scheme is None and 'loadBalancingScheme' in kwargs:
+            load_balancing_scheme = kwargs['loadBalancingScheme']
+        if metadata_filters is None and 'metadataFilters' in kwargs:
+            metadata_filters = kwargs['metadataFilters']
+        if no_automate_dns_zone is None and 'noAutomateDnsZone' in kwargs:
+            no_automate_dns_zone = kwargs['noAutomateDnsZone']
+        if port_range is None and 'portRange' in kwargs:
+            port_range = kwargs['portRange']
+        if psc_connection_id is None and 'pscConnectionId' in kwargs:
+            psc_connection_id = kwargs['pscConnectionId']
+        if psc_connection_status is None and 'pscConnectionStatus' in kwargs:
+            psc_connection_status = kwargs['pscConnectionStatus']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if source_ip_ranges is None and 'sourceIpRanges' in kwargs:
+            source_ip_ranges = kwargs['sourceIpRanges']
+
         if allow_psc_global_access is not None:
             _setter("allow_psc_global_access", allow_psc_global_access)
         if base_forwarding_rule is not None:
@@ -1186,105 +1238,6 @@ class GlobalForwardingRule(pulumi.CustomResource):
         https://cloud.google.com/compute/docs/load-balancing/http/
 
         ## Example Usage
-        ### Global Forwarding Rule External Managed
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_backend_service = gcp.compute.BackendService("defaultBackendService",
-            port_name="http",
-            protocol="HTTP",
-            timeout_sec=10,
-            load_balancing_scheme="EXTERNAL_MANAGED")
-        default_url_map = gcp.compute.URLMap("defaultURLMap",
-            description="a description",
-            default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_backend_service.id,
-                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_backend_service.id,
-                )],
-            )])
-        default_target_http_proxy = gcp.compute.TargetHttpProxy("defaultTargetHttpProxy",
-            description="a description",
-            url_map=default_url_map.id)
-        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
-            target=default_target_http_proxy.id,
-            port_range="80",
-            load_balancing_scheme="EXTERNAL_MANAGED")
-        ```
-        ### Private Service Connect Google Apis
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network = gcp.compute.Network("network",
-            project="my-project-name",
-            auto_create_subnetworks=False,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        vpc_subnetwork = gcp.compute.Subnetwork("vpcSubnetwork",
-            project=network.project,
-            ip_cidr_range="10.2.0.0/16",
-            region="us-central1",
-            network=network.id,
-            private_ip_google_access=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_global_address = gcp.compute.GlobalAddress("defaultGlobalAddress",
-            project=network.project,
-            address_type="INTERNAL",
-            purpose="PRIVATE_SERVICE_CONNECT",
-            network=network.id,
-            address="100.100.100.106",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
-            project=network.project,
-            target="all-apis",
-            network=network.id,
-            ip_address=default_global_address.id,
-            load_balancing_scheme="",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Private Service Connect Google Apis No Automate Dns
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network = gcp.compute.Network("network",
-            project="my-project-name",
-            auto_create_subnetworks=False,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        vpc_subnetwork = gcp.compute.Subnetwork("vpcSubnetwork",
-            project=network.project,
-            ip_cidr_range="10.2.0.0/16",
-            region="us-central1",
-            network=network.id,
-            private_ip_google_access=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_global_address = gcp.compute.GlobalAddress("defaultGlobalAddress",
-            project=network.project,
-            address_type="INTERNAL",
-            purpose="PRIVATE_SERVICE_CONNECT",
-            network=network.id,
-            address="100.100.100.106",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
-            project=network.project,
-            target="all-apis",
-            network=network.id,
-            ip_address=default_global_address.id,
-            load_balancing_scheme="",
-            no_automate_dns_zone=False,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -1448,105 +1401,6 @@ class GlobalForwardingRule(pulumi.CustomResource):
         https://cloud.google.com/compute/docs/load-balancing/http/
 
         ## Example Usage
-        ### Global Forwarding Rule External Managed
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_backend_service = gcp.compute.BackendService("defaultBackendService",
-            port_name="http",
-            protocol="HTTP",
-            timeout_sec=10,
-            load_balancing_scheme="EXTERNAL_MANAGED")
-        default_url_map = gcp.compute.URLMap("defaultURLMap",
-            description="a description",
-            default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_backend_service.id,
-                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_backend_service.id,
-                )],
-            )])
-        default_target_http_proxy = gcp.compute.TargetHttpProxy("defaultTargetHttpProxy",
-            description="a description",
-            url_map=default_url_map.id)
-        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
-            target=default_target_http_proxy.id,
-            port_range="80",
-            load_balancing_scheme="EXTERNAL_MANAGED")
-        ```
-        ### Private Service Connect Google Apis
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network = gcp.compute.Network("network",
-            project="my-project-name",
-            auto_create_subnetworks=False,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        vpc_subnetwork = gcp.compute.Subnetwork("vpcSubnetwork",
-            project=network.project,
-            ip_cidr_range="10.2.0.0/16",
-            region="us-central1",
-            network=network.id,
-            private_ip_google_access=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_global_address = gcp.compute.GlobalAddress("defaultGlobalAddress",
-            project=network.project,
-            address_type="INTERNAL",
-            purpose="PRIVATE_SERVICE_CONNECT",
-            network=network.id,
-            address="100.100.100.106",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
-            project=network.project,
-            target="all-apis",
-            network=network.id,
-            ip_address=default_global_address.id,
-            load_balancing_scheme="",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Private Service Connect Google Apis No Automate Dns
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network = gcp.compute.Network("network",
-            project="my-project-name",
-            auto_create_subnetworks=False,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        vpc_subnetwork = gcp.compute.Subnetwork("vpcSubnetwork",
-            project=network.project,
-            ip_cidr_range="10.2.0.0/16",
-            region="us-central1",
-            network=network.id,
-            private_ip_google_access=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_global_address = gcp.compute.GlobalAddress("defaultGlobalAddress",
-            project=network.project,
-            address_type="INTERNAL",
-            purpose="PRIVATE_SERVICE_CONNECT",
-            network=network.id,
-            address="100.100.100.106",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
-            project=network.project,
-            target="all-apis",
-            network=network.id,
-            ip_address=default_global_address.id,
-            load_balancing_scheme="",
-            no_automate_dns_zone=False,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 

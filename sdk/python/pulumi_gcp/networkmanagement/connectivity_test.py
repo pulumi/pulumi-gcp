@@ -85,15 +85,23 @@ class ConnectivityTestArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             destination: pulumi.Input['ConnectivityTestDestinationArgs'],
-             source: pulumi.Input['ConnectivityTestSourceArgs'],
+             destination: Optional[pulumi.Input['ConnectivityTestDestinationArgs']] = None,
+             source: Optional[pulumi.Input['ConnectivityTestSourceArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
              related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if destination is None:
+            raise TypeError("Missing 'destination' argument")
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if related_projects is None and 'relatedProjects' in kwargs:
+            related_projects = kwargs['relatedProjects']
+
         _setter("destination", destination)
         _setter("source", source)
         if description is not None:
@@ -322,7 +330,11 @@ class _ConnectivityTestState:
              protocol: Optional[pulumi.Input[str]] = None,
              related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              source: Optional[pulumi.Input['ConnectivityTestSourceArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if related_projects is None and 'relatedProjects' in kwargs:
+            related_projects = kwargs['relatedProjects']
+
         if description is not None:
             _setter("description", description)
         if destination is not None:
@@ -499,81 +511,6 @@ class ConnectivityTest(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/network-intelligence-center/docs)
 
         ## Example Usage
-        ### Network Management Connectivity Test Instances
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        vpc = gcp.compute.Network("vpc")
-        debian9 = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        source = gcp.compute.Instance("source",
-            machine_type="e2-medium",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=debian9.id,
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network=vpc.id,
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-            )])
-        destination = gcp.compute.Instance("destination",
-            machine_type="e2-medium",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=debian9.id,
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network=vpc.id,
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-            )])
-        instance_test = gcp.networkmanagement.ConnectivityTest("instance-test",
-            source=gcp.networkmanagement.ConnectivityTestSourceArgs(
-                instance=source.id,
-            ),
-            destination=gcp.networkmanagement.ConnectivityTestDestinationArgs(
-                instance=destination.id,
-            ),
-            protocol="TCP")
-        ```
-        ### Network Management Connectivity Test Addresses
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        vpc = gcp.compute.Network("vpc")
-        subnet = gcp.compute.Subnetwork("subnet",
-            ip_cidr_range="10.0.0.0/16",
-            region="us-central1",
-            network=vpc.id)
-        source_addr = gcp.compute.Address("source-addr",
-            subnetwork=subnet.id,
-            address_type="INTERNAL",
-            address="10.0.42.42",
-            region="us-central1")
-        dest_addr = gcp.compute.Address("dest-addr",
-            subnetwork=subnet.id,
-            address_type="INTERNAL",
-            address="10.0.43.43",
-            region="us-central1")
-        address_test = gcp.networkmanagement.ConnectivityTest("address-test",
-            source=gcp.networkmanagement.ConnectivityTestSourceArgs(
-                ip_address=source_addr.address,
-                project_id=source_addr.project,
-                network=vpc.id,
-                network_type="GCP_NETWORK",
-            ),
-            destination=gcp.networkmanagement.ConnectivityTestDestinationArgs(
-                ip_address=dest_addr.address,
-                project_id=dest_addr.project,
-                network=vpc.id,
-            ),
-            protocol="UDP")
-        ```
 
         ## Import
 
@@ -656,81 +593,6 @@ class ConnectivityTest(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/network-intelligence-center/docs)
 
         ## Example Usage
-        ### Network Management Connectivity Test Instances
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        vpc = gcp.compute.Network("vpc")
-        debian9 = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        source = gcp.compute.Instance("source",
-            machine_type="e2-medium",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=debian9.id,
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network=vpc.id,
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-            )])
-        destination = gcp.compute.Instance("destination",
-            machine_type="e2-medium",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=debian9.id,
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network=vpc.id,
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-            )])
-        instance_test = gcp.networkmanagement.ConnectivityTest("instance-test",
-            source=gcp.networkmanagement.ConnectivityTestSourceArgs(
-                instance=source.id,
-            ),
-            destination=gcp.networkmanagement.ConnectivityTestDestinationArgs(
-                instance=destination.id,
-            ),
-            protocol="TCP")
-        ```
-        ### Network Management Connectivity Test Addresses
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        vpc = gcp.compute.Network("vpc")
-        subnet = gcp.compute.Subnetwork("subnet",
-            ip_cidr_range="10.0.0.0/16",
-            region="us-central1",
-            network=vpc.id)
-        source_addr = gcp.compute.Address("source-addr",
-            subnetwork=subnet.id,
-            address_type="INTERNAL",
-            address="10.0.42.42",
-            region="us-central1")
-        dest_addr = gcp.compute.Address("dest-addr",
-            subnetwork=subnet.id,
-            address_type="INTERNAL",
-            address="10.0.43.43",
-            region="us-central1")
-        address_test = gcp.networkmanagement.ConnectivityTest("address-test",
-            source=gcp.networkmanagement.ConnectivityTestSourceArgs(
-                ip_address=source_addr.address,
-                project_id=source_addr.project,
-                network=vpc.id,
-                network_type="GCP_NETWORK",
-            ),
-            destination=gcp.networkmanagement.ConnectivityTestDestinationArgs(
-                ip_address=dest_addr.address,
-                project_id=dest_addr.project,
-                network=vpc.id,
-            ),
-            protocol="UDP")
-        ```
 
         ## Import
 
@@ -785,11 +647,7 @@ class ConnectivityTest(pulumi.CustomResource):
             __props__ = ConnectivityTestArgs.__new__(ConnectivityTestArgs)
 
             __props__.__dict__["description"] = description
-            if destination is not None and not isinstance(destination, ConnectivityTestDestinationArgs):
-                destination = destination or {}
-                def _setter(key, value):
-                    destination[key] = value
-                ConnectivityTestDestinationArgs._configure(_setter, **destination)
+            destination = _utilities.configure(destination, ConnectivityTestDestinationArgs, True)
             if destination is None and not opts.urn:
                 raise TypeError("Missing required property 'destination'")
             __props__.__dict__["destination"] = destination
@@ -798,11 +656,7 @@ class ConnectivityTest(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["related_projects"] = related_projects
-            if source is not None and not isinstance(source, ConnectivityTestSourceArgs):
-                source = source or {}
-                def _setter(key, value):
-                    source[key] = value
-                ConnectivityTestSourceArgs._configure(_setter, **source)
+            source = _utilities.configure(source, ConnectivityTestSourceArgs, True)
             if source is None and not opts.urn:
                 raise TypeError("Missing required property 'source'")
             __props__.__dict__["source"] = source

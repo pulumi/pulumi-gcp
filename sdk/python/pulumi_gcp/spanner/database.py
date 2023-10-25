@@ -72,7 +72,7 @@ class DatabaseArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance: pulumi.Input[str],
+             instance: Optional[pulumi.Input[str]] = None,
              database_dialect: Optional[pulumi.Input[str]] = None,
              ddls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -81,7 +81,21 @@ class DatabaseArgs:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              version_retention_period: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if instance is None:
+            raise TypeError("Missing 'instance' argument")
+        if database_dialect is None and 'databaseDialect' in kwargs:
+            database_dialect = kwargs['databaseDialect']
+        if deletion_protection is None and 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if enable_drop_protection is None and 'enableDropProtection' in kwargs:
+            enable_drop_protection = kwargs['enableDropProtection']
+        if encryption_config is None and 'encryptionConfig' in kwargs:
+            encryption_config = kwargs['encryptionConfig']
+        if version_retention_period is None and 'versionRetentionPeriod' in kwargs:
+            version_retention_period = kwargs['versionRetentionPeriod']
+
         _setter("instance", instance)
         if database_dialect is not None:
             _setter("database_dialect", database_dialect)
@@ -301,7 +315,19 @@ class _DatabaseState:
              project: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              version_retention_period: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if database_dialect is None and 'databaseDialect' in kwargs:
+            database_dialect = kwargs['databaseDialect']
+        if deletion_protection is None and 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if enable_drop_protection is None and 'enableDropProtection' in kwargs:
+            enable_drop_protection = kwargs['enableDropProtection']
+        if encryption_config is None and 'encryptionConfig' in kwargs:
+            encryption_config = kwargs['encryptionConfig']
+        if version_retention_period is None and 'versionRetentionPeriod' in kwargs:
+            version_retention_period = kwargs['versionRetentionPeriod']
+
         if database_dialect is not None:
             _setter("database_dialect", database_dialect)
         if ddls is not None:
@@ -491,25 +517,6 @@ class Database(pulumi.CustomResource):
         > **Warning:** It is strongly recommended to set `lifecycle { prevent_destroy = true }` on databases in order to prevent accidental data loss.
 
         ## Example Usage
-        ### Spanner Database Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        main = gcp.spanner.Instance("main",
-            config="regional-europe-west1",
-            display_name="main-instance",
-            num_nodes=1)
-        database = gcp.spanner.Database("database",
-            instance=main.name,
-            version_retention_period="3d",
-            ddls=[
-                "CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)",
-                "CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)",
-            ],
-            deletion_protection=False)
-        ```
 
         ## Import
 
@@ -581,25 +588,6 @@ class Database(pulumi.CustomResource):
         > **Warning:** It is strongly recommended to set `lifecycle { prevent_destroy = true }` on databases in order to prevent accidental data loss.
 
         ## Example Usage
-        ### Spanner Database Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        main = gcp.spanner.Instance("main",
-            config="regional-europe-west1",
-            display_name="main-instance",
-            num_nodes=1)
-        database = gcp.spanner.Database("database",
-            instance=main.name,
-            version_retention_period="3d",
-            ddls=[
-                "CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)",
-                "CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)",
-            ],
-            deletion_protection=False)
-        ```
 
         ## Import
 
@@ -662,11 +650,7 @@ class Database(pulumi.CustomResource):
             __props__.__dict__["ddls"] = ddls
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["enable_drop_protection"] = enable_drop_protection
-            if encryption_config is not None and not isinstance(encryption_config, DatabaseEncryptionConfigArgs):
-                encryption_config = encryption_config or {}
-                def _setter(key, value):
-                    encryption_config[key] = value
-                DatabaseEncryptionConfigArgs._configure(_setter, **encryption_config)
+            encryption_config = _utilities.configure(encryption_config, DatabaseEncryptionConfigArgs, True)
             __props__.__dict__["encryption_config"] = encryption_config
             if instance is None and not opts.urn:
                 raise TypeError("Missing required property 'instance'")

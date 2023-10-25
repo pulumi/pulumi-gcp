@@ -31,10 +31,16 @@ class RepositoryIamBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -71,10 +77,16 @@ class RepositoryIamMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -141,10 +153,20 @@ class RepositoryPubsubConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             message_format: str,
-             topic: str,
+             message_format: Optional[str] = None,
+             topic: Optional[str] = None,
              service_account_email: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if message_format is None and 'messageFormat' in kwargs:
+            message_format = kwargs['messageFormat']
+        if message_format is None:
+            raise TypeError("Missing 'message_format' argument")
+        if topic is None:
+            raise TypeError("Missing 'topic' argument")
+        if service_account_email is None and 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+
         _setter("message_format", message_format)
         _setter("topic", topic)
         if service_account_email is not None:
@@ -196,10 +218,22 @@ class GetRepositoryPubsubConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             message_format: str,
-             service_account_email: str,
-             topic: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             message_format: Optional[str] = None,
+             service_account_email: Optional[str] = None,
+             topic: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if message_format is None and 'messageFormat' in kwargs:
+            message_format = kwargs['messageFormat']
+        if message_format is None:
+            raise TypeError("Missing 'message_format' argument")
+        if service_account_email is None and 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+        if service_account_email is None:
+            raise TypeError("Missing 'service_account_email' argument")
+        if topic is None:
+            raise TypeError("Missing 'topic' argument")
+
         _setter("message_format", message_format)
         _setter("service_account_email", service_account_email)
         _setter("topic", topic)

@@ -46,13 +46,23 @@ class TransferJobArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: pulumi.Input[str],
-             transfer_spec: pulumi.Input['TransferJobTransferSpecArgs'],
+             description: Optional[pulumi.Input[str]] = None,
+             transfer_spec: Optional[pulumi.Input['TransferJobTransferSpecArgs']] = None,
              notification_config: Optional[pulumi.Input['TransferJobNotificationConfigArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
              schedule: Optional[pulumi.Input['TransferJobScheduleArgs']] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if transfer_spec is None and 'transferSpec' in kwargs:
+            transfer_spec = kwargs['transferSpec']
+        if transfer_spec is None:
+            raise TypeError("Missing 'transfer_spec' argument")
+        if notification_config is None and 'notificationConfig' in kwargs:
+            notification_config = kwargs['notificationConfig']
+
         _setter("description", description)
         _setter("transfer_spec", transfer_spec)
         if notification_config is not None:
@@ -195,7 +205,19 @@ class _TransferJobState:
              schedule: Optional[pulumi.Input['TransferJobScheduleArgs']] = None,
              status: Optional[pulumi.Input[str]] = None,
              transfer_spec: Optional[pulumi.Input['TransferJobTransferSpecArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if creation_time is None and 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if deletion_time is None and 'deletionTime' in kwargs:
+            deletion_time = kwargs['deletionTime']
+        if last_modification_time is None and 'lastModificationTime' in kwargs:
+            last_modification_time = kwargs['lastModificationTime']
+        if notification_config is None and 'notificationConfig' in kwargs:
+            notification_config = kwargs['notificationConfig']
+        if transfer_spec is None and 'transferSpec' in kwargs:
+            transfer_spec = kwargs['transferSpec']
+
         if creation_time is not None:
             _setter("creation_time", creation_time)
         if deletion_time is not None:
@@ -363,85 +385,6 @@ class TransferJob(pulumi.CustomResource):
         * How-to Guides
             * [Configuring Access to Data Sources and Sinks](https://cloud.google.com/storage-transfer/docs/configure-access)
 
-        ## Example Usage
-
-        Example creating a nightly Transfer Job from an AWS S3 Bucket to a GCS bucket.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.storage.get_transfer_project_service_account(project=var["project"])
-        s3_backup_bucket_bucket = gcp.storage.Bucket("s3-backup-bucketBucket",
-            storage_class="NEARLINE",
-            project=var["project"],
-            location="US")
-        s3_backup_bucket_bucket_iam_member = gcp.storage.BucketIAMMember("s3-backup-bucketBucketIAMMember",
-            bucket=s3_backup_bucket_bucket.name,
-            role="roles/storage.admin",
-            member=f"serviceAccount:{default.email}",
-            opts=pulumi.ResourceOptions(depends_on=[s3_backup_bucket_bucket]))
-        topic = gcp.pubsub.Topic("topic")
-        notification_config = gcp.pubsub.TopicIAMMember("notificationConfig",
-            topic=topic.id,
-            role="roles/pubsub.publisher",
-            member=f"serviceAccount:{default.email}")
-        s3_bucket_nightly_backup = gcp.storage.TransferJob("s3-bucket-nightly-backup",
-            description="Nightly backup of S3 bucket",
-            project=var["project"],
-            transfer_spec=gcp.storage.TransferJobTransferSpecArgs(
-                object_conditions=gcp.storage.TransferJobTransferSpecObjectConditionsArgs(
-                    max_time_elapsed_since_last_modification="600s",
-                    exclude_prefixes=["requests.gz"],
-                ),
-                transfer_options=gcp.storage.TransferJobTransferSpecTransferOptionsArgs(
-                    delete_objects_unique_in_sink=False,
-                ),
-                aws_s3_data_source=gcp.storage.TransferJobTransferSpecAwsS3DataSourceArgs(
-                    bucket_name=var["aws_s3_bucket"],
-                    aws_access_key=gcp.storage.TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs(
-                        access_key_id=var["aws_access_key"],
-                        secret_access_key=var["aws_secret_key"],
-                    ),
-                ),
-                gcs_data_sink=gcp.storage.TransferJobTransferSpecGcsDataSinkArgs(
-                    bucket_name=s3_backup_bucket_bucket.name,
-                    path="foo/bar/",
-                ),
-            ),
-            schedule=gcp.storage.TransferJobScheduleArgs(
-                schedule_start_date=gcp.storage.TransferJobScheduleScheduleStartDateArgs(
-                    year=2018,
-                    month=10,
-                    day=1,
-                ),
-                schedule_end_date=gcp.storage.TransferJobScheduleScheduleEndDateArgs(
-                    year=2019,
-                    month=1,
-                    day=15,
-                ),
-                start_time_of_day=gcp.storage.TransferJobScheduleStartTimeOfDayArgs(
-                    hours=23,
-                    minutes=30,
-                    seconds=0,
-                    nanos=0,
-                ),
-                repeat_interval="604800s",
-            ),
-            notification_config=gcp.storage.TransferJobNotificationConfigArgs(
-                pubsub_topic=topic.id,
-                event_types=[
-                    "TRANSFER_OPERATION_SUCCESS",
-                    "TRANSFER_OPERATION_FAILED",
-                ],
-                payload_format="JSON",
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[
-                    s3_backup_bucket_bucket_iam_member,
-                    notification_config,
-                ]))
-        ```
-
         ## Import
 
         Storage buckets can be imported using the Transfer Job's `project` and `name` without the `transferJob/` prefix, e.g.
@@ -477,85 +420,6 @@ class TransferJob(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/transferJobs)
         * How-to Guides
             * [Configuring Access to Data Sources and Sinks](https://cloud.google.com/storage-transfer/docs/configure-access)
-
-        ## Example Usage
-
-        Example creating a nightly Transfer Job from an AWS S3 Bucket to a GCS bucket.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.storage.get_transfer_project_service_account(project=var["project"])
-        s3_backup_bucket_bucket = gcp.storage.Bucket("s3-backup-bucketBucket",
-            storage_class="NEARLINE",
-            project=var["project"],
-            location="US")
-        s3_backup_bucket_bucket_iam_member = gcp.storage.BucketIAMMember("s3-backup-bucketBucketIAMMember",
-            bucket=s3_backup_bucket_bucket.name,
-            role="roles/storage.admin",
-            member=f"serviceAccount:{default.email}",
-            opts=pulumi.ResourceOptions(depends_on=[s3_backup_bucket_bucket]))
-        topic = gcp.pubsub.Topic("topic")
-        notification_config = gcp.pubsub.TopicIAMMember("notificationConfig",
-            topic=topic.id,
-            role="roles/pubsub.publisher",
-            member=f"serviceAccount:{default.email}")
-        s3_bucket_nightly_backup = gcp.storage.TransferJob("s3-bucket-nightly-backup",
-            description="Nightly backup of S3 bucket",
-            project=var["project"],
-            transfer_spec=gcp.storage.TransferJobTransferSpecArgs(
-                object_conditions=gcp.storage.TransferJobTransferSpecObjectConditionsArgs(
-                    max_time_elapsed_since_last_modification="600s",
-                    exclude_prefixes=["requests.gz"],
-                ),
-                transfer_options=gcp.storage.TransferJobTransferSpecTransferOptionsArgs(
-                    delete_objects_unique_in_sink=False,
-                ),
-                aws_s3_data_source=gcp.storage.TransferJobTransferSpecAwsS3DataSourceArgs(
-                    bucket_name=var["aws_s3_bucket"],
-                    aws_access_key=gcp.storage.TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs(
-                        access_key_id=var["aws_access_key"],
-                        secret_access_key=var["aws_secret_key"],
-                    ),
-                ),
-                gcs_data_sink=gcp.storage.TransferJobTransferSpecGcsDataSinkArgs(
-                    bucket_name=s3_backup_bucket_bucket.name,
-                    path="foo/bar/",
-                ),
-            ),
-            schedule=gcp.storage.TransferJobScheduleArgs(
-                schedule_start_date=gcp.storage.TransferJobScheduleScheduleStartDateArgs(
-                    year=2018,
-                    month=10,
-                    day=1,
-                ),
-                schedule_end_date=gcp.storage.TransferJobScheduleScheduleEndDateArgs(
-                    year=2019,
-                    month=1,
-                    day=15,
-                ),
-                start_time_of_day=gcp.storage.TransferJobScheduleStartTimeOfDayArgs(
-                    hours=23,
-                    minutes=30,
-                    seconds=0,
-                    nanos=0,
-                ),
-                repeat_interval="604800s",
-            ),
-            notification_config=gcp.storage.TransferJobNotificationConfigArgs(
-                pubsub_topic=topic.id,
-                event_types=[
-                    "TRANSFER_OPERATION_SUCCESS",
-                    "TRANSFER_OPERATION_FAILED",
-                ],
-                payload_format="JSON",
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[
-                    s3_backup_bucket_bucket_iam_member,
-                    notification_config,
-                ]))
-        ```
 
         ## Import
 
@@ -602,25 +466,13 @@ class TransferJob(pulumi.CustomResource):
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
-            if notification_config is not None and not isinstance(notification_config, TransferJobNotificationConfigArgs):
-                notification_config = notification_config or {}
-                def _setter(key, value):
-                    notification_config[key] = value
-                TransferJobNotificationConfigArgs._configure(_setter, **notification_config)
+            notification_config = _utilities.configure(notification_config, TransferJobNotificationConfigArgs, True)
             __props__.__dict__["notification_config"] = notification_config
             __props__.__dict__["project"] = project
-            if schedule is not None and not isinstance(schedule, TransferJobScheduleArgs):
-                schedule = schedule or {}
-                def _setter(key, value):
-                    schedule[key] = value
-                TransferJobScheduleArgs._configure(_setter, **schedule)
+            schedule = _utilities.configure(schedule, TransferJobScheduleArgs, True)
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["status"] = status
-            if transfer_spec is not None and not isinstance(transfer_spec, TransferJobTransferSpecArgs):
-                transfer_spec = transfer_spec or {}
-                def _setter(key, value):
-                    transfer_spec[key] = value
-                TransferJobTransferSpecArgs._configure(_setter, **transfer_spec)
+            transfer_spec = _utilities.configure(transfer_spec, TransferJobTransferSpecArgs, True)
             if transfer_spec is None and not opts.urn:
                 raise TypeError("Missing required property 'transfer_spec'")
             __props__.__dict__["transfer_spec"] = transfer_spec

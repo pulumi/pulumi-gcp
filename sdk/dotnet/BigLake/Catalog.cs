@@ -19,23 +19,6 @@ namespace Pulumi.Gcp.BigLake
     ///     * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_catalogs)
     /// 
     /// ## Example Usage
-    /// ### Bigquery Biglake Catalog
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.BigLake.Catalog("default", new()
-    ///     {
-    ///         Location = "US",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

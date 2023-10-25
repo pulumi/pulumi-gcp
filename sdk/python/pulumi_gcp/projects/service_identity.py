@@ -32,9 +32,13 @@ class ServiceIdentityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service: pulumi.Input[str],
+             service: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
         _setter("service", service)
         if project is not None:
             _setter("project", project)
@@ -94,7 +98,9 @@ class _ServiceIdentityState:
              email: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if email is not None:
             _setter("email", email)
         if project is not None:
@@ -165,22 +171,6 @@ class ServiceIdentity(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services/generateServiceIdentity)
 
         ## Example Usage
-        ### Service Identity Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        hc_sa = gcp.projects.ServiceIdentity("hcSa",
-            project=project.project_id,
-            service="healthcare.googleapis.com",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        hc_sa_bq_jobuser = gcp.projects.IAMMember("hcSaBqJobuser",
-            project=project.project_id,
-            role="roles/bigquery.jobUser",
-            member=hc_sa.email.apply(lambda email: f"serviceAccount:{email}"))
-        ```
 
         ## Import
 
@@ -215,22 +205,6 @@ class ServiceIdentity(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services/generateServiceIdentity)
 
         ## Example Usage
-        ### Service Identity Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        hc_sa = gcp.projects.ServiceIdentity("hcSa",
-            project=project.project_id,
-            service="healthcare.googleapis.com",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        hc_sa_bq_jobuser = gcp.projects.IAMMember("hcSaBqJobuser",
-            project=project.project_id,
-            role="roles/bigquery.jobUser",
-            member=hc_sa.email.apply(lambda email: f"serviceAccount:{email}"))
-        ```
 
         ## Import
 

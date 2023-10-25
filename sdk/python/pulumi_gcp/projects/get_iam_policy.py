@@ -82,15 +82,6 @@ def get_iam_policy(project: Optional[str] = None,
     """
     Retrieves the current IAM policy data for a project.
 
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.projects.get_iam_policy(project="myproject")
-    ```
-
 
     :param str project: The project id of the target project. This is not
            inferred from the provider.
@@ -112,15 +103,6 @@ def get_iam_policy_output(project: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a project.
-
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.projects.get_iam_policy(project="myproject")
-    ```
 
 
     :param str project: The project id of the target project. This is not

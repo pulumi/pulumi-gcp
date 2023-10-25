@@ -71,7 +71,17 @@ class TopicArgs:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              schema_settings: Optional[pulumi.Input['TopicSchemaSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if message_retention_duration is None and 'messageRetentionDuration' in kwargs:
+            message_retention_duration = kwargs['messageRetentionDuration']
+        if message_storage_policy is None and 'messageStoragePolicy' in kwargs:
+            message_storage_policy = kwargs['messageStoragePolicy']
+        if schema_settings is None and 'schemaSettings' in kwargs:
+            schema_settings = kwargs['schemaSettings']
+
         if kms_key_name is not None:
             _setter("kms_key_name", kms_key_name)
         if labels is not None:
@@ -248,7 +258,17 @@ class _TopicState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              schema_settings: Optional[pulumi.Input['TopicSchemaSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if message_retention_duration is None and 'messageRetentionDuration' in kwargs:
+            message_retention_duration = kwargs['messageRetentionDuration']
+        if message_storage_policy is None and 'messageStoragePolicy' in kwargs:
+            message_storage_policy = kwargs['messageStoragePolicy']
+        if schema_settings is None and 'schemaSettings' in kwargs:
+            schema_settings = kwargs['schemaSettings']
+
         if kms_key_name is not None:
             _setter("kms_key_name", kms_key_name)
         if labels is not None:
@@ -393,67 +413,6 @@ class Topic(pulumi.CustomResource):
         by using the `projects.ServiceIdentity` resource.
 
         ## Example Usage
-        ### Pubsub Topic Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example = gcp.pubsub.Topic("example",
-            labels={
-                "foo": "bar",
-            },
-            message_retention_duration="86600s")
-        ```
-        ### Pubsub Topic Cmek
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        key_ring = gcp.kms.KeyRing("keyRing", location="global")
-        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
-        example = gcp.pubsub.Topic("example", kms_key_name=crypto_key.id)
-        ```
-        ### Pubsub Topic Geo Restricted
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example = gcp.pubsub.Topic("example", message_storage_policy=gcp.pubsub.TopicMessageStoragePolicyArgs(
-            allowed_persistence_regions=["europe-west3"],
-        ))
-        ```
-        ### Pubsub Topic Schema Settings
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example_schema = gcp.pubsub.Schema("exampleSchema",
-            type="AVRO",
-            definition=\"\"\"{
-          "type" : "record",
-          "name" : "Avro",
-          "fields" : [
-            {
-              "name" : "StringField",
-              "type" : "string"
-            },
-            {
-              "name" : "IntField",
-              "type" : "int"
-            }
-          ]
-        }
-        \"\"\")
-        example_topic = gcp.pubsub.Topic("exampleTopic", schema_settings=gcp.pubsub.TopicSchemaSettingsArgs(
-            schema="projects/my-project-name/schemas/example",
-            encoding="JSON",
-        ),
-        opts=pulumi.ResourceOptions(depends_on=[example_schema]))
-        ```
 
         ## Import
 
@@ -518,67 +477,6 @@ class Topic(pulumi.CustomResource):
         by using the `projects.ServiceIdentity` resource.
 
         ## Example Usage
-        ### Pubsub Topic Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example = gcp.pubsub.Topic("example",
-            labels={
-                "foo": "bar",
-            },
-            message_retention_duration="86600s")
-        ```
-        ### Pubsub Topic Cmek
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        key_ring = gcp.kms.KeyRing("keyRing", location="global")
-        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
-        example = gcp.pubsub.Topic("example", kms_key_name=crypto_key.id)
-        ```
-        ### Pubsub Topic Geo Restricted
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example = gcp.pubsub.Topic("example", message_storage_policy=gcp.pubsub.TopicMessageStoragePolicyArgs(
-            allowed_persistence_regions=["europe-west3"],
-        ))
-        ```
-        ### Pubsub Topic Schema Settings
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example_schema = gcp.pubsub.Schema("exampleSchema",
-            type="AVRO",
-            definition=\"\"\"{
-          "type" : "record",
-          "name" : "Avro",
-          "fields" : [
-            {
-              "name" : "StringField",
-              "type" : "string"
-            },
-            {
-              "name" : "IntField",
-              "type" : "int"
-            }
-          ]
-        }
-        \"\"\")
-        example_topic = gcp.pubsub.Topic("exampleTopic", schema_settings=gcp.pubsub.TopicSchemaSettingsArgs(
-            schema="projects/my-project-name/schemas/example",
-            encoding="JSON",
-        ),
-        opts=pulumi.ResourceOptions(depends_on=[example_schema]))
-        ```
 
         ## Import
 
@@ -634,19 +532,11 @@ class Topic(pulumi.CustomResource):
             __props__.__dict__["kms_key_name"] = kms_key_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["message_retention_duration"] = message_retention_duration
-            if message_storage_policy is not None and not isinstance(message_storage_policy, TopicMessageStoragePolicyArgs):
-                message_storage_policy = message_storage_policy or {}
-                def _setter(key, value):
-                    message_storage_policy[key] = value
-                TopicMessageStoragePolicyArgs._configure(_setter, **message_storage_policy)
+            message_storage_policy = _utilities.configure(message_storage_policy, TopicMessageStoragePolicyArgs, True)
             __props__.__dict__["message_storage_policy"] = message_storage_policy
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            if schema_settings is not None and not isinstance(schema_settings, TopicSchemaSettingsArgs):
-                schema_settings = schema_settings or {}
-                def _setter(key, value):
-                    schema_settings[key] = value
-                TopicSchemaSettingsArgs._configure(_setter, **schema_settings)
+            schema_settings = _utilities.configure(schema_settings, TopicSchemaSettingsArgs, True)
             __props__.__dict__["schema_settings"] = schema_settings
         super(Topic, __self__).__init__(
             'gcp:pubsub/topic:Topic',

@@ -42,9 +42,19 @@ class DatasetIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataset_id: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             dataset_id: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if dataset_id is None:
+            raise TypeError("Missing 'dataset_id' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("dataset_id", dataset_id)
         _setter("policy_data", policy_data)
 
@@ -123,7 +133,13 @@ class _DatasetIamPolicyState:
              dataset_id: Optional[pulumi.Input[str]] = None,
              etag: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if dataset_id is not None:
             _setter("dataset_id", dataset_id)
         if etag is not None:
@@ -200,45 +216,6 @@ class DatasetIamPolicy(pulumi.CustomResource):
 
         > **Note:** `healthcare.DatasetIamBinding` resources **can be** used in conjunction with `healthcare.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_healthcare\\_dataset\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
-        dataset = gcp.healthcare.DatasetIamPolicy("dataset",
-            dataset_id="your-dataset-id",
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_healthcare\\_dataset\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.healthcare.DatasetIamBinding("dataset",
-            dataset_id="your-dataset-id",
-            members=["user:jane@example.com"],
-            role="roles/editor")
-        ```
-
-        ## google\\_healthcare\\_dataset\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.healthcare.DatasetIamMember("dataset",
-            dataset_id="your-dataset-id",
-            member="user:jane@example.com",
-            role="roles/editor")
-        ```
-
         ## Import
 
         IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
@@ -303,45 +280,6 @@ class DatasetIamPolicy(pulumi.CustomResource):
         > **Note:** `healthcare.DatasetIamPolicy` **cannot** be used in conjunction with `healthcare.DatasetIamBinding` and `healthcare.DatasetIamMember` or they will fight over what your policy should be.
 
         > **Note:** `healthcare.DatasetIamBinding` resources **can be** used in conjunction with `healthcare.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\\_healthcare\\_dataset\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
-        dataset = gcp.healthcare.DatasetIamPolicy("dataset",
-            dataset_id="your-dataset-id",
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_healthcare\\_dataset\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.healthcare.DatasetIamBinding("dataset",
-            dataset_id="your-dataset-id",
-            members=["user:jane@example.com"],
-            role="roles/editor")
-        ```
-
-        ## google\\_healthcare\\_dataset\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.healthcare.DatasetIamMember("dataset",
-            dataset_id="your-dataset-id",
-            member="user:jane@example.com",
-            role="roles/editor")
-        ```
 
         ## Import
 

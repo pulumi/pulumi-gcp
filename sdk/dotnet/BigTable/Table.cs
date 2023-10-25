@@ -14,56 +14,6 @@ namespace Pulumi.Gcp.BigTable
     /// [the official documentation](https://cloud.google.com/bigtable/) and
     /// [API](https://cloud.google.com/bigtable/docs/go/reference).
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var instance = new Gcp.BigTable.Instance("instance", new()
-    ///     {
-    ///         Clusters = new[]
-    ///         {
-    ///             new Gcp.BigTable.Inputs.InstanceClusterArgs
-    ///             {
-    ///                 ClusterId = "tf-instance-cluster",
-    ///                 Zone = "us-central1-b",
-    ///                 NumNodes = 3,
-    ///                 StorageType = "HDD",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var table = new Gcp.BigTable.Table("table", new()
-    ///     {
-    ///         InstanceName = instance.Name,
-    ///         SplitKeys = new[]
-    ///         {
-    ///             "a",
-    ///             "b",
-    ///             "c",
-    ///         },
-    ///         ColumnFamilies = new[]
-    ///         {
-    ///             new Gcp.BigTable.Inputs.TableColumnFamilyArgs
-    ///             {
-    ///                 Family = "family-first",
-    ///             },
-    ///             new Gcp.BigTable.Inputs.TableColumnFamilyArgs
-    ///             {
-    ///                 Family = "family-second",
-    ///             },
-    ///         },
-    ///         ChangeStreamRetention = "24h0m0s",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Bigtable Tables can be imported using any of these accepted formats

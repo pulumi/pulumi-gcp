@@ -51,13 +51,23 @@ class NetworkEndpointArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_address: pulumi.Input[str],
-             network_endpoint_group: pulumi.Input[str],
+             ip_address: Optional[pulumi.Input[str]] = None,
+             network_endpoint_group: Optional[pulumi.Input[str]] = None,
              instance: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if network_endpoint_group is None and 'networkEndpointGroup' in kwargs:
+            network_endpoint_group = kwargs['networkEndpointGroup']
+        if network_endpoint_group is None:
+            raise TypeError("Missing 'network_endpoint_group' argument")
+
         _setter("ip_address", ip_address)
         _setter("network_endpoint_group", network_endpoint_group)
         if instance is not None:
@@ -198,7 +208,13 @@ class _NetworkEndpointState:
              port: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if network_endpoint_group is None and 'networkEndpointGroup' in kwargs:
+            network_endpoint_group = kwargs['networkEndpointGroup']
+
         if instance is not None:
             _setter("instance", instance)
         if ip_address is not None:
@@ -321,41 +337,6 @@ class NetworkEndpoint(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 
         ## Example Usage
-        ### Network Endpoint
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_image = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False)
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
-            ip_cidr_range="10.0.0.1/16",
-            region="us-central1",
-            network=default_network.id)
-        endpoint_instance = gcp.compute.Instance("endpoint-instance",
-            machine_type="e2-medium",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=my_image.self_link,
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                subnetwork=default_subnetwork.id,
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-            )])
-        default_endpoint = gcp.compute.NetworkEndpoint("default-endpoint",
-            network_endpoint_group=google_compute_network_endpoint_group["neg"]["name"],
-            instance=endpoint_instance.name,
-            port=google_compute_network_endpoint_group["neg"]["default_port"],
-            ip_address=endpoint_instance.network_interfaces[0].network_ip)
-        group = gcp.compute.NetworkEndpointGroup("group",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            default_port=90,
-            zone="us-central1-a")
-        ```
 
         ## Import
 
@@ -416,41 +397,6 @@ class NetworkEndpoint(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 
         ## Example Usage
-        ### Network Endpoint
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_image = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False)
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
-            ip_cidr_range="10.0.0.1/16",
-            region="us-central1",
-            network=default_network.id)
-        endpoint_instance = gcp.compute.Instance("endpoint-instance",
-            machine_type="e2-medium",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=my_image.self_link,
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                subnetwork=default_subnetwork.id,
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-            )])
-        default_endpoint = gcp.compute.NetworkEndpoint("default-endpoint",
-            network_endpoint_group=google_compute_network_endpoint_group["neg"]["name"],
-            instance=endpoint_instance.name,
-            port=google_compute_network_endpoint_group["neg"]["default_port"],
-            ip_address=endpoint_instance.network_interfaces[0].network_ip)
-        group = gcp.compute.NetworkEndpointGroup("group",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            default_port=90,
-            zone="us-central1-a")
-        ```
 
         ## Import
 

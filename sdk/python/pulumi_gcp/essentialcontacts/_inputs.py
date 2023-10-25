@@ -97,7 +97,7 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              date_time_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgs']] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              enum_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs']] = None,
@@ -114,7 +114,43 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs:
              schema_sources: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs']]]] = None,
              text_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs']] = None,
              timestamp_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if date_time_type_options is None and 'dateTimeTypeOptions' in kwargs:
+            date_time_type_options = kwargs['dateTimeTypeOptions']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if enum_type_options is None and 'enumTypeOptions' in kwargs:
+            enum_type_options = kwargs['enumTypeOptions']
+        if float_type_options is None and 'floatTypeOptions' in kwargs:
+            float_type_options = kwargs['floatTypeOptions']
+        if integer_type_options is None and 'integerTypeOptions' in kwargs:
+            integer_type_options = kwargs['integerTypeOptions']
+        if is_filterable is None and 'isFilterable' in kwargs:
+            is_filterable = kwargs['isFilterable']
+        if is_metadata is None and 'isMetadata' in kwargs:
+            is_metadata = kwargs['isMetadata']
+        if is_repeatable is None and 'isRepeatable' in kwargs:
+            is_repeatable = kwargs['isRepeatable']
+        if is_required is None and 'isRequired' in kwargs:
+            is_required = kwargs['isRequired']
+        if is_searchable is None and 'isSearchable' in kwargs:
+            is_searchable = kwargs['isSearchable']
+        if map_type_options is None and 'mapTypeOptions' in kwargs:
+            map_type_options = kwargs['mapTypeOptions']
+        if property_type_options is None and 'propertyTypeOptions' in kwargs:
+            property_type_options = kwargs['propertyTypeOptions']
+        if retrieval_importance is None and 'retrievalImportance' in kwargs:
+            retrieval_importance = kwargs['retrievalImportance']
+        if schema_sources is None and 'schemaSources' in kwargs:
+            schema_sources = kwargs['schemaSources']
+        if text_type_options is None and 'textTypeOptions' in kwargs:
+            text_type_options = kwargs['textTypeOptions']
+        if timestamp_type_options is None and 'timestampTypeOptions' in kwargs:
+            timestamp_type_options = kwargs['timestampTypeOptions']
+
         _setter("name", name)
         if date_time_type_options is not None:
             _setter("date_time_type_options", date_time_type_options)
@@ -365,8 +401,10 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgs
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
         pass
+
 
 
 @pulumi.input_type
@@ -388,9 +426,17 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             possible_values: pulumi.Input[Sequence[pulumi.Input[str]]],
+             possible_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              validation_check_disabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if possible_values is None and 'possibleValues' in kwargs:
+            possible_values = kwargs['possibleValues']
+        if possible_values is None:
+            raise TypeError("Missing 'possible_values' argument")
+        if validation_check_disabled is None and 'validationCheckDisabled' in kwargs:
+            validation_check_disabled = kwargs['validationCheckDisabled']
+
         _setter("possible_values", possible_values)
         if validation_check_disabled is not None:
             _setter("validation_check_disabled", validation_check_disabled)
@@ -429,8 +475,10 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
         pass
+
 
 
 @pulumi.input_type
@@ -440,8 +488,10 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
         pass
+
 
 
 @pulumi.input_type
@@ -451,8 +501,10 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
         pass
+
 
 
 @pulumi.input_type
@@ -470,8 +522,14 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgs
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             property_definitions: pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if property_definitions is None and 'propertyDefinitions' in kwargs:
+            property_definitions = kwargs['propertyDefinitions']
+        if property_definitions is None:
+            raise TypeError("Missing 'property_definitions' argument")
+
         _setter("property_definitions", property_definitions)
 
     @property
@@ -550,7 +608,7 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              date_time_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsArgs']] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              enum_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArgs']] = None,
@@ -566,7 +624,41 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
              schema_sources: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgs']]]] = None,
              text_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArgs']] = None,
              timestamp_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if date_time_type_options is None and 'dateTimeTypeOptions' in kwargs:
+            date_time_type_options = kwargs['dateTimeTypeOptions']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if enum_type_options is None and 'enumTypeOptions' in kwargs:
+            enum_type_options = kwargs['enumTypeOptions']
+        if float_type_options is None and 'floatTypeOptions' in kwargs:
+            float_type_options = kwargs['floatTypeOptions']
+        if integer_type_options is None and 'integerTypeOptions' in kwargs:
+            integer_type_options = kwargs['integerTypeOptions']
+        if is_filterable is None and 'isFilterable' in kwargs:
+            is_filterable = kwargs['isFilterable']
+        if is_metadata is None and 'isMetadata' in kwargs:
+            is_metadata = kwargs['isMetadata']
+        if is_repeatable is None and 'isRepeatable' in kwargs:
+            is_repeatable = kwargs['isRepeatable']
+        if is_required is None and 'isRequired' in kwargs:
+            is_required = kwargs['isRequired']
+        if is_searchable is None and 'isSearchable' in kwargs:
+            is_searchable = kwargs['isSearchable']
+        if map_type_options is None and 'mapTypeOptions' in kwargs:
+            map_type_options = kwargs['mapTypeOptions']
+        if retrieval_importance is None and 'retrievalImportance' in kwargs:
+            retrieval_importance = kwargs['retrievalImportance']
+        if schema_sources is None and 'schemaSources' in kwargs:
+            schema_sources = kwargs['schemaSources']
+        if text_type_options is None and 'textTypeOptions' in kwargs:
+            text_type_options = kwargs['textTypeOptions']
+        if timestamp_type_options is None and 'timestampTypeOptions' in kwargs:
+            timestamp_type_options = kwargs['timestampTypeOptions']
+
         _setter("name", name)
         if date_time_type_options is not None:
             _setter("date_time_type_options", date_time_type_options)
@@ -802,8 +894,10 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
         pass
+
 
 
 @pulumi.input_type
@@ -825,9 +919,17 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             possible_values: pulumi.Input[Sequence[pulumi.Input[str]]],
+             possible_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              validation_check_disabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if possible_values is None and 'possibleValues' in kwargs:
+            possible_values = kwargs['possibleValues']
+        if possible_values is None:
+            raise TypeError("Missing 'possible_values' argument")
+        if validation_check_disabled is None and 'validationCheckDisabled' in kwargs:
+            validation_check_disabled = kwargs['validationCheckDisabled']
+
         _setter("possible_values", possible_values)
         if validation_check_disabled is not None:
             _setter("validation_check_disabled", validation_check_disabled)
@@ -866,8 +968,10 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
         pass
+
 
 
 @pulumi.input_type
@@ -877,8 +981,10 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
         pass
+
 
 
 @pulumi.input_type
@@ -888,8 +994,10 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
         pass
+
 
 
 @pulumi.input_type
@@ -911,7 +1019,11 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
              processor_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if processor_type is None and 'processorType' in kwargs:
+            processor_type = kwargs['processorType']
+
         if name is not None:
             _setter("name", name)
         if processor_type is not None:
@@ -949,8 +1061,10 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
         pass
+
 
 
 @pulumi.input_type
@@ -960,8 +1074,10 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
         pass
+
 
 
 @pulumi.input_type
@@ -983,7 +1099,11 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs:
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
              processor_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if processor_type is None and 'processorType' in kwargs:
+            processor_type = kwargs['processorType']
+
         if name is not None:
             _setter("name", name)
         if processor_type is not None:
@@ -1021,8 +1141,10 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
         pass
+
 
 
 @pulumi.input_type
@@ -1032,7 +1154,9 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArg
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
         pass
+
 
 

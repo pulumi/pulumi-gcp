@@ -48,11 +48,21 @@ class IAMMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
-             service_account_id: pulumi.Input[str],
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             service_account_id: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['IAMMemberConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if service_account_id is None and 'serviceAccountId' in kwargs:
+            service_account_id = kwargs['serviceAccountId']
+        if service_account_id is None:
+            raise TypeError("Missing 'service_account_id' argument")
+
         _setter("member", member)
         _setter("role", role)
         _setter("service_account_id", service_account_id)
@@ -160,7 +170,11 @@ class _IAMMemberState:
              member: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              service_account_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service_account_id is None and 'serviceAccountId' in kwargs:
+            service_account_id = kwargs['serviceAccountId']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -266,95 +280,6 @@ class IAMMember(pulumi.CustomResource):
         > **Note:** `serviceAccount.IAMBinding` resources **can be** used in conjunction with `serviceAccount.IAMMember` resources **only if** they do not grant privilege to the same role.
 
         ## Example Usage
-        ### Service Account IAM Policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/iam.serviceAccountUser",
-            members=["user:jane@example.com"],
-        )])
-        sa = gcp.service_account.Account("sa",
-            account_id="my-service-account",
-            display_name="A service account that only Jane can interact with")
-        admin_account_iam = gcp.service_account.IAMPolicy("admin-account-iam",
-            service_account_id=sa.name,
-            policy_data=admin.policy_data)
-        ```
-        ### Service Account IAM Binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        sa = gcp.service_account.Account("sa",
-            account_id="my-service-account",
-            display_name="A service account that only Jane can use")
-        admin_account_iam = gcp.service_account.IAMBinding("admin-account-iam",
-            service_account_id=sa.name,
-            role="roles/iam.serviceAccountUser",
-            members=["user:jane@example.com"])
-        ```
-        ### Service Account IAM Binding With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        sa = gcp.service_account.Account("sa",
-            account_id="my-service-account",
-            display_name="A service account that only Jane can use")
-        admin_account_iam = gcp.service_account.IAMBinding("admin-account-iam",
-            service_account_id=sa.name,
-            role="roles/iam.serviceAccountUser",
-            members=["user:jane@example.com"],
-            condition=gcp.service_account.IAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-        ### Service Account IAM Member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.get_default_service_account()
-        sa = gcp.service_account.Account("sa",
-            account_id="my-service-account",
-            display_name="A service account that Jane can use")
-        admin_account_iam = gcp.service_account.IAMMember("admin-account-iam",
-            service_account_id=sa.name,
-            role="roles/iam.serviceAccountUser",
-            member="user:jane@example.com")
-        # Allow SA service account use the default GCE account
-        gce_default_account_iam = gcp.service_account.IAMMember("gce-default-account-iam",
-            service_account_id=default.name,
-            role="roles/iam.serviceAccountUser",
-            member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
-        ```
-        ### Service Account IAM Member With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        sa = gcp.service_account.Account("sa",
-            account_id="my-service-account",
-            display_name="A service account that Jane can use")
-        admin_account_iam = gcp.service_account.IAMMember("admin-account-iam",
-            service_account_id=sa.name,
-            role="roles/iam.serviceAccountUser",
-            member="user:jane@example.com",
-            condition=gcp.service_account.IAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
 
         ## Import
 
@@ -420,95 +345,6 @@ class IAMMember(pulumi.CustomResource):
         > **Note:** `serviceAccount.IAMBinding` resources **can be** used in conjunction with `serviceAccount.IAMMember` resources **only if** they do not grant privilege to the same role.
 
         ## Example Usage
-        ### Service Account IAM Policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/iam.serviceAccountUser",
-            members=["user:jane@example.com"],
-        )])
-        sa = gcp.service_account.Account("sa",
-            account_id="my-service-account",
-            display_name="A service account that only Jane can interact with")
-        admin_account_iam = gcp.service_account.IAMPolicy("admin-account-iam",
-            service_account_id=sa.name,
-            policy_data=admin.policy_data)
-        ```
-        ### Service Account IAM Binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        sa = gcp.service_account.Account("sa",
-            account_id="my-service-account",
-            display_name="A service account that only Jane can use")
-        admin_account_iam = gcp.service_account.IAMBinding("admin-account-iam",
-            service_account_id=sa.name,
-            role="roles/iam.serviceAccountUser",
-            members=["user:jane@example.com"])
-        ```
-        ### Service Account IAM Binding With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        sa = gcp.service_account.Account("sa",
-            account_id="my-service-account",
-            display_name="A service account that only Jane can use")
-        admin_account_iam = gcp.service_account.IAMBinding("admin-account-iam",
-            service_account_id=sa.name,
-            role="roles/iam.serviceAccountUser",
-            members=["user:jane@example.com"],
-            condition=gcp.service_account.IAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-        ### Service Account IAM Member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.get_default_service_account()
-        sa = gcp.service_account.Account("sa",
-            account_id="my-service-account",
-            display_name="A service account that Jane can use")
-        admin_account_iam = gcp.service_account.IAMMember("admin-account-iam",
-            service_account_id=sa.name,
-            role="roles/iam.serviceAccountUser",
-            member="user:jane@example.com")
-        # Allow SA service account use the default GCE account
-        gce_default_account_iam = gcp.service_account.IAMMember("gce-default-account-iam",
-            service_account_id=default.name,
-            role="roles/iam.serviceAccountUser",
-            member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
-        ```
-        ### Service Account IAM Member With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        sa = gcp.service_account.Account("sa",
-            account_id="my-service-account",
-            display_name="A service account that Jane can use")
-        admin_account_iam = gcp.service_account.IAMMember("admin-account-iam",
-            service_account_id=sa.name,
-            role="roles/iam.serviceAccountUser",
-            member="user:jane@example.com",
-            condition=gcp.service_account.IAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
 
         ## Import
 
@@ -568,11 +404,7 @@ class IAMMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = IAMMemberArgs.__new__(IAMMemberArgs)
 
-            if condition is not None and not isinstance(condition, IAMMemberConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                IAMMemberConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, IAMMemberConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")

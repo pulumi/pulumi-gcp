@@ -22,45 +22,6 @@ import (
 //   - [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 //
 // ## Example Usage
-// ### Tag Value Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/tags"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			key, err := tags.NewTagKey(ctx, "key", &tags.TagKeyArgs{
-//				Description: pulumi.String("For keyname resources."),
-//				Parent:      pulumi.String("organizations/123456789"),
-//				ShortName:   pulumi.String("keyname"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = tags.NewTagValue(ctx, "value", &tags.TagValueArgs{
-//				Description: pulumi.String("For valuename resources."),
-//				Parent: key.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("tagKeys/%v", name), nil
-//				}).(pulumi.StringOutput),
-//				ShortName: pulumi.String("valuename"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

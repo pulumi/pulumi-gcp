@@ -13,54 +13,12 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// Retrieves the current IAM policy data for image
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.Compute.GetImageIamPolicy.Invoke(new()
-        ///     {
-        ///         Project = google_compute_image.Example.Project,
-        ///         Image = google_compute_image.Example.Name,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetImageIamPolicyResult> InvokeAsync(GetImageIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetImageIamPolicyResult>("gcp:compute/getImageIamPolicy:getImageIamPolicy", args ?? new GetImageIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for image
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.Compute.GetImageIamPolicy.Invoke(new()
-        ///     {
-        ///         Project = google_compute_image.Example.Project,
-        ///         Image = google_compute_image.Example.Name,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetImageIamPolicyResult> Invoke(GetImageIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetImageIamPolicyResult>("gcp:compute/getImageIamPolicy:getImageIamPolicy", args ?? new GetImageIamPolicyInvokeArgs(), options.WithDefaults());

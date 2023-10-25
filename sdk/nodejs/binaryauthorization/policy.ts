@@ -16,59 +16,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/binary-authorization/)
  *
  * ## Example Usage
- * ### Binary Authorization Policy Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const note = new gcp.containeranalysis.Note("note", {attestationAuthority: {
- *     hint: {
- *         humanReadableName: "My attestor",
- *     },
- * }});
- * const attestor = new gcp.binaryauthorization.Attestor("attestor", {attestationAuthorityNote: {
- *     noteReference: note.name,
- * }});
- * const policy = new gcp.binaryauthorization.Policy("policy", {
- *     admissionWhitelistPatterns: [{
- *         namePattern: "gcr.io/google_containers/*",
- *     }],
- *     defaultAdmissionRule: {
- *         evaluationMode: "ALWAYS_ALLOW",
- *         enforcementMode: "ENFORCED_BLOCK_AND_AUDIT_LOG",
- *     },
- *     clusterAdmissionRules: [{
- *         cluster: "us-central1-a.prod-cluster",
- *         evaluationMode: "REQUIRE_ATTESTATION",
- *         enforcementMode: "ENFORCED_BLOCK_AND_AUDIT_LOG",
- *         requireAttestationsBies: [attestor.name],
- *     }],
- * });
- * ```
- * ### Binary Authorization Policy Global Evaluation
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const note = new gcp.containeranalysis.Note("note", {attestationAuthority: {
- *     hint: {
- *         humanReadableName: "My attestor",
- *     },
- * }});
- * const attestor = new gcp.binaryauthorization.Attestor("attestor", {attestationAuthorityNote: {
- *     noteReference: note.name,
- * }});
- * const policy = new gcp.binaryauthorization.Policy("policy", {
- *     defaultAdmissionRule: {
- *         evaluationMode: "REQUIRE_ATTESTATION",
- *         enforcementMode: "ENFORCED_BLOCK_AND_AUDIT_LOG",
- *         requireAttestationsBies: [attestor.name],
- *     },
- *     globalPolicyEvaluationMode: "ENABLE",
- * });
- * ```
  *
  * ## Import
  *

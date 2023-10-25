@@ -65,7 +65,13 @@ class EdgeCacheKeysetArgs:
              project: Optional[pulumi.Input[str]] = None,
              public_keys: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetPublicKeyArgs']]]] = None,
              validation_shared_keys: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetValidationSharedKeyArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if public_keys is None and 'publicKeys' in kwargs:
+            public_keys = kwargs['publicKeys']
+        if validation_shared_keys is None and 'validationSharedKeys' in kwargs:
+            validation_shared_keys = kwargs['validationSharedKeys']
+
         if description is not None:
             _setter("description", description)
         if labels is not None:
@@ -220,7 +226,13 @@ class _EdgeCacheKeysetState:
              project: Optional[pulumi.Input[str]] = None,
              public_keys: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetPublicKeyArgs']]]] = None,
              validation_shared_keys: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetValidationSharedKeyArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if public_keys is None and 'publicKeys' in kwargs:
+            public_keys = kwargs['publicKeys']
+        if validation_shared_keys is None and 'validationSharedKeys' in kwargs:
+            validation_shared_keys = kwargs['validationSharedKeys']
+
         if description is not None:
             _setter("description", description)
         if labels is not None:
@@ -349,49 +361,6 @@ class EdgeCacheKeyset(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
-        ### Network Services Edge Cache Keyset Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networkservices.EdgeCacheKeyset("default",
-            description="The default keyset",
-            public_keys=[
-                gcp.networkservices.EdgeCacheKeysetPublicKeyArgs(
-                    id="my-public-key",
-                    value="FHsTyFHNmvNpw4o7-rp-M1yqMyBF8vXSBRkZtkQ0RKY",
-                ),
-                gcp.networkservices.EdgeCacheKeysetPublicKeyArgs(
-                    id="my-public-key-2",
-                    value="hzd03llxB1u5FOLKFkZ6_wCJqC7jtN0bg7xlBqS6WVM",
-                ),
-            ])
-        ```
-        ### Network Services Edge Cache Keyset Dual Token
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        secret_basic = gcp.secretmanager.Secret("secret-basic",
-            secret_id="secret-name",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
-        secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
-            secret=secret_basic.id,
-            secret_data="secret-data")
-        default = gcp.networkservices.EdgeCacheKeyset("default",
-            description="The default keyset",
-            public_keys=[gcp.networkservices.EdgeCacheKeysetPublicKeyArgs(
-                id="my-public-key",
-                managed=True,
-            )],
-            validation_shared_keys=[gcp.networkservices.EdgeCacheKeysetValidationSharedKeyArgs(
-                secret_version=secret_version_basic.id,
-            )])
-        ```
 
         ## Import
 
@@ -454,49 +423,6 @@ class EdgeCacheKeyset(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
-        ### Network Services Edge Cache Keyset Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networkservices.EdgeCacheKeyset("default",
-            description="The default keyset",
-            public_keys=[
-                gcp.networkservices.EdgeCacheKeysetPublicKeyArgs(
-                    id="my-public-key",
-                    value="FHsTyFHNmvNpw4o7-rp-M1yqMyBF8vXSBRkZtkQ0RKY",
-                ),
-                gcp.networkservices.EdgeCacheKeysetPublicKeyArgs(
-                    id="my-public-key-2",
-                    value="hzd03llxB1u5FOLKFkZ6_wCJqC7jtN0bg7xlBqS6WVM",
-                ),
-            ])
-        ```
-        ### Network Services Edge Cache Keyset Dual Token
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        secret_basic = gcp.secretmanager.Secret("secret-basic",
-            secret_id="secret-name",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
-        secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
-            secret=secret_basic.id,
-            secret_data="secret-data")
-        default = gcp.networkservices.EdgeCacheKeyset("default",
-            description="The default keyset",
-            public_keys=[gcp.networkservices.EdgeCacheKeysetPublicKeyArgs(
-                id="my-public-key",
-                managed=True,
-            )],
-            validation_shared_keys=[gcp.networkservices.EdgeCacheKeysetValidationSharedKeyArgs(
-                secret_version=secret_version_basic.id,
-            )])
-        ```
 
         ## Import
 

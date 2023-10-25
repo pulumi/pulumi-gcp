@@ -95,7 +95,7 @@ class MetastoreServiceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_id: pulumi.Input[str],
+             service_id: Optional[pulumi.Input[str]] = None,
              database_type: Optional[pulumi.Input[str]] = None,
              encryption_config: Optional[pulumi.Input['MetastoreServiceEncryptionConfigArgs']] = None,
              hive_metastore_config: Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs']] = None,
@@ -111,7 +111,31 @@ class MetastoreServiceArgs:
              scaling_config: Optional[pulumi.Input['MetastoreServiceScalingConfigArgs']] = None,
              telemetry_config: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']] = None,
              tier: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if service_id is None:
+            raise TypeError("Missing 'service_id' argument")
+        if database_type is None and 'databaseType' in kwargs:
+            database_type = kwargs['databaseType']
+        if encryption_config is None and 'encryptionConfig' in kwargs:
+            encryption_config = kwargs['encryptionConfig']
+        if hive_metastore_config is None and 'hiveMetastoreConfig' in kwargs:
+            hive_metastore_config = kwargs['hiveMetastoreConfig']
+        if maintenance_window is None and 'maintenanceWindow' in kwargs:
+            maintenance_window = kwargs['maintenanceWindow']
+        if metadata_integration is None and 'metadataIntegration' in kwargs:
+            metadata_integration = kwargs['metadataIntegration']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if release_channel is None and 'releaseChannel' in kwargs:
+            release_channel = kwargs['releaseChannel']
+        if scaling_config is None and 'scalingConfig' in kwargs:
+            scaling_config = kwargs['scalingConfig']
+        if telemetry_config is None and 'telemetryConfig' in kwargs:
+            telemetry_config = kwargs['telemetryConfig']
+
         _setter("service_id", service_id)
         if database_type is not None:
             _setter("database_type", database_type)
@@ -482,7 +506,35 @@ class _MetastoreServiceState:
              telemetry_config: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']] = None,
              tier: Optional[pulumi.Input[str]] = None,
              uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if artifact_gcs_uri is None and 'artifactGcsUri' in kwargs:
+            artifact_gcs_uri = kwargs['artifactGcsUri']
+        if database_type is None and 'databaseType' in kwargs:
+            database_type = kwargs['databaseType']
+        if encryption_config is None and 'encryptionConfig' in kwargs:
+            encryption_config = kwargs['encryptionConfig']
+        if endpoint_uri is None and 'endpointUri' in kwargs:
+            endpoint_uri = kwargs['endpointUri']
+        if hive_metastore_config is None and 'hiveMetastoreConfig' in kwargs:
+            hive_metastore_config = kwargs['hiveMetastoreConfig']
+        if maintenance_window is None and 'maintenanceWindow' in kwargs:
+            maintenance_window = kwargs['maintenanceWindow']
+        if metadata_integration is None and 'metadataIntegration' in kwargs:
+            metadata_integration = kwargs['metadataIntegration']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if release_channel is None and 'releaseChannel' in kwargs:
+            release_channel = kwargs['releaseChannel']
+        if scaling_config is None and 'scalingConfig' in kwargs:
+            scaling_config = kwargs['scalingConfig']
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if state_message is None and 'stateMessage' in kwargs:
+            state_message = kwargs['stateMessage']
+        if telemetry_config is None and 'telemetryConfig' in kwargs:
+            telemetry_config = kwargs['telemetryConfig']
+
         if artifact_gcs_uri is not None:
             _setter("artifact_gcs_uri", artifact_gcs_uri)
         if database_type is not None:
@@ -848,105 +900,6 @@ class MetastoreService(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dataproc-metastore/docs/overview)
 
         ## Example Usage
-        ### Dataproc Metastore Service Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.dataproc.MetastoreService("default",
-            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
-                version="2.3.6",
-            ),
-            location="us-central1",
-            maintenance_window=gcp.dataproc.MetastoreServiceMaintenanceWindowArgs(
-                day_of_week="SUNDAY",
-                hour_of_day=2,
-            ),
-            port=9080,
-            service_id="metastore-srv",
-            tier="DEVELOPER")
-        ```
-        ### Dataproc Metastore Service Cmek Example
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        key_ring = gcp.kms.KeyRing("keyRing", location="us-central1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        crypto_key = gcp.kms.CryptoKey("cryptoKey",
-            key_ring=key_ring.id,
-            purpose="ENCRYPT_DECRYPT",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default = gcp.dataproc.MetastoreService("default",
-            service_id="example-service",
-            location="us-central1",
-            encryption_config=gcp.dataproc.MetastoreServiceEncryptionConfigArgs(
-                kms_key=crypto_key.id,
-            ),
-            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
-                version="3.1.2",
-            ))
-        ```
-        ### Dataproc Metastore Service Private Service Connect
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        net = gcp.compute.Network("net", auto_create_subnetworks=False)
-        subnet = gcp.compute.Subnetwork("subnet",
-            region="us-central1",
-            network=net.id,
-            ip_cidr_range="10.0.0.0/22",
-            private_ip_google_access=True)
-        default = gcp.dataproc.MetastoreService("default",
-            service_id="metastore-srv",
-            location="us-central1",
-            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
-                version="3.1.2",
-            ),
-            network_config=gcp.dataproc.MetastoreServiceNetworkConfigArgs(
-                consumers=[gcp.dataproc.MetastoreServiceNetworkConfigConsumerArgs(
-                    subnetwork=subnet.id,
-                )],
-            ))
-        ```
-        ### Dataproc Metastore Service Dpms2
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dpms2 = gcp.dataproc.MetastoreService("dpms2",
-            database_type="SPANNER",
-            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
-                version="3.1.2",
-            ),
-            location="us-central1",
-            scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArgs(
-                instance_size="EXTRA_SMALL",
-            ),
-            service_id="dpms2")
-        ```
-        ### Dataproc Metastore Service Dpms2 Scaling Factor
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dpms2_scaling_factor = gcp.dataproc.MetastoreService("dpms2ScalingFactor",
-            database_type="SPANNER",
-            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
-                version="3.1.2",
-            ),
-            location="us-central1",
-            scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArgs(
-                scaling_factor=2,
-            ),
-            service_id="dpms2sf")
-        ```
 
         ## Import
 
@@ -1021,105 +974,6 @@ class MetastoreService(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dataproc-metastore/docs/overview)
 
         ## Example Usage
-        ### Dataproc Metastore Service Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.dataproc.MetastoreService("default",
-            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
-                version="2.3.6",
-            ),
-            location="us-central1",
-            maintenance_window=gcp.dataproc.MetastoreServiceMaintenanceWindowArgs(
-                day_of_week="SUNDAY",
-                hour_of_day=2,
-            ),
-            port=9080,
-            service_id="metastore-srv",
-            tier="DEVELOPER")
-        ```
-        ### Dataproc Metastore Service Cmek Example
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        key_ring = gcp.kms.KeyRing("keyRing", location="us-central1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        crypto_key = gcp.kms.CryptoKey("cryptoKey",
-            key_ring=key_ring.id,
-            purpose="ENCRYPT_DECRYPT",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default = gcp.dataproc.MetastoreService("default",
-            service_id="example-service",
-            location="us-central1",
-            encryption_config=gcp.dataproc.MetastoreServiceEncryptionConfigArgs(
-                kms_key=crypto_key.id,
-            ),
-            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
-                version="3.1.2",
-            ))
-        ```
-        ### Dataproc Metastore Service Private Service Connect
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        net = gcp.compute.Network("net", auto_create_subnetworks=False)
-        subnet = gcp.compute.Subnetwork("subnet",
-            region="us-central1",
-            network=net.id,
-            ip_cidr_range="10.0.0.0/22",
-            private_ip_google_access=True)
-        default = gcp.dataproc.MetastoreService("default",
-            service_id="metastore-srv",
-            location="us-central1",
-            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
-                version="3.1.2",
-            ),
-            network_config=gcp.dataproc.MetastoreServiceNetworkConfigArgs(
-                consumers=[gcp.dataproc.MetastoreServiceNetworkConfigConsumerArgs(
-                    subnetwork=subnet.id,
-                )],
-            ))
-        ```
-        ### Dataproc Metastore Service Dpms2
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dpms2 = gcp.dataproc.MetastoreService("dpms2",
-            database_type="SPANNER",
-            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
-                version="3.1.2",
-            ),
-            location="us-central1",
-            scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArgs(
-                instance_size="EXTRA_SMALL",
-            ),
-            service_id="dpms2")
-        ```
-        ### Dataproc Metastore Service Dpms2 Scaling Factor
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dpms2_scaling_factor = gcp.dataproc.MetastoreService("dpms2ScalingFactor",
-            database_type="SPANNER",
-            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
-                version="3.1.2",
-            ),
-            location="us-central1",
-            scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArgs(
-                scaling_factor=2,
-            ),
-            service_id="dpms2sf")
-        ```
 
         ## Import
 
@@ -1182,56 +1036,28 @@ class MetastoreService(pulumi.CustomResource):
             __props__ = MetastoreServiceArgs.__new__(MetastoreServiceArgs)
 
             __props__.__dict__["database_type"] = database_type
-            if encryption_config is not None and not isinstance(encryption_config, MetastoreServiceEncryptionConfigArgs):
-                encryption_config = encryption_config or {}
-                def _setter(key, value):
-                    encryption_config[key] = value
-                MetastoreServiceEncryptionConfigArgs._configure(_setter, **encryption_config)
+            encryption_config = _utilities.configure(encryption_config, MetastoreServiceEncryptionConfigArgs, True)
             __props__.__dict__["encryption_config"] = encryption_config
-            if hive_metastore_config is not None and not isinstance(hive_metastore_config, MetastoreServiceHiveMetastoreConfigArgs):
-                hive_metastore_config = hive_metastore_config or {}
-                def _setter(key, value):
-                    hive_metastore_config[key] = value
-                MetastoreServiceHiveMetastoreConfigArgs._configure(_setter, **hive_metastore_config)
+            hive_metastore_config = _utilities.configure(hive_metastore_config, MetastoreServiceHiveMetastoreConfigArgs, True)
             __props__.__dict__["hive_metastore_config"] = hive_metastore_config
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
-            if maintenance_window is not None and not isinstance(maintenance_window, MetastoreServiceMaintenanceWindowArgs):
-                maintenance_window = maintenance_window or {}
-                def _setter(key, value):
-                    maintenance_window[key] = value
-                MetastoreServiceMaintenanceWindowArgs._configure(_setter, **maintenance_window)
+            maintenance_window = _utilities.configure(maintenance_window, MetastoreServiceMaintenanceWindowArgs, True)
             __props__.__dict__["maintenance_window"] = maintenance_window
-            if metadata_integration is not None and not isinstance(metadata_integration, MetastoreServiceMetadataIntegrationArgs):
-                metadata_integration = metadata_integration or {}
-                def _setter(key, value):
-                    metadata_integration[key] = value
-                MetastoreServiceMetadataIntegrationArgs._configure(_setter, **metadata_integration)
+            metadata_integration = _utilities.configure(metadata_integration, MetastoreServiceMetadataIntegrationArgs, True)
             __props__.__dict__["metadata_integration"] = metadata_integration
             __props__.__dict__["network"] = network
-            if network_config is not None and not isinstance(network_config, MetastoreServiceNetworkConfigArgs):
-                network_config = network_config or {}
-                def _setter(key, value):
-                    network_config[key] = value
-                MetastoreServiceNetworkConfigArgs._configure(_setter, **network_config)
+            network_config = _utilities.configure(network_config, MetastoreServiceNetworkConfigArgs, True)
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["port"] = port
             __props__.__dict__["project"] = project
             __props__.__dict__["release_channel"] = release_channel
-            if scaling_config is not None and not isinstance(scaling_config, MetastoreServiceScalingConfigArgs):
-                scaling_config = scaling_config or {}
-                def _setter(key, value):
-                    scaling_config[key] = value
-                MetastoreServiceScalingConfigArgs._configure(_setter, **scaling_config)
+            scaling_config = _utilities.configure(scaling_config, MetastoreServiceScalingConfigArgs, True)
             __props__.__dict__["scaling_config"] = scaling_config
             if service_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_id'")
             __props__.__dict__["service_id"] = service_id
-            if telemetry_config is not None and not isinstance(telemetry_config, MetastoreServiceTelemetryConfigArgs):
-                telemetry_config = telemetry_config or {}
-                def _setter(key, value):
-                    telemetry_config[key] = value
-                MetastoreServiceTelemetryConfigArgs._configure(_setter, **telemetry_config)
+            telemetry_config = _utilities.configure(telemetry_config, MetastoreServiceTelemetryConfigArgs, True)
             __props__.__dict__["telemetry_config"] = telemetry_config
             __props__.__dict__["tier"] = tier
             __props__.__dict__["artifact_gcs_uri"] = None

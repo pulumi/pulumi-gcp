@@ -13,34 +13,6 @@ import (
 )
 
 // Retrieves the current IAM policy data for deviceregistry
-//
-// ## example
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iot"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := iot.LookupRegistryIamPolicy(ctx, &iot.LookupRegistryIamPolicyArgs{
-//				Project: pulumi.StringRef(google_cloudiot_registry.TestRegistry.Project),
-//				Region:  pulumi.StringRef(google_cloudiot_registry.TestRegistry.Region),
-//				Name:    google_cloudiot_registry.TestRegistry.Name,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupRegistryIamPolicy(ctx *pulumi.Context, args *LookupRegistryIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupRegistryIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegistryIamPolicyResult

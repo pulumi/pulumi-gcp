@@ -18,35 +18,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
  *
  * ## Example Usage
- * ### Beyondcorp App Gateway Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const appGateway = new gcp.beyondcorp.AppGateway("appGateway", {
- *     hostType: "GCP_REGIONAL_MIG",
- *     region: "us-central1",
- *     type: "TCP_PROXY",
- * });
- * ```
- * ### Beyondcorp App Gateway Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const appGateway = new gcp.beyondcorp.AppGateway("appGateway", {
- *     displayName: "some display name",
- *     hostType: "GCP_REGIONAL_MIG",
- *     labels: {
- *         bar: "baz",
- *         foo: "bar",
- *     },
- *     region: "us-central1",
- *     type: "TCP_PROXY",
- * });
- * ```
  *
  * ## Import
  *

@@ -32,7 +32,9 @@ class FieldIndexConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              indexes: Optional[pulumi.Input[Sequence[pulumi.Input['FieldIndexConfigIndexArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if indexes is not None:
             _setter("indexes", indexes)
 
@@ -81,7 +83,13 @@ class FieldIndexConfigIndexArgs:
              array_config: Optional[pulumi.Input[str]] = None,
              order: Optional[pulumi.Input[str]] = None,
              query_scope: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if array_config is None and 'arrayConfig' in kwargs:
+            array_config = kwargs['arrayConfig']
+        if query_scope is None and 'queryScope' in kwargs:
+            query_scope = kwargs['queryScope']
+
         if array_config is not None:
             _setter("array_config", array_config)
         if order is not None:
@@ -150,7 +158,9 @@ class FieldTtlConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if state is not None:
             _setter("state", state)
 
@@ -197,7 +207,13 @@ class IndexFieldArgs:
              array_config: Optional[pulumi.Input[str]] = None,
              field_path: Optional[pulumi.Input[str]] = None,
              order: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if array_config is None and 'arrayConfig' in kwargs:
+            array_config = kwargs['arrayConfig']
+        if field_path is None and 'fieldPath' in kwargs:
+            field_path = kwargs['fieldPath']
+
         if array_config is not None:
             _setter("array_config", array_config)
         if field_path is not None:

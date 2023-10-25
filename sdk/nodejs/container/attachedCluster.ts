@@ -17,57 +17,6 @@ import * as utilities from "../utilities";
  *     * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
  *
  * ## Example Usage
- * ### Container Attached Cluster Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const project = gcp.organizations.getProject({});
- * const versions = project.then(project => gcp.container.getAttachedVersions({
- *     location: "us-west1",
- *     project: project.projectId,
- * }));
- * const primary = new gcp.container.AttachedCluster("primary", {
- *     location: "us-west1",
- *     project: project.then(project => project.projectId),
- *     description: "Test cluster",
- *     distribution: "aks",
- *     oidcConfig: {
- *         issuerUrl: "https://oidc.issuer.url",
- *     },
- *     platformVersion: versions.then(versions => versions.validVersions?.[0]),
- *     fleet: {
- *         project: project.then(project => `projects/${project.number}`),
- *     },
- * });
- * ```
- * ### Container Attached Cluster Ignore Errors
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const project = gcp.organizations.getProject({});
- * const versions = project.then(project => gcp.container.getAttachedVersions({
- *     location: "us-west1",
- *     project: project.projectId,
- * }));
- * const primary = new gcp.container.AttachedCluster("primary", {
- *     location: "us-west1",
- *     project: project.then(project => project.projectId),
- *     description: "Test cluster",
- *     distribution: "aks",
- *     oidcConfig: {
- *         issuerUrl: "https://oidc.issuer.url",
- *     },
- *     platformVersion: versions.then(versions => versions.validVersions?.[0]),
- *     fleet: {
- *         project: project.then(project => `projects/${project.number}`),
- *     },
- *     deletionPolicy: "DELETE_IGNORE_ERRORS",
- * });
- * ```
  *
  * ## Import
  *

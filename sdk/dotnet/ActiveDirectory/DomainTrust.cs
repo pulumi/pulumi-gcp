@@ -23,31 +23,6 @@ namespace Pulumi.Gcp.ActiveDirectory
     /// Read more about sensitive data in state.
     /// 
     /// ## Example Usage
-    /// ### Active Directory Domain Trust Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var ad_domain_trust = new Gcp.ActiveDirectory.DomainTrust("ad-domain-trust", new()
-    ///     {
-    ///         Domain = "test-managed-ad.com",
-    ///         TargetDnsIpAddresses = new[]
-    ///         {
-    ///             "10.1.0.100",
-    ///         },
-    ///         TargetDomainName = "example-gcp.com",
-    ///         TrustDirection = "OUTBOUND",
-    ///         TrustHandshakeSecret = "Testing1!",
-    ///         TrustType = "FOREST",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

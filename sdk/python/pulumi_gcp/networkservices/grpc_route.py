@@ -51,15 +51,21 @@ class GrpcRouteArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hostnames: pulumi.Input[Sequence[pulumi.Input[str]]],
-             rules: pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleArgs']]],
+             hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             rules: Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleArgs']]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              gateways: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if hostnames is None:
+            raise TypeError("Missing 'hostnames' argument")
+        if rules is None:
+            raise TypeError("Missing 'rules' argument")
+
         _setter("hostnames", hostnames)
         _setter("rules", rules)
         if description is not None:
@@ -232,7 +238,15 @@ class _GrpcRouteState:
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleArgs']]]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:
@@ -407,117 +421,6 @@ class GrpcRoute(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Network Services Grpc Route Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networkservices.GrpcRoute("default",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            hostnames=["example"],
-            rules=[gcp.networkservices.GrpcRouteRuleArgs(
-                matches=[gcp.networkservices.GrpcRouteRuleMatchArgs(
-                    headers=[gcp.networkservices.GrpcRouteRuleMatchHeaderArgs(
-                        key="key",
-                        value="value",
-                    )],
-                )],
-                action=gcp.networkservices.GrpcRouteRuleActionArgs(
-                    retry_policy=gcp.networkservices.GrpcRouteRuleActionRetryPolicyArgs(
-                        retry_conditions=["cancelled"],
-                        num_retries=1,
-                    ),
-                ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Network Services Grpc Route Matches And Actions
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networkservices.GrpcRoute("default",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            hostnames=["example"],
-            rules=[gcp.networkservices.GrpcRouteRuleArgs(
-                matches=[
-                    gcp.networkservices.GrpcRouteRuleMatchArgs(
-                        headers=[gcp.networkservices.GrpcRouteRuleMatchHeaderArgs(
-                            key="key",
-                            value="value",
-                        )],
-                    ),
-                    gcp.networkservices.GrpcRouteRuleMatchArgs(
-                        headers=[gcp.networkservices.GrpcRouteRuleMatchHeaderArgs(
-                            key="key",
-                            value="value",
-                        )],
-                        method=gcp.networkservices.GrpcRouteRuleMatchMethodArgs(
-                            grpc_service="foo",
-                            grpc_method="bar",
-                            case_sensitive=True,
-                        ),
-                    ),
-                ],
-                action=gcp.networkservices.GrpcRouteRuleActionArgs(
-                    fault_injection_policy=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyArgs(
-                        delay=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyDelayArgs(
-                            fixed_delay="1s",
-                            percentage=1,
-                        ),
-                        abort=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyAbortArgs(
-                            http_status=500,
-                            percentage=1,
-                        ),
-                    ),
-                    retry_policy=gcp.networkservices.GrpcRouteRuleActionRetryPolicyArgs(
-                        retry_conditions=["cancelled"],
-                        num_retries=1,
-                    ),
-                ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Network Services Grpc Route Actions
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networkservices.GrpcRoute("default",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            hostnames=["example"],
-            rules=[gcp.networkservices.GrpcRouteRuleArgs(
-                action=gcp.networkservices.GrpcRouteRuleActionArgs(
-                    fault_injection_policy=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyArgs(
-                        delay=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyDelayArgs(
-                            fixed_delay="1s",
-                            percentage=1,
-                        ),
-                        abort=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyAbortArgs(
-                            http_status=500,
-                            percentage=1,
-                        ),
-                    ),
-                    retry_policy=gcp.networkservices.GrpcRouteRuleActionRetryPolicyArgs(
-                        retry_conditions=["cancelled"],
-                        num_retries=1,
-                    ),
-                ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -556,117 +459,6 @@ class GrpcRoute(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Network Services Grpc Route Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networkservices.GrpcRoute("default",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            hostnames=["example"],
-            rules=[gcp.networkservices.GrpcRouteRuleArgs(
-                matches=[gcp.networkservices.GrpcRouteRuleMatchArgs(
-                    headers=[gcp.networkservices.GrpcRouteRuleMatchHeaderArgs(
-                        key="key",
-                        value="value",
-                    )],
-                )],
-                action=gcp.networkservices.GrpcRouteRuleActionArgs(
-                    retry_policy=gcp.networkservices.GrpcRouteRuleActionRetryPolicyArgs(
-                        retry_conditions=["cancelled"],
-                        num_retries=1,
-                    ),
-                ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Network Services Grpc Route Matches And Actions
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networkservices.GrpcRoute("default",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            hostnames=["example"],
-            rules=[gcp.networkservices.GrpcRouteRuleArgs(
-                matches=[
-                    gcp.networkservices.GrpcRouteRuleMatchArgs(
-                        headers=[gcp.networkservices.GrpcRouteRuleMatchHeaderArgs(
-                            key="key",
-                            value="value",
-                        )],
-                    ),
-                    gcp.networkservices.GrpcRouteRuleMatchArgs(
-                        headers=[gcp.networkservices.GrpcRouteRuleMatchHeaderArgs(
-                            key="key",
-                            value="value",
-                        )],
-                        method=gcp.networkservices.GrpcRouteRuleMatchMethodArgs(
-                            grpc_service="foo",
-                            grpc_method="bar",
-                            case_sensitive=True,
-                        ),
-                    ),
-                ],
-                action=gcp.networkservices.GrpcRouteRuleActionArgs(
-                    fault_injection_policy=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyArgs(
-                        delay=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyDelayArgs(
-                            fixed_delay="1s",
-                            percentage=1,
-                        ),
-                        abort=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyAbortArgs(
-                            http_status=500,
-                            percentage=1,
-                        ),
-                    ),
-                    retry_policy=gcp.networkservices.GrpcRouteRuleActionRetryPolicyArgs(
-                        retry_conditions=["cancelled"],
-                        num_retries=1,
-                    ),
-                ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Network Services Grpc Route Actions
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networkservices.GrpcRoute("default",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            hostnames=["example"],
-            rules=[gcp.networkservices.GrpcRouteRuleArgs(
-                action=gcp.networkservices.GrpcRouteRuleActionArgs(
-                    fault_injection_policy=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyArgs(
-                        delay=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyDelayArgs(
-                            fixed_delay="1s",
-                            percentage=1,
-                        ),
-                        abort=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyAbortArgs(
-                            http_status=500,
-                            percentage=1,
-                        ),
-                    ),
-                    retry_policy=gcp.networkservices.GrpcRouteRuleActionRetryPolicyArgs(
-                        retry_conditions=["cancelled"],
-                        num_retries=1,
-                    ),
-                ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 

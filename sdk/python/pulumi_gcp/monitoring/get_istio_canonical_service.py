@@ -157,16 +157,6 @@ def get_istio_canonical_service(canonical_service: Optional[str] = None,
         * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
     ## Example Usage
-    ### Monitoring Istio Canonical Service
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    default = gcp.monitoring.get_istio_canonical_service(canonical_service="prometheus",
-        canonical_service_namespace="istio-system",
-        mesh_uid="proj-573164786102")
-    ```
 
 
     :param str canonical_service: The name of the canonical service underlying this service.
@@ -225,16 +215,6 @@ def get_istio_canonical_service_output(canonical_service: Optional[pulumi.Input[
         * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
     ## Example Usage
-    ### Monitoring Istio Canonical Service
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    default = gcp.monitoring.get_istio_canonical_service(canonical_service="prometheus",
-        canonical_service_namespace="istio-system",
-        mesh_uid="proj-573164786102")
-    ```
 
 
     :param str canonical_service: The name of the canonical service underlying this service.

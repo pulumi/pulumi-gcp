@@ -67,15 +67,25 @@ class GuestPoliciesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             assignment: pulumi.Input['GuestPoliciesAssignmentArgs'],
-             guest_policy_id: pulumi.Input[str],
+             assignment: Optional[pulumi.Input['GuestPoliciesAssignmentArgs']] = None,
+             guest_policy_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              etag: Optional[pulumi.Input[str]] = None,
              package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]]] = None,
              packages: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArgs']]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              recipes: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if assignment is None:
+            raise TypeError("Missing 'assignment' argument")
+        if guest_policy_id is None and 'guestPolicyId' in kwargs:
+            guest_policy_id = kwargs['guestPolicyId']
+        if guest_policy_id is None:
+            raise TypeError("Missing 'guest_policy_id' argument")
+        if package_repositories is None and 'packageRepositories' in kwargs:
+            package_repositories = kwargs['packageRepositories']
+
         _setter("assignment", assignment)
         _setter("guest_policy_id", guest_policy_id)
         if description is not None:
@@ -282,7 +292,17 @@ class _GuestPoliciesState:
              project: Optional[pulumi.Input[str]] = None,
              recipes: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if guest_policy_id is None and 'guestPolicyId' in kwargs:
+            guest_policy_id = kwargs['guestPolicyId']
+        if package_repositories is None and 'packageRepositories' in kwargs:
+            package_repositories = kwargs['packageRepositories']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if assignment is not None:
             _setter("assignment", assignment)
         if create_time is not None:
@@ -485,140 +505,6 @@ class GuestPolicies(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/os-config-management)
 
         ## Example Usage
-        ### Os Config Guest Policies Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_image = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        foobar = gcp.compute.Instance("foobar",
-            machine_type="e2-medium",
-            zone="us-central1-a",
-            can_ip_forward=False,
-            tags=[
-                "foo",
-                "bar",
-            ],
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=my_image.self_link,
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-            )],
-            metadata={
-                "foo": "bar",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        guest_policies = gcp.osconfig.GuestPolicies("guestPolicies",
-            guest_policy_id="guest-policy",
-            assignment=gcp.osconfig.GuestPoliciesAssignmentArgs(
-                instances=[foobar.id],
-            ),
-            packages=[gcp.osconfig.GuestPoliciesPackageArgs(
-                name="my-package",
-                desired_state="UPDATED",
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Os Config Guest Policies Packages
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        guest_policies = gcp.osconfig.GuestPolicies("guestPolicies",
-            guest_policy_id="guest-policy",
-            assignment=gcp.osconfig.GuestPoliciesAssignmentArgs(
-                group_labels=[
-                    gcp.osconfig.GuestPoliciesAssignmentGroupLabelArgs(
-                        labels={
-                            "color": "red",
-                            "env": "test",
-                        },
-                    ),
-                    gcp.osconfig.GuestPoliciesAssignmentGroupLabelArgs(
-                        labels={
-                            "color": "blue",
-                            "env": "test",
-                        },
-                    ),
-                ],
-            ),
-            packages=[
-                gcp.osconfig.GuestPoliciesPackageArgs(
-                    name="my-package",
-                    desired_state="INSTALLED",
-                ),
-                gcp.osconfig.GuestPoliciesPackageArgs(
-                    name="bad-package-1",
-                    desired_state="REMOVED",
-                ),
-                gcp.osconfig.GuestPoliciesPackageArgs(
-                    name="bad-package-2",
-                    desired_state="REMOVED",
-                    manager="APT",
-                ),
-            ],
-            package_repositories=[
-                gcp.osconfig.GuestPoliciesPackageRepositoryArgs(
-                    apt=gcp.osconfig.GuestPoliciesPackageRepositoryAptArgs(
-                        uri="https://packages.cloud.google.com/apt",
-                        archive_type="DEB",
-                        distribution="cloud-sdk-stretch",
-                        components=["main"],
-                    ),
-                ),
-                gcp.osconfig.GuestPoliciesPackageRepositoryArgs(
-                    yum=gcp.osconfig.GuestPoliciesPackageRepositoryYumArgs(
-                        id="google-cloud-sdk",
-                        display_name="Google Cloud SDK",
-                        base_url="https://packages.cloud.google.com/yum/repos/cloud-sdk-el7-x86_64",
-                        gpg_keys=[
-                            "https://packages.cloud.google.com/yum/doc/yum-key.gpg",
-                            "https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg",
-                        ],
-                    ),
-                ),
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Os Config Guest Policies Recipes
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        guest_policies = gcp.osconfig.GuestPolicies("guestPolicies",
-            guest_policy_id="guest-policy",
-            assignment=gcp.osconfig.GuestPoliciesAssignmentArgs(
-                zones=[
-                    "us-east1-b",
-                    "us-east1-d",
-                ],
-            ),
-            recipes=[gcp.osconfig.GuestPoliciesRecipeArgs(
-                name="guest-policy-recipe",
-                desired_state="INSTALLED",
-                artifacts=[gcp.osconfig.GuestPoliciesRecipeArtifactArgs(
-                    id="guest-policy-artifact-id",
-                    gcs=gcp.osconfig.GuestPoliciesRecipeArtifactGcsArgs(
-                        bucket="my-bucket",
-                        object="executable.msi",
-                        generation=1546030865175603,
-                    ),
-                )],
-                install_steps=[gcp.osconfig.GuestPoliciesRecipeInstallStepArgs(
-                    msi_installation=gcp.osconfig.GuestPoliciesRecipeInstallStepMsiInstallationArgs(
-                        artifact_id="guest-policy-artifact-id",
-                    ),
-                )],
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -683,140 +569,6 @@ class GuestPolicies(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/os-config-management)
 
         ## Example Usage
-        ### Os Config Guest Policies Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_image = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        foobar = gcp.compute.Instance("foobar",
-            machine_type="e2-medium",
-            zone="us-central1-a",
-            can_ip_forward=False,
-            tags=[
-                "foo",
-                "bar",
-            ],
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=my_image.self_link,
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-            )],
-            metadata={
-                "foo": "bar",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        guest_policies = gcp.osconfig.GuestPolicies("guestPolicies",
-            guest_policy_id="guest-policy",
-            assignment=gcp.osconfig.GuestPoliciesAssignmentArgs(
-                instances=[foobar.id],
-            ),
-            packages=[gcp.osconfig.GuestPoliciesPackageArgs(
-                name="my-package",
-                desired_state="UPDATED",
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Os Config Guest Policies Packages
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        guest_policies = gcp.osconfig.GuestPolicies("guestPolicies",
-            guest_policy_id="guest-policy",
-            assignment=gcp.osconfig.GuestPoliciesAssignmentArgs(
-                group_labels=[
-                    gcp.osconfig.GuestPoliciesAssignmentGroupLabelArgs(
-                        labels={
-                            "color": "red",
-                            "env": "test",
-                        },
-                    ),
-                    gcp.osconfig.GuestPoliciesAssignmentGroupLabelArgs(
-                        labels={
-                            "color": "blue",
-                            "env": "test",
-                        },
-                    ),
-                ],
-            ),
-            packages=[
-                gcp.osconfig.GuestPoliciesPackageArgs(
-                    name="my-package",
-                    desired_state="INSTALLED",
-                ),
-                gcp.osconfig.GuestPoliciesPackageArgs(
-                    name="bad-package-1",
-                    desired_state="REMOVED",
-                ),
-                gcp.osconfig.GuestPoliciesPackageArgs(
-                    name="bad-package-2",
-                    desired_state="REMOVED",
-                    manager="APT",
-                ),
-            ],
-            package_repositories=[
-                gcp.osconfig.GuestPoliciesPackageRepositoryArgs(
-                    apt=gcp.osconfig.GuestPoliciesPackageRepositoryAptArgs(
-                        uri="https://packages.cloud.google.com/apt",
-                        archive_type="DEB",
-                        distribution="cloud-sdk-stretch",
-                        components=["main"],
-                    ),
-                ),
-                gcp.osconfig.GuestPoliciesPackageRepositoryArgs(
-                    yum=gcp.osconfig.GuestPoliciesPackageRepositoryYumArgs(
-                        id="google-cloud-sdk",
-                        display_name="Google Cloud SDK",
-                        base_url="https://packages.cloud.google.com/yum/repos/cloud-sdk-el7-x86_64",
-                        gpg_keys=[
-                            "https://packages.cloud.google.com/yum/doc/yum-key.gpg",
-                            "https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg",
-                        ],
-                    ),
-                ),
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Os Config Guest Policies Recipes
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        guest_policies = gcp.osconfig.GuestPolicies("guestPolicies",
-            guest_policy_id="guest-policy",
-            assignment=gcp.osconfig.GuestPoliciesAssignmentArgs(
-                zones=[
-                    "us-east1-b",
-                    "us-east1-d",
-                ],
-            ),
-            recipes=[gcp.osconfig.GuestPoliciesRecipeArgs(
-                name="guest-policy-recipe",
-                desired_state="INSTALLED",
-                artifacts=[gcp.osconfig.GuestPoliciesRecipeArtifactArgs(
-                    id="guest-policy-artifact-id",
-                    gcs=gcp.osconfig.GuestPoliciesRecipeArtifactGcsArgs(
-                        bucket="my-bucket",
-                        object="executable.msi",
-                        generation=1546030865175603,
-                    ),
-                )],
-                install_steps=[gcp.osconfig.GuestPoliciesRecipeInstallStepArgs(
-                    msi_installation=gcp.osconfig.GuestPoliciesRecipeInstallStepMsiInstallationArgs(
-                        artifact_id="guest-policy-artifact-id",
-                    ),
-                )],
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -870,11 +622,7 @@ class GuestPolicies(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GuestPoliciesArgs.__new__(GuestPoliciesArgs)
 
-            if assignment is not None and not isinstance(assignment, GuestPoliciesAssignmentArgs):
-                assignment = assignment or {}
-                def _setter(key, value):
-                    assignment[key] = value
-                GuestPoliciesAssignmentArgs._configure(_setter, **assignment)
+            assignment = _utilities.configure(assignment, GuestPoliciesAssignmentArgs, True)
             if assignment is None and not opts.urn:
                 raise TypeError("Missing required property 'assignment'")
             __props__.__dict__["assignment"] = assignment

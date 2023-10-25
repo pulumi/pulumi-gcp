@@ -13,33 +13,6 @@ import (
 )
 
 // Retrieves the current IAM policy data for secret
-//
-// ## example
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/secretmanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := secretmanager.LookupSecretIamPolicy(ctx, &secretmanager.LookupSecretIamPolicyArgs{
-//				Project:  pulumi.StringRef(google_secret_manager_secret.SecretBasic.Project),
-//				SecretId: google_secret_manager_secret.SecretBasic.Secret_id,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupSecretIamPolicy(ctx *pulumi.Context, args *LookupSecretIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupSecretIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecretIamPolicyResult

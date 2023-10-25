@@ -60,14 +60,26 @@ class RegionTargetHttpsProxyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ssl_certificates: pulumi.Input[Sequence[pulumi.Input[str]]],
-             url_map: pulumi.Input[str],
+             ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             url_map: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              ssl_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ssl_certificates is None and 'sslCertificates' in kwargs:
+            ssl_certificates = kwargs['sslCertificates']
+        if ssl_certificates is None:
+            raise TypeError("Missing 'ssl_certificates' argument")
+        if url_map is None and 'urlMap' in kwargs:
+            url_map = kwargs['urlMap']
+        if url_map is None:
+            raise TypeError("Missing 'url_map' argument")
+        if ssl_policy is None and 'sslPolicy' in kwargs:
+            ssl_policy = kwargs['sslPolicy']
+
         _setter("ssl_certificates", ssl_certificates)
         _setter("url_map", url_map)
         if description is not None:
@@ -250,7 +262,21 @@ class _RegionTargetHttpsProxyState:
              ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              ssl_policy: Optional[pulumi.Input[str]] = None,
              url_map: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if proxy_id is None and 'proxyId' in kwargs:
+            proxy_id = kwargs['proxyId']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if ssl_certificates is None and 'sslCertificates' in kwargs:
+            ssl_certificates = kwargs['sslCertificates']
+        if ssl_policy is None and 'sslPolicy' in kwargs:
+            ssl_policy = kwargs['sslPolicy']
+        if url_map is None and 'urlMap' in kwargs:
+            url_map = kwargs['urlMap']
+
         if creation_timestamp is not None:
             _setter("creation_timestamp", creation_timestamp)
         if description is not None:

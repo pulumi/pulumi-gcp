@@ -63,13 +63,23 @@ class Hl7StoreArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataset: pulumi.Input[str],
+             dataset: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              notification_config: Optional[pulumi.Input['Hl7StoreNotificationConfigArgs']] = None,
              notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]]] = None,
              parser_config: Optional[pulumi.Input['Hl7StoreParserConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dataset is None:
+            raise TypeError("Missing 'dataset' argument")
+        if notification_config is None and 'notificationConfig' in kwargs:
+            notification_config = kwargs['notificationConfig']
+        if notification_configs is None and 'notificationConfigs' in kwargs:
+            notification_configs = kwargs['notificationConfigs']
+        if parser_config is None and 'parserConfig' in kwargs:
+            parser_config = kwargs['parserConfig']
+
         _setter("dataset", dataset)
         if labels is not None:
             _setter("labels", labels)
@@ -241,7 +251,17 @@ class _Hl7StoreState:
              notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]]] = None,
              parser_config: Optional[pulumi.Input['Hl7StoreParserConfigArgs']] = None,
              self_link: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if notification_config is None and 'notificationConfig' in kwargs:
+            notification_config = kwargs['notificationConfig']
+        if notification_configs is None and 'notificationConfigs' in kwargs:
+            notification_configs = kwargs['notificationConfigs']
+        if parser_config is None and 'parserConfig' in kwargs:
+            parser_config = kwargs['parserConfig']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if dataset is not None:
             _setter("dataset", dataset)
         if labels is not None:
@@ -391,135 +411,6 @@ class Hl7Store(pulumi.CustomResource):
             * [Creating a HL7v2 Store](https://cloud.google.com/healthcare/docs/how-tos/hl7v2)
 
         ## Example Usage
-        ### Healthcare Hl7 V2 Store Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        topic = gcp.pubsub.Topic("topic")
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
-        store = gcp.healthcare.Hl7Store("store",
-            dataset=dataset.id,
-            notification_configs=[gcp.healthcare.Hl7StoreNotificationConfigsArgs(
-                pubsub_topic=topic.id,
-            )],
-            labels={
-                "label1": "labelvalue1",
-            })
-        ```
-        ### Healthcare Hl7 V2 Store Parser Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        store = gcp.healthcare.Hl7Store("store",
-            dataset=dataset.id,
-            parser_config=gcp.healthcare.Hl7StoreParserConfigArgs(
-                allow_null_header=False,
-                segment_terminator="Jw==",
-                schema=\"\"\"{
-          "schemas": [{
-            "messageSchemaConfigs": {
-              "ADT_A01": {
-                "name": "ADT_A01",
-                "minOccurs": 1,
-                "maxOccurs": 1,
-                "members": [{
-                    "segment": {
-                      "type": "MSH",
-                      "minOccurs": 1,
-                      "maxOccurs": 1
-                    }
-                  },
-                  {
-                    "segment": {
-                      "type": "EVN",
-                      "minOccurs": 1,
-                      "maxOccurs": 1
-                    }
-                  },
-                  {
-                    "segment": {
-                      "type": "PID",
-                      "minOccurs": 1,
-                      "maxOccurs": 1
-                    }
-                  },
-                  {
-                    "segment": {
-                      "type": "ZPD",
-                      "minOccurs": 1,
-                      "maxOccurs": 1
-                    }
-                  },
-                  {
-                    "segment": {
-                      "type": "OBX"
-                    }
-                  },
-                  {
-                    "group": {
-                      "name": "PROCEDURE",
-                      "members": [{
-                          "segment": {
-                            "type": "PR1",
-                            "minOccurs": 1,
-                            "maxOccurs": 1
-                          }
-                        },
-                        {
-                          "segment": {
-                            "type": "ROL"
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    "segment": {
-                      "type": "PDA",
-                      "maxOccurs": 1
-                    }
-                  }
-                ]
-              }
-            }
-          }],
-          "types": [{
-            "type": [{
-                "name": "ZPD",
-                "primitive": "VARIES"
-              }
-
-            ]
-          }],
-          "ignoreMinOccurs": true
-        }
-        \"\"\",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Healthcare Hl7 V2 Store Unschematized
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        store = gcp.healthcare.Hl7Store("store",
-            dataset=dataset.id,
-            parser_config=gcp.healthcare.Hl7StoreParserConfigArgs(
-                allow_null_header=False,
-                segment_terminator="Jw==",
-                version="V2",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -579,135 +470,6 @@ class Hl7Store(pulumi.CustomResource):
             * [Creating a HL7v2 Store](https://cloud.google.com/healthcare/docs/how-tos/hl7v2)
 
         ## Example Usage
-        ### Healthcare Hl7 V2 Store Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        topic = gcp.pubsub.Topic("topic")
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
-        store = gcp.healthcare.Hl7Store("store",
-            dataset=dataset.id,
-            notification_configs=[gcp.healthcare.Hl7StoreNotificationConfigsArgs(
-                pubsub_topic=topic.id,
-            )],
-            labels={
-                "label1": "labelvalue1",
-            })
-        ```
-        ### Healthcare Hl7 V2 Store Parser Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        store = gcp.healthcare.Hl7Store("store",
-            dataset=dataset.id,
-            parser_config=gcp.healthcare.Hl7StoreParserConfigArgs(
-                allow_null_header=False,
-                segment_terminator="Jw==",
-                schema=\"\"\"{
-          "schemas": [{
-            "messageSchemaConfigs": {
-              "ADT_A01": {
-                "name": "ADT_A01",
-                "minOccurs": 1,
-                "maxOccurs": 1,
-                "members": [{
-                    "segment": {
-                      "type": "MSH",
-                      "minOccurs": 1,
-                      "maxOccurs": 1
-                    }
-                  },
-                  {
-                    "segment": {
-                      "type": "EVN",
-                      "minOccurs": 1,
-                      "maxOccurs": 1
-                    }
-                  },
-                  {
-                    "segment": {
-                      "type": "PID",
-                      "minOccurs": 1,
-                      "maxOccurs": 1
-                    }
-                  },
-                  {
-                    "segment": {
-                      "type": "ZPD",
-                      "minOccurs": 1,
-                      "maxOccurs": 1
-                    }
-                  },
-                  {
-                    "segment": {
-                      "type": "OBX"
-                    }
-                  },
-                  {
-                    "group": {
-                      "name": "PROCEDURE",
-                      "members": [{
-                          "segment": {
-                            "type": "PR1",
-                            "minOccurs": 1,
-                            "maxOccurs": 1
-                          }
-                        },
-                        {
-                          "segment": {
-                            "type": "ROL"
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    "segment": {
-                      "type": "PDA",
-                      "maxOccurs": 1
-                    }
-                  }
-                ]
-              }
-            }
-          }],
-          "types": [{
-            "type": [{
-                "name": "ZPD",
-                "primitive": "VARIES"
-              }
-
-            ]
-          }],
-          "ignoreMinOccurs": true
-        }
-        \"\"\",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Healthcare Hl7 V2 Store Unschematized
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        store = gcp.healthcare.Hl7Store("store",
-            dataset=dataset.id,
-            parser_config=gcp.healthcare.Hl7StoreParserConfigArgs(
-                allow_null_header=False,
-                segment_terminator="Jw==",
-                version="V2",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -760,18 +522,10 @@ class Hl7Store(pulumi.CustomResource):
             __props__.__dict__["dataset"] = dataset
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
-            if notification_config is not None and not isinstance(notification_config, Hl7StoreNotificationConfigArgs):
-                notification_config = notification_config or {}
-                def _setter(key, value):
-                    notification_config[key] = value
-                Hl7StoreNotificationConfigArgs._configure(_setter, **notification_config)
+            notification_config = _utilities.configure(notification_config, Hl7StoreNotificationConfigArgs, True)
             __props__.__dict__["notification_config"] = notification_config
             __props__.__dict__["notification_configs"] = notification_configs
-            if parser_config is not None and not isinstance(parser_config, Hl7StoreParserConfigArgs):
-                parser_config = parser_config or {}
-                def _setter(key, value):
-                    parser_config[key] = value
-                Hl7StoreParserConfigArgs._configure(_setter, **parser_config)
+            parser_config = _utilities.configure(parser_config, Hl7StoreParserConfigArgs, True)
             __props__.__dict__["parser_config"] = parser_config
             __props__.__dict__["self_link"] = None
         super(Hl7Store, __self__).__init__(

@@ -13,23 +13,6 @@ namespace Pulumi.Gcp.Compute
     /// The Compute NetworkFirewallPolicy resource
     /// 
     /// ## Example Usage
-    /// ### Global
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var primary = new Gcp.Compute.NetworkFirewallPolicy("primary", new()
-    ///     {
-    ///         Description = "Sample global network firewall policy",
-    ///         Project = "my-project-name",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

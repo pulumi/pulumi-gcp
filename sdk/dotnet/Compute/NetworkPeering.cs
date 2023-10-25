@@ -20,41 +20,6 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// &gt; Subnets IP ranges across peered VPC networks cannot overlap.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.Compute.Network("default", new()
-    ///     {
-    ///         AutoCreateSubnetworks = false,
-    ///     });
-    /// 
-    ///     var other = new Gcp.Compute.Network("other", new()
-    ///     {
-    ///         AutoCreateSubnetworks = false,
-    ///     });
-    /// 
-    ///     var peering1 = new Gcp.Compute.NetworkPeering("peering1", new()
-    ///     {
-    ///         Network = @default.SelfLink,
-    ///         PeerNetwork = other.SelfLink,
-    ///     });
-    /// 
-    ///     var peering2 = new Gcp.Compute.NetworkPeering("peering2", new()
-    ///     {
-    ///         Network = other.SelfLink,
-    ///         PeerNetwork = @default.SelfLink,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// VPC network peerings can be imported using the name and project of the primary network the peering exists in and the name of the network peering

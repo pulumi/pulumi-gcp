@@ -50,11 +50,21 @@ class MetastoreServiceIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy_data: pulumi.Input[str],
-             service_id: pulumi.Input[str],
+             policy_data: Optional[pulumi.Input[str]] = None,
+             service_id: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if service_id is None:
+            raise TypeError("Missing 'service_id' argument")
+
         _setter("policy_data", policy_data)
         _setter("service_id", service_id)
         if location is not None:
@@ -171,7 +181,13 @@ class _MetastoreServiceIamPolicyState:
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              service_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+
         if etag is not None:
             _setter("etag", etag)
         if location is not None:
@@ -282,51 +298,6 @@ class MetastoreServiceIamPolicy(pulumi.CustomResource):
 
         > **Note:** `dataproc.MetastoreServiceIamBinding` resources **can be** used in conjunction with `dataproc.MetastoreServiceIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataproc\\_metastore\\_service\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.dataproc.MetastoreServiceIamPolicy("policy",
-            project=google_dataproc_metastore_service["default"]["project"],
-            location=google_dataproc_metastore_service["default"]["location"],
-            service_id=google_dataproc_metastore_service["default"]["service_id"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_dataproc\\_metastore\\_service\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.dataproc.MetastoreServiceIamBinding("binding",
-            project=google_dataproc_metastore_service["default"]["project"],
-            location=google_dataproc_metastore_service["default"]["location"],
-            service_id=google_dataproc_metastore_service["default"]["service_id"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_dataproc\\_metastore\\_service\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.dataproc.MetastoreServiceIamMember("member",
-            project=google_dataproc_metastore_service["default"]["project"],
-            location=google_dataproc_metastore_service["default"]["location"],
-            service_id=google_dataproc_metastore_service["default"]["service_id"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/services/{{service_id}} * {{project}}/{{location}}/{{service_id}} * {{location}}/{{service_id}} * {{service_id}} Any variables not passed in the import command will be taken from the provider configuration. Dataproc metastore service IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -393,51 +364,6 @@ class MetastoreServiceIamPolicy(pulumi.CustomResource):
         > **Note:** `dataproc.MetastoreServiceIamPolicy` **cannot** be used in conjunction with `dataproc.MetastoreServiceIamBinding` and `dataproc.MetastoreServiceIamMember` or they will fight over what your policy should be.
 
         > **Note:** `dataproc.MetastoreServiceIamBinding` resources **can be** used in conjunction with `dataproc.MetastoreServiceIamMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\\_dataproc\\_metastore\\_service\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.dataproc.MetastoreServiceIamPolicy("policy",
-            project=google_dataproc_metastore_service["default"]["project"],
-            location=google_dataproc_metastore_service["default"]["location"],
-            service_id=google_dataproc_metastore_service["default"]["service_id"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_dataproc\\_metastore\\_service\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.dataproc.MetastoreServiceIamBinding("binding",
-            project=google_dataproc_metastore_service["default"]["project"],
-            location=google_dataproc_metastore_service["default"]["location"],
-            service_id=google_dataproc_metastore_service["default"]["service_id"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_dataproc\\_metastore\\_service\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.dataproc.MetastoreServiceIamMember("member",
-            project=google_dataproc_metastore_service["default"]["project"],
-            location=google_dataproc_metastore_service["default"]["location"],
-            service_id=google_dataproc_metastore_service["default"]["service_id"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
 
         ## Import
 

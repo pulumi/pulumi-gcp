@@ -100,10 +100,10 @@ class VMwareClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             admin_cluster_membership: pulumi.Input[str],
-             control_plane_node: pulumi.Input['VMwareClusterControlPlaneNodeArgs'],
-             location: pulumi.Input[str],
-             on_prem_version: pulumi.Input[str],
+             admin_cluster_membership: Optional[pulumi.Input[str]] = None,
+             control_plane_node: Optional[pulumi.Input['VMwareClusterControlPlaneNodeArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             on_prem_version: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              anti_affinity_groups: Optional[pulumi.Input['VMwareClusterAntiAffinityGroupsArgs']] = None,
              authorization: Optional[pulumi.Input['VMwareClusterAuthorizationArgs']] = None,
@@ -118,7 +118,39 @@ class VMwareClusterArgs:
              storage: Optional[pulumi.Input['VMwareClusterStorageArgs']] = None,
              upgrade_policy: Optional[pulumi.Input['VMwareClusterUpgradePolicyArgs']] = None,
              vm_tracking_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if admin_cluster_membership is None and 'adminClusterMembership' in kwargs:
+            admin_cluster_membership = kwargs['adminClusterMembership']
+        if admin_cluster_membership is None:
+            raise TypeError("Missing 'admin_cluster_membership' argument")
+        if control_plane_node is None and 'controlPlaneNode' in kwargs:
+            control_plane_node = kwargs['controlPlaneNode']
+        if control_plane_node is None:
+            raise TypeError("Missing 'control_plane_node' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if on_prem_version is None and 'onPremVersion' in kwargs:
+            on_prem_version = kwargs['onPremVersion']
+        if on_prem_version is None:
+            raise TypeError("Missing 'on_prem_version' argument")
+        if anti_affinity_groups is None and 'antiAffinityGroups' in kwargs:
+            anti_affinity_groups = kwargs['antiAffinityGroups']
+        if auto_repair_config is None and 'autoRepairConfig' in kwargs:
+            auto_repair_config = kwargs['autoRepairConfig']
+        if dataplane_v2 is None and 'dataplaneV2' in kwargs:
+            dataplane_v2 = kwargs['dataplaneV2']
+        if enable_control_plane_v2 is None and 'enableControlPlaneV2' in kwargs:
+            enable_control_plane_v2 = kwargs['enableControlPlaneV2']
+        if load_balancer is None and 'loadBalancer' in kwargs:
+            load_balancer = kwargs['loadBalancer']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if upgrade_policy is None and 'upgradePolicy' in kwargs:
+            upgrade_policy = kwargs['upgradePolicy']
+        if vm_tracking_enabled is None and 'vmTrackingEnabled' in kwargs:
+            vm_tracking_enabled = kwargs['vmTrackingEnabled']
+
         _setter("admin_cluster_membership", admin_cluster_membership)
         _setter("control_plane_node", control_plane_node)
         _setter("location", location)
@@ -567,7 +599,41 @@ class _VMwareClusterState:
              validation_checks: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckArgs']]]] = None,
              vcenters: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterVcenterArgs']]]] = None,
              vm_tracking_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if admin_cluster_membership is None and 'adminClusterMembership' in kwargs:
+            admin_cluster_membership = kwargs['adminClusterMembership']
+        if anti_affinity_groups is None and 'antiAffinityGroups' in kwargs:
+            anti_affinity_groups = kwargs['antiAffinityGroups']
+        if auto_repair_config is None and 'autoRepairConfig' in kwargs:
+            auto_repair_config = kwargs['autoRepairConfig']
+        if control_plane_node is None and 'controlPlaneNode' in kwargs:
+            control_plane_node = kwargs['controlPlaneNode']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if dataplane_v2 is None and 'dataplaneV2' in kwargs:
+            dataplane_v2 = kwargs['dataplaneV2']
+        if delete_time is None and 'deleteTime' in kwargs:
+            delete_time = kwargs['deleteTime']
+        if enable_control_plane_v2 is None and 'enableControlPlaneV2' in kwargs:
+            enable_control_plane_v2 = kwargs['enableControlPlaneV2']
+        if load_balancer is None and 'loadBalancer' in kwargs:
+            load_balancer = kwargs['loadBalancer']
+        if local_name is None and 'localName' in kwargs:
+            local_name = kwargs['localName']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if on_prem_version is None and 'onPremVersion' in kwargs:
+            on_prem_version = kwargs['onPremVersion']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if upgrade_policy is None and 'upgradePolicy' in kwargs:
+            upgrade_policy = kwargs['upgradePolicy']
+        if validation_checks is None and 'validationChecks' in kwargs:
+            validation_checks = kwargs['validationChecks']
+        if vm_tracking_enabled is None and 'vmTrackingEnabled' in kwargs:
+            vm_tracking_enabled = kwargs['vmTrackingEnabled']
+
         if admin_cluster_membership is not None:
             _setter("admin_cluster_membership", admin_cluster_membership)
         if annotations is not None:
@@ -1071,213 +1137,6 @@ class VMwareCluster(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Gkeonprem Vmware Cluster Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        cluster_basic = gcp.gkeonprem.VMwareCluster("cluster-basic",
-            location="us-west1",
-            admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
-            description="test cluster",
-            on_prem_version="1.13.1-gke.35",
-            annotations={},
-            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
-                service_address_cidr_blocks=["10.96.0.0/12"],
-                pod_address_cidr_blocks=["192.168.0.0/16"],
-                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArgs(
-                    enabled=True,
-                ),
-            ),
-            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
-                cpus=4,
-                memory=8192,
-                replicas=1,
-            ),
-            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
-                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
-                    control_plane_vip="10.251.133.5",
-                    ingress_vip="10.251.135.19",
-                ),
-                metal_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigArgs(
-                    address_pools=[
-                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
-                            pool="ingress-ip",
-                            manual_assign=True,
-                            addresses=["10.251.135.19"],
-                            avoid_buggy_ips=True,
-                        ),
-                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
-                            pool="lb-test-ip",
-                            manual_assign=True,
-                            addresses=["10.251.135.19"],
-                            avoid_buggy_ips=True,
-                        ),
-                    ],
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Gkeonprem Vmware Cluster F5lb
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        cluster_f5lb = gcp.gkeonprem.VMwareCluster("cluster-f5lb",
-            location="us-west1",
-            admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
-            description="test cluster",
-            on_prem_version="1.13.1-gke.35",
-            annotations={},
-            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
-                service_address_cidr_blocks=["10.96.0.0/12"],
-                pod_address_cidr_blocks=["192.168.0.0/16"],
-                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArgs(
-                    enabled=True,
-                ),
-                control_plane_v2_config=gcp.gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigArgs(
-                    control_plane_ip_block=gcp.gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs(
-                        ips=[gcp.gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs(
-                            hostname="test-hostname",
-                            ip="10.0.0.1",
-                        )],
-                        netmask="10.0.0.1/32",
-                        gateway="test-gateway",
-                    ),
-                ),
-            ),
-            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
-                cpus=4,
-                memory=8192,
-                replicas=1,
-                auto_resize_config=gcp.gkeonprem.VMwareClusterControlPlaneNodeAutoResizeConfigArgs(
-                    enabled=True,
-                ),
-            ),
-            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
-                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
-                    control_plane_vip="10.251.133.5",
-                    ingress_vip="10.251.135.19",
-                ),
-                f5_config=gcp.gkeonprem.VMwareClusterLoadBalancerF5ConfigArgs(
-                    address="10.0.0.1",
-                    partition="test-partition",
-                    snat_pool="test-snap-pool",
-                ),
-            ),
-            dataplane_v2=gcp.gkeonprem.VMwareClusterDataplaneV2Args(
-                dataplane_v2_enabled=True,
-                windows_dataplane_v2_enabled=True,
-                advanced_networking=True,
-            ),
-            vm_tracking_enabled=True,
-            enable_control_plane_v2=True,
-            authorization=gcp.gkeonprem.VMwareClusterAuthorizationArgs(
-                admin_users=[gcp.gkeonprem.VMwareClusterAuthorizationAdminUserArgs(
-                    username="testuser@gmail.com",
-                )],
-            ),
-            anti_affinity_groups=gcp.gkeonprem.VMwareClusterAntiAffinityGroupsArgs(
-                aag_config_disabled=True,
-            ),
-            auto_repair_config=gcp.gkeonprem.VMwareClusterAutoRepairConfigArgs(
-                enabled=True,
-            ),
-            storage=gcp.gkeonprem.VMwareClusterStorageArgs(
-                vsphere_csi_disabled=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Gkeonprem Vmware Cluster Manuallb
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        cluster_manuallb = gcp.gkeonprem.VMwareCluster("cluster-manuallb",
-            location="us-west1",
-            admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
-            description="test cluster",
-            on_prem_version="1.13.1-gke.35",
-            annotations={},
-            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
-                service_address_cidr_blocks=["10.96.0.0/12"],
-                pod_address_cidr_blocks=["192.168.0.0/16"],
-                host_config=gcp.gkeonprem.VMwareClusterNetworkConfigHostConfigArgs(
-                    dns_servers=["10.254.41.1"],
-                    ntp_servers=["216.239.35.8"],
-                    dns_search_domains=["test-domain"],
-                ),
-                static_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigArgs(
-                    ip_blocks=[gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs(
-                        netmask="255.255.252.0",
-                        gateway="10.251.31.254",
-                        ips=[
-                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs(
-                                ip="10.251.30.153",
-                                hostname="test-hostname1",
-                            ),
-                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs(
-                                ip="10.251.31.206",
-                                hostname="test-hostname2",
-                            ),
-                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs(
-                                ip="10.251.31.193",
-                                hostname="test-hostname3",
-                            ),
-                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs(
-                                ip="10.251.30.230",
-                                hostname="test-hostname4",
-                            ),
-                        ],
-                    )],
-                ),
-            ),
-            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
-                cpus=4,
-                memory=8192,
-                replicas=1,
-                auto_resize_config=gcp.gkeonprem.VMwareClusterControlPlaneNodeAutoResizeConfigArgs(
-                    enabled=True,
-                ),
-            ),
-            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
-                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
-                    control_plane_vip="10.251.133.5",
-                    ingress_vip="10.251.135.19",
-                ),
-                manual_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerManualLbConfigArgs(
-                    ingress_http_node_port=30005,
-                    ingress_https_node_port=30006,
-                    control_plane_node_port=30007,
-                    konnectivity_server_node_port=30008,
-                ),
-            ),
-            dataplane_v2=gcp.gkeonprem.VMwareClusterDataplaneV2Args(
-                dataplane_v2_enabled=True,
-                windows_dataplane_v2_enabled=True,
-                advanced_networking=True,
-            ),
-            vm_tracking_enabled=True,
-            enable_control_plane_v2=True,
-            upgrade_policy=gcp.gkeonprem.VMwareClusterUpgradePolicyArgs(
-                control_plane_only=True,
-            ),
-            authorization=gcp.gkeonprem.VMwareClusterAuthorizationArgs(
-                admin_users=[gcp.gkeonprem.VMwareClusterAuthorizationAdminUserArgs(
-                    username="testuser@gmail.com",
-                )],
-            ),
-            anti_affinity_groups=gcp.gkeonprem.VMwareClusterAntiAffinityGroupsArgs(
-                aag_config_disabled=True,
-            ),
-            auto_repair_config=gcp.gkeonprem.VMwareClusterAutoRepairConfigArgs(
-                enabled=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -1345,213 +1204,6 @@ class VMwareCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Gkeonprem Vmware Cluster Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        cluster_basic = gcp.gkeonprem.VMwareCluster("cluster-basic",
-            location="us-west1",
-            admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
-            description="test cluster",
-            on_prem_version="1.13.1-gke.35",
-            annotations={},
-            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
-                service_address_cidr_blocks=["10.96.0.0/12"],
-                pod_address_cidr_blocks=["192.168.0.0/16"],
-                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArgs(
-                    enabled=True,
-                ),
-            ),
-            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
-                cpus=4,
-                memory=8192,
-                replicas=1,
-            ),
-            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
-                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
-                    control_plane_vip="10.251.133.5",
-                    ingress_vip="10.251.135.19",
-                ),
-                metal_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigArgs(
-                    address_pools=[
-                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
-                            pool="ingress-ip",
-                            manual_assign=True,
-                            addresses=["10.251.135.19"],
-                            avoid_buggy_ips=True,
-                        ),
-                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
-                            pool="lb-test-ip",
-                            manual_assign=True,
-                            addresses=["10.251.135.19"],
-                            avoid_buggy_ips=True,
-                        ),
-                    ],
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Gkeonprem Vmware Cluster F5lb
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        cluster_f5lb = gcp.gkeonprem.VMwareCluster("cluster-f5lb",
-            location="us-west1",
-            admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
-            description="test cluster",
-            on_prem_version="1.13.1-gke.35",
-            annotations={},
-            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
-                service_address_cidr_blocks=["10.96.0.0/12"],
-                pod_address_cidr_blocks=["192.168.0.0/16"],
-                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArgs(
-                    enabled=True,
-                ),
-                control_plane_v2_config=gcp.gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigArgs(
-                    control_plane_ip_block=gcp.gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs(
-                        ips=[gcp.gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs(
-                            hostname="test-hostname",
-                            ip="10.0.0.1",
-                        )],
-                        netmask="10.0.0.1/32",
-                        gateway="test-gateway",
-                    ),
-                ),
-            ),
-            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
-                cpus=4,
-                memory=8192,
-                replicas=1,
-                auto_resize_config=gcp.gkeonprem.VMwareClusterControlPlaneNodeAutoResizeConfigArgs(
-                    enabled=True,
-                ),
-            ),
-            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
-                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
-                    control_plane_vip="10.251.133.5",
-                    ingress_vip="10.251.135.19",
-                ),
-                f5_config=gcp.gkeonprem.VMwareClusterLoadBalancerF5ConfigArgs(
-                    address="10.0.0.1",
-                    partition="test-partition",
-                    snat_pool="test-snap-pool",
-                ),
-            ),
-            dataplane_v2=gcp.gkeonprem.VMwareClusterDataplaneV2Args(
-                dataplane_v2_enabled=True,
-                windows_dataplane_v2_enabled=True,
-                advanced_networking=True,
-            ),
-            vm_tracking_enabled=True,
-            enable_control_plane_v2=True,
-            authorization=gcp.gkeonprem.VMwareClusterAuthorizationArgs(
-                admin_users=[gcp.gkeonprem.VMwareClusterAuthorizationAdminUserArgs(
-                    username="testuser@gmail.com",
-                )],
-            ),
-            anti_affinity_groups=gcp.gkeonprem.VMwareClusterAntiAffinityGroupsArgs(
-                aag_config_disabled=True,
-            ),
-            auto_repair_config=gcp.gkeonprem.VMwareClusterAutoRepairConfigArgs(
-                enabled=True,
-            ),
-            storage=gcp.gkeonprem.VMwareClusterStorageArgs(
-                vsphere_csi_disabled=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Gkeonprem Vmware Cluster Manuallb
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        cluster_manuallb = gcp.gkeonprem.VMwareCluster("cluster-manuallb",
-            location="us-west1",
-            admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
-            description="test cluster",
-            on_prem_version="1.13.1-gke.35",
-            annotations={},
-            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
-                service_address_cidr_blocks=["10.96.0.0/12"],
-                pod_address_cidr_blocks=["192.168.0.0/16"],
-                host_config=gcp.gkeonprem.VMwareClusterNetworkConfigHostConfigArgs(
-                    dns_servers=["10.254.41.1"],
-                    ntp_servers=["216.239.35.8"],
-                    dns_search_domains=["test-domain"],
-                ),
-                static_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigArgs(
-                    ip_blocks=[gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs(
-                        netmask="255.255.252.0",
-                        gateway="10.251.31.254",
-                        ips=[
-                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs(
-                                ip="10.251.30.153",
-                                hostname="test-hostname1",
-                            ),
-                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs(
-                                ip="10.251.31.206",
-                                hostname="test-hostname2",
-                            ),
-                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs(
-                                ip="10.251.31.193",
-                                hostname="test-hostname3",
-                            ),
-                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs(
-                                ip="10.251.30.230",
-                                hostname="test-hostname4",
-                            ),
-                        ],
-                    )],
-                ),
-            ),
-            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
-                cpus=4,
-                memory=8192,
-                replicas=1,
-                auto_resize_config=gcp.gkeonprem.VMwareClusterControlPlaneNodeAutoResizeConfigArgs(
-                    enabled=True,
-                ),
-            ),
-            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
-                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
-                    control_plane_vip="10.251.133.5",
-                    ingress_vip="10.251.135.19",
-                ),
-                manual_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerManualLbConfigArgs(
-                    ingress_http_node_port=30005,
-                    ingress_https_node_port=30006,
-                    control_plane_node_port=30007,
-                    konnectivity_server_node_port=30008,
-                ),
-            ),
-            dataplane_v2=gcp.gkeonprem.VMwareClusterDataplaneV2Args(
-                dataplane_v2_enabled=True,
-                windows_dataplane_v2_enabled=True,
-                advanced_networking=True,
-            ),
-            vm_tracking_enabled=True,
-            enable_control_plane_v2=True,
-            upgrade_policy=gcp.gkeonprem.VMwareClusterUpgradePolicyArgs(
-                control_plane_only=True,
-            ),
-            authorization=gcp.gkeonprem.VMwareClusterAuthorizationArgs(
-                admin_users=[gcp.gkeonprem.VMwareClusterAuthorizationAdminUserArgs(
-                    username="testuser@gmail.com",
-                )],
-            ),
-            anti_affinity_groups=gcp.gkeonprem.VMwareClusterAntiAffinityGroupsArgs(
-                aag_config_disabled=True,
-            ),
-            auto_repair_config=gcp.gkeonprem.VMwareClusterAutoRepairConfigArgs(
-                enabled=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -1619,71 +1271,35 @@ class VMwareCluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'admin_cluster_membership'")
             __props__.__dict__["admin_cluster_membership"] = admin_cluster_membership
             __props__.__dict__["annotations"] = annotations
-            if anti_affinity_groups is not None and not isinstance(anti_affinity_groups, VMwareClusterAntiAffinityGroupsArgs):
-                anti_affinity_groups = anti_affinity_groups or {}
-                def _setter(key, value):
-                    anti_affinity_groups[key] = value
-                VMwareClusterAntiAffinityGroupsArgs._configure(_setter, **anti_affinity_groups)
+            anti_affinity_groups = _utilities.configure(anti_affinity_groups, VMwareClusterAntiAffinityGroupsArgs, True)
             __props__.__dict__["anti_affinity_groups"] = anti_affinity_groups
-            if authorization is not None and not isinstance(authorization, VMwareClusterAuthorizationArgs):
-                authorization = authorization or {}
-                def _setter(key, value):
-                    authorization[key] = value
-                VMwareClusterAuthorizationArgs._configure(_setter, **authorization)
+            authorization = _utilities.configure(authorization, VMwareClusterAuthorizationArgs, True)
             __props__.__dict__["authorization"] = authorization
-            if auto_repair_config is not None and not isinstance(auto_repair_config, VMwareClusterAutoRepairConfigArgs):
-                auto_repair_config = auto_repair_config or {}
-                def _setter(key, value):
-                    auto_repair_config[key] = value
-                VMwareClusterAutoRepairConfigArgs._configure(_setter, **auto_repair_config)
+            auto_repair_config = _utilities.configure(auto_repair_config, VMwareClusterAutoRepairConfigArgs, True)
             __props__.__dict__["auto_repair_config"] = auto_repair_config
-            if control_plane_node is not None and not isinstance(control_plane_node, VMwareClusterControlPlaneNodeArgs):
-                control_plane_node = control_plane_node or {}
-                def _setter(key, value):
-                    control_plane_node[key] = value
-                VMwareClusterControlPlaneNodeArgs._configure(_setter, **control_plane_node)
+            control_plane_node = _utilities.configure(control_plane_node, VMwareClusterControlPlaneNodeArgs, True)
             if control_plane_node is None and not opts.urn:
                 raise TypeError("Missing required property 'control_plane_node'")
             __props__.__dict__["control_plane_node"] = control_plane_node
-            if dataplane_v2 is not None and not isinstance(dataplane_v2, VMwareClusterDataplaneV2Args):
-                dataplane_v2 = dataplane_v2 or {}
-                def _setter(key, value):
-                    dataplane_v2[key] = value
-                VMwareClusterDataplaneV2Args._configure(_setter, **dataplane_v2)
+            dataplane_v2 = _utilities.configure(dataplane_v2, VMwareClusterDataplaneV2Args, True)
             __props__.__dict__["dataplane_v2"] = dataplane_v2
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_control_plane_v2"] = enable_control_plane_v2
-            if load_balancer is not None and not isinstance(load_balancer, VMwareClusterLoadBalancerArgs):
-                load_balancer = load_balancer or {}
-                def _setter(key, value):
-                    load_balancer[key] = value
-                VMwareClusterLoadBalancerArgs._configure(_setter, **load_balancer)
+            load_balancer = _utilities.configure(load_balancer, VMwareClusterLoadBalancerArgs, True)
             __props__.__dict__["load_balancer"] = load_balancer
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if network_config is not None and not isinstance(network_config, VMwareClusterNetworkConfigArgs):
-                network_config = network_config or {}
-                def _setter(key, value):
-                    network_config[key] = value
-                VMwareClusterNetworkConfigArgs._configure(_setter, **network_config)
+            network_config = _utilities.configure(network_config, VMwareClusterNetworkConfigArgs, True)
             __props__.__dict__["network_config"] = network_config
             if on_prem_version is None and not opts.urn:
                 raise TypeError("Missing required property 'on_prem_version'")
             __props__.__dict__["on_prem_version"] = on_prem_version
             __props__.__dict__["project"] = project
-            if storage is not None and not isinstance(storage, VMwareClusterStorageArgs):
-                storage = storage or {}
-                def _setter(key, value):
-                    storage[key] = value
-                VMwareClusterStorageArgs._configure(_setter, **storage)
+            storage = _utilities.configure(storage, VMwareClusterStorageArgs, True)
             __props__.__dict__["storage"] = storage
-            if upgrade_policy is not None and not isinstance(upgrade_policy, VMwareClusterUpgradePolicyArgs):
-                upgrade_policy = upgrade_policy or {}
-                def _setter(key, value):
-                    upgrade_policy[key] = value
-                VMwareClusterUpgradePolicyArgs._configure(_setter, **upgrade_policy)
+            upgrade_policy = _utilities.configure(upgrade_policy, VMwareClusterUpgradePolicyArgs, True)
             __props__.__dict__["upgrade_policy"] = upgrade_policy
             __props__.__dict__["vm_tracking_enabled"] = vm_tracking_enabled
             __props__.__dict__["create_time"] = None

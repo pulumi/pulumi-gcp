@@ -58,18 +58,38 @@ class AwsClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             authorization: pulumi.Input['AwsClusterAuthorizationArgs'],
-             aws_region: pulumi.Input[str],
-             control_plane: pulumi.Input['AwsClusterControlPlaneArgs'],
-             fleet: pulumi.Input['AwsClusterFleetArgs'],
-             location: pulumi.Input[str],
-             networking: pulumi.Input['AwsClusterNetworkingArgs'],
+             authorization: Optional[pulumi.Input['AwsClusterAuthorizationArgs']] = None,
+             aws_region: Optional[pulumi.Input[str]] = None,
+             control_plane: Optional[pulumi.Input['AwsClusterControlPlaneArgs']] = None,
+             fleet: Optional[pulumi.Input['AwsClusterFleetArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             networking: Optional[pulumi.Input['AwsClusterNetworkingArgs']] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              logging_config: Optional[pulumi.Input['AwsClusterLoggingConfigArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if authorization is None:
+            raise TypeError("Missing 'authorization' argument")
+        if aws_region is None and 'awsRegion' in kwargs:
+            aws_region = kwargs['awsRegion']
+        if aws_region is None:
+            raise TypeError("Missing 'aws_region' argument")
+        if control_plane is None and 'controlPlane' in kwargs:
+            control_plane = kwargs['controlPlane']
+        if control_plane is None:
+            raise TypeError("Missing 'control_plane' argument")
+        if fleet is None:
+            raise TypeError("Missing 'fleet' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if networking is None:
+            raise TypeError("Missing 'networking' argument")
+        if logging_config is None and 'loggingConfig' in kwargs:
+            logging_config = kwargs['loggingConfig']
+
         _setter("authorization", authorization)
         _setter("aws_region", aws_region)
         _setter("control_plane", control_plane)
@@ -308,7 +328,21 @@ class _AwsClusterState:
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AwsClusterWorkloadIdentityConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if aws_region is None and 'awsRegion' in kwargs:
+            aws_region = kwargs['awsRegion']
+        if control_plane is None and 'controlPlane' in kwargs:
+            control_plane = kwargs['controlPlane']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if logging_config is None and 'loggingConfig' in kwargs:
+            logging_config = kwargs['loggingConfig']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if workload_identity_configs is None and 'workloadIdentityConfigs' in kwargs:
+            workload_identity_configs = kwargs['workloadIdentityConfigs']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if authorization is not None:
@@ -600,225 +634,6 @@ class AwsCluster(pulumi.CustomResource):
         For more information, see:
         * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
         ## Example Usage
-        ### Basic_aws_cluster
-        A basic example of a containeraws cluster
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        versions = gcp.container.get_aws_versions(location="us-west1",
-            project="my-project-name")
-        primary = gcp.container.AwsCluster("primary",
-            annotations={
-                "label-one": "value-one",
-            },
-            authorization=gcp.container.AwsClusterAuthorizationArgs(
-                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
-                    username="my@service-account.com",
-                )],
-            ),
-            aws_region="my-aws-region",
-            control_plane=gcp.container.AwsClusterControlPlaneArgs(
-                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArgs(
-                    role_arn="arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
-                    role_session_name="my--1p-dev-session",
-                ),
-                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                iam_instance_profile="my--1p-dev-controlplane",
-                instance_type="t3.medium",
-                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="GP3",
-                ),
-                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArgs(
-                    secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
-                ),
-                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="GP3",
-                ),
-                security_group_ids=["sg-00000000000000000"],
-                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArgs(
-                    ec2_key_pair="my--1p-dev-ssh",
-                ),
-                subnet_ids=["subnet-00000000000000000"],
-                tags={
-                    "owner": "my@service-account.com",
-                },
-                version=versions.valid_versions[0],
-            ),
-            description="A sample aws cluster",
-            fleet=gcp.container.AwsClusterFleetArgs(
-                project="my-project-number",
-            ),
-            location="us-west1",
-            networking=gcp.container.AwsClusterNetworkingArgs(
-                pod_address_cidr_blocks=["10.2.0.0/16"],
-                service_address_cidr_blocks=["10.1.0.0/16"],
-                vpc_id="vpc-00000000000000000",
-            ),
-            project="my-project-name")
-        ```
-        ### Basic_enum_aws_cluster
-        A basic example of a containeraws cluster with lowercase enums
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        versions = gcp.container.get_aws_versions(location="us-west1",
-            project="my-project-name")
-        primary = gcp.container.AwsCluster("primary",
-            annotations={
-                "label-one": "value-one",
-            },
-            authorization=gcp.container.AwsClusterAuthorizationArgs(
-                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
-                    username="my@service-account.com",
-                )],
-            ),
-            aws_region="my-aws-region",
-            control_plane=gcp.container.AwsClusterControlPlaneArgs(
-                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArgs(
-                    role_arn="arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
-                    role_session_name="my--1p-dev-session",
-                ),
-                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                iam_instance_profile="my--1p-dev-controlplane",
-                instance_type="t3.medium",
-                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="gp3",
-                ),
-                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArgs(
-                    secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
-                ),
-                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="gp3",
-                ),
-                security_group_ids=["sg-00000000000000000"],
-                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArgs(
-                    ec2_key_pair="my--1p-dev-ssh",
-                ),
-                subnet_ids=["subnet-00000000000000000"],
-                tags={
-                    "owner": "my@service-account.com",
-                },
-                version=versions.valid_versions[0],
-            ),
-            description="A sample aws cluster",
-            fleet=gcp.container.AwsClusterFleetArgs(
-                project="my-project-number",
-            ),
-            location="us-west1",
-            networking=gcp.container.AwsClusterNetworkingArgs(
-                pod_address_cidr_blocks=["10.2.0.0/16"],
-                service_address_cidr_blocks=["10.1.0.0/16"],
-                vpc_id="vpc-00000000000000000",
-            ),
-            project="my-project-name")
-        ```
-        ### Beta_basic_enum_aws_cluster
-        A basic example of a containeraws cluster with lowercase enums (beta)
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        versions = gcp.container.get_aws_versions(project="my-project-name",
-            location="us-west1")
-        primary = gcp.container.AwsCluster("primary",
-            authorization=gcp.container.AwsClusterAuthorizationArgs(
-                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
-                    username="my@service-account.com",
-                )],
-            ),
-            aws_region="my-aws-region",
-            control_plane=gcp.container.AwsClusterControlPlaneArgs(
-                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArgs(
-                    role_arn="arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
-                    role_session_name="my--1p-dev-session",
-                ),
-                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                iam_instance_profile="my--1p-dev-controlplane",
-                subnet_ids=["subnet-00000000000000000"],
-                version=versions.valid_versions[0],
-                instance_type="t3.medium",
-                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="gp3",
-                ),
-                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArgs(
-                    secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
-                ),
-                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="gp3",
-                ),
-                security_group_ids=["sg-00000000000000000"],
-                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArgs(
-                    ec2_key_pair="my--1p-dev-ssh",
-                ),
-                tags={
-                    "owner": "my@service-account.com",
-                },
-                instance_placement=gcp.container.AwsClusterControlPlaneInstancePlacementArgs(
-                    tenancy="dedicated",
-                ),
-            ),
-            fleet=gcp.container.AwsClusterFleetArgs(
-                project="my-project-number",
-            ),
-            location="us-west1",
-            networking=gcp.container.AwsClusterNetworkingArgs(
-                pod_address_cidr_blocks=["10.2.0.0/16"],
-                service_address_cidr_blocks=["10.1.0.0/16"],
-                vpc_id="vpc-00000000000000000",
-            ),
-            annotations={
-                "label-one": "value-one",
-            },
-            description="A sample aws cluster",
-            project="my-project-name",
-            logging_config=gcp.container.AwsClusterLoggingConfigArgs(
-                component_config=gcp.container.AwsClusterLoggingConfigComponentConfigArgs(
-                    enable_components=[
-                        "system_components",
-                        "workloads",
-                    ],
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -862,225 +677,6 @@ class AwsCluster(pulumi.CustomResource):
         For more information, see:
         * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
         ## Example Usage
-        ### Basic_aws_cluster
-        A basic example of a containeraws cluster
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        versions = gcp.container.get_aws_versions(location="us-west1",
-            project="my-project-name")
-        primary = gcp.container.AwsCluster("primary",
-            annotations={
-                "label-one": "value-one",
-            },
-            authorization=gcp.container.AwsClusterAuthorizationArgs(
-                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
-                    username="my@service-account.com",
-                )],
-            ),
-            aws_region="my-aws-region",
-            control_plane=gcp.container.AwsClusterControlPlaneArgs(
-                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArgs(
-                    role_arn="arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
-                    role_session_name="my--1p-dev-session",
-                ),
-                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                iam_instance_profile="my--1p-dev-controlplane",
-                instance_type="t3.medium",
-                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="GP3",
-                ),
-                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArgs(
-                    secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
-                ),
-                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="GP3",
-                ),
-                security_group_ids=["sg-00000000000000000"],
-                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArgs(
-                    ec2_key_pair="my--1p-dev-ssh",
-                ),
-                subnet_ids=["subnet-00000000000000000"],
-                tags={
-                    "owner": "my@service-account.com",
-                },
-                version=versions.valid_versions[0],
-            ),
-            description="A sample aws cluster",
-            fleet=gcp.container.AwsClusterFleetArgs(
-                project="my-project-number",
-            ),
-            location="us-west1",
-            networking=gcp.container.AwsClusterNetworkingArgs(
-                pod_address_cidr_blocks=["10.2.0.0/16"],
-                service_address_cidr_blocks=["10.1.0.0/16"],
-                vpc_id="vpc-00000000000000000",
-            ),
-            project="my-project-name")
-        ```
-        ### Basic_enum_aws_cluster
-        A basic example of a containeraws cluster with lowercase enums
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        versions = gcp.container.get_aws_versions(location="us-west1",
-            project="my-project-name")
-        primary = gcp.container.AwsCluster("primary",
-            annotations={
-                "label-one": "value-one",
-            },
-            authorization=gcp.container.AwsClusterAuthorizationArgs(
-                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
-                    username="my@service-account.com",
-                )],
-            ),
-            aws_region="my-aws-region",
-            control_plane=gcp.container.AwsClusterControlPlaneArgs(
-                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArgs(
-                    role_arn="arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
-                    role_session_name="my--1p-dev-session",
-                ),
-                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                iam_instance_profile="my--1p-dev-controlplane",
-                instance_type="t3.medium",
-                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="gp3",
-                ),
-                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArgs(
-                    secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
-                ),
-                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="gp3",
-                ),
-                security_group_ids=["sg-00000000000000000"],
-                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArgs(
-                    ec2_key_pair="my--1p-dev-ssh",
-                ),
-                subnet_ids=["subnet-00000000000000000"],
-                tags={
-                    "owner": "my@service-account.com",
-                },
-                version=versions.valid_versions[0],
-            ),
-            description="A sample aws cluster",
-            fleet=gcp.container.AwsClusterFleetArgs(
-                project="my-project-number",
-            ),
-            location="us-west1",
-            networking=gcp.container.AwsClusterNetworkingArgs(
-                pod_address_cidr_blocks=["10.2.0.0/16"],
-                service_address_cidr_blocks=["10.1.0.0/16"],
-                vpc_id="vpc-00000000000000000",
-            ),
-            project="my-project-name")
-        ```
-        ### Beta_basic_enum_aws_cluster
-        A basic example of a containeraws cluster with lowercase enums (beta)
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        versions = gcp.container.get_aws_versions(project="my-project-name",
-            location="us-west1")
-        primary = gcp.container.AwsCluster("primary",
-            authorization=gcp.container.AwsClusterAuthorizationArgs(
-                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
-                    username="my@service-account.com",
-                )],
-            ),
-            aws_region="my-aws-region",
-            control_plane=gcp.container.AwsClusterControlPlaneArgs(
-                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArgs(
-                    role_arn="arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
-                    role_session_name="my--1p-dev-session",
-                ),
-                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArgs(
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                ),
-                iam_instance_profile="my--1p-dev-controlplane",
-                subnet_ids=["subnet-00000000000000000"],
-                version=versions.valid_versions[0],
-                instance_type="t3.medium",
-                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="gp3",
-                ),
-                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArgs(
-                    secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
-                ),
-                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArgs(
-                    iops=3000,
-                    kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    size_gib=10,
-                    volume_type="gp3",
-                ),
-                security_group_ids=["sg-00000000000000000"],
-                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArgs(
-                    ec2_key_pair="my--1p-dev-ssh",
-                ),
-                tags={
-                    "owner": "my@service-account.com",
-                },
-                instance_placement=gcp.container.AwsClusterControlPlaneInstancePlacementArgs(
-                    tenancy="dedicated",
-                ),
-            ),
-            fleet=gcp.container.AwsClusterFleetArgs(
-                project="my-project-number",
-            ),
-            location="us-west1",
-            networking=gcp.container.AwsClusterNetworkingArgs(
-                pod_address_cidr_blocks=["10.2.0.0/16"],
-                service_address_cidr_blocks=["10.1.0.0/16"],
-                vpc_id="vpc-00000000000000000",
-            ),
-            annotations={
-                "label-one": "value-one",
-            },
-            description="A sample aws cluster",
-            project="my-project-name",
-            logging_config=gcp.container.AwsClusterLoggingConfigArgs(
-                component_config=gcp.container.AwsClusterLoggingConfigComponentConfigArgs(
-                    enable_components=[
-                        "system_components",
-                        "workloads",
-                    ],
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -1138,49 +734,29 @@ class AwsCluster(pulumi.CustomResource):
             __props__ = AwsClusterArgs.__new__(AwsClusterArgs)
 
             __props__.__dict__["annotations"] = annotations
-            if authorization is not None and not isinstance(authorization, AwsClusterAuthorizationArgs):
-                authorization = authorization or {}
-                def _setter(key, value):
-                    authorization[key] = value
-                AwsClusterAuthorizationArgs._configure(_setter, **authorization)
+            authorization = _utilities.configure(authorization, AwsClusterAuthorizationArgs, True)
             if authorization is None and not opts.urn:
                 raise TypeError("Missing required property 'authorization'")
             __props__.__dict__["authorization"] = authorization
             if aws_region is None and not opts.urn:
                 raise TypeError("Missing required property 'aws_region'")
             __props__.__dict__["aws_region"] = aws_region
-            if control_plane is not None and not isinstance(control_plane, AwsClusterControlPlaneArgs):
-                control_plane = control_plane or {}
-                def _setter(key, value):
-                    control_plane[key] = value
-                AwsClusterControlPlaneArgs._configure(_setter, **control_plane)
+            control_plane = _utilities.configure(control_plane, AwsClusterControlPlaneArgs, True)
             if control_plane is None and not opts.urn:
                 raise TypeError("Missing required property 'control_plane'")
             __props__.__dict__["control_plane"] = control_plane
             __props__.__dict__["description"] = description
-            if fleet is not None and not isinstance(fleet, AwsClusterFleetArgs):
-                fleet = fleet or {}
-                def _setter(key, value):
-                    fleet[key] = value
-                AwsClusterFleetArgs._configure(_setter, **fleet)
+            fleet = _utilities.configure(fleet, AwsClusterFleetArgs, True)
             if fleet is None and not opts.urn:
                 raise TypeError("Missing required property 'fleet'")
             __props__.__dict__["fleet"] = fleet
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if logging_config is not None and not isinstance(logging_config, AwsClusterLoggingConfigArgs):
-                logging_config = logging_config or {}
-                def _setter(key, value):
-                    logging_config[key] = value
-                AwsClusterLoggingConfigArgs._configure(_setter, **logging_config)
+            logging_config = _utilities.configure(logging_config, AwsClusterLoggingConfigArgs, True)
             __props__.__dict__["logging_config"] = logging_config
             __props__.__dict__["name"] = name
-            if networking is not None and not isinstance(networking, AwsClusterNetworkingArgs):
-                networking = networking or {}
-                def _setter(key, value):
-                    networking[key] = value
-                AwsClusterNetworkingArgs._configure(_setter, **networking)
+            networking = _utilities.configure(networking, AwsClusterNetworkingArgs, True)
             if networking is None and not opts.urn:
                 raise TypeError("Missing required property 'networking'")
             __props__.__dict__["networking"] = networking

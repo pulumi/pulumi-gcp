@@ -50,10 +50,16 @@ class BucketAccessControlArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: pulumi.Input[str],
-             entity: pulumi.Input[str],
+             bucket: Optional[pulumi.Input[str]] = None,
+             entity: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if entity is None:
+            raise TypeError("Missing 'entity' argument")
+
         _setter("bucket", bucket)
         _setter("entity", entity)
         if role is not None:
@@ -164,7 +170,9 @@ class _BucketAccessControlState:
              email: Optional[pulumi.Input[str]] = None,
              entity: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if bucket is not None:
             _setter("bucket", bucket)
         if domain is not None:
@@ -289,18 +297,6 @@ class BucketAccessControl(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
 
         ## Example Usage
-        ### Storage Bucket Access Control Public Bucket
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        bucket = gcp.storage.Bucket("bucket", location="US")
-        public_rule = gcp.storage.BucketAccessControl("publicRule",
-            bucket=bucket.name,
-            role="READER",
-            entity="allUsers")
-        ```
 
         ## Import
 
@@ -365,18 +361,6 @@ class BucketAccessControl(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
 
         ## Example Usage
-        ### Storage Bucket Access Control Public Bucket
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        bucket = gcp.storage.Bucket("bucket", location="US")
-        public_rule = gcp.storage.BucketAccessControl("publicRule",
-            bucket=bucket.name,
-            role="READER",
-            entity="allUsers")
-        ```
 
         ## Import
 

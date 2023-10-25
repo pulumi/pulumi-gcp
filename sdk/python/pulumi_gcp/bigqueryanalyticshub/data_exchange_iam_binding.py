@@ -57,13 +57,23 @@ class DataExchangeIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data_exchange_id: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
+             data_exchange_id: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['DataExchangeIamBindingConditionArgs']] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if data_exchange_id is None and 'dataExchangeId' in kwargs:
+            data_exchange_id = kwargs['dataExchangeId']
+        if data_exchange_id is None:
+            raise TypeError("Missing 'data_exchange_id' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("data_exchange_id", data_exchange_id)
         _setter("members", members)
         _setter("role", role)
@@ -211,7 +221,11 @@ class _DataExchangeIamBindingState:
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if data_exchange_id is None and 'dataExchangeId' in kwargs:
+            data_exchange_id = kwargs['dataExchangeId']
+
         if condition is not None:
             _setter("condition", condition)
         if data_exchange_id is not None:
@@ -349,51 +363,6 @@ class DataExchangeIamBinding(pulumi.CustomResource):
 
         > **Note:** `bigqueryanalyticshub.DataExchangeIamBinding` resources **can be** used in conjunction with `bigqueryanalyticshub.DataExchangeIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.bigqueryanalyticshub.DataExchangeIamPolicy("policy",
-            project=google_bigquery_analytics_hub_data_exchange["data_exchange"]["project"],
-            location=google_bigquery_analytics_hub_data_exchange["data_exchange"]["location"],
-            data_exchange_id=google_bigquery_analytics_hub_data_exchange["data_exchange"]["data_exchange_id"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.bigqueryanalyticshub.DataExchangeIamBinding("binding",
-            project=google_bigquery_analytics_hub_data_exchange["data_exchange"]["project"],
-            location=google_bigquery_analytics_hub_data_exchange["data_exchange"]["location"],
-            data_exchange_id=google_bigquery_analytics_hub_data_exchange["data_exchange"]["data_exchange_id"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.bigqueryanalyticshub.DataExchangeIamMember("member",
-            project=google_bigquery_analytics_hub_data_exchange["data_exchange"]["project"],
-            location=google_bigquery_analytics_hub_data_exchange["data_exchange"]["location"],
-            data_exchange_id=google_bigquery_analytics_hub_data_exchange["data_exchange"]["data_exchange_id"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}} * {{project}}/{{location}}/{{data_exchange_id}} * {{location}}/{{data_exchange_id}} * {{data_exchange_id}} Any variables not passed in the import command will be taken from the provider configuration. Bigquery Analytics Hub dataexchange IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -462,51 +431,6 @@ class DataExchangeIamBinding(pulumi.CustomResource):
 
         > **Note:** `bigqueryanalyticshub.DataExchangeIamBinding` resources **can be** used in conjunction with `bigqueryanalyticshub.DataExchangeIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.bigqueryanalyticshub.DataExchangeIamPolicy("policy",
-            project=google_bigquery_analytics_hub_data_exchange["data_exchange"]["project"],
-            location=google_bigquery_analytics_hub_data_exchange["data_exchange"]["location"],
-            data_exchange_id=google_bigquery_analytics_hub_data_exchange["data_exchange"]["data_exchange_id"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.bigqueryanalyticshub.DataExchangeIamBinding("binding",
-            project=google_bigquery_analytics_hub_data_exchange["data_exchange"]["project"],
-            location=google_bigquery_analytics_hub_data_exchange["data_exchange"]["location"],
-            data_exchange_id=google_bigquery_analytics_hub_data_exchange["data_exchange"]["data_exchange_id"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_bigquery\\_analytics\\_hub\\_data\\_exchange\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.bigqueryanalyticshub.DataExchangeIamMember("member",
-            project=google_bigquery_analytics_hub_data_exchange["data_exchange"]["project"],
-            location=google_bigquery_analytics_hub_data_exchange["data_exchange"]["location"],
-            data_exchange_id=google_bigquery_analytics_hub_data_exchange["data_exchange"]["data_exchange_id"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}} * {{project}}/{{location}}/{{data_exchange_id}} * {{location}}/{{data_exchange_id}} * {{data_exchange_id}} Any variables not passed in the import command will be taken from the provider configuration. Bigquery Analytics Hub dataexchange IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -565,11 +489,7 @@ class DataExchangeIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DataExchangeIamBindingArgs.__new__(DataExchangeIamBindingArgs)
 
-            if condition is not None and not isinstance(condition, DataExchangeIamBindingConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                DataExchangeIamBindingConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, DataExchangeIamBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if data_exchange_id is None and not opts.urn:
                 raise TypeError("Missing required property 'data_exchange_id'")

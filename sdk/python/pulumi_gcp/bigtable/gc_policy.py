@@ -57,16 +57,36 @@ class GCPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             column_family: pulumi.Input[str],
-             instance_name: pulumi.Input[str],
-             table: pulumi.Input[str],
+             column_family: Optional[pulumi.Input[str]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             table: Optional[pulumi.Input[str]] = None,
              deletion_policy: Optional[pulumi.Input[str]] = None,
              gc_rules: Optional[pulumi.Input[str]] = None,
              max_age: Optional[pulumi.Input['GCPolicyMaxAgeArgs']] = None,
              max_versions: Optional[pulumi.Input[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]]] = None,
              mode: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if column_family is None and 'columnFamily' in kwargs:
+            column_family = kwargs['columnFamily']
+        if column_family is None:
+            raise TypeError("Missing 'column_family' argument")
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if table is None:
+            raise TypeError("Missing 'table' argument")
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+        if gc_rules is None and 'gcRules' in kwargs:
+            gc_rules = kwargs['gcRules']
+        if max_age is None and 'maxAge' in kwargs:
+            max_age = kwargs['maxAge']
+        if max_versions is None and 'maxVersions' in kwargs:
+            max_versions = kwargs['maxVersions']
+
         _setter("column_family", column_family)
         _setter("instance_name", instance_name)
         _setter("table", table)
@@ -250,7 +270,21 @@ class _GCPolicyState:
              mode: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              table: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if column_family is None and 'columnFamily' in kwargs:
+            column_family = kwargs['columnFamily']
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+        if gc_rules is None and 'gcRules' in kwargs:
+            gc_rules = kwargs['gcRules']
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if max_age is None and 'maxAge' in kwargs:
+            max_age = kwargs['maxAge']
+        if max_versions is None and 'maxVersions' in kwargs:
+            max_versions = kwargs['maxVersions']
+
         if column_family is not None:
             _setter("column_family", column_family)
         if deletion_policy is not None:
@@ -413,110 +447,6 @@ class GCPolicy(pulumi.CustomResource):
         The workaround is unreplicating the instance first by updating the instance to have one
         cluster.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.bigtable.Instance("instance", clusters=[gcp.bigtable.InstanceClusterArgs(
-            cluster_id="tf-instance-cluster",
-            num_nodes=3,
-            storage_type="HDD",
-        )])
-        table = gcp.bigtable.Table("table",
-            instance_name=instance.name,
-            column_families=[gcp.bigtable.TableColumnFamilyArgs(
-                family="name",
-            )])
-        policy = gcp.bigtable.GCPolicy("policy",
-            instance_name=instance.name,
-            table=table.name,
-            column_family="name",
-            deletion_policy="ABANDON",
-            gc_rules=\"\"\"  {
-            "rules": [
-              {
-                "max_age": "168h"
-              }
-            ]
-          }
-        \"\"\")
-        ```
-
-        Multiple conditions is also supported. `UNION` when any of its sub-policies apply (OR). `INTERSECTION` when all its sub-policies apply (AND)
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        policy = gcp.bigtable.GCPolicy("policy",
-            instance_name=google_bigtable_instance["instance"]["name"],
-            table=google_bigtable_table["table"]["name"],
-            column_family="name",
-            deletion_policy="ABANDON",
-            gc_rules=\"\"\"  {
-            "mode": "union",
-            "rules": [
-              {
-                "max_age": "168h"
-              },
-              {
-                "max_version": 10
-              }
-            ]
-          }
-        \"\"\")
-        ```
-
-        An example of more complex GC policy:
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.bigtable.Instance("instance",
-            clusters=[gcp.bigtable.InstanceClusterArgs(
-                cluster_id="cid",
-                zone="us-central1-b",
-            )],
-            instance_type="DEVELOPMENT",
-            deletion_protection=False)
-        table = gcp.bigtable.Table("table",
-            instance_name=instance.id,
-            column_families=[gcp.bigtable.TableColumnFamilyArgs(
-                family="cf1",
-            )])
-        policy = gcp.bigtable.GCPolicy("policy",
-            instance_name=instance.id,
-            table=table.name,
-            column_family="cf1",
-            deletion_policy="ABANDON",
-            gc_rules=\"\"\"  {
-            "mode": "union",
-            "rules": [
-              {
-                "max_age": "10h"
-              },
-              {
-                "mode": "intersection",
-                "rules": [
-                  {
-                    "max_age": "2h"
-                  },
-                  {
-                    "max_version": 2
-                  }
-                ]
-              }
-            ]
-          }
-        \"\"\")
-        ```
-        This is equivalent to running the following `cbt` command:
-        ```python
-        import pulumi
-        ```
-
         ## Import
 
         This resource does not support import.
@@ -557,110 +487,6 @@ class GCPolicy(pulumi.CustomResource):
         considered relaxing from pure age-based or version-based GC policy, hence not allowed.
         The workaround is unreplicating the instance first by updating the instance to have one
         cluster.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.bigtable.Instance("instance", clusters=[gcp.bigtable.InstanceClusterArgs(
-            cluster_id="tf-instance-cluster",
-            num_nodes=3,
-            storage_type="HDD",
-        )])
-        table = gcp.bigtable.Table("table",
-            instance_name=instance.name,
-            column_families=[gcp.bigtable.TableColumnFamilyArgs(
-                family="name",
-            )])
-        policy = gcp.bigtable.GCPolicy("policy",
-            instance_name=instance.name,
-            table=table.name,
-            column_family="name",
-            deletion_policy="ABANDON",
-            gc_rules=\"\"\"  {
-            "rules": [
-              {
-                "max_age": "168h"
-              }
-            ]
-          }
-        \"\"\")
-        ```
-
-        Multiple conditions is also supported. `UNION` when any of its sub-policies apply (OR). `INTERSECTION` when all its sub-policies apply (AND)
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        policy = gcp.bigtable.GCPolicy("policy",
-            instance_name=google_bigtable_instance["instance"]["name"],
-            table=google_bigtable_table["table"]["name"],
-            column_family="name",
-            deletion_policy="ABANDON",
-            gc_rules=\"\"\"  {
-            "mode": "union",
-            "rules": [
-              {
-                "max_age": "168h"
-              },
-              {
-                "max_version": 10
-              }
-            ]
-          }
-        \"\"\")
-        ```
-
-        An example of more complex GC policy:
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.bigtable.Instance("instance",
-            clusters=[gcp.bigtable.InstanceClusterArgs(
-                cluster_id="cid",
-                zone="us-central1-b",
-            )],
-            instance_type="DEVELOPMENT",
-            deletion_protection=False)
-        table = gcp.bigtable.Table("table",
-            instance_name=instance.id,
-            column_families=[gcp.bigtable.TableColumnFamilyArgs(
-                family="cf1",
-            )])
-        policy = gcp.bigtable.GCPolicy("policy",
-            instance_name=instance.id,
-            table=table.name,
-            column_family="cf1",
-            deletion_policy="ABANDON",
-            gc_rules=\"\"\"  {
-            "mode": "union",
-            "rules": [
-              {
-                "max_age": "10h"
-              },
-              {
-                "mode": "intersection",
-                "rules": [
-                  {
-                    "max_age": "2h"
-                  },
-                  {
-                    "max_version": 2
-                  }
-                ]
-              }
-            ]
-          }
-        \"\"\")
-        ```
-        This is equivalent to running the following `cbt` command:
-        ```python
-        import pulumi
-        ```
 
         ## Import
 
@@ -711,11 +537,7 @@ class GCPolicy(pulumi.CustomResource):
             if instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_name'")
             __props__.__dict__["instance_name"] = instance_name
-            if max_age is not None and not isinstance(max_age, GCPolicyMaxAgeArgs):
-                max_age = max_age or {}
-                def _setter(key, value):
-                    max_age[key] = value
-                GCPolicyMaxAgeArgs._configure(_setter, **max_age)
+            max_age = _utilities.configure(max_age, GCPolicyMaxAgeArgs, True)
             __props__.__dict__["max_age"] = max_age
             __props__.__dict__["max_versions"] = max_versions
             __props__.__dict__["mode"] = mode

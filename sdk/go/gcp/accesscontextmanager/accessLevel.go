@@ -29,62 +29,6 @@ import (
 // `billingProject` you defined.
 //
 // ## Example Usage
-// ### Access Context Manager Access Level Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/accesscontextmanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := accesscontextmanager.NewAccessPolicy(ctx, "access-policy", &accesscontextmanager.AccessPolicyArgs{
-//				Parent: pulumi.String("organizations/123456789"),
-//				Title:  pulumi.String("my policy"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = accesscontextmanager.NewAccessLevel(ctx, "access-level", &accesscontextmanager.AccessLevelArgs{
-//				Basic: &accesscontextmanager.AccessLevelBasicArgs{
-//					Conditions: accesscontextmanager.AccessLevelBasicConditionArray{
-//						&accesscontextmanager.AccessLevelBasicConditionArgs{
-//							DevicePolicy: &accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs{
-//								OsConstraints: accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArray{
-//									&accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs{
-//										OsType: pulumi.String("DESKTOP_CHROME_OS"),
-//									},
-//								},
-//								RequireScreenLock: pulumi.Bool(true),
-//							},
-//							Regions: pulumi.StringArray{
-//								pulumi.String("CH"),
-//								pulumi.String("IT"),
-//								pulumi.String("US"),
-//							},
-//						},
-//					},
-//				},
-//				Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("accessPolicies/%v", name), nil
-//				}).(pulumi.StringOutput),
-//				Title: pulumi.String("chromeos_no_lock"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

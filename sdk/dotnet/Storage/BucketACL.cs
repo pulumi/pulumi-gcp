@@ -21,36 +21,6 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// **NOTE** This resource will not remove the `project-owners-&lt;project_id&gt;` entity from the `OWNER` role.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Example creating an ACL on a bucket with one owner, and one reader.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var image_store = new Gcp.Storage.Bucket("image-store", new()
-    ///     {
-    ///         Location = "EU",
-    ///     });
-    /// 
-    ///     var image_store_acl = new Gcp.Storage.BucketACL("image-store-acl", new()
-    ///     {
-    ///         Bucket = image_store.Name,
-    ///         RoleEntities = new[]
-    ///         {
-    ///             "OWNER:user-my.email@gmail.com",
-    ///             "READER:group-mygroup",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// This resource does not support import.

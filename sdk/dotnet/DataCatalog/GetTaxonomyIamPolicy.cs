@@ -13,52 +13,12 @@ namespace Pulumi.Gcp.DataCatalog
     {
         /// <summary>
         /// Retrieves the current IAM policy data for taxonomy
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.DataCatalog.GetTaxonomyIamPolicy.Invoke(new()
-        ///     {
-        ///         Taxonomy = google_data_catalog_taxonomy.Basic_taxonomy.Name,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetTaxonomyIamPolicyResult> InvokeAsync(GetTaxonomyIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTaxonomyIamPolicyResult>("gcp:datacatalog/getTaxonomyIamPolicy:getTaxonomyIamPolicy", args ?? new GetTaxonomyIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for taxonomy
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.DataCatalog.GetTaxonomyIamPolicy.Invoke(new()
-        ///     {
-        ///         Taxonomy = google_data_catalog_taxonomy.Basic_taxonomy.Name,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetTaxonomyIamPolicyResult> Invoke(GetTaxonomyIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTaxonomyIamPolicyResult>("gcp:datacatalog/getTaxonomyIamPolicy:getTaxonomyIamPolicy", args ?? new GetTaxonomyIamPolicyInvokeArgs(), options.WithDefaults());

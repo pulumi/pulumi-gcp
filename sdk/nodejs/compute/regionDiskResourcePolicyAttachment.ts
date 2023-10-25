@@ -11,52 +11,6 @@ import * as utilities from "../utilities";
  * > **Note:** This resource does not support zonal disks (`gcp.compute.Disk`). For zonal disks, please refer to the `gcp.compute.DiskResourcePolicyAttachment` resource.
  *
  * ## Example Usage
- * ### Region Disk Resource Policy Attachment Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const disk = new gcp.compute.Disk("disk", {
- *     image: "debian-cloud/debian-11",
- *     size: 50,
- *     type: "pd-ssd",
- *     zone: "us-central1-a",
- * });
- * const snapdisk = new gcp.compute.Snapshot("snapdisk", {
- *     sourceDisk: disk.name,
- *     zone: "us-central1-a",
- * });
- * const ssd = new gcp.compute.RegionDisk("ssd", {
- *     replicaZones: [
- *         "us-central1-a",
- *         "us-central1-f",
- *     ],
- *     snapshot: snapdisk.id,
- *     size: 50,
- *     type: "pd-ssd",
- *     region: "us-central1",
- * });
- * const attachment = new gcp.compute.RegionDiskResourcePolicyAttachment("attachment", {
- *     disk: ssd.name,
- *     region: "us-central1",
- * });
- * const policy = new gcp.compute.ResourcePolicy("policy", {
- *     region: "us-central1",
- *     snapshotSchedulePolicy: {
- *         schedule: {
- *             dailySchedule: {
- *                 daysInCycle: 1,
- *                 startTime: "04:00",
- *             },
- *         },
- *     },
- * });
- * const myImage = gcp.compute.getImage({
- *     family: "debian-11",
- *     project: "debian-cloud",
- * });
- * ```
  *
  * ## Import
  *

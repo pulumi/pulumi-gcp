@@ -61,7 +61,13 @@ class AppGatewayArgs:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if host_type is None and 'hostType' in kwargs:
+            host_type = kwargs['hostType']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if host_type is not None:
@@ -231,7 +237,15 @@ class _AppGatewayState:
              state: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              uri: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allocated_connections is None and 'allocatedConnections' in kwargs:
+            allocated_connections = kwargs['allocatedConnections']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if host_type is None and 'hostType' in kwargs:
+            host_type = kwargs['hostType']
+
         if allocated_connections is not None:
             _setter("allocated_connections", allocated_connections)
         if display_name is not None:
@@ -408,33 +422,6 @@ class AppGateway(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
 
         ## Example Usage
-        ### Beyondcorp App Gateway Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        app_gateway = gcp.beyondcorp.AppGateway("appGateway",
-            host_type="GCP_REGIONAL_MIG",
-            region="us-central1",
-            type="TCP_PROXY")
-        ```
-        ### Beyondcorp App Gateway Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        app_gateway = gcp.beyondcorp.AppGateway("appGateway",
-            display_name="some display name",
-            host_type="GCP_REGIONAL_MIG",
-            labels={
-                "bar": "baz",
-                "foo": "bar",
-            },
-            region="us-central1",
-            type="TCP_PROXY")
-        ```
 
         ## Import
 
@@ -492,33 +479,6 @@ class AppGateway(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
 
         ## Example Usage
-        ### Beyondcorp App Gateway Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        app_gateway = gcp.beyondcorp.AppGateway("appGateway",
-            host_type="GCP_REGIONAL_MIG",
-            region="us-central1",
-            type="TCP_PROXY")
-        ```
-        ### Beyondcorp App Gateway Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        app_gateway = gcp.beyondcorp.AppGateway("appGateway",
-            display_name="some display name",
-            host_type="GCP_REGIONAL_MIG",
-            labels={
-                "bar": "baz",
-                "foo": "bar",
-            },
-            region="us-central1",
-            type="TCP_PROXY")
-        ```
 
         ## Import
 

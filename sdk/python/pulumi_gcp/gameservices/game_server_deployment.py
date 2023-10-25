@@ -43,12 +43,18 @@ class GameServerDeploymentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             deployment_id: pulumi.Input[str],
+             deployment_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deployment_id is None and 'deploymentId' in kwargs:
+            deployment_id = kwargs['deploymentId']
+        if deployment_id is None:
+            raise TypeError("Missing 'deployment_id' argument")
+
         _setter("deployment_id", deployment_id)
         if description is not None:
             _setter("description", description)
@@ -169,7 +175,11 @@ class _GameServerDeploymentState:
              location: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deployment_id is None and 'deploymentId' in kwargs:
+            deployment_id = kwargs['deploymentId']
+
         if deployment_id is not None:
             _setter("deployment_id", deployment_id)
         if description is not None:
@@ -285,16 +295,6 @@ class GameServerDeployment(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/game-servers/docs)
 
         ## Example Usage
-        ### Game Service Deployment Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.gameservices.GameServerDeployment("default",
-            deployment_id="tf-test-deployment",
-            description="a deployment description")
-        ```
 
         ## Import
 
@@ -341,16 +341,6 @@ class GameServerDeployment(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/game-servers/docs)
 
         ## Example Usage
-        ### Game Service Deployment Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.gameservices.GameServerDeployment("default",
-            deployment_id="tf-test-deployment",
-            description="a deployment description")
-        ```
 
         ## Import
 

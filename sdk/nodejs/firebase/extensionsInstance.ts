@@ -8,50 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
- * ### Firebase Extentions Instance Resize Image
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const images = new gcp.storage.Bucket("images", {
- *     project: "my-project-name",
- *     location: "US",
- *     uniformBucketLevelAccess: true,
- *     forceDestroy: true,
- * }, {
- *     provider: google_beta,
- * });
- * const resizeImage = new gcp.firebase.ExtensionsInstance("resizeImage", {
- *     project: "my-project-name",
- *     instanceId: "storage-resize-images",
- *     config: {
- *         extensionRef: "firebase/storage-resize-images",
- *         extensionVersion: "0.1.37",
- *         params: {
- *             DELETE_ORIGINAL_FILE: "false",
- *             MAKE_PUBLIC: "false",
- *             IMAGE_TYPE: "false",
- *             IS_ANIMATED: "true",
- *             FUNCTION_MEMORY: "1024",
- *             DO_BACKFILL: "false",
- *             IMG_SIZES: "200x200",
- *             IMG_BUCKET: images.name,
- *             LOCATION: "",
- *         },
- *         systemParams: {
- *             "firebaseextensions.v1beta.function/maxInstances": "3000",
- *             "firebaseextensions.v1beta.function/memory": "256",
- *             "firebaseextensions.v1beta.function/minInstances": "0",
- *             "firebaseextensions.v1beta.function/vpcConnectorEgressSettings": "VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED",
- *         },
- *         allowedEventTypes: ["firebase.extensions.storage-resize-images.v1.complete"],
- *         eventarcChannel: "projects/my-project-name/locations//channels/firebase",
- *     },
- * }, {
- *     provider: google_beta,
- * });
- * ```
  *
  * ## Import
  *

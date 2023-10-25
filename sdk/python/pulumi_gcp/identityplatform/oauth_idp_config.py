@@ -48,14 +48,26 @@ class OauthIdpConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             client_id: pulumi.Input[str],
-             issuer: pulumi.Input[str],
+             client_id: Optional[pulumi.Input[str]] = None,
+             issuer: Optional[pulumi.Input[str]] = None,
              client_secret: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_id is None:
+            raise TypeError("Missing 'client_id' argument")
+        if issuer is None:
+            raise TypeError("Missing 'issuer' argument")
+        if client_secret is None and 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("client_id", client_id)
         _setter("issuer", issuer)
         if client_secret is not None:
@@ -202,7 +214,15 @@ class _OauthIdpConfigState:
              issuer: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_secret is None and 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if client_id is not None:
             _setter("client_id", client_id)
         if client_secret is not None:
@@ -328,19 +348,6 @@ class OauthIdpConfig(pulumi.CustomResource):
         the marketplace prior to using this resource.
 
         ## Example Usage
-        ### Identity Platform Oauth Idp Config Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        oauth_idp_config = gcp.identityplatform.OauthIdpConfig("oauthIdpConfig",
-            client_id="client-id",
-            client_secret="secret",
-            display_name="Display Name",
-            enabled=True,
-            issuer="issuer")
-        ```
 
         ## Import
 
@@ -386,19 +393,6 @@ class OauthIdpConfig(pulumi.CustomResource):
         the marketplace prior to using this resource.
 
         ## Example Usage
-        ### Identity Platform Oauth Idp Config Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        oauth_idp_config = gcp.identityplatform.OauthIdpConfig("oauthIdpConfig",
-            client_id="client-id",
-            client_secret="secret",
-            display_name="Display Name",
-            enabled=True,
-            issuer="issuer")
-        ```
 
         ## Import
 

@@ -103,17 +103,6 @@ def get_queue_iam_policy(location: Optional[str] = None,
     """
     Retrieves the current IAM policy data for queue
 
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.cloudtasks.get_queue_iam_policy(project=google_cloud_tasks_queue["default"]["project"],
-        location=google_cloud_tasks_queue["default"]["location"],
-        name=google_cloud_tasks_queue["default"]["name"])
-    ```
-
 
     :param str location: The location of the queue Used to find the parent resource to bind the IAM policy to
     :param str name: Used to find the parent resource to bind the IAM policy to
@@ -143,17 +132,6 @@ def get_queue_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]] 
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQueueIamPolicyResult]:
     """
     Retrieves the current IAM policy data for queue
-
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.cloudtasks.get_queue_iam_policy(project=google_cloud_tasks_queue["default"]["project"],
-        location=google_cloud_tasks_queue["default"]["location"],
-        name=google_cloud_tasks_queue["default"]["name"])
-    ```
 
 
     :param str location: The location of the queue Used to find the parent resource to bind the IAM policy to

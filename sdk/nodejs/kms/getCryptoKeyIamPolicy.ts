@@ -6,17 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for a Google Cloud KMS crypto key.
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const foo = gcp.kms.getCryptoKeyIamPolicy({
- *     cryptoKeyId: google_kms_crypto_key.crypto_key.id,
- * });
- * ```
  */
 export function getCryptoKeyIamPolicy(args: GetCryptoKeyIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetCryptoKeyIamPolicyResult> {
 
@@ -56,17 +45,6 @@ export interface GetCryptoKeyIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for a Google Cloud KMS crypto key.
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const foo = gcp.kms.getCryptoKeyIamPolicy({
- *     cryptoKeyId: google_kms_crypto_key.crypto_key.id,
- * });
- * ```
  */
 export function getCryptoKeyIamPolicyOutput(args: GetCryptoKeyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCryptoKeyIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getCryptoKeyIamPolicy(a, opts))

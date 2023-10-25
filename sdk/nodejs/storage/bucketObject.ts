@@ -14,33 +14,6 @@ import * as utilities from "../utilities";
  * and
  * [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
  *
- * ## Example Usage
- *
- * Example creating a public object in an existing `image-store` bucket.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const picture = new gcp.storage.BucketObject("picture", {
- *     bucket: "image-store",
- *     source: new pulumi.asset.FileAsset("/images/nature/garden-tiger-moth.jpg"),
- * });
- * ```
- *
- * Example creating an empty folder in an existing `image-store` bucket.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const emptyFolder = new gcp.storage.BucketObject("emptyFolder", {
- *     bucket: "image-store",
- *     content: " ",
- * });
- * // folder name should end with '/'
- * ```
- *
  * ## Import
  *
  * This resource does not support import.

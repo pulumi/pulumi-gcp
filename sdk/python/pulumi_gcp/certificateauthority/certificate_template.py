@@ -49,7 +49,7 @@ class CertificateTemplateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              identity_constraints: Optional[pulumi.Input['CertificateTemplateIdentityConstraintsArgs']] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -57,7 +57,17 @@ class CertificateTemplateArgs:
              passthrough_extensions: Optional[pulumi.Input['CertificateTemplatePassthroughExtensionsArgs']] = None,
              predefined_values: Optional[pulumi.Input['CertificateTemplatePredefinedValuesArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if identity_constraints is None and 'identityConstraints' in kwargs:
+            identity_constraints = kwargs['identityConstraints']
+        if passthrough_extensions is None and 'passthroughExtensions' in kwargs:
+            passthrough_extensions = kwargs['passthroughExtensions']
+        if predefined_values is None and 'predefinedValues' in kwargs:
+            predefined_values = kwargs['predefinedValues']
+
         _setter("location", location)
         if description is not None:
             _setter("description", description)
@@ -223,7 +233,19 @@ class _CertificateTemplateState:
              predefined_values: Optional[pulumi.Input['CertificateTemplatePredefinedValuesArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if identity_constraints is None and 'identityConstraints' in kwargs:
+            identity_constraints = kwargs['identityConstraints']
+        if passthrough_extensions is None and 'passthroughExtensions' in kwargs:
+            passthrough_extensions = kwargs['passthroughExtensions']
+        if predefined_values is None and 'predefinedValues' in kwargs:
+            predefined_values = kwargs['predefinedValues']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:
@@ -482,28 +504,16 @@ class CertificateTemplate(pulumi.CustomResource):
             __props__ = CertificateTemplateArgs.__new__(CertificateTemplateArgs)
 
             __props__.__dict__["description"] = description
-            if identity_constraints is not None and not isinstance(identity_constraints, CertificateTemplateIdentityConstraintsArgs):
-                identity_constraints = identity_constraints or {}
-                def _setter(key, value):
-                    identity_constraints[key] = value
-                CertificateTemplateIdentityConstraintsArgs._configure(_setter, **identity_constraints)
+            identity_constraints = _utilities.configure(identity_constraints, CertificateTemplateIdentityConstraintsArgs, True)
             __props__.__dict__["identity_constraints"] = identity_constraints
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if passthrough_extensions is not None and not isinstance(passthrough_extensions, CertificateTemplatePassthroughExtensionsArgs):
-                passthrough_extensions = passthrough_extensions or {}
-                def _setter(key, value):
-                    passthrough_extensions[key] = value
-                CertificateTemplatePassthroughExtensionsArgs._configure(_setter, **passthrough_extensions)
+            passthrough_extensions = _utilities.configure(passthrough_extensions, CertificateTemplatePassthroughExtensionsArgs, True)
             __props__.__dict__["passthrough_extensions"] = passthrough_extensions
-            if predefined_values is not None and not isinstance(predefined_values, CertificateTemplatePredefinedValuesArgs):
-                predefined_values = predefined_values or {}
-                def _setter(key, value):
-                    predefined_values[key] = value
-                CertificateTemplatePredefinedValuesArgs._configure(_setter, **predefined_values)
+            predefined_values = _utilities.configure(predefined_values, CertificateTemplatePredefinedValuesArgs, True)
             __props__.__dict__["predefined_values"] = predefined_values
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None

@@ -18,30 +18,6 @@ namespace Pulumi.Gcp.Projects
         /// 
         /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
-        /// ### Searching For Projects About To Be Deleted In An Org
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var my_org_projects = Gcp.Projects.GetProject.Invoke(new()
-        ///     {
-        ///         Filter = "parent.id:012345678910 lifecycleState:DELETE_REQUESTED",
-        ///     });
-        /// 
-        ///     var deletion_candidate = Gcp.Organizations.GetProject.Invoke(new()
-        ///     {
-        ///         ProjectId = my_org_projects.Apply(getProjectResult =&gt; getProjectResult.Projects[0]?.ProjectId),
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs args, InvokeOptions? options = null)
@@ -54,30 +30,6 @@ namespace Pulumi.Gcp.Projects
         /// 
         /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
-        /// ### Searching For Projects About To Be Deleted In An Org
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var my_org_projects = Gcp.Projects.GetProject.Invoke(new()
-        ///     {
-        ///         Filter = "parent.id:012345678910 lifecycleState:DELETE_REQUESTED",
-        ///     });
-        /// 
-        ///     var deletion_candidate = Gcp.Organizations.GetProject.Invoke(new()
-        ///     {
-        ///         ProjectId = my_org_projects.Apply(getProjectResult =&gt; getProjectResult.Projects[0]?.ProjectId),
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs args, InvokeOptions? options = null)

@@ -13,32 +13,6 @@ import (
 )
 
 // Retrieves the current IAM policy data for bucket
-//
-// ## example
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.GetBucketIamPolicy(ctx, &storage.GetBucketIamPolicyArgs{
-//				Bucket: google_storage_bucket.Default.Name,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetBucketIamPolicy(ctx *pulumi.Context, args *GetBucketIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetBucketIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBucketIamPolicyResult

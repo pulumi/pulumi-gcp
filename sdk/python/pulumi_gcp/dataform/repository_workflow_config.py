@@ -54,7 +54,7 @@ class RepositoryWorkflowConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             release_config: pulumi.Input[str],
+             release_config: Optional[pulumi.Input[str]] = None,
              cron_schedule: Optional[pulumi.Input[str]] = None,
              invocation_config: Optional[pulumi.Input['RepositoryWorkflowConfigInvocationConfigArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
@@ -62,7 +62,19 @@ class RepositoryWorkflowConfigArgs:
              region: Optional[pulumi.Input[str]] = None,
              repository: Optional[pulumi.Input[str]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if release_config is None and 'releaseConfig' in kwargs:
+            release_config = kwargs['releaseConfig']
+        if release_config is None:
+            raise TypeError("Missing 'release_config' argument")
+        if cron_schedule is None and 'cronSchedule' in kwargs:
+            cron_schedule = kwargs['cronSchedule']
+        if invocation_config is None and 'invocationConfig' in kwargs:
+            invocation_config = kwargs['invocationConfig']
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         _setter("release_config", release_config)
         if cron_schedule is not None:
             _setter("cron_schedule", cron_schedule)
@@ -235,7 +247,19 @@ class _RepositoryWorkflowConfigState:
              release_config: Optional[pulumi.Input[str]] = None,
              repository: Optional[pulumi.Input[str]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cron_schedule is None and 'cronSchedule' in kwargs:
+            cron_schedule = kwargs['cronSchedule']
+        if invocation_config is None and 'invocationConfig' in kwargs:
+            invocation_config = kwargs['invocationConfig']
+        if recent_scheduled_execution_records is None and 'recentScheduledExecutionRecords' in kwargs:
+            recent_scheduled_execution_records = kwargs['recentScheduledExecutionRecords']
+        if release_config is None and 'releaseConfig' in kwargs:
+            release_config = kwargs['releaseConfig']
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         if cron_schedule is not None:
             _setter("cron_schedule", cron_schedule)
         if invocation_config is not None:
@@ -386,88 +410,6 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Dataform Repository Workflow Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
-        secret = gcp.secretmanager.Secret("secret",
-            secret_id="my_secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        secret_version = gcp.secretmanager.SecretVersion("secretVersion",
-            secret=secret.id,
-            secret_data="secret-data",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        repository = gcp.dataform.Repository("repository",
-            region="us-central1",
-            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
-                url=git_repository.url,
-                default_branch="main",
-                authentication_token_secret_version=secret_version.id,
-            ),
-            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArgs(
-                default_database="database",
-                schema_suffix="_suffix",
-                table_prefix="prefix_",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        release_config = gcp.dataform.RepositoryReleaseConfig("releaseConfig",
-            project=repository.project,
-            region=repository.region,
-            repository=repository.name,
-            git_commitish="main",
-            cron_schedule="0 7 * * *",
-            time_zone="America/New_York",
-            code_compilation_config=gcp.dataform.RepositoryReleaseConfigCodeCompilationConfigArgs(
-                default_database="gcp-example-project",
-                default_schema="example-dataset",
-                default_location="us-central1",
-                assertion_schema="example-assertion-dataset",
-                database_suffix="",
-                schema_suffix="",
-                table_prefix="",
-                vars={
-                    "var1": "value",
-                },
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        dataform_sa = gcp.service_account.Account("dataformSa",
-            account_id="dataform-workflow-sa",
-            display_name="Dataform Service Account",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        workflow = gcp.dataform.RepositoryWorkflowConfig("workflow",
-            project=repository.project,
-            region=repository.region,
-            repository=repository.name,
-            release_config=release_config.id,
-            invocation_config=gcp.dataform.RepositoryWorkflowConfigInvocationConfigArgs(
-                included_targets=[
-                    gcp.dataform.RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs(
-                        database="gcp-example-project",
-                        schema="example-dataset",
-                        name="target_1",
-                    ),
-                    gcp.dataform.RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs(
-                        database="gcp-example-project",
-                        schema="example-dataset",
-                        name="target_2",
-                    ),
-                ],
-                included_tags=["tag_1"],
-                transitive_dependencies_included=True,
-                transitive_dependents_included=True,
-                fully_refresh_incremental_tables_enabled=False,
-                service_account=dataform_sa.email,
-            ),
-            cron_schedule="0 7 * * *",
-            time_zone="America/New_York",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -513,88 +455,6 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Dataform Repository Workflow Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
-        secret = gcp.secretmanager.Secret("secret",
-            secret_id="my_secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        secret_version = gcp.secretmanager.SecretVersion("secretVersion",
-            secret=secret.id,
-            secret_data="secret-data",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        repository = gcp.dataform.Repository("repository",
-            region="us-central1",
-            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
-                url=git_repository.url,
-                default_branch="main",
-                authentication_token_secret_version=secret_version.id,
-            ),
-            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArgs(
-                default_database="database",
-                schema_suffix="_suffix",
-                table_prefix="prefix_",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        release_config = gcp.dataform.RepositoryReleaseConfig("releaseConfig",
-            project=repository.project,
-            region=repository.region,
-            repository=repository.name,
-            git_commitish="main",
-            cron_schedule="0 7 * * *",
-            time_zone="America/New_York",
-            code_compilation_config=gcp.dataform.RepositoryReleaseConfigCodeCompilationConfigArgs(
-                default_database="gcp-example-project",
-                default_schema="example-dataset",
-                default_location="us-central1",
-                assertion_schema="example-assertion-dataset",
-                database_suffix="",
-                schema_suffix="",
-                table_prefix="",
-                vars={
-                    "var1": "value",
-                },
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        dataform_sa = gcp.service_account.Account("dataformSa",
-            account_id="dataform-workflow-sa",
-            display_name="Dataform Service Account",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        workflow = gcp.dataform.RepositoryWorkflowConfig("workflow",
-            project=repository.project,
-            region=repository.region,
-            repository=repository.name,
-            release_config=release_config.id,
-            invocation_config=gcp.dataform.RepositoryWorkflowConfigInvocationConfigArgs(
-                included_targets=[
-                    gcp.dataform.RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs(
-                        database="gcp-example-project",
-                        schema="example-dataset",
-                        name="target_1",
-                    ),
-                    gcp.dataform.RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs(
-                        database="gcp-example-project",
-                        schema="example-dataset",
-                        name="target_2",
-                    ),
-                ],
-                included_tags=["tag_1"],
-                transitive_dependencies_included=True,
-                transitive_dependents_included=True,
-                fully_refresh_incremental_tables_enabled=False,
-                service_account=dataform_sa.email,
-            ),
-            cron_schedule="0 7 * * *",
-            time_zone="America/New_York",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -653,11 +513,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
             __props__ = RepositoryWorkflowConfigArgs.__new__(RepositoryWorkflowConfigArgs)
 
             __props__.__dict__["cron_schedule"] = cron_schedule
-            if invocation_config is not None and not isinstance(invocation_config, RepositoryWorkflowConfigInvocationConfigArgs):
-                invocation_config = invocation_config or {}
-                def _setter(key, value):
-                    invocation_config[key] = value
-                RepositoryWorkflowConfigInvocationConfigArgs._configure(_setter, **invocation_config)
+            invocation_config = _utilities.configure(invocation_config, RepositoryWorkflowConfigInvocationConfigArgs, True)
             __props__.__dict__["invocation_config"] = invocation_config
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

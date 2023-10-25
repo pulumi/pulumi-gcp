@@ -48,13 +48,19 @@ class LiteSubscriptionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             topic: pulumi.Input[str],
+             topic: Optional[pulumi.Input[str]] = None,
              delivery_config: Optional[pulumi.Input['LiteSubscriptionDeliveryConfigArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if topic is None:
+            raise TypeError("Missing 'topic' argument")
+        if delivery_config is None and 'deliveryConfig' in kwargs:
+            delivery_config = kwargs['deliveryConfig']
+
         _setter("topic", topic)
         if delivery_config is not None:
             _setter("delivery_config", delivery_config)
@@ -186,7 +192,11 @@ class _LiteSubscriptionState:
              region: Optional[pulumi.Input[str]] = None,
              topic: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if delivery_config is None and 'deliveryConfig' in kwargs:
+            delivery_config = kwargs['deliveryConfig']
+
         if delivery_config is not None:
             _setter("delivery_config", delivery_config)
         if name is not None:
@@ -301,31 +311,6 @@ class LiteSubscription(pulumi.CustomResource):
             * [Managing Subscriptions](https://cloud.google.com/pubsub/lite/docs/subscriptions)
 
         ## Example Usage
-        ### Pubsub Lite Subscription Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        example_lite_topic = gcp.pubsub.LiteTopic("exampleLiteTopic",
-            project=project.number,
-            partition_config=gcp.pubsub.LiteTopicPartitionConfigArgs(
-                count=1,
-                capacity=gcp.pubsub.LiteTopicPartitionConfigCapacityArgs(
-                    publish_mib_per_sec=4,
-                    subscribe_mib_per_sec=8,
-                ),
-            ),
-            retention_config=gcp.pubsub.LiteTopicRetentionConfigArgs(
-                per_partition_bytes="32212254720",
-            ))
-        example_lite_subscription = gcp.pubsub.LiteSubscription("exampleLiteSubscription",
-            topic=example_lite_topic.name,
-            delivery_config=gcp.pubsub.LiteSubscriptionDeliveryConfigArgs(
-                delivery_requirement="DELIVER_AFTER_STORED",
-            ))
-        ```
 
         ## Import
 
@@ -378,31 +363,6 @@ class LiteSubscription(pulumi.CustomResource):
             * [Managing Subscriptions](https://cloud.google.com/pubsub/lite/docs/subscriptions)
 
         ## Example Usage
-        ### Pubsub Lite Subscription Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        example_lite_topic = gcp.pubsub.LiteTopic("exampleLiteTopic",
-            project=project.number,
-            partition_config=gcp.pubsub.LiteTopicPartitionConfigArgs(
-                count=1,
-                capacity=gcp.pubsub.LiteTopicPartitionConfigCapacityArgs(
-                    publish_mib_per_sec=4,
-                    subscribe_mib_per_sec=8,
-                ),
-            ),
-            retention_config=gcp.pubsub.LiteTopicRetentionConfigArgs(
-                per_partition_bytes="32212254720",
-            ))
-        example_lite_subscription = gcp.pubsub.LiteSubscription("exampleLiteSubscription",
-            topic=example_lite_topic.name,
-            delivery_config=gcp.pubsub.LiteSubscriptionDeliveryConfigArgs(
-                delivery_requirement="DELIVER_AFTER_STORED",
-            ))
-        ```
 
         ## Import
 
@@ -458,11 +418,7 @@ class LiteSubscription(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = LiteSubscriptionArgs.__new__(LiteSubscriptionArgs)
 
-            if delivery_config is not None and not isinstance(delivery_config, LiteSubscriptionDeliveryConfigArgs):
-                delivery_config = delivery_config or {}
-                def _setter(key, value):
-                    delivery_config[key] = value
-                LiteSubscriptionDeliveryConfigArgs._configure(_setter, **delivery_config)
+            delivery_config = _utilities.configure(delivery_config, LiteSubscriptionDeliveryConfigArgs, True)
             __props__.__dict__["delivery_config"] = delivery_config
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

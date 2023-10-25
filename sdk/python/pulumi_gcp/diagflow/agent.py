@@ -87,9 +87,9 @@ class AgentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             default_language_code: pulumi.Input[str],
-             display_name: pulumi.Input[str],
-             time_zone: pulumi.Input[str],
+             default_language_code: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             time_zone: Optional[pulumi.Input[str]] = None,
              api_version: Optional[pulumi.Input[str]] = None,
              avatar_uri: Optional[pulumi.Input[str]] = None,
              classification_threshold: Optional[pulumi.Input[float]] = None,
@@ -99,7 +99,33 @@ class AgentArgs:
              project: Optional[pulumi.Input[str]] = None,
              supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tier: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if default_language_code is None and 'defaultLanguageCode' in kwargs:
+            default_language_code = kwargs['defaultLanguageCode']
+        if default_language_code is None:
+            raise TypeError("Missing 'default_language_code' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+        if time_zone is None:
+            raise TypeError("Missing 'time_zone' argument")
+        if api_version is None and 'apiVersion' in kwargs:
+            api_version = kwargs['apiVersion']
+        if avatar_uri is None and 'avatarUri' in kwargs:
+            avatar_uri = kwargs['avatarUri']
+        if classification_threshold is None and 'classificationThreshold' in kwargs:
+            classification_threshold = kwargs['classificationThreshold']
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+        if match_mode is None and 'matchMode' in kwargs:
+            match_mode = kwargs['matchMode']
+        if supported_language_codes is None and 'supportedLanguageCodes' in kwargs:
+            supported_language_codes = kwargs['supportedLanguageCodes']
+
         _setter("default_language_code", default_language_code)
         _setter("display_name", display_name)
         _setter("time_zone", time_zone)
@@ -388,7 +414,29 @@ class _AgentState:
              supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tier: Optional[pulumi.Input[str]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api_version is None and 'apiVersion' in kwargs:
+            api_version = kwargs['apiVersion']
+        if avatar_uri is None and 'avatarUri' in kwargs:
+            avatar_uri = kwargs['avatarUri']
+        if avatar_uri_backend is None and 'avatarUriBackend' in kwargs:
+            avatar_uri_backend = kwargs['avatarUriBackend']
+        if classification_threshold is None and 'classificationThreshold' in kwargs:
+            classification_threshold = kwargs['classificationThreshold']
+        if default_language_code is None and 'defaultLanguageCode' in kwargs:
+            default_language_code = kwargs['defaultLanguageCode']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+        if match_mode is None and 'matchMode' in kwargs:
+            match_mode = kwargs['matchMode']
+        if supported_language_codes is None and 'supportedLanguageCodes' in kwargs:
+            supported_language_codes = kwargs['supportedLanguageCodes']
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         if api_version is not None:
             _setter("api_version", api_version)
         if avatar_uri is not None:
@@ -633,29 +681,6 @@ class Agent(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 
         ## Example Usage
-        ### Dialogflow Agent Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        full_agent = gcp.diagflow.Agent("fullAgent",
-            api_version="API_VERSION_V2_BETA_1",
-            avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
-            classification_threshold=0.3,
-            default_language_code="en",
-            description="Example description.",
-            display_name="dialogflow-agent",
-            enable_logging=True,
-            match_mode="MATCH_MODE_ML_ONLY",
-            supported_language_codes=[
-                "fr",
-                "de",
-                "es",
-            ],
-            tier="TIER_STANDARD",
-            time_zone="America/New_York")
-        ```
 
         ## Import
 
@@ -727,29 +752,6 @@ class Agent(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 
         ## Example Usage
-        ### Dialogflow Agent Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        full_agent = gcp.diagflow.Agent("fullAgent",
-            api_version="API_VERSION_V2_BETA_1",
-            avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
-            classification_threshold=0.3,
-            default_language_code="en",
-            description="Example description.",
-            display_name="dialogflow-agent",
-            enable_logging=True,
-            match_mode="MATCH_MODE_ML_ONLY",
-            supported_language_codes=[
-                "fr",
-                "de",
-                "es",
-            ],
-            tier="TIER_STANDARD",
-            time_zone="America/New_York")
-        ```
 
         ## Import
 

@@ -63,7 +63,17 @@ class AiFeatureStoreArgs:
              online_storage_ttl_days: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if encryption_spec is None and 'encryptionSpec' in kwargs:
+            encryption_spec = kwargs['encryptionSpec']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if online_serving_config is None and 'onlineServingConfig' in kwargs:
+            online_serving_config = kwargs['onlineServingConfig']
+        if online_storage_ttl_days is None and 'onlineStorageTtlDays' in kwargs:
+            online_storage_ttl_days = kwargs['onlineStorageTtlDays']
+
         if encryption_spec is not None:
             _setter("encryption_spec", encryption_spec)
         if force_destroy is not None:
@@ -246,7 +256,21 @@ class _AiFeatureStoreState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if encryption_spec is None and 'encryptionSpec' in kwargs:
+            encryption_spec = kwargs['encryptionSpec']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if online_serving_config is None and 'onlineServingConfig' in kwargs:
+            online_serving_config = kwargs['onlineServingConfig']
+        if online_storage_ttl_days is None and 'onlineStorageTtlDays' in kwargs:
+            online_storage_ttl_days = kwargs['onlineStorageTtlDays']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if encryption_spec is not None:
@@ -433,68 +457,6 @@ class AiFeatureStore(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
         ## Example Usage
-        ### Vertex Ai Featurestore
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        featurestore = gcp.vertex.AiFeatureStore("featurestore",
-            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
-                kms_key_name="kms-name",
-            ),
-            force_destroy=True,
-            labels={
-                "foo": "bar",
-            },
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
-                fixed_node_count=2,
-            ),
-            region="us-central1")
-        ```
-        ### Vertex Ai Featurestore With Beta Fields
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        featurestore = gcp.vertex.AiFeatureStore("featurestore",
-            labels={
-                "foo": "bar",
-            },
-            region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
-                fixed_node_count=2,
-            ),
-            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
-                kms_key_name="kms-name",
-            ),
-            online_storage_ttl_days=30,
-            force_destroy=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Vertex Ai Featurestore Scaling
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        featurestore = gcp.vertex.AiFeatureStore("featurestore",
-            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
-                kms_key_name="kms-name",
-            ),
-            force_destroy=True,
-            labels={
-                "foo": "bar",
-            },
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
-                scaling=gcp.vertex.AiFeatureStoreOnlineServingConfigScalingArgs(
-                    max_node_count=10,
-                    min_node_count=2,
-                ),
-            ),
-            region="us-central1")
-        ```
 
         ## Import
 
@@ -549,68 +511,6 @@ class AiFeatureStore(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
         ## Example Usage
-        ### Vertex Ai Featurestore
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        featurestore = gcp.vertex.AiFeatureStore("featurestore",
-            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
-                kms_key_name="kms-name",
-            ),
-            force_destroy=True,
-            labels={
-                "foo": "bar",
-            },
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
-                fixed_node_count=2,
-            ),
-            region="us-central1")
-        ```
-        ### Vertex Ai Featurestore With Beta Fields
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        featurestore = gcp.vertex.AiFeatureStore("featurestore",
-            labels={
-                "foo": "bar",
-            },
-            region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
-                fixed_node_count=2,
-            ),
-            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
-                kms_key_name="kms-name",
-            ),
-            online_storage_ttl_days=30,
-            force_destroy=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Vertex Ai Featurestore Scaling
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        featurestore = gcp.vertex.AiFeatureStore("featurestore",
-            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
-                kms_key_name="kms-name",
-            ),
-            force_destroy=True,
-            labels={
-                "foo": "bar",
-            },
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
-                scaling=gcp.vertex.AiFeatureStoreOnlineServingConfigScalingArgs(
-                    max_node_count=10,
-                    min_node_count=2,
-                ),
-            ),
-            region="us-central1")
-        ```
 
         ## Import
 
@@ -668,20 +568,12 @@ class AiFeatureStore(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AiFeatureStoreArgs.__new__(AiFeatureStoreArgs)
 
-            if encryption_spec is not None and not isinstance(encryption_spec, AiFeatureStoreEncryptionSpecArgs):
-                encryption_spec = encryption_spec or {}
-                def _setter(key, value):
-                    encryption_spec[key] = value
-                AiFeatureStoreEncryptionSpecArgs._configure(_setter, **encryption_spec)
+            encryption_spec = _utilities.configure(encryption_spec, AiFeatureStoreEncryptionSpecArgs, True)
             __props__.__dict__["encryption_spec"] = encryption_spec
             __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
-            if online_serving_config is not None and not isinstance(online_serving_config, AiFeatureStoreOnlineServingConfigArgs):
-                online_serving_config = online_serving_config or {}
-                def _setter(key, value):
-                    online_serving_config[key] = value
-                AiFeatureStoreOnlineServingConfigArgs._configure(_setter, **online_serving_config)
+            online_serving_config = _utilities.configure(online_serving_config, AiFeatureStoreOnlineServingConfigArgs, True)
             __props__.__dict__["online_serving_config"] = online_serving_config
             __props__.__dict__["online_storage_ttl_days"] = online_storage_ttl_days
             __props__.__dict__["project"] = project

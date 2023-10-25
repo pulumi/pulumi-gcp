@@ -117,8 +117,8 @@ class InstanceGroupManagerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             base_instance_name: pulumi.Input[str],
-             versions: pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]],
+             base_instance_name: Optional[pulumi.Input[str]] = None,
+             versions: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]]] = None,
              all_instances_config: Optional[pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs']] = None,
              auto_healing_policies: Optional[pulumi.Input['InstanceGroupManagerAutoHealingPoliciesArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -136,7 +136,41 @@ class InstanceGroupManagerArgs:
              wait_for_instances: Optional[pulumi.Input[bool]] = None,
              wait_for_instances_status: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if base_instance_name is None and 'baseInstanceName' in kwargs:
+            base_instance_name = kwargs['baseInstanceName']
+        if base_instance_name is None:
+            raise TypeError("Missing 'base_instance_name' argument")
+        if versions is None:
+            raise TypeError("Missing 'versions' argument")
+        if all_instances_config is None and 'allInstancesConfig' in kwargs:
+            all_instances_config = kwargs['allInstancesConfig']
+        if auto_healing_policies is None and 'autoHealingPolicies' in kwargs:
+            auto_healing_policies = kwargs['autoHealingPolicies']
+        if instance_lifecycle_policy is None and 'instanceLifecyclePolicy' in kwargs:
+            instance_lifecycle_policy = kwargs['instanceLifecyclePolicy']
+        if list_managed_instances_results is None and 'listManagedInstancesResults' in kwargs:
+            list_managed_instances_results = kwargs['listManagedInstancesResults']
+        if named_ports is None and 'namedPorts' in kwargs:
+            named_ports = kwargs['namedPorts']
+        if stateful_disks is None and 'statefulDisks' in kwargs:
+            stateful_disks = kwargs['statefulDisks']
+        if stateful_external_ips is None and 'statefulExternalIps' in kwargs:
+            stateful_external_ips = kwargs['statefulExternalIps']
+        if stateful_internal_ips is None and 'statefulInternalIps' in kwargs:
+            stateful_internal_ips = kwargs['statefulInternalIps']
+        if target_pools is None and 'targetPools' in kwargs:
+            target_pools = kwargs['targetPools']
+        if target_size is None and 'targetSize' in kwargs:
+            target_size = kwargs['targetSize']
+        if update_policy is None and 'updatePolicy' in kwargs:
+            update_policy = kwargs['updatePolicy']
+        if wait_for_instances is None and 'waitForInstances' in kwargs:
+            wait_for_instances = kwargs['waitForInstances']
+        if wait_for_instances_status is None and 'waitForInstancesStatus' in kwargs:
+            wait_for_instances_status = kwargs['waitForInstancesStatus']
+
         _setter("base_instance_name", base_instance_name)
         _setter("versions", versions)
         if all_instances_config is not None:
@@ -580,7 +614,41 @@ class _InstanceGroupManagerState:
              wait_for_instances: Optional[pulumi.Input[bool]] = None,
              wait_for_instances_status: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if all_instances_config is None and 'allInstancesConfig' in kwargs:
+            all_instances_config = kwargs['allInstancesConfig']
+        if auto_healing_policies is None and 'autoHealingPolicies' in kwargs:
+            auto_healing_policies = kwargs['autoHealingPolicies']
+        if base_instance_name is None and 'baseInstanceName' in kwargs:
+            base_instance_name = kwargs['baseInstanceName']
+        if instance_group is None and 'instanceGroup' in kwargs:
+            instance_group = kwargs['instanceGroup']
+        if instance_lifecycle_policy is None and 'instanceLifecyclePolicy' in kwargs:
+            instance_lifecycle_policy = kwargs['instanceLifecyclePolicy']
+        if list_managed_instances_results is None and 'listManagedInstancesResults' in kwargs:
+            list_managed_instances_results = kwargs['listManagedInstancesResults']
+        if named_ports is None and 'namedPorts' in kwargs:
+            named_ports = kwargs['namedPorts']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if stateful_disks is None and 'statefulDisks' in kwargs:
+            stateful_disks = kwargs['statefulDisks']
+        if stateful_external_ips is None and 'statefulExternalIps' in kwargs:
+            stateful_external_ips = kwargs['statefulExternalIps']
+        if stateful_internal_ips is None and 'statefulInternalIps' in kwargs:
+            stateful_internal_ips = kwargs['statefulInternalIps']
+        if target_pools is None and 'targetPools' in kwargs:
+            target_pools = kwargs['targetPools']
+        if target_size is None and 'targetSize' in kwargs:
+            target_size = kwargs['targetSize']
+        if update_policy is None and 'updatePolicy' in kwargs:
+            update_policy = kwargs['updatePolicy']
+        if wait_for_instances is None and 'waitForInstances' in kwargs:
+            wait_for_instances = kwargs['waitForInstances']
+        if wait_for_instances_status is None and 'waitForInstancesStatus' in kwargs:
+            wait_for_instances_status = kwargs['waitForInstancesStatus']
+
         if all_instances_config is not None:
             _setter("all_instances_config", all_instances_config)
         if auto_healing_policies is not None:
@@ -985,70 +1053,6 @@ class InstanceGroupManager(pulumi.CustomResource):
         > **Note:** Use [compute.RegionInstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_region_instance_group_manager.html) to create a regional (multi-zone) instance group manager.
 
         ## Example Usage
-        ### With Top Level Instance Template (`Google` Provider)
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        autohealing = gcp.compute.HealthCheck("autohealing",
-            check_interval_sec=5,
-            timeout_sec=5,
-            healthy_threshold=2,
-            unhealthy_threshold=10,
-            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
-                request_path="/healthz",
-                port=8080,
-            ))
-        appserver = gcp.compute.InstanceGroupManager("appserver",
-            base_instance_name="app",
-            zone="us-central1-a",
-            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
-                instance_template=google_compute_instance_template["appserver"]["self_link_unique"],
-            )],
-            all_instances_config=gcp.compute.InstanceGroupManagerAllInstancesConfigArgs(
-                metadata={
-                    "metadata_key": "metadata_value",
-                },
-                labels={
-                    "label_key": "label_value",
-                },
-            ),
-            target_pools=[google_compute_target_pool["appserver"]["id"]],
-            target_size=2,
-            named_ports=[gcp.compute.InstanceGroupManagerNamedPortArgs(
-                name="customhttp",
-                port=8888,
-            )],
-            auto_healing_policies=gcp.compute.InstanceGroupManagerAutoHealingPoliciesArgs(
-                health_check=autohealing.id,
-                initial_delay_sec=300,
-            ))
-        ```
-        ### With Multiple Versions (`Google-Beta` Provider)
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        appserver = gcp.compute.InstanceGroupManager("appserver",
-            base_instance_name="app",
-            zone="us-central1-a",
-            target_size=5,
-            versions=[
-                gcp.compute.InstanceGroupManagerVersionArgs(
-                    name="appserver",
-                    instance_template=google_compute_instance_template["appserver"]["self_link_unique"],
-                ),
-                gcp.compute.InstanceGroupManagerVersionArgs(
-                    name="appserver-canary",
-                    instance_template=google_compute_instance_template["appserver-canary"]["self_link_unique"],
-                    target_size=gcp.compute.InstanceGroupManagerVersionTargetSizeArgs(
-                        fixed=1,
-                    ),
-                ),
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -1142,70 +1146,6 @@ class InstanceGroupManager(pulumi.CustomResource):
         > **Note:** Use [compute.RegionInstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_region_instance_group_manager.html) to create a regional (multi-zone) instance group manager.
 
         ## Example Usage
-        ### With Top Level Instance Template (`Google` Provider)
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        autohealing = gcp.compute.HealthCheck("autohealing",
-            check_interval_sec=5,
-            timeout_sec=5,
-            healthy_threshold=2,
-            unhealthy_threshold=10,
-            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
-                request_path="/healthz",
-                port=8080,
-            ))
-        appserver = gcp.compute.InstanceGroupManager("appserver",
-            base_instance_name="app",
-            zone="us-central1-a",
-            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
-                instance_template=google_compute_instance_template["appserver"]["self_link_unique"],
-            )],
-            all_instances_config=gcp.compute.InstanceGroupManagerAllInstancesConfigArgs(
-                metadata={
-                    "metadata_key": "metadata_value",
-                },
-                labels={
-                    "label_key": "label_value",
-                },
-            ),
-            target_pools=[google_compute_target_pool["appserver"]["id"]],
-            target_size=2,
-            named_ports=[gcp.compute.InstanceGroupManagerNamedPortArgs(
-                name="customhttp",
-                port=8888,
-            )],
-            auto_healing_policies=gcp.compute.InstanceGroupManagerAutoHealingPoliciesArgs(
-                health_check=autohealing.id,
-                initial_delay_sec=300,
-            ))
-        ```
-        ### With Multiple Versions (`Google-Beta` Provider)
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        appserver = gcp.compute.InstanceGroupManager("appserver",
-            base_instance_name="app",
-            zone="us-central1-a",
-            target_size=5,
-            versions=[
-                gcp.compute.InstanceGroupManagerVersionArgs(
-                    name="appserver",
-                    instance_template=google_compute_instance_template["appserver"]["self_link_unique"],
-                ),
-                gcp.compute.InstanceGroupManagerVersionArgs(
-                    name="appserver-canary",
-                    instance_template=google_compute_instance_template["appserver-canary"]["self_link_unique"],
-                    target_size=gcp.compute.InstanceGroupManagerVersionTargetSizeArgs(
-                        fixed=1,
-                    ),
-                ),
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -1274,27 +1214,15 @@ class InstanceGroupManager(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceGroupManagerArgs.__new__(InstanceGroupManagerArgs)
 
-            if all_instances_config is not None and not isinstance(all_instances_config, InstanceGroupManagerAllInstancesConfigArgs):
-                all_instances_config = all_instances_config or {}
-                def _setter(key, value):
-                    all_instances_config[key] = value
-                InstanceGroupManagerAllInstancesConfigArgs._configure(_setter, **all_instances_config)
+            all_instances_config = _utilities.configure(all_instances_config, InstanceGroupManagerAllInstancesConfigArgs, True)
             __props__.__dict__["all_instances_config"] = all_instances_config
-            if auto_healing_policies is not None and not isinstance(auto_healing_policies, InstanceGroupManagerAutoHealingPoliciesArgs):
-                auto_healing_policies = auto_healing_policies or {}
-                def _setter(key, value):
-                    auto_healing_policies[key] = value
-                InstanceGroupManagerAutoHealingPoliciesArgs._configure(_setter, **auto_healing_policies)
+            auto_healing_policies = _utilities.configure(auto_healing_policies, InstanceGroupManagerAutoHealingPoliciesArgs, True)
             __props__.__dict__["auto_healing_policies"] = auto_healing_policies
             if base_instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'base_instance_name'")
             __props__.__dict__["base_instance_name"] = base_instance_name
             __props__.__dict__["description"] = description
-            if instance_lifecycle_policy is not None and not isinstance(instance_lifecycle_policy, InstanceGroupManagerInstanceLifecyclePolicyArgs):
-                instance_lifecycle_policy = instance_lifecycle_policy or {}
-                def _setter(key, value):
-                    instance_lifecycle_policy[key] = value
-                InstanceGroupManagerInstanceLifecyclePolicyArgs._configure(_setter, **instance_lifecycle_policy)
+            instance_lifecycle_policy = _utilities.configure(instance_lifecycle_policy, InstanceGroupManagerInstanceLifecyclePolicyArgs, True)
             __props__.__dict__["instance_lifecycle_policy"] = instance_lifecycle_policy
             __props__.__dict__["list_managed_instances_results"] = list_managed_instances_results
             __props__.__dict__["name"] = name
@@ -1305,11 +1233,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["stateful_internal_ips"] = stateful_internal_ips
             __props__.__dict__["target_pools"] = target_pools
             __props__.__dict__["target_size"] = target_size
-            if update_policy is not None and not isinstance(update_policy, InstanceGroupManagerUpdatePolicyArgs):
-                update_policy = update_policy or {}
-                def _setter(key, value):
-                    update_policy[key] = value
-                InstanceGroupManagerUpdatePolicyArgs._configure(_setter, **update_policy)
+            update_policy = _utilities.configure(update_policy, InstanceGroupManagerUpdatePolicyArgs, True)
             __props__.__dict__["update_policy"] = update_policy
             if versions is None and not opts.urn:
                 raise TypeError("Missing required property 'versions'")

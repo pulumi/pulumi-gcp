@@ -49,7 +49,7 @@ class ConnectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
              github_config: Optional[pulumi.Input['ConnectionGithubConfigArgs']] = None,
@@ -57,7 +57,17 @@ class ConnectionArgs:
              gitlab_config: Optional[pulumi.Input['ConnectionGitlabConfigArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if github_config is None and 'githubConfig' in kwargs:
+            github_config = kwargs['githubConfig']
+        if github_enterprise_config is None and 'githubEnterpriseConfig' in kwargs:
+            github_enterprise_config = kwargs['githubEnterpriseConfig']
+        if gitlab_config is None and 'gitlabConfig' in kwargs:
+            gitlab_config = kwargs['gitlabConfig']
+
         _setter("location", location)
         if annotations is not None:
             _setter("annotations", annotations)
@@ -235,7 +245,21 @@ class _ConnectionState:
              project: Optional[pulumi.Input[str]] = None,
              reconciling: Optional[pulumi.Input[bool]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if github_config is None and 'githubConfig' in kwargs:
+            github_config = kwargs['githubConfig']
+        if github_enterprise_config is None and 'githubEnterpriseConfig' in kwargs:
+            github_enterprise_config = kwargs['githubEnterpriseConfig']
+        if gitlab_config is None and 'gitlabConfig' in kwargs:
+            gitlab_config = kwargs['gitlabConfig']
+        if installation_states is None and 'installationStates' in kwargs:
+            installation_states = kwargs['installationStates']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if create_time is not None:
@@ -438,82 +462,6 @@ class Connection(pulumi.CustomResource):
         The Cloudbuildv2 Connection resource
 
         ## Example Usage
-        ### Ghe
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        private_key_secret = gcp.secretmanager.Secret("private-key-secret",
-            secret_id="ghe-pk-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
-        private_key_secret_version = gcp.secretmanager.SecretVersion("private-key-secret-version",
-            secret=private_key_secret.id,
-            secret_data=(lambda path: open(path).read())("private-key.pem"))
-        webhook_secret_secret = gcp.secretmanager.Secret("webhook-secret-secret",
-            secret_id="github-token-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
-        webhook_secret_secret_version = gcp.secretmanager.SecretVersion("webhook-secret-secret-version",
-            secret=webhook_secret_secret.id,
-            secret_data="<webhook-secret-data>")
-        p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/secretmanager.secretAccessor",
-            members=["serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
-        )])
-        policy_pk = gcp.secretmanager.SecretIamPolicy("policy-pk",
-            secret_id=private_key_secret.secret_id,
-            policy_data=p4sa_secret_accessor.policy_data)
-        policy_whs = gcp.secretmanager.SecretIamPolicy("policy-whs",
-            secret_id=webhook_secret_secret.secret_id,
-            policy_data=p4sa_secret_accessor.policy_data)
-        my_connection = gcp.cloudbuildv2.Connection("my-connection",
-            location="us-central1",
-            github_enterprise_config=gcp.cloudbuildv2.ConnectionGithubEnterpriseConfigArgs(
-                host_uri="https://ghe.com",
-                private_key_secret_version=private_key_secret_version.id,
-                webhook_secret_secret_version=webhook_secret_secret_version.id,
-                app_id=200,
-                app_slug="gcb-app",
-                app_installation_id=300,
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[
-                    policy_pk,
-                    policy_whs,
-                ]))
-        ```
-        ### GitHub Connection
-        Creates a Connection to github.com
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        github_token_secret = gcp.secretmanager.Secret("github-token-secret",
-            secret_id="github-token-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
-        github_token_secret_version = gcp.secretmanager.SecretVersion("github-token-secret-version",
-            secret=github_token_secret.id,
-            secret_data=(lambda path: open(path).read())("my-github-token.txt"))
-        p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/secretmanager.secretAccessor",
-            members=["serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
-        )])
-        policy = gcp.secretmanager.SecretIamPolicy("policy",
-            secret_id=github_token_secret.secret_id,
-            policy_data=p4sa_secret_accessor.policy_data)
-        my_connection = gcp.cloudbuildv2.Connection("my-connection",
-            location="us-west1",
-            github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
-                app_installation_id=123123,
-                authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
-                    oauth_token_secret_version=github_token_secret_version.id,
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -552,82 +500,6 @@ class Connection(pulumi.CustomResource):
         The Cloudbuildv2 Connection resource
 
         ## Example Usage
-        ### Ghe
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        private_key_secret = gcp.secretmanager.Secret("private-key-secret",
-            secret_id="ghe-pk-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
-        private_key_secret_version = gcp.secretmanager.SecretVersion("private-key-secret-version",
-            secret=private_key_secret.id,
-            secret_data=(lambda path: open(path).read())("private-key.pem"))
-        webhook_secret_secret = gcp.secretmanager.Secret("webhook-secret-secret",
-            secret_id="github-token-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
-        webhook_secret_secret_version = gcp.secretmanager.SecretVersion("webhook-secret-secret-version",
-            secret=webhook_secret_secret.id,
-            secret_data="<webhook-secret-data>")
-        p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/secretmanager.secretAccessor",
-            members=["serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
-        )])
-        policy_pk = gcp.secretmanager.SecretIamPolicy("policy-pk",
-            secret_id=private_key_secret.secret_id,
-            policy_data=p4sa_secret_accessor.policy_data)
-        policy_whs = gcp.secretmanager.SecretIamPolicy("policy-whs",
-            secret_id=webhook_secret_secret.secret_id,
-            policy_data=p4sa_secret_accessor.policy_data)
-        my_connection = gcp.cloudbuildv2.Connection("my-connection",
-            location="us-central1",
-            github_enterprise_config=gcp.cloudbuildv2.ConnectionGithubEnterpriseConfigArgs(
-                host_uri="https://ghe.com",
-                private_key_secret_version=private_key_secret_version.id,
-                webhook_secret_secret_version=webhook_secret_secret_version.id,
-                app_id=200,
-                app_slug="gcb-app",
-                app_installation_id=300,
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[
-                    policy_pk,
-                    policy_whs,
-                ]))
-        ```
-        ### GitHub Connection
-        Creates a Connection to github.com
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        github_token_secret = gcp.secretmanager.Secret("github-token-secret",
-            secret_id="github-token-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
-        github_token_secret_version = gcp.secretmanager.SecretVersion("github-token-secret-version",
-            secret=github_token_secret.id,
-            secret_data=(lambda path: open(path).read())("my-github-token.txt"))
-        p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/secretmanager.secretAccessor",
-            members=["serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
-        )])
-        policy = gcp.secretmanager.SecretIamPolicy("policy",
-            secret_id=github_token_secret.secret_id,
-            policy_data=p4sa_secret_accessor.policy_data)
-        my_connection = gcp.cloudbuildv2.Connection("my-connection",
-            location="us-west1",
-            github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
-                app_installation_id=123123,
-                authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
-                    oauth_token_secret_version=github_token_secret_version.id,
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -683,23 +555,11 @@ class Connection(pulumi.CustomResource):
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["disabled"] = disabled
-            if github_config is not None and not isinstance(github_config, ConnectionGithubConfigArgs):
-                github_config = github_config or {}
-                def _setter(key, value):
-                    github_config[key] = value
-                ConnectionGithubConfigArgs._configure(_setter, **github_config)
+            github_config = _utilities.configure(github_config, ConnectionGithubConfigArgs, True)
             __props__.__dict__["github_config"] = github_config
-            if github_enterprise_config is not None and not isinstance(github_enterprise_config, ConnectionGithubEnterpriseConfigArgs):
-                github_enterprise_config = github_enterprise_config or {}
-                def _setter(key, value):
-                    github_enterprise_config[key] = value
-                ConnectionGithubEnterpriseConfigArgs._configure(_setter, **github_enterprise_config)
+            github_enterprise_config = _utilities.configure(github_enterprise_config, ConnectionGithubEnterpriseConfigArgs, True)
             __props__.__dict__["github_enterprise_config"] = github_enterprise_config
-            if gitlab_config is not None and not isinstance(gitlab_config, ConnectionGitlabConfigArgs):
-                gitlab_config = gitlab_config or {}
-                def _setter(key, value):
-                    gitlab_config[key] = value
-                ConnectionGitlabConfigArgs._configure(_setter, **gitlab_config)
+            gitlab_config = _utilities.configure(gitlab_config, ConnectionGitlabConfigArgs, True)
             __props__.__dict__["gitlab_config"] = gitlab_config
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")

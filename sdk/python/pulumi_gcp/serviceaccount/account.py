@@ -45,12 +45,20 @@ class AccountArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("account_id", account_id)
         if description is not None:
             _setter("description", description)
@@ -186,7 +194,15 @@ class _AccountState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              unique_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if unique_id is None and 'uniqueId' in kwargs:
+            unique_id = kwargs['uniqueId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if description is not None:
@@ -348,19 +364,6 @@ class Account(pulumi.CustomResource):
         errors when you try to apply ACLs to service accounts immediately after
         creation.
 
-        ## Example Usage
-
-        This snippet creates a service account in a project.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        service_account = gcp.service_account.Account("serviceAccount",
-            account_id="service-account-id",
-            display_name="Service Account")
-        ```
-
         ## Import
 
         Service accounts can be imported using their URI, e.g.
@@ -402,19 +405,6 @@ class Account(pulumi.CustomResource):
         > Creation of service accounts is eventually consistent, and that can lead to
         errors when you try to apply ACLs to service accounts immediately after
         creation.
-
-        ## Example Usage
-
-        This snippet creates a service account in a project.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        service_account = gcp.service_account.Account("serviceAccount",
-            account_id="service-account-id",
-            display_name="Service Account")
-        ```
 
         ## Import
 

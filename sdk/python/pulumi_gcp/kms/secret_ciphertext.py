@@ -38,10 +38,20 @@ class SecretCiphertextArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             crypto_key: pulumi.Input[str],
-             plaintext: pulumi.Input[str],
+             crypto_key: Optional[pulumi.Input[str]] = None,
+             plaintext: Optional[pulumi.Input[str]] = None,
              additional_authenticated_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if crypto_key is None and 'cryptoKey' in kwargs:
+            crypto_key = kwargs['cryptoKey']
+        if crypto_key is None:
+            raise TypeError("Missing 'crypto_key' argument")
+        if plaintext is None:
+            raise TypeError("Missing 'plaintext' argument")
+        if additional_authenticated_data is None and 'additionalAuthenticatedData' in kwargs:
+            additional_authenticated_data = kwargs['additionalAuthenticatedData']
+
         _setter("crypto_key", crypto_key)
         _setter("plaintext", plaintext)
         if additional_authenticated_data is not None:
@@ -124,7 +134,13 @@ class _SecretCiphertextState:
              ciphertext: Optional[pulumi.Input[str]] = None,
              crypto_key: Optional[pulumi.Input[str]] = None,
              plaintext: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if additional_authenticated_data is None and 'additionalAuthenticatedData' in kwargs:
+            additional_authenticated_data = kwargs['additionalAuthenticatedData']
+        if crypto_key is None and 'cryptoKey' in kwargs:
+            crypto_key = kwargs['cryptoKey']
+
         if additional_authenticated_data is not None:
             _setter("additional_authenticated_data", additional_authenticated_data)
         if ciphertext is not None:
@@ -215,35 +231,6 @@ class SecretCiphertext(pulumi.CustomResource):
         > **Warning:** All arguments including `plaintext` and `additional_authenticated_data` will be stored in the raw state as plain-text.
 
         ## Example Usage
-        ### Kms Secret Ciphertext Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        keyring = gcp.kms.KeyRing("keyring", location="global")
-        cryptokey = gcp.kms.CryptoKey("cryptokey",
-            key_ring=keyring.id,
-            rotation_period="100000s")
-        my_password = gcp.kms.SecretCiphertext("myPassword",
-            crypto_key=cryptokey.id,
-            plaintext="my-secret-password")
-        instance = gcp.compute.Instance("instance",
-            machine_type="e2-medium",
-            zone="us-central1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-11",
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-            )],
-            metadata={
-                "password": my_password.ciphertext,
-            })
-        ```
 
         ## Import
 
@@ -284,35 +271,6 @@ class SecretCiphertext(pulumi.CustomResource):
         > **Warning:** All arguments including `plaintext` and `additional_authenticated_data` will be stored in the raw state as plain-text.
 
         ## Example Usage
-        ### Kms Secret Ciphertext Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        keyring = gcp.kms.KeyRing("keyring", location="global")
-        cryptokey = gcp.kms.CryptoKey("cryptokey",
-            key_ring=keyring.id,
-            rotation_period="100000s")
-        my_password = gcp.kms.SecretCiphertext("myPassword",
-            crypto_key=cryptokey.id,
-            plaintext="my-secret-password")
-        instance = gcp.compute.Instance("instance",
-            machine_type="e2-medium",
-            zone="us-central1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-11",
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-            )],
-            metadata={
-                "password": my_password.ciphertext,
-            })
-        ```
 
         ## Import
 

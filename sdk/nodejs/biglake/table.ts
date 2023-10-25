@@ -16,59 +16,6 @@ import * as utilities from "../utilities";
  *     * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_tables)
  *
  * ## Example Usage
- * ### Biglake Table
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const catalog = new gcp.biglake.Catalog("catalog", {location: "US"});
- * const bucket = new gcp.storage.Bucket("bucket", {
- *     location: "US",
- *     forceDestroy: true,
- *     uniformBucketLevelAccess: true,
- * });
- * const metadataFolder = new gcp.storage.BucketObject("metadataFolder", {
- *     content: " ",
- *     bucket: bucket.name,
- * });
- * const dataFolder = new gcp.storage.BucketObject("dataFolder", {
- *     content: " ",
- *     bucket: bucket.name,
- * });
- * const database = new gcp.biglake.Database("database", {
- *     catalog: catalog.id,
- *     type: "HIVE",
- *     hiveOptions: {
- *         locationUri: pulumi.interpolate`gs://${bucket.name}/${metadataFolder.name}`,
- *         parameters: {
- *             owner: "Alex",
- *         },
- *     },
- * });
- * const table = new gcp.biglake.Table("table", {
- *     database: database.id,
- *     type: "HIVE",
- *     hiveOptions: {
- *         tableType: "MANAGED_TABLE",
- *         storageDescriptor: {
- *             locationUri: pulumi.interpolate`gs://${bucket.name}/${dataFolder.name}`,
- *             inputFormat: "org.apache.hadoop.mapred.SequenceFileInputFormat",
- *             outputFormat: "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
- *         },
- *         parameters: {
- *             "spark.sql.create.version": "3.1.3",
- *             "spark.sql.sources.schema.numParts": "1",
- *             transient_lastDdlTime: "1680894197",
- *             "spark.sql.partitionProvider": "catalog",
- *             owner: "John Doe",
- *             "spark.sql.sources.schema.part.0": "{\"type\":\"struct\",\"fields\":[{\"name\":\"id\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}},{\"name\":\"name\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}},{\"name\":\"age\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}}]}",
- *             "spark.sql.sources.provider": "iceberg",
- *             provider: "iceberg",
- *         },
- *     },
- * });
- * ```
  *
  * ## Import
  *

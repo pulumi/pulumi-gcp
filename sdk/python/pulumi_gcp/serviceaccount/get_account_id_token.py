@@ -113,22 +113,6 @@ def get_account_id_token(delegates: Optional[Sequence[str]] = None,
 
       Note: to use the following, you must grant `target_service_account` the
       `roles/iam.serviceAccountTokenCreator` role on itself.
-    ### Invoking Cloud Run Endpoint
-
-      The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-    import pulumi_http as http
-
-    oidc = gcp.serviceAccount.get_account_id_token(target_audience="https://your.cloud.run.app/")
-    cloudrun = http.get_http(url="https://your.cloud.run.app/",
-        request_headers={
-            "Authorization": f"Bearer {oidc.id_token}",
-        })
-    pulumi.export("cloudRunResponse", cloudrun.body)
-    ```
 
 
     :param Sequence[str] delegates: Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.   Used only when using impersonation mode.
@@ -175,22 +159,6 @@ def get_account_id_token_output(delegates: Optional[pulumi.Input[Optional[Sequen
 
       Note: to use the following, you must grant `target_service_account` the
       `roles/iam.serviceAccountTokenCreator` role on itself.
-    ### Invoking Cloud Run Endpoint
-
-      The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-    import pulumi_http as http
-
-    oidc = gcp.serviceAccount.get_account_id_token(target_audience="https://your.cloud.run.app/")
-    cloudrun = http.get_http(url="https://your.cloud.run.app/",
-        request_headers={
-            "Authorization": f"Bearer {oidc.id_token}",
-        })
-    pulumi.export("cloudRunResponse", cloudrun.body)
-    ```
 
 
     :param Sequence[str] delegates: Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.   Used only when using impersonation mode.

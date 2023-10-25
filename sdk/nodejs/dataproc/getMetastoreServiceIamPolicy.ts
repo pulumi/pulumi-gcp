@@ -6,19 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for service
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.dataproc.getMetastoreServiceIamPolicy({
- *     project: google_dataproc_metastore_service["default"].project,
- *     location: google_dataproc_metastore_service["default"].location,
- *     serviceId: google_dataproc_metastore_service["default"].service_id,
- * });
- * ```
  */
 export function getMetastoreServiceIamPolicy(args: GetMetastoreServiceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetMetastoreServiceIamPolicyResult> {
 
@@ -71,19 +58,6 @@ export interface GetMetastoreServiceIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for service
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.dataproc.getMetastoreServiceIamPolicy({
- *     project: google_dataproc_metastore_service["default"].project,
- *     location: google_dataproc_metastore_service["default"].location,
- *     serviceId: google_dataproc_metastore_service["default"].service_id,
- * });
- * ```
  */
 export function getMetastoreServiceIamPolicyOutput(args: GetMetastoreServiceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetastoreServiceIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getMetastoreServiceIamPolicy(a, opts))

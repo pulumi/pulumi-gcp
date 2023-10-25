@@ -19,43 +19,6 @@ import (
 // the datasource. A region can have a different set of supported versions than
 // its component zones, and not all zones in a region are guaranteed to
 // support the same version.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			central1b, err := container.GetEngineVersions(ctx, &container.GetEngineVersionsArgs{
-//				Location:      pulumi.StringRef("us-central1-b"),
-//				VersionPrefix: pulumi.StringRef("1.12."),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = container.NewCluster(ctx, "foo", &container.ClusterArgs{
-//				Location:         pulumi.String("us-central1-b"),
-//				NodeVersion:      *pulumi.String(central1b.LatestNodeVersion),
-//				InitialNodeCount: pulumi.Int(1),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("stableChannelDefaultVersion", central1b.ReleaseChannelDefaultVersion.STABLE)
-//			ctx.Export("stableChannelLatestVersion", central1b.ReleaseChannelLatestVersion.STABLE)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetEngineVersions(ctx *pulumi.Context, args *GetEngineVersionsArgs, opts ...pulumi.InvokeOption) (*GetEngineVersionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEngineVersionsResult

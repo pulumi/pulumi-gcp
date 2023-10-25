@@ -57,7 +57,7 @@ class AppProfileArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_profile_id: pulumi.Input[str],
+             app_profile_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              ignore_warnings: Optional[pulumi.Input[bool]] = None,
              instance: Optional[pulumi.Input[str]] = None,
@@ -65,7 +65,21 @@ class AppProfileArgs:
              multi_cluster_routing_use_any: Optional[pulumi.Input[bool]] = None,
              project: Optional[pulumi.Input[str]] = None,
              single_cluster_routing: Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if app_profile_id is None and 'appProfileId' in kwargs:
+            app_profile_id = kwargs['appProfileId']
+        if app_profile_id is None:
+            raise TypeError("Missing 'app_profile_id' argument")
+        if ignore_warnings is None and 'ignoreWarnings' in kwargs:
+            ignore_warnings = kwargs['ignoreWarnings']
+        if multi_cluster_routing_cluster_ids is None and 'multiClusterRoutingClusterIds' in kwargs:
+            multi_cluster_routing_cluster_ids = kwargs['multiClusterRoutingClusterIds']
+        if multi_cluster_routing_use_any is None and 'multiClusterRoutingUseAny' in kwargs:
+            multi_cluster_routing_use_any = kwargs['multiClusterRoutingUseAny']
+        if single_cluster_routing is None and 'singleClusterRouting' in kwargs:
+            single_cluster_routing = kwargs['singleClusterRouting']
+
         _setter("app_profile_id", app_profile_id)
         if description is not None:
             _setter("description", description)
@@ -243,7 +257,19 @@ class _AppProfileState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              single_cluster_routing: Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if app_profile_id is None and 'appProfileId' in kwargs:
+            app_profile_id = kwargs['appProfileId']
+        if ignore_warnings is None and 'ignoreWarnings' in kwargs:
+            ignore_warnings = kwargs['ignoreWarnings']
+        if multi_cluster_routing_cluster_ids is None and 'multiClusterRoutingClusterIds' in kwargs:
+            multi_cluster_routing_cluster_ids = kwargs['multiClusterRoutingClusterIds']
+        if multi_cluster_routing_use_any is None and 'multiClusterRoutingUseAny' in kwargs:
+            multi_cluster_routing_use_any = kwargs['multiClusterRoutingUseAny']
+        if single_cluster_routing is None and 'singleClusterRouting' in kwargs:
+            single_cluster_routing = kwargs['singleClusterRouting']
+
         if app_profile_id is not None:
             _setter("app_profile_id", app_profile_id)
         if description is not None:
@@ -402,101 +428,6 @@ class AppProfile(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.appProfiles)
 
         ## Example Usage
-        ### Bigtable App Profile Anycluster
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.bigtable.Instance("instance",
-            clusters=[
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="cluster-1",
-                    zone="us-central1-a",
-                    num_nodes=3,
-                    storage_type="HDD",
-                ),
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="cluster-2",
-                    zone="us-central1-b",
-                    num_nodes=3,
-                    storage_type="HDD",
-                ),
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="cluster-3",
-                    zone="us-central1-c",
-                    num_nodes=3,
-                    storage_type="HDD",
-                ),
-            ],
-            deletion_protection=True)
-        ap = gcp.bigquery.AppProfile("ap",
-            instance=instance.name,
-            app_profile_id="bt-profile",
-            multi_cluster_routing_use_any=True,
-            ignore_warnings=True)
-        ```
-        ### Bigtable App Profile Singlecluster
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.bigtable.Instance("instance",
-            clusters=[gcp.bigtable.InstanceClusterArgs(
-                cluster_id="cluster-1",
-                zone="us-central1-b",
-                num_nodes=3,
-                storage_type="HDD",
-            )],
-            deletion_protection=True)
-        ap = gcp.bigquery.AppProfile("ap",
-            instance=instance.name,
-            app_profile_id="bt-profile",
-            single_cluster_routing=gcp.bigquery.AppProfileSingleClusterRoutingArgs(
-                cluster_id="cluster-1",
-                allow_transactional_writes=True,
-            ),
-            ignore_warnings=True)
-        ```
-        ### Bigtable App Profile Multicluster
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.bigtable.Instance("instance",
-            clusters=[
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="cluster-1",
-                    zone="us-central1-a",
-                    num_nodes=3,
-                    storage_type="HDD",
-                ),
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="cluster-2",
-                    zone="us-central1-b",
-                    num_nodes=3,
-                    storage_type="HDD",
-                ),
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="cluster-3",
-                    zone="us-central1-c",
-                    num_nodes=3,
-                    storage_type="HDD",
-                ),
-            ],
-            deletion_protection=True)
-        ap = gcp.bigquery.AppProfile("ap",
-            instance=instance.name,
-            app_profile_id="bt-profile",
-            multi_cluster_routing_use_any=True,
-            multi_cluster_routing_cluster_ids=[
-                "cluster-1",
-                "cluster-2",
-            ],
-            ignore_warnings=True)
-        ```
 
         ## Import
 
@@ -547,101 +478,6 @@ class AppProfile(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.appProfiles)
 
         ## Example Usage
-        ### Bigtable App Profile Anycluster
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.bigtable.Instance("instance",
-            clusters=[
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="cluster-1",
-                    zone="us-central1-a",
-                    num_nodes=3,
-                    storage_type="HDD",
-                ),
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="cluster-2",
-                    zone="us-central1-b",
-                    num_nodes=3,
-                    storage_type="HDD",
-                ),
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="cluster-3",
-                    zone="us-central1-c",
-                    num_nodes=3,
-                    storage_type="HDD",
-                ),
-            ],
-            deletion_protection=True)
-        ap = gcp.bigquery.AppProfile("ap",
-            instance=instance.name,
-            app_profile_id="bt-profile",
-            multi_cluster_routing_use_any=True,
-            ignore_warnings=True)
-        ```
-        ### Bigtable App Profile Singlecluster
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.bigtable.Instance("instance",
-            clusters=[gcp.bigtable.InstanceClusterArgs(
-                cluster_id="cluster-1",
-                zone="us-central1-b",
-                num_nodes=3,
-                storage_type="HDD",
-            )],
-            deletion_protection=True)
-        ap = gcp.bigquery.AppProfile("ap",
-            instance=instance.name,
-            app_profile_id="bt-profile",
-            single_cluster_routing=gcp.bigquery.AppProfileSingleClusterRoutingArgs(
-                cluster_id="cluster-1",
-                allow_transactional_writes=True,
-            ),
-            ignore_warnings=True)
-        ```
-        ### Bigtable App Profile Multicluster
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.bigtable.Instance("instance",
-            clusters=[
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="cluster-1",
-                    zone="us-central1-a",
-                    num_nodes=3,
-                    storage_type="HDD",
-                ),
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="cluster-2",
-                    zone="us-central1-b",
-                    num_nodes=3,
-                    storage_type="HDD",
-                ),
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="cluster-3",
-                    zone="us-central1-c",
-                    num_nodes=3,
-                    storage_type="HDD",
-                ),
-            ],
-            deletion_protection=True)
-        ap = gcp.bigquery.AppProfile("ap",
-            instance=instance.name,
-            app_profile_id="bt-profile",
-            multi_cluster_routing_use_any=True,
-            multi_cluster_routing_cluster_ids=[
-                "cluster-1",
-                "cluster-2",
-            ],
-            ignore_warnings=True)
-        ```
 
         ## Import
 
@@ -704,11 +540,7 @@ class AppProfile(pulumi.CustomResource):
             __props__.__dict__["multi_cluster_routing_cluster_ids"] = multi_cluster_routing_cluster_ids
             __props__.__dict__["multi_cluster_routing_use_any"] = multi_cluster_routing_use_any
             __props__.__dict__["project"] = project
-            if single_cluster_routing is not None and not isinstance(single_cluster_routing, AppProfileSingleClusterRoutingArgs):
-                single_cluster_routing = single_cluster_routing or {}
-                def _setter(key, value):
-                    single_cluster_routing[key] = value
-                AppProfileSingleClusterRoutingArgs._configure(_setter, **single_cluster_routing)
+            single_cluster_routing = _utilities.configure(single_cluster_routing, AppProfileSingleClusterRoutingArgs, True)
             __props__.__dict__["single_cluster_routing"] = single_cluster_routing
             __props__.__dict__["name"] = None
         super(AppProfile, __self__).__init__(

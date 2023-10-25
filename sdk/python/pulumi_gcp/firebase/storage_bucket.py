@@ -32,7 +32,11 @@ class StorageBucketArgs:
              _setter: Callable[[Any, Any], None],
              bucket_id: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bucket_id is None and 'bucketId' in kwargs:
+            bucket_id = kwargs['bucketId']
+
         if bucket_id is not None:
             _setter("bucket_id", bucket_id)
         if project is not None:
@@ -89,7 +93,11 @@ class _StorageBucketState:
              bucket_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bucket_id is None and 'bucketId' in kwargs:
+            bucket_id = kwargs['bucketId']
+
         if bucket_id is not None:
             _setter("bucket_id", bucket_id)
         if name is not None:
@@ -145,21 +153,6 @@ class StorageBucket(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Firebasestorage Bucket Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_bucket = gcp.storage.Bucket("defaultBucket",
-            location="US",
-            uniform_bucket_level_access=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_storage_bucket = gcp.firebase.StorageBucket("defaultStorageBucket",
-            project="my-project-name",
-            bucket_id=default_bucket.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -191,21 +184,6 @@ class StorageBucket(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Firebasestorage Bucket Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_bucket = gcp.storage.Bucket("defaultBucket",
-            location="US",
-            uniform_bucket_level_access=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_storage_bucket = gcp.firebase.StorageBucket("defaultStorageBucket",
-            project="my-project-name",
-            bucket_id=default_bucket.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 

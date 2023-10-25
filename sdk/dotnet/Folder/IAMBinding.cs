@@ -21,35 +21,6 @@ namespace Pulumi.Gcp.Folder
     ///     Use `pulumi import` and inspect the output to ensure
     ///     your existing members are preserved.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var department1 = new Gcp.Organizations.Folder("department1", new()
-    ///     {
-    ///         DisplayName = "Department 1",
-    ///         Parent = "organizations/1234567",
-    ///     });
-    /// 
-    ///     var admin = new Gcp.Folder.IAMBinding("admin", new()
-    ///     {
-    ///         Folder = department1.Name,
-    ///         Role = "roles/editor",
-    ///         Members = new[]
-    ///         {
-    ///             "user:alice@gmail.com",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// IAM binding imports use space-delimited identifiers; first the resource in question and then the role.

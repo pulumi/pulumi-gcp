@@ -71,8 +71,8 @@ class ExtensionsInstanceConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             extension_ref: pulumi.Input[str],
-             params: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+             extension_ref: Optional[pulumi.Input[str]] = None,
+             params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              allowed_event_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              create_time: Optional[pulumi.Input[str]] = None,
              eventarc_channel: Optional[pulumi.Input[str]] = None,
@@ -80,7 +80,27 @@ class ExtensionsInstanceConfigArgs:
              name: Optional[pulumi.Input[str]] = None,
              populated_postinstall_content: Optional[pulumi.Input[str]] = None,
              system_params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if extension_ref is None and 'extensionRef' in kwargs:
+            extension_ref = kwargs['extensionRef']
+        if extension_ref is None:
+            raise TypeError("Missing 'extension_ref' argument")
+        if params is None:
+            raise TypeError("Missing 'params' argument")
+        if allowed_event_types is None and 'allowedEventTypes' in kwargs:
+            allowed_event_types = kwargs['allowedEventTypes']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if eventarc_channel is None and 'eventarcChannel' in kwargs:
+            eventarc_channel = kwargs['eventarcChannel']
+        if extension_version is None and 'extensionVersion' in kwargs:
+            extension_version = kwargs['extensionVersion']
+        if populated_postinstall_content is None and 'populatedPostinstallContent' in kwargs:
+            populated_postinstall_content = kwargs['populatedPostinstallContent']
+        if system_params is None and 'systemParams' in kwargs:
+            system_params = kwargs['systemParams']
+
         _setter("extension_ref", extension_ref)
         _setter("params", params)
         if allowed_event_types is not None:
@@ -242,7 +262,9 @@ class ExtensionsInstanceErrorStatusArgs:
              code: Optional[pulumi.Input[int]] = None,
              details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
              message: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if code is not None:
             _setter("code", code)
         if details is not None:
@@ -312,7 +334,15 @@ class ExtensionsInstanceRuntimeDataArgs:
              fatal_error: Optional[pulumi.Input['ExtensionsInstanceRuntimeDataFatalErrorArgs']] = None,
              processing_state: Optional[pulumi.Input['ExtensionsInstanceRuntimeDataProcessingStateArgs']] = None,
              state_update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if fatal_error is None and 'fatalError' in kwargs:
+            fatal_error = kwargs['fatalError']
+        if processing_state is None and 'processingState' in kwargs:
+            processing_state = kwargs['processingState']
+        if state_update_time is None and 'stateUpdateTime' in kwargs:
+            state_update_time = kwargs['stateUpdateTime']
+
         if fatal_error is not None:
             _setter("fatal_error", fatal_error)
         if processing_state is not None:
@@ -376,7 +406,11 @@ class ExtensionsInstanceRuntimeDataFatalErrorArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              error_message: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if error_message is None and 'errorMessage' in kwargs:
+            error_message = kwargs['errorMessage']
+
         if error_message is not None:
             _setter("error_message", error_message)
 
@@ -417,7 +451,11 @@ class ExtensionsInstanceRuntimeDataProcessingStateArgs:
              _setter: Callable[[Any, Any], None],
              detail_message: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if detail_message is None and 'detailMessage' in kwargs:
+            detail_message = kwargs['detailMessage']
+
         if detail_message is not None:
             _setter("detail_message", detail_message)
         if state is not None:
@@ -474,7 +512,9 @@ class HostingVersionConfigArgs:
              _setter: Callable[[Any, Any], None],
              redirects: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRedirectArgs']]]] = None,
              rewrites: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRewriteArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if redirects is not None:
             _setter("redirects", redirects)
         if rewrites is not None:
@@ -520,9 +560,6 @@ class HostingVersionConfigRedirectArgs:
         :param pulumi.Input[str] location: The value to put in the HTTP location header of the response.
                The location can contain capture group values from the pattern using a : prefix to identify
                the segment and an optional * to capture the rest of the URL. For example:
-               ```python
-               import pulumi
-               ```
         :param pulumi.Input[int] status_code: The status HTTP code to return in the response. It must be a valid 3xx status code.
         :param pulumi.Input[str] glob: The user-supplied glob to match against the request URL path.
         :param pulumi.Input[str] regex: The user-supplied RE2 regular expression to match against the request URL path.
@@ -537,11 +574,19 @@ class HostingVersionConfigRedirectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
-             status_code: pulumi.Input[int],
+             location: Optional[pulumi.Input[str]] = None,
+             status_code: Optional[pulumi.Input[int]] = None,
              glob: Optional[pulumi.Input[str]] = None,
              regex: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if status_code is None and 'statusCode' in kwargs:
+            status_code = kwargs['statusCode']
+        if status_code is None:
+            raise TypeError("Missing 'status_code' argument")
+
         _setter("location", location)
         _setter("status_code", status_code)
         if glob is not None:
@@ -556,9 +601,6 @@ class HostingVersionConfigRedirectArgs:
         The value to put in the HTTP location header of the response.
         The location can contain capture group values from the pattern using a : prefix to identify
         the segment and an optional * to capture the rest of the URL. For example:
-        ```python
-        import pulumi
-        ```
         """
         return pulumi.get(self, "location")
 
@@ -631,7 +673,9 @@ class HostingVersionConfigRewriteArgs:
              glob: Optional[pulumi.Input[str]] = None,
              regex: Optional[pulumi.Input[str]] = None,
              run: Optional[pulumi.Input['HostingVersionConfigRewriteRunArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if function is not None:
             _setter("function", function)
         if glob is not None:
@@ -708,9 +752,15 @@ class HostingVersionConfigRewriteRunArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_id: pulumi.Input[str],
+             service_id: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if service_id is None:
+            raise TypeError("Missing 'service_id' argument")
+
         _setter("service_id", service_id)
         if region is not None:
             _setter("region", region)

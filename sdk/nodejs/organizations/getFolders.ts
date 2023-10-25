@@ -12,19 +12,6 @@ import * as utilities from "../utilities";
  * for more details.
  *
  * ## Example Usage
- * ### Searching For Folders At The Root Of An Org
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const my-org-folders = gcp.organizations.getFolders({
- *     parentId: `organizations/${_var.organization_id}`,
- * });
- * const first-folder = my_org_folders.then(my_org_folders => gcp.organizations.getFolder({
- *     folder: my_org_folders.folders?.[0]?.name,
- * }));
- * ```
  */
 export function getFolders(args: GetFoldersArgs, opts?: pulumi.InvokeOptions): Promise<GetFoldersResult> {
 
@@ -64,19 +51,6 @@ export interface GetFoldersResult {
  * for more details.
  *
  * ## Example Usage
- * ### Searching For Folders At The Root Of An Org
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const my-org-folders = gcp.organizations.getFolders({
- *     parentId: `organizations/${_var.organization_id}`,
- * });
- * const first-folder = my_org_folders.then(my_org_folders => gcp.organizations.getFolder({
- *     folder: my_org_folders.folders?.[0]?.name,
- * }));
- * ```
  */
 export function getFoldersOutput(args: GetFoldersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFoldersResult> {
     return pulumi.output(args).apply((a: any) => getFolders(a, opts))

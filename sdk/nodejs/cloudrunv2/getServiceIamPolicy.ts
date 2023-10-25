@@ -6,19 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for service
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.cloudrunv2.getServiceIamPolicy({
- *     project: google_cloud_run_v2_service["default"].project,
- *     location: google_cloud_run_v2_service["default"].location,
- *     name: google_cloud_run_v2_service["default"].name,
- * });
- * ```
  */
 export function getServiceIamPolicy(args: GetServiceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceIamPolicyResult> {
 
@@ -72,19 +59,6 @@ export interface GetServiceIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for service
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.cloudrunv2.getServiceIamPolicy({
- *     project: google_cloud_run_v2_service["default"].project,
- *     location: google_cloud_run_v2_service["default"].location,
- *     name: google_cloud_run_v2_service["default"].name,
- * });
- * ```
  */
 export function getServiceIamPolicyOutput(args: GetServiceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getServiceIamPolicy(a, opts))

@@ -46,10 +46,20 @@ class DnsManagedZoneIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             managed_zone: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
+             managed_zone: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if managed_zone is None and 'managedZone' in kwargs:
+            managed_zone = kwargs['managedZone']
+        if managed_zone is None:
+            raise TypeError("Missing 'managed_zone' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("managed_zone", managed_zone)
         _setter("policy_data", policy_data)
         if project is not None:
@@ -148,7 +158,13 @@ class _DnsManagedZoneIamPolicyState:
              managed_zone: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if managed_zone is None and 'managedZone' in kwargs:
+            managed_zone = kwargs['managedZone']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if etag is not None:
             _setter("etag", etag)
         if managed_zone is not None:
@@ -245,48 +261,6 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
 
         > **Note:** `dns.DnsManagedZoneIamBinding` resources **can be** used in conjunction with `dns.DnsManagedZoneIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dns\\_managed\\_zone\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.dns.DnsManagedZoneIamPolicy("policy",
-            project=google_dns_managed_zone["default"]["project"],
-            managed_zone=google_dns_managed_zone["default"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_dns\\_managed\\_zone\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.dns.DnsManagedZoneIamBinding("binding",
-            project=google_dns_managed_zone["default"]["project"],
-            managed_zone=google_dns_managed_zone["default"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_dns\\_managed\\_zone\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.dns.DnsManagedZoneIamMember("member",
-            project=google_dns_managed_zone["default"]["project"],
-            managed_zone=google_dns_managed_zone["default"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/managedZones/{{managed_zone}} * {{project}}/{{managed_zone}} * {{managed_zone}} Any variables not passed in the import command will be taken from the provider configuration. Cloud DNS managedzone IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -351,48 +325,6 @@ class DnsManagedZoneIamPolicy(pulumi.CustomResource):
         > **Note:** `dns.DnsManagedZoneIamPolicy` **cannot** be used in conjunction with `dns.DnsManagedZoneIamBinding` and `dns.DnsManagedZoneIamMember` or they will fight over what your policy should be.
 
         > **Note:** `dns.DnsManagedZoneIamBinding` resources **can be** used in conjunction with `dns.DnsManagedZoneIamMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\\_dns\\_managed\\_zone\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.dns.DnsManagedZoneIamPolicy("policy",
-            project=google_dns_managed_zone["default"]["project"],
-            managed_zone=google_dns_managed_zone["default"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_dns\\_managed\\_zone\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.dns.DnsManagedZoneIamBinding("binding",
-            project=google_dns_managed_zone["default"]["project"],
-            managed_zone=google_dns_managed_zone["default"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_dns\\_managed\\_zone\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.dns.DnsManagedZoneIamMember("member",
-            project=google_dns_managed_zone["default"]["project"],
-            managed_zone=google_dns_managed_zone["default"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
 
         ## Import
 

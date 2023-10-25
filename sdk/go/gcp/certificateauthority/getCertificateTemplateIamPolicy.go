@@ -13,32 +13,6 @@ import (
 )
 
 // Retrieves the current IAM policy data for certificatetemplate
-//
-// ## example
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificateauthority"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := certificateauthority.LookupCertificateTemplateIamPolicy(ctx, &certificateauthority.LookupCertificateTemplateIamPolicyArgs{
-//				CertificateTemplate: google_privateca_certificate_template.Default.Id,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupCertificateTemplateIamPolicy(ctx *pulumi.Context, args *LookupCertificateTemplateIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupCertificateTemplateIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCertificateTemplateIamPolicyResult

@@ -52,12 +52,22 @@ class ScopeIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
-             scope_id: pulumi.Input[str],
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             scope_id: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['ScopeIamMemberConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if scope_id is None and 'scopeId' in kwargs:
+            scope_id = kwargs['scopeId']
+        if scope_id is None:
+            raise TypeError("Missing 'scope_id' argument")
+
         _setter("member", member)
         _setter("role", role)
         _setter("scope_id", scope_id)
@@ -181,7 +191,11 @@ class _ScopeIamMemberState:
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              scope_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if scope_id is None and 'scopeId' in kwargs:
+            scope_id = kwargs['scopeId']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -300,48 +314,6 @@ class ScopeIamMember(pulumi.CustomResource):
 
         > **Note:** `gkehub.ScopeIamBinding` resources **can be** used in conjunction with `gkehub.ScopeIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_gke\\_hub\\_scope\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.gkehub.ScopeIamPolicy("policy",
-            project=google_gke_hub_scope["scope"]["project"],
-            scope_id=google_gke_hub_scope["scope"]["scope_id"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_gke\\_hub\\_scope\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.gkehub.ScopeIamBinding("binding",
-            project=google_gke_hub_scope["scope"]["project"],
-            scope_id=google_gke_hub_scope["scope"]["scope_id"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_gke\\_hub\\_scope\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.gkehub.ScopeIamMember("member",
-            project=google_gke_hub_scope["scope"]["project"],
-            scope_id=google_gke_hub_scope["scope"]["scope_id"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/global/scopes/{{scope_id}} * {{project}}/{{scope_id}} * {{scope_id}} Any variables not passed in the import command will be taken from the provider configuration. GKEHub scope IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -407,48 +379,6 @@ class ScopeIamMember(pulumi.CustomResource):
 
         > **Note:** `gkehub.ScopeIamBinding` resources **can be** used in conjunction with `gkehub.ScopeIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_gke\\_hub\\_scope\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.gkehub.ScopeIamPolicy("policy",
-            project=google_gke_hub_scope["scope"]["project"],
-            scope_id=google_gke_hub_scope["scope"]["scope_id"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_gke\\_hub\\_scope\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.gkehub.ScopeIamBinding("binding",
-            project=google_gke_hub_scope["scope"]["project"],
-            scope_id=google_gke_hub_scope["scope"]["scope_id"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_gke\\_hub\\_scope\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.gkehub.ScopeIamMember("member",
-            project=google_gke_hub_scope["scope"]["project"],
-            scope_id=google_gke_hub_scope["scope"]["scope_id"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/global/scopes/{{scope_id}} * {{project}}/{{scope_id}} * {{scope_id}} Any variables not passed in the import command will be taken from the provider configuration. GKEHub scope IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -506,11 +436,7 @@ class ScopeIamMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ScopeIamMemberArgs.__new__(ScopeIamMemberArgs)
 
-            if condition is not None and not isinstance(condition, ScopeIamMemberConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                ScopeIamMemberConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, ScopeIamMemberConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")

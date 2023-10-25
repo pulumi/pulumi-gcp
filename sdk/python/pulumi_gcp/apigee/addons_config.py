@@ -35,9 +35,15 @@ class AddonsConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             org: pulumi.Input[str],
+             org: Optional[pulumi.Input[str]] = None,
              addons_config: Optional[pulumi.Input['AddonsConfigAddonsConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if org is None:
+            raise TypeError("Missing 'org' argument")
+        if addons_config is None and 'addonsConfig' in kwargs:
+            addons_config = kwargs['addonsConfig']
+
         _setter("org", org)
         if addons_config is not None:
             _setter("addons_config", addons_config)
@@ -95,7 +101,11 @@ class _AddonsConfigState:
              _setter: Callable[[Any, Any], None],
              addons_config: Optional[pulumi.Input['AddonsConfigAddonsConfigArgs']] = None,
              org: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if addons_config is None and 'addonsConfig' in kwargs:
+            addons_config = kwargs['addonsConfig']
+
         if addons_config is not None:
             _setter("addons_config", addons_config)
         if org is not None:
@@ -148,80 +158,6 @@ class AddonsConfig(pulumi.CustomResource):
             * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
 
         ## Example Usage
-        ### Apigee Addons Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        test_organization = gcp.apigee.AddonsConfig("testOrganization",
-            addons_config=gcp.apigee.AddonsConfigAddonsConfigArgs(
-                api_security_config=gcp.apigee.AddonsConfigAddonsConfigApiSecurityConfigArgs(
-                    enabled=True,
-                ),
-                monetization_config=gcp.apigee.AddonsConfigAddonsConfigMonetizationConfigArgs(
-                    enabled=True,
-                ),
-            ),
-            org="test_organization")
-        ```
-        ### Apigee Addons Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        current = gcp.organizations.get_client_config()
-        apigee = gcp.projects.Service("apigee",
-            project=current.project,
-            service="apigee.googleapis.com")
-        compute = gcp.projects.Service("compute",
-            project=current.project,
-            service="compute.googleapis.com")
-        servicenetworking = gcp.projects.Service("servicenetworking",
-            project=current.project,
-            service="servicenetworking.googleapis.com")
-        apigee_network = gcp.compute.Network("apigeeNetwork", project=current.project,
-        opts=pulumi.ResourceOptions(depends_on=[compute]))
-        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=apigee_network.id,
-            project=current.project)
-        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
-            network=apigee_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[apigee_range.name])
-        org = gcp.apigee.Organization("org",
-            analytics_region="us-central1",
-            project_id=current.project,
-            authorized_network=apigee_network.id,
-            billing_type="EVALUATION",
-            opts=pulumi.ResourceOptions(depends_on=[
-                    apigee_vpc_connection,
-                    apigee,
-                ]))
-        test_organization = gcp.apigee.AddonsConfig("testOrganization",
-            org=org.name,
-            addons_config=gcp.apigee.AddonsConfigAddonsConfigArgs(
-                integration_config=gcp.apigee.AddonsConfigAddonsConfigIntegrationConfigArgs(
-                    enabled=True,
-                ),
-                api_security_config=gcp.apigee.AddonsConfigAddonsConfigApiSecurityConfigArgs(
-                    enabled=True,
-                ),
-                connectors_platform_config=gcp.apigee.AddonsConfigAddonsConfigConnectorsPlatformConfigArgs(
-                    enabled=True,
-                ),
-                monetization_config=gcp.apigee.AddonsConfigAddonsConfigMonetizationConfigArgs(
-                    enabled=True,
-                ),
-                advanced_api_ops_config=gcp.apigee.AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs(
-                    enabled=True,
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -260,80 +196,6 @@ class AddonsConfig(pulumi.CustomResource):
             * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
 
         ## Example Usage
-        ### Apigee Addons Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        test_organization = gcp.apigee.AddonsConfig("testOrganization",
-            addons_config=gcp.apigee.AddonsConfigAddonsConfigArgs(
-                api_security_config=gcp.apigee.AddonsConfigAddonsConfigApiSecurityConfigArgs(
-                    enabled=True,
-                ),
-                monetization_config=gcp.apigee.AddonsConfigAddonsConfigMonetizationConfigArgs(
-                    enabled=True,
-                ),
-            ),
-            org="test_organization")
-        ```
-        ### Apigee Addons Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        current = gcp.organizations.get_client_config()
-        apigee = gcp.projects.Service("apigee",
-            project=current.project,
-            service="apigee.googleapis.com")
-        compute = gcp.projects.Service("compute",
-            project=current.project,
-            service="compute.googleapis.com")
-        servicenetworking = gcp.projects.Service("servicenetworking",
-            project=current.project,
-            service="servicenetworking.googleapis.com")
-        apigee_network = gcp.compute.Network("apigeeNetwork", project=current.project,
-        opts=pulumi.ResourceOptions(depends_on=[compute]))
-        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=apigee_network.id,
-            project=current.project)
-        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
-            network=apigee_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[apigee_range.name])
-        org = gcp.apigee.Organization("org",
-            analytics_region="us-central1",
-            project_id=current.project,
-            authorized_network=apigee_network.id,
-            billing_type="EVALUATION",
-            opts=pulumi.ResourceOptions(depends_on=[
-                    apigee_vpc_connection,
-                    apigee,
-                ]))
-        test_organization = gcp.apigee.AddonsConfig("testOrganization",
-            org=org.name,
-            addons_config=gcp.apigee.AddonsConfigAddonsConfigArgs(
-                integration_config=gcp.apigee.AddonsConfigAddonsConfigIntegrationConfigArgs(
-                    enabled=True,
-                ),
-                api_security_config=gcp.apigee.AddonsConfigAddonsConfigApiSecurityConfigArgs(
-                    enabled=True,
-                ),
-                connectors_platform_config=gcp.apigee.AddonsConfigAddonsConfigConnectorsPlatformConfigArgs(
-                    enabled=True,
-                ),
-                monetization_config=gcp.apigee.AddonsConfigAddonsConfigMonetizationConfigArgs(
-                    enabled=True,
-                ),
-                advanced_api_ops_config=gcp.apigee.AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs(
-                    enabled=True,
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -377,11 +239,7 @@ class AddonsConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AddonsConfigArgs.__new__(AddonsConfigArgs)
 
-            if addons_config is not None and not isinstance(addons_config, AddonsConfigAddonsConfigArgs):
-                addons_config = addons_config or {}
-                def _setter(key, value):
-                    addons_config[key] = value
-                AddonsConfigAddonsConfigArgs._configure(_setter, **addons_config)
+            addons_config = _utilities.configure(addons_config, AddonsConfigAddonsConfigArgs, True)
             __props__.__dict__["addons_config"] = addons_config
             if org is None and not opts.urn:
                 raise TypeError("Missing required property 'org'")

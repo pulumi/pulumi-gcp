@@ -11,21 +11,6 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
  * and
  * [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const generic-regex = gcp.compute.getInstanceTemplate({
- *     filter: "name != generic-tpl-20200107",
- *     mostRecent: true,
- * });
- * const generic = gcp.compute.getInstanceTemplate({
- *     selfLinkUnique: "https://www.googleapis.com/compute/v1/projects/your-project-name/global/instanceTemplates/example-template-custom?uniqueId=1234",
- * });
- * ```
  */
 export function getInstanceTemplate(args?: GetInstanceTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTemplateResult> {
     args = args || {};
@@ -216,21 +201,6 @@ export interface GetInstanceTemplateResult {
  * [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
  * and
  * [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const generic-regex = gcp.compute.getInstanceTemplate({
- *     filter: "name != generic-tpl-20200107",
- *     mostRecent: true,
- * });
- * const generic = gcp.compute.getInstanceTemplate({
- *     selfLinkUnique: "https://www.googleapis.com/compute/v1/projects/your-project-name/global/instanceTemplates/example-template-custom?uniqueId=1234",
- * });
- * ```
  */
 export function getInstanceTemplateOutput(args?: GetInstanceTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTemplateResult> {
     return pulumi.output(args).apply((a: any) => getInstanceTemplate(a, opts))

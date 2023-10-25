@@ -27,33 +27,6 @@ import (
 //   - [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 //
 // ## Example Usage
-// ### Monitoring Mesh Istio Service
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := monitoring.GetMeshIstioService(ctx, &monitoring.GetMeshIstioServiceArgs{
-//				MeshUid:          "proj-573164786102",
-//				ServiceName:      "prometheus",
-//				ServiceNamespace: "istio-system",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetMeshIstioService(ctx *pulumi.Context, args *GetMeshIstioServiceArgs, opts ...pulumi.InvokeOption) (*GetMeshIstioServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMeshIstioServiceResult

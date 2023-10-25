@@ -93,15 +93,6 @@ def get_source_iam_policy(organization: Optional[str] = None,
     """
     Retrieves the current IAM policy data for source
 
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.securitycenter.get_source_iam_policy(source=google_scc_source["custom_source"]["name"])
-    ```
-
 
     :param str source: Used to find the parent resource to bind the IAM policy to
     """
@@ -125,15 +116,6 @@ def get_source_iam_policy_output(organization: Optional[pulumi.Input[str]] = Non
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSourceIamPolicyResult]:
     """
     Retrieves the current IAM policy data for source
-
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.securitycenter.get_source_iam_policy(source=google_scc_source["custom_source"]["name"])
-    ```
 
 
     :param str source: Used to find the parent resource to bind the IAM policy to

@@ -13,96 +13,12 @@ namespace Pulumi.Gcp.Tpu
     {
         /// <summary>
         /// Get runtime versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.runtimeVersions).
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var available = Gcp.Tpu.GetV2RuntimeVersions.Invoke();
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// {{% /example %}}
-        /// {{% example %}}
-        /// ### Configure Basic TPU VM With Available Version
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var available = Gcp.Tpu.GetV2RuntimeVersions.Invoke();
-        /// 
-        ///     var tpu = new Gcp.Tpu.V2Vm("tpu", new()
-        ///     {
-        ///         Zone = "us-central1-b",
-        ///         RuntimeVersion = available.Apply(getV2RuntimeVersionsResult =&gt; getV2RuntimeVersionsResult.Versions[0]),
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetV2RuntimeVersionsResult> InvokeAsync(GetV2RuntimeVersionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetV2RuntimeVersionsResult>("gcp:tpu/getV2RuntimeVersions:getV2RuntimeVersions", args ?? new GetV2RuntimeVersionsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get runtime versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.runtimeVersions).
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var available = Gcp.Tpu.GetV2RuntimeVersions.Invoke();
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// {{% /example %}}
-        /// {{% example %}}
-        /// ### Configure Basic TPU VM With Available Version
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var available = Gcp.Tpu.GetV2RuntimeVersions.Invoke();
-        /// 
-        ///     var tpu = new Gcp.Tpu.V2Vm("tpu", new()
-        ///     {
-        ///         Zone = "us-central1-b",
-        ///         RuntimeVersion = available.Apply(getV2RuntimeVersionsResult =&gt; getV2RuntimeVersionsResult.Versions[0]),
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetV2RuntimeVersionsResult> Invoke(GetV2RuntimeVersionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetV2RuntimeVersionsResult>("gcp:tpu/getV2RuntimeVersions:getV2RuntimeVersions", args ?? new GetV2RuntimeVersionsInvokeArgs(), options.WithDefaults());

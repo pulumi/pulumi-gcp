@@ -17,33 +17,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/monitoring/groups/)
  *
  * ## Example Usage
- * ### Monitoring Group Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const basic = new gcp.monitoring.Group("basic", {
- *     displayName: "tf-test MonitoringGroup",
- *     filter: "resource.metadata.region=\"europe-west2\"",
- * });
- * ```
- * ### Monitoring Group Subgroup
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const parent = new gcp.monitoring.Group("parent", {
- *     displayName: "tf-test MonitoringParentGroup",
- *     filter: "resource.metadata.region=\"europe-west2\"",
- * });
- * const subgroup = new gcp.monitoring.Group("subgroup", {
- *     displayName: "tf-test MonitoringSubGroup",
- *     filter: "resource.metadata.region=\"europe-west2\"",
- *     parentName: parent.name,
- * });
- * ```
  *
  * ## Import
  *

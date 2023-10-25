@@ -13,34 +13,6 @@ import (
 )
 
 // Retrieves the current IAM policy data for instance
-//
-// ## example
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/notebooks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := notebooks.LookupInstanceIamPolicy(ctx, &notebooks.LookupInstanceIamPolicyArgs{
-//				Project:      pulumi.StringRef(google_notebooks_instance.Instance.Project),
-//				Location:     pulumi.StringRef(google_notebooks_instance.Instance.Location),
-//				InstanceName: google_notebooks_instance.Instance.Name,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupInstanceIamPolicy(ctx *pulumi.Context, args *LookupInstanceIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupInstanceIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInstanceIamPolicyResult

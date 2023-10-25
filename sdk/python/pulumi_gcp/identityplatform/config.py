@@ -53,7 +53,17 @@ class ConfigArgs:
              project: Optional[pulumi.Input[str]] = None,
              quota: Optional[pulumi.Input['ConfigQuotaArgs']] = None,
              sign_in: Optional[pulumi.Input['ConfigSignInArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if authorized_domains is None and 'authorizedDomains' in kwargs:
+            authorized_domains = kwargs['authorizedDomains']
+        if autodelete_anonymous_users is None and 'autodeleteAnonymousUsers' in kwargs:
+            autodelete_anonymous_users = kwargs['autodeleteAnonymousUsers']
+        if blocking_functions is None and 'blockingFunctions' in kwargs:
+            blocking_functions = kwargs['blockingFunctions']
+        if sign_in is None and 'signIn' in kwargs:
+            sign_in = kwargs['signIn']
+
         if authorized_domains is not None:
             _setter("authorized_domains", authorized_domains)
         if autodelete_anonymous_users is not None:
@@ -188,7 +198,17 @@ class _ConfigState:
              project: Optional[pulumi.Input[str]] = None,
              quota: Optional[pulumi.Input['ConfigQuotaArgs']] = None,
              sign_in: Optional[pulumi.Input['ConfigSignInArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if authorized_domains is None and 'authorizedDomains' in kwargs:
+            authorized_domains = kwargs['authorizedDomains']
+        if autodelete_anonymous_users is None and 'autodeleteAnonymousUsers' in kwargs:
+            autodelete_anonymous_users = kwargs['autodeleteAnonymousUsers']
+        if blocking_functions is None and 'blockingFunctions' in kwargs:
+            blocking_functions = kwargs['blockingFunctions']
+        if sign_in is None and 'signIn' in kwargs:
+            sign_in = kwargs['signIn']
+
         if authorized_domains is not None:
             _setter("authorized_domains", authorized_domains)
         if autodelete_anonymous_users is not None:
@@ -321,65 +341,6 @@ class Config(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/identity-platform/docs)
 
         ## Example Usage
-        ### Identity Platform Config Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_project = gcp.organizations.Project("defaultProject",
-            project_id="my-project",
-            org_id="123456789",
-            billing_account="000000-0000000-0000000-000000",
-            labels={
-                "firebase": "enabled",
-            })
-        identitytoolkit = gcp.projects.Service("identitytoolkit",
-            project=default_project.project_id,
-            service="identitytoolkit.googleapis.com")
-        default_config = gcp.identityplatform.Config("defaultConfig",
-            project=default_project.project_id,
-            autodelete_anonymous_users=True,
-            sign_in=gcp.identityplatform.ConfigSignInArgs(
-                allow_duplicate_emails=True,
-                anonymous=gcp.identityplatform.ConfigSignInAnonymousArgs(
-                    enabled=True,
-                ),
-                email=gcp.identityplatform.ConfigSignInEmailArgs(
-                    enabled=True,
-                    password_required=False,
-                ),
-                phone_number=gcp.identityplatform.ConfigSignInPhoneNumberArgs(
-                    enabled=True,
-                    test_phone_numbers={
-                        "+11231231234": "000000",
-                    },
-                ),
-            ),
-            blocking_functions=gcp.identityplatform.ConfigBlockingFunctionsArgs(
-                triggers=[gcp.identityplatform.ConfigBlockingFunctionsTriggerArgs(
-                    event_type="beforeSignIn",
-                    function_uri="https://us-east1-my-project.cloudfunctions.net/before-sign-in",
-                )],
-                forward_inbound_credentials=gcp.identityplatform.ConfigBlockingFunctionsForwardInboundCredentialsArgs(
-                    refresh_token=True,
-                    access_token=True,
-                    id_token=True,
-                ),
-            ),
-            quota=gcp.identityplatform.ConfigQuotaArgs(
-                sign_up_quota_config=gcp.identityplatform.ConfigQuotaSignUpQuotaConfigArgs(
-                    quota=1000,
-                    start_time="",
-                    quota_duration="7200s",
-                ),
-            ),
-            authorized_domains=[
-                "localhost",
-                "my-project.firebaseapp.com",
-                "my-project.web.app",
-            ])
-        ```
 
         ## Import
 
@@ -432,65 +393,6 @@ class Config(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/identity-platform/docs)
 
         ## Example Usage
-        ### Identity Platform Config Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_project = gcp.organizations.Project("defaultProject",
-            project_id="my-project",
-            org_id="123456789",
-            billing_account="000000-0000000-0000000-000000",
-            labels={
-                "firebase": "enabled",
-            })
-        identitytoolkit = gcp.projects.Service("identitytoolkit",
-            project=default_project.project_id,
-            service="identitytoolkit.googleapis.com")
-        default_config = gcp.identityplatform.Config("defaultConfig",
-            project=default_project.project_id,
-            autodelete_anonymous_users=True,
-            sign_in=gcp.identityplatform.ConfigSignInArgs(
-                allow_duplicate_emails=True,
-                anonymous=gcp.identityplatform.ConfigSignInAnonymousArgs(
-                    enabled=True,
-                ),
-                email=gcp.identityplatform.ConfigSignInEmailArgs(
-                    enabled=True,
-                    password_required=False,
-                ),
-                phone_number=gcp.identityplatform.ConfigSignInPhoneNumberArgs(
-                    enabled=True,
-                    test_phone_numbers={
-                        "+11231231234": "000000",
-                    },
-                ),
-            ),
-            blocking_functions=gcp.identityplatform.ConfigBlockingFunctionsArgs(
-                triggers=[gcp.identityplatform.ConfigBlockingFunctionsTriggerArgs(
-                    event_type="beforeSignIn",
-                    function_uri="https://us-east1-my-project.cloudfunctions.net/before-sign-in",
-                )],
-                forward_inbound_credentials=gcp.identityplatform.ConfigBlockingFunctionsForwardInboundCredentialsArgs(
-                    refresh_token=True,
-                    access_token=True,
-                    id_token=True,
-                ),
-            ),
-            quota=gcp.identityplatform.ConfigQuotaArgs(
-                sign_up_quota_config=gcp.identityplatform.ConfigQuotaSignUpQuotaConfigArgs(
-                    quota=1000,
-                    start_time="",
-                    quota_duration="7200s",
-                ),
-            ),
-            authorized_domains=[
-                "localhost",
-                "my-project.firebaseapp.com",
-                "my-project.web.app",
-            ])
-        ```
 
         ## Import
 
@@ -544,24 +446,12 @@ class Config(pulumi.CustomResource):
 
             __props__.__dict__["authorized_domains"] = authorized_domains
             __props__.__dict__["autodelete_anonymous_users"] = autodelete_anonymous_users
-            if blocking_functions is not None and not isinstance(blocking_functions, ConfigBlockingFunctionsArgs):
-                blocking_functions = blocking_functions or {}
-                def _setter(key, value):
-                    blocking_functions[key] = value
-                ConfigBlockingFunctionsArgs._configure(_setter, **blocking_functions)
+            blocking_functions = _utilities.configure(blocking_functions, ConfigBlockingFunctionsArgs, True)
             __props__.__dict__["blocking_functions"] = blocking_functions
             __props__.__dict__["project"] = project
-            if quota is not None and not isinstance(quota, ConfigQuotaArgs):
-                quota = quota or {}
-                def _setter(key, value):
-                    quota[key] = value
-                ConfigQuotaArgs._configure(_setter, **quota)
+            quota = _utilities.configure(quota, ConfigQuotaArgs, True)
             __props__.__dict__["quota"] = quota
-            if sign_in is not None and not isinstance(sign_in, ConfigSignInArgs):
-                sign_in = sign_in or {}
-                def _setter(key, value):
-                    sign_in[key] = value
-                ConfigSignInArgs._configure(_setter, **sign_in)
+            sign_in = _utilities.configure(sign_in, ConfigSignInArgs, True)
             __props__.__dict__["sign_in"] = sign_in
             __props__.__dict__["name"] = None
         super(Config, __self__).__init__(

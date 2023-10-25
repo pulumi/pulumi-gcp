@@ -13,52 +13,12 @@ namespace Pulumi.Gcp.DataCatalog
     {
         /// <summary>
         /// Retrieves the current IAM policy data for policytag
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.DataCatalog.GetPolicyTagIamPolicy.Invoke(new()
-        ///     {
-        ///         PolicyTag = google_data_catalog_policy_tag.Basic_policy_tag.Name,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetPolicyTagIamPolicyResult> InvokeAsync(GetPolicyTagIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPolicyTagIamPolicyResult>("gcp:datacatalog/getPolicyTagIamPolicy:getPolicyTagIamPolicy", args ?? new GetPolicyTagIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for policytag
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.DataCatalog.GetPolicyTagIamPolicy.Invoke(new()
-        ///     {
-        ///         PolicyTag = google_data_catalog_policy_tag.Basic_policy_tag.Name,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetPolicyTagIamPolicyResult> Invoke(GetPolicyTagIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPolicyTagIamPolicyResult>("gcp:datacatalog/getPolicyTagIamPolicy:getPolicyTagIamPolicy", args ?? new GetPolicyTagIamPolicyInvokeArgs(), options.WithDefaults());

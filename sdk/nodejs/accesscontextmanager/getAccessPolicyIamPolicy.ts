@@ -6,17 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for accesspolicy
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.accesscontextmanager.getAccessPolicyIamPolicy({
- *     name: google_access_context_manager_access_policy["access-policy"].name,
- * });
- * ```
  */
 export function getAccessPolicyIamPolicy(args: GetAccessPolicyIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessPolicyIamPolicyResult> {
 
@@ -57,17 +46,6 @@ export interface GetAccessPolicyIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for accesspolicy
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.accesscontextmanager.getAccessPolicyIamPolicy({
- *     name: google_access_context_manager_access_policy["access-policy"].name,
- * });
- * ```
  */
 export function getAccessPolicyIamPolicyOutput(args: GetAccessPolicyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessPolicyIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getAccessPolicyIamPolicy(a, opts))

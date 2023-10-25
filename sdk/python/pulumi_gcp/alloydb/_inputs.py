@@ -49,7 +49,11 @@ class BackupEncryptionConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              kms_key_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+
         if kms_key_name is not None:
             _setter("kms_key_name", kms_key_name)
 
@@ -87,7 +91,13 @@ class BackupEncryptionInfoArgs:
              _setter: Callable[[Any, Any], None],
              encryption_type: Optional[pulumi.Input[str]] = None,
              kms_key_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if encryption_type is None and 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if kms_key_versions is None and 'kmsKeyVersions' in kwargs:
+            kms_key_versions = kwargs['kmsKeyVersions']
+
         if encryption_type is not None:
             _setter("encryption_type", encryption_type)
         if kms_key_versions is not None:
@@ -169,7 +179,19 @@ class ClusterAutomatedBackupPolicyArgs:
              quantity_based_retention: Optional[pulumi.Input['ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs']] = None,
              time_based_retention: Optional[pulumi.Input['ClusterAutomatedBackupPolicyTimeBasedRetentionArgs']] = None,
              weekly_schedule: Optional[pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if backup_window is None and 'backupWindow' in kwargs:
+            backup_window = kwargs['backupWindow']
+        if encryption_config is None and 'encryptionConfig' in kwargs:
+            encryption_config = kwargs['encryptionConfig']
+        if quantity_based_retention is None and 'quantityBasedRetention' in kwargs:
+            quantity_based_retention = kwargs['quantityBasedRetention']
+        if time_based_retention is None and 'timeBasedRetention' in kwargs:
+            time_based_retention = kwargs['timeBasedRetention']
+        if weekly_schedule is None and 'weeklySchedule' in kwargs:
+            weekly_schedule = kwargs['weeklySchedule']
+
         if backup_window is not None:
             _setter("backup_window", backup_window)
         if enabled is not None:
@@ -305,7 +327,11 @@ class ClusterAutomatedBackupPolicyEncryptionConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              kms_key_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+
         if kms_key_name is not None:
             _setter("kms_key_name", kms_key_name)
 
@@ -337,7 +363,9 @@ class ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if count is not None:
             _setter("count", count)
 
@@ -370,7 +398,11 @@ class ClusterAutomatedBackupPolicyTimeBasedRetentionArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              retention_period: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if retention_period is None and 'retentionPeriod' in kwargs:
+            retention_period = kwargs['retentionPeriod']
+
         if retention_period is not None:
             _setter("retention_period", retention_period)
 
@@ -407,9 +439,17 @@ class ClusterAutomatedBackupPolicyWeeklyScheduleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             start_times: pulumi.Input[Sequence[pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs']]],
+             start_times: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs']]]] = None,
              days_of_weeks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if start_times is None and 'startTimes' in kwargs:
+            start_times = kwargs['startTimes']
+        if start_times is None:
+            raise TypeError("Missing 'start_times' argument")
+        if days_of_weeks is None and 'daysOfWeeks' in kwargs:
+            days_of_weeks = kwargs['daysOfWeeks']
+
         _setter("start_times", start_times)
         if days_of_weeks is not None:
             _setter("days_of_weeks", days_of_weeks)
@@ -468,7 +508,9 @@ class ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs:
              minutes: Optional[pulumi.Input[int]] = None,
              nanos: Optional[pulumi.Input[int]] = None,
              seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if hours is not None:
             _setter("hours", hours)
         if minutes is not None:
@@ -542,7 +584,11 @@ class ClusterBackupSourceArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              backup_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if backup_name is None and 'backupName' in kwargs:
+            backup_name = kwargs['backupName']
+
         if backup_name is not None:
             _setter("backup_name", backup_name)
 
@@ -584,7 +630,13 @@ class ClusterContinuousBackupConfigArgs:
              enabled: Optional[pulumi.Input[bool]] = None,
              encryption_config: Optional[pulumi.Input['ClusterContinuousBackupConfigEncryptionConfigArgs']] = None,
              recovery_window_days: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if encryption_config is None and 'encryptionConfig' in kwargs:
+            encryption_config = kwargs['encryptionConfig']
+        if recovery_window_days is None and 'recoveryWindowDays' in kwargs:
+            recovery_window_days = kwargs['recoveryWindowDays']
+
         if enabled is not None:
             _setter("enabled", enabled)
         if encryption_config is not None:
@@ -646,7 +698,11 @@ class ClusterContinuousBackupConfigEncryptionConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              kms_key_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+
         if kms_key_name is not None:
             _setter("kms_key_name", kms_key_name)
 
@@ -695,7 +751,15 @@ class ClusterContinuousBackupInfoArgs:
              enabled_time: Optional[pulumi.Input[str]] = None,
              encryption_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterContinuousBackupInfoEncryptionInfoArgs']]]] = None,
              schedules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if earliest_restorable_time is None and 'earliestRestorableTime' in kwargs:
+            earliest_restorable_time = kwargs['earliestRestorableTime']
+        if enabled_time is None and 'enabledTime' in kwargs:
+            enabled_time = kwargs['enabledTime']
+        if encryption_infos is None and 'encryptionInfos' in kwargs:
+            encryption_infos = kwargs['encryptionInfos']
+
         if earliest_restorable_time is not None:
             _setter("earliest_restorable_time", earliest_restorable_time)
         if enabled_time is not None:
@@ -780,7 +844,13 @@ class ClusterContinuousBackupInfoEncryptionInfoArgs:
              _setter: Callable[[Any, Any], None],
              encryption_type: Optional[pulumi.Input[str]] = None,
              kms_key_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if encryption_type is None and 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if kms_key_versions is None and 'kmsKeyVersions' in kwargs:
+            kms_key_versions = kwargs['kmsKeyVersions']
+
         if encryption_type is not None:
             _setter("encryption_type", encryption_type)
         if kms_key_versions is not None:
@@ -828,7 +898,11 @@ class ClusterEncryptionConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              kms_key_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+
         if kms_key_name is not None:
             _setter("kms_key_name", kms_key_name)
 
@@ -866,7 +940,13 @@ class ClusterEncryptionInfoArgs:
              _setter: Callable[[Any, Any], None],
              encryption_type: Optional[pulumi.Input[str]] = None,
              kms_key_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if encryption_type is None and 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if kms_key_versions is None and 'kmsKeyVersions' in kwargs:
+            kms_key_versions = kwargs['kmsKeyVersions']
+
         if encryption_type is not None:
             _setter("encryption_type", encryption_type)
         if kms_key_versions is not None:
@@ -917,9 +997,13 @@ class ClusterInitialUserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             password: pulumi.Input[str],
+             password: Optional[pulumi.Input[str]] = None,
              user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+
         _setter("password", password)
         if user is not None:
             _setter("user", user)
@@ -973,7 +1057,15 @@ class ClusterMigrationSourceArgs:
              host_port: Optional[pulumi.Input[str]] = None,
              reference_id: Optional[pulumi.Input[str]] = None,
              source_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if host_port is None and 'hostPort' in kwargs:
+            host_port = kwargs['hostPort']
+        if reference_id is None and 'referenceId' in kwargs:
+            reference_id = kwargs['referenceId']
+        if source_type is None and 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+
         if host_port is not None:
             _setter("host_port", host_port)
         if reference_id is not None:
@@ -1039,7 +1131,11 @@ class ClusterNetworkConfigArgs:
              _setter: Callable[[Any, Any], None],
              allocated_ip_range: Optional[pulumi.Input[str]] = None,
              network: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allocated_ip_range is None and 'allocatedIpRange' in kwargs:
+            allocated_ip_range = kwargs['allocatedIpRange']
+
         if allocated_ip_range is not None:
             _setter("allocated_ip_range", allocated_ip_range)
         if network is not None:
@@ -1086,8 +1182,14 @@ class ClusterRestoreBackupSourceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backup_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             backup_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if backup_name is None and 'backupName' in kwargs:
+            backup_name = kwargs['backupName']
+        if backup_name is None:
+            raise TypeError("Missing 'backup_name' argument")
+
         _setter("backup_name", backup_name)
 
     @property
@@ -1120,9 +1222,17 @@ class ClusterRestoreContinuousBackupSourceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster: pulumi.Input[str],
-             point_in_time: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             cluster: Optional[pulumi.Input[str]] = None,
+             point_in_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cluster is None:
+            raise TypeError("Missing 'cluster' argument")
+        if point_in_time is None and 'pointInTime' in kwargs:
+            point_in_time = kwargs['pointInTime']
+        if point_in_time is None:
+            raise TypeError("Missing 'point_in_time' argument")
+
         _setter("cluster", cluster)
         _setter("point_in_time", point_in_time)
 
@@ -1166,7 +1276,11 @@ class InstanceMachineConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              cpu_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cpu_count is None and 'cpuCount' in kwargs:
+            cpu_count = kwargs['cpuCount']
+
         if cpu_count is not None:
             _setter("cpu_count", cpu_count)
 
@@ -1198,7 +1312,11 @@ class InstanceReadPoolConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              node_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if node_count is None and 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+
         if node_count is not None:
             _setter("node_count", node_count)
 

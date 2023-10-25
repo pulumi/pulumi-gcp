@@ -20,43 +20,6 @@ import * as utilities from "../utilities";
  * Read more about sensitive data in state.
  *
  * ## Example Usage
- * ### Dlp Deidentify Template Image Transformations
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const basic = new gcp.dataloss.PreventionDeidentifyTemplate("basic", {
- *     deidentifyConfig: {
- *         imageTransformations: {
- *             transforms: [
- *                 {
- *                     redactionColor: {
- *                         blue: 1,
- *                         green: 0.2,
- *                         red: 0.5,
- *                     },
- *                     selectedInfoTypes: {
- *                         infoTypes: [{
- *                             name: "COLOR_INFO",
- *                             version: "latest",
- *                         }],
- *                     },
- *                 },
- *                 {
- *                     allInfoTypes: {},
- *                 },
- *                 {
- *                     allText: {},
- *                 },
- *             ],
- *         },
- *     },
- *     description: "Description",
- *     displayName: "Displayname",
- *     parent: "projects/my-project-name",
- * });
- * ```
  *
  * ## Import
  *

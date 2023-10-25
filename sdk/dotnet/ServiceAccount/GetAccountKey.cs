@@ -13,78 +13,12 @@ namespace Pulumi.Gcp.ServiceAccount
     {
         /// <summary>
         /// Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myaccount = new Gcp.ServiceAccount.Account("myaccount", new()
-        ///     {
-        ///         AccountId = "dev-foo-account",
-        ///     });
-        /// 
-        ///     var mykeyKey = new Gcp.ServiceAccount.Key("mykeyKey", new()
-        ///     {
-        ///         ServiceAccountId = myaccount.Name,
-        ///     });
-        /// 
-        ///     var mykeyAccountKey = Gcp.ServiceAccount.GetAccountKey.Invoke(new()
-        ///     {
-        ///         Name = mykeyKey.Name,
-        ///         PublicKeyType = "TYPE_X509_PEM_FILE",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountKeyResult> InvokeAsync(GetAccountKeyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountKeyResult>("gcp:serviceAccount/getAccountKey:getAccountKey", args ?? new GetAccountKeyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myaccount = new Gcp.ServiceAccount.Account("myaccount", new()
-        ///     {
-        ///         AccountId = "dev-foo-account",
-        ///     });
-        /// 
-        ///     var mykeyKey = new Gcp.ServiceAccount.Key("mykeyKey", new()
-        ///     {
-        ///         ServiceAccountId = myaccount.Name,
-        ///     });
-        /// 
-        ///     var mykeyAccountKey = Gcp.ServiceAccount.GetAccountKey.Invoke(new()
-        ///     {
-        ///         Name = mykeyKey.Name,
-        ///         PublicKeyType = "TYPE_X509_PEM_FILE",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccountKeyResult> Invoke(GetAccountKeyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountKeyResult>("gcp:serviceAccount/getAccountKey:getAccountKey", args ?? new GetAccountKeyInvokeArgs(), options.WithDefaults());

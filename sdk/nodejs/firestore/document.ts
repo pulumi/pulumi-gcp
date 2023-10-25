@@ -24,44 +24,6 @@ import * as utilities from "../utilities";
  * the App Engine location specified.
  *
  * ## Example Usage
- * ### Firestore Document Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const mydoc = new gcp.firestore.Document("mydoc", {
- *     collection: "somenewcollection",
- *     documentId: "my-doc-id",
- *     fields: "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
- *     project: "my-project-name",
- * });
- * ```
- * ### Firestore Document Nested Document
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const mydoc = new gcp.firestore.Document("mydoc", {
- *     collection: "somenewcollection",
- *     documentId: "my-doc-id",
- *     fields: "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
- *     project: "my-project-name",
- * });
- * const subDocument = new gcp.firestore.Document("subDocument", {
- *     collection: pulumi.interpolate`${mydoc.path}/subdocs`,
- *     documentId: "bitcoinkey",
- *     fields: "{\"something\":{\"mapValue\":{\"fields\":{\"ayo\":{\"stringValue\":\"val2\"}}}}}",
- *     project: "my-project-name",
- * });
- * const subSubDocument = new gcp.firestore.Document("subSubDocument", {
- *     collection: pulumi.interpolate`${subDocument.path}/subsubdocs`,
- *     documentId: "asecret",
- *     fields: "{\"something\":{\"mapValue\":{\"fields\":{\"secret\":{\"stringValue\":\"hithere\"}}}}}",
- *     project: "my-project-name",
- * });
- * ```
  *
  * ## Import
  *

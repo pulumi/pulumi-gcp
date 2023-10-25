@@ -14,18 +14,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/document-ai/docs/overview)
  *
  * ## Example Usage
- * ### Documentai Processor
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const processor = new gcp.essentialcontacts.DocumentAiProcessor("processor", {
- *     displayName: "test-processor",
- *     location: "us",
- *     type: "OCR_PROCESSOR",
- * });
- * ```
  *
  * ## Import
  *

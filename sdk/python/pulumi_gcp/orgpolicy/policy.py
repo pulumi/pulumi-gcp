@@ -38,10 +38,14 @@ class PolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parent: pulumi.Input[str],
+             parent: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              spec: Optional[pulumi.Input['PolicySpecArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+
         _setter("parent", parent)
         if name is not None:
             _setter("name", name)
@@ -117,7 +121,9 @@ class _PolicyState:
              name: Optional[pulumi.Input[str]] = None,
              parent: Optional[pulumi.Input[str]] = None,
              spec: Optional[pulumi.Input['PolicySpecArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if parent is not None:
@@ -183,84 +189,6 @@ class Policy(pulumi.CustomResource):
         * [The resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
         * [All valid constraints](https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints)
         ## Example Usage
-        ### Enforce_policy
-        A test of an enforce orgpolicy policy for a project
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.organizations.Project("basic",
-            org_id="123456789",
-            project_id="id")
-        primary = gcp.orgpolicy.Policy("primary",
-            parent=basic.name.apply(lambda name: f"projects/{name}"),
-            spec=gcp.orgpolicy.PolicySpecArgs(
-                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
-                    enforce="FALSE",
-                )],
-            ))
-        ```
-        ### Folder_policy
-        A test of an orgpolicy policy for a folder
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.organizations.Folder("basic",
-            parent="organizations/123456789",
-            display_name="folder")
-        primary = gcp.orgpolicy.Policy("primary",
-            parent=basic.name,
-            spec=gcp.orgpolicy.PolicySpecArgs(
-                inherit_from_parent=True,
-                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
-                    deny_all="TRUE",
-                )],
-            ))
-        ```
-        ### Organization_policy
-        A test of an orgpolicy policy for an organization
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.orgpolicy.Policy("primary",
-            parent="organizations/123456789",
-            spec=gcp.orgpolicy.PolicySpecArgs(
-                reset=True,
-            ))
-        ```
-        ### Project_policy
-        A test of an orgpolicy policy for a project
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.organizations.Project("basic",
-            org_id="123456789",
-            project_id="id")
-        primary = gcp.orgpolicy.Policy("primary",
-            parent=basic.name.apply(lambda name: f"projects/{name}"),
-            spec=gcp.orgpolicy.PolicySpecArgs(
-                rules=[
-                    gcp.orgpolicy.PolicySpecRuleArgs(
-                        condition=gcp.orgpolicy.PolicySpecRuleConditionArgs(
-                            description="A sample condition for the policy",
-                            expression="resource.matchLabels('labelKeys/123', 'labelValues/345')",
-                            location="sample-location.log",
-                            title="sample-condition",
-                        ),
-                        values=gcp.orgpolicy.PolicySpecRuleValuesArgs(
-                            allowed_values=["projects/allowed-project"],
-                            denied_values=["projects/denied-project"],
-                        ),
-                    ),
-                    gcp.orgpolicy.PolicySpecRuleArgs(
-                        allow_all="TRUE",
-                    ),
-                ],
-            ))
-        ```
 
         ## Import
 
@@ -294,84 +222,6 @@ class Policy(pulumi.CustomResource):
         * [The resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
         * [All valid constraints](https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints)
         ## Example Usage
-        ### Enforce_policy
-        A test of an enforce orgpolicy policy for a project
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.organizations.Project("basic",
-            org_id="123456789",
-            project_id="id")
-        primary = gcp.orgpolicy.Policy("primary",
-            parent=basic.name.apply(lambda name: f"projects/{name}"),
-            spec=gcp.orgpolicy.PolicySpecArgs(
-                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
-                    enforce="FALSE",
-                )],
-            ))
-        ```
-        ### Folder_policy
-        A test of an orgpolicy policy for a folder
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.organizations.Folder("basic",
-            parent="organizations/123456789",
-            display_name="folder")
-        primary = gcp.orgpolicy.Policy("primary",
-            parent=basic.name,
-            spec=gcp.orgpolicy.PolicySpecArgs(
-                inherit_from_parent=True,
-                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
-                    deny_all="TRUE",
-                )],
-            ))
-        ```
-        ### Organization_policy
-        A test of an orgpolicy policy for an organization
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.orgpolicy.Policy("primary",
-            parent="organizations/123456789",
-            spec=gcp.orgpolicy.PolicySpecArgs(
-                reset=True,
-            ))
-        ```
-        ### Project_policy
-        A test of an orgpolicy policy for a project
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.organizations.Project("basic",
-            org_id="123456789",
-            project_id="id")
-        primary = gcp.orgpolicy.Policy("primary",
-            parent=basic.name.apply(lambda name: f"projects/{name}"),
-            spec=gcp.orgpolicy.PolicySpecArgs(
-                rules=[
-                    gcp.orgpolicy.PolicySpecRuleArgs(
-                        condition=gcp.orgpolicy.PolicySpecRuleConditionArgs(
-                            description="A sample condition for the policy",
-                            expression="resource.matchLabels('labelKeys/123', 'labelValues/345')",
-                            location="sample-location.log",
-                            title="sample-condition",
-                        ),
-                        values=gcp.orgpolicy.PolicySpecRuleValuesArgs(
-                            allowed_values=["projects/allowed-project"],
-                            denied_values=["projects/denied-project"],
-                        ),
-                    ),
-                    gcp.orgpolicy.PolicySpecRuleArgs(
-                        allow_all="TRUE",
-                    ),
-                ],
-            ))
-        ```
 
         ## Import
 
@@ -416,11 +266,7 @@ class Policy(pulumi.CustomResource):
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
-            if spec is not None and not isinstance(spec, PolicySpecArgs):
-                spec = spec or {}
-                def _setter(key, value):
-                    spec[key] = value
-                PolicySpecArgs._configure(_setter, **spec)
+            spec = _utilities.configure(spec, PolicySpecArgs, True)
             __props__.__dict__["spec"] = spec
         super(Policy, __self__).__init__(
             'gcp:orgpolicy/policy:Policy',

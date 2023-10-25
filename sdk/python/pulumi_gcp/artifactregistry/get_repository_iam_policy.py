@@ -103,17 +103,6 @@ def get_repository_iam_policy(location: Optional[str] = None,
     """
     Retrieves the current IAM policy data for repository
 
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.artifactregistry.get_repository_iam_policy(project=google_artifact_registry_repository["my-repo"]["project"],
-        location=google_artifact_registry_repository["my-repo"]["location"],
-        repository=google_artifact_registry_repository["my-repo"]["name"])
-    ```
-
 
     :param str location: The name of the location this repository is located in.
            Used to find the parent resource to bind the IAM policy to
@@ -144,17 +133,6 @@ def get_repository_iam_policy_output(location: Optional[pulumi.Input[Optional[st
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRepositoryIamPolicyResult]:
     """
     Retrieves the current IAM policy data for repository
-
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.artifactregistry.get_repository_iam_policy(project=google_artifact_registry_repository["my-repo"]["project"],
-        location=google_artifact_registry_repository["my-repo"]["location"],
-        repository=google_artifact_registry_repository["my-repo"]["name"])
-    ```
 
 
     :param str location: The name of the location this repository is located in.

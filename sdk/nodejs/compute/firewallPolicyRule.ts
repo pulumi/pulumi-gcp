@@ -10,57 +10,6 @@ import * as utilities from "../utilities";
  * The Compute FirewallPolicyRule resource
  *
  * ## Example Usage
- * ### Basic_fir_sec_rule
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const basicGlobalNetworksecurityAddressGroup = new gcp.networksecurity.AddressGroup("basicGlobalNetworksecurityAddressGroup", {
- *     parent: "organizations/123456789",
- *     description: "Sample global networksecurity_address_group",
- *     location: "global",
- *     items: ["208.80.154.224/32"],
- *     type: "IPV4",
- *     capacity: 100,
- * });
- * const folder = new gcp.organizations.Folder("folder", {
- *     displayName: "policy",
- *     parent: "organizations/123456789",
- * });
- * const _default = new gcp.compute.FirewallPolicy("default", {
- *     parent: folder.id,
- *     shortName: "policy",
- *     description: "Resource created for Terraform acceptance testing",
- * });
- * const primary = new gcp.compute.FirewallPolicyRule("primary", {
- *     firewallPolicy: _default.name,
- *     description: "Resource created for Terraform acceptance testing",
- *     priority: 9000,
- *     enableLogging: true,
- *     action: "allow",
- *     direction: "EGRESS",
- *     disabled: false,
- *     match: {
- *         layer4Configs: [
- *             {
- *                 ipProtocol: "tcp",
- *                 ports: ["8080"],
- *             },
- *             {
- *                 ipProtocol: "udp",
- *                 ports: ["22"],
- *             },
- *         ],
- *         destIpRanges: ["11.100.0.1/32"],
- *         destFqdns: [],
- *         destRegionCodes: ["US"],
- *         destThreatIntelligences: ["iplist-known-malicious-ips"],
- *         srcAddressGroups: [],
- *         destAddressGroups: [basicGlobalNetworksecurityAddressGroup.id],
- *     },
- *     targetServiceAccounts: ["my@service-account.com"],
- * });
- * ```
  *
  * ## Import
  *

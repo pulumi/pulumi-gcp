@@ -9,68 +9,6 @@ import * as utilities from "../utilities";
 /**
  * A Workflow Template is a reusable workflow configuration. It defines a graph of jobs with information on where to run those jobs.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const template = new gcp.dataproc.WorkflowTemplate("template", {
- *     jobs: [
- *         {
- *             sparkJob: {
- *                 mainClass: "SomeClass",
- *             },
- *             stepId: "someJob",
- *         },
- *         {
- *             prerequisiteStepIds: ["someJob"],
- *             prestoJob: {
- *                 queryFileUri: "someuri",
- *             },
- *             stepId: "otherJob",
- *         },
- *     ],
- *     location: "us-central1",
- *     placement: {
- *         managedCluster: {
- *             clusterName: "my-cluster",
- *             config: {
- *                 gceClusterConfig: {
- *                     tags: [
- *                         "foo",
- *                         "bar",
- *                     ],
- *                     zone: "us-central1-a",
- *                 },
- *                 masterConfig: {
- *                     diskConfig: {
- *                         bootDiskSizeGb: 15,
- *                         bootDiskType: "pd-ssd",
- *                     },
- *                     machineType: "n1-standard-1",
- *                     numInstances: 1,
- *                 },
- *                 secondaryWorkerConfig: {
- *                     numInstances: 2,
- *                 },
- *                 softwareConfig: {
- *                     imageVersion: "2.0.35-debian10",
- *                 },
- *                 workerConfig: {
- *                     diskConfig: {
- *                         bootDiskSizeGb: 10,
- *                         numLocalSsds: 2,
- *                     },
- *                     machineType: "n1-standard-2",
- *                     numInstances: 3,
- *                 },
- *             },
- *         },
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * WorkflowTemplate can be imported using any of these accepted formats

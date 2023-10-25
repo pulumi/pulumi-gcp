@@ -46,10 +46,18 @@ class AttestorIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attestor: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
+             attestor: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if attestor is None:
+            raise TypeError("Missing 'attestor' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("attestor", attestor)
         _setter("policy_data", policy_data)
         if project is not None:
@@ -148,7 +156,11 @@ class _AttestorIamPolicyState:
              etag: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if attestor is not None:
             _setter("attestor", attestor)
         if etag is not None:
@@ -245,48 +257,6 @@ class AttestorIamPolicy(pulumi.CustomResource):
 
         > **Note:** `binaryauthorization.AttestorIamBinding` resources **can be** used in conjunction with `binaryauthorization.AttestorIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_binary\\_authorization\\_attestor\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.binaryauthorization.AttestorIamPolicy("policy",
-            project=google_binary_authorization_attestor["attestor"]["project"],
-            attestor=google_binary_authorization_attestor["attestor"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_binary\\_authorization\\_attestor\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.binaryauthorization.AttestorIamBinding("binding",
-            project=google_binary_authorization_attestor["attestor"]["project"],
-            attestor=google_binary_authorization_attestor["attestor"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_binary\\_authorization\\_attestor\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.binaryauthorization.AttestorIamMember("member",
-            project=google_binary_authorization_attestor["attestor"]["project"],
-            attestor=google_binary_authorization_attestor["attestor"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/attestors/{{name}} * {{project}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Binary Authorization attestor IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -351,48 +321,6 @@ class AttestorIamPolicy(pulumi.CustomResource):
         > **Note:** `binaryauthorization.AttestorIamPolicy` **cannot** be used in conjunction with `binaryauthorization.AttestorIamBinding` and `binaryauthorization.AttestorIamMember` or they will fight over what your policy should be.
 
         > **Note:** `binaryauthorization.AttestorIamBinding` resources **can be** used in conjunction with `binaryauthorization.AttestorIamMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\\_binary\\_authorization\\_attestor\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.binaryauthorization.AttestorIamPolicy("policy",
-            project=google_binary_authorization_attestor["attestor"]["project"],
-            attestor=google_binary_authorization_attestor["attestor"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_binary\\_authorization\\_attestor\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.binaryauthorization.AttestorIamBinding("binding",
-            project=google_binary_authorization_attestor["attestor"]["project"],
-            attestor=google_binary_authorization_attestor["attestor"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_binary\\_authorization\\_attestor\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.binaryauthorization.AttestorIamMember("member",
-            project=google_binary_authorization_attestor["attestor"]["project"],
-            attestor=google_binary_authorization_attestor["attestor"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
 
         ## Import
 

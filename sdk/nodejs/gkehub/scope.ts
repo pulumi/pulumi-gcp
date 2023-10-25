@@ -16,21 +16,6 @@ import * as utilities from "../utilities";
  *     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
  *
  * ## Example Usage
- * ### Gkehub Scope Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const scope = new gcp.gkehub.Scope("scope", {
- *     labels: {
- *         keya: "valuea",
- *         keyb: "valueb",
- *         keyc: "valuec",
- *     },
- *     scopeId: "tf-test-scope%{random_suffix}",
- * });
- * ```
  *
  * ## Import
  *

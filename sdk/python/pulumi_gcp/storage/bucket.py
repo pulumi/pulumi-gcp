@@ -87,7 +87,7 @@ class BucketArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
              autoclass: Optional[pulumi.Input['BucketAutoclassArgs']] = None,
              cors: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]]] = None,
              custom_placement_config: Optional[pulumi.Input['BucketCustomPlacementConfigArgs']] = None,
@@ -106,7 +106,29 @@ class BucketArgs:
              uniform_bucket_level_access: Optional[pulumi.Input[bool]] = None,
              versioning: Optional[pulumi.Input['BucketVersioningArgs']] = None,
              website: Optional[pulumi.Input['BucketWebsiteArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if custom_placement_config is None and 'customPlacementConfig' in kwargs:
+            custom_placement_config = kwargs['customPlacementConfig']
+        if default_event_based_hold is None and 'defaultEventBasedHold' in kwargs:
+            default_event_based_hold = kwargs['defaultEventBasedHold']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if lifecycle_rules is None and 'lifecycleRules' in kwargs:
+            lifecycle_rules = kwargs['lifecycleRules']
+        if public_access_prevention is None and 'publicAccessPrevention' in kwargs:
+            public_access_prevention = kwargs['publicAccessPrevention']
+        if requester_pays is None and 'requesterPays' in kwargs:
+            requester_pays = kwargs['requesterPays']
+        if retention_policy is None and 'retentionPolicy' in kwargs:
+            retention_policy = kwargs['retentionPolicy']
+        if storage_class is None and 'storageClass' in kwargs:
+            storage_class = kwargs['storageClass']
+        if uniform_bucket_level_access is None and 'uniformBucketLevelAccess' in kwargs:
+            uniform_bucket_level_access = kwargs['uniformBucketLevelAccess']
+
         _setter("location", location)
         if autoclass is not None:
             _setter("autoclass", autoclass)
@@ -480,7 +502,29 @@ class _BucketState:
              url: Optional[pulumi.Input[str]] = None,
              versioning: Optional[pulumi.Input['BucketVersioningArgs']] = None,
              website: Optional[pulumi.Input['BucketWebsiteArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if custom_placement_config is None and 'customPlacementConfig' in kwargs:
+            custom_placement_config = kwargs['customPlacementConfig']
+        if default_event_based_hold is None and 'defaultEventBasedHold' in kwargs:
+            default_event_based_hold = kwargs['defaultEventBasedHold']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if lifecycle_rules is None and 'lifecycleRules' in kwargs:
+            lifecycle_rules = kwargs['lifecycleRules']
+        if public_access_prevention is None and 'publicAccessPrevention' in kwargs:
+            public_access_prevention = kwargs['publicAccessPrevention']
+        if requester_pays is None and 'requesterPays' in kwargs:
+            requester_pays = kwargs['requesterPays']
+        if retention_policy is None and 'retentionPolicy' in kwargs:
+            retention_policy = kwargs['retentionPolicy']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if storage_class is None and 'storageClass' in kwargs:
+            storage_class = kwargs['storageClass']
+        if uniform_bucket_level_access is None and 'uniformBucketLevelAccess' in kwargs:
+            uniform_bucket_level_access = kwargs['uniformBucketLevelAccess']
+
         if autoclass is not None:
             _setter("autoclass", autoclass)
         if cors is not None:
@@ -820,72 +864,6 @@ class Bucket(pulumi.CustomResource):
         determined which will require enabling the compute api.
 
         ## Example Usage
-        ### Creating A Private Bucket In Standard Storage, In The EU Region. Bucket Configured As Static Website And CORS Configurations
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        static_site = gcp.storage.Bucket("static-site",
-            cors=[gcp.storage.BucketCorArgs(
-                max_age_seconds=3600,
-                methods=[
-                    "GET",
-                    "HEAD",
-                    "PUT",
-                    "POST",
-                    "DELETE",
-                ],
-                origins=["http://image-store.com"],
-                response_headers=["*"],
-            )],
-            force_destroy=True,
-            location="EU",
-            uniform_bucket_level_access=True,
-            website=gcp.storage.BucketWebsiteArgs(
-                main_page_suffix="index.html",
-                not_found_page="404.html",
-            ))
-        ```
-        ### Life Cycle Settings For Storage Bucket Objects
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        auto_expire = gcp.storage.Bucket("auto-expire",
-            force_destroy=True,
-            lifecycle_rules=[
-                gcp.storage.BucketLifecycleRuleArgs(
-                    action=gcp.storage.BucketLifecycleRuleActionArgs(
-                        type="Delete",
-                    ),
-                    condition=gcp.storage.BucketLifecycleRuleConditionArgs(
-                        age=3,
-                    ),
-                ),
-                gcp.storage.BucketLifecycleRuleArgs(
-                    action=gcp.storage.BucketLifecycleRuleActionArgs(
-                        type="AbortIncompleteMultipartUpload",
-                    ),
-                    condition=gcp.storage.BucketLifecycleRuleConditionArgs(
-                        age=1,
-                    ),
-                ),
-            ],
-            location="US")
-        ```
-        ### Enabling Public Access Prevention
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        auto_expire = gcp.storage.Bucket("auto-expire",
-            force_destroy=True,
-            location="US",
-            public_access_prevention="enforced")
-        ```
 
         ## Import
 
@@ -949,72 +927,6 @@ class Bucket(pulumi.CustomResource):
         determined which will require enabling the compute api.
 
         ## Example Usage
-        ### Creating A Private Bucket In Standard Storage, In The EU Region. Bucket Configured As Static Website And CORS Configurations
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        static_site = gcp.storage.Bucket("static-site",
-            cors=[gcp.storage.BucketCorArgs(
-                max_age_seconds=3600,
-                methods=[
-                    "GET",
-                    "HEAD",
-                    "PUT",
-                    "POST",
-                    "DELETE",
-                ],
-                origins=["http://image-store.com"],
-                response_headers=["*"],
-            )],
-            force_destroy=True,
-            location="EU",
-            uniform_bucket_level_access=True,
-            website=gcp.storage.BucketWebsiteArgs(
-                main_page_suffix="index.html",
-                not_found_page="404.html",
-            ))
-        ```
-        ### Life Cycle Settings For Storage Bucket Objects
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        auto_expire = gcp.storage.Bucket("auto-expire",
-            force_destroy=True,
-            lifecycle_rules=[
-                gcp.storage.BucketLifecycleRuleArgs(
-                    action=gcp.storage.BucketLifecycleRuleActionArgs(
-                        type="Delete",
-                    ),
-                    condition=gcp.storage.BucketLifecycleRuleConditionArgs(
-                        age=3,
-                    ),
-                ),
-                gcp.storage.BucketLifecycleRuleArgs(
-                    action=gcp.storage.BucketLifecycleRuleActionArgs(
-                        type="AbortIncompleteMultipartUpload",
-                    ),
-                    condition=gcp.storage.BucketLifecycleRuleConditionArgs(
-                        age=1,
-                    ),
-                ),
-            ],
-            location="US")
-        ```
-        ### Enabling Public Access Prevention
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        auto_expire = gcp.storage.Bucket("auto-expire",
-            force_destroy=True,
-            location="US",
-            public_access_prevention="enforced")
-        ```
 
         ## Import
 
@@ -1079,25 +991,13 @@ class Bucket(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BucketArgs.__new__(BucketArgs)
 
-            if autoclass is not None and not isinstance(autoclass, BucketAutoclassArgs):
-                autoclass = autoclass or {}
-                def _setter(key, value):
-                    autoclass[key] = value
-                BucketAutoclassArgs._configure(_setter, **autoclass)
+            autoclass = _utilities.configure(autoclass, BucketAutoclassArgs, True)
             __props__.__dict__["autoclass"] = autoclass
             __props__.__dict__["cors"] = cors
-            if custom_placement_config is not None and not isinstance(custom_placement_config, BucketCustomPlacementConfigArgs):
-                custom_placement_config = custom_placement_config or {}
-                def _setter(key, value):
-                    custom_placement_config[key] = value
-                BucketCustomPlacementConfigArgs._configure(_setter, **custom_placement_config)
+            custom_placement_config = _utilities.configure(custom_placement_config, BucketCustomPlacementConfigArgs, True)
             __props__.__dict__["custom_placement_config"] = custom_placement_config
             __props__.__dict__["default_event_based_hold"] = default_event_based_hold
-            if encryption is not None and not isinstance(encryption, BucketEncryptionArgs):
-                encryption = encryption or {}
-                def _setter(key, value):
-                    encryption[key] = value
-                BucketEncryptionArgs._configure(_setter, **encryption)
+            encryption = _utilities.configure(encryption, BucketEncryptionArgs, True)
             __props__.__dict__["encryption"] = encryption
             __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["labels"] = labels
@@ -1105,35 +1005,19 @@ class Bucket(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if logging is not None and not isinstance(logging, BucketLoggingArgs):
-                logging = logging or {}
-                def _setter(key, value):
-                    logging[key] = value
-                BucketLoggingArgs._configure(_setter, **logging)
+            logging = _utilities.configure(logging, BucketLoggingArgs, True)
             __props__.__dict__["logging"] = logging
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["public_access_prevention"] = public_access_prevention
             __props__.__dict__["requester_pays"] = requester_pays
-            if retention_policy is not None and not isinstance(retention_policy, BucketRetentionPolicyArgs):
-                retention_policy = retention_policy or {}
-                def _setter(key, value):
-                    retention_policy[key] = value
-                BucketRetentionPolicyArgs._configure(_setter, **retention_policy)
+            retention_policy = _utilities.configure(retention_policy, BucketRetentionPolicyArgs, True)
             __props__.__dict__["retention_policy"] = retention_policy
             __props__.__dict__["storage_class"] = storage_class
             __props__.__dict__["uniform_bucket_level_access"] = uniform_bucket_level_access
-            if versioning is not None and not isinstance(versioning, BucketVersioningArgs):
-                versioning = versioning or {}
-                def _setter(key, value):
-                    versioning[key] = value
-                BucketVersioningArgs._configure(_setter, **versioning)
+            versioning = _utilities.configure(versioning, BucketVersioningArgs, True)
             __props__.__dict__["versioning"] = versioning
-            if website is not None and not isinstance(website, BucketWebsiteArgs):
-                website = website or {}
-                def _setter(key, value):
-                    website[key] = value
-                BucketWebsiteArgs._configure(_setter, **website)
+            website = _utilities.configure(website, BucketWebsiteArgs, True)
             __props__.__dict__["website"] = website
             __props__.__dict__["self_link"] = None
             __props__.__dict__["url"] = None

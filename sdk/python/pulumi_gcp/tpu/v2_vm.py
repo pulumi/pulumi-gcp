@@ -45,13 +45,21 @@ class V2VmArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             runtime_version: pulumi.Input[str],
+             runtime_version: Optional[pulumi.Input[str]] = None,
              accelerator_type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if runtime_version is None and 'runtimeVersion' in kwargs:
+            runtime_version = kwargs['runtimeVersion']
+        if runtime_version is None:
+            raise TypeError("Missing 'runtime_version' argument")
+        if accelerator_type is None and 'acceleratorType' in kwargs:
+            accelerator_type = kwargs['acceleratorType']
+
         _setter("runtime_version", runtime_version)
         if accelerator_type is not None:
             _setter("accelerator_type", accelerator_type)
@@ -181,7 +189,13 @@ class _V2VmState:
              project: Optional[pulumi.Input[str]] = None,
              runtime_version: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if accelerator_type is None and 'acceleratorType' in kwargs:
+            accelerator_type = kwargs['acceleratorType']
+        if runtime_version is None and 'runtimeVersion' in kwargs:
+            runtime_version = kwargs['runtimeVersion']
+
         if accelerator_type is not None:
             _setter("accelerator_type", accelerator_type)
         if description is not None:
@@ -286,33 +300,6 @@ class V2Vm(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Tpu V2 Vm Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        available = gcp.tpu.get_v2_runtime_versions()
-        tpu = gcp.tpu.V2Vm("tpu",
-            zone="us-central1-c",
-            runtime_version="tpu-vm-tf-2.13.0",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Tpu V2 Vm Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        available_v2_runtime_versions = gcp.tpu.get_v2_runtime_versions()
-        available_v2_accelerator_types = gcp.tpu.get_v2_accelerator_types()
-        tpu = gcp.tpu.V2Vm("tpu",
-            zone="us-central1-c",
-            description="Text description of the TPU.",
-            runtime_version="tpu-vm-tf-2.13.0",
-            accelerator_type="v2-8",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -355,33 +342,6 @@ class V2Vm(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Tpu V2 Vm Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        available = gcp.tpu.get_v2_runtime_versions()
-        tpu = gcp.tpu.V2Vm("tpu",
-            zone="us-central1-c",
-            runtime_version="tpu-vm-tf-2.13.0",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Tpu V2 Vm Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        available_v2_runtime_versions = gcp.tpu.get_v2_runtime_versions()
-        available_v2_accelerator_types = gcp.tpu.get_v2_accelerator_types()
-        tpu = gcp.tpu.V2Vm("tpu",
-            zone="us-central1-c",
-            description="Text description of the TPU.",
-            runtime_version="tpu-vm-tf-2.13.0",
-            accelerator_type="v2-8",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 

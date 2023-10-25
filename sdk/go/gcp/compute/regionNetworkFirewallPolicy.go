@@ -15,32 +15,6 @@ import (
 // The Compute NetworkFirewallPolicy resource
 //
 // ## Example Usage
-// ### Regional
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewRegionNetworkFirewallPolicy(ctx, "primary", &compute.RegionNetworkFirewallPolicyArgs{
-//				Description: pulumi.String("Sample regional network firewall policy"),
-//				Project:     pulumi.String("my-project-name"),
-//				Region:      pulumi.String("us-west1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

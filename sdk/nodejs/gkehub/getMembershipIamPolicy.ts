@@ -6,18 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for membership
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.gkehub.getMembershipIamPolicy({
- *     project: google_gke_hub_membership.membership.project,
- *     membershipId: google_gke_hub_membership.membership.membership_id,
- * });
- * ```
  */
 export function getMembershipIamPolicy(args: GetMembershipIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetMembershipIamPolicyResult> {
 
@@ -62,18 +50,6 @@ export interface GetMembershipIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for membership
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.gkehub.getMembershipIamPolicy({
- *     project: google_gke_hub_membership.membership.project,
- *     membershipId: google_gke_hub_membership.membership.membership_id,
- * });
- * ```
  */
 export function getMembershipIamPolicyOutput(args: GetMembershipIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMembershipIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getMembershipIamPolicy(a, opts))

@@ -20,53 +20,6 @@ import * as utilities from "../utilities";
  * Read more about sensitive data in state.
  *
  * ## Example Usage
- * ### Network Services Edge Cache Keyset Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.networkservices.EdgeCacheKeyset("default", {
- *     description: "The default keyset",
- *     publicKeys: [
- *         {
- *             id: "my-public-key",
- *             value: "FHsTyFHNmvNpw4o7-rp-M1yqMyBF8vXSBRkZtkQ0RKY",
- *         },
- *         {
- *             id: "my-public-key-2",
- *             value: "hzd03llxB1u5FOLKFkZ6_wCJqC7jtN0bg7xlBqS6WVM",
- *         },
- *     ],
- * });
- * ```
- * ### Network Services Edge Cache Keyset Dual Token
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const secret_basic = new gcp.secretmanager.Secret("secret-basic", {
- *     secretId: "secret-name",
- *     replication: {
- *         auto: {},
- *     },
- * });
- * const secret_version_basic = new gcp.secretmanager.SecretVersion("secret-version-basic", {
- *     secret: secret_basic.id,
- *     secretData: "secret-data",
- * });
- * const _default = new gcp.networkservices.EdgeCacheKeyset("default", {
- *     description: "The default keyset",
- *     publicKeys: [{
- *         id: "my-public-key",
- *         managed: true,
- *     }],
- *     validationSharedKeys: [{
- *         secretVersion: secret_version_basic.id,
- *     }],
- * });
- * ```
  *
  * ## Import
  *

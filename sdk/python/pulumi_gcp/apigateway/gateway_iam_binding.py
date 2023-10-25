@@ -58,13 +58,21 @@ class GatewayIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             gateway: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
+             gateway: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['GatewayIamBindingConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if gateway is None:
+            raise TypeError("Missing 'gateway' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("gateway", gateway)
         _setter("members", members)
         _setter("role", role)
@@ -212,7 +220,9 @@ class _GatewayIamBindingState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -349,54 +359,6 @@ class GatewayIamBinding(pulumi.CustomResource):
 
         > **Note:** `apigateway.GatewayIamBinding` resources **can be** used in conjunction with `apigateway.GatewayIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_api\\_gateway\\_gateway\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/apigateway.viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.apigateway.GatewayIamPolicy("policy",
-            project=google_api_gateway_gateway["api_gw"]["project"],
-            region=google_api_gateway_gateway["api_gw"]["region"],
-            gateway=google_api_gateway_gateway["api_gw"]["gateway_id"],
-            policy_data=admin.policy_data,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-
-        ## google\\_api\\_gateway\\_gateway\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.apigateway.GatewayIamBinding("binding",
-            project=google_api_gateway_gateway["api_gw"]["project"],
-            region=google_api_gateway_gateway["api_gw"]["region"],
-            gateway=google_api_gateway_gateway["api_gw"]["gateway_id"],
-            role="roles/apigateway.viewer",
-            members=["user:jane@example.com"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-
-        ## google\\_api\\_gateway\\_gateway\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.apigateway.GatewayIamMember("member",
-            project=google_api_gateway_gateway["api_gw"]["project"],
-            region=google_api_gateway_gateway["api_gw"]["region"],
-            gateway=google_api_gateway_gateway["api_gw"]["gateway_id"],
-            role="roles/apigateway.viewer",
-            member="user:jane@example.com",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{region}}/gateways/{{gateway}} * {{project}}/{{region}}/{{gateway}} * {{region}}/{{gateway}} * {{gateway}} Any variables not passed in the import command will be taken from the provider configuration. API Gateway gateway IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -466,54 +428,6 @@ class GatewayIamBinding(pulumi.CustomResource):
 
         > **Note:** `apigateway.GatewayIamBinding` resources **can be** used in conjunction with `apigateway.GatewayIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_api\\_gateway\\_gateway\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/apigateway.viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.apigateway.GatewayIamPolicy("policy",
-            project=google_api_gateway_gateway["api_gw"]["project"],
-            region=google_api_gateway_gateway["api_gw"]["region"],
-            gateway=google_api_gateway_gateway["api_gw"]["gateway_id"],
-            policy_data=admin.policy_data,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-
-        ## google\\_api\\_gateway\\_gateway\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.apigateway.GatewayIamBinding("binding",
-            project=google_api_gateway_gateway["api_gw"]["project"],
-            region=google_api_gateway_gateway["api_gw"]["region"],
-            gateway=google_api_gateway_gateway["api_gw"]["gateway_id"],
-            role="roles/apigateway.viewer",
-            members=["user:jane@example.com"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-
-        ## google\\_api\\_gateway\\_gateway\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.apigateway.GatewayIamMember("member",
-            project=google_api_gateway_gateway["api_gw"]["project"],
-            region=google_api_gateway_gateway["api_gw"]["region"],
-            gateway=google_api_gateway_gateway["api_gw"]["gateway_id"],
-            role="roles/apigateway.viewer",
-            member="user:jane@example.com",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{region}}/gateways/{{gateway}} * {{project}}/{{region}}/{{gateway}} * {{region}}/{{gateway}} * {{gateway}} Any variables not passed in the import command will be taken from the provider configuration. API Gateway gateway IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -572,11 +486,7 @@ class GatewayIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GatewayIamBindingArgs.__new__(GatewayIamBindingArgs)
 
-            if condition is not None and not isinstance(condition, GatewayIamBindingConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                GatewayIamBindingConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, GatewayIamBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if gateway is None and not opts.urn:
                 raise TypeError("Missing required property 'gateway'")

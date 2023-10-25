@@ -71,7 +71,7 @@ class NotificationChannelArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
@@ -80,7 +80,19 @@ class NotificationChannelArgs:
              project: Optional[pulumi.Input[str]] = None,
              sensitive_labels: Optional[pulumi.Input['NotificationChannelSensitiveLabelsArgs']] = None,
              user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if force_delete is None and 'forceDelete' in kwargs:
+            force_delete = kwargs['forceDelete']
+        if sensitive_labels is None and 'sensitiveLabels' in kwargs:
+            sensitive_labels = kwargs['sensitiveLabels']
+        if user_labels is None and 'userLabels' in kwargs:
+            user_labels = kwargs['userLabels']
+
         _setter("type", type)
         if description is not None:
             _setter("description", description)
@@ -304,7 +316,19 @@ class _NotificationChannelState:
              type: Optional[pulumi.Input[str]] = None,
              user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              verification_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if force_delete is None and 'forceDelete' in kwargs:
+            force_delete = kwargs['forceDelete']
+        if sensitive_labels is None and 'sensitiveLabels' in kwargs:
+            sensitive_labels = kwargs['sensitiveLabels']
+        if user_labels is None and 'userLabels' in kwargs:
+            user_labels = kwargs['userLabels']
+        if verification_status is None and 'verificationStatus' in kwargs:
+            verification_status = kwargs['verificationStatus']
+
         if description is not None:
             _setter("description", description)
         if display_name is not None:
@@ -526,36 +550,6 @@ class NotificationChannel(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
-        ### Notification Channel Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.monitoring.NotificationChannel("basic",
-            display_name="Test Notification Channel",
-            force_delete=False,
-            labels={
-                "email_address": "fake_email@blahblah.com",
-            },
-            type="email")
-        ```
-        ### Notification Channel Sensitive
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.monitoring.NotificationChannel("default",
-            display_name="Test Slack Channel",
-            labels={
-                "channel_name": "#foobar",
-            },
-            sensitive_labels=gcp.monitoring.NotificationChannelSensitiveLabelsArgs(
-                auth_token="one",
-            ),
-            type="slack")
-        ```
 
         ## Import
 
@@ -631,36 +625,6 @@ class NotificationChannel(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
-        ### Notification Channel Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.monitoring.NotificationChannel("basic",
-            display_name="Test Notification Channel",
-            force_delete=False,
-            labels={
-                "email_address": "fake_email@blahblah.com",
-            },
-            type="email")
-        ```
-        ### Notification Channel Sensitive
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.monitoring.NotificationChannel("default",
-            display_name="Test Slack Channel",
-            labels={
-                "channel_name": "#foobar",
-            },
-            sensitive_labels=gcp.monitoring.NotificationChannelSensitiveLabelsArgs(
-                auth_token="one",
-            ),
-            type="slack")
-        ```
 
         ## Import
 
@@ -713,11 +677,7 @@ class NotificationChannel(pulumi.CustomResource):
             __props__.__dict__["force_delete"] = force_delete
             __props__.__dict__["labels"] = labels
             __props__.__dict__["project"] = project
-            if sensitive_labels is not None and not isinstance(sensitive_labels, NotificationChannelSensitiveLabelsArgs):
-                sensitive_labels = sensitive_labels or {}
-                def _setter(key, value):
-                    sensitive_labels[key] = value
-                NotificationChannelSensitiveLabelsArgs._configure(_setter, **sensitive_labels)
+            sensitive_labels = _utilities.configure(sensitive_labels, NotificationChannelSensitiveLabelsArgs, True)
             __props__.__dict__["sensitive_labels"] = sensitive_labels
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")

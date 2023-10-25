@@ -38,11 +38,21 @@ class JobIAMPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             job_id: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
+             job_id: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if job_id is None and 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+        if job_id is None:
+            raise TypeError("Missing 'job_id' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("job_id", job_id)
         _setter("policy_data", policy_data)
         if project is not None:
@@ -135,7 +145,13 @@ class _JobIAMPolicyState:
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if job_id is None and 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if etag is not None:
             _setter("etag", etag)
         if job_id is not None:
@@ -230,47 +246,6 @@ class JobIAMPolicy(pulumi.CustomResource):
 
         > **Note:** `dataproc.JobIAMBinding` resources **can be** used in conjunction with `dataproc.JobIAMMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataproc\\_job\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
-        editor = gcp.dataproc.JobIAMPolicy("editor",
-            project="your-project",
-            region="your-region",
-            job_id="your-dataproc-job",
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_dataproc\\_job\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        editor = gcp.dataproc.JobIAMBinding("editor",
-            job_id="your-dataproc-job",
-            members=["user:jane@example.com"],
-            role="roles/editor")
-        ```
-
-        ## google\\_dataproc\\_job\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        editor = gcp.dataproc.JobIAMMember("editor",
-            job_id="your-dataproc-job",
-            member="user:jane@example.com",
-            role="roles/editor")
-        ```
-
         ## Import
 
         Job IAM resources can be imported using the project, region, job id, role and/or member.
@@ -317,47 +292,6 @@ class JobIAMPolicy(pulumi.CustomResource):
         > **Note:** `dataproc.JobIAMPolicy` **cannot** be used in conjunction with `dataproc.JobIAMBinding` and `dataproc.JobIAMMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the job as `dataproc.JobIAMPolicy` replaces the entire policy.
 
         > **Note:** `dataproc.JobIAMBinding` resources **can be** used in conjunction with `dataproc.JobIAMMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\\_dataproc\\_job\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
-        editor = gcp.dataproc.JobIAMPolicy("editor",
-            project="your-project",
-            region="your-region",
-            job_id="your-dataproc-job",
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_dataproc\\_job\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        editor = gcp.dataproc.JobIAMBinding("editor",
-            job_id="your-dataproc-job",
-            members=["user:jane@example.com"],
-            role="roles/editor")
-        ```
-
-        ## google\\_dataproc\\_job\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        editor = gcp.dataproc.JobIAMMember("editor",
-            job_id="your-dataproc-job",
-            member="user:jane@example.com",
-            role="roles/editor")
-        ```
 
         ## Import
 

@@ -14,65 +14,6 @@ import (
 )
 
 // ## Example Usage
-// ### Backup Dr Management Server
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/backupdisasterrecovery"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			privateIpAddress, err := compute.NewGlobalAddress(ctx, "privateIpAddress", &compute.GlobalAddressArgs{
-//				AddressType:  pulumi.String("INTERNAL"),
-//				Purpose:      pulumi.String("VPC_PEERING"),
-//				PrefixLength: pulumi.Int(20),
-//				Network:      defaultNetwork.ID(),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			defaultConnection, err := servicenetworking.NewConnection(ctx, "defaultConnection", &servicenetworking.ConnectionArgs{
-//				Network: defaultNetwork.ID(),
-//				Service: pulumi.String("servicenetworking.googleapis.com"),
-//				ReservedPeeringRanges: pulumi.StringArray{
-//					privateIpAddress.Name,
-//				},
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = backupdisasterrecovery.NewManagementServer(ctx, "ms-console", &backupdisasterrecovery.ManagementServerArgs{
-//				Location: pulumi.String("us-central1"),
-//				Type:     pulumi.String("BACKUP_RESTORE"),
-//				Networks: backupdisasterrecovery.ManagementServerNetworkArray{
-//					&backupdisasterrecovery.ManagementServerNetworkArgs{
-//						Network:     defaultNetwork.ID(),
-//						PeeringMode: pulumi.String("PRIVATE_SERVICE_ACCESS"),
-//					},
-//				},
-//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
-//				defaultConnection,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

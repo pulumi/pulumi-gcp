@@ -67,7 +67,15 @@ class ServerTlsPolicyArgs:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              server_certificate: Optional[pulumi.Input['ServerTlsPolicyServerCertificateArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_open is None and 'allowOpen' in kwargs:
+            allow_open = kwargs['allowOpen']
+        if mtls_policy is None and 'mtlsPolicy' in kwargs:
+            mtls_policy = kwargs['mtlsPolicy']
+        if server_certificate is None and 'serverCertificate' in kwargs:
+            server_certificate = kwargs['serverCertificate']
+
         if allow_open is not None:
             _setter("allow_open", allow_open)
         if description is not None:
@@ -254,7 +262,19 @@ class _ServerTlsPolicyState:
              project: Optional[pulumi.Input[str]] = None,
              server_certificate: Optional[pulumi.Input['ServerTlsPolicyServerCertificateArgs']] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_open is None and 'allowOpen' in kwargs:
+            allow_open = kwargs['allowOpen']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if mtls_policy is None and 'mtlsPolicy' in kwargs:
+            mtls_policy = kwargs['mtlsPolicy']
+        if server_certificate is None and 'serverCertificate' in kwargs:
+            server_certificate = kwargs['serverCertificate']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if allow_open is not None:
             _setter("allow_open", allow_open)
         if create_time is not None:
@@ -423,82 +443,6 @@ class ServerTlsPolicy(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Network Security Server Tls Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.ServerTlsPolicy("default",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            allow_open=False,
-            server_certificate=gcp.networksecurity.ServerTlsPolicyServerCertificateArgs(
-                certificate_provider_instance=gcp.networksecurity.ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs(
-                    plugin_instance="google_cloud_private_spiffe",
-                ),
-            ),
-            mtls_policy=gcp.networksecurity.ServerTlsPolicyMtlsPolicyArgs(
-                client_validation_cas=[
-                    gcp.networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaArgs(
-                        grpc_endpoint=gcp.networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs(
-                            target_uri="unix:mypath",
-                        ),
-                    ),
-                    gcp.networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaArgs(
-                        grpc_endpoint=gcp.networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs(
-                            target_uri="unix:abc/mypath",
-                        ),
-                    ),
-                    gcp.networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaArgs(
-                        certificate_provider_instance=gcp.networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs(
-                            plugin_instance="google_cloud_private_spiffe",
-                        ),
-                    ),
-                ],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Network Security Server Tls Policy Advanced
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.ServerTlsPolicy("default",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            location="global",
-            allow_open=False,
-            mtls_policy=gcp.networksecurity.ServerTlsPolicyMtlsPolicyArgs(
-                client_validation_mode="ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Network Security Server Tls Policy Server Cert
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.ServerTlsPolicy("default",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            location="global",
-            allow_open=False,
-            server_certificate=gcp.networksecurity.ServerTlsPolicyServerCertificateArgs(
-                grpc_endpoint=gcp.networksecurity.ServerTlsPolicyServerCertificateGrpcEndpointArgs(
-                    target_uri="unix:mypath",
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -545,82 +489,6 @@ class ServerTlsPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Network Security Server Tls Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.ServerTlsPolicy("default",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            allow_open=False,
-            server_certificate=gcp.networksecurity.ServerTlsPolicyServerCertificateArgs(
-                certificate_provider_instance=gcp.networksecurity.ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs(
-                    plugin_instance="google_cloud_private_spiffe",
-                ),
-            ),
-            mtls_policy=gcp.networksecurity.ServerTlsPolicyMtlsPolicyArgs(
-                client_validation_cas=[
-                    gcp.networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaArgs(
-                        grpc_endpoint=gcp.networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs(
-                            target_uri="unix:mypath",
-                        ),
-                    ),
-                    gcp.networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaArgs(
-                        grpc_endpoint=gcp.networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs(
-                            target_uri="unix:abc/mypath",
-                        ),
-                    ),
-                    gcp.networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaArgs(
-                        certificate_provider_instance=gcp.networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs(
-                            plugin_instance="google_cloud_private_spiffe",
-                        ),
-                    ),
-                ],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Network Security Server Tls Policy Advanced
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.ServerTlsPolicy("default",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            location="global",
-            allow_open=False,
-            mtls_policy=gcp.networksecurity.ServerTlsPolicyMtlsPolicyArgs(
-                client_validation_mode="ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Network Security Server Tls Policy Server Cert
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.ServerTlsPolicy("default",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            location="global",
-            allow_open=False,
-            server_certificate=gcp.networksecurity.ServerTlsPolicyServerCertificateArgs(
-                grpc_endpoint=gcp.networksecurity.ServerTlsPolicyServerCertificateGrpcEndpointArgs(
-                    target_uri="unix:mypath",
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -678,19 +546,11 @@ class ServerTlsPolicy(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
-            if mtls_policy is not None and not isinstance(mtls_policy, ServerTlsPolicyMtlsPolicyArgs):
-                mtls_policy = mtls_policy or {}
-                def _setter(key, value):
-                    mtls_policy[key] = value
-                ServerTlsPolicyMtlsPolicyArgs._configure(_setter, **mtls_policy)
+            mtls_policy = _utilities.configure(mtls_policy, ServerTlsPolicyMtlsPolicyArgs, True)
             __props__.__dict__["mtls_policy"] = mtls_policy
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            if server_certificate is not None and not isinstance(server_certificate, ServerTlsPolicyServerCertificateArgs):
-                server_certificate = server_certificate or {}
-                def _setter(key, value):
-                    server_certificate[key] = value
-                ServerTlsPolicyServerCertificateArgs._configure(_setter, **server_certificate)
+            server_certificate = _utilities.configure(server_certificate, ServerTlsPolicyServerCertificateArgs, True)
             __props__.__dict__["server_certificate"] = server_certificate
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None

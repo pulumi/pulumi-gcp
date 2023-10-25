@@ -19,47 +19,6 @@ namespace Pulumi.Gcp.Diagflow
     ///     * [Official Documentation](https://cloud.google.com/dialogflow/es/docs/fulfillment-overview)
     /// 
     /// ## Example Usage
-    /// ### Dialogflow Fulfillment Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var basicAgent = new Gcp.Diagflow.Agent("basicAgent", new()
-    ///     {
-    ///         DisplayName = "example_agent",
-    ///         DefaultLanguageCode = "en",
-    ///         TimeZone = "America/New_York",
-    ///     });
-    /// 
-    ///     var basicFulfillment = new Gcp.Diagflow.Fulfillment("basicFulfillment", new()
-    ///     {
-    ///         DisplayName = "basic-fulfillment",
-    ///         Enabled = true,
-    ///         GenericWebService = new Gcp.Diagflow.Inputs.FulfillmentGenericWebServiceArgs
-    ///         {
-    ///             Uri = "https://google.com",
-    ///             Username = "admin",
-    ///             Password = "password",
-    ///             RequestHeaders = 
-    ///             {
-    ///                 { "name", "wrench" },
-    ///             },
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             basicAgent,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

@@ -47,7 +47,11 @@ class AiMetadataStoreArgs:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if encryption_spec is None and 'encryptionSpec' in kwargs:
+            encryption_spec = kwargs['encryptionSpec']
+
         if description is not None:
             _setter("description", description)
         if encryption_spec is not None:
@@ -169,7 +173,15 @@ class _AiMetadataStoreState:
              region: Optional[pulumi.Input[str]] = None,
              states: Optional[pulumi.Input[Sequence[pulumi.Input['AiMetadataStoreStateArgs']]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if encryption_spec is None and 'encryptionSpec' in kwargs:
+            encryption_spec = kwargs['encryptionSpec']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:
@@ -300,16 +312,6 @@ class AiMetadataStore(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Vertex Ai Metadata Store
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        store = gcp.vertex.AiMetadataStore("store",
-            description="Store to test the terraform module",
-            region="us-central1")
-        ```
 
         ## Import
 
@@ -349,16 +351,6 @@ class AiMetadataStore(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Vertex Ai Metadata Store
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        store = gcp.vertex.AiMetadataStore("store",
-            description="Store to test the terraform module",
-            region="us-central1")
-        ```
 
         ## Import
 
@@ -414,11 +406,7 @@ class AiMetadataStore(pulumi.CustomResource):
             __props__ = AiMetadataStoreArgs.__new__(AiMetadataStoreArgs)
 
             __props__.__dict__["description"] = description
-            if encryption_spec is not None and not isinstance(encryption_spec, AiMetadataStoreEncryptionSpecArgs):
-                encryption_spec = encryption_spec or {}
-                def _setter(key, value):
-                    encryption_spec[key] = value
-                AiMetadataStoreEncryptionSpecArgs._configure(_setter, **encryption_spec)
+            encryption_spec = _utilities.configure(encryption_spec, AiMetadataStoreEncryptionSpecArgs, True)
             __props__.__dict__["encryption_spec"] = encryption_spec
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

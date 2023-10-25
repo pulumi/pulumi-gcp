@@ -11,27 +11,6 @@ namespace Pulumi.Gcp.Compute
 {
     /// <summary>
     /// ## Example Usage
-    /// ### Compute Network Edge Security Service Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.Compute.NetworkEdgeSecurityService("default", new()
-    ///     {
-    ///         Region = "us-east1",
-    ///         Description = "My basic resource",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

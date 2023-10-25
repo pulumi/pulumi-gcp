@@ -128,16 +128,6 @@ def get_organization(domain: Optional[str] = None,
     """
     Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.
 
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    org = gcp.organizations.get_organization(domain="example.com")
-    sales = gcp.organizations.Folder("sales",
-        display_name="Sales",
-        parent=org.name)
-    ```
-
 
     :param str domain: The domain name of the Organization.
            
@@ -167,16 +157,6 @@ def get_organization_output(domain: Optional[pulumi.Input[Optional[str]]] = None
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationResult]:
     """
     Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    org = gcp.organizations.get_organization(domain="example.com")
-    sales = gcp.organizations.Folder("sales",
-        display_name="Sales",
-        parent=org.name)
-    ```
 
 
     :param str domain: The domain name of the Organization.

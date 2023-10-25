@@ -12,55 +12,6 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints/)
  *
  * ## Example Usage
- * ### Vertex Ai Index Endpoint
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const vertexNetwork = gcp.compute.getNetwork({
- *     name: "network-name",
- * });
- * const vertexRange = new gcp.compute.GlobalAddress("vertexRange", {
- *     purpose: "VPC_PEERING",
- *     addressType: "INTERNAL",
- *     prefixLength: 24,
- *     network: vertexNetwork.then(vertexNetwork => vertexNetwork.id),
- * });
- * const vertexVpcConnection = new gcp.servicenetworking.Connection("vertexVpcConnection", {
- *     network: vertexNetwork.then(vertexNetwork => vertexNetwork.id),
- *     service: "servicenetworking.googleapis.com",
- *     reservedPeeringRanges: [vertexRange.name],
- * });
- * const project = gcp.organizations.getProject({});
- * const indexEndpoint = new gcp.vertex.AiIndexEndpoint("indexEndpoint", {
- *     displayName: "sample-endpoint",
- *     description: "A sample vertex endpoint",
- *     region: "us-central1",
- *     labels: {
- *         "label-one": "value-one",
- *     },
- *     network: Promise.all([project, vertexNetwork]).then(([project, vertexNetwork]) => `projects/${project.number}/global/networks/${vertexNetwork.name}`),
- * }, {
- *     dependsOn: [vertexVpcConnection],
- * });
- * ```
- * ### Vertex Ai Index Endpoint With Public Endpoint
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const indexEndpoint = new gcp.vertex.AiIndexEndpoint("indexEndpoint", {
- *     description: "A sample vertex endpoint with an public endpoint",
- *     displayName: "sample-endpoint",
- *     labels: {
- *         "label-one": "value-one",
- *     },
- *     publicEndpointEnabled: true,
- *     region: "us-central1",
- * });
- * ```
  *
  * ## Import
  *

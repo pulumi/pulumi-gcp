@@ -18,44 +18,6 @@ import * as utilities from "../utilities";
  *     * [Creating Attestations (Occurrences)](https://cloud.google.com/binary-authorization/docs/making-attestations)
  *
  * ## Example Usage
- * ### Container Analysis Note Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const note = new gcp.containeranalysis.Note("note", {attestationAuthority: {
- *     hint: {
- *         humanReadableName: "Attestor Note",
- *     },
- * }});
- * ```
- * ### Container Analysis Note Attestation Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const note = new gcp.containeranalysis.Note("note", {
- *     attestationAuthority: {
- *         hint: {
- *             humanReadableName: "Attestor Note",
- *         },
- *     },
- *     expirationTime: "2120-10-02T15:01:23.045123456Z",
- *     longDescription: "a longer description of test note",
- *     relatedUrls: [
- *         {
- *             label: "foo",
- *             url: "some.url",
- *         },
- *         {
- *             url: "google.com",
- *         },
- *     ],
- *     shortDescription: "test note",
- * });
- * ```
  *
  * ## Import
  *

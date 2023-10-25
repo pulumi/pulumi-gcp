@@ -19,36 +19,6 @@ namespace Pulumi.Gcp.Datastream
     ///     * [Official Documentation](https://cloud.google.com/datastream/docs/create-a-private-connectivity-configuration)
     /// 
     /// ## Example Usage
-    /// ### Datastream Private Connection Full
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork");
-    /// 
-    ///     var defaultPrivateConnection = new Gcp.Datastream.PrivateConnection("defaultPrivateConnection", new()
-    ///     {
-    ///         DisplayName = "Connection profile",
-    ///         Location = "us-central1",
-    ///         PrivateConnectionId = "my-connection",
-    ///         Labels = 
-    ///         {
-    ///             { "key", "value" },
-    ///         },
-    ///         VpcPeeringConfig = new Gcp.Datastream.Inputs.PrivateConnectionVpcPeeringConfigArgs
-    ///         {
-    ///             Vpc = defaultNetwork.Id,
-    ///             Subnet = "10.0.0.0/29",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

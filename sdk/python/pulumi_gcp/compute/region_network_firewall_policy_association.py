@@ -42,12 +42,22 @@ class RegionNetworkFirewallPolicyAssociationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attachment_target: pulumi.Input[str],
-             firewall_policy: pulumi.Input[str],
+             attachment_target: Optional[pulumi.Input[str]] = None,
+             firewall_policy: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if attachment_target is None and 'attachmentTarget' in kwargs:
+            attachment_target = kwargs['attachmentTarget']
+        if attachment_target is None:
+            raise TypeError("Missing 'attachment_target' argument")
+        if firewall_policy is None and 'firewallPolicy' in kwargs:
+            firewall_policy = kwargs['firewallPolicy']
+        if firewall_policy is None:
+            raise TypeError("Missing 'firewall_policy' argument")
+
         _setter("attachment_target", attachment_target)
         _setter("firewall_policy", firewall_policy)
         if name is not None:
@@ -162,7 +172,15 @@ class _RegionNetworkFirewallPolicyAssociationState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              short_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if attachment_target is None and 'attachmentTarget' in kwargs:
+            attachment_target = kwargs['attachmentTarget']
+        if firewall_policy is None and 'firewallPolicy' in kwargs:
+            firewall_policy = kwargs['firewallPolicy']
+        if short_name is None and 'shortName' in kwargs:
+            short_name = kwargs['shortName']
+
         if attachment_target is not None:
             _setter("attachment_target", attachment_target)
         if firewall_policy is not None:
@@ -268,22 +286,6 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
         The Compute NetworkFirewallPolicyAssociation resource
 
         ## Example Usage
-        ### Regional
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic_regional_network_firewall_policy = gcp.compute.RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy",
-            project="my-project-name",
-            description="Sample global network firewall policy",
-            region="us-west1")
-        basic_network = gcp.compute.Network("basicNetwork")
-        primary = gcp.compute.RegionNetworkFirewallPolicyAssociation("primary",
-            attachment_target=basic_network.id,
-            firewall_policy=basic_regional_network_firewall_policy.name,
-            project="my-project-name",
-            region="us-west1")
-        ```
 
         ## Import
 
@@ -319,22 +321,6 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
         The Compute NetworkFirewallPolicyAssociation resource
 
         ## Example Usage
-        ### Regional
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic_regional_network_firewall_policy = gcp.compute.RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy",
-            project="my-project-name",
-            description="Sample global network firewall policy",
-            region="us-west1")
-        basic_network = gcp.compute.Network("basicNetwork")
-        primary = gcp.compute.RegionNetworkFirewallPolicyAssociation("primary",
-            attachment_target=basic_network.id,
-            firewall_policy=basic_regional_network_firewall_policy.name,
-            project="my-project-name",
-            region="us-west1")
-        ```
 
         ## Import
 

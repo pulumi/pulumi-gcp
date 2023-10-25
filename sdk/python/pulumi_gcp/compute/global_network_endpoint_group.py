@@ -51,12 +51,20 @@ class GlobalNetworkEndpointGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network_endpoint_type: pulumi.Input[str],
+             network_endpoint_type: Optional[pulumi.Input[str]] = None,
              default_port: Optional[pulumi.Input[int]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if network_endpoint_type is None and 'networkEndpointType' in kwargs:
+            network_endpoint_type = kwargs['networkEndpointType']
+        if network_endpoint_type is None:
+            raise TypeError("Missing 'network_endpoint_type' argument")
+        if default_port is None and 'defaultPort' in kwargs:
+            default_port = kwargs['defaultPort']
+
         _setter("network_endpoint_type", network_endpoint_type)
         if default_port is not None:
             _setter("default_port", default_port)
@@ -190,7 +198,15 @@ class _GlobalNetworkEndpointGroupState:
              network_endpoint_type: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if default_port is None and 'defaultPort' in kwargs:
+            default_port = kwargs['defaultPort']
+        if network_endpoint_type is None and 'networkEndpointType' in kwargs:
+            network_endpoint_type = kwargs['networkEndpointType']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if default_port is not None:
             _setter("default_port", default_port)
         if description is not None:
@@ -316,26 +332,6 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
 
         ## Example Usage
-        ### Global Network Endpoint Group
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        neg = gcp.compute.GlobalNetworkEndpointGroup("neg",
-            default_port=90,
-            network_endpoint_type="INTERNET_FQDN_PORT")
-        ```
-        ### Global Network Endpoint Group Ip Address
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        neg = gcp.compute.GlobalNetworkEndpointGroup("neg",
-            default_port=90,
-            network_endpoint_type="INTERNET_IP_PORT")
-        ```
 
         ## Import
 
@@ -395,26 +391,6 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
 
         ## Example Usage
-        ### Global Network Endpoint Group
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        neg = gcp.compute.GlobalNetworkEndpointGroup("neg",
-            default_port=90,
-            network_endpoint_type="INTERNET_FQDN_PORT")
-        ```
-        ### Global Network Endpoint Group Ip Address
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        neg = gcp.compute.GlobalNetworkEndpointGroup("neg",
-            default_port=90,
-            network_endpoint_type="INTERNET_IP_PORT")
-        ```
 
         ## Import
 

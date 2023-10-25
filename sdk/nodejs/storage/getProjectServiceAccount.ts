@@ -39,40 +39,6 @@ import * as utilities from "../utilities";
  * [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
  *
  * ## Example Usage
- * ### Pub/Sub Notifications
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const gcsAccount = gcp.storage.getProjectServiceAccount({});
- * const binding = new gcp.pubsub.TopicIAMBinding("binding", {
- *     topic: google_pubsub_topic.topic.name,
- *     role: "roles/pubsub.publisher",
- *     members: [gcsAccount.then(gcsAccount => `serviceAccount:${gcsAccount.emailAddress}`)],
- * });
- * ```
- * ### Cloud KMS Keys
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const gcsAccount = gcp.storage.getProjectServiceAccount({});
- * const binding = new gcp.kms.CryptoKeyIAMBinding("binding", {
- *     cryptoKeyId: "your-crypto-key-id",
- *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
- *     members: [gcsAccount.then(gcsAccount => `serviceAccount:${gcsAccount.emailAddress}`)],
- * });
- * const bucket = new gcp.storage.Bucket("bucket", {
- *     location: "US",
- *     encryption: {
- *         defaultKmsKeyName: "your-crypto-key-id",
- *     },
- * }, {
- *     dependsOn: [binding],
- * });
- * ```
  */
 export function getProjectServiceAccount(args?: GetProjectServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectServiceAccountResult> {
     args = args || {};
@@ -154,40 +120,6 @@ export interface GetProjectServiceAccountResult {
  * [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
  *
  * ## Example Usage
- * ### Pub/Sub Notifications
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const gcsAccount = gcp.storage.getProjectServiceAccount({});
- * const binding = new gcp.pubsub.TopicIAMBinding("binding", {
- *     topic: google_pubsub_topic.topic.name,
- *     role: "roles/pubsub.publisher",
- *     members: [gcsAccount.then(gcsAccount => `serviceAccount:${gcsAccount.emailAddress}`)],
- * });
- * ```
- * ### Cloud KMS Keys
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const gcsAccount = gcp.storage.getProjectServiceAccount({});
- * const binding = new gcp.kms.CryptoKeyIAMBinding("binding", {
- *     cryptoKeyId: "your-crypto-key-id",
- *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
- *     members: [gcsAccount.then(gcsAccount => `serviceAccount:${gcsAccount.emailAddress}`)],
- * });
- * const bucket = new gcp.storage.Bucket("bucket", {
- *     location: "US",
- *     encryption: {
- *         defaultKmsKeyName: "your-crypto-key-id",
- *     },
- * }, {
- *     dependsOn: [binding],
- * });
- * ```
  */
 export function getProjectServiceAccountOutput(args?: GetProjectServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectServiceAccountResult> {
     return pulumi.output(args).apply((a: any) => getProjectServiceAccount(a, opts))

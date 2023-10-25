@@ -13,54 +13,12 @@ namespace Pulumi.Gcp.GkeHub
     {
         /// <summary>
         /// Retrieves the current IAM policy data for membership
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.GkeHub.GetMembershipIamPolicy.Invoke(new()
-        ///     {
-        ///         Project = google_gke_hub_membership.Membership.Project,
-        ///         MembershipId = google_gke_hub_membership.Membership.Membership_id,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetMembershipIamPolicyResult> InvokeAsync(GetMembershipIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMembershipIamPolicyResult>("gcp:gkehub/getMembershipIamPolicy:getMembershipIamPolicy", args ?? new GetMembershipIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for membership
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.GkeHub.GetMembershipIamPolicy.Invoke(new()
-        ///     {
-        ///         Project = google_gke_hub_membership.Membership.Project,
-        ///         MembershipId = google_gke_hub_membership.Membership.Membership_id,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetMembershipIamPolicyResult> Invoke(GetMembershipIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMembershipIamPolicyResult>("gcp:gkehub/getMembershipIamPolicy:getMembershipIamPolicy", args ?? new GetMembershipIamPolicyInvokeArgs(), options.WithDefaults());

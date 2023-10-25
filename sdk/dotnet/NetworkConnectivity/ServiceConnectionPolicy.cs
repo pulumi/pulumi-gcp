@@ -19,46 +19,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
     ///     * [About Service Connection Policies](https://cloud.google.com/vpc/docs/about-service-connection-policies#service-policies)
     /// 
     /// ## Example Usage
-    /// ### Network Connectivity Policy Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var producerNet = new Gcp.Compute.Network("producerNet", new()
-    ///     {
-    ///         AutoCreateSubnetworks = false,
-    ///     });
-    /// 
-    ///     var producerSubnet = new Gcp.Compute.Subnetwork("producerSubnet", new()
-    ///     {
-    ///         IpCidrRange = "10.0.0.0/16",
-    ///         Region = "us-central1",
-    ///         Network = producerNet.Id,
-    ///     });
-    /// 
-    ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
-    ///     {
-    ///         Location = "us-central1",
-    ///         ServiceClass = "my-basic-service-class",
-    ///         Description = "my basic service connection policy",
-    ///         Network = producerNet.Id,
-    ///         PscConfig = new Gcp.NetworkConnectivity.Inputs.ServiceConnectionPolicyPscConfigArgs
-    ///         {
-    ///             Subnetworks = new[]
-    ///             {
-    ///                 producerSubnet.Id,
-    ///             },
-    ///             Limit = "2",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

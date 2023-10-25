@@ -45,10 +45,18 @@ class SubscriptionIAMPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy_data: pulumi.Input[str],
-             subscription: pulumi.Input[str],
+             policy_data: Optional[pulumi.Input[str]] = None,
+             subscription: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+        if subscription is None:
+            raise TypeError("Missing 'subscription' argument")
+
         _setter("policy_data", policy_data)
         _setter("subscription", subscription)
         if project is not None:
@@ -145,7 +153,11 @@ class _SubscriptionIAMPolicyState:
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              subscription: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if etag is not None:
             _setter("etag", etag)
         if policy_data is not None:
@@ -237,45 +249,6 @@ class SubscriptionIAMPolicy(pulumi.CustomResource):
 
         > **Note:** `pubsub.SubscriptionIAMBinding` resources **can be** used in conjunction with `pubsub.SubscriptionIAMMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_pubsub\\_subscription\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
-        editor = gcp.pubsub.SubscriptionIAMPolicy("editor",
-            subscription="your-subscription-name",
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_pubsub\\_subscription\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        editor = gcp.pubsub.SubscriptionIAMBinding("editor",
-            members=["user:jane@example.com"],
-            role="roles/editor",
-            subscription="your-subscription-name")
-        ```
-
-        ## google\\_pubsub\\_subscription\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        editor = gcp.pubsub.SubscriptionIAMMember("editor",
-            member="user:jane@example.com",
-            role="roles/editor",
-            subscription="your-subscription-name")
-        ```
-
         ## Import
 
         Pubsub subscription IAM resources can be imported using the project, subscription name, role and member.
@@ -331,45 +304,6 @@ class SubscriptionIAMPolicy(pulumi.CustomResource):
         > **Note:** `pubsub.SubscriptionIAMPolicy` **cannot** be used in conjunction with `pubsub.SubscriptionIAMBinding` and `pubsub.SubscriptionIAMMember` or they will fight over what your policy should be.
 
         > **Note:** `pubsub.SubscriptionIAMBinding` resources **can be** used in conjunction with `pubsub.SubscriptionIAMMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\\_pubsub\\_subscription\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
-        editor = gcp.pubsub.SubscriptionIAMPolicy("editor",
-            subscription="your-subscription-name",
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_pubsub\\_subscription\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        editor = gcp.pubsub.SubscriptionIAMBinding("editor",
-            members=["user:jane@example.com"],
-            role="roles/editor",
-            subscription="your-subscription-name")
-        ```
-
-        ## google\\_pubsub\\_subscription\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        editor = gcp.pubsub.SubscriptionIAMMember("editor",
-            member="user:jane@example.com",
-            role="roles/editor",
-            subscription="your-subscription-name")
-        ```
 
         ## Import
 

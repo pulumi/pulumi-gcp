@@ -21,66 +21,6 @@ namespace Pulumi.Gcp.Iot
     ///     * [Official Documentation](https://cloud.google.com/iot/docs/)
     /// 
     /// ## Example Usage
-    /// ### Cloudiot Device Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var registry = new Gcp.Iot.Registry("registry");
-    /// 
-    ///     var test_device = new Gcp.Iot.Device("test-device", new()
-    ///     {
-    ///         Registry = registry.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Cloudiot Device Full
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.IO;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var registry = new Gcp.Iot.Registry("registry");
-    /// 
-    ///     var test_device = new Gcp.Iot.Device("test-device", new()
-    ///     {
-    ///         Registry = registry.Id,
-    ///         Credentials = new[]
-    ///         {
-    ///             new Gcp.Iot.Inputs.DeviceCredentialArgs
-    ///             {
-    ///                 PublicKey = new Gcp.Iot.Inputs.DeviceCredentialPublicKeyArgs
-    ///                 {
-    ///                     Format = "RSA_PEM",
-    ///                     Key = File.ReadAllText("test-fixtures/rsa_public.pem"),
-    ///                 },
-    ///             },
-    ///         },
-    ///         Blocked = false,
-    ///         LogLevel = "INFO",
-    ///         Metadata = 
-    ///         {
-    ///             { "test_key_1", "test_value_1" },
-    ///         },
-    ///         GatewayConfig = new Gcp.Iot.Inputs.DeviceGatewayConfigArgs
-    ///         {
-    ///             GatewayType = "NON_GATEWAY",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

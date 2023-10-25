@@ -82,15 +82,6 @@ def get_dataset_iam_policy(dataset_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for a Google Cloud Healthcare dataset.
 
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    foo = gcp.healthcare.get_dataset_iam_policy(dataset_id=google_healthcare_dataset["dataset"]["id"])
-    ```
-
 
     :param str dataset_id: The dataset ID, in the form
            `{project_id}/{location_name}/{dataset_name}` or
@@ -114,15 +105,6 @@ def get_dataset_iam_policy_output(dataset_id: Optional[pulumi.Input[str]] = None
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatasetIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a Google Cloud Healthcare dataset.
-
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    foo = gcp.healthcare.get_dataset_iam_policy(dataset_id=google_healthcare_dataset["dataset"]["id"])
-    ```
 
 
     :param str dataset_id: The dataset ID, in the form

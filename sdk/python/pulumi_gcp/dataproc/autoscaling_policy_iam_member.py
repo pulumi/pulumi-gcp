@@ -61,13 +61,23 @@ class AutoscalingPolicyIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             member: pulumi.Input[str],
-             policy_id: pulumi.Input[str],
-             role: pulumi.Input[str],
+             member: Optional[pulumi.Input[str]] = None,
+             policy_id: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['AutoscalingPolicyIamMemberConditionArgs']] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if policy_id is None:
+            raise TypeError("Missing 'policy_id' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("member", member)
         _setter("policy_id", policy_id)
         _setter("role", role)
@@ -223,7 +233,11 @@ class _AutoscalingPolicyIamMemberState:
              policy_id: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -365,51 +379,6 @@ class AutoscalingPolicyIamMember(pulumi.CustomResource):
 
         > **Note:** `dataproc.AutoscalingPolicyIamBinding` resources **can be** used in conjunction with `dataproc.AutoscalingPolicyIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataproc\\_autoscaling\\_policy\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.dataproc.AutoscalingPolicyIamPolicy("policy",
-            project=google_dataproc_autoscaling_policy["basic"]["project"],
-            location=google_dataproc_autoscaling_policy["basic"]["location"],
-            policy_id=google_dataproc_autoscaling_policy["basic"]["policy_id"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_dataproc\\_autoscaling\\_policy\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.dataproc.AutoscalingPolicyIamBinding("binding",
-            project=google_dataproc_autoscaling_policy["basic"]["project"],
-            location=google_dataproc_autoscaling_policy["basic"]["location"],
-            policy_id=google_dataproc_autoscaling_policy["basic"]["policy_id"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_dataproc\\_autoscaling\\_policy\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.dataproc.AutoscalingPolicyIamMember("member",
-            project=google_dataproc_autoscaling_policy["basic"]["project"],
-            location=google_dataproc_autoscaling_policy["basic"]["location"],
-            policy_id=google_dataproc_autoscaling_policy["basic"]["policy_id"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{policy_id}} * {{project}}/{{location}}/{{policy_id}} * {{location}}/{{policy_id}} * {{policy_id}} Any variables not passed in the import command will be taken from the provider configuration. Dataproc autoscalingpolicy IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -482,51 +451,6 @@ class AutoscalingPolicyIamMember(pulumi.CustomResource):
 
         > **Note:** `dataproc.AutoscalingPolicyIamBinding` resources **can be** used in conjunction with `dataproc.AutoscalingPolicyIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataproc\\_autoscaling\\_policy\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.dataproc.AutoscalingPolicyIamPolicy("policy",
-            project=google_dataproc_autoscaling_policy["basic"]["project"],
-            location=google_dataproc_autoscaling_policy["basic"]["location"],
-            policy_id=google_dataproc_autoscaling_policy["basic"]["policy_id"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_dataproc\\_autoscaling\\_policy\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.dataproc.AutoscalingPolicyIamBinding("binding",
-            project=google_dataproc_autoscaling_policy["basic"]["project"],
-            location=google_dataproc_autoscaling_policy["basic"]["location"],
-            policy_id=google_dataproc_autoscaling_policy["basic"]["policy_id"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_dataproc\\_autoscaling\\_policy\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.dataproc.AutoscalingPolicyIamMember("member",
-            project=google_dataproc_autoscaling_policy["basic"]["project"],
-            location=google_dataproc_autoscaling_policy["basic"]["location"],
-            policy_id=google_dataproc_autoscaling_policy["basic"]["policy_id"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{policy_id}} * {{project}}/{{location}}/{{policy_id}} * {{location}}/{{policy_id}} * {{policy_id}} Any variables not passed in the import command will be taken from the provider configuration. Dataproc autoscalingpolicy IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -585,11 +509,7 @@ class AutoscalingPolicyIamMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AutoscalingPolicyIamMemberArgs.__new__(AutoscalingPolicyIamMemberArgs)
 
-            if condition is not None and not isinstance(condition, AutoscalingPolicyIamMemberConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                AutoscalingPolicyIamMemberConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, AutoscalingPolicyIamMemberConditionArgs, True)
             __props__.__dict__["condition"] = condition
             __props__.__dict__["location"] = location
             if member is None and not opts.urn:

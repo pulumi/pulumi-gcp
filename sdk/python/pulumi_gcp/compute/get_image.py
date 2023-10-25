@@ -289,22 +289,6 @@ def get_image(family: Optional[str] = None,
     Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
     [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    my_image = gcp.compute.get_image(family="debian-11",
-        project="debian-cloud")
-    # ...
-    default = gcp.compute.Instance("default", boot_disk=gcp.compute.InstanceBootDiskArgs(
-        initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-            image=my_image.self_link,
-        ),
-    ))
-    ```
-
 
     :param str family: The family name of the image.
     :param bool most_recent: A boolean to indicate either to take to most recent image if your filter
@@ -364,22 +348,6 @@ def get_image_output(family: Optional[pulumi.Input[Optional[str]]] = None,
     """
     Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
     [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    my_image = gcp.compute.get_image(family="debian-11",
-        project="debian-cloud")
-    # ...
-    default = gcp.compute.Instance("default", boot_disk=gcp.compute.InstanceBootDiskArgs(
-        initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-            image=my_image.self_link,
-        ),
-    ))
-    ```
 
 
     :param str family: The family name of the image.

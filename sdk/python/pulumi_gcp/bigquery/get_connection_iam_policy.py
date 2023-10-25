@@ -103,17 +103,6 @@ def get_connection_iam_policy(connection_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for connection
 
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.bigquery.get_connection_iam_policy(project=google_bigquery_connection["connection"]["project"],
-        location=google_bigquery_connection["connection"]["location"],
-        connection_id=google_bigquery_connection["connection"]["connection_id"])
-    ```
-
 
     :param str connection_id: Optional connection id that should be assigned to the created connection.
            Used to find the parent resource to bind the IAM policy to
@@ -150,17 +139,6 @@ def get_connection_iam_policy_output(connection_id: Optional[pulumi.Input[str]] 
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectionIamPolicyResult]:
     """
     Retrieves the current IAM policy data for connection
-
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.bigquery.get_connection_iam_policy(project=google_bigquery_connection["connection"]["project"],
-        location=google_bigquery_connection["connection"]["location"],
-        connection_id=google_bigquery_connection["connection"]["connection_id"])
-    ```
 
 
     :param str connection_id: Optional connection id that should be assigned to the created connection.

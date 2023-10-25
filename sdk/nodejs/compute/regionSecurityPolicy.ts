@@ -8,64 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
- * ### Region Security Policy Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const region_sec_policy_basic = new gcp.compute.RegionSecurityPolicy("region-sec-policy-basic", {
- *     description: "basic region security policy",
- *     type: "CLOUD_ARMOR",
- * }, {
- *     provider: google_beta,
- * });
- * ```
- * ### Region Security Policy With Ddos Protection Config
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const region_sec_policy_ddos_protection = new gcp.compute.RegionSecurityPolicy("region-sec-policy-ddos-protection", {
- *     description: "with ddos protection config",
- *     type: "CLOUD_ARMOR_NETWORK",
- *     ddosProtectionConfig: {
- *         ddosProtection: "ADVANCED_PREVIEW",
- *     },
- * }, {
- *     provider: google_beta,
- * });
- * ```
- * ### Region Security Policy With User Defined Fields
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const region_sec_policy_user_defined_fields = new gcp.compute.RegionSecurityPolicy("region-sec-policy-user-defined-fields", {
- *     description: "with user defined fields",
- *     type: "CLOUD_ARMOR_NETWORK",
- *     userDefinedFields: [
- *         {
- *             name: "SIG1_AT_0",
- *             base: "UDP",
- *             offset: 8,
- *             size: 2,
- *             mask: "0x8F00",
- *         },
- *         {
- *             name: "SIG2_AT_8",
- *             base: "UDP",
- *             offset: 16,
- *             size: 4,
- *             mask: "0xFFFFFFFF",
- *         },
- *     ],
- * }, {
- *     provider: google_beta,
- * });
- * ```
  *
  * ## Import
  *

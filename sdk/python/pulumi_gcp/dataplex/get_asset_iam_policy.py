@@ -123,19 +123,6 @@ def get_asset_iam_policy(asset: Optional[str] = None,
     """
     Retrieves the current IAM policy data for asset
 
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.dataplex.get_asset_iam_policy(project=google_dataplex_asset["example"]["project"],
-        location=google_dataplex_asset["example"]["location"],
-        lake=google_dataplex_asset["example"]["lake"],
-        dataplex_zone=google_dataplex_asset["example"]["dataplex_zone"],
-        asset=google_dataplex_asset["example"]["name"])
-    ```
-
 
     :param str asset: Used to find the parent resource to bind the IAM policy to
     :param str project: The ID of the project in which the resource belongs.
@@ -170,19 +157,6 @@ def get_asset_iam_policy_output(asset: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAssetIamPolicyResult]:
     """
     Retrieves the current IAM policy data for asset
-
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.dataplex.get_asset_iam_policy(project=google_dataplex_asset["example"]["project"],
-        location=google_dataplex_asset["example"]["location"],
-        lake=google_dataplex_asset["example"]["lake"],
-        dataplex_zone=google_dataplex_asset["example"]["dataplex_zone"],
-        asset=google_dataplex_asset["example"]["name"])
-    ```
 
 
     :param str asset: Used to find the parent resource to bind the IAM policy to

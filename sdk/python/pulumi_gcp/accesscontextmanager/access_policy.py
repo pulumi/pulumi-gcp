@@ -37,10 +37,16 @@ class AccessPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parent: pulumi.Input[str],
-             title: pulumi.Input[str],
+             parent: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              scopes: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("parent", parent)
         _setter("title", title)
         if scopes is not None:
@@ -129,7 +135,13 @@ class _AccessPolicyState:
              scopes: Optional[pulumi.Input[str]] = None,
              title: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if name is not None:
@@ -250,30 +262,6 @@ class AccessPolicy(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
-        ### Access Context Manager Access Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
-            parent="organizations/123456789",
-            title="Org Access Policy")
-        ```
-        ### Access Context Manager Access Policy Scoped
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.Project("project",
-            org_id="123456789",
-            project_id="acm-test-proj-123")
-        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
-            parent="organizations/123456789",
-            scopes=project.number.apply(lambda number: f"projects/{number}"),
-            title="Scoped Access Policy")
-        ```
 
         ## Import
 
@@ -320,30 +308,6 @@ class AccessPolicy(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
-        ### Access Context Manager Access Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
-            parent="organizations/123456789",
-            title="Org Access Policy")
-        ```
-        ### Access Context Manager Access Policy Scoped
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.Project("project",
-            org_id="123456789",
-            project_id="acm-test-proj-123")
-        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
-            parent="organizations/123456789",
-            scopes=project.number.apply(lambda number: f"projects/{number}"),
-            title="Scoped Access Policy")
-        ```
 
         ## Import
 

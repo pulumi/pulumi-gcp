@@ -13,54 +13,6 @@ namespace Pulumi.Gcp.Eventarc
     /// The Eventarc GoogleChannelConfig resource
     /// 
     /// ## Example Usage
-    /// ### Basic
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var testProject = Gcp.Organizations.GetProject.Invoke(new()
-    ///     {
-    ///         ProjectId = "my-project-name",
-    ///     });
-    /// 
-    ///     var testKeyRing = Gcp.Kms.GetKMSKeyRing.Invoke(new()
-    ///     {
-    ///         Name = "keyring",
-    ///         Location = "us-west1",
-    ///     });
-    /// 
-    ///     var key = Gcp.Kms.GetKMSCryptoKey.Invoke(new()
-    ///     {
-    ///         Name = "key",
-    ///         KeyRing = testKeyRing.Apply(getKMSKeyRingResult =&gt; getKMSKeyRingResult.Id),
-    ///     });
-    /// 
-    ///     var key1Member = new Gcp.Kms.CryptoKeyIAMMember("key1Member", new()
-    ///     {
-    ///         CryptoKeyId = data.Google_kms_crypto_key.Key1.Id,
-    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
-    ///         Member = $"serviceAccount:service-{testProject.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-eventarc.iam.gserviceaccount.com",
-    ///     });
-    /// 
-    ///     var primary = new Gcp.Eventarc.GoogleChannelConfig("primary", new()
-    ///     {
-    ///         Location = "us-west1",
-    ///         Project = testProject.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
-    ///         CryptoKeyName = data.Google_kms_crypto_key.Key1.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             key1Member,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

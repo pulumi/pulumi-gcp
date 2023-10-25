@@ -32,9 +32,17 @@ class TagBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parent: pulumi.Input[str],
-             tag_value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             parent: Optional[pulumi.Input[str]] = None,
+             tag_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if tag_value is None and 'tagValue' in kwargs:
+            tag_value = kwargs['tagValue']
+        if tag_value is None:
+            raise TypeError("Missing 'tag_value' argument")
+
         _setter("parent", parent)
         _setter("tag_value", tag_value)
 
@@ -93,7 +101,11 @@ class _TagBindingState:
              name: Optional[pulumi.Input[str]] = None,
              parent: Optional[pulumi.Input[str]] = None,
              tag_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if tag_value is None and 'tagValue' in kwargs:
+            tag_value = kwargs['tagValue']
+
         if name is not None:
             _setter("name", name)
         if parent is not None:
@@ -159,27 +171,6 @@ class TagBinding(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 
         ## Example Usage
-        ### Tag Binding Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.Project("project",
-            org_id="123456789",
-            project_id="project_id")
-        key = gcp.tags.TagKey("key",
-            description="For keyname resources.",
-            parent="organizations/123456789",
-            short_name="keyname")
-        value = gcp.tags.TagValue("value",
-            description="For valuename resources.",
-            parent=key.name.apply(lambda name: f"tagKeys/{name}"),
-            short_name="valuename")
-        binding = gcp.tags.TagBinding("binding",
-            parent=project.number.apply(lambda number: f"//cloudresourcemanager.googleapis.com/projects/{number}"),
-            tag_value=value.name.apply(lambda name: f"tagValues/{name}"))
-        ```
 
         ## Import
 
@@ -217,27 +208,6 @@ class TagBinding(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 
         ## Example Usage
-        ### Tag Binding Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.Project("project",
-            org_id="123456789",
-            project_id="project_id")
-        key = gcp.tags.TagKey("key",
-            description="For keyname resources.",
-            parent="organizations/123456789",
-            short_name="keyname")
-        value = gcp.tags.TagValue("value",
-            description="For valuename resources.",
-            parent=key.name.apply(lambda name: f"tagKeys/{name}"),
-            short_name="valuename")
-        binding = gcp.tags.TagBinding("binding",
-            parent=project.number.apply(lambda number: f"//cloudresourcemanager.googleapis.com/projects/{number}"),
-            tag_value=value.name.apply(lambda name: f"tagValues/{name}"))
-        ```
 
         ## Import
 

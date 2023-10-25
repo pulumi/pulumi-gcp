@@ -39,7 +39,9 @@ class NetworkFirewallPolicyArgs:
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if description is not None:
             _setter("description", description)
         if name is not None:
@@ -140,7 +142,19 @@ class _NetworkFirewallPolicyState:
              rule_tuple_count: Optional[pulumi.Input[int]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              self_link_with_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if network_firewall_policy_id is None and 'networkFirewallPolicyId' in kwargs:
+            network_firewall_policy_id = kwargs['networkFirewallPolicyId']
+        if rule_tuple_count is None and 'ruleTupleCount' in kwargs:
+            rule_tuple_count = kwargs['ruleTupleCount']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if self_link_with_id is None and 'selfLinkWithId' in kwargs:
+            self_link_with_id = kwargs['selfLinkWithId']
+
         if creation_timestamp is not None:
             _setter("creation_timestamp", creation_timestamp)
         if description is not None:
@@ -286,15 +300,6 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
         The Compute NetworkFirewallPolicy resource
 
         ## Example Usage
-        ### Global
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.compute.NetworkFirewallPolicy("primary",
-            description="Sample global network firewall policy",
-            project="my-project-name")
-        ```
 
         ## Import
 
@@ -332,15 +337,6 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
         The Compute NetworkFirewallPolicy resource
 
         ## Example Usage
-        ### Global
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.compute.NetworkFirewallPolicy("primary",
-            description="Sample global network firewall policy",
-            project="my-project-name")
-        ```
 
         ## Import
 

@@ -37,10 +37,14 @@ class CatalogArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+
         _setter("location", location)
         if name is not None:
             _setter("name", name)
@@ -143,7 +147,17 @@ class _CatalogState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if delete_time is None and 'deleteTime' in kwargs:
+            delete_time = kwargs['deleteTime']
+        if expire_time is None and 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if delete_time is not None:
@@ -277,14 +291,6 @@ class Catalog(pulumi.CustomResource):
             * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_catalogs)
 
         ## Example Usage
-        ### Bigquery Biglake Catalog
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.biglake.Catalog("default", location="US")
-        ```
 
         ## Import
 
@@ -329,14 +335,6 @@ class Catalog(pulumi.CustomResource):
             * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_catalogs)
 
         ## Example Usage
-        ### Bigquery Biglake Catalog
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.biglake.Catalog("default", location="US")
-        ```
 
         ## Import
 

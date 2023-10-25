@@ -63,13 +63,21 @@ class AttachedDiskArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disk: pulumi.Input[str],
-             instance: pulumi.Input[str],
+             disk: Optional[pulumi.Input[str]] = None,
+             instance: Optional[pulumi.Input[str]] = None,
              device_name: Optional[pulumi.Input[str]] = None,
              mode: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if disk is None:
+            raise TypeError("Missing 'disk' argument")
+        if instance is None:
+            raise TypeError("Missing 'instance' argument")
+        if device_name is None and 'deviceName' in kwargs:
+            device_name = kwargs['deviceName']
+
         _setter("disk", disk)
         _setter("instance", instance)
         if device_name is not None:
@@ -234,7 +242,11 @@ class _AttachedDiskState:
              mode: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if device_name is None and 'deviceName' in kwargs:
+            device_name = kwargs['deviceName']
+
         if device_name is not None:
             _setter("device_name", device_name)
         if disk is not None:
@@ -370,28 +382,6 @@ class AttachedDisk(pulumi.CustomResource):
 
         **Note:** When using `compute.AttachedDisk` you **must** use `lifecycle.ignore_changes = ["attached_disk"]` on the `compute.Instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_instance = gcp.compute.Instance("defaultInstance",
-            machine_type="e2-medium",
-            zone="us-west1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-11",
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-            )])
-        default_attached_disk = gcp.compute.AttachedDisk("defaultAttachedDisk",
-            disk=google_compute_disk["default"]["id"],
-            instance=default_instance.id)
-        ```
-
         ## Import
 
         Attached Disk can be imported the following ways
@@ -455,28 +445,6 @@ class AttachedDisk(pulumi.CustomResource):
             * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
 
         **Note:** When using `compute.AttachedDisk` you **must** use `lifecycle.ignore_changes = ["attached_disk"]` on the `compute.Instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_instance = gcp.compute.Instance("defaultInstance",
-            machine_type="e2-medium",
-            zone="us-west1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-11",
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-            )])
-        default_attached_disk = gcp.compute.AttachedDisk("defaultAttachedDisk",
-            disk=google_compute_disk["default"]["id"],
-            instance=default_instance.id)
-        ```
 
         ## Import
 

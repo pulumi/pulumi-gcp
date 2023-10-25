@@ -104,10 +104,10 @@ class StandardAppVersionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             deployment: pulumi.Input['StandardAppVersionDeploymentArgs'],
-             entrypoint: pulumi.Input['StandardAppVersionEntrypointArgs'],
-             runtime: pulumi.Input[str],
-             service: pulumi.Input[str],
+             deployment: Optional[pulumi.Input['StandardAppVersionDeploymentArgs']] = None,
+             entrypoint: Optional[pulumi.Input['StandardAppVersionEntrypointArgs']] = None,
+             runtime: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
              app_engine_apis: Optional[pulumi.Input[bool]] = None,
              automatic_scaling: Optional[pulumi.Input['StandardAppVersionAutomaticScalingArgs']] = None,
              basic_scaling: Optional[pulumi.Input['StandardAppVersionBasicScalingArgs']] = None,
@@ -125,7 +125,43 @@ class StandardAppVersionArgs:
              threadsafe: Optional[pulumi.Input[bool]] = None,
              version_id: Optional[pulumi.Input[str]] = None,
              vpc_access_connector: Optional[pulumi.Input['StandardAppVersionVpcAccessConnectorArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deployment is None:
+            raise TypeError("Missing 'deployment' argument")
+        if entrypoint is None:
+            raise TypeError("Missing 'entrypoint' argument")
+        if runtime is None:
+            raise TypeError("Missing 'runtime' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+        if app_engine_apis is None and 'appEngineApis' in kwargs:
+            app_engine_apis = kwargs['appEngineApis']
+        if automatic_scaling is None and 'automaticScaling' in kwargs:
+            automatic_scaling = kwargs['automaticScaling']
+        if basic_scaling is None and 'basicScaling' in kwargs:
+            basic_scaling = kwargs['basicScaling']
+        if delete_service_on_destroy is None and 'deleteServiceOnDestroy' in kwargs:
+            delete_service_on_destroy = kwargs['deleteServiceOnDestroy']
+        if env_variables is None and 'envVariables' in kwargs:
+            env_variables = kwargs['envVariables']
+        if inbound_services is None and 'inboundServices' in kwargs:
+            inbound_services = kwargs['inboundServices']
+        if instance_class is None and 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if manual_scaling is None and 'manualScaling' in kwargs:
+            manual_scaling = kwargs['manualScaling']
+        if noop_on_destroy is None and 'noopOnDestroy' in kwargs:
+            noop_on_destroy = kwargs['noopOnDestroy']
+        if runtime_api_version is None and 'runtimeApiVersion' in kwargs:
+            runtime_api_version = kwargs['runtimeApiVersion']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if version_id is None and 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+        if vpc_access_connector is None and 'vpcAccessConnector' in kwargs:
+            vpc_access_connector = kwargs['vpcAccessConnector']
+
         _setter("deployment", deployment)
         _setter("entrypoint", entrypoint)
         _setter("runtime", runtime)
@@ -550,7 +586,35 @@ class _StandardAppVersionState:
              threadsafe: Optional[pulumi.Input[bool]] = None,
              version_id: Optional[pulumi.Input[str]] = None,
              vpc_access_connector: Optional[pulumi.Input['StandardAppVersionVpcAccessConnectorArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if app_engine_apis is None and 'appEngineApis' in kwargs:
+            app_engine_apis = kwargs['appEngineApis']
+        if automatic_scaling is None and 'automaticScaling' in kwargs:
+            automatic_scaling = kwargs['automaticScaling']
+        if basic_scaling is None and 'basicScaling' in kwargs:
+            basic_scaling = kwargs['basicScaling']
+        if delete_service_on_destroy is None and 'deleteServiceOnDestroy' in kwargs:
+            delete_service_on_destroy = kwargs['deleteServiceOnDestroy']
+        if env_variables is None and 'envVariables' in kwargs:
+            env_variables = kwargs['envVariables']
+        if inbound_services is None and 'inboundServices' in kwargs:
+            inbound_services = kwargs['inboundServices']
+        if instance_class is None and 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if manual_scaling is None and 'manualScaling' in kwargs:
+            manual_scaling = kwargs['manualScaling']
+        if noop_on_destroy is None and 'noopOnDestroy' in kwargs:
+            noop_on_destroy = kwargs['noopOnDestroy']
+        if runtime_api_version is None and 'runtimeApiVersion' in kwargs:
+            runtime_api_version = kwargs['runtimeApiVersion']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if version_id is None and 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+        if vpc_access_connector is None and 'vpcAccessConnector' in kwargs:
+            vpc_access_connector = kwargs['vpcAccessConnector']
+
         if app_engine_apis is not None:
             _setter("app_engine_apis", app_engine_apis)
         if automatic_scaling is not None:
@@ -917,79 +981,6 @@ class StandardAppVersion(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/appengine/docs/standard)
 
         ## Example Usage
-        ### App Engine Standard App Version
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        custom_service_account = gcp.service_account.Account("customServiceAccount",
-            account_id="my-account",
-            display_name="Custom Service Account")
-        gae_api = gcp.projects.IAMMember("gaeApi",
-            project=custom_service_account.project,
-            role="roles/compute.networkUser",
-            member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        storage_viewer = gcp.projects.IAMMember("storageViewer",
-            project=custom_service_account.project,
-            role="roles/storage.objectViewer",
-            member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        bucket = gcp.storage.Bucket("bucket", location="US")
-        object = gcp.storage.BucketObject("object",
-            bucket=bucket.name,
-            source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
-        myapp_v1 = gcp.appengine.StandardAppVersion("myappV1",
-            version_id="v1",
-            service="myapp",
-            runtime="nodejs10",
-            entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
-                shell="node ./app.js",
-            ),
-            deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
-                zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
-                    source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
-                ),
-            ),
-            env_variables={
-                "port": "8080",
-            },
-            automatic_scaling=gcp.appengine.StandardAppVersionAutomaticScalingArgs(
-                max_concurrent_requests=10,
-                min_idle_instances=1,
-                max_idle_instances=3,
-                min_pending_latency="1s",
-                max_pending_latency="5s",
-                standard_scheduler_settings=gcp.appengine.StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs(
-                    target_cpu_utilization=0.5,
-                    target_throughput_utilization=0.75,
-                    min_instances=2,
-                    max_instances=10,
-                ),
-            ),
-            delete_service_on_destroy=True,
-            service_account=custom_service_account.email)
-        myapp_v2 = gcp.appengine.StandardAppVersion("myappV2",
-            version_id="v2",
-            service="myapp",
-            runtime="nodejs10",
-            app_engine_apis=True,
-            entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
-                shell="node ./app.js",
-            ),
-            deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
-                zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
-                    source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
-                ),
-            ),
-            env_variables={
-                "port": "8080",
-            },
-            basic_scaling=gcp.appengine.StandardAppVersionBasicScalingArgs(
-                max_instances=5,
-            ),
-            noop_on_destroy=True,
-            service_account=custom_service_account.email)
-        ```
 
         ## Import
 
@@ -1066,79 +1057,6 @@ class StandardAppVersion(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/appengine/docs/standard)
 
         ## Example Usage
-        ### App Engine Standard App Version
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        custom_service_account = gcp.service_account.Account("customServiceAccount",
-            account_id="my-account",
-            display_name="Custom Service Account")
-        gae_api = gcp.projects.IAMMember("gaeApi",
-            project=custom_service_account.project,
-            role="roles/compute.networkUser",
-            member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        storage_viewer = gcp.projects.IAMMember("storageViewer",
-            project=custom_service_account.project,
-            role="roles/storage.objectViewer",
-            member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        bucket = gcp.storage.Bucket("bucket", location="US")
-        object = gcp.storage.BucketObject("object",
-            bucket=bucket.name,
-            source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
-        myapp_v1 = gcp.appengine.StandardAppVersion("myappV1",
-            version_id="v1",
-            service="myapp",
-            runtime="nodejs10",
-            entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
-                shell="node ./app.js",
-            ),
-            deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
-                zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
-                    source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
-                ),
-            ),
-            env_variables={
-                "port": "8080",
-            },
-            automatic_scaling=gcp.appengine.StandardAppVersionAutomaticScalingArgs(
-                max_concurrent_requests=10,
-                min_idle_instances=1,
-                max_idle_instances=3,
-                min_pending_latency="1s",
-                max_pending_latency="5s",
-                standard_scheduler_settings=gcp.appengine.StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs(
-                    target_cpu_utilization=0.5,
-                    target_throughput_utilization=0.75,
-                    min_instances=2,
-                    max_instances=10,
-                ),
-            ),
-            delete_service_on_destroy=True,
-            service_account=custom_service_account.email)
-        myapp_v2 = gcp.appengine.StandardAppVersion("myappV2",
-            version_id="v2",
-            service="myapp",
-            runtime="nodejs10",
-            app_engine_apis=True,
-            entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
-                shell="node ./app.js",
-            ),
-            deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
-                zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
-                    source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
-                ),
-            ),
-            env_variables={
-                "port": "8080",
-            },
-            basic_scaling=gcp.appengine.StandardAppVersionBasicScalingArgs(
-                max_instances=5,
-            ),
-            noop_on_destroy=True,
-            service_account=custom_service_account.email)
-        ```
 
         ## Import
 
@@ -1206,32 +1124,16 @@ class StandardAppVersion(pulumi.CustomResource):
             __props__ = StandardAppVersionArgs.__new__(StandardAppVersionArgs)
 
             __props__.__dict__["app_engine_apis"] = app_engine_apis
-            if automatic_scaling is not None and not isinstance(automatic_scaling, StandardAppVersionAutomaticScalingArgs):
-                automatic_scaling = automatic_scaling or {}
-                def _setter(key, value):
-                    automatic_scaling[key] = value
-                StandardAppVersionAutomaticScalingArgs._configure(_setter, **automatic_scaling)
+            automatic_scaling = _utilities.configure(automatic_scaling, StandardAppVersionAutomaticScalingArgs, True)
             __props__.__dict__["automatic_scaling"] = automatic_scaling
-            if basic_scaling is not None and not isinstance(basic_scaling, StandardAppVersionBasicScalingArgs):
-                basic_scaling = basic_scaling or {}
-                def _setter(key, value):
-                    basic_scaling[key] = value
-                StandardAppVersionBasicScalingArgs._configure(_setter, **basic_scaling)
+            basic_scaling = _utilities.configure(basic_scaling, StandardAppVersionBasicScalingArgs, True)
             __props__.__dict__["basic_scaling"] = basic_scaling
             __props__.__dict__["delete_service_on_destroy"] = delete_service_on_destroy
-            if deployment is not None and not isinstance(deployment, StandardAppVersionDeploymentArgs):
-                deployment = deployment or {}
-                def _setter(key, value):
-                    deployment[key] = value
-                StandardAppVersionDeploymentArgs._configure(_setter, **deployment)
+            deployment = _utilities.configure(deployment, StandardAppVersionDeploymentArgs, True)
             if deployment is None and not opts.urn:
                 raise TypeError("Missing required property 'deployment'")
             __props__.__dict__["deployment"] = deployment
-            if entrypoint is not None and not isinstance(entrypoint, StandardAppVersionEntrypointArgs):
-                entrypoint = entrypoint or {}
-                def _setter(key, value):
-                    entrypoint[key] = value
-                StandardAppVersionEntrypointArgs._configure(_setter, **entrypoint)
+            entrypoint = _utilities.configure(entrypoint, StandardAppVersionEntrypointArgs, True)
             if entrypoint is None and not opts.urn:
                 raise TypeError("Missing required property 'entrypoint'")
             __props__.__dict__["entrypoint"] = entrypoint
@@ -1240,11 +1142,7 @@ class StandardAppVersion(pulumi.CustomResource):
             __props__.__dict__["inbound_services"] = inbound_services
             __props__.__dict__["instance_class"] = instance_class
             __props__.__dict__["libraries"] = libraries
-            if manual_scaling is not None and not isinstance(manual_scaling, StandardAppVersionManualScalingArgs):
-                manual_scaling = manual_scaling or {}
-                def _setter(key, value):
-                    manual_scaling[key] = value
-                StandardAppVersionManualScalingArgs._configure(_setter, **manual_scaling)
+            manual_scaling = _utilities.configure(manual_scaling, StandardAppVersionManualScalingArgs, True)
             __props__.__dict__["manual_scaling"] = manual_scaling
             __props__.__dict__["noop_on_destroy"] = noop_on_destroy
             __props__.__dict__["project"] = project
@@ -1258,11 +1156,7 @@ class StandardAppVersion(pulumi.CustomResource):
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["threadsafe"] = threadsafe
             __props__.__dict__["version_id"] = version_id
-            if vpc_access_connector is not None and not isinstance(vpc_access_connector, StandardAppVersionVpcAccessConnectorArgs):
-                vpc_access_connector = vpc_access_connector or {}
-                def _setter(key, value):
-                    vpc_access_connector[key] = value
-                StandardAppVersionVpcAccessConnectorArgs._configure(_setter, **vpc_access_connector)
+            vpc_access_connector = _utilities.configure(vpc_access_connector, StandardAppVersionVpcAccessConnectorArgs, True)
             __props__.__dict__["vpc_access_connector"] = vpc_access_connector
             __props__.__dict__["name"] = None
         super(StandardAppVersion, __self__).__init__(

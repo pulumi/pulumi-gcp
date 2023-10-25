@@ -13,58 +13,12 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     {
         /// <summary>
         /// Retrieves the current IAM policy data for listing
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.BigQueryAnalyticsHub.GetListingIamPolicy.Invoke(new()
-        ///     {
-        ///         Project = google_bigquery_analytics_hub_listing.Listing.Project,
-        ///         Location = google_bigquery_analytics_hub_listing.Listing.Location,
-        ///         DataExchangeId = google_bigquery_analytics_hub_listing.Listing.Data_exchange_id,
-        ///         ListingId = google_bigquery_analytics_hub_listing.Listing.Listing_id,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetListingIamPolicyResult> InvokeAsync(GetListingIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetListingIamPolicyResult>("gcp:bigqueryanalyticshub/getListingIamPolicy:getListingIamPolicy", args ?? new GetListingIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for listing
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.BigQueryAnalyticsHub.GetListingIamPolicy.Invoke(new()
-        ///     {
-        ///         Project = google_bigquery_analytics_hub_listing.Listing.Project,
-        ///         Location = google_bigquery_analytics_hub_listing.Listing.Location,
-        ///         DataExchangeId = google_bigquery_analytics_hub_listing.Listing.Data_exchange_id,
-        ///         ListingId = google_bigquery_analytics_hub_listing.Listing.Listing_id,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetListingIamPolicyResult> Invoke(GetListingIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetListingIamPolicyResult>("gcp:bigqueryanalyticshub/getListingIamPolicy:getListingIamPolicy", args ?? new GetListingIamPolicyInvokeArgs(), options.WithDefaults());

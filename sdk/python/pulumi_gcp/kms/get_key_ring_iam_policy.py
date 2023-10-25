@@ -82,15 +82,6 @@ def get_key_ring_iam_policy(key_ring_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for a Google Cloud KMS key ring.
 
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    test_key_ring_iam_policy = gcp.kms.get_key_ring_iam_policy(key_ring_id="{project_id}/{location_name}/{key_ring_name}")
-    ```
-
 
     :param str key_ring_id: The key ring ID, in the form
            `{project_id}/{location_name}/{key_ring_name}` or
@@ -114,15 +105,6 @@ def get_key_ring_iam_policy_output(key_ring_id: Optional[pulumi.Input[str]] = No
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeyRingIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a Google Cloud KMS key ring.
-
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    test_key_ring_iam_policy = gcp.kms.get_key_ring_iam_policy(key_ring_id="{project_id}/{location_name}/{key_ring_name}")
-    ```
 
 
     :param str key_ring_id: The key ring ID, in the form

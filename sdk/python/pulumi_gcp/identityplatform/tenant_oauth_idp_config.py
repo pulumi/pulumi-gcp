@@ -51,15 +51,31 @@ class TenantOauthIdpConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             client_id: pulumi.Input[str],
-             display_name: pulumi.Input[str],
-             issuer: pulumi.Input[str],
-             tenant: pulumi.Input[str],
+             client_id: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             issuer: Optional[pulumi.Input[str]] = None,
+             tenant: Optional[pulumi.Input[str]] = None,
              client_secret: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_id is None:
+            raise TypeError("Missing 'client_id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if issuer is None:
+            raise TypeError("Missing 'issuer' argument")
+        if tenant is None:
+            raise TypeError("Missing 'tenant' argument")
+        if client_secret is None and 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+
         _setter("client_id", client_id)
         _setter("display_name", display_name)
         _setter("issuer", issuer)
@@ -222,7 +238,15 @@ class _TenantOauthIdpConfigState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              tenant: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_secret is None and 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if client_id is not None:
             _setter("client_id", client_id)
         if client_secret is not None:
@@ -363,21 +387,6 @@ class TenantOauthIdpConfig(pulumi.CustomResource):
         the marketplace prior to using this resource.
 
         ## Example Usage
-        ### Identity Platform Tenant Oauth Idp Config Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        tenant = gcp.identityplatform.Tenant("tenant", display_name="tenant")
-        tenant_oauth_idp_config = gcp.identityplatform.TenantOauthIdpConfig("tenantOauthIdpConfig",
-            tenant=tenant.name,
-            display_name="Display Name",
-            client_id="client-id",
-            issuer="issuer",
-            enabled=True,
-            client_secret="secret")
-        ```
 
         ## Import
 
@@ -424,21 +433,6 @@ class TenantOauthIdpConfig(pulumi.CustomResource):
         the marketplace prior to using this resource.
 
         ## Example Usage
-        ### Identity Platform Tenant Oauth Idp Config Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        tenant = gcp.identityplatform.Tenant("tenant", display_name="tenant")
-        tenant_oauth_idp_config = gcp.identityplatform.TenantOauthIdpConfig("tenantOauthIdpConfig",
-            tenant=tenant.name,
-            display_name="Display Name",
-            client_id="client-id",
-            issuer="issuer",
-            enabled=True,
-            client_secret="secret")
-        ```
 
         ## Import
 

@@ -62,9 +62,15 @@ class ConnectionProfileAlloydb(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: str,
+             cluster_id: Optional[str] = None,
              settings: Optional['outputs.ConnectionProfileAlloydbSettings'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+
         _setter("cluster_id", cluster_id)
         if settings is not None:
             _setter("settings", settings)
@@ -134,11 +140,23 @@ class ConnectionProfileAlloydbSettings(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             initial_user: 'outputs.ConnectionProfileAlloydbSettingsInitialUser',
-             vpc_network: str,
+             initial_user: Optional['outputs.ConnectionProfileAlloydbSettingsInitialUser'] = None,
+             vpc_network: Optional[str] = None,
              labels: Optional[Mapping[str, str]] = None,
              primary_instance_settings: Optional['outputs.ConnectionProfileAlloydbSettingsPrimaryInstanceSettings'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if initial_user is None and 'initialUser' in kwargs:
+            initial_user = kwargs['initialUser']
+        if initial_user is None:
+            raise TypeError("Missing 'initial_user' argument")
+        if vpc_network is None and 'vpcNetwork' in kwargs:
+            vpc_network = kwargs['vpcNetwork']
+        if vpc_network is None:
+            raise TypeError("Missing 'vpc_network' argument")
+        if primary_instance_settings is None and 'primaryInstanceSettings' in kwargs:
+            primary_instance_settings = kwargs['primaryInstanceSettings']
+
         _setter("initial_user", initial_user)
         _setter("vpc_network", vpc_network)
         if labels is not None:
@@ -221,10 +239,18 @@ class ConnectionProfileAlloydbSettingsInitialUser(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             password: str,
-             user: str,
+             password: Optional[str] = None,
+             user: Optional[str] = None,
              password_set: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
+        if password_set is None and 'passwordSet' in kwargs:
+            password_set = kwargs['passwordSet']
+
         _setter("password", password)
         _setter("user", user)
         if password_set is not None:
@@ -306,12 +332,24 @@ class ConnectionProfileAlloydbSettingsPrimaryInstanceSettings(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             machine_config: 'outputs.ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig',
+             id: Optional[str] = None,
+             machine_config: Optional['outputs.ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig'] = None,
              database_flags: Optional[Mapping[str, str]] = None,
              labels: Optional[Mapping[str, str]] = None,
              private_ip: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if machine_config is None and 'machineConfig' in kwargs:
+            machine_config = kwargs['machineConfig']
+        if machine_config is None:
+            raise TypeError("Missing 'machine_config' argument")
+        if database_flags is None and 'databaseFlags' in kwargs:
+            database_flags = kwargs['databaseFlags']
+        if private_ip is None and 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+
         _setter("id", id)
         _setter("machine_config", machine_config)
         if database_flags is not None:
@@ -395,8 +433,14 @@ class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig(dict)
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cpu_count: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             cpu_count: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cpu_count is None and 'cpuCount' in kwargs:
+            cpu_count = kwargs['cpuCount']
+        if cpu_count is None:
+            raise TypeError("Missing 'cpu_count' argument")
+
         _setter("cpu_count", cpu_count)
 
     @property
@@ -460,7 +504,15 @@ class ConnectionProfileCloudsql(dict):
              private_ip: Optional[str] = None,
              public_ip: Optional[str] = None,
              settings: Optional['outputs.ConnectionProfileCloudsqlSettings'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cloud_sql_id is None and 'cloudSqlId' in kwargs:
+            cloud_sql_id = kwargs['cloudSqlId']
+        if private_ip is None and 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+        if public_ip is None and 'publicIp' in kwargs:
+            public_ip = kwargs['publicIp']
+
         if cloud_sql_id is not None:
             _setter("cloud_sql_id", cloud_sql_id)
         if private_ip is not None:
@@ -619,7 +671,7 @@ class ConnectionProfileCloudsqlSettings(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             source_id: str,
+             source_id: Optional[str] = None,
              activation_policy: Optional[str] = None,
              auto_storage_increase: Optional[bool] = None,
              cmek_key_name: Optional[str] = None,
@@ -636,7 +688,37 @@ class ConnectionProfileCloudsqlSettings(dict):
              tier: Optional[str] = None,
              user_labels: Optional[Mapping[str, str]] = None,
              zone: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if source_id is None and 'sourceId' in kwargs:
+            source_id = kwargs['sourceId']
+        if source_id is None:
+            raise TypeError("Missing 'source_id' argument")
+        if activation_policy is None and 'activationPolicy' in kwargs:
+            activation_policy = kwargs['activationPolicy']
+        if auto_storage_increase is None and 'autoStorageIncrease' in kwargs:
+            auto_storage_increase = kwargs['autoStorageIncrease']
+        if cmek_key_name is None and 'cmekKeyName' in kwargs:
+            cmek_key_name = kwargs['cmekKeyName']
+        if data_disk_size_gb is None and 'dataDiskSizeGb' in kwargs:
+            data_disk_size_gb = kwargs['dataDiskSizeGb']
+        if data_disk_type is None and 'dataDiskType' in kwargs:
+            data_disk_type = kwargs['dataDiskType']
+        if database_flags is None and 'databaseFlags' in kwargs:
+            database_flags = kwargs['databaseFlags']
+        if database_version is None and 'databaseVersion' in kwargs:
+            database_version = kwargs['databaseVersion']
+        if ip_config is None and 'ipConfig' in kwargs:
+            ip_config = kwargs['ipConfig']
+        if root_password is None and 'rootPassword' in kwargs:
+            root_password = kwargs['rootPassword']
+        if root_password_set is None and 'rootPasswordSet' in kwargs:
+            root_password_set = kwargs['rootPasswordSet']
+        if storage_auto_resize_limit is None and 'storageAutoResizeLimit' in kwargs:
+            storage_auto_resize_limit = kwargs['storageAutoResizeLimit']
+        if user_labels is None and 'userLabels' in kwargs:
+            user_labels = kwargs['userLabels']
+
         _setter("source_id", source_id)
         if activation_policy is not None:
             _setter("activation_policy", activation_policy)
@@ -869,7 +951,17 @@ class ConnectionProfileCloudsqlSettingsIpConfig(dict):
              enable_ipv4: Optional[bool] = None,
              private_network: Optional[str] = None,
              require_ssl: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if authorized_networks is None and 'authorizedNetworks' in kwargs:
+            authorized_networks = kwargs['authorizedNetworks']
+        if enable_ipv4 is None and 'enableIpv4' in kwargs:
+            enable_ipv4 = kwargs['enableIpv4']
+        if private_network is None and 'privateNetwork' in kwargs:
+            private_network = kwargs['privateNetwork']
+        if require_ssl is None and 'requireSsl' in kwargs:
+            require_ssl = kwargs['requireSsl']
+
         if authorized_networks is not None:
             _setter("authorized_networks", authorized_networks)
         if enable_ipv4 is not None:
@@ -954,11 +1046,17 @@ class ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             value: str,
+             value: Optional[str] = None,
              expire_time: Optional[str] = None,
              label: Optional[str] = None,
              ttl: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if expire_time is None and 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+
         _setter("value", value)
         if expire_time is not None:
             _setter("expire_time", expire_time)
@@ -1026,7 +1124,9 @@ class ConnectionProfileError(dict):
              code: Optional[int] = None,
              details: Optional[Sequence[Mapping[str, Any]]] = None,
              message: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if code is not None:
             _setter("code", code)
         if details is not None:
@@ -1117,14 +1217,28 @@ class ConnectionProfileMysql(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             host: str,
-             password: str,
-             port: int,
-             username: str,
+             host: Optional[str] = None,
+             password: Optional[str] = None,
+             port: Optional[int] = None,
+             username: Optional[str] = None,
              cloud_sql_id: Optional[str] = None,
              password_set: Optional[bool] = None,
              ssl: Optional['outputs.ConnectionProfileMysqlSsl'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+        if cloud_sql_id is None and 'cloudSqlId' in kwargs:
+            cloud_sql_id = kwargs['cloudSqlId']
+        if password_set is None and 'passwordSet' in kwargs:
+            password_set = kwargs['passwordSet']
+
         _setter("host", host)
         _setter("password", password)
         _setter("port", port)
@@ -1248,11 +1362,21 @@ class ConnectionProfileMysqlSsl(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ca_certificate: str,
+             ca_certificate: Optional[str] = None,
              client_certificate: Optional[str] = None,
              client_key: Optional[str] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ca_certificate is None and 'caCertificate' in kwargs:
+            ca_certificate = kwargs['caCertificate']
+        if ca_certificate is None:
+            raise TypeError("Missing 'ca_certificate' argument")
+        if client_certificate is None and 'clientCertificate' in kwargs:
+            client_certificate = kwargs['clientCertificate']
+        if client_key is None and 'clientKey' in kwargs:
+            client_key = kwargs['clientKey']
+
         _setter("ca_certificate", ca_certificate)
         if client_certificate is not None:
             _setter("client_certificate", client_certificate)
@@ -1362,15 +1486,31 @@ class ConnectionProfilePostgresql(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             host: str,
-             password: str,
-             port: int,
-             username: str,
+             host: Optional[str] = None,
+             password: Optional[str] = None,
+             port: Optional[int] = None,
+             username: Optional[str] = None,
              cloud_sql_id: Optional[str] = None,
              network_architecture: Optional[str] = None,
              password_set: Optional[bool] = None,
              ssl: Optional['outputs.ConnectionProfilePostgresqlSsl'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+        if cloud_sql_id is None and 'cloudSqlId' in kwargs:
+            cloud_sql_id = kwargs['cloudSqlId']
+        if network_architecture is None and 'networkArchitecture' in kwargs:
+            network_architecture = kwargs['networkArchitecture']
+        if password_set is None and 'passwordSet' in kwargs:
+            password_set = kwargs['passwordSet']
+
         _setter("host", host)
         _setter("password", password)
         _setter("port", port)
@@ -1505,11 +1645,21 @@ class ConnectionProfilePostgresqlSsl(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ca_certificate: str,
+             ca_certificate: Optional[str] = None,
              client_certificate: Optional[str] = None,
              client_key: Optional[str] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ca_certificate is None and 'caCertificate' in kwargs:
+            ca_certificate = kwargs['caCertificate']
+        if ca_certificate is None:
+            raise TypeError("Missing 'ca_certificate' argument")
+        if client_certificate is None and 'clientCertificate' in kwargs:
+            client_certificate = kwargs['clientCertificate']
+        if client_key is None and 'clientKey' in kwargs:
+            client_key = kwargs['clientKey']
+
         _setter("ca_certificate", ca_certificate)
         if client_certificate is not None:
             _setter("client_certificate", client_certificate)

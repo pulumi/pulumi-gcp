@@ -91,8 +91,8 @@ class SloArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             goal: pulumi.Input[float],
-             service: pulumi.Input[str],
+             goal: Optional[pulumi.Input[float]] = None,
+             service: Optional[pulumi.Input[str]] = None,
              basic_sli: Optional[pulumi.Input['SloBasicSliArgs']] = None,
              calendar_period: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
@@ -102,7 +102,29 @@ class SloArgs:
              slo_id: Optional[pulumi.Input[str]] = None,
              user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              windows_based_sli: Optional[pulumi.Input['SloWindowsBasedSliArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if goal is None:
+            raise TypeError("Missing 'goal' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+        if basic_sli is None and 'basicSli' in kwargs:
+            basic_sli = kwargs['basicSli']
+        if calendar_period is None and 'calendarPeriod' in kwargs:
+            calendar_period = kwargs['calendarPeriod']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if request_based_sli is None and 'requestBasedSli' in kwargs:
+            request_based_sli = kwargs['requestBasedSli']
+        if rolling_period_days is None and 'rollingPeriodDays' in kwargs:
+            rolling_period_days = kwargs['rollingPeriodDays']
+        if slo_id is None and 'sloId' in kwargs:
+            slo_id = kwargs['sloId']
+        if user_labels is None and 'userLabels' in kwargs:
+            user_labels = kwargs['userLabels']
+        if windows_based_sli is None and 'windowsBasedSli' in kwargs:
+            windows_based_sli = kwargs['windowsBasedSli']
+
         _setter("goal", goal)
         _setter("service", service)
         if basic_sli is not None:
@@ -384,7 +406,25 @@ class _SloState:
              slo_id: Optional[pulumi.Input[str]] = None,
              user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              windows_based_sli: Optional[pulumi.Input['SloWindowsBasedSliArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if basic_sli is None and 'basicSli' in kwargs:
+            basic_sli = kwargs['basicSli']
+        if calendar_period is None and 'calendarPeriod' in kwargs:
+            calendar_period = kwargs['calendarPeriod']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if request_based_sli is None and 'requestBasedSli' in kwargs:
+            request_based_sli = kwargs['requestBasedSli']
+        if rolling_period_days is None and 'rollingPeriodDays' in kwargs:
+            rolling_period_days = kwargs['rollingPeriodDays']
+        if slo_id is None and 'sloId' in kwargs:
+            slo_id = kwargs['sloId']
+        if user_labels is None and 'userLabels' in kwargs:
+            user_labels = kwargs['userLabels']
+        if windows_based_sli is None and 'windowsBasedSli' in kwargs:
+            windows_based_sli = kwargs['windowsBasedSli']
+
         if basic_sli is not None:
             _setter("basic_sli", basic_sli)
         if calendar_period is not None:
@@ -623,53 +663,6 @@ class Slo(pulumi.CustomResource):
             * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
         ## Example Usage
-        ### Monitoring Slo Appengine
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.monitoring.get_app_engine_service(module_id="default")
-        appeng_slo = gcp.monitoring.Slo("appengSlo",
-            service=default.service_id,
-            slo_id="ae-slo",
-            display_name="Test SLO for App Engine",
-            goal=0.9,
-            calendar_period="DAY",
-            basic_sli=gcp.monitoring.SloBasicSliArgs(
-                latency=gcp.monitoring.SloBasicSliLatencyArgs(
-                    threshold="1s",
-                ),
-            ),
-            user_labels={
-                "my_key": "my_value",
-                "my_other_key": "my_other_value",
-            })
-        ```
-        ### Monitoring Slo Request Based
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        customsrv = gcp.monitoring.CustomService("customsrv",
-            service_id="custom-srv-request-slos",
-            display_name="My Custom Service")
-        request_based_slo = gcp.monitoring.Slo("requestBasedSlo",
-            service=customsrv.service_id,
-            slo_id="consumed-api-slo",
-            display_name="Test SLO with request based SLI (good total ratio)",
-            goal=0.9,
-            rolling_period_days=30,
-            request_based_sli=gcp.monitoring.SloRequestBasedSliArgs(
-                distribution_cut=gcp.monitoring.SloRequestBasedSliDistributionCutArgs(
-                    distribution_filter="metric.type=\\"serviceruntime.googleapis.com/api/request_latencies\\" resource.type=\\"api\\"  ",
-                    range=gcp.monitoring.SloRequestBasedSliDistributionCutRangeArgs(
-                        max=0.5,
-                    ),
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -749,53 +742,6 @@ class Slo(pulumi.CustomResource):
             * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
         ## Example Usage
-        ### Monitoring Slo Appengine
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.monitoring.get_app_engine_service(module_id="default")
-        appeng_slo = gcp.monitoring.Slo("appengSlo",
-            service=default.service_id,
-            slo_id="ae-slo",
-            display_name="Test SLO for App Engine",
-            goal=0.9,
-            calendar_period="DAY",
-            basic_sli=gcp.monitoring.SloBasicSliArgs(
-                latency=gcp.monitoring.SloBasicSliLatencyArgs(
-                    threshold="1s",
-                ),
-            ),
-            user_labels={
-                "my_key": "my_value",
-                "my_other_key": "my_other_value",
-            })
-        ```
-        ### Monitoring Slo Request Based
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        customsrv = gcp.monitoring.CustomService("customsrv",
-            service_id="custom-srv-request-slos",
-            display_name="My Custom Service")
-        request_based_slo = gcp.monitoring.Slo("requestBasedSlo",
-            service=customsrv.service_id,
-            slo_id="consumed-api-slo",
-            display_name="Test SLO with request based SLI (good total ratio)",
-            goal=0.9,
-            rolling_period_days=30,
-            request_based_sli=gcp.monitoring.SloRequestBasedSliArgs(
-                distribution_cut=gcp.monitoring.SloRequestBasedSliDistributionCutArgs(
-                    distribution_filter="metric.type=\\"serviceruntime.googleapis.com/api/request_latencies\\" resource.type=\\"api\\"  ",
-                    range=gcp.monitoring.SloRequestBasedSliDistributionCutRangeArgs(
-                        max=0.5,
-                    ),
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -844,11 +790,7 @@ class Slo(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SloArgs.__new__(SloArgs)
 
-            if basic_sli is not None and not isinstance(basic_sli, SloBasicSliArgs):
-                basic_sli = basic_sli or {}
-                def _setter(key, value):
-                    basic_sli[key] = value
-                SloBasicSliArgs._configure(_setter, **basic_sli)
+            basic_sli = _utilities.configure(basic_sli, SloBasicSliArgs, True)
             __props__.__dict__["basic_sli"] = basic_sli
             __props__.__dict__["calendar_period"] = calendar_period
             __props__.__dict__["display_name"] = display_name
@@ -856,11 +798,7 @@ class Slo(pulumi.CustomResource):
                 raise TypeError("Missing required property 'goal'")
             __props__.__dict__["goal"] = goal
             __props__.__dict__["project"] = project
-            if request_based_sli is not None and not isinstance(request_based_sli, SloRequestBasedSliArgs):
-                request_based_sli = request_based_sli or {}
-                def _setter(key, value):
-                    request_based_sli[key] = value
-                SloRequestBasedSliArgs._configure(_setter, **request_based_sli)
+            request_based_sli = _utilities.configure(request_based_sli, SloRequestBasedSliArgs, True)
             __props__.__dict__["request_based_sli"] = request_based_sli
             __props__.__dict__["rolling_period_days"] = rolling_period_days
             if service is None and not opts.urn:
@@ -868,11 +806,7 @@ class Slo(pulumi.CustomResource):
             __props__.__dict__["service"] = service
             __props__.__dict__["slo_id"] = slo_id
             __props__.__dict__["user_labels"] = user_labels
-            if windows_based_sli is not None and not isinstance(windows_based_sli, SloWindowsBasedSliArgs):
-                windows_based_sli = windows_based_sli or {}
-                def _setter(key, value):
-                    windows_based_sli[key] = value
-                SloWindowsBasedSliArgs._configure(_setter, **windows_based_sli)
+            windows_based_sli = _utilities.configure(windows_based_sli, SloWindowsBasedSliArgs, True)
             __props__.__dict__["windows_based_sli"] = windows_based_sli
             __props__.__dict__["name"] = None
         super(Slo, __self__).__init__(

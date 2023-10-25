@@ -38,11 +38,21 @@ class DatabaseArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             catalog: pulumi.Input[str],
-             hive_options: pulumi.Input['DatabaseHiveOptionsArgs'],
-             type: pulumi.Input[str],
+             catalog: Optional[pulumi.Input[str]] = None,
+             hive_options: Optional[pulumi.Input['DatabaseHiveOptionsArgs']] = None,
+             type: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if catalog is None:
+            raise TypeError("Missing 'catalog' argument")
+        if hive_options is None and 'hiveOptions' in kwargs:
+            hive_options = kwargs['hiveOptions']
+        if hive_options is None:
+            raise TypeError("Missing 'hive_options' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("catalog", catalog)
         _setter("hive_options", hive_options)
         _setter("type", type)
@@ -156,7 +166,19 @@ class _DatabaseState:
              name: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if delete_time is None and 'deleteTime' in kwargs:
+            delete_time = kwargs['deleteTime']
+        if expire_time is None and 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if hive_options is None and 'hiveOptions' in kwargs:
+            hive_options = kwargs['hiveOptions']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if catalog is not None:
             _setter("catalog", catalog)
         if create_time is not None:
@@ -304,30 +326,6 @@ class Database(pulumi.CustomResource):
             * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_databases)
 
         ## Example Usage
-        ### Biglake Database
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        catalog = gcp.biglake.Catalog("catalog", location="US")
-        bucket = gcp.storage.Bucket("bucket",
-            location="US",
-            force_destroy=True,
-            uniform_bucket_level_access=True)
-        metadata_folder = gcp.storage.BucketObject("metadataFolder",
-            content=" ",
-            bucket=bucket.name)
-        database = gcp.biglake.Database("database",
-            catalog=catalog.id,
-            type="HIVE",
-            hive_options=gcp.biglake.DatabaseHiveOptionsArgs(
-                location_uri=pulumi.Output.all(bucket.name, metadata_folder.name).apply(lambda bucketName, metadataFolderName: f"gs://{bucket_name}/{metadata_folder_name}"),
-                parameters={
-                    "owner": "John Doe",
-                },
-            ))
-        ```
 
         ## Import
 
@@ -361,30 +359,6 @@ class Database(pulumi.CustomResource):
             * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_databases)
 
         ## Example Usage
-        ### Biglake Database
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        catalog = gcp.biglake.Catalog("catalog", location="US")
-        bucket = gcp.storage.Bucket("bucket",
-            location="US",
-            force_destroy=True,
-            uniform_bucket_level_access=True)
-        metadata_folder = gcp.storage.BucketObject("metadataFolder",
-            content=" ",
-            bucket=bucket.name)
-        database = gcp.biglake.Database("database",
-            catalog=catalog.id,
-            type="HIVE",
-            hive_options=gcp.biglake.DatabaseHiveOptionsArgs(
-                location_uri=pulumi.Output.all(bucket.name, metadata_folder.name).apply(lambda bucketName, metadataFolderName: f"gs://{bucket_name}/{metadata_folder_name}"),
-                parameters={
-                    "owner": "John Doe",
-                },
-            ))
-        ```
 
         ## Import
 
@@ -429,11 +403,7 @@ class Database(pulumi.CustomResource):
             if catalog is None and not opts.urn:
                 raise TypeError("Missing required property 'catalog'")
             __props__.__dict__["catalog"] = catalog
-            if hive_options is not None and not isinstance(hive_options, DatabaseHiveOptionsArgs):
-                hive_options = hive_options or {}
-                def _setter(key, value):
-                    hive_options[key] = value
-                DatabaseHiveOptionsArgs._configure(_setter, **hive_options)
+            hive_options = _utilities.configure(hive_options, DatabaseHiveOptionsArgs, True)
             if hive_options is None and not opts.urn:
                 raise TypeError("Missing required property 'hive_options'")
             __props__.__dict__["hive_options"] = hive_options

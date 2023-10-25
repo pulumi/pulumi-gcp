@@ -33,9 +33,19 @@ class DiskAsyncReplicationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             primary_disk: pulumi.Input[str],
-             secondary_disk: pulumi.Input['DiskAsyncReplicationSecondaryDiskArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             primary_disk: Optional[pulumi.Input[str]] = None,
+             secondary_disk: Optional[pulumi.Input['DiskAsyncReplicationSecondaryDiskArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if primary_disk is None and 'primaryDisk' in kwargs:
+            primary_disk = kwargs['primaryDisk']
+        if primary_disk is None:
+            raise TypeError("Missing 'primary_disk' argument")
+        if secondary_disk is None and 'secondaryDisk' in kwargs:
+            secondary_disk = kwargs['secondaryDisk']
+        if secondary_disk is None:
+            raise TypeError("Missing 'secondary_disk' argument")
+
         _setter("primary_disk", primary_disk)
         _setter("secondary_disk", secondary_disk)
 
@@ -88,7 +98,13 @@ class _DiskAsyncReplicationState:
              _setter: Callable[[Any, Any], None],
              primary_disk: Optional[pulumi.Input[str]] = None,
              secondary_disk: Optional[pulumi.Input['DiskAsyncReplicationSecondaryDiskArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if primary_disk is None and 'primaryDisk' in kwargs:
+            primary_disk = kwargs['primaryDisk']
+        if secondary_disk is None and 'secondaryDisk' in kwargs:
+            secondary_disk = kwargs['secondaryDisk']
+
         if primary_disk is not None:
             _setter("primary_disk", primary_disk)
         if secondary_disk is not None:
@@ -134,30 +150,6 @@ class DiskAsyncReplication(pulumi.CustomResource):
         see [the official documentation](https://cloud.google.com/compute/docs/disks/async-pd/about)
         and the [API](https://cloud.google.com/compute/docs/reference/rest/v1/disks).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary_disk = gcp.compute.Disk("primary-disk",
-            type="pd-ssd",
-            zone="europe-west4-a",
-            physical_block_size_bytes=4096)
-        secondary_disk = gcp.compute.Disk("secondary-disk",
-            type="pd-ssd",
-            zone="europe-west3-a",
-            async_primary_disk=gcp.compute.DiskAsyncPrimaryDiskArgs(
-                disk=primary_disk.id,
-            ),
-            physical_block_size_bytes=4096)
-        replication = gcp.compute.DiskAsyncReplication("replication",
-            primary_disk=primary_disk.id,
-            secondary_disk=gcp.compute.DiskAsyncReplicationSecondaryDiskArgs(
-                disk=secondary_disk.id,
-            ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] primary_disk: The primary disk (source of replication).
@@ -175,30 +167,6 @@ class DiskAsyncReplication(pulumi.CustomResource):
         Starts and stops asynchronous persistent disk replication. For more information
         see [the official documentation](https://cloud.google.com/compute/docs/disks/async-pd/about)
         and the [API](https://cloud.google.com/compute/docs/reference/rest/v1/disks).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary_disk = gcp.compute.Disk("primary-disk",
-            type="pd-ssd",
-            zone="europe-west4-a",
-            physical_block_size_bytes=4096)
-        secondary_disk = gcp.compute.Disk("secondary-disk",
-            type="pd-ssd",
-            zone="europe-west3-a",
-            async_primary_disk=gcp.compute.DiskAsyncPrimaryDiskArgs(
-                disk=primary_disk.id,
-            ),
-            physical_block_size_bytes=4096)
-        replication = gcp.compute.DiskAsyncReplication("replication",
-            primary_disk=primary_disk.id,
-            secondary_disk=gcp.compute.DiskAsyncReplicationSecondaryDiskArgs(
-                disk=secondary_disk.id,
-            ))
-        ```
 
         :param str resource_name: The name of the resource.
         :param DiskAsyncReplicationArgs args: The arguments to use to populate this resource's properties.
@@ -233,11 +201,7 @@ class DiskAsyncReplication(pulumi.CustomResource):
             if primary_disk is None and not opts.urn:
                 raise TypeError("Missing required property 'primary_disk'")
             __props__.__dict__["primary_disk"] = primary_disk
-            if secondary_disk is not None and not isinstance(secondary_disk, DiskAsyncReplicationSecondaryDiskArgs):
-                secondary_disk = secondary_disk or {}
-                def _setter(key, value):
-                    secondary_disk[key] = value
-                DiskAsyncReplicationSecondaryDiskArgs._configure(_setter, **secondary_disk)
+            secondary_disk = _utilities.configure(secondary_disk, DiskAsyncReplicationSecondaryDiskArgs, True)
             if secondary_disk is None and not opts.urn:
                 raise TypeError("Missing required property 'secondary_disk'")
             __props__.__dict__["secondary_disk"] = secondary_disk

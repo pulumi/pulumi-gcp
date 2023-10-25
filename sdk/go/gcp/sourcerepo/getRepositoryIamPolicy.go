@@ -13,33 +13,6 @@ import (
 )
 
 // Retrieves the current IAM policy data for repository
-//
-// ## example
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sourcerepo"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sourcerepo.LookupRepositoryIamPolicy(ctx, &sourcerepo.LookupRepositoryIamPolicyArgs{
-//				Project:    pulumi.StringRef(google_sourcerepo_repository.MyRepo.Project),
-//				Repository: google_sourcerepo_repository.MyRepo.Name,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupRepositoryIamPolicy(ctx *pulumi.Context, args *LookupRepositoryIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupRepositoryIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRepositoryIamPolicyResult

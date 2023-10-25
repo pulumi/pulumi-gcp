@@ -67,15 +67,33 @@ class ProjectFeedArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             feed_id: pulumi.Input[str],
-             feed_output_config: pulumi.Input['ProjectFeedFeedOutputConfigArgs'],
+             feed_id: Optional[pulumi.Input[str]] = None,
+             feed_output_config: Optional[pulumi.Input['ProjectFeedFeedOutputConfigArgs']] = None,
              asset_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              asset_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              billing_project: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['ProjectFeedConditionArgs']] = None,
              content_type: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if feed_id is None and 'feedId' in kwargs:
+            feed_id = kwargs['feedId']
+        if feed_id is None:
+            raise TypeError("Missing 'feed_id' argument")
+        if feed_output_config is None and 'feedOutputConfig' in kwargs:
+            feed_output_config = kwargs['feedOutputConfig']
+        if feed_output_config is None:
+            raise TypeError("Missing 'feed_output_config' argument")
+        if asset_names is None and 'assetNames' in kwargs:
+            asset_names = kwargs['assetNames']
+        if asset_types is None and 'assetTypes' in kwargs:
+            asset_types = kwargs['assetTypes']
+        if billing_project is None and 'billingProject' in kwargs:
+            billing_project = kwargs['billingProject']
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+
         _setter("feed_id", feed_id)
         _setter("feed_output_config", feed_output_config)
         if asset_names is not None:
@@ -272,7 +290,21 @@ class _ProjectFeedState:
              feed_output_config: Optional[pulumi.Input['ProjectFeedFeedOutputConfigArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if asset_names is None and 'assetNames' in kwargs:
+            asset_names = kwargs['assetNames']
+        if asset_types is None and 'assetTypes' in kwargs:
+            asset_types = kwargs['assetTypes']
+        if billing_project is None and 'billingProject' in kwargs:
+            billing_project = kwargs['billingProject']
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if feed_id is None and 'feedId' in kwargs:
+            feed_id = kwargs['feedId']
+        if feed_output_config is None and 'feedOutputConfig' in kwargs:
+            feed_output_config = kwargs['feedOutputConfig']
+
         if asset_names is not None:
             _setter("asset_names", asset_names)
         if asset_types is not None:
@@ -561,21 +593,13 @@ class ProjectFeed(pulumi.CustomResource):
             __props__.__dict__["asset_names"] = asset_names
             __props__.__dict__["asset_types"] = asset_types
             __props__.__dict__["billing_project"] = billing_project
-            if condition is not None and not isinstance(condition, ProjectFeedConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                ProjectFeedConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, ProjectFeedConditionArgs, True)
             __props__.__dict__["condition"] = condition
             __props__.__dict__["content_type"] = content_type
             if feed_id is None and not opts.urn:
                 raise TypeError("Missing required property 'feed_id'")
             __props__.__dict__["feed_id"] = feed_id
-            if feed_output_config is not None and not isinstance(feed_output_config, ProjectFeedFeedOutputConfigArgs):
-                feed_output_config = feed_output_config or {}
-                def _setter(key, value):
-                    feed_output_config[key] = value
-                ProjectFeedFeedOutputConfigArgs._configure(_setter, **feed_output_config)
+            feed_output_config = _utilities.configure(feed_output_config, ProjectFeedFeedOutputConfigArgs, True)
             if feed_output_config is None and not opts.urn:
                 raise TypeError("Missing required property 'feed_output_config'")
             __props__.__dict__["feed_output_config"] = feed_output_config

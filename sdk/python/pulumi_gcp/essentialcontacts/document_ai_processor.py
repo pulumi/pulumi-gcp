@@ -42,12 +42,24 @@ class DocumentAiProcessorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             location: pulumi.Input[str],
-             type: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              kms_key_name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+
         _setter("display_name", display_name)
         _setter("location", location)
         _setter("type", type)
@@ -161,7 +173,13 @@ class _DocumentAiProcessorState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if kms_key_name is not None:
@@ -273,17 +291,6 @@ class DocumentAiProcessor(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/document-ai/docs/overview)
 
         ## Example Usage
-        ### Documentai Processor
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        processor = gcp.essentialcontacts.DocumentAiProcessor("processor",
-            display_name="test-processor",
-            location="us",
-            type="OCR_PROCESSOR")
-        ```
 
         ## Import
 
@@ -329,17 +336,6 @@ class DocumentAiProcessor(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/document-ai/docs/overview)
 
         ## Example Usage
-        ### Documentai Processor
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        processor = gcp.essentialcontacts.DocumentAiProcessor("processor",
-            display_name="test-processor",
-            location="us",
-            type="OCR_PROCESSOR")
-        ```
 
         ## Import
 

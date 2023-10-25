@@ -11,19 +11,6 @@ import * as utilities from "../utilities";
  *
  * For more information see the [official documentation](https://cloud.google.com/vpc/docs/firewall-policies)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.compute.FirewallPolicy("default", {
- *     description: "Example Resource",
- *     parent: "organizations/12345",
- *     shortName: "my-policy",
- * });
- * ```
- *
  * ## Import
  *
  * FirewallPolicy can be imported using any of these accepted formats

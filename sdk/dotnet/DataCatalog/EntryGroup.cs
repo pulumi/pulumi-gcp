@@ -19,42 +19,6 @@ namespace Pulumi.Gcp.DataCatalog
     ///     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
     /// 
     /// ## Example Usage
-    /// ### Data Catalog Entry Group Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var basicEntryGroup = new Gcp.DataCatalog.EntryGroup("basicEntryGroup", new()
-    ///     {
-    ///         EntryGroupId = "my_group",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Data Catalog Entry Group Full
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var basicEntryGroup = new Gcp.DataCatalog.EntryGroup("basicEntryGroup", new()
-    ///     {
-    ///         Description = "example entry group",
-    ///         DisplayName = "entry group",
-    ///         EntryGroupId = "my_group",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

@@ -25,39 +25,6 @@ import (
 //   - [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 //
 // ## Example Usage
-// ### Monitoring Service Custom
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := monitoring.NewCustomService(ctx, "custom", &monitoring.CustomServiceArgs{
-//				DisplayName: pulumi.String("My Custom Service custom-srv"),
-//				ServiceId:   pulumi.String("custom-srv"),
-//				Telemetry: &monitoring.CustomServiceTelemetryArgs{
-//					ResourceName: pulumi.String("//product.googleapis.com/foo/foo/services/test"),
-//				},
-//				UserLabels: pulumi.StringMap{
-//					"my_key":       pulumi.String("my_value"),
-//					"my_other_key": pulumi.String("my_other_value"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

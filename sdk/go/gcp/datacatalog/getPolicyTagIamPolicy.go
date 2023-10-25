@@ -13,32 +13,6 @@ import (
 )
 
 // Retrieves the current IAM policy data for policytag
-//
-// ## example
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := datacatalog.LookupPolicyTagIamPolicy(ctx, &datacatalog.LookupPolicyTagIamPolicyArgs{
-//				PolicyTag: google_data_catalog_policy_tag.Basic_policy_tag.Name,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupPolicyTagIamPolicy(ctx *pulumi.Context, args *LookupPolicyTagIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupPolicyTagIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPolicyTagIamPolicyResult

@@ -13,56 +13,12 @@ namespace Pulumi.Gcp.GkeHub
     {
         /// <summary>
         /// Retrieves the current IAM policy data for feature
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.GkeHub.GetFeatureIamPolicy.Invoke(new()
-        ///     {
-        ///         Project = google_gke_hub_feature.Feature.Project,
-        ///         Location = google_gke_hub_feature.Feature.Location,
-        ///         Name = google_gke_hub_feature.Feature.Name,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetFeatureIamPolicyResult> InvokeAsync(GetFeatureIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFeatureIamPolicyResult>("gcp:gkehub/getFeatureIamPolicy:getFeatureIamPolicy", args ?? new GetFeatureIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for feature
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.GkeHub.GetFeatureIamPolicy.Invoke(new()
-        ///     {
-        ///         Project = google_gke_hub_feature.Feature.Project,
-        ///         Location = google_gke_hub_feature.Feature.Location,
-        ///         Name = google_gke_hub_feature.Feature.Name,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetFeatureIamPolicyResult> Invoke(GetFeatureIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFeatureIamPolicyResult>("gcp:gkehub/getFeatureIamPolicy:getFeatureIamPolicy", args ?? new GetFeatureIamPolicyInvokeArgs(), options.WithDefaults());

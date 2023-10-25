@@ -13,49 +13,6 @@ namespace Pulumi.Gcp.DataPlex
     /// The Dataplex Zone resource
     /// 
     /// ## Example Usage
-    /// ### Basic_zone
-    /// A basic example of a dataplex zone
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var basic = new Gcp.DataPlex.Lake("basic", new()
-    ///     {
-    ///         Location = "us-west1",
-    ///         Description = "Lake for DCL",
-    ///         DisplayName = "Lake for DCL",
-    ///         Labels = 
-    ///         {
-    ///             { "my-lake", "exists" },
-    ///         },
-    ///         Project = "my-project-name",
-    ///     });
-    /// 
-    ///     var primary = new Gcp.DataPlex.Zone("primary", new()
-    ///     {
-    ///         DiscoverySpec = new Gcp.DataPlex.Inputs.ZoneDiscoverySpecArgs
-    ///         {
-    ///             Enabled = false,
-    ///         },
-    ///         Lake = basic.Name,
-    ///         Location = "us-west1",
-    ///         ResourceSpec = new Gcp.DataPlex.Inputs.ZoneResourceSpecArgs
-    ///         {
-    ///             LocationType = "MULTI_REGION",
-    ///         },
-    ///         Type = "RAW",
-    ///         Description = "Zone for DCL",
-    ///         DisplayName = "Zone for DCL",
-    ///         Labels = null,
-    ///         Project = "my-project-name",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

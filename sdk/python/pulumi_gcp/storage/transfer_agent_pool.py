@@ -53,7 +53,13 @@ class TransferAgentPoolArgs:
              display_name: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bandwidth_limit is None and 'bandwidthLimit' in kwargs:
+            bandwidth_limit = kwargs['bandwidthLimit']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if bandwidth_limit is not None:
             _setter("bandwidth_limit", bandwidth_limit)
         if display_name is not None:
@@ -168,7 +174,13 @@ class _TransferAgentPoolState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bandwidth_limit is None and 'bandwidthLimit' in kwargs:
+            bandwidth_limit = kwargs['bandwidthLimit']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if bandwidth_limit is not None:
             _setter("bandwidth_limit", bandwidth_limit)
         if display_name is not None:
@@ -273,24 +285,6 @@ class TransferAgentPool(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/storage-transfer/docs/on-prem-agent-pools)
 
         ## Example Usage
-        ### Agent Pool Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.storage.get_transfer_project_service_account(project="my-project-name")
-        pubsub_editor_role = gcp.projects.IAMMember("pubsubEditorRole",
-            project="my-project-name",
-            role="roles/pubsub.editor",
-            member=f"serviceAccount:{default.email}")
-        example = gcp.storage.TransferAgentPool("example",
-            display_name="Source A to destination Z",
-            bandwidth_limit=gcp.storage.TransferAgentPoolBandwidthLimitArgs(
-                limit_mbps="120",
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[pubsub_editor_role]))
-        ```
 
         ## Import
 
@@ -343,24 +337,6 @@ class TransferAgentPool(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/storage-transfer/docs/on-prem-agent-pools)
 
         ## Example Usage
-        ### Agent Pool Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.storage.get_transfer_project_service_account(project="my-project-name")
-        pubsub_editor_role = gcp.projects.IAMMember("pubsubEditorRole",
-            project="my-project-name",
-            role="roles/pubsub.editor",
-            member=f"serviceAccount:{default.email}")
-        example = gcp.storage.TransferAgentPool("example",
-            display_name="Source A to destination Z",
-            bandwidth_limit=gcp.storage.TransferAgentPoolBandwidthLimitArgs(
-                limit_mbps="120",
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[pubsub_editor_role]))
-        ```
 
         ## Import
 
@@ -410,11 +386,7 @@ class TransferAgentPool(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TransferAgentPoolArgs.__new__(TransferAgentPoolArgs)
 
-            if bandwidth_limit is not None and not isinstance(bandwidth_limit, TransferAgentPoolBandwidthLimitArgs):
-                bandwidth_limit = bandwidth_limit or {}
-                def _setter(key, value):
-                    bandwidth_limit[key] = value
-                TransferAgentPoolBandwidthLimitArgs._configure(_setter, **bandwidth_limit)
+            bandwidth_limit = _utilities.configure(bandwidth_limit, TransferAgentPoolBandwidthLimitArgs, True)
             __props__.__dict__["bandwidth_limit"] = bandwidth_limit
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["name"] = name

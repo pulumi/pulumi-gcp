@@ -29,28 +29,6 @@ namespace Pulumi.Gcp.Monitoring
         /// 
         /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
-        /// ### Monitoring Istio Canonical Service
-        /// 
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = Gcp.Monitoring.GetIstioCanonicalService.Invoke(new()
-        ///     {
-        ///         CanonicalService = "prometheus",
-        ///         CanonicalServiceNamespace = "istio-system",
-        ///         MeshUid = "proj-573164786102",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetIstioCanonicalServiceResult> InvokeAsync(GetIstioCanonicalServiceArgs args, InvokeOptions? options = null)
@@ -74,28 +52,6 @@ namespace Pulumi.Gcp.Monitoring
         /// 
         /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
-        /// ### Monitoring Istio Canonical Service
-        /// 
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = Gcp.Monitoring.GetIstioCanonicalService.Invoke(new()
-        ///     {
-        ///         CanonicalService = "prometheus",
-        ///         CanonicalServiceNamespace = "istio-system",
-        ///         MeshUid = "proj-573164786102",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetIstioCanonicalServiceResult> Invoke(GetIstioCanonicalServiceInvokeArgs args, InvokeOptions? options = null)

@@ -29,49 +29,6 @@ namespace Pulumi.Gcp.AccessContextManager
     /// `billing_project` you defined.
     /// 
     /// ## Example Usage
-    /// ### Access Context Manager Access Policy Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new()
-    ///     {
-    ///         Parent = "organizations/123456789",
-    ///         Title = "Org Access Policy",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Access Context Manager Access Policy Scoped
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var project = new Gcp.Organizations.Project("project", new()
-    ///     {
-    ///         OrgId = "123456789",
-    ///         ProjectId = "acm-test-proj-123",
-    ///     });
-    /// 
-    ///     var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new()
-    ///     {
-    ///         Parent = "organizations/123456789",
-    ///         Scopes = project.Number.Apply(number =&gt; $"projects/{number}"),
-    ///         Title = "Scoped Access Policy",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

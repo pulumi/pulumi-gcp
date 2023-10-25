@@ -13,54 +13,12 @@ namespace Pulumi.Gcp.PubSub
     {
         /// <summary>
         /// Retrieves the current IAM policy data for topic
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.PubSub.GetTopicIamPolicy.Invoke(new()
-        ///     {
-        ///         Project = google_pubsub_topic.Example.Project,
-        ///         Topic = google_pubsub_topic.Example.Name,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetTopicIamPolicyResult> InvokeAsync(GetTopicIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTopicIamPolicyResult>("gcp:pubsub/getTopicIamPolicy:getTopicIamPolicy", args ?? new GetTopicIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for topic
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.PubSub.GetTopicIamPolicy.Invoke(new()
-        ///     {
-        ///         Project = google_pubsub_topic.Example.Project,
-        ///         Topic = google_pubsub_topic.Example.Name,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetTopicIamPolicyResult> Invoke(GetTopicIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTopicIamPolicyResult>("gcp:pubsub/getTopicIamPolicy:getTopicIamPolicy", args ?? new GetTopicIamPolicyInvokeArgs(), options.WithDefaults());

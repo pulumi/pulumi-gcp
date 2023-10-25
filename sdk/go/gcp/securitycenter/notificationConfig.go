@@ -28,42 +28,6 @@ import (
 //   - [Official Documentation](https://cloud.google.com/security-command-center/docs)
 //
 // ## Example Usage
-// ### Scc Notification Config Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/securitycenter"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			sccNotification, err := pubsub.NewTopic(ctx, "sccNotification", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = securitycenter.NewNotificationConfig(ctx, "customNotificationConfig", &securitycenter.NotificationConfigArgs{
-//				ConfigId:     pulumi.String("my-config"),
-//				Organization: pulumi.String("123456789"),
-//				Description:  pulumi.String("My custom Cloud Security Command Center Finding Notification Configuration"),
-//				PubsubTopic:  sccNotification.ID(),
-//				StreamingConfig: &securitycenter.NotificationConfigStreamingConfigArgs{
-//					Filter: pulumi.String("category = \"OPEN_FIREWALL\" AND state = \"ACTIVE\""),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

@@ -49,11 +49,19 @@ class DefaultObjectAccessControlArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: pulumi.Input[str],
-             entity: pulumi.Input[str],
-             role: pulumi.Input[str],
+             bucket: Optional[pulumi.Input[str]] = None,
+             entity: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              object: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if entity is None:
+            raise TypeError("Missing 'entity' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("bucket", bucket)
         _setter("entity", entity)
         _setter("role", role)
@@ -182,7 +190,13 @@ class _DefaultObjectAccessControlState:
              object: Optional[pulumi.Input[str]] = None,
              project_teams: Optional[pulumi.Input[Sequence[pulumi.Input['DefaultObjectAccessControlProjectTeamArgs']]]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_id is None and 'entityId' in kwargs:
+            entity_id = kwargs['entityId']
+        if project_teams is None and 'projectTeams' in kwargs:
+            project_teams = kwargs['projectTeams']
+
         if bucket is not None:
             _setter("bucket", bucket)
         if domain is not None:
@@ -356,18 +370,6 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
 
         ## Example Usage
-        ### Storage Default Object Access Control Public
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        bucket = gcp.storage.Bucket("bucket", location="US")
-        public_rule = gcp.storage.DefaultObjectAccessControl("publicRule",
-            bucket=bucket.name,
-            role="READER",
-            entity="allUsers")
-        ```
 
         ## Import
 
@@ -424,18 +426,6 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
 
         ## Example Usage
-        ### Storage Default Object Access Control Public
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        bucket = gcp.storage.Bucket("bucket", location="US")
-        public_rule = gcp.storage.DefaultObjectAccessControl("publicRule",
-            bucket=bucket.name,
-            role="READER",
-            entity="allUsers")
-        ```
 
         ## Import
 

@@ -45,11 +45,21 @@ class PolicyTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             taxonomy: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
+             taxonomy: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              parent_policy_tag: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if taxonomy is None:
+            raise TypeError("Missing 'taxonomy' argument")
+        if parent_policy_tag is None and 'parentPolicyTag' in kwargs:
+            parent_policy_tag = kwargs['parentPolicyTag']
+
         _setter("display_name", display_name)
         _setter("taxonomy", taxonomy)
         if description is not None:
@@ -163,7 +173,15 @@ class _PolicyTagState:
              name: Optional[pulumi.Input[str]] = None,
              parent_policy_tag: Optional[pulumi.Input[str]] = None,
              taxonomy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if child_policy_tags is None and 'childPolicyTags' in kwargs:
+            child_policy_tags = kwargs['childPolicyTags']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if parent_policy_tag is None and 'parentPolicyTag' in kwargs:
+            parent_policy_tag = kwargs['parentPolicyTag']
+
         if child_policy_tags is not None:
             _setter("child_policy_tags", child_policy_tags)
         if description is not None:
@@ -281,47 +299,6 @@ class PolicyTag(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
         ## Example Usage
-        ### Data Catalog Taxonomies Policy Tag Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_taxonomy = gcp.datacatalog.Taxonomy("myTaxonomy",
-            display_name="taxonomy_display_name",
-            description="A collection of policy tags",
-            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"])
-        basic_policy_tag = gcp.datacatalog.PolicyTag("basicPolicyTag",
-            taxonomy=my_taxonomy.id,
-            display_name="Low security",
-            description="A policy tag normally associated with low security items")
-        ```
-        ### Data Catalog Taxonomies Policy Tag Child Policies
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_taxonomy = gcp.datacatalog.Taxonomy("myTaxonomy",
-            display_name="taxonomy_display_name",
-            description="A collection of policy tags",
-            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"])
-        parent_policy = gcp.datacatalog.PolicyTag("parentPolicy",
-            taxonomy=my_taxonomy.id,
-            display_name="High",
-            description="A policy tag category used for high security access")
-        child_policy = gcp.datacatalog.PolicyTag("childPolicy",
-            taxonomy=my_taxonomy.id,
-            display_name="ssn",
-            description="A hash of the users ssn",
-            parent_policy_tag=parent_policy.id)
-        child_policy2 = gcp.datacatalog.PolicyTag("childPolicy2",
-            taxonomy=my_taxonomy.id,
-            display_name="dob",
-            description="The users date of birth",
-            parent_policy_tag=parent_policy.id,
-            opts=pulumi.ResourceOptions(depends_on=[child_policy]))
-        ```
 
         ## Import
 
@@ -364,47 +341,6 @@ class PolicyTag(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
         ## Example Usage
-        ### Data Catalog Taxonomies Policy Tag Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_taxonomy = gcp.datacatalog.Taxonomy("myTaxonomy",
-            display_name="taxonomy_display_name",
-            description="A collection of policy tags",
-            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"])
-        basic_policy_tag = gcp.datacatalog.PolicyTag("basicPolicyTag",
-            taxonomy=my_taxonomy.id,
-            display_name="Low security",
-            description="A policy tag normally associated with low security items")
-        ```
-        ### Data Catalog Taxonomies Policy Tag Child Policies
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_taxonomy = gcp.datacatalog.Taxonomy("myTaxonomy",
-            display_name="taxonomy_display_name",
-            description="A collection of policy tags",
-            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"])
-        parent_policy = gcp.datacatalog.PolicyTag("parentPolicy",
-            taxonomy=my_taxonomy.id,
-            display_name="High",
-            description="A policy tag category used for high security access")
-        child_policy = gcp.datacatalog.PolicyTag("childPolicy",
-            taxonomy=my_taxonomy.id,
-            display_name="ssn",
-            description="A hash of the users ssn",
-            parent_policy_tag=parent_policy.id)
-        child_policy2 = gcp.datacatalog.PolicyTag("childPolicy2",
-            taxonomy=my_taxonomy.id,
-            display_name="dob",
-            description="The users date of birth",
-            parent_policy_tag=parent_policy.id,
-            opts=pulumi.ResourceOptions(depends_on=[child_policy]))
-        ```
 
         ## Import
 

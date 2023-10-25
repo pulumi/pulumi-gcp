@@ -29,69 +29,6 @@ import (
 // > **Warning:** All arguments including `plaintext` and `additionalAuthenticatedData` will be stored in the raw state as plain-text.
 //
 // ## Example Usage
-// ### Kms Secret Ciphertext Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			keyring, err := kms.NewKeyRing(ctx, "keyring", &kms.KeyRingArgs{
-//				Location: pulumi.String("global"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			cryptokey, err := kms.NewCryptoKey(ctx, "cryptokey", &kms.CryptoKeyArgs{
-//				KeyRing:        keyring.ID(),
-//				RotationPeriod: pulumi.String("100000s"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			myPassword, err := kms.NewSecretCiphertext(ctx, "myPassword", &kms.SecretCiphertextArgs{
-//				CryptoKey: cryptokey.ID(),
-//				Plaintext: pulumi.String("my-secret-password"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewInstance(ctx, "instance", &compute.InstanceArgs{
-//				MachineType: pulumi.String("e2-medium"),
-//				Zone:        pulumi.String("us-central1-a"),
-//				BootDisk: &compute.InstanceBootDiskArgs{
-//					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-//						Image: pulumi.String("debian-cloud/debian-11"),
-//					},
-//				},
-//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-//					&compute.InstanceNetworkInterfaceArgs{
-//						Network: pulumi.String("default"),
-//						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
-//							nil,
-//						},
-//					},
-//				},
-//				Metadata: pulumi.StringMap{
-//					"password": myPassword.Ciphertext,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

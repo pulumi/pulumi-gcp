@@ -42,12 +42,16 @@ class ProjectExclusionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter: pulumi.Input[str],
+             filter: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if filter is None:
+            raise TypeError("Missing 'filter' argument")
+
         _setter("filter", filter)
         if description is not None:
             _setter("description", description)
@@ -159,7 +163,9 @@ class _ProjectExclusionState:
              filter: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if description is not None:
             _setter("description", description)
         if disabled is not None:
@@ -256,17 +262,6 @@ class ProjectExclusion(pulumi.CustomResource):
 
         > You can specify exclusions for log sinks created by the provider by using the exclusions field of `logging.ProjectSink`
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_exclusion = gcp.logging.ProjectExclusion("my-exclusion",
-            description="Exclude GCE instance debug logs",
-            filter="resource.type = gce_instance AND severity <= DEBUG")
-        ```
-
         ## Import
 
         Project-level logging exclusions can be imported using their URI, e.g.
@@ -301,17 +296,6 @@ class ProjectExclusion(pulumi.CustomResource):
             * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
 
         > You can specify exclusions for log sinks created by the provider by using the exclusions field of `logging.ProjectSink`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_exclusion = gcp.logging.ProjectExclusion("my-exclusion",
-            description="Exclude GCE instance debug logs",
-            filter="resource.type = gce_instance AND severity <= DEBUG")
-        ```
 
         ## Import
 

@@ -15,39 +15,6 @@ import (
 // Use this data source to access a Region Network Endpoint Group's attributes.
 //
 // The RNEG may be found by providing either a `selfLink`, or a `name` and a `region`.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.LookupRegionNetworkEndpointGroup(ctx, &compute.LookupRegionNetworkEndpointGroupArgs{
-//				Name:   pulumi.StringRef("k8s1-abcdef01-myns-mysvc-8080-4b6bac43"),
-//				Region: pulumi.StringRef("us-central1"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.LookupRegionNetworkEndpointGroup(ctx, &compute.LookupRegionNetworkEndpointGroupArgs{
-//				SelfLink: pulumi.StringRef("https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupRegionNetworkEndpointGroup(ctx *pulumi.Context, args *LookupRegionNetworkEndpointGroupArgs, opts ...pulumi.InvokeOption) (*LookupRegionNetworkEndpointGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegionNetworkEndpointGroupResult

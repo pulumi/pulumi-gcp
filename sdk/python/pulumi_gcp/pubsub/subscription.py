@@ -137,7 +137,7 @@ class SubscriptionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             topic: pulumi.Input[str],
+             topic: Optional[pulumi.Input[str]] = None,
              ack_deadline_seconds: Optional[pulumi.Input[int]] = None,
              bigquery_config: Optional[pulumi.Input['SubscriptionBigqueryConfigArgs']] = None,
              cloud_storage_config: Optional[pulumi.Input['SubscriptionCloudStorageConfigArgs']] = None,
@@ -153,7 +153,33 @@ class SubscriptionArgs:
              push_config: Optional[pulumi.Input['SubscriptionPushConfigArgs']] = None,
              retain_acked_messages: Optional[pulumi.Input[bool]] = None,
              retry_policy: Optional[pulumi.Input['SubscriptionRetryPolicyArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if topic is None:
+            raise TypeError("Missing 'topic' argument")
+        if ack_deadline_seconds is None and 'ackDeadlineSeconds' in kwargs:
+            ack_deadline_seconds = kwargs['ackDeadlineSeconds']
+        if bigquery_config is None and 'bigqueryConfig' in kwargs:
+            bigquery_config = kwargs['bigqueryConfig']
+        if cloud_storage_config is None and 'cloudStorageConfig' in kwargs:
+            cloud_storage_config = kwargs['cloudStorageConfig']
+        if dead_letter_policy is None and 'deadLetterPolicy' in kwargs:
+            dead_letter_policy = kwargs['deadLetterPolicy']
+        if enable_exactly_once_delivery is None and 'enableExactlyOnceDelivery' in kwargs:
+            enable_exactly_once_delivery = kwargs['enableExactlyOnceDelivery']
+        if enable_message_ordering is None and 'enableMessageOrdering' in kwargs:
+            enable_message_ordering = kwargs['enableMessageOrdering']
+        if expiration_policy is None and 'expirationPolicy' in kwargs:
+            expiration_policy = kwargs['expirationPolicy']
+        if message_retention_duration is None and 'messageRetentionDuration' in kwargs:
+            message_retention_duration = kwargs['messageRetentionDuration']
+        if push_config is None and 'pushConfig' in kwargs:
+            push_config = kwargs['pushConfig']
+        if retain_acked_messages is None and 'retainAckedMessages' in kwargs:
+            retain_acked_messages = kwargs['retainAckedMessages']
+        if retry_policy is None and 'retryPolicy' in kwargs:
+            retry_policy = kwargs['retryPolicy']
+
         _setter("topic", topic)
         if ack_deadline_seconds is not None:
             _setter("ack_deadline_seconds", ack_deadline_seconds)
@@ -583,7 +609,31 @@ class _SubscriptionState:
              retain_acked_messages: Optional[pulumi.Input[bool]] = None,
              retry_policy: Optional[pulumi.Input['SubscriptionRetryPolicyArgs']] = None,
              topic: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ack_deadline_seconds is None and 'ackDeadlineSeconds' in kwargs:
+            ack_deadline_seconds = kwargs['ackDeadlineSeconds']
+        if bigquery_config is None and 'bigqueryConfig' in kwargs:
+            bigquery_config = kwargs['bigqueryConfig']
+        if cloud_storage_config is None and 'cloudStorageConfig' in kwargs:
+            cloud_storage_config = kwargs['cloudStorageConfig']
+        if dead_letter_policy is None and 'deadLetterPolicy' in kwargs:
+            dead_letter_policy = kwargs['deadLetterPolicy']
+        if enable_exactly_once_delivery is None and 'enableExactlyOnceDelivery' in kwargs:
+            enable_exactly_once_delivery = kwargs['enableExactlyOnceDelivery']
+        if enable_message_ordering is None and 'enableMessageOrdering' in kwargs:
+            enable_message_ordering = kwargs['enableMessageOrdering']
+        if expiration_policy is None and 'expirationPolicy' in kwargs:
+            expiration_policy = kwargs['expirationPolicy']
+        if message_retention_duration is None and 'messageRetentionDuration' in kwargs:
+            message_retention_duration = kwargs['messageRetentionDuration']
+        if push_config is None and 'pushConfig' in kwargs:
+            push_config = kwargs['pushConfig']
+        if retain_acked_messages is None and 'retainAckedMessages' in kwargs:
+            retain_acked_messages = kwargs['retainAckedMessages']
+        if retry_policy is None and 'retryPolicy' in kwargs:
+            retry_policy = kwargs['retryPolicy']
+
         if ack_deadline_seconds is not None:
             _setter("ack_deadline_seconds", ack_deadline_seconds)
         if bigquery_config is not None:
@@ -910,115 +960,6 @@ class Subscription(pulumi.CustomResource):
         by using the `projects.ServiceIdentity` resource.
 
         ## Example Usage
-        ### Pubsub Subscription Push
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example_topic = gcp.pubsub.Topic("exampleTopic")
-        example_subscription = gcp.pubsub.Subscription("exampleSubscription",
-            topic=example_topic.name,
-            ack_deadline_seconds=20,
-            labels={
-                "foo": "bar",
-            },
-            push_config=gcp.pubsub.SubscriptionPushConfigArgs(
-                push_endpoint="https://example.com/push",
-                attributes={
-                    "x-goog-version": "v1",
-                },
-            ))
-        ```
-        ### Pubsub Subscription Pull
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example_topic = gcp.pubsub.Topic("exampleTopic")
-        example_subscription = gcp.pubsub.Subscription("exampleSubscription",
-            topic=example_topic.name,
-            labels={
-                "foo": "bar",
-            },
-            message_retention_duration="1200s",
-            retain_acked_messages=True,
-            ack_deadline_seconds=20,
-            expiration_policy=gcp.pubsub.SubscriptionExpirationPolicyArgs(
-                ttl="300000.5s",
-            ),
-            retry_policy=gcp.pubsub.SubscriptionRetryPolicyArgs(
-                minimum_backoff="10s",
-            ),
-            enable_message_ordering=False)
-        ```
-        ### Pubsub Subscription Different Project
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example_topic = gcp.pubsub.Topic("exampleTopic", project="topic-project")
-        example_subscription = gcp.pubsub.Subscription("exampleSubscription",
-            project="subscription-project",
-            topic=example_topic.name)
-        ```
-        ### Pubsub Subscription Dead Letter
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example_topic = gcp.pubsub.Topic("exampleTopic")
-        example_dead_letter = gcp.pubsub.Topic("exampleDeadLetter")
-        example_subscription = gcp.pubsub.Subscription("exampleSubscription",
-            topic=example_topic.name,
-            dead_letter_policy=gcp.pubsub.SubscriptionDeadLetterPolicyArgs(
-                dead_letter_topic=example_dead_letter.id,
-                max_delivery_attempts=10,
-            ))
-        ```
-        ### Pubsub Subscription Push Bq
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example_topic = gcp.pubsub.Topic("exampleTopic")
-        project = gcp.organizations.get_project()
-        viewer = gcp.projects.IAMMember("viewer",
-            project=project.project_id,
-            role="roles/bigquery.metadataViewer",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
-        editor = gcp.projects.IAMMember("editor",
-            project=project.project_id,
-            role="roles/bigquery.dataEditor",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
-        test_dataset = gcp.bigquery.Dataset("testDataset", dataset_id="example_dataset")
-        test_table = gcp.bigquery.Table("testTable",
-            deletion_protection=False,
-            table_id="example_table",
-            dataset_id=test_dataset.dataset_id,
-            schema=\"\"\"[
-          {
-            "name": "data",
-            "type": "STRING",
-            "mode": "NULLABLE",
-            "description": "The data"
-          }
-        ]
-        \"\"\")
-        example_subscription = gcp.pubsub.Subscription("exampleSubscription",
-            topic=example_topic.name,
-            bigquery_config=gcp.pubsub.SubscriptionBigqueryConfigArgs(
-                table=pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[
-                    viewer,
-                    editor,
-                ]))
-        ```
 
         ## Import
 
@@ -1139,115 +1080,6 @@ class Subscription(pulumi.CustomResource):
         by using the `projects.ServiceIdentity` resource.
 
         ## Example Usage
-        ### Pubsub Subscription Push
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example_topic = gcp.pubsub.Topic("exampleTopic")
-        example_subscription = gcp.pubsub.Subscription("exampleSubscription",
-            topic=example_topic.name,
-            ack_deadline_seconds=20,
-            labels={
-                "foo": "bar",
-            },
-            push_config=gcp.pubsub.SubscriptionPushConfigArgs(
-                push_endpoint="https://example.com/push",
-                attributes={
-                    "x-goog-version": "v1",
-                },
-            ))
-        ```
-        ### Pubsub Subscription Pull
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example_topic = gcp.pubsub.Topic("exampleTopic")
-        example_subscription = gcp.pubsub.Subscription("exampleSubscription",
-            topic=example_topic.name,
-            labels={
-                "foo": "bar",
-            },
-            message_retention_duration="1200s",
-            retain_acked_messages=True,
-            ack_deadline_seconds=20,
-            expiration_policy=gcp.pubsub.SubscriptionExpirationPolicyArgs(
-                ttl="300000.5s",
-            ),
-            retry_policy=gcp.pubsub.SubscriptionRetryPolicyArgs(
-                minimum_backoff="10s",
-            ),
-            enable_message_ordering=False)
-        ```
-        ### Pubsub Subscription Different Project
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example_topic = gcp.pubsub.Topic("exampleTopic", project="topic-project")
-        example_subscription = gcp.pubsub.Subscription("exampleSubscription",
-            project="subscription-project",
-            topic=example_topic.name)
-        ```
-        ### Pubsub Subscription Dead Letter
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example_topic = gcp.pubsub.Topic("exampleTopic")
-        example_dead_letter = gcp.pubsub.Topic("exampleDeadLetter")
-        example_subscription = gcp.pubsub.Subscription("exampleSubscription",
-            topic=example_topic.name,
-            dead_letter_policy=gcp.pubsub.SubscriptionDeadLetterPolicyArgs(
-                dead_letter_topic=example_dead_letter.id,
-                max_delivery_attempts=10,
-            ))
-        ```
-        ### Pubsub Subscription Push Bq
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example_topic = gcp.pubsub.Topic("exampleTopic")
-        project = gcp.organizations.get_project()
-        viewer = gcp.projects.IAMMember("viewer",
-            project=project.project_id,
-            role="roles/bigquery.metadataViewer",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
-        editor = gcp.projects.IAMMember("editor",
-            project=project.project_id,
-            role="roles/bigquery.dataEditor",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
-        test_dataset = gcp.bigquery.Dataset("testDataset", dataset_id="example_dataset")
-        test_table = gcp.bigquery.Table("testTable",
-            deletion_protection=False,
-            table_id="example_table",
-            dataset_id=test_dataset.dataset_id,
-            schema=\"\"\"[
-          {
-            "name": "data",
-            "type": "STRING",
-            "mode": "NULLABLE",
-            "description": "The data"
-          }
-        ]
-        \"\"\")
-        example_subscription = gcp.pubsub.Subscription("exampleSubscription",
-            topic=example_topic.name,
-            bigquery_config=gcp.pubsub.SubscriptionBigqueryConfigArgs(
-                table=pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[
-                    viewer,
-                    editor,
-                ]))
-        ```
 
         ## Import
 
@@ -1310,49 +1142,25 @@ class Subscription(pulumi.CustomResource):
             __props__ = SubscriptionArgs.__new__(SubscriptionArgs)
 
             __props__.__dict__["ack_deadline_seconds"] = ack_deadline_seconds
-            if bigquery_config is not None and not isinstance(bigquery_config, SubscriptionBigqueryConfigArgs):
-                bigquery_config = bigquery_config or {}
-                def _setter(key, value):
-                    bigquery_config[key] = value
-                SubscriptionBigqueryConfigArgs._configure(_setter, **bigquery_config)
+            bigquery_config = _utilities.configure(bigquery_config, SubscriptionBigqueryConfigArgs, True)
             __props__.__dict__["bigquery_config"] = bigquery_config
-            if cloud_storage_config is not None and not isinstance(cloud_storage_config, SubscriptionCloudStorageConfigArgs):
-                cloud_storage_config = cloud_storage_config or {}
-                def _setter(key, value):
-                    cloud_storage_config[key] = value
-                SubscriptionCloudStorageConfigArgs._configure(_setter, **cloud_storage_config)
+            cloud_storage_config = _utilities.configure(cloud_storage_config, SubscriptionCloudStorageConfigArgs, True)
             __props__.__dict__["cloud_storage_config"] = cloud_storage_config
-            if dead_letter_policy is not None and not isinstance(dead_letter_policy, SubscriptionDeadLetterPolicyArgs):
-                dead_letter_policy = dead_letter_policy or {}
-                def _setter(key, value):
-                    dead_letter_policy[key] = value
-                SubscriptionDeadLetterPolicyArgs._configure(_setter, **dead_letter_policy)
+            dead_letter_policy = _utilities.configure(dead_letter_policy, SubscriptionDeadLetterPolicyArgs, True)
             __props__.__dict__["dead_letter_policy"] = dead_letter_policy
             __props__.__dict__["enable_exactly_once_delivery"] = enable_exactly_once_delivery
             __props__.__dict__["enable_message_ordering"] = enable_message_ordering
-            if expiration_policy is not None and not isinstance(expiration_policy, SubscriptionExpirationPolicyArgs):
-                expiration_policy = expiration_policy or {}
-                def _setter(key, value):
-                    expiration_policy[key] = value
-                SubscriptionExpirationPolicyArgs._configure(_setter, **expiration_policy)
+            expiration_policy = _utilities.configure(expiration_policy, SubscriptionExpirationPolicyArgs, True)
             __props__.__dict__["expiration_policy"] = expiration_policy
             __props__.__dict__["filter"] = filter
             __props__.__dict__["labels"] = labels
             __props__.__dict__["message_retention_duration"] = message_retention_duration
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            if push_config is not None and not isinstance(push_config, SubscriptionPushConfigArgs):
-                push_config = push_config or {}
-                def _setter(key, value):
-                    push_config[key] = value
-                SubscriptionPushConfigArgs._configure(_setter, **push_config)
+            push_config = _utilities.configure(push_config, SubscriptionPushConfigArgs, True)
             __props__.__dict__["push_config"] = push_config
             __props__.__dict__["retain_acked_messages"] = retain_acked_messages
-            if retry_policy is not None and not isinstance(retry_policy, SubscriptionRetryPolicyArgs):
-                retry_policy = retry_policy or {}
-                def _setter(key, value):
-                    retry_policy[key] = value
-                SubscriptionRetryPolicyArgs._configure(_setter, **retry_policy)
+            retry_policy = _utilities.configure(retry_policy, SubscriptionRetryPolicyArgs, True)
             __props__.__dict__["retry_policy"] = retry_policy
             if topic is None and not opts.urn:
                 raise TypeError("Missing required property 'topic'")

@@ -6,18 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for a Spanner instance.
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const foo = gcp.spanner.getInstanceIamPolicy({
- *     project: google_spanner_instance.instance.project,
- *     instance: google_spanner_instance.instance.name,
- * });
- * ```
  */
 export function getInstanceIamPolicy(args: GetInstanceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceIamPolicyResult> {
 
@@ -64,18 +52,6 @@ export interface GetInstanceIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for a Spanner instance.
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const foo = gcp.spanner.getInstanceIamPolicy({
- *     project: google_spanner_instance.instance.project,
- *     instance: google_spanner_instance.instance.name,
- * });
- * ```
  */
 export function getInstanceIamPolicyOutput(args: GetInstanceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getInstanceIamPolicy(a, opts))

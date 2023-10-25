@@ -107,7 +107,7 @@ class EdgeCacheOriginArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             origin_address: pulumi.Input[str],
+             origin_address: Optional[pulumi.Input[str]] = None,
              aws_v4_authentication: Optional[pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              failover_origin: Optional[pulumi.Input[str]] = None,
@@ -121,7 +121,25 @@ class EdgeCacheOriginArgs:
              protocol: Optional[pulumi.Input[str]] = None,
              retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              timeout: Optional[pulumi.Input['EdgeCacheOriginTimeoutArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if origin_address is None and 'originAddress' in kwargs:
+            origin_address = kwargs['originAddress']
+        if origin_address is None:
+            raise TypeError("Missing 'origin_address' argument")
+        if aws_v4_authentication is None and 'awsV4Authentication' in kwargs:
+            aws_v4_authentication = kwargs['awsV4Authentication']
+        if failover_origin is None and 'failoverOrigin' in kwargs:
+            failover_origin = kwargs['failoverOrigin']
+        if max_attempts is None and 'maxAttempts' in kwargs:
+            max_attempts = kwargs['maxAttempts']
+        if origin_override_action is None and 'originOverrideAction' in kwargs:
+            origin_override_action = kwargs['originOverrideAction']
+        if origin_redirect is None and 'originRedirect' in kwargs:
+            origin_redirect = kwargs['originRedirect']
+        if retry_conditions is None and 'retryConditions' in kwargs:
+            retry_conditions = kwargs['retryConditions']
+
         _setter("origin_address", origin_address)
         if aws_v4_authentication is not None:
             _setter("aws_v4_authentication", aws_v4_authentication)
@@ -467,7 +485,23 @@ class _EdgeCacheOriginState:
              protocol: Optional[pulumi.Input[str]] = None,
              retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              timeout: Optional[pulumi.Input['EdgeCacheOriginTimeoutArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if aws_v4_authentication is None and 'awsV4Authentication' in kwargs:
+            aws_v4_authentication = kwargs['awsV4Authentication']
+        if failover_origin is None and 'failoverOrigin' in kwargs:
+            failover_origin = kwargs['failoverOrigin']
+        if max_attempts is None and 'maxAttempts' in kwargs:
+            max_attempts = kwargs['maxAttempts']
+        if origin_address is None and 'originAddress' in kwargs:
+            origin_address = kwargs['originAddress']
+        if origin_override_action is None and 'originOverrideAction' in kwargs:
+            origin_override_action = kwargs['originOverrideAction']
+        if origin_redirect is None and 'originRedirect' in kwargs:
+            origin_redirect = kwargs['originRedirect']
+        if retry_conditions is None and 'retryConditions' in kwargs:
+            retry_conditions = kwargs['retryConditions']
+
         if aws_v4_authentication is not None:
             _setter("aws_v4_authentication", aws_v4_authentication)
         if description is not None:
@@ -734,96 +768,6 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins)
 
         ## Example Usage
-        ### Network Services Edge Cache Origin Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networkservices.EdgeCacheOrigin("default",
-            description="The default bucket for media edge test",
-            origin_address="gs://media-edge-default")
-        ```
-        ### Network Services Edge Cache Origin Advanced
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        fallback = gcp.networkservices.EdgeCacheOrigin("fallback",
-            origin_address="fallback.example.com",
-            description="The default bucket for media edge test",
-            max_attempts=3,
-            protocol="HTTP",
-            port=80,
-            retry_conditions=[
-                "CONNECT_FAILURE",
-                "NOT_FOUND",
-                "HTTP_5XX",
-                "FORBIDDEN",
-            ],
-            timeout=gcp.networkservices.EdgeCacheOriginTimeoutArgs(
-                connect_timeout="10s",
-                max_attempts_timeout="20s",
-                response_timeout="60s",
-                read_timeout="5s",
-            ),
-            origin_override_action=gcp.networkservices.EdgeCacheOriginOriginOverrideActionArgs(
-                url_rewrite=gcp.networkservices.EdgeCacheOriginOriginOverrideActionUrlRewriteArgs(
-                    host_rewrite="example.com",
-                ),
-                header_action=gcp.networkservices.EdgeCacheOriginOriginOverrideActionHeaderActionArgs(
-                    request_headers_to_adds=[gcp.networkservices.EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs(
-                        header_name="x-header",
-                        header_value="value",
-                        replace=True,
-                    )],
-                ),
-            ),
-            origin_redirect=gcp.networkservices.EdgeCacheOriginOriginRedirectArgs(
-                redirect_conditions=[
-                    "MOVED_PERMANENTLY",
-                    "FOUND",
-                    "SEE_OTHER",
-                    "TEMPORARY_REDIRECT",
-                    "PERMANENT_REDIRECT",
-                ],
-            ))
-        default = gcp.networkservices.EdgeCacheOrigin("default",
-            origin_address="gs://media-edge-default",
-            failover_origin=fallback.id,
-            description="The default bucket for media edge test",
-            max_attempts=2,
-            labels={
-                "a": "b",
-            },
-            timeout=gcp.networkservices.EdgeCacheOriginTimeoutArgs(
-                connect_timeout="10s",
-            ))
-        ```
-        ### Network Services Edge Cache Origin V4auth
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        secret_basic = gcp.secretmanager.Secret("secret-basic",
-            secret_id="secret-name",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
-        secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
-            secret=secret_basic.id,
-            secret_data="secret-data")
-        default = gcp.networkservices.EdgeCacheOrigin("default",
-            origin_address="gs://media-edge-default",
-            description="The default bucket for V4 authentication",
-            aws_v4_authentication=gcp.networkservices.EdgeCacheOriginAwsV4AuthenticationArgs(
-                access_key_id="ACCESSKEYID",
-                secret_access_key_version=secret_version_basic.id,
-                origin_region="auto",
-            ))
-        ```
 
         ## Import
 
@@ -912,96 +856,6 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins)
 
         ## Example Usage
-        ### Network Services Edge Cache Origin Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networkservices.EdgeCacheOrigin("default",
-            description="The default bucket for media edge test",
-            origin_address="gs://media-edge-default")
-        ```
-        ### Network Services Edge Cache Origin Advanced
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        fallback = gcp.networkservices.EdgeCacheOrigin("fallback",
-            origin_address="fallback.example.com",
-            description="The default bucket for media edge test",
-            max_attempts=3,
-            protocol="HTTP",
-            port=80,
-            retry_conditions=[
-                "CONNECT_FAILURE",
-                "NOT_FOUND",
-                "HTTP_5XX",
-                "FORBIDDEN",
-            ],
-            timeout=gcp.networkservices.EdgeCacheOriginTimeoutArgs(
-                connect_timeout="10s",
-                max_attempts_timeout="20s",
-                response_timeout="60s",
-                read_timeout="5s",
-            ),
-            origin_override_action=gcp.networkservices.EdgeCacheOriginOriginOverrideActionArgs(
-                url_rewrite=gcp.networkservices.EdgeCacheOriginOriginOverrideActionUrlRewriteArgs(
-                    host_rewrite="example.com",
-                ),
-                header_action=gcp.networkservices.EdgeCacheOriginOriginOverrideActionHeaderActionArgs(
-                    request_headers_to_adds=[gcp.networkservices.EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs(
-                        header_name="x-header",
-                        header_value="value",
-                        replace=True,
-                    )],
-                ),
-            ),
-            origin_redirect=gcp.networkservices.EdgeCacheOriginOriginRedirectArgs(
-                redirect_conditions=[
-                    "MOVED_PERMANENTLY",
-                    "FOUND",
-                    "SEE_OTHER",
-                    "TEMPORARY_REDIRECT",
-                    "PERMANENT_REDIRECT",
-                ],
-            ))
-        default = gcp.networkservices.EdgeCacheOrigin("default",
-            origin_address="gs://media-edge-default",
-            failover_origin=fallback.id,
-            description="The default bucket for media edge test",
-            max_attempts=2,
-            labels={
-                "a": "b",
-            },
-            timeout=gcp.networkservices.EdgeCacheOriginTimeoutArgs(
-                connect_timeout="10s",
-            ))
-        ```
-        ### Network Services Edge Cache Origin V4auth
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        secret_basic = gcp.secretmanager.Secret("secret-basic",
-            secret_id="secret-name",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
-        secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
-            secret=secret_basic.id,
-            secret_data="secret-data")
-        default = gcp.networkservices.EdgeCacheOrigin("default",
-            origin_address="gs://media-edge-default",
-            description="The default bucket for V4 authentication",
-            aws_v4_authentication=gcp.networkservices.EdgeCacheOriginAwsV4AuthenticationArgs(
-                access_key_id="ACCESSKEYID",
-                secret_access_key_version=secret_version_basic.id,
-                origin_region="auto",
-            ))
-        ```
 
         ## Import
 
@@ -1061,11 +915,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EdgeCacheOriginArgs.__new__(EdgeCacheOriginArgs)
 
-            if aws_v4_authentication is not None and not isinstance(aws_v4_authentication, EdgeCacheOriginAwsV4AuthenticationArgs):
-                aws_v4_authentication = aws_v4_authentication or {}
-                def _setter(key, value):
-                    aws_v4_authentication[key] = value
-                EdgeCacheOriginAwsV4AuthenticationArgs._configure(_setter, **aws_v4_authentication)
+            aws_v4_authentication = _utilities.configure(aws_v4_authentication, EdgeCacheOriginAwsV4AuthenticationArgs, True)
             __props__.__dict__["aws_v4_authentication"] = aws_v4_authentication
             __props__.__dict__["description"] = description
             __props__.__dict__["failover_origin"] = failover_origin
@@ -1075,27 +925,15 @@ class EdgeCacheOrigin(pulumi.CustomResource):
             if origin_address is None and not opts.urn:
                 raise TypeError("Missing required property 'origin_address'")
             __props__.__dict__["origin_address"] = origin_address
-            if origin_override_action is not None and not isinstance(origin_override_action, EdgeCacheOriginOriginOverrideActionArgs):
-                origin_override_action = origin_override_action or {}
-                def _setter(key, value):
-                    origin_override_action[key] = value
-                EdgeCacheOriginOriginOverrideActionArgs._configure(_setter, **origin_override_action)
+            origin_override_action = _utilities.configure(origin_override_action, EdgeCacheOriginOriginOverrideActionArgs, True)
             __props__.__dict__["origin_override_action"] = origin_override_action
-            if origin_redirect is not None and not isinstance(origin_redirect, EdgeCacheOriginOriginRedirectArgs):
-                origin_redirect = origin_redirect or {}
-                def _setter(key, value):
-                    origin_redirect[key] = value
-                EdgeCacheOriginOriginRedirectArgs._configure(_setter, **origin_redirect)
+            origin_redirect = _utilities.configure(origin_redirect, EdgeCacheOriginOriginRedirectArgs, True)
             __props__.__dict__["origin_redirect"] = origin_redirect
             __props__.__dict__["port"] = port
             __props__.__dict__["project"] = project
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["retry_conditions"] = retry_conditions
-            if timeout is not None and not isinstance(timeout, EdgeCacheOriginTimeoutArgs):
-                timeout = timeout or {}
-                def _setter(key, value):
-                    timeout[key] = value
-                EdgeCacheOriginTimeoutArgs._configure(_setter, **timeout)
+            timeout = _utilities.configure(timeout, EdgeCacheOriginTimeoutArgs, True)
             __props__.__dict__["timeout"] = timeout
         super(EdgeCacheOrigin, __self__).__init__(
             'gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin',

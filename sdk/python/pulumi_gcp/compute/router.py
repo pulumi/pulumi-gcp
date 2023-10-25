@@ -57,14 +57,20 @@ class RouterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network: pulumi.Input[str],
+             network: Optional[pulumi.Input[str]] = None,
              bgp: Optional[pulumi.Input['RouterBgpArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              encrypted_interconnect_router: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if encrypted_interconnect_router is None and 'encryptedInterconnectRouter' in kwargs:
+            encrypted_interconnect_router = kwargs['encryptedInterconnectRouter']
+
         _setter("network", network)
         if bgp is not None:
             _setter("bgp", bgp)
@@ -234,7 +240,15 @@ class _RouterState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if encrypted_interconnect_router is None and 'encryptedInterconnectRouter' in kwargs:
+            encrypted_interconnect_router = kwargs['encryptedInterconnectRouter']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if bgp is not None:
             _setter("bgp", bgp)
         if creation_timestamp is not None:
@@ -397,43 +411,6 @@ class Router(pulumi.CustomResource):
             * [Google Cloud Router](https://cloud.google.com/router/docs/)
 
         ## Example Usage
-        ### Router Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        foobar_network = gcp.compute.Network("foobarNetwork", auto_create_subnetworks=False)
-        foobar_router = gcp.compute.Router("foobarRouter",
-            network=foobar_network.name,
-            bgp=gcp.compute.RouterBgpArgs(
-                asn=64514,
-                advertise_mode="CUSTOM",
-                advertised_groups=["ALL_SUBNETS"],
-                advertised_ip_ranges=[
-                    gcp.compute.RouterBgpAdvertisedIpRangeArgs(
-                        range="1.2.3.4",
-                    ),
-                    gcp.compute.RouterBgpAdvertisedIpRangeArgs(
-                        range="6.7.0.0/16",
-                    ),
-                ],
-            ))
-        ```
-        ### Compute Router Encrypted Interconnect
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network = gcp.compute.Network("network", auto_create_subnetworks=False)
-        encrypted_interconnect_router = gcp.compute.Router("encrypted-interconnect-router",
-            network=network.name,
-            encrypted_interconnect_router=True,
-            bgp=gcp.compute.RouterBgpArgs(
-                asn=64514,
-            ))
-        ```
 
         ## Import
 
@@ -492,43 +469,6 @@ class Router(pulumi.CustomResource):
             * [Google Cloud Router](https://cloud.google.com/router/docs/)
 
         ## Example Usage
-        ### Router Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        foobar_network = gcp.compute.Network("foobarNetwork", auto_create_subnetworks=False)
-        foobar_router = gcp.compute.Router("foobarRouter",
-            network=foobar_network.name,
-            bgp=gcp.compute.RouterBgpArgs(
-                asn=64514,
-                advertise_mode="CUSTOM",
-                advertised_groups=["ALL_SUBNETS"],
-                advertised_ip_ranges=[
-                    gcp.compute.RouterBgpAdvertisedIpRangeArgs(
-                        range="1.2.3.4",
-                    ),
-                    gcp.compute.RouterBgpAdvertisedIpRangeArgs(
-                        range="6.7.0.0/16",
-                    ),
-                ],
-            ))
-        ```
-        ### Compute Router Encrypted Interconnect
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network = gcp.compute.Network("network", auto_create_subnetworks=False)
-        encrypted_interconnect_router = gcp.compute.Router("encrypted-interconnect-router",
-            network=network.name,
-            encrypted_interconnect_router=True,
-            bgp=gcp.compute.RouterBgpArgs(
-                asn=64514,
-            ))
-        ```
 
         ## Import
 
@@ -585,11 +525,7 @@ class Router(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RouterArgs.__new__(RouterArgs)
 
-            if bgp is not None and not isinstance(bgp, RouterBgpArgs):
-                bgp = bgp or {}
-                def _setter(key, value):
-                    bgp[key] = value
-                RouterBgpArgs._configure(_setter, **bgp)
+            bgp = _utilities.configure(bgp, RouterBgpArgs, True)
             __props__.__dict__["bgp"] = bgp
             __props__.__dict__["description"] = description
             __props__.__dict__["encrypted_interconnect_router"] = encrypted_interconnect_router

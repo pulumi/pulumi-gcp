@@ -55,14 +55,28 @@ class BareMetalNodePoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bare_metal_cluster: pulumi.Input[str],
-             location: pulumi.Input[str],
-             node_pool_config: pulumi.Input['BareMetalNodePoolNodePoolConfigArgs'],
+             bare_metal_cluster: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             node_pool_config: Optional[pulumi.Input['BareMetalNodePoolNodePoolConfigArgs']] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bare_metal_cluster is None and 'bareMetalCluster' in kwargs:
+            bare_metal_cluster = kwargs['bareMetalCluster']
+        if bare_metal_cluster is None:
+            raise TypeError("Missing 'bare_metal_cluster' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if node_pool_config is None and 'nodePoolConfig' in kwargs:
+            node_pool_config = kwargs['nodePoolConfig']
+        if node_pool_config is None:
+            raise TypeError("Missing 'node_pool_config' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("bare_metal_cluster", bare_metal_cluster)
         _setter("location", location)
         _setter("node_pool_config", node_pool_config)
@@ -256,7 +270,21 @@ class _BareMetalNodePoolState:
              statuses: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolStatusArgs']]]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bare_metal_cluster is None and 'bareMetalCluster' in kwargs:
+            bare_metal_cluster = kwargs['bareMetalCluster']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if delete_time is None and 'deleteTime' in kwargs:
+            delete_time = kwargs['deleteTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if node_pool_config is None and 'nodePoolConfig' in kwargs:
+            node_pool_config = kwargs['nodePoolConfig']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if bare_metal_cluster is not None:
@@ -499,185 +527,6 @@ class BareMetalNodePool(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Gkeonprem Bare Metal Node Pool Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_basic = gcp.gkeonprem.BareMetalCluster("default-basic",
-            location="us-west1",
-            admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
-            bare_metal_version="1.12.3",
-            network_config=gcp.gkeonprem.BareMetalClusterNetworkConfigArgs(
-                island_mode_cidr=gcp.gkeonprem.BareMetalClusterNetworkConfigIslandModeCidrArgs(
-                    service_address_cidr_blocks=["172.26.0.0/16"],
-                    pod_address_cidr_blocks=["10.240.0.0/13"],
-                ),
-            ),
-            control_plane=gcp.gkeonprem.BareMetalClusterControlPlaneArgs(
-                control_plane_node_pool_config=gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs(
-                    node_pool_config=gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs(
-                        labels={},
-                        operating_system="LINUX",
-                        node_configs=[gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs(
-                            labels={},
-                            node_ip="10.200.0.9",
-                        )],
-                    ),
-                ),
-            ),
-            load_balancer=gcp.gkeonprem.BareMetalClusterLoadBalancerArgs(
-                port_config=gcp.gkeonprem.BareMetalClusterLoadBalancerPortConfigArgs(
-                    control_plane_load_balancer_port=443,
-                ),
-                vip_config=gcp.gkeonprem.BareMetalClusterLoadBalancerVipConfigArgs(
-                    control_plane_vip="10.200.0.13",
-                    ingress_vip="10.200.0.14",
-                ),
-                metal_lb_config=gcp.gkeonprem.BareMetalClusterLoadBalancerMetalLbConfigArgs(
-                    address_pools=[gcp.gkeonprem.BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs(
-                        pool="pool1",
-                        addresses=[
-                            "10.200.0.14/32",
-                            "10.200.0.15/32",
-                            "10.200.0.16/32",
-                            "10.200.0.17/32",
-                            "10.200.0.18/32",
-                            "fd00:1::f/128",
-                            "fd00:1::10/128",
-                            "fd00:1::11/128",
-                            "fd00:1::12/128",
-                        ],
-                    )],
-                ),
-            ),
-            storage=gcp.gkeonprem.BareMetalClusterStorageArgs(
-                lvp_share_config=gcp.gkeonprem.BareMetalClusterStorageLvpShareConfigArgs(
-                    lvp_config=gcp.gkeonprem.BareMetalClusterStorageLvpShareConfigLvpConfigArgs(
-                        path="/mnt/localpv-share",
-                        storage_class="local-shared",
-                    ),
-                    shared_path_pv_count=5,
-                ),
-                lvp_node_mounts_config=gcp.gkeonprem.BareMetalClusterStorageLvpNodeMountsConfigArgs(
-                    path="/mnt/localpv-disk",
-                    storage_class="local-disks",
-                ),
-            ),
-            security_config=gcp.gkeonprem.BareMetalClusterSecurityConfigArgs(
-                authorization=gcp.gkeonprem.BareMetalClusterSecurityConfigAuthorizationArgs(
-                    admin_users=[gcp.gkeonprem.BareMetalClusterSecurityConfigAuthorizationAdminUserArgs(
-                        username="admin@hashicorptest.com",
-                    )],
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        nodepool_basic = gcp.gkeonprem.BareMetalNodePool("nodepool-basic",
-            bare_metal_cluster=default_basic.name,
-            location="us-west1",
-            node_pool_config=gcp.gkeonprem.BareMetalNodePoolNodePoolConfigArgs(
-                operating_system="LINUX",
-                node_configs=[gcp.gkeonprem.BareMetalNodePoolNodePoolConfigNodeConfigArgs(
-                    node_ip="10.200.0.11",
-                )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Gkeonprem Bare Metal Node Pool Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_full = gcp.gkeonprem.BareMetalCluster("default-full",
-            location="us-west1",
-            admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
-            bare_metal_version="1.12.3",
-            network_config=gcp.gkeonprem.BareMetalClusterNetworkConfigArgs(
-                island_mode_cidr=gcp.gkeonprem.BareMetalClusterNetworkConfigIslandModeCidrArgs(
-                    service_address_cidr_blocks=["172.26.0.0/16"],
-                    pod_address_cidr_blocks=["10.240.0.0/13"],
-                ),
-            ),
-            control_plane=gcp.gkeonprem.BareMetalClusterControlPlaneArgs(
-                control_plane_node_pool_config=gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs(
-                    node_pool_config=gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs(
-                        labels={},
-                        operating_system="LINUX",
-                        node_configs=[gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs(
-                            labels={},
-                            node_ip="10.200.0.9",
-                        )],
-                    ),
-                ),
-            ),
-            load_balancer=gcp.gkeonprem.BareMetalClusterLoadBalancerArgs(
-                port_config=gcp.gkeonprem.BareMetalClusterLoadBalancerPortConfigArgs(
-                    control_plane_load_balancer_port=443,
-                ),
-                vip_config=gcp.gkeonprem.BareMetalClusterLoadBalancerVipConfigArgs(
-                    control_plane_vip="10.200.0.13",
-                    ingress_vip="10.200.0.14",
-                ),
-                metal_lb_config=gcp.gkeonprem.BareMetalClusterLoadBalancerMetalLbConfigArgs(
-                    address_pools=[gcp.gkeonprem.BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs(
-                        pool="pool1",
-                        addresses=[
-                            "10.200.0.14/32",
-                            "10.200.0.15/32",
-                            "10.200.0.16/32",
-                            "10.200.0.17/32",
-                            "10.200.0.18/32",
-                            "fd00:1::f/128",
-                            "fd00:1::10/128",
-                            "fd00:1::11/128",
-                            "fd00:1::12/128",
-                        ],
-                    )],
-                ),
-            ),
-            storage=gcp.gkeonprem.BareMetalClusterStorageArgs(
-                lvp_share_config=gcp.gkeonprem.BareMetalClusterStorageLvpShareConfigArgs(
-                    lvp_config=gcp.gkeonprem.BareMetalClusterStorageLvpShareConfigLvpConfigArgs(
-                        path="/mnt/localpv-share",
-                        storage_class="local-shared",
-                    ),
-                    shared_path_pv_count=5,
-                ),
-                lvp_node_mounts_config=gcp.gkeonprem.BareMetalClusterStorageLvpNodeMountsConfigArgs(
-                    path="/mnt/localpv-disk",
-                    storage_class="local-disks",
-                ),
-            ),
-            security_config=gcp.gkeonprem.BareMetalClusterSecurityConfigArgs(
-                authorization=gcp.gkeonprem.BareMetalClusterSecurityConfigAuthorizationArgs(
-                    admin_users=[gcp.gkeonprem.BareMetalClusterSecurityConfigAuthorizationAdminUserArgs(
-                        username="admin@hashicorptest.com",
-                    )],
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        nodepool_full = gcp.gkeonprem.BareMetalNodePool("nodepool-full",
-            display_name="test-name",
-            bare_metal_cluster=default_full.name,
-            location="us-west1",
-            annotations={},
-            node_pool_config=gcp.gkeonprem.BareMetalNodePoolNodePoolConfigArgs(
-                operating_system="LINUX",
-                labels={},
-                node_configs=[gcp.gkeonprem.BareMetalNodePoolNodePoolConfigNodeConfigArgs(
-                    node_ip="10.200.0.11",
-                    labels={},
-                )],
-                taints=[gcp.gkeonprem.BareMetalNodePoolNodePoolConfigTaintArgs(
-                    key="test-key",
-                    value="test-value",
-                    effect="NO_EXECUTE",
-                )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -722,185 +571,6 @@ class BareMetalNodePool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Gkeonprem Bare Metal Node Pool Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_basic = gcp.gkeonprem.BareMetalCluster("default-basic",
-            location="us-west1",
-            admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
-            bare_metal_version="1.12.3",
-            network_config=gcp.gkeonprem.BareMetalClusterNetworkConfigArgs(
-                island_mode_cidr=gcp.gkeonprem.BareMetalClusterNetworkConfigIslandModeCidrArgs(
-                    service_address_cidr_blocks=["172.26.0.0/16"],
-                    pod_address_cidr_blocks=["10.240.0.0/13"],
-                ),
-            ),
-            control_plane=gcp.gkeonprem.BareMetalClusterControlPlaneArgs(
-                control_plane_node_pool_config=gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs(
-                    node_pool_config=gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs(
-                        labels={},
-                        operating_system="LINUX",
-                        node_configs=[gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs(
-                            labels={},
-                            node_ip="10.200.0.9",
-                        )],
-                    ),
-                ),
-            ),
-            load_balancer=gcp.gkeonprem.BareMetalClusterLoadBalancerArgs(
-                port_config=gcp.gkeonprem.BareMetalClusterLoadBalancerPortConfigArgs(
-                    control_plane_load_balancer_port=443,
-                ),
-                vip_config=gcp.gkeonprem.BareMetalClusterLoadBalancerVipConfigArgs(
-                    control_plane_vip="10.200.0.13",
-                    ingress_vip="10.200.0.14",
-                ),
-                metal_lb_config=gcp.gkeonprem.BareMetalClusterLoadBalancerMetalLbConfigArgs(
-                    address_pools=[gcp.gkeonprem.BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs(
-                        pool="pool1",
-                        addresses=[
-                            "10.200.0.14/32",
-                            "10.200.0.15/32",
-                            "10.200.0.16/32",
-                            "10.200.0.17/32",
-                            "10.200.0.18/32",
-                            "fd00:1::f/128",
-                            "fd00:1::10/128",
-                            "fd00:1::11/128",
-                            "fd00:1::12/128",
-                        ],
-                    )],
-                ),
-            ),
-            storage=gcp.gkeonprem.BareMetalClusterStorageArgs(
-                lvp_share_config=gcp.gkeonprem.BareMetalClusterStorageLvpShareConfigArgs(
-                    lvp_config=gcp.gkeonprem.BareMetalClusterStorageLvpShareConfigLvpConfigArgs(
-                        path="/mnt/localpv-share",
-                        storage_class="local-shared",
-                    ),
-                    shared_path_pv_count=5,
-                ),
-                lvp_node_mounts_config=gcp.gkeonprem.BareMetalClusterStorageLvpNodeMountsConfigArgs(
-                    path="/mnt/localpv-disk",
-                    storage_class="local-disks",
-                ),
-            ),
-            security_config=gcp.gkeonprem.BareMetalClusterSecurityConfigArgs(
-                authorization=gcp.gkeonprem.BareMetalClusterSecurityConfigAuthorizationArgs(
-                    admin_users=[gcp.gkeonprem.BareMetalClusterSecurityConfigAuthorizationAdminUserArgs(
-                        username="admin@hashicorptest.com",
-                    )],
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        nodepool_basic = gcp.gkeonprem.BareMetalNodePool("nodepool-basic",
-            bare_metal_cluster=default_basic.name,
-            location="us-west1",
-            node_pool_config=gcp.gkeonprem.BareMetalNodePoolNodePoolConfigArgs(
-                operating_system="LINUX",
-                node_configs=[gcp.gkeonprem.BareMetalNodePoolNodePoolConfigNodeConfigArgs(
-                    node_ip="10.200.0.11",
-                )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Gkeonprem Bare Metal Node Pool Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_full = gcp.gkeonprem.BareMetalCluster("default-full",
-            location="us-west1",
-            admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
-            bare_metal_version="1.12.3",
-            network_config=gcp.gkeonprem.BareMetalClusterNetworkConfigArgs(
-                island_mode_cidr=gcp.gkeonprem.BareMetalClusterNetworkConfigIslandModeCidrArgs(
-                    service_address_cidr_blocks=["172.26.0.0/16"],
-                    pod_address_cidr_blocks=["10.240.0.0/13"],
-                ),
-            ),
-            control_plane=gcp.gkeonprem.BareMetalClusterControlPlaneArgs(
-                control_plane_node_pool_config=gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs(
-                    node_pool_config=gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs(
-                        labels={},
-                        operating_system="LINUX",
-                        node_configs=[gcp.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs(
-                            labels={},
-                            node_ip="10.200.0.9",
-                        )],
-                    ),
-                ),
-            ),
-            load_balancer=gcp.gkeonprem.BareMetalClusterLoadBalancerArgs(
-                port_config=gcp.gkeonprem.BareMetalClusterLoadBalancerPortConfigArgs(
-                    control_plane_load_balancer_port=443,
-                ),
-                vip_config=gcp.gkeonprem.BareMetalClusterLoadBalancerVipConfigArgs(
-                    control_plane_vip="10.200.0.13",
-                    ingress_vip="10.200.0.14",
-                ),
-                metal_lb_config=gcp.gkeonprem.BareMetalClusterLoadBalancerMetalLbConfigArgs(
-                    address_pools=[gcp.gkeonprem.BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs(
-                        pool="pool1",
-                        addresses=[
-                            "10.200.0.14/32",
-                            "10.200.0.15/32",
-                            "10.200.0.16/32",
-                            "10.200.0.17/32",
-                            "10.200.0.18/32",
-                            "fd00:1::f/128",
-                            "fd00:1::10/128",
-                            "fd00:1::11/128",
-                            "fd00:1::12/128",
-                        ],
-                    )],
-                ),
-            ),
-            storage=gcp.gkeonprem.BareMetalClusterStorageArgs(
-                lvp_share_config=gcp.gkeonprem.BareMetalClusterStorageLvpShareConfigArgs(
-                    lvp_config=gcp.gkeonprem.BareMetalClusterStorageLvpShareConfigLvpConfigArgs(
-                        path="/mnt/localpv-share",
-                        storage_class="local-shared",
-                    ),
-                    shared_path_pv_count=5,
-                ),
-                lvp_node_mounts_config=gcp.gkeonprem.BareMetalClusterStorageLvpNodeMountsConfigArgs(
-                    path="/mnt/localpv-disk",
-                    storage_class="local-disks",
-                ),
-            ),
-            security_config=gcp.gkeonprem.BareMetalClusterSecurityConfigArgs(
-                authorization=gcp.gkeonprem.BareMetalClusterSecurityConfigAuthorizationArgs(
-                    admin_users=[gcp.gkeonprem.BareMetalClusterSecurityConfigAuthorizationAdminUserArgs(
-                        username="admin@hashicorptest.com",
-                    )],
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        nodepool_full = gcp.gkeonprem.BareMetalNodePool("nodepool-full",
-            display_name="test-name",
-            bare_metal_cluster=default_full.name,
-            location="us-west1",
-            annotations={},
-            node_pool_config=gcp.gkeonprem.BareMetalNodePoolNodePoolConfigArgs(
-                operating_system="LINUX",
-                labels={},
-                node_configs=[gcp.gkeonprem.BareMetalNodePoolNodePoolConfigNodeConfigArgs(
-                    node_ip="10.200.0.11",
-                    labels={},
-                )],
-                taints=[gcp.gkeonprem.BareMetalNodePoolNodePoolConfigTaintArgs(
-                    key="test-key",
-                    value="test-value",
-                    effect="NO_EXECUTE",
-                )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -962,11 +632,7 @@ class BareMetalNodePool(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if node_pool_config is not None and not isinstance(node_pool_config, BareMetalNodePoolNodePoolConfigArgs):
-                node_pool_config = node_pool_config or {}
-                def _setter(key, value):
-                    node_pool_config[key] = value
-                BareMetalNodePoolNodePoolConfigArgs._configure(_setter, **node_pool_config)
+            node_pool_config = _utilities.configure(node_pool_config, BareMetalNodePoolNodePoolConfigArgs, True)
             if node_pool_config is None and not opts.urn:
                 raise TypeError("Missing required property 'node_pool_config'")
             __props__.__dict__["node_pool_config"] = node_pool_config

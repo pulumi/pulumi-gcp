@@ -49,13 +49,27 @@ class HostingChannelArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             channel_id: pulumi.Input[str],
-             site_id: pulumi.Input[str],
+             channel_id: Optional[pulumi.Input[str]] = None,
+             site_id: Optional[pulumi.Input[str]] = None,
              expire_time: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              retained_release_count: Optional[pulumi.Input[int]] = None,
              ttl: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if channel_id is None and 'channelId' in kwargs:
+            channel_id = kwargs['channelId']
+        if channel_id is None:
+            raise TypeError("Missing 'channel_id' argument")
+        if site_id is None and 'siteId' in kwargs:
+            site_id = kwargs['siteId']
+        if site_id is None:
+            raise TypeError("Missing 'site_id' argument")
+        if expire_time is None and 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if retained_release_count is None and 'retainedReleaseCount' in kwargs:
+            retained_release_count = kwargs['retainedReleaseCount']
+
         _setter("channel_id", channel_id)
         _setter("site_id", site_id)
         if expire_time is not None:
@@ -197,7 +211,17 @@ class _HostingChannelState:
              retained_release_count: Optional[pulumi.Input[int]] = None,
              site_id: Optional[pulumi.Input[str]] = None,
              ttl: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if channel_id is None and 'channelId' in kwargs:
+            channel_id = kwargs['channelId']
+        if expire_time is None and 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if retained_release_count is None and 'retainedReleaseCount' in kwargs:
+            retained_release_count = kwargs['retainedReleaseCount']
+        if site_id is None and 'siteId' in kwargs:
+            site_id = kwargs['siteId']
+
         if channel_id is not None:
             _setter("channel_id", channel_id)
         if expire_time is not None:
@@ -321,41 +345,6 @@ class HostingChannel(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Firebasehosting Channel Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_hosting_site = gcp.firebase.HostingSite("defaultHostingSite",
-            project="my-project-name",
-            site_id="site-with-channel",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_channel = gcp.firebase.HostingChannel("defaultHostingChannel",
-            site_id=default_hosting_site.site_id,
-            channel_id="channel-basic",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Firebasehosting Channel Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.firebase.HostingSite("default",
-            project="my-project-name",
-            site_id="site-with-channel",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        full = gcp.firebase.HostingChannel("full",
-            site_id=default.site_id,
-            channel_id="channel-full",
-            ttl="86400s",
-            retained_release_count=20,
-            labels={
-                "some-key": "some-value",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -394,41 +383,6 @@ class HostingChannel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Firebasehosting Channel Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_hosting_site = gcp.firebase.HostingSite("defaultHostingSite",
-            project="my-project-name",
-            site_id="site-with-channel",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_hosting_channel = gcp.firebase.HostingChannel("defaultHostingChannel",
-            site_id=default_hosting_site.site_id,
-            channel_id="channel-basic",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Firebasehosting Channel Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.firebase.HostingSite("default",
-            project="my-project-name",
-            site_id="site-with-channel",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        full = gcp.firebase.HostingChannel("full",
-            site_id=default.site_id,
-            channel_id="channel-full",
-            ttl="86400s",
-            retained_release_count=20,
-            labels={
-                "some-key": "some-value",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 

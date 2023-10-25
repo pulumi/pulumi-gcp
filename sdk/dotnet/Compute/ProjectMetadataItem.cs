@@ -15,25 +15,6 @@ namespace Pulumi.Gcp.Compute
     /// manage a single key/value setting in the provider rather than the entire
     /// project metadata map.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.Compute.ProjectMetadataItem("default", new()
-    ///     {
-    ///         Key = "my_metadata",
-    ///         Value = "my_value",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Project metadata items can be imported using the `key`, e.g.

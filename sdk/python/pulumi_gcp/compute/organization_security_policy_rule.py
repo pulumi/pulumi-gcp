@@ -66,17 +66,35 @@ class OrganizationSecurityPolicyRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: pulumi.Input[str],
-             match: pulumi.Input['OrganizationSecurityPolicyRuleMatchArgs'],
-             policy_id: pulumi.Input[str],
-             priority: pulumi.Input[int],
+             action: Optional[pulumi.Input[str]] = None,
+             match: Optional[pulumi.Input['OrganizationSecurityPolicyRuleMatchArgs']] = None,
+             policy_id: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
              description: Optional[pulumi.Input[str]] = None,
              direction: Optional[pulumi.Input[str]] = None,
              enable_logging: Optional[pulumi.Input[bool]] = None,
              preview: Optional[pulumi.Input[bool]] = None,
              target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if match is None:
+            raise TypeError("Missing 'match' argument")
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if policy_id is None:
+            raise TypeError("Missing 'policy_id' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+        if target_resources is None and 'targetResources' in kwargs:
+            target_resources = kwargs['targetResources']
+        if target_service_accounts is None and 'targetServiceAccounts' in kwargs:
+            target_service_accounts = kwargs['targetServiceAccounts']
+
         _setter("action", action)
         _setter("match", match)
         _setter("policy_id", policy_id)
@@ -289,7 +307,17 @@ class _OrganizationSecurityPolicyRuleState:
              priority: Optional[pulumi.Input[int]] = None,
              target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if target_resources is None and 'targetResources' in kwargs:
+            target_resources = kwargs['targetResources']
+        if target_service_accounts is None and 'targetServiceAccounts' in kwargs:
+            target_service_accounts = kwargs['targetServiceAccounts']
+
         if action is not None:
             _setter("action", action)
         if description is not None:
@@ -469,41 +497,6 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             * [Creating firewall rules](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
 
         ## Example Usage
-        ### Organization Security Policy Rule Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        policy_organization_security_policy = gcp.compute.OrganizationSecurityPolicy("policyOrganizationSecurityPolicy",
-            display_name="tf-test",
-            parent="organizations/123456789",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule",
-            policy_id=policy_organization_security_policy.id,
-            action="allow",
-            direction="INGRESS",
-            enable_logging=True,
-            match=gcp.compute.OrganizationSecurityPolicyRuleMatchArgs(
-                config=gcp.compute.OrganizationSecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=[
-                        "192.168.0.0/16",
-                        "10.0.0.0/8",
-                    ],
-                    layer4_configs=[
-                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
-                            ip_protocol="tcp",
-                            ports=["22"],
-                        ),
-                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
-                            ip_protocol="icmp",
-                        ),
-                    ],
-                ),
-            ),
-            priority=100,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -553,41 +546,6 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             * [Creating firewall rules](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
 
         ## Example Usage
-        ### Organization Security Policy Rule Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        policy_organization_security_policy = gcp.compute.OrganizationSecurityPolicy("policyOrganizationSecurityPolicy",
-            display_name="tf-test",
-            parent="organizations/123456789",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule",
-            policy_id=policy_organization_security_policy.id,
-            action="allow",
-            direction="INGRESS",
-            enable_logging=True,
-            match=gcp.compute.OrganizationSecurityPolicyRuleMatchArgs(
-                config=gcp.compute.OrganizationSecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=[
-                        "192.168.0.0/16",
-                        "10.0.0.0/8",
-                    ],
-                    layer4_configs=[
-                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
-                            ip_protocol="tcp",
-                            ports=["22"],
-                        ),
-                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
-                            ip_protocol="icmp",
-                        ),
-                    ],
-                ),
-            ),
-            priority=100,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -641,11 +599,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["direction"] = direction
             __props__.__dict__["enable_logging"] = enable_logging
-            if match is not None and not isinstance(match, OrganizationSecurityPolicyRuleMatchArgs):
-                match = match or {}
-                def _setter(key, value):
-                    match[key] = value
-                OrganizationSecurityPolicyRuleMatchArgs._configure(_setter, **match)
+            match = _utilities.configure(match, OrganizationSecurityPolicyRuleMatchArgs, True)
             if match is None and not opts.urn:
                 raise TypeError("Missing required property 'match'")
             __props__.__dict__["match"] = match

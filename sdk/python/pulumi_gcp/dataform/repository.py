@@ -51,7 +51,13 @@ class RepositoryArgs:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              workspace_compilation_overrides: Optional[pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if git_remote_settings is None and 'gitRemoteSettings' in kwargs:
+            git_remote_settings = kwargs['gitRemoteSettings']
+        if workspace_compilation_overrides is None and 'workspaceCompilationOverrides' in kwargs:
+            workspace_compilation_overrides = kwargs['workspaceCompilationOverrides']
+
         if git_remote_settings is not None:
             _setter("git_remote_settings", git_remote_settings)
         if name is not None:
@@ -168,7 +174,13 @@ class _RepositoryState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              workspace_compilation_overrides: Optional[pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if git_remote_settings is None and 'gitRemoteSettings' in kwargs:
+            git_remote_settings = kwargs['gitRemoteSettings']
+        if workspace_compilation_overrides is None and 'workspaceCompilationOverrides' in kwargs:
+            workspace_compilation_overrides = kwargs['workspaceCompilationOverrides']
+
         if git_remote_settings is not None:
             _setter("git_remote_settings", git_remote_settings)
         if name is not None:
@@ -260,36 +272,6 @@ class Repository(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Dataform Repository
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
-        secret = gcp.secretmanager.Secret("secret",
-            secret_id="secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        secret_version = gcp.secretmanager.SecretVersion("secretVersion",
-            secret=secret.id,
-            secret_data="secret-data",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        dataform_respository = gcp.dataform.Repository("dataformRespository",
-            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
-                url=git_repository.url,
-                default_branch="main",
-                authentication_token_secret_version=secret_version.id,
-            ),
-            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArgs(
-                default_database="database",
-                schema_suffix="_suffix",
-                table_prefix="prefix_",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -333,36 +315,6 @@ class Repository(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Dataform Repository
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
-        secret = gcp.secretmanager.Secret("secret",
-            secret_id="secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        secret_version = gcp.secretmanager.SecretVersion("secretVersion",
-            secret=secret.id,
-            secret_data="secret-data",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        dataform_respository = gcp.dataform.Repository("dataformRespository",
-            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
-                url=git_repository.url,
-                default_branch="main",
-                authentication_token_secret_version=secret_version.id,
-            ),
-            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArgs(
-                default_database="database",
-                schema_suffix="_suffix",
-                table_prefix="prefix_",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -417,20 +369,12 @@ class Repository(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RepositoryArgs.__new__(RepositoryArgs)
 
-            if git_remote_settings is not None and not isinstance(git_remote_settings, RepositoryGitRemoteSettingsArgs):
-                git_remote_settings = git_remote_settings or {}
-                def _setter(key, value):
-                    git_remote_settings[key] = value
-                RepositoryGitRemoteSettingsArgs._configure(_setter, **git_remote_settings)
+            git_remote_settings = _utilities.configure(git_remote_settings, RepositoryGitRemoteSettingsArgs, True)
             __props__.__dict__["git_remote_settings"] = git_remote_settings
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
-            if workspace_compilation_overrides is not None and not isinstance(workspace_compilation_overrides, RepositoryWorkspaceCompilationOverridesArgs):
-                workspace_compilation_overrides = workspace_compilation_overrides or {}
-                def _setter(key, value):
-                    workspace_compilation_overrides[key] = value
-                RepositoryWorkspaceCompilationOverridesArgs._configure(_setter, **workspace_compilation_overrides)
+            workspace_compilation_overrides = _utilities.configure(workspace_compilation_overrides, RepositoryWorkspaceCompilationOverridesArgs, True)
             __props__.__dict__["workspace_compilation_overrides"] = workspace_compilation_overrides
         super(Repository, __self__).__init__(
             'gcp:dataform/repository:Repository',

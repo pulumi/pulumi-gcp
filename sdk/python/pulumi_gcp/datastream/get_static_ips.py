@@ -81,17 +81,6 @@ def get_static_ips(location: Optional[str] = None,
     Returns the list of IP addresses that Datastream connects from. For more information see
     the [official documentation](https://cloud.google.com/datastream/docs/ip-allowlists-and-regions).
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    datastream_ips = gcp.datastream.get_static_ips(location="us-west1",
-        project="my-project")
-    pulumi.export("ipList", datastream_ips.static_ips)
-    ```
-
 
     :param str location: The location to list Datastream IPs for. For example: `us-east1`.
     :param str project: Project from which to list static IP addresses. Defaults to project declared in the provider.
@@ -116,17 +105,6 @@ def get_static_ips_output(location: Optional[pulumi.Input[str]] = None,
     """
     Returns the list of IP addresses that Datastream connects from. For more information see
     the [official documentation](https://cloud.google.com/datastream/docs/ip-allowlists-and-regions).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    datastream_ips = gcp.datastream.get_static_ips(location="us-west1",
-        project="my-project")
-    pulumi.export("ipList", datastream_ips.static_ips)
-    ```
 
 
     :param str location: The location to list Datastream IPs for. For example: `us-east1`.

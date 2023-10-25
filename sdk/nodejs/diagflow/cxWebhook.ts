@@ -16,38 +16,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
  *
  * ## Example Usage
- * ### Dialogflowcx Webhook Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const agent = new gcp.diagflow.CxAgent("agent", {
- *     displayName: "dialogflowcx-agent",
- *     location: "global",
- *     defaultLanguageCode: "en",
- *     supportedLanguageCodes: [
- *         "it",
- *         "de",
- *         "es",
- *     ],
- *     timeZone: "America/New_York",
- *     description: "Example description.",
- *     avatarUri: "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
- *     enableStackdriverLogging: true,
- *     enableSpellCorrection: true,
- *     speechToTextSettings: {
- *         enableSpeechAdaptation: true,
- *     },
- * });
- * const basicWebhook = new gcp.diagflow.CxWebhook("basicWebhook", {
- *     parent: agent.id,
- *     displayName: "MyFlow",
- *     genericWebService: {
- *         uri: "https://example.com",
- *     },
- * });
- * ```
  *
  * ## Import
  *

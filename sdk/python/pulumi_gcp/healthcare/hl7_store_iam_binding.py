@@ -49,11 +49,21 @@ class Hl7StoreIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hl7_v2_store_id: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
+             hl7_v2_store_id: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['Hl7StoreIamBindingConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if hl7_v2_store_id is None and 'hl7V2StoreId' in kwargs:
+            hl7_v2_store_id = kwargs['hl7V2StoreId']
+        if hl7_v2_store_id is None:
+            raise TypeError("Missing 'hl7_v2_store_id' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("hl7_v2_store_id", hl7_v2_store_id)
         _setter("members", members)
         _setter("role", role)
@@ -161,7 +171,11 @@ class _Hl7StoreIamBindingState:
              hl7_v2_store_id: Optional[pulumi.Input[str]] = None,
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if hl7_v2_store_id is None and 'hl7V2StoreId' in kwargs:
+            hl7_v2_store_id = kwargs['hl7V2StoreId']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -263,45 +277,6 @@ class Hl7StoreIamBinding(pulumi.CustomResource):
 
         > **Note:** `healthcare.Hl7StoreIamBinding` resources **can be** used in conjunction with `healthcare.Hl7StoreIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_healthcare\\_hl7\\_v2\\_store\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
-        hl7_v2_store = gcp.healthcare.Hl7StoreIamPolicy("hl7V2Store",
-            hl7_v2_store_id="your-hl7-v2-store-id",
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_healthcare\\_hl7\\_v2\\_store\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        hl7_v2_store = gcp.healthcare.Hl7StoreIamBinding("hl7V2Store",
-            hl7_v2_store_id="your-hl7-v2-store-id",
-            members=["user:jane@example.com"],
-            role="roles/editor")
-        ```
-
-        ## google\\_healthcare\\_hl7\\_v2\\_store\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        hl7_v2_store = gcp.healthcare.Hl7StoreIamMember("hl7V2Store",
-            hl7_v2_store_id="your-hl7-v2-store-id",
-            member="user:jane@example.com",
-            role="roles/editor")
-        ```
-
         ## Import
 
         IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
@@ -364,45 +339,6 @@ class Hl7StoreIamBinding(pulumi.CustomResource):
 
         > **Note:** `healthcare.Hl7StoreIamBinding` resources **can be** used in conjunction with `healthcare.Hl7StoreIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_healthcare\\_hl7\\_v2\\_store\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
-        hl7_v2_store = gcp.healthcare.Hl7StoreIamPolicy("hl7V2Store",
-            hl7_v2_store_id="your-hl7-v2-store-id",
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_healthcare\\_hl7\\_v2\\_store\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        hl7_v2_store = gcp.healthcare.Hl7StoreIamBinding("hl7V2Store",
-            hl7_v2_store_id="your-hl7-v2-store-id",
-            members=["user:jane@example.com"],
-            role="roles/editor")
-        ```
-
-        ## google\\_healthcare\\_hl7\\_v2\\_store\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        hl7_v2_store = gcp.healthcare.Hl7StoreIamMember("hl7V2Store",
-            hl7_v2_store_id="your-hl7-v2-store-id",
-            member="user:jane@example.com",
-            role="roles/editor")
-        ```
-
         ## Import
 
         IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
@@ -461,11 +397,7 @@ class Hl7StoreIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = Hl7StoreIamBindingArgs.__new__(Hl7StoreIamBindingArgs)
 
-            if condition is not None and not isinstance(condition, Hl7StoreIamBindingConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                Hl7StoreIamBindingConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, Hl7StoreIamBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if hl7_v2_store_id is None and not opts.urn:
                 raise TypeError("Missing required property 'hl7_v2_store_id'")

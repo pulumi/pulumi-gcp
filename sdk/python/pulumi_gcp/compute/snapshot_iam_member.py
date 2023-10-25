@@ -53,12 +53,18 @@ class SnapshotIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['SnapshotIamMemberConditionArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("member", member)
         _setter("role", role)
         if condition is not None:
@@ -187,7 +193,9 @@ class _SnapshotIamMemberState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -309,45 +317,6 @@ class SnapshotIamMember(pulumi.CustomResource):
 
         > **Note:** `compute.SnapshotIamBinding` resources **can be** used in conjunction with `compute.SnapshotIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_compute\\_snapshot\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.compute.SnapshotIamPolicy("policy",
-            project=google_compute_snapshot["snapshot"]["project"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_compute\\_snapshot\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.compute.SnapshotIamBinding("binding",
-            project=google_compute_snapshot["snapshot"]["project"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_compute\\_snapshot\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.compute.SnapshotIamMember("member",
-            project=google_compute_snapshot["snapshot"]["project"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/global/snapshots/{{name}} * {{project}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Compute Engine snapshot IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -414,45 +383,6 @@ class SnapshotIamMember(pulumi.CustomResource):
 
         > **Note:** `compute.SnapshotIamBinding` resources **can be** used in conjunction with `compute.SnapshotIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_compute\\_snapshot\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.compute.SnapshotIamPolicy("policy",
-            project=google_compute_snapshot["snapshot"]["project"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_compute\\_snapshot\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.compute.SnapshotIamBinding("binding",
-            project=google_compute_snapshot["snapshot"]["project"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_compute\\_snapshot\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.compute.SnapshotIamMember("member",
-            project=google_compute_snapshot["snapshot"]["project"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/global/snapshots/{{name}} * {{project}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Compute Engine snapshot IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -510,11 +440,7 @@ class SnapshotIamMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SnapshotIamMemberArgs.__new__(SnapshotIamMemberArgs)
 
-            if condition is not None and not isinstance(condition, SnapshotIamMemberConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                SnapshotIamMemberConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, SnapshotIamMemberConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")

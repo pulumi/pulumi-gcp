@@ -46,10 +46,18 @@ class InstanceIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
+             instance: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if instance is None:
+            raise TypeError("Missing 'instance' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("instance", instance)
         _setter("policy_data", policy_data)
         if project is not None:
@@ -148,7 +156,11 @@ class _InstanceIamPolicyState:
              instance: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if etag is not None:
             _setter("etag", etag)
         if instance is not None:
@@ -241,46 +253,6 @@ class InstanceIamPolicy(pulumi.CustomResource):
 
         > **Note:** `bigtable.InstanceIamBinding` resources **can be** used in conjunction with `bigtable.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_bigtable\\_instance\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/bigtable.user",
-            members=["user:jane@example.com"],
-        )])
-        editor = gcp.bigtable.InstanceIamPolicy("editor",
-            project="your-project",
-            instance="your-bigtable-instance",
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_bigtable\\_instance\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        editor = gcp.bigtable.InstanceIamBinding("editor",
-            instance="your-bigtable-instance",
-            members=["user:jane@example.com"],
-            role="roles/bigtable.user")
-        ```
-
-        ## google\\_bigtable\\_instance\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        editor = gcp.bigtable.InstanceIamMember("editor",
-            instance="your-bigtable-instance",
-            member="user:jane@example.com",
-            role="roles/bigtable.user")
-        ```
-
         ## Import
 
         Instance IAM resources can be imported using the project, instance name, role and/or member.
@@ -337,46 +309,6 @@ class InstanceIamPolicy(pulumi.CustomResource):
         > **Note:** `bigtable.InstanceIamPolicy` **cannot** be used in conjunction with `bigtable.InstanceIamBinding` and `bigtable.InstanceIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the instance as `bigtable.InstanceIamPolicy` replaces the entire policy.
 
         > **Note:** `bigtable.InstanceIamBinding` resources **can be** used in conjunction with `bigtable.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\\_bigtable\\_instance\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/bigtable.user",
-            members=["user:jane@example.com"],
-        )])
-        editor = gcp.bigtable.InstanceIamPolicy("editor",
-            project="your-project",
-            instance="your-bigtable-instance",
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_bigtable\\_instance\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        editor = gcp.bigtable.InstanceIamBinding("editor",
-            instance="your-bigtable-instance",
-            members=["user:jane@example.com"],
-            role="roles/bigtable.user")
-        ```
-
-        ## google\\_bigtable\\_instance\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        editor = gcp.bigtable.InstanceIamMember("editor",
-            instance="your-bigtable-instance",
-            member="user:jane@example.com",
-            role="roles/bigtable.user")
-        ```
 
         ## Import
 

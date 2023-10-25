@@ -49,13 +49,23 @@ class LinkedDatasetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: pulumi.Input[str],
-             link_id: pulumi.Input[str],
+             bucket: Optional[pulumi.Input[str]] = None,
+             link_id: Optional[pulumi.Input[str]] = None,
              bigquery_datasets: Optional[pulumi.Input[Sequence[pulumi.Input['LinkedDatasetBigqueryDatasetArgs']]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              parent: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if link_id is None and 'linkId' in kwargs:
+            link_id = kwargs['linkId']
+        if link_id is None:
+            raise TypeError("Missing 'link_id' argument")
+        if bigquery_datasets is None and 'bigqueryDatasets' in kwargs:
+            bigquery_datasets = kwargs['bigqueryDatasets']
+
         _setter("bucket", bucket)
         _setter("link_id", link_id)
         if bigquery_datasets is not None:
@@ -203,7 +213,17 @@ class _LinkedDatasetState:
              location: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              parent: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bigquery_datasets is None and 'bigqueryDatasets' in kwargs:
+            bigquery_datasets = kwargs['bigqueryDatasets']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if lifecycle_state is None and 'lifecycleState' in kwargs:
+            lifecycle_state = kwargs['lifecycleState']
+        if link_id is None and 'linkId' in kwargs:
+            link_id = kwargs['linkId']
+
         if bigquery_datasets is not None:
             _setter("bigquery_datasets", bigquery_datasets)
         if bucket is not None:
@@ -363,41 +383,6 @@ class LinkedDataset(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/logging/docs/apis)
 
         ## Example Usage
-        ### Logging Linked Dataset Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        logging_linked_dataset_project_bucket_config = gcp.logging.ProjectBucketConfig("loggingLinkedDatasetProjectBucketConfig",
-            location="global",
-            project="my-project-name",
-            enable_analytics=True,
-            bucket_id="my-bucket")
-        logging_linked_dataset_linked_dataset = gcp.logging.LinkedDataset("loggingLinkedDatasetLinkedDataset",
-            link_id="mylink",
-            bucket=logging_linked_dataset_project_bucket_config.id,
-            description="Linked dataset test")
-        ```
-        ### Logging Linked Dataset All Params
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        logging_linked_dataset_project_bucket_config = gcp.logging.ProjectBucketConfig("loggingLinkedDatasetProjectBucketConfig",
-            bucket_id="my-bucket",
-            enable_analytics=True,
-            location="global",
-            project="my-project-name")
-        logging_linked_dataset_linked_dataset = gcp.logging.LinkedDataset("loggingLinkedDatasetLinkedDataset",
-            bucket="my-bucket",
-            description="Linked dataset test",
-            link_id="mylink",
-            location="global",
-            parent="projects/my-project-name",
-            opts=pulumi.ResourceOptions(depends_on=["google_logging_project_bucket_config.logging_linked_dataset"]))
-        ```
 
         ## Import
 
@@ -438,41 +423,6 @@ class LinkedDataset(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/logging/docs/apis)
 
         ## Example Usage
-        ### Logging Linked Dataset Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        logging_linked_dataset_project_bucket_config = gcp.logging.ProjectBucketConfig("loggingLinkedDatasetProjectBucketConfig",
-            location="global",
-            project="my-project-name",
-            enable_analytics=True,
-            bucket_id="my-bucket")
-        logging_linked_dataset_linked_dataset = gcp.logging.LinkedDataset("loggingLinkedDatasetLinkedDataset",
-            link_id="mylink",
-            bucket=logging_linked_dataset_project_bucket_config.id,
-            description="Linked dataset test")
-        ```
-        ### Logging Linked Dataset All Params
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        logging_linked_dataset_project_bucket_config = gcp.logging.ProjectBucketConfig("loggingLinkedDatasetProjectBucketConfig",
-            bucket_id="my-bucket",
-            enable_analytics=True,
-            location="global",
-            project="my-project-name")
-        logging_linked_dataset_linked_dataset = gcp.logging.LinkedDataset("loggingLinkedDatasetLinkedDataset",
-            bucket="my-bucket",
-            description="Linked dataset test",
-            link_id="mylink",
-            location="global",
-            parent="projects/my-project-name",
-            opts=pulumi.ResourceOptions(depends_on=["google_logging_project_bucket_config.logging_linked_dataset"]))
-        ```
 
         ## Import
 

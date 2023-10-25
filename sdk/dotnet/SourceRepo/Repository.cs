@@ -19,53 +19,6 @@ namespace Pulumi.Gcp.SourceRepo
     ///     * [Official Documentation](https://cloud.google.com/source-repositories/)
     /// 
     /// ## Example Usage
-    /// ### Sourcerepo Repository Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var my_repo = new Gcp.SourceRepo.Repository("my-repo");
-    /// 
-    /// });
-    /// ```
-    /// ### Sourcerepo Repository Full
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var testAccount = new Gcp.ServiceAccount.Account("testAccount", new()
-    ///     {
-    ///         AccountId = "my-account",
-    ///         DisplayName = "Test Service Account",
-    ///     });
-    /// 
-    ///     var topic = new Gcp.PubSub.Topic("topic");
-    /// 
-    ///     var my_repo = new Gcp.SourceRepo.Repository("my-repo", new()
-    ///     {
-    ///         PubsubConfigs = new[]
-    ///         {
-    ///             new Gcp.SourceRepo.Inputs.RepositoryPubsubConfigArgs
-    ///             {
-    ///                 Topic = topic.Id,
-    ///                 MessageFormat = "JSON",
-    ///                 ServiceAccountEmail = testAccount.Email,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

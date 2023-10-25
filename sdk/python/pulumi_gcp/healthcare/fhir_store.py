@@ -108,7 +108,7 @@ class FhirStoreArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataset: pulumi.Input[str],
+             dataset: Optional[pulumi.Input[str]] = None,
              complex_data_type_reference_parsing: Optional[pulumi.Input[str]] = None,
              default_search_handling_strict: Optional[pulumi.Input[bool]] = None,
              disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
@@ -121,7 +121,29 @@ class FhirStoreArgs:
              notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]]] = None,
              stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dataset is None:
+            raise TypeError("Missing 'dataset' argument")
+        if complex_data_type_reference_parsing is None and 'complexDataTypeReferenceParsing' in kwargs:
+            complex_data_type_reference_parsing = kwargs['complexDataTypeReferenceParsing']
+        if default_search_handling_strict is None and 'defaultSearchHandlingStrict' in kwargs:
+            default_search_handling_strict = kwargs['defaultSearchHandlingStrict']
+        if disable_referential_integrity is None and 'disableReferentialIntegrity' in kwargs:
+            disable_referential_integrity = kwargs['disableReferentialIntegrity']
+        if disable_resource_versioning is None and 'disableResourceVersioning' in kwargs:
+            disable_resource_versioning = kwargs['disableResourceVersioning']
+        if enable_history_import is None and 'enableHistoryImport' in kwargs:
+            enable_history_import = kwargs['enableHistoryImport']
+        if enable_update_create is None and 'enableUpdateCreate' in kwargs:
+            enable_update_create = kwargs['enableUpdateCreate']
+        if notification_config is None and 'notificationConfig' in kwargs:
+            notification_config = kwargs['notificationConfig']
+        if notification_configs is None and 'notificationConfigs' in kwargs:
+            notification_configs = kwargs['notificationConfigs']
+        if stream_configs is None and 'streamConfigs' in kwargs:
+            stream_configs = kwargs['streamConfigs']
+
         _setter("dataset", dataset)
         if complex_data_type_reference_parsing is not None:
             _setter("complex_data_type_reference_parsing", complex_data_type_reference_parsing)
@@ -461,7 +483,29 @@ class _FhirStoreState:
              self_link: Optional[pulumi.Input[str]] = None,
              stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if complex_data_type_reference_parsing is None and 'complexDataTypeReferenceParsing' in kwargs:
+            complex_data_type_reference_parsing = kwargs['complexDataTypeReferenceParsing']
+        if default_search_handling_strict is None and 'defaultSearchHandlingStrict' in kwargs:
+            default_search_handling_strict = kwargs['defaultSearchHandlingStrict']
+        if disable_referential_integrity is None and 'disableReferentialIntegrity' in kwargs:
+            disable_referential_integrity = kwargs['disableReferentialIntegrity']
+        if disable_resource_versioning is None and 'disableResourceVersioning' in kwargs:
+            disable_resource_versioning = kwargs['disableResourceVersioning']
+        if enable_history_import is None and 'enableHistoryImport' in kwargs:
+            enable_history_import = kwargs['enableHistoryImport']
+        if enable_update_create is None and 'enableUpdateCreate' in kwargs:
+            enable_update_create = kwargs['enableUpdateCreate']
+        if notification_config is None and 'notificationConfig' in kwargs:
+            notification_config = kwargs['notificationConfig']
+        if notification_configs is None and 'notificationConfigs' in kwargs:
+            notification_configs = kwargs['notificationConfigs']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if stream_configs is None and 'streamConfigs' in kwargs:
+            stream_configs = kwargs['streamConfigs']
+
         if complex_data_type_reference_parsing is not None:
             _setter("complex_data_type_reference_parsing", complex_data_type_reference_parsing)
         if dataset is not None:
@@ -734,116 +778,6 @@ class FhirStore(pulumi.CustomResource):
             * [Creating a FHIR store](https://cloud.google.com/healthcare/docs/how-tos/fhir)
 
         ## Example Usage
-        ### Healthcare Fhir Store Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        topic = gcp.pubsub.Topic("topic")
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
-        default = gcp.healthcare.FhirStore("default",
-            dataset=dataset.id,
-            version="R4",
-            complex_data_type_reference_parsing="DISABLED",
-            enable_update_create=False,
-            disable_referential_integrity=False,
-            disable_resource_versioning=False,
-            enable_history_import=False,
-            default_search_handling_strict=False,
-            notification_config=gcp.healthcare.FhirStoreNotificationConfigArgs(
-                pubsub_topic=topic.id,
-            ),
-            labels={
-                "label1": "labelvalue1",
-            })
-        ```
-        ### Healthcare Fhir Store Streaming Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
-        bq_dataset = gcp.bigquery.Dataset("bqDataset",
-            dataset_id="bq_example_dataset",
-            friendly_name="test",
-            description="This is a test description",
-            location="US",
-            delete_contents_on_destroy=True)
-        default = gcp.healthcare.FhirStore("default",
-            dataset=dataset.id,
-            version="R4",
-            enable_update_create=False,
-            disable_referential_integrity=False,
-            disable_resource_versioning=False,
-            enable_history_import=False,
-            labels={
-                "label1": "labelvalue1",
-            },
-            stream_configs=[gcp.healthcare.FhirStoreStreamConfigArgs(
-                resource_types=["Observation"],
-                bigquery_destination=gcp.healthcare.FhirStoreStreamConfigBigqueryDestinationArgs(
-                    dataset_uri=pulumi.Output.all(bq_dataset.project, bq_dataset.dataset_id).apply(lambda project, dataset_id: f"bq://{project}.{dataset_id}"),
-                    schema_config=gcp.healthcare.FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs(
-                        recursive_structure_depth=3,
-                        last_updated_partition_config=gcp.healthcare.FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs(
-                            type="HOUR",
-                            expiration_ms="1000000",
-                        ),
-                    ),
-                ),
-            )])
-        topic = gcp.pubsub.Topic("topic")
-        ```
-        ### Healthcare Fhir Store Notification Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        topic = gcp.pubsub.Topic("topic")
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
-        default = gcp.healthcare.FhirStore("default",
-            dataset=dataset.id,
-            version="R4",
-            enable_update_create=False,
-            disable_referential_integrity=False,
-            disable_resource_versioning=False,
-            enable_history_import=False,
-            labels={
-                "label1": "labelvalue1",
-            },
-            notification_config=gcp.healthcare.FhirStoreNotificationConfigArgs(
-                pubsub_topic=topic.id,
-            ))
-        ```
-        ### Healthcare Fhir Store Notification Configs
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        topic = gcp.pubsub.Topic("topic", opts=pulumi.ResourceOptions(provider=google_beta))
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default = gcp.healthcare.FhirStore("default",
-            dataset=dataset.id,
-            version="R4",
-            enable_update_create=False,
-            disable_referential_integrity=False,
-            disable_resource_versioning=False,
-            enable_history_import=False,
-            labels={
-                "label1": "labelvalue1",
-            },
-            notification_configs=[gcp.healthcare.FhirStoreNotificationConfigArgs(
-                pubsub_topic=topic.id,
-                send_full_resource=True,
-                send_previous_resource_on_delete=True,
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -934,116 +868,6 @@ class FhirStore(pulumi.CustomResource):
             * [Creating a FHIR store](https://cloud.google.com/healthcare/docs/how-tos/fhir)
 
         ## Example Usage
-        ### Healthcare Fhir Store Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        topic = gcp.pubsub.Topic("topic")
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
-        default = gcp.healthcare.FhirStore("default",
-            dataset=dataset.id,
-            version="R4",
-            complex_data_type_reference_parsing="DISABLED",
-            enable_update_create=False,
-            disable_referential_integrity=False,
-            disable_resource_versioning=False,
-            enable_history_import=False,
-            default_search_handling_strict=False,
-            notification_config=gcp.healthcare.FhirStoreNotificationConfigArgs(
-                pubsub_topic=topic.id,
-            ),
-            labels={
-                "label1": "labelvalue1",
-            })
-        ```
-        ### Healthcare Fhir Store Streaming Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
-        bq_dataset = gcp.bigquery.Dataset("bqDataset",
-            dataset_id="bq_example_dataset",
-            friendly_name="test",
-            description="This is a test description",
-            location="US",
-            delete_contents_on_destroy=True)
-        default = gcp.healthcare.FhirStore("default",
-            dataset=dataset.id,
-            version="R4",
-            enable_update_create=False,
-            disable_referential_integrity=False,
-            disable_resource_versioning=False,
-            enable_history_import=False,
-            labels={
-                "label1": "labelvalue1",
-            },
-            stream_configs=[gcp.healthcare.FhirStoreStreamConfigArgs(
-                resource_types=["Observation"],
-                bigquery_destination=gcp.healthcare.FhirStoreStreamConfigBigqueryDestinationArgs(
-                    dataset_uri=pulumi.Output.all(bq_dataset.project, bq_dataset.dataset_id).apply(lambda project, dataset_id: f"bq://{project}.{dataset_id}"),
-                    schema_config=gcp.healthcare.FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs(
-                        recursive_structure_depth=3,
-                        last_updated_partition_config=gcp.healthcare.FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs(
-                            type="HOUR",
-                            expiration_ms="1000000",
-                        ),
-                    ),
-                ),
-            )])
-        topic = gcp.pubsub.Topic("topic")
-        ```
-        ### Healthcare Fhir Store Notification Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        topic = gcp.pubsub.Topic("topic")
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
-        default = gcp.healthcare.FhirStore("default",
-            dataset=dataset.id,
-            version="R4",
-            enable_update_create=False,
-            disable_referential_integrity=False,
-            disable_resource_versioning=False,
-            enable_history_import=False,
-            labels={
-                "label1": "labelvalue1",
-            },
-            notification_config=gcp.healthcare.FhirStoreNotificationConfigArgs(
-                pubsub_topic=topic.id,
-            ))
-        ```
-        ### Healthcare Fhir Store Notification Configs
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        topic = gcp.pubsub.Topic("topic", opts=pulumi.ResourceOptions(provider=google_beta))
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default = gcp.healthcare.FhirStore("default",
-            dataset=dataset.id,
-            version="R4",
-            enable_update_create=False,
-            disable_referential_integrity=False,
-            disable_resource_versioning=False,
-            enable_history_import=False,
-            labels={
-                "label1": "labelvalue1",
-            },
-            notification_configs=[gcp.healthcare.FhirStoreNotificationConfigArgs(
-                pubsub_topic=topic.id,
-                send_full_resource=True,
-                send_previous_resource_on_delete=True,
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -1109,11 +933,7 @@ class FhirStore(pulumi.CustomResource):
             __props__.__dict__["enable_update_create"] = enable_update_create
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
-            if notification_config is not None and not isinstance(notification_config, FhirStoreNotificationConfigArgs):
-                notification_config = notification_config or {}
-                def _setter(key, value):
-                    notification_config[key] = value
-                FhirStoreNotificationConfigArgs._configure(_setter, **notification_config)
+            notification_config = _utilities.configure(notification_config, FhirStoreNotificationConfigArgs, True)
             __props__.__dict__["notification_config"] = notification_config
             __props__.__dict__["notification_configs"] = notification_configs
             __props__.__dict__["stream_configs"] = stream_configs

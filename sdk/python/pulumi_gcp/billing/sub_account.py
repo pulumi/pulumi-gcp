@@ -35,10 +35,22 @@ class SubAccountArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             master_billing_account: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
+             master_billing_account: Optional[pulumi.Input[str]] = None,
              deletion_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if master_billing_account is None and 'masterBillingAccount' in kwargs:
+            master_billing_account = kwargs['masterBillingAccount']
+        if master_billing_account is None:
+            raise TypeError("Missing 'master_billing_account' argument")
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+
         _setter("display_name", display_name)
         _setter("master_billing_account", master_billing_account)
         if deletion_policy is not None:
@@ -123,7 +135,17 @@ class _SubAccountState:
              master_billing_account: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              open: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if billing_account_id is None and 'billingAccountId' in kwargs:
+            billing_account_id = kwargs['billingAccountId']
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if master_billing_account is None and 'masterBillingAccount' in kwargs:
+            master_billing_account = kwargs['masterBillingAccount']
+
         if billing_account_id is not None:
             _setter("billing_account_id", billing_account_id)
         if deletion_policy is not None:
@@ -227,15 +249,6 @@ class SubAccount(pulumi.CustomResource):
 
         !> **WARNING:** Deleting this resource will not delete or close the billing subaccount.
 
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        subaccount = gcp.billing.SubAccount("subaccount",
-            display_name="My Billing Account",
-            master_billing_account="012345-567890-ABCDEF")
-        ```
-
         ## Import
 
         Billing Subaccounts can be imported using any of these accepted formats:
@@ -263,15 +276,6 @@ class SubAccount(pulumi.CustomResource):
         Allows creation and management of a Google Cloud Billing Subaccount.
 
         !> **WARNING:** Deleting this resource will not delete or close the billing subaccount.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        subaccount = gcp.billing.SubAccount("subaccount",
-            display_name="My Billing Account",
-            master_billing_account="012345-567890-ABCDEF")
-        ```
 
         ## Import
 

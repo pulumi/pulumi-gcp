@@ -56,7 +56,11 @@ class DatabaseHiveOptions(dict):
              _setter: Callable[[Any, Any], None],
              location_uri: Optional[str] = None,
              parameters: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location_uri is None and 'locationUri' in kwargs:
+            location_uri = kwargs['locationUri']
+
         if location_uri is not None:
             _setter("location_uri", location_uri)
         if parameters is not None:
@@ -128,7 +132,13 @@ class TableHiveOptions(dict):
              parameters: Optional[Mapping[str, str]] = None,
              storage_descriptor: Optional['outputs.TableHiveOptionsStorageDescriptor'] = None,
              table_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if storage_descriptor is None and 'storageDescriptor' in kwargs:
+            storage_descriptor = kwargs['storageDescriptor']
+        if table_type is None and 'tableType' in kwargs:
+            table_type = kwargs['tableType']
+
         if parameters is not None:
             _setter("parameters", parameters)
         if storage_descriptor is not None:
@@ -208,7 +218,15 @@ class TableHiveOptionsStorageDescriptor(dict):
              input_format: Optional[str] = None,
              location_uri: Optional[str] = None,
              output_format: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if input_format is None and 'inputFormat' in kwargs:
+            input_format = kwargs['inputFormat']
+        if location_uri is None and 'locationUri' in kwargs:
+            location_uri = kwargs['locationUri']
+        if output_format is None and 'outputFormat' in kwargs:
+            output_format = kwargs['outputFormat']
+
         if input_format is not None:
             _setter("input_format", input_format)
         if location_uri is not None:

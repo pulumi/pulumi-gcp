@@ -47,7 +47,9 @@ class SchemaArgs:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if definition is not None:
             _setter("definition", definition)
         if name is not None:
@@ -150,7 +152,9 @@ class _SchemaState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if definition is not None:
             _setter("definition", definition)
         if name is not None:
@@ -238,52 +242,6 @@ class Schema(pulumi.CustomResource):
             * [Creating and managing schemas](https://cloud.google.com/pubsub/docs/schemas)
 
         ## Example Usage
-        ### Pubsub Schema Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example = gcp.pubsub.Schema("example",
-            definition=\"\"\"{
-          "type" : "record",
-          "name" : "Avro",
-          "fields" : [
-            {
-              "name" : "StringField",
-              "type" : "string"
-            },
-            {
-              "name" : "IntField",
-              "type" : "int"
-            }
-          ]
-        }
-
-        \"\"\",
-            type="AVRO")
-        ```
-        ### Pubsub Schema Protobuf
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example_schema = gcp.pubsub.Schema("exampleSchema",
-            type="PROTOCOL_BUFFER",
-            definition=\"\"\"syntax = "proto3";
-        message Results {
-        string message_request = 1;
-        string message_response = 2;
-        string timestamp_request = 3;
-        string timestamp_response = 4;
-        }\"\"\")
-        example_topic = gcp.pubsub.Topic("exampleTopic", schema_settings=gcp.pubsub.TopicSchemaSettingsArgs(
-            schema="projects/my-project-name/schemas/example",
-            encoding="JSON",
-        ),
-        opts=pulumi.ResourceOptions(depends_on=[example_schema]))
-        ```
 
         ## Import
 
@@ -333,52 +291,6 @@ class Schema(pulumi.CustomResource):
             * [Creating and managing schemas](https://cloud.google.com/pubsub/docs/schemas)
 
         ## Example Usage
-        ### Pubsub Schema Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example = gcp.pubsub.Schema("example",
-            definition=\"\"\"{
-          "type" : "record",
-          "name" : "Avro",
-          "fields" : [
-            {
-              "name" : "StringField",
-              "type" : "string"
-            },
-            {
-              "name" : "IntField",
-              "type" : "int"
-            }
-          ]
-        }
-
-        \"\"\",
-            type="AVRO")
-        ```
-        ### Pubsub Schema Protobuf
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example_schema = gcp.pubsub.Schema("exampleSchema",
-            type="PROTOCOL_BUFFER",
-            definition=\"\"\"syntax = "proto3";
-        message Results {
-        string message_request = 1;
-        string message_response = 2;
-        string timestamp_request = 3;
-        string timestamp_response = 4;
-        }\"\"\")
-        example_topic = gcp.pubsub.Topic("exampleTopic", schema_settings=gcp.pubsub.TopicSchemaSettingsArgs(
-            schema="projects/my-project-name/schemas/example",
-            encoding="JSON",
-        ),
-        opts=pulumi.ResourceOptions(depends_on=[example_schema]))
-        ```
 
         ## Import
 

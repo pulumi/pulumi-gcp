@@ -55,13 +55,21 @@ class TaxonomyIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
-             taxonomy: pulumi.Input[str],
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             taxonomy: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['TaxonomyIamMemberConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if taxonomy is None:
+            raise TypeError("Missing 'taxonomy' argument")
+
         _setter("member", member)
         _setter("role", role)
         _setter("taxonomy", taxonomy)
@@ -203,7 +211,9 @@ class _TaxonomyIamMemberState:
              region: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              taxonomy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -337,45 +347,6 @@ class TaxonomyIamMember(pulumi.CustomResource):
 
         > **Note:** `datacatalog.TaxonomyIamBinding` resources **can be** used in conjunction with `datacatalog.TaxonomyIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_data\\_catalog\\_taxonomy\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.datacatalog.TaxonomyIamPolicy("policy",
-            taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_data\\_catalog\\_taxonomy\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.datacatalog.TaxonomyIamBinding("binding",
-            taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_data\\_catalog\\_taxonomy\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.datacatalog.TaxonomyIamMember("member",
-            taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{region}}/taxonomies/{{taxonomy}} * {{project}}/{{region}}/{{taxonomy}} * {{region}}/{{taxonomy}} * {{taxonomy}} Any variables not passed in the import command will be taken from the provider configuration. Data catalog taxonomy IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -442,45 +413,6 @@ class TaxonomyIamMember(pulumi.CustomResource):
 
         > **Note:** `datacatalog.TaxonomyIamBinding` resources **can be** used in conjunction with `datacatalog.TaxonomyIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_data\\_catalog\\_taxonomy\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.datacatalog.TaxonomyIamPolicy("policy",
-            taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_data\\_catalog\\_taxonomy\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.datacatalog.TaxonomyIamBinding("binding",
-            taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_data\\_catalog\\_taxonomy\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.datacatalog.TaxonomyIamMember("member",
-            taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{region}}/taxonomies/{{taxonomy}} * {{project}}/{{region}}/{{taxonomy}} * {{region}}/{{taxonomy}} * {{taxonomy}} Any variables not passed in the import command will be taken from the provider configuration. Data catalog taxonomy IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -539,11 +471,7 @@ class TaxonomyIamMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TaxonomyIamMemberArgs.__new__(TaxonomyIamMemberArgs)
 
-            if condition is not None and not isinstance(condition, TaxonomyIamMemberConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                TaxonomyIamMemberConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, TaxonomyIamMemberConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")

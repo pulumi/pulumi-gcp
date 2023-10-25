@@ -43,12 +43,16 @@ class ServiceBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service: pulumi.Input[str],
+             service: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
         _setter("service", service)
         if description is not None:
             _setter("description", description)
@@ -170,7 +174,13 @@ class _ServiceBindingState:
              project: Optional[pulumi.Input[str]] = None,
              service: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:
@@ -289,32 +299,6 @@ class ServiceBinding(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Network Services Service Binding Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_namespace = gcp.servicedirectory.Namespace("defaultNamespace",
-            namespace_id="my-namespace",
-            location="us-central1",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_service = gcp.servicedirectory.Service("defaultService",
-            service_id="my-service",
-            namespace=default_namespace.id,
-            metadata={
-                "stage": "prod",
-                "region": "us-central1",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_service_binding = gcp.networkservices.ServiceBinding("defaultServiceBinding",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            service=default_service.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -353,32 +337,6 @@ class ServiceBinding(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Network Services Service Binding Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_namespace = gcp.servicedirectory.Namespace("defaultNamespace",
-            namespace_id="my-namespace",
-            location="us-central1",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_service = gcp.servicedirectory.Service("defaultService",
-            service_id="my-service",
-            namespace=default_namespace.id,
-            metadata={
-                "stage": "prod",
-                "region": "us-central1",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_service_binding = gcp.networkservices.ServiceBinding("defaultServiceBinding",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            service=default_service.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 

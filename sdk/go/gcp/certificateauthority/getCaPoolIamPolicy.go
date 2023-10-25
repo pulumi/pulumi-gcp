@@ -13,32 +13,6 @@ import (
 )
 
 // Retrieves the current IAM policy data for capool
-//
-// ## example
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificateauthority"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := certificateauthority.LookupCaPoolIamPolicy(ctx, &certificateauthority.LookupCaPoolIamPolicyArgs{
-//				CaPool: google_privateca_ca_pool.Default.Id,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupCaPoolIamPolicy(ctx *pulumi.Context, args *LookupCaPoolIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupCaPoolIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCaPoolIamPolicyResult

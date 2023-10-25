@@ -64,7 +64,13 @@ class TargetGrpcProxyArgs:
              project: Optional[pulumi.Input[str]] = None,
              url_map: Optional[pulumi.Input[str]] = None,
              validate_for_proxyless: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if url_map is None and 'urlMap' in kwargs:
+            url_map = kwargs['urlMap']
+        if validate_for_proxyless is None and 'validateForProxyless' in kwargs:
+            validate_for_proxyless = kwargs['validateForProxyless']
+
         if description is not None:
             _setter("description", description)
         if name is not None:
@@ -233,7 +239,19 @@ class _TargetGrpcProxyState:
              self_link_with_id: Optional[pulumi.Input[str]] = None,
              url_map: Optional[pulumi.Input[str]] = None,
              validate_for_proxyless: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if self_link_with_id is None and 'selfLinkWithId' in kwargs:
+            self_link_with_id = kwargs['selfLinkWithId']
+        if url_map is None and 'urlMap' in kwargs:
+            url_map = kwargs['urlMap']
+        if validate_for_proxyless is None and 'validateForProxyless' in kwargs:
+            validate_for_proxyless = kwargs['validateForProxyless']
+
         if creation_timestamp is not None:
             _setter("creation_timestamp", creation_timestamp)
         if description is not None:

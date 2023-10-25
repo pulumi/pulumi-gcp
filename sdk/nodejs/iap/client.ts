@@ -21,30 +21,6 @@ import * as utilities from "../utilities";
  * state as plain-text.
  *
  * ## Example Usage
- * ### Iap Client
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const project = new gcp.organizations.Project("project", {
- *     projectId: "my-project",
- *     orgId: "123456789",
- * });
- * const projectService = new gcp.projects.Service("projectService", {
- *     project: project.projectId,
- *     service: "iap.googleapis.com",
- * });
- * const projectBrand = new gcp.iap.Brand("projectBrand", {
- *     supportEmail: "support@example.com",
- *     applicationTitle: "Cloud IAP protected Application",
- *     project: projectService.project,
- * });
- * const projectClient = new gcp.iap.Client("projectClient", {
- *     displayName: "Test Client",
- *     brand: projectBrand.name,
- * });
- * ```
  *
  * ## Import
  *

@@ -32,9 +32,17 @@ class EgressPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             egress_policy_name: pulumi.Input[str],
-             resource: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             egress_policy_name: Optional[pulumi.Input[str]] = None,
+             resource: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if egress_policy_name is None and 'egressPolicyName' in kwargs:
+            egress_policy_name = kwargs['egressPolicyName']
+        if egress_policy_name is None:
+            raise TypeError("Missing 'egress_policy_name' argument")
+        if resource is None:
+            raise TypeError("Missing 'resource' argument")
+
         _setter("egress_policy_name", egress_policy_name)
         _setter("resource", resource)
 
@@ -89,7 +97,11 @@ class _EgressPolicyState:
              _setter: Callable[[Any, Any], None],
              egress_policy_name: Optional[pulumi.Input[str]] = None,
              resource: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if egress_policy_name is None and 'egressPolicyName' in kwargs:
+            egress_policy_name = kwargs['egressPolicyName']
+
         if egress_policy_name is not None:
             _setter("egress_policy_name", egress_policy_name)
         if resource is not None:

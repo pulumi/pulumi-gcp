@@ -20,55 +20,6 @@ namespace Pulumi.Gcp.Compute
     /// key/value pairs within the project metadata rather than the entire set, then use
     /// google_compute_project_metadata_item.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.Compute.ProjectMetadata("default", new()
-    ///     {
-    ///         Metadata = 
-    ///         {
-    ///             { "13", "42" },
-    ///             { "fizz", "buzz" },
-    ///             { "foo", "bar" },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Adding An SSH Key
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     //A key set in project metadata is propagated to every instance in the project.
-    ///     //This resource configuration is prone to causing frequent diffs as Google adds SSH Keys when the SSH Button is pressed in the console.
-    ///     //It is better to use OS Login instead.
-    ///     var mySshKey = new Gcp.Compute.ProjectMetadata("mySshKey", new()
-    ///     {
-    ///         Metadata = 
-    ///         {
-    ///             { "ssh-keys", @"      dev:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT dev
-    ///       foo:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT bar
-    ///     
-    /// " },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// This resource can be imported using the project ID

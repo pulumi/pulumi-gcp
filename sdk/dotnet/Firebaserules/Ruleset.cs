@@ -13,64 +13,6 @@ namespace Pulumi.Gcp.Firebaserules
     /// For more information, see:
     /// * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
     /// ## Example Usage
-    /// ### Basic_ruleset
-    /// Creates a basic Firestore ruleset
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var primary = new Gcp.Firebaserules.Ruleset("primary", new()
-    ///     {
-    ///         Project = "my-project-name",
-    ///         Source = new Gcp.Firebaserules.Inputs.RulesetSourceArgs
-    ///         {
-    ///             Files = new[]
-    ///             {
-    ///                 new Gcp.Firebaserules.Inputs.RulesetSourceFileArgs
-    ///                 {
-    ///                     Content = "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
-    ///                     Fingerprint = "",
-    ///                     Name = "firestore.rules",
-    ///                 },
-    ///             },
-    ///             Language = "",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Minimal_ruleset
-    /// Creates a minimal Firestore ruleset
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var primary = new Gcp.Firebaserules.Ruleset("primary", new()
-    ///     {
-    ///         Project = "my-project-name",
-    ///         Source = new Gcp.Firebaserules.Inputs.RulesetSourceArgs
-    ///         {
-    ///             Files = new[]
-    ///             {
-    ///                 new Gcp.Firebaserules.Inputs.RulesetSourceFileArgs
-    ///                 {
-    ///                     Content = "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
-    ///                     Name = "firestore.rules",
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

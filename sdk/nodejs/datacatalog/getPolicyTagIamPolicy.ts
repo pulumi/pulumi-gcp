@@ -6,17 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for policytag
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.datacatalog.getPolicyTagIamPolicy({
- *     policyTag: google_data_catalog_policy_tag.basic_policy_tag.name,
- * });
- * ```
  */
 export function getPolicyTagIamPolicy(args: GetPolicyTagIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyTagIamPolicyResult> {
 
@@ -57,17 +46,6 @@ export interface GetPolicyTagIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for policytag
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.datacatalog.getPolicyTagIamPolicy({
- *     policyTag: google_data_catalog_policy_tag.basic_policy_tag.name,
- * });
- * ```
  */
 export function getPolicyTagIamPolicyOutput(args: GetPolicyTagIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyTagIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getPolicyTagIamPolicy(a, opts))

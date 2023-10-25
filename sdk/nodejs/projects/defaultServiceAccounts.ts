@@ -20,31 +20,6 @@ import * as utilities from "../utilities";
  * and it is for users who are unable to use constraints. If the default service accounts change their name
  * or additional service accounts are added, this resource will need to be updated.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const myProject = new gcp.projects.DefaultServiceAccounts("myProject", {
- *     action: "DELETE",
- *     project: "my-project-id",
- * });
- * ```
- *
- * To enable the default service accounts on the resource destroy:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const myProject = new gcp.projects.DefaultServiceAccounts("myProject", {
- *     action: "DISABLE",
- *     project: "my-project-id",
- *     restorePolicy: "REVERT",
- * });
- * ```
- *
  * ## Import
  *
  * This resource does not support import

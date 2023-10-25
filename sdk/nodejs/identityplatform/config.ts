@@ -22,68 +22,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/identity-platform/docs)
  *
  * ## Example Usage
- * ### Identity Platform Config Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const defaultProject = new gcp.organizations.Project("defaultProject", {
- *     projectId: "my-project",
- *     orgId: "123456789",
- *     billingAccount: "000000-0000000-0000000-000000",
- *     labels: {
- *         firebase: "enabled",
- *     },
- * });
- * const identitytoolkit = new gcp.projects.Service("identitytoolkit", {
- *     project: defaultProject.projectId,
- *     service: "identitytoolkit.googleapis.com",
- * });
- * const defaultConfig = new gcp.identityplatform.Config("defaultConfig", {
- *     project: defaultProject.projectId,
- *     autodeleteAnonymousUsers: true,
- *     signIn: {
- *         allowDuplicateEmails: true,
- *         anonymous: {
- *             enabled: true,
- *         },
- *         email: {
- *             enabled: true,
- *             passwordRequired: false,
- *         },
- *         phoneNumber: {
- *             enabled: true,
- *             testPhoneNumbers: {
- *                 "+11231231234": "000000",
- *             },
- *         },
- *     },
- *     blockingFunctions: {
- *         triggers: [{
- *             eventType: "beforeSignIn",
- *             functionUri: "https://us-east1-my-project.cloudfunctions.net/before-sign-in",
- *         }],
- *         forwardInboundCredentials: {
- *             refreshToken: true,
- *             accessToken: true,
- *             idToken: true,
- *         },
- *     },
- *     quota: {
- *         signUpQuotaConfig: {
- *             quota: 1000,
- *             startTime: "",
- *             quotaDuration: "7200s",
- *         },
- *     },
- *     authorizedDomains: [
- *         "localhost",
- *         "my-project.firebaseapp.com",
- *         "my-project.web.app",
- *     ],
- * });
- * ```
  *
  * ## Import
  *

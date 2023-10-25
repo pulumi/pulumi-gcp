@@ -129,7 +129,7 @@ class DatasetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataset_id: pulumi.Input[str],
+             dataset_id: Optional[pulumi.Input[str]] = None,
              accesses: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessArgs']]]] = None,
              default_collation: Optional[pulumi.Input[str]] = None,
              default_encryption_configuration: Optional[pulumi.Input['DatasetDefaultEncryptionConfigurationArgs']] = None,
@@ -144,7 +144,31 @@ class DatasetArgs:
              max_time_travel_hours: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              storage_billing_model: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if dataset_id is None:
+            raise TypeError("Missing 'dataset_id' argument")
+        if default_collation is None and 'defaultCollation' in kwargs:
+            default_collation = kwargs['defaultCollation']
+        if default_encryption_configuration is None and 'defaultEncryptionConfiguration' in kwargs:
+            default_encryption_configuration = kwargs['defaultEncryptionConfiguration']
+        if default_partition_expiration_ms is None and 'defaultPartitionExpirationMs' in kwargs:
+            default_partition_expiration_ms = kwargs['defaultPartitionExpirationMs']
+        if default_table_expiration_ms is None and 'defaultTableExpirationMs' in kwargs:
+            default_table_expiration_ms = kwargs['defaultTableExpirationMs']
+        if delete_contents_on_destroy is None and 'deleteContentsOnDestroy' in kwargs:
+            delete_contents_on_destroy = kwargs['deleteContentsOnDestroy']
+        if friendly_name is None and 'friendlyName' in kwargs:
+            friendly_name = kwargs['friendlyName']
+        if is_case_insensitive is None and 'isCaseInsensitive' in kwargs:
+            is_case_insensitive = kwargs['isCaseInsensitive']
+        if max_time_travel_hours is None and 'maxTimeTravelHours' in kwargs:
+            max_time_travel_hours = kwargs['maxTimeTravelHours']
+        if storage_billing_model is None and 'storageBillingModel' in kwargs:
+            storage_billing_model = kwargs['storageBillingModel']
+
         _setter("dataset_id", dataset_id)
         if accesses is not None:
             _setter("accesses", accesses)
@@ -564,7 +588,35 @@ class _DatasetState:
              project: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              storage_billing_model: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if creation_time is None and 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if default_collation is None and 'defaultCollation' in kwargs:
+            default_collation = kwargs['defaultCollation']
+        if default_encryption_configuration is None and 'defaultEncryptionConfiguration' in kwargs:
+            default_encryption_configuration = kwargs['defaultEncryptionConfiguration']
+        if default_partition_expiration_ms is None and 'defaultPartitionExpirationMs' in kwargs:
+            default_partition_expiration_ms = kwargs['defaultPartitionExpirationMs']
+        if default_table_expiration_ms is None and 'defaultTableExpirationMs' in kwargs:
+            default_table_expiration_ms = kwargs['defaultTableExpirationMs']
+        if delete_contents_on_destroy is None and 'deleteContentsOnDestroy' in kwargs:
+            delete_contents_on_destroy = kwargs['deleteContentsOnDestroy']
+        if friendly_name is None and 'friendlyName' in kwargs:
+            friendly_name = kwargs['friendlyName']
+        if is_case_insensitive is None and 'isCaseInsensitive' in kwargs:
+            is_case_insensitive = kwargs['isCaseInsensitive']
+        if last_modified_time is None and 'lastModifiedTime' in kwargs:
+            last_modified_time = kwargs['lastModifiedTime']
+        if max_time_travel_hours is None and 'maxTimeTravelHours' in kwargs:
+            max_time_travel_hours = kwargs['maxTimeTravelHours']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if storage_billing_model is None and 'storageBillingModel' in kwargs:
+            storage_billing_model = kwargs['storageBillingModel']
+
         if accesses is not None:
             _setter("accesses", accesses)
         if creation_time is not None:
@@ -917,154 +969,6 @@ class Dataset(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Bigquery Dataset Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        bqowner = gcp.service_account.Account("bqowner", account_id="bqowner")
-        dataset = gcp.bigquery.Dataset("dataset",
-            dataset_id="example_dataset",
-            friendly_name="test",
-            description="This is a test description",
-            location="EU",
-            default_table_expiration_ms=3600000,
-            labels={
-                "env": "default",
-            },
-            accesses=[
-                gcp.bigquery.DatasetAccessArgs(
-                    role="OWNER",
-                    user_by_email=bqowner.email,
-                ),
-                gcp.bigquery.DatasetAccessArgs(
-                    role="READER",
-                    domain="hashicorp.com",
-                ),
-            ])
-        ```
-        ### Bigquery Dataset Cmek
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        key_ring = gcp.kms.KeyRing("keyRing", location="us")
-        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
-        dataset = gcp.bigquery.Dataset("dataset",
-            dataset_id="example_dataset",
-            friendly_name="test",
-            description="This is a test description",
-            location="US",
-            default_table_expiration_ms=3600000,
-            default_encryption_configuration=gcp.bigquery.DatasetDefaultEncryptionConfigurationArgs(
-                kms_key_name=crypto_key.id,
-            ))
-        ```
-        ### Bigquery Dataset Authorized Dataset
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        bqowner = gcp.service_account.Account("bqowner", account_id="bqowner")
-        public = gcp.bigquery.Dataset("public",
-            dataset_id="public",
-            friendly_name="test",
-            description="This dataset is public",
-            location="EU",
-            default_table_expiration_ms=3600000,
-            labels={
-                "env": "default",
-            },
-            accesses=[
-                gcp.bigquery.DatasetAccessArgs(
-                    role="OWNER",
-                    user_by_email=bqowner.email,
-                ),
-                gcp.bigquery.DatasetAccessArgs(
-                    role="READER",
-                    domain="hashicorp.com",
-                ),
-            ])
-        dataset = gcp.bigquery.Dataset("dataset",
-            dataset_id="private",
-            friendly_name="test",
-            description="This dataset is private",
-            location="EU",
-            default_table_expiration_ms=3600000,
-            labels={
-                "env": "default",
-            },
-            accesses=[
-                gcp.bigquery.DatasetAccessArgs(
-                    role="OWNER",
-                    user_by_email=bqowner.email,
-                ),
-                gcp.bigquery.DatasetAccessArgs(
-                    role="READER",
-                    domain="hashicorp.com",
-                ),
-                gcp.bigquery.DatasetAccessArgs(
-                    dataset=gcp.bigquery.DatasetAccessDatasetArgs(
-                        dataset=gcp.bigquery.DatasetAccessDatasetDatasetArgs(
-                            project_id=public.project,
-                            dataset_id=public.dataset_id,
-                        ),
-                        target_types=["VIEWS"],
-                    ),
-                ),
-            ])
-        ```
-        ### Bigquery Dataset Authorized Routine
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_gcp as gcp
-
-        public_dataset = gcp.bigquery.Dataset("publicDataset",
-            dataset_id="public_dataset",
-            description="This dataset is public")
-        public_routine = gcp.bigquery.Routine("publicRoutine",
-            dataset_id=public_dataset.dataset_id,
-            routine_id="public_routine",
-            routine_type="TABLE_VALUED_FUNCTION",
-            language="SQL",
-            definition_body="SELECT 1 + value AS value\\n",
-            arguments=[gcp.bigquery.RoutineArgumentArgs(
-                name="value",
-                argument_kind="FIXED_TYPE",
-                data_type=json.dumps({
-                    "typeKind": "INT64",
-                }),
-            )],
-            return_table_type=json.dumps({
-                "columns": [{
-                    "name": "value",
-                    "type": {
-                        "typeKind": "INT64",
-                    },
-                }],
-            }))
-        private = gcp.bigquery.Dataset("private",
-            dataset_id="private_dataset",
-            description="This dataset is private",
-            accesses=[
-                gcp.bigquery.DatasetAccessArgs(
-                    role="OWNER",
-                    user_by_email="my@service-account.com",
-                ),
-                gcp.bigquery.DatasetAccessArgs(
-                    routine=gcp.bigquery.DatasetAccessRoutineArgs(
-                        project_id=public_routine.project,
-                        dataset_id=public_routine.dataset_id,
-                        routine_id=public_routine.routine_id,
-                    ),
-                ),
-            ])
-        ```
 
         ## Import
 
@@ -1167,154 +1071,6 @@ class Dataset(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Bigquery Dataset Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        bqowner = gcp.service_account.Account("bqowner", account_id="bqowner")
-        dataset = gcp.bigquery.Dataset("dataset",
-            dataset_id="example_dataset",
-            friendly_name="test",
-            description="This is a test description",
-            location="EU",
-            default_table_expiration_ms=3600000,
-            labels={
-                "env": "default",
-            },
-            accesses=[
-                gcp.bigquery.DatasetAccessArgs(
-                    role="OWNER",
-                    user_by_email=bqowner.email,
-                ),
-                gcp.bigquery.DatasetAccessArgs(
-                    role="READER",
-                    domain="hashicorp.com",
-                ),
-            ])
-        ```
-        ### Bigquery Dataset Cmek
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        key_ring = gcp.kms.KeyRing("keyRing", location="us")
-        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
-        dataset = gcp.bigquery.Dataset("dataset",
-            dataset_id="example_dataset",
-            friendly_name="test",
-            description="This is a test description",
-            location="US",
-            default_table_expiration_ms=3600000,
-            default_encryption_configuration=gcp.bigquery.DatasetDefaultEncryptionConfigurationArgs(
-                kms_key_name=crypto_key.id,
-            ))
-        ```
-        ### Bigquery Dataset Authorized Dataset
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        bqowner = gcp.service_account.Account("bqowner", account_id="bqowner")
-        public = gcp.bigquery.Dataset("public",
-            dataset_id="public",
-            friendly_name="test",
-            description="This dataset is public",
-            location="EU",
-            default_table_expiration_ms=3600000,
-            labels={
-                "env": "default",
-            },
-            accesses=[
-                gcp.bigquery.DatasetAccessArgs(
-                    role="OWNER",
-                    user_by_email=bqowner.email,
-                ),
-                gcp.bigquery.DatasetAccessArgs(
-                    role="READER",
-                    domain="hashicorp.com",
-                ),
-            ])
-        dataset = gcp.bigquery.Dataset("dataset",
-            dataset_id="private",
-            friendly_name="test",
-            description="This dataset is private",
-            location="EU",
-            default_table_expiration_ms=3600000,
-            labels={
-                "env": "default",
-            },
-            accesses=[
-                gcp.bigquery.DatasetAccessArgs(
-                    role="OWNER",
-                    user_by_email=bqowner.email,
-                ),
-                gcp.bigquery.DatasetAccessArgs(
-                    role="READER",
-                    domain="hashicorp.com",
-                ),
-                gcp.bigquery.DatasetAccessArgs(
-                    dataset=gcp.bigquery.DatasetAccessDatasetArgs(
-                        dataset=gcp.bigquery.DatasetAccessDatasetDatasetArgs(
-                            project_id=public.project,
-                            dataset_id=public.dataset_id,
-                        ),
-                        target_types=["VIEWS"],
-                    ),
-                ),
-            ])
-        ```
-        ### Bigquery Dataset Authorized Routine
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_gcp as gcp
-
-        public_dataset = gcp.bigquery.Dataset("publicDataset",
-            dataset_id="public_dataset",
-            description="This dataset is public")
-        public_routine = gcp.bigquery.Routine("publicRoutine",
-            dataset_id=public_dataset.dataset_id,
-            routine_id="public_routine",
-            routine_type="TABLE_VALUED_FUNCTION",
-            language="SQL",
-            definition_body="SELECT 1 + value AS value\\n",
-            arguments=[gcp.bigquery.RoutineArgumentArgs(
-                name="value",
-                argument_kind="FIXED_TYPE",
-                data_type=json.dumps({
-                    "typeKind": "INT64",
-                }),
-            )],
-            return_table_type=json.dumps({
-                "columns": [{
-                    "name": "value",
-                    "type": {
-                        "typeKind": "INT64",
-                    },
-                }],
-            }))
-        private = gcp.bigquery.Dataset("private",
-            dataset_id="private_dataset",
-            description="This dataset is private",
-            accesses=[
-                gcp.bigquery.DatasetAccessArgs(
-                    role="OWNER",
-                    user_by_email="my@service-account.com",
-                ),
-                gcp.bigquery.DatasetAccessArgs(
-                    routine=gcp.bigquery.DatasetAccessRoutineArgs(
-                        project_id=public_routine.project,
-                        dataset_id=public_routine.dataset_id,
-                        routine_id=public_routine.routine_id,
-                    ),
-                ),
-            ])
-        ```
 
         ## Import
 
@@ -1380,11 +1136,7 @@ class Dataset(pulumi.CustomResource):
                 raise TypeError("Missing required property 'dataset_id'")
             __props__.__dict__["dataset_id"] = dataset_id
             __props__.__dict__["default_collation"] = default_collation
-            if default_encryption_configuration is not None and not isinstance(default_encryption_configuration, DatasetDefaultEncryptionConfigurationArgs):
-                default_encryption_configuration = default_encryption_configuration or {}
-                def _setter(key, value):
-                    default_encryption_configuration[key] = value
-                DatasetDefaultEncryptionConfigurationArgs._configure(_setter, **default_encryption_configuration)
+            default_encryption_configuration = _utilities.configure(default_encryption_configuration, DatasetDefaultEncryptionConfigurationArgs, True)
             __props__.__dict__["default_encryption_configuration"] = default_encryption_configuration
             __props__.__dict__["default_partition_expiration_ms"] = default_partition_expiration_ms
             __props__.__dict__["default_table_expiration_ms"] = default_table_expiration_ms

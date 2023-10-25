@@ -11,55 +11,6 @@ import * as utilities from "../utilities";
  * information, see Creating VLAN Attachments.
  *
  * ## Example Usage
- * ### Interconnect Attachment Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const foobarNetwork = new gcp.compute.Network("foobarNetwork", {autoCreateSubnetworks: false});
- * const foobarRouter = new gcp.compute.Router("foobarRouter", {
- *     network: foobarNetwork.name,
- *     bgp: {
- *         asn: 16550,
- *     },
- * });
- * const onPrem = new gcp.compute.InterconnectAttachment("onPrem", {
- *     edgeAvailabilityDomain: "AVAILABILITY_DOMAIN_1",
- *     type: "PARTNER",
- *     router: foobarRouter.id,
- *     mtu: "1500",
- * });
- * ```
- * ### Compute Interconnect Attachment Ipsec Encryption
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const network = new gcp.compute.Network("network", {autoCreateSubnetworks: false});
- * const address = new gcp.compute.Address("address", {
- *     addressType: "INTERNAL",
- *     purpose: "IPSEC_INTERCONNECT",
- *     address: "192.168.1.0",
- *     prefixLength: 29,
- *     network: network.selfLink,
- * });
- * const router = new gcp.compute.Router("router", {
- *     network: network.name,
- *     encryptedInterconnectRouter: true,
- *     bgp: {
- *         asn: 16550,
- *     },
- * });
- * const ipsec_encrypted_interconnect_attachment = new gcp.compute.InterconnectAttachment("ipsec-encrypted-interconnect-attachment", {
- *     edgeAvailabilityDomain: "AVAILABILITY_DOMAIN_1",
- *     type: "PARTNER",
- *     router: router.id,
- *     encryption: "IPSEC",
- *     ipsecInternalAddresses: [address.selfLink],
- * });
- * ```
  *
  * ## Import
  *

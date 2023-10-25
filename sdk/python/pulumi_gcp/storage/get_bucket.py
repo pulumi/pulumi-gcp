@@ -242,15 +242,6 @@ def get_bucket(name: Optional[str] = None,
     and
     [API](https://cloud.google.com/storage/docs/json_api/v1/buckets).
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    my_bucket = gcp.storage.get_bucket(name="my-bucket")
-    ```
-
 
     :param str name: The name of the bucket.
     """
@@ -292,15 +283,6 @@ def get_bucket_output(name: Optional[pulumi.Input[str]] = None,
     See [the official documentation](https://cloud.google.com/storage/docs/key-terms#buckets)
     and
     [API](https://cloud.google.com/storage/docs/json_api/v1/buckets).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    my_bucket = gcp.storage.get_bucket(name="my-bucket")
-    ```
 
 
     :param str name: The name of the bucket.

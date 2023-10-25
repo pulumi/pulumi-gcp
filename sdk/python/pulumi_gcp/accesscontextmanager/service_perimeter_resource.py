@@ -34,9 +34,17 @@ class ServicePerimeterResourceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             perimeter_name: pulumi.Input[str],
-             resource: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             perimeter_name: Optional[pulumi.Input[str]] = None,
+             resource: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if perimeter_name is None and 'perimeterName' in kwargs:
+            perimeter_name = kwargs['perimeterName']
+        if perimeter_name is None:
+            raise TypeError("Missing 'perimeter_name' argument")
+        if resource is None:
+            raise TypeError("Missing 'resource' argument")
+
         _setter("perimeter_name", perimeter_name)
         _setter("resource", resource)
 
@@ -95,7 +103,11 @@ class _ServicePerimeterResourceState:
              _setter: Callable[[Any, Any], None],
              perimeter_name: Optional[pulumi.Input[str]] = None,
              resource: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if perimeter_name is None and 'perimeterName' in kwargs:
+            perimeter_name = kwargs['perimeterName']
+
         if perimeter_name is not None:
             _setter("perimeter_name", perimeter_name)
         if resource is not None:
@@ -162,25 +174,6 @@ class ServicePerimeterResource(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
-        ### Access Context Manager Service Perimeter Resource Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
-            parent="organizations/123456789",
-            title="my policy")
-        service_perimeter_resource_service_perimeter = gcp.accesscontextmanager.ServicePerimeter("service-perimeter-resourceServicePerimeter",
-            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
-            title="restrict_all",
-            status=gcp.accesscontextmanager.ServicePerimeterStatusArgs(
-                restricted_services=["storage.googleapis.com"],
-            ))
-        service_perimeter_resource_service_perimeter_resource = gcp.accesscontextmanager.ServicePerimeterResource("service-perimeter-resourceServicePerimeterResource",
-            perimeter_name=service_perimeter_resource_service_perimeter.name,
-            resource="projects/987654321")
-        ```
 
         ## Import
 
@@ -229,25 +222,6 @@ class ServicePerimeterResource(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
-        ### Access Context Manager Service Perimeter Resource Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
-            parent="organizations/123456789",
-            title="my policy")
-        service_perimeter_resource_service_perimeter = gcp.accesscontextmanager.ServicePerimeter("service-perimeter-resourceServicePerimeter",
-            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
-            title="restrict_all",
-            status=gcp.accesscontextmanager.ServicePerimeterStatusArgs(
-                restricted_services=["storage.googleapis.com"],
-            ))
-        service_perimeter_resource_service_perimeter_resource = gcp.accesscontextmanager.ServicePerimeterResource("service-perimeter-resourceServicePerimeterResource",
-            perimeter_name=service_perimeter_resource_service_perimeter.name,
-            resource="projects/987654321")
-        ```
 
         ## Import
 

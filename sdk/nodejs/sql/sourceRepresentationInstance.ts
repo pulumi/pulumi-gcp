@@ -16,38 +16,6 @@ import * as utilities from "../utilities";
  * Read more about sensitive data in state.
  *
  * ## Example Usage
- * ### Sql Source Representation Instance Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const instance = new gcp.sql.SourceRepresentationInstance("instance", {
- *     databaseVersion: "MYSQL_8_0",
- *     dumpFilePath: "gs://replica-bucket/source-database.sql.gz",
- *     host: "10.20.30.40",
- *     password: "password-for-the-user",
- *     port: 3306,
- *     region: "us-central1",
- *     username: "some-user",
- * });
- * ```
- * ### Sql Source Representation Instance Postgres
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const instance = new gcp.sql.SourceRepresentationInstance("instance", {
- *     databaseVersion: "POSTGRES_9_6",
- *     dumpFilePath: "gs://replica-bucket/source-database.sql.gz",
- *     host: "10.20.30.40",
- *     password: "password-for-the-user",
- *     port: 3306,
- *     region: "us-central1",
- *     username: "some-user",
- * });
- * ```
  *
  * ## Import
  *

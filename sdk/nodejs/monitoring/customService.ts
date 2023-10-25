@@ -20,24 +20,6 @@ import * as utilities from "../utilities";
  *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
  *
  * ## Example Usage
- * ### Monitoring Service Custom
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const custom = new gcp.monitoring.CustomService("custom", {
- *     displayName: "My Custom Service custom-srv",
- *     serviceId: "custom-srv",
- *     telemetry: {
- *         resourceName: "//product.googleapis.com/foo/foo/services/test",
- *     },
- *     userLabels: {
- *         my_key: "my_value",
- *         my_other_key: "my_other_value",
- *     },
- * });
- * ```
  *
  * ## Import
  *

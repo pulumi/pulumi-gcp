@@ -159,15 +159,6 @@ def get_secret(project: Optional[str] = None,
     """
     Use this data source to get information about a Secret Manager Secret
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    qa = gcp.secretmanager.get_secret(secret_id="foobar")
-    ```
-
 
     :param str project: The ID of the project in which the resource belongs.
     :param str secret_id: The name of the secret.
@@ -200,15 +191,6 @@ def get_secret_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretResult]:
     """
     Use this data source to get information about a Secret Manager Secret
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    qa = gcp.secretmanager.get_secret(secret_id="foobar")
-    ```
 
 
     :param str project: The ID of the project in which the resource belongs.

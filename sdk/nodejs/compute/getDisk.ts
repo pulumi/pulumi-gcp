@@ -10,23 +10,6 @@ import * as utilities from "../utilities";
  * Get information about a Google Compute Persistent disks.
  *
  * [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/latest/disks).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const persistent-boot-disk = gcp.compute.getDisk({
- *     name: "persistent-boot-disk",
- *     project: "example",
- * });
- * // ...
- * const _default = new gcp.compute.Instance("default", {bootDisk: {
- *     source: persistent_boot_disk.then(persistent_boot_disk => persistent_boot_disk.selfLink),
- *     autoDelete: false,
- * }});
- * ```
  */
 export function getDisk(args: GetDiskArgs, opts?: pulumi.InvokeOptions): Promise<GetDiskResult> {
 
@@ -170,23 +153,6 @@ export interface GetDiskResult {
  * Get information about a Google Compute Persistent disks.
  *
  * [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/latest/disks).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const persistent-boot-disk = gcp.compute.getDisk({
- *     name: "persistent-boot-disk",
- *     project: "example",
- * });
- * // ...
- * const _default = new gcp.compute.Instance("default", {bootDisk: {
- *     source: persistent_boot_disk.then(persistent_boot_disk => persistent_boot_disk.selfLink),
- *     autoDelete: false,
- * }});
- * ```
  */
 export function getDiskOutput(args: GetDiskOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiskResult> {
     return pulumi.output(args).apply((a: any) => getDisk(a, opts))

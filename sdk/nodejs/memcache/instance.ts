@@ -16,48 +16,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/memcache/docs/creating-instances)
  *
  * ## Example Usage
- * ### Memcache Instance Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const memcacheNetwork = gcp.compute.getNetwork({
- *     name: "test-network",
- * });
- * const serviceRange = new gcp.compute.GlobalAddress("serviceRange", {
- *     purpose: "VPC_PEERING",
- *     addressType: "INTERNAL",
- *     prefixLength: 16,
- *     network: memcacheNetwork.then(memcacheNetwork => memcacheNetwork.id),
- * });
- * const privateServiceConnection = new gcp.servicenetworking.Connection("privateServiceConnection", {
- *     network: memcacheNetwork.then(memcacheNetwork => memcacheNetwork.id),
- *     service: "servicenetworking.googleapis.com",
- *     reservedPeeringRanges: [serviceRange.name],
- * });
- * const instance = new gcp.memcache.Instance("instance", {
- *     authorizedNetwork: privateServiceConnection.network,
- *     nodeConfig: {
- *         cpuCount: 1,
- *         memorySizeMb: 1024,
- *     },
- *     nodeCount: 1,
- *     memcacheVersion: "MEMCACHE_1_5",
- *     maintenancePolicy: {
- *         weeklyMaintenanceWindows: [{
- *             day: "SATURDAY",
- *             duration: "14400s",
- *             startTime: {
- *                 hours: 0,
- *                 minutes: 30,
- *                 seconds: 0,
- *                 nanos: 0,
- *             },
- *         }],
- *     },
- * });
- * ```
  *
  * ## Import
  *

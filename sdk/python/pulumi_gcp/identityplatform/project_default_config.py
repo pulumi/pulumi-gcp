@@ -35,7 +35,11 @@ class ProjectDefaultConfigArgs:
              _setter: Callable[[Any, Any], None],
              project: Optional[pulumi.Input[str]] = None,
              sign_in: Optional[pulumi.Input['ProjectDefaultConfigSignInArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if sign_in is None and 'signIn' in kwargs:
+            sign_in = kwargs['signIn']
+
         if project is not None:
             _setter("project", project)
         if sign_in is not None:
@@ -94,7 +98,11 @@ class _ProjectDefaultConfigState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              sign_in: Optional[pulumi.Input['ProjectDefaultConfigSignInArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if sign_in is None and 'signIn' in kwargs:
+            sign_in = kwargs['signIn']
+
         if name is not None:
             _setter("name", name)
         if project is not None:
@@ -159,29 +167,6 @@ class ProjectDefaultConfig(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
-        ### Identity Platform Project Default Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.identityplatform.ProjectDefaultConfig("default", sign_in=gcp.identityplatform.ProjectDefaultConfigSignInArgs(
-            allow_duplicate_emails=True,
-            anonymous=gcp.identityplatform.ProjectDefaultConfigSignInAnonymousArgs(
-                enabled=True,
-            ),
-            email=gcp.identityplatform.ProjectDefaultConfigSignInEmailArgs(
-                enabled=True,
-                password_required=False,
-            ),
-            phone_number=gcp.identityplatform.ProjectDefaultConfigSignInPhoneNumberArgs(
-                enabled=True,
-                test_phone_numbers={
-                    "+11231231234": "000000",
-                },
-            ),
-        ))
-        ```
 
         ## Import
 
@@ -222,29 +207,6 @@ class ProjectDefaultConfig(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
-        ### Identity Platform Project Default Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.identityplatform.ProjectDefaultConfig("default", sign_in=gcp.identityplatform.ProjectDefaultConfigSignInArgs(
-            allow_duplicate_emails=True,
-            anonymous=gcp.identityplatform.ProjectDefaultConfigSignInAnonymousArgs(
-                enabled=True,
-            ),
-            email=gcp.identityplatform.ProjectDefaultConfigSignInEmailArgs(
-                enabled=True,
-                password_required=False,
-            ),
-            phone_number=gcp.identityplatform.ProjectDefaultConfigSignInPhoneNumberArgs(
-                enabled=True,
-                test_phone_numbers={
-                    "+11231231234": "000000",
-                },
-            ),
-        ))
-        ```
 
         ## Import
 
@@ -293,11 +255,7 @@ class ProjectDefaultConfig(pulumi.CustomResource):
             __props__ = ProjectDefaultConfigArgs.__new__(ProjectDefaultConfigArgs)
 
             __props__.__dict__["project"] = project
-            if sign_in is not None and not isinstance(sign_in, ProjectDefaultConfigSignInArgs):
-                sign_in = sign_in or {}
-                def _setter(key, value):
-                    sign_in[key] = value
-                ProjectDefaultConfigSignInArgs._configure(_setter, **sign_in)
+            sign_in = _utilities.configure(sign_in, ProjectDefaultConfigSignInArgs, True)
             __props__.__dict__["sign_in"] = sign_in
             __props__.__dict__["name"] = None
         super(ProjectDefaultConfig, __self__).__init__(

@@ -23616,9 +23616,6 @@ export namespace container {
          *
          * This example `addonsConfig` disables two addons:
          *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          * <a name="nestedBinaryAuthorization"></a>The `binaryAuthorization` block supports:
          */
         configConnectorConfig?: pulumi.Input<inputs.container.ClusterAddonsConfigConfigConnectorConfig>;
@@ -24143,9 +24140,6 @@ export namespace container {
          * where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
          *
          * Examples:
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         dailyMaintenanceWindow?: pulumi.Input<inputs.container.ClusterMaintenancePolicyDailyMaintenanceWindow>;
         /**
@@ -24161,13 +24155,6 @@ export namespace container {
          * Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
          *
          * Examples:
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         recurringWindow?: pulumi.Input<inputs.container.ClusterMaintenancePolicyRecurringWindow>;
     }
@@ -24197,10 +24184,6 @@ export namespace container {
          * Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
          *
          * Examples:
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         scope: pulumi.Input<string>;
     }
@@ -24216,9 +24199,6 @@ export namespace container {
         /**
          * Whether client certificate authorization is enabled for this cluster.  For example:
          *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          *
          * This block also contains several computed attributes, documented below.
          */
@@ -24333,18 +24313,10 @@ export namespace container {
         diskType?: pulumi.Input<string>;
         /**
          * ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         ephemeralStorageConfig?: pulumi.Input<inputs.container.ClusterNodeConfigEphemeralStorageConfig>;
         /**
          * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         ephemeralStorageLocalSsdConfig?: pulumi.Input<inputs.container.ClusterNodeConfigEphemeralStorageLocalSsdConfig>;
         /**
@@ -24361,10 +24333,6 @@ export namespace container {
          * A `machineType` that has more than 16 GiB of memory is also recommended.
          * GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
          * Structure is documented below.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         gcfsConfig?: pulumi.Input<inputs.container.ClusterNodeConfigGcfsConfig>;
         /**
@@ -24378,11 +24346,6 @@ export namespace container {
          * gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
          * GKE node version 1.15.11-gke.15 or later
          * Structure is documented below.
-         *
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         gvnic?: pulumi.Input<inputs.container.ClusterNodeConfigGvnic>;
         hostMaintenancePolicy?: pulumi.Input<inputs.container.ClusterNodeConfigHostMaintenancePolicy>;
@@ -24394,10 +24357,6 @@ export namespace container {
         /**
          * Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
          * Structure is documented below.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         kubeletConfig?: pulumi.Input<inputs.container.ClusterNodeConfigKubeletConfig>;
         /**
@@ -24409,10 +24368,6 @@ export namespace container {
          * Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
          * Note that validations happen all server side. All attributes are optional.
          * Structure is documented below.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         linuxNodeConfig?: pulumi.Input<inputs.container.ClusterNodeConfigLinuxNodeConfig>;
         /**
@@ -24489,10 +24444,6 @@ export namespace container {
         shieldedInstanceConfig?: pulumi.Input<inputs.container.ClusterNodeConfigShieldedInstanceConfig>;
         /**
          * Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         soleTenantConfig?: pulumi.Input<inputs.container.ClusterNodeConfigSoleTenantConfig>;
         /**
@@ -24836,10 +24787,6 @@ export namespace container {
     export interface ClusterNodePoolAutoConfigNetworkTags {
         /**
          * List of network tags applied to auto-provisioned node pools.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         tags?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -24974,18 +24921,10 @@ export namespace container {
         diskType?: pulumi.Input<string>;
         /**
          * ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         ephemeralStorageConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigEphemeralStorageConfig>;
         /**
          * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         ephemeralStorageLocalSsdConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig>;
         /**
@@ -25002,10 +24941,6 @@ export namespace container {
          * A `machineType` that has more than 16 GiB of memory is also recommended.
          * GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
          * Structure is documented below.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         gcfsConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigGcfsConfig>;
         /**
@@ -25019,11 +24954,6 @@ export namespace container {
          * gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
          * GKE node version 1.15.11-gke.15 or later
          * Structure is documented below.
-         *
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         gvnic?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigGvnic>;
         hostMaintenancePolicy?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigHostMaintenancePolicy>;
@@ -25035,10 +24965,6 @@ export namespace container {
         /**
          * Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
          * Structure is documented below.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         kubeletConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigKubeletConfig>;
         /**
@@ -25050,10 +24976,6 @@ export namespace container {
          * Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
          * Note that validations happen all server side. All attributes are optional.
          * Structure is documented below.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         linuxNodeConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigLinuxNodeConfig>;
         /**
@@ -25130,10 +25052,6 @@ export namespace container {
         shieldedInstanceConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigShieldedInstanceConfig>;
         /**
          * Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         soleTenantConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigSoleTenantConfig>;
         /**
@@ -25474,10 +25392,6 @@ export namespace container {
         enabled: pulumi.Input<boolean>;
         /**
          * Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         filter?: pulumi.Input<inputs.container.ClusterNotificationConfigPubsubFilter>;
         /**
@@ -25597,10 +25511,6 @@ export namespace container {
          * Parameters for using BigQuery as the destination of resource usage export.
          *
          * * `bigquery_destination.dataset_id` (Required) - The ID of a BigQuery Dataset. For Example:
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         bigqueryDestination: pulumi.Input<inputs.container.ClusterResourceUsageExportConfigBigqueryDestination>;
         /**
@@ -25659,10 +25569,6 @@ export namespace container {
     export interface ClusterWorkloadIdentityConfig {
         /**
          * The workload pool to attach all Kubernetes service accounts to.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         workloadPool?: pulumi.Input<string>;
     }
@@ -40090,9 +39996,6 @@ export namespace firebase {
          * The value to put in the HTTP location header of the response.
          * The location can contain capture group values from the pattern using a : prefix to identify
          * the segment and an optional * to capture the rest of the URL. For example:
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         location: pulumi.Input<string>;
         /**
@@ -43682,9 +43585,6 @@ export namespace iam {
          * If this list is empty, the OIDC token audience must be equal to the full canonical
          * resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
          * For example:
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         allowedAudiences?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -43698,9 +43598,6 @@ export namespace iam {
          * .well-known path for the `issuerUri`. Currently, RSA and EC asymmetric
          * keys are supported. The JWK must use following format and include only
          * the following fields:
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         jwksJson?: pulumi.Input<string>;
     }

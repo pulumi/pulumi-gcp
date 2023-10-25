@@ -15,33 +15,6 @@ import (
 // Get information about a Google Cloud Run Service. For more information see
 // the [official documentation](https://cloud.google.com/run/docs/)
 // and [API](https://cloud.google.com/run/docs/apis).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrun"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudrun.LookupService(ctx, &cloudrun.LookupServiceArgs{
-//				Location: "us-central1",
-//				Name:     "my-service",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceResult

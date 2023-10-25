@@ -54,15 +54,29 @@ class RestorePlanArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backup_plan: pulumi.Input[str],
-             cluster: pulumi.Input[str],
-             location: pulumi.Input[str],
-             restore_config: pulumi.Input['RestorePlanRestoreConfigArgs'],
+             backup_plan: Optional[pulumi.Input[str]] = None,
+             cluster: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             restore_config: Optional[pulumi.Input['RestorePlanRestoreConfigArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if backup_plan is None and 'backupPlan' in kwargs:
+            backup_plan = kwargs['backupPlan']
+        if backup_plan is None:
+            raise TypeError("Missing 'backup_plan' argument")
+        if cluster is None:
+            raise TypeError("Missing 'cluster' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if restore_config is None and 'restoreConfig' in kwargs:
+            restore_config = kwargs['restoreConfig']
+        if restore_config is None:
+            raise TypeError("Missing 'restore_config' argument")
+
         _setter("backup_plan", backup_plan)
         _setter("cluster", cluster)
         _setter("location", location)
@@ -239,7 +253,15 @@ class _RestorePlanState:
              state: Optional[pulumi.Input[str]] = None,
              state_reason: Optional[pulumi.Input[str]] = None,
              uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if backup_plan is None and 'backupPlan' in kwargs:
+            backup_plan = kwargs['backupPlan']
+        if restore_config is None and 'restoreConfig' in kwargs:
+            restore_config = kwargs['restoreConfig']
+        if state_reason is None and 'stateReason' in kwargs:
+            state_reason = kwargs['stateReason']
+
         if backup_plan is not None:
             _setter("backup_plan", backup_plan)
         if cluster is not None:
@@ -425,306 +447,6 @@ class RestorePlan(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
 
         ## Example Usage
-        ### Gkebackup Restoreplan All Namespaces
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.container.Cluster("primary",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ))
-        basic = gcp.gkebackup.BackupPlan("basic",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
-        all_ns = gcp.gkebackup.RestorePlan("allNs",
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                all_namespaces=True,
-                namespaced_resource_restore_mode="FAIL_ON_CONFLICT",
-                volume_data_restore_policy="RESTORE_VOLUME_DATA_FROM_BACKUP",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    all_group_kinds=True,
-                ),
-                cluster_resource_conflict_policy="USE_EXISTING_VERSION",
-            ))
-        ```
-        ### Gkebackup Restoreplan Rollback Namespace
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.container.Cluster("primary",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ))
-        basic = gcp.gkebackup.BackupPlan("basic",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
-        rollback_ns = gcp.gkebackup.RestorePlan("rollbackNs",
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                selected_namespaces=gcp.gkebackup.RestorePlanRestoreConfigSelectedNamespacesArgs(
-                    namespaces=["my-ns"],
-                ),
-                namespaced_resource_restore_mode="DELETE_AND_RESTORE",
-                volume_data_restore_policy="RESTORE_VOLUME_DATA_FROM_BACKUP",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    selected_group_kinds=[
-                        gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs(
-                            resource_group="apiextension.k8s.io",
-                            resource_kind="CustomResourceDefinition",
-                        ),
-                        gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs(
-                            resource_group="storage.k8s.io",
-                            resource_kind="StorageClass",
-                        ),
-                    ],
-                ),
-                cluster_resource_conflict_policy="USE_EXISTING_VERSION",
-            ))
-        ```
-        ### Gkebackup Restoreplan Protected Application
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.container.Cluster("primary",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ))
-        basic = gcp.gkebackup.BackupPlan("basic",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
-        rollback_app = gcp.gkebackup.RestorePlan("rollbackApp",
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                selected_applications=gcp.gkebackup.RestorePlanRestoreConfigSelectedApplicationsArgs(
-                    namespaced_names=[gcp.gkebackup.RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs(
-                        name="my-app",
-                        namespace="my-ns",
-                    )],
-                ),
-                namespaced_resource_restore_mode="DELETE_AND_RESTORE",
-                volume_data_restore_policy="REUSE_VOLUME_HANDLE_FROM_BACKUP",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    no_group_kinds=True,
-                ),
-            ))
-        ```
-        ### Gkebackup Restoreplan All Cluster Resources
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.container.Cluster("primary",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ))
-        basic = gcp.gkebackup.BackupPlan("basic",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
-        all_cluster_resources = gcp.gkebackup.RestorePlan("allClusterResources",
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                no_namespaces=True,
-                namespaced_resource_restore_mode="FAIL_ON_CONFLICT",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    all_group_kinds=True,
-                ),
-                cluster_resource_conflict_policy="USE_EXISTING_VERSION",
-            ))
-        ```
-        ### Gkebackup Restoreplan Rename Namespace
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.container.Cluster("primary",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ))
-        basic = gcp.gkebackup.BackupPlan("basic",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
-        rename_ns = gcp.gkebackup.RestorePlan("renameNs",
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                selected_namespaces=gcp.gkebackup.RestorePlanRestoreConfigSelectedNamespacesArgs(
-                    namespaces=["ns1"],
-                ),
-                namespaced_resource_restore_mode="FAIL_ON_CONFLICT",
-                volume_data_restore_policy="REUSE_VOLUME_HANDLE_FROM_BACKUP",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    no_group_kinds=True,
-                ),
-                transformation_rules=[
-                    gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleArgs(
-                        description="rename namespace from ns1 to ns2",
-                        resource_filter=gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleResourceFilterArgs(
-                            group_kinds=[gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs(
-                                resource_kind="Namespace",
-                            )],
-                            json_path=".metadata[?(@.name == 'ns1')]",
-                        ),
-                        field_actions=[gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleFieldActionArgs(
-                            op="REPLACE",
-                            path="/metadata/name",
-                            value="ns2",
-                        )],
-                    ),
-                    gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleArgs(
-                        description="move all resources from ns1 to ns2",
-                        resource_filter=gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleResourceFilterArgs(
-                            namespaces=["ns1"],
-                        ),
-                        field_actions=[gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleFieldActionArgs(
-                            op="REPLACE",
-                            path="/metadata/namespace",
-                            value="ns2",
-                        )],
-                    ),
-                ],
-            ))
-        ```
-        ### Gkebackup Restoreplan Second Transformation
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.container.Cluster("primary",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ))
-        basic = gcp.gkebackup.BackupPlan("basic",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
-        transform_rule = gcp.gkebackup.RestorePlan("transformRule",
-            description="copy nginx env variables",
-            labels={
-                "app": "nginx",
-            },
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                excluded_namespaces=gcp.gkebackup.RestorePlanRestoreConfigExcludedNamespacesArgs(
-                    namespaces=["my-ns"],
-                ),
-                namespaced_resource_restore_mode="DELETE_AND_RESTORE",
-                volume_data_restore_policy="RESTORE_VOLUME_DATA_FROM_BACKUP",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    excluded_group_kinds=[gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs(
-                        resource_group="apiextension.k8s.io",
-                        resource_kind="CustomResourceDefinition",
-                    )],
-                ),
-                cluster_resource_conflict_policy="USE_EXISTING_VERSION",
-                transformation_rules=[gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleArgs(
-                    description="Copy environment variables from the nginx container to the install init container.",
-                    resource_filter=gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleResourceFilterArgs(
-                        group_kinds=[gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs(
-                            resource_kind="Pod",
-                            resource_group="",
-                        )],
-                        json_path=".metadata[?(@.name == 'nginx')]",
-                    ),
-                    field_actions=[gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleFieldActionArgs(
-                        op="COPY",
-                        path="/spec/initContainers/0/env",
-                        from_path="/spec/containers/0/env",
-                    )],
-                )],
-            ))
-        ```
 
         ## Import
 
@@ -774,306 +496,6 @@ class RestorePlan(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
 
         ## Example Usage
-        ### Gkebackup Restoreplan All Namespaces
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.container.Cluster("primary",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ))
-        basic = gcp.gkebackup.BackupPlan("basic",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
-        all_ns = gcp.gkebackup.RestorePlan("allNs",
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                all_namespaces=True,
-                namespaced_resource_restore_mode="FAIL_ON_CONFLICT",
-                volume_data_restore_policy="RESTORE_VOLUME_DATA_FROM_BACKUP",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    all_group_kinds=True,
-                ),
-                cluster_resource_conflict_policy="USE_EXISTING_VERSION",
-            ))
-        ```
-        ### Gkebackup Restoreplan Rollback Namespace
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.container.Cluster("primary",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ))
-        basic = gcp.gkebackup.BackupPlan("basic",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
-        rollback_ns = gcp.gkebackup.RestorePlan("rollbackNs",
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                selected_namespaces=gcp.gkebackup.RestorePlanRestoreConfigSelectedNamespacesArgs(
-                    namespaces=["my-ns"],
-                ),
-                namespaced_resource_restore_mode="DELETE_AND_RESTORE",
-                volume_data_restore_policy="RESTORE_VOLUME_DATA_FROM_BACKUP",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    selected_group_kinds=[
-                        gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs(
-                            resource_group="apiextension.k8s.io",
-                            resource_kind="CustomResourceDefinition",
-                        ),
-                        gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs(
-                            resource_group="storage.k8s.io",
-                            resource_kind="StorageClass",
-                        ),
-                    ],
-                ),
-                cluster_resource_conflict_policy="USE_EXISTING_VERSION",
-            ))
-        ```
-        ### Gkebackup Restoreplan Protected Application
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.container.Cluster("primary",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ))
-        basic = gcp.gkebackup.BackupPlan("basic",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
-        rollback_app = gcp.gkebackup.RestorePlan("rollbackApp",
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                selected_applications=gcp.gkebackup.RestorePlanRestoreConfigSelectedApplicationsArgs(
-                    namespaced_names=[gcp.gkebackup.RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs(
-                        name="my-app",
-                        namespace="my-ns",
-                    )],
-                ),
-                namespaced_resource_restore_mode="DELETE_AND_RESTORE",
-                volume_data_restore_policy="REUSE_VOLUME_HANDLE_FROM_BACKUP",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    no_group_kinds=True,
-                ),
-            ))
-        ```
-        ### Gkebackup Restoreplan All Cluster Resources
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.container.Cluster("primary",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ))
-        basic = gcp.gkebackup.BackupPlan("basic",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
-        all_cluster_resources = gcp.gkebackup.RestorePlan("allClusterResources",
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                no_namespaces=True,
-                namespaced_resource_restore_mode="FAIL_ON_CONFLICT",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    all_group_kinds=True,
-                ),
-                cluster_resource_conflict_policy="USE_EXISTING_VERSION",
-            ))
-        ```
-        ### Gkebackup Restoreplan Rename Namespace
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.container.Cluster("primary",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ))
-        basic = gcp.gkebackup.BackupPlan("basic",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
-        rename_ns = gcp.gkebackup.RestorePlan("renameNs",
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                selected_namespaces=gcp.gkebackup.RestorePlanRestoreConfigSelectedNamespacesArgs(
-                    namespaces=["ns1"],
-                ),
-                namespaced_resource_restore_mode="FAIL_ON_CONFLICT",
-                volume_data_restore_policy="REUSE_VOLUME_HANDLE_FROM_BACKUP",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    no_group_kinds=True,
-                ),
-                transformation_rules=[
-                    gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleArgs(
-                        description="rename namespace from ns1 to ns2",
-                        resource_filter=gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleResourceFilterArgs(
-                            group_kinds=[gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs(
-                                resource_kind="Namespace",
-                            )],
-                            json_path=".metadata[?(@.name == 'ns1')]",
-                        ),
-                        field_actions=[gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleFieldActionArgs(
-                            op="REPLACE",
-                            path="/metadata/name",
-                            value="ns2",
-                        )],
-                    ),
-                    gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleArgs(
-                        description="move all resources from ns1 to ns2",
-                        resource_filter=gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleResourceFilterArgs(
-                            namespaces=["ns1"],
-                        ),
-                        field_actions=[gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleFieldActionArgs(
-                            op="REPLACE",
-                            path="/metadata/namespace",
-                            value="ns2",
-                        )],
-                    ),
-                ],
-            ))
-        ```
-        ### Gkebackup Restoreplan Second Transformation
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.container.Cluster("primary",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ))
-        basic = gcp.gkebackup.BackupPlan("basic",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
-        transform_rule = gcp.gkebackup.RestorePlan("transformRule",
-            description="copy nginx env variables",
-            labels={
-                "app": "nginx",
-            },
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                excluded_namespaces=gcp.gkebackup.RestorePlanRestoreConfigExcludedNamespacesArgs(
-                    namespaces=["my-ns"],
-                ),
-                namespaced_resource_restore_mode="DELETE_AND_RESTORE",
-                volume_data_restore_policy="RESTORE_VOLUME_DATA_FROM_BACKUP",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    excluded_group_kinds=[gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs(
-                        resource_group="apiextension.k8s.io",
-                        resource_kind="CustomResourceDefinition",
-                    )],
-                ),
-                cluster_resource_conflict_policy="USE_EXISTING_VERSION",
-                transformation_rules=[gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleArgs(
-                    description="Copy environment variables from the nginx container to the install init container.",
-                    resource_filter=gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleResourceFilterArgs(
-                        group_kinds=[gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs(
-                            resource_kind="Pod",
-                            resource_group="",
-                        )],
-                        json_path=".metadata[?(@.name == 'nginx')]",
-                    ),
-                    field_actions=[gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleFieldActionArgs(
-                        op="COPY",
-                        path="/spec/initContainers/0/env",
-                        from_path="/spec/containers/0/env",
-                    )],
-                )],
-            ))
-        ```
 
         ## Import
 
@@ -1140,11 +562,7 @@ class RestorePlan(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            if restore_config is not None and not isinstance(restore_config, RestorePlanRestoreConfigArgs):
-                restore_config = restore_config or {}
-                def _setter(key, value):
-                    restore_config[key] = value
-                RestorePlanRestoreConfigArgs._configure(_setter, **restore_config)
+            restore_config = _utilities.configure(restore_config, RestorePlanRestoreConfigArgs, True)
             if restore_config is None and not opts.urn:
                 raise TypeError("Missing required property 'restore_config'")
             __props__.__dict__["restore_config"] = restore_config

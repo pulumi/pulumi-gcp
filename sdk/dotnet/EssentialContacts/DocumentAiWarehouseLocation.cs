@@ -19,30 +19,6 @@ namespace Pulumi.Gcp.EssentialContacts
     ///     * [Official Documentation](https://cloud.google.com/document-warehouse/docs/overview)
     /// 
     /// ## Example Usage
-    /// ### Document Ai Warehouse Location
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    ///     var example = new Gcp.EssentialContacts.DocumentAiWarehouseLocation("example", new()
-    ///     {
-    ///         Location = "us",
-    ///         ProjectNumber = project.Apply(getProjectResult =&gt; getProjectResult.Number),
-    ///         AccessControlMode = "ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI",
-    ///         DatabaseType = "DB_INFRA_SPANNER",
-    ///         KmsKey = "dummy_key",
-    ///         DocumentCreatorDefaultRole = "DOCUMENT_ADMIN",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

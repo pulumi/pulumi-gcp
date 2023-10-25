@@ -48,15 +48,33 @@ class NetworkPeeringArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network: pulumi.Input[str],
-             peer_network: pulumi.Input[str],
+             network: Optional[pulumi.Input[str]] = None,
+             peer_network: Optional[pulumi.Input[str]] = None,
              export_custom_routes: Optional[pulumi.Input[bool]] = None,
              export_subnet_routes_with_public_ip: Optional[pulumi.Input[bool]] = None,
              import_custom_routes: Optional[pulumi.Input[bool]] = None,
              import_subnet_routes_with_public_ip: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              stack_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if peer_network is None and 'peerNetwork' in kwargs:
+            peer_network = kwargs['peerNetwork']
+        if peer_network is None:
+            raise TypeError("Missing 'peer_network' argument")
+        if export_custom_routes is None and 'exportCustomRoutes' in kwargs:
+            export_custom_routes = kwargs['exportCustomRoutes']
+        if export_subnet_routes_with_public_ip is None and 'exportSubnetRoutesWithPublicIp' in kwargs:
+            export_subnet_routes_with_public_ip = kwargs['exportSubnetRoutesWithPublicIp']
+        if import_custom_routes is None and 'importCustomRoutes' in kwargs:
+            import_custom_routes = kwargs['importCustomRoutes']
+        if import_subnet_routes_with_public_ip is None and 'importSubnetRoutesWithPublicIp' in kwargs:
+            import_subnet_routes_with_public_ip = kwargs['importSubnetRoutesWithPublicIp']
+        if stack_type is None and 'stackType' in kwargs:
+            stack_type = kwargs['stackType']
+
         _setter("network", network)
         _setter("peer_network", peer_network)
         if export_custom_routes is not None:
@@ -224,7 +242,23 @@ class _NetworkPeeringState:
              stack_type: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              state_details: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if export_custom_routes is None and 'exportCustomRoutes' in kwargs:
+            export_custom_routes = kwargs['exportCustomRoutes']
+        if export_subnet_routes_with_public_ip is None and 'exportSubnetRoutesWithPublicIp' in kwargs:
+            export_subnet_routes_with_public_ip = kwargs['exportSubnetRoutesWithPublicIp']
+        if import_custom_routes is None and 'importCustomRoutes' in kwargs:
+            import_custom_routes = kwargs['importCustomRoutes']
+        if import_subnet_routes_with_public_ip is None and 'importSubnetRoutesWithPublicIp' in kwargs:
+            import_subnet_routes_with_public_ip = kwargs['importSubnetRoutesWithPublicIp']
+        if peer_network is None and 'peerNetwork' in kwargs:
+            peer_network = kwargs['peerNetwork']
+        if stack_type is None and 'stackType' in kwargs:
+            stack_type = kwargs['stackType']
+        if state_details is None and 'stateDetails' in kwargs:
+            state_details = kwargs['stateDetails']
+
         if export_custom_routes is not None:
             _setter("export_custom_routes", export_custom_routes)
         if export_subnet_routes_with_public_ip is not None:
@@ -394,22 +428,6 @@ class NetworkPeering(pulumi.CustomResource):
 
         > Subnets IP ranges across peered VPC networks cannot overlap.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.Network("default", auto_create_subnetworks=False)
-        other = gcp.compute.Network("other", auto_create_subnetworks=False)
-        peering1 = gcp.compute.NetworkPeering("peering1",
-            network=default.self_link,
-            peer_network=other.self_link)
-        peering2 = gcp.compute.NetworkPeering("peering2",
-            network=other.self_link,
-            peer_network=default.self_link)
-        ```
-
         ## Import
 
         VPC network peerings can be imported using the name and project of the primary network the peering exists in and the name of the network peering
@@ -446,22 +464,6 @@ class NetworkPeering(pulumi.CustomResource):
         to be functional.
 
         > Subnets IP ranges across peered VPC networks cannot overlap.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.Network("default", auto_create_subnetworks=False)
-        other = gcp.compute.Network("other", auto_create_subnetworks=False)
-        peering1 = gcp.compute.NetworkPeering("peering1",
-            network=default.self_link,
-            peer_network=other.self_link)
-        peering2 = gcp.compute.NetworkPeering("peering2",
-            network=other.self_link,
-            peer_network=default.self_link)
-        ```
 
         ## Import
 

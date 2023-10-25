@@ -64,7 +64,15 @@ class EngineModelArgs:
              online_prediction_logging: Optional[pulumi.Input[bool]] = None,
              project: Optional[pulumi.Input[str]] = None,
              regions: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if default_version is None and 'defaultVersion' in kwargs:
+            default_version = kwargs['defaultVersion']
+        if online_prediction_console_logging is None and 'onlinePredictionConsoleLogging' in kwargs:
+            online_prediction_console_logging = kwargs['onlinePredictionConsoleLogging']
+        if online_prediction_logging is None and 'onlinePredictionLogging' in kwargs:
+            online_prediction_logging = kwargs['onlinePredictionLogging']
+
         if default_version is not None:
             _setter("default_version", default_version)
         if description is not None:
@@ -237,7 +245,15 @@ class _EngineModelState:
              online_prediction_logging: Optional[pulumi.Input[bool]] = None,
              project: Optional[pulumi.Input[str]] = None,
              regions: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if default_version is None and 'defaultVersion' in kwargs:
+            default_version = kwargs['defaultVersion']
+        if online_prediction_console_logging is None and 'onlinePredictionConsoleLogging' in kwargs:
+            online_prediction_console_logging = kwargs['onlinePredictionConsoleLogging']
+        if online_prediction_logging is None and 'onlinePredictionLogging' in kwargs:
+            online_prediction_logging = kwargs['onlinePredictionLogging']
+
         if default_version is not None:
             _setter("default_version", default_version)
         if description is not None:
@@ -386,31 +402,6 @@ class EngineModel(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/ai-platform/prediction/docs/deploying-models)
 
         ## Example Usage
-        ### Ml Model Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.ml.EngineModel("default",
-            description="My model",
-            regions="us-central1")
-        ```
-        ### Ml Model Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.ml.EngineModel("default",
-            description="My model",
-            labels={
-                "my_model": "foo",
-            },
-            online_prediction_console_logging=True,
-            online_prediction_logging=True,
-            regions="us-central1")
-        ```
 
         ## Import
 
@@ -465,31 +456,6 @@ class EngineModel(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/ai-platform/prediction/docs/deploying-models)
 
         ## Example Usage
-        ### Ml Model Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.ml.EngineModel("default",
-            description="My model",
-            regions="us-central1")
-        ```
-        ### Ml Model Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.ml.EngineModel("default",
-            description="My model",
-            labels={
-                "my_model": "foo",
-            },
-            online_prediction_console_logging=True,
-            online_prediction_logging=True,
-            regions="us-central1")
-        ```
 
         ## Import
 
@@ -543,11 +509,7 @@ class EngineModel(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EngineModelArgs.__new__(EngineModelArgs)
 
-            if default_version is not None and not isinstance(default_version, EngineModelDefaultVersionArgs):
-                default_version = default_version or {}
-                def _setter(key, value):
-                    default_version[key] = value
-                EngineModelDefaultVersionArgs._configure(_setter, **default_version)
+            default_version = _utilities.configure(default_version, EngineModelDefaultVersionArgs, True)
             __props__.__dict__["default_version"] = default_version
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels

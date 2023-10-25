@@ -15,58 +15,6 @@ namespace Pulumi.Gcp.Storage
         /// The Google Cloud storage signed URL data source generates a signed URL for a given storage object. Signed URLs provide a way to give time-limited read or write access to anyone in possession of the URL, regardless of whether they have a Google account.
         /// 
         /// For more info about signed URL's is available [here](https://cloud.google.com/storage/docs/access-control/signed-urls).
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var artifact = Gcp.Storage.GetObjectSignedUrl.Invoke(new()
-        ///     {
-        ///         Bucket = "install_binaries",
-        ///         Path = "path/to/install_file.bin",
-        ///     });
-        /// 
-        ///     var vm = new Gcp.Compute.Instance("vm");
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// ## Full Example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.IO;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var getUrl = Gcp.Storage.GetObjectSignedUrl.Invoke(new()
-        ///     {
-        ///         Bucket = "fried_chicken",
-        ///         Path = "path/to/file",
-        ///         ContentMd5 = "pRviqwS4c4OTJRTe03FD1w==",
-        ///         ContentType = "text/plain",
-        ///         Duration = "2d",
-        ///         Credentials = File.ReadAllText("path/to/credentials.json"),
-        ///         ExtensionHeaders = 
-        ///         {
-        ///             { "x-goog-if-generation-match", "1" },
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetObjectSignedUrlResult> InvokeAsync(GetObjectSignedUrlArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetObjectSignedUrlResult>("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", args ?? new GetObjectSignedUrlArgs(), options.WithDefaults());
@@ -75,58 +23,6 @@ namespace Pulumi.Gcp.Storage
         /// The Google Cloud storage signed URL data source generates a signed URL for a given storage object. Signed URLs provide a way to give time-limited read or write access to anyone in possession of the URL, regardless of whether they have a Google account.
         /// 
         /// For more info about signed URL's is available [here](https://cloud.google.com/storage/docs/access-control/signed-urls).
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var artifact = Gcp.Storage.GetObjectSignedUrl.Invoke(new()
-        ///     {
-        ///         Bucket = "install_binaries",
-        ///         Path = "path/to/install_file.bin",
-        ///     });
-        /// 
-        ///     var vm = new Gcp.Compute.Instance("vm");
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// ## Full Example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.IO;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var getUrl = Gcp.Storage.GetObjectSignedUrl.Invoke(new()
-        ///     {
-        ///         Bucket = "fried_chicken",
-        ///         Path = "path/to/file",
-        ///         ContentMd5 = "pRviqwS4c4OTJRTe03FD1w==",
-        ///         ContentType = "text/plain",
-        ///         Duration = "2d",
-        ///         Credentials = File.ReadAllText("path/to/credentials.json"),
-        ///         ExtensionHeaders = 
-        ///         {
-        ///             { "x-goog-if-generation-match", "1" },
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetObjectSignedUrlResult> Invoke(GetObjectSignedUrlInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetObjectSignedUrlResult>("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", args ?? new GetObjectSignedUrlInvokeArgs(), options.WithDefaults());

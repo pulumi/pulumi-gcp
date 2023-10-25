@@ -6,68 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
- * ### Workstation Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false}, {
- *     provider: google_beta,
- * });
- * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
- *     ipCidrRange: "10.0.0.0/24",
- *     region: "us-central1",
- *     network: defaultNetwork.name,
- * }, {
- *     provider: google_beta,
- * });
- * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("defaultWorkstationCluster", {
- *     workstationClusterId: "workstation-cluster",
- *     network: defaultNetwork.id,
- *     subnetwork: defaultSubnetwork.id,
- *     location: "us-central1",
- *     labels: {
- *         label: "key",
- *     },
- *     annotations: {
- *         "label-one": "value-one",
- *     },
- * }, {
- *     provider: google_beta,
- * });
- * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("defaultWorkstationConfig", {
- *     workstationConfigId: "workstation-config",
- *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
- *     location: "us-central1",
- *     host: {
- *         gceInstance: {
- *             machineType: "e2-standard-4",
- *             bootDiskSizeGb: 35,
- *             disablePublicIpAddresses: true,
- *         },
- *     },
- * }, {
- *     provider: google_beta,
- * });
- * const defaultWorkstation = new gcp.workstations.Workstation("defaultWorkstation", {
- *     workstationId: "work-station",
- *     workstationConfigId: defaultWorkstationConfig.workstationConfigId,
- *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
- *     location: "us-central1",
- *     labels: {
- *         label: "key",
- *     },
- *     env: {
- *         name: "foo",
- *     },
- *     annotations: {
- *         "label-one": "value-one",
- *     },
- * }, {
- *     provider: google_beta,
- * });
- * ```
  *
  * ## Import
  *

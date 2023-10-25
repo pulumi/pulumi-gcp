@@ -13,32 +13,6 @@ import (
 )
 
 // Retrieves the current IAM policy data for a Google Cloud Healthcare HL7v2 store.
-//
-// ## example
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := healthcare.GetHl7V2StoreIamPolicy(ctx, &healthcare.GetHl7V2StoreIamPolicyArgs{
-//				Hl7V2StoreId: google_healthcare_hl7_v2_store.Hl7_v2_store.Id,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetHl7V2StoreIamPolicy(ctx *pulumi.Context, args *GetHl7V2StoreIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetHl7V2StoreIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHl7V2StoreIamPolicyResult

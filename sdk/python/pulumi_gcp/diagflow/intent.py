@@ -81,7 +81,7 @@ class IntentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              action: Optional[pulumi.Input[str]] = None,
              default_response_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -93,7 +93,27 @@ class IntentArgs:
              project: Optional[pulumi.Input[str]] = None,
              reset_contexts: Optional[pulumi.Input[bool]] = None,
              webhook_state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if default_response_platforms is None and 'defaultResponsePlatforms' in kwargs:
+            default_response_platforms = kwargs['defaultResponsePlatforms']
+        if input_context_names is None and 'inputContextNames' in kwargs:
+            input_context_names = kwargs['inputContextNames']
+        if is_fallback is None and 'isFallback' in kwargs:
+            is_fallback = kwargs['isFallback']
+        if ml_disabled is None and 'mlDisabled' in kwargs:
+            ml_disabled = kwargs['mlDisabled']
+        if parent_followup_intent_name is None and 'parentFollowupIntentName' in kwargs:
+            parent_followup_intent_name = kwargs['parentFollowupIntentName']
+        if reset_contexts is None and 'resetContexts' in kwargs:
+            reset_contexts = kwargs['resetContexts']
+        if webhook_state is None and 'webhookState' in kwargs:
+            webhook_state = kwargs['webhookState']
+
         _setter("display_name", display_name)
         if action is not None:
             _setter("action", action)
@@ -380,7 +400,29 @@ class _IntentState:
              reset_contexts: Optional[pulumi.Input[bool]] = None,
              root_followup_intent_name: Optional[pulumi.Input[str]] = None,
              webhook_state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if default_response_platforms is None and 'defaultResponsePlatforms' in kwargs:
+            default_response_platforms = kwargs['defaultResponsePlatforms']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if followup_intent_infos is None and 'followupIntentInfos' in kwargs:
+            followup_intent_infos = kwargs['followupIntentInfos']
+        if input_context_names is None and 'inputContextNames' in kwargs:
+            input_context_names = kwargs['inputContextNames']
+        if is_fallback is None and 'isFallback' in kwargs:
+            is_fallback = kwargs['isFallback']
+        if ml_disabled is None and 'mlDisabled' in kwargs:
+            ml_disabled = kwargs['mlDisabled']
+        if parent_followup_intent_name is None and 'parentFollowupIntentName' in kwargs:
+            parent_followup_intent_name = kwargs['parentFollowupIntentName']
+        if reset_contexts is None and 'resetContexts' in kwargs:
+            reset_contexts = kwargs['resetContexts']
+        if root_followup_intent_name is None and 'rootFollowupIntentName' in kwargs:
+            root_followup_intent_name = kwargs['rootFollowupIntentName']
+        if webhook_state is None and 'webhookState' in kwargs:
+            webhook_state = kwargs['webhookState']
+
         if action is not None:
             _setter("action", action)
         if default_response_platforms is not None:
@@ -647,59 +689,6 @@ class Intent(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 
         ## Example Usage
-        ### Dialogflow Intent Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic_agent = gcp.diagflow.Agent("basicAgent",
-            display_name="example_agent",
-            default_language_code="en",
-            time_zone="America/New_York")
-        basic_intent = gcp.diagflow.Intent("basicIntent", display_name="basic-intent",
-        opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
-        ```
-        ### Dialogflow Intent Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        agent_project_project = gcp.organizations.Project("agentProjectProject",
-            project_id="my-project",
-            org_id="123456789")
-        agent_project_service = gcp.projects.Service("agentProjectService",
-            project=agent_project_project.project_id,
-            service="dialogflow.googleapis.com",
-            disable_dependent_services=False)
-        dialogflow_service_account = gcp.service_account.Account("dialogflowServiceAccount", account_id="my-account")
-        agent_create = gcp.projects.IAMMember("agentCreate",
-            project=agent_project_service.project,
-            role="roles/dialogflow.admin",
-            member=dialogflow_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        basic_agent = gcp.diagflow.Agent("basicAgent",
-            project=agent_project_project.project_id,
-            display_name="example_agent",
-            default_language_code="en",
-            time_zone="America/New_York")
-        full_intent = gcp.diagflow.Intent("fullIntent",
-            project=agent_project_project.project_id,
-            display_name="full-intent",
-            webhook_state="WEBHOOK_STATE_ENABLED",
-            priority=1,
-            is_fallback=False,
-            ml_disabled=True,
-            action="some_action",
-            reset_contexts=True,
-            input_context_names=[agent_project_project.project_id.apply(lambda project_id: f"projects/{project_id}/agent/sessions/-/contexts/some_id")],
-            events=["some_event"],
-            default_response_platforms=[
-                "FACEBOOK",
-                "SLACK",
-            ],
-            opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
-        ```
 
         ## Import
 
@@ -761,59 +750,6 @@ class Intent(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 
         ## Example Usage
-        ### Dialogflow Intent Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic_agent = gcp.diagflow.Agent("basicAgent",
-            display_name="example_agent",
-            default_language_code="en",
-            time_zone="America/New_York")
-        basic_intent = gcp.diagflow.Intent("basicIntent", display_name="basic-intent",
-        opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
-        ```
-        ### Dialogflow Intent Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        agent_project_project = gcp.organizations.Project("agentProjectProject",
-            project_id="my-project",
-            org_id="123456789")
-        agent_project_service = gcp.projects.Service("agentProjectService",
-            project=agent_project_project.project_id,
-            service="dialogflow.googleapis.com",
-            disable_dependent_services=False)
-        dialogflow_service_account = gcp.service_account.Account("dialogflowServiceAccount", account_id="my-account")
-        agent_create = gcp.projects.IAMMember("agentCreate",
-            project=agent_project_service.project,
-            role="roles/dialogflow.admin",
-            member=dialogflow_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        basic_agent = gcp.diagflow.Agent("basicAgent",
-            project=agent_project_project.project_id,
-            display_name="example_agent",
-            default_language_code="en",
-            time_zone="America/New_York")
-        full_intent = gcp.diagflow.Intent("fullIntent",
-            project=agent_project_project.project_id,
-            display_name="full-intent",
-            webhook_state="WEBHOOK_STATE_ENABLED",
-            priority=1,
-            is_fallback=False,
-            ml_disabled=True,
-            action="some_action",
-            reset_contexts=True,
-            input_context_names=[agent_project_project.project_id.apply(lambda project_id: f"projects/{project_id}/agent/sessions/-/contexts/some_id")],
-            events=["some_event"],
-            default_response_platforms=[
-                "FACEBOOK",
-                "SLACK",
-            ],
-            opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
-        ```
 
         ## Import
 

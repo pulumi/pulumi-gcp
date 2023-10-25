@@ -40,9 +40,17 @@ class GameServerClusterConnectionInfoArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             gke_cluster_reference: pulumi.Input['GameServerClusterConnectionInfoGkeClusterReferenceArgs'],
-             namespace: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             gke_cluster_reference: Optional[pulumi.Input['GameServerClusterConnectionInfoGkeClusterReferenceArgs']] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if gke_cluster_reference is None and 'gkeClusterReference' in kwargs:
+            gke_cluster_reference = kwargs['gkeClusterReference']
+        if gke_cluster_reference is None:
+            raise TypeError("Missing 'gke_cluster_reference' argument")
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+
         _setter("gke_cluster_reference", gke_cluster_reference)
         _setter("namespace", namespace)
 
@@ -97,8 +105,12 @@ class GameServerClusterConnectionInfoGkeClusterReferenceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             cluster: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cluster is None:
+            raise TypeError("Missing 'cluster' argument")
+
         _setter("cluster", cluster)
 
     @property
@@ -148,9 +160,15 @@ class GameServerConfigFleetConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             fleet_spec: pulumi.Input[str],
+             fleet_spec: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if fleet_spec is None and 'fleetSpec' in kwargs:
+            fleet_spec = kwargs['fleetSpec']
+        if fleet_spec is None:
+            raise TypeError("Missing 'fleet_spec' argument")
+
         _setter("fleet_spec", fleet_spec)
         if name is not None:
             _setter("name", name)
@@ -217,11 +235,19 @@ class GameServerConfigScalingConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             fleet_autoscaler_spec: pulumi.Input[str],
-             name: pulumi.Input[str],
+             fleet_autoscaler_spec: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
              schedules: Optional[pulumi.Input[Sequence[pulumi.Input['GameServerConfigScalingConfigScheduleArgs']]]] = None,
              selectors: Optional[pulumi.Input[Sequence[pulumi.Input['GameServerConfigScalingConfigSelectorArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if fleet_autoscaler_spec is None and 'fleetAutoscalerSpec' in kwargs:
+            fleet_autoscaler_spec = kwargs['fleetAutoscalerSpec']
+        if fleet_autoscaler_spec is None:
+            raise TypeError("Missing 'fleet_autoscaler_spec' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("fleet_autoscaler_spec", fleet_autoscaler_spec)
         _setter("name", name)
         if schedules is not None:
@@ -317,7 +343,17 @@ class GameServerConfigScalingConfigScheduleArgs:
              cron_spec: Optional[pulumi.Input[str]] = None,
              end_time: Optional[pulumi.Input[str]] = None,
              start_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cron_job_duration is None and 'cronJobDuration' in kwargs:
+            cron_job_duration = kwargs['cronJobDuration']
+        if cron_spec is None and 'cronSpec' in kwargs:
+            cron_spec = kwargs['cronSpec']
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+
         if cron_job_duration is not None:
             _setter("cron_job_duration", cron_job_duration)
         if cron_spec is not None:
@@ -397,7 +433,9 @@ class GameServerConfigScalingConfigSelectorArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if labels is not None:
             _setter("labels", labels)
 
@@ -434,7 +472,13 @@ class GameServerDeploymentRolloutGameServerConfigOverrideArgs:
              _setter: Callable[[Any, Any], None],
              config_version: Optional[pulumi.Input[str]] = None,
              realms_selector: Optional[pulumi.Input['GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if config_version is None and 'configVersion' in kwargs:
+            config_version = kwargs['configVersion']
+        if realms_selector is None and 'realmsSelector' in kwargs:
+            realms_selector = kwargs['realmsSelector']
+
         if config_version is not None:
             _setter("config_version", config_version)
         if realms_selector is not None:
@@ -481,7 +525,9 @@ class GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if realms is not None:
             _setter("realms", realms)
 

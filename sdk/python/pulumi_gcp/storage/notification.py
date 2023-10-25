@@ -46,13 +46,29 @@ class NotificationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: pulumi.Input[str],
-             payload_format: pulumi.Input[str],
-             topic: pulumi.Input[str],
+             bucket: Optional[pulumi.Input[str]] = None,
+             payload_format: Optional[pulumi.Input[str]] = None,
+             topic: Optional[pulumi.Input[str]] = None,
              custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              event_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              object_name_prefix: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if payload_format is None and 'payloadFormat' in kwargs:
+            payload_format = kwargs['payloadFormat']
+        if payload_format is None:
+            raise TypeError("Missing 'payload_format' argument")
+        if topic is None:
+            raise TypeError("Missing 'topic' argument")
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if event_types is None and 'eventTypes' in kwargs:
+            event_types = kwargs['eventTypes']
+        if object_name_prefix is None and 'objectNamePrefix' in kwargs:
+            object_name_prefix = kwargs['objectNamePrefix']
+
         _setter("bucket", bucket)
         _setter("payload_format", payload_format)
         _setter("topic", topic)
@@ -190,7 +206,21 @@ class _NotificationState:
              payload_format: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              topic: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if event_types is None and 'eventTypes' in kwargs:
+            event_types = kwargs['eventTypes']
+        if notification_id is None and 'notificationId' in kwargs:
+            notification_id = kwargs['notificationId']
+        if object_name_prefix is None and 'objectNamePrefix' in kwargs:
+            object_name_prefix = kwargs['objectNamePrefix']
+        if payload_format is None and 'payloadFormat' in kwargs:
+            payload_format = kwargs['payloadFormat']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if bucket is not None:
             _setter("bucket", bucket)
         if custom_attributes is not None:
@@ -340,35 +370,6 @@ class Notification(pulumi.CustomResource):
         > **NOTE**: This resource can affect your storage IAM policy. If you are using this in the same config as your storage IAM policy resources, consider
         making this resource dependent on those IAM resources via `depends_on`. This will safeguard against errors due to IAM race conditions.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        gcs_account = gcp.storage.get_project_service_account()
-        topic = gcp.pubsub.Topic("topic")
-        binding = gcp.pubsub.TopicIAMBinding("binding",
-            topic=topic.id,
-            role="roles/pubsub.publisher",
-            members=[f"serviceAccount:{gcs_account.email_address}"])
-        # End enabling notifications
-        bucket = gcp.storage.Bucket("bucket", location="US")
-        notification = gcp.storage.Notification("notification",
-            bucket=bucket.name,
-            payload_format="JSON_API_V1",
-            topic=topic.id,
-            event_types=[
-                "OBJECT_FINALIZE",
-                "OBJECT_METADATA_UPDATE",
-            ],
-            custom_attributes={
-                "new-attribute": "new-attribute-value",
-            },
-            opts=pulumi.ResourceOptions(depends_on=[binding]))
-        # Enable notifications by giving the correct IAM permission to the unique service account.
-        ```
-
         ## Import
 
         Storage notifications can be imported using the notification `id` in the format `<bucket_name>/notificationConfigs/<id>` e.g.
@@ -414,35 +415,6 @@ class Notification(pulumi.CustomResource):
 
         > **NOTE**: This resource can affect your storage IAM policy. If you are using this in the same config as your storage IAM policy resources, consider
         making this resource dependent on those IAM resources via `depends_on`. This will safeguard against errors due to IAM race conditions.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        gcs_account = gcp.storage.get_project_service_account()
-        topic = gcp.pubsub.Topic("topic")
-        binding = gcp.pubsub.TopicIAMBinding("binding",
-            topic=topic.id,
-            role="roles/pubsub.publisher",
-            members=[f"serviceAccount:{gcs_account.email_address}"])
-        # End enabling notifications
-        bucket = gcp.storage.Bucket("bucket", location="US")
-        notification = gcp.storage.Notification("notification",
-            bucket=bucket.name,
-            payload_format="JSON_API_V1",
-            topic=topic.id,
-            event_types=[
-                "OBJECT_FINALIZE",
-                "OBJECT_METADATA_UPDATE",
-            ],
-            custom_attributes={
-                "new-attribute": "new-attribute-value",
-            },
-            opts=pulumi.ResourceOptions(depends_on=[binding]))
-        # Enable notifications by giving the correct IAM permission to the unique service account.
-        ```
 
         ## Import
 

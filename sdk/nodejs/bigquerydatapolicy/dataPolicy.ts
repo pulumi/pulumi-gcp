@@ -16,30 +16,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/bigquery/docs/column-data-masking-intro)
  *
  * ## Example Usage
- * ### Bigquery Datapolicy Data Policy Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const taxonomy = new gcp.datacatalog.Taxonomy("taxonomy", {
- *     region: "us-central1",
- *     displayName: "taxonomy",
- *     description: "A collection of policy tags",
- *     activatedPolicyTypes: ["FINE_GRAINED_ACCESS_CONTROL"],
- * });
- * const policyTag = new gcp.datacatalog.PolicyTag("policyTag", {
- *     taxonomy: taxonomy.id,
- *     displayName: "Low security",
- *     description: "A policy tag normally associated with low security items",
- * });
- * const dataPolicy = new gcp.bigquerydatapolicy.DataPolicy("dataPolicy", {
- *     location: "us-central1",
- *     dataPolicyId: "data_policy",
- *     policyTag: policyTag.name,
- *     dataPolicyType: "COLUMN_LEVEL_SECURITY_POLICY",
- * });
- * ```
  *
  * ## Import
  *

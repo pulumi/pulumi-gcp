@@ -23,68 +23,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
  *
  * ## Example Usage
- * ### Network Endpoints
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const myImage = gcp.compute.getImage({
- *     family: "debian-11",
- *     project: "debian-cloud",
- * });
- * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false});
- * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
- *     ipCidrRange: "10.0.0.1/16",
- *     region: "us-central1",
- *     network: defaultNetwork.id,
- * });
- * const endpoint_instance1 = new gcp.compute.Instance("endpoint-instance1", {
- *     machineType: "e2-medium",
- *     bootDisk: {
- *         initializeParams: {
- *             image: myImage.then(myImage => myImage.selfLink),
- *         },
- *     },
- *     networkInterfaces: [{
- *         subnetwork: defaultSubnetwork.id,
- *         accessConfigs: [{}],
- *     }],
- * });
- * const endpoint_instance2 = new gcp.compute.Instance("endpoint-instance2", {
- *     machineType: "e2-medium",
- *     bootDisk: {
- *         initializeParams: {
- *             image: myImage.then(myImage => myImage.selfLink),
- *         },
- *     },
- *     networkInterfaces: [{
- *         subnetwork: defaultSubnetwork.id,
- *         accessConfigs: [{}],
- *     }],
- * });
- * const default_endpoints = new gcp.compute.NetworkEndpointList("default-endpoints", {
- *     networkEndpointGroup: google_compute_network_endpoint_group.neg.name,
- *     networkEndpoints: [
- *         {
- *             instance: endpoint_instance1.name,
- *             port: google_compute_network_endpoint_group.neg.default_port,
- *             ipAddress: endpoint_instance1.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].networkIp),
- *         },
- *         {
- *             instance: endpoint_instance2.name,
- *             port: google_compute_network_endpoint_group.neg.default_port,
- *             ipAddress: endpoint_instance2.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].networkIp),
- *         },
- *     ],
- * });
- * const group = new gcp.compute.NetworkEndpointGroup("group", {
- *     network: defaultNetwork.id,
- *     subnetwork: defaultSubnetwork.id,
- *     defaultPort: 90,
- *     zone: "us-central1-a",
- * });
- * ```
  *
  * ## Import
  *

@@ -43,12 +43,22 @@ class GlobalNetworkEndpointArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             global_network_endpoint_group: pulumi.Input[str],
-             port: pulumi.Input[int],
+             global_network_endpoint_group: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
              fqdn: Optional[pulumi.Input[str]] = None,
              ip_address: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if global_network_endpoint_group is None and 'globalNetworkEndpointGroup' in kwargs:
+            global_network_endpoint_group = kwargs['globalNetworkEndpointGroup']
+        if global_network_endpoint_group is None:
+            raise TypeError("Missing 'global_network_endpoint_group' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         _setter("global_network_endpoint_group", global_network_endpoint_group)
         _setter("port", port)
         if fqdn is not None:
@@ -161,7 +171,13 @@ class _GlobalNetworkEndpointState:
              ip_address: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if global_network_endpoint_group is None and 'globalNetworkEndpointGroup' in kwargs:
+            global_network_endpoint_group = kwargs['globalNetworkEndpointGroup']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         if fqdn is not None:
             _setter("fqdn", fqdn)
         if global_network_endpoint_group is not None:
@@ -262,20 +278,6 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 
         ## Example Usage
-        ### Global Network Endpoint
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        neg = gcp.compute.GlobalNetworkEndpointGroup("neg",
-            default_port=90,
-            network_endpoint_type="INTERNET_FQDN_PORT")
-        default_endpoint = gcp.compute.GlobalNetworkEndpoint("default-endpoint",
-            global_network_endpoint_group=neg.name,
-            fqdn="www.example.com",
-            port=90)
-        ```
 
         ## Import
 
@@ -324,20 +326,6 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 
         ## Example Usage
-        ### Global Network Endpoint
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        neg = gcp.compute.GlobalNetworkEndpointGroup("neg",
-            default_port=90,
-            network_endpoint_type="INTERNET_FQDN_PORT")
-        default_endpoint = gcp.compute.GlobalNetworkEndpoint("default-endpoint",
-            global_network_endpoint_group=neg.name,
-            fqdn="www.example.com",
-            port=90)
-        ```
 
         ## Import
 

@@ -65,41 +65,6 @@ namespace Pulumi.Gcp.ServiceAccount
         ///     value = data.google_service_account_id_token.oidc.id_token
         ///   }
         ///   ```
-        /// {{% example %}}
-        /// ### Invoking Cloud Run Endpoint
-        /// 
-        ///   The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// using Http = Pulumi.Http;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var oidc = Gcp.ServiceAccount.GetAccountIdToken.Invoke(new()
-        ///     {
-        ///         TargetAudience = "https://your.cloud.run.app/",
-        ///     });
-        /// 
-        ///     var cloudrun = Http.GetHttp.Invoke(new()
-        ///     {
-        ///         Url = "https://your.cloud.run.app/",
-        ///         RequestHeaders = 
-        ///         {
-        ///             { "Authorization", $"Bearer {oidc.Apply(getAccountIdTokenResult =&gt; getAccountIdTokenResult.IdToken)}" },
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["cloudRunResponse"] = cloudrun.Apply(getHttpResult =&gt; getHttpResult.Body),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountIdTokenResult> InvokeAsync(GetAccountIdTokenArgs args, InvokeOptions? options = null)
@@ -159,41 +124,6 @@ namespace Pulumi.Gcp.ServiceAccount
         ///     value = data.google_service_account_id_token.oidc.id_token
         ///   }
         ///   ```
-        /// {{% example %}}
-        /// ### Invoking Cloud Run Endpoint
-        /// 
-        ///   The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// using Http = Pulumi.Http;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var oidc = Gcp.ServiceAccount.GetAccountIdToken.Invoke(new()
-        ///     {
-        ///         TargetAudience = "https://your.cloud.run.app/",
-        ///     });
-        /// 
-        ///     var cloudrun = Http.GetHttp.Invoke(new()
-        ///     {
-        ///         Url = "https://your.cloud.run.app/",
-        ///         RequestHeaders = 
-        ///         {
-        ///             { "Authorization", $"Bearer {oidc.Apply(getAccountIdTokenResult =&gt; getAccountIdTokenResult.IdToken)}" },
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["cloudRunResponse"] = cloudrun.Apply(getHttpResult =&gt; getHttpResult.Body),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccountIdTokenResult> Invoke(GetAccountIdTokenInvokeArgs args, InvokeOptions? options = null)

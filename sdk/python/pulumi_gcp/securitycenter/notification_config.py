@@ -43,12 +43,28 @@ class NotificationConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config_id: pulumi.Input[str],
-             organization: pulumi.Input[str],
-             pubsub_topic: pulumi.Input[str],
-             streaming_config: pulumi.Input['NotificationConfigStreamingConfigArgs'],
+             config_id: Optional[pulumi.Input[str]] = None,
+             organization: Optional[pulumi.Input[str]] = None,
+             pubsub_topic: Optional[pulumi.Input[str]] = None,
+             streaming_config: Optional[pulumi.Input['NotificationConfigStreamingConfigArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if config_id is None and 'configId' in kwargs:
+            config_id = kwargs['configId']
+        if config_id is None:
+            raise TypeError("Missing 'config_id' argument")
+        if organization is None:
+            raise TypeError("Missing 'organization' argument")
+        if pubsub_topic is None and 'pubsubTopic' in kwargs:
+            pubsub_topic = kwargs['pubsubTopic']
+        if pubsub_topic is None:
+            raise TypeError("Missing 'pubsub_topic' argument")
+        if streaming_config is None and 'streamingConfig' in kwargs:
+            streaming_config = kwargs['streamingConfig']
+        if streaming_config is None:
+            raise TypeError("Missing 'streaming_config' argument")
+
         _setter("config_id", config_id)
         _setter("organization", organization)
         _setter("pubsub_topic", pubsub_topic)
@@ -165,7 +181,17 @@ class _NotificationConfigState:
              pubsub_topic: Optional[pulumi.Input[str]] = None,
              service_account: Optional[pulumi.Input[str]] = None,
              streaming_config: Optional[pulumi.Input['NotificationConfigStreamingConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if config_id is None and 'configId' in kwargs:
+            config_id = kwargs['configId']
+        if pubsub_topic is None and 'pubsubTopic' in kwargs:
+            pubsub_topic = kwargs['pubsubTopic']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if streaming_config is None and 'streamingConfig' in kwargs:
+            streaming_config = kwargs['streamingConfig']
+
         if config_id is not None:
             _setter("config_id", config_id)
         if description is not None:
@@ -298,22 +324,6 @@ class NotificationConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/security-command-center/docs)
 
         ## Example Usage
-        ### Scc Notification Config Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        scc_notification = gcp.pubsub.Topic("sccNotification")
-        custom_notification_config = gcp.securitycenter.NotificationConfig("customNotificationConfig",
-            config_id="my-config",
-            organization="123456789",
-            description="My custom Cloud Security Command Center Finding Notification Configuration",
-            pubsub_topic=scc_notification.id,
-            streaming_config=gcp.securitycenter.NotificationConfigStreamingConfigArgs(
-                filter="category = \\"OPEN_FIREWALL\\" AND state = \\"ACTIVE\\"",
-            ))
-        ```
 
         ## Import
 
@@ -360,22 +370,6 @@ class NotificationConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/security-command-center/docs)
 
         ## Example Usage
-        ### Scc Notification Config Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        scc_notification = gcp.pubsub.Topic("sccNotification")
-        custom_notification_config = gcp.securitycenter.NotificationConfig("customNotificationConfig",
-            config_id="my-config",
-            organization="123456789",
-            description="My custom Cloud Security Command Center Finding Notification Configuration",
-            pubsub_topic=scc_notification.id,
-            streaming_config=gcp.securitycenter.NotificationConfigStreamingConfigArgs(
-                filter="category = \\"OPEN_FIREWALL\\" AND state = \\"ACTIVE\\"",
-            ))
-        ```
 
         ## Import
 
@@ -432,11 +426,7 @@ class NotificationConfig(pulumi.CustomResource):
             if pubsub_topic is None and not opts.urn:
                 raise TypeError("Missing required property 'pubsub_topic'")
             __props__.__dict__["pubsub_topic"] = pubsub_topic
-            if streaming_config is not None and not isinstance(streaming_config, NotificationConfigStreamingConfigArgs):
-                streaming_config = streaming_config or {}
-                def _setter(key, value):
-                    streaming_config[key] = value
-                NotificationConfigStreamingConfigArgs._configure(_setter, **streaming_config)
+            streaming_config = _utilities.configure(streaming_config, NotificationConfigStreamingConfigArgs, True)
             if streaming_config is None and not opts.urn:
                 raise TypeError("Missing required property 'streaming_config'")
             __props__.__dict__["streaming_config"] = streaming_config

@@ -51,12 +51,20 @@ class ConsentStoreArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataset: pulumi.Input[str],
+             dataset: Optional[pulumi.Input[str]] = None,
              default_consent_ttl: Optional[pulumi.Input[str]] = None,
              enable_consent_create_on_update: Optional[pulumi.Input[bool]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dataset is None:
+            raise TypeError("Missing 'dataset' argument")
+        if default_consent_ttl is None and 'defaultConsentTtl' in kwargs:
+            default_consent_ttl = kwargs['defaultConsentTtl']
+        if enable_consent_create_on_update is None and 'enableConsentCreateOnUpdate' in kwargs:
+            enable_consent_create_on_update = kwargs['enableConsentCreateOnUpdate']
+
         _setter("dataset", dataset)
         if default_consent_ttl is not None:
             _setter("default_consent_ttl", default_consent_ttl)
@@ -186,7 +194,13 @@ class _ConsentStoreState:
              enable_consent_create_on_update: Optional[pulumi.Input[bool]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if default_consent_ttl is None and 'defaultConsentTtl' in kwargs:
+            default_consent_ttl = kwargs['defaultConsentTtl']
+        if enable_consent_create_on_update is None and 'enableConsentCreateOnUpdate' in kwargs:
+            enable_consent_create_on_update = kwargs['enableConsentCreateOnUpdate']
+
         if dataset is not None:
             _setter("dataset", dataset)
         if default_consent_ttl is not None:
@@ -293,47 +307,6 @@ class ConsentStore(pulumi.CustomResource):
             * [Creating a Consent store](https://cloud.google.com/healthcare/docs/how-tos/consent)
 
         ## Example Usage
-        ### Healthcare Consent Store Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
-        my_consent = gcp.healthcare.ConsentStore("my-consent", dataset=dataset.id)
-        ```
-        ### Healthcare Consent Store Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
-        my_consent = gcp.healthcare.ConsentStore("my-consent",
-            dataset=dataset.id,
-            enable_consent_create_on_update=True,
-            default_consent_ttl="90000s",
-            labels={
-                "label1": "labelvalue1",
-            })
-        ```
-        ### Healthcare Consent Store Iam
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
-        my_consent = gcp.healthcare.ConsentStore("my-consent", dataset=dataset.id)
-        test_account = gcp.service_account.Account("test-account",
-            account_id="my-account",
-            display_name="Test Service Account")
-        test_iam = gcp.healthcare.ConsentStoreIamMember("test-iam",
-            dataset=dataset.id,
-            consent_store_id=my_consent.name,
-            role="roles/editor",
-            member=test_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        ```
 
         ## Import
 
@@ -380,47 +353,6 @@ class ConsentStore(pulumi.CustomResource):
             * [Creating a Consent store](https://cloud.google.com/healthcare/docs/how-tos/consent)
 
         ## Example Usage
-        ### Healthcare Consent Store Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
-        my_consent = gcp.healthcare.ConsentStore("my-consent", dataset=dataset.id)
-        ```
-        ### Healthcare Consent Store Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
-        my_consent = gcp.healthcare.ConsentStore("my-consent",
-            dataset=dataset.id,
-            enable_consent_create_on_update=True,
-            default_consent_ttl="90000s",
-            labels={
-                "label1": "labelvalue1",
-            })
-        ```
-        ### Healthcare Consent Store Iam
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
-        my_consent = gcp.healthcare.ConsentStore("my-consent", dataset=dataset.id)
-        test_account = gcp.service_account.Account("test-account",
-            account_id="my-account",
-            display_name="Test Service Account")
-        test_iam = gcp.healthcare.ConsentStoreIamMember("test-iam",
-            dataset=dataset.id,
-            consent_store_id=my_consent.name,
-            role="roles/editor",
-            member=test_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        ```
 
         ## Import
 

@@ -111,9 +111,19 @@ class BitbucketServerConfigConnectedRepository(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project_key: str,
-             repo_slug: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             project_key: Optional[str] = None,
+             repo_slug: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project_key is None and 'projectKey' in kwargs:
+            project_key = kwargs['projectKey']
+        if project_key is None:
+            raise TypeError("Missing 'project_key' argument")
+        if repo_slug is None and 'repoSlug' in kwargs:
+            repo_slug = kwargs['repoSlug']
+        if repo_slug is None:
+            raise TypeError("Missing 'repo_slug' argument")
+
         _setter("project_key", project_key)
         _setter("repo_slug", repo_slug)
 
@@ -178,10 +188,24 @@ class BitbucketServerConfigSecrets(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             admin_access_token_version_name: str,
-             read_access_token_version_name: str,
-             webhook_secret_version_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             admin_access_token_version_name: Optional[str] = None,
+             read_access_token_version_name: Optional[str] = None,
+             webhook_secret_version_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if admin_access_token_version_name is None and 'adminAccessTokenVersionName' in kwargs:
+            admin_access_token_version_name = kwargs['adminAccessTokenVersionName']
+        if admin_access_token_version_name is None:
+            raise TypeError("Missing 'admin_access_token_version_name' argument")
+        if read_access_token_version_name is None and 'readAccessTokenVersionName' in kwargs:
+            read_access_token_version_name = kwargs['readAccessTokenVersionName']
+        if read_access_token_version_name is None:
+            raise TypeError("Missing 'read_access_token_version_name' argument")
+        if webhook_secret_version_name is None and 'webhookSecretVersionName' in kwargs:
+            webhook_secret_version_name = kwargs['webhookSecretVersionName']
+        if webhook_secret_version_name is None:
+            raise TypeError("Missing 'webhook_secret_version_name' argument")
+
         _setter("admin_access_token_version_name", admin_access_token_version_name)
         _setter("read_access_token_version_name", read_access_token_version_name)
         _setter("webhook_secret_version_name", webhook_secret_version_name)
@@ -247,7 +271,11 @@ class TriggerApprovalConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              approval_required: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if approval_required is None and 'approvalRequired' in kwargs:
+            approval_required = kwargs['approvalRequired']
+
         if approval_required is not None:
             _setter("approval_required", approval_required)
 
@@ -313,12 +341,28 @@ class TriggerBitbucketServerTriggerConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bitbucket_server_config_resource: str,
-             project_key: str,
-             repo_slug: str,
+             bitbucket_server_config_resource: Optional[str] = None,
+             project_key: Optional[str] = None,
+             repo_slug: Optional[str] = None,
              pull_request: Optional['outputs.TriggerBitbucketServerTriggerConfigPullRequest'] = None,
              push: Optional['outputs.TriggerBitbucketServerTriggerConfigPush'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bitbucket_server_config_resource is None and 'bitbucketServerConfigResource' in kwargs:
+            bitbucket_server_config_resource = kwargs['bitbucketServerConfigResource']
+        if bitbucket_server_config_resource is None:
+            raise TypeError("Missing 'bitbucket_server_config_resource' argument")
+        if project_key is None and 'projectKey' in kwargs:
+            project_key = kwargs['projectKey']
+        if project_key is None:
+            raise TypeError("Missing 'project_key' argument")
+        if repo_slug is None and 'repoSlug' in kwargs:
+            repo_slug = kwargs['repoSlug']
+        if repo_slug is None:
+            raise TypeError("Missing 'repo_slug' argument")
+        if pull_request is None and 'pullRequest' in kwargs:
+            pull_request = kwargs['pullRequest']
+
         _setter("bitbucket_server_config_resource", bitbucket_server_config_resource)
         _setter("project_key", project_key)
         _setter("repo_slug", repo_slug)
@@ -412,10 +456,18 @@ class TriggerBitbucketServerTriggerConfigPullRequest(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             branch: str,
+             branch: Optional[str] = None,
              comment_control: Optional[str] = None,
              invert_regex: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if branch is None:
+            raise TypeError("Missing 'branch' argument")
+        if comment_control is None and 'commentControl' in kwargs:
+            comment_control = kwargs['commentControl']
+        if invert_regex is None and 'invertRegex' in kwargs:
+            invert_regex = kwargs['invertRegex']
+
         _setter("branch", branch)
         if comment_control is not None:
             _setter("comment_control", comment_control)
@@ -489,7 +541,11 @@ class TriggerBitbucketServerTriggerConfigPush(dict):
              branch: Optional[str] = None,
              invert_regex: Optional[bool] = None,
              tag: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if invert_regex is None and 'invertRegex' in kwargs:
+            invert_regex = kwargs['invertRegex']
+
         if branch is not None:
             _setter("branch", branch)
         if invert_regex is not None:
@@ -608,7 +664,7 @@ class TriggerBuild(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             steps: Sequence['outputs.TriggerBuildStep'],
+             steps: Optional[Sequence['outputs.TriggerBuildStep']] = None,
              artifacts: Optional['outputs.TriggerBuildArtifacts'] = None,
              available_secrets: Optional['outputs.TriggerBuildAvailableSecrets'] = None,
              images: Optional[Sequence[str]] = None,
@@ -620,7 +676,17 @@ class TriggerBuild(dict):
              substitutions: Optional[Mapping[str, str]] = None,
              tags: Optional[Sequence[str]] = None,
              timeout: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if steps is None:
+            raise TypeError("Missing 'steps' argument")
+        if available_secrets is None and 'availableSecrets' in kwargs:
+            available_secrets = kwargs['availableSecrets']
+        if logs_bucket is None and 'logsBucket' in kwargs:
+            logs_bucket = kwargs['logsBucket']
+        if queue_ttl is None and 'queueTtl' in kwargs:
+            queue_ttl = kwargs['queueTtl']
+
         _setter("steps", steps)
         if artifacts is not None:
             _setter("artifacts", artifacts)
@@ -787,7 +853,9 @@ class TriggerBuildArtifacts(dict):
              _setter: Callable[[Any, Any], None],
              images: Optional[Sequence[str]] = None,
              objects: Optional['outputs.TriggerBuildArtifactsObjects'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if images is not None:
             _setter("images", images)
         if objects is not None:
@@ -848,7 +916,9 @@ class TriggerBuildArtifactsObjects(dict):
              location: Optional[str] = None,
              paths: Optional[Sequence[str]] = None,
              timings: Optional[Sequence['outputs.TriggerBuildArtifactsObjectsTiming']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if location is not None:
             _setter("location", location)
         if paths is not None:
@@ -930,7 +1000,13 @@ class TriggerBuildArtifactsObjectsTiming(dict):
              _setter: Callable[[Any, Any], None],
              end_time: Optional[str] = None,
              start_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+
         if end_time is not None:
             _setter("end_time", end_time)
         if start_time is not None:
@@ -989,8 +1065,14 @@ class TriggerBuildAvailableSecrets(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             secret_managers: Sequence['outputs.TriggerBuildAvailableSecretsSecretManager'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             secret_managers: Optional[Sequence['outputs.TriggerBuildAvailableSecretsSecretManager']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if secret_managers is None and 'secretManagers' in kwargs:
+            secret_managers = kwargs['secretManagers']
+        if secret_managers is None:
+            raise TypeError("Missing 'secret_managers' argument")
+
         _setter("secret_managers", secret_managers)
 
     @property
@@ -1039,9 +1121,17 @@ class TriggerBuildAvailableSecretsSecretManager(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             env: str,
-             version_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             env: Optional[str] = None,
+             version_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if env is None:
+            raise TypeError("Missing 'env' argument")
+        if version_name is None and 'versionName' in kwargs:
+            version_name = kwargs['versionName']
+        if version_name is None:
+            raise TypeError("Missing 'version_name' argument")
+
         _setter("env", env)
         _setter("version_name", version_name)
 
@@ -1180,7 +1270,27 @@ class TriggerBuildOptions(dict):
              substitution_option: Optional[str] = None,
              volumes: Optional[Sequence['outputs.TriggerBuildOptionsVolume']] = None,
              worker_pool: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if disk_size_gb is None and 'diskSizeGb' in kwargs:
+            disk_size_gb = kwargs['diskSizeGb']
+        if dynamic_substitutions is None and 'dynamicSubstitutions' in kwargs:
+            dynamic_substitutions = kwargs['dynamicSubstitutions']
+        if log_streaming_option is None and 'logStreamingOption' in kwargs:
+            log_streaming_option = kwargs['logStreamingOption']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if requested_verify_option is None and 'requestedVerifyOption' in kwargs:
+            requested_verify_option = kwargs['requestedVerifyOption']
+        if secret_envs is None and 'secretEnvs' in kwargs:
+            secret_envs = kwargs['secretEnvs']
+        if source_provenance_hashes is None and 'sourceProvenanceHashes' in kwargs:
+            source_provenance_hashes = kwargs['sourceProvenanceHashes']
+        if substitution_option is None and 'substitutionOption' in kwargs:
+            substitution_option = kwargs['substitutionOption']
+        if worker_pool is None and 'workerPool' in kwargs:
+            worker_pool = kwargs['workerPool']
+
         if disk_size_gb is not None:
             _setter("disk_size_gb", disk_size_gb)
         if dynamic_substitutions is not None:
@@ -1350,7 +1460,9 @@ class TriggerBuildOptionsVolume(dict):
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
              path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if path is not None:
@@ -1416,9 +1528,17 @@ class TriggerBuildSecret(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             kms_key_name: str,
+             kms_key_name: Optional[str] = None,
              secret_env: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if kms_key_name is None:
+            raise TypeError("Missing 'kms_key_name' argument")
+        if secret_env is None and 'secretEnv' in kwargs:
+            secret_env = kwargs['secretEnv']
+
         _setter("kms_key_name", kms_key_name)
         if secret_env is not None:
             _setter("secret_env", secret_env)
@@ -1483,7 +1603,13 @@ class TriggerBuildSource(dict):
              _setter: Callable[[Any, Any], None],
              repo_source: Optional['outputs.TriggerBuildSourceRepoSource'] = None,
              storage_source: Optional['outputs.TriggerBuildSourceStorageSource'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if repo_source is None and 'repoSource' in kwargs:
+            repo_source = kwargs['repoSource']
+        if storage_source is None and 'storageSource' in kwargs:
+            storage_source = kwargs['storageSource']
+
         if repo_source is not None:
             _setter("repo_source", repo_source)
         if storage_source is not None:
@@ -1577,7 +1703,7 @@ class TriggerBuildSourceRepoSource(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             repo_name: str,
+             repo_name: Optional[str] = None,
              branch_name: Optional[str] = None,
              commit_sha: Optional[str] = None,
              dir: Optional[str] = None,
@@ -1585,7 +1711,23 @@ class TriggerBuildSourceRepoSource(dict):
              project_id: Optional[str] = None,
              substitutions: Optional[Mapping[str, str]] = None,
              tag_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if repo_name is None and 'repoName' in kwargs:
+            repo_name = kwargs['repoName']
+        if repo_name is None:
+            raise TypeError("Missing 'repo_name' argument")
+        if branch_name is None and 'branchName' in kwargs:
+            branch_name = kwargs['branchName']
+        if commit_sha is None and 'commitSha' in kwargs:
+            commit_sha = kwargs['commitSha']
+        if invert_regex is None and 'invertRegex' in kwargs:
+            invert_regex = kwargs['invertRegex']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if tag_name is None and 'tagName' in kwargs:
+            tag_name = kwargs['tagName']
+
         _setter("repo_name", repo_name)
         if branch_name is not None:
             _setter("branch_name", branch_name)
@@ -1696,10 +1838,16 @@ class TriggerBuildSourceStorageSource(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: str,
-             object: str,
+             bucket: Optional[str] = None,
+             object: Optional[str] = None,
              generation: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if object is None:
+            raise TypeError("Missing 'object' argument")
+
         _setter("bucket", bucket)
         _setter("object", object)
         if generation is not None:
@@ -1862,7 +2010,7 @@ class TriggerBuildStep(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              allow_exit_codes: Optional[Sequence[int]] = None,
              allow_failure: Optional[bool] = None,
              args: Optional[Sequence[str]] = None,
@@ -1876,7 +2024,19 @@ class TriggerBuildStep(dict):
              timing: Optional[str] = None,
              volumes: Optional[Sequence['outputs.TriggerBuildStepVolume']] = None,
              wait_fors: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if allow_exit_codes is None and 'allowExitCodes' in kwargs:
+            allow_exit_codes = kwargs['allowExitCodes']
+        if allow_failure is None and 'allowFailure' in kwargs:
+            allow_failure = kwargs['allowFailure']
+        if secret_envs is None and 'secretEnvs' in kwargs:
+            secret_envs = kwargs['secretEnvs']
+        if wait_fors is None and 'waitFors' in kwargs:
+            wait_fors = kwargs['waitFors']
+
         _setter("name", name)
         if allow_exit_codes is not None:
             _setter("allow_exit_codes", allow_exit_codes)
@@ -2093,9 +2253,15 @@ class TriggerBuildStepVolume(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             path: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             path: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+
         _setter("name", name)
         _setter("path", path)
 
@@ -2181,14 +2347,26 @@ class TriggerGitFileSource(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: str,
-             repo_type: str,
+             path: Optional[str] = None,
+             repo_type: Optional[str] = None,
              bitbucket_server_config: Optional[str] = None,
              github_enterprise_config: Optional[str] = None,
              repository: Optional[str] = None,
              revision: Optional[str] = None,
              uri: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if repo_type is None and 'repoType' in kwargs:
+            repo_type = kwargs['repoType']
+        if repo_type is None:
+            raise TypeError("Missing 'repo_type' argument")
+        if bitbucket_server_config is None and 'bitbucketServerConfig' in kwargs:
+            bitbucket_server_config = kwargs['bitbucketServerConfig']
+        if github_enterprise_config is None and 'githubEnterpriseConfig' in kwargs:
+            github_enterprise_config = kwargs['githubEnterpriseConfig']
+
         _setter("path", path)
         _setter("repo_type", repo_type)
         if bitbucket_server_config is not None:
@@ -2322,7 +2500,13 @@ class TriggerGithub(dict):
              owner: Optional[str] = None,
              pull_request: Optional['outputs.TriggerGithubPullRequest'] = None,
              push: Optional['outputs.TriggerGithubPush'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enterprise_config_resource_name is None and 'enterpriseConfigResourceName' in kwargs:
+            enterprise_config_resource_name = kwargs['enterpriseConfigResourceName']
+        if pull_request is None and 'pullRequest' in kwargs:
+            pull_request = kwargs['pullRequest']
+
         if enterprise_config_resource_name is not None:
             _setter("enterprise_config_resource_name", enterprise_config_resource_name)
         if name is not None:
@@ -2421,10 +2605,18 @@ class TriggerGithubPullRequest(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             branch: str,
+             branch: Optional[str] = None,
              comment_control: Optional[str] = None,
              invert_regex: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if branch is None:
+            raise TypeError("Missing 'branch' argument")
+        if comment_control is None and 'commentControl' in kwargs:
+            comment_control = kwargs['commentControl']
+        if invert_regex is None and 'invertRegex' in kwargs:
+            invert_regex = kwargs['invertRegex']
+
         _setter("branch", branch)
         if comment_control is not None:
             _setter("comment_control", comment_control)
@@ -2498,7 +2690,11 @@ class TriggerGithubPush(dict):
              branch: Optional[str] = None,
              invert_regex: Optional[bool] = None,
              tag: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if invert_regex is None and 'invertRegex' in kwargs:
+            invert_regex = kwargs['invertRegex']
+
         if branch is not None:
             _setter("branch", branch)
         if invert_regex is not None:
@@ -2574,11 +2770,17 @@ class TriggerPubsubConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             topic: str,
+             topic: Optional[str] = None,
              service_account_email: Optional[str] = None,
              state: Optional[str] = None,
              subscription: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if topic is None:
+            raise TypeError("Missing 'topic' argument")
+        if service_account_email is None and 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+
         _setter("topic", topic)
         if service_account_email is not None:
             _setter("service_account_email", service_account_email)
@@ -2665,7 +2867,11 @@ class TriggerRepositoryEventConfig(dict):
              pull_request: Optional['outputs.TriggerRepositoryEventConfigPullRequest'] = None,
              push: Optional['outputs.TriggerRepositoryEventConfigPush'] = None,
              repository: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if pull_request is None and 'pullRequest' in kwargs:
+            pull_request = kwargs['pullRequest']
+
         if pull_request is not None:
             _setter("pull_request", pull_request)
         if push is not None:
@@ -2744,7 +2950,13 @@ class TriggerRepositoryEventConfigPullRequest(dict):
              branch: Optional[str] = None,
              comment_control: Optional[str] = None,
              invert_regex: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if comment_control is None and 'commentControl' in kwargs:
+            comment_control = kwargs['commentControl']
+        if invert_regex is None and 'invertRegex' in kwargs:
+            invert_regex = kwargs['invertRegex']
+
         if branch is not None:
             _setter("branch", branch)
         if comment_control is not None:
@@ -2819,7 +3031,11 @@ class TriggerRepositoryEventConfigPush(dict):
              branch: Optional[str] = None,
              invert_regex: Optional[bool] = None,
              tag: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if invert_regex is None and 'invertRegex' in kwargs:
+            invert_regex = kwargs['invertRegex']
+
         if branch is not None:
             _setter("branch", branch)
         if invert_regex is not None:
@@ -2907,13 +3123,25 @@ class TriggerSourceToBuild(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ref: str,
-             repo_type: str,
+             ref: Optional[str] = None,
+             repo_type: Optional[str] = None,
              bitbucket_server_config: Optional[str] = None,
              github_enterprise_config: Optional[str] = None,
              repository: Optional[str] = None,
              uri: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ref is None:
+            raise TypeError("Missing 'ref' argument")
+        if repo_type is None and 'repoType' in kwargs:
+            repo_type = kwargs['repoType']
+        if repo_type is None:
+            raise TypeError("Missing 'repo_type' argument")
+        if bitbucket_server_config is None and 'bitbucketServerConfig' in kwargs:
+            bitbucket_server_config = kwargs['bitbucketServerConfig']
+        if github_enterprise_config is None and 'githubEnterpriseConfig' in kwargs:
+            github_enterprise_config = kwargs['githubEnterpriseConfig']
+
         _setter("ref", ref)
         _setter("repo_type", repo_type)
         if bitbucket_server_config is not None:
@@ -3051,7 +3279,21 @@ class TriggerTriggerTemplate(dict):
              project_id: Optional[str] = None,
              repo_name: Optional[str] = None,
              tag_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if branch_name is None and 'branchName' in kwargs:
+            branch_name = kwargs['branchName']
+        if commit_sha is None and 'commitSha' in kwargs:
+            commit_sha = kwargs['commitSha']
+        if invert_regex is None and 'invertRegex' in kwargs:
+            invert_regex = kwargs['invertRegex']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if repo_name is None and 'repoName' in kwargs:
+            repo_name = kwargs['repoName']
+        if tag_name is None and 'tagName' in kwargs:
+            tag_name = kwargs['tagName']
+
         if branch_name is not None:
             _setter("branch_name", branch_name)
         if commit_sha is not None:
@@ -3149,9 +3391,13 @@ class TriggerWebhookConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             secret: str,
+             secret: Optional[str] = None,
              state: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if secret is None:
+            raise TypeError("Missing 'secret' argument")
+
         _setter("secret", secret)
         if state is not None:
             _setter("state", state)
@@ -3211,9 +3457,17 @@ class WorkerPoolNetworkConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             peered_network: str,
+             peered_network: Optional[str] = None,
              peered_network_ip_range: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if peered_network is None and 'peeredNetwork' in kwargs:
+            peered_network = kwargs['peeredNetwork']
+        if peered_network is None:
+            raise TypeError("Missing 'peered_network' argument")
+        if peered_network_ip_range is None and 'peeredNetworkIpRange' in kwargs:
+            peered_network_ip_range = kwargs['peeredNetworkIpRange']
+
         _setter("peered_network", peered_network)
         if peered_network_ip_range is not None:
             _setter("peered_network_ip_range", peered_network_ip_range)
@@ -3279,7 +3533,15 @@ class WorkerPoolWorkerConfig(dict):
              disk_size_gb: Optional[int] = None,
              machine_type: Optional[str] = None,
              no_external_ip: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if disk_size_gb is None and 'diskSizeGb' in kwargs:
+            disk_size_gb = kwargs['diskSizeGb']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if no_external_ip is None and 'noExternalIp' in kwargs:
+            no_external_ip = kwargs['noExternalIp']
+
         if disk_size_gb is not None:
             _setter("disk_size_gb", disk_size_gb)
         if machine_type is not None:
@@ -3323,8 +3585,14 @@ class GetTriggerApprovalConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             approval_required: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             approval_required: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if approval_required is None and 'approvalRequired' in kwargs:
+            approval_required = kwargs['approvalRequired']
+        if approval_required is None:
+            raise TypeError("Missing 'approval_required' argument")
+
         _setter("approval_required", approval_required)
 
     @property
@@ -3352,12 +3620,32 @@ class GetTriggerBitbucketServerTriggerConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bitbucket_server_config_resource: str,
-             project_key: str,
-             pull_requests: Sequence['outputs.GetTriggerBitbucketServerTriggerConfigPullRequestResult'],
-             pushes: Sequence['outputs.GetTriggerBitbucketServerTriggerConfigPushResult'],
-             repo_slug: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             bitbucket_server_config_resource: Optional[str] = None,
+             project_key: Optional[str] = None,
+             pull_requests: Optional[Sequence['outputs.GetTriggerBitbucketServerTriggerConfigPullRequestResult']] = None,
+             pushes: Optional[Sequence['outputs.GetTriggerBitbucketServerTriggerConfigPushResult']] = None,
+             repo_slug: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bitbucket_server_config_resource is None and 'bitbucketServerConfigResource' in kwargs:
+            bitbucket_server_config_resource = kwargs['bitbucketServerConfigResource']
+        if bitbucket_server_config_resource is None:
+            raise TypeError("Missing 'bitbucket_server_config_resource' argument")
+        if project_key is None and 'projectKey' in kwargs:
+            project_key = kwargs['projectKey']
+        if project_key is None:
+            raise TypeError("Missing 'project_key' argument")
+        if pull_requests is None and 'pullRequests' in kwargs:
+            pull_requests = kwargs['pullRequests']
+        if pull_requests is None:
+            raise TypeError("Missing 'pull_requests' argument")
+        if pushes is None:
+            raise TypeError("Missing 'pushes' argument")
+        if repo_slug is None and 'repoSlug' in kwargs:
+            repo_slug = kwargs['repoSlug']
+        if repo_slug is None:
+            raise TypeError("Missing 'repo_slug' argument")
+
         _setter("bitbucket_server_config_resource", bitbucket_server_config_resource)
         _setter("project_key", project_key)
         _setter("pull_requests", pull_requests)
@@ -3405,10 +3693,22 @@ class GetTriggerBitbucketServerTriggerConfigPullRequestResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             branch: str,
-             comment_control: str,
-             invert_regex: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             branch: Optional[str] = None,
+             comment_control: Optional[str] = None,
+             invert_regex: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if branch is None:
+            raise TypeError("Missing 'branch' argument")
+        if comment_control is None and 'commentControl' in kwargs:
+            comment_control = kwargs['commentControl']
+        if comment_control is None:
+            raise TypeError("Missing 'comment_control' argument")
+        if invert_regex is None and 'invertRegex' in kwargs:
+            invert_regex = kwargs['invertRegex']
+        if invert_regex is None:
+            raise TypeError("Missing 'invert_regex' argument")
+
         _setter("branch", branch)
         _setter("comment_control", comment_control)
         _setter("invert_regex", invert_regex)
@@ -3444,10 +3744,20 @@ class GetTriggerBitbucketServerTriggerConfigPushResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             branch: str,
-             invert_regex: bool,
-             tag: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             branch: Optional[str] = None,
+             invert_regex: Optional[bool] = None,
+             tag: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if branch is None:
+            raise TypeError("Missing 'branch' argument")
+        if invert_regex is None and 'invertRegex' in kwargs:
+            invert_regex = kwargs['invertRegex']
+        if invert_regex is None:
+            raise TypeError("Missing 'invert_regex' argument")
+        if tag is None:
+            raise TypeError("Missing 'tag' argument")
+
         _setter("branch", branch)
         _setter("invert_regex", invert_regex)
         _setter("tag", tag)
@@ -3501,19 +3811,51 @@ class GetTriggerBuildResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             artifacts: Sequence['outputs.GetTriggerBuildArtifactResult'],
-             available_secrets: Sequence['outputs.GetTriggerBuildAvailableSecretResult'],
-             images: Sequence[str],
-             logs_bucket: str,
-             options: Sequence['outputs.GetTriggerBuildOptionResult'],
-             queue_ttl: str,
-             secrets: Sequence['outputs.GetTriggerBuildSecretResult'],
-             sources: Sequence['outputs.GetTriggerBuildSourceResult'],
-             steps: Sequence['outputs.GetTriggerBuildStepResult'],
-             substitutions: Mapping[str, str],
-             tags: Sequence[str],
-             timeout: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             artifacts: Optional[Sequence['outputs.GetTriggerBuildArtifactResult']] = None,
+             available_secrets: Optional[Sequence['outputs.GetTriggerBuildAvailableSecretResult']] = None,
+             images: Optional[Sequence[str]] = None,
+             logs_bucket: Optional[str] = None,
+             options: Optional[Sequence['outputs.GetTriggerBuildOptionResult']] = None,
+             queue_ttl: Optional[str] = None,
+             secrets: Optional[Sequence['outputs.GetTriggerBuildSecretResult']] = None,
+             sources: Optional[Sequence['outputs.GetTriggerBuildSourceResult']] = None,
+             steps: Optional[Sequence['outputs.GetTriggerBuildStepResult']] = None,
+             substitutions: Optional[Mapping[str, str]] = None,
+             tags: Optional[Sequence[str]] = None,
+             timeout: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if artifacts is None:
+            raise TypeError("Missing 'artifacts' argument")
+        if available_secrets is None and 'availableSecrets' in kwargs:
+            available_secrets = kwargs['availableSecrets']
+        if available_secrets is None:
+            raise TypeError("Missing 'available_secrets' argument")
+        if images is None:
+            raise TypeError("Missing 'images' argument")
+        if logs_bucket is None and 'logsBucket' in kwargs:
+            logs_bucket = kwargs['logsBucket']
+        if logs_bucket is None:
+            raise TypeError("Missing 'logs_bucket' argument")
+        if options is None:
+            raise TypeError("Missing 'options' argument")
+        if queue_ttl is None and 'queueTtl' in kwargs:
+            queue_ttl = kwargs['queueTtl']
+        if queue_ttl is None:
+            raise TypeError("Missing 'queue_ttl' argument")
+        if secrets is None:
+            raise TypeError("Missing 'secrets' argument")
+        if sources is None:
+            raise TypeError("Missing 'sources' argument")
+        if steps is None:
+            raise TypeError("Missing 'steps' argument")
+        if substitutions is None:
+            raise TypeError("Missing 'substitutions' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if timeout is None:
+            raise TypeError("Missing 'timeout' argument")
+
         _setter("artifacts", artifacts)
         _setter("available_secrets", available_secrets)
         _setter("images", images)
@@ -3601,9 +3943,15 @@ class GetTriggerBuildArtifactResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             images: Sequence[str],
-             objects: Sequence['outputs.GetTriggerBuildArtifactObjectResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             images: Optional[Sequence[str]] = None,
+             objects: Optional[Sequence['outputs.GetTriggerBuildArtifactObjectResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if images is None:
+            raise TypeError("Missing 'images' argument")
+        if objects is None:
+            raise TypeError("Missing 'objects' argument")
+
         _setter("images", images)
         _setter("objects", objects)
 
@@ -3638,10 +3986,18 @@ class GetTriggerBuildArtifactObjectResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: str,
-             paths: Sequence[str],
-             timings: Sequence['outputs.GetTriggerBuildArtifactObjectTimingResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             location: Optional[str] = None,
+             paths: Optional[Sequence[str]] = None,
+             timings: Optional[Sequence['outputs.GetTriggerBuildArtifactObjectTimingResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if paths is None:
+            raise TypeError("Missing 'paths' argument")
+        if timings is None:
+            raise TypeError("Missing 'timings' argument")
+
         _setter("location", location)
         _setter("paths", paths)
         _setter("timings", timings)
@@ -3680,9 +4036,19 @@ class GetTriggerBuildArtifactObjectTimingResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             end_time: str,
-             start_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             end_time: Optional[str] = None,
+             start_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if end_time is None:
+            raise TypeError("Missing 'end_time' argument")
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if start_time is None:
+            raise TypeError("Missing 'start_time' argument")
+
         _setter("end_time", end_time)
         _setter("start_time", start_time)
 
@@ -3708,8 +4074,14 @@ class GetTriggerBuildAvailableSecretResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             secret_managers: Sequence['outputs.GetTriggerBuildAvailableSecretSecretManagerResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             secret_managers: Optional[Sequence['outputs.GetTriggerBuildAvailableSecretSecretManagerResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if secret_managers is None and 'secretManagers' in kwargs:
+            secret_managers = kwargs['secretManagers']
+        if secret_managers is None:
+            raise TypeError("Missing 'secret_managers' argument")
+
         _setter("secret_managers", secret_managers)
 
     @property
@@ -3731,9 +4103,17 @@ class GetTriggerBuildAvailableSecretSecretManagerResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             env: str,
-             version_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             env: Optional[str] = None,
+             version_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if env is None:
+            raise TypeError("Missing 'env' argument")
+        if version_name is None and 'versionName' in kwargs:
+            version_name = kwargs['versionName']
+        if version_name is None:
+            raise TypeError("Missing 'version_name' argument")
+
         _setter("env", env)
         _setter("version_name", version_name)
 
@@ -3781,19 +4161,63 @@ class GetTriggerBuildOptionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disk_size_gb: int,
-             dynamic_substitutions: bool,
-             envs: Sequence[str],
-             log_streaming_option: str,
-             logging: str,
-             machine_type: str,
-             requested_verify_option: str,
-             secret_envs: Sequence[str],
-             source_provenance_hashes: Sequence[str],
-             substitution_option: str,
-             volumes: Sequence['outputs.GetTriggerBuildOptionVolumeResult'],
-             worker_pool: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             disk_size_gb: Optional[int] = None,
+             dynamic_substitutions: Optional[bool] = None,
+             envs: Optional[Sequence[str]] = None,
+             log_streaming_option: Optional[str] = None,
+             logging: Optional[str] = None,
+             machine_type: Optional[str] = None,
+             requested_verify_option: Optional[str] = None,
+             secret_envs: Optional[Sequence[str]] = None,
+             source_provenance_hashes: Optional[Sequence[str]] = None,
+             substitution_option: Optional[str] = None,
+             volumes: Optional[Sequence['outputs.GetTriggerBuildOptionVolumeResult']] = None,
+             worker_pool: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if disk_size_gb is None and 'diskSizeGb' in kwargs:
+            disk_size_gb = kwargs['diskSizeGb']
+        if disk_size_gb is None:
+            raise TypeError("Missing 'disk_size_gb' argument")
+        if dynamic_substitutions is None and 'dynamicSubstitutions' in kwargs:
+            dynamic_substitutions = kwargs['dynamicSubstitutions']
+        if dynamic_substitutions is None:
+            raise TypeError("Missing 'dynamic_substitutions' argument")
+        if envs is None:
+            raise TypeError("Missing 'envs' argument")
+        if log_streaming_option is None and 'logStreamingOption' in kwargs:
+            log_streaming_option = kwargs['logStreamingOption']
+        if log_streaming_option is None:
+            raise TypeError("Missing 'log_streaming_option' argument")
+        if logging is None:
+            raise TypeError("Missing 'logging' argument")
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if machine_type is None:
+            raise TypeError("Missing 'machine_type' argument")
+        if requested_verify_option is None and 'requestedVerifyOption' in kwargs:
+            requested_verify_option = kwargs['requestedVerifyOption']
+        if requested_verify_option is None:
+            raise TypeError("Missing 'requested_verify_option' argument")
+        if secret_envs is None and 'secretEnvs' in kwargs:
+            secret_envs = kwargs['secretEnvs']
+        if secret_envs is None:
+            raise TypeError("Missing 'secret_envs' argument")
+        if source_provenance_hashes is None and 'sourceProvenanceHashes' in kwargs:
+            source_provenance_hashes = kwargs['sourceProvenanceHashes']
+        if source_provenance_hashes is None:
+            raise TypeError("Missing 'source_provenance_hashes' argument")
+        if substitution_option is None and 'substitutionOption' in kwargs:
+            substitution_option = kwargs['substitutionOption']
+        if substitution_option is None:
+            raise TypeError("Missing 'substitution_option' argument")
+        if volumes is None:
+            raise TypeError("Missing 'volumes' argument")
+        if worker_pool is None and 'workerPool' in kwargs:
+            worker_pool = kwargs['workerPool']
+        if worker_pool is None:
+            raise TypeError("Missing 'worker_pool' argument")
+
         _setter("disk_size_gb", disk_size_gb)
         _setter("dynamic_substitutions", dynamic_substitutions)
         _setter("envs", envs)
@@ -3881,9 +4305,15 @@ class GetTriggerBuildOptionVolumeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             path: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             path: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+
         _setter("name", name)
         _setter("path", path)
 
@@ -3911,9 +4341,19 @@ class GetTriggerBuildSecretResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             kms_key_name: str,
-             secret_env: Mapping[str, str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             kms_key_name: Optional[str] = None,
+             secret_env: Optional[Mapping[str, str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if kms_key_name is None:
+            raise TypeError("Missing 'kms_key_name' argument")
+        if secret_env is None and 'secretEnv' in kwargs:
+            secret_env = kwargs['secretEnv']
+        if secret_env is None:
+            raise TypeError("Missing 'secret_env' argument")
+
         _setter("kms_key_name", kms_key_name)
         _setter("secret_env", secret_env)
 
@@ -3941,9 +4381,19 @@ class GetTriggerBuildSourceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             repo_sources: Sequence['outputs.GetTriggerBuildSourceRepoSourceResult'],
-             storage_sources: Sequence['outputs.GetTriggerBuildSourceStorageSourceResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             repo_sources: Optional[Sequence['outputs.GetTriggerBuildSourceRepoSourceResult']] = None,
+             storage_sources: Optional[Sequence['outputs.GetTriggerBuildSourceStorageSourceResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if repo_sources is None and 'repoSources' in kwargs:
+            repo_sources = kwargs['repoSources']
+        if repo_sources is None:
+            raise TypeError("Missing 'repo_sources' argument")
+        if storage_sources is None and 'storageSources' in kwargs:
+            storage_sources = kwargs['storageSources']
+        if storage_sources is None:
+            raise TypeError("Missing 'storage_sources' argument")
+
         _setter("repo_sources", repo_sources)
         _setter("storage_sources", storage_sources)
 
@@ -3983,15 +4433,45 @@ class GetTriggerBuildSourceRepoSourceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             branch_name: str,
-             commit_sha: str,
-             dir: str,
-             invert_regex: bool,
-             project_id: str,
-             repo_name: str,
-             substitutions: Mapping[str, str],
-             tag_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             branch_name: Optional[str] = None,
+             commit_sha: Optional[str] = None,
+             dir: Optional[str] = None,
+             invert_regex: Optional[bool] = None,
+             project_id: Optional[str] = None,
+             repo_name: Optional[str] = None,
+             substitutions: Optional[Mapping[str, str]] = None,
+             tag_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if branch_name is None and 'branchName' in kwargs:
+            branch_name = kwargs['branchName']
+        if branch_name is None:
+            raise TypeError("Missing 'branch_name' argument")
+        if commit_sha is None and 'commitSha' in kwargs:
+            commit_sha = kwargs['commitSha']
+        if commit_sha is None:
+            raise TypeError("Missing 'commit_sha' argument")
+        if dir is None:
+            raise TypeError("Missing 'dir' argument")
+        if invert_regex is None and 'invertRegex' in kwargs:
+            invert_regex = kwargs['invertRegex']
+        if invert_regex is None:
+            raise TypeError("Missing 'invert_regex' argument")
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if repo_name is None and 'repoName' in kwargs:
+            repo_name = kwargs['repoName']
+        if repo_name is None:
+            raise TypeError("Missing 'repo_name' argument")
+        if substitutions is None:
+            raise TypeError("Missing 'substitutions' argument")
+        if tag_name is None and 'tagName' in kwargs:
+            tag_name = kwargs['tagName']
+        if tag_name is None:
+            raise TypeError("Missing 'tag_name' argument")
+
         _setter("branch_name", branch_name)
         _setter("commit_sha", commit_sha)
         _setter("dir", dir)
@@ -4057,10 +4537,18 @@ class GetTriggerBuildSourceStorageSourceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: str,
-             generation: str,
-             object: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             bucket: Optional[str] = None,
+             generation: Optional[str] = None,
+             object: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if generation is None:
+            raise TypeError("Missing 'generation' argument")
+        if object is None:
+            raise TypeError("Missing 'object' argument")
+
         _setter("bucket", bucket)
         _setter("generation", generation)
         _setter("object", object)
@@ -4118,21 +4606,59 @@ class GetTriggerBuildStepResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allow_exit_codes: Sequence[int],
-             allow_failure: bool,
-             args: Sequence[str],
-             dir: str,
-             entrypoint: str,
-             envs: Sequence[str],
-             id: str,
-             name: str,
-             script: str,
-             secret_envs: Sequence[str],
-             timeout: str,
-             timing: str,
-             volumes: Sequence['outputs.GetTriggerBuildStepVolumeResult'],
-             wait_fors: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             allow_exit_codes: Optional[Sequence[int]] = None,
+             allow_failure: Optional[bool] = None,
+             args: Optional[Sequence[str]] = None,
+             dir: Optional[str] = None,
+             entrypoint: Optional[str] = None,
+             envs: Optional[Sequence[str]] = None,
+             id: Optional[str] = None,
+             name: Optional[str] = None,
+             script: Optional[str] = None,
+             secret_envs: Optional[Sequence[str]] = None,
+             timeout: Optional[str] = None,
+             timing: Optional[str] = None,
+             volumes: Optional[Sequence['outputs.GetTriggerBuildStepVolumeResult']] = None,
+             wait_fors: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_exit_codes is None and 'allowExitCodes' in kwargs:
+            allow_exit_codes = kwargs['allowExitCodes']
+        if allow_exit_codes is None:
+            raise TypeError("Missing 'allow_exit_codes' argument")
+        if allow_failure is None and 'allowFailure' in kwargs:
+            allow_failure = kwargs['allowFailure']
+        if allow_failure is None:
+            raise TypeError("Missing 'allow_failure' argument")
+        if args is None:
+            raise TypeError("Missing 'args' argument")
+        if dir is None:
+            raise TypeError("Missing 'dir' argument")
+        if entrypoint is None:
+            raise TypeError("Missing 'entrypoint' argument")
+        if envs is None:
+            raise TypeError("Missing 'envs' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if script is None:
+            raise TypeError("Missing 'script' argument")
+        if secret_envs is None and 'secretEnvs' in kwargs:
+            secret_envs = kwargs['secretEnvs']
+        if secret_envs is None:
+            raise TypeError("Missing 'secret_envs' argument")
+        if timeout is None:
+            raise TypeError("Missing 'timeout' argument")
+        if timing is None:
+            raise TypeError("Missing 'timing' argument")
+        if volumes is None:
+            raise TypeError("Missing 'volumes' argument")
+        if wait_fors is None and 'waitFors' in kwargs:
+            wait_fors = kwargs['waitFors']
+        if wait_fors is None:
+            raise TypeError("Missing 'wait_fors' argument")
+
         _setter("allow_exit_codes", allow_exit_codes)
         _setter("allow_failure", allow_failure)
         _setter("args", args)
@@ -4232,9 +4758,15 @@ class GetTriggerBuildStepVolumeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             path: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             path: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+
         _setter("name", name)
         _setter("path", path)
 
@@ -4272,14 +4804,36 @@ class GetTriggerGitFileSourceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bitbucket_server_config: str,
-             github_enterprise_config: str,
-             path: str,
-             repo_type: str,
-             repository: str,
-             revision: str,
-             uri: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             bitbucket_server_config: Optional[str] = None,
+             github_enterprise_config: Optional[str] = None,
+             path: Optional[str] = None,
+             repo_type: Optional[str] = None,
+             repository: Optional[str] = None,
+             revision: Optional[str] = None,
+             uri: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bitbucket_server_config is None and 'bitbucketServerConfig' in kwargs:
+            bitbucket_server_config = kwargs['bitbucketServerConfig']
+        if bitbucket_server_config is None:
+            raise TypeError("Missing 'bitbucket_server_config' argument")
+        if github_enterprise_config is None and 'githubEnterpriseConfig' in kwargs:
+            github_enterprise_config = kwargs['githubEnterpriseConfig']
+        if github_enterprise_config is None:
+            raise TypeError("Missing 'github_enterprise_config' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if repo_type is None and 'repoType' in kwargs:
+            repo_type = kwargs['repoType']
+        if repo_type is None:
+            raise TypeError("Missing 'repo_type' argument")
+        if repository is None:
+            raise TypeError("Missing 'repository' argument")
+        if revision is None:
+            raise TypeError("Missing 'revision' argument")
+        if uri is None:
+            raise TypeError("Missing 'uri' argument")
+
         _setter("bitbucket_server_config", bitbucket_server_config)
         _setter("github_enterprise_config", github_enterprise_config)
         _setter("path", path)
@@ -4343,12 +4897,28 @@ class GetTriggerGithubResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enterprise_config_resource_name: str,
-             name: str,
-             owner: str,
-             pull_requests: Sequence['outputs.GetTriggerGithubPullRequestResult'],
-             pushes: Sequence['outputs.GetTriggerGithubPushResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enterprise_config_resource_name: Optional[str] = None,
+             name: Optional[str] = None,
+             owner: Optional[str] = None,
+             pull_requests: Optional[Sequence['outputs.GetTriggerGithubPullRequestResult']] = None,
+             pushes: Optional[Sequence['outputs.GetTriggerGithubPushResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enterprise_config_resource_name is None and 'enterpriseConfigResourceName' in kwargs:
+            enterprise_config_resource_name = kwargs['enterpriseConfigResourceName']
+        if enterprise_config_resource_name is None:
+            raise TypeError("Missing 'enterprise_config_resource_name' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if owner is None:
+            raise TypeError("Missing 'owner' argument")
+        if pull_requests is None and 'pullRequests' in kwargs:
+            pull_requests = kwargs['pullRequests']
+        if pull_requests is None:
+            raise TypeError("Missing 'pull_requests' argument")
+        if pushes is None:
+            raise TypeError("Missing 'pushes' argument")
+
         _setter("enterprise_config_resource_name", enterprise_config_resource_name)
         _setter("name", name)
         _setter("owner", owner)
@@ -4396,10 +4966,22 @@ class GetTriggerGithubPullRequestResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             branch: str,
-             comment_control: str,
-             invert_regex: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             branch: Optional[str] = None,
+             comment_control: Optional[str] = None,
+             invert_regex: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if branch is None:
+            raise TypeError("Missing 'branch' argument")
+        if comment_control is None and 'commentControl' in kwargs:
+            comment_control = kwargs['commentControl']
+        if comment_control is None:
+            raise TypeError("Missing 'comment_control' argument")
+        if invert_regex is None and 'invertRegex' in kwargs:
+            invert_regex = kwargs['invertRegex']
+        if invert_regex is None:
+            raise TypeError("Missing 'invert_regex' argument")
+
         _setter("branch", branch)
         _setter("comment_control", comment_control)
         _setter("invert_regex", invert_regex)
@@ -4435,10 +5017,20 @@ class GetTriggerGithubPushResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             branch: str,
-             invert_regex: bool,
-             tag: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             branch: Optional[str] = None,
+             invert_regex: Optional[bool] = None,
+             tag: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if branch is None:
+            raise TypeError("Missing 'branch' argument")
+        if invert_regex is None and 'invertRegex' in kwargs:
+            invert_regex = kwargs['invertRegex']
+        if invert_regex is None:
+            raise TypeError("Missing 'invert_regex' argument")
+        if tag is None:
+            raise TypeError("Missing 'tag' argument")
+
         _setter("branch", branch)
         _setter("invert_regex", invert_regex)
         _setter("tag", tag)
@@ -4476,11 +5068,23 @@ class GetTriggerPubsubConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_account_email: str,
-             state: str,
-             subscription: str,
-             topic: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             service_account_email: Optional[str] = None,
+             state: Optional[str] = None,
+             subscription: Optional[str] = None,
+             topic: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service_account_email is None and 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+        if service_account_email is None:
+            raise TypeError("Missing 'service_account_email' argument")
+        if state is None:
+            raise TypeError("Missing 'state' argument")
+        if subscription is None:
+            raise TypeError("Missing 'subscription' argument")
+        if topic is None:
+            raise TypeError("Missing 'topic' argument")
+
         _setter("service_account_email", service_account_email)
         _setter("state", state)
         _setter("subscription", subscription)
@@ -4522,10 +5126,20 @@ class GetTriggerRepositoryEventConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pull_requests: Sequence['outputs.GetTriggerRepositoryEventConfigPullRequestResult'],
-             pushes: Sequence['outputs.GetTriggerRepositoryEventConfigPushResult'],
-             repository: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             pull_requests: Optional[Sequence['outputs.GetTriggerRepositoryEventConfigPullRequestResult']] = None,
+             pushes: Optional[Sequence['outputs.GetTriggerRepositoryEventConfigPushResult']] = None,
+             repository: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if pull_requests is None and 'pullRequests' in kwargs:
+            pull_requests = kwargs['pullRequests']
+        if pull_requests is None:
+            raise TypeError("Missing 'pull_requests' argument")
+        if pushes is None:
+            raise TypeError("Missing 'pushes' argument")
+        if repository is None:
+            raise TypeError("Missing 'repository' argument")
+
         _setter("pull_requests", pull_requests)
         _setter("pushes", pushes)
         _setter("repository", repository)
@@ -4561,10 +5175,22 @@ class GetTriggerRepositoryEventConfigPullRequestResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             branch: str,
-             comment_control: str,
-             invert_regex: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             branch: Optional[str] = None,
+             comment_control: Optional[str] = None,
+             invert_regex: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if branch is None:
+            raise TypeError("Missing 'branch' argument")
+        if comment_control is None and 'commentControl' in kwargs:
+            comment_control = kwargs['commentControl']
+        if comment_control is None:
+            raise TypeError("Missing 'comment_control' argument")
+        if invert_regex is None and 'invertRegex' in kwargs:
+            invert_regex = kwargs['invertRegex']
+        if invert_regex is None:
+            raise TypeError("Missing 'invert_regex' argument")
+
         _setter("branch", branch)
         _setter("comment_control", comment_control)
         _setter("invert_regex", invert_regex)
@@ -4600,10 +5226,20 @@ class GetTriggerRepositoryEventConfigPushResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             branch: str,
-             invert_regex: bool,
-             tag: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             branch: Optional[str] = None,
+             invert_regex: Optional[bool] = None,
+             tag: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if branch is None:
+            raise TypeError("Missing 'branch' argument")
+        if invert_regex is None and 'invertRegex' in kwargs:
+            invert_regex = kwargs['invertRegex']
+        if invert_regex is None:
+            raise TypeError("Missing 'invert_regex' argument")
+        if tag is None:
+            raise TypeError("Missing 'tag' argument")
+
         _setter("branch", branch)
         _setter("invert_regex", invert_regex)
         _setter("tag", tag)
@@ -4645,13 +5281,33 @@ class GetTriggerSourceToBuildResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bitbucket_server_config: str,
-             github_enterprise_config: str,
-             ref: str,
-             repo_type: str,
-             repository: str,
-             uri: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             bitbucket_server_config: Optional[str] = None,
+             github_enterprise_config: Optional[str] = None,
+             ref: Optional[str] = None,
+             repo_type: Optional[str] = None,
+             repository: Optional[str] = None,
+             uri: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bitbucket_server_config is None and 'bitbucketServerConfig' in kwargs:
+            bitbucket_server_config = kwargs['bitbucketServerConfig']
+        if bitbucket_server_config is None:
+            raise TypeError("Missing 'bitbucket_server_config' argument")
+        if github_enterprise_config is None and 'githubEnterpriseConfig' in kwargs:
+            github_enterprise_config = kwargs['githubEnterpriseConfig']
+        if github_enterprise_config is None:
+            raise TypeError("Missing 'github_enterprise_config' argument")
+        if ref is None:
+            raise TypeError("Missing 'ref' argument")
+        if repo_type is None and 'repoType' in kwargs:
+            repo_type = kwargs['repoType']
+        if repo_type is None:
+            raise TypeError("Missing 'repo_type' argument")
+        if repository is None:
+            raise TypeError("Missing 'repository' argument")
+        if uri is None:
+            raise TypeError("Missing 'uri' argument")
+
         _setter("bitbucket_server_config", bitbucket_server_config)
         _setter("github_enterprise_config", github_enterprise_config)
         _setter("ref", ref)
@@ -4713,14 +5369,42 @@ class GetTriggerTriggerTemplateResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             branch_name: str,
-             commit_sha: str,
-             dir: str,
-             invert_regex: bool,
-             project_id: str,
-             repo_name: str,
-             tag_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             branch_name: Optional[str] = None,
+             commit_sha: Optional[str] = None,
+             dir: Optional[str] = None,
+             invert_regex: Optional[bool] = None,
+             project_id: Optional[str] = None,
+             repo_name: Optional[str] = None,
+             tag_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if branch_name is None and 'branchName' in kwargs:
+            branch_name = kwargs['branchName']
+        if branch_name is None:
+            raise TypeError("Missing 'branch_name' argument")
+        if commit_sha is None and 'commitSha' in kwargs:
+            commit_sha = kwargs['commitSha']
+        if commit_sha is None:
+            raise TypeError("Missing 'commit_sha' argument")
+        if dir is None:
+            raise TypeError("Missing 'dir' argument")
+        if invert_regex is None and 'invertRegex' in kwargs:
+            invert_regex = kwargs['invertRegex']
+        if invert_regex is None:
+            raise TypeError("Missing 'invert_regex' argument")
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if repo_name is None and 'repoName' in kwargs:
+            repo_name = kwargs['repoName']
+        if repo_name is None:
+            raise TypeError("Missing 'repo_name' argument")
+        if tag_name is None and 'tagName' in kwargs:
+            tag_name = kwargs['tagName']
+        if tag_name is None:
+            raise TypeError("Missing 'tag_name' argument")
+
         _setter("branch_name", branch_name)
         _setter("commit_sha", commit_sha)
         _setter("dir", dir)
@@ -4778,9 +5462,15 @@ class GetTriggerWebhookConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             secret: str,
-             state: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             secret: Optional[str] = None,
+             state: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if secret is None:
+            raise TypeError("Missing 'secret' argument")
+        if state is None:
+            raise TypeError("Missing 'state' argument")
+
         _setter("secret", secret)
         _setter("state", state)
 

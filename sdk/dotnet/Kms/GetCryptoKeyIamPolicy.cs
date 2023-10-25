@@ -13,48 +13,12 @@ namespace Pulumi.Gcp.Kms
     {
         /// <summary>
         /// Retrieves the current IAM policy data for a Google Cloud KMS crypto key.
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = Gcp.Kms.GetCryptoKeyIamPolicy.Invoke(new()
-        ///     {
-        ///         CryptoKeyId = google_kms_crypto_key.Crypto_key.Id,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetCryptoKeyIamPolicyResult> InvokeAsync(GetCryptoKeyIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCryptoKeyIamPolicyResult>("gcp:kms/getCryptoKeyIamPolicy:getCryptoKeyIamPolicy", args ?? new GetCryptoKeyIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for a Google Cloud KMS crypto key.
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = Gcp.Kms.GetCryptoKeyIamPolicy.Invoke(new()
-        ///     {
-        ///         CryptoKeyId = google_kms_crypto_key.Crypto_key.Id,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetCryptoKeyIamPolicyResult> Invoke(GetCryptoKeyIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCryptoKeyIamPolicyResult>("gcp:kms/getCryptoKeyIamPolicy:getCryptoKeyIamPolicy", args ?? new GetCryptoKeyIamPolicyInvokeArgs(), options.WithDefaults());

@@ -39,10 +39,18 @@ class ServiceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             namespace: pulumi.Input[str],
-             service_id: pulumi.Input[str],
+             namespace: Optional[pulumi.Input[str]] = None,
+             service_id: Optional[pulumi.Input[str]] = None,
              metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if service_id is None:
+            raise TypeError("Missing 'service_id' argument")
+
         _setter("namespace", namespace)
         _setter("service_id", service_id)
         if metadata is not None:
@@ -128,7 +136,11 @@ class _ServiceState:
              name: Optional[pulumi.Input[str]] = None,
              namespace: Optional[pulumi.Input[str]] = None,
              service_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+
         if metadata is not None:
             _setter("metadata", metadata)
         if name is not None:
@@ -214,25 +226,6 @@ class Service(pulumi.CustomResource):
             * [Configuring a service](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_service)
 
         ## Example Usage
-        ### Service Directory Service Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example_namespace = gcp.servicedirectory.Namespace("exampleNamespace",
-            namespace_id="example-namespace",
-            location="us-central1",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        example_service = gcp.servicedirectory.Service("exampleService",
-            service_id="example-service",
-            namespace=example_namespace.id,
-            metadata={
-                "stage": "prod",
-                "region": "us-central1",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -279,25 +272,6 @@ class Service(pulumi.CustomResource):
             * [Configuring a service](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_service)
 
         ## Example Usage
-        ### Service Directory Service Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example_namespace = gcp.servicedirectory.Namespace("exampleNamespace",
-            namespace_id="example-namespace",
-            location="us-central1",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        example_service = gcp.servicedirectory.Service("exampleService",
-            service_id="example-service",
-            namespace=example_namespace.id,
-            metadata={
-                "stage": "prod",
-                "region": "us-central1",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 

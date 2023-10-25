@@ -21,27 +21,6 @@ namespace Pulumi.Gcp.BigQuery
     ///     * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
     /// 
     /// ## Example Usage
-    /// ### Bigquery Reservation Capacity Commitment Docs
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Gcp.BigQuery.CapacityCommitment("example", new()
-    ///     {
-    ///         CapacityCommitmentId = "example-commitment",
-    ///         Edition = "ENTERPRISE",
-    ///         Location = "us-west2",
-    ///         Plan = "FLEX_FLAT_RATE",
-    ///         SlotCount = 100,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

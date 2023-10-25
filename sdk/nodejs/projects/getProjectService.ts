@@ -18,17 +18,6 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
  * * How-to Guides
  *     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const my-project-service = gcp.projects.getProjectService({
- *     service: "my-project-service",
- * });
- * ```
  */
 export function getProjectService(args: GetProjectServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectServiceResult> {
 
@@ -83,17 +72,6 @@ export interface GetProjectServiceResult {
  * * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
  * * How-to Guides
  *     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const my-project-service = gcp.projects.getProjectService({
- *     service: "my-project-service",
- * });
- * ```
  */
 export function getProjectServiceOutput(args: GetProjectServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectServiceResult> {
     return pulumi.output(args).apply((a: any) => getProjectService(a, opts))

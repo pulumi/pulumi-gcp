@@ -13,56 +13,12 @@ namespace Pulumi.Gcp.Dataproc
     {
         /// <summary>
         /// Retrieves the current IAM policy data for service
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.Dataproc.GetMetastoreServiceIamPolicy.Invoke(new()
-        ///     {
-        ///         Project = google_dataproc_metastore_service.Default.Project,
-        ///         Location = google_dataproc_metastore_service.Default.Location,
-        ///         ServiceId = google_dataproc_metastore_service.Default.Service_id,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetMetastoreServiceIamPolicyResult> InvokeAsync(GetMetastoreServiceIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMetastoreServiceIamPolicyResult>("gcp:dataproc/getMetastoreServiceIamPolicy:getMetastoreServiceIamPolicy", args ?? new GetMetastoreServiceIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for service
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.Dataproc.GetMetastoreServiceIamPolicy.Invoke(new()
-        ///     {
-        ///         Project = google_dataproc_metastore_service.Default.Project,
-        ///         Location = google_dataproc_metastore_service.Default.Location,
-        ///         ServiceId = google_dataproc_metastore_service.Default.Service_id,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetMetastoreServiceIamPolicyResult> Invoke(GetMetastoreServiceIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMetastoreServiceIamPolicyResult>("gcp:dataproc/getMetastoreServiceIamPolicy:getMetastoreServiceIamPolicy", args ?? new GetMetastoreServiceIamPolicyInvokeArgs(), options.WithDefaults());

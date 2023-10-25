@@ -54,15 +54,31 @@ class GameServerConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config_id: pulumi.Input[str],
-             deployment_id: pulumi.Input[str],
-             fleet_configs: pulumi.Input[Sequence[pulumi.Input['GameServerConfigFleetConfigArgs']]],
+             config_id: Optional[pulumi.Input[str]] = None,
+             deployment_id: Optional[pulumi.Input[str]] = None,
+             fleet_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GameServerConfigFleetConfigArgs']]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              scaling_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GameServerConfigScalingConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if config_id is None and 'configId' in kwargs:
+            config_id = kwargs['configId']
+        if config_id is None:
+            raise TypeError("Missing 'config_id' argument")
+        if deployment_id is None and 'deploymentId' in kwargs:
+            deployment_id = kwargs['deploymentId']
+        if deployment_id is None:
+            raise TypeError("Missing 'deployment_id' argument")
+        if fleet_configs is None and 'fleetConfigs' in kwargs:
+            fleet_configs = kwargs['fleetConfigs']
+        if fleet_configs is None:
+            raise TypeError("Missing 'fleet_configs' argument")
+        if scaling_configs is None and 'scalingConfigs' in kwargs:
+            scaling_configs = kwargs['scalingConfigs']
+
         _setter("config_id", config_id)
         _setter("deployment_id", deployment_id)
         _setter("fleet_configs", fleet_configs)
@@ -234,7 +250,17 @@ class _GameServerConfigState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              scaling_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GameServerConfigScalingConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if config_id is None and 'configId' in kwargs:
+            config_id = kwargs['configId']
+        if deployment_id is None and 'deploymentId' in kwargs:
+            deployment_id = kwargs['deploymentId']
+        if fleet_configs is None and 'fleetConfigs' in kwargs:
+            fleet_configs = kwargs['fleetConfigs']
+        if scaling_configs is None and 'scalingConfigs' in kwargs:
+            scaling_configs = kwargs['scalingConfigs']
+
         if config_id is not None:
             _setter("config_id", config_id)
         if deployment_id is not None:
@@ -394,73 +420,6 @@ class GameServerConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/game-servers/docs)
 
         ## Example Usage
-        ### Game Service Config Basic
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_gcp as gcp
-
-        default_game_server_deployment = gcp.gameservices.GameServerDeployment("defaultGameServerDeployment",
-            deployment_id="tf-test-deployment",
-            description="a deployment description")
-        default_game_server_config = gcp.gameservices.GameServerConfig("defaultGameServerConfig",
-            config_id="tf-test-config",
-            deployment_id=default_game_server_deployment.deployment_id,
-            description="a config description",
-            fleet_configs=[gcp.gameservices.GameServerConfigFleetConfigArgs(
-                name="something-unique",
-                fleet_spec=json.dumps({
-                    "replicas": 1,
-                    "scheduling": "Packed",
-                    "template": {
-                        "metadata": {
-                            "name": "tf-test-game-server-template",
-                        },
-                        "spec": {
-                            "ports": [{
-                                "name": "default",
-                                "portPolicy": "Dynamic",
-                                "containerPort": 7654,
-                                "protocol": "UDP",
-                            }],
-                            "template": {
-                                "spec": {
-                                    "containers": [{
-                                        "name": "simple-udp-server",
-                                        "image": "gcr.io/agones-images/udp-server:0.14",
-                                    }],
-                                },
-                            },
-                        },
-                    },
-                }),
-            )],
-            scaling_configs=[gcp.gameservices.GameServerConfigScalingConfigArgs(
-                name="scaling-config-name",
-                fleet_autoscaler_spec=json.dumps({
-                    "policy": {
-                        "type": "Webhook",
-                        "webhook": {
-                            "service": {
-                                "name": "autoscaler-webhook-service",
-                                "namespace": "default",
-                                "path": "scale",
-                            },
-                        },
-                    },
-                }),
-                selectors=[gcp.gameservices.GameServerConfigScalingConfigSelectorArgs(
-                    labels={
-                        "one": "two",
-                    },
-                )],
-                schedules=[gcp.gameservices.GameServerConfigScalingConfigScheduleArgs(
-                    cron_job_duration="3.500s",
-                    cron_spec="0 0 * * 0",
-                )],
-            )])
-        ```
 
         ## Import
 
@@ -510,73 +469,6 @@ class GameServerConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/game-servers/docs)
 
         ## Example Usage
-        ### Game Service Config Basic
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_gcp as gcp
-
-        default_game_server_deployment = gcp.gameservices.GameServerDeployment("defaultGameServerDeployment",
-            deployment_id="tf-test-deployment",
-            description="a deployment description")
-        default_game_server_config = gcp.gameservices.GameServerConfig("defaultGameServerConfig",
-            config_id="tf-test-config",
-            deployment_id=default_game_server_deployment.deployment_id,
-            description="a config description",
-            fleet_configs=[gcp.gameservices.GameServerConfigFleetConfigArgs(
-                name="something-unique",
-                fleet_spec=json.dumps({
-                    "replicas": 1,
-                    "scheduling": "Packed",
-                    "template": {
-                        "metadata": {
-                            "name": "tf-test-game-server-template",
-                        },
-                        "spec": {
-                            "ports": [{
-                                "name": "default",
-                                "portPolicy": "Dynamic",
-                                "containerPort": 7654,
-                                "protocol": "UDP",
-                            }],
-                            "template": {
-                                "spec": {
-                                    "containers": [{
-                                        "name": "simple-udp-server",
-                                        "image": "gcr.io/agones-images/udp-server:0.14",
-                                    }],
-                                },
-                            },
-                        },
-                    },
-                }),
-            )],
-            scaling_configs=[gcp.gameservices.GameServerConfigScalingConfigArgs(
-                name="scaling-config-name",
-                fleet_autoscaler_spec=json.dumps({
-                    "policy": {
-                        "type": "Webhook",
-                        "webhook": {
-                            "service": {
-                                "name": "autoscaler-webhook-service",
-                                "namespace": "default",
-                                "path": "scale",
-                            },
-                        },
-                    },
-                }),
-                selectors=[gcp.gameservices.GameServerConfigScalingConfigSelectorArgs(
-                    labels={
-                        "one": "two",
-                    },
-                )],
-                schedules=[gcp.gameservices.GameServerConfigScalingConfigScheduleArgs(
-                    cron_job_duration="3.500s",
-                    cron_spec="0 0 * * 0",
-                )],
-            )])
-        ```
 
         ## Import
 

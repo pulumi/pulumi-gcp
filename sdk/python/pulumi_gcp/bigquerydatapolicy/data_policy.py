@@ -49,13 +49,31 @@ class DataPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data_policy_id: pulumi.Input[str],
-             data_policy_type: pulumi.Input[str],
-             location: pulumi.Input[str],
-             policy_tag: pulumi.Input[str],
+             data_policy_id: Optional[pulumi.Input[str]] = None,
+             data_policy_type: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             policy_tag: Optional[pulumi.Input[str]] = None,
              data_masking_policy: Optional[pulumi.Input['DataPolicyDataMaskingPolicyArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if data_policy_id is None and 'dataPolicyId' in kwargs:
+            data_policy_id = kwargs['dataPolicyId']
+        if data_policy_id is None:
+            raise TypeError("Missing 'data_policy_id' argument")
+        if data_policy_type is None and 'dataPolicyType' in kwargs:
+            data_policy_type = kwargs['dataPolicyType']
+        if data_policy_type is None:
+            raise TypeError("Missing 'data_policy_type' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if policy_tag is None and 'policyTag' in kwargs:
+            policy_tag = kwargs['policyTag']
+        if policy_tag is None:
+            raise TypeError("Missing 'policy_tag' argument")
+        if data_masking_policy is None and 'dataMaskingPolicy' in kwargs:
+            data_masking_policy = kwargs['dataMaskingPolicy']
+
         _setter("data_policy_id", data_policy_id)
         _setter("data_policy_type", data_policy_type)
         _setter("location", location)
@@ -190,7 +208,17 @@ class _DataPolicyState:
              name: Optional[pulumi.Input[str]] = None,
              policy_tag: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if data_masking_policy is None and 'dataMaskingPolicy' in kwargs:
+            data_masking_policy = kwargs['dataMaskingPolicy']
+        if data_policy_id is None and 'dataPolicyId' in kwargs:
+            data_policy_id = kwargs['dataPolicyId']
+        if data_policy_type is None and 'dataPolicyType' in kwargs:
+            data_policy_type = kwargs['dataPolicyType']
+        if policy_tag is None and 'policyTag' in kwargs:
+            policy_tag = kwargs['policyTag']
+
         if data_masking_policy is not None:
             _setter("data_masking_policy", data_masking_policy)
         if data_policy_id is not None:
@@ -319,27 +347,6 @@ class DataPolicy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/bigquery/docs/column-data-masking-intro)
 
         ## Example Usage
-        ### Bigquery Datapolicy Data Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        taxonomy = gcp.datacatalog.Taxonomy("taxonomy",
-            region="us-central1",
-            display_name="taxonomy",
-            description="A collection of policy tags",
-            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"])
-        policy_tag = gcp.datacatalog.PolicyTag("policyTag",
-            taxonomy=taxonomy.id,
-            display_name="Low security",
-            description="A policy tag normally associated with low security items")
-        data_policy = gcp.bigquerydatapolicy.DataPolicy("dataPolicy",
-            location="us-central1",
-            data_policy_id="data_policy",
-            policy_tag=policy_tag.name,
-            data_policy_type="COLUMN_LEVEL_SECURITY_POLICY")
-        ```
 
         ## Import
 
@@ -388,27 +395,6 @@ class DataPolicy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/bigquery/docs/column-data-masking-intro)
 
         ## Example Usage
-        ### Bigquery Datapolicy Data Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        taxonomy = gcp.datacatalog.Taxonomy("taxonomy",
-            region="us-central1",
-            display_name="taxonomy",
-            description="A collection of policy tags",
-            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"])
-        policy_tag = gcp.datacatalog.PolicyTag("policyTag",
-            taxonomy=taxonomy.id,
-            display_name="Low security",
-            description="A policy tag normally associated with low security items")
-        data_policy = gcp.bigquerydatapolicy.DataPolicy("dataPolicy",
-            location="us-central1",
-            data_policy_id="data_policy",
-            policy_tag=policy_tag.name,
-            data_policy_type="COLUMN_LEVEL_SECURITY_POLICY")
-        ```
 
         ## Import
 
@@ -460,11 +446,7 @@ class DataPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DataPolicyArgs.__new__(DataPolicyArgs)
 
-            if data_masking_policy is not None and not isinstance(data_masking_policy, DataPolicyDataMaskingPolicyArgs):
-                data_masking_policy = data_masking_policy or {}
-                def _setter(key, value):
-                    data_masking_policy[key] = value
-                DataPolicyDataMaskingPolicyArgs._configure(_setter, **data_masking_policy)
+            data_masking_policy = _utilities.configure(data_masking_policy, DataPolicyDataMaskingPolicyArgs, True)
             __props__.__dict__["data_masking_policy"] = data_masking_policy
             if data_policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'data_policy_id'")

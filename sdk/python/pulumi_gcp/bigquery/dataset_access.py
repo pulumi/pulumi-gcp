@@ -83,7 +83,7 @@ class DatasetAccessInitArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataset_id: pulumi.Input[str],
+             dataset_id: Optional[pulumi.Input[str]] = None,
              authorized_dataset: Optional[pulumi.Input['DatasetAccessAuthorizedDatasetArgs']] = None,
              domain: Optional[pulumi.Input[str]] = None,
              group_by_email: Optional[pulumi.Input[str]] = None,
@@ -94,7 +94,23 @@ class DatasetAccessInitArgs:
              special_group: Optional[pulumi.Input[str]] = None,
              user_by_email: Optional[pulumi.Input[str]] = None,
              view: Optional[pulumi.Input['DatasetAccessViewArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if dataset_id is None:
+            raise TypeError("Missing 'dataset_id' argument")
+        if authorized_dataset is None and 'authorizedDataset' in kwargs:
+            authorized_dataset = kwargs['authorizedDataset']
+        if group_by_email is None and 'groupByEmail' in kwargs:
+            group_by_email = kwargs['groupByEmail']
+        if iam_member is None and 'iamMember' in kwargs:
+            iam_member = kwargs['iamMember']
+        if special_group is None and 'specialGroup' in kwargs:
+            special_group = kwargs['specialGroup']
+        if user_by_email is None and 'userByEmail' in kwargs:
+            user_by_email = kwargs['userByEmail']
+
         _setter("dataset_id", dataset_id)
         if authorized_dataset is not None:
             _setter("authorized_dataset", authorized_dataset)
@@ -361,7 +377,23 @@ class _DatasetAccessState:
              special_group: Optional[pulumi.Input[str]] = None,
              user_by_email: Optional[pulumi.Input[str]] = None,
              view: Optional[pulumi.Input['DatasetAccessViewArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api_updated_member is None and 'apiUpdatedMember' in kwargs:
+            api_updated_member = kwargs['apiUpdatedMember']
+        if authorized_dataset is None and 'authorizedDataset' in kwargs:
+            authorized_dataset = kwargs['authorizedDataset']
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if group_by_email is None and 'groupByEmail' in kwargs:
+            group_by_email = kwargs['groupByEmail']
+        if iam_member is None and 'iamMember' in kwargs:
+            iam_member = kwargs['iamMember']
+        if special_group is None and 'specialGroup' in kwargs:
+            special_group = kwargs['specialGroup']
+        if user_by_email is None and 'userByEmail' in kwargs:
+            user_by_email = kwargs['userByEmail']
+
         if api_updated_member is not None:
             _setter("api_updated_member", api_updated_member)
         if authorized_dataset is not None:
@@ -577,103 +609,6 @@ class DatasetAccess(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Bigquery Dataset Access Basic User
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
-        bqowner = gcp.service_account.Account("bqowner", account_id="bqowner")
-        access = gcp.bigquery.DatasetAccess("access",
-            dataset_id=dataset.dataset_id,
-            role="OWNER",
-            user_by_email=bqowner.email)
-        ```
-        ### Bigquery Dataset Access View
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        private = gcp.bigquery.Dataset("private", dataset_id="example_dataset")
-        public_dataset = gcp.bigquery.Dataset("publicDataset", dataset_id="example_dataset2")
-        public_table = gcp.bigquery.Table("publicTable",
-            deletion_protection=False,
-            dataset_id=public_dataset.dataset_id,
-            table_id="example_table",
-            view=gcp.bigquery.TableViewArgs(
-                query="SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
-                use_legacy_sql=False,
-            ))
-        access = gcp.bigquery.DatasetAccess("access",
-            dataset_id=private.dataset_id,
-            view=gcp.bigquery.DatasetAccessViewArgs(
-                project_id=public_table.project,
-                dataset_id=public_dataset.dataset_id,
-                table_id=public_table.table_id,
-            ))
-        ```
-        ### Bigquery Dataset Access Authorized Dataset
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        private = gcp.bigquery.Dataset("private", dataset_id="private")
-        public = gcp.bigquery.Dataset("public", dataset_id="public")
-        access = gcp.bigquery.DatasetAccess("access",
-            dataset_id=private.dataset_id,
-            authorized_dataset=gcp.bigquery.DatasetAccessAuthorizedDatasetArgs(
-                dataset=gcp.bigquery.DatasetAccessAuthorizedDatasetDatasetArgs(
-                    project_id=public.project,
-                    dataset_id=public.dataset_id,
-                ),
-                target_types=["VIEWS"],
-            ))
-        ```
-        ### Bigquery Dataset Access Authorized Routine
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_gcp as gcp
-
-        public_dataset = gcp.bigquery.Dataset("publicDataset",
-            dataset_id="public_dataset",
-            description="This dataset is public")
-        public_routine = gcp.bigquery.Routine("publicRoutine",
-            dataset_id=public_dataset.dataset_id,
-            routine_id="public_routine",
-            routine_type="TABLE_VALUED_FUNCTION",
-            language="SQL",
-            definition_body="SELECT 1 + value AS value\\n",
-            arguments=[gcp.bigquery.RoutineArgumentArgs(
-                name="value",
-                argument_kind="FIXED_TYPE",
-                data_type=json.dumps({
-                    "typeKind": "INT64",
-                }),
-            )],
-            return_table_type=json.dumps({
-                "columns": [{
-                    "name": "value",
-                    "type": {
-                        "typeKind": "INT64",
-                    },
-                }],
-            }))
-        private = gcp.bigquery.Dataset("private",
-            dataset_id="private_dataset",
-            description="This dataset is private")
-        authorized_routine = gcp.bigquery.DatasetAccess("authorizedRoutine",
-            dataset_id=private.dataset_id,
-            routine=gcp.bigquery.DatasetAccessRoutineArgs(
-                project_id=public_routine.project,
-                dataset_id=public_routine.dataset_id,
-                routine_id=public_routine.routine_id,
-            ))
-        ```
 
         ## Import
 
@@ -726,103 +661,6 @@ class DatasetAccess(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Bigquery Dataset Access Basic User
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
-        bqowner = gcp.service_account.Account("bqowner", account_id="bqowner")
-        access = gcp.bigquery.DatasetAccess("access",
-            dataset_id=dataset.dataset_id,
-            role="OWNER",
-            user_by_email=bqowner.email)
-        ```
-        ### Bigquery Dataset Access View
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        private = gcp.bigquery.Dataset("private", dataset_id="example_dataset")
-        public_dataset = gcp.bigquery.Dataset("publicDataset", dataset_id="example_dataset2")
-        public_table = gcp.bigquery.Table("publicTable",
-            deletion_protection=False,
-            dataset_id=public_dataset.dataset_id,
-            table_id="example_table",
-            view=gcp.bigquery.TableViewArgs(
-                query="SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
-                use_legacy_sql=False,
-            ))
-        access = gcp.bigquery.DatasetAccess("access",
-            dataset_id=private.dataset_id,
-            view=gcp.bigquery.DatasetAccessViewArgs(
-                project_id=public_table.project,
-                dataset_id=public_dataset.dataset_id,
-                table_id=public_table.table_id,
-            ))
-        ```
-        ### Bigquery Dataset Access Authorized Dataset
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        private = gcp.bigquery.Dataset("private", dataset_id="private")
-        public = gcp.bigquery.Dataset("public", dataset_id="public")
-        access = gcp.bigquery.DatasetAccess("access",
-            dataset_id=private.dataset_id,
-            authorized_dataset=gcp.bigquery.DatasetAccessAuthorizedDatasetArgs(
-                dataset=gcp.bigquery.DatasetAccessAuthorizedDatasetDatasetArgs(
-                    project_id=public.project,
-                    dataset_id=public.dataset_id,
-                ),
-                target_types=["VIEWS"],
-            ))
-        ```
-        ### Bigquery Dataset Access Authorized Routine
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_gcp as gcp
-
-        public_dataset = gcp.bigquery.Dataset("publicDataset",
-            dataset_id="public_dataset",
-            description="This dataset is public")
-        public_routine = gcp.bigquery.Routine("publicRoutine",
-            dataset_id=public_dataset.dataset_id,
-            routine_id="public_routine",
-            routine_type="TABLE_VALUED_FUNCTION",
-            language="SQL",
-            definition_body="SELECT 1 + value AS value\\n",
-            arguments=[gcp.bigquery.RoutineArgumentArgs(
-                name="value",
-                argument_kind="FIXED_TYPE",
-                data_type=json.dumps({
-                    "typeKind": "INT64",
-                }),
-            )],
-            return_table_type=json.dumps({
-                "columns": [{
-                    "name": "value",
-                    "type": {
-                        "typeKind": "INT64",
-                    },
-                }],
-            }))
-        private = gcp.bigquery.Dataset("private",
-            dataset_id="private_dataset",
-            description="This dataset is private")
-        authorized_routine = gcp.bigquery.DatasetAccess("authorizedRoutine",
-            dataset_id=private.dataset_id,
-            routine=gcp.bigquery.DatasetAccessRoutineArgs(
-                project_id=public_routine.project,
-                dataset_id=public_routine.dataset_id,
-                routine_id=public_routine.routine_id,
-            ))
-        ```
 
         ## Import
 
@@ -867,11 +705,7 @@ class DatasetAccess(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatasetAccessInitArgs.__new__(DatasetAccessInitArgs)
 
-            if authorized_dataset is not None and not isinstance(authorized_dataset, DatasetAccessAuthorizedDatasetArgs):
-                authorized_dataset = authorized_dataset or {}
-                def _setter(key, value):
-                    authorized_dataset[key] = value
-                DatasetAccessAuthorizedDatasetArgs._configure(_setter, **authorized_dataset)
+            authorized_dataset = _utilities.configure(authorized_dataset, DatasetAccessAuthorizedDatasetArgs, True)
             __props__.__dict__["authorized_dataset"] = authorized_dataset
             if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")
@@ -881,19 +715,11 @@ class DatasetAccess(pulumi.CustomResource):
             __props__.__dict__["iam_member"] = iam_member
             __props__.__dict__["project"] = project
             __props__.__dict__["role"] = role
-            if routine is not None and not isinstance(routine, DatasetAccessRoutineArgs):
-                routine = routine or {}
-                def _setter(key, value):
-                    routine[key] = value
-                DatasetAccessRoutineArgs._configure(_setter, **routine)
+            routine = _utilities.configure(routine, DatasetAccessRoutineArgs, True)
             __props__.__dict__["routine"] = routine
             __props__.__dict__["special_group"] = special_group
             __props__.__dict__["user_by_email"] = user_by_email
-            if view is not None and not isinstance(view, DatasetAccessViewArgs):
-                view = view or {}
-                def _setter(key, value):
-                    view[key] = value
-                DatasetAccessViewArgs._configure(_setter, **view)
+            view = _utilities.configure(view, DatasetAccessViewArgs, True)
             __props__.__dict__["view"] = view
             __props__.__dict__["api_updated_member"] = None
         super(DatasetAccess, __self__).__init__(

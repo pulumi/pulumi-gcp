@@ -59,15 +59,31 @@ class ClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             psc_configs: pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]],
-             shard_count: pulumi.Input[int],
+             psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]]] = None,
+             shard_count: Optional[pulumi.Input[int]] = None,
              authorization_mode: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              replica_count: Optional[pulumi.Input[int]] = None,
              transit_encryption_mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if psc_configs is None and 'pscConfigs' in kwargs:
+            psc_configs = kwargs['pscConfigs']
+        if psc_configs is None:
+            raise TypeError("Missing 'psc_configs' argument")
+        if shard_count is None and 'shardCount' in kwargs:
+            shard_count = kwargs['shardCount']
+        if shard_count is None:
+            raise TypeError("Missing 'shard_count' argument")
+        if authorization_mode is None and 'authorizationMode' in kwargs:
+            authorization_mode = kwargs['authorizationMode']
+        if replica_count is None and 'replicaCount' in kwargs:
+            replica_count = kwargs['replicaCount']
+        if transit_encryption_mode is None and 'transitEncryptionMode' in kwargs:
+            transit_encryption_mode = kwargs['transitEncryptionMode']
+
         _setter("psc_configs", psc_configs)
         _setter("shard_count", shard_count)
         if authorization_mode is not None:
@@ -279,7 +295,29 @@ class _ClusterState:
              state_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterStateInfoArgs']]]] = None,
              transit_encryption_mode: Optional[pulumi.Input[str]] = None,
              uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if authorization_mode is None and 'authorizationMode' in kwargs:
+            authorization_mode = kwargs['authorizationMode']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if discovery_endpoints is None and 'discoveryEndpoints' in kwargs:
+            discovery_endpoints = kwargs['discoveryEndpoints']
+        if psc_configs is None and 'pscConfigs' in kwargs:
+            psc_configs = kwargs['pscConfigs']
+        if psc_connections is None and 'pscConnections' in kwargs:
+            psc_connections = kwargs['pscConnections']
+        if replica_count is None and 'replicaCount' in kwargs:
+            replica_count = kwargs['replicaCount']
+        if shard_count is None and 'shardCount' in kwargs:
+            shard_count = kwargs['shardCount']
+        if size_gb is None and 'sizeGb' in kwargs:
+            size_gb = kwargs['sizeGb']
+        if state_infos is None and 'stateInfos' in kwargs:
+            state_infos = kwargs['stateInfos']
+        if transit_encryption_mode is None and 'transitEncryptionMode' in kwargs:
+            transit_encryption_mode = kwargs['transitEncryptionMode']
+
         if authorization_mode is not None:
             _setter("authorization_mode", authorization_mode)
         if create_time is not None:
@@ -525,40 +563,6 @@ class Cluster(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Redis Cluster Ha
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        producer_net = gcp.compute.Network("producerNet", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        producer_subnet = gcp.compute.Subnetwork("producerSubnet",
-            ip_cidr_range="10.0.0.248/29",
-            region="us-central1",
-            network=producer_net.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
-            location="us-central1",
-            service_class="gcp-memorystore-redis",
-            description="my basic service connection policy",
-            network=producer_net.id,
-            psc_config=gcp.networkconnectivity.ServiceConnectionPolicyPscConfigArgs(
-                subnetworks=[producer_subnet.id],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        cluster_ha = gcp.redis.Cluster("cluster-ha",
-            shard_count=3,
-            psc_configs=[gcp.redis.ClusterPscConfigArgs(
-                network=producer_net.id,
-            )],
-            region="us-central1",
-            replica_count=1,
-            transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
-            authorization_mode="AUTH_MODE_DISABLED",
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[default]))
-        ```
 
         ## Import
 
@@ -609,40 +613,6 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Redis Cluster Ha
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        producer_net = gcp.compute.Network("producerNet", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        producer_subnet = gcp.compute.Subnetwork("producerSubnet",
-            ip_cidr_range="10.0.0.248/29",
-            region="us-central1",
-            network=producer_net.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
-            location="us-central1",
-            service_class="gcp-memorystore-redis",
-            description="my basic service connection policy",
-            network=producer_net.id,
-            psc_config=gcp.networkconnectivity.ServiceConnectionPolicyPscConfigArgs(
-                subnetworks=[producer_subnet.id],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        cluster_ha = gcp.redis.Cluster("cluster-ha",
-            shard_count=3,
-            psc_configs=[gcp.redis.ClusterPscConfigArgs(
-                network=producer_net.id,
-            )],
-            region="us-central1",
-            replica_count=1,
-            transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
-            authorization_mode="AUTH_MODE_DISABLED",
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[default]))
-        ```
 
         ## Import
 

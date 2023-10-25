@@ -21,33 +21,6 @@ import (
 //
 // > You can specify exclusions for log sinks created by the provider by using the exclusions field of `logging.ProjectSink`
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := logging.NewProjectExclusion(ctx, "my-exclusion", &logging.ProjectExclusionArgs{
-//				Description: pulumi.String("Exclude GCE instance debug logs"),
-//				Filter:      pulumi.String("resource.type = gce_instance AND severity <= DEBUG"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Project-level logging exclusions can be imported using their URI, e.g.

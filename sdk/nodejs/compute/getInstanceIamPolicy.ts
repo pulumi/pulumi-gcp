@@ -6,19 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for instance
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.compute.getInstanceIamPolicy({
- *     project: google_compute_instance["default"].project,
- *     zone: google_compute_instance["default"].zone,
- *     instanceName: google_compute_instance["default"].name,
- * });
- * ```
  */
 export function getInstanceIamPolicy(args: GetInstanceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceIamPolicyResult> {
 
@@ -74,19 +61,6 @@ export interface GetInstanceIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for instance
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.compute.getInstanceIamPolicy({
- *     project: google_compute_instance["default"].project,
- *     zone: google_compute_instance["default"].zone,
- *     instanceName: google_compute_instance["default"].name,
- * });
- * ```
  */
 export function getInstanceIamPolicyOutput(args: GetInstanceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getInstanceIamPolicy(a, opts))

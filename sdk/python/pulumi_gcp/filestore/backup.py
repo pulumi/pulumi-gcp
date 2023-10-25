@@ -54,14 +54,26 @@ class BackupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
-             source_file_share: pulumi.Input[str],
-             source_instance: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
+             source_file_share: Optional[pulumi.Input[str]] = None,
+             source_instance: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if source_file_share is None and 'sourceFileShare' in kwargs:
+            source_file_share = kwargs['sourceFileShare']
+        if source_file_share is None:
+            raise TypeError("Missing 'source_file_share' argument")
+        if source_instance is None and 'sourceInstance' in kwargs:
+            source_instance = kwargs['sourceInstance']
+        if source_instance is None:
+            raise TypeError("Missing 'source_instance' argument")
+
         _setter("location", location)
         _setter("source_file_share", source_file_share)
         _setter("source_instance", source_instance)
@@ -247,7 +259,25 @@ class _BackupState:
              source_instance_tier: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              storage_bytes: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if capacity_gb is None and 'capacityGb' in kwargs:
+            capacity_gb = kwargs['capacityGb']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if download_bytes is None and 'downloadBytes' in kwargs:
+            download_bytes = kwargs['downloadBytes']
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if source_file_share is None and 'sourceFileShare' in kwargs:
+            source_file_share = kwargs['sourceFileShare']
+        if source_instance is None and 'sourceInstance' in kwargs:
+            source_instance = kwargs['sourceInstance']
+        if source_instance_tier is None and 'sourceInstanceTier' in kwargs:
+            source_instance_tier = kwargs['sourceInstanceTier']
+        if storage_bytes is None and 'storageBytes' in kwargs:
+            storage_bytes = kwargs['storageBytes']
+
         if capacity_gb is not None:
             _setter("capacity_gb", capacity_gb)
         if create_time is not None:
@@ -480,34 +510,6 @@ class Backup(pulumi.CustomResource):
             * [Creating Backups](https://cloud.google.com/filestore/docs/create-backups)
 
         ## Example Usage
-        ### Filestore Backup Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.filestore.Instance("instance",
-            location="us-central1-b",
-            tier="BASIC_HDD",
-            file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=1024,
-                name="share1",
-            ),
-            networks=[gcp.filestore.InstanceNetworkArgs(
-                network="default",
-                modes=["MODE_IPV4"],
-                connect_mode="DIRECT_PEERING",
-            )])
-        backup = gcp.filestore.Backup("backup",
-            location="us-central1",
-            description="This is a filestore backup for the test instance",
-            source_instance=instance.id,
-            source_file_share="share1",
-            labels={
-                "files": "label1",
-                "other-label": "label2",
-            })
-        ```
 
         ## Import
 
@@ -562,34 +564,6 @@ class Backup(pulumi.CustomResource):
             * [Creating Backups](https://cloud.google.com/filestore/docs/create-backups)
 
         ## Example Usage
-        ### Filestore Backup Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.filestore.Instance("instance",
-            location="us-central1-b",
-            tier="BASIC_HDD",
-            file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=1024,
-                name="share1",
-            ),
-            networks=[gcp.filestore.InstanceNetworkArgs(
-                network="default",
-                modes=["MODE_IPV4"],
-                connect_mode="DIRECT_PEERING",
-            )])
-        backup = gcp.filestore.Backup("backup",
-            location="us-central1",
-            description="This is a filestore backup for the test instance",
-            source_instance=instance.id,
-            source_file_share="share1",
-            labels={
-                "files": "label1",
-                "other-label": "label2",
-            })
-        ```
 
         ## Import
 

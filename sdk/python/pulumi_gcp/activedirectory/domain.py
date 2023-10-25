@@ -53,14 +53,28 @@ class DomainArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain_name: pulumi.Input[str],
-             locations: pulumi.Input[Sequence[pulumi.Input[str]]],
-             reserved_ip_range: pulumi.Input[str],
+             domain_name: Optional[pulumi.Input[str]] = None,
+             locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             reserved_ip_range: Optional[pulumi.Input[str]] = None,
              admin: Optional[pulumi.Input[str]] = None,
              authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if domain_name is None and 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if locations is None:
+            raise TypeError("Missing 'locations' argument")
+        if reserved_ip_range is None and 'reservedIpRange' in kwargs:
+            reserved_ip_range = kwargs['reservedIpRange']
+        if reserved_ip_range is None:
+            raise TypeError("Missing 'reserved_ip_range' argument")
+        if authorized_networks is None and 'authorizedNetworks' in kwargs:
+            authorized_networks = kwargs['authorizedNetworks']
+
         _setter("domain_name", domain_name)
         _setter("locations", locations)
         _setter("reserved_ip_range", reserved_ip_range)
@@ -225,7 +239,15 @@ class _DomainState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              reserved_ip_range: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if authorized_networks is None and 'authorizedNetworks' in kwargs:
+            authorized_networks = kwargs['authorizedNetworks']
+        if domain_name is None and 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if reserved_ip_range is None and 'reservedIpRange' in kwargs:
+            reserved_ip_range = kwargs['reservedIpRange']
+
         if admin is not None:
             _setter("admin", admin)
         if authorized_networks is not None:
@@ -387,17 +409,6 @@ class Domain(pulumi.CustomResource):
             * [Managed Microsoft Active Directory Quickstart](https://cloud.google.com/managed-microsoft-ad/docs/quickstarts)
 
         ## Example Usage
-        ### Active Directory Domain Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        ad_domain = gcp.activedirectory.Domain("ad-domain",
-            domain_name="tfgen.org.com",
-            locations=["us-central1"],
-            reserved_ip_range="192.168.255.0/24")
-        ```
 
         ## Import
 
@@ -442,17 +453,6 @@ class Domain(pulumi.CustomResource):
             * [Managed Microsoft Active Directory Quickstart](https://cloud.google.com/managed-microsoft-ad/docs/quickstarts)
 
         ## Example Usage
-        ### Active Directory Domain Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        ad_domain = gcp.activedirectory.Domain("ad-domain",
-            domain_name="tfgen.org.com",
-            locations=["us-central1"],
-            reserved_ip_range="192.168.255.0/24")
-        ```
 
         ## Import
 

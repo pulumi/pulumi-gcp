@@ -20,60 +20,6 @@ import (
 // * [API documentation](https://cloud.google.com/intrusion-detection-system/docs/configuring-ids)
 //
 // ## Example Usage
-// ### Cloudids Endpoint
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudids"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "default", nil)
-//			if err != nil {
-//				return err
-//			}
-//			serviceRange, err := compute.NewGlobalAddress(ctx, "serviceRange", &compute.GlobalAddressArgs{
-//				Purpose:      pulumi.String("VPC_PEERING"),
-//				AddressType:  pulumi.String("INTERNAL"),
-//				PrefixLength: pulumi.Int(16),
-//				Network:      _default.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			privateServiceConnection, err := servicenetworking.NewConnection(ctx, "privateServiceConnection", &servicenetworking.ConnectionArgs{
-//				Network: _default.ID(),
-//				Service: pulumi.String("servicenetworking.googleapis.com"),
-//				ReservedPeeringRanges: pulumi.StringArray{
-//					serviceRange.Name,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudids.NewEndpoint(ctx, "example-endpoint", &cloudids.EndpointArgs{
-//				Location: pulumi.String("us-central1-f"),
-//				Network:  _default.ID(),
-//				Severity: pulumi.String("INFORMATIONAL"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				privateServiceConnection,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

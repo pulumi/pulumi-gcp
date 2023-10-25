@@ -15,32 +15,6 @@ import (
 // Use this data source to get the rollout state.
 //
 // https://cloud.google.com/game-servers/docs/reference/rest/v1beta/GameServerDeploymentRollout
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gameservices"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gameservices.LookupGameServerDeploymentRollout(ctx, &gameservices.LookupGameServerDeploymentRolloutArgs{
-//				DeploymentId: "tf-test-deployment-s8sn12jt2c",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupGameServerDeploymentRollout(ctx *pulumi.Context, args *LookupGameServerDeploymentRolloutArgs, opts ...pulumi.InvokeOption) (*LookupGameServerDeploymentRolloutResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGameServerDeploymentRolloutResult

@@ -41,8 +41,12 @@ class NoteAttestationAuthorityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hint: pulumi.Input['NoteAttestationAuthorityHintArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             hint: Optional[pulumi.Input['NoteAttestationAuthorityHintArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if hint is None:
+            raise TypeError("Missing 'hint' argument")
+
         _setter("hint", hint)
 
     @property
@@ -83,8 +87,14 @@ class NoteAttestationAuthorityHintArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             human_readable_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             human_readable_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if human_readable_name is None and 'humanReadableName' in kwargs:
+            human_readable_name = kwargs['humanReadableName']
+        if human_readable_name is None:
+            raise TypeError("Missing 'human_readable_name' argument")
+
         _setter("human_readable_name", human_readable_name)
 
     @property
@@ -118,10 +128,16 @@ class NoteIamBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -170,10 +186,16 @@ class NoteIamMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -224,9 +246,13 @@ class NoteRelatedUrlArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             url: pulumi.Input[str],
+             url: Optional[pulumi.Input[str]] = None,
              label: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+
         _setter("url", url)
         if label is not None:
             _setter("label", label)
@@ -279,9 +305,17 @@ class OccurenceAttestationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             serialized_payload: pulumi.Input[str],
-             signatures: pulumi.Input[Sequence[pulumi.Input['OccurenceAttestationSignatureArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             serialized_payload: Optional[pulumi.Input[str]] = None,
+             signatures: Optional[pulumi.Input[Sequence[pulumi.Input['OccurenceAttestationSignatureArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if serialized_payload is None and 'serializedPayload' in kwargs:
+            serialized_payload = kwargs['serializedPayload']
+        if serialized_payload is None:
+            raise TypeError("Missing 'serialized_payload' argument")
+        if signatures is None:
+            raise TypeError("Missing 'signatures' argument")
+
         _setter("serialized_payload", serialized_payload)
         _setter("signatures", signatures)
 
@@ -350,9 +384,15 @@ class OccurenceAttestationSignatureArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             public_key_id: pulumi.Input[str],
+             public_key_id: Optional[pulumi.Input[str]] = None,
              signature: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if public_key_id is None and 'publicKeyId' in kwargs:
+            public_key_id = kwargs['publicKeyId']
+        if public_key_id is None:
+            raise TypeError("Missing 'public_key_id' argument")
+
         _setter("public_key_id", public_key_id)
         if signature is not None:
             _setter("signature", signature)

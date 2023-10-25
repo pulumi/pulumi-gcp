@@ -31,9 +31,17 @@ class FolderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             parent: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             display_name: Optional[pulumi.Input[str]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+
         _setter("display_name", display_name)
         _setter("parent", parent)
 
@@ -103,7 +111,17 @@ class _FolderState:
              lifecycle_state: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              parent: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if folder_id is None and 'folderId' in kwargs:
+            folder_id = kwargs['folderId']
+        if lifecycle_state is None and 'lifecycleState' in kwargs:
+            lifecycle_state = kwargs['lifecycleState']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if display_name is not None:
@@ -216,22 +234,6 @@ class Folder(pulumi.CustomResource):
         [Access Control for Folders Using IAM](https://cloud.google.com/resource-manager/docs/access-control-folders)
         doc for more information.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        # Top-level folder under an organization.
-        department1 = gcp.organizations.Folder("department1",
-            display_name="Department 1",
-            parent="organizations/1234567")
-        # Folder nested under another folder.
-        team_abc = gcp.organizations.Folder("team-abc",
-            display_name="Team ABC",
-            parent=department1.name)
-        ```
-
         ## Import
 
         Folders can be imported using the folder's id, e.g. Both syntaxes are valid
@@ -271,22 +273,6 @@ class Folder(pulumi.CustomResource):
         resource must have `roles/resourcemanager.folderCreator`. See the
         [Access Control for Folders Using IAM](https://cloud.google.com/resource-manager/docs/access-control-folders)
         doc for more information.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        # Top-level folder under an organization.
-        department1 = gcp.organizations.Folder("department1",
-            display_name="Department 1",
-            parent="organizations/1234567")
-        # Folder nested under another folder.
-        team_abc = gcp.organizations.Folder("team-abc",
-            display_name="Team ABC",
-            parent=department1.name)
-        ```
 
         ## Import
 

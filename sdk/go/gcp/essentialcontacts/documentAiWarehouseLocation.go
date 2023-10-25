@@ -22,41 +22,6 @@ import (
 //   - [Official Documentation](https://cloud.google.com/document-warehouse/docs/overview)
 //
 // ## Example Usage
-// ### Document Ai Warehouse Location
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/essentialcontacts"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.LookupProject(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = essentialcontacts.NewDocumentAiWarehouseLocation(ctx, "example", &essentialcontacts.DocumentAiWarehouseLocationArgs{
-//				Location:                   pulumi.String("us"),
-//				ProjectNumber:              *pulumi.String(project.Number),
-//				AccessControlMode:          pulumi.String("ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI"),
-//				DatabaseType:               pulumi.String("DB_INFRA_SPANNER"),
-//				KmsKey:                     pulumi.String("dummy_key"),
-//				DocumentCreatorDefaultRole: pulumi.String("DOCUMENT_ADMIN"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

@@ -24,33 +24,6 @@ import * as utilities from "../utilities";
  * `billingProject` you defined.
  *
  * ## Example Usage
- * ### Access Context Manager Access Policy Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
- *     parent: "organizations/123456789",
- *     title: "Org Access Policy",
- * });
- * ```
- * ### Access Context Manager Access Policy Scoped
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const project = new gcp.organizations.Project("project", {
- *     orgId: "123456789",
- *     projectId: "acm-test-proj-123",
- * });
- * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
- *     parent: "organizations/123456789",
- *     scopes: pulumi.interpolate`projects/${project.number}`,
- *     title: "Scoped Access Policy",
- * });
- * ```
  *
  * ## Import
  *

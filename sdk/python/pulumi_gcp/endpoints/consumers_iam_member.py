@@ -38,12 +38,26 @@ class ConsumersIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             consumer_project: pulumi.Input[str],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
-             service_name: pulumi.Input[str],
+             consumer_project: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['ConsumersIamMemberConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if consumer_project is None and 'consumerProject' in kwargs:
+            consumer_project = kwargs['consumerProject']
+        if consumer_project is None:
+            raise TypeError("Missing 'consumer_project' argument")
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+
         _setter("consumer_project", consumer_project)
         _setter("member", member)
         _setter("role", role)
@@ -136,7 +150,13 @@ class _ConsumersIamMemberState:
              member: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if consumer_project is None and 'consumerProject' in kwargs:
+            consumer_project = kwargs['consumerProject']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if condition is not None:
             _setter("condition", condition)
         if consumer_project is not None:
@@ -347,11 +367,7 @@ class ConsumersIamMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConsumersIamMemberArgs.__new__(ConsumersIamMemberArgs)
 
-            if condition is not None and not isinstance(condition, ConsumersIamMemberConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                ConsumersIamMemberConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, ConsumersIamMemberConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if consumer_project is None and not opts.urn:
                 raise TypeError("Missing required property 'consumer_project'")

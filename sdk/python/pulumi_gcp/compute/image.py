@@ -118,7 +118,25 @@ class ImageArgs:
              source_image: Optional[pulumi.Input[str]] = None,
              source_snapshot: Optional[pulumi.Input[str]] = None,
              storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if disk_size_gb is None and 'diskSizeGb' in kwargs:
+            disk_size_gb = kwargs['diskSizeGb']
+        if guest_os_features is None and 'guestOsFeatures' in kwargs:
+            guest_os_features = kwargs['guestOsFeatures']
+        if image_encryption_key is None and 'imageEncryptionKey' in kwargs:
+            image_encryption_key = kwargs['imageEncryptionKey']
+        if raw_disk is None and 'rawDisk' in kwargs:
+            raw_disk = kwargs['rawDisk']
+        if source_disk is None and 'sourceDisk' in kwargs:
+            source_disk = kwargs['sourceDisk']
+        if source_image is None and 'sourceImage' in kwargs:
+            source_image = kwargs['sourceImage']
+        if source_snapshot is None and 'sourceSnapshot' in kwargs:
+            source_snapshot = kwargs['sourceSnapshot']
+        if storage_locations is None and 'storageLocations' in kwargs:
+            storage_locations = kwargs['storageLocations']
+
         if description is not None:
             _setter("description", description)
         if disk_size_gb is not None:
@@ -477,7 +495,33 @@ class _ImageState:
              source_image: Optional[pulumi.Input[str]] = None,
              source_snapshot: Optional[pulumi.Input[str]] = None,
              storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if archive_size_bytes is None and 'archiveSizeBytes' in kwargs:
+            archive_size_bytes = kwargs['archiveSizeBytes']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if disk_size_gb is None and 'diskSizeGb' in kwargs:
+            disk_size_gb = kwargs['diskSizeGb']
+        if guest_os_features is None and 'guestOsFeatures' in kwargs:
+            guest_os_features = kwargs['guestOsFeatures']
+        if image_encryption_key is None and 'imageEncryptionKey' in kwargs:
+            image_encryption_key = kwargs['imageEncryptionKey']
+        if label_fingerprint is None and 'labelFingerprint' in kwargs:
+            label_fingerprint = kwargs['labelFingerprint']
+        if raw_disk is None and 'rawDisk' in kwargs:
+            raw_disk = kwargs['rawDisk']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if source_disk is None and 'sourceDisk' in kwargs:
+            source_disk = kwargs['sourceDisk']
+        if source_image is None and 'sourceImage' in kwargs:
+            source_image = kwargs['sourceImage']
+        if source_snapshot is None and 'sourceSnapshot' in kwargs:
+            source_snapshot = kwargs['sourceSnapshot']
+        if storage_locations is None and 'storageLocations' in kwargs:
+            storage_locations = kwargs['storageLocations']
+
         if archive_size_bytes is not None:
             _setter("archive_size_bytes", archive_size_bytes)
         if creation_timestamp is not None:
@@ -816,47 +860,6 @@ class Image(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/images)
 
         ## Example Usage
-        ### Image Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example = gcp.compute.Image("example", raw_disk=gcp.compute.ImageRawDiskArgs(
-            source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
-        ))
-        ```
-        ### Image Guest Os
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example = gcp.compute.Image("example",
-            guest_os_features=[
-                gcp.compute.ImageGuestOsFeatureArgs(
-                    type="SECURE_BOOT",
-                ),
-                gcp.compute.ImageGuestOsFeatureArgs(
-                    type="MULTI_IP_SUBNET",
-                ),
-            ],
-            raw_disk=gcp.compute.ImageRawDiskArgs(
-                source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
-            ))
-        ```
-        ### Image Basic Storage Location
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example = gcp.compute.Image("example",
-            raw_disk=gcp.compute.ImageRawDiskArgs(
-                source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
-            ),
-            storage_locations=["us-central1"])
-        ```
 
         ## Import
 
@@ -959,47 +962,6 @@ class Image(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/images)
 
         ## Example Usage
-        ### Image Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example = gcp.compute.Image("example", raw_disk=gcp.compute.ImageRawDiskArgs(
-            source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
-        ))
-        ```
-        ### Image Guest Os
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example = gcp.compute.Image("example",
-            guest_os_features=[
-                gcp.compute.ImageGuestOsFeatureArgs(
-                    type="SECURE_BOOT",
-                ),
-                gcp.compute.ImageGuestOsFeatureArgs(
-                    type="MULTI_IP_SUBNET",
-                ),
-            ],
-            raw_disk=gcp.compute.ImageRawDiskArgs(
-                source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
-            ))
-        ```
-        ### Image Basic Storage Location
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example = gcp.compute.Image("example",
-            raw_disk=gcp.compute.ImageRawDiskArgs(
-                source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
-            ),
-            storage_locations=["us-central1"])
-        ```
 
         ## Import
 
@@ -1063,21 +1025,13 @@ class Image(pulumi.CustomResource):
             __props__.__dict__["disk_size_gb"] = disk_size_gb
             __props__.__dict__["family"] = family
             __props__.__dict__["guest_os_features"] = guest_os_features
-            if image_encryption_key is not None and not isinstance(image_encryption_key, ImageImageEncryptionKeyArgs):
-                image_encryption_key = image_encryption_key or {}
-                def _setter(key, value):
-                    image_encryption_key[key] = value
-                ImageImageEncryptionKeyArgs._configure(_setter, **image_encryption_key)
+            image_encryption_key = _utilities.configure(image_encryption_key, ImageImageEncryptionKeyArgs, True)
             __props__.__dict__["image_encryption_key"] = image_encryption_key
             __props__.__dict__["labels"] = labels
             __props__.__dict__["licenses"] = licenses
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            if raw_disk is not None and not isinstance(raw_disk, ImageRawDiskArgs):
-                raw_disk = raw_disk or {}
-                def _setter(key, value):
-                    raw_disk[key] = value
-                ImageRawDiskArgs._configure(_setter, **raw_disk)
+            raw_disk = _utilities.configure(raw_disk, ImageRawDiskArgs, True)
             __props__.__dict__["raw_disk"] = raw_disk
             __props__.__dict__["source_disk"] = source_disk
             __props__.__dict__["source_image"] = source_image

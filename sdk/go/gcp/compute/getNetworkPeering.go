@@ -16,56 +16,6 @@ import (
 // [the official documentation](https://cloud.google.com/compute/docs/vpc/vpc-peering)
 // and
 // [API](https://cloud.google.com/compute/docs/reference/latest/networks).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-//				AutoCreateSubnetworks: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			other, err := compute.NewNetwork(ctx, "other", &compute.NetworkArgs{
-//				AutoCreateSubnetworks: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			peering1, err := compute.NewNetworkPeering(ctx, "peering1", &compute.NetworkPeeringArgs{
-//				Network:     _default.SelfLink,
-//				PeerNetwork: other.SelfLink,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewNetworkPeering(ctx, "peering2", &compute.NetworkPeeringArgs{
-//				Network:     other.SelfLink,
-//				PeerNetwork: _default.SelfLink,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_ = compute.LookupNetworkPeeringOutput(ctx, compute.GetNetworkPeeringOutputArgs{
-//				Name:    peering1.Name,
-//				Network: peering1.Network,
-//			}, nil)
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupNetworkPeering(ctx *pulumi.Context, args *LookupNetworkPeeringArgs, opts ...pulumi.InvokeOption) (*LookupNetworkPeeringResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkPeeringResult

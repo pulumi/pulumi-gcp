@@ -19,60 +19,6 @@ namespace Pulumi.Gcp.Apigee
     ///     * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
     /// 
     /// ## Example Usage
-    /// ### Apigee Environment Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var current = Gcp.Organizations.GetClientConfig.Invoke();
-    /// 
-    ///     var apigeeNetwork = new Gcp.Compute.Network("apigeeNetwork");
-    /// 
-    ///     var apigeeRange = new Gcp.Compute.GlobalAddress("apigeeRange", new()
-    ///     {
-    ///         Purpose = "VPC_PEERING",
-    ///         AddressType = "INTERNAL",
-    ///         PrefixLength = 16,
-    ///         Network = apigeeNetwork.Id,
-    ///     });
-    /// 
-    ///     var apigeeVpcConnection = new Gcp.ServiceNetworking.Connection("apigeeVpcConnection", new()
-    ///     {
-    ///         Network = apigeeNetwork.Id,
-    ///         Service = "servicenetworking.googleapis.com",
-    ///         ReservedPeeringRanges = new[]
-    ///         {
-    ///             apigeeRange.Name,
-    ///         },
-    ///     });
-    /// 
-    ///     var apigeeOrg = new Gcp.Apigee.Organization("apigeeOrg", new()
-    ///     {
-    ///         AnalyticsRegion = "us-central1",
-    ///         ProjectId = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
-    ///         AuthorizedNetwork = apigeeNetwork.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             apigeeVpcConnection,
-    ///         },
-    ///     });
-    /// 
-    ///     var env = new Gcp.Apigee.Environment("env", new()
-    ///     {
-    ///         Description = "Apigee Environment",
-    ///         DisplayName = "environment-1",
-    ///         OrgId = apigeeOrg.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

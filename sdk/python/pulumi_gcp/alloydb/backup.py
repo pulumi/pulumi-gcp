@@ -51,14 +51,28 @@ class BackupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backup_id: pulumi.Input[str],
-             cluster_name: pulumi.Input[str],
-             location: pulumi.Input[str],
+             backup_id: Optional[pulumi.Input[str]] = None,
+             cluster_name: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              encryption_config: Optional[pulumi.Input['BackupEncryptionConfigArgs']] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if backup_id is None and 'backupId' in kwargs:
+            backup_id = kwargs['backupId']
+        if backup_id is None:
+            raise TypeError("Missing 'backup_id' argument")
+        if cluster_name is None and 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if cluster_name is None:
+            raise TypeError("Missing 'cluster_name' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if encryption_config is None and 'encryptionConfig' in kwargs:
+            encryption_config = kwargs['encryptionConfig']
+
         _setter("backup_id", backup_id)
         _setter("cluster_name", cluster_name)
         _setter("location", location)
@@ -239,7 +253,21 @@ class _BackupState:
              state: Optional[pulumi.Input[str]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if backup_id is None and 'backupId' in kwargs:
+            backup_id = kwargs['backupId']
+        if cluster_name is None and 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if encryption_config is None and 'encryptionConfig' in kwargs:
+            encryption_config = kwargs['encryptionConfig']
+        if encryption_infos is None and 'encryptionInfos' in kwargs:
+            encryption_infos = kwargs['encryptionInfos']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if backup_id is not None:
             _setter("backup_id", backup_id)
         if cluster_name is not None:
@@ -481,72 +509,6 @@ class Backup(pulumi.CustomResource):
             * [AlloyDB](https://cloud.google.com/alloydb/docs/)
 
         ## Example Usage
-        ### Alloydb Backup Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.get_network(name="alloydb-network")
-        default_cluster = gcp.alloydb.Cluster("defaultCluster",
-            cluster_id="alloydb-cluster",
-            location="us-central1",
-            network=default_network.id)
-        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
-            address_type="INTERNAL",
-            purpose="VPC_PEERING",
-            prefix_length=16,
-            network=default_network.id)
-        vpc_connection = gcp.servicenetworking.Connection("vpcConnection",
-            network=default_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_alloc.name])
-        default_instance = gcp.alloydb.Instance("defaultInstance",
-            cluster=default_cluster.name,
-            instance_id="alloydb-instance",
-            instance_type="PRIMARY",
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
-        default_backup = gcp.alloydb.Backup("defaultBackup",
-            location="us-central1",
-            backup_id="alloydb-backup",
-            cluster_name=default_cluster.name,
-            opts=pulumi.ResourceOptions(depends_on=[default_instance]))
-        ```
-        ### Alloydb Backup Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.get_network(name="alloydb-network")
-        default_cluster = gcp.alloydb.Cluster("defaultCluster",
-            cluster_id="alloydb-cluster",
-            location="us-central1",
-            network=default_network.id)
-        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
-            address_type="INTERNAL",
-            purpose="VPC_PEERING",
-            prefix_length=16,
-            network=default_network.id)
-        vpc_connection = gcp.servicenetworking.Connection("vpcConnection",
-            network=default_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_alloc.name])
-        default_instance = gcp.alloydb.Instance("defaultInstance",
-            cluster=default_cluster.name,
-            instance_id="alloydb-instance",
-            instance_type="PRIMARY",
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
-        default_backup = gcp.alloydb.Backup("defaultBackup",
-            location="us-central1",
-            backup_id="alloydb-backup",
-            cluster_name=default_cluster.name,
-            description="example description",
-            labels={
-                "label": "key",
-            },
-            opts=pulumi.ResourceOptions(depends_on=[default_instance]))
-        ```
 
         ## Import
 
@@ -595,72 +557,6 @@ class Backup(pulumi.CustomResource):
             * [AlloyDB](https://cloud.google.com/alloydb/docs/)
 
         ## Example Usage
-        ### Alloydb Backup Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.get_network(name="alloydb-network")
-        default_cluster = gcp.alloydb.Cluster("defaultCluster",
-            cluster_id="alloydb-cluster",
-            location="us-central1",
-            network=default_network.id)
-        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
-            address_type="INTERNAL",
-            purpose="VPC_PEERING",
-            prefix_length=16,
-            network=default_network.id)
-        vpc_connection = gcp.servicenetworking.Connection("vpcConnection",
-            network=default_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_alloc.name])
-        default_instance = gcp.alloydb.Instance("defaultInstance",
-            cluster=default_cluster.name,
-            instance_id="alloydb-instance",
-            instance_type="PRIMARY",
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
-        default_backup = gcp.alloydb.Backup("defaultBackup",
-            location="us-central1",
-            backup_id="alloydb-backup",
-            cluster_name=default_cluster.name,
-            opts=pulumi.ResourceOptions(depends_on=[default_instance]))
-        ```
-        ### Alloydb Backup Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.get_network(name="alloydb-network")
-        default_cluster = gcp.alloydb.Cluster("defaultCluster",
-            cluster_id="alloydb-cluster",
-            location="us-central1",
-            network=default_network.id)
-        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
-            address_type="INTERNAL",
-            purpose="VPC_PEERING",
-            prefix_length=16,
-            network=default_network.id)
-        vpc_connection = gcp.servicenetworking.Connection("vpcConnection",
-            network=default_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_alloc.name])
-        default_instance = gcp.alloydb.Instance("defaultInstance",
-            cluster=default_cluster.name,
-            instance_id="alloydb-instance",
-            instance_type="PRIMARY",
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
-        default_backup = gcp.alloydb.Backup("defaultBackup",
-            location="us-central1",
-            backup_id="alloydb-backup",
-            cluster_name=default_cluster.name,
-            description="example description",
-            labels={
-                "label": "key",
-            },
-            opts=pulumi.ResourceOptions(depends_on=[default_instance]))
-        ```
 
         ## Import
 
@@ -720,11 +616,7 @@ class Backup(pulumi.CustomResource):
                 raise TypeError("Missing required property 'cluster_name'")
             __props__.__dict__["cluster_name"] = cluster_name
             __props__.__dict__["description"] = description
-            if encryption_config is not None and not isinstance(encryption_config, BackupEncryptionConfigArgs):
-                encryption_config = encryption_config or {}
-                def _setter(key, value):
-                    encryption_config[key] = value
-                BackupEncryptionConfigArgs._configure(_setter, **encryption_config)
+            encryption_config = _utilities.configure(encryption_config, BackupEncryptionConfigArgs, True)
             __props__.__dict__["encryption_config"] = encryption_config
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:

@@ -20,26 +20,6 @@ namespace Pulumi.Gcp.SecurityCenter
     /// * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1/organizations.muteConfigs)
     /// 
     /// ## Example Usage
-    /// ### Scc Mute Config
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.SecurityCenter.MuteConfig("default", new()
-    ///     {
-    ///         Description = "My Mute Config",
-    ///         Filter = "category: \"OS_VULNERABILITY\"",
-    ///         MuteConfigId = "my-config",
-    ///         Parent = "organizations/123456789",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

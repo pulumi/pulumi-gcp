@@ -16,33 +16,6 @@ import * as utilities from "../utilities";
  *     * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_databases)
  *
  * ## Example Usage
- * ### Biglake Database
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const catalog = new gcp.biglake.Catalog("catalog", {location: "US"});
- * const bucket = new gcp.storage.Bucket("bucket", {
- *     location: "US",
- *     forceDestroy: true,
- *     uniformBucketLevelAccess: true,
- * });
- * const metadataFolder = new gcp.storage.BucketObject("metadataFolder", {
- *     content: " ",
- *     bucket: bucket.name,
- * });
- * const database = new gcp.biglake.Database("database", {
- *     catalog: catalog.id,
- *     type: "HIVE",
- *     hiveOptions: {
- *         locationUri: pulumi.interpolate`gs://${bucket.name}/${metadataFolder.name}`,
- *         parameters: {
- *             owner: "John Doe",
- *         },
- *     },
- * });
- * ```
  *
  * ## Import
  *

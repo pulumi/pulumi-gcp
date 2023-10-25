@@ -13,32 +13,6 @@ import (
 )
 
 // Use this data source to get information about the supported alloydb database flags in a location.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/alloydb"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := alloydb.GetSupportedDatabaseFlags(ctx, &alloydb.GetSupportedDatabaseFlagsArgs{
-//				Location: "us-central1",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetSupportedDatabaseFlags(ctx *pulumi.Context, args *GetSupportedDatabaseFlagsArgs, opts ...pulumi.InvokeOption) (*GetSupportedDatabaseFlagsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSupportedDatabaseFlagsResult

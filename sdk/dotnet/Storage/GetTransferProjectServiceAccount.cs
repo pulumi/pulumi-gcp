@@ -13,58 +13,12 @@ namespace Pulumi.Gcp.Storage
     {
         /// <summary>
         /// Use this data source to retrieve Storage Transfer service account for this project
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = Gcp.Storage.GetTransferProjectServiceAccount.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["defaultAccount"] = @default.Apply(@default =&gt; @default.Apply(getTransferProjectServiceAccountResult =&gt; getTransferProjectServiceAccountResult.Email)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTransferProjectServiceAccountResult> InvokeAsync(GetTransferProjectServiceAccountArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransferProjectServiceAccountResult>("gcp:storage/getTransferProjectServiceAccount:getTransferProjectServiceAccount", args ?? new GetTransferProjectServiceAccountArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve Storage Transfer service account for this project
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = Gcp.Storage.GetTransferProjectServiceAccount.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["defaultAccount"] = @default.Apply(@default =&gt; @default.Apply(getTransferProjectServiceAccountResult =&gt; getTransferProjectServiceAccountResult.Email)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetTransferProjectServiceAccountResult> Invoke(GetTransferProjectServiceAccountInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransferProjectServiceAccountResult>("gcp:storage/getTransferProjectServiceAccount:getTransferProjectServiceAccount", args ?? new GetTransferProjectServiceAccountInvokeArgs(), options.WithDefaults());

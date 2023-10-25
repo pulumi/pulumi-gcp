@@ -125,36 +125,6 @@ def get_project_service_account(project: Optional[str] = None,
     [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
 
     ## Example Usage
-    ### Pub/Sub Notifications
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    gcs_account = gcp.storage.get_project_service_account()
-    binding = gcp.pubsub.TopicIAMBinding("binding",
-        topic=google_pubsub_topic["topic"]["name"],
-        role="roles/pubsub.publisher",
-        members=[f"serviceAccount:{gcs_account.email_address}"])
-    ```
-    ### Cloud KMS Keys
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    gcs_account = gcp.storage.get_project_service_account()
-    binding = gcp.kms.CryptoKeyIAMBinding("binding",
-        crypto_key_id="your-crypto-key-id",
-        role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-        members=[f"serviceAccount:{gcs_account.email_address}"])
-    bucket = gcp.storage.Bucket("bucket",
-        location="US",
-        encryption=gcp.storage.BucketEncryptionArgs(
-            default_kms_key_name="your-crypto-key-id",
-        ),
-        opts=pulumi.ResourceOptions(depends_on=[binding]))
-    ```
 
 
     :param str project: The project the unique service account was created for. If it is not provided, the provider project is used.
@@ -214,36 +184,6 @@ def get_project_service_account_output(project: Optional[pulumi.Input[Optional[s
     [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
 
     ## Example Usage
-    ### Pub/Sub Notifications
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    gcs_account = gcp.storage.get_project_service_account()
-    binding = gcp.pubsub.TopicIAMBinding("binding",
-        topic=google_pubsub_topic["topic"]["name"],
-        role="roles/pubsub.publisher",
-        members=[f"serviceAccount:{gcs_account.email_address}"])
-    ```
-    ### Cloud KMS Keys
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    gcs_account = gcp.storage.get_project_service_account()
-    binding = gcp.kms.CryptoKeyIAMBinding("binding",
-        crypto_key_id="your-crypto-key-id",
-        role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-        members=[f"serviceAccount:{gcs_account.email_address}"])
-    bucket = gcp.storage.Bucket("bucket",
-        location="US",
-        encryption=gcp.storage.BucketEncryptionArgs(
-            default_kms_key_name="your-crypto-key-id",
-        ),
-        opts=pulumi.ResourceOptions(depends_on=[binding]))
-    ```
 
 
     :param str project: The project the unique service account was created for. If it is not provided, the provider project is used.

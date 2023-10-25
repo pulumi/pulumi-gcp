@@ -137,10 +137,10 @@ class FlexibleAppVersionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             liveness_check: pulumi.Input['FlexibleAppVersionLivenessCheckArgs'],
-             readiness_check: pulumi.Input['FlexibleAppVersionReadinessCheckArgs'],
-             runtime: pulumi.Input[str],
-             service: pulumi.Input[str],
+             liveness_check: Optional[pulumi.Input['FlexibleAppVersionLivenessCheckArgs']] = None,
+             readiness_check: Optional[pulumi.Input['FlexibleAppVersionReadinessCheckArgs']] = None,
+             runtime: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
              api_config: Optional[pulumi.Input['FlexibleAppVersionApiConfigArgs']] = None,
              automatic_scaling: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingArgs']] = None,
              beta_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -166,7 +166,59 @@ class FlexibleAppVersionArgs:
              serving_status: Optional[pulumi.Input[str]] = None,
              version_id: Optional[pulumi.Input[str]] = None,
              vpc_access_connector: Optional[pulumi.Input['FlexibleAppVersionVpcAccessConnectorArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if liveness_check is None and 'livenessCheck' in kwargs:
+            liveness_check = kwargs['livenessCheck']
+        if liveness_check is None:
+            raise TypeError("Missing 'liveness_check' argument")
+        if readiness_check is None and 'readinessCheck' in kwargs:
+            readiness_check = kwargs['readinessCheck']
+        if readiness_check is None:
+            raise TypeError("Missing 'readiness_check' argument")
+        if runtime is None:
+            raise TypeError("Missing 'runtime' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+        if api_config is None and 'apiConfig' in kwargs:
+            api_config = kwargs['apiConfig']
+        if automatic_scaling is None and 'automaticScaling' in kwargs:
+            automatic_scaling = kwargs['automaticScaling']
+        if beta_settings is None and 'betaSettings' in kwargs:
+            beta_settings = kwargs['betaSettings']
+        if default_expiration is None and 'defaultExpiration' in kwargs:
+            default_expiration = kwargs['defaultExpiration']
+        if delete_service_on_destroy is None and 'deleteServiceOnDestroy' in kwargs:
+            delete_service_on_destroy = kwargs['deleteServiceOnDestroy']
+        if endpoints_api_service is None and 'endpointsApiService' in kwargs:
+            endpoints_api_service = kwargs['endpointsApiService']
+        if env_variables is None and 'envVariables' in kwargs:
+            env_variables = kwargs['envVariables']
+        if inbound_services is None and 'inboundServices' in kwargs:
+            inbound_services = kwargs['inboundServices']
+        if instance_class is None and 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if manual_scaling is None and 'manualScaling' in kwargs:
+            manual_scaling = kwargs['manualScaling']
+        if nobuild_files_regex is None and 'nobuildFilesRegex' in kwargs:
+            nobuild_files_regex = kwargs['nobuildFilesRegex']
+        if noop_on_destroy is None and 'noopOnDestroy' in kwargs:
+            noop_on_destroy = kwargs['noopOnDestroy']
+        if runtime_api_version is None and 'runtimeApiVersion' in kwargs:
+            runtime_api_version = kwargs['runtimeApiVersion']
+        if runtime_channel is None and 'runtimeChannel' in kwargs:
+            runtime_channel = kwargs['runtimeChannel']
+        if runtime_main_executable_path is None and 'runtimeMainExecutablePath' in kwargs:
+            runtime_main_executable_path = kwargs['runtimeMainExecutablePath']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if serving_status is None and 'servingStatus' in kwargs:
+            serving_status = kwargs['servingStatus']
+        if version_id is None and 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+        if vpc_access_connector is None and 'vpcAccessConnector' in kwargs:
+            vpc_access_connector = kwargs['vpcAccessConnector']
+
         _setter("liveness_check", liveness_check)
         _setter("readiness_check", readiness_check)
         _setter("runtime", runtime)
@@ -754,7 +806,51 @@ class _FlexibleAppVersionState:
              serving_status: Optional[pulumi.Input[str]] = None,
              version_id: Optional[pulumi.Input[str]] = None,
              vpc_access_connector: Optional[pulumi.Input['FlexibleAppVersionVpcAccessConnectorArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api_config is None and 'apiConfig' in kwargs:
+            api_config = kwargs['apiConfig']
+        if automatic_scaling is None and 'automaticScaling' in kwargs:
+            automatic_scaling = kwargs['automaticScaling']
+        if beta_settings is None and 'betaSettings' in kwargs:
+            beta_settings = kwargs['betaSettings']
+        if default_expiration is None and 'defaultExpiration' in kwargs:
+            default_expiration = kwargs['defaultExpiration']
+        if delete_service_on_destroy is None and 'deleteServiceOnDestroy' in kwargs:
+            delete_service_on_destroy = kwargs['deleteServiceOnDestroy']
+        if endpoints_api_service is None and 'endpointsApiService' in kwargs:
+            endpoints_api_service = kwargs['endpointsApiService']
+        if env_variables is None and 'envVariables' in kwargs:
+            env_variables = kwargs['envVariables']
+        if inbound_services is None and 'inboundServices' in kwargs:
+            inbound_services = kwargs['inboundServices']
+        if instance_class is None and 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if liveness_check is None and 'livenessCheck' in kwargs:
+            liveness_check = kwargs['livenessCheck']
+        if manual_scaling is None and 'manualScaling' in kwargs:
+            manual_scaling = kwargs['manualScaling']
+        if nobuild_files_regex is None and 'nobuildFilesRegex' in kwargs:
+            nobuild_files_regex = kwargs['nobuildFilesRegex']
+        if noop_on_destroy is None and 'noopOnDestroy' in kwargs:
+            noop_on_destroy = kwargs['noopOnDestroy']
+        if readiness_check is None and 'readinessCheck' in kwargs:
+            readiness_check = kwargs['readinessCheck']
+        if runtime_api_version is None and 'runtimeApiVersion' in kwargs:
+            runtime_api_version = kwargs['runtimeApiVersion']
+        if runtime_channel is None and 'runtimeChannel' in kwargs:
+            runtime_channel = kwargs['runtimeChannel']
+        if runtime_main_executable_path is None and 'runtimeMainExecutablePath' in kwargs:
+            runtime_main_executable_path = kwargs['runtimeMainExecutablePath']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if serving_status is None and 'servingStatus' in kwargs:
+            serving_status = kwargs['servingStatus']
+        if version_id is None and 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+        if vpc_access_connector is None and 'vpcAccessConnector' in kwargs:
+            vpc_access_connector = kwargs['vpcAccessConnector']
+
         if api_config is not None:
             _setter("api_config", api_config)
         if automatic_scaling is not None:
@@ -1254,86 +1350,6 @@ class FlexibleAppVersion(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/appengine/docs/flexible)
 
         ## Example Usage
-        ### App Engine Flexible App Version
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_project = gcp.organizations.Project("myProject",
-            project_id="appeng-flex",
-            org_id="123456789",
-            billing_account="000000-0000000-0000000-000000")
-        app = gcp.appengine.Application("app",
-            project=my_project.project_id,
-            location_id="us-central")
-        service = gcp.projects.Service("service",
-            project=my_project.project_id,
-            service="appengineflex.googleapis.com",
-            disable_dependent_services=False)
-        custom_service_account = gcp.service_account.Account("customServiceAccount",
-            project=service.project,
-            account_id="my-account",
-            display_name="Custom Service Account")
-        gae_api = gcp.projects.IAMMember("gaeApi",
-            project=service.project,
-            role="roles/compute.networkUser",
-            member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        logs_writer = gcp.projects.IAMMember("logsWriter",
-            project=service.project,
-            role="roles/logging.logWriter",
-            member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        storage_viewer = gcp.projects.IAMMember("storageViewer",
-            project=service.project,
-            role="roles/storage.objectViewer",
-            member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        bucket = gcp.storage.Bucket("bucket",
-            project=my_project.project_id,
-            location="US")
-        object = gcp.storage.BucketObject("object",
-            bucket=bucket.name,
-            source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
-        myapp_v1 = gcp.appengine.FlexibleAppVersion("myappV1",
-            version_id="v1",
-            project=gae_api.project,
-            service="default",
-            runtime="nodejs",
-            entrypoint=gcp.appengine.FlexibleAppVersionEntrypointArgs(
-                shell="node ./app.js",
-            ),
-            deployment=gcp.appengine.FlexibleAppVersionDeploymentArgs(
-                zip=gcp.appengine.FlexibleAppVersionDeploymentZipArgs(
-                    source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
-                ),
-            ),
-            liveness_check=gcp.appengine.FlexibleAppVersionLivenessCheckArgs(
-                path="/",
-            ),
-            readiness_check=gcp.appengine.FlexibleAppVersionReadinessCheckArgs(
-                path="/",
-            ),
-            env_variables={
-                "port": "8080",
-            },
-            handlers=[gcp.appengine.FlexibleAppVersionHandlerArgs(
-                url_regex=".*\\\\/my-path\\\\/*",
-                security_level="SECURE_ALWAYS",
-                login="LOGIN_REQUIRED",
-                auth_fail_action="AUTH_FAIL_ACTION_REDIRECT",
-                static_files=gcp.appengine.FlexibleAppVersionHandlerStaticFilesArgs(
-                    path="my-other-path",
-                    upload_path_regex=".*\\\\/my-path\\\\/*",
-                ),
-            )],
-            automatic_scaling=gcp.appengine.FlexibleAppVersionAutomaticScalingArgs(
-                cool_down_period="120s",
-                cpu_utilization=gcp.appengine.FlexibleAppVersionAutomaticScalingCpuUtilizationArgs(
-                    target_utilization=0.5,
-                ),
-            ),
-            noop_on_destroy=True,
-            service_account=custom_service_account.email)
-        ```
 
         ## Import
 
@@ -1430,86 +1446,6 @@ class FlexibleAppVersion(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/appengine/docs/flexible)
 
         ## Example Usage
-        ### App Engine Flexible App Version
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_project = gcp.organizations.Project("myProject",
-            project_id="appeng-flex",
-            org_id="123456789",
-            billing_account="000000-0000000-0000000-000000")
-        app = gcp.appengine.Application("app",
-            project=my_project.project_id,
-            location_id="us-central")
-        service = gcp.projects.Service("service",
-            project=my_project.project_id,
-            service="appengineflex.googleapis.com",
-            disable_dependent_services=False)
-        custom_service_account = gcp.service_account.Account("customServiceAccount",
-            project=service.project,
-            account_id="my-account",
-            display_name="Custom Service Account")
-        gae_api = gcp.projects.IAMMember("gaeApi",
-            project=service.project,
-            role="roles/compute.networkUser",
-            member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        logs_writer = gcp.projects.IAMMember("logsWriter",
-            project=service.project,
-            role="roles/logging.logWriter",
-            member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        storage_viewer = gcp.projects.IAMMember("storageViewer",
-            project=service.project,
-            role="roles/storage.objectViewer",
-            member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        bucket = gcp.storage.Bucket("bucket",
-            project=my_project.project_id,
-            location="US")
-        object = gcp.storage.BucketObject("object",
-            bucket=bucket.name,
-            source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
-        myapp_v1 = gcp.appengine.FlexibleAppVersion("myappV1",
-            version_id="v1",
-            project=gae_api.project,
-            service="default",
-            runtime="nodejs",
-            entrypoint=gcp.appengine.FlexibleAppVersionEntrypointArgs(
-                shell="node ./app.js",
-            ),
-            deployment=gcp.appengine.FlexibleAppVersionDeploymentArgs(
-                zip=gcp.appengine.FlexibleAppVersionDeploymentZipArgs(
-                    source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
-                ),
-            ),
-            liveness_check=gcp.appengine.FlexibleAppVersionLivenessCheckArgs(
-                path="/",
-            ),
-            readiness_check=gcp.appengine.FlexibleAppVersionReadinessCheckArgs(
-                path="/",
-            ),
-            env_variables={
-                "port": "8080",
-            },
-            handlers=[gcp.appengine.FlexibleAppVersionHandlerArgs(
-                url_regex=".*\\\\/my-path\\\\/*",
-                security_level="SECURE_ALWAYS",
-                login="LOGIN_REQUIRED",
-                auth_fail_action="AUTH_FAIL_ACTION_REDIRECT",
-                static_files=gcp.appengine.FlexibleAppVersionHandlerStaticFilesArgs(
-                    path="my-other-path",
-                    upload_path_regex=".*\\\\/my-path\\\\/*",
-                ),
-            )],
-            automatic_scaling=gcp.appengine.FlexibleAppVersionAutomaticScalingArgs(
-                cool_down_period="120s",
-                cpu_utilization=gcp.appengine.FlexibleAppVersionAutomaticScalingCpuUtilizationArgs(
-                    target_utilization=0.5,
-                ),
-            ),
-            noop_on_destroy=True,
-            service_account=custom_service_account.email)
-        ```
 
         ## Import
 
@@ -1584,79 +1520,39 @@ class FlexibleAppVersion(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FlexibleAppVersionArgs.__new__(FlexibleAppVersionArgs)
 
-            if api_config is not None and not isinstance(api_config, FlexibleAppVersionApiConfigArgs):
-                api_config = api_config or {}
-                def _setter(key, value):
-                    api_config[key] = value
-                FlexibleAppVersionApiConfigArgs._configure(_setter, **api_config)
+            api_config = _utilities.configure(api_config, FlexibleAppVersionApiConfigArgs, True)
             __props__.__dict__["api_config"] = api_config
-            if automatic_scaling is not None and not isinstance(automatic_scaling, FlexibleAppVersionAutomaticScalingArgs):
-                automatic_scaling = automatic_scaling or {}
-                def _setter(key, value):
-                    automatic_scaling[key] = value
-                FlexibleAppVersionAutomaticScalingArgs._configure(_setter, **automatic_scaling)
+            automatic_scaling = _utilities.configure(automatic_scaling, FlexibleAppVersionAutomaticScalingArgs, True)
             __props__.__dict__["automatic_scaling"] = automatic_scaling
             __props__.__dict__["beta_settings"] = beta_settings
             __props__.__dict__["default_expiration"] = default_expiration
             __props__.__dict__["delete_service_on_destroy"] = delete_service_on_destroy
-            if deployment is not None and not isinstance(deployment, FlexibleAppVersionDeploymentArgs):
-                deployment = deployment or {}
-                def _setter(key, value):
-                    deployment[key] = value
-                FlexibleAppVersionDeploymentArgs._configure(_setter, **deployment)
+            deployment = _utilities.configure(deployment, FlexibleAppVersionDeploymentArgs, True)
             __props__.__dict__["deployment"] = deployment
-            if endpoints_api_service is not None and not isinstance(endpoints_api_service, FlexibleAppVersionEndpointsApiServiceArgs):
-                endpoints_api_service = endpoints_api_service or {}
-                def _setter(key, value):
-                    endpoints_api_service[key] = value
-                FlexibleAppVersionEndpointsApiServiceArgs._configure(_setter, **endpoints_api_service)
+            endpoints_api_service = _utilities.configure(endpoints_api_service, FlexibleAppVersionEndpointsApiServiceArgs, True)
             __props__.__dict__["endpoints_api_service"] = endpoints_api_service
-            if entrypoint is not None and not isinstance(entrypoint, FlexibleAppVersionEntrypointArgs):
-                entrypoint = entrypoint or {}
-                def _setter(key, value):
-                    entrypoint[key] = value
-                FlexibleAppVersionEntrypointArgs._configure(_setter, **entrypoint)
+            entrypoint = _utilities.configure(entrypoint, FlexibleAppVersionEntrypointArgs, True)
             __props__.__dict__["entrypoint"] = entrypoint
             __props__.__dict__["env_variables"] = env_variables
             __props__.__dict__["handlers"] = handlers
             __props__.__dict__["inbound_services"] = inbound_services
             __props__.__dict__["instance_class"] = instance_class
-            if liveness_check is not None and not isinstance(liveness_check, FlexibleAppVersionLivenessCheckArgs):
-                liveness_check = liveness_check or {}
-                def _setter(key, value):
-                    liveness_check[key] = value
-                FlexibleAppVersionLivenessCheckArgs._configure(_setter, **liveness_check)
+            liveness_check = _utilities.configure(liveness_check, FlexibleAppVersionLivenessCheckArgs, True)
             if liveness_check is None and not opts.urn:
                 raise TypeError("Missing required property 'liveness_check'")
             __props__.__dict__["liveness_check"] = liveness_check
-            if manual_scaling is not None and not isinstance(manual_scaling, FlexibleAppVersionManualScalingArgs):
-                manual_scaling = manual_scaling or {}
-                def _setter(key, value):
-                    manual_scaling[key] = value
-                FlexibleAppVersionManualScalingArgs._configure(_setter, **manual_scaling)
+            manual_scaling = _utilities.configure(manual_scaling, FlexibleAppVersionManualScalingArgs, True)
             __props__.__dict__["manual_scaling"] = manual_scaling
-            if network is not None and not isinstance(network, FlexibleAppVersionNetworkArgs):
-                network = network or {}
-                def _setter(key, value):
-                    network[key] = value
-                FlexibleAppVersionNetworkArgs._configure(_setter, **network)
+            network = _utilities.configure(network, FlexibleAppVersionNetworkArgs, True)
             __props__.__dict__["network"] = network
             __props__.__dict__["nobuild_files_regex"] = nobuild_files_regex
             __props__.__dict__["noop_on_destroy"] = noop_on_destroy
             __props__.__dict__["project"] = project
-            if readiness_check is not None and not isinstance(readiness_check, FlexibleAppVersionReadinessCheckArgs):
-                readiness_check = readiness_check or {}
-                def _setter(key, value):
-                    readiness_check[key] = value
-                FlexibleAppVersionReadinessCheckArgs._configure(_setter, **readiness_check)
+            readiness_check = _utilities.configure(readiness_check, FlexibleAppVersionReadinessCheckArgs, True)
             if readiness_check is None and not opts.urn:
                 raise TypeError("Missing required property 'readiness_check'")
             __props__.__dict__["readiness_check"] = readiness_check
-            if resources is not None and not isinstance(resources, FlexibleAppVersionResourcesArgs):
-                resources = resources or {}
-                def _setter(key, value):
-                    resources[key] = value
-                FlexibleAppVersionResourcesArgs._configure(_setter, **resources)
+            resources = _utilities.configure(resources, FlexibleAppVersionResourcesArgs, True)
             __props__.__dict__["resources"] = resources
             if runtime is None and not opts.urn:
                 raise TypeError("Missing required property 'runtime'")
@@ -1670,11 +1566,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["serving_status"] = serving_status
             __props__.__dict__["version_id"] = version_id
-            if vpc_access_connector is not None and not isinstance(vpc_access_connector, FlexibleAppVersionVpcAccessConnectorArgs):
-                vpc_access_connector = vpc_access_connector or {}
-                def _setter(key, value):
-                    vpc_access_connector[key] = value
-                FlexibleAppVersionVpcAccessConnectorArgs._configure(_setter, **vpc_access_connector)
+            vpc_access_connector = _utilities.configure(vpc_access_connector, FlexibleAppVersionVpcAccessConnectorArgs, True)
             __props__.__dict__["vpc_access_connector"] = vpc_access_connector
             __props__.__dict__["name"] = None
         super(FlexibleAppVersion, __self__).__init__(

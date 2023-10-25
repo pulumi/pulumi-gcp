@@ -93,16 +93,6 @@ def get_note_iam_policy(note: Optional[str] = None,
     """
     Retrieves the current IAM policy data for note
 
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.containeranalysis.get_note_iam_policy(project=google_container_analysis_note["note"]["project"],
-        note=google_container_analysis_note["note"]["name"])
-    ```
-
 
     :param str note: Used to find the parent resource to bind the IAM policy to
     :param str project: The ID of the project in which the resource belongs.
@@ -128,16 +118,6 @@ def get_note_iam_policy_output(note: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNoteIamPolicyResult]:
     """
     Retrieves the current IAM policy data for note
-
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.containeranalysis.get_note_iam_policy(project=google_container_analysis_note["note"]["project"],
-        note=google_container_analysis_note["note"]["name"])
-    ```
 
 
     :param str note: Used to find the parent resource to bind the IAM policy to

@@ -46,12 +46,20 @@ class FulfillmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              features: Optional[pulumi.Input[Sequence[pulumi.Input['FulfillmentFeatureArgs']]]] = None,
              generic_web_service: Optional[pulumi.Input['FulfillmentGenericWebServiceArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if generic_web_service is None and 'genericWebService' in kwargs:
+            generic_web_service = kwargs['genericWebService']
+
         _setter("display_name", display_name)
         if enabled is not None:
             _setter("enabled", enabled)
@@ -172,7 +180,13 @@ class _FulfillmentState:
              generic_web_service: Optional[pulumi.Input['FulfillmentGenericWebServiceArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if generic_web_service is None and 'genericWebService' in kwargs:
+            generic_web_service = kwargs['genericWebService']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if enabled is not None:
@@ -287,29 +301,6 @@ class Fulfillment(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/es/docs/fulfillment-overview)
 
         ## Example Usage
-        ### Dialogflow Fulfillment Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic_agent = gcp.diagflow.Agent("basicAgent",
-            display_name="example_agent",
-            default_language_code="en",
-            time_zone="America/New_York")
-        basic_fulfillment = gcp.diagflow.Fulfillment("basicFulfillment",
-            display_name="basic-fulfillment",
-            enabled=True,
-            generic_web_service=gcp.diagflow.FulfillmentGenericWebServiceArgs(
-                uri="https://google.com",
-                username="admin",
-                password="password",
-                request_headers={
-                    "name": "wrench",
-                },
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
-        ```
 
         ## Import
 
@@ -349,29 +340,6 @@ class Fulfillment(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/es/docs/fulfillment-overview)
 
         ## Example Usage
-        ### Dialogflow Fulfillment Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic_agent = gcp.diagflow.Agent("basicAgent",
-            display_name="example_agent",
-            default_language_code="en",
-            time_zone="America/New_York")
-        basic_fulfillment = gcp.diagflow.Fulfillment("basicFulfillment",
-            display_name="basic-fulfillment",
-            enabled=True,
-            generic_web_service=gcp.diagflow.FulfillmentGenericWebServiceArgs(
-                uri="https://google.com",
-                username="admin",
-                password="password",
-                request_headers={
-                    "name": "wrench",
-                },
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
-        ```
 
         ## Import
 
@@ -419,11 +387,7 @@ class Fulfillment(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["features"] = features
-            if generic_web_service is not None and not isinstance(generic_web_service, FulfillmentGenericWebServiceArgs):
-                generic_web_service = generic_web_service or {}
-                def _setter(key, value):
-                    generic_web_service[key] = value
-                FulfillmentGenericWebServiceArgs._configure(_setter, **generic_web_service)
+            generic_web_service = _utilities.configure(generic_web_service, FulfillmentGenericWebServiceArgs, True)
             __props__.__dict__["generic_web_service"] = generic_web_service
             __props__.__dict__["project"] = project
             __props__.__dict__["name"] = None

@@ -55,9 +55,9 @@ class TriggerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             destination: pulumi.Input['TriggerDestinationArgs'],
-             location: pulumi.Input[str],
-             matching_criterias: pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]],
+             destination: Optional[pulumi.Input['TriggerDestinationArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             matching_criterias: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]]] = None,
              channel: Optional[pulumi.Input[str]] = None,
              event_data_content_type: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -65,7 +65,21 @@ class TriggerArgs:
              project: Optional[pulumi.Input[str]] = None,
              service_account: Optional[pulumi.Input[str]] = None,
              transports: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerTransportArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if destination is None:
+            raise TypeError("Missing 'destination' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if matching_criterias is None and 'matchingCriterias' in kwargs:
+            matching_criterias = kwargs['matchingCriterias']
+        if matching_criterias is None:
+            raise TypeError("Missing 'matching_criterias' argument")
+        if event_data_content_type is None and 'eventDataContentType' in kwargs:
+            event_data_content_type = kwargs['eventDataContentType']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+
         _setter("destination", destination)
         _setter("location", location)
         _setter("matching_criterias", matching_criterias)
@@ -277,7 +291,19 @@ class _TriggerState:
              transports: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerTransportArgs']]]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if event_data_content_type is None and 'eventDataContentType' in kwargs:
+            event_data_content_type = kwargs['eventDataContentType']
+        if matching_criterias is None and 'matchingCriterias' in kwargs:
+            matching_criterias = kwargs['matchingCriterias']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if channel is not None:
             _setter("channel", channel)
         if conditions is not None:
@@ -510,49 +536,6 @@ class Trigger(pulumi.CustomResource):
         The Eventarc Trigger resource
 
         ## Example Usage
-        ### Basic
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.cloudrun.Service("default",
-            location="europe-west1",
-            metadata=gcp.cloudrun.ServiceMetadataArgs(
-                namespace="my-project-name",
-            ),
-            template=gcp.cloudrun.ServiceTemplateArgs(
-                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
-                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
-                        image="gcr.io/cloudrun/hello",
-                        ports=[gcp.cloudrun.ServiceTemplateSpecContainerPortArgs(
-                            container_port=8080,
-                        )],
-                    )],
-                    container_concurrency=50,
-                    timeout_seconds=100,
-                ),
-            ),
-            traffics=[gcp.cloudrun.ServiceTrafficArgs(
-                percent=100,
-                latest_revision=True,
-            )])
-        primary = gcp.eventarc.Trigger("primary",
-            location="europe-west1",
-            matching_criterias=[gcp.eventarc.TriggerMatchingCriteriaArgs(
-                attribute="type",
-                value="google.cloud.pubsub.topic.v1.messagePublished",
-            )],
-            destination=gcp.eventarc.TriggerDestinationArgs(
-                cloud_run_service=gcp.eventarc.TriggerDestinationCloudRunServiceArgs(
-                    service=default.name,
-                    region="europe-west1",
-                ),
-            ),
-            labels={
-                "foo": "bar",
-            })
-        foo = gcp.pubsub.Topic("foo")
-        ```
 
         ## Import
 
@@ -593,49 +576,6 @@ class Trigger(pulumi.CustomResource):
         The Eventarc Trigger resource
 
         ## Example Usage
-        ### Basic
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.cloudrun.Service("default",
-            location="europe-west1",
-            metadata=gcp.cloudrun.ServiceMetadataArgs(
-                namespace="my-project-name",
-            ),
-            template=gcp.cloudrun.ServiceTemplateArgs(
-                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
-                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
-                        image="gcr.io/cloudrun/hello",
-                        ports=[gcp.cloudrun.ServiceTemplateSpecContainerPortArgs(
-                            container_port=8080,
-                        )],
-                    )],
-                    container_concurrency=50,
-                    timeout_seconds=100,
-                ),
-            ),
-            traffics=[gcp.cloudrun.ServiceTrafficArgs(
-                percent=100,
-                latest_revision=True,
-            )])
-        primary = gcp.eventarc.Trigger("primary",
-            location="europe-west1",
-            matching_criterias=[gcp.eventarc.TriggerMatchingCriteriaArgs(
-                attribute="type",
-                value="google.cloud.pubsub.topic.v1.messagePublished",
-            )],
-            destination=gcp.eventarc.TriggerDestinationArgs(
-                cloud_run_service=gcp.eventarc.TriggerDestinationCloudRunServiceArgs(
-                    service=default.name,
-                    region="europe-west1",
-                ),
-            ),
-            labels={
-                "foo": "bar",
-            })
-        foo = gcp.pubsub.Topic("foo")
-        ```
 
         ## Import
 
@@ -692,11 +632,7 @@ class Trigger(pulumi.CustomResource):
             __props__ = TriggerArgs.__new__(TriggerArgs)
 
             __props__.__dict__["channel"] = channel
-            if destination is not None and not isinstance(destination, TriggerDestinationArgs):
-                destination = destination or {}
-                def _setter(key, value):
-                    destination[key] = value
-                TriggerDestinationArgs._configure(_setter, **destination)
+            destination = _utilities.configure(destination, TriggerDestinationArgs, True)
             if destination is None and not opts.urn:
                 raise TypeError("Missing required property 'destination'")
             __props__.__dict__["destination"] = destination

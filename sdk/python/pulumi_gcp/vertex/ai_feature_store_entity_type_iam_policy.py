@@ -45,10 +45,20 @@ class AiFeatureStoreEntityTypeIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entitytype: pulumi.Input[str],
-             featurestore: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             entitytype: Optional[pulumi.Input[str]] = None,
+             featurestore: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entitytype is None:
+            raise TypeError("Missing 'entitytype' argument")
+        if featurestore is None:
+            raise TypeError("Missing 'featurestore' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("entitytype", entitytype)
         _setter("featurestore", featurestore)
         _setter("policy_data", policy_data)
@@ -144,7 +154,11 @@ class _AiFeatureStoreEntityTypeIamPolicyState:
              etag: Optional[pulumi.Input[str]] = None,
              featurestore: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if entitytype is not None:
             _setter("entitytype", entitytype)
         if etag is not None:

@@ -40,9 +40,19 @@ class AccountIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             billing_account_id: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             billing_account_id: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if billing_account_id is None and 'billingAccountId' in kwargs:
+            billing_account_id = kwargs['billingAccountId']
+        if billing_account_id is None:
+            raise TypeError("Missing 'billing_account_id' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("billing_account_id", billing_account_id)
         _setter("policy_data", policy_data)
 
@@ -117,7 +127,13 @@ class _AccountIamPolicyState:
              billing_account_id: Optional[pulumi.Input[str]] = None,
              etag: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if billing_account_id is None and 'billingAccountId' in kwargs:
+            billing_account_id = kwargs['billingAccountId']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if billing_account_id is not None:
             _setter("billing_account_id", billing_account_id)
         if etag is not None:
@@ -192,45 +208,6 @@ class AccountIamPolicy(pulumi.CustomResource):
 
         > **Note:** `billing.AccountIamBinding` resources **can be** used in conjunction with `billing.AccountIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_billing\\_account\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/billing.viewer",
-            members=["user:jane@example.com"],
-        )])
-        editor = gcp.billing.AccountIamPolicy("editor",
-            billing_account_id="00AA00-000AAA-00AA0A",
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_billing\\_account\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        editor = gcp.billing.AccountIamBinding("editor",
-            billing_account_id="00AA00-000AAA-00AA0A",
-            members=["user:jane@example.com"],
-            role="roles/billing.viewer")
-        ```
-
-        ## google\\_billing\\_account\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        editor = gcp.billing.AccountIamMember("editor",
-            billing_account_id="00AA00-000AAA-00AA0A",
-            member="user:jane@example.com",
-            role="roles/billing.viewer")
-        ```
-
         ## Import
 
         Instance IAM resources can be imported using the project, table name, role and/or member.
@@ -283,45 +260,6 @@ class AccountIamPolicy(pulumi.CustomResource):
         > **Note:** `billing.AccountIamPolicy` **cannot** be used in conjunction with `billing.AccountIamBinding` and `billing.AccountIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the billing account as `billing.AccountIamPolicy` replaces the entire policy.
 
         > **Note:** `billing.AccountIamBinding` resources **can be** used in conjunction with `billing.AccountIamMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\\_billing\\_account\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/billing.viewer",
-            members=["user:jane@example.com"],
-        )])
-        editor = gcp.billing.AccountIamPolicy("editor",
-            billing_account_id="00AA00-000AAA-00AA0A",
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_billing\\_account\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        editor = gcp.billing.AccountIamBinding("editor",
-            billing_account_id="00AA00-000AAA-00AA0A",
-            members=["user:jane@example.com"],
-            role="roles/billing.viewer")
-        ```
-
-        ## google\\_billing\\_account\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        editor = gcp.billing.AccountIamMember("editor",
-            billing_account_id="00AA00-000AAA-00AA0A",
-            member="user:jane@example.com",
-            role="roles/billing.viewer")
-        ```
 
         ## Import
 

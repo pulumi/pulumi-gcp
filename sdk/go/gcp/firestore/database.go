@@ -26,36 +26,6 @@ import (
 //   - [Official Documentation](https://cloud.google.com/firestore/docs/)
 //
 // ## Example Usage
-// ### Firestore Database With Delete Protection
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firestore"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
-//				Project:               pulumi.Any(google_project.Project.Project_id),
-//				LocationId:            pulumi.String("nam5"),
-//				Type:                  pulumi.String("FIRESTORE_NATIVE"),
-//				DeleteProtectionState: pulumi.String("DELETE_PROTECTION_ENABLED"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				google_project_service.Firestore,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

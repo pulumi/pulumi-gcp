@@ -98,7 +98,21 @@ class JobArgs:
              retry_config: Optional[pulumi.Input['JobRetryConfigArgs']] = None,
              schedule: Optional[pulumi.Input[str]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if app_engine_http_target is None and 'appEngineHttpTarget' in kwargs:
+            app_engine_http_target = kwargs['appEngineHttpTarget']
+        if attempt_deadline is None and 'attemptDeadline' in kwargs:
+            attempt_deadline = kwargs['attemptDeadline']
+        if http_target is None and 'httpTarget' in kwargs:
+            http_target = kwargs['httpTarget']
+        if pubsub_target is None and 'pubsubTarget' in kwargs:
+            pubsub_target = kwargs['pubsubTarget']
+        if retry_config is None and 'retryConfig' in kwargs:
+            retry_config = kwargs['retryConfig']
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         if app_engine_http_target is not None:
             _setter("app_engine_http_target", app_engine_http_target)
         if attempt_deadline is not None:
@@ -383,7 +397,21 @@ class _JobState:
              schedule: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if app_engine_http_target is None and 'appEngineHttpTarget' in kwargs:
+            app_engine_http_target = kwargs['appEngineHttpTarget']
+        if attempt_deadline is None and 'attemptDeadline' in kwargs:
+            attempt_deadline = kwargs['attemptDeadline']
+        if http_target is None and 'httpTarget' in kwargs:
+            http_target = kwargs['httpTarget']
+        if pubsub_target is None and 'pubsubTarget' in kwargs:
+            pubsub_target = kwargs['pubsubTarget']
+        if retry_config is None and 'retryConfig' in kwargs:
+            retry_config = kwargs['retryConfig']
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         if app_engine_http_target is not None:
             _setter("app_engine_http_target", app_engine_http_target)
         if attempt_deadline is not None:
@@ -622,73 +650,6 @@ class Job(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/scheduler/)
 
         ## Example Usage
-        ### Scheduler Job App Engine
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        job = gcp.cloudscheduler.Job("job",
-            app_engine_http_target=gcp.cloudscheduler.JobAppEngineHttpTargetArgs(
-                app_engine_routing=gcp.cloudscheduler.JobAppEngineHttpTargetAppEngineRoutingArgs(
-                    instance="my-instance-001",
-                    service="web",
-                    version="prod",
-                ),
-                http_method="POST",
-                relative_uri="/ping",
-            ),
-            attempt_deadline="320s",
-            description="test app engine job",
-            retry_config=gcp.cloudscheduler.JobRetryConfigArgs(
-                max_doublings=2,
-                max_retry_duration="10s",
-                min_backoff_duration="1s",
-                retry_count=3,
-            ),
-            schedule="*/4 * * * *",
-            time_zone="Europe/London")
-        ```
-        ### Scheduler Job Oauth
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.get_default_service_account()
-        job = gcp.cloudscheduler.Job("job",
-            description="test http job",
-            schedule="*/8 * * * *",
-            time_zone="America/New_York",
-            attempt_deadline="320s",
-            http_target=gcp.cloudscheduler.JobHttpTargetArgs(
-                http_method="GET",
-                uri="https://cloudscheduler.googleapis.com/v1/projects/my-project-name/locations/us-west1/jobs",
-                oauth_token=gcp.cloudscheduler.JobHttpTargetOauthTokenArgs(
-                    service_account_email=default.email,
-                ),
-            ))
-        ```
-        ### Scheduler Job Oidc
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.get_default_service_account()
-        job = gcp.cloudscheduler.Job("job",
-            description="test http job",
-            schedule="*/8 * * * *",
-            time_zone="America/New_York",
-            attempt_deadline="320s",
-            http_target=gcp.cloudscheduler.JobHttpTargetArgs(
-                http_method="GET",
-                uri="https://example.com/ping",
-                oidc_token=gcp.cloudscheduler.JobHttpTargetOidcTokenArgs(
-                    service_account_email=default.email,
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -767,73 +728,6 @@ class Job(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/scheduler/)
 
         ## Example Usage
-        ### Scheduler Job App Engine
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        job = gcp.cloudscheduler.Job("job",
-            app_engine_http_target=gcp.cloudscheduler.JobAppEngineHttpTargetArgs(
-                app_engine_routing=gcp.cloudscheduler.JobAppEngineHttpTargetAppEngineRoutingArgs(
-                    instance="my-instance-001",
-                    service="web",
-                    version="prod",
-                ),
-                http_method="POST",
-                relative_uri="/ping",
-            ),
-            attempt_deadline="320s",
-            description="test app engine job",
-            retry_config=gcp.cloudscheduler.JobRetryConfigArgs(
-                max_doublings=2,
-                max_retry_duration="10s",
-                min_backoff_duration="1s",
-                retry_count=3,
-            ),
-            schedule="*/4 * * * *",
-            time_zone="Europe/London")
-        ```
-        ### Scheduler Job Oauth
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.get_default_service_account()
-        job = gcp.cloudscheduler.Job("job",
-            description="test http job",
-            schedule="*/8 * * * *",
-            time_zone="America/New_York",
-            attempt_deadline="320s",
-            http_target=gcp.cloudscheduler.JobHttpTargetArgs(
-                http_method="GET",
-                uri="https://cloudscheduler.googleapis.com/v1/projects/my-project-name/locations/us-west1/jobs",
-                oauth_token=gcp.cloudscheduler.JobHttpTargetOauthTokenArgs(
-                    service_account_email=default.email,
-                ),
-            ))
-        ```
-        ### Scheduler Job Oidc
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.get_default_service_account()
-        job = gcp.cloudscheduler.Job("job",
-            description="test http job",
-            schedule="*/8 * * * *",
-            time_zone="America/New_York",
-            attempt_deadline="320s",
-            http_target=gcp.cloudscheduler.JobHttpTargetArgs(
-                http_method="GET",
-                uri="https://example.com/ping",
-                oidc_token=gcp.cloudscheduler.JobHttpTargetOidcTokenArgs(
-                    service_account_email=default.email,
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -895,35 +789,19 @@ class Job(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = JobArgs.__new__(JobArgs)
 
-            if app_engine_http_target is not None and not isinstance(app_engine_http_target, JobAppEngineHttpTargetArgs):
-                app_engine_http_target = app_engine_http_target or {}
-                def _setter(key, value):
-                    app_engine_http_target[key] = value
-                JobAppEngineHttpTargetArgs._configure(_setter, **app_engine_http_target)
+            app_engine_http_target = _utilities.configure(app_engine_http_target, JobAppEngineHttpTargetArgs, True)
             __props__.__dict__["app_engine_http_target"] = app_engine_http_target
             __props__.__dict__["attempt_deadline"] = attempt_deadline
             __props__.__dict__["description"] = description
-            if http_target is not None and not isinstance(http_target, JobHttpTargetArgs):
-                http_target = http_target or {}
-                def _setter(key, value):
-                    http_target[key] = value
-                JobHttpTargetArgs._configure(_setter, **http_target)
+            http_target = _utilities.configure(http_target, JobHttpTargetArgs, True)
             __props__.__dict__["http_target"] = http_target
             __props__.__dict__["name"] = name
             __props__.__dict__["paused"] = paused
             __props__.__dict__["project"] = project
-            if pubsub_target is not None and not isinstance(pubsub_target, JobPubsubTargetArgs):
-                pubsub_target = pubsub_target or {}
-                def _setter(key, value):
-                    pubsub_target[key] = value
-                JobPubsubTargetArgs._configure(_setter, **pubsub_target)
+            pubsub_target = _utilities.configure(pubsub_target, JobPubsubTargetArgs, True)
             __props__.__dict__["pubsub_target"] = pubsub_target
             __props__.__dict__["region"] = region
-            if retry_config is not None and not isinstance(retry_config, JobRetryConfigArgs):
-                retry_config = retry_config or {}
-                def _setter(key, value):
-                    retry_config[key] = value
-                JobRetryConfigArgs._configure(_setter, **retry_config)
+            retry_config = _utilities.configure(retry_config, JobRetryConfigArgs, True)
             __props__.__dict__["retry_config"] = retry_config
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["time_zone"] = time_zone

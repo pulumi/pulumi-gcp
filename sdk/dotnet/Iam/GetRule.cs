@@ -13,52 +13,12 @@ namespace Pulumi.Gcp.Iam
     {
         /// <summary>
         /// Use this data source to get information about a Google IAM Role.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var roleinfo = Gcp.Iam.GetRule.Invoke(new()
-        ///     {
-        ///         Name = "roles/compute.viewer",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["theRolePermissions"] = roleinfo.Apply(getRuleResult =&gt; getRuleResult.IncludedPermissions),
-        ///     };
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetRuleResult> InvokeAsync(GetRuleArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRuleResult>("gcp:iam/getRule:getRule", args ?? new GetRuleArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get information about a Google IAM Role.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var roleinfo = Gcp.Iam.GetRule.Invoke(new()
-        ///     {
-        ///         Name = "roles/compute.viewer",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["theRolePermissions"] = roleinfo.Apply(getRuleResult =&gt; getRuleResult.IncludedPermissions),
-        ///     };
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetRuleResult> Invoke(GetRuleInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRuleResult>("gcp:iam/getRule:getRule", args ?? new GetRuleInvokeArgs(), options.WithDefaults());

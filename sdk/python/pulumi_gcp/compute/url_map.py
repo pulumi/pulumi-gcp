@@ -91,7 +91,21 @@ class URLMapArgs:
              path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherArgs']]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              tests: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapTestArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if default_route_action is None and 'defaultRouteAction' in kwargs:
+            default_route_action = kwargs['defaultRouteAction']
+        if default_service is None and 'defaultService' in kwargs:
+            default_service = kwargs['defaultService']
+        if default_url_redirect is None and 'defaultUrlRedirect' in kwargs:
+            default_url_redirect = kwargs['defaultUrlRedirect']
+        if header_action is None and 'headerAction' in kwargs:
+            header_action = kwargs['headerAction']
+        if host_rules is None and 'hostRules' in kwargs:
+            host_rules = kwargs['hostRules']
+        if path_matchers is None and 'pathMatchers' in kwargs:
+            path_matchers = kwargs['pathMatchers']
+
         if default_route_action is not None:
             _setter("default_route_action", default_route_action)
         if default_service is not None:
@@ -355,7 +369,27 @@ class _URLMapState:
              project: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              tests: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapTestArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if default_route_action is None and 'defaultRouteAction' in kwargs:
+            default_route_action = kwargs['defaultRouteAction']
+        if default_service is None and 'defaultService' in kwargs:
+            default_service = kwargs['defaultService']
+        if default_url_redirect is None and 'defaultUrlRedirect' in kwargs:
+            default_url_redirect = kwargs['defaultUrlRedirect']
+        if header_action is None and 'headerAction' in kwargs:
+            header_action = kwargs['headerAction']
+        if host_rules is None and 'hostRules' in kwargs:
+            host_rules = kwargs['hostRules']
+        if map_id is None and 'mapId' in kwargs:
+            map_id = kwargs['mapId']
+        if path_matchers is None and 'pathMatchers' in kwargs:
+            path_matchers = kwargs['pathMatchers']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if creation_timestamp is not None:
             _setter("creation_timestamp", creation_timestamp)
         if default_route_action is not None:
@@ -732,25 +766,13 @@ class URLMap(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = URLMapArgs.__new__(URLMapArgs)
 
-            if default_route_action is not None and not isinstance(default_route_action, URLMapDefaultRouteActionArgs):
-                default_route_action = default_route_action or {}
-                def _setter(key, value):
-                    default_route_action[key] = value
-                URLMapDefaultRouteActionArgs._configure(_setter, **default_route_action)
+            default_route_action = _utilities.configure(default_route_action, URLMapDefaultRouteActionArgs, True)
             __props__.__dict__["default_route_action"] = default_route_action
             __props__.__dict__["default_service"] = default_service
-            if default_url_redirect is not None and not isinstance(default_url_redirect, URLMapDefaultUrlRedirectArgs):
-                default_url_redirect = default_url_redirect or {}
-                def _setter(key, value):
-                    default_url_redirect[key] = value
-                URLMapDefaultUrlRedirectArgs._configure(_setter, **default_url_redirect)
+            default_url_redirect = _utilities.configure(default_url_redirect, URLMapDefaultUrlRedirectArgs, True)
             __props__.__dict__["default_url_redirect"] = default_url_redirect
             __props__.__dict__["description"] = description
-            if header_action is not None and not isinstance(header_action, URLMapHeaderActionArgs):
-                header_action = header_action or {}
-                def _setter(key, value):
-                    header_action[key] = value
-                URLMapHeaderActionArgs._configure(_setter, **header_action)
+            header_action = _utilities.configure(header_action, URLMapHeaderActionArgs, True)
             __props__.__dict__["header_action"] = header_action
             __props__.__dict__["host_rules"] = host_rules
             __props__.__dict__["name"] = name

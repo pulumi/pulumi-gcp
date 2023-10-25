@@ -28,41 +28,6 @@ import (
 // `billingProject` you defined.
 //
 // ## Example Usage
-// ### Essential Contact
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/essentialcontacts"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.LookupProject(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = essentialcontacts.NewContact(ctx, "contact", &essentialcontacts.ContactArgs{
-//				Parent:      *pulumi.String(project.Id),
-//				Email:       pulumi.String("foo@bar.com"),
-//				LanguageTag: pulumi.String("en-GB"),
-//				NotificationCategorySubscriptions: pulumi.StringArray{
-//					pulumi.String("ALL"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

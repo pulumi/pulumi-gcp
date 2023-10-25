@@ -57,13 +57,23 @@ class CertificateTemplateIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             certificate_template: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
+             certificate_template: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['CertificateTemplateIamBindingConditionArgs']] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if certificate_template is None and 'certificateTemplate' in kwargs:
+            certificate_template = kwargs['certificateTemplate']
+        if certificate_template is None:
+            raise TypeError("Missing 'certificate_template' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("certificate_template", certificate_template)
         _setter("members", members)
         _setter("role", role)
@@ -211,7 +221,11 @@ class _CertificateTemplateIamBindingState:
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if certificate_template is None and 'certificateTemplate' in kwargs:
+            certificate_template = kwargs['certificateTemplate']
+
         if certificate_template is not None:
             _setter("certificate_template", certificate_template)
         if condition is not None:
@@ -351,97 +365,6 @@ class CertificateTemplateIamBinding(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_privateca\\_certificate\\_template\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/privateca.templateUser",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.certificateauthority.CertificateTemplateIamPolicy("policy",
-            certificate_template=google_privateca_certificate_template["default"]["id"],
-            policy_data=admin.policy_data)
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/privateca.templateUser",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
-        policy = gcp.certificateauthority.CertificateTemplateIamPolicy("policy",
-            certificate_template=google_privateca_certificate_template["default"]["id"],
-            policy_data=admin.policy_data)
-        ```
-        ## google\\_privateca\\_certificate\\_template\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.certificateauthority.CertificateTemplateIamBinding("binding",
-            certificate_template=google_privateca_certificate_template["default"]["id"],
-            role="roles/privateca.templateUser",
-            members=["user:jane@example.com"])
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.certificateauthority.CertificateTemplateIamBinding("binding",
-            certificate_template=google_privateca_certificate_template["default"]["id"],
-            role="roles/privateca.templateUser",
-            members=["user:jane@example.com"],
-            condition=gcp.certificateauthority.CertificateTemplateIamBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-        ## google\\_privateca\\_certificate\\_template\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.certificateauthority.CertificateTemplateIamMember("member",
-            certificate_template=google_privateca_certificate_template["default"]["id"],
-            role="roles/privateca.templateUser",
-            member="user:jane@example.com")
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.certificateauthority.CertificateTemplateIamMember("member",
-            certificate_template=google_privateca_certificate_template["default"]["id"],
-            role="roles/privateca.templateUser",
-            member="user:jane@example.com",
-            condition=gcp.certificateauthority.CertificateTemplateIamMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/certificateTemplates/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} Any variables not passed in the import command will be taken from the provider configuration. Certificate Authority Service certificatetemplate IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -512,97 +435,6 @@ class CertificateTemplateIamBinding(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_privateca\\_certificate\\_template\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/privateca.templateUser",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.certificateauthority.CertificateTemplateIamPolicy("policy",
-            certificate_template=google_privateca_certificate_template["default"]["id"],
-            policy_data=admin.policy_data)
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/privateca.templateUser",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
-        policy = gcp.certificateauthority.CertificateTemplateIamPolicy("policy",
-            certificate_template=google_privateca_certificate_template["default"]["id"],
-            policy_data=admin.policy_data)
-        ```
-        ## google\\_privateca\\_certificate\\_template\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.certificateauthority.CertificateTemplateIamBinding("binding",
-            certificate_template=google_privateca_certificate_template["default"]["id"],
-            role="roles/privateca.templateUser",
-            members=["user:jane@example.com"])
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.certificateauthority.CertificateTemplateIamBinding("binding",
-            certificate_template=google_privateca_certificate_template["default"]["id"],
-            role="roles/privateca.templateUser",
-            members=["user:jane@example.com"],
-            condition=gcp.certificateauthority.CertificateTemplateIamBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-        ## google\\_privateca\\_certificate\\_template\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.certificateauthority.CertificateTemplateIamMember("member",
-            certificate_template=google_privateca_certificate_template["default"]["id"],
-            role="roles/privateca.templateUser",
-            member="user:jane@example.com")
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.certificateauthority.CertificateTemplateIamMember("member",
-            certificate_template=google_privateca_certificate_template["default"]["id"],
-            role="roles/privateca.templateUser",
-            member="user:jane@example.com",
-            condition=gcp.certificateauthority.CertificateTemplateIamMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/certificateTemplates/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} Any variables not passed in the import command will be taken from the provider configuration. Certificate Authority Service certificatetemplate IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -664,11 +496,7 @@ class CertificateTemplateIamBinding(pulumi.CustomResource):
             if certificate_template is None and not opts.urn:
                 raise TypeError("Missing required property 'certificate_template'")
             __props__.__dict__["certificate_template"] = certificate_template
-            if condition is not None and not isinstance(condition, CertificateTemplateIamBindingConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                CertificateTemplateIamBindingConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, CertificateTemplateIamBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             __props__.__dict__["location"] = location
             if members is None and not opts.urn:

@@ -21,29 +21,6 @@ namespace Pulumi.Gcp.Organizations
     ///     Use `pulumi import` and inspect the `output to ensure
     ///     your existing members are preserved.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var binding = new Gcp.Organizations.IAMBinding("binding", new()
-    ///     {
-    ///         Members = new[]
-    ///         {
-    ///             "user:alice@gmail.com",
-    ///         },
-    ///         OrgId = "123456789",
-    ///         Role = "roles/browser",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// IAM binding imports use space-delimited identifiers; first the resource in question and then the role.

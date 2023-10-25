@@ -437,17 +437,6 @@ def get_instance_template(filter: Optional[str] = None,
     and
     [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates).
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    generic_regex = gcp.compute.get_instance_template(filter="name != generic-tpl-20200107",
-        most_recent=True)
-    generic = gcp.compute.get_instance_template(self_link_unique="https://www.googleapis.com/compute/v1/projects/your-project-name/global/instanceTemplates/example-template-custom?uniqueId=1234")
-    ```
-
 
     :param str filter: A filter to retrieve the instance templates.
            See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
@@ -515,17 +504,6 @@ def get_instance_template_output(filter: Optional[pulumi.Input[Optional[str]]] =
     [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
     and
     [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    generic_regex = gcp.compute.get_instance_template(filter="name != generic-tpl-20200107",
-        most_recent=True)
-    generic = gcp.compute.get_instance_template(self_link_unique="https://www.googleapis.com/compute/v1/projects/your-project-name/global/instanceTemplates/example-template-custom?uniqueId=1234")
-    ```
 
 
     :param str filter: A filter to retrieve the instance templates.

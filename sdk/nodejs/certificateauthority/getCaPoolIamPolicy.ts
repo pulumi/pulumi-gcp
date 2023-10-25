@@ -6,17 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for capool
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.certificateauthority.getCaPoolIamPolicy({
- *     caPool: google_privateca_ca_pool["default"].id,
- * });
- * ```
  */
 export function getCaPoolIamPolicy(args: GetCaPoolIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetCaPoolIamPolicyResult> {
 
@@ -72,17 +61,6 @@ export interface GetCaPoolIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for capool
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.certificateauthority.getCaPoolIamPolicy({
- *     caPool: google_privateca_ca_pool["default"].id,
- * });
- * ```
  */
 export function getCaPoolIamPolicyOutput(args: GetCaPoolIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCaPoolIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getCaPoolIamPolicy(a, opts))

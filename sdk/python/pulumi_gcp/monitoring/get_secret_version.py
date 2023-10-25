@@ -141,15 +141,6 @@ def get_secret_version(project: Optional[str] = None,
     """
     Get the value and metadata from a Secret Manager secret version. For more information see the official documentation datasource.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    basic = gcp.secretmanager.get_secret_version(secret="my-secret")
-    ```
-
 
     :param str project: The project to get the secret version for. If it
            is not provided, the provider project is used.
@@ -184,15 +175,6 @@ def get_secret_version_output(project: Optional[pulumi.Input[Optional[str]]] = N
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretVersionResult]:
     """
     Get the value and metadata from a Secret Manager secret version. For more information see the official documentation datasource.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    basic = gcp.secretmanager.get_secret_version(secret="my-secret")
-    ```
 
 
     :param str project: The project to get the secret version for. If it

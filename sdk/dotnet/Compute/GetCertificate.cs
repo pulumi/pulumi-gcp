@@ -13,68 +13,12 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// Get info about a Google Compute SSL Certificate from its name.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myCert = Gcp.Compute.GetCertificate.Invoke(new()
-        ///     {
-        ///         Name = "my-cert",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["certificate"] = myCert.Apply(getCertificateResult =&gt; getCertificateResult.Certificate),
-        ///         ["certificateId"] = myCert.Apply(getCertificateResult =&gt; getCertificateResult.CertificateId),
-        ///         ["selfLink"] = myCert.Apply(getCertificateResult =&gt; getCertificateResult.SelfLink),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCertificateResult> InvokeAsync(GetCertificateArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCertificateResult>("gcp:compute/getCertificate:getCertificate", args ?? new GetCertificateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get info about a Google Compute SSL Certificate from its name.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myCert = Gcp.Compute.GetCertificate.Invoke(new()
-        ///     {
-        ///         Name = "my-cert",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["certificate"] = myCert.Apply(getCertificateResult =&gt; getCertificateResult.Certificate),
-        ///         ["certificateId"] = myCert.Apply(getCertificateResult =&gt; getCertificateResult.CertificateId),
-        ///         ["selfLink"] = myCert.Apply(getCertificateResult =&gt; getCertificateResult.SelfLink),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetCertificateResult> Invoke(GetCertificateInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCertificateResult>("gcp:compute/getCertificate:getCertificate", args ?? new GetCertificateInvokeArgs(), options.WithDefaults());

@@ -49,12 +49,20 @@ class TaxonomyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              activated_policy_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if activated_policy_types is None and 'activatedPolicyTypes' in kwargs:
+            activated_policy_types = kwargs['activatedPolicyTypes']
+
         _setter("display_name", display_name)
         if activated_policy_types is not None:
             _setter("activated_policy_types", activated_policy_types)
@@ -185,7 +193,13 @@ class _TaxonomyState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if activated_policy_types is None and 'activatedPolicyTypes' in kwargs:
+            activated_policy_types = kwargs['activatedPolicyTypes']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if activated_policy_types is not None:
             _setter("activated_policy_types", activated_policy_types)
         if description is not None:
@@ -305,17 +319,6 @@ class Taxonomy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
         ## Example Usage
-        ### Data Catalog Taxonomy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic_taxonomy = gcp.datacatalog.Taxonomy("basicTaxonomy",
-            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"],
-            description="A collection of policy tags",
-            display_name="my_taxonomy")
-        ```
 
         ## Import
 
@@ -360,17 +363,6 @@ class Taxonomy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
         ## Example Usage
-        ### Data Catalog Taxonomy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic_taxonomy = gcp.datacatalog.Taxonomy("basicTaxonomy",
-            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"],
-            description="A collection of policy tags",
-            display_name="my_taxonomy")
-        ```
 
         ## Import
 

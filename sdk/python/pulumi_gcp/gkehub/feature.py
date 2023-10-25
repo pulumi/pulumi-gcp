@@ -45,12 +45,16 @@ class FeatureArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              spec: Optional[pulumi.Input['FeatureSpecArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+
         _setter("location", location)
         if labels is not None:
             _setter("labels", labels)
@@ -188,7 +192,17 @@ class _FeatureState:
              spec: Optional[pulumi.Input['FeatureSpecArgs']] = None,
              states: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureStateArgs']]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if delete_time is None and 'deleteTime' in kwargs:
+            delete_time = kwargs['deleteTime']
+        if resource_states is None and 'resourceStates' in kwargs:
+            resource_states = kwargs['resourceStates']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if delete_time is not None:
@@ -361,108 +375,6 @@ class Feature(pulumi.CustomResource):
             * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 
         ## Example Usage
-        ### Gkehub Feature Multi Cluster Ingress
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        cluster = gcp.container.Cluster("cluster",
-            location="us-central1-a",
-            initial_node_count=1)
-        membership = gcp.gkehub.Membership("membership",
-            membership_id="my-membership",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                ),
-            ),
-            description="Membership")
-        feature = gcp.gkehub.Feature("feature",
-            location="global",
-            spec=gcp.gkehub.FeatureSpecArgs(
-                multiclusteringress=gcp.gkehub.FeatureSpecMulticlusteringressArgs(
-                    config_membership=membership.id,
-                ),
-            ))
-        ```
-        ### Gkehub Feature Multi Cluster Service Discovery
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        feature = gcp.gkehub.Feature("feature",
-            labels={
-                "foo": "bar",
-            },
-            location="global")
-        ```
-        ### Gkehub Feature Anthos Service Mesh
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        feature = gcp.gkehub.Feature("feature", location="global")
-        ```
-        ### Enable Fleet Observability For Default Logs With Copy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        feature = gcp.gkehub.Feature("feature",
-            location="global",
-            spec=gcp.gkehub.FeatureSpecArgs(
-                fleetobservability=gcp.gkehub.FeatureSpecFleetobservabilityArgs(
-                    logging_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigArgs(
-                        default_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs(
-                            mode="COPY",
-                        ),
-                    ),
-                ),
-            ))
-        ```
-        ### Enable Fleet Observability For Scope Logs With Move
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        feature = gcp.gkehub.Feature("feature",
-            location="global",
-            spec=gcp.gkehub.FeatureSpecArgs(
-                fleetobservability=gcp.gkehub.FeatureSpecFleetobservabilityArgs(
-                    logging_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigArgs(
-                        fleet_scope_logs_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs(
-                            mode="MOVE",
-                        ),
-                    ),
-                ),
-            ))
-        ```
-        ### Enable Fleet Observability For Both Default And Scope Logs
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        feature = gcp.gkehub.Feature("feature",
-            location="global",
-            spec=gcp.gkehub.FeatureSpecArgs(
-                fleetobservability=gcp.gkehub.FeatureSpecFleetobservabilityArgs(
-                    logging_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigArgs(
-                        default_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs(
-                            mode="COPY",
-                        ),
-                        fleet_scope_logs_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs(
-                            mode="MOVE",
-                        ),
-                    ),
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -509,108 +421,6 @@ class Feature(pulumi.CustomResource):
             * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 
         ## Example Usage
-        ### Gkehub Feature Multi Cluster Ingress
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        cluster = gcp.container.Cluster("cluster",
-            location="us-central1-a",
-            initial_node_count=1)
-        membership = gcp.gkehub.Membership("membership",
-            membership_id="my-membership",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                ),
-            ),
-            description="Membership")
-        feature = gcp.gkehub.Feature("feature",
-            location="global",
-            spec=gcp.gkehub.FeatureSpecArgs(
-                multiclusteringress=gcp.gkehub.FeatureSpecMulticlusteringressArgs(
-                    config_membership=membership.id,
-                ),
-            ))
-        ```
-        ### Gkehub Feature Multi Cluster Service Discovery
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        feature = gcp.gkehub.Feature("feature",
-            labels={
-                "foo": "bar",
-            },
-            location="global")
-        ```
-        ### Gkehub Feature Anthos Service Mesh
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        feature = gcp.gkehub.Feature("feature", location="global")
-        ```
-        ### Enable Fleet Observability For Default Logs With Copy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        feature = gcp.gkehub.Feature("feature",
-            location="global",
-            spec=gcp.gkehub.FeatureSpecArgs(
-                fleetobservability=gcp.gkehub.FeatureSpecFleetobservabilityArgs(
-                    logging_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigArgs(
-                        default_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs(
-                            mode="COPY",
-                        ),
-                    ),
-                ),
-            ))
-        ```
-        ### Enable Fleet Observability For Scope Logs With Move
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        feature = gcp.gkehub.Feature("feature",
-            location="global",
-            spec=gcp.gkehub.FeatureSpecArgs(
-                fleetobservability=gcp.gkehub.FeatureSpecFleetobservabilityArgs(
-                    logging_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigArgs(
-                        fleet_scope_logs_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs(
-                            mode="MOVE",
-                        ),
-                    ),
-                ),
-            ))
-        ```
-        ### Enable Fleet Observability For Both Default And Scope Logs
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        feature = gcp.gkehub.Feature("feature",
-            location="global",
-            spec=gcp.gkehub.FeatureSpecArgs(
-                fleetobservability=gcp.gkehub.FeatureSpecFleetobservabilityArgs(
-                    logging_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigArgs(
-                        default_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs(
-                            mode="COPY",
-                        ),
-                        fleet_scope_logs_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs(
-                            mode="MOVE",
-                        ),
-                    ),
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -667,11 +477,7 @@ class Feature(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            if spec is not None and not isinstance(spec, FeatureSpecArgs):
-                spec = spec or {}
-                def _setter(key, value):
-                    spec[key] = value
-                FeatureSpecArgs._configure(_setter, **spec)
+            spec = _utilities.configure(spec, FeatureSpecArgs, True)
             __props__.__dict__["spec"] = spec
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None

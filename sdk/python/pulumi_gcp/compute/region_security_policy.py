@@ -68,7 +68,13 @@ class RegionSecurityPolicyArgs:
              region: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ddos_protection_config is None and 'ddosProtectionConfig' in kwargs:
+            ddos_protection_config = kwargs['ddosProtectionConfig']
+        if user_defined_fields is None and 'userDefinedFields' in kwargs:
+            user_defined_fields = kwargs['userDefinedFields']
+
         if ddos_protection_config is not None:
             _setter("ddos_protection_config", ddos_protection_config)
         if description is not None:
@@ -256,7 +262,19 @@ class _RegionSecurityPolicyState:
              self_link_with_policy_id: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ddos_protection_config is None and 'ddosProtectionConfig' in kwargs:
+            ddos_protection_config = kwargs['ddosProtectionConfig']
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if self_link_with_policy_id is None and 'selfLinkWithPolicyId' in kwargs:
+            self_link_with_policy_id = kwargs['selfLinkWithPolicyId']
+        if user_defined_fields is None and 'userDefinedFields' in kwargs:
+            user_defined_fields = kwargs['userDefinedFields']
+
         if ddos_protection_config is not None:
             _setter("ddos_protection_config", ddos_protection_config)
         if description is not None:
@@ -444,58 +462,6 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Region Security Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        region_sec_policy_basic = gcp.compute.RegionSecurityPolicy("region-sec-policy-basic",
-            description="basic region security policy",
-            type="CLOUD_ARMOR",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Region Security Policy With Ddos Protection Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        region_sec_policy_ddos_protection = gcp.compute.RegionSecurityPolicy("region-sec-policy-ddos-protection",
-            description="with ddos protection config",
-            type="CLOUD_ARMOR_NETWORK",
-            ddos_protection_config=gcp.compute.RegionSecurityPolicyDdosProtectionConfigArgs(
-                ddos_protection="ADVANCED_PREVIEW",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Region Security Policy With User Defined Fields
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        region_sec_policy_user_defined_fields = gcp.compute.RegionSecurityPolicy("region-sec-policy-user-defined-fields",
-            description="with user defined fields",
-            type="CLOUD_ARMOR_NETWORK",
-            user_defined_fields=[
-                gcp.compute.RegionSecurityPolicyUserDefinedFieldArgs(
-                    name="SIG1_AT_0",
-                    base="UDP",
-                    offset=8,
-                    size=2,
-                    mask="0x8F00",
-                ),
-                gcp.compute.RegionSecurityPolicyUserDefinedFieldArgs(
-                    name="SIG2_AT_8",
-                    base="UDP",
-                    offset=16,
-                    size=4,
-                    mask="0xFFFFFFFF",
-                ),
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -550,58 +516,6 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Region Security Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        region_sec_policy_basic = gcp.compute.RegionSecurityPolicy("region-sec-policy-basic",
-            description="basic region security policy",
-            type="CLOUD_ARMOR",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Region Security Policy With Ddos Protection Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        region_sec_policy_ddos_protection = gcp.compute.RegionSecurityPolicy("region-sec-policy-ddos-protection",
-            description="with ddos protection config",
-            type="CLOUD_ARMOR_NETWORK",
-            ddos_protection_config=gcp.compute.RegionSecurityPolicyDdosProtectionConfigArgs(
-                ddos_protection="ADVANCED_PREVIEW",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Region Security Policy With User Defined Fields
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        region_sec_policy_user_defined_fields = gcp.compute.RegionSecurityPolicy("region-sec-policy-user-defined-fields",
-            description="with user defined fields",
-            type="CLOUD_ARMOR_NETWORK",
-            user_defined_fields=[
-                gcp.compute.RegionSecurityPolicyUserDefinedFieldArgs(
-                    name="SIG1_AT_0",
-                    base="UDP",
-                    offset=8,
-                    size=2,
-                    mask="0x8F00",
-                ),
-                gcp.compute.RegionSecurityPolicyUserDefinedFieldArgs(
-                    name="SIG2_AT_8",
-                    base="UDP",
-                    offset=16,
-                    size=4,
-                    mask="0xFFFFFFFF",
-                ),
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -658,11 +572,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RegionSecurityPolicyArgs.__new__(RegionSecurityPolicyArgs)
 
-            if ddos_protection_config is not None and not isinstance(ddos_protection_config, RegionSecurityPolicyDdosProtectionConfigArgs):
-                ddos_protection_config = ddos_protection_config or {}
-                def _setter(key, value):
-                    ddos_protection_config[key] = value
-                RegionSecurityPolicyDdosProtectionConfigArgs._configure(_setter, **ddos_protection_config)
+            ddos_protection_config = _utilities.configure(ddos_protection_config, RegionSecurityPolicyDdosProtectionConfigArgs, True)
             __props__.__dict__["ddos_protection_config"] = ddos_protection_config
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name

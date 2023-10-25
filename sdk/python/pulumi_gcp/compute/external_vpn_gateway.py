@@ -61,7 +61,11 @@ class ExternalVpnGatewayArgs:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              redundancy_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if redundancy_type is None and 'redundancyType' in kwargs:
+            redundancy_type = kwargs['redundancyType']
+
         if description is not None:
             _setter("description", description)
         if interfaces is not None:
@@ -217,7 +221,15 @@ class _ExternalVpnGatewayState:
              project: Optional[pulumi.Input[str]] = None,
              redundancy_type: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if label_fingerprint is None and 'labelFingerprint' in kwargs:
+            label_fingerprint = kwargs['labelFingerprint']
+        if redundancy_type is None and 'redundancyType' in kwargs:
+            redundancy_type = kwargs['redundancyType']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if description is not None:
             _setter("description", description)
         if interfaces is not None:
@@ -365,79 +377,6 @@ class ExternalVpnGateway(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/externalVpnGateways)
 
         ## Example Usage
-        ### External Vpn Gateway
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network = gcp.compute.Network("network",
-            routing_mode="GLOBAL",
-            auto_create_subnetworks=False)
-        ha_gateway = gcp.compute.HaVpnGateway("haGateway",
-            region="us-central1",
-            network=network.id)
-        external_gateway = gcp.compute.ExternalVpnGateway("externalGateway",
-            redundancy_type="SINGLE_IP_INTERNALLY_REDUNDANT",
-            description="An externally managed VPN gateway",
-            interfaces=[gcp.compute.ExternalVpnGatewayInterfaceArgs(
-                id=0,
-                ip_address="8.8.8.8",
-            )])
-        network_subnet1 = gcp.compute.Subnetwork("networkSubnet1",
-            ip_cidr_range="10.0.1.0/24",
-            region="us-central1",
-            network=network.id)
-        network_subnet2 = gcp.compute.Subnetwork("networkSubnet2",
-            ip_cidr_range="10.0.2.0/24",
-            region="us-west1",
-            network=network.id)
-        router1 = gcp.compute.Router("router1",
-            network=network.name,
-            bgp=gcp.compute.RouterBgpArgs(
-                asn=64514,
-            ))
-        tunnel1 = gcp.compute.VPNTunnel("tunnel1",
-            region="us-central1",
-            vpn_gateway=ha_gateway.id,
-            peer_external_gateway=external_gateway.id,
-            peer_external_gateway_interface=0,
-            shared_secret="a secret message",
-            router=router1.id,
-            vpn_gateway_interface=0)
-        tunnel2 = gcp.compute.VPNTunnel("tunnel2",
-            region="us-central1",
-            vpn_gateway=ha_gateway.id,
-            peer_external_gateway=external_gateway.id,
-            peer_external_gateway_interface=0,
-            shared_secret="a secret message",
-            router=router1.id.apply(lambda id: f" {id}"),
-            vpn_gateway_interface=1)
-        router1_interface1 = gcp.compute.RouterInterface("router1Interface1",
-            router=router1.name,
-            region="us-central1",
-            ip_range="169.254.0.1/30",
-            vpn_tunnel=tunnel1.name)
-        router1_peer1 = gcp.compute.RouterPeer("router1Peer1",
-            router=router1.name,
-            region="us-central1",
-            peer_ip_address="169.254.0.2",
-            peer_asn=64515,
-            advertised_route_priority=100,
-            interface=router1_interface1.name)
-        router1_interface2 = gcp.compute.RouterInterface("router1Interface2",
-            router=router1.name,
-            region="us-central1",
-            ip_range="169.254.1.1/30",
-            vpn_tunnel=tunnel2.name)
-        router1_peer2 = gcp.compute.RouterPeer("router1Peer2",
-            router=router1.name,
-            region="us-central1",
-            peer_ip_address="169.254.1.2",
-            peer_asn=64515,
-            advertised_route_priority=100,
-            interface=router1_interface2.name)
-        ```
 
         ## Import
 
@@ -490,79 +429,6 @@ class ExternalVpnGateway(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/externalVpnGateways)
 
         ## Example Usage
-        ### External Vpn Gateway
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network = gcp.compute.Network("network",
-            routing_mode="GLOBAL",
-            auto_create_subnetworks=False)
-        ha_gateway = gcp.compute.HaVpnGateway("haGateway",
-            region="us-central1",
-            network=network.id)
-        external_gateway = gcp.compute.ExternalVpnGateway("externalGateway",
-            redundancy_type="SINGLE_IP_INTERNALLY_REDUNDANT",
-            description="An externally managed VPN gateway",
-            interfaces=[gcp.compute.ExternalVpnGatewayInterfaceArgs(
-                id=0,
-                ip_address="8.8.8.8",
-            )])
-        network_subnet1 = gcp.compute.Subnetwork("networkSubnet1",
-            ip_cidr_range="10.0.1.0/24",
-            region="us-central1",
-            network=network.id)
-        network_subnet2 = gcp.compute.Subnetwork("networkSubnet2",
-            ip_cidr_range="10.0.2.0/24",
-            region="us-west1",
-            network=network.id)
-        router1 = gcp.compute.Router("router1",
-            network=network.name,
-            bgp=gcp.compute.RouterBgpArgs(
-                asn=64514,
-            ))
-        tunnel1 = gcp.compute.VPNTunnel("tunnel1",
-            region="us-central1",
-            vpn_gateway=ha_gateway.id,
-            peer_external_gateway=external_gateway.id,
-            peer_external_gateway_interface=0,
-            shared_secret="a secret message",
-            router=router1.id,
-            vpn_gateway_interface=0)
-        tunnel2 = gcp.compute.VPNTunnel("tunnel2",
-            region="us-central1",
-            vpn_gateway=ha_gateway.id,
-            peer_external_gateway=external_gateway.id,
-            peer_external_gateway_interface=0,
-            shared_secret="a secret message",
-            router=router1.id.apply(lambda id: f" {id}"),
-            vpn_gateway_interface=1)
-        router1_interface1 = gcp.compute.RouterInterface("router1Interface1",
-            router=router1.name,
-            region="us-central1",
-            ip_range="169.254.0.1/30",
-            vpn_tunnel=tunnel1.name)
-        router1_peer1 = gcp.compute.RouterPeer("router1Peer1",
-            router=router1.name,
-            region="us-central1",
-            peer_ip_address="169.254.0.2",
-            peer_asn=64515,
-            advertised_route_priority=100,
-            interface=router1_interface1.name)
-        router1_interface2 = gcp.compute.RouterInterface("router1Interface2",
-            router=router1.name,
-            region="us-central1",
-            ip_range="169.254.1.1/30",
-            vpn_tunnel=tunnel2.name)
-        router1_peer2 = gcp.compute.RouterPeer("router1Peer2",
-            router=router1.name,
-            region="us-central1",
-            peer_ip_address="169.254.1.2",
-            peer_asn=64515,
-            advertised_route_priority=100,
-            interface=router1_interface2.name)
-        ```
 
         ## Import
 

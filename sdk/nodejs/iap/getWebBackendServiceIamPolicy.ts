@@ -6,18 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for webbackendservice
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.iap.getWebBackendServiceIamPolicy({
- *     project: google_compute_backend_service["default"].project,
- *     webBackendService: google_compute_backend_service["default"].name,
- * });
- * ```
  */
 export function getWebBackendServiceIamPolicy(args: GetWebBackendServiceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetWebBackendServiceIamPolicyResult> {
 
@@ -65,18 +53,6 @@ export interface GetWebBackendServiceIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for webbackendservice
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.iap.getWebBackendServiceIamPolicy({
- *     project: google_compute_backend_service["default"].project,
- *     webBackendService: google_compute_backend_service["default"].name,
- * });
- * ```
  */
 export function getWebBackendServiceIamPolicyOutput(args: GetWebBackendServiceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebBackendServiceIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getWebBackendServiceIamPolicy(a, opts))

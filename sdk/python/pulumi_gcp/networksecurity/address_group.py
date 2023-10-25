@@ -53,15 +53,23 @@ class AddressGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             capacity: pulumi.Input[int],
-             location: pulumi.Input[str],
-             type: pulumi.Input[str],
+             capacity: Optional[pulumi.Input[int]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              items: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              parent: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if capacity is None:
+            raise TypeError("Missing 'capacity' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("capacity", capacity)
         _setter("location", location)
         _setter("type", type)
@@ -241,7 +249,13 @@ class _AddressGroupState:
              parent: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if capacity is not None:
             _setter("capacity", capacity)
         if create_time is not None:
@@ -418,46 +432,6 @@ class AddressGroup(pulumi.CustomResource):
             * [Use AddressGroups](https://cloud.google.com/vpc/docs/use-address-groups-firewall-policies)
 
         ## Example Usage
-        ### Network Security Address Groups Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.AddressGroup("default",
-            capacity=100,
-            items=["208.80.154.224/32"],
-            location="us-central1",
-            parent="projects/my-project-name",
-            type="IPV4")
-        ```
-        ### Network Security Address Groups Organization Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.AddressGroup("default",
-            capacity=100,
-            items=["208.80.154.224/32"],
-            location="us-central1",
-            parent="organizations/123456789",
-            type="IPV4")
-        ```
-        ### Network Security Address Groups Advanced
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.AddressGroup("default",
-            capacity=100,
-            description="my description",
-            items=["208.80.154.224/32"],
-            location="us-central1",
-            parent="projects/my-project-name",
-            type="IPV4")
-        ```
 
         ## Import
 
@@ -500,46 +474,6 @@ class AddressGroup(pulumi.CustomResource):
             * [Use AddressGroups](https://cloud.google.com/vpc/docs/use-address-groups-firewall-policies)
 
         ## Example Usage
-        ### Network Security Address Groups Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.AddressGroup("default",
-            capacity=100,
-            items=["208.80.154.224/32"],
-            location="us-central1",
-            parent="projects/my-project-name",
-            type="IPV4")
-        ```
-        ### Network Security Address Groups Organization Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.AddressGroup("default",
-            capacity=100,
-            items=["208.80.154.224/32"],
-            location="us-central1",
-            parent="organizations/123456789",
-            type="IPV4")
-        ```
-        ### Network Security Address Groups Advanced
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.AddressGroup("default",
-            capacity=100,
-            description="my description",
-            items=["208.80.154.224/32"],
-            location="us-central1",
-            parent="projects/my-project-name",
-            type="IPV4")
-        ```
 
         ## Import
 

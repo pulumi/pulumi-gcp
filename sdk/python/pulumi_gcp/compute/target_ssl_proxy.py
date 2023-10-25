@@ -66,7 +66,7 @@ class TargetSSLProxyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backend_service: pulumi.Input[str],
+             backend_service: Optional[pulumi.Input[str]] = None,
              certificate_map: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
@@ -74,7 +74,21 @@ class TargetSSLProxyArgs:
              proxy_header: Optional[pulumi.Input[str]] = None,
              ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              ssl_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if backend_service is None and 'backendService' in kwargs:
+            backend_service = kwargs['backendService']
+        if backend_service is None:
+            raise TypeError("Missing 'backend_service' argument")
+        if certificate_map is None and 'certificateMap' in kwargs:
+            certificate_map = kwargs['certificateMap']
+        if proxy_header is None and 'proxyHeader' in kwargs:
+            proxy_header = kwargs['proxyHeader']
+        if ssl_certificates is None and 'sslCertificates' in kwargs:
+            ssl_certificates = kwargs['sslCertificates']
+        if ssl_policy is None and 'sslPolicy' in kwargs:
+            ssl_policy = kwargs['sslPolicy']
+
         _setter("backend_service", backend_service)
         if certificate_map is not None:
             _setter("certificate_map", certificate_map)
@@ -282,7 +296,25 @@ class _TargetSSLProxyState:
              self_link: Optional[pulumi.Input[str]] = None,
              ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              ssl_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if backend_service is None and 'backendService' in kwargs:
+            backend_service = kwargs['backendService']
+        if certificate_map is None and 'certificateMap' in kwargs:
+            certificate_map = kwargs['certificateMap']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if proxy_header is None and 'proxyHeader' in kwargs:
+            proxy_header = kwargs['proxyHeader']
+        if proxy_id is None and 'proxyId' in kwargs:
+            proxy_id = kwargs['proxyId']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if ssl_certificates is None and 'sslCertificates' in kwargs:
+            ssl_certificates = kwargs['sslCertificates']
+        if ssl_policy is None and 'sslPolicy' in kwargs:
+            ssl_policy = kwargs['sslPolicy']
+
         if backend_service is not None:
             _setter("backend_service", backend_service)
         if certificate_map is not None:

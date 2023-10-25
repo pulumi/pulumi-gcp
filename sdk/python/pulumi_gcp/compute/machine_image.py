@@ -52,13 +52,23 @@ class MachineImageArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             source_instance: pulumi.Input[str],
+             source_instance: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              guest_flush: Optional[pulumi.Input[bool]] = None,
              machine_image_encryption_key: Optional[pulumi.Input['MachineImageMachineImageEncryptionKeyArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if source_instance is None and 'sourceInstance' in kwargs:
+            source_instance = kwargs['sourceInstance']
+        if source_instance is None:
+            raise TypeError("Missing 'source_instance' argument")
+        if guest_flush is None and 'guestFlush' in kwargs:
+            guest_flush = kwargs['guestFlush']
+        if machine_image_encryption_key is None and 'machineImageEncryptionKey' in kwargs:
+            machine_image_encryption_key = kwargs['machineImageEncryptionKey']
+
         _setter("source_instance", source_instance)
         if description is not None:
             _setter("description", description)
@@ -206,7 +216,19 @@ class _MachineImageState:
              self_link: Optional[pulumi.Input[str]] = None,
              source_instance: Optional[pulumi.Input[str]] = None,
              storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if guest_flush is None and 'guestFlush' in kwargs:
+            guest_flush = kwargs['guestFlush']
+        if machine_image_encryption_key is None and 'machineImageEncryptionKey' in kwargs:
+            machine_image_encryption_key = kwargs['machineImageEncryptionKey']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if source_instance is None and 'sourceInstance' in kwargs:
+            source_instance = kwargs['sourceInstance']
+        if storage_locations is None and 'storageLocations' in kwargs:
+            storage_locations = kwargs['storageLocations']
+
         if description is not None:
             _setter("description", description)
         if guest_flush is not None:
@@ -354,54 +376,6 @@ class MachineImage(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/machine-images)
 
         ## Example Usage
-        ### Machine Image Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        vm = gcp.compute.Instance("vm",
-            machine_type="e2-medium",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-11",
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        image = gcp.compute.MachineImage("image", source_instance=vm.self_link,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Compute Machine Image Kms
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        vm = gcp.compute.Instance("vm",
-            machine_type="e2-medium",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-11",
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        key_ring = gcp.kms.KeyRing("keyRing", location="us",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        image = gcp.compute.MachineImage("image",
-            source_instance=vm.self_link,
-            machine_image_encryption_key=gcp.compute.MachineImageMachineImageEncryptionKeyArgs(
-                kms_key_name=crypto_key.id,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -455,54 +429,6 @@ class MachineImage(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/machine-images)
 
         ## Example Usage
-        ### Machine Image Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        vm = gcp.compute.Instance("vm",
-            machine_type="e2-medium",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-11",
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        image = gcp.compute.MachineImage("image", source_instance=vm.self_link,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Compute Machine Image Kms
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        vm = gcp.compute.Instance("vm",
-            machine_type="e2-medium",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-11",
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        key_ring = gcp.kms.KeyRing("keyRing", location="us",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        image = gcp.compute.MachineImage("image",
-            source_instance=vm.self_link,
-            machine_image_encryption_key=gcp.compute.MachineImageMachineImageEncryptionKeyArgs(
-                kms_key_name=crypto_key.id,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -556,11 +482,7 @@ class MachineImage(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["guest_flush"] = guest_flush
-            if machine_image_encryption_key is not None and not isinstance(machine_image_encryption_key, MachineImageMachineImageEncryptionKeyArgs):
-                machine_image_encryption_key = machine_image_encryption_key or {}
-                def _setter(key, value):
-                    machine_image_encryption_key[key] = value
-                MachineImageMachineImageEncryptionKeyArgs._configure(_setter, **machine_image_encryption_key)
+            machine_image_encryption_key = _utilities.configure(machine_image_encryption_key, MachineImageMachineImageEncryptionKeyArgs, True)
             __props__.__dict__["machine_image_encryption_key"] = machine_image_encryption_key
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

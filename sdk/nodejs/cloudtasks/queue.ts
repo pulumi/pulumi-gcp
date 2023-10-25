@@ -15,43 +15,6 @@ import * as utilities from "../utilities";
  * resource's location will be the same as the App Engine location specified.
  *
  * ## Example Usage
- * ### Queue Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.cloudtasks.Queue("default", {location: "us-central1"});
- * ```
- * ### Cloud Tasks Queue Advanced
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const advancedConfiguration = new gcp.cloudtasks.Queue("advancedConfiguration", {
- *     appEngineRoutingOverride: {
- *         instance: "test",
- *         service: "worker",
- *         version: "1.0",
- *     },
- *     location: "us-central1",
- *     rateLimits: {
- *         maxConcurrentDispatches: 3,
- *         maxDispatchesPerSecond: 2,
- *     },
- *     retryConfig: {
- *         maxAttempts: 5,
- *         maxBackoff: "3s",
- *         maxDoublings: 1,
- *         maxRetryDuration: "4s",
- *         minBackoff: "2s",
- *     },
- *     stackdriverLoggingConfig: {
- *         samplingRatio: 0.9,
- *     },
- * });
- * ```
  *
  * ## Import
  *

@@ -55,15 +55,41 @@ class DomainTrustArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain: pulumi.Input[str],
-             target_dns_ip_addresses: pulumi.Input[Sequence[pulumi.Input[str]]],
-             target_domain_name: pulumi.Input[str],
-             trust_direction: pulumi.Input[str],
-             trust_handshake_secret: pulumi.Input[str],
-             trust_type: pulumi.Input[str],
+             domain: Optional[pulumi.Input[str]] = None,
+             target_dns_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             target_domain_name: Optional[pulumi.Input[str]] = None,
+             trust_direction: Optional[pulumi.Input[str]] = None,
+             trust_handshake_secret: Optional[pulumi.Input[str]] = None,
+             trust_type: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              selective_authentication: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if target_dns_ip_addresses is None and 'targetDnsIpAddresses' in kwargs:
+            target_dns_ip_addresses = kwargs['targetDnsIpAddresses']
+        if target_dns_ip_addresses is None:
+            raise TypeError("Missing 'target_dns_ip_addresses' argument")
+        if target_domain_name is None and 'targetDomainName' in kwargs:
+            target_domain_name = kwargs['targetDomainName']
+        if target_domain_name is None:
+            raise TypeError("Missing 'target_domain_name' argument")
+        if trust_direction is None and 'trustDirection' in kwargs:
+            trust_direction = kwargs['trustDirection']
+        if trust_direction is None:
+            raise TypeError("Missing 'trust_direction' argument")
+        if trust_handshake_secret is None and 'trustHandshakeSecret' in kwargs:
+            trust_handshake_secret = kwargs['trustHandshakeSecret']
+        if trust_handshake_secret is None:
+            raise TypeError("Missing 'trust_handshake_secret' argument")
+        if trust_type is None and 'trustType' in kwargs:
+            trust_type = kwargs['trustType']
+        if trust_type is None:
+            raise TypeError("Missing 'trust_type' argument")
+        if selective_authentication is None and 'selectiveAuthentication' in kwargs:
+            selective_authentication = kwargs['selectiveAuthentication']
+
         _setter("domain", domain)
         _setter("target_dns_ip_addresses", target_dns_ip_addresses)
         _setter("target_domain_name", target_domain_name)
@@ -232,7 +258,21 @@ class _DomainTrustState:
              trust_direction: Optional[pulumi.Input[str]] = None,
              trust_handshake_secret: Optional[pulumi.Input[str]] = None,
              trust_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if selective_authentication is None and 'selectiveAuthentication' in kwargs:
+            selective_authentication = kwargs['selectiveAuthentication']
+        if target_dns_ip_addresses is None and 'targetDnsIpAddresses' in kwargs:
+            target_dns_ip_addresses = kwargs['targetDnsIpAddresses']
+        if target_domain_name is None and 'targetDomainName' in kwargs:
+            target_domain_name = kwargs['targetDomainName']
+        if trust_direction is None and 'trustDirection' in kwargs:
+            trust_direction = kwargs['trustDirection']
+        if trust_handshake_secret is None and 'trustHandshakeSecret' in kwargs:
+            trust_handshake_secret = kwargs['trustHandshakeSecret']
+        if trust_type is None and 'trustType' in kwargs:
+            trust_type = kwargs['trustType']
+
         if domain is not None:
             _setter("domain", domain)
         if project is not None:
@@ -383,20 +423,6 @@ class DomainTrust(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
-        ### Active Directory Domain Trust Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        ad_domain_trust = gcp.activedirectory.DomainTrust("ad-domain-trust",
-            domain="test-managed-ad.com",
-            target_dns_ip_addresses=["10.1.0.100"],
-            target_domain_name="example-gcp.com",
-            trust_direction="OUTBOUND",
-            trust_handshake_secret="Testing1!",
-            trust_type="FOREST")
-        ```
 
         ## Import
 
@@ -453,20 +479,6 @@ class DomainTrust(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
-        ### Active Directory Domain Trust Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        ad_domain_trust = gcp.activedirectory.DomainTrust("ad-domain-trust",
-            domain="test-managed-ad.com",
-            target_dns_ip_addresses=["10.1.0.100"],
-            target_domain_name="example-gcp.com",
-            trust_direction="OUTBOUND",
-            trust_handshake_secret="Testing1!",
-            trust_type="FOREST")
-        ```
 
         ## Import
 

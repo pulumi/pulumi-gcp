@@ -41,7 +41,11 @@ class ApiKeyArgs:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              restrictions: Optional[pulumi.Input['ApiKeyRestrictionsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if name is not None:
@@ -136,7 +140,13 @@ class _ApiKeyState:
              project: Optional[pulumi.Input[str]] = None,
              restrictions: Optional[pulumi.Input['ApiKeyRestrictionsArgs']] = None,
              uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if key_string is None and 'keyString' in kwargs:
+            key_string = kwargs['keyString']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if key_string is not None:
@@ -237,110 +247,6 @@ class ApiKey(pulumi.CustomResource):
         The Apikeys Key resource
 
         ## Example Usage
-        ### Android_key
-        A basic example of a android api keys key
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.organizations.Project("basic",
-            project_id="app",
-            org_id="123456789")
-        primary = gcp.projects.ApiKey("primary",
-            display_name="sample-key",
-            project=basic.name,
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                android_key_restrictions=gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsArgs(
-                    allowed_applications=[gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs(
-                        package_name="com.example.app123",
-                        sha1_fingerprint="1699466a142d4682a5f91b50fdf400f2358e2b0b",
-                    )],
-                ),
-                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
-                    service="translate.googleapis.com",
-                    methods=["GET*"],
-                )],
-            ))
-        ```
-        ### Basic_key
-        A basic example of a api keys key
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.organizations.Project("basic",
-            project_id="app",
-            org_id="123456789")
-        primary = gcp.projects.ApiKey("primary",
-            display_name="sample-key",
-            project=basic.name,
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
-                    service="translate.googleapis.com",
-                    methods=["GET*"],
-                )],
-                browser_key_restrictions=gcp.projects.ApiKeyRestrictionsBrowserKeyRestrictionsArgs(
-                    allowed_referrers=[".*"],
-                ),
-            ))
-        ```
-        ### Ios_key
-        A basic example of a ios api keys key
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.organizations.Project("basic",
-            project_id="app",
-            org_id="123456789")
-        primary = gcp.projects.ApiKey("primary",
-            display_name="sample-key",
-            project=basic.name,
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
-                    service="translate.googleapis.com",
-                    methods=["GET*"],
-                )],
-                ios_key_restrictions=gcp.projects.ApiKeyRestrictionsIosKeyRestrictionsArgs(
-                    allowed_bundle_ids=["com.google.app.macos"],
-                ),
-            ))
-        ```
-        ### Minimal_key
-        A minimal example of a api keys key
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.organizations.Project("basic",
-            project_id="app",
-            org_id="123456789")
-        primary = gcp.projects.ApiKey("primary",
-            display_name="sample-key",
-            project=basic.name)
-        ```
-        ### Server_key
-        A basic example of a server api keys key
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.organizations.Project("basic",
-            project_id="app",
-            org_id="123456789")
-        primary = gcp.projects.ApiKey("primary",
-            display_name="sample-key",
-            project=basic.name,
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
-                    service="translate.googleapis.com",
-                    methods=["GET*"],
-                )],
-                server_key_restrictions=gcp.projects.ApiKeyRestrictionsServerKeyRestrictionsArgs(
-                    allowed_ips=["127.0.0.1"],
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -375,110 +281,6 @@ class ApiKey(pulumi.CustomResource):
         The Apikeys Key resource
 
         ## Example Usage
-        ### Android_key
-        A basic example of a android api keys key
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.organizations.Project("basic",
-            project_id="app",
-            org_id="123456789")
-        primary = gcp.projects.ApiKey("primary",
-            display_name="sample-key",
-            project=basic.name,
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                android_key_restrictions=gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsArgs(
-                    allowed_applications=[gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs(
-                        package_name="com.example.app123",
-                        sha1_fingerprint="1699466a142d4682a5f91b50fdf400f2358e2b0b",
-                    )],
-                ),
-                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
-                    service="translate.googleapis.com",
-                    methods=["GET*"],
-                )],
-            ))
-        ```
-        ### Basic_key
-        A basic example of a api keys key
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.organizations.Project("basic",
-            project_id="app",
-            org_id="123456789")
-        primary = gcp.projects.ApiKey("primary",
-            display_name="sample-key",
-            project=basic.name,
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
-                    service="translate.googleapis.com",
-                    methods=["GET*"],
-                )],
-                browser_key_restrictions=gcp.projects.ApiKeyRestrictionsBrowserKeyRestrictionsArgs(
-                    allowed_referrers=[".*"],
-                ),
-            ))
-        ```
-        ### Ios_key
-        A basic example of a ios api keys key
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.organizations.Project("basic",
-            project_id="app",
-            org_id="123456789")
-        primary = gcp.projects.ApiKey("primary",
-            display_name="sample-key",
-            project=basic.name,
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
-                    service="translate.googleapis.com",
-                    methods=["GET*"],
-                )],
-                ios_key_restrictions=gcp.projects.ApiKeyRestrictionsIosKeyRestrictionsArgs(
-                    allowed_bundle_ids=["com.google.app.macos"],
-                ),
-            ))
-        ```
-        ### Minimal_key
-        A minimal example of a api keys key
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.organizations.Project("basic",
-            project_id="app",
-            org_id="123456789")
-        primary = gcp.projects.ApiKey("primary",
-            display_name="sample-key",
-            project=basic.name)
-        ```
-        ### Server_key
-        A basic example of a server api keys key
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.organizations.Project("basic",
-            project_id="app",
-            org_id="123456789")
-        primary = gcp.projects.ApiKey("primary",
-            display_name="sample-key",
-            project=basic.name,
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
-                    service="translate.googleapis.com",
-                    methods=["GET*"],
-                )],
-                server_key_restrictions=gcp.projects.ApiKeyRestrictionsServerKeyRestrictionsArgs(
-                    allowed_ips=["127.0.0.1"],
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -531,11 +333,7 @@ class ApiKey(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            if restrictions is not None and not isinstance(restrictions, ApiKeyRestrictionsArgs):
-                restrictions = restrictions or {}
-                def _setter(key, value):
-                    restrictions[key] = value
-                ApiKeyRestrictionsArgs._configure(_setter, **restrictions)
+            restrictions = _utilities.configure(restrictions, ApiKeyRestrictionsArgs, True)
             __props__.__dict__["restrictions"] = restrictions
             __props__.__dict__["key_string"] = None
             __props__.__dict__["uid"] = None

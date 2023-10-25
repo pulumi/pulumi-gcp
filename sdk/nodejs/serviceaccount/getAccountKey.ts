@@ -6,20 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const myaccount = new gcp.serviceaccount.Account("myaccount", {accountId: "dev-foo-account"});
- * const mykeyKey = new gcp.serviceaccount.Key("mykeyKey", {serviceAccountId: myaccount.name});
- * const mykeyAccountKey = gcp.serviceAccount.getAccountKeyOutput({
- *     name: mykeyKey.name,
- *     publicKeyType: "TYPE_X509_PEM_FILE",
- * });
- * ```
  */
 export function getAccountKey(args: GetAccountKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountKeyResult> {
 
@@ -71,20 +57,6 @@ export interface GetAccountKeyResult {
 }
 /**
  * Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const myaccount = new gcp.serviceaccount.Account("myaccount", {accountId: "dev-foo-account"});
- * const mykeyKey = new gcp.serviceaccount.Key("mykeyKey", {serviceAccountId: myaccount.name});
- * const mykeyAccountKey = gcp.serviceAccount.getAccountKeyOutput({
- *     name: mykeyKey.name,
- *     publicKeyType: "TYPE_X509_PEM_FILE",
- * });
- * ```
  */
 export function getAccountKeyOutput(args: GetAccountKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountKeyResult> {
     return pulumi.output(args).apply((a: any) => getAccountKey(a, opts))

@@ -55,17 +55,37 @@ class AssetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataplex_zone: pulumi.Input[str],
-             discovery_spec: pulumi.Input['AssetDiscoverySpecArgs'],
-             lake: pulumi.Input[str],
-             location: pulumi.Input[str],
-             resource_spec: pulumi.Input['AssetResourceSpecArgs'],
+             dataplex_zone: Optional[pulumi.Input[str]] = None,
+             discovery_spec: Optional[pulumi.Input['AssetDiscoverySpecArgs']] = None,
+             lake: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             resource_spec: Optional[pulumi.Input['AssetResourceSpecArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dataplex_zone is None and 'dataplexZone' in kwargs:
+            dataplex_zone = kwargs['dataplexZone']
+        if dataplex_zone is None:
+            raise TypeError("Missing 'dataplex_zone' argument")
+        if discovery_spec is None and 'discoverySpec' in kwargs:
+            discovery_spec = kwargs['discoverySpec']
+        if discovery_spec is None:
+            raise TypeError("Missing 'discovery_spec' argument")
+        if lake is None:
+            raise TypeError("Missing 'lake' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if resource_spec is None and 'resourceSpec' in kwargs:
+            resource_spec = kwargs['resourceSpec']
+        if resource_spec is None:
+            raise TypeError("Missing 'resource_spec' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("dataplex_zone", dataplex_zone)
         _setter("discovery_spec", discovery_spec)
         _setter("lake", lake)
@@ -283,7 +303,27 @@ class _AssetState:
              state: Optional[pulumi.Input[str]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if dataplex_zone is None and 'dataplexZone' in kwargs:
+            dataplex_zone = kwargs['dataplexZone']
+        if discovery_spec is None and 'discoverySpec' in kwargs:
+            discovery_spec = kwargs['discoverySpec']
+        if discovery_statuses is None and 'discoveryStatuses' in kwargs:
+            discovery_statuses = kwargs['discoveryStatuses']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if resource_spec is None and 'resourceSpec' in kwargs:
+            resource_spec = kwargs['resourceSpec']
+        if resource_statuses is None and 'resourceStatuses' in kwargs:
+            resource_statuses = kwargs['resourceStatuses']
+        if security_statuses is None and 'securityStatuses' in kwargs:
+            security_statuses = kwargs['securityStatuses']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if dataplex_zone is not None:
@@ -544,43 +584,6 @@ class Asset(pulumi.CustomResource):
         The Dataplex Asset resource
 
         ## Example Usage
-        ### Basic_asset
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic_bucket = gcp.storage.Bucket("basicBucket",
-            location="us-west1",
-            uniform_bucket_level_access=True,
-            project="my-project-name")
-        basic_lake = gcp.dataplex.Lake("basicLake",
-            location="us-west1",
-            project="my-project-name")
-        basic_zone = gcp.dataplex.Zone("basicZone",
-            location="us-west1",
-            lake=basic_lake.name,
-            type="RAW",
-            discovery_spec=gcp.dataplex.ZoneDiscoverySpecArgs(
-                enabled=False,
-            ),
-            resource_spec=gcp.dataplex.ZoneResourceSpecArgs(
-                location_type="SINGLE_REGION",
-            ),
-            project="my-project-name")
-        primary = gcp.dataplex.Asset("primary",
-            location="us-west1",
-            lake=basic_lake.name,
-            dataplex_zone=basic_zone.name,
-            discovery_spec=gcp.dataplex.AssetDiscoverySpecArgs(
-                enabled=False,
-            ),
-            resource_spec=gcp.dataplex.AssetResourceSpecArgs(
-                name="projects/my-project-name/buckets/bucket",
-                type="STORAGE_BUCKET",
-            ),
-            project="my-project-name",
-            opts=pulumi.ResourceOptions(depends_on=[basic_bucket]))
-        ```
 
         ## Import
 
@@ -621,43 +624,6 @@ class Asset(pulumi.CustomResource):
         The Dataplex Asset resource
 
         ## Example Usage
-        ### Basic_asset
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic_bucket = gcp.storage.Bucket("basicBucket",
-            location="us-west1",
-            uniform_bucket_level_access=True,
-            project="my-project-name")
-        basic_lake = gcp.dataplex.Lake("basicLake",
-            location="us-west1",
-            project="my-project-name")
-        basic_zone = gcp.dataplex.Zone("basicZone",
-            location="us-west1",
-            lake=basic_lake.name,
-            type="RAW",
-            discovery_spec=gcp.dataplex.ZoneDiscoverySpecArgs(
-                enabled=False,
-            ),
-            resource_spec=gcp.dataplex.ZoneResourceSpecArgs(
-                location_type="SINGLE_REGION",
-            ),
-            project="my-project-name")
-        primary = gcp.dataplex.Asset("primary",
-            location="us-west1",
-            lake=basic_lake.name,
-            dataplex_zone=basic_zone.name,
-            discovery_spec=gcp.dataplex.AssetDiscoverySpecArgs(
-                enabled=False,
-            ),
-            resource_spec=gcp.dataplex.AssetResourceSpecArgs(
-                name="projects/my-project-name/buckets/bucket",
-                type="STORAGE_BUCKET",
-            ),
-            project="my-project-name",
-            opts=pulumi.ResourceOptions(depends_on=[basic_bucket]))
-        ```
 
         ## Import
 
@@ -717,11 +683,7 @@ class Asset(pulumi.CustomResource):
                 raise TypeError("Missing required property 'dataplex_zone'")
             __props__.__dict__["dataplex_zone"] = dataplex_zone
             __props__.__dict__["description"] = description
-            if discovery_spec is not None and not isinstance(discovery_spec, AssetDiscoverySpecArgs):
-                discovery_spec = discovery_spec or {}
-                def _setter(key, value):
-                    discovery_spec[key] = value
-                AssetDiscoverySpecArgs._configure(_setter, **discovery_spec)
+            discovery_spec = _utilities.configure(discovery_spec, AssetDiscoverySpecArgs, True)
             if discovery_spec is None and not opts.urn:
                 raise TypeError("Missing required property 'discovery_spec'")
             __props__.__dict__["discovery_spec"] = discovery_spec
@@ -735,11 +697,7 @@ class Asset(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            if resource_spec is not None and not isinstance(resource_spec, AssetResourceSpecArgs):
-                resource_spec = resource_spec or {}
-                def _setter(key, value):
-                    resource_spec[key] = value
-                AssetResourceSpecArgs._configure(_setter, **resource_spec)
+            resource_spec = _utilities.configure(resource_spec, AssetResourceSpecArgs, True)
             if resource_spec is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_spec'")
             __props__.__dict__["resource_spec"] = resource_spec

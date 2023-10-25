@@ -13,52 +13,12 @@ namespace Pulumi.Gcp.Tags
     {
         /// <summary>
         /// Retrieves the current IAM policy data for tagvalue
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.Tags.GetTagValueIamPolicy.Invoke(new()
-        ///     {
-        ///         TagValue = google_tags_tag_value.Value.Name,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetTagValueIamPolicyResult> InvokeAsync(GetTagValueIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagValueIamPolicyResult>("gcp:tags/getTagValueIamPolicy:getTagValueIamPolicy", args ?? new GetTagValueIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for tagvalue
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.Tags.GetTagValueIamPolicy.Invoke(new()
-        ///     {
-        ///         TagValue = google_tags_tag_value.Value.Name,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetTagValueIamPolicyResult> Invoke(GetTagValueIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTagValueIamPolicyResult>("gcp:tags/getTagValueIamPolicy:getTagValueIamPolicy", args ?? new GetTagValueIamPolicyInvokeArgs(), options.WithDefaults());

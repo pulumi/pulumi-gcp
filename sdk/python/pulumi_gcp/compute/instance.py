@@ -171,9 +171,9 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             boot_disk: pulumi.Input['InstanceBootDiskArgs'],
-             machine_type: pulumi.Input[str],
-             network_interfaces: pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]],
+             boot_disk: Optional[pulumi.Input['InstanceBootDiskArgs']] = None,
+             machine_type: Optional[pulumi.Input[str]] = None,
+             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]]] = None,
              advanced_machine_features: Optional[pulumi.Input['InstanceAdvancedMachineFeaturesArgs']] = None,
              allow_stopping_for_update: Optional[pulumi.Input[bool]] = None,
              attached_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArgs']]]] = None,
@@ -201,7 +201,55 @@ class InstanceArgs:
              shielded_instance_config: Optional[pulumi.Input['InstanceShieldedInstanceConfigArgs']] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if boot_disk is None and 'bootDisk' in kwargs:
+            boot_disk = kwargs['bootDisk']
+        if boot_disk is None:
+            raise TypeError("Missing 'boot_disk' argument")
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if machine_type is None:
+            raise TypeError("Missing 'machine_type' argument")
+        if network_interfaces is None and 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if network_interfaces is None:
+            raise TypeError("Missing 'network_interfaces' argument")
+        if advanced_machine_features is None and 'advancedMachineFeatures' in kwargs:
+            advanced_machine_features = kwargs['advancedMachineFeatures']
+        if allow_stopping_for_update is None and 'allowStoppingForUpdate' in kwargs:
+            allow_stopping_for_update = kwargs['allowStoppingForUpdate']
+        if attached_disks is None and 'attachedDisks' in kwargs:
+            attached_disks = kwargs['attachedDisks']
+        if can_ip_forward is None and 'canIpForward' in kwargs:
+            can_ip_forward = kwargs['canIpForward']
+        if confidential_instance_config is None and 'confidentialInstanceConfig' in kwargs:
+            confidential_instance_config = kwargs['confidentialInstanceConfig']
+        if deletion_protection is None and 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if desired_status is None and 'desiredStatus' in kwargs:
+            desired_status = kwargs['desiredStatus']
+        if enable_display is None and 'enableDisplay' in kwargs:
+            enable_display = kwargs['enableDisplay']
+        if guest_accelerators is None and 'guestAccelerators' in kwargs:
+            guest_accelerators = kwargs['guestAccelerators']
+        if metadata_startup_script is None and 'metadataStartupScript' in kwargs:
+            metadata_startup_script = kwargs['metadataStartupScript']
+        if min_cpu_platform is None and 'minCpuPlatform' in kwargs:
+            min_cpu_platform = kwargs['minCpuPlatform']
+        if network_performance_config is None and 'networkPerformanceConfig' in kwargs:
+            network_performance_config = kwargs['networkPerformanceConfig']
+        if reservation_affinity is None and 'reservationAffinity' in kwargs:
+            reservation_affinity = kwargs['reservationAffinity']
+        if resource_policies is None and 'resourcePolicies' in kwargs:
+            resource_policies = kwargs['resourcePolicies']
+        if scratch_disks is None and 'scratchDisks' in kwargs:
+            scratch_disks = kwargs['scratchDisks']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if shielded_instance_config is None and 'shieldedInstanceConfig' in kwargs:
+            shielded_instance_config = kwargs['shieldedInstanceConfig']
+
         _setter("boot_disk", boot_disk)
         _setter("machine_type", machine_type)
         _setter("network_interfaces", network_interfaces)
@@ -893,7 +941,63 @@ class _InstanceState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tags_fingerprint: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if advanced_machine_features is None and 'advancedMachineFeatures' in kwargs:
+            advanced_machine_features = kwargs['advancedMachineFeatures']
+        if allow_stopping_for_update is None and 'allowStoppingForUpdate' in kwargs:
+            allow_stopping_for_update = kwargs['allowStoppingForUpdate']
+        if attached_disks is None and 'attachedDisks' in kwargs:
+            attached_disks = kwargs['attachedDisks']
+        if boot_disk is None and 'bootDisk' in kwargs:
+            boot_disk = kwargs['bootDisk']
+        if can_ip_forward is None and 'canIpForward' in kwargs:
+            can_ip_forward = kwargs['canIpForward']
+        if confidential_instance_config is None and 'confidentialInstanceConfig' in kwargs:
+            confidential_instance_config = kwargs['confidentialInstanceConfig']
+        if cpu_platform is None and 'cpuPlatform' in kwargs:
+            cpu_platform = kwargs['cpuPlatform']
+        if current_status is None and 'currentStatus' in kwargs:
+            current_status = kwargs['currentStatus']
+        if deletion_protection is None and 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if desired_status is None and 'desiredStatus' in kwargs:
+            desired_status = kwargs['desiredStatus']
+        if enable_display is None and 'enableDisplay' in kwargs:
+            enable_display = kwargs['enableDisplay']
+        if guest_accelerators is None and 'guestAccelerators' in kwargs:
+            guest_accelerators = kwargs['guestAccelerators']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if label_fingerprint is None and 'labelFingerprint' in kwargs:
+            label_fingerprint = kwargs['labelFingerprint']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if metadata_fingerprint is None and 'metadataFingerprint' in kwargs:
+            metadata_fingerprint = kwargs['metadataFingerprint']
+        if metadata_startup_script is None and 'metadataStartupScript' in kwargs:
+            metadata_startup_script = kwargs['metadataStartupScript']
+        if min_cpu_platform is None and 'minCpuPlatform' in kwargs:
+            min_cpu_platform = kwargs['minCpuPlatform']
+        if network_interfaces is None and 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if network_performance_config is None and 'networkPerformanceConfig' in kwargs:
+            network_performance_config = kwargs['networkPerformanceConfig']
+        if reservation_affinity is None and 'reservationAffinity' in kwargs:
+            reservation_affinity = kwargs['reservationAffinity']
+        if resource_policies is None and 'resourcePolicies' in kwargs:
+            resource_policies = kwargs['resourcePolicies']
+        if scratch_disks is None and 'scratchDisks' in kwargs:
+            scratch_disks = kwargs['scratchDisks']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if shielded_instance_config is None and 'shieldedInstanceConfig' in kwargs:
+            shielded_instance_config = kwargs['shieldedInstanceConfig']
+        if tags_fingerprint is None and 'tagsFingerprint' in kwargs:
+            tags_fingerprint = kwargs['tagsFingerprint']
+
         if advanced_machine_features is not None:
             _setter("advanced_machine_features", advanced_machine_features)
         if allow_stopping_for_update is not None:
@@ -1512,47 +1616,6 @@ class Instance(pulumi.CustomResource):
         and
         [API](https://cloud.google.com/compute/docs/reference/latest/instances).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_account = gcp.service_account.Account("defaultAccount",
-            account_id="service_account_id",
-            display_name="Service Account")
-        default_instance = gcp.compute.Instance("defaultInstance",
-            machine_type="e2-medium",
-            zone="us-central1-a",
-            tags=[
-                "foo",
-                "bar",
-            ],
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-11",
-                    labels={
-                        "my_label": "value",
-                    },
-                ),
-            ),
-            scratch_disks=[gcp.compute.InstanceScratchDiskArgs(
-                interface="SCSI",
-            )],
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-            )],
-            metadata={
-                "foo": "bar",
-            },
-            metadata_startup_script="echo hi > /test.txt",
-            service_account=gcp.compute.InstanceServiceAccountArgs(
-                email=default_account.email,
-                scopes=["cloud-platform"],
-            ))
-        ```
-
         ## Import
 
         Instances can be imported using any of these accepted formats
@@ -1672,47 +1735,6 @@ class Instance(pulumi.CustomResource):
         and
         [API](https://cloud.google.com/compute/docs/reference/latest/instances).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_account = gcp.service_account.Account("defaultAccount",
-            account_id="service_account_id",
-            display_name="Service Account")
-        default_instance = gcp.compute.Instance("defaultInstance",
-            machine_type="e2-medium",
-            zone="us-central1-a",
-            tags=[
-                "foo",
-                "bar",
-            ],
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-11",
-                    labels={
-                        "my_label": "value",
-                    },
-                ),
-            ),
-            scratch_disks=[gcp.compute.InstanceScratchDiskArgs(
-                interface="SCSI",
-            )],
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-            )],
-            metadata={
-                "foo": "bar",
-            },
-            metadata_startup_script="echo hi > /test.txt",
-            service_account=gcp.compute.InstanceServiceAccountArgs(
-                email=default_account.email,
-                scopes=["cloud-platform"],
-            ))
-        ```
-
         ## Import
 
         Instances can be imported using any of these accepted formats
@@ -1789,28 +1811,16 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
-            if advanced_machine_features is not None and not isinstance(advanced_machine_features, InstanceAdvancedMachineFeaturesArgs):
-                advanced_machine_features = advanced_machine_features or {}
-                def _setter(key, value):
-                    advanced_machine_features[key] = value
-                InstanceAdvancedMachineFeaturesArgs._configure(_setter, **advanced_machine_features)
+            advanced_machine_features = _utilities.configure(advanced_machine_features, InstanceAdvancedMachineFeaturesArgs, True)
             __props__.__dict__["advanced_machine_features"] = advanced_machine_features
             __props__.__dict__["allow_stopping_for_update"] = allow_stopping_for_update
             __props__.__dict__["attached_disks"] = attached_disks
-            if boot_disk is not None and not isinstance(boot_disk, InstanceBootDiskArgs):
-                boot_disk = boot_disk or {}
-                def _setter(key, value):
-                    boot_disk[key] = value
-                InstanceBootDiskArgs._configure(_setter, **boot_disk)
+            boot_disk = _utilities.configure(boot_disk, InstanceBootDiskArgs, True)
             if boot_disk is None and not opts.urn:
                 raise TypeError("Missing required property 'boot_disk'")
             __props__.__dict__["boot_disk"] = boot_disk
             __props__.__dict__["can_ip_forward"] = can_ip_forward
-            if confidential_instance_config is not None and not isinstance(confidential_instance_config, InstanceConfidentialInstanceConfigArgs):
-                confidential_instance_config = confidential_instance_config or {}
-                def _setter(key, value):
-                    confidential_instance_config[key] = value
-                InstanceConfidentialInstanceConfigArgs._configure(_setter, **confidential_instance_config)
+            confidential_instance_config = _utilities.configure(confidential_instance_config, InstanceConfidentialInstanceConfigArgs, True)
             __props__.__dict__["confidential_instance_config"] = confidential_instance_config
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
@@ -1829,44 +1839,20 @@ class Instance(pulumi.CustomResource):
             if network_interfaces is None and not opts.urn:
                 raise TypeError("Missing required property 'network_interfaces'")
             __props__.__dict__["network_interfaces"] = network_interfaces
-            if network_performance_config is not None and not isinstance(network_performance_config, InstanceNetworkPerformanceConfigArgs):
-                network_performance_config = network_performance_config or {}
-                def _setter(key, value):
-                    network_performance_config[key] = value
-                InstanceNetworkPerformanceConfigArgs._configure(_setter, **network_performance_config)
+            network_performance_config = _utilities.configure(network_performance_config, InstanceNetworkPerformanceConfigArgs, True)
             __props__.__dict__["network_performance_config"] = network_performance_config
-            if params is not None and not isinstance(params, InstanceParamsArgs):
-                params = params or {}
-                def _setter(key, value):
-                    params[key] = value
-                InstanceParamsArgs._configure(_setter, **params)
+            params = _utilities.configure(params, InstanceParamsArgs, True)
             __props__.__dict__["params"] = params
             __props__.__dict__["project"] = project
-            if reservation_affinity is not None and not isinstance(reservation_affinity, InstanceReservationAffinityArgs):
-                reservation_affinity = reservation_affinity or {}
-                def _setter(key, value):
-                    reservation_affinity[key] = value
-                InstanceReservationAffinityArgs._configure(_setter, **reservation_affinity)
+            reservation_affinity = _utilities.configure(reservation_affinity, InstanceReservationAffinityArgs, True)
             __props__.__dict__["reservation_affinity"] = reservation_affinity
             __props__.__dict__["resource_policies"] = resource_policies
-            if scheduling is not None and not isinstance(scheduling, InstanceSchedulingArgs):
-                scheduling = scheduling or {}
-                def _setter(key, value):
-                    scheduling[key] = value
-                InstanceSchedulingArgs._configure(_setter, **scheduling)
+            scheduling = _utilities.configure(scheduling, InstanceSchedulingArgs, True)
             __props__.__dict__["scheduling"] = scheduling
             __props__.__dict__["scratch_disks"] = scratch_disks
-            if service_account is not None and not isinstance(service_account, InstanceServiceAccountArgs):
-                service_account = service_account or {}
-                def _setter(key, value):
-                    service_account[key] = value
-                InstanceServiceAccountArgs._configure(_setter, **service_account)
+            service_account = _utilities.configure(service_account, InstanceServiceAccountArgs, True)
             __props__.__dict__["service_account"] = service_account
-            if shielded_instance_config is not None and not isinstance(shielded_instance_config, InstanceShieldedInstanceConfigArgs):
-                shielded_instance_config = shielded_instance_config or {}
-                def _setter(key, value):
-                    shielded_instance_config[key] = value
-                InstanceShieldedInstanceConfigArgs._configure(_setter, **shielded_instance_config)
+            shielded_instance_config = _utilities.configure(shielded_instance_config, InstanceShieldedInstanceConfigArgs, True)
             __props__.__dict__["shielded_instance_config"] = shielded_instance_config
             __props__.__dict__["tags"] = tags
             __props__.__dict__["zone"] = zone

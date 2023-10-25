@@ -40,10 +40,18 @@ class SourceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             organization: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
+             organization: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if organization is None:
+            raise TypeError("Missing 'organization' argument")
+
         _setter("display_name", display_name)
         _setter("organization", organization)
         if description is not None:
@@ -131,7 +139,11 @@ class _SourceState:
              display_name: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              organization: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if description is not None:
             _setter("description", description)
         if display_name is not None:
@@ -221,17 +233,6 @@ class Source(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/security-command-center/docs)
 
         ## Example Usage
-        ### Scc Source Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        custom_source = gcp.securitycenter.Source("customSource",
-            description="My custom Cloud Security Command Center Finding Source",
-            display_name="My Source",
-            organization="123456789")
-        ```
 
         ## Import
 
@@ -278,17 +279,6 @@ class Source(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/security-command-center/docs)
 
         ## Example Usage
-        ### Scc Source Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        custom_source = gcp.securitycenter.Source("customSource",
-            description="My custom Cloud Security Command Center Finding Source",
-            display_name="My Source",
-            organization="123456789")
-        ```
 
         ## Import
 
