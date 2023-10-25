@@ -3888,5 +3888,7 @@ func Provider() tfbridge.ProviderInfo {
 	err = x.AutoAliasing(&prov, prov.GetMetadata())
 	contract.AssertNoErrorf(err, "Failed to apply automatic aliases")
 
+	fixTagNames(&prov)
+
 	return prov
 }
