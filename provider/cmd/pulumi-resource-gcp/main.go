@@ -19,15 +19,31 @@ package main
 import (
 	"context"
 	_ "embed"
+	"flag"
+	"io"
+	"os"
 
 	gcp "github.com/pulumi/pulumi-gcp/provider/v6"
 	"github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/cmdutil"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 )
 
 //go:embed schema-embed.json
 var pulumiSchema []byte
 
+var tracing string
+
 func main() {
-	tfbridge.MainWithMuxer(context.Background(), "gcp",
-		gcp.Provider(), pulumiSchema)
+	module_name := "gcp"
+	flags := flag.NewFlagSet(module_name+"-flags", flag.ContinueOnError)
+	flags.StringVar(&tracing, "tracing", "", "Emit tracing to a Zipkin-compatible tracing endpoint")
+	flags.SetOutput(io.Discard)
+	err := flags.Parse(os.Args[1:])
+	contract.IgnoreError(err)
+	cmdutil.InitTracing(module_name, module_name, tracing)
+
+	// Modify the path to point to the new provider
+	prov := gcp.Provider()
+	tfbridge.MainWithMuxer(context.Background(), module_name, prov, pulumiSchema)
 }
