@@ -13,6 +13,32 @@ import (
 )
 
 // Get information about a Google BeyondCorp App Connection.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/beyondcorp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := beyondcorp.LookupAppConnection(ctx, &beyondcorp.LookupAppConnectionArgs{
+//				Name: "my-beyondcorp-app-connection",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupAppConnection(ctx *pulumi.Context, args *LookupAppConnectionArgs, opts ...pulumi.InvokeOption) (*LookupAppConnectionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAppConnectionResult

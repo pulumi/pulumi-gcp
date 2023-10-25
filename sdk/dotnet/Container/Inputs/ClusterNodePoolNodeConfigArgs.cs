@@ -47,12 +47,32 @@ namespace Pulumi.Gcp.Container.Inputs
 
         /// <summary>
         /// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         [Input("ephemeralStorageConfig")]
         public Input<Inputs.ClusterNodePoolNodeConfigEphemeralStorageConfigArgs>? EphemeralStorageConfig { get; set; }
 
         /// <summary>
         /// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         [Input("ephemeralStorageLocalSsdConfig")]
         public Input<Inputs.ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs>? EphemeralStorageLocalSsdConfig { get; set; }
@@ -73,6 +93,16 @@ namespace Pulumi.Gcp.Container.Inputs
         /// A `machine_type` that has more than 16 GiB of memory is also recommended.
         /// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
         /// Structure is documented below.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         [Input("gcfsConfig")]
         public Input<Inputs.ClusterNodePoolNodeConfigGcfsConfigArgs>? GcfsConfig { get; set; }
@@ -96,6 +126,17 @@ namespace Pulumi.Gcp.Container.Inputs
         /// gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
         /// GKE node version 1.15.11-gke.15 or later
         /// Structure is documented below.
+        /// 
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         [Input("gvnic")]
         public Input<Inputs.ClusterNodePoolNodeConfigGvnicArgs>? Gvnic { get; set; }
@@ -113,6 +154,16 @@ namespace Pulumi.Gcp.Container.Inputs
         /// <summary>
         /// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
         /// Structure is documented below.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         [Input("kubeletConfig")]
         public Input<Inputs.ClusterNodePoolNodeConfigKubeletConfigArgs>? KubeletConfig { get; set; }
@@ -134,6 +185,16 @@ namespace Pulumi.Gcp.Container.Inputs
         /// Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
         /// Note that validations happen all server side. All attributes are optional.
         /// Structure is documented below.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         [Input("linuxNodeConfig")]
         public Input<Inputs.ClusterNodePoolNodeConfigLinuxNodeConfigArgs>? LinuxNodeConfig { get; set; }
@@ -258,6 +319,16 @@ namespace Pulumi.Gcp.Container.Inputs
 
         /// <summary>
         /// Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         [Input("soleTenantConfig")]
         public Input<Inputs.ClusterNodePoolNodeConfigSoleTenantConfigArgs>? SoleTenantConfig { get; set; }

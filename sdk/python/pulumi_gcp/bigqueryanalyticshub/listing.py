@@ -648,6 +648,32 @@ class Listing(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
 
         ## Example Usage
+        ### Bigquery Analyticshub Listing Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        listing_data_exchange = gcp.bigqueryanalyticshub.DataExchange("listingDataExchange",
+            location="US",
+            data_exchange_id="my_data_exchange",
+            display_name="my_data_exchange",
+            description="example data exchange")
+        listing_dataset = gcp.bigquery.Dataset("listingDataset",
+            dataset_id="my_listing",
+            friendly_name="my_listing",
+            description="example data exchange",
+            location="US")
+        listing_listing = gcp.bigqueryanalyticshub.Listing("listingListing",
+            location="US",
+            data_exchange_id=listing_data_exchange.data_exchange_id,
+            listing_id="my_listing",
+            display_name="my_listing",
+            description="example data exchange",
+            bigquery_dataset=gcp.bigqueryanalyticshub.ListingBigqueryDatasetArgs(
+                dataset=listing_dataset.id,
+            ))
+        ```
 
         ## Import
 
@@ -702,6 +728,32 @@ class Listing(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
 
         ## Example Usage
+        ### Bigquery Analyticshub Listing Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        listing_data_exchange = gcp.bigqueryanalyticshub.DataExchange("listingDataExchange",
+            location="US",
+            data_exchange_id="my_data_exchange",
+            display_name="my_data_exchange",
+            description="example data exchange")
+        listing_dataset = gcp.bigquery.Dataset("listingDataset",
+            dataset_id="my_listing",
+            friendly_name="my_listing",
+            description="example data exchange",
+            location="US")
+        listing_listing = gcp.bigqueryanalyticshub.Listing("listingListing",
+            location="US",
+            data_exchange_id=listing_data_exchange.data_exchange_id,
+            listing_id="my_listing",
+            display_name="my_listing",
+            description="example data exchange",
+            bigquery_dataset=gcp.bigqueryanalyticshub.ListingBigqueryDatasetArgs(
+                dataset=listing_dataset.id,
+            ))
+        ```
 
         ## Import
 

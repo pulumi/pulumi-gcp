@@ -291,6 +291,17 @@ class DocumentAiProcessor(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/document-ai/docs/overview)
 
         ## Example Usage
+        ### Documentai Processor
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        processor = gcp.essentialcontacts.DocumentAiProcessor("processor",
+            display_name="test-processor",
+            location="us",
+            type="OCR_PROCESSOR")
+        ```
 
         ## Import
 
@@ -336,6 +347,17 @@ class DocumentAiProcessor(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/document-ai/docs/overview)
 
         ## Example Usage
+        ### Documentai Processor
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        processor = gcp.essentialcontacts.DocumentAiProcessor("processor",
+            display_name="test-processor",
+            location="us",
+            type="OCR_PROCESSOR")
+        ```
 
         ## Import
 

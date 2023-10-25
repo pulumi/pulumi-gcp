@@ -22,6 +22,25 @@ import * as utilities from "../utilities";
  * `preview=false`).
  *
  * ## Example Usage
+ * ### Deployment Manager Deployment Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const deployment = new gcp.deploymentmanager.Deployment("deployment", {
+ *     target: {
+ *         config: {
+ *             content: fs.readFileSync("path/to/config.yml"),
+ *         },
+ *     },
+ *     labels: [{
+ *         key: "foo",
+ *         value: "bar",
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *

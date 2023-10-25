@@ -6,6 +6,19 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myCluster = gcp.vmwareengine.getCluster({
+ *     name: "my-cluster",
+ *     parent: "project/locations/us-west1-a/privateClouds/my-cloud",
+ * });
+ * ```
+ */
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -44,6 +57,19 @@ export interface GetClusterResult {
     readonly state: string;
     readonly uid: string;
 }
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myCluster = gcp.vmwareengine.getCluster({
+ *     name: "my-cluster",
+ *     parent: "project/locations/us-west1-a/privateClouds/my-cloud",
+ * });
+ * ```
+ */
 export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterResult> {
     return pulumi.output(args).apply((a: any) => getCluster(a, opts))
 }

@@ -189,6 +189,84 @@ class Policy(pulumi.CustomResource):
         * [The resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
         * [All valid constraints](https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints)
         ## Example Usage
+        ### Enforce_policy
+        A test of an enforce orgpolicy policy for a project
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.organizations.Project("basic",
+            org_id="123456789",
+            project_id="id")
+        primary = gcp.orgpolicy.Policy("primary",
+            parent=basic.name.apply(lambda name: f"projects/{name}"),
+            spec=gcp.orgpolicy.PolicySpecArgs(
+                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
+                    enforce="FALSE",
+                )],
+            ))
+        ```
+        ### Folder_policy
+        A test of an orgpolicy policy for a folder
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.organizations.Folder("basic",
+            parent="organizations/123456789",
+            display_name="folder")
+        primary = gcp.orgpolicy.Policy("primary",
+            parent=basic.name,
+            spec=gcp.orgpolicy.PolicySpecArgs(
+                inherit_from_parent=True,
+                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
+                    deny_all="TRUE",
+                )],
+            ))
+        ```
+        ### Organization_policy
+        A test of an orgpolicy policy for an organization
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.orgpolicy.Policy("primary",
+            parent="organizations/123456789",
+            spec=gcp.orgpolicy.PolicySpecArgs(
+                reset=True,
+            ))
+        ```
+        ### Project_policy
+        A test of an orgpolicy policy for a project
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.organizations.Project("basic",
+            org_id="123456789",
+            project_id="id")
+        primary = gcp.orgpolicy.Policy("primary",
+            parent=basic.name.apply(lambda name: f"projects/{name}"),
+            spec=gcp.orgpolicy.PolicySpecArgs(
+                rules=[
+                    gcp.orgpolicy.PolicySpecRuleArgs(
+                        condition=gcp.orgpolicy.PolicySpecRuleConditionArgs(
+                            description="A sample condition for the policy",
+                            expression="resource.matchLabels('labelKeys/123', 'labelValues/345')",
+                            location="sample-location.log",
+                            title="sample-condition",
+                        ),
+                        values=gcp.orgpolicy.PolicySpecRuleValuesArgs(
+                            allowed_values=["projects/allowed-project"],
+                            denied_values=["projects/denied-project"],
+                        ),
+                    ),
+                    gcp.orgpolicy.PolicySpecRuleArgs(
+                        allow_all="TRUE",
+                    ),
+                ],
+            ))
+        ```
 
         ## Import
 
@@ -222,6 +300,84 @@ class Policy(pulumi.CustomResource):
         * [The resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
         * [All valid constraints](https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints)
         ## Example Usage
+        ### Enforce_policy
+        A test of an enforce orgpolicy policy for a project
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.organizations.Project("basic",
+            org_id="123456789",
+            project_id="id")
+        primary = gcp.orgpolicy.Policy("primary",
+            parent=basic.name.apply(lambda name: f"projects/{name}"),
+            spec=gcp.orgpolicy.PolicySpecArgs(
+                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
+                    enforce="FALSE",
+                )],
+            ))
+        ```
+        ### Folder_policy
+        A test of an orgpolicy policy for a folder
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.organizations.Folder("basic",
+            parent="organizations/123456789",
+            display_name="folder")
+        primary = gcp.orgpolicy.Policy("primary",
+            parent=basic.name,
+            spec=gcp.orgpolicy.PolicySpecArgs(
+                inherit_from_parent=True,
+                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
+                    deny_all="TRUE",
+                )],
+            ))
+        ```
+        ### Organization_policy
+        A test of an orgpolicy policy for an organization
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.orgpolicy.Policy("primary",
+            parent="organizations/123456789",
+            spec=gcp.orgpolicy.PolicySpecArgs(
+                reset=True,
+            ))
+        ```
+        ### Project_policy
+        A test of an orgpolicy policy for a project
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.organizations.Project("basic",
+            org_id="123456789",
+            project_id="id")
+        primary = gcp.orgpolicy.Policy("primary",
+            parent=basic.name.apply(lambda name: f"projects/{name}"),
+            spec=gcp.orgpolicy.PolicySpecArgs(
+                rules=[
+                    gcp.orgpolicy.PolicySpecRuleArgs(
+                        condition=gcp.orgpolicy.PolicySpecRuleConditionArgs(
+                            description="A sample condition for the policy",
+                            expression="resource.matchLabels('labelKeys/123', 'labelValues/345')",
+                            location="sample-location.log",
+                            title="sample-condition",
+                        ),
+                        values=gcp.orgpolicy.PolicySpecRuleValuesArgs(
+                            allowed_values=["projects/allowed-project"],
+                            denied_values=["projects/denied-project"],
+                        ),
+                    ),
+                    gcp.orgpolicy.PolicySpecRuleArgs(
+                        allow_all="TRUE",
+                    ),
+                ],
+            ))
+        ```
 
         ## Import
 

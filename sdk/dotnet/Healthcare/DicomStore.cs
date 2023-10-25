@@ -20,6 +20,119 @@ namespace Pulumi.Gcp.Healthcare
     ///     * [Creating a DICOM store](https://cloud.google.com/healthcare/docs/how-tos/dicom)
     /// 
     /// ## Example Usage
+    /// ### Healthcare Dicom Store Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var topic = new Gcp.PubSub.Topic("topic");
+    /// 
+    ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Healthcare.DicomStore("default", new()
+    ///     {
+    ///         Dataset = dataset.Id,
+    ///         NotificationConfig = new Gcp.Healthcare.Inputs.DicomStoreNotificationConfigArgs
+    ///         {
+    ///             PubsubTopic = topic.Id,
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "label1", "labelvalue1" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Healthcare Dicom Store Bq Stream
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var topic = new Gcp.PubSub.Topic("topic", new()
+    ///     {
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var bqDataset = new Gcp.BigQuery.Dataset("bqDataset", new()
+    ///     {
+    ///         DatasetId = "dicom_bq_ds",
+    ///         FriendlyName = "test",
+    ///         Description = "This is a test description",
+    ///         Location = "US",
+    ///         DeleteContentsOnDestroy = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var bqTable = new Gcp.BigQuery.Table("bqTable", new()
+    ///     {
+    ///         DeletionProtection = false,
+    ///         DatasetId = bqDataset.DatasetId,
+    ///         TableId = "dicom_bq_tb",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Healthcare.DicomStore("default", new()
+    ///     {
+    ///         Dataset = dataset.Id,
+    ///         NotificationConfig = new Gcp.Healthcare.Inputs.DicomStoreNotificationConfigArgs
+    ///         {
+    ///             PubsubTopic = topic.Id,
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "label1", "labelvalue1" },
+    ///         },
+    ///         StreamConfigs = new[]
+    ///         {
+    ///             new Gcp.Healthcare.Inputs.DicomStoreStreamConfigArgs
+    ///             {
+    ///                 BigqueryDestination = new Gcp.Healthcare.Inputs.DicomStoreStreamConfigBigqueryDestinationArgs
+    ///                 {
+    ///                     TableUri = Output.Tuple(bqDataset.Project, bqDataset.DatasetId, bqTable.TableId).Apply(values =&gt;
+    ///                     {
+    ///                         var project = values.Item1;
+    ///                         var datasetId = values.Item2;
+    ///                         var tableId = values.Item3;
+    ///                         return $"bq://{project}.{datasetId}.{tableId}";
+    ///                     }),
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

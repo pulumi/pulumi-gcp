@@ -413,6 +413,67 @@ class Topic(pulumi.CustomResource):
         by using the `projects.ServiceIdentity` resource.
 
         ## Example Usage
+        ### Pubsub Topic Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example",
+            labels={
+                "foo": "bar",
+            },
+            message_retention_duration="86600s")
+        ```
+        ### Pubsub Topic Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRing("keyRing", location="global")
+        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
+        example = gcp.pubsub.Topic("example", kms_key_name=crypto_key.id)
+        ```
+        ### Pubsub Topic Geo Restricted
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example", message_storage_policy=gcp.pubsub.TopicMessageStoragePolicyArgs(
+            allowed_persistence_regions=["europe-west3"],
+        ))
+        ```
+        ### Pubsub Topic Schema Settings
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_schema = gcp.pubsub.Schema("exampleSchema",
+            type="AVRO",
+            definition=\"\"\"{
+          "type" : "record",
+          "name" : "Avro",
+          "fields" : [
+            {
+              "name" : "StringField",
+              "type" : "string"
+            },
+            {
+              "name" : "IntField",
+              "type" : "int"
+            }
+          ]
+        }
+        \"\"\")
+        example_topic = gcp.pubsub.Topic("exampleTopic", schema_settings=gcp.pubsub.TopicSchemaSettingsArgs(
+            schema="projects/my-project-name/schemas/example",
+            encoding="JSON",
+        ),
+        opts=pulumi.ResourceOptions(depends_on=[example_schema]))
+        ```
 
         ## Import
 
@@ -477,6 +538,67 @@ class Topic(pulumi.CustomResource):
         by using the `projects.ServiceIdentity` resource.
 
         ## Example Usage
+        ### Pubsub Topic Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example",
+            labels={
+                "foo": "bar",
+            },
+            message_retention_duration="86600s")
+        ```
+        ### Pubsub Topic Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRing("keyRing", location="global")
+        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
+        example = gcp.pubsub.Topic("example", kms_key_name=crypto_key.id)
+        ```
+        ### Pubsub Topic Geo Restricted
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example", message_storage_policy=gcp.pubsub.TopicMessageStoragePolicyArgs(
+            allowed_persistence_regions=["europe-west3"],
+        ))
+        ```
+        ### Pubsub Topic Schema Settings
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_schema = gcp.pubsub.Schema("exampleSchema",
+            type="AVRO",
+            definition=\"\"\"{
+          "type" : "record",
+          "name" : "Avro",
+          "fields" : [
+            {
+              "name" : "StringField",
+              "type" : "string"
+            },
+            {
+              "name" : "IntField",
+              "type" : "int"
+            }
+          ]
+        }
+        \"\"\")
+        example_topic = gcp.pubsub.Topic("exampleTopic", schema_settings=gcp.pubsub.TopicSchemaSettingsArgs(
+            schema="projects/my-project-name/schemas/example",
+            encoding="JSON",
+        ),
+        opts=pulumi.ResourceOptions(depends_on=[example_schema]))
+        ```
 
         ## Import
 

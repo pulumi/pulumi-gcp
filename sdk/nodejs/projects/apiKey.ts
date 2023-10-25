@@ -10,6 +10,120 @@ import * as utilities from "../utilities";
  * The Apikeys Key resource
  *
  * ## Example Usage
+ * ### Android_key
+ * A basic example of a android api keys key
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = new gcp.organizations.Project("basic", {
+ *     projectId: "app",
+ *     orgId: "123456789",
+ * });
+ * const primary = new gcp.projects.ApiKey("primary", {
+ *     displayName: "sample-key",
+ *     project: basic.name,
+ *     restrictions: {
+ *         androidKeyRestrictions: {
+ *             allowedApplications: [{
+ *                 packageName: "com.example.app123",
+ *                 sha1Fingerprint: "1699466a142d4682a5f91b50fdf400f2358e2b0b",
+ *             }],
+ *         },
+ *         apiTargets: [{
+ *             service: "translate.googleapis.com",
+ *             methods: ["GET*"],
+ *         }],
+ *     },
+ * });
+ * ```
+ * ### Basic_key
+ * A basic example of a api keys key
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = new gcp.organizations.Project("basic", {
+ *     projectId: "app",
+ *     orgId: "123456789",
+ * });
+ * const primary = new gcp.projects.ApiKey("primary", {
+ *     displayName: "sample-key",
+ *     project: basic.name,
+ *     restrictions: {
+ *         apiTargets: [{
+ *             service: "translate.googleapis.com",
+ *             methods: ["GET*"],
+ *         }],
+ *         browserKeyRestrictions: {
+ *             allowedReferrers: [".*"],
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Ios_key
+ * A basic example of a ios api keys key
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = new gcp.organizations.Project("basic", {
+ *     projectId: "app",
+ *     orgId: "123456789",
+ * });
+ * const primary = new gcp.projects.ApiKey("primary", {
+ *     displayName: "sample-key",
+ *     project: basic.name,
+ *     restrictions: {
+ *         apiTargets: [{
+ *             service: "translate.googleapis.com",
+ *             methods: ["GET*"],
+ *         }],
+ *         iosKeyRestrictions: {
+ *             allowedBundleIds: ["com.google.app.macos"],
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Minimal_key
+ * A minimal example of a api keys key
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = new gcp.organizations.Project("basic", {
+ *     projectId: "app",
+ *     orgId: "123456789",
+ * });
+ * const primary = new gcp.projects.ApiKey("primary", {
+ *     displayName: "sample-key",
+ *     project: basic.name,
+ * });
+ * ```
+ * ### Server_key
+ * A basic example of a server api keys key
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = new gcp.organizations.Project("basic", {
+ *     projectId: "app",
+ *     orgId: "123456789",
+ * });
+ * const primary = new gcp.projects.ApiKey("primary", {
+ *     displayName: "sample-key",
+ *     project: basic.name,
+ *     restrictions: {
+ *         apiTargets: [{
+ *             service: "translate.googleapis.com",
+ *             methods: ["GET*"],
+ *         }],
+ *         serverKeyRestrictions: {
+ *             allowedIps: ["127.0.0.1"],
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

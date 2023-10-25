@@ -13,6 +13,24 @@ namespace Pulumi.Gcp.Compute
     /// The Compute NetworkFirewallPolicy resource
     /// 
     /// ## Example Usage
+    /// ### Regional
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.Compute.RegionNetworkFirewallPolicy("primary", new()
+    ///     {
+    ///         Description = "Sample regional network firewall policy",
+    ///         Project = "my-project-name",
+    ///         Region = "us-west1",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -19,6 +19,84 @@ namespace Pulumi.Gcp.Monitoring
     ///     * [Official Documentation](https://cloud.google.com/monitoring/custom-metrics/)
     /// 
     /// ## Example Usage
+    /// ### Monitoring Metric Descriptor Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basic = new Gcp.Monitoring.MetricDescriptor("basic", new()
+    ///     {
+    ///         Description = "Daily sales records from all branch stores.",
+    ///         DisplayName = "metric-descriptor",
+    ///         Labels = new[]
+    ///         {
+    ///             new Gcp.Monitoring.Inputs.MetricDescriptorLabelArgs
+    ///             {
+    ///                 Description = "The ID of the store.",
+    ///                 Key = "store_id",
+    ///                 ValueType = "STRING",
+    ///             },
+    ///         },
+    ///         LaunchStage = "BETA",
+    ///         Metadata = new Gcp.Monitoring.Inputs.MetricDescriptorMetadataArgs
+    ///         {
+    ///             IngestDelay = "30s",
+    ///             SamplePeriod = "60s",
+    ///         },
+    ///         MetricKind = "GAUGE",
+    ///         Type = "custom.googleapis.com/stores/daily_sales",
+    ///         Unit = "{USD}",
+    ///         ValueType = "DOUBLE",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Monitoring Metric Descriptor Alert
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var withAlert = new Gcp.Monitoring.MetricDescriptor("withAlert", new()
+    ///     {
+    ///         Description = "Daily sales records from all branch stores.",
+    ///         DisplayName = "metric-descriptor",
+    ///         MetricKind = "GAUGE",
+    ///         Type = "custom.googleapis.com/stores/daily_sales",
+    ///         Unit = "{USD}",
+    ///         ValueType = "DOUBLE",
+    ///     });
+    /// 
+    ///     var alertPolicy = new Gcp.Monitoring.AlertPolicy("alertPolicy", new()
+    ///     {
+    ///         Combiner = "OR",
+    ///         Conditions = new[]
+    ///         {
+    ///             new Gcp.Monitoring.Inputs.AlertPolicyConditionArgs
+    ///             {
+    ///                 ConditionThreshold = new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdArgs
+    ///                 {
+    ///                     Comparison = "COMPARISON_GT",
+    ///                     Duration = "60s",
+    ///                     Filter = withAlert.Type.Apply(type =&gt; $"metric.type=\"{type}\" AND resource.type=\"gce_instance\""),
+    ///                 },
+    ///                 DisplayName = "test condition",
+    ///             },
+    ///         },
+    ///         DisplayName = "metric-descriptor",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -16,6 +16,45 @@ import * as utilities from "../utilities";
  *     * [Google Cloud Router](https://cloud.google.com/router/docs/)
  *
  * ## Example Usage
+ * ### Router Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const foobarNetwork = new gcp.compute.Network("foobarNetwork", {autoCreateSubnetworks: false});
+ * const foobarRouter = new gcp.compute.Router("foobarRouter", {
+ *     network: foobarNetwork.name,
+ *     bgp: {
+ *         asn: 64514,
+ *         advertiseMode: "CUSTOM",
+ *         advertisedGroups: ["ALL_SUBNETS"],
+ *         advertisedIpRanges: [
+ *             {
+ *                 range: "1.2.3.4",
+ *             },
+ *             {
+ *                 range: "6.7.0.0/16",
+ *             },
+ *         ],
+ *     },
+ * });
+ * ```
+ * ### Compute Router Encrypted Interconnect
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const network = new gcp.compute.Network("network", {autoCreateSubnetworks: false});
+ * const encrypted_interconnect_router = new gcp.compute.Router("encrypted-interconnect-router", {
+ *     network: network.name,
+ *     encryptedInterconnectRouter: true,
+ *     bgp: {
+ *         asn: 64514,
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

@@ -16,6 +16,139 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
  *
  * ## Example Usage
+ * ### Dialogflowcx Test Case Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const agent = new gcp.diagflow.CxAgent("agent", {
+ *     displayName: "dialogflowcx-agent",
+ *     location: "global",
+ *     defaultLanguageCode: "en",
+ *     supportedLanguageCodes: [
+ *         "fr",
+ *         "de",
+ *         "es",
+ *     ],
+ *     timeZone: "America/New_York",
+ *     description: "Example description.",
+ *     avatarUri: "https://storage.cloud.google.com/dialogflow-test-host-image/cloud-logo.png",
+ *     enableStackdriverLogging: true,
+ *     enableSpellCorrection: true,
+ *     speechToTextSettings: {
+ *         enableSpeechAdaptation: true,
+ *     },
+ * });
+ * const intent = new gcp.diagflow.CxIntent("intent", {
+ *     parent: agent.id,
+ *     displayName: "MyIntent",
+ *     priority: 1,
+ *     trainingPhrases: [{
+ *         parts: [{
+ *             text: "training phrase",
+ *         }],
+ *         repeatCount: 1,
+ *     }],
+ * });
+ * const page = new gcp.diagflow.CxPage("page", {
+ *     parent: agent.startFlow,
+ *     displayName: "MyPage",
+ *     transitionRoutes: [{
+ *         intent: intent.id,
+ *         triggerFulfillment: {
+ *             messages: [{
+ *                 text: {
+ *                     texts: ["Training phrase response"],
+ *                 },
+ *             }],
+ *         },
+ *     }],
+ *     eventHandlers: [{
+ *         event: "some-event",
+ *         triggerFulfillment: {
+ *             messages: [{
+ *                 text: {
+ *                     texts: ["Handling some event"],
+ *                 },
+ *             }],
+ *         },
+ *     }],
+ * });
+ * const basicTestCase = new gcp.diagflow.CxTestCase("basicTestCase", {
+ *     parent: agent.id,
+ *     displayName: "MyTestCase",
+ *     tags: ["#tag1"],
+ *     notes: "demonstrates a simple training phrase response",
+ *     testConfig: {
+ *         trackingParameters: ["some_param"],
+ *         page: page.id,
+ *     },
+ *     testCaseConversationTurns: [
+ *         {
+ *             userInput: {
+ *                 input: {
+ *                     languageCode: "en",
+ *                     text: {
+ *                         text: "training phrase",
+ *                     },
+ *                 },
+ *                 injectedParameters: JSON.stringify({
+ *                     some_param: "1",
+ *                 }),
+ *                 isWebhookEnabled: true,
+ *                 enableSentimentAnalysis: true,
+ *             },
+ *             virtualAgentOutput: {
+ *                 sessionParameters: JSON.stringify({
+ *                     some_param: "1",
+ *                 }),
+ *                 triggeredIntent: {
+ *                     name: intent.id,
+ *                 },
+ *                 currentPage: {
+ *                     name: page.id,
+ *                 },
+ *                 textResponses: [{
+ *                     texts: ["Training phrase response"],
+ *                 }],
+ *             },
+ *         },
+ *         {
+ *             userInput: {
+ *                 input: {
+ *                     event: {
+ *                         event: "some-event",
+ *                     },
+ *                 },
+ *             },
+ *             virtualAgentOutput: {
+ *                 currentPage: {
+ *                     name: page.id,
+ *                 },
+ *                 textResponses: [{
+ *                     texts: ["Handling some event"],
+ *                 }],
+ *             },
+ *         },
+ *         {
+ *             userInput: {
+ *                 input: {
+ *                     dtmf: {
+ *                         digits: "12",
+ *                         finishDigit: "3",
+ *                     },
+ *                 },
+ *             },
+ *             virtualAgentOutput: {
+ *                 textResponses: [{
+ *                     texts: ["I didn't get that. Can you say it again?"],
+ *                 }],
+ *             },
+ *         },
+ *     ],
+ * });
+ * ```
  *
  * ## Import
  *

@@ -13,6 +13,32 @@ import (
 )
 
 // ## Example Usage
+// ### Compute Network Edge Security Service Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetworkEdgeSecurityService(ctx, "default", &compute.NetworkEdgeSecurityServiceArgs{
+//				Region:      pulumi.String("us-east1"),
+//				Description: pulumi.String("My basic resource"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

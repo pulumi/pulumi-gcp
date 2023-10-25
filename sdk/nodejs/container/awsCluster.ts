@@ -12,6 +12,235 @@ import * as utilities from "../utilities";
  * For more information, see:
  * * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
  * ## Example Usage
+ * ### Basic_aws_cluster
+ * A basic example of a containeraws cluster
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const versions = gcp.container.getAwsVersions({
+ *     location: "us-west1",
+ *     project: "my-project-name",
+ * });
+ * const primary = new gcp.container.AwsCluster("primary", {
+ *     annotations: {
+ *         "label-one": "value-one",
+ *     },
+ *     authorization: {
+ *         adminUsers: [{
+ *             username: "my@service-account.com",
+ *         }],
+ *     },
+ *     awsRegion: "my-aws-region",
+ *     controlPlane: {
+ *         awsServicesAuthentication: {
+ *             roleArn: "arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
+ *             roleSessionName: "my--1p-dev-session",
+ *         },
+ *         configEncryption: {
+ *             kmsKeyArn: "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+ *         },
+ *         databaseEncryption: {
+ *             kmsKeyArn: "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+ *         },
+ *         iamInstanceProfile: "my--1p-dev-controlplane",
+ *         instanceType: "t3.medium",
+ *         mainVolume: {
+ *             iops: 3000,
+ *             kmsKeyArn: "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+ *             sizeGib: 10,
+ *             volumeType: "GP3",
+ *         },
+ *         proxyConfig: {
+ *             secretArn: "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+ *             secretVersion: "12345678-ABCD-EFGH-IJKL-987654321098",
+ *         },
+ *         rootVolume: {
+ *             iops: 3000,
+ *             kmsKeyArn: "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+ *             sizeGib: 10,
+ *             volumeType: "GP3",
+ *         },
+ *         securityGroupIds: ["sg-00000000000000000"],
+ *         sshConfig: {
+ *             ec2KeyPair: "my--1p-dev-ssh",
+ *         },
+ *         subnetIds: ["subnet-00000000000000000"],
+ *         tags: {
+ *             owner: "my@service-account.com",
+ *         },
+ *         version: versions.then(versions => versions.validVersions?.[0]),
+ *     },
+ *     description: "A sample aws cluster",
+ *     fleet: {
+ *         project: "my-project-number",
+ *     },
+ *     location: "us-west1",
+ *     networking: {
+ *         podAddressCidrBlocks: ["10.2.0.0/16"],
+ *         serviceAddressCidrBlocks: ["10.1.0.0/16"],
+ *         vpcId: "vpc-00000000000000000",
+ *     },
+ *     project: "my-project-name",
+ * });
+ * ```
+ * ### Basic_enum_aws_cluster
+ * A basic example of a containeraws cluster with lowercase enums
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const versions = gcp.container.getAwsVersions({
+ *     location: "us-west1",
+ *     project: "my-project-name",
+ * });
+ * const primary = new gcp.container.AwsCluster("primary", {
+ *     annotations: {
+ *         "label-one": "value-one",
+ *     },
+ *     authorization: {
+ *         adminUsers: [{
+ *             username: "my@service-account.com",
+ *         }],
+ *     },
+ *     awsRegion: "my-aws-region",
+ *     controlPlane: {
+ *         awsServicesAuthentication: {
+ *             roleArn: "arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
+ *             roleSessionName: "my--1p-dev-session",
+ *         },
+ *         configEncryption: {
+ *             kmsKeyArn: "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+ *         },
+ *         databaseEncryption: {
+ *             kmsKeyArn: "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+ *         },
+ *         iamInstanceProfile: "my--1p-dev-controlplane",
+ *         instanceType: "t3.medium",
+ *         mainVolume: {
+ *             iops: 3000,
+ *             kmsKeyArn: "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+ *             sizeGib: 10,
+ *             volumeType: "gp3",
+ *         },
+ *         proxyConfig: {
+ *             secretArn: "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+ *             secretVersion: "12345678-ABCD-EFGH-IJKL-987654321098",
+ *         },
+ *         rootVolume: {
+ *             iops: 3000,
+ *             kmsKeyArn: "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+ *             sizeGib: 10,
+ *             volumeType: "gp3",
+ *         },
+ *         securityGroupIds: ["sg-00000000000000000"],
+ *         sshConfig: {
+ *             ec2KeyPair: "my--1p-dev-ssh",
+ *         },
+ *         subnetIds: ["subnet-00000000000000000"],
+ *         tags: {
+ *             owner: "my@service-account.com",
+ *         },
+ *         version: versions.then(versions => versions.validVersions?.[0]),
+ *     },
+ *     description: "A sample aws cluster",
+ *     fleet: {
+ *         project: "my-project-number",
+ *     },
+ *     location: "us-west1",
+ *     networking: {
+ *         podAddressCidrBlocks: ["10.2.0.0/16"],
+ *         serviceAddressCidrBlocks: ["10.1.0.0/16"],
+ *         vpcId: "vpc-00000000000000000",
+ *     },
+ *     project: "my-project-name",
+ * });
+ * ```
+ * ### Beta_basic_enum_aws_cluster
+ * A basic example of a containeraws cluster with lowercase enums (beta)
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const versions = gcp.container.getAwsVersions({
+ *     project: "my-project-name",
+ *     location: "us-west1",
+ * });
+ * const primary = new gcp.container.AwsCluster("primary", {
+ *     authorization: {
+ *         adminUsers: [{
+ *             username: "my@service-account.com",
+ *         }],
+ *     },
+ *     awsRegion: "my-aws-region",
+ *     controlPlane: {
+ *         awsServicesAuthentication: {
+ *             roleArn: "arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
+ *             roleSessionName: "my--1p-dev-session",
+ *         },
+ *         configEncryption: {
+ *             kmsKeyArn: "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+ *         },
+ *         databaseEncryption: {
+ *             kmsKeyArn: "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+ *         },
+ *         iamInstanceProfile: "my--1p-dev-controlplane",
+ *         subnetIds: ["subnet-00000000000000000"],
+ *         version: versions.then(versions => versions.validVersions?.[0]),
+ *         instanceType: "t3.medium",
+ *         mainVolume: {
+ *             iops: 3000,
+ *             kmsKeyArn: "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+ *             sizeGib: 10,
+ *             volumeType: "gp3",
+ *         },
+ *         proxyConfig: {
+ *             secretArn: "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+ *             secretVersion: "12345678-ABCD-EFGH-IJKL-987654321098",
+ *         },
+ *         rootVolume: {
+ *             iops: 3000,
+ *             kmsKeyArn: "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+ *             sizeGib: 10,
+ *             volumeType: "gp3",
+ *         },
+ *         securityGroupIds: ["sg-00000000000000000"],
+ *         sshConfig: {
+ *             ec2KeyPair: "my--1p-dev-ssh",
+ *         },
+ *         tags: {
+ *             owner: "my@service-account.com",
+ *         },
+ *         instancePlacement: {
+ *             tenancy: "dedicated",
+ *         },
+ *     },
+ *     fleet: {
+ *         project: "my-project-number",
+ *     },
+ *     location: "us-west1",
+ *     networking: {
+ *         podAddressCidrBlocks: ["10.2.0.0/16"],
+ *         serviceAddressCidrBlocks: ["10.1.0.0/16"],
+ *         vpcId: "vpc-00000000000000000",
+ *     },
+ *     annotations: {
+ *         "label-one": "value-one",
+ *     },
+ *     description: "A sample aws cluster",
+ *     project: "my-project-name",
+ *     loggingConfig: {
+ *         componentConfig: {
+ *             enableComponents: [
+ *                 "system_components",
+ *                 "workloads",
+ *             ],
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

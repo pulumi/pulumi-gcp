@@ -23,6 +23,52 @@ import (
 //
 // > Subnets IP ranges across peered VPC networks cannot overlap.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			other, err := compute.NewNetwork(ctx, "other", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNetworkPeering(ctx, "peering1", &compute.NetworkPeeringArgs{
+//				Network:     _default.SelfLink,
+//				PeerNetwork: other.SelfLink,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNetworkPeering(ctx, "peering2", &compute.NetworkPeeringArgs{
+//				Network:     other.SelfLink,
+//				PeerNetwork: _default.SelfLink,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // # VPC network peerings can be imported using the name and project of the primary network the peering exists in and the name of the network peering

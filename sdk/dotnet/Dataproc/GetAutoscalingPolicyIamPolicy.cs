@@ -13,12 +13,56 @@ namespace Pulumi.Gcp.Dataproc
     {
         /// <summary>
         /// Retrieves the current IAM policy data for autoscalingpolicy
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Dataproc.GetAutoscalingPolicyIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_dataproc_autoscaling_policy.Basic.Project,
+        ///         Location = google_dataproc_autoscaling_policy.Basic.Location,
+        ///         PolicyId = google_dataproc_autoscaling_policy.Basic.Policy_id,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetAutoscalingPolicyIamPolicyResult> InvokeAsync(GetAutoscalingPolicyIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAutoscalingPolicyIamPolicyResult>("gcp:dataproc/getAutoscalingPolicyIamPolicy:getAutoscalingPolicyIamPolicy", args ?? new GetAutoscalingPolicyIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for autoscalingpolicy
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Dataproc.GetAutoscalingPolicyIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_dataproc_autoscaling_policy.Basic.Project,
+        ///         Location = google_dataproc_autoscaling_policy.Basic.Location,
+        ///         PolicyId = google_dataproc_autoscaling_policy.Basic.Policy_id,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAutoscalingPolicyIamPolicyResult> Invoke(GetAutoscalingPolicyIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAutoscalingPolicyIamPolicyResult>("gcp:dataproc/getAutoscalingPolicyIamPolicy:getAutoscalingPolicyIamPolicy", args ?? new GetAutoscalingPolicyIamPolicyInvokeArgs(), options.WithDefaults());

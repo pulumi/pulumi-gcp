@@ -8,6 +8,23 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieve a list of testable permissions for a resource. Testable permissions mean the permissions that user can add or remove in a role at a given resource. The resource can be referenced either via the full resource name or via a URI.
+ *
+ * ## Example Usage
+ *
+ * Retrieve all the supported permissions able to be set on `my-project` that are in either GA or BETA. This is useful for dynamically constructing custom roles.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const perms = gcp.iam.getTestablePermissions({
+ *     fullResourceName: "//cloudresourcemanager.googleapis.com/projects/my-project",
+ *     stages: [
+ *         "GA",
+ *         "BETA",
+ *     ],
+ * });
+ * ```
  */
 export function getTestablePermissions(args: GetTestablePermissionsArgs, opts?: pulumi.InvokeOptions): Promise<GetTestablePermissionsResult> {
 
@@ -58,6 +75,23 @@ export interface GetTestablePermissionsResult {
 }
 /**
  * Retrieve a list of testable permissions for a resource. Testable permissions mean the permissions that user can add or remove in a role at a given resource. The resource can be referenced either via the full resource name or via a URI.
+ *
+ * ## Example Usage
+ *
+ * Retrieve all the supported permissions able to be set on `my-project` that are in either GA or BETA. This is useful for dynamically constructing custom roles.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const perms = gcp.iam.getTestablePermissions({
+ *     fullResourceName: "//cloudresourcemanager.googleapis.com/projects/my-project",
+ *     stages: [
+ *         "GA",
+ *         "BETA",
+ *     ],
+ * });
+ * ```
  */
 export function getTestablePermissionsOutput(args: GetTestablePermissionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTestablePermissionsResult> {
     return pulumi.output(args).apply((a: any) => getTestablePermissions(a, opts))

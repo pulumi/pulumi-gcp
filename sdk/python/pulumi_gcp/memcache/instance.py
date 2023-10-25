@@ -687,6 +687,43 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/memcache/docs/creating-instances)
 
         ## Example Usage
+        ### Memcache Instance Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        memcache_network = gcp.compute.get_network(name="test-network")
+        service_range = gcp.compute.GlobalAddress("serviceRange",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=memcache_network.id)
+        private_service_connection = gcp.servicenetworking.Connection("privateServiceConnection",
+            network=memcache_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[service_range.name])
+        instance = gcp.memcache.Instance("instance",
+            authorized_network=private_service_connection.network,
+            node_config=gcp.memcache.InstanceNodeConfigArgs(
+                cpu_count=1,
+                memory_size_mb=1024,
+            ),
+            node_count=1,
+            memcache_version="MEMCACHE_1_5",
+            maintenance_policy=gcp.memcache.InstanceMaintenancePolicyArgs(
+                weekly_maintenance_windows=[gcp.memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs(
+                    day="SATURDAY",
+                    duration="14400s",
+                    start_time=gcp.memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs(
+                        hours=0,
+                        minutes=30,
+                        seconds=0,
+                        nanos=0,
+                    ),
+                )],
+            ))
+        ```
 
         ## Import
 
@@ -749,6 +786,43 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/memcache/docs/creating-instances)
 
         ## Example Usage
+        ### Memcache Instance Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        memcache_network = gcp.compute.get_network(name="test-network")
+        service_range = gcp.compute.GlobalAddress("serviceRange",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=memcache_network.id)
+        private_service_connection = gcp.servicenetworking.Connection("privateServiceConnection",
+            network=memcache_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[service_range.name])
+        instance = gcp.memcache.Instance("instance",
+            authorized_network=private_service_connection.network,
+            node_config=gcp.memcache.InstanceNodeConfigArgs(
+                cpu_count=1,
+                memory_size_mb=1024,
+            ),
+            node_count=1,
+            memcache_version="MEMCACHE_1_5",
+            maintenance_policy=gcp.memcache.InstanceMaintenancePolicyArgs(
+                weekly_maintenance_windows=[gcp.memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs(
+                    day="SATURDAY",
+                    duration="14400s",
+                    start_time=gcp.memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs(
+                        hours=0,
+                        minutes=30,
+                        seconds=0,
+                        nanos=0,
+                    ),
+                )],
+            ))
+        ```
 
         ## Import
 

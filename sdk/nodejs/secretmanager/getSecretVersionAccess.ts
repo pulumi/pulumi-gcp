@@ -6,6 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Get the value from a Secret Manager secret version. This is similar to the gcp.secretmanager.SecretVersion datasource, but it only requires the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions/access).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = gcp.secretmanager.getSecretVersionAccess({
+ *     secret: "my-secret",
+ * });
+ * ```
  */
 export function getSecretVersionAccess(args: GetSecretVersionAccessArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretVersionAccessResult> {
 
@@ -60,6 +71,17 @@ export interface GetSecretVersionAccessResult {
 }
 /**
  * Get the value from a Secret Manager secret version. This is similar to the gcp.secretmanager.SecretVersion datasource, but it only requires the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions/access).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = gcp.secretmanager.getSecretVersionAccess({
+ *     secret: "my-secret",
+ * });
+ * ```
  */
 export function getSecretVersionAccessOutput(args: GetSecretVersionAccessOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretVersionAccessResult> {
     return pulumi.output(args).apply((a: any) => getSecretVersionAccess(a, opts))

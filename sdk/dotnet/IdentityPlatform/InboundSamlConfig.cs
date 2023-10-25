@@ -17,6 +17,42 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// the marketplace prior to using this resource.
     /// 
     /// ## Example Usage
+    /// ### Identity Platform Inbound Saml Config Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.IO;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var samlConfig = new Gcp.IdentityPlatform.InboundSamlConfig("samlConfig", new()
+    ///     {
+    ///         DisplayName = "Display Name",
+    ///         IdpConfig = new Gcp.IdentityPlatform.Inputs.InboundSamlConfigIdpConfigArgs
+    ///         {
+    ///             IdpEntityId = "tf-idp",
+    ///             SignRequest = true,
+    ///             SsoUrl = "https://example.com",
+    ///             IdpCertificates = new[]
+    ///             {
+    ///                 new Gcp.IdentityPlatform.Inputs.InboundSamlConfigIdpConfigIdpCertificateArgs
+    ///                 {
+    ///                     X509Certificate = File.ReadAllText("test-fixtures/rsa_cert.pem"),
+    ///                 },
+    ///             },
+    ///         },
+    ///         SpConfig = new Gcp.IdentityPlatform.Inputs.InboundSamlConfigSpConfigArgs
+    ///         {
+    ///             SpEntityId = "tf-sp",
+    ///             CallbackUri = "https://example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

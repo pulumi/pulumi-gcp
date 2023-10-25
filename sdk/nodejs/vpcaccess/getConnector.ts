@@ -14,6 +14,22 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/vpc/docs/reference/vpcaccess/rest/v1/projects.locations.connectors)
  * * How-to Guides
  *     * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const sample = gcp.vpcaccess.getConnector({
+ *     name: "vpc-con",
+ * });
+ * const connector = new gcp.vpcaccess.Connector("connector", {
+ *     ipCidrRange: "10.8.0.0/28",
+ *     network: "default",
+ *     region: "us-central1",
+ * });
+ * ```
  */
 export function getConnector(args: GetConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectorResult> {
 
@@ -78,6 +94,22 @@ export interface GetConnectorResult {
  * * [API documentation](https://cloud.google.com/vpc/docs/reference/vpcaccess/rest/v1/projects.locations.connectors)
  * * How-to Guides
  *     * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const sample = gcp.vpcaccess.getConnector({
+ *     name: "vpc-con",
+ * });
+ * const connector = new gcp.vpcaccess.Connector("connector", {
+ *     ipCidrRange: "10.8.0.0/28",
+ *     network: "default",
+ *     region: "us-central1",
+ * });
+ * ```
  */
 export function getConnectorOutput(args: GetConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectorResult> {
     return pulumi.output(args).apply((a: any) => getConnector(a, opts))

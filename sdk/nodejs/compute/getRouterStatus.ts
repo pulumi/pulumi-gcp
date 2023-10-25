@@ -13,6 +13,17 @@ import * as utilities from "../utilities";
  * For more information see [the official documentation](https://cloud.google.com/network-connectivity/docs/router/how-to/viewing-router-details)
  * and
  * [API](https://cloud.google.com/compute/docs/reference/rest/v1/routers/getRouterStatus).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-router = gcp.compute.getRouterStatus({
+ *     name: "myrouter",
+ * });
+ * ```
  */
 export function getRouterStatus(args: GetRouterStatusArgs, opts?: pulumi.InvokeOptions): Promise<GetRouterStatusResult> {
 
@@ -76,6 +87,17 @@ export interface GetRouterStatusResult {
  * For more information see [the official documentation](https://cloud.google.com/network-connectivity/docs/router/how-to/viewing-router-details)
  * and
  * [API](https://cloud.google.com/compute/docs/reference/rest/v1/routers/getRouterStatus).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-router = gcp.compute.getRouterStatus({
+ *     name: "myrouter",
+ * });
+ * ```
  */
 export function getRouterStatusOutput(args: GetRouterStatusOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouterStatusResult> {
     return pulumi.output(args).apply((a: any) => getRouterStatus(a, opts))

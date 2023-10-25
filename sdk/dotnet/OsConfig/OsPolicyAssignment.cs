@@ -25,6 +25,147 @@ namespace Pulumi.Gcp.OsConfig
     ///     *   [Official Documentation](https://cloud.google.com/compute/docs/os-configuration-management/create-os-policy-assignment)
     /// 
     /// ## Example Usage
+    /// ### Os Config Os Policy Assignment Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.OsConfig.OsPolicyAssignment("primary", new()
+    ///     {
+    ///         Description = "A test os policy assignment",
+    ///         InstanceFilter = new Gcp.OsConfig.Inputs.OsPolicyAssignmentInstanceFilterArgs
+    ///         {
+    ///             All = false,
+    ///             ExclusionLabels = new[]
+    ///             {
+    ///                 new Gcp.OsConfig.Inputs.OsPolicyAssignmentInstanceFilterExclusionLabelArgs
+    ///                 {
+    ///                     Labels = 
+    ///                     {
+    ///                         { "label-two", "value-two" },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             InclusionLabels = new[]
+    ///             {
+    ///                 new Gcp.OsConfig.Inputs.OsPolicyAssignmentInstanceFilterInclusionLabelArgs
+    ///                 {
+    ///                     Labels = 
+    ///                     {
+    ///                         { "label-one", "value-one" },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Inventories = new[]
+    ///             {
+    ///                 new Gcp.OsConfig.Inputs.OsPolicyAssignmentInstanceFilterInventoryArgs
+    ///                 {
+    ///                     OsShortName = "centos",
+    ///                     OsVersion = "8.*",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Location = "us-central1-a",
+    ///         OsPolicies = new[]
+    ///         {
+    ///             new Gcp.OsConfig.Inputs.OsPolicyAssignmentOsPolicyArgs
+    ///             {
+    ///                 AllowNoResourceGroupMatch = false,
+    ///                 Description = "A test os policy",
+    ///                 Id = "policy",
+    ///                 Mode = "VALIDATION",
+    ///                 ResourceGroups = new[]
+    ///                 {
+    ///                     new Gcp.OsConfig.Inputs.OsPolicyAssignmentOsPolicyResourceGroupArgs
+    ///                     {
+    ///                         InventoryFilters = new[]
+    ///                         {
+    ///                             new Gcp.OsConfig.Inputs.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs
+    ///                             {
+    ///                                 OsShortName = "centos",
+    ///                                 OsVersion = "8.*",
+    ///                             },
+    ///                         },
+    ///                         Resources = new[]
+    ///                         {
+    ///                             new Gcp.OsConfig.Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs
+    ///                             {
+    ///                                 Id = "apt-to-yum",
+    ///                                 Repository = new Gcp.OsConfig.Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs
+    ///                                 {
+    ///                                     Apt = new Gcp.OsConfig.Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs
+    ///                                     {
+    ///                                         ArchiveType = "DEB",
+    ///                                         Components = new[]
+    ///                                         {
+    ///                                             "doc",
+    ///                                         },
+    ///                                         Distribution = "debian",
+    ///                                         GpgKey = ".gnupg/pubring.kbx",
+    ///                                         Uri = "https://atl.mirrors.clouvider.net/debian",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                             new Gcp.OsConfig.Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs
+    ///                             {
+    ///                                 Exec = new Gcp.OsConfig.Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs
+    ///                                 {
+    ///                                     Enforce = new Gcp.OsConfig.Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs
+    ///                                     {
+    ///                                         Args = new[]
+    ///                                         {
+    ///                                             "arg1",
+    ///                                         },
+    ///                                         File = new Gcp.OsConfig.Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs
+    ///                                         {
+    ///                                             AllowInsecure = true,
+    ///                                             Remote = new Gcp.OsConfig.Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs
+    ///                                             {
+    ///                                                 Sha256Checksum = "c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
+    ///                                                 Uri = "https://www.example.com/script.sh",
+    ///                                             },
+    ///                                         },
+    ///                                         Interpreter = "SHELL",
+    ///                                         OutputFilePath = "$HOME/out",
+    ///                                     },
+    ///                                     Validate = new Gcp.OsConfig.Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs
+    ///                                     {
+    ///                                         Args = new[]
+    ///                                         {
+    ///                                             "arg1",
+    ///                                         },
+    ///                                         File = new Gcp.OsConfig.Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs
+    ///                                         {
+    ///                                             LocalPath = "$HOME/script.sh",
+    ///                                         },
+    ///                                         Interpreter = "SHELL",
+    ///                                         OutputFilePath = "$HOME/out",
+    ///                                     },
+    ///                                 },
+    ///                                 Id = "exec1",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Rollout = new Gcp.OsConfig.Inputs.OsPolicyAssignmentRolloutArgs
+    ///         {
+    ///             DisruptionBudget = new Gcp.OsConfig.Inputs.OsPolicyAssignmentRolloutDisruptionBudgetArgs
+    ///             {
+    ///                 Percent = 100,
+    ///             },
+    ///             MinWaitDuration = "3s",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

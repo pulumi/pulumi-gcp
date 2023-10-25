@@ -14,6 +14,117 @@ import (
 )
 
 // ## Example Usage
+// ### Firebase Database Instance Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := firebase.NewDatabaseInstance(ctx, "basic", &firebase.DatabaseInstanceArgs{
+//				Project:    pulumi.String("my-project-name"),
+//				Region:     pulumi.String("us-central1"),
+//				InstanceId: pulumi.String("active-db"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Firebase Database Instance Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := firebase.NewDatabaseInstance(ctx, "full", &firebase.DatabaseInstanceArgs{
+//				Project:      pulumi.String("my-project-name"),
+//				Region:       pulumi.String("europe-west1"),
+//				InstanceId:   pulumi.String("disabled-db"),
+//				Type:         pulumi.String("USER_DATABASE"),
+//				DesiredState: pulumi.String("DISABLED"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Firebase Database Instance Default Database
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultProject, err := organizations.NewProject(ctx, "defaultProject", &organizations.ProjectArgs{
+//				ProjectId: pulumi.String("rtdb-project"),
+//				OrgId:     pulumi.String("123456789"),
+//				Labels: pulumi.StringMap{
+//					"firebase": pulumi.String("enabled"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firebase.NewProject(ctx, "defaultFirebase/projectProject", &firebase.ProjectArgs{
+//				Project: defaultProject.ProjectId,
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			firebaseDatabase, err := projects.NewService(ctx, "firebaseDatabase", &projects.ServiceArgs{
+//				Project: defaultFirebase / projectProject.Project,
+//				Service: pulumi.String("firebasedatabase.googleapis.com"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firebase.NewDatabaseInstance(ctx, "defaultDatabaseInstance", &firebase.DatabaseInstanceArgs{
+//				Project:    defaultFirebase / projectProject.Project,
+//				Region:     pulumi.String("us-central1"),
+//				InstanceId: pulumi.String("rtdb-project-default-rtdb"),
+//				Type:       pulumi.String("DEFAULT_DATABASE"),
+//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+//				firebaseDatabase,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

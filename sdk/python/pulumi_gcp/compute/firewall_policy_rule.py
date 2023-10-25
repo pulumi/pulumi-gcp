@@ -486,6 +486,53 @@ class FirewallPolicyRule(pulumi.CustomResource):
         The Compute FirewallPolicyRule resource
 
         ## Example Usage
+        ### Basic_fir_sec_rule
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_global_networksecurity_address_group = gcp.networksecurity.AddressGroup("basicGlobalNetworksecurityAddressGroup",
+            parent="organizations/123456789",
+            description="Sample global networksecurity_address_group",
+            location="global",
+            items=["208.80.154.224/32"],
+            type="IPV4",
+            capacity=100)
+        folder = gcp.organizations.Folder("folder",
+            display_name="policy",
+            parent="organizations/123456789")
+        default = gcp.compute.FirewallPolicy("default",
+            parent=folder.id,
+            short_name="policy",
+            description="Resource created for Terraform acceptance testing")
+        primary = gcp.compute.FirewallPolicyRule("primary",
+            firewall_policy=default.name,
+            description="Resource created for Terraform acceptance testing",
+            priority=9000,
+            enable_logging=True,
+            action="allow",
+            direction="EGRESS",
+            disabled=False,
+            match=gcp.compute.FirewallPolicyRuleMatchArgs(
+                layer4_configs=[
+                    gcp.compute.FirewallPolicyRuleMatchLayer4ConfigArgs(
+                        ip_protocol="tcp",
+                        ports=["8080"],
+                    ),
+                    gcp.compute.FirewallPolicyRuleMatchLayer4ConfigArgs(
+                        ip_protocol="udp",
+                        ports=["22"],
+                    ),
+                ],
+                dest_ip_ranges=["11.100.0.1/32"],
+                dest_fqdns=[],
+                dest_region_codes=["US"],
+                dest_threat_intelligences=["iplist-known-malicious-ips"],
+                src_address_groups=[],
+                dest_address_groups=[basic_global_networksecurity_address_group.id],
+            ),
+            target_service_accounts=["my@service-account.com"])
+        ```
 
         ## Import
 
@@ -522,6 +569,53 @@ class FirewallPolicyRule(pulumi.CustomResource):
         The Compute FirewallPolicyRule resource
 
         ## Example Usage
+        ### Basic_fir_sec_rule
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_global_networksecurity_address_group = gcp.networksecurity.AddressGroup("basicGlobalNetworksecurityAddressGroup",
+            parent="organizations/123456789",
+            description="Sample global networksecurity_address_group",
+            location="global",
+            items=["208.80.154.224/32"],
+            type="IPV4",
+            capacity=100)
+        folder = gcp.organizations.Folder("folder",
+            display_name="policy",
+            parent="organizations/123456789")
+        default = gcp.compute.FirewallPolicy("default",
+            parent=folder.id,
+            short_name="policy",
+            description="Resource created for Terraform acceptance testing")
+        primary = gcp.compute.FirewallPolicyRule("primary",
+            firewall_policy=default.name,
+            description="Resource created for Terraform acceptance testing",
+            priority=9000,
+            enable_logging=True,
+            action="allow",
+            direction="EGRESS",
+            disabled=False,
+            match=gcp.compute.FirewallPolicyRuleMatchArgs(
+                layer4_configs=[
+                    gcp.compute.FirewallPolicyRuleMatchLayer4ConfigArgs(
+                        ip_protocol="tcp",
+                        ports=["8080"],
+                    ),
+                    gcp.compute.FirewallPolicyRuleMatchLayer4ConfigArgs(
+                        ip_protocol="udp",
+                        ports=["22"],
+                    ),
+                ],
+                dest_ip_ranges=["11.100.0.1/32"],
+                dest_fqdns=[],
+                dest_region_codes=["US"],
+                dest_threat_intelligences=["iplist-known-malicious-ips"],
+                src_address_groups=[],
+                dest_address_groups=[basic_global_networksecurity_address_group.id],
+            ),
+            target_service_accounts=["my@service-account.com"])
+        ```
 
         ## Import
 

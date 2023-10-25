@@ -263,6 +263,18 @@ def get_authority(certificate_authority_id: Optional[str] = None,
     """
     Get info about a Google CAS Certificate Authority.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    default = gcp.certificateauthority.get_authority(location="us-west1",
+        pool="pool-name",
+        certificate_authority_id="ca-id")
+    pulumi.export("csr", default.pem_csr)
+    ```
+
 
     :param str certificate_authority_id: ID of the certificate authority.
            
@@ -315,6 +327,18 @@ def get_authority_output(certificate_authority_id: Optional[pulumi.Input[Optiona
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAuthorityResult]:
     """
     Get info about a Google CAS Certificate Authority.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    default = gcp.certificateauthority.get_authority(location="us-west1",
+        pool="pool-name",
+        certificate_authority_id="ca-id")
+    pulumi.export("csr", default.pem_csr)
+    ```
 
 
     :param str certificate_authority_id: ID of the certificate authority.

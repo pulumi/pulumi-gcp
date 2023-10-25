@@ -19,6 +19,44 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
     ///     * [Official Documentation](https://cloud.google.com/bigquery/docs/column-data-masking-intro)
     /// 
     /// ## Example Usage
+    /// ### Bigquery Datapolicy Data Policy Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var taxonomy = new Gcp.DataCatalog.Taxonomy("taxonomy", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         DisplayName = "taxonomy",
+    ///         Description = "A collection of policy tags",
+    ///         ActivatedPolicyTypes = new[]
+    ///         {
+    ///             "FINE_GRAINED_ACCESS_CONTROL",
+    ///         },
+    ///     });
+    /// 
+    ///     var policyTag = new Gcp.DataCatalog.PolicyTag("policyTag", new()
+    ///     {
+    ///         Taxonomy = taxonomy.Id,
+    ///         DisplayName = "Low security",
+    ///         Description = "A policy tag normally associated with low security items",
+    ///     });
+    /// 
+    ///     var dataPolicy = new Gcp.BigQueryDataPolicy.DataPolicy("dataPolicy", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         DataPolicyId = "data_policy",
+    ///         PolicyTag = policyTag.Name,
+    ///         DataPolicyType = "COLUMN_LEVEL_SECURITY_POLICY",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

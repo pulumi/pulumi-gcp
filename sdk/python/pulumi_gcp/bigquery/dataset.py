@@ -969,6 +969,154 @@ class Dataset(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Bigquery Dataset Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bqowner = gcp.service_account.Account("bqowner", account_id="bqowner")
+        dataset = gcp.bigquery.Dataset("dataset",
+            dataset_id="example_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="EU",
+            default_table_expiration_ms=3600000,
+            labels={
+                "env": "default",
+            },
+            accesses=[
+                gcp.bigquery.DatasetAccessArgs(
+                    role="OWNER",
+                    user_by_email=bqowner.email,
+                ),
+                gcp.bigquery.DatasetAccessArgs(
+                    role="READER",
+                    domain="hashicorp.com",
+                ),
+            ])
+        ```
+        ### Bigquery Dataset Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRing("keyRing", location="us")
+        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
+        dataset = gcp.bigquery.Dataset("dataset",
+            dataset_id="example_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="US",
+            default_table_expiration_ms=3600000,
+            default_encryption_configuration=gcp.bigquery.DatasetDefaultEncryptionConfigurationArgs(
+                kms_key_name=crypto_key.id,
+            ))
+        ```
+        ### Bigquery Dataset Authorized Dataset
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bqowner = gcp.service_account.Account("bqowner", account_id="bqowner")
+        public = gcp.bigquery.Dataset("public",
+            dataset_id="public",
+            friendly_name="test",
+            description="This dataset is public",
+            location="EU",
+            default_table_expiration_ms=3600000,
+            labels={
+                "env": "default",
+            },
+            accesses=[
+                gcp.bigquery.DatasetAccessArgs(
+                    role="OWNER",
+                    user_by_email=bqowner.email,
+                ),
+                gcp.bigquery.DatasetAccessArgs(
+                    role="READER",
+                    domain="hashicorp.com",
+                ),
+            ])
+        dataset = gcp.bigquery.Dataset("dataset",
+            dataset_id="private",
+            friendly_name="test",
+            description="This dataset is private",
+            location="EU",
+            default_table_expiration_ms=3600000,
+            labels={
+                "env": "default",
+            },
+            accesses=[
+                gcp.bigquery.DatasetAccessArgs(
+                    role="OWNER",
+                    user_by_email=bqowner.email,
+                ),
+                gcp.bigquery.DatasetAccessArgs(
+                    role="READER",
+                    domain="hashicorp.com",
+                ),
+                gcp.bigquery.DatasetAccessArgs(
+                    dataset=gcp.bigquery.DatasetAccessDatasetArgs(
+                        dataset=gcp.bigquery.DatasetAccessDatasetDatasetArgs(
+                            project_id=public.project,
+                            dataset_id=public.dataset_id,
+                        ),
+                        target_types=["VIEWS"],
+                    ),
+                ),
+            ])
+        ```
+        ### Bigquery Dataset Authorized Routine
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        public_dataset = gcp.bigquery.Dataset("publicDataset",
+            dataset_id="public_dataset",
+            description="This dataset is public")
+        public_routine = gcp.bigquery.Routine("publicRoutine",
+            dataset_id=public_dataset.dataset_id,
+            routine_id="public_routine",
+            routine_type="TABLE_VALUED_FUNCTION",
+            language="SQL",
+            definition_body="SELECT 1 + value AS value\\n",
+            arguments=[gcp.bigquery.RoutineArgumentArgs(
+                name="value",
+                argument_kind="FIXED_TYPE",
+                data_type=json.dumps({
+                    "typeKind": "INT64",
+                }),
+            )],
+            return_table_type=json.dumps({
+                "columns": [{
+                    "name": "value",
+                    "type": {
+                        "typeKind": "INT64",
+                    },
+                }],
+            }))
+        private = gcp.bigquery.Dataset("private",
+            dataset_id="private_dataset",
+            description="This dataset is private",
+            accesses=[
+                gcp.bigquery.DatasetAccessArgs(
+                    role="OWNER",
+                    user_by_email="my@service-account.com",
+                ),
+                gcp.bigquery.DatasetAccessArgs(
+                    routine=gcp.bigquery.DatasetAccessRoutineArgs(
+                        project_id=public_routine.project,
+                        dataset_id=public_routine.dataset_id,
+                        routine_id=public_routine.routine_id,
+                    ),
+                ),
+            ])
+        ```
 
         ## Import
 
@@ -1071,6 +1219,154 @@ class Dataset(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Bigquery Dataset Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bqowner = gcp.service_account.Account("bqowner", account_id="bqowner")
+        dataset = gcp.bigquery.Dataset("dataset",
+            dataset_id="example_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="EU",
+            default_table_expiration_ms=3600000,
+            labels={
+                "env": "default",
+            },
+            accesses=[
+                gcp.bigquery.DatasetAccessArgs(
+                    role="OWNER",
+                    user_by_email=bqowner.email,
+                ),
+                gcp.bigquery.DatasetAccessArgs(
+                    role="READER",
+                    domain="hashicorp.com",
+                ),
+            ])
+        ```
+        ### Bigquery Dataset Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRing("keyRing", location="us")
+        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
+        dataset = gcp.bigquery.Dataset("dataset",
+            dataset_id="example_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="US",
+            default_table_expiration_ms=3600000,
+            default_encryption_configuration=gcp.bigquery.DatasetDefaultEncryptionConfigurationArgs(
+                kms_key_name=crypto_key.id,
+            ))
+        ```
+        ### Bigquery Dataset Authorized Dataset
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bqowner = gcp.service_account.Account("bqowner", account_id="bqowner")
+        public = gcp.bigquery.Dataset("public",
+            dataset_id="public",
+            friendly_name="test",
+            description="This dataset is public",
+            location="EU",
+            default_table_expiration_ms=3600000,
+            labels={
+                "env": "default",
+            },
+            accesses=[
+                gcp.bigquery.DatasetAccessArgs(
+                    role="OWNER",
+                    user_by_email=bqowner.email,
+                ),
+                gcp.bigquery.DatasetAccessArgs(
+                    role="READER",
+                    domain="hashicorp.com",
+                ),
+            ])
+        dataset = gcp.bigquery.Dataset("dataset",
+            dataset_id="private",
+            friendly_name="test",
+            description="This dataset is private",
+            location="EU",
+            default_table_expiration_ms=3600000,
+            labels={
+                "env": "default",
+            },
+            accesses=[
+                gcp.bigquery.DatasetAccessArgs(
+                    role="OWNER",
+                    user_by_email=bqowner.email,
+                ),
+                gcp.bigquery.DatasetAccessArgs(
+                    role="READER",
+                    domain="hashicorp.com",
+                ),
+                gcp.bigquery.DatasetAccessArgs(
+                    dataset=gcp.bigquery.DatasetAccessDatasetArgs(
+                        dataset=gcp.bigquery.DatasetAccessDatasetDatasetArgs(
+                            project_id=public.project,
+                            dataset_id=public.dataset_id,
+                        ),
+                        target_types=["VIEWS"],
+                    ),
+                ),
+            ])
+        ```
+        ### Bigquery Dataset Authorized Routine
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        public_dataset = gcp.bigquery.Dataset("publicDataset",
+            dataset_id="public_dataset",
+            description="This dataset is public")
+        public_routine = gcp.bigquery.Routine("publicRoutine",
+            dataset_id=public_dataset.dataset_id,
+            routine_id="public_routine",
+            routine_type="TABLE_VALUED_FUNCTION",
+            language="SQL",
+            definition_body="SELECT 1 + value AS value\\n",
+            arguments=[gcp.bigquery.RoutineArgumentArgs(
+                name="value",
+                argument_kind="FIXED_TYPE",
+                data_type=json.dumps({
+                    "typeKind": "INT64",
+                }),
+            )],
+            return_table_type=json.dumps({
+                "columns": [{
+                    "name": "value",
+                    "type": {
+                        "typeKind": "INT64",
+                    },
+                }],
+            }))
+        private = gcp.bigquery.Dataset("private",
+            dataset_id="private_dataset",
+            description="This dataset is private",
+            accesses=[
+                gcp.bigquery.DatasetAccessArgs(
+                    role="OWNER",
+                    user_by_email="my@service-account.com",
+                ),
+                gcp.bigquery.DatasetAccessArgs(
+                    routine=gcp.bigquery.DatasetAccessRoutineArgs(
+                        project_id=public_routine.project,
+                        dataset_id=public_routine.dataset_id,
+                        routine_id=public_routine.routine_id,
+                    ),
+                ),
+            ])
+        ```
 
         ## Import
 

@@ -23,6 +23,70 @@ import * as utilities from "../utilities";
  * chosen location.
  *
  * ## Example Usage
+ * ### Firestore Field Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = new gcp.firestore.Field("basic", {
+ *     collection: "chatrooms_%{random_suffix}",
+ *     database: "(default)",
+ *     field: "basic",
+ *     indexConfig: {
+ *         indexes: [
+ *             {
+ *                 order: "ASCENDING",
+ *                 queryScope: "COLLECTION_GROUP",
+ *             },
+ *             {
+ *                 arrayConfig: "CONTAINS",
+ *             },
+ *         ],
+ *     },
+ *     project: "my-project-name",
+ *     ttlConfig: {},
+ * });
+ * ```
+ * ### Firestore Field Timestamp
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const timestamp = new gcp.firestore.Field("timestamp", {
+ *     collection: "chatrooms_%{random_suffix}",
+ *     field: "timestamp",
+ *     indexConfig: {},
+ *     project: "my-project-name",
+ *     ttlConfig: {},
+ * });
+ * ```
+ * ### Firestore Field Match Override
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const matchOverride = new gcp.firestore.Field("matchOverride", {
+ *     collection: "chatrooms_%{random_suffix}",
+ *     field: "field_with_same_configuration_as_ancestor",
+ *     indexConfig: {
+ *         indexes: [
+ *             {
+ *                 order: "ASCENDING",
+ *             },
+ *             {
+ *                 order: "DESCENDING",
+ *             },
+ *             {
+ *                 arrayConfig: "CONTAINS",
+ *             },
+ *         ],
+ *     },
+ *     project: "my-project-name",
+ * });
+ * ```
  *
  * ## Import
  *

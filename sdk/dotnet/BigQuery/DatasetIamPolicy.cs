@@ -28,6 +28,98 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// &gt; **Note:** `gcp.bigquery.DatasetIamBinding` resources **can be** used in conjunction with `gcp.bigquery.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
+    /// ## google\_bigquery\_dataset\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var owner = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/bigquery.dataOwner",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var datasetDataset = new Gcp.BigQuery.Dataset("datasetDataset", new()
+    ///     {
+    ///         DatasetId = "example_dataset",
+    ///     });
+    /// 
+    ///     var datasetDatasetIamPolicy = new Gcp.BigQuery.DatasetIamPolicy("datasetDatasetIamPolicy", new()
+    ///     {
+    ///         DatasetId = datasetDataset.DatasetId,
+    ///         PolicyData = owner.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## google\_bigquery\_dataset\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dataset = new Gcp.BigQuery.Dataset("dataset", new()
+    ///     {
+    ///         DatasetId = "example_dataset",
+    ///     });
+    /// 
+    ///     var reader = new Gcp.BigQuery.DatasetIamBinding("reader", new()
+    ///     {
+    ///         DatasetId = dataset.DatasetId,
+    ///         Role = "roles/bigquery.dataViewer",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## google\_bigquery\_dataset\_iam\_member
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dataset = new Gcp.BigQuery.Dataset("dataset", new()
+    ///     {
+    ///         DatasetId = "example_dataset",
+    ///     });
+    /// 
+    ///     var editor = new Gcp.BigQuery.DatasetIamMember("editor", new()
+    ///     {
+    ///         DatasetId = dataset.DatasetId,
+    ///         Role = "roles/bigquery.dataEditor",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.

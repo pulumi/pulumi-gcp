@@ -228,6 +228,69 @@ class Attestor(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/binary-authorization/)
 
         ## Example Usage
+        ### Binary Authorization Attestor Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
+            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
+                human_readable_name="Attestor Note",
+            ),
+        ))
+        attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
+            note_reference=note.name,
+            public_keys=[gcp.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArgs(
+                ascii_armored_pgp_public_key=\"\"\"mQENBFtP0doBCADF+joTiXWKVuP8kJt3fgpBSjT9h8ezMfKA4aXZctYLx5wslWQl
+        bB7Iu2ezkECNzoEeU7WxUe8a61pMCh9cisS9H5mB2K2uM4Jnf8tgFeXn3akJDVo0
+        oR1IC+Dp9mXbRSK3MAvKkOwWlG99sx3uEdvmeBRHBOO+grchLx24EThXFOyP9Fk6
+        V39j6xMjw4aggLD15B4V0v9JqBDdJiIYFzszZDL6pJwZrzcP0z8JO4rTZd+f64bD
+        Mpj52j/pQfA8lZHOaAgb1OrthLdMrBAjoDjArV4Ek7vSbrcgYWcI6BhsQrFoxKdX
+        83TZKai55ZCfCLIskwUIzA1NLVwyzCS+fSN/ABEBAAG0KCJUZXN0IEF0dGVzdG9y
+        IiA8ZGFuYWhvZmZtYW5AZ29vZ2xlLmNvbT6JAU4EEwEIADgWIQRfWkqHt6hpTA1L
+        uY060eeM4dc66AUCW0/R2gIbLwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgAAKCRA6
+        0eeM4dc66HdpCAC4ot3b0OyxPb0Ip+WT2U0PbpTBPJklesuwpIrM4Lh0N+1nVRLC
+        51WSmVbM8BiAFhLbN9LpdHhds1kUrHF7+wWAjdR8sqAj9otc6HGRM/3qfa2qgh+U
+        WTEk/3us/rYSi7T7TkMuutRMIa1IkR13uKiW56csEMnbOQpn9rDqwIr5R8nlZP5h
+        MAU9vdm1DIv567meMqTaVZgR3w7bck2P49AO8lO5ERFpVkErtu/98y+rUy9d789l
+        +OPuS1NGnxI1YKsNaWJF4uJVuvQuZ1twrhCbGNtVorO2U12+cEq+YtUxj7kmdOC1
+        qoIRW6y0+UlAc+MbqfL0ziHDOAmcqz1GnROg
+        =6Bvm
+        \"\"\",
+            )],
+        ))
+        ```
+        ### Binary Authorization Attestor Kms
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        keyring = gcp.kms.KeyRing("keyring", location="global")
+        crypto_key = gcp.kms.CryptoKey("crypto-key",
+            key_ring=keyring.id,
+            purpose="ASYMMETRIC_SIGN",
+            version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
+                algorithm="RSA_SIGN_PKCS1_4096_SHA512",
+            ))
+        version = gcp.kms.get_kms_crypto_key_version_output(crypto_key=crypto_key.id)
+        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
+            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
+                human_readable_name="Attestor Note",
+            ),
+        ))
+        attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
+            note_reference=note.name,
+            public_keys=[gcp.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArgs(
+                id=version.id,
+                pkix_public_key=gcp.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs(
+                    public_key_pem=version.public_keys[0].pem,
+                    signature_algorithm=version.public_keys[0].algorithm,
+                ),
+            )],
+        ))
+        ```
 
         ## Import
 
@@ -271,6 +334,69 @@ class Attestor(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/binary-authorization/)
 
         ## Example Usage
+        ### Binary Authorization Attestor Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
+            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
+                human_readable_name="Attestor Note",
+            ),
+        ))
+        attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
+            note_reference=note.name,
+            public_keys=[gcp.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArgs(
+                ascii_armored_pgp_public_key=\"\"\"mQENBFtP0doBCADF+joTiXWKVuP8kJt3fgpBSjT9h8ezMfKA4aXZctYLx5wslWQl
+        bB7Iu2ezkECNzoEeU7WxUe8a61pMCh9cisS9H5mB2K2uM4Jnf8tgFeXn3akJDVo0
+        oR1IC+Dp9mXbRSK3MAvKkOwWlG99sx3uEdvmeBRHBOO+grchLx24EThXFOyP9Fk6
+        V39j6xMjw4aggLD15B4V0v9JqBDdJiIYFzszZDL6pJwZrzcP0z8JO4rTZd+f64bD
+        Mpj52j/pQfA8lZHOaAgb1OrthLdMrBAjoDjArV4Ek7vSbrcgYWcI6BhsQrFoxKdX
+        83TZKai55ZCfCLIskwUIzA1NLVwyzCS+fSN/ABEBAAG0KCJUZXN0IEF0dGVzdG9y
+        IiA8ZGFuYWhvZmZtYW5AZ29vZ2xlLmNvbT6JAU4EEwEIADgWIQRfWkqHt6hpTA1L
+        uY060eeM4dc66AUCW0/R2gIbLwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgAAKCRA6
+        0eeM4dc66HdpCAC4ot3b0OyxPb0Ip+WT2U0PbpTBPJklesuwpIrM4Lh0N+1nVRLC
+        51WSmVbM8BiAFhLbN9LpdHhds1kUrHF7+wWAjdR8sqAj9otc6HGRM/3qfa2qgh+U
+        WTEk/3us/rYSi7T7TkMuutRMIa1IkR13uKiW56csEMnbOQpn9rDqwIr5R8nlZP5h
+        MAU9vdm1DIv567meMqTaVZgR3w7bck2P49AO8lO5ERFpVkErtu/98y+rUy9d789l
+        +OPuS1NGnxI1YKsNaWJF4uJVuvQuZ1twrhCbGNtVorO2U12+cEq+YtUxj7kmdOC1
+        qoIRW6y0+UlAc+MbqfL0ziHDOAmcqz1GnROg
+        =6Bvm
+        \"\"\",
+            )],
+        ))
+        ```
+        ### Binary Authorization Attestor Kms
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        keyring = gcp.kms.KeyRing("keyring", location="global")
+        crypto_key = gcp.kms.CryptoKey("crypto-key",
+            key_ring=keyring.id,
+            purpose="ASYMMETRIC_SIGN",
+            version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
+                algorithm="RSA_SIGN_PKCS1_4096_SHA512",
+            ))
+        version = gcp.kms.get_kms_crypto_key_version_output(crypto_key=crypto_key.id)
+        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
+            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
+                human_readable_name="Attestor Note",
+            ),
+        ))
+        attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
+            note_reference=note.name,
+            public_keys=[gcp.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArgs(
+                id=version.id,
+                pkix_public_key=gcp.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs(
+                    public_key_pem=version.public_keys[0].pem,
+                    signature_algorithm=version.public_keys[0].algorithm,
+                ),
+            )],
+        ))
+        ```
 
         ## Import
 

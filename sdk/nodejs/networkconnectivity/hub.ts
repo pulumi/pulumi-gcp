@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * The NetworkConnectivity Hub resource
  *
  * ## Example Usage
+ * ### Basic_hub
+ * A basic test of a networkconnectivity hub
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.networkconnectivity.Hub("primary", {
+ *     description: "A sample hub",
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ *     project: "my-project-name",
+ * });
+ * ```
  *
  * ## Import
  *

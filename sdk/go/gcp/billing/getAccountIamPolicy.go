@@ -13,6 +13,32 @@ import (
 )
 
 // Retrieves the current IAM policy data for a Billing Account.
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/billing"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := billing.LookupAccountIamPolicy(ctx, &billing.LookupAccountIamPolicyArgs{
+//				BillingAccountId: "MEEP-MEEP-MEEP-MEEP-MEEP",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupAccountIamPolicy(ctx *pulumi.Context, args *LookupAccountIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAccountIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountIamPolicyResult

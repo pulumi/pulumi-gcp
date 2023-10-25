@@ -16,6 +16,41 @@ import (
 // DnsAuthorization represents a HTTP-reachable backend for a DnsAuthorization.
 //
 // ## Example Usage
+// ### Certificate Manager Dns Authorization Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := certificatemanager.NewDnsAuthorization(ctx, "default", &certificatemanager.DnsAuthorizationArgs{
+//				Description: pulumi.String("The default dnss"),
+//				Domain:      pulumi.String("subdomain.hashicorptest.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("recordNameToInsert", _default.DnsResourceRecords.ApplyT(func(dnsResourceRecords []certificatemanager.DnsAuthorizationDnsResourceRecord) (*string, error) {
+//				return &dnsResourceRecords[0].Name, nil
+//			}).(pulumi.StringPtrOutput))
+//			ctx.Export("recordTypeToInsert", _default.DnsResourceRecords.ApplyT(func(dnsResourceRecords []certificatemanager.DnsAuthorizationDnsResourceRecord) (*string, error) {
+//				return &dnsResourceRecords[0].Type, nil
+//			}).(pulumi.StringPtrOutput))
+//			ctx.Export("recordDataToInsert", _default.DnsResourceRecords.ApplyT(func(dnsResourceRecords []certificatemanager.DnsAuthorizationDnsResourceRecord) (*string, error) {
+//				return &dnsResourceRecords[0].Data, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

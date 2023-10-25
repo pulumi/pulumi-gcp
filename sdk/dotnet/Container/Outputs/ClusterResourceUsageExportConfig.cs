@@ -17,6 +17,16 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Parameters for using BigQuery as the destination of resource usage export.
         /// 
         /// * `bigquery_destination.dataset_id` (Required) - The ID of a BigQuery Dataset. For Example:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public readonly Outputs.ClusterResourceUsageExportConfigBigqueryDestination BigqueryDestination;
         /// <summary>

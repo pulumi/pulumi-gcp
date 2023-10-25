@@ -25,6 +25,73 @@ import (
 //   - [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/)
 //
 // ## Example Usage
+// ### Instance Group Named Port Gke
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			containerNetwork, err := compute.NewNetwork(ctx, "containerNetwork", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			containerSubnetwork, err := compute.NewSubnetwork(ctx, "containerSubnetwork", &compute.SubnetworkArgs{
+//				Region:      pulumi.String("us-central1"),
+//				Network:     containerNetwork.Name,
+//				IpCidrRange: pulumi.String("10.0.36.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myCluster, err := container.NewCluster(ctx, "myCluster", &container.ClusterArgs{
+//				Location:         pulumi.String("us-central1-a"),
+//				InitialNodeCount: pulumi.Int(1),
+//				Network:          containerNetwork.Name,
+//				Subnetwork:       containerSubnetwork.Name,
+//				IpAllocationPolicy: &container.ClusterIpAllocationPolicyArgs{
+//					ClusterIpv4CidrBlock:  pulumi.String("/19"),
+//					ServicesIpv4CidrBlock: pulumi.String("/22"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstanceGroupNamedPort(ctx, "myPort", &compute.InstanceGroupNamedPortArgs{
+//				Group: myCluster.NodePools.ApplyT(func(nodePools []container.ClusterNodePool) (*string, error) {
+//					return &nodePools[0].InstanceGroupUrls[0], nil
+//				}).(pulumi.StringPtrOutput),
+//				Zone: pulumi.String("us-central1-a"),
+//				Port: pulumi.Int(8080),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstanceGroupNamedPort(ctx, "myPorts", &compute.InstanceGroupNamedPortArgs{
+//				Group: myCluster.NodePools.ApplyT(func(nodePools []container.ClusterNodePool) (*string, error) {
+//					return &nodePools[0].InstanceGroupUrls[0], nil
+//				}).(pulumi.StringPtrOutput),
+//				Zone: pulumi.String("us-central1-a"),
+//				Port: pulumi.Int(4443),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

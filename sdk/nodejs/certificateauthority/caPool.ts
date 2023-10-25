@@ -12,6 +12,24 @@ import * as utilities from "../utilities";
  * trust anchor.
  *
  * ## Example Usage
+ * ### Privateca Capool Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.certificateauthority.CaPool("default", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     location: "us-central1",
+ *     publishingOptions: {
+ *         publishCaCert: true,
+ *         publishCrl: true,
+ *     },
+ *     tier: "ENTERPRISE",
+ * });
+ * ```
  *
  * ## Import
  *

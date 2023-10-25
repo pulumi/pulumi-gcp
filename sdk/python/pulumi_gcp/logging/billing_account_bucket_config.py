@@ -347,6 +347,20 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
 
         > **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.organizations.get_billing_account(billing_account="00AA00-000AAA-00AA0A")
+        basic = gcp.logging.BillingAccountBucketConfig("basic",
+            billing_account=default.billing_account,
+            location="global",
+            retention_days=30,
+            bucket_id="_Default")
+        ```
+
         ## Import
 
         This resource can be imported using the following format:
@@ -378,6 +392,20 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
         [Storing Logs](https://cloud.google.com/logging/docs/storage).
 
         > **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.organizations.get_billing_account(billing_account="00AA00-000AAA-00AA0A")
+        basic = gcp.logging.BillingAccountBucketConfig("basic",
+            billing_account=default.billing_account,
+            location="global",
+            retention_days=30,
+            bucket_id="_Default")
+        ```
 
         ## Import
 

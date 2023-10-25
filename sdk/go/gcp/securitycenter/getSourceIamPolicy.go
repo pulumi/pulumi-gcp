@@ -13,6 +13,32 @@ import (
 )
 
 // Retrieves the current IAM policy data for source
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/securitycenter"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := securitycenter.LookupSourceIamPolicy(ctx, &securitycenter.LookupSourceIamPolicyArgs{
+//				Source: google_scc_source.Custom_source.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupSourceIamPolicy(ctx *pulumi.Context, args *LookupSourceIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupSourceIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSourceIamPolicyResult

@@ -19,6 +19,25 @@ namespace Pulumi.Gcp.EssentialContacts
     ///     * [Official Documentation](https://cloud.google.com/document-ai/docs/overview)
     /// 
     /// ## Example Usage
+    /// ### Documentai Processor
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var processor = new Gcp.EssentialContacts.DocumentAiProcessor("processor", new()
+    ///     {
+    ///         DisplayName = "test-processor",
+    ///         Location = "us",
+    ///         Type = "OCR_PROCESSOR",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

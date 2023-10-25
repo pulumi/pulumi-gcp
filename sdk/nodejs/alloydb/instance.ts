@@ -16,6 +16,46 @@ import * as utilities from "../utilities";
  *     * [AlloyDB](https://cloud.google.com/alloydb/docs/)
  *
  * ## Example Usage
+ * ### Alloydb Instance Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultNetwork = gcp.compute.getNetwork({
+ *     name: "alloydb-network",
+ * });
+ * const defaultCluster = new gcp.alloydb.Cluster("defaultCluster", {
+ *     clusterId: "alloydb-cluster",
+ *     location: "us-central1",
+ *     network: defaultNetwork.then(defaultNetwork => defaultNetwork.id),
+ *     initialUser: {
+ *         password: "alloydb-cluster",
+ *     },
+ * });
+ * const privateIpAlloc = new gcp.compute.GlobalAddress("privateIpAlloc", {
+ *     addressType: "INTERNAL",
+ *     purpose: "VPC_PEERING",
+ *     prefixLength: 16,
+ *     network: defaultNetwork.then(defaultNetwork => defaultNetwork.id),
+ * });
+ * const vpcConnection = new gcp.servicenetworking.Connection("vpcConnection", {
+ *     network: defaultNetwork.then(defaultNetwork => defaultNetwork.id),
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [privateIpAlloc.name],
+ * });
+ * const defaultInstance = new gcp.alloydb.Instance("defaultInstance", {
+ *     cluster: defaultCluster.name,
+ *     instanceId: "alloydb-instance",
+ *     instanceType: "PRIMARY",
+ *     machineConfig: {
+ *         cpuCount: 2,
+ *     },
+ * }, {
+ *     dependsOn: [vpcConnection],
+ * });
+ * const project = gcp.organizations.getProject({});
+ * ```
  *
  * ## Import
  *

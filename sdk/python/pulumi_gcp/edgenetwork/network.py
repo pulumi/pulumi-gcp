@@ -411,6 +411,22 @@ class Network(pulumi.CustomResource):
             * [Create and manage networks](https://cloud.google.com/distributed-cloud/edge/latest/docs/networks#api)
 
         ## Example Usage
+        ### Edgenetwork Network
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_network = gcp.edgenetwork.Network("exampleNetwork",
+            network_id="example-network",
+            location="us-west1",
+            zone="",
+            description="Example network.",
+            mtu=9000,
+            labels={
+                "environment": "dev",
+            })
+        ```
 
         ## Import
 
@@ -466,6 +482,22 @@ class Network(pulumi.CustomResource):
             * [Create and manage networks](https://cloud.google.com/distributed-cloud/edge/latest/docs/networks#api)
 
         ## Example Usage
+        ### Edgenetwork Network
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_network = gcp.edgenetwork.Network("exampleNetwork",
+            network_id="example-network",
+            location="us-west1",
+            zone="",
+            description="Example network.",
+            mtu=9000,
+            labels={
+                "environment": "dev",
+            })
+        ```
 
         ## Import
 

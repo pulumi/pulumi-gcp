@@ -321,6 +321,26 @@ class Index(pulumi.CustomResource):
         the App Engine location specified.
 
         ## Example Usage
+        ### Firestore Index Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_index = gcp.firestore.Index("my-index",
+            collection="chatrooms",
+            fields=[
+                gcp.firestore.IndexFieldArgs(
+                    field_path="name",
+                    order="ASCENDING",
+                ),
+                gcp.firestore.IndexFieldArgs(
+                    field_path="description",
+                    order="DESCENDING",
+                ),
+            ],
+            project="my-project-name")
+        ```
 
         ## Import
 
@@ -374,6 +394,26 @@ class Index(pulumi.CustomResource):
         the App Engine location specified.
 
         ## Example Usage
+        ### Firestore Index Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_index = gcp.firestore.Index("my-index",
+            collection="chatrooms",
+            fields=[
+                gcp.firestore.IndexFieldArgs(
+                    field_path="name",
+                    order="ASCENDING",
+                ),
+                gcp.firestore.IndexFieldArgs(
+                    field_path="description",
+                    order="DESCENDING",
+                ),
+            ],
+            project="my-project-name")
+        ```
 
         ## Import
 

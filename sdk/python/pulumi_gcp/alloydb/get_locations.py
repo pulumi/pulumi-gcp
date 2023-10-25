@@ -71,6 +71,15 @@ def get_locations(project: Optional[str] = None,
     """
     Use this data source to get information about the available locations. For more details refer the [API docs](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations).
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    qa = gcp.alloydb.get_locations()
+    ```
+
 
     :param str project: The ID of the project.
     """
@@ -90,6 +99,15 @@ def get_locations_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLocationsResult]:
     """
     Use this data source to get information about the available locations. For more details refer the [API docs](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    qa = gcp.alloydb.get_locations()
+    ```
 
 
     :param str project: The ID of the project.

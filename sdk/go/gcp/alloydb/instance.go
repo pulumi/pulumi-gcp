@@ -22,6 +22,81 @@ import (
 //   - [AlloyDB](https://cloud.google.com/alloydb/docs/)
 //
 // ## Example Usage
+// ### Alloydb Instance Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/alloydb"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+//				Name: "alloydb-network",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultCluster, err := alloydb.NewCluster(ctx, "defaultCluster", &alloydb.ClusterArgs{
+//				ClusterId: pulumi.String("alloydb-cluster"),
+//				Location:  pulumi.String("us-central1"),
+//				Network:   *pulumi.String(defaultNetwork.Id),
+//				InitialUser: &alloydb.ClusterInitialUserArgs{
+//					Password: pulumi.String("alloydb-cluster"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			privateIpAlloc, err := compute.NewGlobalAddress(ctx, "privateIpAlloc", &compute.GlobalAddressArgs{
+//				AddressType:  pulumi.String("INTERNAL"),
+//				Purpose:      pulumi.String("VPC_PEERING"),
+//				PrefixLength: pulumi.Int(16),
+//				Network:      *pulumi.String(defaultNetwork.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vpcConnection, err := servicenetworking.NewConnection(ctx, "vpcConnection", &servicenetworking.ConnectionArgs{
+//				Network: *pulumi.String(defaultNetwork.Id),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					privateIpAlloc.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alloydb.NewInstance(ctx, "defaultInstance", &alloydb.InstanceArgs{
+//				Cluster:      defaultCluster.Name,
+//				InstanceId:   pulumi.String("alloydb-instance"),
+//				InstanceType: pulumi.String("PRIMARY"),
+//				MachineConfig: &alloydb.InstanceMachineConfigArgs{
+//					CpuCount: pulumi.Int(2),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				vpcConnection,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

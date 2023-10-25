@@ -17,6 +17,66 @@ namespace Pulumi.Gcp.AppEngine
     /// * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services)
     /// 
     /// ## Example Usage
+    /// ### App Engine Service Network Settings
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+    ///     {
+    ///         Location = "US",
+    ///     });
+    /// 
+    ///     var @object = new Gcp.Storage.BucketObject("object", new()
+    ///     {
+    ///         Bucket = bucket.Name,
+    ///         Source = new FileAsset("./test-fixtures/hello-world.zip"),
+    ///     });
+    /// 
+    ///     var internalappStandardAppVersion = new Gcp.AppEngine.StandardAppVersion("internalappStandardAppVersion", new()
+    ///     {
+    ///         VersionId = "v1",
+    ///         Service = "internalapp",
+    ///         DeleteServiceOnDestroy = true,
+    ///         Runtime = "nodejs10",
+    ///         Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
+    ///         {
+    ///             Shell = "node ./app.js",
+    ///         },
+    ///         Deployment = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentArgs
+    ///         {
+    ///             Zip = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentZipArgs
+    ///             {
+    ///                 SourceUrl = Output.Tuple(bucket.Name, @object.Name).Apply(values =&gt;
+    ///                 {
+    ///                     var bucketName = values.Item1;
+    ///                     var objectName = values.Item2;
+    ///                     return $"https://storage.googleapis.com/{bucketName}/{objectName}";
+    ///                 }),
+    ///             },
+    ///         },
+    ///         EnvVariables = 
+    ///         {
+    ///             { "port", "8080" },
+    ///         },
+    ///     });
+    /// 
+    ///     var internalappServiceNetworkSettings = new Gcp.AppEngine.ServiceNetworkSettings("internalappServiceNetworkSettings", new()
+    ///     {
+    ///         Service = internalappStandardAppVersion.Service,
+    ///         NetworkSettings = new Gcp.AppEngine.Inputs.ServiceNetworkSettingsNetworkSettingsArgs
+    ///         {
+    ///             IngressTrafficAllowed = "INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

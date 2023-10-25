@@ -6,6 +6,18 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for note
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.containeranalysis.getNoteIamPolicy({
+ *     project: google_container_analysis_note.note.project,
+ *     note: google_container_analysis_note.note.name,
+ * });
+ * ```
  */
 export function getNoteIamPolicy(args: GetNoteIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetNoteIamPolicyResult> {
 
@@ -53,6 +65,18 @@ export interface GetNoteIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for note
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.containeranalysis.getNoteIamPolicy({
+ *     project: google_container_analysis_note.note.project,
+ *     note: google_container_analysis_note.note.name,
+ * });
+ * ```
  */
 export function getNoteIamPolicyOutput(args: GetNoteIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNoteIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getNoteIamPolicy(a, opts))

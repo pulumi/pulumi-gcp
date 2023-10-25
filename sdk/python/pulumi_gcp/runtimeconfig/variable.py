@@ -286,6 +286,36 @@ class Variable(pulumi.CustomResource):
                  value: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Example creating a RuntimeConfig variable.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_runtime_config = gcp.runtimeconfig.Config("my-runtime-config", description="Runtime configuration values for my service")
+        environment = gcp.runtimeconfig.Variable("environment",
+            parent=my_runtime_config.name,
+            text="example.com")
+        ```
+
+        You can also encode binary content using the `value` argument instead. The
+        value must be base64 encoded.
+
+        Example of using the `value` argument.
+
+        ```python
+        import pulumi
+        import base64
+        import pulumi_gcp as gcp
+
+        my_runtime_config = gcp.runtimeconfig.Config("my-runtime-config", description="Runtime configuration values for my service")
+        my_secret = gcp.runtimeconfig.Variable("my-secret",
+            parent=my_runtime_config.name,
+            value=(lambda path: base64.b64encode(open(path).read().encode()).decode())("my-encrypted-secret.dat"))
+        ```
+
         ## Import
 
         Runtime Config Variables can be imported using the `name` or full variable name, e.g.
@@ -320,6 +350,36 @@ class Variable(pulumi.CustomResource):
                  args: VariableArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Example creating a RuntimeConfig variable.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_runtime_config = gcp.runtimeconfig.Config("my-runtime-config", description="Runtime configuration values for my service")
+        environment = gcp.runtimeconfig.Variable("environment",
+            parent=my_runtime_config.name,
+            text="example.com")
+        ```
+
+        You can also encode binary content using the `value` argument instead. The
+        value must be base64 encoded.
+
+        Example of using the `value` argument.
+
+        ```python
+        import pulumi
+        import base64
+        import pulumi_gcp as gcp
+
+        my_runtime_config = gcp.runtimeconfig.Config("my-runtime-config", description="Runtime configuration values for my service")
+        my_secret = gcp.runtimeconfig.Variable("my-secret",
+            parent=my_runtime_config.name,
+            value=(lambda path: base64.b64encode(open(path).read().encode()).decode())("my-encrypted-secret.dat"))
+        ```
+
         ## Import
 
         Runtime Config Variables can be imported using the `name` or full variable name, e.g.

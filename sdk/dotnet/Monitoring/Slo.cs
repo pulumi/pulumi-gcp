@@ -26,6 +26,82 @@ namespace Pulumi.Gcp.Monitoring
     ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
     /// 
     /// ## Example Usage
+    /// ### Monitoring Slo Appengine
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = Gcp.Monitoring.GetAppEngineService.Invoke(new()
+    ///     {
+    ///         ModuleId = "default",
+    ///     });
+    /// 
+    ///     var appengSlo = new Gcp.Monitoring.Slo("appengSlo", new()
+    ///     {
+    ///         Service = @default.Apply(@default =&gt; @default.Apply(getAppEngineServiceResult =&gt; getAppEngineServiceResult.ServiceId)),
+    ///         SloId = "ae-slo",
+    ///         DisplayName = "Test SLO for App Engine",
+    ///         Goal = 0.9,
+    ///         CalendarPeriod = "DAY",
+    ///         BasicSli = new Gcp.Monitoring.Inputs.SloBasicSliArgs
+    ///         {
+    ///             Latency = new Gcp.Monitoring.Inputs.SloBasicSliLatencyArgs
+    ///             {
+    ///                 Threshold = "1s",
+    ///             },
+    ///         },
+    ///         UserLabels = 
+    ///         {
+    ///             { "my_key", "my_value" },
+    ///             { "my_other_key", "my_other_value" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Monitoring Slo Request Based
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var customsrv = new Gcp.Monitoring.CustomService("customsrv", new()
+    ///     {
+    ///         ServiceId = "custom-srv-request-slos",
+    ///         DisplayName = "My Custom Service",
+    ///     });
+    /// 
+    ///     var requestBasedSlo = new Gcp.Monitoring.Slo("requestBasedSlo", new()
+    ///     {
+    ///         Service = customsrv.ServiceId,
+    ///         SloId = "consumed-api-slo",
+    ///         DisplayName = "Test SLO with request based SLI (good total ratio)",
+    ///         Goal = 0.9,
+    ///         RollingPeriodDays = 30,
+    ///         RequestBasedSli = new Gcp.Monitoring.Inputs.SloRequestBasedSliArgs
+    ///         {
+    ///             DistributionCut = new Gcp.Monitoring.Inputs.SloRequestBasedSliDistributionCutArgs
+    ///             {
+    ///                 DistributionFilter = "metric.type=\"serviceruntime.googleapis.com/api/request_latencies\" resource.type=\"api\"  ",
+    ///                 Range = new Gcp.Monitoring.Inputs.SloRequestBasedSliDistributionCutRangeArgs
+    ///                 {
+    ///                     Max = 0.5,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

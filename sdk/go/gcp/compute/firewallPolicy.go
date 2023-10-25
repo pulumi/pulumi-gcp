@@ -19,6 +19,34 @@ import (
 //
 // For more information see the [official documentation](https://cloud.google.com/vpc/docs/firewall-policies)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewFirewallPolicy(ctx, "default", &compute.FirewallPolicyArgs{
+//				Description: pulumi.String("Example Resource"),
+//				Parent:      pulumi.String("organizations/12345"),
+//				ShortName:   pulumi.String("my-policy"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // # FirewallPolicy can be imported using any of these accepted formats

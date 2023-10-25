@@ -13,12 +13,56 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// Retrieves the current IAM policy data for disk
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Compute.GetDiskIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_compute_disk.Default.Project,
+        ///         Zone = google_compute_disk.Default.Zone,
+        ///         Name = google_compute_disk.Default.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetDiskIamPolicyResult> InvokeAsync(GetDiskIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDiskIamPolicyResult>("gcp:compute/getDiskIamPolicy:getDiskIamPolicy", args ?? new GetDiskIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for disk
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Compute.GetDiskIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_compute_disk.Default.Project,
+        ///         Zone = google_compute_disk.Default.Zone,
+        ///         Name = google_compute_disk.Default.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetDiskIamPolicyResult> Invoke(GetDiskIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDiskIamPolicyResult>("gcp:compute/getDiskIamPolicy:getDiskIamPolicy", args ?? new GetDiskIamPolicyInvokeArgs(), options.WithDefaults());

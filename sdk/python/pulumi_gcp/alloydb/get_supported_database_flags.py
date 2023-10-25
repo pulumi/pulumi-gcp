@@ -81,6 +81,15 @@ def get_supported_database_flags(location: Optional[str] = None,
     """
     Use this data source to get information about the supported alloydb database flags in a location.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    qa = gcp.alloydb.get_supported_database_flags(location="us-central1")
+    ```
+
 
     :param str location: The canonical id of the location. For example: `us-east1`.
     :param str project: The ID of the project.
@@ -104,6 +113,15 @@ def get_supported_database_flags_output(location: Optional[pulumi.Input[str]] = 
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSupportedDatabaseFlagsResult]:
     """
     Use this data source to get information about the supported alloydb database flags in a location.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    qa = gcp.alloydb.get_supported_database_flags(location="us-central1")
+    ```
 
 
     :param str location: The canonical id of the location. For example: `us-east1`.

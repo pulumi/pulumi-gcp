@@ -14,6 +14,32 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// For more information on applying hierarchical firewall policies see the [official documentation](https://cloud.google.com/vpc/docs/firewall-policies#managing_hierarchical_firewall_policy_resources)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultFirewallPolicy = new Gcp.Compute.FirewallPolicy("defaultFirewallPolicy", new()
+    ///     {
+    ///         Parent = "organizations/12345",
+    ///         ShortName = "my-policy",
+    ///         Description = "Example Resource",
+    ///     });
+    /// 
+    ///     var defaultFirewallPolicyAssociation = new Gcp.Compute.FirewallPolicyAssociation("defaultFirewallPolicyAssociation", new()
+    ///     {
+    ///         FirewallPolicy = defaultFirewallPolicy.Id,
+    ///         AttachmentTarget = google_folder.Folder.Name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// FirewallPolicyAssociation can be imported using any of these accepted formats

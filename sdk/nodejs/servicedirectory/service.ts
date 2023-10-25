@@ -14,6 +14,29 @@ import * as utilities from "../utilities";
  *     * [Configuring a service](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_service)
  *
  * ## Example Usage
+ * ### Service Directory Service Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const exampleNamespace = new gcp.servicedirectory.Namespace("exampleNamespace", {
+ *     namespaceId: "example-namespace",
+ *     location: "us-central1",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const exampleService = new gcp.servicedirectory.Service("exampleService", {
+ *     serviceId: "example-service",
+ *     namespace: exampleNamespace.id,
+ *     metadata: {
+ *         stage: "prod",
+ *         region: "us-central1",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

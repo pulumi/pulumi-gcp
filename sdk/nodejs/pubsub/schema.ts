@@ -15,6 +15,55 @@ import * as utilities from "../utilities";
  *     * [Creating and managing schemas](https://cloud.google.com/pubsub/docs/schemas)
  *
  * ## Example Usage
+ * ### Pubsub Schema Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.pubsub.Schema("example", {
+ *     definition: `{
+ *   "type" : "record",
+ *   "name" : "Avro",
+ *   "fields" : [
+ *     {
+ *       "name" : "StringField",
+ *       "type" : "string"
+ *     },
+ *     {
+ *       "name" : "IntField",
+ *       "type" : "int"
+ *     }
+ *   ]
+ * }
+ *
+ * `,
+ *     type: "AVRO",
+ * });
+ * ```
+ * ### Pubsub Schema Protobuf
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const exampleSchema = new gcp.pubsub.Schema("exampleSchema", {
+ *     type: "PROTOCOL_BUFFER",
+ *     definition: `syntax = "proto3";
+ * message Results {
+ * string message_request = 1;
+ * string message_response = 2;
+ * string timestamp_request = 3;
+ * string timestamp_response = 4;
+ * }`,
+ * });
+ * const exampleTopic = new gcp.pubsub.Topic("exampleTopic", {schemaSettings: {
+ *     schema: "projects/my-project-name/schemas/example",
+ *     encoding: "JSON",
+ * }}, {
+ *     dependsOn: [exampleSchema],
+ * });
+ * ```
  *
  * ## Import
  *

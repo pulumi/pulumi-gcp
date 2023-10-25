@@ -17,6 +17,146 @@ import * as utilities from "../utilities";
  *     * [Configure a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-setup)
  *
  * ## Example Usage
+ * ### Looker Instance Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const looker_instance = new gcp.looker.Instance("looker-instance", {
+ *     oauthConfig: {
+ *         clientId: "my-client-id",
+ *         clientSecret: "my-client-secret",
+ *     },
+ *     platformEdition: "LOOKER_CORE_STANDARD",
+ *     region: "us-central1",
+ * });
+ * ```
+ * ### Looker Instance Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const looker_instance = new gcp.looker.Instance("looker-instance", {
+ *     adminSettings: {
+ *         allowedEmailDomains: ["google.com"],
+ *     },
+ *     denyMaintenancePeriod: {
+ *         endDate: {
+ *             day: 1,
+ *             month: 2,
+ *             year: 2050,
+ *         },
+ *         startDate: {
+ *             day: 1,
+ *             month: 1,
+ *             year: 2050,
+ *         },
+ *         time: {
+ *             hours: 10,
+ *             minutes: 0,
+ *             nanos: 0,
+ *             seconds: 0,
+ *         },
+ *     },
+ *     maintenanceWindow: {
+ *         dayOfWeek: "THURSDAY",
+ *         startTime: {
+ *             hours: 22,
+ *             minutes: 0,
+ *             nanos: 0,
+ *             seconds: 0,
+ *         },
+ *     },
+ *     oauthConfig: {
+ *         clientId: "my-client-id",
+ *         clientSecret: "my-client-secret",
+ *     },
+ *     platformEdition: "LOOKER_CORE_STANDARD",
+ *     publicIpEnabled: true,
+ *     region: "us-central1",
+ *     userMetadata: {
+ *         additionalDeveloperUserCount: 10,
+ *         additionalStandardUserCount: 10,
+ *         additionalViewerUserCount: 10,
+ *     },
+ * });
+ * ```
+ * ### Looker Instance Enterprise Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const lookerNetwork = gcp.compute.getNetwork({
+ *     name: "looker-network",
+ * });
+ * const lookerRange = new gcp.compute.GlobalAddress("lookerRange", {
+ *     purpose: "VPC_PEERING",
+ *     addressType: "INTERNAL",
+ *     prefixLength: 20,
+ *     network: lookerNetwork.then(lookerNetwork => lookerNetwork.id),
+ * });
+ * const lookerVpcConnection = new gcp.servicenetworking.Connection("lookerVpcConnection", {
+ *     network: lookerNetwork.then(lookerNetwork => lookerNetwork.id),
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [lookerRange.name],
+ * });
+ * const looker_instance = new gcp.looker.Instance("looker-instance", {
+ *     platformEdition: "LOOKER_CORE_ENTERPRISE_ANNUAL",
+ *     region: "us-central1",
+ *     privateIpEnabled: true,
+ *     publicIpEnabled: false,
+ *     reservedRange: lookerRange.name,
+ *     consumerNetwork: lookerNetwork.then(lookerNetwork => lookerNetwork.id),
+ *     adminSettings: {
+ *         allowedEmailDomains: ["google.com"],
+ *     },
+ *     encryptionConfig: {
+ *         kmsKeyName: "looker-kms-key",
+ *     },
+ *     maintenanceWindow: {
+ *         dayOfWeek: "THURSDAY",
+ *         startTime: {
+ *             hours: 22,
+ *             minutes: 0,
+ *             seconds: 0,
+ *             nanos: 0,
+ *         },
+ *     },
+ *     denyMaintenancePeriod: {
+ *         startDate: {
+ *             year: 2050,
+ *             month: 1,
+ *             day: 1,
+ *         },
+ *         endDate: {
+ *             year: 2050,
+ *             month: 2,
+ *             day: 1,
+ *         },
+ *         time: {
+ *             hours: 10,
+ *             minutes: 0,
+ *             seconds: 0,
+ *             nanos: 0,
+ *         },
+ *     },
+ *     oauthConfig: {
+ *         clientId: "my-client-id",
+ *         clientSecret: "my-client-secret",
+ *     },
+ * }, {
+ *     dependsOn: [lookerVpcConnection],
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const cryptoKey = new gcp.kms.CryptoKeyIAMMember("cryptoKey", {
+ *     cryptoKeyId: "looker-kms-key",
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-looker.iam.gserviceaccount.com`),
+ * });
+ * ```
  *
  * ## Import
  *

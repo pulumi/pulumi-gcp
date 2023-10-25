@@ -21,6 +21,95 @@ import (
 // plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 //
 // ## Example Usage
+// ### With A Separately Managed Node Pool (Recommended)
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := serviceAccount.NewAccount(ctx, "default", &serviceAccount.AccountArgs{
+//				AccountId:   pulumi.String("service-account-id"),
+//				DisplayName: pulumi.String("Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Location:              pulumi.String("us-central1"),
+//				RemoveDefaultNodePool: pulumi.Bool(true),
+//				InitialNodeCount:      pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = container.NewNodePool(ctx, "primaryPreemptibleNodes", &container.NodePoolArgs{
+//				Location:  pulumi.String("us-central1"),
+//				Cluster:   primary.Name,
+//				NodeCount: pulumi.Int(1),
+//				NodeConfig: &container.NodePoolNodeConfigArgs{
+//					Preemptible:    pulumi.Bool(true),
+//					MachineType:    pulumi.String("e2-medium"),
+//					ServiceAccount: _default.Email,
+//					OauthScopes: pulumi.StringArray{
+//						pulumi.String("https://www.googleapis.com/auth/cloud-platform"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// > **Note:** It is recommended that node pools be created and managed as separate resources as in the example above.
+// This allows node pools to be added and removed without recreating the cluster.  Node pools defined directly in the
+// `container.Cluster` resource cannot be removed without re-creating the cluster.
+// ### Autopilot
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := serviceAccount.NewAccount(ctx, "default", &serviceAccount.AccountArgs{
+//				AccountId:   pulumi.String("service-account-id"),
+//				DisplayName: pulumi.String("Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				EnableAutopilot: pulumi.Bool(true),
+//				Location:        pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

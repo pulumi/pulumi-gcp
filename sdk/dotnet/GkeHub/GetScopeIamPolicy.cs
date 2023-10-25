@@ -13,12 +13,54 @@ namespace Pulumi.Gcp.GkeHub
     {
         /// <summary>
         /// Retrieves the current IAM policy data for scope
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.GkeHub.GetScopeIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_gke_hub_scope.Scope.Project,
+        ///         ScopeId = google_gke_hub_scope.Scope.Scope_id,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetScopeIamPolicyResult> InvokeAsync(GetScopeIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetScopeIamPolicyResult>("gcp:gkehub/getScopeIamPolicy:getScopeIamPolicy", args ?? new GetScopeIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for scope
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.GkeHub.GetScopeIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_gke_hub_scope.Scope.Project,
+        ///         ScopeId = google_gke_hub_scope.Scope.Scope_id,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetScopeIamPolicyResult> Invoke(GetScopeIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetScopeIamPolicyResult>("gcp:gkehub/getScopeIamPolicy:getScopeIamPolicy", args ?? new GetScopeIamPolicyInvokeArgs(), options.WithDefaults());

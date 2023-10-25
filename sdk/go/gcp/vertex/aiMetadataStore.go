@@ -13,6 +13,32 @@ import (
 )
 
 // ## Example Usage
+// ### Vertex Ai Metadata Store
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vertex.NewAiMetadataStore(ctx, "store", &vertex.AiMetadataStoreArgs{
+//				Description: pulumi.String("Store to test the terraform module"),
+//				Region:      pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

@@ -630,6 +630,173 @@ class UptimeCheckConfig(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
+        ### Uptime Check Config Http
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        http = gcp.monitoring.UptimeCheckConfig("http",
+            checker_type="STATIC_IP_CHECKERS",
+            content_matchers=[gcp.monitoring.UptimeCheckConfigContentMatcherArgs(
+                content="\\"example\\"",
+                json_path_matcher=gcp.monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs(
+                    json_matcher="EXACT_MATCH",
+                    json_path="$.path",
+                ),
+                matcher="MATCHES_JSON_PATH",
+            )],
+            display_name="http-uptime-check",
+            http_check=gcp.monitoring.UptimeCheckConfigHttpCheckArgs(
+                body="Zm9vJTI1M0RiYXI=",
+                content_type="URL_ENCODED",
+                path="some-path",
+                port=8010,
+                request_method="POST",
+            ),
+            monitored_resource=gcp.monitoring.UptimeCheckConfigMonitoredResourceArgs(
+                labels={
+                    "host": "192.168.1.1",
+                    "projectId": "my-project-name",
+                },
+                type="uptime_url",
+            ),
+            timeout="60s")
+        ```
+        ### Uptime Check Config Status Code
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        status_code = gcp.monitoring.UptimeCheckConfig("statusCode",
+            checker_type="STATIC_IP_CHECKERS",
+            content_matchers=[gcp.monitoring.UptimeCheckConfigContentMatcherArgs(
+                content="\\"example\\"",
+                json_path_matcher=gcp.monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs(
+                    json_matcher="EXACT_MATCH",
+                    json_path="$.path",
+                ),
+                matcher="MATCHES_JSON_PATH",
+            )],
+            display_name="http-uptime-check",
+            http_check=gcp.monitoring.UptimeCheckConfigHttpCheckArgs(
+                accepted_response_status_codes=[
+                    gcp.monitoring.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs(
+                        status_class="STATUS_CLASS_2XX",
+                    ),
+                    gcp.monitoring.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs(
+                        status_value=301,
+                    ),
+                    gcp.monitoring.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs(
+                        status_value=302,
+                    ),
+                ],
+                body="Zm9vJTI1M0RiYXI=",
+                content_type="URL_ENCODED",
+                path="some-path",
+                port=8010,
+                request_method="POST",
+            ),
+            monitored_resource=gcp.monitoring.UptimeCheckConfigMonitoredResourceArgs(
+                labels={
+                    "host": "192.168.1.1",
+                    "projectId": "my-project-name",
+                },
+                type="uptime_url",
+            ),
+            timeout="60s")
+        ```
+        ### Uptime Check Config Https
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        https = gcp.monitoring.UptimeCheckConfig("https",
+            content_matchers=[gcp.monitoring.UptimeCheckConfigContentMatcherArgs(
+                content="example",
+                json_path_matcher=gcp.monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs(
+                    json_matcher="REGEX_MATCH",
+                    json_path="$.path",
+                ),
+                matcher="MATCHES_JSON_PATH",
+            )],
+            display_name="https-uptime-check",
+            http_check=gcp.monitoring.UptimeCheckConfigHttpCheckArgs(
+                path="/some-path",
+                port=443,
+                use_ssl=True,
+                validate_ssl=True,
+            ),
+            monitored_resource=gcp.monitoring.UptimeCheckConfigMonitoredResourceArgs(
+                labels={
+                    "host": "192.168.1.1",
+                    "projectId": "my-project-name",
+                },
+                type="uptime_url",
+            ),
+            timeout="60s")
+        ```
+        ### Uptime Check Tcp
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        check = gcp.monitoring.Group("check",
+            display_name="uptime-check-group",
+            filter="resource.metadata.name=has_substring(\\"foo\\")")
+        tcp_group = gcp.monitoring.UptimeCheckConfig("tcpGroup",
+            display_name="tcp-uptime-check",
+            timeout="60s",
+            tcp_check=gcp.monitoring.UptimeCheckConfigTcpCheckArgs(
+                port=888,
+            ),
+            resource_group=gcp.monitoring.UptimeCheckConfigResourceGroupArgs(
+                resource_type="INSTANCE",
+                group_id=check.name,
+            ))
+        ```
+        ### Uptime Check Config Synthetic Monitor
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket",
+            location="US",
+            uniform_bucket_level_access=True)
+        object = gcp.storage.BucketObject("object",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("synthetic-fn-source.zip"))
+        # Add path to the zipped function source code
+        function = gcp.cloudfunctionsv2.Function("function",
+            location="us-central1",
+            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
+                runtime="nodejs16",
+                entry_point="SyntheticFunction",
+                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
+                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
+                        bucket=bucket.name,
+                        object=object.name,
+                    ),
+                ),
+            ),
+            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
+                max_instance_count=1,
+                available_memory="256M",
+                timeout_seconds=60,
+            ))
+        synthetic_monitor = gcp.monitoring.UptimeCheckConfig("syntheticMonitor",
+            display_name="synthetic_monitor",
+            timeout="60s",
+            synthetic_monitor=gcp.monitoring.UptimeCheckConfigSyntheticMonitorArgs(
+                cloud_function_v2=gcp.monitoring.UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args(
+                    name=function.id,
+                ),
+            ))
+        ```
 
         ## Import
 
@@ -684,6 +851,173 @@ class UptimeCheckConfig(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
+        ### Uptime Check Config Http
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        http = gcp.monitoring.UptimeCheckConfig("http",
+            checker_type="STATIC_IP_CHECKERS",
+            content_matchers=[gcp.monitoring.UptimeCheckConfigContentMatcherArgs(
+                content="\\"example\\"",
+                json_path_matcher=gcp.monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs(
+                    json_matcher="EXACT_MATCH",
+                    json_path="$.path",
+                ),
+                matcher="MATCHES_JSON_PATH",
+            )],
+            display_name="http-uptime-check",
+            http_check=gcp.monitoring.UptimeCheckConfigHttpCheckArgs(
+                body="Zm9vJTI1M0RiYXI=",
+                content_type="URL_ENCODED",
+                path="some-path",
+                port=8010,
+                request_method="POST",
+            ),
+            monitored_resource=gcp.monitoring.UptimeCheckConfigMonitoredResourceArgs(
+                labels={
+                    "host": "192.168.1.1",
+                    "projectId": "my-project-name",
+                },
+                type="uptime_url",
+            ),
+            timeout="60s")
+        ```
+        ### Uptime Check Config Status Code
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        status_code = gcp.monitoring.UptimeCheckConfig("statusCode",
+            checker_type="STATIC_IP_CHECKERS",
+            content_matchers=[gcp.monitoring.UptimeCheckConfigContentMatcherArgs(
+                content="\\"example\\"",
+                json_path_matcher=gcp.monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs(
+                    json_matcher="EXACT_MATCH",
+                    json_path="$.path",
+                ),
+                matcher="MATCHES_JSON_PATH",
+            )],
+            display_name="http-uptime-check",
+            http_check=gcp.monitoring.UptimeCheckConfigHttpCheckArgs(
+                accepted_response_status_codes=[
+                    gcp.monitoring.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs(
+                        status_class="STATUS_CLASS_2XX",
+                    ),
+                    gcp.monitoring.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs(
+                        status_value=301,
+                    ),
+                    gcp.monitoring.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs(
+                        status_value=302,
+                    ),
+                ],
+                body="Zm9vJTI1M0RiYXI=",
+                content_type="URL_ENCODED",
+                path="some-path",
+                port=8010,
+                request_method="POST",
+            ),
+            monitored_resource=gcp.monitoring.UptimeCheckConfigMonitoredResourceArgs(
+                labels={
+                    "host": "192.168.1.1",
+                    "projectId": "my-project-name",
+                },
+                type="uptime_url",
+            ),
+            timeout="60s")
+        ```
+        ### Uptime Check Config Https
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        https = gcp.monitoring.UptimeCheckConfig("https",
+            content_matchers=[gcp.monitoring.UptimeCheckConfigContentMatcherArgs(
+                content="example",
+                json_path_matcher=gcp.monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs(
+                    json_matcher="REGEX_MATCH",
+                    json_path="$.path",
+                ),
+                matcher="MATCHES_JSON_PATH",
+            )],
+            display_name="https-uptime-check",
+            http_check=gcp.monitoring.UptimeCheckConfigHttpCheckArgs(
+                path="/some-path",
+                port=443,
+                use_ssl=True,
+                validate_ssl=True,
+            ),
+            monitored_resource=gcp.monitoring.UptimeCheckConfigMonitoredResourceArgs(
+                labels={
+                    "host": "192.168.1.1",
+                    "projectId": "my-project-name",
+                },
+                type="uptime_url",
+            ),
+            timeout="60s")
+        ```
+        ### Uptime Check Tcp
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        check = gcp.monitoring.Group("check",
+            display_name="uptime-check-group",
+            filter="resource.metadata.name=has_substring(\\"foo\\")")
+        tcp_group = gcp.monitoring.UptimeCheckConfig("tcpGroup",
+            display_name="tcp-uptime-check",
+            timeout="60s",
+            tcp_check=gcp.monitoring.UptimeCheckConfigTcpCheckArgs(
+                port=888,
+            ),
+            resource_group=gcp.monitoring.UptimeCheckConfigResourceGroupArgs(
+                resource_type="INSTANCE",
+                group_id=check.name,
+            ))
+        ```
+        ### Uptime Check Config Synthetic Monitor
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket",
+            location="US",
+            uniform_bucket_level_access=True)
+        object = gcp.storage.BucketObject("object",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("synthetic-fn-source.zip"))
+        # Add path to the zipped function source code
+        function = gcp.cloudfunctionsv2.Function("function",
+            location="us-central1",
+            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
+                runtime="nodejs16",
+                entry_point="SyntheticFunction",
+                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
+                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
+                        bucket=bucket.name,
+                        object=object.name,
+                    ),
+                ),
+            ),
+            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
+                max_instance_count=1,
+                available_memory="256M",
+                timeout_seconds=60,
+            ))
+        synthetic_monitor = gcp.monitoring.UptimeCheckConfig("syntheticMonitor",
+            display_name="synthetic_monitor",
+            timeout="60s",
+            synthetic_monitor=gcp.monitoring.UptimeCheckConfigSyntheticMonitorArgs(
+                cloud_function_v2=gcp.monitoring.UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args(
+                    name=function.id,
+                ),
+            ))
+        ```
 
         ## Import
 

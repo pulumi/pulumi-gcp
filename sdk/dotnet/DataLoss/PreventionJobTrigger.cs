@@ -19,6 +19,541 @@ namespace Pulumi.Gcp.DataLoss
     ///     * [Official Documentation](https://cloud.google.com/dlp/docs/creating-job-triggers)
     /// 
     /// ## Example Usage
+    /// ### Dlp Job Trigger Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basic = new Gcp.DataLoss.PreventionJobTrigger("basic", new()
+    ///     {
+    ///         Description = "Description",
+    ///         DisplayName = "Displayname",
+    ///         InspectJob = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobArgs
+    ///         {
+    ///             Actions = new[]
+    ///             {
+    ///                 new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionArgs
+    ///                 {
+    ///                     SaveFindings = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsArgs
+    ///                     {
+    ///                         OutputConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs
+    ///                         {
+    ///                             Table = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs
+    ///                             {
+    ///                                 DatasetId = "dataset",
+    ///                                 ProjectId = "project",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             InspectTemplateName = "fake",
+    ///             StorageConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigArgs
+    ///             {
+    ///                 CloudStorageOptions = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs
+    ///                 {
+    ///                     FileSet = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs
+    ///                     {
+    ///                         Url = "gs://mybucket/directory/",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Parent = "projects/my-project-name",
+    ///         Triggers = new[]
+    ///         {
+    ///             new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerArgs
+    ///             {
+    ///                 Schedule = new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerScheduleArgs
+    ///                 {
+    ///                     RecurrencePeriodDuration = "86400s",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dlp Job Trigger Bigquery Row Limit
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bigqueryRowLimit = new Gcp.DataLoss.PreventionJobTrigger("bigqueryRowLimit", new()
+    ///     {
+    ///         Description = "Description",
+    ///         DisplayName = "Displayname",
+    ///         InspectJob = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobArgs
+    ///         {
+    ///             Actions = new[]
+    ///             {
+    ///                 new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionArgs
+    ///                 {
+    ///                     SaveFindings = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsArgs
+    ///                     {
+    ///                         OutputConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs
+    ///                         {
+    ///                             Table = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs
+    ///                             {
+    ///                                 DatasetId = "dataset",
+    ///                                 ProjectId = "project",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             InspectTemplateName = "fake",
+    ///             StorageConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigArgs
+    ///             {
+    ///                 BigQueryOptions = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs
+    ///                 {
+    ///                     RowsLimit = 1000,
+    ///                     SampleMethod = "RANDOM_START",
+    ///                     TableReference = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs
+    ///                     {
+    ///                         DatasetId = "dataset",
+    ///                         ProjectId = "project",
+    ///                         TableId = "table_to_scan",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Parent = "projects/my-project-name",
+    ///         Triggers = new[]
+    ///         {
+    ///             new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerArgs
+    ///             {
+    ///                 Schedule = new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerScheduleArgs
+    ///                 {
+    ///                     RecurrencePeriodDuration = "86400s",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dlp Job Trigger Bigquery Row Limit Percentage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bigqueryRowLimitPercentage = new Gcp.DataLoss.PreventionJobTrigger("bigqueryRowLimitPercentage", new()
+    ///     {
+    ///         Description = "Description",
+    ///         DisplayName = "Displayname",
+    ///         InspectJob = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobArgs
+    ///         {
+    ///             Actions = new[]
+    ///             {
+    ///                 new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionArgs
+    ///                 {
+    ///                     SaveFindings = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsArgs
+    ///                     {
+    ///                         OutputConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs
+    ///                         {
+    ///                             Table = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs
+    ///                             {
+    ///                                 DatasetId = "dataset",
+    ///                                 ProjectId = "project",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             InspectTemplateName = "fake",
+    ///             StorageConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigArgs
+    ///             {
+    ///                 BigQueryOptions = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs
+    ///                 {
+    ///                     RowsLimitPercent = 50,
+    ///                     SampleMethod = "RANDOM_START",
+    ///                     TableReference = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs
+    ///                     {
+    ///                         DatasetId = "dataset",
+    ///                         ProjectId = "project",
+    ///                         TableId = "table_to_scan",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Parent = "projects/my-project-name",
+    ///         Triggers = new[]
+    ///         {
+    ///             new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerArgs
+    ///             {
+    ///                 Schedule = new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerScheduleArgs
+    ///                 {
+    ///                     RecurrencePeriodDuration = "86400s",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dlp Job Trigger Job Notification Emails
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var jobNotificationEmails = new Gcp.DataLoss.PreventionJobTrigger("jobNotificationEmails", new()
+    ///     {
+    ///         Description = "Description for the job_trigger created by terraform",
+    ///         DisplayName = "TerraformDisplayName",
+    ///         InspectJob = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobArgs
+    ///         {
+    ///             Actions = new[]
+    ///             {
+    ///                 new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionArgs
+    ///                 {
+    ///                     JobNotificationEmails = null,
+    ///                 },
+    ///             },
+    ///             InspectTemplateName = "sample-inspect-template",
+    ///             StorageConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigArgs
+    ///             {
+    ///                 CloudStorageOptions = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs
+    ///                 {
+    ///                     FileSet = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs
+    ///                     {
+    ///                         Url = "gs://mybucket/directory/",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Parent = "projects/my-project-name",
+    ///         Triggers = new[]
+    ///         {
+    ///             new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerArgs
+    ///             {
+    ///                 Schedule = new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerScheduleArgs
+    ///                 {
+    ///                     RecurrencePeriodDuration = "86400s",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dlp Job Trigger Deidentify
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultDataset = new Gcp.BigQuery.Dataset("defaultDataset", new()
+    ///     {
+    ///         DatasetId = "tf_test",
+    ///         FriendlyName = "terraform-test",
+    ///         Description = "Description for the dataset created by terraform",
+    ///         Location = "US",
+    ///         DefaultTableExpirationMs = 3600000,
+    ///         Labels = 
+    ///         {
+    ///             { "env", "default" },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultTable = new Gcp.BigQuery.Table("defaultTable", new()
+    ///     {
+    ///         DatasetId = defaultDataset.DatasetId,
+    ///         TableId = "tf_test",
+    ///         DeletionProtection = false,
+    ///         TimePartitioning = new Gcp.BigQuery.Inputs.TableTimePartitioningArgs
+    ///         {
+    ///             Type = "DAY",
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "env", "default" },
+    ///         },
+    ///         Schema = @"    [
+    ///     {
+    ///       ""name"": ""quantity"",
+    ///       ""type"": ""NUMERIC"",
+    ///       ""mode"": ""NULLABLE"",
+    ///       ""description"": ""The quantity""
+    ///     },
+    ///     {
+    ///       ""name"": ""name"",
+    ///       ""type"": ""STRING"",
+    ///       ""mode"": ""NULLABLE"",
+    ///       ""description"": ""Name of the object""
+    ///     }
+    ///     ]
+    /// ",
+    ///     });
+    /// 
+    ///     var deidentify = new Gcp.DataLoss.PreventionJobTrigger("deidentify", new()
+    ///     {
+    ///         Parent = "projects/my-project-name",
+    ///         Description = "Description for the job_trigger created by terraform",
+    ///         DisplayName = "TerraformDisplayName",
+    ///         Triggers = new[]
+    ///         {
+    ///             new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerArgs
+    ///             {
+    ///                 Schedule = new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerScheduleArgs
+    ///                 {
+    ///                     RecurrencePeriodDuration = "86400s",
+    ///                 },
+    ///             },
+    ///         },
+    ///         InspectJob = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobArgs
+    ///         {
+    ///             InspectTemplateName = "sample-inspect-template",
+    ///             Actions = new[]
+    ///             {
+    ///                 new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionArgs
+    ///                 {
+    ///                     Deidentify = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionDeidentifyArgs
+    ///                     {
+    ///                         CloudStorageOutput = "gs://samplebucket/dir/",
+    ///                         FileTypesToTransforms = new[]
+    ///                         {
+    ///                             "CSV",
+    ///                             "TSV",
+    ///                         },
+    ///                         TransformationDetailsStorageConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs
+    ///                         {
+    ///                             Table = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs
+    ///                             {
+    ///                                 ProjectId = "my-project-name",
+    ///                                 DatasetId = defaultDataset.DatasetId,
+    ///                                 TableId = defaultTable.TableId,
+    ///                             },
+    ///                         },
+    ///                         TransformationConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs
+    ///                         {
+    ///                             DeidentifyTemplate = "sample-deidentify-template",
+    ///                             ImageRedactTemplate = "sample-image-redact-template",
+    ///                             StructuredDeidentifyTemplate = "sample-structured-deidentify-template",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             StorageConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigArgs
+    ///             {
+    ///                 CloudStorageOptions = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs
+    ///                 {
+    ///                     FileSet = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs
+    ///                     {
+    ///                         Url = "gs://mybucket/directory/",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dlp Job Trigger Hybrid
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var hybridTrigger = new Gcp.DataLoss.PreventionJobTrigger("hybridTrigger", new()
+    ///     {
+    ///         InspectJob = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobArgs
+    ///         {
+    ///             Actions = new[]
+    ///             {
+    ///                 new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionArgs
+    ///                 {
+    ///                     SaveFindings = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsArgs
+    ///                     {
+    ///                         OutputConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs
+    ///                         {
+    ///                             Table = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs
+    ///                             {
+    ///                                 DatasetId = "dataset",
+    ///                                 ProjectId = "project",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             InspectTemplateName = "fake",
+    ///             StorageConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigArgs
+    ///             {
+    ///                 HybridOptions = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs
+    ///                 {
+    ///                     Description = "Hybrid job trigger for data from the comments field of a table that contains customer appointment bookings",
+    ///                     Labels = 
+    ///                     {
+    ///                         { "env", "prod" },
+    ///                     },
+    ///                     RequiredFindingLabelKeys = new[]
+    ///                     {
+    ///                         "appointment-bookings-comments",
+    ///                     },
+    ///                     TableOptions = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs
+    ///                     {
+    ///                         IdentifyingFields = new[]
+    ///                         {
+    ///                             new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArgs
+    ///                             {
+    ///                                 Name = "booking_id",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Parent = "projects/my-project-name",
+    ///         Triggers = new[]
+    ///         {
+    ///             new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerArgs
+    ///             {
+    ///                 Manual = null,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dlp Job Trigger Publish To Stackdriver
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var publishToStackdriver = new Gcp.DataLoss.PreventionJobTrigger("publishToStackdriver", new()
+    ///     {
+    ///         Description = "Description for the job_trigger created by terraform",
+    ///         DisplayName = "TerraformDisplayName",
+    ///         InspectJob = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobArgs
+    ///         {
+    ///             Actions = new[]
+    ///             {
+    ///                 new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionArgs
+    ///                 {
+    ///                     PublishToStackdriver = null,
+    ///                 },
+    ///             },
+    ///             InspectTemplateName = "sample-inspect-template",
+    ///             StorageConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigArgs
+    ///             {
+    ///                 CloudStorageOptions = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs
+    ///                 {
+    ///                     FileSet = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs
+    ///                     {
+    ///                         Url = "gs://mybucket/directory/",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Parent = "projects/my-project-name",
+    ///         Triggers = new[]
+    ///         {
+    ///             new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerArgs
+    ///             {
+    ///                 Schedule = new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerScheduleArgs
+    ///                 {
+    ///                     RecurrencePeriodDuration = "86400s",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dlp Job Trigger With Id
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var withTriggerId = new Gcp.DataLoss.PreventionJobTrigger("withTriggerId", new()
+    ///     {
+    ///         Description = "Starting description",
+    ///         DisplayName = "display",
+    ///         InspectJob = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobArgs
+    ///         {
+    ///             Actions = new[]
+    ///             {
+    ///                 new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionArgs
+    ///                 {
+    ///                     SaveFindings = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsArgs
+    ///                     {
+    ///                         OutputConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs
+    ///                         {
+    ///                             Table = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs
+    ///                             {
+    ///                                 DatasetId = "dataset123",
+    ///                                 ProjectId = "project",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             InspectTemplateName = "fake",
+    ///             StorageConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigArgs
+    ///             {
+    ///                 CloudStorageOptions = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs
+    ///                 {
+    ///                     FileSet = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs
+    ///                     {
+    ///                         Url = "gs://mybucket/directory/",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Parent = "projects/my-project-name",
+    ///         TriggerId = "id-",
+    ///         Triggers = new[]
+    ///         {
+    ///             new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerArgs
+    ///             {
+    ///                 Schedule = new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerScheduleArgs
+    ///                 {
+    ///                     RecurrencePeriodDuration = "86400s",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

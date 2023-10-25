@@ -19,6 +19,55 @@ namespace Pulumi.Gcp.BigLake
     ///     * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_databases)
     /// 
     /// ## Example Usage
+    /// ### Biglake Database
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var catalog = new Gcp.BigLake.Catalog("catalog", new()
+    ///     {
+    ///         Location = "US",
+    ///     });
+    /// 
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+    ///     {
+    ///         Location = "US",
+    ///         ForceDestroy = true,
+    ///         UniformBucketLevelAccess = true,
+    ///     });
+    /// 
+    ///     var metadataFolder = new Gcp.Storage.BucketObject("metadataFolder", new()
+    ///     {
+    ///         Content = " ",
+    ///         Bucket = bucket.Name,
+    ///     });
+    /// 
+    ///     var database = new Gcp.BigLake.Database("database", new()
+    ///     {
+    ///         Catalog = catalog.Id,
+    ///         Type = "HIVE",
+    ///         HiveOptions = new Gcp.BigLake.Inputs.DatabaseHiveOptionsArgs
+    ///         {
+    ///             LocationUri = Output.Tuple(bucket.Name, metadataFolder.Name).Apply(values =&gt;
+    ///             {
+    ///                 var bucketName = values.Item1;
+    ///                 var metadataFolderName = values.Item2;
+    ///                 return $"gs://{bucketName}/{metadataFolderName}";
+    ///             }),
+    ///             Parameters = 
+    ///             {
+    ///                 { "owner", "John Doe" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

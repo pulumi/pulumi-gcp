@@ -15,6 +15,226 @@ namespace Pulumi.Gcp.Compute
     /// and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
     /// 
     /// Security Policy is used by google_compute_backend_service.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var policy = new Gcp.Compute.SecurityPolicy("policy", new()
+    ///     {
+    ///         Rules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.SecurityPolicyRuleArgs
+    ///             {
+    ///                 Action = "deny(403)",
+    ///                 Description = "Deny access to IPs in 9.9.9.0/24",
+    ///                 Match = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchArgs
+    ///                 {
+    ///                     Config = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchConfigArgs
+    ///                     {
+    ///                         SrcIpRanges = new[]
+    ///                         {
+    ///                             "9.9.9.0/24",
+    ///                         },
+    ///                     },
+    ///                     VersionedExpr = "SRC_IPS_V1",
+    ///                 },
+    ///                 Priority = 1000,
+    ///             },
+    ///             new Gcp.Compute.Inputs.SecurityPolicyRuleArgs
+    ///             {
+    ///                 Action = "allow",
+    ///                 Description = "default rule",
+    ///                 Match = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchArgs
+    ///                 {
+    ///                     Config = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchConfigArgs
+    ///                     {
+    ///                         SrcIpRanges = new[]
+    ///                         {
+    ///                             "*",
+    ///                         },
+    ///                     },
+    ///                     VersionedExpr = "SRC_IPS_V1",
+    ///                 },
+    ///                 Priority = 2147483647,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### With ReCAPTCHA Configuration Options
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.Recaptcha.EnterpriseKey("primary", new()
+    ///     {
+    ///         DisplayName = "display-name",
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Project = "my-project-name",
+    ///         WebSettings = new Gcp.Recaptcha.Inputs.EnterpriseKeyWebSettingsArgs
+    ///         {
+    ///             IntegrationType = "INVISIBLE",
+    ///             AllowAllDomains = true,
+    ///             AllowedDomains = new[]
+    ///             {
+    ///                 "localhost",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.Compute.SecurityPolicy("policy", new()
+    ///     {
+    ///         Description = "basic security policy",
+    ///         Type = "CLOUD_ARMOR",
+    ///         RecaptchaOptionsConfig = new Gcp.Compute.Inputs.SecurityPolicyRecaptchaOptionsConfigArgs
+    ///         {
+    ///             RedirectSiteKey = primary.Name,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### With Header Actions
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var policy = new Gcp.Compute.SecurityPolicy("policy", new()
+    ///     {
+    ///         Rules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.SecurityPolicyRuleArgs
+    ///             {
+    ///                 Action = "allow",
+    ///                 Description = "default rule",
+    ///                 Match = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchArgs
+    ///                 {
+    ///                     Config = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchConfigArgs
+    ///                     {
+    ///                         SrcIpRanges = new[]
+    ///                         {
+    ///                             "*",
+    ///                         },
+    ///                     },
+    ///                     VersionedExpr = "SRC_IPS_V1",
+    ///                 },
+    ///                 Priority = 2147483647,
+    ///             },
+    ///             new Gcp.Compute.Inputs.SecurityPolicyRuleArgs
+    ///             {
+    ///                 Action = "allow",
+    ///                 HeaderAction = new Gcp.Compute.Inputs.SecurityPolicyRuleHeaderActionArgs
+    ///                 {
+    ///                     RequestHeadersToAdds = new[]
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs
+    ///                         {
+    ///                             HeaderName = "reCAPTCHA-Warning",
+    ///                             HeaderValue = "high",
+    ///                         },
+    ///                         new Gcp.Compute.Inputs.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs
+    ///                         {
+    ///                             HeaderName = "X-Resource",
+    ///                             HeaderValue = "test",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Match = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchArgs
+    ///                 {
+    ///                     Expr = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchExprArgs
+    ///                     {
+    ///                         Expression = "request.path.matches(\"/login.html\") &amp;&amp; token.recaptcha_session.score &lt; 0.2",
+    ///                     },
+    ///                 },
+    ///                 Priority = 1000,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### With EnforceOnKey Value As Empty String
+    /// A scenario example that won't cause any conflict between `enforce_on_key` and `enforce_on_key_configs`, because `enforce_on_key` was specified as an empty string:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var policy = new Gcp.Compute.SecurityPolicy("policy", new()
+    ///     {
+    ///         Description = "throttle rule with enforce_on_key_configs",
+    ///         Rules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.SecurityPolicyRuleArgs
+    ///             {
+    ///                 Action = "throttle",
+    ///                 Description = "default rule",
+    ///                 Match = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchArgs
+    ///                 {
+    ///                     Config = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchConfigArgs
+    ///                     {
+    ///                         SrcIpRanges = new[]
+    ///                         {
+    ///                             "*",
+    ///                         },
+    ///                     },
+    ///                     VersionedExpr = "SRC_IPS_V1",
+    ///                 },
+    ///                 Priority = 2147483647,
+    ///                 RateLimitOptions = new Gcp.Compute.Inputs.SecurityPolicyRuleRateLimitOptionsArgs
+    ///                 {
+    ///                     ConformAction = "allow",
+    ///                     EnforceOnKey = "",
+    ///                     EnforceOnKeyConfigs = new[]
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs
+    ///                         {
+    ///                             EnforceOnKeyType = "IP",
+    ///                         },
+    ///                     },
+    ///                     ExceedAction = "redirect",
+    ///                     ExceedRedirectOptions = new Gcp.Compute.Inputs.SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs
+    ///                     {
+    ///                         Target = "&lt;https://www.example.com&gt;",
+    ///                         Type = "EXTERNAL_302",
+    ///                     },
+    ///                     RateLimitThreshold = new Gcp.Compute.Inputs.SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs
+    ///                     {
+    ///                         Count = 10,
+    ///                         IntervalSec = 60,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/securityPolicy:SecurityPolicy")]
     public partial class SecurityPolicy : global::Pulumi.CustomResource

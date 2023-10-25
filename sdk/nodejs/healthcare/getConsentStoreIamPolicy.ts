@@ -6,6 +6,18 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for consentstore
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.healthcare.getConsentStoreIamPolicy({
+ *     dataset: google_healthcare_consent_store["my-consent"].dataset,
+ *     consentStoreId: google_healthcare_consent_store["my-consent"].name,
+ * });
+ * ```
  */
 export function getConsentStoreIamPolicy(args: GetConsentStoreIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetConsentStoreIamPolicyResult> {
 
@@ -54,6 +66,18 @@ export interface GetConsentStoreIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for consentstore
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.healthcare.getConsentStoreIamPolicy({
+ *     dataset: google_healthcare_consent_store["my-consent"].dataset,
+ *     consentStoreId: google_healthcare_consent_store["my-consent"].name,
+ * });
+ * ```
  */
 export function getConsentStoreIamPolicyOutput(args: GetConsentStoreIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConsentStoreIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getConsentStoreIamPolicy(a, opts))

@@ -13,12 +13,66 @@ namespace Pulumi.Gcp.Container
     {
         /// <summary>
         /// Provides access to available Kubernetes versions in a location for a given project.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var central1b = Gcp.Container.GetAzureVersions.Invoke(new()
+        ///     {
+        ///         Location = "us-west1",
+        ///         Project = "my-project",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstAvailableVersion"] = data.Google_container_azure_versions.Versions.Valid_versions[0],
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAzureVersionsResult> InvokeAsync(GetAzureVersionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAzureVersionsResult>("gcp:container/getAzureVersions:getAzureVersions", args ?? new GetAzureVersionsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides access to available Kubernetes versions in a location for a given project.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var central1b = Gcp.Container.GetAzureVersions.Invoke(new()
+        ///     {
+        ///         Location = "us-west1",
+        ///         Project = "my-project",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstAvailableVersion"] = data.Google_container_azure_versions.Versions.Valid_versions[0],
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAzureVersionsResult> Invoke(GetAzureVersionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAzureVersionsResult>("gcp:container/getAzureVersions:getAzureVersions", args ?? new GetAzureVersionsInvokeArgs(), options.WithDefaults());

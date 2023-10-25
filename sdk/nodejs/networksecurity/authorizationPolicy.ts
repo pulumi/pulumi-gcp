@@ -8,6 +8,59 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### Network Security Authorization Policy Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.networksecurity.AuthorizationPolicy("default", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     description: "my description",
+ *     action: "ALLOW",
+ *     rules: [{
+ *         sources: [{
+ *             principals: ["namespace/*"],
+ *             ipBlocks: ["1.2.3.0/24"],
+ *         }],
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Network Security Authorization Policy Destinations
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.networksecurity.AuthorizationPolicy("default", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     description: "my description",
+ *     action: "ALLOW",
+ *     rules: [{
+ *         sources: [{
+ *             principals: ["namespace/*"],
+ *             ipBlocks: ["1.2.3.0/24"],
+ *         }],
+ *         destinations: [{
+ *             hosts: ["mydomain.*"],
+ *             ports: [8080],
+ *             methods: ["GET"],
+ *             httpHeaderMatch: {
+ *                 headerName: ":method",
+ *                 regexMatch: "GET",
+ *             },
+ *         }],
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

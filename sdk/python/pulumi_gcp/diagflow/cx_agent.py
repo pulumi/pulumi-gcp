@@ -625,6 +625,30 @@ class CxAgent(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 
         ## Example Usage
+        ### Dialogflowcx Agent Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        full_agent = gcp.diagflow.CxAgent("fullAgent",
+            avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+            default_language_code="en",
+            description="Example description.",
+            display_name="dialogflowcx-agent",
+            enable_spell_correction=True,
+            enable_stackdriver_logging=True,
+            location="global",
+            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
+                enable_speech_adaptation=True,
+            ),
+            supported_language_codes=[
+                "fr",
+                "de",
+                "es",
+            ],
+            time_zone="America/New_York")
+        ```
 
         ## Import
 
@@ -683,6 +707,30 @@ class CxAgent(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 
         ## Example Usage
+        ### Dialogflowcx Agent Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        full_agent = gcp.diagflow.CxAgent("fullAgent",
+            avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+            default_language_code="en",
+            description="Example description.",
+            display_name="dialogflowcx-agent",
+            enable_spell_correction=True,
+            enable_stackdriver_logging=True,
+            location="global",
+            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
+                enable_speech_adaptation=True,
+            ),
+            supported_language_codes=[
+                "fr",
+                "de",
+                "es",
+            ],
+            time_zone="America/New_York")
+        ```
 
         ## Import
 

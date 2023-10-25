@@ -28,6 +28,124 @@ import (
 //   - [Official Documentation](https://cloud.google.com/compute/docs/os-configuration-management/create-os-policy-assignment)
 //
 // ## Example Usage
+// ### Os Config Os Policy Assignment Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/osconfig"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := osconfig.NewOsPolicyAssignment(ctx, "primary", &osconfig.OsPolicyAssignmentArgs{
+//				Description: pulumi.String("A test os policy assignment"),
+//				InstanceFilter: &osconfig.OsPolicyAssignmentInstanceFilterArgs{
+//					All: pulumi.Bool(false),
+//					ExclusionLabels: osconfig.OsPolicyAssignmentInstanceFilterExclusionLabelArray{
+//						&osconfig.OsPolicyAssignmentInstanceFilterExclusionLabelArgs{
+//							Labels: pulumi.StringMap{
+//								"label-two": pulumi.String("value-two"),
+//							},
+//						},
+//					},
+//					InclusionLabels: osconfig.OsPolicyAssignmentInstanceFilterInclusionLabelArray{
+//						&osconfig.OsPolicyAssignmentInstanceFilterInclusionLabelArgs{
+//							Labels: pulumi.StringMap{
+//								"label-one": pulumi.String("value-one"),
+//							},
+//						},
+//					},
+//					Inventories: osconfig.OsPolicyAssignmentInstanceFilterInventoryArray{
+//						&osconfig.OsPolicyAssignmentInstanceFilterInventoryArgs{
+//							OsShortName: pulumi.String("centos"),
+//							OsVersion:   pulumi.String("8.*"),
+//						},
+//					},
+//				},
+//				Location: pulumi.String("us-central1-a"),
+//				OsPolicies: osconfig.OsPolicyAssignmentOsPolicyArray{
+//					&osconfig.OsPolicyAssignmentOsPolicyArgs{
+//						AllowNoResourceGroupMatch: pulumi.Bool(false),
+//						Description:               pulumi.String("A test os policy"),
+//						Id:                        pulumi.String("policy"),
+//						Mode:                      pulumi.String("VALIDATION"),
+//						ResourceGroups: osconfig.OsPolicyAssignmentOsPolicyResourceGroupArray{
+//							&osconfig.OsPolicyAssignmentOsPolicyResourceGroupArgs{
+//								InventoryFilters: osconfig.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArray{
+//									&osconfig.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs{
+//										OsShortName: pulumi.String("centos"),
+//										OsVersion:   pulumi.String("8.*"),
+//									},
+//								},
+//								Resources: osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArray{
+//									&osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs{
+//										Id: pulumi.String("apt-to-yum"),
+//										Repository: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs{
+//											Apt: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs{
+//												ArchiveType: pulumi.String("DEB"),
+//												Components: pulumi.StringArray{
+//													pulumi.String("doc"),
+//												},
+//												Distribution: pulumi.String("debian"),
+//												GpgKey:       pulumi.String(".gnupg/pubring.kbx"),
+//												Uri:          pulumi.String("https://atl.mirrors.clouvider.net/debian"),
+//											},
+//										},
+//									},
+//									&osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs{
+//										Exec: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs{
+//											Enforce: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs{
+//												Args: pulumi.StringArray{
+//													pulumi.String("arg1"),
+//												},
+//												File: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs{
+//													AllowInsecure: pulumi.Bool(true),
+//													Remote: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs{
+//														Sha256Checksum: pulumi.String("c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063"),
+//														Uri:            pulumi.String("https://www.example.com/script.sh"),
+//													},
+//												},
+//												Interpreter:    pulumi.String("SHELL"),
+//												OutputFilePath: pulumi.String("$HOME/out"),
+//											},
+//											Validate: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs{
+//												Args: pulumi.StringArray{
+//													pulumi.String("arg1"),
+//												},
+//												File: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs{
+//													LocalPath: pulumi.String("$HOME/script.sh"),
+//												},
+//												Interpreter:    pulumi.String("SHELL"),
+//												OutputFilePath: pulumi.String("$HOME/out"),
+//											},
+//										},
+//										Id: pulumi.String("exec1"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//				Rollout: &osconfig.OsPolicyAssignmentRolloutArgs{
+//					DisruptionBudget: &osconfig.OsPolicyAssignmentRolloutDisruptionBudgetArgs{
+//						Percent: pulumi.Int(100),
+//					},
+//					MinWaitDuration: pulumi.String("3s"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

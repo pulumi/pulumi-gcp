@@ -76,6 +76,15 @@ def get_locations(project: Optional[str] = None,
     * How-to Guides
         * [Official Documentation](https://cloud.google.com/run/docs/)
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    available = gcp.cloudrun.get_locations()
+    ```
+
 
     :param str project: The project to list versions for. If it
            is not provided, the provider project is used.
@@ -102,6 +111,15 @@ def get_locations_output(project: Optional[pulumi.Input[Optional[str]]] = None,
     * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1/projects.locations)
     * How-to Guides
         * [Official Documentation](https://cloud.google.com/run/docs/)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    available = gcp.cloudrun.get_locations()
+    ```
 
 
     :param str project: The project to list versions for. If it

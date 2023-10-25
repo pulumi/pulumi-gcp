@@ -25,6 +25,276 @@ import (
 // state as plain-text.
 //
 // ## Example Usage
+// ### Uptime Check Config Http
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := monitoring.NewUptimeCheckConfig(ctx, "http", &monitoring.UptimeCheckConfigArgs{
+//				CheckerType: pulumi.String("STATIC_IP_CHECKERS"),
+//				ContentMatchers: monitoring.UptimeCheckConfigContentMatcherArray{
+//					&monitoring.UptimeCheckConfigContentMatcherArgs{
+//						Content: pulumi.String("\"example\""),
+//						JsonPathMatcher: &monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs{
+//							JsonMatcher: pulumi.String("EXACT_MATCH"),
+//							JsonPath:    pulumi.String("$.path"),
+//						},
+//						Matcher: pulumi.String("MATCHES_JSON_PATH"),
+//					},
+//				},
+//				DisplayName: pulumi.String("http-uptime-check"),
+//				HttpCheck: &monitoring.UptimeCheckConfigHttpCheckArgs{
+//					Body:          pulumi.String("Zm9vJTI1M0RiYXI="),
+//					ContentType:   pulumi.String("URL_ENCODED"),
+//					Path:          pulumi.String("some-path"),
+//					Port:          pulumi.Int(8010),
+//					RequestMethod: pulumi.String("POST"),
+//				},
+//				MonitoredResource: &monitoring.UptimeCheckConfigMonitoredResourceArgs{
+//					Labels: pulumi.StringMap{
+//						"host":      pulumi.String("192.168.1.1"),
+//						"projectId": pulumi.String("my-project-name"),
+//					},
+//					Type: pulumi.String("uptime_url"),
+//				},
+//				Timeout: pulumi.String("60s"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Uptime Check Config Status Code
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := monitoring.NewUptimeCheckConfig(ctx, "statusCode", &monitoring.UptimeCheckConfigArgs{
+//				CheckerType: pulumi.String("STATIC_IP_CHECKERS"),
+//				ContentMatchers: monitoring.UptimeCheckConfigContentMatcherArray{
+//					&monitoring.UptimeCheckConfigContentMatcherArgs{
+//						Content: pulumi.String("\"example\""),
+//						JsonPathMatcher: &monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs{
+//							JsonMatcher: pulumi.String("EXACT_MATCH"),
+//							JsonPath:    pulumi.String("$.path"),
+//						},
+//						Matcher: pulumi.String("MATCHES_JSON_PATH"),
+//					},
+//				},
+//				DisplayName: pulumi.String("http-uptime-check"),
+//				HttpCheck: &monitoring.UptimeCheckConfigHttpCheckArgs{
+//					AcceptedResponseStatusCodes: monitoring.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArray{
+//						&monitoring.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs{
+//							StatusClass: pulumi.String("STATUS_CLASS_2XX"),
+//						},
+//						&monitoring.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs{
+//							StatusValue: pulumi.Int(301),
+//						},
+//						&monitoring.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs{
+//							StatusValue: pulumi.Int(302),
+//						},
+//					},
+//					Body:          pulumi.String("Zm9vJTI1M0RiYXI="),
+//					ContentType:   pulumi.String("URL_ENCODED"),
+//					Path:          pulumi.String("some-path"),
+//					Port:          pulumi.Int(8010),
+//					RequestMethod: pulumi.String("POST"),
+//				},
+//				MonitoredResource: &monitoring.UptimeCheckConfigMonitoredResourceArgs{
+//					Labels: pulumi.StringMap{
+//						"host":      pulumi.String("192.168.1.1"),
+//						"projectId": pulumi.String("my-project-name"),
+//					},
+//					Type: pulumi.String("uptime_url"),
+//				},
+//				Timeout: pulumi.String("60s"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Uptime Check Config Https
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := monitoring.NewUptimeCheckConfig(ctx, "https", &monitoring.UptimeCheckConfigArgs{
+//				ContentMatchers: monitoring.UptimeCheckConfigContentMatcherArray{
+//					&monitoring.UptimeCheckConfigContentMatcherArgs{
+//						Content: pulumi.String("example"),
+//						JsonPathMatcher: &monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs{
+//							JsonMatcher: pulumi.String("REGEX_MATCH"),
+//							JsonPath:    pulumi.String("$.path"),
+//						},
+//						Matcher: pulumi.String("MATCHES_JSON_PATH"),
+//					},
+//				},
+//				DisplayName: pulumi.String("https-uptime-check"),
+//				HttpCheck: &monitoring.UptimeCheckConfigHttpCheckArgs{
+//					Path:        pulumi.String("/some-path"),
+//					Port:        pulumi.Int(443),
+//					UseSsl:      pulumi.Bool(true),
+//					ValidateSsl: pulumi.Bool(true),
+//				},
+//				MonitoredResource: &monitoring.UptimeCheckConfigMonitoredResourceArgs{
+//					Labels: pulumi.StringMap{
+//						"host":      pulumi.String("192.168.1.1"),
+//						"projectId": pulumi.String("my-project-name"),
+//					},
+//					Type: pulumi.String("uptime_url"),
+//				},
+//				Timeout: pulumi.String("60s"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Uptime Check Tcp
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			check, err := monitoring.NewGroup(ctx, "check", &monitoring.GroupArgs{
+//				DisplayName: pulumi.String("uptime-check-group"),
+//				Filter:      pulumi.String("resource.metadata.name=has_substring(\"foo\")"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = monitoring.NewUptimeCheckConfig(ctx, "tcpGroup", &monitoring.UptimeCheckConfigArgs{
+//				DisplayName: pulumi.String("tcp-uptime-check"),
+//				Timeout:     pulumi.String("60s"),
+//				TcpCheck: &monitoring.UptimeCheckConfigTcpCheckArgs{
+//					Port: pulumi.Int(888),
+//				},
+//				ResourceGroup: &monitoring.UptimeCheckConfigResourceGroupArgs{
+//					ResourceType: pulumi.String("INSTANCE"),
+//					GroupId:      check.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Uptime Check Config Synthetic Monitor
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudfunctionsv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Location:                 pulumi.String("US"),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
+//				Bucket: bucket.Name,
+//				Source: pulumi.NewFileAsset("synthetic-fn-source.zip"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			function, err := cloudfunctionsv2.NewFunction(ctx, "function", &cloudfunctionsv2.FunctionArgs{
+//				Location: pulumi.String("us-central1"),
+//				BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
+//					Runtime:    pulumi.String("nodejs16"),
+//					EntryPoint: pulumi.String("SyntheticFunction"),
+//					Source: &cloudfunctionsv2.FunctionBuildConfigSourceArgs{
+//						StorageSource: &cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs{
+//							Bucket: bucket.Name,
+//							Object: object.Name,
+//						},
+//					},
+//				},
+//				ServiceConfig: &cloudfunctionsv2.FunctionServiceConfigArgs{
+//					MaxInstanceCount: pulumi.Int(1),
+//					AvailableMemory:  pulumi.String("256M"),
+//					TimeoutSeconds:   pulumi.Int(60),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = monitoring.NewUptimeCheckConfig(ctx, "syntheticMonitor", &monitoring.UptimeCheckConfigArgs{
+//				DisplayName: pulumi.String("synthetic_monitor"),
+//				Timeout:     pulumi.String("60s"),
+//				SyntheticMonitor: &monitoring.UptimeCheckConfigSyntheticMonitorArgs{
+//					CloudFunctionV2: &monitoring.UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args{
+//						Name: function.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

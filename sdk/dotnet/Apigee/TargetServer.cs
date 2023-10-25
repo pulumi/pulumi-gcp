@@ -19,6 +19,121 @@ namespace Pulumi.Gcp.Apigee
     ///     * [Load balancing across backend servers](https://cloud.google.com/apigee/docs/api-platform/deploy/load-balancing-across-backend-servers)
     /// 
     /// ## Example Usage
+    /// ### Apigee Target Server Test Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = new Gcp.Organizations.Project("project", new()
+    ///     {
+    ///         ProjectId = "my-project",
+    ///         OrgId = "123456789",
+    ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///     });
+    /// 
+    ///     var apigee = new Gcp.Projects.Service("apigee", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "apigee.googleapis.com",
+    ///     });
+    /// 
+    ///     var servicenetworking = new Gcp.Projects.Service("servicenetworking", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "servicenetworking.googleapis.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             apigee,
+    ///         },
+    ///     });
+    /// 
+    ///     var compute = new Gcp.Projects.Service("compute", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "compute.googleapis.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             servicenetworking,
+    ///         },
+    ///     });
+    /// 
+    ///     var apigeeNetwork = new Gcp.Compute.Network("apigeeNetwork", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             compute,
+    ///         },
+    ///     });
+    /// 
+    ///     var apigeeRange = new Gcp.Compute.GlobalAddress("apigeeRange", new()
+    ///     {
+    ///         Purpose = "VPC_PEERING",
+    ///         AddressType = "INTERNAL",
+    ///         PrefixLength = 16,
+    ///         Network = apigeeNetwork.Id,
+    ///         Project = project.ProjectId,
+    ///     });
+    /// 
+    ///     var apigeeVpcConnection = new Gcp.ServiceNetworking.Connection("apigeeVpcConnection", new()
+    ///     {
+    ///         Network = apigeeNetwork.Id,
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             apigeeRange.Name,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             servicenetworking,
+    ///         },
+    ///     });
+    /// 
+    ///     var apigeeOrg = new Gcp.Apigee.Organization("apigeeOrg", new()
+    ///     {
+    ///         AnalyticsRegion = "us-central1",
+    ///         ProjectId = project.ProjectId,
+    ///         AuthorizedNetwork = apigeeNetwork.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             apigeeVpcConnection,
+    ///             apigee,
+    ///         },
+    ///     });
+    /// 
+    ///     var apigeeEnvironment = new Gcp.Apigee.Environment("apigeeEnvironment", new()
+    ///     {
+    ///         OrgId = apigeeOrg.Id,
+    ///         Description = "Apigee Environment",
+    ///         DisplayName = "environment-1",
+    ///     });
+    /// 
+    ///     var apigeeTargetServer = new Gcp.Apigee.TargetServer("apigeeTargetServer", new()
+    ///     {
+    ///         Description = "Apigee Target Server",
+    ///         Protocol = "HTTP",
+    ///         Host = "abc.foo.com",
+    ///         Port = 8080,
+    ///         EnvId = apigeeEnvironment.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

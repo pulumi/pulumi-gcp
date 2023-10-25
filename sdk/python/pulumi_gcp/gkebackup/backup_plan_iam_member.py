@@ -358,6 +358,48 @@ class BackupPlanIamMember(pulumi.CustomResource):
 
         > **Note:** `gkebackup.BackupPlanIamBinding` resources **can be** used in conjunction with `gkebackup.BackupPlanIamMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\\_gke\\_backup\\_backup\\_plan\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.gkebackup.BackupPlanIamPolicy("policy",
+            project=google_gke_backup_backup_plan["basic"]["project"],
+            location=google_gke_backup_backup_plan["basic"]["location"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_gke\\_backup\\_backup\\_plan\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.gkebackup.BackupPlanIamBinding("binding",
+            project=google_gke_backup_backup_plan["basic"]["project"],
+            location=google_gke_backup_backup_plan["basic"]["location"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_gke\\_backup\\_backup\\_plan\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.gkebackup.BackupPlanIamMember("member",
+            project=google_gke_backup_backup_plan["basic"]["project"],
+            location=google_gke_backup_backup_plan["basic"]["location"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/backupPlans/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Backup for GKE backupplan IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -425,6 +467,48 @@ class BackupPlanIamMember(pulumi.CustomResource):
         > **Note:** `gkebackup.BackupPlanIamPolicy` **cannot** be used in conjunction with `gkebackup.BackupPlanIamBinding` and `gkebackup.BackupPlanIamMember` or they will fight over what your policy should be.
 
         > **Note:** `gkebackup.BackupPlanIamBinding` resources **can be** used in conjunction with `gkebackup.BackupPlanIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_gke\\_backup\\_backup\\_plan\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.gkebackup.BackupPlanIamPolicy("policy",
+            project=google_gke_backup_backup_plan["basic"]["project"],
+            location=google_gke_backup_backup_plan["basic"]["location"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_gke\\_backup\\_backup\\_plan\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.gkebackup.BackupPlanIamBinding("binding",
+            project=google_gke_backup_backup_plan["basic"]["project"],
+            location=google_gke_backup_backup_plan["basic"]["location"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_gke\\_backup\\_backup\\_plan\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.gkebackup.BackupPlanIamMember("member",
+            project=google_gke_backup_backup_plan["basic"]["project"],
+            location=google_gke_backup_backup_plan["basic"]["location"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
 
         ## Import
 

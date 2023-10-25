@@ -6,6 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for subnetwork
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.compute.getSubnetworkIamPolicy({
+ *     project: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].project,
+ *     region: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].region,
+ *     subnetwork: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].name,
+ * });
+ * ```
  */
 export function getSubnetworkIamPolicy(args: GetSubnetworkIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetworkIamPolicyResult> {
 
@@ -62,6 +75,19 @@ export interface GetSubnetworkIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for subnetwork
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.compute.getSubnetworkIamPolicy({
+ *     project: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].project,
+ *     region: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].region,
+ *     subnetwork: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].name,
+ * });
+ * ```
  */
 export function getSubnetworkIamPolicyOutput(args: GetSubnetworkIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetworkIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getSubnetworkIamPolicy(a, opts))

@@ -27,6 +27,49 @@ import (
 // * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services/generateServiceIdentity)
 //
 // ## Example Usage
+// ### Service Identity Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			hcSa, err := projects.NewServiceIdentity(ctx, "hcSa", &projects.ServiceIdentityArgs{
+//				Project: *pulumi.String(project.ProjectId),
+//				Service: pulumi.String("healthcare.googleapis.com"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewIAMMember(ctx, "hcSaBqJobuser", &projects.IAMMemberArgs{
+//				Project: *pulumi.String(project.ProjectId),
+//				Role:    pulumi.String("roles/bigquery.jobUser"),
+//				Member: hcSa.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

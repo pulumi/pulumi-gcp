@@ -374,6 +374,57 @@ class Policy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/binary-authorization/)
 
         ## Example Usage
+        ### Binary Authorization Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
+            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
+                human_readable_name="My attestor",
+            ),
+        ))
+        attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
+            note_reference=note.name,
+        ))
+        policy = gcp.binaryauthorization.Policy("policy",
+            admission_whitelist_patterns=[gcp.binaryauthorization.PolicyAdmissionWhitelistPatternArgs(
+                name_pattern="gcr.io/google_containers/*",
+            )],
+            default_admission_rule=gcp.binaryauthorization.PolicyDefaultAdmissionRuleArgs(
+                evaluation_mode="ALWAYS_ALLOW",
+                enforcement_mode="ENFORCED_BLOCK_AND_AUDIT_LOG",
+            ),
+            cluster_admission_rules=[gcp.binaryauthorization.PolicyClusterAdmissionRuleArgs(
+                cluster="us-central1-a.prod-cluster",
+                evaluation_mode="REQUIRE_ATTESTATION",
+                enforcement_mode="ENFORCED_BLOCK_AND_AUDIT_LOG",
+                require_attestations_bies=[attestor.name],
+            )])
+        ```
+        ### Binary Authorization Policy Global Evaluation
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
+            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
+                human_readable_name="My attestor",
+            ),
+        ))
+        attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
+            note_reference=note.name,
+        ))
+        policy = gcp.binaryauthorization.Policy("policy",
+            default_admission_rule=gcp.binaryauthorization.PolicyDefaultAdmissionRuleArgs(
+                evaluation_mode="REQUIRE_ATTESTATION",
+                enforcement_mode="ENFORCED_BLOCK_AND_AUDIT_LOG",
+                require_attestations_bies=[attestor.name],
+            ),
+            global_policy_evaluation_mode="ENABLE")
+        ```
 
         ## Import
 
@@ -430,6 +481,57 @@ class Policy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/binary-authorization/)
 
         ## Example Usage
+        ### Binary Authorization Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
+            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
+                human_readable_name="My attestor",
+            ),
+        ))
+        attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
+            note_reference=note.name,
+        ))
+        policy = gcp.binaryauthorization.Policy("policy",
+            admission_whitelist_patterns=[gcp.binaryauthorization.PolicyAdmissionWhitelistPatternArgs(
+                name_pattern="gcr.io/google_containers/*",
+            )],
+            default_admission_rule=gcp.binaryauthorization.PolicyDefaultAdmissionRuleArgs(
+                evaluation_mode="ALWAYS_ALLOW",
+                enforcement_mode="ENFORCED_BLOCK_AND_AUDIT_LOG",
+            ),
+            cluster_admission_rules=[gcp.binaryauthorization.PolicyClusterAdmissionRuleArgs(
+                cluster="us-central1-a.prod-cluster",
+                evaluation_mode="REQUIRE_ATTESTATION",
+                enforcement_mode="ENFORCED_BLOCK_AND_AUDIT_LOG",
+                require_attestations_bies=[attestor.name],
+            )])
+        ```
+        ### Binary Authorization Policy Global Evaluation
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
+            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
+                human_readable_name="My attestor",
+            ),
+        ))
+        attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
+            note_reference=note.name,
+        ))
+        policy = gcp.binaryauthorization.Policy("policy",
+            default_admission_rule=gcp.binaryauthorization.PolicyDefaultAdmissionRuleArgs(
+                evaluation_mode="REQUIRE_ATTESTATION",
+                enforcement_mode="ENFORCED_BLOCK_AND_AUDIT_LOG",
+                require_attestations_bies=[attestor.name],
+            ),
+            global_policy_evaluation_mode="ENABLE")
+        ```
 
         ## Import
 

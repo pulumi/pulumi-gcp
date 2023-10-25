@@ -30,6 +30,86 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/vpc/docs/firewalls)
     /// 
     /// ## Example Usage
+    /// ### Firewall Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork");
+    /// 
+    ///     var defaultFirewall = new Gcp.Compute.Firewall("defaultFirewall", new()
+    ///     {
+    ///         Network = defaultNetwork.Name,
+    ///         Allows = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "icmp",
+    ///             },
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///                 Ports = new[]
+    ///                 {
+    ///                     "80",
+    ///                     "8080",
+    ///                     "1000-2000",
+    ///                 },
+    ///             },
+    ///         },
+    ///         SourceTags = new[]
+    ///         {
+    ///             "web",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Firewall With Target Tags
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var rules = new Gcp.Compute.Firewall("rules", new()
+    ///     {
+    ///         Allows = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+    ///             {
+    ///                 Ports = new[]
+    ///                 {
+    ///                     "80",
+    ///                     "8080",
+    ///                     "1000-2000",
+    ///                 },
+    ///                 Protocol = "tcp",
+    ///             },
+    ///         },
+    ///         Description = "Creates firewall rule targeting tagged instances",
+    ///         Network = "default",
+    ///         Project = "my-project-name",
+    ///         SourceTags = new[]
+    ///         {
+    ///             "foo",
+    ///         },
+    ///         TargetTags = new[]
+    ///         {
+    ///             "web",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

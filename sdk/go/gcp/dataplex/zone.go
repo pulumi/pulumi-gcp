@@ -16,6 +16,55 @@ import (
 // The Dataplex Zone resource
 //
 // ## Example Usage
+// ### Basic_zone
+// A basic example of a dataplex zone
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			basic, err := dataplex.NewLake(ctx, "basic", &dataplex.LakeArgs{
+//				Location:    pulumi.String("us-west1"),
+//				Description: pulumi.String("Lake for DCL"),
+//				DisplayName: pulumi.String("Lake for DCL"),
+//				Labels: pulumi.StringMap{
+//					"my-lake": pulumi.String("exists"),
+//				},
+//				Project: pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataplex.NewZone(ctx, "primary", &dataplex.ZoneArgs{
+//				DiscoverySpec: &dataplex.ZoneDiscoverySpecArgs{
+//					Enabled: pulumi.Bool(false),
+//				},
+//				Lake:     basic.Name,
+//				Location: pulumi.String("us-west1"),
+//				ResourceSpec: &dataplex.ZoneResourceSpecArgs{
+//					LocationType: pulumi.String("MULTI_REGION"),
+//				},
+//				Type:        pulumi.String("RAW"),
+//				Description: pulumi.String("Zone for DCL"),
+//				DisplayName: pulumi.String("Zone for DCL"),
+//				Labels:      nil,
+//				Project:     pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

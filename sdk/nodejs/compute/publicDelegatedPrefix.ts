@@ -14,6 +14,24 @@ import * as utilities from "../utilities";
  *     * [Using bring your own IP](https://cloud.google.com/vpc/docs/using-bring-your-own-ip)
  *
  * ## Example Usage
+ * ### Public Delegated Prefixes Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const advertised = new gcp.compute.PublicAdvertisedPrefix("advertised", {
+ *     description: "description",
+ *     dnsVerificationIp: "127.127.0.0",
+ *     ipCidrRange: "127.127.0.0/16",
+ * });
+ * const prefixes = new gcp.compute.PublicDelegatedPrefix("prefixes", {
+ *     region: "us-central1",
+ *     description: "my description",
+ *     ipCidrRange: "127.127.0.0/24",
+ *     parentPrefix: advertised.id,
+ * });
+ * ```
  *
  * ## Import
  *

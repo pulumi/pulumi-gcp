@@ -28,6 +28,51 @@ import (
 // `preview=false`).
 //
 // ## Example Usage
+// ### Deployment Manager Deployment Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"os"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/deploymentmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := os.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := deploymentmanager.NewDeployment(ctx, "deployment", &deploymentmanager.DeploymentArgs{
+//				Target: &deploymentmanager.DeploymentTargetArgs{
+//					Config: &deploymentmanager.DeploymentTargetConfigArgs{
+//						Content: readFileOrPanic("path/to/config.yml"),
+//					},
+//				},
+//				Labels: deploymentmanager.DeploymentLabelArray{
+//					&deploymentmanager.DeploymentLabelArgs{
+//						Key:   pulumi.String("foo"),
+//						Value: pulumi.String("bar"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

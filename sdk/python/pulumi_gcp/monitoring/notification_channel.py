@@ -550,6 +550,36 @@ class NotificationChannel(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
+        ### Notification Channel Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.monitoring.NotificationChannel("basic",
+            display_name="Test Notification Channel",
+            force_delete=False,
+            labels={
+                "email_address": "fake_email@blahblah.com",
+            },
+            type="email")
+        ```
+        ### Notification Channel Sensitive
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.monitoring.NotificationChannel("default",
+            display_name="Test Slack Channel",
+            labels={
+                "channel_name": "#foobar",
+            },
+            sensitive_labels=gcp.monitoring.NotificationChannelSensitiveLabelsArgs(
+                auth_token="one",
+            ),
+            type="slack")
+        ```
 
         ## Import
 
@@ -625,6 +655,36 @@ class NotificationChannel(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
+        ### Notification Channel Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.monitoring.NotificationChannel("basic",
+            display_name="Test Notification Channel",
+            force_delete=False,
+            labels={
+                "email_address": "fake_email@blahblah.com",
+            },
+            type="email")
+        ```
+        ### Notification Channel Sensitive
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.monitoring.NotificationChannel("default",
+            display_name="Test Slack Channel",
+            labels={
+                "channel_name": "#foobar",
+            },
+            sensitive_labels=gcp.monitoring.NotificationChannelSensitiveLabelsArgs(
+                auth_token="one",
+            ),
+            type="slack")
+        ```
 
         ## Import
 

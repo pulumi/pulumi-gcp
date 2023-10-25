@@ -5,6 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * Example creating a RuntimeConfig resource.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_runtime_config = new gcp.runtimeconfig.Config("my-runtime-config", {description: "Runtime configuration values for my service"});
+ * ```
+ *
  * ## Import
  *
  * Runtime Configs can be imported using the `name` or full config name, e.g.

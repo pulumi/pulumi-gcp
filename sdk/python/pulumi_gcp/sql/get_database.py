@@ -114,6 +114,16 @@ def get_database(instance: Optional[str] = None,
     """
     Use this data source to get information about a database in a Cloud SQL instance.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    qa = gcp.sql.get_database(name="test-sql-database",
+        instance=google_sql_database_instance["main"]["name"])
+    ```
+
 
     :param str instance: The name of the Cloud SQL database instance in which the database belongs.
     :param str name: The name of the database.
@@ -144,6 +154,16 @@ def get_database_output(instance: Optional[pulumi.Input[str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseResult]:
     """
     Use this data source to get information about a database in a Cloud SQL instance.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    qa = gcp.sql.get_database(name="test-sql-database",
+        instance=google_sql_database_instance["main"]["name"])
+    ```
 
 
     :param str instance: The name of the Cloud SQL database instance in which the database belongs.

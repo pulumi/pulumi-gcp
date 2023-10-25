@@ -22,6 +22,35 @@ import (
 //   - [Official Documentation](https://cloud.google.com/data-catalog/docs)
 //
 // ## Example Usage
+// ### Data Catalog Taxonomy Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := datacatalog.NewTaxonomy(ctx, "basicTaxonomy", &datacatalog.TaxonomyArgs{
+//				ActivatedPolicyTypes: pulumi.StringArray{
+//					pulumi.String("FINE_GRAINED_ACCESS_CONTROL"),
+//				},
+//				Description: pulumi.String("A collection of policy tags"),
+//				DisplayName: pulumi.String("my_taxonomy"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

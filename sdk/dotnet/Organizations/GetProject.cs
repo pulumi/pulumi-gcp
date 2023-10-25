@@ -15,6 +15,29 @@ namespace Pulumi.Gcp.Organizations
         /// Use this data source to get project details.
         /// For more information see
         /// [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var project = Gcp.Organizations.GetProject.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["projectNumber"] = project.Apply(getProjectResult =&gt; getProjectResult.Number),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("gcp:organizations/getProject:getProject", args ?? new GetProjectArgs(), options.WithDefaults());
@@ -23,6 +46,29 @@ namespace Pulumi.Gcp.Organizations
         /// Use this data source to get project details.
         /// For more information see
         /// [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var project = Gcp.Organizations.GetProject.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["projectNumber"] = project.Apply(getProjectResult =&gt; getProjectResult.Number),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectResult>("gcp:organizations/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());

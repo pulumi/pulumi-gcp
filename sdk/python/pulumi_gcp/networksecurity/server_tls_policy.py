@@ -443,6 +443,82 @@ class ServerTlsPolicy(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Network Security Server Tls Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.ServerTlsPolicy("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            allow_open=False,
+            server_certificate=gcp.networksecurity.ServerTlsPolicyServerCertificateArgs(
+                certificate_provider_instance=gcp.networksecurity.ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs(
+                    plugin_instance="google_cloud_private_spiffe",
+                ),
+            ),
+            mtls_policy=gcp.networksecurity.ServerTlsPolicyMtlsPolicyArgs(
+                client_validation_cas=[
+                    gcp.networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaArgs(
+                        grpc_endpoint=gcp.networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs(
+                            target_uri="unix:mypath",
+                        ),
+                    ),
+                    gcp.networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaArgs(
+                        grpc_endpoint=gcp.networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs(
+                            target_uri="unix:abc/mypath",
+                        ),
+                    ),
+                    gcp.networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaArgs(
+                        certificate_provider_instance=gcp.networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs(
+                            plugin_instance="google_cloud_private_spiffe",
+                        ),
+                    ),
+                ],
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Network Security Server Tls Policy Advanced
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.ServerTlsPolicy("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            location="global",
+            allow_open=False,
+            mtls_policy=gcp.networksecurity.ServerTlsPolicyMtlsPolicyArgs(
+                client_validation_mode="ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Network Security Server Tls Policy Server Cert
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.ServerTlsPolicy("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            location="global",
+            allow_open=False,
+            server_certificate=gcp.networksecurity.ServerTlsPolicyServerCertificateArgs(
+                grpc_endpoint=gcp.networksecurity.ServerTlsPolicyServerCertificateGrpcEndpointArgs(
+                    target_uri="unix:mypath",
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -489,6 +565,82 @@ class ServerTlsPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Network Security Server Tls Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.ServerTlsPolicy("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            allow_open=False,
+            server_certificate=gcp.networksecurity.ServerTlsPolicyServerCertificateArgs(
+                certificate_provider_instance=gcp.networksecurity.ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs(
+                    plugin_instance="google_cloud_private_spiffe",
+                ),
+            ),
+            mtls_policy=gcp.networksecurity.ServerTlsPolicyMtlsPolicyArgs(
+                client_validation_cas=[
+                    gcp.networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaArgs(
+                        grpc_endpoint=gcp.networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs(
+                            target_uri="unix:mypath",
+                        ),
+                    ),
+                    gcp.networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaArgs(
+                        grpc_endpoint=gcp.networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs(
+                            target_uri="unix:abc/mypath",
+                        ),
+                    ),
+                    gcp.networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaArgs(
+                        certificate_provider_instance=gcp.networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs(
+                            plugin_instance="google_cloud_private_spiffe",
+                        ),
+                    ),
+                ],
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Network Security Server Tls Policy Advanced
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.ServerTlsPolicy("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            location="global",
+            allow_open=False,
+            mtls_policy=gcp.networksecurity.ServerTlsPolicyMtlsPolicyArgs(
+                client_validation_mode="ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Network Security Server Tls Policy Server Cert
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.ServerTlsPolicy("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            location="global",
+            allow_open=False,
+            server_certificate=gcp.networksecurity.ServerTlsPolicyServerCertificateArgs(
+                grpc_endpoint=gcp.networksecurity.ServerTlsPolicyServerCertificateGrpcEndpointArgs(
+                    target_uri="unix:mypath",
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

@@ -406,6 +406,50 @@ class CustomConstraint(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Org Policy Custom Constraint Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        constraint = gcp.orgpolicy.CustomConstraint("constraint",
+            parent="organizations/123456789",
+            action_type="ALLOW",
+            condition="resource.management.autoUpgrade == false",
+            method_types=[
+                "CREATE",
+                "UPDATE",
+            ],
+            resource_types=["container.googleapis.com/NodePool"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Org Policy Custom Constraint Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        constraint = gcp.orgpolicy.CustomConstraint("constraint",
+            parent="organizations/123456789",
+            display_name="Disable GKE auto upgrade",
+            description="Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
+            action_type="ALLOW",
+            condition="resource.management.autoUpgrade == false",
+            method_types=[
+                "CREATE",
+                "UPDATE",
+            ],
+            resource_types=["container.googleapis.com/NodePool"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        bool = gcp.orgpolicy.Policy("bool",
+            parent="organizations/123456789",
+            spec=gcp.orgpolicy.PolicySpecArgs(
+                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
+                    enforce="TRUE",
+                )],
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -438,6 +482,50 @@ class CustomConstraint(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Org Policy Custom Constraint Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        constraint = gcp.orgpolicy.CustomConstraint("constraint",
+            parent="organizations/123456789",
+            action_type="ALLOW",
+            condition="resource.management.autoUpgrade == false",
+            method_types=[
+                "CREATE",
+                "UPDATE",
+            ],
+            resource_types=["container.googleapis.com/NodePool"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Org Policy Custom Constraint Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        constraint = gcp.orgpolicy.CustomConstraint("constraint",
+            parent="organizations/123456789",
+            display_name="Disable GKE auto upgrade",
+            description="Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
+            action_type="ALLOW",
+            condition="resource.management.autoUpgrade == false",
+            method_types=[
+                "CREATE",
+                "UPDATE",
+            ],
+            resource_types=["container.googleapis.com/NodePool"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        bool = gcp.orgpolicy.Policy("bool",
+            parent="organizations/123456789",
+            spec=gcp.orgpolicy.PolicySpecArgs(
+                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
+                    enforce="TRUE",
+                )],
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

@@ -10,6 +10,65 @@ import * as utilities from "../utilities";
  * The Compute NetworkFirewallPolicyRule resource
  *
  * ## Example Usage
+ * ### Regional
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basicRegionalNetworksecurityAddressGroup = new gcp.networksecurity.AddressGroup("basicRegionalNetworksecurityAddressGroup", {
+ *     parent: "projects/my-project-name",
+ *     description: "Sample regional networksecurity_address_group",
+ *     location: "us-west1",
+ *     items: ["208.80.154.224/32"],
+ *     type: "IPV4",
+ *     capacity: 100,
+ * });
+ * const basicRegionalNetworkFirewallPolicy = new gcp.compute.RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy", {
+ *     description: "Sample regional network firewall policy",
+ *     project: "my-project-name",
+ *     region: "us-west1",
+ * });
+ * const basicNetwork = new gcp.compute.Network("basicNetwork", {});
+ * const basicKey = new gcp.tags.TagKey("basicKey", {
+ *     description: "For keyname resources.",
+ *     parent: "organizations/123456789",
+ *     purpose: "GCE_FIREWALL",
+ *     shortName: "tagkey",
+ *     purposeData: {
+ *         network: pulumi.interpolate`my-project-name/${basicNetwork.name}`,
+ *     },
+ * });
+ * const basicValue = new gcp.tags.TagValue("basicValue", {
+ *     description: "For valuename resources.",
+ *     parent: pulumi.interpolate`tagKeys/${basicKey.name}`,
+ *     shortName: "tagvalue",
+ * });
+ * const primary = new gcp.compute.RegionNetworkFirewallPolicyRule("primary", {
+ *     action: "allow",
+ *     description: "This is a simple rule description",
+ *     direction: "INGRESS",
+ *     disabled: false,
+ *     enableLogging: true,
+ *     firewallPolicy: basicRegionalNetworkFirewallPolicy.name,
+ *     priority: 1000,
+ *     region: "us-west1",
+ *     ruleName: "test-rule",
+ *     targetServiceAccounts: ["my@service-account.com"],
+ *     match: {
+ *         srcIpRanges: ["10.100.0.1/32"],
+ *         srcFqdns: ["example.com"],
+ *         srcRegionCodes: ["US"],
+ *         srcThreatIntelligences: ["iplist-known-malicious-ips"],
+ *         layer4Configs: [{
+ *             ipProtocol: "all",
+ *         }],
+ *         srcSecureTags: [{
+ *             name: pulumi.interpolate`tagValues/${basicValue.name}`,
+ *         }],
+ *         srcAddressGroups: [basicRegionalNetworksecurityAddressGroup.id],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

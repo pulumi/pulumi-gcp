@@ -20,6 +20,24 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// the Cloud Console prior to creating tenants.
     /// 
     /// ## Example Usage
+    /// ### Identity Platform Tenant Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var tenant = new Gcp.IdentityPlatform.Tenant("tenant", new()
+    ///     {
+    ///         AllowPasswordSignup = true,
+    ///         DisplayName = "tenant",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

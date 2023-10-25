@@ -422,6 +422,33 @@ class AppGateway(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
 
         ## Example Usage
+        ### Beyondcorp App Gateway Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        app_gateway = gcp.beyondcorp.AppGateway("appGateway",
+            host_type="GCP_REGIONAL_MIG",
+            region="us-central1",
+            type="TCP_PROXY")
+        ```
+        ### Beyondcorp App Gateway Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        app_gateway = gcp.beyondcorp.AppGateway("appGateway",
+            display_name="some display name",
+            host_type="GCP_REGIONAL_MIG",
+            labels={
+                "bar": "baz",
+                "foo": "bar",
+            },
+            region="us-central1",
+            type="TCP_PROXY")
+        ```
 
         ## Import
 
@@ -479,6 +506,33 @@ class AppGateway(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
 
         ## Example Usage
+        ### Beyondcorp App Gateway Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        app_gateway = gcp.beyondcorp.AppGateway("appGateway",
+            host_type="GCP_REGIONAL_MIG",
+            region="us-central1",
+            type="TCP_PROXY")
+        ```
+        ### Beyondcorp App Gateway Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        app_gateway = gcp.beyondcorp.AppGateway("appGateway",
+            display_name="some display name",
+            host_type="GCP_REGIONAL_MIG",
+            labels={
+                "bar": "baz",
+                "foo": "bar",
+            },
+            region="us-central1",
+            type="TCP_PROXY")
+        ```
 
         ## Import
 

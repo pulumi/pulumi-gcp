@@ -25,6 +25,52 @@ import (
 // > Want fine-grained control over object ACLs? Use `storage.ObjectAccessControl` to control individual
 // role entity pairs.
 //
+// ## Example Usage
+//
+// Create an object ACL with one owner and one reader.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := storage.NewBucket(ctx, "image-store", &storage.BucketArgs{
+//				Location: pulumi.String("EU"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			image, err := storage.NewBucketObject(ctx, "image", &storage.BucketObjectArgs{
+//				Bucket: image_store.Name,
+//				Source: pulumi.NewFileAsset("image1.jpg"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = storage.NewObjectACL(ctx, "image-store-acl", &storage.ObjectACLArgs{
+//				Bucket: image_store.Name,
+//				Object: image.OutputName,
+//				RoleEntities: pulumi.StringArray{
+//					pulumi.String("OWNER:user-my.email@gmail.com"),
+//					pulumi.String("READER:group-mygroup"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // This resource does not support import.

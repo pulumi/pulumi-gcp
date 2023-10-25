@@ -21,6 +21,76 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
     /// 
     /// ## Example Usage
+    /// ### Forwarding Rule Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultTargetPool = new Gcp.Compute.TargetPool("defaultTargetPool");
+    /// 
+    ///     var defaultForwardingRule = new Gcp.Compute.ForwardingRule("defaultForwardingRule", new()
+    ///     {
+    ///         Target = defaultTargetPool.Id,
+    ///         PortRange = "80",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Forwarding Rule Regional Steering
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basic = new Gcp.Compute.Address("basic", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///     });
+    /// 
+    ///     var externalRegionBackendService = new Gcp.Compute.RegionBackendService("externalRegionBackendService", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         LoadBalancingScheme = "EXTERNAL",
+    ///     });
+    /// 
+    ///     var externalForwardingRule = new Gcp.Compute.ForwardingRule("externalForwardingRule", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         IpAddress = basic.SelfLink,
+    ///         BackendService = externalRegionBackendService.SelfLink,
+    ///         LoadBalancingScheme = "EXTERNAL",
+    ///     });
+    /// 
+    ///     var steering = new Gcp.Compute.ForwardingRule("steering", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         IpAddress = basic.SelfLink,
+    ///         BackendService = externalRegionBackendService.SelfLink,
+    ///         LoadBalancingScheme = "EXTERNAL",
+    ///         SourceIpRanges = new[]
+    ///         {
+    ///             "34.121.88.0/24",
+    ///             "35.187.239.137",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             externalForwardingRule,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

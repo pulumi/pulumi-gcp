@@ -466,6 +466,48 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/spanner/)
 
         ## Example Usage
+        ### Spanner Instance Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.spanner.Instance("example",
+            config="regional-us-central1",
+            display_name="Test Spanner Instance",
+            labels={
+                "foo": "bar",
+            },
+            num_nodes=2)
+        ```
+        ### Spanner Instance Processing Units
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.spanner.Instance("example",
+            config="regional-us-central1",
+            display_name="Test Spanner Instance",
+            labels={
+                "foo": "bar",
+            },
+            processing_units=200)
+        ```
+        ### Spanner Instance Multi Regional
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.spanner.Instance("example",
+            config="nam-eur-asia1",
+            display_name="Multi Regional Instance",
+            labels={
+                "foo": "bar",
+            },
+            num_nodes=2)
+        ```
 
         ## Import
 
@@ -529,6 +571,48 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/spanner/)
 
         ## Example Usage
+        ### Spanner Instance Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.spanner.Instance("example",
+            config="regional-us-central1",
+            display_name="Test Spanner Instance",
+            labels={
+                "foo": "bar",
+            },
+            num_nodes=2)
+        ```
+        ### Spanner Instance Processing Units
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.spanner.Instance("example",
+            config="regional-us-central1",
+            display_name="Test Spanner Instance",
+            labels={
+                "foo": "bar",
+            },
+            processing_units=200)
+        ```
+        ### Spanner Instance Multi Regional
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.spanner.Instance("example",
+            config="nam-eur-asia1",
+            display_name="Multi Regional Instance",
+            labels={
+                "foo": "bar",
+            },
+            num_nodes=2)
+        ```
 
         ## Import
 

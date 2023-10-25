@@ -13,6 +13,34 @@ import (
 )
 
 // Retrieves the current IAM policy data for datascan
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataplex.LookupDatascanIamPolicy(ctx, &dataplex.LookupDatascanIamPolicyArgs{
+//				Project:    pulumi.StringRef(google_dataplex_datascan.Basic_profile.Project),
+//				Location:   pulumi.StringRef(google_dataplex_datascan.Basic_profile.Location),
+//				DataScanId: google_dataplex_datascan.Basic_profile.Data_scan_id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupDatascanIamPolicy(ctx *pulumi.Context, args *LookupDatascanIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupDatascanIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatascanIamPolicyResult

@@ -14,6 +14,31 @@ import * as utilities from "../utilities";
  * the marketplace prior to using this resource.
  *
  * ## Example Usage
+ * ### Identity Platform Tenant Inbound Saml Config Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const tenant = new gcp.identityplatform.Tenant("tenant", {displayName: "tenant"});
+ * const tenantSamlConfig = new gcp.identityplatform.TenantInboundSamlConfig("tenantSamlConfig", {
+ *     displayName: "Display Name",
+ *     tenant: tenant.name,
+ *     idpConfig: {
+ *         idpEntityId: "tf-idp",
+ *         signRequest: true,
+ *         ssoUrl: "https://example.com",
+ *         idpCertificates: [{
+ *             x509Certificate: fs.readFileSync("test-fixtures/rsa_cert.pem"),
+ *         }],
+ *     },
+ *     spConfig: {
+ *         spEntityId: "tf-sp",
+ *         callbackUri: "https://example.com",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

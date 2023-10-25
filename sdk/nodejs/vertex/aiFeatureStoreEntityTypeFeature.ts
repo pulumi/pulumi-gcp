@@ -14,6 +14,82 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
  *
  * ## Example Usage
+ * ### Vertex Ai Featurestore Entitytype Feature
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const featurestore = new gcp.vertex.AiFeatureStore("featurestore", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     region: "us-central1",
+ *     onlineServingConfig: {
+ *         fixedNodeCount: 2,
+ *     },
+ * });
+ * const entity = new gcp.vertex.AiFeatureStoreEntityType("entity", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     featurestore: featurestore.id,
+ * });
+ * const feature = new gcp.vertex.AiFeatureStoreEntityTypeFeature("feature", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     entitytype: entity.id,
+ *     valueType: "INT64_ARRAY",
+ * });
+ * ```
+ * ### Vertex Ai Featurestore Entitytype Feature With Beta Fields
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const featurestore = new gcp.vertex.AiFeatureStore("featurestore", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     region: "us-central1",
+ *     onlineServingConfig: {
+ *         fixedNodeCount: 2,
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const entity = new gcp.vertex.AiFeatureStoreEntityType("entity", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     featurestore: featurestore.id,
+ *     monitoringConfig: {
+ *         snapshotAnalysis: {
+ *             disabled: false,
+ *             monitoringInterval: "86400s",
+ *         },
+ *         categoricalThresholdConfig: {
+ *             value: 0.3,
+ *         },
+ *         numericalThresholdConfig: {
+ *             value: 0.3,
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const feature = new gcp.vertex.AiFeatureStoreEntityTypeFeature("feature", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     entitytype: entity.id,
+ *     valueType: "INT64_ARRAY",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

@@ -312,6 +312,17 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
             * [Using bring your own IP](https://cloud.google.com/vpc/docs/using-bring-your-own-ip)
 
         ## Example Usage
+        ### Public Advertised Prefixes Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prefixes = gcp.compute.PublicAdvertisedPrefix("prefixes",
+            description="description",
+            dns_verification_ip="127.127.0.0",
+            ip_cidr_range="127.127.0.0/16")
+        ```
 
         ## Import
 
@@ -362,6 +373,17 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
             * [Using bring your own IP](https://cloud.google.com/vpc/docs/using-bring-your-own-ip)
 
         ## Example Usage
+        ### Public Advertised Prefixes Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prefixes = gcp.compute.PublicAdvertisedPrefix("prefixes",
+            description="description",
+            dns_verification_ip="127.127.0.0",
+            ip_cidr_range="127.127.0.0/16")
+        ```
 
         ## Import
 

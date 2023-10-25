@@ -22,6 +22,33 @@ import (
 //   - [Official Documentation](https://cloud.google.com/document-ai/docs/overview)
 //
 // ## Example Usage
+// ### Documentai Processor
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/essentialcontacts"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := essentialcontacts.NewDocumentAiProcessor(ctx, "processor", &essentialcontacts.DocumentAiProcessorArgs{
+//				DisplayName: pulumi.String("test-processor"),
+//				Location:    pulumi.String("us"),
+//				Type:        pulumi.String("OCR_PROCESSOR"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

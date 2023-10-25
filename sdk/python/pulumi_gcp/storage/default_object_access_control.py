@@ -370,6 +370,18 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
 
         ## Example Usage
+        ### Storage Default Object Access Control Public
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket", location="US")
+        public_rule = gcp.storage.DefaultObjectAccessControl("publicRule",
+            bucket=bucket.name,
+            role="READER",
+            entity="allUsers")
+        ```
 
         ## Import
 
@@ -426,6 +438,18 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
 
         ## Example Usage
+        ### Storage Default Object Access Control Public
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket", location="US")
+        public_rule = gcp.storage.DefaultObjectAccessControl("publicRule",
+            bucket=bucket.name,
+            role="READER",
+            entity="allUsers")
+        ```
 
         ## Import
 

@@ -14,6 +14,76 @@ namespace Pulumi.Gcp.CloudAsset
         /// <summary>
         /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
+        /// ### Searching For All Projects In An Org
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var projects = Gcp.CloudAsset.GetResourcesSearchAll.Invoke(new()
+        ///     {
+        ///         Scope = "organizations/0123456789",
+        ///         AssetTypes = new[]
+        ///         {
+        ///             "cloudresourcemanager.googleapis.com/Project",
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% example %}}
+        /// ### Searching For All Projects With CloudBuild API Enabled
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var cloudBuildProjects = Gcp.CloudAsset.GetResourcesSearchAll.Invoke(new()
+        ///     {
+        ///         Scope = "organizations/0123456789",
+        ///         AssetTypes = new[]
+        ///         {
+        ///             "serviceusage.googleapis.com/Service",
+        ///         },
+        ///         Query = "displayName:cloudbuild.googleapis.com AND state:ENABLED",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% example %}}
+        /// ### Searching For All Service Accounts In A Project
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var projectServiceAccounts = Gcp.CloudAsset.GetResourcesSearchAll.Invoke(new()
+        ///     {
+        ///         Scope = "projects/my-project-id",
+        ///         AssetTypes = new[]
+        ///         {
+        ///             "iam.googleapis.com/ServiceAccount",
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetResourcesSearchAllResult> InvokeAsync(GetResourcesSearchAllArgs args, InvokeOptions? options = null)
@@ -22,6 +92,76 @@ namespace Pulumi.Gcp.CloudAsset
         /// <summary>
         /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
+        /// ### Searching For All Projects In An Org
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var projects = Gcp.CloudAsset.GetResourcesSearchAll.Invoke(new()
+        ///     {
+        ///         Scope = "organizations/0123456789",
+        ///         AssetTypes = new[]
+        ///         {
+        ///             "cloudresourcemanager.googleapis.com/Project",
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% example %}}
+        /// ### Searching For All Projects With CloudBuild API Enabled
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var cloudBuildProjects = Gcp.CloudAsset.GetResourcesSearchAll.Invoke(new()
+        ///     {
+        ///         Scope = "organizations/0123456789",
+        ///         AssetTypes = new[]
+        ///         {
+        ///             "serviceusage.googleapis.com/Service",
+        ///         },
+        ///         Query = "displayName:cloudbuild.googleapis.com AND state:ENABLED",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% example %}}
+        /// ### Searching For All Service Accounts In A Project
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var projectServiceAccounts = Gcp.CloudAsset.GetResourcesSearchAll.Invoke(new()
+        ///     {
+        ///         Scope = "projects/my-project-id",
+        ///         AssetTypes = new[]
+        ///         {
+        ///             "iam.googleapis.com/ServiceAccount",
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetResourcesSearchAllResult> Invoke(GetResourcesSearchAllInvokeArgs args, InvokeOptions? options = null)

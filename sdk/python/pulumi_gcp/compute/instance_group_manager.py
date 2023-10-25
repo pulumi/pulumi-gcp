@@ -1053,6 +1053,70 @@ class InstanceGroupManager(pulumi.CustomResource):
         > **Note:** Use [compute.RegionInstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_region_instance_group_manager.html) to create a regional (multi-zone) instance group manager.
 
         ## Example Usage
+        ### With Top Level Instance Template (`Google` Provider)
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        autohealing = gcp.compute.HealthCheck("autohealing",
+            check_interval_sec=5,
+            timeout_sec=5,
+            healthy_threshold=2,
+            unhealthy_threshold=10,
+            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
+                request_path="/healthz",
+                port=8080,
+            ))
+        appserver = gcp.compute.InstanceGroupManager("appserver",
+            base_instance_name="app",
+            zone="us-central1-a",
+            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
+                instance_template=google_compute_instance_template["appserver"]["self_link_unique"],
+            )],
+            all_instances_config=gcp.compute.InstanceGroupManagerAllInstancesConfigArgs(
+                metadata={
+                    "metadata_key": "metadata_value",
+                },
+                labels={
+                    "label_key": "label_value",
+                },
+            ),
+            target_pools=[google_compute_target_pool["appserver"]["id"]],
+            target_size=2,
+            named_ports=[gcp.compute.InstanceGroupManagerNamedPortArgs(
+                name="customhttp",
+                port=8888,
+            )],
+            auto_healing_policies=gcp.compute.InstanceGroupManagerAutoHealingPoliciesArgs(
+                health_check=autohealing.id,
+                initial_delay_sec=300,
+            ))
+        ```
+        ### With Multiple Versions (`Google-Beta` Provider)
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        appserver = gcp.compute.InstanceGroupManager("appserver",
+            base_instance_name="app",
+            zone="us-central1-a",
+            target_size=5,
+            versions=[
+                gcp.compute.InstanceGroupManagerVersionArgs(
+                    name="appserver",
+                    instance_template=google_compute_instance_template["appserver"]["self_link_unique"],
+                ),
+                gcp.compute.InstanceGroupManagerVersionArgs(
+                    name="appserver-canary",
+                    instance_template=google_compute_instance_template["appserver-canary"]["self_link_unique"],
+                    target_size=gcp.compute.InstanceGroupManagerVersionTargetSizeArgs(
+                        fixed=1,
+                    ),
+                ),
+            ],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -1146,6 +1210,70 @@ class InstanceGroupManager(pulumi.CustomResource):
         > **Note:** Use [compute.RegionInstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_region_instance_group_manager.html) to create a regional (multi-zone) instance group manager.
 
         ## Example Usage
+        ### With Top Level Instance Template (`Google` Provider)
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        autohealing = gcp.compute.HealthCheck("autohealing",
+            check_interval_sec=5,
+            timeout_sec=5,
+            healthy_threshold=2,
+            unhealthy_threshold=10,
+            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
+                request_path="/healthz",
+                port=8080,
+            ))
+        appserver = gcp.compute.InstanceGroupManager("appserver",
+            base_instance_name="app",
+            zone="us-central1-a",
+            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
+                instance_template=google_compute_instance_template["appserver"]["self_link_unique"],
+            )],
+            all_instances_config=gcp.compute.InstanceGroupManagerAllInstancesConfigArgs(
+                metadata={
+                    "metadata_key": "metadata_value",
+                },
+                labels={
+                    "label_key": "label_value",
+                },
+            ),
+            target_pools=[google_compute_target_pool["appserver"]["id"]],
+            target_size=2,
+            named_ports=[gcp.compute.InstanceGroupManagerNamedPortArgs(
+                name="customhttp",
+                port=8888,
+            )],
+            auto_healing_policies=gcp.compute.InstanceGroupManagerAutoHealingPoliciesArgs(
+                health_check=autohealing.id,
+                initial_delay_sec=300,
+            ))
+        ```
+        ### With Multiple Versions (`Google-Beta` Provider)
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        appserver = gcp.compute.InstanceGroupManager("appserver",
+            base_instance_name="app",
+            zone="us-central1-a",
+            target_size=5,
+            versions=[
+                gcp.compute.InstanceGroupManagerVersionArgs(
+                    name="appserver",
+                    instance_template=google_compute_instance_template["appserver"]["self_link_unique"],
+                ),
+                gcp.compute.InstanceGroupManagerVersionArgs(
+                    name="appserver-canary",
+                    instance_template=google_compute_instance_template["appserver-canary"]["self_link_unique"],
+                    target_size=gcp.compute.InstanceGroupManagerVersionTargetSizeArgs(
+                        fixed=1,
+                    ),
+                ),
+            ],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

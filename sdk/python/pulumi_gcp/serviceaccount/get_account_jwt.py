@@ -100,6 +100,24 @@ def get_account_jwt(delegates: Optional[Sequence[str]] = None,
     """
     This data source provides a [self-signed JWT](https://cloud.google.com/iam/docs/create-short-lived-credentials-direct#sa-credentials-jwt).  Tokens issued from this data source are typically used to call external services that accept JWTs for authentication.
 
+    ## Example Usage
+
+    Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
+
+    ```python
+    import pulumi
+    import json
+    import pulumi_gcp as gcp
+
+    foo = gcp.serviceAccount.get_account_jwt(target_service_account="impersonated-account@project.iam.gserviceaccount.com",
+        payload=json.dumps({
+            "foo": "bar",
+            "sub": "subject",
+        }),
+        expires_in=60)
+    pulumi.export("jwt", foo.jwt)
+    ```
+
 
     :param Sequence[str] delegates: Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.
     :param int expires_in: Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expires_in seconds.
@@ -131,6 +149,24 @@ def get_account_jwt_output(delegates: Optional[pulumi.Input[Optional[Sequence[st
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountJwtResult]:
     """
     This data source provides a [self-signed JWT](https://cloud.google.com/iam/docs/create-short-lived-credentials-direct#sa-credentials-jwt).  Tokens issued from this data source are typically used to call external services that accept JWTs for authentication.
+
+    ## Example Usage
+
+    Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
+
+    ```python
+    import pulumi
+    import json
+    import pulumi_gcp as gcp
+
+    foo = gcp.serviceAccount.get_account_jwt(target_service_account="impersonated-account@project.iam.gserviceaccount.com",
+        payload=json.dumps({
+            "foo": "bar",
+            "sub": "subject",
+        }),
+        expires_in=60)
+    pulumi.export("jwt", foo.jwt)
+    ```
 
 
     :param Sequence[str] delegates: Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.

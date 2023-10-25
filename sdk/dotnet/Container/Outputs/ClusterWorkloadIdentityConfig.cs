@@ -15,6 +15,16 @@ namespace Pulumi.Gcp.Container.Outputs
     {
         /// <summary>
         /// The workload pool to attach all Kubernetes service accounts to.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public readonly string? WorkloadPool;
 

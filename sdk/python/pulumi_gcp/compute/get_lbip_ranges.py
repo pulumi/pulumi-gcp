@@ -73,6 +73,23 @@ def get_lbip_ranges(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGet
     Use this data source to access IP ranges in your firewall rules.
 
     https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    ranges = gcp.compute.get_lbip_ranges()
+    lb = gcp.compute.Firewall("lb",
+        network=google_compute_network["main"]["name"],
+        allows=[gcp.compute.FirewallAllowArgs(
+            protocol="tcp",
+            ports=["80"],
+        )],
+        source_ranges=ranges.networks,
+        target_tags=["InstanceBehindLoadBalancer"])
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -90,5 +107,22 @@ def get_lbip_ranges_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulum
     Use this data source to access IP ranges in your firewall rules.
 
     https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    ranges = gcp.compute.get_lbip_ranges()
+    lb = gcp.compute.Firewall("lb",
+        network=google_compute_network["main"]["name"],
+        allows=[gcp.compute.FirewallAllowArgs(
+            protocol="tcp",
+            ports=["80"],
+        )],
+        source_ranges=ranges.networks,
+        target_tags=["InstanceBehindLoadBalancer"])
+    ```
     """
     ...

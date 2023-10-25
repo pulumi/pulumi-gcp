@@ -18,6 +18,63 @@ namespace Pulumi.Gcp.CloudTasks
     /// resource's location will be the same as the App Engine location specified.
     /// 
     /// ## Example Usage
+    /// ### Queue Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudTasks.Queue("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloud Tasks Queue Advanced
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var advancedConfiguration = new Gcp.CloudTasks.Queue("advancedConfiguration", new()
+    ///     {
+    ///         AppEngineRoutingOverride = new Gcp.CloudTasks.Inputs.QueueAppEngineRoutingOverrideArgs
+    ///         {
+    ///             Instance = "test",
+    ///             Service = "worker",
+    ///             Version = "1.0",
+    ///         },
+    ///         Location = "us-central1",
+    ///         RateLimits = new Gcp.CloudTasks.Inputs.QueueRateLimitsArgs
+    ///         {
+    ///             MaxConcurrentDispatches = 3,
+    ///             MaxDispatchesPerSecond = 2,
+    ///         },
+    ///         RetryConfig = new Gcp.CloudTasks.Inputs.QueueRetryConfigArgs
+    ///         {
+    ///             MaxAttempts = 5,
+    ///             MaxBackoff = "3s",
+    ///             MaxDoublings = 1,
+    ///             MaxRetryDuration = "4s",
+    ///             MinBackoff = "2s",
+    ///         },
+    ///         StackdriverLoggingConfig = new Gcp.CloudTasks.Inputs.QueueStackdriverLoggingConfigArgs
+    ///         {
+    ///             SamplingRatio = 0.9,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -434,6 +434,223 @@ class Service(pulumi.CustomResource):
         developer experience and broader support of Cloud Run features.
 
         ## Example Usage
+        ### Cloud Run Service Pubsub
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="gcr.io/cloudrun/hello",
+                    )],
+                ),
+            ),
+            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                percent=100,
+                latest_revision=True,
+            )])
+        sa = gcp.service_account.Account("sa",
+            account_id="cloud-run-pubsub-invoker",
+            display_name="Cloud Run Pub/Sub Invoker")
+        binding = gcp.cloudrun.IamBinding("binding",
+            location=default.location,
+            service=default.name,
+            role="roles/run.invoker",
+            members=[sa.email.apply(lambda email: f"serviceAccount:{email}")])
+        project = gcp.projects.IAMBinding("project",
+            role="roles/iam.serviceAccountTokenCreator",
+            members=[sa.email.apply(lambda email: f"serviceAccount:{email}")])
+        topic = gcp.pubsub.Topic("topic")
+        subscription = gcp.pubsub.Subscription("subscription",
+            topic=topic.name,
+            push_config=gcp.pubsub.SubscriptionPushConfigArgs(
+                push_endpoint=default.statuses[0].url,
+                oidc_token=gcp.pubsub.SubscriptionPushConfigOidcTokenArgs(
+                    service_account_email=sa.email,
+                ),
+                attributes={
+                    "x-goog-version": "v1",
+                },
+            ))
+        ```
+        ### Cloud Run Service Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                    )],
+                ),
+            ),
+            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                latest_revision=True,
+                percent=100,
+            )])
+        ```
+        ### Cloud Run Service Sql
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            region="us-east1",
+            database_version="MYSQL_5_7",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+            ),
+            deletion_protection=True)
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                    )],
+                ),
+                metadata=gcp.cloudrun.ServiceTemplateMetadataArgs(
+                    annotations={
+                        "autoscaling.knative.dev/maxScale": "1000",
+                        "run.googleapis.com/cloudsql-instances": instance.connection_name,
+                        "run.googleapis.com/client-name": "demo",
+                    },
+                ),
+            ),
+            autogenerate_revision_name=True)
+        ```
+        ### Cloud Run Service Noauth
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                    )],
+                ),
+            ))
+        noauth_iam_policy = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/run.invoker",
+            members=["allUsers"],
+        )])
+        noauth_iam_policy = gcp.cloudrun.IamPolicy("noauthIamPolicy",
+            location=default.location,
+            project=default.project,
+            service=default.name,
+            policy_data=noauth_iam_policy.policy_data)
+        ```
+        ### Cloud Run Service Probes
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                        startup_probe=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeArgs(
+                            initial_delay_seconds=0,
+                            timeout_seconds=1,
+                            period_seconds=3,
+                            failure_threshold=1,
+                            tcp_socket=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeTcpSocketArgs(
+                                port=8080,
+                            ),
+                        ),
+                        liveness_probe=gcp.cloudrun.ServiceTemplateSpecContainerLivenessProbeArgs(
+                            http_get=gcp.cloudrun.ServiceTemplateSpecContainerLivenessProbeHttpGetArgs(
+                                path="/",
+                            ),
+                        ),
+                    )],
+                ),
+            ),
+            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                percent=100,
+                latest_revision=True,
+            )])
+        ```
+        ### Cloud Run Service Multicontainer
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            metadata=gcp.cloudrun.ServiceMetadataArgs(
+                annotations={
+                    "run.googleapis.com/launch-stage": "BETA",
+                },
+            ),
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                metadata=gcp.cloudrun.ServiceTemplateMetadataArgs(
+                    annotations={
+                        "run.googleapis.com/container-dependencies": json.dumps({
+                            "hello-1": ["hello-2"],
+                        }),
+                    },
+                ),
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[
+                        gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                            name="hello-1",
+                            ports=[gcp.cloudrun.ServiceTemplateSpecContainerPortArgs(
+                                container_port=8080,
+                            )],
+                            image="us-docker.pkg.dev/cloudrun/container/hello",
+                            volume_mounts=[gcp.cloudrun.ServiceTemplateSpecContainerVolumeMountArgs(
+                                name="shared-volume",
+                                mount_path="/mnt/shared",
+                            )],
+                        ),
+                        gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                            name="hello-2",
+                            image="us-docker.pkg.dev/cloudrun/container/hello",
+                            envs=[gcp.cloudrun.ServiceTemplateSpecContainerEnvArgs(
+                                name="PORT",
+                                value="8081",
+                            )],
+                            startup_probe=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeArgs(
+                                http_get=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeHttpGetArgs(
+                                    port=8081,
+                                ),
+                            ),
+                            volume_mounts=[gcp.cloudrun.ServiceTemplateSpecContainerVolumeMountArgs(
+                                name="shared-volume",
+                                mount_path="/mnt/shared",
+                            )],
+                        ),
+                    ],
+                    volumes=[gcp.cloudrun.ServiceTemplateSpecVolumeArgs(
+                        name="shared-volume",
+                        empty_dir=gcp.cloudrun.ServiceTemplateSpecVolumeEmptyDirArgs(
+                            medium="Memory",
+                            size_limit="128Mi",
+                        ),
+                    )],
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -501,6 +718,223 @@ class Service(pulumi.CustomResource):
         developer experience and broader support of Cloud Run features.
 
         ## Example Usage
+        ### Cloud Run Service Pubsub
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="gcr.io/cloudrun/hello",
+                    )],
+                ),
+            ),
+            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                percent=100,
+                latest_revision=True,
+            )])
+        sa = gcp.service_account.Account("sa",
+            account_id="cloud-run-pubsub-invoker",
+            display_name="Cloud Run Pub/Sub Invoker")
+        binding = gcp.cloudrun.IamBinding("binding",
+            location=default.location,
+            service=default.name,
+            role="roles/run.invoker",
+            members=[sa.email.apply(lambda email: f"serviceAccount:{email}")])
+        project = gcp.projects.IAMBinding("project",
+            role="roles/iam.serviceAccountTokenCreator",
+            members=[sa.email.apply(lambda email: f"serviceAccount:{email}")])
+        topic = gcp.pubsub.Topic("topic")
+        subscription = gcp.pubsub.Subscription("subscription",
+            topic=topic.name,
+            push_config=gcp.pubsub.SubscriptionPushConfigArgs(
+                push_endpoint=default.statuses[0].url,
+                oidc_token=gcp.pubsub.SubscriptionPushConfigOidcTokenArgs(
+                    service_account_email=sa.email,
+                ),
+                attributes={
+                    "x-goog-version": "v1",
+                },
+            ))
+        ```
+        ### Cloud Run Service Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                    )],
+                ),
+            ),
+            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                latest_revision=True,
+                percent=100,
+            )])
+        ```
+        ### Cloud Run Service Sql
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            region="us-east1",
+            database_version="MYSQL_5_7",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+            ),
+            deletion_protection=True)
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                    )],
+                ),
+                metadata=gcp.cloudrun.ServiceTemplateMetadataArgs(
+                    annotations={
+                        "autoscaling.knative.dev/maxScale": "1000",
+                        "run.googleapis.com/cloudsql-instances": instance.connection_name,
+                        "run.googleapis.com/client-name": "demo",
+                    },
+                ),
+            ),
+            autogenerate_revision_name=True)
+        ```
+        ### Cloud Run Service Noauth
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                    )],
+                ),
+            ))
+        noauth_iam_policy = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/run.invoker",
+            members=["allUsers"],
+        )])
+        noauth_iam_policy = gcp.cloudrun.IamPolicy("noauthIamPolicy",
+            location=default.location,
+            project=default.project,
+            service=default.name,
+            policy_data=noauth_iam_policy.policy_data)
+        ```
+        ### Cloud Run Service Probes
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                        startup_probe=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeArgs(
+                            initial_delay_seconds=0,
+                            timeout_seconds=1,
+                            period_seconds=3,
+                            failure_threshold=1,
+                            tcp_socket=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeTcpSocketArgs(
+                                port=8080,
+                            ),
+                        ),
+                        liveness_probe=gcp.cloudrun.ServiceTemplateSpecContainerLivenessProbeArgs(
+                            http_get=gcp.cloudrun.ServiceTemplateSpecContainerLivenessProbeHttpGetArgs(
+                                path="/",
+                            ),
+                        ),
+                    )],
+                ),
+            ),
+            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                percent=100,
+                latest_revision=True,
+            )])
+        ```
+        ### Cloud Run Service Multicontainer
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            metadata=gcp.cloudrun.ServiceMetadataArgs(
+                annotations={
+                    "run.googleapis.com/launch-stage": "BETA",
+                },
+            ),
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                metadata=gcp.cloudrun.ServiceTemplateMetadataArgs(
+                    annotations={
+                        "run.googleapis.com/container-dependencies": json.dumps({
+                            "hello-1": ["hello-2"],
+                        }),
+                    },
+                ),
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[
+                        gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                            name="hello-1",
+                            ports=[gcp.cloudrun.ServiceTemplateSpecContainerPortArgs(
+                                container_port=8080,
+                            )],
+                            image="us-docker.pkg.dev/cloudrun/container/hello",
+                            volume_mounts=[gcp.cloudrun.ServiceTemplateSpecContainerVolumeMountArgs(
+                                name="shared-volume",
+                                mount_path="/mnt/shared",
+                            )],
+                        ),
+                        gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                            name="hello-2",
+                            image="us-docker.pkg.dev/cloudrun/container/hello",
+                            envs=[gcp.cloudrun.ServiceTemplateSpecContainerEnvArgs(
+                                name="PORT",
+                                value="8081",
+                            )],
+                            startup_probe=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeArgs(
+                                http_get=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeHttpGetArgs(
+                                    port=8081,
+                                ),
+                            ),
+                            volume_mounts=[gcp.cloudrun.ServiceTemplateSpecContainerVolumeMountArgs(
+                                name="shared-volume",
+                                mount_path="/mnt/shared",
+                            )],
+                        ),
+                    ],
+                    volumes=[gcp.cloudrun.ServiceTemplateSpecVolumeArgs(
+                        name="shared-volume",
+                        empty_dir=gcp.cloudrun.ServiceTemplateSpecVolumeEmptyDirArgs(
+                            medium="Memory",
+                            size_limit="128Mi",
+                        ),
+                    )],
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

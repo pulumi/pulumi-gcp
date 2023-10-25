@@ -585,6 +585,90 @@ class OsPolicyAssignment(pulumi.CustomResource):
             *   [Official Documentation](https://cloud.google.com/compute/docs/os-configuration-management/create-os-policy-assignment)
 
         ## Example Usage
+        ### Os Config Os Policy Assignment Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.osconfig.OsPolicyAssignment("primary",
+            description="A test os policy assignment",
+            instance_filter=gcp.osconfig.OsPolicyAssignmentInstanceFilterArgs(
+                all=False,
+                exclusion_labels=[gcp.osconfig.OsPolicyAssignmentInstanceFilterExclusionLabelArgs(
+                    labels={
+                        "label-two": "value-two",
+                    },
+                )],
+                inclusion_labels=[gcp.osconfig.OsPolicyAssignmentInstanceFilterInclusionLabelArgs(
+                    labels={
+                        "label-one": "value-one",
+                    },
+                )],
+                inventories=[gcp.osconfig.OsPolicyAssignmentInstanceFilterInventoryArgs(
+                    os_short_name="centos",
+                    os_version="8.*",
+                )],
+            ),
+            location="us-central1-a",
+            os_policies=[gcp.osconfig.OsPolicyAssignmentOsPolicyArgs(
+                allow_no_resource_group_match=False,
+                description="A test os policy",
+                id="policy",
+                mode="VALIDATION",
+                resource_groups=[gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupArgs(
+                    inventory_filters=[gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs(
+                        os_short_name="centos",
+                        os_version="8.*",
+                    )],
+                    resources=[
+                        gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
+                            id="apt-to-yum",
+                            repository=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs(
+                                apt=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs(
+                                    archive_type="DEB",
+                                    components=["doc"],
+                                    distribution="debian",
+                                    gpg_key=".gnupg/pubring.kbx",
+                                    uri="https://atl.mirrors.clouvider.net/debian",
+                                ),
+                            ),
+                        ),
+                        gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
+                            exec_=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs(
+                                enforce=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs(
+                                    args=["arg1"],
+                                    file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs(
+                                        allow_insecure=True,
+                                        remote=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs(
+                                            sha256_checksum="c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
+                                            uri="https://www.example.com/script.sh",
+                                        ),
+                                    ),
+                                    interpreter="SHELL",
+                                    output_file_path="$HOME/out",
+                                ),
+                                validate=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs(
+                                    args=["arg1"],
+                                    file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs(
+                                        local_path="$HOME/script.sh",
+                                    ),
+                                    interpreter="SHELL",
+                                    output_file_path="$HOME/out",
+                                ),
+                            ),
+                            id="exec1",
+                        ),
+                    ],
+                )],
+            )],
+            rollout=gcp.osconfig.OsPolicyAssignmentRolloutArgs(
+                disruption_budget=gcp.osconfig.OsPolicyAssignmentRolloutDisruptionBudgetArgs(
+                    percent=100,
+                ),
+                min_wait_duration="3s",
+            ))
+        ```
 
         ## Import
 
@@ -644,6 +728,90 @@ class OsPolicyAssignment(pulumi.CustomResource):
             *   [Official Documentation](https://cloud.google.com/compute/docs/os-configuration-management/create-os-policy-assignment)
 
         ## Example Usage
+        ### Os Config Os Policy Assignment Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.osconfig.OsPolicyAssignment("primary",
+            description="A test os policy assignment",
+            instance_filter=gcp.osconfig.OsPolicyAssignmentInstanceFilterArgs(
+                all=False,
+                exclusion_labels=[gcp.osconfig.OsPolicyAssignmentInstanceFilterExclusionLabelArgs(
+                    labels={
+                        "label-two": "value-two",
+                    },
+                )],
+                inclusion_labels=[gcp.osconfig.OsPolicyAssignmentInstanceFilterInclusionLabelArgs(
+                    labels={
+                        "label-one": "value-one",
+                    },
+                )],
+                inventories=[gcp.osconfig.OsPolicyAssignmentInstanceFilterInventoryArgs(
+                    os_short_name="centos",
+                    os_version="8.*",
+                )],
+            ),
+            location="us-central1-a",
+            os_policies=[gcp.osconfig.OsPolicyAssignmentOsPolicyArgs(
+                allow_no_resource_group_match=False,
+                description="A test os policy",
+                id="policy",
+                mode="VALIDATION",
+                resource_groups=[gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupArgs(
+                    inventory_filters=[gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs(
+                        os_short_name="centos",
+                        os_version="8.*",
+                    )],
+                    resources=[
+                        gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
+                            id="apt-to-yum",
+                            repository=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs(
+                                apt=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs(
+                                    archive_type="DEB",
+                                    components=["doc"],
+                                    distribution="debian",
+                                    gpg_key=".gnupg/pubring.kbx",
+                                    uri="https://atl.mirrors.clouvider.net/debian",
+                                ),
+                            ),
+                        ),
+                        gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
+                            exec_=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs(
+                                enforce=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs(
+                                    args=["arg1"],
+                                    file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs(
+                                        allow_insecure=True,
+                                        remote=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs(
+                                            sha256_checksum="c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
+                                            uri="https://www.example.com/script.sh",
+                                        ),
+                                    ),
+                                    interpreter="SHELL",
+                                    output_file_path="$HOME/out",
+                                ),
+                                validate=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs(
+                                    args=["arg1"],
+                                    file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs(
+                                        local_path="$HOME/script.sh",
+                                    ),
+                                    interpreter="SHELL",
+                                    output_file_path="$HOME/out",
+                                ),
+                            ),
+                            id="exec1",
+                        ),
+                    ],
+                )],
+            )],
+            rollout=gcp.osconfig.OsPolicyAssignmentRolloutArgs(
+                disruption_budget=gcp.osconfig.OsPolicyAssignmentRolloutDisruptionBudgetArgs(
+                    percent=100,
+                ),
+                min_wait_duration="3s",
+            ))
+        ```
 
         ## Import
 

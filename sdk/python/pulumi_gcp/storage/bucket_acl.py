@@ -232,6 +232,23 @@ class BucketACL(pulumi.CustomResource):
 
         **NOTE** This resource will not remove the `project-owners-<project_id>` entity from the `OWNER` role.
 
+        ## Example Usage
+
+        Example creating an ACL on a bucket with one owner, and one reader.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        image_store = gcp.storage.Bucket("image-store", location="EU")
+        image_store_acl = gcp.storage.BucketACL("image-store-acl",
+            bucket=image_store.name,
+            role_entities=[
+                "OWNER:user-my.email@gmail.com",
+                "READER:group-mygroup",
+            ])
+        ```
+
         ## Import
 
         This resource does not support import.
@@ -262,6 +279,23 @@ class BucketACL(pulumi.CustomResource):
         Permissions can be granted either by ACLs or Cloud IAM policies. In general, permissions granted by Cloud IAM policies do not appear in ACLs, and permissions granted by ACLs do not appear in Cloud IAM policies. The only exception is for ACLs applied directly on a bucket and certain bucket-level Cloud IAM policies, as described in [Cloud IAM relation to ACLs](https://cloud.google.com/storage/docs/access-control/iam#acls).
 
         **NOTE** This resource will not remove the `project-owners-<project_id>` entity from the `OWNER` role.
+
+        ## Example Usage
+
+        Example creating an ACL on a bucket with one owner, and one reader.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        image_store = gcp.storage.Bucket("image-store", location="EU")
+        image_store_acl = gcp.storage.BucketACL("image-store-acl",
+            bucket=image_store.name,
+            role_entities=[
+                "OWNER:user-my.email@gmail.com",
+                "READER:group-mygroup",
+            ])
+        ```
 
         ## Import
 

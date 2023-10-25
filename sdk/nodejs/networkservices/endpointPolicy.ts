@@ -8,6 +8,58 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### Network Services Endpoint Policy Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.networkservices.EndpointPolicy("default", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     description: "my description",
+ *     type: "SIDECAR_PROXY",
+ *     trafficPortSelector: {
+ *         ports: ["8081"],
+ *     },
+ *     endpointMatcher: {
+ *         metadataLabelMatcher: {
+ *             metadataLabelMatchCriteria: "MATCH_ANY",
+ *             metadataLabels: [{
+ *                 labelName: "foo",
+ *                 labelValue: "bar",
+ *             }],
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Network Services Endpoint Policy Empty Match
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.networkservices.EndpointPolicy("default", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     description: "my description",
+ *     type: "SIDECAR_PROXY",
+ *     trafficPortSelector: {
+ *         ports: ["8081"],
+ *     },
+ *     endpointMatcher: {
+ *         metadataLabelMatcher: {
+ *             metadataLabelMatchCriteria: "MATCH_ANY",
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

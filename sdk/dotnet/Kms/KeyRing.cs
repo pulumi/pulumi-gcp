@@ -23,6 +23,23 @@ namespace Pulumi.Gcp.Kms
     ///     * [Creating a key ring](https://cloud.google.com/kms/docs/creating-keys#create_a_key_ring)
     /// 
     /// ## Example Usage
+    /// ### Kms Key Ring Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example_keyring = new Gcp.Kms.KeyRing("example-keyring", new()
+    ///     {
+    ///         Location = "global",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

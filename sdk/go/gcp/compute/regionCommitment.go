@@ -26,6 +26,80 @@ import (
 //   - [Committed use discounts for Compute Engine](https://cloud.google.com/compute/docs/instances/committed-use-discounts-overview)
 //
 // ## Example Usage
+// ### Compute Region Commitment Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewRegionCommitment(ctx, "foobar", &compute.RegionCommitmentArgs{
+//				Plan: pulumi.String("THIRTY_SIX_MONTH"),
+//				Resources: compute.RegionCommitmentResourceArray{
+//					&compute.RegionCommitmentResourceArgs{
+//						Amount: pulumi.String("4"),
+//						Type:   pulumi.String("VCPU"),
+//					},
+//					&compute.RegionCommitmentResourceArgs{
+//						Amount: pulumi.String("9"),
+//						Type:   pulumi.String("MEMORY"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Compute Region Commitment Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewRegionCommitment(ctx, "foobar", &compute.RegionCommitmentArgs{
+//				AutoRenew:   pulumi.Bool(true),
+//				Category:    pulumi.String("MACHINE"),
+//				Description: pulumi.String("some description"),
+//				Plan:        pulumi.String("THIRTY_SIX_MONTH"),
+//				Resources: compute.RegionCommitmentResourceArray{
+//					&compute.RegionCommitmentResourceArgs{
+//						Amount: pulumi.String("4"),
+//						Type:   pulumi.String("VCPU"),
+//					},
+//					&compute.RegionCommitmentResourceArgs{
+//						Amount: pulumi.String("9"),
+//						Type:   pulumi.String("MEMORY"),
+//					},
+//				},
+//				Type: pulumi.String("MEMORY_OPTIMIZED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

@@ -182,6 +182,17 @@ class ProjectMetadataItem(pulumi.CustomResource):
         manage a single key/value setting in the provider rather than the entire
         project metadata map.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.ProjectMetadataItem("default",
+            key="my_metadata",
+            value="my_value")
+        ```
+
         ## Import
 
         Project metadata items can be imported using the `key`, e.g.
@@ -210,6 +221,17 @@ class ProjectMetadataItem(pulumi.CustomResource):
         a project in GCE. Using `compute.ProjectMetadataItem` lets you
         manage a single key/value setting in the provider rather than the entire
         project metadata map.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.ProjectMetadataItem("default",
+            key="my_metadata",
+            value="my_value")
+        ```
 
         ## Import
 

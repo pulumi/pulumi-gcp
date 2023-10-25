@@ -409,6 +409,17 @@ class Domain(pulumi.CustomResource):
             * [Managed Microsoft Active Directory Quickstart](https://cloud.google.com/managed-microsoft-ad/docs/quickstarts)
 
         ## Example Usage
+        ### Active Directory Domain Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ad_domain = gcp.activedirectory.Domain("ad-domain",
+            domain_name="tfgen.org.com",
+            locations=["us-central1"],
+            reserved_ip_range="192.168.255.0/24")
+        ```
 
         ## Import
 
@@ -453,6 +464,17 @@ class Domain(pulumi.CustomResource):
             * [Managed Microsoft Active Directory Quickstart](https://cloud.google.com/managed-microsoft-ad/docs/quickstarts)
 
         ## Example Usage
+        ### Active Directory Domain Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ad_domain = gcp.activedirectory.Domain("ad-domain",
+            domain_name="tfgen.org.com",
+            locations=["us-central1"],
+            reserved_ip_range="192.168.255.0/24")
+        ```
 
         ## Import
 

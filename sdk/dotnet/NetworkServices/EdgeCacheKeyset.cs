@@ -23,6 +23,83 @@ namespace Pulumi.Gcp.NetworkServices
     /// Read more about sensitive data in state.
     /// 
     /// ## Example Usage
+    /// ### Network Services Edge Cache Keyset Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.NetworkServices.EdgeCacheKeyset("default", new()
+    ///     {
+    ///         Description = "The default keyset",
+    ///         PublicKeys = new[]
+    ///         {
+    ///             new Gcp.NetworkServices.Inputs.EdgeCacheKeysetPublicKeyArgs
+    ///             {
+    ///                 Id = "my-public-key",
+    ///                 Value = "FHsTyFHNmvNpw4o7-rp-M1yqMyBF8vXSBRkZtkQ0RKY",
+    ///             },
+    ///             new Gcp.NetworkServices.Inputs.EdgeCacheKeysetPublicKeyArgs
+    ///             {
+    ///                 Id = "my-public-key-2",
+    ///                 Value = "hzd03llxB1u5FOLKFkZ6_wCJqC7jtN0bg7xlBqS6WVM",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Network Services Edge Cache Keyset Dual Token
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var secret_basic = new Gcp.SecretManager.Secret("secret-basic", new()
+    ///     {
+    ///         SecretId = "secret-name",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var secret_version_basic = new Gcp.SecretManager.SecretVersion("secret-version-basic", new()
+    ///     {
+    ///         Secret = secret_basic.Id,
+    ///         SecretData = "secret-data",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.NetworkServices.EdgeCacheKeyset("default", new()
+    ///     {
+    ///         Description = "The default keyset",
+    ///         PublicKeys = new[]
+    ///         {
+    ///             new Gcp.NetworkServices.Inputs.EdgeCacheKeysetPublicKeyArgs
+    ///             {
+    ///                 Id = "my-public-key",
+    ///                 Managed = true,
+    ///             },
+    ///         },
+    ///         ValidationSharedKeys = new[]
+    ///         {
+    ///             new Gcp.NetworkServices.Inputs.EdgeCacheKeysetValidationSharedKeyArgs
+    ///             {
+    ///                 SecretVersion = secret_version_basic.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -6,6 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for tagtemplate
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.datacatalog.getTagTemplateIamPolicy({
+ *     tagTemplate: google_data_catalog_tag_template.basic_tag_template.name,
+ * });
+ * ```
  */
 export function getTagTemplateIamPolicy(args: GetTagTemplateIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetTagTemplateIamPolicyResult> {
 
@@ -56,6 +67,17 @@ export interface GetTagTemplateIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for tagtemplate
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.datacatalog.getTagTemplateIamPolicy({
+ *     tagTemplate: google_data_catalog_tag_template.basic_tag_template.name,
+ * });
+ * ```
  */
 export function getTagTemplateIamPolicyOutput(args: GetTagTemplateIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagTemplateIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getTagTemplateIamPolicy(a, opts))

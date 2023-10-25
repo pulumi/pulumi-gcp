@@ -20,6 +20,25 @@ namespace Pulumi.Gcp.CloudRun
         /// * How-to Guides
         ///     * [Official Documentation](https://cloud.google.com/run/docs/)
         ///     
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var available = Gcp.CloudRun.GetLocations.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetLocationsResult> InvokeAsync(GetLocationsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLocationsResult>("gcp:cloudrun/getLocations:getLocations", args ?? new GetLocationsArgs(), options.WithDefaults());
@@ -33,6 +52,25 @@ namespace Pulumi.Gcp.CloudRun
         /// * How-to Guides
         ///     * [Official Documentation](https://cloud.google.com/run/docs/)
         ///     
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var available = Gcp.CloudRun.GetLocations.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetLocationsResult> Invoke(GetLocationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLocationsResult>("gcp:cloudrun/getLocations:getLocations", args ?? new GetLocationsInvokeArgs(), options.WithDefaults());

@@ -12,6 +12,32 @@ import * as utilities from "../utilities";
  * and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools).
  *
  * ## Example Usage
+ * ### Using A Separately Managed Node Pool (Recommended)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.serviceaccount.Account("default", {
+ *     accountId: "service-account-id",
+ *     displayName: "Service Account",
+ * });
+ * const primary = new gcp.container.Cluster("primary", {
+ *     location: "us-central1",
+ *     removeDefaultNodePool: true,
+ *     initialNodeCount: 1,
+ * });
+ * const primaryPreemptibleNodes = new gcp.container.NodePool("primaryPreemptibleNodes", {
+ *     cluster: primary.id,
+ *     nodeCount: 1,
+ *     nodeConfig: {
+ *         preemptible: true,
+ *         machineType: "e2-medium",
+ *         serviceAccount: _default.email,
+ *         oauthScopes: ["https://www.googleapis.com/auth/cloud-platform"],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

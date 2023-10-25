@@ -13,12 +13,58 @@ namespace Pulumi.Gcp.DataPlex
     {
         /// <summary>
         /// Retrieves the current IAM policy data for zone
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.DataPlex.GetZoneIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_dataplex_zone.Example.Project,
+        ///         Location = google_dataplex_zone.Example.Location,
+        ///         Lake = google_dataplex_zone.Example.Lake,
+        ///         DataplexZone = google_dataplex_zone.Example.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetZoneIamPolicyResult> InvokeAsync(GetZoneIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZoneIamPolicyResult>("gcp:dataplex/getZoneIamPolicy:getZoneIamPolicy", args ?? new GetZoneIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for zone
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.DataPlex.GetZoneIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_dataplex_zone.Example.Project,
+        ///         Location = google_dataplex_zone.Example.Location,
+        ///         Lake = google_dataplex_zone.Example.Lake,
+        ///         DataplexZone = google_dataplex_zone.Example.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetZoneIamPolicyResult> Invoke(GetZoneIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZoneIamPolicyResult>("gcp:dataplex/getZoneIamPolicy:getZoneIamPolicy", args ?? new GetZoneIamPolicyInvokeArgs(), options.WithDefaults());

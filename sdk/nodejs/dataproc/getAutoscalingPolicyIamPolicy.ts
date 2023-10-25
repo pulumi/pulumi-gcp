@@ -6,6 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for autoscalingpolicy
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.dataproc.getAutoscalingPolicyIamPolicy({
+ *     project: google_dataproc_autoscaling_policy.basic.project,
+ *     location: google_dataproc_autoscaling_policy.basic.location,
+ *     policyId: google_dataproc_autoscaling_policy.basic.policy_id,
+ * });
+ * ```
  */
 export function getAutoscalingPolicyIamPolicy(args: GetAutoscalingPolicyIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAutoscalingPolicyIamPolicyResult> {
 
@@ -64,6 +77,19 @@ export interface GetAutoscalingPolicyIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for autoscalingpolicy
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.dataproc.getAutoscalingPolicyIamPolicy({
+ *     project: google_dataproc_autoscaling_policy.basic.project,
+ *     location: google_dataproc_autoscaling_policy.basic.location,
+ *     policyId: google_dataproc_autoscaling_policy.basic.policy_id,
+ * });
+ * ```
  */
 export function getAutoscalingPolicyIamPolicyOutput(args: GetAutoscalingPolicyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAutoscalingPolicyIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getAutoscalingPolicyIamPolicy(a, opts))

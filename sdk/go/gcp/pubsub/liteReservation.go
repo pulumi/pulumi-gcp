@@ -22,6 +22,37 @@ import (
 //   - [Managing Reservations](https://cloud.google.com/pubsub/lite/docs/reservations)
 //
 // ## Example Usage
+// ### Pubsub Lite Reservation Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewLiteReservation(ctx, "example", &pubsub.LiteReservationArgs{
+//				Project:            *pulumi.String(project.Number),
+//				ThroughputCapacity: pulumi.Int(2),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

@@ -27,6 +27,128 @@ namespace Pulumi.Gcp.Compute
     /// state as plain-text.
     /// 
     /// ## Example Usage
+    /// ### Backend Service Cache Include Http Headers
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         CdnPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyArgs
+    ///         {
+    ///             CacheKeyPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyCacheKeyPolicyArgs
+    ///             {
+    ///                 IncludeHost = true,
+    ///                 IncludeHttpHeaders = new[]
+    ///                 {
+    ///                     "X-My-Header-Field",
+    ///                 },
+    ///                 IncludeProtocol = true,
+    ///                 IncludeQueryString = true,
+    ///             },
+    ///             CacheMode = "USE_ORIGIN_HEADERS",
+    ///         },
+    ///         EnableCdn = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Backend Service Cache Include Named Cookies
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         CdnPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyArgs
+    ///         {
+    ///             CacheKeyPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyCacheKeyPolicyArgs
+    ///             {
+    ///                 IncludeHost = true,
+    ///                 IncludeNamedCookies = new[]
+    ///                 {
+    ///                     "__next_preview_data",
+    ///                     "__prerender_bypass",
+    ///                 },
+    ///                 IncludeProtocol = true,
+    ///                 IncludeQueryString = true,
+    ///             },
+    ///             CacheMode = "CACHE_ALL_STATIC",
+    ///             ClientTtl = 7200,
+    ///             DefaultTtl = 3600,
+    ///             MaxTtl = 10800,
+    ///         },
+    ///         EnableCdn = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Backend Service Network Endpoint
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var externalProxy = new Gcp.Compute.GlobalNetworkEndpointGroup("externalProxy", new()
+    ///     {
+    ///         NetworkEndpointType = "INTERNET_FQDN_PORT",
+    ///         DefaultPort = 443,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var proxy = new Gcp.Compute.GlobalNetworkEndpoint("proxy", new()
+    ///     {
+    ///         GlobalNetworkEndpointGroup = externalProxy.Id,
+    ///         Fqdn = "test.example.com",
+    ///         Port = externalProxy.DefaultPort,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         EnableCdn = true,
+    ///         TimeoutSec = 10,
+    ///         ConnectionDrainingTimeoutSec = 10,
+    ///         CustomRequestHeaders = new[]
+    ///         {
+    ///             proxy.Fqdn.Apply(fqdn =&gt; $"host: {fqdn}"),
+    ///         },
+    ///         CustomResponseHeaders = new[]
+    ///         {
+    ///             "X-Cache-Hit: {cdn_cache_status}",
+    ///         },
+    ///         Backends = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.BackendServiceBackendArgs
+    ///             {
+    ///                 Group = externalProxy.Id,
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -342,6 +342,26 @@ class IAMCustomRole(pulumi.CustomResource):
          made available again. This means a deleted role that has been deleted for more than 7 days cannot be changed at all
          by the provider, and new roles cannot share that name.
 
+        ## Example Usage
+
+        This snippet creates a customized IAM organization role.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_custom_role = gcp.organizations.IAMCustomRole("my-custom-role",
+            description="A description",
+            org_id="123456789",
+            permissions=[
+                "iam.roles.list",
+                "iam.roles.create",
+                "iam.roles.delete",
+            ],
+            role_id="myCustomRole",
+            title="My Custom Role")
+        ```
+
         ## Import
 
         Customized IAM organization role can be imported using their URI, e.g.
@@ -379,6 +399,26 @@ class IAMCustomRole(pulumi.CustomResource):
          after 7 days, but it can take up to 30 more days (i.e. between 7 and 37 days after deletion) before the role name is
          made available again. This means a deleted role that has been deleted for more than 7 days cannot be changed at all
          by the provider, and new roles cannot share that name.
+
+        ## Example Usage
+
+        This snippet creates a customized IAM organization role.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_custom_role = gcp.organizations.IAMCustomRole("my-custom-role",
+            description="A description",
+            org_id="123456789",
+            permissions=[
+                "iam.roles.list",
+                "iam.roles.create",
+                "iam.roles.delete",
+            ],
+            role_id="myCustomRole",
+            title="My Custom Role")
+        ```
 
         ## Import
 

@@ -6,6 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for a Spanner database.
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const foo = gcp.spanner.getDatabaseIamPolicy({
+ *     project: google_spanner_database.database.project,
+ *     database: google_spanner_database.database.name,
+ *     instance: google_spanner_database.database.instance,
+ * });
+ * ```
  */
 export function getDatabaseIamPolicy(args: GetDatabaseIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseIamPolicyResult> {
 
@@ -58,6 +71,19 @@ export interface GetDatabaseIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for a Spanner database.
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const foo = gcp.spanner.getDatabaseIamPolicy({
+ *     project: google_spanner_database.database.project,
+ *     database: google_spanner_database.database.name,
+ *     instance: google_spanner_database.database.instance,
+ * });
+ * ```
  */
 export function getDatabaseIamPolicyOutput(args: GetDatabaseIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getDatabaseIamPolicy(a, opts))

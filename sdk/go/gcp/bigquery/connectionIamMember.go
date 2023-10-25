@@ -27,6 +27,111 @@ import (
 //
 // > **Note:** `bigquery.ConnectionIamBinding` resources **can be** used in conjunction with `bigquery.ConnectionIamMember` resources **only if** they do not grant privilege to the same role.
 //
+// ## google\_bigquery\_connection\_iam\_policy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/viewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewConnectionIamPolicy(ctx, "policy", &bigquery.ConnectionIamPolicyArgs{
+//				Project:      pulumi.Any(google_bigquery_connection.Connection.Project),
+//				Location:     pulumi.Any(google_bigquery_connection.Connection.Location),
+//				ConnectionId: pulumi.Any(google_bigquery_connection.Connection.Connection_id),
+//				PolicyData:   *pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## google\_bigquery\_connection\_iam\_binding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigquery.NewConnectionIamBinding(ctx, "binding", &bigquery.ConnectionIamBindingArgs{
+//				Project:      pulumi.Any(google_bigquery_connection.Connection.Project),
+//				Location:     pulumi.Any(google_bigquery_connection.Connection.Location),
+//				ConnectionId: pulumi.Any(google_bigquery_connection.Connection.Connection_id),
+//				Role:         pulumi.String("roles/viewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## google\_bigquery\_connection\_iam\_member
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigquery.NewConnectionIamMember(ctx, "member", &bigquery.ConnectionIamMemberArgs{
+//				Project:      pulumi.Any(google_bigquery_connection.Connection.Project),
+//				Location:     pulumi.Any(google_bigquery_connection.Connection.Location),
+//				ConnectionId: pulumi.Any(google_bigquery_connection.Connection.Connection_id),
+//				Role:         pulumi.String("roles/viewer"),
+//				Member:       pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/connections/{{connection_id}} * {{project}}/{{location}}/{{connection_id}} * {{location}}/{{connection_id}} * {{connection_id}} Any variables not passed in the import command will be taken from the provider configuration. BigQuery Connection connection IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

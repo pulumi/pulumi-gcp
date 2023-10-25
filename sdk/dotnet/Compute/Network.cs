@@ -19,6 +19,58 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/vpc/docs/vpc)
     /// 
     /// ## Example Usage
+    /// ### Network Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var vpcNetwork = new Gcp.Compute.Network("vpcNetwork");
+    /// 
+    /// });
+    /// ```
+    /// ### Network Custom Mtu
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var vpcNetwork = new Gcp.Compute.Network("vpcNetwork", new()
+    ///     {
+    ///         AutoCreateSubnetworks = true,
+    ///         Mtu = 1460,
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Network Custom Firewall Enforcement Order
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var vpcNetwork = new Gcp.Compute.Network("vpcNetwork", new()
+    ///     {
+    ///         AutoCreateSubnetworks = true,
+    ///         NetworkFirewallPolicyEnforcementOrder = "BEFORE_CLASSIC_FIREWALL",
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

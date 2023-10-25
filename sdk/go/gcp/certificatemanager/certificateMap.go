@@ -16,6 +16,35 @@ import (
 // which are usable by any associated target proxies
 //
 // ## Example Usage
+// ### Certificate Manager Certificate Map Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := certificatemanager.NewCertificateMap(ctx, "default", &certificatemanager.CertificateMapArgs{
+//				Description: pulumi.String("My acceptance test certificate map"),
+//				Labels: pulumi.StringMap{
+//					"terraform": pulumi.String("true"),
+//					"acc-test":  pulumi.String("true"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

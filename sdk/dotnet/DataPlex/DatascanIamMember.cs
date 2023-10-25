@@ -24,6 +24,89 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// &gt; **Note:** `gcp.dataplex.DatascanIamBinding` resources **can be** used in conjunction with `gcp.dataplex.DatascanIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
+    /// ## google\_dataplex\_datascan\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/viewer",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.DataPlex.DatascanIamPolicy("policy", new()
+    ///     {
+    ///         Project = google_dataplex_datascan.Basic_profile.Project,
+    ///         Location = google_dataplex_datascan.Basic_profile.Location,
+    ///         DataScanId = google_dataplex_datascan.Basic_profile.Data_scan_id,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## google\_dataplex\_datascan\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var binding = new Gcp.DataPlex.DatascanIamBinding("binding", new()
+    ///     {
+    ///         Project = google_dataplex_datascan.Basic_profile.Project,
+    ///         Location = google_dataplex_datascan.Basic_profile.Location,
+    ///         DataScanId = google_dataplex_datascan.Basic_profile.Data_scan_id,
+    ///         Role = "roles/viewer",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## google\_dataplex\_datascan\_iam\_member
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var member = new Gcp.DataPlex.DatascanIamMember("member", new()
+    ///     {
+    ///         Project = google_dataplex_datascan.Basic_profile.Project,
+    ///         Location = google_dataplex_datascan.Basic_profile.Location,
+    ///         DataScanId = google_dataplex_datascan.Basic_profile.Data_scan_id,
+    ///         Role = "roles/viewer",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}} * {{project}}/{{location}}/{{data_scan_id}} * {{location}}/{{data_scan_id}} * {{data_scan_id}} Any variables not passed in the import command will be taken from the provider configuration. Dataplex datascan IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

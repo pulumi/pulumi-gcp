@@ -387,6 +387,21 @@ class TenantOauthIdpConfig(pulumi.CustomResource):
         the marketplace prior to using this resource.
 
         ## Example Usage
+        ### Identity Platform Tenant Oauth Idp Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tenant = gcp.identityplatform.Tenant("tenant", display_name="tenant")
+        tenant_oauth_idp_config = gcp.identityplatform.TenantOauthIdpConfig("tenantOauthIdpConfig",
+            tenant=tenant.name,
+            display_name="Display Name",
+            client_id="client-id",
+            issuer="issuer",
+            enabled=True,
+            client_secret="secret")
+        ```
 
         ## Import
 
@@ -433,6 +448,21 @@ class TenantOauthIdpConfig(pulumi.CustomResource):
         the marketplace prior to using this resource.
 
         ## Example Usage
+        ### Identity Platform Tenant Oauth Idp Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tenant = gcp.identityplatform.Tenant("tenant", display_name="tenant")
+        tenant_oauth_idp_config = gcp.identityplatform.TenantOauthIdpConfig("tenantOauthIdpConfig",
+            tenant=tenant.name,
+            display_name="Display Name",
+            client_id="client-id",
+            issuer="issuer",
+            enabled=True,
+            client_secret="secret")
+        ```
 
         ## Import
 

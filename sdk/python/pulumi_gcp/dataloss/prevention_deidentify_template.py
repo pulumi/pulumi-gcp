@@ -352,6 +352,42 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
+        ### Dlp Deidentify Template Image Transformations
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.dataloss.PreventionDeidentifyTemplate("basic",
+            deidentify_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigArgs(
+                image_transformations=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs(
+                    transforms=[
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
+                            redaction_color=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgs(
+                                blue=1,
+                                green=0.2,
+                                red=0.5,
+                            ),
+                            selected_info_types=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs(
+                                info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArgs(
+                                    name="COLOR_INFO",
+                                    version="latest",
+                                )],
+                            ),
+                        ),
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
+                            all_info_types=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypesArgs(),
+                        ),
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
+                            all_text=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllTextArgs(),
+                        ),
+                    ],
+                ),
+            ),
+            description="Description",
+            display_name="Displayname",
+            parent="projects/my-project-name")
+        ```
 
         ## Import
 
@@ -400,6 +436,42 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
+        ### Dlp Deidentify Template Image Transformations
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.dataloss.PreventionDeidentifyTemplate("basic",
+            deidentify_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigArgs(
+                image_transformations=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs(
+                    transforms=[
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
+                            redaction_color=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgs(
+                                blue=1,
+                                green=0.2,
+                                red=0.5,
+                            ),
+                            selected_info_types=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs(
+                                info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArgs(
+                                    name="COLOR_INFO",
+                                    version="latest",
+                                )],
+                            ),
+                        ),
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
+                            all_info_types=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypesArgs(),
+                        ),
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
+                            all_text=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllTextArgs(),
+                        ),
+                    ],
+                ),
+            ),
+            description="Description",
+            display_name="Displayname",
+            parent="projects/my-project-name")
+        ```
 
         ## Import
 

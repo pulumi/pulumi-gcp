@@ -11,6 +11,20 @@ import * as utilities from "../utilities";
  * which are usable by any associated target proxies
  *
  * ## Example Usage
+ * ### Certificate Manager Certificate Map Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.certificatemanager.CertificateMap("default", {
+ *     description: "My acceptance test certificate map",
+ *     labels: {
+ *         terraform: "true",
+ *         "acc-test": "true",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

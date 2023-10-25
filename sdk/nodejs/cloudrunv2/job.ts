@@ -16,6 +16,244 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/run/docs/)
  *
  * ## Example Usage
+ * ### Cloudrunv2 Job Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.Job("default", {
+ *     location: "us-central1",
+ *     template: {
+ *         template: {
+ *             containers: [{
+ *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *             }],
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Cloudrunv2 Job Sql
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const secret = new gcp.secretmanager.Secret("secret", {
+ *     secretId: "secret",
+ *     replication: {
+ *         auto: {},
+ *     },
+ * });
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     region: "us-central1",
+ *     databaseVersion: "MYSQL_5_7",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *     },
+ *     deletionProtection: true,
+ * });
+ * const _default = new gcp.cloudrunv2.Job("default", {
+ *     location: "us-central1",
+ *     template: {
+ *         template: {
+ *             volumes: [{
+ *                 name: "cloudsql",
+ *                 cloudSqlInstance: {
+ *                     instances: [instance.connectionName],
+ *                 },
+ *             }],
+ *             containers: [{
+ *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *                 envs: [
+ *                     {
+ *                         name: "FOO",
+ *                         value: "bar",
+ *                     },
+ *                     {
+ *                         name: "latestdclsecret",
+ *                         valueSource: {
+ *                             secretKeyRef: {
+ *                                 secret: secret.secretId,
+ *                                 version: "1",
+ *                             },
+ *                         },
+ *                     },
+ *                 ],
+ *                 volumeMounts: [{
+ *                     name: "cloudsql",
+ *                     mountPath: "/cloudsql",
+ *                 }],
+ *             }],
+ *         },
+ *     },
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const secret_version_data = new gcp.secretmanager.SecretVersion("secret-version-data", {
+ *     secret: secret.name,
+ *     secretData: "secret-data",
+ * });
+ * const secret_access = new gcp.secretmanager.SecretIamMember("secret-access", {
+ *     secretId: secret.id,
+ *     role: "roles/secretmanager.secretAccessor",
+ *     member: project.then(project => `serviceAccount:${project.number}-compute@developer.gserviceaccount.com`),
+ * }, {
+ *     dependsOn: [secret],
+ * });
+ * ```
+ * ### Cloudrunv2 Job Vpcaccess
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const customTestNetwork = new gcp.compute.Network("customTestNetwork", {autoCreateSubnetworks: false});
+ * const customTestSubnetwork = new gcp.compute.Subnetwork("customTestSubnetwork", {
+ *     ipCidrRange: "10.2.0.0/28",
+ *     region: "us-central1",
+ *     network: customTestNetwork.id,
+ * });
+ * const connector = new gcp.vpcaccess.Connector("connector", {
+ *     subnet: {
+ *         name: customTestSubnetwork.name,
+ *     },
+ *     machineType: "e2-standard-4",
+ *     minInstances: 2,
+ *     maxInstances: 3,
+ *     region: "us-central1",
+ * });
+ * const _default = new gcp.cloudrunv2.Job("default", {
+ *     location: "us-central1",
+ *     template: {
+ *         template: {
+ *             containers: [{
+ *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *             }],
+ *             vpcAccess: {
+ *                 connector: connector.id,
+ *                 egress: "ALL_TRAFFIC",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Cloudrunv2 Job Directvpc
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.Job("default", {
+ *     location: "us-central1",
+ *     launchStage: "BETA",
+ *     template: {
+ *         template: {
+ *             containers: [{
+ *                 image: "us-docker.pkg.dev/cloudrun/container/job",
+ *             }],
+ *             vpcAccess: {
+ *                 networkInterfaces: [{
+ *                     network: "default",
+ *                     subnetwork: "default",
+ *                     tags: [
+ *                         "tag1",
+ *                         "tag2",
+ *                         "tag3",
+ *                     ],
+ *                 }],
+ *                 egress: "ALL_TRAFFIC",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Cloudrunv2 Job Secret
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const secret = new gcp.secretmanager.Secret("secret", {
+ *     secretId: "secret",
+ *     replication: {
+ *         auto: {},
+ *     },
+ * });
+ * const secret_version_data = new gcp.secretmanager.SecretVersion("secret-version-data", {
+ *     secret: secret.name,
+ *     secretData: "secret-data",
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const secret_access = new gcp.secretmanager.SecretIamMember("secret-access", {
+ *     secretId: secret.id,
+ *     role: "roles/secretmanager.secretAccessor",
+ *     member: project.then(project => `serviceAccount:${project.number}-compute@developer.gserviceaccount.com`),
+ * }, {
+ *     dependsOn: [secret],
+ * });
+ * const _default = new gcp.cloudrunv2.Job("default", {
+ *     location: "us-central1",
+ *     template: {
+ *         template: {
+ *             volumes: [{
+ *                 name: "a-volume",
+ *                 secret: {
+ *                     secret: secret.secretId,
+ *                     defaultMode: 292,
+ *                     items: [{
+ *                         version: "1",
+ *                         path: "my-secret",
+ *                         mode: 256,
+ *                     }],
+ *                 },
+ *             }],
+ *             containers: [{
+ *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *                 volumeMounts: [{
+ *                     name: "a-volume",
+ *                     mountPath: "/secrets",
+ *                 }],
+ *             }],
+ *         },
+ *     },
+ * }, {
+ *     dependsOn: [
+ *         secret_version_data,
+ *         secret_access,
+ *     ],
+ * });
+ * ```
+ * ### Cloudrunv2 Job Emptydir
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.Job("default", {
+ *     location: "us-central1",
+ *     launchStage: "BETA",
+ *     template: {
+ *         template: {
+ *             containers: [{
+ *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *                 volumeMounts: [{
+ *                     name: "empty-dir-volume",
+ *                     mountPath: "/mnt",
+ *                 }],
+ *             }],
+ *             volumes: [{
+ *                 name: "empty-dir-volume",
+ *                 emptyDir: {
+ *                     medium: "MEMORY",
+ *                     sizeLimit: "128Mi",
+ *                 },
+ *             }],
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

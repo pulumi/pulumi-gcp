@@ -449,6 +449,22 @@ class Reservation(pulumi.CustomResource):
             * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
 
         ## Example Usage
+        ### Bigquery Reservation Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        reservation = gcp.bigquery.Reservation("reservation",
+            autoscale=gcp.bigquery.ReservationAutoscaleArgs(
+                max_slots=100,
+            ),
+            concurrency=0,
+            edition="STANDARD",
+            ignore_idle_slots=True,
+            location="us-west2",
+            slot_capacity=0)
+        ```
 
         ## Import
 
@@ -504,6 +520,22 @@ class Reservation(pulumi.CustomResource):
             * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
 
         ## Example Usage
+        ### Bigquery Reservation Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        reservation = gcp.bigquery.Reservation("reservation",
+            autoscale=gcp.bigquery.ReservationAutoscaleArgs(
+                max_slots=100,
+            ),
+            concurrency=0,
+            edition="STANDARD",
+            ignore_idle_slots=True,
+            location="us-west2",
+            slot_capacity=0)
+        ```
 
         ## Import
 

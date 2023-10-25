@@ -27,6 +27,108 @@ import (
 //
 // > **Note:** `cloudbuildv2.ConnectionIAMBinding` resources **can be** used in conjunction with `cloudbuildv2.ConnectionIAMMember` resources **only if** they do not grant privilege to the same role.
 //
+// ## google\_cloudbuildv2\_connection\_iam\_policy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuildv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/cloudbuild.connectionViewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudbuildv2.NewConnectionIAMPolicy(ctx, "policy", &cloudbuildv2.ConnectionIAMPolicyArgs{
+//				Project:    pulumi.Any(google_cloudbuildv2_connection.MyConnection.Project),
+//				Location:   pulumi.Any(google_cloudbuildv2_connection.MyConnection.Location),
+//				PolicyData: *pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## google\_cloudbuildv2\_connection\_iam\_binding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuildv2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudbuildv2.NewConnectionIAMBinding(ctx, "binding", &cloudbuildv2.ConnectionIAMBindingArgs{
+//				Project:  pulumi.Any(google_cloudbuildv2_connection.MyConnection.Project),
+//				Location: pulumi.Any(google_cloudbuildv2_connection.MyConnection.Location),
+//				Role:     pulumi.String("roles/cloudbuild.connectionViewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## google\_cloudbuildv2\_connection\_iam\_member
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuildv2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudbuildv2.NewConnectionIAMMember(ctx, "member", &cloudbuildv2.ConnectionIAMMemberArgs{
+//				Project:  pulumi.Any(google_cloudbuildv2_connection.MyConnection.Project),
+//				Location: pulumi.Any(google_cloudbuildv2_connection.MyConnection.Location),
+//				Role:     pulumi.String("roles/cloudbuild.connectionViewer"),
+//				Member:   pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/connections/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Build v2 connection IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

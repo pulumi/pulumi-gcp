@@ -13,6 +13,32 @@ import (
 )
 
 // Retrieves the current IAM policy data for a Google Cloud KMS crypto key.
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := kms.GetCryptoKeyIamPolicy(ctx, &kms.GetCryptoKeyIamPolicyArgs{
+//				CryptoKeyId: google_kms_crypto_key.Crypto_key.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetCryptoKeyIamPolicy(ctx *pulumi.Context, args *GetCryptoKeyIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetCryptoKeyIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCryptoKeyIamPolicyResult

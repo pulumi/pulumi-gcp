@@ -241,6 +241,127 @@ class IAMMember(pulumi.CustomResource):
         > **Note:** The underlying API method `projects.setIamPolicy` has constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
            IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning a 400 error code so please review these if you encounter errors with this resource.
 
+        ## google\\_folder\\_iam\\_policy
+
+        !> **Be careful!** You can accidentally lock yourself out of your folder
+           using this resource. Deleting a `folder.IAMPolicy` removes access
+           from anyone without permissions on its parent folder/organization. Proceed with caution.
+           It's not recommended to use `folder.IAMPolicy` with your provider folder
+           to avoid locking yourself out, and it should generally only be used with folders
+           fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
+           applying the change.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        folder = gcp.folder.IAMPolicy("folder",
+            folder="folders/1234567",
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+                title="expires_after_2019_12_31",
+            ),
+            members=["user:jane@example.com"],
+            role="roles/compute.admin",
+        )])
+        folder = gcp.folder.IAMPolicy("folder",
+            folder="folders/1234567",
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_folder\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        folder = gcp.folder.IAMBinding("folder",
+            folder="folders/1234567",
+            members=["user:jane@example.com"],
+            role="roles/editor")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        folder = gcp.folder.IAMBinding("folder",
+            condition=gcp.folder.IAMBindingConditionArgs(
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+                title="expires_after_2019_12_31",
+            ),
+            folder="folders/1234567",
+            members=["user:jane@example.com"],
+            role="roles/container.admin")
+        ```
+
+        ## google\\_folder\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        folder = gcp.folder.IAMMember("folder",
+            folder="folders/1234567",
+            member="user:jane@example.com",
+            role="roles/editor")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        folder = gcp.folder.IAMMember("folder",
+            condition=gcp.folder.IAMMemberConditionArgs(
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+                title="expires_after_2019_12_31",
+            ),
+            folder="folders/1234567",
+            member="user:jane@example.com",
+            role="roles/firebase.admin")
+        ```
+
+        ## google\\_folder\\_iam\\_audit\\_config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        folder = gcp.folder.IamAuditConfig("folder",
+            audit_log_configs=[
+                gcp.folder.IamAuditConfigAuditLogConfigArgs(
+                    log_type="ADMIN_READ",
+                ),
+                gcp.folder.IamAuditConfigAuditLogConfigArgs(
+                    exempted_members=["user:joebloggs@hashicorp.com"],
+                    log_type="DATA_READ",
+                ),
+            ],
+            folder="folders/1234567",
+            service="allServices")
+        ```
+
         ## Import
 
         IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
@@ -310,6 +431,127 @@ class IAMMember(pulumi.CustomResource):
 
         > **Note:** The underlying API method `projects.setIamPolicy` has constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
            IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning a 400 error code so please review these if you encounter errors with this resource.
+
+        ## google\\_folder\\_iam\\_policy
+
+        !> **Be careful!** You can accidentally lock yourself out of your folder
+           using this resource. Deleting a `folder.IAMPolicy` removes access
+           from anyone without permissions on its parent folder/organization. Proceed with caution.
+           It's not recommended to use `folder.IAMPolicy` with your provider folder
+           to avoid locking yourself out, and it should generally only be used with folders
+           fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
+           applying the change.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        folder = gcp.folder.IAMPolicy("folder",
+            folder="folders/1234567",
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+                title="expires_after_2019_12_31",
+            ),
+            members=["user:jane@example.com"],
+            role="roles/compute.admin",
+        )])
+        folder = gcp.folder.IAMPolicy("folder",
+            folder="folders/1234567",
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_folder\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        folder = gcp.folder.IAMBinding("folder",
+            folder="folders/1234567",
+            members=["user:jane@example.com"],
+            role="roles/editor")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        folder = gcp.folder.IAMBinding("folder",
+            condition=gcp.folder.IAMBindingConditionArgs(
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+                title="expires_after_2019_12_31",
+            ),
+            folder="folders/1234567",
+            members=["user:jane@example.com"],
+            role="roles/container.admin")
+        ```
+
+        ## google\\_folder\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        folder = gcp.folder.IAMMember("folder",
+            folder="folders/1234567",
+            member="user:jane@example.com",
+            role="roles/editor")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        folder = gcp.folder.IAMMember("folder",
+            condition=gcp.folder.IAMMemberConditionArgs(
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+                title="expires_after_2019_12_31",
+            ),
+            folder="folders/1234567",
+            member="user:jane@example.com",
+            role="roles/firebase.admin")
+        ```
+
+        ## google\\_folder\\_iam\\_audit\\_config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        folder = gcp.folder.IamAuditConfig("folder",
+            audit_log_configs=[
+                gcp.folder.IamAuditConfigAuditLogConfigArgs(
+                    log_type="ADMIN_READ",
+                ),
+                gcp.folder.IamAuditConfigAuditLogConfigArgs(
+                    exempted_members=["user:joebloggs@hashicorp.com"],
+                    log_type="DATA_READ",
+                ),
+            ],
+            folder="folders/1234567",
+            service="allServices")
+        ```
 
         ## Import
 

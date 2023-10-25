@@ -13,6 +13,34 @@ import (
 )
 
 // Retrieves the current IAM policy data for appengineservice
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := iap.LookupAppEngineServiceIamPolicy(ctx, &iap.LookupAppEngineServiceIamPolicyArgs{
+//				AppId:   google_app_engine_standard_app_version.Version.Project,
+//				Project: pulumi.StringRef(google_app_engine_standard_app_version.Version.Project),
+//				Service: google_app_engine_standard_app_version.Version.Service,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupAppEngineServiceIamPolicy(ctx *pulumi.Context, args *LookupAppEngineServiceIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAppEngineServiceIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAppEngineServiceIamPolicyResult

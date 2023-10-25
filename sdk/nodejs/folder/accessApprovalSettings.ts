@@ -14,6 +14,73 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/access-approval/docs/reference/rest/v1/folders)
  *
  * ## Example Usage
+ * ### Folder Access Approval Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myFolder = new gcp.organizations.Folder("myFolder", {
+ *     displayName: "my-folder",
+ *     parent: "organizations/123456789",
+ * });
+ * const folderAccessApproval = new gcp.folder.AccessApprovalSettings("folderAccessApproval", {
+ *     folderId: myFolder.folderId,
+ *     notificationEmails: [
+ *         "testuser@example.com",
+ *         "example.user@example.com",
+ *     ],
+ *     enrolledServices: [{
+ *         cloudProduct: "all",
+ *     }],
+ * });
+ * ```
+ * ### Folder Access Approval Active Key Version
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myFolder = new gcp.organizations.Folder("myFolder", {
+ *     displayName: "my-folder",
+ *     parent: "organizations/123456789",
+ * });
+ * const myProject = new gcp.organizations.Project("myProject", {
+ *     projectId: "your-project-id",
+ *     folderId: myFolder.name,
+ * });
+ * const keyRing = new gcp.kms.KeyRing("keyRing", {
+ *     location: "global",
+ *     project: myProject.projectId,
+ * });
+ * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {
+ *     keyRing: keyRing.id,
+ *     purpose: "ASYMMETRIC_SIGN",
+ *     versionTemplate: {
+ *         algorithm: "EC_SIGN_P384_SHA384",
+ *     },
+ * });
+ * const serviceAccount = gcp.accessapproval.getFolderServiceAccountOutput({
+ *     folderId: myFolder.folderId,
+ * });
+ * const iam = new gcp.kms.CryptoKeyIAMMember("iam", {
+ *     cryptoKeyId: cryptoKey.id,
+ *     role: "roles/cloudkms.signerVerifier",
+ *     member: serviceAccount.apply(serviceAccount => `serviceAccount:${serviceAccount.accountEmail}`),
+ * });
+ * const cryptoKeyVersion = gcp.kms.getKMSCryptoKeyVersionOutput({
+ *     cryptoKey: cryptoKey.id,
+ * });
+ * const folderAccessApproval = new gcp.folder.AccessApprovalSettings("folderAccessApproval", {
+ *     folderId: myFolder.folderId,
+ *     activeKeyVersion: cryptoKeyVersion.apply(cryptoKeyVersion => cryptoKeyVersion.name),
+ *     enrolledServices: [{
+ *         cloudProduct: "all",
+ *     }],
+ * }, {
+ *     dependsOn: [iam],
+ * });
+ * ```
  *
  * ## Import
  *

@@ -25,6 +25,129 @@ namespace Pulumi.Gcp.Compute
     ///     * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
     /// 
     /// ## Example Usage
+    /// ### Backend Bucket Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var imageBucket = new Gcp.Storage.Bucket("imageBucket", new()
+    ///     {
+    ///         Location = "EU",
+    ///     });
+    /// 
+    ///     var imageBackend = new Gcp.Compute.BackendBucket("imageBackend", new()
+    ///     {
+    ///         Description = "Contains beautiful images",
+    ///         BucketName = imageBucket.Name,
+    ///         EnableCdn = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Backend Bucket Security Policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var imageBackendBucket = new Gcp.Storage.Bucket("imageBackendBucket", new()
+    ///     {
+    ///         Location = "EU",
+    ///     });
+    /// 
+    ///     var policy = new Gcp.Compute.SecurityPolicy("policy", new()
+    ///     {
+    ///         Description = "basic security policy",
+    ///         Type = "CLOUD_ARMOR_EDGE",
+    ///     });
+    /// 
+    ///     var imageBackendBackendBucket = new Gcp.Compute.BackendBucket("imageBackendBackendBucket", new()
+    ///     {
+    ///         Description = "Contains beautiful images",
+    ///         BucketName = imageBackendBucket.Name,
+    ///         EnableCdn = true,
+    ///         EdgeSecurityPolicy = policy.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Backend Bucket Query String Whitelist
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var imageBucket = new Gcp.Storage.Bucket("imageBucket", new()
+    ///     {
+    ///         Location = "EU",
+    ///     });
+    /// 
+    ///     var imageBackend = new Gcp.Compute.BackendBucket("imageBackend", new()
+    ///     {
+    ///         Description = "Contains beautiful images",
+    ///         BucketName = imageBucket.Name,
+    ///         EnableCdn = true,
+    ///         CdnPolicy = new Gcp.Compute.Inputs.BackendBucketCdnPolicyArgs
+    ///         {
+    ///             CacheKeyPolicy = new Gcp.Compute.Inputs.BackendBucketCdnPolicyCacheKeyPolicyArgs
+    ///             {
+    ///                 QueryStringWhitelists = new[]
+    ///                 {
+    ///                     "image-version",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Backend Bucket Include Http Headers
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var imageBucket = new Gcp.Storage.Bucket("imageBucket", new()
+    ///     {
+    ///         Location = "EU",
+    ///     });
+    /// 
+    ///     var imageBackend = new Gcp.Compute.BackendBucket("imageBackend", new()
+    ///     {
+    ///         Description = "Contains beautiful images",
+    ///         BucketName = imageBucket.Name,
+    ///         EnableCdn = true,
+    ///         CdnPolicy = new Gcp.Compute.Inputs.BackendBucketCdnPolicyArgs
+    ///         {
+    ///             CacheKeyPolicy = new Gcp.Compute.Inputs.BackendBucketCdnPolicyCacheKeyPolicyArgs
+    ///             {
+    ///                 IncludeHttpHeaders = new[]
+    ///                 {
+    ///                     "X-My-Header-Field",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

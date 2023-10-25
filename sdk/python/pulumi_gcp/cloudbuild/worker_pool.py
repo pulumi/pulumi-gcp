@@ -440,6 +440,55 @@ class WorkerPool(pulumi.CustomResource):
         """
         Definition of custom Cloud Build WorkerPools for running jobs with custom configuration and custom networking.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.cloudbuild.WorkerPool("pool",
+            location="europe-west1",
+            worker_config=gcp.cloudbuild.WorkerPoolWorkerConfigArgs(
+                disk_size_gb=100,
+                machine_type="e2-standard-4",
+                no_external_ip=False,
+            ))
+        ```
+        ### Network Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        servicenetworking = gcp.projects.Service("servicenetworking",
+            service="servicenetworking.googleapis.com",
+            disable_on_destroy=False)
+        network = gcp.compute.Network("network", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
+        worker_range = gcp.compute.GlobalAddress("workerRange",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=network.id)
+        worker_pool_conn = gcp.servicenetworking.Connection("workerPoolConn",
+            network=network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[worker_range.name],
+            opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
+        pool = gcp.cloudbuild.WorkerPool("pool",
+            location="europe-west1",
+            worker_config=gcp.cloudbuild.WorkerPoolWorkerConfigArgs(
+                disk_size_gb=100,
+                machine_type="e2-standard-4",
+                no_external_ip=False,
+            ),
+            network_config=gcp.cloudbuild.WorkerPoolNetworkConfigArgs(
+                peered_network=network.id,
+                peered_network_ip_range="/29",
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[worker_pool_conn]))
+        ```
+
         ## Import
 
         WorkerPool can be imported using any of these accepted formats
@@ -478,6 +527,55 @@ class WorkerPool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Definition of custom Cloud Build WorkerPools for running jobs with custom configuration and custom networking.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.cloudbuild.WorkerPool("pool",
+            location="europe-west1",
+            worker_config=gcp.cloudbuild.WorkerPoolWorkerConfigArgs(
+                disk_size_gb=100,
+                machine_type="e2-standard-4",
+                no_external_ip=False,
+            ))
+        ```
+        ### Network Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        servicenetworking = gcp.projects.Service("servicenetworking",
+            service="servicenetworking.googleapis.com",
+            disable_on_destroy=False)
+        network = gcp.compute.Network("network", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
+        worker_range = gcp.compute.GlobalAddress("workerRange",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=network.id)
+        worker_pool_conn = gcp.servicenetworking.Connection("workerPoolConn",
+            network=network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[worker_range.name],
+            opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
+        pool = gcp.cloudbuild.WorkerPool("pool",
+            location="europe-west1",
+            worker_config=gcp.cloudbuild.WorkerPoolWorkerConfigArgs(
+                disk_size_gb=100,
+                machine_type="e2-standard-4",
+                no_external_ip=False,
+            ),
+            network_config=gcp.cloudbuild.WorkerPoolNetworkConfigArgs(
+                peered_network=network.id,
+                peered_network_ip_range="/29",
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[worker_pool_conn]))
+        ```
 
         ## Import
 

@@ -801,6 +801,19 @@ class Route(pulumi.CustomResource):
             * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
 
         ## Example Usage
+        ### Route Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork")
+        default_route = gcp.compute.Route("defaultRoute",
+            dest_range="15.0.0.0/24",
+            network=default_network.name,
+            next_hop_ip="10.132.1.5",
+            priority=100)
+        ```
 
         ## Import
 
@@ -913,6 +926,19 @@ class Route(pulumi.CustomResource):
             * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
 
         ## Example Usage
+        ### Route Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork")
+        default_route = gcp.compute.Route("defaultRoute",
+            dest_range="15.0.0.0/24",
+            network=default_network.name,
+            next_hop_ip="10.132.1.5",
+            priority=100)
+        ```
 
         ## Import
 

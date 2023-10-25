@@ -1204,6 +1204,326 @@ class Trigger(pulumi.CustomResource):
         > **Note:** You can retrieve the email of the Cloud Build Service Account used in jobs by using the `projects.ServiceIdentity` resource.
 
         ## Example Usage
+        ### Cloudbuild Trigger Filename
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        filename_trigger = gcp.cloudbuild.Trigger("filename-trigger",
+            filename="cloudbuild.yaml",
+            location="us-central1",
+            substitutions={
+                "_BAZ": "qux",
+                "_FOO": "bar",
+            },
+            trigger_template=gcp.cloudbuild.TriggerTriggerTemplateArgs(
+                branch_name="main",
+                repo_name="my-repo",
+            ))
+        ```
+        ### Cloudbuild Trigger Service Account
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        cloudbuild_service_account = gcp.service_account.Account("cloudbuildServiceAccount", account_id="cloud-sa")
+        act_as = gcp.projects.IAMMember("actAs",
+            project=project.project_id,
+            role="roles/iam.serviceAccountUser",
+            member=cloudbuild_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        logs_writer = gcp.projects.IAMMember("logsWriter",
+            project=project.project_id,
+            role="roles/logging.logWriter",
+            member=cloudbuild_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        service_account_trigger = gcp.cloudbuild.Trigger("service-account-trigger",
+            trigger_template=gcp.cloudbuild.TriggerTriggerTemplateArgs(
+                branch_name="main",
+                repo_name="my-repo",
+            ),
+            service_account=cloudbuild_service_account.id,
+            filename="cloudbuild.yaml",
+            opts=pulumi.ResourceOptions(depends_on=[
+                    act_as,
+                    logs_writer,
+                ]))
+        ```
+        ### Cloudbuild Trigger Include Build Logs
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        include_build_logs_trigger = gcp.cloudbuild.Trigger("include-build-logs-trigger",
+            filename="cloudbuild.yaml",
+            github=gcp.cloudbuild.TriggerGithubArgs(
+                name="terraform-provider-google-beta",
+                owner="hashicorp",
+                push=gcp.cloudbuild.TriggerGithubPushArgs(
+                    branch="^main$",
+                ),
+            ),
+            include_build_logs="INCLUDE_BUILD_LOGS_WITH_STATUS",
+            location="us-central1")
+        ```
+        ### Cloudbuild Trigger Pubsub Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        mytopic = gcp.pubsub.Topic("mytopic")
+        pubsub_config_trigger = gcp.cloudbuild.Trigger("pubsub-config-trigger",
+            location="us-central1",
+            description="acceptance test example pubsub build trigger",
+            pubsub_config=gcp.cloudbuild.TriggerPubsubConfigArgs(
+                topic=mytopic.id,
+            ),
+            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
+                uri="https://hashicorp/terraform-provider-google-beta",
+                ref="refs/heads/main",
+                repo_type="GITHUB",
+            ),
+            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
+                path="cloudbuild.yaml",
+                uri="https://hashicorp/terraform-provider-google-beta",
+                revision="refs/heads/main",
+                repo_type="GITHUB",
+            ),
+            substitutions={
+                "_ACTION": "$(body.message.data.action)",
+            },
+            filter="_ACTION.matches('INSERT')")
+        ```
+        ### Cloudbuild Trigger Webhook Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        webhook_trigger_secret_key = gcp.secretmanager.Secret("webhookTriggerSecretKey",
+            secret_id="webhook-trigger-secret-key",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
+                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+                        location="us-central1",
+                    )],
+                ),
+            ))
+        webhook_trigger_secret_key_data = gcp.secretmanager.SecretVersion("webhookTriggerSecretKeyData",
+            secret=webhook_trigger_secret_key.id,
+            secret_data="secretkeygoeshere")
+        project = gcp.organizations.get_project()
+        secret_accessor = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/secretmanager.secretAccessor",
+            members=[f"serviceAccount:service-{project.number}@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
+        )])
+        policy = gcp.secretmanager.SecretIamPolicy("policy",
+            project=webhook_trigger_secret_key.project,
+            secret_id=webhook_trigger_secret_key.secret_id,
+            policy_data=secret_accessor.policy_data)
+        webhook_config_trigger = gcp.cloudbuild.Trigger("webhook-config-trigger",
+            description="acceptance test example webhook build trigger",
+            webhook_config=gcp.cloudbuild.TriggerWebhookConfigArgs(
+                secret=webhook_trigger_secret_key_data.id,
+            ),
+            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
+                uri="https://hashicorp/terraform-provider-google-beta",
+                ref="refs/heads/main",
+                repo_type="GITHUB",
+            ),
+            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
+                path="cloudbuild.yaml",
+                uri="https://hashicorp/terraform-provider-google-beta",
+                revision="refs/heads/main",
+                repo_type="GITHUB",
+            ))
+        ```
+        ### Cloudbuild Trigger Manual
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        manual_trigger = gcp.cloudbuild.Trigger("manual-trigger",
+            approval_config=gcp.cloudbuild.TriggerApprovalConfigArgs(
+                approval_required=True,
+            ),
+            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
+                path="cloudbuild.yaml",
+                repo_type="GITHUB",
+                revision="refs/heads/main",
+                uri="https://hashicorp/terraform-provider-google-beta",
+            ),
+            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
+                ref="refs/heads/main",
+                repo_type="GITHUB",
+                uri="https://hashicorp/terraform-provider-google-beta",
+            ))
+        ```
+        ### Cloudbuild Trigger Manual Github Enterprise
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        manual_ghe_trigger = gcp.cloudbuild.Trigger("manual-ghe-trigger",
+            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
+                github_enterprise_config="projects/myProject/locations/global/githubEnterpriseConfigs/configID",
+                path="cloudbuild.yaml",
+                repo_type="GITHUB",
+                revision="refs/heads/main",
+                uri="https://hashicorp/terraform-provider-google-beta",
+            ),
+            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
+                github_enterprise_config="projects/myProject/locations/global/githubEnterpriseConfigs/configID",
+                ref="refs/heads/main",
+                repo_type="GITHUB",
+                uri="https://hashicorp/terraform-provider-google-beta",
+            ))
+        ```
+        ### Cloudbuild Trigger Manual Bitbucket Server
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        manual_bitbucket_trigger = gcp.cloudbuild.Trigger("manual-bitbucket-trigger",
+            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
+                bitbucket_server_config="projects/myProject/locations/global/bitbucketServerConfigs/configID",
+                path="cloudbuild.yaml",
+                repo_type="BITBUCKET_SERVER",
+                revision="refs/heads/main",
+                uri="https://bbs.com/scm/stag/test-repo.git",
+            ),
+            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
+                bitbucket_server_config="projects/myProject/locations/global/bitbucketServerConfigs/configID",
+                ref="refs/heads/main",
+                repo_type="BITBUCKET_SERVER",
+                uri="https://bbs.com/scm/stag/test-repo.git",
+            ))
+        ```
+        ### Cloudbuild Trigger Repo
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_connection = gcp.cloudbuildv2.Connection("my-connection",
+            location="us-central1",
+            github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
+                app_installation_id=123123,
+                authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
+                    oauth_token_secret_version="projects/my-project/secrets/github-pat-secret/versions/latest",
+                ),
+            ))
+        my_repository = gcp.cloudbuildv2.Repository("my-repository",
+            parent_connection=my_connection.id,
+            remote_uri="https://github.com/myuser/my-repo.git")
+        repo_trigger = gcp.cloudbuild.Trigger("repo-trigger",
+            location="us-central1",
+            repository_event_config=gcp.cloudbuild.TriggerRepositoryEventConfigArgs(
+                repository=my_repository.id,
+                push=gcp.cloudbuild.TriggerRepositoryEventConfigPushArgs(
+                    branch="feature-.*",
+                ),
+            ),
+            filename="cloudbuild.yaml")
+        ```
+        ### Cloudbuild Trigger Bitbucket Server Push
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bbs_push_trigger = gcp.cloudbuild.Trigger("bbs-push-trigger",
+            bitbucket_server_trigger_config=gcp.cloudbuild.TriggerBitbucketServerTriggerConfigArgs(
+                bitbucket_server_config_resource="projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
+                project_key="STAG",
+                push=gcp.cloudbuild.TriggerBitbucketServerTriggerConfigPushArgs(
+                    invert_regex=True,
+                    tag="^0.1.*",
+                ),
+                repo_slug="bbs-push-trigger",
+            ),
+            filename="cloudbuild.yaml",
+            location="us-central1")
+        ```
+        ### Cloudbuild Trigger Bitbucket Server Pull Request
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bbs_pull_request_trigger = gcp.cloudbuild.Trigger("bbs-pull-request-trigger",
+            bitbucket_server_trigger_config=gcp.cloudbuild.TriggerBitbucketServerTriggerConfigArgs(
+                bitbucket_server_config_resource="projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
+                project_key="STAG",
+                pull_request=gcp.cloudbuild.TriggerBitbucketServerTriggerConfigPullRequestArgs(
+                    branch="^master$",
+                    comment_control="COMMENTS_ENABLED",
+                    invert_regex=False,
+                ),
+                repo_slug="terraform-provider-google",
+            ),
+            filename="cloudbuild.yaml",
+            location="us-central1")
+        ```
+        ### Cloudbuild Trigger Github Enterprise
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ghe_trigger = gcp.cloudbuild.Trigger("ghe-trigger",
+            filename="cloudbuild.yaml",
+            github=gcp.cloudbuild.TriggerGithubArgs(
+                enterprise_config_resource_name="projects/123456789/locations/us-central1/githubEnterpriseConfigs/configID",
+                name="terraform-provider-google",
+                owner="hashicorp",
+                push=gcp.cloudbuild.TriggerGithubPushArgs(
+                    branch="^main$",
+                ),
+            ),
+            location="us-central1")
+        ```
+        ### Cloudbuild Trigger Pubsub With Repo
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_connection = gcp.cloudbuildv2.Connection("my-connection",
+            location="us-central1",
+            github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
+                app_installation_id=123123,
+                authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
+                    oauth_token_secret_version="projects/my-project/secrets/github-pat-secret/versions/latest",
+                ),
+            ))
+        my_repository = gcp.cloudbuildv2.Repository("my-repository",
+            parent_connection=my_connection.id,
+            remote_uri="https://github.com/myuser/my-repo.git")
+        mytopic = gcp.pubsub.Topic("mytopic")
+        pubsub_with_repo_trigger = gcp.cloudbuild.Trigger("pubsub-with-repo-trigger",
+            location="us-central1",
+            pubsub_config=gcp.cloudbuild.TriggerPubsubConfigArgs(
+                topic=mytopic.id,
+            ),
+            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
+                repository=my_repository.id,
+                ref="refs/heads/main",
+                repo_type="GITHUB",
+            ),
+            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
+                path="cloudbuild.yaml",
+                repository=my_repository.id,
+                revision="refs/heads/main",
+                repo_type="GITHUB",
+            ))
+        ```
 
         ## Import
 
@@ -1319,6 +1639,326 @@ class Trigger(pulumi.CustomResource):
         > **Note:** You can retrieve the email of the Cloud Build Service Account used in jobs by using the `projects.ServiceIdentity` resource.
 
         ## Example Usage
+        ### Cloudbuild Trigger Filename
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        filename_trigger = gcp.cloudbuild.Trigger("filename-trigger",
+            filename="cloudbuild.yaml",
+            location="us-central1",
+            substitutions={
+                "_BAZ": "qux",
+                "_FOO": "bar",
+            },
+            trigger_template=gcp.cloudbuild.TriggerTriggerTemplateArgs(
+                branch_name="main",
+                repo_name="my-repo",
+            ))
+        ```
+        ### Cloudbuild Trigger Service Account
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        cloudbuild_service_account = gcp.service_account.Account("cloudbuildServiceAccount", account_id="cloud-sa")
+        act_as = gcp.projects.IAMMember("actAs",
+            project=project.project_id,
+            role="roles/iam.serviceAccountUser",
+            member=cloudbuild_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        logs_writer = gcp.projects.IAMMember("logsWriter",
+            project=project.project_id,
+            role="roles/logging.logWriter",
+            member=cloudbuild_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        service_account_trigger = gcp.cloudbuild.Trigger("service-account-trigger",
+            trigger_template=gcp.cloudbuild.TriggerTriggerTemplateArgs(
+                branch_name="main",
+                repo_name="my-repo",
+            ),
+            service_account=cloudbuild_service_account.id,
+            filename="cloudbuild.yaml",
+            opts=pulumi.ResourceOptions(depends_on=[
+                    act_as,
+                    logs_writer,
+                ]))
+        ```
+        ### Cloudbuild Trigger Include Build Logs
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        include_build_logs_trigger = gcp.cloudbuild.Trigger("include-build-logs-trigger",
+            filename="cloudbuild.yaml",
+            github=gcp.cloudbuild.TriggerGithubArgs(
+                name="terraform-provider-google-beta",
+                owner="hashicorp",
+                push=gcp.cloudbuild.TriggerGithubPushArgs(
+                    branch="^main$",
+                ),
+            ),
+            include_build_logs="INCLUDE_BUILD_LOGS_WITH_STATUS",
+            location="us-central1")
+        ```
+        ### Cloudbuild Trigger Pubsub Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        mytopic = gcp.pubsub.Topic("mytopic")
+        pubsub_config_trigger = gcp.cloudbuild.Trigger("pubsub-config-trigger",
+            location="us-central1",
+            description="acceptance test example pubsub build trigger",
+            pubsub_config=gcp.cloudbuild.TriggerPubsubConfigArgs(
+                topic=mytopic.id,
+            ),
+            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
+                uri="https://hashicorp/terraform-provider-google-beta",
+                ref="refs/heads/main",
+                repo_type="GITHUB",
+            ),
+            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
+                path="cloudbuild.yaml",
+                uri="https://hashicorp/terraform-provider-google-beta",
+                revision="refs/heads/main",
+                repo_type="GITHUB",
+            ),
+            substitutions={
+                "_ACTION": "$(body.message.data.action)",
+            },
+            filter="_ACTION.matches('INSERT')")
+        ```
+        ### Cloudbuild Trigger Webhook Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        webhook_trigger_secret_key = gcp.secretmanager.Secret("webhookTriggerSecretKey",
+            secret_id="webhook-trigger-secret-key",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
+                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+                        location="us-central1",
+                    )],
+                ),
+            ))
+        webhook_trigger_secret_key_data = gcp.secretmanager.SecretVersion("webhookTriggerSecretKeyData",
+            secret=webhook_trigger_secret_key.id,
+            secret_data="secretkeygoeshere")
+        project = gcp.organizations.get_project()
+        secret_accessor = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/secretmanager.secretAccessor",
+            members=[f"serviceAccount:service-{project.number}@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
+        )])
+        policy = gcp.secretmanager.SecretIamPolicy("policy",
+            project=webhook_trigger_secret_key.project,
+            secret_id=webhook_trigger_secret_key.secret_id,
+            policy_data=secret_accessor.policy_data)
+        webhook_config_trigger = gcp.cloudbuild.Trigger("webhook-config-trigger",
+            description="acceptance test example webhook build trigger",
+            webhook_config=gcp.cloudbuild.TriggerWebhookConfigArgs(
+                secret=webhook_trigger_secret_key_data.id,
+            ),
+            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
+                uri="https://hashicorp/terraform-provider-google-beta",
+                ref="refs/heads/main",
+                repo_type="GITHUB",
+            ),
+            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
+                path="cloudbuild.yaml",
+                uri="https://hashicorp/terraform-provider-google-beta",
+                revision="refs/heads/main",
+                repo_type="GITHUB",
+            ))
+        ```
+        ### Cloudbuild Trigger Manual
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        manual_trigger = gcp.cloudbuild.Trigger("manual-trigger",
+            approval_config=gcp.cloudbuild.TriggerApprovalConfigArgs(
+                approval_required=True,
+            ),
+            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
+                path="cloudbuild.yaml",
+                repo_type="GITHUB",
+                revision="refs/heads/main",
+                uri="https://hashicorp/terraform-provider-google-beta",
+            ),
+            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
+                ref="refs/heads/main",
+                repo_type="GITHUB",
+                uri="https://hashicorp/terraform-provider-google-beta",
+            ))
+        ```
+        ### Cloudbuild Trigger Manual Github Enterprise
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        manual_ghe_trigger = gcp.cloudbuild.Trigger("manual-ghe-trigger",
+            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
+                github_enterprise_config="projects/myProject/locations/global/githubEnterpriseConfigs/configID",
+                path="cloudbuild.yaml",
+                repo_type="GITHUB",
+                revision="refs/heads/main",
+                uri="https://hashicorp/terraform-provider-google-beta",
+            ),
+            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
+                github_enterprise_config="projects/myProject/locations/global/githubEnterpriseConfigs/configID",
+                ref="refs/heads/main",
+                repo_type="GITHUB",
+                uri="https://hashicorp/terraform-provider-google-beta",
+            ))
+        ```
+        ### Cloudbuild Trigger Manual Bitbucket Server
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        manual_bitbucket_trigger = gcp.cloudbuild.Trigger("manual-bitbucket-trigger",
+            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
+                bitbucket_server_config="projects/myProject/locations/global/bitbucketServerConfigs/configID",
+                path="cloudbuild.yaml",
+                repo_type="BITBUCKET_SERVER",
+                revision="refs/heads/main",
+                uri="https://bbs.com/scm/stag/test-repo.git",
+            ),
+            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
+                bitbucket_server_config="projects/myProject/locations/global/bitbucketServerConfigs/configID",
+                ref="refs/heads/main",
+                repo_type="BITBUCKET_SERVER",
+                uri="https://bbs.com/scm/stag/test-repo.git",
+            ))
+        ```
+        ### Cloudbuild Trigger Repo
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_connection = gcp.cloudbuildv2.Connection("my-connection",
+            location="us-central1",
+            github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
+                app_installation_id=123123,
+                authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
+                    oauth_token_secret_version="projects/my-project/secrets/github-pat-secret/versions/latest",
+                ),
+            ))
+        my_repository = gcp.cloudbuildv2.Repository("my-repository",
+            parent_connection=my_connection.id,
+            remote_uri="https://github.com/myuser/my-repo.git")
+        repo_trigger = gcp.cloudbuild.Trigger("repo-trigger",
+            location="us-central1",
+            repository_event_config=gcp.cloudbuild.TriggerRepositoryEventConfigArgs(
+                repository=my_repository.id,
+                push=gcp.cloudbuild.TriggerRepositoryEventConfigPushArgs(
+                    branch="feature-.*",
+                ),
+            ),
+            filename="cloudbuild.yaml")
+        ```
+        ### Cloudbuild Trigger Bitbucket Server Push
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bbs_push_trigger = gcp.cloudbuild.Trigger("bbs-push-trigger",
+            bitbucket_server_trigger_config=gcp.cloudbuild.TriggerBitbucketServerTriggerConfigArgs(
+                bitbucket_server_config_resource="projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
+                project_key="STAG",
+                push=gcp.cloudbuild.TriggerBitbucketServerTriggerConfigPushArgs(
+                    invert_regex=True,
+                    tag="^0.1.*",
+                ),
+                repo_slug="bbs-push-trigger",
+            ),
+            filename="cloudbuild.yaml",
+            location="us-central1")
+        ```
+        ### Cloudbuild Trigger Bitbucket Server Pull Request
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bbs_pull_request_trigger = gcp.cloudbuild.Trigger("bbs-pull-request-trigger",
+            bitbucket_server_trigger_config=gcp.cloudbuild.TriggerBitbucketServerTriggerConfigArgs(
+                bitbucket_server_config_resource="projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
+                project_key="STAG",
+                pull_request=gcp.cloudbuild.TriggerBitbucketServerTriggerConfigPullRequestArgs(
+                    branch="^master$",
+                    comment_control="COMMENTS_ENABLED",
+                    invert_regex=False,
+                ),
+                repo_slug="terraform-provider-google",
+            ),
+            filename="cloudbuild.yaml",
+            location="us-central1")
+        ```
+        ### Cloudbuild Trigger Github Enterprise
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ghe_trigger = gcp.cloudbuild.Trigger("ghe-trigger",
+            filename="cloudbuild.yaml",
+            github=gcp.cloudbuild.TriggerGithubArgs(
+                enterprise_config_resource_name="projects/123456789/locations/us-central1/githubEnterpriseConfigs/configID",
+                name="terraform-provider-google",
+                owner="hashicorp",
+                push=gcp.cloudbuild.TriggerGithubPushArgs(
+                    branch="^main$",
+                ),
+            ),
+            location="us-central1")
+        ```
+        ### Cloudbuild Trigger Pubsub With Repo
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_connection = gcp.cloudbuildv2.Connection("my-connection",
+            location="us-central1",
+            github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
+                app_installation_id=123123,
+                authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
+                    oauth_token_secret_version="projects/my-project/secrets/github-pat-secret/versions/latest",
+                ),
+            ))
+        my_repository = gcp.cloudbuildv2.Repository("my-repository",
+            parent_connection=my_connection.id,
+            remote_uri="https://github.com/myuser/my-repo.git")
+        mytopic = gcp.pubsub.Topic("mytopic")
+        pubsub_with_repo_trigger = gcp.cloudbuild.Trigger("pubsub-with-repo-trigger",
+            location="us-central1",
+            pubsub_config=gcp.cloudbuild.TriggerPubsubConfigArgs(
+                topic=mytopic.id,
+            ),
+            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
+                repository=my_repository.id,
+                ref="refs/heads/main",
+                repo_type="GITHUB",
+            ),
+            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
+                path="cloudbuild.yaml",
+                repository=my_repository.id,
+                revision="refs/heads/main",
+                repo_type="GITHUB",
+            ))
+        ```
 
         ## Import
 

@@ -491,6 +491,39 @@ class Workload(pulumi.CustomResource):
         The AssuredWorkloads Workload resource
 
         ## Example Usage
+        ### Basic_workload
+        A basic test of a assuredworkloads api
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.assuredworkloads.Workload("primary",
+            billing_account="billingAccounts/000000-0000000-0000000-000000",
+            compliance_regime="FEDRAMP_MODERATE",
+            display_name="Workload Example",
+            kms_settings=gcp.assuredworkloads.WorkloadKmsSettingsArgs(
+                next_rotation_time="9999-10-02T15:01:23Z",
+                rotation_period="10368000s",
+            ),
+            labels={
+                "label-one": "value-one",
+            },
+            location="us-west1",
+            organization="123456789",
+            provisioned_resources_parent="folders/519620126891",
+            resource_settings=[
+                gcp.assuredworkloads.WorkloadResourceSettingArgs(
+                    resource_type="CONSUMER_PROJECT",
+                ),
+                gcp.assuredworkloads.WorkloadResourceSettingArgs(
+                    resource_type="ENCRYPTION_KEYS_PROJECT",
+                ),
+                gcp.assuredworkloads.WorkloadResourceSettingArgs(
+                    resource_id="ring",
+                    resource_type="KEYRING",
+                ),
+            ])
+        ```
 
         ## Import
 
@@ -530,6 +563,39 @@ class Workload(pulumi.CustomResource):
         The AssuredWorkloads Workload resource
 
         ## Example Usage
+        ### Basic_workload
+        A basic test of a assuredworkloads api
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.assuredworkloads.Workload("primary",
+            billing_account="billingAccounts/000000-0000000-0000000-000000",
+            compliance_regime="FEDRAMP_MODERATE",
+            display_name="Workload Example",
+            kms_settings=gcp.assuredworkloads.WorkloadKmsSettingsArgs(
+                next_rotation_time="9999-10-02T15:01:23Z",
+                rotation_period="10368000s",
+            ),
+            labels={
+                "label-one": "value-one",
+            },
+            location="us-west1",
+            organization="123456789",
+            provisioned_resources_parent="folders/519620126891",
+            resource_settings=[
+                gcp.assuredworkloads.WorkloadResourceSettingArgs(
+                    resource_type="CONSUMER_PROJECT",
+                ),
+                gcp.assuredworkloads.WorkloadResourceSettingArgs(
+                    resource_type="ENCRYPTION_KEYS_PROJECT",
+                ),
+                gcp.assuredworkloads.WorkloadResourceSettingArgs(
+                    resource_id="ring",
+                    resource_type="KEYRING",
+                ),
+            ])
+        ```
 
         ## Import
 

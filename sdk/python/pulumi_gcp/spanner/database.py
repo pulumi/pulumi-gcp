@@ -517,6 +517,25 @@ class Database(pulumi.CustomResource):
         > **Warning:** It is strongly recommended to set `lifecycle { prevent_destroy = true }` on databases in order to prevent accidental data loss.
 
         ## Example Usage
+        ### Spanner Database Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        main = gcp.spanner.Instance("main",
+            config="regional-europe-west1",
+            display_name="main-instance",
+            num_nodes=1)
+        database = gcp.spanner.Database("database",
+            instance=main.name,
+            version_retention_period="3d",
+            ddls=[
+                "CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)",
+                "CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)",
+            ],
+            deletion_protection=False)
+        ```
 
         ## Import
 
@@ -588,6 +607,25 @@ class Database(pulumi.CustomResource):
         > **Warning:** It is strongly recommended to set `lifecycle { prevent_destroy = true }` on databases in order to prevent accidental data loss.
 
         ## Example Usage
+        ### Spanner Database Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        main = gcp.spanner.Instance("main",
+            config="regional-europe-west1",
+            display_name="main-instance",
+            num_nodes=1)
+        database = gcp.spanner.Database("database",
+            instance=main.name,
+            version_retention_period="3d",
+            ddls=[
+                "CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)",
+                "CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)",
+            ],
+            deletion_protection=False)
+        ```
 
         ## Import
 

@@ -13,6 +13,32 @@ import (
 )
 
 // Retrieves the current IAM policy data for tagtemplate
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := datacatalog.LookupTagTemplateIamPolicy(ctx, &datacatalog.LookupTagTemplateIamPolicyArgs{
+//				TagTemplate: google_data_catalog_tag_template.Basic_tag_template.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupTagTemplateIamPolicy(ctx *pulumi.Context, args *LookupTagTemplateIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupTagTemplateIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTagTemplateIamPolicyResult

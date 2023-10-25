@@ -13,6 +13,34 @@ import (
 )
 
 // Retrieves the current IAM policy data for feature
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gkehub.LookupFeatureIamPolicy(ctx, &gkehub.LookupFeatureIamPolicyArgs{
+//				Project:  pulumi.StringRef(google_gke_hub_feature.Feature.Project),
+//				Location: pulumi.StringRef(google_gke_hub_feature.Feature.Location),
+//				Name:     google_gke_hub_feature.Feature.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupFeatureIamPolicy(ctx *pulumi.Context, args *LookupFeatureIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupFeatureIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFeatureIamPolicyResult

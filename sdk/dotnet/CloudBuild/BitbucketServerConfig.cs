@@ -19,6 +19,73 @@ namespace Pulumi.Gcp.CloudBuild
     ///     * [Connect to a Bitbucket Server host](https://cloud.google.com/build/docs/automating-builds/bitbucket/connect-host-bitbucket-server)
     /// 
     /// ## Example Usage
+    /// ### Cloudbuild Bitbucket Server Config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bbs_config = new Gcp.CloudBuild.BitbucketServerConfig("bbs-config", new()
+    ///     {
+    ///         ApiKey = "&lt;api-key&gt;",
+    ///         ConfigId = "bbs-config",
+    ///         HostUri = "https://bbs.com",
+    ///         Location = "us-central1",
+    ///         Secrets = new Gcp.CloudBuild.Inputs.BitbucketServerConfigSecretsArgs
+    ///         {
+    ///             AdminAccessTokenVersionName = "projects/myProject/secrets/mybbspat/versions/1",
+    ///             ReadAccessTokenVersionName = "projects/myProject/secrets/mybbspat/versions/1",
+    ///             WebhookSecretVersionName = "projects/myProject/secrets/mybbspat/versions/1",
+    ///         },
+    ///         Username = "test",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudbuild Bitbucket Server Config Repositories
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bbs_config_with_repos = new Gcp.CloudBuild.BitbucketServerConfig("bbs-config-with-repos", new()
+    ///     {
+    ///         ApiKey = "&lt;api-key&gt;",
+    ///         ConfigId = "bbs-config",
+    ///         ConnectedRepositories = new[]
+    ///         {
+    ///             new Gcp.CloudBuild.Inputs.BitbucketServerConfigConnectedRepositoryArgs
+    ///             {
+    ///                 ProjectKey = "DEV",
+    ///                 RepoSlug = "repo1",
+    ///             },
+    ///             new Gcp.CloudBuild.Inputs.BitbucketServerConfigConnectedRepositoryArgs
+    ///             {
+    ///                 ProjectKey = "PROD",
+    ///                 RepoSlug = "repo1",
+    ///             },
+    ///         },
+    ///         HostUri = "https://bbs.com",
+    ///         Location = "us-central1",
+    ///         Secrets = new Gcp.CloudBuild.Inputs.BitbucketServerConfigSecretsArgs
+    ///         {
+    ///             AdminAccessTokenVersionName = "projects/myProject/secrets/mybbspat/versions/1",
+    ///             ReadAccessTokenVersionName = "projects/myProject/secrets/mybbspat/versions/1",
+    ///             WebhookSecretVersionName = "projects/myProject/secrets/mybbspat/versions/1",
+    ///         },
+    ///         Username = "test",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -23,6 +23,37 @@ namespace Pulumi.Gcp.Monitoring
     ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
     /// 
     /// ## Example Usage
+    /// ### Monitoring Service Example
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myService = new Gcp.Monitoring.GenericService("myService", new()
+    ///     {
+    ///         BasicService = new Gcp.Monitoring.Inputs.GenericServiceBasicServiceArgs
+    ///         {
+    ///             ServiceLabels = 
+    ///             {
+    ///                 { "moduleId", "another-module-id" },
+    ///             },
+    ///             ServiceType = "APP_ENGINE",
+    ///         },
+    ///         DisplayName = "My Service my-service",
+    ///         ServiceId = "my-service",
+    ///         UserLabels = 
+    ///         {
+    ///             { "my_key", "my_value" },
+    ///             { "my_other_key", "my_other_value" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -287,6 +287,17 @@ class HmacKey(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
+        ### Storage Hmac Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Create a new service account
+        service_account = gcp.service_account.Account("serviceAccount", account_id="my-svc-acc")
+        #Create the HMAC key for the associated service account
+        key = gcp.storage.HmacKey("key", service_account_email=service_account.email)
+        ```
 
         ## Import
 
@@ -340,6 +351,17 @@ class HmacKey(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
+        ### Storage Hmac Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Create a new service account
+        service_account = gcp.service_account.Account("serviceAccount", account_id="my-svc-acc")
+        #Create the HMAC key for the associated service account
+        key = gcp.storage.HmacKey("key", service_account_email=service_account.email)
+        ```
 
         ## Import
 

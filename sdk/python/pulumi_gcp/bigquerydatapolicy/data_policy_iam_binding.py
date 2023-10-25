@@ -355,6 +355,51 @@ class DataPolicyIamBinding(pulumi.CustomResource):
 
         > **Note:** `bigquerydatapolicy.DataPolicyIamBinding` resources **can be** used in conjunction with `bigquerydatapolicy.DataPolicyIamMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\\_bigquery\\_datapolicy\\_data\\_policy\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.bigquerydatapolicy.DataPolicyIamPolicy("policy",
+            project=google_bigquery_datapolicy_data_policy["data_policy"]["project"],
+            location=google_bigquery_datapolicy_data_policy["data_policy"]["location"],
+            data_policy_id=google_bigquery_datapolicy_data_policy["data_policy"]["data_policy_id"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_bigquery\\_datapolicy\\_data\\_policy\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.bigquerydatapolicy.DataPolicyIamBinding("binding",
+            project=google_bigquery_datapolicy_data_policy["data_policy"]["project"],
+            location=google_bigquery_datapolicy_data_policy["data_policy"]["location"],
+            data_policy_id=google_bigquery_datapolicy_data_policy["data_policy"]["data_policy_id"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_bigquery\\_datapolicy\\_data\\_policy\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.bigquerydatapolicy.DataPolicyIamMember("member",
+            project=google_bigquery_datapolicy_data_policy["data_policy"]["project"],
+            location=google_bigquery_datapolicy_data_policy["data_policy"]["location"],
+            data_policy_id=google_bigquery_datapolicy_data_policy["data_policy"]["data_policy_id"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/dataPolicies/{{data_policy_id}} * {{project}}/{{location}}/{{data_policy_id}} * {{location}}/{{data_policy_id}} * {{data_policy_id}} Any variables not passed in the import command will be taken from the provider configuration. BigQuery Data Policy datapolicy IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -421,6 +466,51 @@ class DataPolicyIamBinding(pulumi.CustomResource):
         > **Note:** `bigquerydatapolicy.DataPolicyIamPolicy` **cannot** be used in conjunction with `bigquerydatapolicy.DataPolicyIamBinding` and `bigquerydatapolicy.DataPolicyIamMember` or they will fight over what your policy should be.
 
         > **Note:** `bigquerydatapolicy.DataPolicyIamBinding` resources **can be** used in conjunction with `bigquerydatapolicy.DataPolicyIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_bigquery\\_datapolicy\\_data\\_policy\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.bigquerydatapolicy.DataPolicyIamPolicy("policy",
+            project=google_bigquery_datapolicy_data_policy["data_policy"]["project"],
+            location=google_bigquery_datapolicy_data_policy["data_policy"]["location"],
+            data_policy_id=google_bigquery_datapolicy_data_policy["data_policy"]["data_policy_id"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_bigquery\\_datapolicy\\_data\\_policy\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.bigquerydatapolicy.DataPolicyIamBinding("binding",
+            project=google_bigquery_datapolicy_data_policy["data_policy"]["project"],
+            location=google_bigquery_datapolicy_data_policy["data_policy"]["location"],
+            data_policy_id=google_bigquery_datapolicy_data_policy["data_policy"]["data_policy_id"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_bigquery\\_datapolicy\\_data\\_policy\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.bigquerydatapolicy.DataPolicyIamMember("member",
+            project=google_bigquery_datapolicy_data_policy["data_policy"]["project"],
+            location=google_bigquery_datapolicy_data_policy["data_policy"]["location"],
+            data_policy_id=google_bigquery_datapolicy_data_policy["data_policy"]["data_policy_id"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
 
         ## Import
 

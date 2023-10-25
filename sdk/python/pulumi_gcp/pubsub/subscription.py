@@ -960,6 +960,115 @@ class Subscription(pulumi.CustomResource):
         by using the `projects.ServiceIdentity` resource.
 
         ## Example Usage
+        ### Pubsub Subscription Push
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_topic = gcp.pubsub.Topic("exampleTopic")
+        example_subscription = gcp.pubsub.Subscription("exampleSubscription",
+            topic=example_topic.name,
+            ack_deadline_seconds=20,
+            labels={
+                "foo": "bar",
+            },
+            push_config=gcp.pubsub.SubscriptionPushConfigArgs(
+                push_endpoint="https://example.com/push",
+                attributes={
+                    "x-goog-version": "v1",
+                },
+            ))
+        ```
+        ### Pubsub Subscription Pull
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_topic = gcp.pubsub.Topic("exampleTopic")
+        example_subscription = gcp.pubsub.Subscription("exampleSubscription",
+            topic=example_topic.name,
+            labels={
+                "foo": "bar",
+            },
+            message_retention_duration="1200s",
+            retain_acked_messages=True,
+            ack_deadline_seconds=20,
+            expiration_policy=gcp.pubsub.SubscriptionExpirationPolicyArgs(
+                ttl="300000.5s",
+            ),
+            retry_policy=gcp.pubsub.SubscriptionRetryPolicyArgs(
+                minimum_backoff="10s",
+            ),
+            enable_message_ordering=False)
+        ```
+        ### Pubsub Subscription Different Project
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_topic = gcp.pubsub.Topic("exampleTopic", project="topic-project")
+        example_subscription = gcp.pubsub.Subscription("exampleSubscription",
+            project="subscription-project",
+            topic=example_topic.name)
+        ```
+        ### Pubsub Subscription Dead Letter
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_topic = gcp.pubsub.Topic("exampleTopic")
+        example_dead_letter = gcp.pubsub.Topic("exampleDeadLetter")
+        example_subscription = gcp.pubsub.Subscription("exampleSubscription",
+            topic=example_topic.name,
+            dead_letter_policy=gcp.pubsub.SubscriptionDeadLetterPolicyArgs(
+                dead_letter_topic=example_dead_letter.id,
+                max_delivery_attempts=10,
+            ))
+        ```
+        ### Pubsub Subscription Push Bq
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_topic = gcp.pubsub.Topic("exampleTopic")
+        project = gcp.organizations.get_project()
+        viewer = gcp.projects.IAMMember("viewer",
+            project=project.project_id,
+            role="roles/bigquery.metadataViewer",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
+        editor = gcp.projects.IAMMember("editor",
+            project=project.project_id,
+            role="roles/bigquery.dataEditor",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
+        test_dataset = gcp.bigquery.Dataset("testDataset", dataset_id="example_dataset")
+        test_table = gcp.bigquery.Table("testTable",
+            deletion_protection=False,
+            table_id="example_table",
+            dataset_id=test_dataset.dataset_id,
+            schema=\"\"\"[
+          {
+            "name": "data",
+            "type": "STRING",
+            "mode": "NULLABLE",
+            "description": "The data"
+          }
+        ]
+        \"\"\")
+        example_subscription = gcp.pubsub.Subscription("exampleSubscription",
+            topic=example_topic.name,
+            bigquery_config=gcp.pubsub.SubscriptionBigqueryConfigArgs(
+                table=pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[
+                    viewer,
+                    editor,
+                ]))
+        ```
 
         ## Import
 
@@ -1080,6 +1189,115 @@ class Subscription(pulumi.CustomResource):
         by using the `projects.ServiceIdentity` resource.
 
         ## Example Usage
+        ### Pubsub Subscription Push
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_topic = gcp.pubsub.Topic("exampleTopic")
+        example_subscription = gcp.pubsub.Subscription("exampleSubscription",
+            topic=example_topic.name,
+            ack_deadline_seconds=20,
+            labels={
+                "foo": "bar",
+            },
+            push_config=gcp.pubsub.SubscriptionPushConfigArgs(
+                push_endpoint="https://example.com/push",
+                attributes={
+                    "x-goog-version": "v1",
+                },
+            ))
+        ```
+        ### Pubsub Subscription Pull
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_topic = gcp.pubsub.Topic("exampleTopic")
+        example_subscription = gcp.pubsub.Subscription("exampleSubscription",
+            topic=example_topic.name,
+            labels={
+                "foo": "bar",
+            },
+            message_retention_duration="1200s",
+            retain_acked_messages=True,
+            ack_deadline_seconds=20,
+            expiration_policy=gcp.pubsub.SubscriptionExpirationPolicyArgs(
+                ttl="300000.5s",
+            ),
+            retry_policy=gcp.pubsub.SubscriptionRetryPolicyArgs(
+                minimum_backoff="10s",
+            ),
+            enable_message_ordering=False)
+        ```
+        ### Pubsub Subscription Different Project
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_topic = gcp.pubsub.Topic("exampleTopic", project="topic-project")
+        example_subscription = gcp.pubsub.Subscription("exampleSubscription",
+            project="subscription-project",
+            topic=example_topic.name)
+        ```
+        ### Pubsub Subscription Dead Letter
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_topic = gcp.pubsub.Topic("exampleTopic")
+        example_dead_letter = gcp.pubsub.Topic("exampleDeadLetter")
+        example_subscription = gcp.pubsub.Subscription("exampleSubscription",
+            topic=example_topic.name,
+            dead_letter_policy=gcp.pubsub.SubscriptionDeadLetterPolicyArgs(
+                dead_letter_topic=example_dead_letter.id,
+                max_delivery_attempts=10,
+            ))
+        ```
+        ### Pubsub Subscription Push Bq
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_topic = gcp.pubsub.Topic("exampleTopic")
+        project = gcp.organizations.get_project()
+        viewer = gcp.projects.IAMMember("viewer",
+            project=project.project_id,
+            role="roles/bigquery.metadataViewer",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
+        editor = gcp.projects.IAMMember("editor",
+            project=project.project_id,
+            role="roles/bigquery.dataEditor",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
+        test_dataset = gcp.bigquery.Dataset("testDataset", dataset_id="example_dataset")
+        test_table = gcp.bigquery.Table("testTable",
+            deletion_protection=False,
+            table_id="example_table",
+            dataset_id=test_dataset.dataset_id,
+            schema=\"\"\"[
+          {
+            "name": "data",
+            "type": "STRING",
+            "mode": "NULLABLE",
+            "description": "The data"
+          }
+        ]
+        \"\"\")
+        example_subscription = gcp.pubsub.Subscription("exampleSubscription",
+            topic=example_topic.name,
+            bigquery_config=gcp.pubsub.SubscriptionBigqueryConfigArgs(
+                table=pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[
+                    viewer,
+                    editor,
+                ]))
+        ```
 
         ## Import
 

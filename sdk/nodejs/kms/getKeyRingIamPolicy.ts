@@ -6,6 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for a Google Cloud KMS key ring.
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const testKeyRingIamPolicy = gcp.kms.getKeyRingIamPolicy({
+ *     keyRingId: "{project_id}/{location_name}/{key_ring_name}",
+ * });
+ * ```
  */
 export function getKeyRingIamPolicy(args: GetKeyRingIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyRingIamPolicyResult> {
 
@@ -48,6 +59,17 @@ export interface GetKeyRingIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for a Google Cloud KMS key ring.
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const testKeyRingIamPolicy = gcp.kms.getKeyRingIamPolicy({
+ *     keyRingId: "{project_id}/{location_name}/{key_ring_name}",
+ * });
+ * ```
  */
 export function getKeyRingIamPolicyOutput(args: GetKeyRingIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyRingIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getKeyRingIamPolicy(a, opts))

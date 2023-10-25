@@ -365,6 +365,97 @@ class CertificateTemplateIamBinding(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
+        ## google\\_privateca\\_certificate\\_template\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/privateca.templateUser",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.certificateauthority.CertificateTemplateIamPolicy("policy",
+            certificate_template=google_privateca_certificate_template["default"]["id"],
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/privateca.templateUser",
+            members=["user:jane@example.com"],
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ),
+        )])
+        policy = gcp.certificateauthority.CertificateTemplateIamPolicy("policy",
+            certificate_template=google_privateca_certificate_template["default"]["id"],
+            policy_data=admin.policy_data)
+        ```
+        ## google\\_privateca\\_certificate\\_template\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.certificateauthority.CertificateTemplateIamBinding("binding",
+            certificate_template=google_privateca_certificate_template["default"]["id"],
+            role="roles/privateca.templateUser",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.certificateauthority.CertificateTemplateIamBinding("binding",
+            certificate_template=google_privateca_certificate_template["default"]["id"],
+            role="roles/privateca.templateUser",
+            members=["user:jane@example.com"],
+            condition=gcp.certificateauthority.CertificateTemplateIamBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+        ## google\\_privateca\\_certificate\\_template\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.certificateauthority.CertificateTemplateIamMember("member",
+            certificate_template=google_privateca_certificate_template["default"]["id"],
+            role="roles/privateca.templateUser",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.certificateauthority.CertificateTemplateIamMember("member",
+            certificate_template=google_privateca_certificate_template["default"]["id"],
+            role="roles/privateca.templateUser",
+            member="user:jane@example.com",
+            condition=gcp.certificateauthority.CertificateTemplateIamMemberConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/certificateTemplates/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} Any variables not passed in the import command will be taken from the provider configuration. Certificate Authority Service certificatetemplate IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -434,6 +525,97 @@ class CertificateTemplateIamBinding(pulumi.CustomResource):
         > **Note:** `certificateauthority.CertificateTemplateIamBinding` resources **can be** used in conjunction with `certificateauthority.CertificateTemplateIamMember` resources **only if** they do not grant privilege to the same role.
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
+        ## google\\_privateca\\_certificate\\_template\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/privateca.templateUser",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.certificateauthority.CertificateTemplateIamPolicy("policy",
+            certificate_template=google_privateca_certificate_template["default"]["id"],
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/privateca.templateUser",
+            members=["user:jane@example.com"],
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ),
+        )])
+        policy = gcp.certificateauthority.CertificateTemplateIamPolicy("policy",
+            certificate_template=google_privateca_certificate_template["default"]["id"],
+            policy_data=admin.policy_data)
+        ```
+        ## google\\_privateca\\_certificate\\_template\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.certificateauthority.CertificateTemplateIamBinding("binding",
+            certificate_template=google_privateca_certificate_template["default"]["id"],
+            role="roles/privateca.templateUser",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.certificateauthority.CertificateTemplateIamBinding("binding",
+            certificate_template=google_privateca_certificate_template["default"]["id"],
+            role="roles/privateca.templateUser",
+            members=["user:jane@example.com"],
+            condition=gcp.certificateauthority.CertificateTemplateIamBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+        ## google\\_privateca\\_certificate\\_template\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.certificateauthority.CertificateTemplateIamMember("member",
+            certificate_template=google_privateca_certificate_template["default"]["id"],
+            role="roles/privateca.templateUser",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.certificateauthority.CertificateTemplateIamMember("member",
+            certificate_template=google_privateca_certificate_template["default"]["id"],
+            role="roles/privateca.templateUser",
+            member="user:jane@example.com",
+            condition=gcp.certificateauthority.CertificateTemplateIamMemberConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
 
         ## Import
 

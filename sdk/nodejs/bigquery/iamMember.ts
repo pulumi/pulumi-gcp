@@ -23,6 +23,119 @@ import * as utilities from "../utilities";
  *
  * > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
  *
+ * ## google\_bigquery\_table\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/bigquery.dataOwner",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.bigquery.IamPolicy("policy", {
+ *     project: google_bigquery_table.test.project,
+ *     datasetId: google_bigquery_table.test.dataset_id,
+ *     tableId: google_bigquery_table.test.table_id,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/bigquery.dataOwner",
+ *         members: ["user:jane@example.com"],
+ *         condition: {
+ *             title: "expires_after_2019_12_31",
+ *             description: "Expiring at midnight of 2019-12-31",
+ *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         },
+ *     }],
+ * });
+ * const policy = new gcp.bigquery.IamPolicy("policy", {
+ *     project: google_bigquery_table.test.project,
+ *     datasetId: google_bigquery_table.test.dataset_id,
+ *     tableId: google_bigquery_table.test.table_id,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * ## google\_bigquery\_table\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.bigquery.IamBinding("binding", {
+ *     project: google_bigquery_table.test.project,
+ *     datasetId: google_bigquery_table.test.dataset_id,
+ *     tableId: google_bigquery_table.test.table_id,
+ *     role: "roles/bigquery.dataOwner",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.bigquery.IamBinding("binding", {
+ *     project: google_bigquery_table.test.project,
+ *     datasetId: google_bigquery_table.test.dataset_id,
+ *     tableId: google_bigquery_table.test.table_id,
+ *     role: "roles/bigquery.dataOwner",
+ *     members: ["user:jane@example.com"],
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ * ## google\_bigquery\_table\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.bigquery.IamMember("member", {
+ *     project: google_bigquery_table.test.project,
+ *     datasetId: google_bigquery_table.test.dataset_id,
+ *     tableId: google_bigquery_table.test.table_id,
+ *     role: "roles/bigquery.dataOwner",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.bigquery.IamMember("member", {
+ *     project: google_bigquery_table.test.project,
+ *     datasetId: google_bigquery_table.test.dataset_id,
+ *     tableId: google_bigquery_table.test.table_id,
+ *     role: "roles/bigquery.dataOwner",
+ *     member: "user:jane@example.com",
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}} * {{project}}/{{dataset_id}}/{{table_id}} * {{dataset_id}}/{{table_id}} * {{table_id}} Any variables not passed in the import command will be taken from the provider configuration. BigQuery table IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

@@ -6,6 +6,37 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### Tpu V2 Vm Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const available = gcp.tpu.getV2RuntimeVersions({});
+ * const tpu = new gcp.tpu.V2Vm("tpu", {
+ *     zone: "us-central1-c",
+ *     runtimeVersion: "tpu-vm-tf-2.13.0",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Tpu V2 Vm Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const availableV2RuntimeVersions = gcp.tpu.getV2RuntimeVersions({});
+ * const availableV2AcceleratorTypes = gcp.tpu.getV2AcceleratorTypes({});
+ * const tpu = new gcp.tpu.V2Vm("tpu", {
+ *     zone: "us-central1-c",
+ *     description: "Text description of the TPU.",
+ *     runtimeVersion: "tpu-vm-tf-2.13.0",
+ *     acceleratorType: "v2-8",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

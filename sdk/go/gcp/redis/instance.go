@@ -22,6 +22,282 @@ import (
 //   - [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
 //
 // ## Example Usage
+// ### Redis Instance Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/redis"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := redis.NewInstance(ctx, "cache", &redis.InstanceArgs{
+//				MemorySizeGb: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Redis Instance Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/redis"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			redis_network, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+//				Name: "redis-test-network",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = redis.NewInstance(ctx, "cache", &redis.InstanceArgs{
+//				Tier:                  pulumi.String("STANDARD_HA"),
+//				MemorySizeGb:          pulumi.Int(1),
+//				LocationId:            pulumi.String("us-central1-a"),
+//				AlternativeLocationId: pulumi.String("us-central1-f"),
+//				AuthorizedNetwork:     *pulumi.String(redis_network.Id),
+//				RedisVersion:          pulumi.String("REDIS_4_0"),
+//				DisplayName:           pulumi.String("Test Instance"),
+//				ReservedIpRange:       pulumi.String("192.168.0.0/29"),
+//				Labels: pulumi.StringMap{
+//					"my_key":    pulumi.String("my_val"),
+//					"other_key": pulumi.String("other_val"),
+//				},
+//				MaintenancePolicy: &redis.InstanceMaintenancePolicyArgs{
+//					WeeklyMaintenanceWindows: redis.InstanceMaintenancePolicyWeeklyMaintenanceWindowArray{
+//						&redis.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs{
+//							Day: pulumi.String("TUESDAY"),
+//							StartTime: &redis.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{
+//								Hours:   pulumi.Int(0),
+//								Minutes: pulumi.Int(30),
+//								Seconds: pulumi.Int(0),
+//								Nanos:   pulumi.Int(0),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Redis Instance Full With Persistence Config
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/redis"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := redis.NewInstance(ctx, "cache-persis", &redis.InstanceArgs{
+//				AlternativeLocationId: pulumi.String("us-central1-f"),
+//				LocationId:            pulumi.String("us-central1-a"),
+//				MemorySizeGb:          pulumi.Int(1),
+//				PersistenceConfig: &redis.InstancePersistenceConfigArgs{
+//					PersistenceMode:   pulumi.String("RDB"),
+//					RdbSnapshotPeriod: pulumi.String("TWELVE_HOURS"),
+//				},
+//				Tier: pulumi.String("STANDARD_HA"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Redis Instance Private Service
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			redis_network, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+//				Name: "redis-test-network",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			serviceRange, err := compute.NewGlobalAddress(ctx, "serviceRange", &compute.GlobalAddressArgs{
+//				Purpose:      pulumi.String("VPC_PEERING"),
+//				AddressType:  pulumi.String("INTERNAL"),
+//				PrefixLength: pulumi.Int(16),
+//				Network:      *pulumi.String(redis_network.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			privateServiceConnection, err := servicenetworking.NewConnection(ctx, "privateServiceConnection", &servicenetworking.ConnectionArgs{
+//				Network: *pulumi.String(redis_network.Id),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					serviceRange.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = redis.NewInstance(ctx, "cache", &redis.InstanceArgs{
+//				Tier:                  pulumi.String("STANDARD_HA"),
+//				MemorySizeGb:          pulumi.Int(1),
+//				LocationId:            pulumi.String("us-central1-a"),
+//				AlternativeLocationId: pulumi.String("us-central1-f"),
+//				AuthorizedNetwork:     *pulumi.String(redis_network.Id),
+//				ConnectMode:           pulumi.String("PRIVATE_SERVICE_ACCESS"),
+//				RedisVersion:          pulumi.String("REDIS_4_0"),
+//				DisplayName:           pulumi.String("Test Instance"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				privateServiceConnection,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Redis Instance Mrr
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/redis"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			redis_network, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+//				Name: "redis-test-network",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = redis.NewInstance(ctx, "cache", &redis.InstanceArgs{
+//				Tier:                  pulumi.String("STANDARD_HA"),
+//				MemorySizeGb:          pulumi.Int(5),
+//				LocationId:            pulumi.String("us-central1-a"),
+//				AlternativeLocationId: pulumi.String("us-central1-f"),
+//				AuthorizedNetwork:     *pulumi.String(redis_network.Id),
+//				RedisVersion:          pulumi.String("REDIS_6_X"),
+//				DisplayName:           pulumi.String("Terraform Test Instance"),
+//				ReservedIpRange:       pulumi.String("192.168.0.0/28"),
+//				ReplicaCount:          pulumi.Int(5),
+//				ReadReplicasMode:      pulumi.String("READ_REPLICAS_ENABLED"),
+//				Labels: pulumi.StringMap{
+//					"my_key":    pulumi.String("my_val"),
+//					"other_key": pulumi.String("other_val"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Redis Instance Cmek
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/redis"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			redisKeyring, err := kms.NewKeyRing(ctx, "redisKeyring", &kms.KeyRingArgs{
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			redisKey, err := kms.NewCryptoKey(ctx, "redisKey", &kms.CryptoKeyArgs{
+//				KeyRing: redisKeyring.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			redis_network, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+//				Name: "redis-test-network",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = redis.NewInstance(ctx, "cache", &redis.InstanceArgs{
+//				Tier:                  pulumi.String("STANDARD_HA"),
+//				MemorySizeGb:          pulumi.Int(1),
+//				LocationId:            pulumi.String("us-central1-a"),
+//				AlternativeLocationId: pulumi.String("us-central1-f"),
+//				AuthorizedNetwork:     *pulumi.String(redis_network.Id),
+//				RedisVersion:          pulumi.String("REDIS_6_X"),
+//				DisplayName:           pulumi.String("Terraform Test Instance"),
+//				ReservedIpRange:       pulumi.String("192.168.0.0/29"),
+//				Labels: pulumi.StringMap{
+//					"my_key":    pulumi.String("my_val"),
+//					"other_key": pulumi.String("other_val"),
+//				},
+//				CustomerManagedKey: redisKey.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

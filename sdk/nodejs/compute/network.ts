@@ -14,6 +14,38 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/vpc/docs/vpc)
  *
  * ## Example Usage
+ * ### Network Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const vpcNetwork = new gcp.compute.Network("vpcNetwork", {});
+ * ```
+ * ### Network Custom Mtu
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const vpcNetwork = new gcp.compute.Network("vpcNetwork", {
+ *     autoCreateSubnetworks: true,
+ *     mtu: 1460,
+ *     project: "my-project-name",
+ * });
+ * ```
+ * ### Network Custom Firewall Enforcement Order
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const vpcNetwork = new gcp.compute.Network("vpcNetwork", {
+ *     autoCreateSubnetworks: true,
+ *     networkFirewallPolicyEnforcementOrder: "BEFORE_CLASSIC_FIREWALL",
+ *     project: "my-project-name",
+ * });
+ * ```
  *
  * ## Import
  *

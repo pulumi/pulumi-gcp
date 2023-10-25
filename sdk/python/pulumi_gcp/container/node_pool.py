@@ -898,6 +898,29 @@ class NodePool(pulumi.CustomResource):
         and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools).
 
         ## Example Usage
+        ### Using A Separately Managed Node Pool (Recommended)
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.service_account.Account("default",
+            account_id="service-account-id",
+            display_name="Service Account")
+        primary = gcp.container.Cluster("primary",
+            location="us-central1",
+            remove_default_node_pool=True,
+            initial_node_count=1)
+        primary_preemptible_nodes = gcp.container.NodePool("primaryPreemptibleNodes",
+            cluster=primary.id,
+            node_count=1,
+            node_config=gcp.container.NodePoolNodeConfigArgs(
+                preemptible=True,
+                machine_type="e2-medium",
+                service_account=default.email,
+                oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],
+            ))
+        ```
 
         ## Import
 
@@ -981,6 +1004,29 @@ class NodePool(pulumi.CustomResource):
         and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools).
 
         ## Example Usage
+        ### Using A Separately Managed Node Pool (Recommended)
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.service_account.Account("default",
+            account_id="service-account-id",
+            display_name="Service Account")
+        primary = gcp.container.Cluster("primary",
+            location="us-central1",
+            remove_default_node_pool=True,
+            initial_node_count=1)
+        primary_preemptible_nodes = gcp.container.NodePool("primaryPreemptibleNodes",
+            cluster=primary.id,
+            node_count=1,
+            node_config=gcp.container.NodePoolNodeConfigArgs(
+                preemptible=True,
+                machine_type="e2-medium",
+                service_account=default.email,
+                oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],
+            ))
+        ```
 
         ## Import
 

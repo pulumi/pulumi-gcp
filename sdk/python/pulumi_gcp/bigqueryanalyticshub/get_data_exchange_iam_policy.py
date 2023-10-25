@@ -103,6 +103,17 @@ def get_data_exchange_iam_policy(data_exchange_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for dataexchange
 
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.bigqueryanalyticshub.get_data_exchange_iam_policy(project=google_bigquery_analytics_hub_data_exchange["data_exchange"]["project"],
+        location=google_bigquery_analytics_hub_data_exchange["data_exchange"]["location"],
+        data_exchange_id=google_bigquery_analytics_hub_data_exchange["data_exchange"]["data_exchange_id"])
+    ```
+
 
     :param str data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
     :param str location: The name of the location this data exchange.
@@ -133,6 +144,17 @@ def get_data_exchange_iam_policy_output(data_exchange_id: Optional[pulumi.Input[
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDataExchangeIamPolicyResult]:
     """
     Retrieves the current IAM policy data for dataexchange
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.bigqueryanalyticshub.get_data_exchange_iam_policy(project=google_bigquery_analytics_hub_data_exchange["data_exchange"]["project"],
+        location=google_bigquery_analytics_hub_data_exchange["data_exchange"]["location"],
+        data_exchange_id=google_bigquery_analytics_hub_data_exchange["data_exchange"]["data_exchange_id"])
+    ```
 
 
     :param str data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to

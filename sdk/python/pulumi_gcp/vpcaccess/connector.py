@@ -572,6 +572,33 @@ class Connector(pulumi.CustomResource):
             * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
 
         ## Example Usage
+        ### Vpc Access Connector
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        connector = gcp.vpcaccess.Connector("connector",
+            ip_cidr_range="10.8.0.0/28",
+            network="default")
+        ```
+        ### Vpc Access Connector Shared Vpc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_test_network = gcp.compute.Network("customTestNetwork", auto_create_subnetworks=False)
+        custom_test_subnetwork = gcp.compute.Subnetwork("customTestSubnetwork",
+            ip_cidr_range="10.2.0.0/28",
+            region="us-central1",
+            network=custom_test_network.id)
+        connector = gcp.vpcaccess.Connector("connector",
+            subnet=gcp.vpcaccess.ConnectorSubnetArgs(
+                name=custom_test_subnetwork.name,
+            ),
+            machine_type="e2-standard-4")
+        ```
 
         ## Import
 
@@ -628,6 +655,33 @@ class Connector(pulumi.CustomResource):
             * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
 
         ## Example Usage
+        ### Vpc Access Connector
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        connector = gcp.vpcaccess.Connector("connector",
+            ip_cidr_range="10.8.0.0/28",
+            network="default")
+        ```
+        ### Vpc Access Connector Shared Vpc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_test_network = gcp.compute.Network("customTestNetwork", auto_create_subnetworks=False)
+        custom_test_subnetwork = gcp.compute.Subnetwork("customTestSubnetwork",
+            ip_cidr_range="10.2.0.0/28",
+            region="us-central1",
+            network=custom_test_network.id)
+        connector = gcp.vpcaccess.Connector("connector",
+            subnet=gcp.vpcaccess.ConnectorSubnetArgs(
+                name=custom_test_subnetwork.name,
+            ),
+            machine_type="e2-standard-4")
+        ```
 
         ## Import
 

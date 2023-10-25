@@ -15,6 +15,23 @@ import * as utilities from "../utilities";
  *     * [Configuring a namespace](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_namespace)
  *
  * ## Example Usage
+ * ### Service Directory Namespace Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.servicedirectory.Namespace("example", {
+ *     namespaceId: "example-namespace",
+ *     location: "us-central1",
+ *     labels: {
+ *         key: "value",
+ *         foo: "bar",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

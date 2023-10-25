@@ -22,6 +22,17 @@ import * as utilities from "../utilities";
  * state as plain-text.
  *
  * ## Example Usage
+ * ### Storage Hmac Key
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * // Create a new service account
+ * const serviceAccount = new gcp.serviceaccount.Account("serviceAccount", {accountId: "my-svc-acc"});
+ * //Create the HMAC key for the associated service account
+ * const key = new gcp.storage.HmacKey("key", {serviceAccountEmail: serviceAccount.email});
+ * ```
  *
  * ## Import
  *

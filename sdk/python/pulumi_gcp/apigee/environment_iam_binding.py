@@ -315,6 +315,48 @@ class EnvironmentIamBinding(pulumi.CustomResource):
 
         > **Note:** `apigee.EnvironmentIamBinding` resources **can be** used in conjunction with `apigee.EnvironmentIamMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\\_apigee\\_environment\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.apigee.EnvironmentIamPolicy("policy",
+            org_id=google_apigee_environment["apigee_environment"]["org_id"],
+            env_id=google_apigee_environment["apigee_environment"]["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_apigee\\_environment\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.apigee.EnvironmentIamBinding("binding",
+            org_id=google_apigee_environment["apigee_environment"]["org_id"],
+            env_id=google_apigee_environment["apigee_environment"]["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_apigee\\_environment\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.apigee.EnvironmentIamMember("member",
+            org_id=google_apigee_environment["apigee_environment"]["org_id"],
+            env_id=google_apigee_environment["apigee_environment"]["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* {{org_id}}/environments/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Apigee environment IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -378,6 +420,48 @@ class EnvironmentIamBinding(pulumi.CustomResource):
         > **Note:** `apigee.EnvironmentIamPolicy` **cannot** be used in conjunction with `apigee.EnvironmentIamBinding` and `apigee.EnvironmentIamMember` or they will fight over what your policy should be.
 
         > **Note:** `apigee.EnvironmentIamBinding` resources **can be** used in conjunction with `apigee.EnvironmentIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_apigee\\_environment\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.apigee.EnvironmentIamPolicy("policy",
+            org_id=google_apigee_environment["apigee_environment"]["org_id"],
+            env_id=google_apigee_environment["apigee_environment"]["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_apigee\\_environment\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.apigee.EnvironmentIamBinding("binding",
+            org_id=google_apigee_environment["apigee_environment"]["org_id"],
+            env_id=google_apigee_environment["apigee_environment"]["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_apigee\\_environment\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.apigee.EnvironmentIamMember("member",
+            org_id=google_apigee_environment["apigee_environment"]["org_id"],
+            env_id=google_apigee_environment["apigee_environment"]["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
 
         ## Import
 

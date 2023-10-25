@@ -10,6 +10,17 @@ import * as utilities from "../utilities";
  * Get information about a Google Cloud Pub/Sub Topic. For more information see
  * the [official documentation](https://cloud.google.com/pubsub/docs/)
  * and [API](https://cloud.google.com/pubsub/docs/apis).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-pubsub-topic = gcp.pubsub.getTopic({
+ *     name: "my-pubsub-topic",
+ * });
+ * ```
  */
 export function getTopic(args: GetTopicArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicResult> {
 
@@ -57,6 +68,17 @@ export interface GetTopicResult {
  * Get information about a Google Cloud Pub/Sub Topic. For more information see
  * the [official documentation](https://cloud.google.com/pubsub/docs/)
  * and [API](https://cloud.google.com/pubsub/docs/apis).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-pubsub-topic = gcp.pubsub.getTopic({
+ *     name: "my-pubsub-topic",
+ * });
+ * ```
  */
 export function getTopicOutput(args: GetTopicOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicResult> {
     return pulumi.output(args).apply((a: any) => getTopic(a, opts))

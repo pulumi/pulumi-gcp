@@ -23,6 +23,62 @@ namespace Pulumi.Gcp.DataLoss
     /// Read more about sensitive data in state.
     /// 
     /// ## Example Usage
+    /// ### Dlp Deidentify Template Image Transformations
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basic = new Gcp.DataLoss.PreventionDeidentifyTemplate("basic", new()
+    ///     {
+    ///         DeidentifyConfig = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigArgs
+    ///         {
+    ///             ImageTransformations = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs
+    ///             {
+    ///                 Transforms = new[]
+    ///                 {
+    ///                     new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs
+    ///                     {
+    ///                         RedactionColor = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgs
+    ///                         {
+    ///                             Blue = 1,
+    ///                             Green = 0.2,
+    ///                             Red = 0.5,
+    ///                         },
+    ///                         SelectedInfoTypes = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs
+    ///                         {
+    ///                             InfoTypes = new[]
+    ///                             {
+    ///                                 new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArgs
+    ///                                 {
+    ///                                     Name = "COLOR_INFO",
+    ///                                     Version = "latest",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs
+    ///                     {
+    ///                         AllInfoTypes = null,
+    ///                     },
+    ///                     new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs
+    ///                     {
+    ///                         AllText = null,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Description = "Description",
+    ///         DisplayName = "Displayname",
+    ///         Parent = "projects/my-project-name",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

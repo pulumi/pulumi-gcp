@@ -6,6 +6,18 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for topic
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.pubsub.getTopicIamPolicy({
+ *     project: google_pubsub_topic.example.project,
+ *     topic: google_pubsub_topic.example.name,
+ * });
+ * ```
  */
 export function getTopicIamPolicy(args: GetTopicIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicIamPolicyResult> {
 
@@ -53,6 +65,18 @@ export interface GetTopicIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for topic
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.pubsub.getTopicIamPolicy({
+ *     project: google_pubsub_topic.example.project,
+ *     topic: google_pubsub_topic.example.name,
+ * });
+ * ```
  */
 export function getTopicIamPolicyOutput(args: GetTopicIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getTopicIamPolicy(a, opts))

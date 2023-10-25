@@ -13,12 +13,56 @@ namespace Pulumi.Gcp.CertificateManager
     {
         /// <summary>
         /// Get info about a Google Certificate Manager Certificate Map resource.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = Gcp.CertificateManager.GetCertificateMap.Invoke(new()
+        ///     {
+        ///         Name = "cert-map",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCertificateMapResult> InvokeAsync(GetCertificateMapArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCertificateMapResult>("gcp:certificatemanager/getCertificateMap:getCertificateMap", args ?? new GetCertificateMapArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get info about a Google Certificate Manager Certificate Map resource.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = Gcp.CertificateManager.GetCertificateMap.Invoke(new()
+        ///     {
+        ///         Name = "cert-map",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetCertificateMapResult> Invoke(GetCertificateMapInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCertificateMapResult>("gcp:certificatemanager/getCertificateMap:getCertificateMap", args ?? new GetCertificateMapInvokeArgs(), options.WithDefaults());

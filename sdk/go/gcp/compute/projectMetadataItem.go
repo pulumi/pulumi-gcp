@@ -18,6 +18,33 @@ import (
 // manage a single key/value setting in the provider rather than the entire
 // project metadata map.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewProjectMetadataItem(ctx, "default", &compute.ProjectMetadataItemArgs{
+//				Key:   pulumi.String("my_metadata"),
+//				Value: pulumi.String("my_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Project metadata items can be imported using the `key`, e.g.

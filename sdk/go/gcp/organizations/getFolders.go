@@ -17,6 +17,39 @@ import (
 // for more details.
 //
 // ## Example Usage
+// ### Searching For Folders At The Root Of An Org
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			my_org_folders, err := organizations.GetFolders(ctx, &organizations.GetFoldersArgs{
+//				ParentId: fmt.Sprintf("organizations/%v", _var.Organization_id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = organizations.LookupFolder(ctx, &organizations.LookupFolderArgs{
+//				Folder: my_org_folders.Folders[0].Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetFolders(ctx *pulumi.Context, args *GetFoldersArgs, opts ...pulumi.InvokeOption) (*GetFoldersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFoldersResult

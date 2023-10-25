@@ -16,6 +16,33 @@ import (
 // [official documentation](https://cloud.google.com/sql/)
 // and
 // [API](https://cloud.google.com/sql/docs/postgres/backup-recovery/pitr#get-the-latest-recovery-time).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := sql.GetDatabaseInstanceLatestRecoveryTime(ctx, &sql.GetDatabaseInstanceLatestRecoveryTimeArgs{
+//				Instance: "sample-instance",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("latestRecoveryTime", _default)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDatabaseInstanceLatestRecoveryTime(ctx *pulumi.Context, args *GetDatabaseInstanceLatestRecoveryTimeArgs, opts ...pulumi.InvokeOption) (*GetDatabaseInstanceLatestRecoveryTimeResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabaseInstanceLatestRecoveryTimeResult

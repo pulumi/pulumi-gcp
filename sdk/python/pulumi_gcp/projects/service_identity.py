@@ -171,6 +171,22 @@ class ServiceIdentity(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services/generateServiceIdentity)
 
         ## Example Usage
+        ### Service Identity Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        hc_sa = gcp.projects.ServiceIdentity("hcSa",
+            project=project.project_id,
+            service="healthcare.googleapis.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        hc_sa_bq_jobuser = gcp.projects.IAMMember("hcSaBqJobuser",
+            project=project.project_id,
+            role="roles/bigquery.jobUser",
+            member=hc_sa.email.apply(lambda email: f"serviceAccount:{email}"))
+        ```
 
         ## Import
 
@@ -205,6 +221,22 @@ class ServiceIdentity(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services/generateServiceIdentity)
 
         ## Example Usage
+        ### Service Identity Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        hc_sa = gcp.projects.ServiceIdentity("hcSa",
+            project=project.project_id,
+            service="healthcare.googleapis.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        hc_sa_bq_jobuser = gcp.projects.IAMMember("hcSaBqJobuser",
+            project=project.project_id,
+            role="roles/bigquery.jobUser",
+            member=hc_sa.email.apply(lambda email: f"serviceAccount:{email}"))
+        ```
 
         ## Import
 

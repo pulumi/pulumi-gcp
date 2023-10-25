@@ -25,6 +25,57 @@ import (
 //   - [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 //
 // ## Example Usage
+// ### Notification Channel Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			basic, err := monitoring.LookupNotificationChannel(ctx, &monitoring.LookupNotificationChannelArgs{
+//				DisplayName: pulumi.StringRef("Test Notification Channel"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = monitoring.NewAlertPolicy(ctx, "alertPolicy", &monitoring.AlertPolicyArgs{
+//				DisplayName: pulumi.String("My Alert Policy"),
+//				NotificationChannels: pulumi.StringArray{
+//					*pulumi.String(basic.Name),
+//				},
+//				Combiner: pulumi.String("OR"),
+//				Conditions: monitoring.AlertPolicyConditionArray{
+//					&monitoring.AlertPolicyConditionArgs{
+//						DisplayName: pulumi.String("test condition"),
+//						ConditionThreshold: &monitoring.AlertPolicyConditionConditionThresholdArgs{
+//							Filter:     pulumi.String("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\""),
+//							Duration:   pulumi.String("60s"),
+//							Comparison: pulumi.String("COMPARISON_GT"),
+//							Aggregations: monitoring.AlertPolicyConditionConditionThresholdAggregationArray{
+//								&monitoring.AlertPolicyConditionConditionThresholdAggregationArgs{
+//									AlignmentPeriod:  pulumi.String("60s"),
+//									PerSeriesAligner: pulumi.String("ALIGN_RATE"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupNotificationChannel(ctx *pulumi.Context, args *LookupNotificationChannelArgs, opts ...pulumi.InvokeOption) (*LookupNotificationChannelResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNotificationChannelResult

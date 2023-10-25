@@ -216,6 +216,29 @@ class DefaultServiceAccounts(pulumi.CustomResource):
         and it is for users who are unable to use constraints. If the default service accounts change their name
         or additional service accounts are added, this resource will need to be updated.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.projects.DefaultServiceAccounts("myProject",
+            action="DELETE",
+            project="my-project-id")
+        ```
+
+        To enable the default service accounts on the resource destroy:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.projects.DefaultServiceAccounts("myProject",
+            action="DISABLE",
+            project="my-project-id",
+            restore_policy="REVERT")
+        ```
+
         ## Import
 
         This resource does not support import
@@ -250,6 +273,29 @@ class DefaultServiceAccounts(pulumi.CustomResource):
         > This resource works on a best-effort basis, as no API formally describes the default service accounts
         and it is for users who are unable to use constraints. If the default service accounts change their name
         or additional service accounts are added, this resource will need to be updated.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.projects.DefaultServiceAccounts("myProject",
+            action="DELETE",
+            project="my-project-id")
+        ```
+
+        To enable the default service accounts on the resource destroy:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.projects.DefaultServiceAccounts("myProject",
+            action="DISABLE",
+            project="my-project-id",
+            restore_policy="REVERT")
+        ```
 
         ## Import
 

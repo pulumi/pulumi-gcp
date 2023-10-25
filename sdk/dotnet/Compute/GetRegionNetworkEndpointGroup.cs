@@ -15,6 +15,34 @@ namespace Pulumi.Gcp.Compute
         /// Use this data source to access a Region Network Endpoint Group's attributes.
         /// 
         /// The RNEG may be found by providing either a `self_link`, or a `name` and a `region`.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var rneg1 = Gcp.Compute.GetRegionNetworkEndpointGroup.Invoke(new()
+        ///     {
+        ///         Name = "k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
+        ///         Region = "us-central1",
+        ///     });
+        /// 
+        ///     var rneg2 = Gcp.Compute.GetRegionNetworkEndpointGroup.Invoke(new()
+        ///     {
+        ///         SelfLink = "https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegionNetworkEndpointGroupResult> InvokeAsync(GetRegionNetworkEndpointGroupArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionNetworkEndpointGroupResult>("gcp:compute/getRegionNetworkEndpointGroup:getRegionNetworkEndpointGroup", args ?? new GetRegionNetworkEndpointGroupArgs(), options.WithDefaults());
@@ -23,6 +51,34 @@ namespace Pulumi.Gcp.Compute
         /// Use this data source to access a Region Network Endpoint Group's attributes.
         /// 
         /// The RNEG may be found by providing either a `self_link`, or a `name` and a `region`.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var rneg1 = Gcp.Compute.GetRegionNetworkEndpointGroup.Invoke(new()
+        ///     {
+        ///         Name = "k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
+        ///         Region = "us-central1",
+        ///     });
+        /// 
+        ///     var rneg2 = Gcp.Compute.GetRegionNetworkEndpointGroup.Invoke(new()
+        ///     {
+        ///         SelfLink = "https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetRegionNetworkEndpointGroupResult> Invoke(GetRegionNetworkEndpointGroupInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionNetworkEndpointGroupResult>("gcp:compute/getRegionNetworkEndpointGroup:getRegionNetworkEndpointGroup", args ?? new GetRegionNetworkEndpointGroupInvokeArgs(), options.WithDefaults());

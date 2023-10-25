@@ -15,6 +15,39 @@ import (
 // Get a Compute Instance Group Manager within GCE.
 // For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups#managed_instance_groups)
 // and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroupManagers)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.LookupInstanceGroupManager(ctx, &compute.LookupInstanceGroupManagerArgs{
+//				Name: pulumi.StringRef("my-igm"),
+//				Zone: pulumi.StringRef("us-central1-a"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.LookupInstanceGroupManager(ctx, &compute.LookupInstanceGroupManagerArgs{
+//				SelfLink: pulumi.StringRef("https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupInstanceGroupManager(ctx *pulumi.Context, args *LookupInstanceGroupManagerArgs, opts ...pulumi.InvokeOption) (*LookupInstanceGroupManagerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInstanceGroupManagerResult

@@ -18,6 +18,21 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/firestore/docs/)
  *
  * ## Example Usage
+ * ### Firestore Database With Delete Protection
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const database = new gcp.firestore.Database("database", {
+ *     project: google_project.project.project_id,
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
+ *     deleteProtectionState: "DELETE_PROTECTION_ENABLED",
+ * }, {
+ *     dependsOn: [google_project_service.firestore],
+ * });
+ * ```
  *
  * ## Import
  *

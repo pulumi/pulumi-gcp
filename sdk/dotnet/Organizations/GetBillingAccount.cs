@@ -13,12 +13,60 @@ namespace Pulumi.Gcp.Organizations
     {
         /// <summary>
         /// Use this data source to get information about a Google Billing Account.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var acct = Gcp.Organizations.GetBillingAccount.Invoke(new()
+        ///     {
+        ///         DisplayName = "My Billing Account",
+        ///         Open = true,
+        ///     });
+        /// 
+        ///     var myProject = new Gcp.Organizations.Project("myProject", new()
+        ///     {
+        ///         ProjectId = "your-project-id",
+        ///         OrgId = "1234567",
+        ///         BillingAccount = acct.Apply(getBillingAccountResult =&gt; getBillingAccountResult.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetBillingAccountResult> InvokeAsync(GetBillingAccountArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBillingAccountResult>("gcp:organizations/getBillingAccount:getBillingAccount", args ?? new GetBillingAccountArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get information about a Google Billing Account.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var acct = Gcp.Organizations.GetBillingAccount.Invoke(new()
+        ///     {
+        ///         DisplayName = "My Billing Account",
+        ///         Open = true,
+        ///     });
+        /// 
+        ///     var myProject = new Gcp.Organizations.Project("myProject", new()
+        ///     {
+        ///         ProjectId = "your-project-id",
+        ///         OrgId = "1234567",
+        ///         BillingAccount = acct.Apply(getBillingAccountResult =&gt; getBillingAccountResult.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetBillingAccountResult> Invoke(GetBillingAccountInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBillingAccountResult>("gcp:organizations/getBillingAccount:getBillingAccount", args ?? new GetBillingAccountInvokeArgs(), options.WithDefaults());

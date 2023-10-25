@@ -6,6 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Provides access to available Kubernetes versions in a location for a given project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const central1b = gcp.container.getAzureVersions({
+ *     location: "us-west1",
+ *     project: "my-project",
+ * });
+ * export const firstAvailableVersion = data.google_container_azure_versions.versions.valid_versions[0];
+ * ```
  */
 export function getAzureVersions(args?: GetAzureVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetAzureVersionsResult> {
     args = args || {};
@@ -53,6 +66,19 @@ export interface GetAzureVersionsResult {
 }
 /**
  * Provides access to available Kubernetes versions in a location for a given project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const central1b = gcp.container.getAzureVersions({
+ *     location: "us-west1",
+ *     project: "my-project",
+ * });
+ * export const firstAvailableVersion = data.google_container_azure_versions.versions.valid_versions[0];
+ * ```
  */
 export function getAzureVersionsOutput(args?: GetAzureVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzureVersionsResult> {
     return pulumi.output(args).apply((a: any) => getAzureVersions(a, opts))

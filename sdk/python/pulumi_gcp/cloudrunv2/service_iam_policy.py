@@ -293,6 +293,48 @@ class ServiceIamPolicy(pulumi.CustomResource):
 
         > **Note:** `cloudrunv2.ServiceIamBinding` resources **can be** used in conjunction with `cloudrunv2.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\\_cloud\\_run\\_v2\\_service\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.cloudrunv2.ServiceIamPolicy("policy",
+            project=google_cloud_run_v2_service["default"]["project"],
+            location=google_cloud_run_v2_service["default"]["location"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_cloud\\_run\\_v2\\_service\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.cloudrunv2.ServiceIamBinding("binding",
+            project=google_cloud_run_v2_service["default"]["project"],
+            location=google_cloud_run_v2_service["default"]["location"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_cloud\\_run\\_v2\\_service\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.cloudrunv2.ServiceIamMember("member",
+            project=google_cloud_run_v2_service["default"]["project"],
+            location=google_cloud_run_v2_service["default"]["location"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/services/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Run (v2 API) service IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -358,6 +400,48 @@ class ServiceIamPolicy(pulumi.CustomResource):
         > **Note:** `cloudrunv2.ServiceIamPolicy` **cannot** be used in conjunction with `cloudrunv2.ServiceIamBinding` and `cloudrunv2.ServiceIamMember` or they will fight over what your policy should be.
 
         > **Note:** `cloudrunv2.ServiceIamBinding` resources **can be** used in conjunction with `cloudrunv2.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_cloud\\_run\\_v2\\_service\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.cloudrunv2.ServiceIamPolicy("policy",
+            project=google_cloud_run_v2_service["default"]["project"],
+            location=google_cloud_run_v2_service["default"]["location"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_cloud\\_run\\_v2\\_service\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.cloudrunv2.ServiceIamBinding("binding",
+            project=google_cloud_run_v2_service["default"]["project"],
+            location=google_cloud_run_v2_service["default"]["location"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_cloud\\_run\\_v2\\_service\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.cloudrunv2.ServiceIamMember("member",
+            project=google_cloud_run_v2_service["default"]["project"],
+            location=google_cloud_run_v2_service["default"]["location"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
 
         ## Import
 

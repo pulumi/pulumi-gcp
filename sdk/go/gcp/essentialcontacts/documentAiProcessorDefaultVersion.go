@@ -16,6 +16,44 @@ import (
 // The default version for the processor. Deleting this resource is a no-op, and does not unset the default version.
 //
 // ## Example Usage
+// ### Documentai Default Version
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/essentialcontacts"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			processorDocumentAiProcessor, err := essentialcontacts.NewDocumentAiProcessor(ctx, "processorDocumentAiProcessor", &essentialcontacts.DocumentAiProcessorArgs{
+//				Location:    pulumi.String("us"),
+//				DisplayName: pulumi.String("test-processor"),
+//				Type:        pulumi.String("OCR_PROCESSOR"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = essentialcontacts.NewDocumentAiProcessorDefaultVersion(ctx, "processorDocumentAiProcessorDefaultVersion", &essentialcontacts.DocumentAiProcessorDefaultVersionArgs{
+//				Processor: processorDocumentAiProcessor.ID(),
+//				Version: processorDocumentAiProcessor.ID().ApplyT(func(id string) (string, error) {
+//					return fmt.Sprintf("%v/processorVersions/stable", id), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

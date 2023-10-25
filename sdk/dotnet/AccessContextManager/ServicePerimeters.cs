@@ -21,6 +21,88 @@ namespace Pulumi.Gcp.AccessContextManager
     ///     * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
     /// 
     /// ## Example Usage
+    /// ### Access Context Manager Service Perimeters Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new()
+    ///     {
+    ///         Parent = "organizations/123456789",
+    ///         Title = "my policy",
+    ///     });
+    /// 
+    ///     var service_perimeter = new Gcp.AccessContextManager.ServicePerimeters("service-perimeter", new()
+    ///     {
+    ///         Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
+    ///         ServicePerimeterDetails = new[]
+    ///         {
+    ///             new Gcp.AccessContextManager.Inputs.ServicePerimetersServicePerimeterArgs
+    ///             {
+    ///                 Name = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}/servicePerimeters/"),
+    ///                 Status = new Gcp.AccessContextManager.Inputs.ServicePerimetersServicePerimeterStatusArgs
+    ///                 {
+    ///                     RestrictedServices = new[]
+    ///                     {
+    ///                         "storage.googleapis.com",
+    ///                     },
+    ///                 },
+    ///                 Title = "",
+    ///             },
+    ///             new Gcp.AccessContextManager.Inputs.ServicePerimetersServicePerimeterArgs
+    ///             {
+    ///                 Name = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}/servicePerimeters/"),
+    ///                 Status = new Gcp.AccessContextManager.Inputs.ServicePerimetersServicePerimeterStatusArgs
+    ///                 {
+    ///                     RestrictedServices = new[]
+    ///                     {
+    ///                         "bigtable.googleapis.com",
+    ///                     },
+    ///                 },
+    ///                 Title = "",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var access_level = new Gcp.AccessContextManager.AccessLevel("access-level", new()
+    ///     {
+    ///         Basic = new Gcp.AccessContextManager.Inputs.AccessLevelBasicArgs
+    ///         {
+    ///             Conditions = new[]
+    ///             {
+    ///                 new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionArgs
+    ///                 {
+    ///                     DevicePolicy = new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionDevicePolicyArgs
+    ///                     {
+    ///                         OsConstraints = new[]
+    ///                         {
+    ///                             new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionDevicePolicyOsConstraintArgs
+    ///                             {
+    ///                                 OsType = "DESKTOP_CHROME_OS",
+    ///                             },
+    ///                         },
+    ///                         RequireScreenLock = false,
+    ///                     },
+    ///                     Regions = new[]
+    ///                     {
+    ///                         "CH",
+    ///                         "IT",
+    ///                         "US",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
+    ///         Title = "chromeos_no_lock",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

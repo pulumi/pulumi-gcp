@@ -1146,6 +1146,58 @@ class Table(pulumi.CustomResource):
         (and run `pulumi update` to write the field to state) in order to destroy an instance.
         It is recommended to not set this field (or set it to true) until you're ready to destroy.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_dataset = gcp.bigquery.Dataset("defaultDataset",
+            dataset_id="foo",
+            friendly_name="test",
+            description="This is a test description",
+            location="EU",
+            default_table_expiration_ms=3600000,
+            labels={
+                "env": "default",
+            })
+        default_table = gcp.bigquery.Table("defaultTable",
+            dataset_id=default_dataset.dataset_id,
+            table_id="bar",
+            time_partitioning=gcp.bigquery.TableTimePartitioningArgs(
+                type="DAY",
+            ),
+            labels={
+                "env": "default",
+            },
+            schema=\"\"\"[
+          {
+            "name": "permalink",
+            "type": "STRING",
+            "mode": "NULLABLE",
+            "description": "The Permalink"
+          },
+          {
+            "name": "state",
+            "type": "STRING",
+            "mode": "NULLABLE",
+            "description": "State where the head office is located"
+          }
+        ]
+        \"\"\")
+        sheet = gcp.bigquery.Table("sheet",
+            dataset_id=default_dataset.dataset_id,
+            table_id="sheet",
+            external_data_configuration=gcp.bigquery.TableExternalDataConfigurationArgs(
+                autodetect=True,
+                source_format="GOOGLE_SHEETS",
+                google_sheets_options=gcp.bigquery.TableExternalDataConfigurationGoogleSheetsOptionsArgs(
+                    skip_leading_rows=1,
+                ),
+                source_uris=["https://docs.google.com/spreadsheets/d/123456789012345"],
+            ))
+        ```
+
         ## Import
 
         BigQuery tables imported using any of these accepted formats
@@ -1245,6 +1297,58 @@ class Table(pulumi.CustomResource):
         > **Note**: On newer versions of the provider, you must explicitly set `deletion_protection=false`
         (and run `pulumi update` to write the field to state) in order to destroy an instance.
         It is recommended to not set this field (or set it to true) until you're ready to destroy.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_dataset = gcp.bigquery.Dataset("defaultDataset",
+            dataset_id="foo",
+            friendly_name="test",
+            description="This is a test description",
+            location="EU",
+            default_table_expiration_ms=3600000,
+            labels={
+                "env": "default",
+            })
+        default_table = gcp.bigquery.Table("defaultTable",
+            dataset_id=default_dataset.dataset_id,
+            table_id="bar",
+            time_partitioning=gcp.bigquery.TableTimePartitioningArgs(
+                type="DAY",
+            ),
+            labels={
+                "env": "default",
+            },
+            schema=\"\"\"[
+          {
+            "name": "permalink",
+            "type": "STRING",
+            "mode": "NULLABLE",
+            "description": "The Permalink"
+          },
+          {
+            "name": "state",
+            "type": "STRING",
+            "mode": "NULLABLE",
+            "description": "State where the head office is located"
+          }
+        ]
+        \"\"\")
+        sheet = gcp.bigquery.Table("sheet",
+            dataset_id=default_dataset.dataset_id,
+            table_id="sheet",
+            external_data_configuration=gcp.bigquery.TableExternalDataConfigurationArgs(
+                autodetect=True,
+                source_format="GOOGLE_SHEETS",
+                google_sheets_options=gcp.bigquery.TableExternalDataConfigurationGoogleSheetsOptionsArgs(
+                    skip_leading_rows=1,
+                ),
+                source_uris=["https://docs.google.com/spreadsheets/d/123456789012345"],
+            ))
+        ```
 
         ## Import
 

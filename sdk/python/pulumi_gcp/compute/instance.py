@@ -1616,6 +1616,47 @@ class Instance(pulumi.CustomResource):
         and
         [API](https://cloud.google.com/compute/docs/reference/latest/instances).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_account = gcp.service_account.Account("defaultAccount",
+            account_id="service_account_id",
+            display_name="Service Account")
+        default_instance = gcp.compute.Instance("defaultInstance",
+            machine_type="e2-medium",
+            zone="us-central1-a",
+            tags=[
+                "foo",
+                "bar",
+            ],
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-11",
+                    labels={
+                        "my_label": "value",
+                    },
+                ),
+            ),
+            scratch_disks=[gcp.compute.InstanceScratchDiskArgs(
+                interface="SCSI",
+            )],
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network="default",
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+            )],
+            metadata={
+                "foo": "bar",
+            },
+            metadata_startup_script="echo hi > /test.txt",
+            service_account=gcp.compute.InstanceServiceAccountArgs(
+                email=default_account.email,
+                scopes=["cloud-platform"],
+            ))
+        ```
+
         ## Import
 
         Instances can be imported using any of these accepted formats
@@ -1734,6 +1775,47 @@ class Instance(pulumi.CustomResource):
         [the official documentation](https://cloud.google.com/compute/docs/instances)
         and
         [API](https://cloud.google.com/compute/docs/reference/latest/instances).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_account = gcp.service_account.Account("defaultAccount",
+            account_id="service_account_id",
+            display_name="Service Account")
+        default_instance = gcp.compute.Instance("defaultInstance",
+            machine_type="e2-medium",
+            zone="us-central1-a",
+            tags=[
+                "foo",
+                "bar",
+            ],
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-11",
+                    labels={
+                        "my_label": "value",
+                    },
+                ),
+            ),
+            scratch_disks=[gcp.compute.InstanceScratchDiskArgs(
+                interface="SCSI",
+            )],
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network="default",
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+            )],
+            metadata={
+                "foo": "bar",
+            },
+            metadata_startup_script="echo hi > /test.txt",
+            service_account=gcp.compute.InstanceServiceAccountArgs(
+                email=default_account.email,
+                scopes=["cloud-platform"],
+            ))
+        ```
 
         ## Import
 

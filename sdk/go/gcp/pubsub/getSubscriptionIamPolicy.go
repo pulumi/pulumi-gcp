@@ -13,6 +13,32 @@ import (
 )
 
 // Retrieves the current IAM policy data for a Pubsub subscription.
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := pubsub.GetSubscriptionIamPolicy(ctx, &pubsub.GetSubscriptionIamPolicyArgs{
+//				Subscription: google_pubsub_subscription.Subscription.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetSubscriptionIamPolicy(ctx *pulumi.Context, args *GetSubscriptionIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetSubscriptionIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSubscriptionIamPolicyResult

@@ -16,6 +16,55 @@ import (
 // The AssuredWorkloads Workload resource
 //
 // ## Example Usage
+// ### Basic_workload
+// A basic test of a assuredworkloads api
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/assuredworkloads"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := assuredworkloads.NewWorkload(ctx, "primary", &assuredworkloads.WorkloadArgs{
+//				BillingAccount:   pulumi.String("billingAccounts/000000-0000000-0000000-000000"),
+//				ComplianceRegime: pulumi.String("FEDRAMP_MODERATE"),
+//				DisplayName:      pulumi.String("Workload Example"),
+//				KmsSettings: &assuredworkloads.WorkloadKmsSettingsArgs{
+//					NextRotationTime: pulumi.String("9999-10-02T15:01:23Z"),
+//					RotationPeriod:   pulumi.String("10368000s"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//				Location:                   pulumi.String("us-west1"),
+//				Organization:               pulumi.String("123456789"),
+//				ProvisionedResourcesParent: pulumi.String("folders/519620126891"),
+//				ResourceSettings: assuredworkloads.WorkloadResourceSettingArray{
+//					&assuredworkloads.WorkloadResourceSettingArgs{
+//						ResourceType: pulumi.String("CONSUMER_PROJECT"),
+//					},
+//					&assuredworkloads.WorkloadResourceSettingArgs{
+//						ResourceType: pulumi.String("ENCRYPTION_KEYS_PROJECT"),
+//					},
+//					&assuredworkloads.WorkloadResourceSettingArgs{
+//						ResourceId:   pulumi.String("ring"),
+//						ResourceType: pulumi.String("KEYRING"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

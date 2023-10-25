@@ -20,6 +20,85 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// &gt; **Note:** `gcp.dataproc.ClusterIAMBinding` resources **can be** used in conjunction with `gcp.dataproc.ClusterIAMMember` resources **only if** they do not grant privilege to the same role.
     /// 
+    /// ## google\_dataproc\_cluster\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/editor",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var editor = new Gcp.Dataproc.ClusterIAMPolicy("editor", new()
+    ///     {
+    ///         Project = "your-project",
+    ///         Region = "your-region",
+    ///         Cluster = "your-dataproc-cluster",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## google\_dataproc\_cluster\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var editor = new Gcp.Dataproc.ClusterIAMBinding("editor", new()
+    ///     {
+    ///         Cluster = "your-dataproc-cluster",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Role = "roles/editor",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## google\_dataproc\_cluster\_iam\_member
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var editor = new Gcp.Dataproc.ClusterIAMMember("editor", new()
+    ///     {
+    ///         Cluster = "your-dataproc-cluster",
+    ///         Member = "user:jane@example.com",
+    ///         Role = "roles/editor",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Cluster IAM resources can be imported using the project, region, cluster name, role and/or member.

@@ -1126,6 +1126,83 @@ class RegionDisk(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
+        ### Region Disk Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        disk = gcp.compute.Disk("disk",
+            image="debian-cloud/debian-11",
+            size=50,
+            type="pd-ssd",
+            zone="us-central1-a")
+        snapdisk = gcp.compute.Snapshot("snapdisk",
+            source_disk=disk.name,
+            zone="us-central1-a")
+        regiondisk = gcp.compute.RegionDisk("regiondisk",
+            snapshot=snapdisk.id,
+            type="pd-ssd",
+            region="us-central1",
+            physical_block_size_bytes=4096,
+            replica_zones=[
+                "us-central1-a",
+                "us-central1-f",
+            ])
+        ```
+        ### Region Disk Async
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.compute.RegionDisk("primary",
+            type="pd-ssd",
+            region="us-central1",
+            physical_block_size_bytes=4096,
+            replica_zones=[
+                "us-central1-a",
+                "us-central1-f",
+            ])
+        secondary = gcp.compute.RegionDisk("secondary",
+            type="pd-ssd",
+            region="us-east1",
+            physical_block_size_bytes=4096,
+            async_primary_disk=gcp.compute.RegionDiskAsyncPrimaryDiskArgs(
+                disk=primary.id,
+            ),
+            replica_zones=[
+                "us-east1-b",
+                "us-east1-c",
+            ])
+        ```
+        ### Region Disk Features
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        regiondisk = gcp.compute.RegionDisk("regiondisk",
+            guest_os_features=[
+                gcp.compute.RegionDiskGuestOsFeatureArgs(
+                    type="SECURE_BOOT",
+                ),
+                gcp.compute.RegionDiskGuestOsFeatureArgs(
+                    type="MULTI_IP_SUBNET",
+                ),
+                gcp.compute.RegionDiskGuestOsFeatureArgs(
+                    type="WINDOWS",
+                ),
+            ],
+            licenses=["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"],
+            physical_block_size_bytes=4096,
+            region="us-central1",
+            replica_zones=[
+                "us-central1-a",
+                "us-central1-f",
+            ],
+            type="pd-ssd")
+        ```
 
         ## Import
 
@@ -1250,6 +1327,83 @@ class RegionDisk(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
+        ### Region Disk Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        disk = gcp.compute.Disk("disk",
+            image="debian-cloud/debian-11",
+            size=50,
+            type="pd-ssd",
+            zone="us-central1-a")
+        snapdisk = gcp.compute.Snapshot("snapdisk",
+            source_disk=disk.name,
+            zone="us-central1-a")
+        regiondisk = gcp.compute.RegionDisk("regiondisk",
+            snapshot=snapdisk.id,
+            type="pd-ssd",
+            region="us-central1",
+            physical_block_size_bytes=4096,
+            replica_zones=[
+                "us-central1-a",
+                "us-central1-f",
+            ])
+        ```
+        ### Region Disk Async
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.compute.RegionDisk("primary",
+            type="pd-ssd",
+            region="us-central1",
+            physical_block_size_bytes=4096,
+            replica_zones=[
+                "us-central1-a",
+                "us-central1-f",
+            ])
+        secondary = gcp.compute.RegionDisk("secondary",
+            type="pd-ssd",
+            region="us-east1",
+            physical_block_size_bytes=4096,
+            async_primary_disk=gcp.compute.RegionDiskAsyncPrimaryDiskArgs(
+                disk=primary.id,
+            ),
+            replica_zones=[
+                "us-east1-b",
+                "us-east1-c",
+            ])
+        ```
+        ### Region Disk Features
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        regiondisk = gcp.compute.RegionDisk("regiondisk",
+            guest_os_features=[
+                gcp.compute.RegionDiskGuestOsFeatureArgs(
+                    type="SECURE_BOOT",
+                ),
+                gcp.compute.RegionDiskGuestOsFeatureArgs(
+                    type="MULTI_IP_SUBNET",
+                ),
+                gcp.compute.RegionDiskGuestOsFeatureArgs(
+                    type="WINDOWS",
+                ),
+            ],
+            licenses=["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"],
+            physical_block_size_bytes=4096,
+            region="us-central1",
+            replica_zones=[
+                "us-central1-a",
+                "us-central1-f",
+            ],
+            type="pd-ssd")
+        ```
 
         ## Import
 

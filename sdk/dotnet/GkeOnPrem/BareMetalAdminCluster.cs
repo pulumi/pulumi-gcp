@@ -11,6 +11,262 @@ namespace Pulumi.Gcp.GkeOnPrem
 {
     /// <summary>
     /// ## Example Usage
+    /// ### Gkeonprem Bare Metal Admin Cluster Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin_cluster_basic = new Gcp.GkeOnPrem.BareMetalAdminCluster("admin-cluster-basic", new()
+    ///     {
+    ///         Location = "us-west1",
+    ///         BareMetalVersion = "1.13.4",
+    ///         NetworkConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterNetworkConfigArgs
+    ///         {
+    ///             IslandModeCidr = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterNetworkConfigIslandModeCidrArgs
+    ///             {
+    ///                 ServiceAddressCidrBlocks = new[]
+    ///                 {
+    ///                     "172.26.0.0/16",
+    ///                 },
+    ///                 PodAddressCidrBlocks = new[]
+    ///                 {
+    ///                     "10.240.0.0/13",
+    ///                 },
+    ///             },
+    ///         },
+    ///         NodeConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterNodeConfigArgs
+    ///         {
+    ///             MaxPodsPerNode = 250,
+    ///         },
+    ///         ControlPlane = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterControlPlaneArgs
+    ///         {
+    ///             ControlPlaneNodePoolConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs
+    ///             {
+    ///                 NodePoolConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs
+    ///                 {
+    ///                     Labels = null,
+    ///                     OperatingSystem = "LINUX",
+    ///                     NodeConfigs = new[]
+    ///                     {
+    ///                         new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs
+    ///                         {
+    ///                             Labels = null,
+    ///                             NodeIp = "10.200.0.2",
+    ///                         },
+    ///                         new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs
+    ///                         {
+    ///                             Labels = null,
+    ///                             NodeIp = "10.200.0.3",
+    ///                         },
+    ///                         new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs
+    ///                         {
+    ///                             Labels = null,
+    ///                             NodeIp = "10.200.0.4",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         LoadBalancer = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterLoadBalancerArgs
+    ///         {
+    ///             PortConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterLoadBalancerPortConfigArgs
+    ///             {
+    ///                 ControlPlaneLoadBalancerPort = 443,
+    ///             },
+    ///             VipConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterLoadBalancerVipConfigArgs
+    ///             {
+    ///                 ControlPlaneVip = "10.200.0.5",
+    ///             },
+    ///         },
+    ///         Storage = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterStorageArgs
+    ///         {
+    ///             LvpShareConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterStorageLvpShareConfigArgs
+    ///             {
+    ///                 LvpConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs
+    ///                 {
+    ///                     Path = "/mnt/localpv-share",
+    ///                     StorageClass = "local-shared",
+    ///                 },
+    ///                 SharedPathPvCount = 5,
+    ///             },
+    ///             LvpNodeMountsConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterStorageLvpNodeMountsConfigArgs
+    ///             {
+    ///                 Path = "/mnt/localpv-disk",
+    ///                 StorageClass = "local-disks",
+    ///             },
+    ///         },
+    ///         NodeAccessConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterNodeAccessConfigArgs
+    ///         {
+    ///             LoginUser = "root",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Gkeonprem Bare Metal Admin Cluster Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin_cluster_basic = new Gcp.GkeOnPrem.BareMetalAdminCluster("admin-cluster-basic", new()
+    ///     {
+    ///         Location = "us-west1",
+    ///         Description = "test description",
+    ///         BareMetalVersion = "1.13.4",
+    ///         Annotations = null,
+    ///         NetworkConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterNetworkConfigArgs
+    ///         {
+    ///             IslandModeCidr = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterNetworkConfigIslandModeCidrArgs
+    ///             {
+    ///                 ServiceAddressCidrBlocks = new[]
+    ///                 {
+    ///                     "172.26.0.0/16",
+    ///                 },
+    ///                 PodAddressCidrBlocks = new[]
+    ///                 {
+    ///                     "10.240.0.0/13",
+    ///                 },
+    ///             },
+    ///         },
+    ///         NodeConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterNodeConfigArgs
+    ///         {
+    ///             MaxPodsPerNode = 250,
+    ///         },
+    ///         ControlPlane = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterControlPlaneArgs
+    ///         {
+    ///             ControlPlaneNodePoolConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs
+    ///             {
+    ///                 NodePoolConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs
+    ///                 {
+    ///                     Labels = null,
+    ///                     OperatingSystem = "LINUX",
+    ///                     NodeConfigs = new[]
+    ///                     {
+    ///                         new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs
+    ///                         {
+    ///                             Labels = null,
+    ///                             NodeIp = "10.200.0.2",
+    ///                         },
+    ///                         new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs
+    ///                         {
+    ///                             Labels = null,
+    ///                             NodeIp = "10.200.0.3",
+    ///                         },
+    ///                         new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs
+    ///                         {
+    ///                             Labels = null,
+    ///                             NodeIp = "10.200.0.4",
+    ///                         },
+    ///                     },
+    ///                     Taints = new[]
+    ///                     {
+    ///                         new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs
+    ///                         {
+    ///                             Key = "test-key",
+    ///                             Value = "test-value",
+    ///                             Effect = "NO_EXECUTE",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             ApiServerArgs = new[]
+    ///             {
+    ///                 new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterControlPlaneApiServerArgArgs
+    ///                 {
+    ///                     Argument = "test argument",
+    ///                     Value = "test value",
+    ///                 },
+    ///             },
+    ///         },
+    ///         LoadBalancer = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterLoadBalancerArgs
+    ///         {
+    ///             PortConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterLoadBalancerPortConfigArgs
+    ///             {
+    ///                 ControlPlaneLoadBalancerPort = 443,
+    ///             },
+    ///             VipConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterLoadBalancerVipConfigArgs
+    ///             {
+    ///                 ControlPlaneVip = "10.200.0.5",
+    ///             },
+    ///             ManualLbConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterLoadBalancerManualLbConfigArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///         },
+    ///         Storage = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterStorageArgs
+    ///         {
+    ///             LvpShareConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterStorageLvpShareConfigArgs
+    ///             {
+    ///                 LvpConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs
+    ///                 {
+    ///                     Path = "/mnt/localpv-share",
+    ///                     StorageClass = "local-shared",
+    ///                 },
+    ///                 SharedPathPvCount = 5,
+    ///             },
+    ///             LvpNodeMountsConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterStorageLvpNodeMountsConfigArgs
+    ///             {
+    ///                 Path = "/mnt/localpv-disk",
+    ///                 StorageClass = "local-disks",
+    ///             },
+    ///         },
+    ///         NodeAccessConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterNodeAccessConfigArgs
+    ///         {
+    ///             LoginUser = "root",
+    ///         },
+    ///         SecurityConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterSecurityConfigArgs
+    ///         {
+    ///             Authorization = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterSecurityConfigAuthorizationArgs
+    ///             {
+    ///                 AdminUsers = new[]
+    ///                 {
+    ///                     new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs
+    ///                     {
+    ///                         Username = "admin@hashicorptest.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         MaintenanceConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterMaintenanceConfigArgs
+    ///         {
+    ///             MaintenanceAddressCidrBlocks = new[]
+    ///             {
+    ///                 "10.0.0.1/32",
+    ///                 "10.0.0.2/32",
+    ///             },
+    ///         },
+    ///         ClusterOperations = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterClusterOperationsArgs
+    ///         {
+    ///             EnableApplicationLogs = true,
+    ///         },
+    ///         Proxy = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterProxyArgs
+    ///         {
+    ///             Uri = "test proxy uri",
+    ///             NoProxies = new[]
+    ///             {
+    ///                 "127.0.0.1",
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

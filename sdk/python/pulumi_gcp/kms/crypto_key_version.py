@@ -262,6 +262,18 @@ class CryptoKeyVersion(pulumi.CustomResource):
             * [Creating a key Version](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions/create)
 
         ## Example Usage
+        ### Kms Crypto Key Version Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        keyring = gcp.kms.KeyRing("keyring", location="global")
+        cryptokey = gcp.kms.CryptoKey("cryptokey",
+            key_ring=keyring.id,
+            rotation_period="100000s")
+        example_key = gcp.kms.CryptoKeyVersion("example-key", crypto_key=cryptokey.id)
+        ```
 
         ## Import
 
@@ -299,6 +311,18 @@ class CryptoKeyVersion(pulumi.CustomResource):
             * [Creating a key Version](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions/create)
 
         ## Example Usage
+        ### Kms Crypto Key Version Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        keyring = gcp.kms.KeyRing("keyring", location="global")
+        cryptokey = gcp.kms.CryptoKey("cryptokey",
+            key_ring=keyring.id,
+            rotation_period="100000s")
+        example_key = gcp.kms.CryptoKeyVersion("example-key", crypto_key=cryptokey.id)
+        ```
 
         ## Import
 

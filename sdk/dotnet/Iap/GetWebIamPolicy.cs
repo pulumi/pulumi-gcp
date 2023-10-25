@@ -13,12 +13,52 @@ namespace Pulumi.Gcp.Iap
     {
         /// <summary>
         /// Retrieves the current IAM policy data for web
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Iap.GetWebIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_project_service.Project_service.Project,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetWebIamPolicyResult> InvokeAsync(GetWebIamPolicyArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWebIamPolicyResult>("gcp:iap/getWebIamPolicy:getWebIamPolicy", args ?? new GetWebIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for web
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Iap.GetWebIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_project_service.Project_service.Project,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetWebIamPolicyResult> Invoke(GetWebIamPolicyInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWebIamPolicyResult>("gcp:iap/getWebIamPolicy:getWebIamPolicy", args ?? new GetWebIamPolicyInvokeArgs(), options.WithDefaults());

@@ -26,6 +26,59 @@ import (
 // Read more about sensitive data in state.
 //
 // ## Example Usage
+// ### Certificate Manager Trust Config
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"os"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := os.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := certificatemanager.NewTrustConfig(ctx, "default", &certificatemanager.TrustConfigArgs{
+//				Description: pulumi.String("sample description for the trust config"),
+//				Location:    pulumi.String("us-central1"),
+//				TrustStores: certificatemanager.TrustConfigTrustStoreArray{
+//					&certificatemanager.TrustConfigTrustStoreArgs{
+//						TrustAnchors: certificatemanager.TrustConfigTrustStoreTrustAnchorArray{
+//							&certificatemanager.TrustConfigTrustStoreTrustAnchorArgs{
+//								PemCertificate: readFileOrPanic("test-fixtures/cert.pem"),
+//							},
+//						},
+//						IntermediateCas: certificatemanager.TrustConfigTrustStoreIntermediateCaArray{
+//							&certificatemanager.TrustConfigTrustStoreIntermediateCaArgs{
+//								PemCertificate: readFileOrPanic("test-fixtures/cert.pem"),
+//							},
+//						},
+//					},
+//				},
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

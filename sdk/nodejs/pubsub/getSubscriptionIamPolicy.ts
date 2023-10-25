@@ -6,6 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for a Pubsub subscription.
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.pubsub.getSubscriptionIamPolicy({
+ *     subscription: google_pubsub_subscription.subscription.id,
+ * });
+ * ```
  */
 export function getSubscriptionIamPolicy(args: GetSubscriptionIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetSubscriptionIamPolicyResult> {
 
@@ -52,6 +63,17 @@ export interface GetSubscriptionIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for a Pubsub subscription.
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.pubsub.getSubscriptionIamPolicy({
+ *     subscription: google_pubsub_subscription.subscription.id,
+ * });
+ * ```
  */
 export function getSubscriptionIamPolicyOutput(args: GetSubscriptionIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubscriptionIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getSubscriptionIamPolicy(a, opts))

@@ -11,6 +11,216 @@ namespace Pulumi.Gcp.Firebase
 {
     /// <summary>
     /// ## Example Usage
+    /// ### Firebasehosting Version Redirect
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultHostingSite = new Gcp.Firebase.HostingSite("defaultHostingSite", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         SiteId = "site-id",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultHostingVersion = new Gcp.Firebase.HostingVersion("defaultHostingVersion", new()
+    ///     {
+    ///         SiteId = defaultHostingSite.SiteId,
+    ///         Config = new Gcp.Firebase.Inputs.HostingVersionConfigArgs
+    ///         {
+    ///             Redirects = new[]
+    ///             {
+    ///                 new Gcp.Firebase.Inputs.HostingVersionConfigRedirectArgs
+    ///                 {
+    ///                     Glob = "/google/**",
+    ///                     StatusCode = 302,
+    ///                     Location = "https://www.google.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultHostingRelease = new Gcp.Firebase.HostingRelease("defaultHostingRelease", new()
+    ///     {
+    ///         SiteId = defaultHostingSite.SiteId,
+    ///         VersionName = defaultHostingVersion.Name,
+    ///         Message = "Redirect to Google",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Firebasehosting Version Cloud Run
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultHostingSite = new Gcp.Firebase.HostingSite("defaultHostingSite", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         SiteId = "site-id",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultService = new Gcp.CloudRunV2.Service("defaultService", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Location = "us-central1",
+    ///         Ingress = "INGRESS_TRAFFIC_ALL",
+    ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             Containers = new[]
+    ///             {
+    ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
+    ///                 {
+    ///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultHostingVersion = new Gcp.Firebase.HostingVersion("defaultHostingVersion", new()
+    ///     {
+    ///         SiteId = defaultHostingSite.SiteId,
+    ///         Config = new Gcp.Firebase.Inputs.HostingVersionConfigArgs
+    ///         {
+    ///             Rewrites = new[]
+    ///             {
+    ///                 new Gcp.Firebase.Inputs.HostingVersionConfigRewriteArgs
+    ///                 {
+    ///                     Glob = "/hello/**",
+    ///                     Run = new Gcp.Firebase.Inputs.HostingVersionConfigRewriteRunArgs
+    ///                     {
+    ///                         ServiceId = defaultService.Name,
+    ///                         Region = defaultService.Location,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultHostingRelease = new Gcp.Firebase.HostingRelease("defaultHostingRelease", new()
+    ///     {
+    ///         SiteId = defaultHostingSite.SiteId,
+    ///         VersionName = defaultHostingVersion.Name,
+    ///         Message = "Cloud Run Integration",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Firebasehosting Version Cloud Functions
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultHostingSite = new Gcp.Firebase.HostingSite("defaultHostingSite", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         SiteId = "site-id",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Location = "US",
+    ///         UniformBucketLevelAccess = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var @object = new Gcp.Storage.BucketObject("object", new()
+    ///     {
+    ///         Bucket = bucket.Name,
+    ///         Source = new FileAsset("function-source.zip"),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     // Add path to the zipped function source code
+    ///     var function = new Gcp.CloudFunctions.Function("function", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Description = "A Cloud Function connected to Firebase Hosing",
+    ///         Runtime = "nodejs16",
+    ///         AvailableMemoryMb = 128,
+    ///         SourceArchiveBucket = bucket.Name,
+    ///         SourceArchiveObject = @object.Name,
+    ///         TriggerHttp = true,
+    ///         EntryPoint = "helloHttp",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultHostingVersion = new Gcp.Firebase.HostingVersion("defaultHostingVersion", new()
+    ///     {
+    ///         SiteId = defaultHostingSite.SiteId,
+    ///         Config = new Gcp.Firebase.Inputs.HostingVersionConfigArgs
+    ///         {
+    ///             Rewrites = new[]
+    ///             {
+    ///                 new Gcp.Firebase.Inputs.HostingVersionConfigRewriteArgs
+    ///                 {
+    ///                     Glob = "/hello/**",
+    ///                     Function = function.Name,
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultHostingRelease = new Gcp.Firebase.HostingRelease("defaultHostingRelease", new()
+    ///     {
+    ///         SiteId = defaultHostingSite.SiteId,
+    ///         VersionName = defaultHostingVersion.Name,
+    ///         Message = "Cloud Functions Integration",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

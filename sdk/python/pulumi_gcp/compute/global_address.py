@@ -604,6 +604,29 @@ class GlobalAddress(pulumi.CustomResource):
             * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address)
 
         ## Example Usage
+        ### Global Address Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.GlobalAddress("default")
+        ```
+        ### Global Address Private Services Connect
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        default = gcp.compute.GlobalAddress("default",
+            address_type="INTERNAL",
+            purpose="PRIVATE_SERVICE_CONNECT",
+            network=network.id,
+            address="100.100.100.105",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -676,6 +699,29 @@ class GlobalAddress(pulumi.CustomResource):
             * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address)
 
         ## Example Usage
+        ### Global Address Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.GlobalAddress("default")
+        ```
+        ### Global Address Private Services Connect
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        default = gcp.compute.GlobalAddress("default",
+            address_type="INTERNAL",
+            purpose="PRIVATE_SERVICE_CONNECT",
+            network=network.id,
+            address="100.100.100.105",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

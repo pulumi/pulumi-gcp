@@ -21,6 +21,230 @@ namespace Pulumi.Gcp.OsConfig
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/os-config-management)
     /// 
     /// ## Example Usage
+    /// ### Os Config Guest Policies Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var foobar = new Gcp.Compute.Instance("foobar", new()
+    ///     {
+    ///         MachineType = "e2-medium",
+    ///         Zone = "us-central1-a",
+    ///         CanIpForward = false,
+    ///         Tags = new[]
+    ///         {
+    ///             "foo",
+    ///             "bar",
+    ///         },
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///         {
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///             {
+    ///                 Image = myImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 Network = "default",
+    ///             },
+    ///         },
+    ///         Metadata = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var guestPolicies = new Gcp.OsConfig.GuestPolicies("guestPolicies", new()
+    ///     {
+    ///         GuestPolicyId = "guest-policy",
+    ///         Assignment = new Gcp.OsConfig.Inputs.GuestPoliciesAssignmentArgs
+    ///         {
+    ///             Instances = new[]
+    ///             {
+    ///                 foobar.Id,
+    ///             },
+    ///         },
+    ///         Packages = new[]
+    ///         {
+    ///             new Gcp.OsConfig.Inputs.GuestPoliciesPackageArgs
+    ///             {
+    ///                 Name = "my-package",
+    ///                 DesiredState = "UPDATED",
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Os Config Guest Policies Packages
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var guestPolicies = new Gcp.OsConfig.GuestPolicies("guestPolicies", new()
+    ///     {
+    ///         GuestPolicyId = "guest-policy",
+    ///         Assignment = new Gcp.OsConfig.Inputs.GuestPoliciesAssignmentArgs
+    ///         {
+    ///             GroupLabels = new[]
+    ///             {
+    ///                 new Gcp.OsConfig.Inputs.GuestPoliciesAssignmentGroupLabelArgs
+    ///                 {
+    ///                     Labels = 
+    ///                     {
+    ///                         { "color", "red" },
+    ///                         { "env", "test" },
+    ///                     },
+    ///                 },
+    ///                 new Gcp.OsConfig.Inputs.GuestPoliciesAssignmentGroupLabelArgs
+    ///                 {
+    ///                     Labels = 
+    ///                     {
+    ///                         { "color", "blue" },
+    ///                         { "env", "test" },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Packages = new[]
+    ///         {
+    ///             new Gcp.OsConfig.Inputs.GuestPoliciesPackageArgs
+    ///             {
+    ///                 Name = "my-package",
+    ///                 DesiredState = "INSTALLED",
+    ///             },
+    ///             new Gcp.OsConfig.Inputs.GuestPoliciesPackageArgs
+    ///             {
+    ///                 Name = "bad-package-1",
+    ///                 DesiredState = "REMOVED",
+    ///             },
+    ///             new Gcp.OsConfig.Inputs.GuestPoliciesPackageArgs
+    ///             {
+    ///                 Name = "bad-package-2",
+    ///                 DesiredState = "REMOVED",
+    ///                 Manager = "APT",
+    ///             },
+    ///         },
+    ///         PackageRepositories = new[]
+    ///         {
+    ///             new Gcp.OsConfig.Inputs.GuestPoliciesPackageRepositoryArgs
+    ///             {
+    ///                 Apt = new Gcp.OsConfig.Inputs.GuestPoliciesPackageRepositoryAptArgs
+    ///                 {
+    ///                     Uri = "https://packages.cloud.google.com/apt",
+    ///                     ArchiveType = "DEB",
+    ///                     Distribution = "cloud-sdk-stretch",
+    ///                     Components = new[]
+    ///                     {
+    ///                         "main",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.OsConfig.Inputs.GuestPoliciesPackageRepositoryArgs
+    ///             {
+    ///                 Yum = new Gcp.OsConfig.Inputs.GuestPoliciesPackageRepositoryYumArgs
+    ///                 {
+    ///                     Id = "google-cloud-sdk",
+    ///                     DisplayName = "Google Cloud SDK",
+    ///                     BaseUrl = "https://packages.cloud.google.com/yum/repos/cloud-sdk-el7-x86_64",
+    ///                     GpgKeys = new[]
+    ///                     {
+    ///                         "https://packages.cloud.google.com/yum/doc/yum-key.gpg",
+    ///                         "https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Os Config Guest Policies Recipes
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var guestPolicies = new Gcp.OsConfig.GuestPolicies("guestPolicies", new()
+    ///     {
+    ///         GuestPolicyId = "guest-policy",
+    ///         Assignment = new Gcp.OsConfig.Inputs.GuestPoliciesAssignmentArgs
+    ///         {
+    ///             Zones = new[]
+    ///             {
+    ///                 "us-east1-b",
+    ///                 "us-east1-d",
+    ///             },
+    ///         },
+    ///         Recipes = new[]
+    ///         {
+    ///             new Gcp.OsConfig.Inputs.GuestPoliciesRecipeArgs
+    ///             {
+    ///                 Name = "guest-policy-recipe",
+    ///                 DesiredState = "INSTALLED",
+    ///                 Artifacts = new[]
+    ///                 {
+    ///                     new Gcp.OsConfig.Inputs.GuestPoliciesRecipeArtifactArgs
+    ///                     {
+    ///                         Id = "guest-policy-artifact-id",
+    ///                         Gcs = new Gcp.OsConfig.Inputs.GuestPoliciesRecipeArtifactGcsArgs
+    ///                         {
+    ///                             Bucket = "my-bucket",
+    ///                             Object = "executable.msi",
+    ///                             Generation = 1546030865175603,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 InstallSteps = new[]
+    ///                 {
+    ///                     new Gcp.OsConfig.Inputs.GuestPoliciesRecipeInstallStepArgs
+    ///                     {
+    ///                         MsiInstallation = new Gcp.OsConfig.Inputs.GuestPoliciesRecipeInstallStepMsiInstallationArgs
+    ///                         {
+    ///                             ArtifactId = "guest-policy-artifact-id",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

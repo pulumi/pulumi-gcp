@@ -25,6 +25,32 @@ namespace Pulumi.Gcp.SecurityCenter
     ///     * [Official Documentation](https://cloud.google.com/security-command-center/docs)
     /// 
     /// ## Example Usage
+    /// ### Scc Notification Config Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sccNotification = new Gcp.PubSub.Topic("sccNotification");
+    /// 
+    ///     var customNotificationConfig = new Gcp.SecurityCenter.NotificationConfig("customNotificationConfig", new()
+    ///     {
+    ///         ConfigId = "my-config",
+    ///         Organization = "123456789",
+    ///         Description = "My custom Cloud Security Command Center Finding Notification Configuration",
+    ///         PubsubTopic = sccNotification.Id,
+    ///         StreamingConfig = new Gcp.SecurityCenter.Inputs.NotificationConfigStreamingConfigArgs
+    ///         {
+    ///             Filter = "category = \"OPEN_FIREWALL\" AND state = \"ACTIVE\"",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

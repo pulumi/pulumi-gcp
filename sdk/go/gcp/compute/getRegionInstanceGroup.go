@@ -15,6 +15,30 @@ import (
 // Get a Compute Region Instance Group within GCE.
 // For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.GetRegionInstanceGroup(ctx, &compute.GetRegionInstanceGroupArgs{
+//				Name: pulumi.StringRef("instance-group-name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
 func GetRegionInstanceGroup(ctx *pulumi.Context, args *GetRegionInstanceGroupArgs, opts ...pulumi.InvokeOption) (*GetRegionInstanceGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

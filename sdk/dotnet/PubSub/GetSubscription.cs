@@ -15,6 +15,28 @@ namespace Pulumi.Gcp.PubSub
         /// Get information about a Google Cloud Pub/Sub Subscription. For more information see
         /// the [official documentation](https://cloud.google.com/pubsub/docs/)
         /// and [API](https://cloud.google.com/pubsub/docs/apis).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_pubsub_subscription = Gcp.PubSub.GetSubscription.Invoke(new()
+        ///     {
+        ///         Name = "my-pubsub-subscription",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSubscriptionResult> InvokeAsync(GetSubscriptionArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSubscriptionResult>("gcp:pubsub/getSubscription:getSubscription", args ?? new GetSubscriptionArgs(), options.WithDefaults());
@@ -23,6 +45,28 @@ namespace Pulumi.Gcp.PubSub
         /// Get information about a Google Cloud Pub/Sub Subscription. For more information see
         /// the [official documentation](https://cloud.google.com/pubsub/docs/)
         /// and [API](https://cloud.google.com/pubsub/docs/apis).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_pubsub_subscription = Gcp.PubSub.GetSubscription.Invoke(new()
+        ///     {
+        ///         Name = "my-pubsub-subscription",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetSubscriptionResult> Invoke(GetSubscriptionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSubscriptionResult>("gcp:pubsub/getSubscription:getSubscription", args ?? new GetSubscriptionInvokeArgs(), options.WithDefaults());

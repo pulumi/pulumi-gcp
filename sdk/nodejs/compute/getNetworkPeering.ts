@@ -9,6 +9,28 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/compute/docs/vpc/vpc-peering)
  * and
  * [API](https://cloud.google.com/compute/docs/reference/latest/networks).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {autoCreateSubnetworks: false});
+ * const other = new gcp.compute.Network("other", {autoCreateSubnetworks: false});
+ * const peering1 = new gcp.compute.NetworkPeering("peering1", {
+ *     network: _default.selfLink,
+ *     peerNetwork: other.selfLink,
+ * });
+ * const peering2 = new gcp.compute.NetworkPeering("peering2", {
+ *     network: other.selfLink,
+ *     peerNetwork: _default.selfLink,
+ * });
+ * const peering1Ds = gcp.compute.getNetworkPeeringOutput({
+ *     name: peering1.name,
+ *     network: peering1.network,
+ * });
+ * ```
  */
 export function getNetworkPeering(args: GetNetworkPeeringArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkPeeringResult> {
 
@@ -57,6 +79,28 @@ export interface GetNetworkPeeringResult {
  * [the official documentation](https://cloud.google.com/compute/docs/vpc/vpc-peering)
  * and
  * [API](https://cloud.google.com/compute/docs/reference/latest/networks).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {autoCreateSubnetworks: false});
+ * const other = new gcp.compute.Network("other", {autoCreateSubnetworks: false});
+ * const peering1 = new gcp.compute.NetworkPeering("peering1", {
+ *     network: _default.selfLink,
+ *     peerNetwork: other.selfLink,
+ * });
+ * const peering2 = new gcp.compute.NetworkPeering("peering2", {
+ *     network: other.selfLink,
+ *     peerNetwork: _default.selfLink,
+ * });
+ * const peering1Ds = gcp.compute.getNetworkPeeringOutput({
+ *     name: peering1.name,
+ *     network: peering1.network,
+ * });
+ * ```
  */
 export function getNetworkPeeringOutput(args: GetNetworkPeeringOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkPeeringResult> {
     return pulumi.output(args).apply((a: any) => getNetworkPeering(a, opts))

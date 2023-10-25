@@ -14,6 +14,108 @@ import (
 )
 
 // ## Example Usage
+// ### Dataproc Metastore Federation Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultMetastoreService, err := dataproc.NewMetastoreService(ctx, "defaultMetastoreService", &dataproc.MetastoreServiceArgs{
+//				ServiceId: pulumi.String(""),
+//				Location:  pulumi.String("us-central1"),
+//				Tier:      pulumi.String("DEVELOPER"),
+//				HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
+//					Version:          pulumi.String("3.1.2"),
+//					EndpointProtocol: pulumi.String("GRPC"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataproc.NewMetastoreFederation(ctx, "defaultMetastoreFederation", &dataproc.MetastoreFederationArgs{
+//				Location:     pulumi.String("us-central1"),
+//				FederationId: pulumi.String(""),
+//				Version:      pulumi.String("3.1.2"),
+//				BackendMetastores: dataproc.MetastoreFederationBackendMetastoreArray{
+//					&dataproc.MetastoreFederationBackendMetastoreArgs{
+//						Rank:          pulumi.String("1"),
+//						Name:          defaultMetastoreService.ID(),
+//						MetastoreType: pulumi.String("DATAPROC_METASTORE"),
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Dataproc Metastore Federation Bigquery
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultMetastoreService, err := dataproc.NewMetastoreService(ctx, "defaultMetastoreService", &dataproc.MetastoreServiceArgs{
+//				ServiceId: pulumi.String(""),
+//				Location:  pulumi.String("us-central1"),
+//				Tier:      pulumi.String("DEVELOPER"),
+//				HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
+//					Version:          pulumi.String("3.1.2"),
+//					EndpointProtocol: pulumi.String("GRPC"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataproc.NewMetastoreFederation(ctx, "defaultMetastoreFederation", &dataproc.MetastoreFederationArgs{
+//				Location:     pulumi.String("us-central1"),
+//				FederationId: pulumi.String(""),
+//				Version:      pulumi.String("3.1.2"),
+//				BackendMetastores: dataproc.MetastoreFederationBackendMetastoreArray{
+//					&dataproc.MetastoreFederationBackendMetastoreArgs{
+//						Rank:          pulumi.String("2"),
+//						Name:          *pulumi.String(project.Id),
+//						MetastoreType: pulumi.String("BIGQUERY"),
+//					},
+//					&dataproc.MetastoreFederationBackendMetastoreArgs{
+//						Rank:          pulumi.String("1"),
+//						Name:          defaultMetastoreService.ID(),
+//						MetastoreType: pulumi.String("DATAPROC_METASTORE"),
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

@@ -29,6 +29,37 @@ namespace Pulumi.Gcp.AccessContextManager
     /// `billing_project` you defined.
     /// 
     /// ## Example Usage
+    /// ### Access Context Manager Authorized Orgs Desc Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test_access = new Gcp.AccessContextManager.AccessPolicy("test-access", new()
+    ///     {
+    ///         Parent = "organizations/",
+    ///         Title = "my policy",
+    ///     });
+    /// 
+    ///     var authorized_orgs_desc = new Gcp.AccessContextManager.AuthorizedOrgsDesc("authorized-orgs-desc", new()
+    ///     {
+    ///         AssetType = "ASSET_TYPE_CREDENTIAL_STRENGTH",
+    ///         AuthorizationDirection = "AUTHORIZATION_DIRECTION_TO",
+    ///         AuthorizationType = "AUTHORIZATION_TYPE_TRUST",
+    ///         Orgs = new[]
+    ///         {
+    ///             "organizations/12345",
+    ///             "organizations/98765",
+    ///         },
+    ///         Parent = test_access.Name.Apply(name =&gt; $"accessPolicies/{name}"),
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

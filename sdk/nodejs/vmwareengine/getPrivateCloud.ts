@@ -6,6 +6,19 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myPc = gcp.vmwareengine.getPrivateCloud({
+ *     name: "my-pc",
+ *     location: "us-central1-a",
+ * });
+ * ```
+ */
 export function getPrivateCloud(args: GetPrivateCloudArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateCloudResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -57,6 +70,19 @@ export interface GetPrivateCloudResult {
     readonly uid: string;
     readonly vcenters: outputs.vmwareengine.GetPrivateCloudVcenter[];
 }
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myPc = gcp.vmwareengine.getPrivateCloud({
+ *     name: "my-pc",
+ *     location: "us-central1-a",
+ * });
+ * ```
+ */
 export function getPrivateCloudOutput(args: GetPrivateCloudOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateCloudResult> {
     return pulumi.output(args).apply((a: any) => getPrivateCloud(a, opts))
 }

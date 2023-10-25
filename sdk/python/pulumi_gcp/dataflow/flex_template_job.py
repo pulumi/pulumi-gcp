@@ -1141,6 +1141,73 @@ class FlexTemplateJob(pulumi.CustomResource):
                  transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        big_data_job = gcp.dataflow.FlexTemplateJob("bigDataJob",
+            container_spec_gcs_path="gs://my-bucket/templates/template.json",
+            parameters={
+                "inputSubscription": "messages",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ## Note on "destroy" / "apply"
+
+        There are many types of Dataflow jobs.  Some Dataflow jobs run constantly,
+        getting new data from (e.g.) a GCS bucket, and outputting data continuously.
+        Some jobs process a set amount of data then terminate. All jobs can fail while
+        running due to programming errors or other issues. In this way, Dataflow jobs
+        are different from most other provider / Google resources.
+
+        The Dataflow resource is considered 'existing' while it is in a nonterminal
+        state.  If it reaches a terminal state (e.g. 'FAILED', 'COMPLETE',
+        'CANCELLED'), it will be recreated on the next 'apply'.  This is as expected for
+        jobs which run continuously, but may surprise users who use this resource for
+        other kinds of Dataflow jobs.
+
+        A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If
+        "cancelled", the job terminates - any data written remains where it is, but no
+        new data will be processed.  If "drained", no new data will enter the pipeline,
+        but any data currently in the pipeline will finish being processed.  The default
+        is "cancelled", but if a user sets `on_delete` to `"drain"` in the
+        configuration, you may experience a long wait for your `pulumi destroy` to
+        complete.
+
+        You can potentially short-circuit the wait by setting `skip_wait_on_job_termination`
+        to `true`, but beware that unless you take active steps to ensure that the job
+        `name` parameter changes between instances, the name will conflict and the launch
+        of the new job will fail. One way to do this is with a
+        random_id
+        resource, for example:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        big_data_job_subscription_id = config.get("bigDataJobSubscriptionId")
+        if big_data_job_subscription_id is None:
+            big_data_job_subscription_id = "projects/myproject/subscriptions/messages"
+        big_data_job_name_suffix = random.RandomId("bigDataJobNameSuffix",
+            byte_length=4,
+            keepers={
+                "region": var["region"],
+                "subscription_id": big_data_job_subscription_id,
+            })
+        big_data_job = gcp.dataflow.FlexTemplateJob("bigDataJob",
+            region=var["region"],
+            container_spec_gcs_path="gs://my-bucket/templates/template.json",
+            skip_wait_on_job_termination=True,
+            parameters={
+                "inputSubscription": big_data_job_subscription_id,
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
         ## Import
 
         This resource does not support import.
@@ -1198,6 +1265,73 @@ class FlexTemplateJob(pulumi.CustomResource):
                  args: FlexTemplateJobArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        big_data_job = gcp.dataflow.FlexTemplateJob("bigDataJob",
+            container_spec_gcs_path="gs://my-bucket/templates/template.json",
+            parameters={
+                "inputSubscription": "messages",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ## Note on "destroy" / "apply"
+
+        There are many types of Dataflow jobs.  Some Dataflow jobs run constantly,
+        getting new data from (e.g.) a GCS bucket, and outputting data continuously.
+        Some jobs process a set amount of data then terminate. All jobs can fail while
+        running due to programming errors or other issues. In this way, Dataflow jobs
+        are different from most other provider / Google resources.
+
+        The Dataflow resource is considered 'existing' while it is in a nonterminal
+        state.  If it reaches a terminal state (e.g. 'FAILED', 'COMPLETE',
+        'CANCELLED'), it will be recreated on the next 'apply'.  This is as expected for
+        jobs which run continuously, but may surprise users who use this resource for
+        other kinds of Dataflow jobs.
+
+        A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If
+        "cancelled", the job terminates - any data written remains where it is, but no
+        new data will be processed.  If "drained", no new data will enter the pipeline,
+        but any data currently in the pipeline will finish being processed.  The default
+        is "cancelled", but if a user sets `on_delete` to `"drain"` in the
+        configuration, you may experience a long wait for your `pulumi destroy` to
+        complete.
+
+        You can potentially short-circuit the wait by setting `skip_wait_on_job_termination`
+        to `true`, but beware that unless you take active steps to ensure that the job
+        `name` parameter changes between instances, the name will conflict and the launch
+        of the new job will fail. One way to do this is with a
+        random_id
+        resource, for example:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        big_data_job_subscription_id = config.get("bigDataJobSubscriptionId")
+        if big_data_job_subscription_id is None:
+            big_data_job_subscription_id = "projects/myproject/subscriptions/messages"
+        big_data_job_name_suffix = random.RandomId("bigDataJobNameSuffix",
+            byte_length=4,
+            keepers={
+                "region": var["region"],
+                "subscription_id": big_data_job_subscription_id,
+            })
+        big_data_job = gcp.dataflow.FlexTemplateJob("bigDataJob",
+            region=var["region"],
+            container_spec_gcs_path="gs://my-bucket/templates/template.json",
+            skip_wait_on_job_termination=True,
+            parameters={
+                "inputSubscription": big_data_job_subscription_id,
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
         ## Import
 
         This resource does not support import.

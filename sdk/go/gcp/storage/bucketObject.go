@@ -22,6 +22,62 @@ import (
 // and
 // [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
 //
+// ## Example Usage
+//
+// Example creating a public object in an existing `image-store` bucket.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := storage.NewBucketObject(ctx, "picture", &storage.BucketObjectArgs{
+//				Bucket: pulumi.String("image-store"),
+//				Source: pulumi.NewFileAsset("/images/nature/garden-tiger-moth.jpg"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Example creating an empty folder in an existing `image-store` bucket.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := storage.NewBucketObject(ctx, "emptyFolder", &storage.BucketObjectArgs{
+//				Bucket:  pulumi.String("image-store"),
+//				Content: pulumi.String(" "),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // This resource does not support import.

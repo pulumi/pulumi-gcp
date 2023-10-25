@@ -13,12 +13,66 @@ namespace Pulumi.Gcp.Container
     {
         /// <summary>
         /// Provides access to available platform versions in a location for a given project.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var uswest = Gcp.Container.GetAttachedVersions.Invoke(new()
+        ///     {
+        ///         Location = "us-west1",
+        ///         Project = "my-project",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstAvailableVersion"] = data.Google_container_attached_versions.Versions.Valid_versions[0],
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAttachedVersionsResult> InvokeAsync(GetAttachedVersionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAttachedVersionsResult>("gcp:container/getAttachedVersions:getAttachedVersions", args ?? new GetAttachedVersionsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides access to available platform versions in a location for a given project.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var uswest = Gcp.Container.GetAttachedVersions.Invoke(new()
+        ///     {
+        ///         Location = "us-west1",
+        ///         Project = "my-project",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstAvailableVersion"] = data.Google_container_attached_versions.Versions.Valid_versions[0],
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAttachedVersionsResult> Invoke(GetAttachedVersionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAttachedVersionsResult>("gcp:container/getAttachedVersions:getAttachedVersions", args ?? new GetAttachedVersionsInvokeArgs(), options.WithDefaults());

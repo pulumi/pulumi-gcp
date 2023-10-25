@@ -94,6 +94,21 @@ def get_testable_permissions(custom_support_level: Optional[str] = None,
     """
     Retrieve a list of testable permissions for a resource. Testable permissions mean the permissions that user can add or remove in a role at a given resource. The resource can be referenced either via the full resource name or via a URI.
 
+    ## Example Usage
+
+    Retrieve all the supported permissions able to be set on `my-project` that are in either GA or BETA. This is useful for dynamically constructing custom roles.
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    perms = gcp.iam.get_testable_permissions(full_resource_name="//cloudresourcemanager.googleapis.com/projects/my-project",
+        stages=[
+            "GA",
+            "BETA",
+        ])
+    ```
+
 
     :param str custom_support_level: The level of support for custom roles. Can be one of `"NOT_SUPPORTED"`, `"SUPPORTED"`, `"TESTING"`. Default is `"SUPPORTED"`
     :param str full_resource_name: See [full resource name documentation](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more detail.
@@ -121,6 +136,21 @@ def get_testable_permissions_output(custom_support_level: Optional[pulumi.Input[
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTestablePermissionsResult]:
     """
     Retrieve a list of testable permissions for a resource. Testable permissions mean the permissions that user can add or remove in a role at a given resource. The resource can be referenced either via the full resource name or via a URI.
+
+    ## Example Usage
+
+    Retrieve all the supported permissions able to be set on `my-project` that are in either GA or BETA. This is useful for dynamically constructing custom roles.
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    perms = gcp.iam.get_testable_permissions(full_resource_name="//cloudresourcemanager.googleapis.com/projects/my-project",
+        stages=[
+            "GA",
+            "BETA",
+        ])
+    ```
 
 
     :param str custom_support_level: The level of support for custom roles. Can be one of `"NOT_SUPPORTED"`, `"SUPPORTED"`, `"TESTING"`. Default is `"SUPPORTED"`

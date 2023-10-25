@@ -364,6 +364,46 @@ class Membership(pulumi.CustomResource):
             * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 
         ## Example Usage
+        ### Gkehub Membership Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            initial_node_count=1,
+            location="us-central1-a")
+        membership = gcp.gkehub.Membership("membership",
+            endpoint=gcp.gkehub.MembershipEndpointArgs(
+                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
+                    resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                ),
+            ),
+            membership_id="basic")
+        ```
+        ### Gkehub Membership Issuer
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            location="us-central1-a",
+            initial_node_count=1,
+            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
+                workload_pool="my-project-name.svc.id.goog",
+            ))
+        membership = gcp.gkehub.Membership("membership",
+            membership_id="basic",
+            endpoint=gcp.gkehub.MembershipEndpointArgs(
+                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
+                    resource_link=primary.id,
+                ),
+            ),
+            authority=gcp.gkehub.MembershipAuthorityArgs(
+                issuer=primary.id.apply(lambda id: f"https://container.googleapis.com/v1/{id}"),
+            ))
+        ```
 
         ## Import
 
@@ -417,6 +457,46 @@ class Membership(pulumi.CustomResource):
             * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 
         ## Example Usage
+        ### Gkehub Membership Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            initial_node_count=1,
+            location="us-central1-a")
+        membership = gcp.gkehub.Membership("membership",
+            endpoint=gcp.gkehub.MembershipEndpointArgs(
+                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
+                    resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                ),
+            ),
+            membership_id="basic")
+        ```
+        ### Gkehub Membership Issuer
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            location="us-central1-a",
+            initial_node_count=1,
+            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
+                workload_pool="my-project-name.svc.id.goog",
+            ))
+        membership = gcp.gkehub.Membership("membership",
+            membership_id="basic",
+            endpoint=gcp.gkehub.MembershipEndpointArgs(
+                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
+                    resource_link=primary.id,
+                ),
+            ),
+            authority=gcp.gkehub.MembershipAuthorityArgs(
+                issuer=primary.id.apply(lambda id: f"https://container.googleapis.com/v1/{id}"),
+            ))
+        ```
 
         ## Import
 

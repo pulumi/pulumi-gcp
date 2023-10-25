@@ -82,6 +82,15 @@ def get_service_iam_policy(service_name: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceIamPolicyResult:
     """
     Retrieves the current IAM policy data for service
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.endpoints.get_service_iam_policy(service_name=google_endpoints_service["endpoints_service"]["service_name"])
+    ```
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
@@ -100,5 +109,14 @@ def get_service_iam_policy_output(service_name: Optional[pulumi.Input[str]] = No
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceIamPolicyResult]:
     """
     Retrieves the current IAM policy data for service
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.endpoints.get_service_iam_policy(service_name=google_endpoints_service["endpoints_service"]["service_name"])
+    ```
     """
     ...

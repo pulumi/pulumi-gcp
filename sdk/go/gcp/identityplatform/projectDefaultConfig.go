@@ -21,6 +21,46 @@ import (
 // `billingProject` you defined.
 //
 // ## Example Usage
+// ### Identity Platform Project Default Config
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/identityplatform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := identityplatform.NewProjectDefaultConfig(ctx, "default", &identityplatform.ProjectDefaultConfigArgs{
+//				SignIn: &identityplatform.ProjectDefaultConfigSignInArgs{
+//					AllowDuplicateEmails: pulumi.Bool(true),
+//					Anonymous: &identityplatform.ProjectDefaultConfigSignInAnonymousArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//					Email: &identityplatform.ProjectDefaultConfigSignInEmailArgs{
+//						Enabled:          pulumi.Bool(true),
+//						PasswordRequired: pulumi.Bool(false),
+//					},
+//					PhoneNumber: &identityplatform.ProjectDefaultConfigSignInPhoneNumberArgs{
+//						Enabled: pulumi.Bool(true),
+//						TestPhoneNumbers: pulumi.StringMap{
+//							"+11231231234": pulumi.String("000000"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

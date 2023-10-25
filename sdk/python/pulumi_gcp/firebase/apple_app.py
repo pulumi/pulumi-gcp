@@ -412,6 +412,42 @@ class AppleApp(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Firebase Apple App Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.firebase.AppleApp("default",
+            project="my-project-name",
+            display_name="Display Name Basic",
+            bundle_id="apple.app.12345",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Firebase Apple App Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        apple = gcp.projects.ApiKey("apple",
+            display_name="Display Name Full",
+            project="my-project-name",
+            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
+                ios_key_restrictions=gcp.projects.ApiKeyRestrictionsIosKeyRestrictionsArgs(
+                    allowed_bundle_ids=["apple.app.12345"],
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        full = gcp.firebase.AppleApp("full",
+            project="my-project-name",
+            display_name="Display Name Full",
+            bundle_id="apple.app.12345",
+            app_store_id="12345",
+            team_id="9987654321",
+            api_key_id=apple.uid,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -463,6 +499,42 @@ class AppleApp(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Firebase Apple App Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.firebase.AppleApp("default",
+            project="my-project-name",
+            display_name="Display Name Basic",
+            bundle_id="apple.app.12345",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Firebase Apple App Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        apple = gcp.projects.ApiKey("apple",
+            display_name="Display Name Full",
+            project="my-project-name",
+            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
+                ios_key_restrictions=gcp.projects.ApiKeyRestrictionsIosKeyRestrictionsArgs(
+                    allowed_bundle_ids=["apple.app.12345"],
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        full = gcp.firebase.AppleApp("full",
+            project="my-project-name",
+            display_name="Display Name Full",
+            bundle_id="apple.app.12345",
+            app_store_id="12345",
+            team_id="9987654321",
+            api_key_id=apple.uid,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

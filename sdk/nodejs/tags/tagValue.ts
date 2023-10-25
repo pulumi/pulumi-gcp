@@ -14,6 +14,23 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
  *
  * ## Example Usage
+ * ### Tag Value Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const key = new gcp.tags.TagKey("key", {
+ *     description: "For keyname resources.",
+ *     parent: "organizations/123456789",
+ *     shortName: "keyname",
+ * });
+ * const value = new gcp.tags.TagValue("value", {
+ *     description: "For valuename resources.",
+ *     parent: pulumi.interpolate`tagKeys/${key.name}`,
+ *     shortName: "valuename",
+ * });
+ * ```
  *
  * ## Import
  *

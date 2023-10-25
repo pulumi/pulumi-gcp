@@ -20,6 +20,29 @@ import * as utilities from "../utilities";
  * Read more about sensitive data in state.
  *
  * ## Example Usage
+ * ### Certificate Manager Trust Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.certificatemanager.TrustConfig("default", {
+ *     description: "sample description for the trust config",
+ *     location: "us-central1",
+ *     trustStores: [{
+ *         trustAnchors: [{
+ *             pemCertificate: fs.readFileSync("test-fixtures/cert.pem"),
+ *         }],
+ *         intermediateCas: [{
+ *             pemCertificate: fs.readFileSync("test-fixtures/cert.pem"),
+ *         }],
+ *     }],
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

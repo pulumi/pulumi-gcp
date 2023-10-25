@@ -296,6 +296,19 @@ class CertificateMap(pulumi.CustomResource):
         which are usable by any associated target proxies
 
         ## Example Usage
+        ### Certificate Manager Certificate Map Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificatemanager.CertificateMap("default",
+            description="My acceptance test certificate map",
+            labels={
+                "terraform": "true",
+                "acc-test": "true",
+            })
+        ```
 
         ## Import
 
@@ -336,6 +349,19 @@ class CertificateMap(pulumi.CustomResource):
         which are usable by any associated target proxies
 
         ## Example Usage
+        ### Certificate Manager Certificate Map Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificatemanager.CertificateMap("default",
+            description="My acceptance test certificate map",
+            labels={
+                "terraform": "true",
+                "acc-test": "true",
+            })
+        ```
 
         ## Import
 

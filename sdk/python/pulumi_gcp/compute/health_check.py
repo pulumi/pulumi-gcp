@@ -789,6 +789,219 @@ class HealthCheck(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
 
         ## Example Usage
+        ### Health Check Tcp
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tcp_health_check = gcp.compute.HealthCheck("tcp-health-check",
+            check_interval_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ),
+            timeout_sec=1)
+        ```
+        ### Health Check Tcp Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tcp_health_check = gcp.compute.HealthCheck("tcp-health-check",
+            check_interval_sec=1,
+            description="Health check via tcp",
+            healthy_threshold=4,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port_name="health-check-port",
+                port_specification="USE_NAMED_PORT",
+                proxy_header="NONE",
+                request="ARE YOU HEALTHY?",
+                response="I AM HEALTHY",
+            ),
+            timeout_sec=1,
+            unhealthy_threshold=5)
+        ```
+        ### Health Check Ssl
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ssl_health_check = gcp.compute.HealthCheck("ssl-health-check",
+            check_interval_sec=1,
+            ssl_health_check=gcp.compute.HealthCheckSslHealthCheckArgs(
+                port=443,
+            ),
+            timeout_sec=1)
+        ```
+        ### Health Check Ssl Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ssl_health_check = gcp.compute.HealthCheck("ssl-health-check",
+            check_interval_sec=1,
+            description="Health check via ssl",
+            healthy_threshold=4,
+            ssl_health_check=gcp.compute.HealthCheckSslHealthCheckArgs(
+                port_name="health-check-port",
+                port_specification="USE_NAMED_PORT",
+                proxy_header="NONE",
+                request="ARE YOU HEALTHY?",
+                response="I AM HEALTHY",
+            ),
+            timeout_sec=1,
+            unhealthy_threshold=5)
+        ```
+        ### Health Check Http
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        http_health_check = gcp.compute.HealthCheck("http-health-check",
+            check_interval_sec=1,
+            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
+                port=80,
+            ),
+            timeout_sec=1)
+        ```
+        ### Health Check Http Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        http_health_check = gcp.compute.HealthCheck("http-health-check",
+            check_interval_sec=1,
+            description="Health check via http",
+            healthy_threshold=4,
+            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
+                host="1.2.3.4",
+                port_name="health-check-port",
+                port_specification="USE_NAMED_PORT",
+                proxy_header="NONE",
+                request_path="/mypath",
+                response="I AM HEALTHY",
+            ),
+            timeout_sec=1,
+            unhealthy_threshold=5)
+        ```
+        ### Health Check Https
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        https_health_check = gcp.compute.HealthCheck("https-health-check",
+            check_interval_sec=1,
+            https_health_check=gcp.compute.HealthCheckHttpsHealthCheckArgs(
+                port=443,
+            ),
+            timeout_sec=1)
+        ```
+        ### Health Check Https Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        https_health_check = gcp.compute.HealthCheck("https-health-check",
+            check_interval_sec=1,
+            description="Health check via https",
+            healthy_threshold=4,
+            https_health_check=gcp.compute.HealthCheckHttpsHealthCheckArgs(
+                host="1.2.3.4",
+                port_name="health-check-port",
+                port_specification="USE_NAMED_PORT",
+                proxy_header="NONE",
+                request_path="/mypath",
+                response="I AM HEALTHY",
+            ),
+            timeout_sec=1,
+            unhealthy_threshold=5)
+        ```
+        ### Health Check Http2
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        http2_health_check = gcp.compute.HealthCheck("http2-health-check",
+            check_interval_sec=1,
+            http2_health_check=gcp.compute.HealthCheckHttp2HealthCheckArgs(
+                port=443,
+            ),
+            timeout_sec=1)
+        ```
+        ### Health Check Http2 Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        http2_health_check = gcp.compute.HealthCheck("http2-health-check",
+            check_interval_sec=1,
+            description="Health check via http2",
+            healthy_threshold=4,
+            http2_health_check=gcp.compute.HealthCheckHttp2HealthCheckArgs(
+                host="1.2.3.4",
+                port_name="health-check-port",
+                port_specification="USE_NAMED_PORT",
+                proxy_header="NONE",
+                request_path="/mypath",
+                response="I AM HEALTHY",
+            ),
+            timeout_sec=1,
+            unhealthy_threshold=5)
+        ```
+        ### Health Check Grpc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        grpc_health_check = gcp.compute.HealthCheck("grpc-health-check",
+            check_interval_sec=1,
+            grpc_health_check=gcp.compute.HealthCheckGrpcHealthCheckArgs(
+                port=443,
+            ),
+            timeout_sec=1)
+        ```
+        ### Health Check Grpc Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        grpc_health_check = gcp.compute.HealthCheck("grpc-health-check",
+            check_interval_sec=1,
+            grpc_health_check=gcp.compute.HealthCheckGrpcHealthCheckArgs(
+                grpc_service_name="testservice",
+                port_name="health-check-port",
+                port_specification="USE_NAMED_PORT",
+            ),
+            timeout_sec=1)
+        ```
+        ### Health Check With Logging
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check_with_logging = gcp.compute.HealthCheck("health-check-with-logging",
+            timeout_sec=1,
+            check_interval_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=22,
+            ),
+            log_config=gcp.compute.HealthCheckLogConfigArgs(
+                enable=True,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -876,6 +1089,219 @@ class HealthCheck(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
 
         ## Example Usage
+        ### Health Check Tcp
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tcp_health_check = gcp.compute.HealthCheck("tcp-health-check",
+            check_interval_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ),
+            timeout_sec=1)
+        ```
+        ### Health Check Tcp Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tcp_health_check = gcp.compute.HealthCheck("tcp-health-check",
+            check_interval_sec=1,
+            description="Health check via tcp",
+            healthy_threshold=4,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port_name="health-check-port",
+                port_specification="USE_NAMED_PORT",
+                proxy_header="NONE",
+                request="ARE YOU HEALTHY?",
+                response="I AM HEALTHY",
+            ),
+            timeout_sec=1,
+            unhealthy_threshold=5)
+        ```
+        ### Health Check Ssl
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ssl_health_check = gcp.compute.HealthCheck("ssl-health-check",
+            check_interval_sec=1,
+            ssl_health_check=gcp.compute.HealthCheckSslHealthCheckArgs(
+                port=443,
+            ),
+            timeout_sec=1)
+        ```
+        ### Health Check Ssl Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ssl_health_check = gcp.compute.HealthCheck("ssl-health-check",
+            check_interval_sec=1,
+            description="Health check via ssl",
+            healthy_threshold=4,
+            ssl_health_check=gcp.compute.HealthCheckSslHealthCheckArgs(
+                port_name="health-check-port",
+                port_specification="USE_NAMED_PORT",
+                proxy_header="NONE",
+                request="ARE YOU HEALTHY?",
+                response="I AM HEALTHY",
+            ),
+            timeout_sec=1,
+            unhealthy_threshold=5)
+        ```
+        ### Health Check Http
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        http_health_check = gcp.compute.HealthCheck("http-health-check",
+            check_interval_sec=1,
+            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
+                port=80,
+            ),
+            timeout_sec=1)
+        ```
+        ### Health Check Http Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        http_health_check = gcp.compute.HealthCheck("http-health-check",
+            check_interval_sec=1,
+            description="Health check via http",
+            healthy_threshold=4,
+            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
+                host="1.2.3.4",
+                port_name="health-check-port",
+                port_specification="USE_NAMED_PORT",
+                proxy_header="NONE",
+                request_path="/mypath",
+                response="I AM HEALTHY",
+            ),
+            timeout_sec=1,
+            unhealthy_threshold=5)
+        ```
+        ### Health Check Https
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        https_health_check = gcp.compute.HealthCheck("https-health-check",
+            check_interval_sec=1,
+            https_health_check=gcp.compute.HealthCheckHttpsHealthCheckArgs(
+                port=443,
+            ),
+            timeout_sec=1)
+        ```
+        ### Health Check Https Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        https_health_check = gcp.compute.HealthCheck("https-health-check",
+            check_interval_sec=1,
+            description="Health check via https",
+            healthy_threshold=4,
+            https_health_check=gcp.compute.HealthCheckHttpsHealthCheckArgs(
+                host="1.2.3.4",
+                port_name="health-check-port",
+                port_specification="USE_NAMED_PORT",
+                proxy_header="NONE",
+                request_path="/mypath",
+                response="I AM HEALTHY",
+            ),
+            timeout_sec=1,
+            unhealthy_threshold=5)
+        ```
+        ### Health Check Http2
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        http2_health_check = gcp.compute.HealthCheck("http2-health-check",
+            check_interval_sec=1,
+            http2_health_check=gcp.compute.HealthCheckHttp2HealthCheckArgs(
+                port=443,
+            ),
+            timeout_sec=1)
+        ```
+        ### Health Check Http2 Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        http2_health_check = gcp.compute.HealthCheck("http2-health-check",
+            check_interval_sec=1,
+            description="Health check via http2",
+            healthy_threshold=4,
+            http2_health_check=gcp.compute.HealthCheckHttp2HealthCheckArgs(
+                host="1.2.3.4",
+                port_name="health-check-port",
+                port_specification="USE_NAMED_PORT",
+                proxy_header="NONE",
+                request_path="/mypath",
+                response="I AM HEALTHY",
+            ),
+            timeout_sec=1,
+            unhealthy_threshold=5)
+        ```
+        ### Health Check Grpc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        grpc_health_check = gcp.compute.HealthCheck("grpc-health-check",
+            check_interval_sec=1,
+            grpc_health_check=gcp.compute.HealthCheckGrpcHealthCheckArgs(
+                port=443,
+            ),
+            timeout_sec=1)
+        ```
+        ### Health Check Grpc Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        grpc_health_check = gcp.compute.HealthCheck("grpc-health-check",
+            check_interval_sec=1,
+            grpc_health_check=gcp.compute.HealthCheckGrpcHealthCheckArgs(
+                grpc_service_name="testservice",
+                port_name="health-check-port",
+                port_specification="USE_NAMED_PORT",
+            ),
+            timeout_sec=1)
+        ```
+        ### Health Check With Logging
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check_with_logging = gcp.compute.HealthCheck("health-check-with-logging",
+            timeout_sec=1,
+            check_interval_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=22,
+            ),
+            log_config=gcp.compute.HealthCheckLogConfigArgs(
+                enable=True,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

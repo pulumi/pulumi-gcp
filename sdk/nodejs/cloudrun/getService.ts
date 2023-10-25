@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * Get information about a Google Cloud Run Service. For more information see
  * the [official documentation](https://cloud.google.com/run/docs/)
  * and [API](https://cloud.google.com/run/docs/apis).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const run-service = gcp.cloudrun.getService({
+ *     location: "us-central1",
+ *     name: "my-service",
+ * });
+ * ```
  */
 export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
 
@@ -63,6 +75,18 @@ export interface GetServiceResult {
  * Get information about a Google Cloud Run Service. For more information see
  * the [official documentation](https://cloud.google.com/run/docs/)
  * and [API](https://cloud.google.com/run/docs/apis).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const run-service = gcp.cloudrun.getService({
+ *     location: "us-central1",
+ *     name: "my-service",
+ * });
+ * ```
  */
 export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
     return pulumi.output(args).apply((a: any) => getService(a, opts))

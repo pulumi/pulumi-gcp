@@ -324,6 +324,22 @@ class NotificationConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/security-command-center/docs)
 
         ## Example Usage
+        ### Scc Notification Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        scc_notification = gcp.pubsub.Topic("sccNotification")
+        custom_notification_config = gcp.securitycenter.NotificationConfig("customNotificationConfig",
+            config_id="my-config",
+            organization="123456789",
+            description="My custom Cloud Security Command Center Finding Notification Configuration",
+            pubsub_topic=scc_notification.id,
+            streaming_config=gcp.securitycenter.NotificationConfigStreamingConfigArgs(
+                filter="category = \\"OPEN_FIREWALL\\" AND state = \\"ACTIVE\\"",
+            ))
+        ```
 
         ## Import
 
@@ -370,6 +386,22 @@ class NotificationConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/security-command-center/docs)
 
         ## Example Usage
+        ### Scc Notification Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        scc_notification = gcp.pubsub.Topic("sccNotification")
+        custom_notification_config = gcp.securitycenter.NotificationConfig("customNotificationConfig",
+            config_id="my-config",
+            organization="123456789",
+            description="My custom Cloud Security Command Center Finding Notification Configuration",
+            pubsub_topic=scc_notification.id,
+            streaming_config=gcp.securitycenter.NotificationConfigStreamingConfigArgs(
+                filter="category = \\"OPEN_FIREWALL\\" AND state = \\"ACTIVE\\"",
+            ))
+        ```
 
         ## Import
 

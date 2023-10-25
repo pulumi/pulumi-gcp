@@ -21,6 +21,53 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.secretmanager.SecretIamBinding` resources **can be** used in conjunction with `gcp.secretmanager.SecretIamMember` resources **only if** they do not grant privilege to the same role.
  *
+ * ## google\_secret\_manager\_secret\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/secretmanager.secretAccessor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.secretmanager.SecretIamPolicy("policy", {
+ *     project: google_secret_manager_secret["secret-basic"].project,
+ *     secretId: google_secret_manager_secret["secret-basic"].secret_id,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## google\_secret\_manager\_secret\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.secretmanager.SecretIamBinding("binding", {
+ *     project: google_secret_manager_secret["secret-basic"].project,
+ *     secretId: google_secret_manager_secret["secret-basic"].secret_id,
+ *     role: "roles/secretmanager.secretAccessor",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * ## google\_secret\_manager\_secret\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.secretmanager.SecretIamMember("member", {
+ *     project: google_secret_manager_secret["secret-basic"].project,
+ *     secretId: google_secret_manager_secret["secret-basic"].secret_id,
+ *     role: "roles/secretmanager.secretAccessor",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/secrets/{{secret_id}} * {{project}}/{{secret_id}} * {{secret_id}} Any variables not passed in the import command will be taken from the provider configuration. Secret Manager secret IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

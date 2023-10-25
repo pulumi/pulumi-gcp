@@ -17,6 +17,69 @@ import * as utilities from "../utilities";
  *     * [Creating a DICOM store](https://cloud.google.com/healthcare/docs/how-tos/dicom)
  *
  * ## Example Usage
+ * ### Healthcare Dicom Store Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const topic = new gcp.pubsub.Topic("topic", {});
+ * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
+ * const _default = new gcp.healthcare.DicomStore("default", {
+ *     dataset: dataset.id,
+ *     notificationConfig: {
+ *         pubsubTopic: topic.id,
+ *     },
+ *     labels: {
+ *         label1: "labelvalue1",
+ *     },
+ * });
+ * ```
+ * ### Healthcare Dicom Store Bq Stream
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const topic = new gcp.pubsub.Topic("topic", {}, {
+ *     provider: google_beta,
+ * });
+ * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"}, {
+ *     provider: google_beta,
+ * });
+ * const bqDataset = new gcp.bigquery.Dataset("bqDataset", {
+ *     datasetId: "dicom_bq_ds",
+ *     friendlyName: "test",
+ *     description: "This is a test description",
+ *     location: "US",
+ *     deleteContentsOnDestroy: true,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const bqTable = new gcp.bigquery.Table("bqTable", {
+ *     deletionProtection: false,
+ *     datasetId: bqDataset.datasetId,
+ *     tableId: "dicom_bq_tb",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const _default = new gcp.healthcare.DicomStore("default", {
+ *     dataset: dataset.id,
+ *     notificationConfig: {
+ *         pubsubTopic: topic.id,
+ *     },
+ *     labels: {
+ *         label1: "labelvalue1",
+ *     },
+ *     streamConfigs: [{
+ *         bigqueryDestination: {
+ *             tableUri: pulumi.interpolate`bq://${bqDataset.project}.${bqDataset.datasetId}.${bqTable.tableId}`,
+ *         },
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

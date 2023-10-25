@@ -29,6 +29,65 @@ namespace Pulumi.Gcp.Monitoring
         /// 
         /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
+        /// ### Monitoring App Engine Service
+        /// 
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+        ///     {
+        ///         Location = "US",
+        ///     });
+        /// 
+        ///     var @object = new Gcp.Storage.BucketObject("object", new()
+        ///     {
+        ///         Bucket = bucket.Name,
+        ///         Source = new FileAsset("./test-fixtures/hello-world.zip"),
+        ///     });
+        /// 
+        ///     var myapp = new Gcp.AppEngine.StandardAppVersion("myapp", new()
+        ///     {
+        ///         VersionId = "v1",
+        ///         Service = "myapp",
+        ///         Runtime = "nodejs10",
+        ///         Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
+        ///         {
+        ///             Shell = "node ./app.js",
+        ///         },
+        ///         Deployment = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentArgs
+        ///         {
+        ///             Zip = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentZipArgs
+        ///             {
+        ///                 SourceUrl = Output.Tuple(bucket.Name, @object.Name).Apply(values =&gt;
+        ///                 {
+        ///                     var bucketName = values.Item1;
+        ///                     var objectName = values.Item2;
+        ///                     return $"https://storage.googleapis.com/{bucketName}/{objectName}";
+        ///                 }),
+        ///             },
+        ///         },
+        ///         EnvVariables = 
+        ///         {
+        ///             { "port", "8080" },
+        ///         },
+        ///         DeleteServiceOnDestroy = false,
+        ///     });
+        /// 
+        ///     var srv = Gcp.Monitoring.GetAppEngineService.Invoke(new()
+        ///     {
+        ///         ModuleId = myapp.Service,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAppEngineServiceResult> InvokeAsync(GetAppEngineServiceArgs args, InvokeOptions? options = null)
@@ -52,6 +111,65 @@ namespace Pulumi.Gcp.Monitoring
         /// 
         /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
+        /// ### Monitoring App Engine Service
+        /// 
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+        ///     {
+        ///         Location = "US",
+        ///     });
+        /// 
+        ///     var @object = new Gcp.Storage.BucketObject("object", new()
+        ///     {
+        ///         Bucket = bucket.Name,
+        ///         Source = new FileAsset("./test-fixtures/hello-world.zip"),
+        ///     });
+        /// 
+        ///     var myapp = new Gcp.AppEngine.StandardAppVersion("myapp", new()
+        ///     {
+        ///         VersionId = "v1",
+        ///         Service = "myapp",
+        ///         Runtime = "nodejs10",
+        ///         Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
+        ///         {
+        ///             Shell = "node ./app.js",
+        ///         },
+        ///         Deployment = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentArgs
+        ///         {
+        ///             Zip = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentZipArgs
+        ///             {
+        ///                 SourceUrl = Output.Tuple(bucket.Name, @object.Name).Apply(values =&gt;
+        ///                 {
+        ///                     var bucketName = values.Item1;
+        ///                     var objectName = values.Item2;
+        ///                     return $"https://storage.googleapis.com/{bucketName}/{objectName}";
+        ///                 }),
+        ///             },
+        ///         },
+        ///         EnvVariables = 
+        ///         {
+        ///             { "port", "8080" },
+        ///         },
+        ///         DeleteServiceOnDestroy = false,
+        ///     });
+        /// 
+        ///     var srv = Gcp.Monitoring.GetAppEngineService.Invoke(new()
+        ///     {
+        ///         ModuleId = myapp.Service,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAppEngineServiceResult> Invoke(GetAppEngineServiceInvokeArgs args, InvokeOptions? options = null)

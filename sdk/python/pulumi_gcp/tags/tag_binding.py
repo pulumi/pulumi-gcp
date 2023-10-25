@@ -171,6 +171,27 @@ class TagBinding(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 
         ## Example Usage
+        ### Tag Binding Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.Project("project",
+            org_id="123456789",
+            project_id="project_id")
+        key = gcp.tags.TagKey("key",
+            description="For keyname resources.",
+            parent="organizations/123456789",
+            short_name="keyname")
+        value = gcp.tags.TagValue("value",
+            description="For valuename resources.",
+            parent=key.name.apply(lambda name: f"tagKeys/{name}"),
+            short_name="valuename")
+        binding = gcp.tags.TagBinding("binding",
+            parent=project.number.apply(lambda number: f"//cloudresourcemanager.googleapis.com/projects/{number}"),
+            tag_value=value.name.apply(lambda name: f"tagValues/{name}"))
+        ```
 
         ## Import
 
@@ -208,6 +229,27 @@ class TagBinding(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 
         ## Example Usage
+        ### Tag Binding Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.Project("project",
+            org_id="123456789",
+            project_id="project_id")
+        key = gcp.tags.TagKey("key",
+            description="For keyname resources.",
+            parent="organizations/123456789",
+            short_name="keyname")
+        value = gcp.tags.TagValue("value",
+            description="For valuename resources.",
+            parent=key.name.apply(lambda name: f"tagKeys/{name}"),
+            short_name="valuename")
+        binding = gcp.tags.TagBinding("binding",
+            parent=project.number.apply(lambda number: f"//cloudresourcemanager.googleapis.com/projects/{number}"),
+            tag_value=value.name.apply(lambda name: f"tagValues/{name}"))
+        ```
 
         ## Import
 

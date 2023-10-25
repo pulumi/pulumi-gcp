@@ -360,6 +360,29 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
         the marketplace prior to using this resource.
 
         ## Example Usage
+        ### Identity Platform Tenant Inbound Saml Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tenant = gcp.identityplatform.Tenant("tenant", display_name="tenant")
+        tenant_saml_config = gcp.identityplatform.TenantInboundSamlConfig("tenantSamlConfig",
+            display_name="Display Name",
+            tenant=tenant.name,
+            idp_config=gcp.identityplatform.TenantInboundSamlConfigIdpConfigArgs(
+                idp_entity_id="tf-idp",
+                sign_request=True,
+                sso_url="https://example.com",
+                idp_certificates=[gcp.identityplatform.TenantInboundSamlConfigIdpConfigIdpCertificateArgs(
+                    x509_certificate=(lambda path: open(path).read())("test-fixtures/rsa_cert.pem"),
+                )],
+            ),
+            sp_config=gcp.identityplatform.TenantInboundSamlConfigSpConfigArgs(
+                sp_entity_id="tf-sp",
+                callback_uri="https://example.com",
+            ))
+        ```
 
         ## Import
 
@@ -407,6 +430,29 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
         the marketplace prior to using this resource.
 
         ## Example Usage
+        ### Identity Platform Tenant Inbound Saml Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tenant = gcp.identityplatform.Tenant("tenant", display_name="tenant")
+        tenant_saml_config = gcp.identityplatform.TenantInboundSamlConfig("tenantSamlConfig",
+            display_name="Display Name",
+            tenant=tenant.name,
+            idp_config=gcp.identityplatform.TenantInboundSamlConfigIdpConfigArgs(
+                idp_entity_id="tf-idp",
+                sign_request=True,
+                sso_url="https://example.com",
+                idp_certificates=[gcp.identityplatform.TenantInboundSamlConfigIdpConfigIdpCertificateArgs(
+                    x509_certificate=(lambda path: open(path).read())("test-fixtures/rsa_cert.pem"),
+                )],
+            ),
+            sp_config=gcp.identityplatform.TenantInboundSamlConfigSpConfigArgs(
+                sp_entity_id="tf-sp",
+                callback_uri="https://example.com",
+            ))
+        ```
 
         ## Import
 

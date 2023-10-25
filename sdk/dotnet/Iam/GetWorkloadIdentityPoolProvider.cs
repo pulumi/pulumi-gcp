@@ -13,12 +13,58 @@ namespace Pulumi.Gcp.Iam
     {
         /// <summary>
         /// Get a IAM workload identity provider from Google Cloud by its id.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Gcp.Iam.GetWorkloadIdentityPoolProvider.Invoke(new()
+        ///     {
+        ///         WorkloadIdentityPoolId = "foo-pool",
+        ///         WorkloadIdentityPoolProviderId = "bar-provider",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetWorkloadIdentityPoolProviderResult> InvokeAsync(GetWorkloadIdentityPoolProviderArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkloadIdentityPoolProviderResult>("gcp:iam/getWorkloadIdentityPoolProvider:getWorkloadIdentityPoolProvider", args ?? new GetWorkloadIdentityPoolProviderArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get a IAM workload identity provider from Google Cloud by its id.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Gcp.Iam.GetWorkloadIdentityPoolProvider.Invoke(new()
+        ///     {
+        ///         WorkloadIdentityPoolId = "foo-pool",
+        ///         WorkloadIdentityPoolProviderId = "bar-provider",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetWorkloadIdentityPoolProviderResult> Invoke(GetWorkloadIdentityPoolProviderInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkloadIdentityPoolProviderResult>("gcp:iam/getWorkloadIdentityPoolProvider:getWorkloadIdentityPoolProvider", args ?? new GetWorkloadIdentityPoolProviderInvokeArgs(), options.WithDefaults());

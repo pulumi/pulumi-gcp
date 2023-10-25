@@ -6,6 +6,49 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### Firebasehosting Channel Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHostingSite = new gcp.firebase.HostingSite("defaultHostingSite", {
+ *     project: "my-project-name",
+ *     siteId: "site-with-channel",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultHostingChannel = new gcp.firebase.HostingChannel("defaultHostingChannel", {
+ *     siteId: defaultHostingSite.siteId,
+ *     channelId: "channel-basic",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Firebasehosting Channel Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.firebase.HostingSite("default", {
+ *     project: "my-project-name",
+ *     siteId: "site-with-channel",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const full = new gcp.firebase.HostingChannel("full", {
+ *     siteId: _default.siteId,
+ *     channelId: "channel-full",
+ *     ttl: "86400s",
+ *     retainedReleaseCount: 20,
+ *     labels: {
+ *         "some-key": "some-value",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

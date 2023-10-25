@@ -6,6 +6,53 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### Firebase Android App Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = new gcp.firebase.AndroidApp("basic", {
+ *     project: "my-project-name",
+ *     displayName: "Display Name Basic",
+ *     packageName: "android.package.app",
+ *     sha1Hashes: ["2145bdf698b8715039bd0e83f2069bed435ac21c"],
+ *     sha256Hashes: ["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Firebase Android App Custom Api Key
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const android = new gcp.projects.ApiKey("android", {
+ *     displayName: "Display Name",
+ *     project: "my-project-name",
+ *     restrictions: {
+ *         androidKeyRestrictions: {
+ *             allowedApplications: [{
+ *                 packageName: "android.package.app",
+ *                 sha1Fingerprint: "2145bdf698b8715039bd0e83f2069bed435ac21c",
+ *             }],
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const _default = new gcp.firebase.AndroidApp("default", {
+ *     project: "my-project-name",
+ *     displayName: "Display Name",
+ *     packageName: "android.package.app",
+ *     sha1Hashes: ["2145bdf698b8715039bd0e83f2069bed435ac21c"],
+ *     sha256Hashes: ["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"],
+ *     apiKeyId: android.uid,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

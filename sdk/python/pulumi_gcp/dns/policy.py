@@ -383,6 +383,37 @@ class Policy(pulumi.CustomResource):
             * [Using DNS server policies](https://cloud.google.com/dns/zones/#using-dns-server-policies)
 
         ## Example Usage
+        ### Dns Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
+        network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False)
+        example_policy = gcp.dns.Policy("example-policy",
+            enable_inbound_forwarding=True,
+            enable_logging=True,
+            alternative_name_server_config=gcp.dns.PolicyAlternativeNameServerConfigArgs(
+                target_name_servers=[
+                    gcp.dns.PolicyAlternativeNameServerConfigTargetNameServerArgs(
+                        ipv4_address="172.16.1.10",
+                        forwarding_path="private",
+                    ),
+                    gcp.dns.PolicyAlternativeNameServerConfigTargetNameServerArgs(
+                        ipv4_address="172.16.1.20",
+                    ),
+                ],
+            ),
+            networks=[
+                gcp.dns.PolicyNetworkArgs(
+                    network_url=network_1.id,
+                ),
+                gcp.dns.PolicyNetworkArgs(
+                    network_url=network_2.id,
+                ),
+            ])
+        ```
 
         ## Import
 
@@ -439,6 +470,37 @@ class Policy(pulumi.CustomResource):
             * [Using DNS server policies](https://cloud.google.com/dns/zones/#using-dns-server-policies)
 
         ## Example Usage
+        ### Dns Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
+        network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False)
+        example_policy = gcp.dns.Policy("example-policy",
+            enable_inbound_forwarding=True,
+            enable_logging=True,
+            alternative_name_server_config=gcp.dns.PolicyAlternativeNameServerConfigArgs(
+                target_name_servers=[
+                    gcp.dns.PolicyAlternativeNameServerConfigTargetNameServerArgs(
+                        ipv4_address="172.16.1.10",
+                        forwarding_path="private",
+                    ),
+                    gcp.dns.PolicyAlternativeNameServerConfigTargetNameServerArgs(
+                        ipv4_address="172.16.1.20",
+                    ),
+                ],
+            ),
+            networks=[
+                gcp.dns.PolicyNetworkArgs(
+                    network_url=network_1.id,
+                ),
+                gcp.dns.PolicyNetworkArgs(
+                    network_url=network_2.id,
+                ),
+            ])
+        ```
 
         ## Import
 

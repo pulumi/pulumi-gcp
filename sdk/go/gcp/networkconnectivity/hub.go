@@ -15,6 +15,35 @@ import (
 // The NetworkConnectivity Hub resource
 //
 // ## Example Usage
+// ### Basic_hub
+// A basic test of a networkconnectivity hub
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networkconnectivity.NewHub(ctx, "primary", &networkconnectivity.HubArgs{
+//				Description: pulumi.String("A sample hub"),
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//				Project: pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

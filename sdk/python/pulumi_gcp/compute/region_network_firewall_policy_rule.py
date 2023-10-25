@@ -601,6 +601,60 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
         The Compute NetworkFirewallPolicyRule resource
 
         ## Example Usage
+        ### Regional
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_regional_networksecurity_address_group = gcp.networksecurity.AddressGroup("basicRegionalNetworksecurityAddressGroup",
+            parent="projects/my-project-name",
+            description="Sample regional networksecurity_address_group",
+            location="us-west1",
+            items=["208.80.154.224/32"],
+            type="IPV4",
+            capacity=100)
+        basic_regional_network_firewall_policy = gcp.compute.RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy",
+            description="Sample regional network firewall policy",
+            project="my-project-name",
+            region="us-west1")
+        basic_network = gcp.compute.Network("basicNetwork")
+        basic_key = gcp.tags.TagKey("basicKey",
+            description="For keyname resources.",
+            parent="organizations/123456789",
+            purpose="GCE_FIREWALL",
+            short_name="tagkey",
+            purpose_data={
+                "network": basic_network.name.apply(lambda name: f"my-project-name/{name}"),
+            })
+        basic_value = gcp.tags.TagValue("basicValue",
+            description="For valuename resources.",
+            parent=basic_key.name.apply(lambda name: f"tagKeys/{name}"),
+            short_name="tagvalue")
+        primary = gcp.compute.RegionNetworkFirewallPolicyRule("primary",
+            action="allow",
+            description="This is a simple rule description",
+            direction="INGRESS",
+            disabled=False,
+            enable_logging=True,
+            firewall_policy=basic_regional_network_firewall_policy.name,
+            priority=1000,
+            region="us-west1",
+            rule_name="test-rule",
+            target_service_accounts=["my@service-account.com"],
+            match=gcp.compute.RegionNetworkFirewallPolicyRuleMatchArgs(
+                src_ip_ranges=["10.100.0.1/32"],
+                src_fqdns=["example.com"],
+                src_region_codes=["US"],
+                src_threat_intelligences=["iplist-known-malicious-ips"],
+                layer4_configs=[gcp.compute.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs(
+                    ip_protocol="all",
+                )],
+                src_secure_tags=[gcp.compute.RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs(
+                    name=basic_value.name.apply(lambda name: f"tagValues/{name}"),
+                )],
+                src_address_groups=[basic_regional_networksecurity_address_group.id],
+            ))
+        ```
 
         ## Import
 
@@ -648,6 +702,60 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
         The Compute NetworkFirewallPolicyRule resource
 
         ## Example Usage
+        ### Regional
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_regional_networksecurity_address_group = gcp.networksecurity.AddressGroup("basicRegionalNetworksecurityAddressGroup",
+            parent="projects/my-project-name",
+            description="Sample regional networksecurity_address_group",
+            location="us-west1",
+            items=["208.80.154.224/32"],
+            type="IPV4",
+            capacity=100)
+        basic_regional_network_firewall_policy = gcp.compute.RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy",
+            description="Sample regional network firewall policy",
+            project="my-project-name",
+            region="us-west1")
+        basic_network = gcp.compute.Network("basicNetwork")
+        basic_key = gcp.tags.TagKey("basicKey",
+            description="For keyname resources.",
+            parent="organizations/123456789",
+            purpose="GCE_FIREWALL",
+            short_name="tagkey",
+            purpose_data={
+                "network": basic_network.name.apply(lambda name: f"my-project-name/{name}"),
+            })
+        basic_value = gcp.tags.TagValue("basicValue",
+            description="For valuename resources.",
+            parent=basic_key.name.apply(lambda name: f"tagKeys/{name}"),
+            short_name="tagvalue")
+        primary = gcp.compute.RegionNetworkFirewallPolicyRule("primary",
+            action="allow",
+            description="This is a simple rule description",
+            direction="INGRESS",
+            disabled=False,
+            enable_logging=True,
+            firewall_policy=basic_regional_network_firewall_policy.name,
+            priority=1000,
+            region="us-west1",
+            rule_name="test-rule",
+            target_service_accounts=["my@service-account.com"],
+            match=gcp.compute.RegionNetworkFirewallPolicyRuleMatchArgs(
+                src_ip_ranges=["10.100.0.1/32"],
+                src_fqdns=["example.com"],
+                src_region_codes=["US"],
+                src_threat_intelligences=["iplist-known-malicious-ips"],
+                layer4_configs=[gcp.compute.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs(
+                    ip_protocol="all",
+                )],
+                src_secure_tags=[gcp.compute.RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs(
+                    name=basic_value.name.apply(lambda name: f"tagValues/{name}"),
+                )],
+                src_address_groups=[basic_regional_networksecurity_address_group.id],
+            ))
+        ```
 
         ## Import
 

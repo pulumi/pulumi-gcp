@@ -18,6 +18,63 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/machine-images)
  *
  * ## Example Usage
+ * ### Machine Image Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const vm = new gcp.compute.Instance("vm", {
+ *     machineType: "e2-medium",
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: "debian-cloud/debian-11",
+ *         },
+ *     },
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const image = new gcp.compute.MachineImage("image", {sourceInstance: vm.selfLink}, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Compute Machine Image Kms
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const vm = new gcp.compute.Instance("vm", {
+ *     machineType: "e2-medium",
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: "debian-cloud/debian-11",
+ *         },
+ *     },
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "us"}, {
+ *     provider: google_beta,
+ * });
+ * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {keyRing: keyRing.id}, {
+ *     provider: google_beta,
+ * });
+ * const image = new gcp.compute.MachineImage("image", {
+ *     sourceInstance: vm.selfLink,
+ *     machineImageEncryptionKey: {
+ *         kmsKeyName: cryptoKey.id,
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

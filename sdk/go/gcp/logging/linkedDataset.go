@@ -22,6 +22,82 @@ import (
 //   - [Official Documentation](https://cloud.google.com/logging/docs/apis)
 //
 // ## Example Usage
+// ### Logging Linked Dataset Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			loggingLinkedDatasetProjectBucketConfig, err := logging.NewProjectBucketConfig(ctx, "loggingLinkedDatasetProjectBucketConfig", &logging.ProjectBucketConfigArgs{
+//				Location:        pulumi.String("global"),
+//				Project:         pulumi.String("my-project-name"),
+//				EnableAnalytics: pulumi.Bool(true),
+//				BucketId:        pulumi.String("my-bucket"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = logging.NewLinkedDataset(ctx, "loggingLinkedDatasetLinkedDataset", &logging.LinkedDatasetArgs{
+//				LinkId:      pulumi.String("mylink"),
+//				Bucket:      loggingLinkedDatasetProjectBucketConfig.ID(),
+//				Description: pulumi.String("Linked dataset test"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Logging Linked Dataset All Params
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := logging.NewProjectBucketConfig(ctx, "loggingLinkedDatasetProjectBucketConfig", &logging.ProjectBucketConfigArgs{
+//				BucketId:        pulumi.String("my-bucket"),
+//				EnableAnalytics: pulumi.Bool(true),
+//				Location:        pulumi.String("global"),
+//				Project:         pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = logging.NewLinkedDataset(ctx, "loggingLinkedDatasetLinkedDataset", &logging.LinkedDatasetArgs{
+//				Bucket:      pulumi.String("my-bucket"),
+//				Description: pulumi.String("Linked dataset test"),
+//				LinkId:      pulumi.String("mylink"),
+//				Location:    pulumi.String("global"),
+//				Parent:      pulumi.String("projects/my-project-name"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				pulumi.Resource("google_logging_project_bucket_config.logging_linked_dataset"),
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

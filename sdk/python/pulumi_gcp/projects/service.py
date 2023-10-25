@@ -239,6 +239,18 @@ class Service(pulumi.CustomResource):
         * How-to Guides
             * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.projects.Service("project",
+            disable_dependent_services=True,
+            project="your-project-id",
+            service="iam.googleapis.com")
+        ```
+
         ## Import
 
         Project services can be imported using the `project_id` and `service`, e.g.
@@ -279,6 +291,18 @@ class Service(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
         * How-to Guides
             * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.projects.Service("project",
+            disable_dependent_services=True,
+            project="your-project-id",
+            service="iam.googleapis.com")
+        ```
 
         ## Import
 

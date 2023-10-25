@@ -302,6 +302,45 @@ class SubscriptionIAMMember(pulumi.CustomResource):
 
         > **Note:** `pubsub.SubscriptionIAMBinding` resources **can be** used in conjunction with `pubsub.SubscriptionIAMMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\\_pubsub\\_subscription\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        editor = gcp.pubsub.SubscriptionIAMPolicy("editor",
+            subscription="your-subscription-name",
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_pubsub\\_subscription\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        editor = gcp.pubsub.SubscriptionIAMBinding("editor",
+            members=["user:jane@example.com"],
+            role="roles/editor",
+            subscription="your-subscription-name")
+        ```
+
+        ## google\\_pubsub\\_subscription\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        editor = gcp.pubsub.SubscriptionIAMMember("editor",
+            member="user:jane@example.com",
+            role="roles/editor",
+            subscription="your-subscription-name")
+        ```
+
         ## Import
 
         Pubsub subscription IAM resources can be imported using the project, subscription name, role and member.
@@ -356,6 +395,45 @@ class SubscriptionIAMMember(pulumi.CustomResource):
         > **Note:** `pubsub.SubscriptionIAMPolicy` **cannot** be used in conjunction with `pubsub.SubscriptionIAMBinding` and `pubsub.SubscriptionIAMMember` or they will fight over what your policy should be.
 
         > **Note:** `pubsub.SubscriptionIAMBinding` resources **can be** used in conjunction with `pubsub.SubscriptionIAMMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_pubsub\\_subscription\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        editor = gcp.pubsub.SubscriptionIAMPolicy("editor",
+            subscription="your-subscription-name",
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_pubsub\\_subscription\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        editor = gcp.pubsub.SubscriptionIAMBinding("editor",
+            members=["user:jane@example.com"],
+            role="roles/editor",
+            subscription="your-subscription-name")
+        ```
+
+        ## google\\_pubsub\\_subscription\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        editor = gcp.pubsub.SubscriptionIAMMember("editor",
+            member="user:jane@example.com",
+            role="roles/editor",
+            subscription="your-subscription-name")
+        ```
 
         ## Import
 

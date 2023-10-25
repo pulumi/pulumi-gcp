@@ -346,6 +346,48 @@ class ConnectionIAMMember(pulumi.CustomResource):
 
         > **Note:** `cloudbuildv2.ConnectionIAMBinding` resources **can be** used in conjunction with `cloudbuildv2.ConnectionIAMMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\\_cloudbuildv2\\_connection\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/cloudbuild.connectionViewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.cloudbuildv2.ConnectionIAMPolicy("policy",
+            project=google_cloudbuildv2_connection["my-connection"]["project"],
+            location=google_cloudbuildv2_connection["my-connection"]["location"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_cloudbuildv2\\_connection\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.cloudbuildv2.ConnectionIAMBinding("binding",
+            project=google_cloudbuildv2_connection["my-connection"]["project"],
+            location=google_cloudbuildv2_connection["my-connection"]["location"],
+            role="roles/cloudbuild.connectionViewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_cloudbuildv2\\_connection\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.cloudbuildv2.ConnectionIAMMember("member",
+            project=google_cloudbuildv2_connection["my-connection"]["project"],
+            location=google_cloudbuildv2_connection["my-connection"]["location"],
+            role="roles/cloudbuild.connectionViewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/connections/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Build v2 connection IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -411,6 +453,48 @@ class ConnectionIAMMember(pulumi.CustomResource):
         > **Note:** `cloudbuildv2.ConnectionIAMPolicy` **cannot** be used in conjunction with `cloudbuildv2.ConnectionIAMBinding` and `cloudbuildv2.ConnectionIAMMember` or they will fight over what your policy should be.
 
         > **Note:** `cloudbuildv2.ConnectionIAMBinding` resources **can be** used in conjunction with `cloudbuildv2.ConnectionIAMMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_cloudbuildv2\\_connection\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/cloudbuild.connectionViewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.cloudbuildv2.ConnectionIAMPolicy("policy",
+            project=google_cloudbuildv2_connection["my-connection"]["project"],
+            location=google_cloudbuildv2_connection["my-connection"]["location"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_cloudbuildv2\\_connection\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.cloudbuildv2.ConnectionIAMBinding("binding",
+            project=google_cloudbuildv2_connection["my-connection"]["project"],
+            location=google_cloudbuildv2_connection["my-connection"]["location"],
+            role="roles/cloudbuild.connectionViewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_cloudbuildv2\\_connection\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.cloudbuildv2.ConnectionIAMMember("member",
+            project=google_cloudbuildv2_connection["my-connection"]["project"],
+            location=google_cloudbuildv2_connection["my-connection"]["location"],
+            role="roles/cloudbuild.connectionViewer",
+            member="user:jane@example.com")
+        ```
 
         ## Import
 

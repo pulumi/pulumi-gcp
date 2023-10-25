@@ -118,6 +118,15 @@ def get_database_instances(database_version: Optional[str] = None,
     """
     Use this data source to get information about a list of Cloud SQL instances in a project. You can also apply some filters over this list to get a more filtered list of Cloud SQL instances.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    qa = gcp.sql.get_database_instances(project="test-project")
+    ```
+
 
     :param str database_version: To filter out the Cloud SQL instances which are of the specified database version.
     :param str project: The ID of the project in which the resources belong. If it is not provided, the provider project is used.
@@ -157,6 +166,15 @@ def get_database_instances_output(database_version: Optional[pulumi.Input[Option
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseInstancesResult]:
     """
     Use this data source to get information about a list of Cloud SQL instances in a project. You can also apply some filters over this list to get a more filtered list of Cloud SQL instances.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    qa = gcp.sql.get_database_instances(project="test-project")
+    ```
 
 
     :param str database_version: To filter out the Cloud SQL instances which are of the specified database version.

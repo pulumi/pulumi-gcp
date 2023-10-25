@@ -366,6 +366,17 @@ class TagKey(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 
         ## Example Usage
+        ### Tag Key Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key = gcp.tags.TagKey("key",
+            description="For keyname resources.",
+            parent="organizations/123456789",
+            short_name="keyname")
+        ```
 
         ## Import
 
@@ -410,6 +421,17 @@ class TagKey(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 
         ## Example Usage
+        ### Tag Key Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key = gcp.tags.TagKey("key",
+            description="For keyname resources.",
+            parent="organizations/123456789",
+            short_name="keyname")
+        ```
 
         ## Import
 

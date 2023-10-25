@@ -21,6 +21,53 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.gkebackup.BackupPlanIamBinding` resources **can be** used in conjunction with `gcp.gkebackup.BackupPlanIamMember` resources **only if** they do not grant privilege to the same role.
  *
+ * ## google\_gke\_backup\_backup\_plan\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/viewer",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.gkebackup.BackupPlanIamPolicy("policy", {
+ *     project: google_gke_backup_backup_plan.basic.project,
+ *     location: google_gke_backup_backup_plan.basic.location,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## google\_gke\_backup\_backup\_plan\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.gkebackup.BackupPlanIamBinding("binding", {
+ *     project: google_gke_backup_backup_plan.basic.project,
+ *     location: google_gke_backup_backup_plan.basic.location,
+ *     role: "roles/viewer",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * ## google\_gke\_backup\_backup\_plan\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.gkebackup.BackupPlanIamMember("member", {
+ *     project: google_gke_backup_backup_plan.basic.project,
+ *     location: google_gke_backup_backup_plan.basic.location,
+ *     role: "roles/viewer",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/backupPlans/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Backup for GKE backupplan IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

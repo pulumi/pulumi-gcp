@@ -15,6 +15,51 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/spanner/)
  *
  * ## Example Usage
+ * ### Spanner Instance Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.spanner.Instance("example", {
+ *     config: "regional-us-central1",
+ *     displayName: "Test Spanner Instance",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     numNodes: 2,
+ * });
+ * ```
+ * ### Spanner Instance Processing Units
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.spanner.Instance("example", {
+ *     config: "regional-us-central1",
+ *     displayName: "Test Spanner Instance",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     processingUnits: 200,
+ * });
+ * ```
+ * ### Spanner Instance Multi Regional
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.spanner.Instance("example", {
+ *     config: "nam-eur-asia1",
+ *     displayName: "Multi Regional Instance",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     numNodes: 2,
+ * });
+ * ```
  *
  * ## Import
  *

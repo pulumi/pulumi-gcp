@@ -262,6 +262,30 @@ class AccessPolicy(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+        ### Access Context Manager Access Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
+            parent="organizations/123456789",
+            title="Org Access Policy")
+        ```
+        ### Access Context Manager Access Policy Scoped
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.Project("project",
+            org_id="123456789",
+            project_id="acm-test-proj-123")
+        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
+            parent="organizations/123456789",
+            scopes=project.number.apply(lambda number: f"projects/{number}"),
+            title="Scoped Access Policy")
+        ```
 
         ## Import
 
@@ -308,6 +332,30 @@ class AccessPolicy(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+        ### Access Context Manager Access Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
+            parent="organizations/123456789",
+            title="Org Access Policy")
+        ```
+        ### Access Context Manager Access Policy Scoped
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.Project("project",
+            org_id="123456789",
+            project_id="acm-test-proj-123")
+        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
+            parent="organizations/123456789",
+            scopes=project.number.apply(lambda number: f"projects/{number}"),
+            title="Scoped Access Policy")
+        ```
 
         ## Import
 

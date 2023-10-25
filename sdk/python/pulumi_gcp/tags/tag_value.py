@@ -276,6 +276,21 @@ class TagValue(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 
         ## Example Usage
+        ### Tag Value Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key = gcp.tags.TagKey("key",
+            description="For keyname resources.",
+            parent="organizations/123456789",
+            short_name="keyname")
+        value = gcp.tags.TagValue("value",
+            description="For valuename resources.",
+            parent=key.name.apply(lambda name: f"tagKeys/{name}"),
+            short_name="valuename")
+        ```
 
         ## Import
 
@@ -315,6 +330,21 @@ class TagValue(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 
         ## Example Usage
+        ### Tag Value Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key = gcp.tags.TagKey("key",
+            description="For keyname resources.",
+            parent="organizations/123456789",
+            short_name="keyname")
+        value = gcp.tags.TagValue("value",
+            description="For valuename resources.",
+            parent=key.name.apply(lambda name: f"tagKeys/{name}"),
+            short_name="valuename")
+        ```
 
         ## Import
 

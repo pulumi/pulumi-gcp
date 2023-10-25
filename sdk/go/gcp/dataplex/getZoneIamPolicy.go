@@ -13,6 +13,35 @@ import (
 )
 
 // Retrieves the current IAM policy data for zone
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataplex.LookupZoneIamPolicy(ctx, &dataplex.LookupZoneIamPolicyArgs{
+//				Project:      pulumi.StringRef(google_dataplex_zone.Example.Project),
+//				Location:     pulumi.StringRef(google_dataplex_zone.Example.Location),
+//				Lake:         google_dataplex_zone.Example.Lake,
+//				DataplexZone: google_dataplex_zone.Example.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupZoneIamPolicy(ctx *pulumi.Context, args *LookupZoneIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupZoneIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZoneIamPolicyResult

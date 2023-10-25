@@ -20,6 +20,20 @@ import * as utilities from "../utilities";
  * `billingProject` you defined.
  *
  * ## Example Usage
+ * ### Essential Contact
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const contact = new gcp.essentialcontacts.Contact("contact", {
+ *     parent: project.then(project => project.id),
+ *     email: "foo@bar.com",
+ *     languageTag: "en-GB",
+ *     notificationCategorySubscriptions: ["ALL"],
+ * });
+ * ```
  *
  * ## Import
  *

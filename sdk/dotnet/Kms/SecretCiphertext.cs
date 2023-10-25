@@ -26,6 +26,63 @@ namespace Pulumi.Gcp.Kms
     /// &gt; **Warning:** All arguments including `plaintext` and `additional_authenticated_data` will be stored in the raw state as plain-text.
     /// 
     /// ## Example Usage
+    /// ### Kms Secret Ciphertext Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var keyring = new Gcp.Kms.KeyRing("keyring", new()
+    ///     {
+    ///         Location = "global",
+    ///     });
+    /// 
+    ///     var cryptokey = new Gcp.Kms.CryptoKey("cryptokey", new()
+    ///     {
+    ///         KeyRing = keyring.Id,
+    ///         RotationPeriod = "100000s",
+    ///     });
+    /// 
+    ///     var myPassword = new Gcp.Kms.SecretCiphertext("myPassword", new()
+    ///     {
+    ///         CryptoKey = cryptokey.Id,
+    ///         Plaintext = "my-secret-password",
+    ///     });
+    /// 
+    ///     var instance = new Gcp.Compute.Instance("instance", new()
+    ///     {
+    ///         MachineType = "e2-medium",
+    ///         Zone = "us-central1-a",
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///         {
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///             {
+    ///                 Image = "debian-cloud/debian-11",
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 Network = "default",
+    ///                 AccessConfigs = new[]
+    ///                 {
+    ///                     null,
+    ///                 },
+    ///             },
+    ///         },
+    ///         Metadata = 
+    ///         {
+    ///             { "password", myPassword.Ciphertext },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

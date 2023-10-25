@@ -32,6 +32,67 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
     /// 
     /// ## Example Usage
+    /// ### Network Endpoint Group
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new()
+    ///     {
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///         Region = "us-central1",
+    ///         Network = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var neg = new Gcp.Compute.NetworkEndpointGroup("neg", new()
+    ///     {
+    ///         Network = defaultNetwork.Id,
+    ///         Subnetwork = defaultSubnetwork.Id,
+    ///         DefaultPort = 90,
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Network Endpoint Group Non Gcp
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default");
+    /// 
+    ///     var neg = new Gcp.Compute.NetworkEndpointGroup("neg", new()
+    ///     {
+    ///         Network = @default.Id,
+    ///         DefaultPort = 90,
+    ///         Zone = "us-central1-a",
+    ///         NetworkEndpointType = "NON_GCP_PRIVATE_IP_PORT",
+    ///     });
+    /// 
+    ///     var default_endpoint = new Gcp.Compute.NetworkEndpoint("default-endpoint", new()
+    ///     {
+    ///         NetworkEndpointGroup = neg.Name,
+    ///         Port = neg.DefaultPort,
+    ///         IpAddress = "127.0.0.1",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

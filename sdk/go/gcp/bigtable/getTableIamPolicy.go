@@ -13,6 +13,33 @@ import (
 )
 
 // Retrieves the current IAM policy data for a Bigtable Table.
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigtable.LookupTableIamPolicy(ctx, &bigtable.LookupTableIamPolicyArgs{
+//				Instance: google_bigtable_instance.Instance.Name,
+//				Table:    google_bigtable_table.Table.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupTableIamPolicy(ctx *pulumi.Context, args *LookupTableIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupTableIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTableIamPolicyResult

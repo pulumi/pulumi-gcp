@@ -11,6 +11,93 @@ import * as utilities from "../utilities";
  * state as plain-text.
  *
  * ## Example Usage
+ * ### Secret Version Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const secret_basic = new gcp.secretmanager.Secret("secret-basic", {
+ *     secretId: "secret-version",
+ *     labels: {
+ *         label: "my-label",
+ *     },
+ *     replication: {
+ *         auto: {},
+ *     },
+ * });
+ * const secret_version_basic = new gcp.secretmanager.SecretVersion("secret-version-basic", {
+ *     secret: secret_basic.id,
+ *     secretData: "secret-data",
+ * });
+ * ```
+ * ### Secret Version Deletion Policy Abandon
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const secret_basic = new gcp.secretmanager.Secret("secret-basic", {
+ *     secretId: "secret-version",
+ *     replication: {
+ *         userManaged: {
+ *             replicas: [{
+ *                 location: "us-central1",
+ *             }],
+ *         },
+ *     },
+ * });
+ * const secret_version_deletion_policy = new gcp.secretmanager.SecretVersion("secret-version-deletion-policy", {
+ *     secret: secret_basic.id,
+ *     secretData: "secret-data",
+ *     deletionPolicy: "ABANDON",
+ * });
+ * ```
+ * ### Secret Version Deletion Policy Disable
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const secret_basic = new gcp.secretmanager.Secret("secret-basic", {
+ *     secretId: "secret-version",
+ *     replication: {
+ *         userManaged: {
+ *             replicas: [{
+ *                 location: "us-central1",
+ *             }],
+ *         },
+ *     },
+ * });
+ * const secret_version_deletion_policy = new gcp.secretmanager.SecretVersion("secret-version-deletion-policy", {
+ *     secret: secret_basic.id,
+ *     secretData: "secret-data",
+ *     deletionPolicy: "DISABLE",
+ * });
+ * ```
+ * ### Secret Version With Base64 String Secret Data
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const secret_basic = new gcp.secretmanager.Secret("secret-basic", {
+ *     secretId: "secret-version",
+ *     replication: {
+ *         userManaged: {
+ *             replicas: [{
+ *                 location: "us-central1",
+ *             }],
+ *         },
+ *     },
+ * });
+ * const secret_version_base64 = new gcp.secretmanager.SecretVersion("secret-version-base64", {
+ *     secret: secret_basic.id,
+ *     isSecretDataBase64: true,
+ *     secretData: Buffer.from(fs.readFileSync("secret-data.pfx"), 'binary').toString('base64'),
+ * });
+ * ```
  *
  * ## Import
  *

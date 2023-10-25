@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * Use this data source to access a Region Network Endpoint Group's attributes.
  *
  * The RNEG may be found by providing either a `selfLink`, or a `name` and a `region`.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const rneg1 = gcp.compute.getRegionNetworkEndpointGroup({
+ *     name: "k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
+ *     region: "us-central1",
+ * });
+ * const rneg2 = gcp.compute.getRegionNetworkEndpointGroup({
+ *     selfLink: "https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
+ * });
+ * ```
  */
 export function getRegionNetworkEndpointGroup(args?: GetRegionNetworkEndpointGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionNetworkEndpointGroupResult> {
     args = args || {};
@@ -86,6 +101,21 @@ export interface GetRegionNetworkEndpointGroupResult {
  * Use this data source to access a Region Network Endpoint Group's attributes.
  *
  * The RNEG may be found by providing either a `selfLink`, or a `name` and a `region`.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const rneg1 = gcp.compute.getRegionNetworkEndpointGroup({
+ *     name: "k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
+ *     region: "us-central1",
+ * });
+ * const rneg2 = gcp.compute.getRegionNetworkEndpointGroup({
+ *     selfLink: "https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
+ * });
+ * ```
  */
 export function getRegionNetworkEndpointGroupOutput(args?: GetRegionNetworkEndpointGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionNetworkEndpointGroupResult> {
     return pulumi.output(args).apply((a: any) => getRegionNetworkEndpointGroup(a, opts))

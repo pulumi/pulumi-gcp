@@ -89,6 +89,19 @@ def get_project_service_account(project_id: Optional[str] = None,
     this account needs to be granted the `cloudkms.signerVerifier` IAM role on the
     Cloud KMS key used to sign approvals.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    service_account = gcp.accessapproval.get_project_service_account(project_id="my-project")
+    iam = gcp.kms.CryptoKeyIAMMember("iam",
+        crypto_key_id=google_kms_crypto_key["crypto_key"]["id"],
+        role="roles/cloudkms.signerVerifier",
+        member=f"serviceAccount:{service_account.account_email}")
+    ```
+
 
     :param str project_id: The project ID the service account was created for.
     """
@@ -115,6 +128,19 @@ def get_project_service_account_output(project_id: Optional[pulumi.Input[str]] =
     [custom signing key](https://cloud.google.com/cloud-provider-access-management/access-approval/docs/review-approve-access-requests-custom-keys),
     this account needs to be granted the `cloudkms.signerVerifier` IAM role on the
     Cloud KMS key used to sign approvals.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    service_account = gcp.accessapproval.get_project_service_account(project_id="my-project")
+    iam = gcp.kms.CryptoKeyIAMMember("iam",
+        crypto_key_id=google_kms_crypto_key["crypto_key"]["id"],
+        role="roles/cloudkms.signerVerifier",
+        member=f"serviceAccount:{service_account.account_email}")
+    ```
 
 
     :param str project_id: The project ID the service account was created for.

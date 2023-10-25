@@ -14,6 +14,57 @@ import * as utilities from "../utilities";
  *     * [Create and manage subnetworks](https://cloud.google.com/distributed-cloud/edge/latest/docs/subnetworks#api)
  *
  * ## Example Usage
+ * ### Edgenetwork Subnet
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const exampleNetwork = new gcp.edgenetwork.Network("exampleNetwork", {
+ *     networkId: "example-network",
+ *     location: "us-west1",
+ *     zone: "",
+ *     description: "Example network.",
+ *     mtu: 9000,
+ * });
+ * const exampleSubnet = new gcp.edgenetwork.Subnet("exampleSubnet", {
+ *     subnetId: "example-subnet",
+ *     location: "us-west1",
+ *     zone: "",
+ *     description: "Example subnet.",
+ *     network: exampleNetwork.id,
+ *     ipv4Cidrs: ["4.4.4.1/24"],
+ *     labels: {
+ *         environment: "dev",
+ *     },
+ * });
+ * ```
+ * ### Edgenetwork Subnet With Vlan Id
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const exampleNetwork = new gcp.edgenetwork.Network("exampleNetwork", {
+ *     networkId: "example-network",
+ *     location: "us-west1",
+ *     zone: "",
+ *     description: "Example network.",
+ *     mtu: 9000,
+ * });
+ * const exampleSubnetWithVlanId = new gcp.edgenetwork.Subnet("exampleSubnetWithVlanId", {
+ *     subnetId: "example-subnet-with-vlan-id",
+ *     location: "us-west1",
+ *     zone: "",
+ *     description: "Example subnet with VLAN ID.",
+ *     network: exampleNetwork.id,
+ *     ipv6Cidrs: ["4444:4444:4444:4444::1/64"],
+ *     vlanId: 44,
+ *     labels: {
+ *         environment: "dev",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

@@ -14,6 +14,27 @@ namespace Pulumi.Gcp.ServiceNetworking
     /// 
     /// When using Google Cloud DNS to manage internal DNS, create peered DNS domains to make your DNS available to services like Google Cloud Build.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var name = new Gcp.ServiceNetworking.PeeredDnsDomain("name", new()
+    ///     {
+    ///         DnsSuffix = "example.com.",
+    ///         Network = "default",
+    ///         Project = "10000000",
+    ///         Service = "peering-service",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Project peered DNS domains can be imported using the `service`, `project`, `network` and `name`, e.g.

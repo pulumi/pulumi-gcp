@@ -368,6 +368,23 @@ class CaPool(pulumi.CustomResource):
         trust anchor.
 
         ## Example Usage
+        ### Privateca Capool Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificateauthority.CaPool("default",
+            labels={
+                "foo": "bar",
+            },
+            location="us-central1",
+            publishing_options=gcp.certificateauthority.CaPoolPublishingOptionsArgs(
+                publish_ca_cert=True,
+                publish_crl=True,
+            ),
+            tier="ENTERPRISE")
+        ```
 
         ## Import
 
@@ -417,6 +434,23 @@ class CaPool(pulumi.CustomResource):
         trust anchor.
 
         ## Example Usage
+        ### Privateca Capool Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificateauthority.CaPool("default",
+            labels={
+                "foo": "bar",
+            },
+            location="us-central1",
+            publishing_options=gcp.certificateauthority.CaPoolPublishingOptionsArgs(
+                publish_ca_cert=True,
+                publish_crl=True,
+            ),
+            tier="ENTERPRISE")
+        ```
 
         ## Import
 

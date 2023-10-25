@@ -449,6 +449,65 @@ class PerInstanceConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/stateful-migs#per-instance_configs)
 
         ## Example Usage
+        ### Stateful Igm
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_image = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        igm_basic = gcp.compute.InstanceTemplate("igm-basic",
+            machine_type="e2-medium",
+            can_ip_forward=False,
+            tags=[
+                "foo",
+                "bar",
+            ],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image=my_image.self_link,
+                auto_delete=True,
+                boot=True,
+            )],
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network="default",
+            )],
+            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
+                scopes=[
+                    "userinfo-email",
+                    "compute-ro",
+                    "storage-ro",
+                ],
+            ))
+        igm_no_tp = gcp.compute.InstanceGroupManager("igm-no-tp",
+            description="Test instance group manager",
+            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
+                name="prod",
+                instance_template=igm_basic.self_link,
+            )],
+            base_instance_name="igm-no-tp",
+            zone="us-central1-c",
+            target_size=2)
+        default = gcp.compute.Disk("default",
+            type="pd-ssd",
+            zone=google_compute_instance_group_manager["igm"]["zone"],
+            image="debian-11-bullseye-v20220719",
+            physical_block_size_bytes=4096)
+        with_disk = gcp.compute.PerInstanceConfig("withDisk",
+            zone=google_compute_instance_group_manager["igm"]["zone"],
+            instance_group_manager=google_compute_instance_group_manager["igm"]["name"],
+            preserved_state=gcp.compute.PerInstanceConfigPreservedStateArgs(
+                metadata={
+                    "foo": "bar",
+                    "instance_template": igm_basic.self_link,
+                },
+                disks=[gcp.compute.PerInstanceConfigPreservedStateDiskArgs(
+                    device_name="my-stateful-disk",
+                    source=default.id,
+                    mode="READ_ONLY",
+                )],
+            ))
+        ```
 
         ## Import
 
@@ -515,6 +574,65 @@ class PerInstanceConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/stateful-migs#per-instance_configs)
 
         ## Example Usage
+        ### Stateful Igm
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_image = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        igm_basic = gcp.compute.InstanceTemplate("igm-basic",
+            machine_type="e2-medium",
+            can_ip_forward=False,
+            tags=[
+                "foo",
+                "bar",
+            ],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image=my_image.self_link,
+                auto_delete=True,
+                boot=True,
+            )],
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network="default",
+            )],
+            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
+                scopes=[
+                    "userinfo-email",
+                    "compute-ro",
+                    "storage-ro",
+                ],
+            ))
+        igm_no_tp = gcp.compute.InstanceGroupManager("igm-no-tp",
+            description="Test instance group manager",
+            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
+                name="prod",
+                instance_template=igm_basic.self_link,
+            )],
+            base_instance_name="igm-no-tp",
+            zone="us-central1-c",
+            target_size=2)
+        default = gcp.compute.Disk("default",
+            type="pd-ssd",
+            zone=google_compute_instance_group_manager["igm"]["zone"],
+            image="debian-11-bullseye-v20220719",
+            physical_block_size_bytes=4096)
+        with_disk = gcp.compute.PerInstanceConfig("withDisk",
+            zone=google_compute_instance_group_manager["igm"]["zone"],
+            instance_group_manager=google_compute_instance_group_manager["igm"]["name"],
+            preserved_state=gcp.compute.PerInstanceConfigPreservedStateArgs(
+                metadata={
+                    "foo": "bar",
+                    "instance_template": igm_basic.self_link,
+                },
+                disks=[gcp.compute.PerInstanceConfigPreservedStateDiskArgs(
+                    device_name="my-stateful-disk",
+                    source=default.id,
+                    mode="READ_ONLY",
+                )],
+            ))
+        ```
 
         ## Import
 

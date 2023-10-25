@@ -36,6 +36,98 @@ import (
 //   - [Official Documentation](https://cloud.google.com/compute/docs/images)
 //
 // ## Example Usage
+// ### Image Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewImage(ctx, "example", &compute.ImageArgs{
+//				RawDisk: &compute.ImageRawDiskArgs{
+//					Source: pulumi.String("https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Image Guest Os
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewImage(ctx, "example", &compute.ImageArgs{
+//				GuestOsFeatures: compute.ImageGuestOsFeatureArray{
+//					&compute.ImageGuestOsFeatureArgs{
+//						Type: pulumi.String("SECURE_BOOT"),
+//					},
+//					&compute.ImageGuestOsFeatureArgs{
+//						Type: pulumi.String("MULTI_IP_SUBNET"),
+//					},
+//				},
+//				RawDisk: &compute.ImageRawDiskArgs{
+//					Source: pulumi.String("https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Image Basic Storage Location
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewImage(ctx, "example", &compute.ImageArgs{
+//				RawDisk: &compute.ImageRawDiskArgs{
+//					Source: pulumi.String("https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz"),
+//				},
+//				StorageLocations: pulumi.StringArray{
+//					pulumi.String("us-central1"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

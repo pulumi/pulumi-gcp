@@ -11,9 +11,57 @@ namespace Pulumi.Gcp.RuntimeConfig
 {
     public static class GetVariable
     {
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var run_service = Gcp.RuntimeConfig.GetVariable.Invoke(new()
+        ///     {
+        ///         Name = "prod-variables/hostname",
+        ///         Parent = "my-service",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetVariableResult> InvokeAsync(GetVariableArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVariableResult>("gcp:runtimeconfig/getVariable:getVariable", args ?? new GetVariableArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var run_service = Gcp.RuntimeConfig.GetVariable.Invoke(new()
+        ///     {
+        ///         Name = "prod-variables/hostname",
+        ///         Parent = "my-service",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetVariableResult> Invoke(GetVariableInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVariableResult>("gcp:runtimeconfig/getVariable:getVariable", args ?? new GetVariableInvokeArgs(), options.WithDefaults());
     }

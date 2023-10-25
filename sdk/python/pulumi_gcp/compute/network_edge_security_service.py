@@ -358,6 +358,17 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Compute Network Edge Security Service Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.NetworkEdgeSecurityService("default",
+            region="us-east1",
+            description="My basic resource",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -399,6 +410,17 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Compute Network Edge Security Service Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.NetworkEdgeSecurityService("default",
+            region="us-east1",
+            description="My basic resource",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

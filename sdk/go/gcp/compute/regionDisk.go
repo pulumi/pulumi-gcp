@@ -39,6 +39,145 @@ import (
 // state as plain-text.
 //
 // ## Example Usage
+// ### Region Disk Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			disk, err := compute.NewDisk(ctx, "disk", &compute.DiskArgs{
+//				Image: pulumi.String("debian-cloud/debian-11"),
+//				Size:  pulumi.Int(50),
+//				Type:  pulumi.String("pd-ssd"),
+//				Zone:  pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			snapdisk, err := compute.NewSnapshot(ctx, "snapdisk", &compute.SnapshotArgs{
+//				SourceDisk: disk.Name,
+//				Zone:       pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionDisk(ctx, "regiondisk", &compute.RegionDiskArgs{
+//				Snapshot:               snapdisk.ID(),
+//				Type:                   pulumi.String("pd-ssd"),
+//				Region:                 pulumi.String("us-central1"),
+//				PhysicalBlockSizeBytes: pulumi.Int(4096),
+//				ReplicaZones: pulumi.StringArray{
+//					pulumi.String("us-central1-a"),
+//					pulumi.String("us-central1-f"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Region Disk Async
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			primary, err := compute.NewRegionDisk(ctx, "primary", &compute.RegionDiskArgs{
+//				Type:                   pulumi.String("pd-ssd"),
+//				Region:                 pulumi.String("us-central1"),
+//				PhysicalBlockSizeBytes: pulumi.Int(4096),
+//				ReplicaZones: pulumi.StringArray{
+//					pulumi.String("us-central1-a"),
+//					pulumi.String("us-central1-f"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionDisk(ctx, "secondary", &compute.RegionDiskArgs{
+//				Type:                   pulumi.String("pd-ssd"),
+//				Region:                 pulumi.String("us-east1"),
+//				PhysicalBlockSizeBytes: pulumi.Int(4096),
+//				AsyncPrimaryDisk: &compute.RegionDiskAsyncPrimaryDiskArgs{
+//					Disk: primary.ID(),
+//				},
+//				ReplicaZones: pulumi.StringArray{
+//					pulumi.String("us-east1-b"),
+//					pulumi.String("us-east1-c"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Region Disk Features
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewRegionDisk(ctx, "regiondisk", &compute.RegionDiskArgs{
+//				GuestOsFeatures: compute.RegionDiskGuestOsFeatureArray{
+//					&compute.RegionDiskGuestOsFeatureArgs{
+//						Type: pulumi.String("SECURE_BOOT"),
+//					},
+//					&compute.RegionDiskGuestOsFeatureArgs{
+//						Type: pulumi.String("MULTI_IP_SUBNET"),
+//					},
+//					&compute.RegionDiskGuestOsFeatureArgs{
+//						Type: pulumi.String("WINDOWS"),
+//					},
+//				},
+//				Licenses: pulumi.StringArray{
+//					pulumi.String("https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"),
+//				},
+//				PhysicalBlockSizeBytes: pulumi.Int(4096),
+//				Region:                 pulumi.String("us-central1"),
+//				ReplicaZones: pulumi.StringArray{
+//					pulumi.String("us-central1-a"),
+//					pulumi.String("us-central1-f"),
+//				},
+//				Type: pulumi.String("pd-ssd"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

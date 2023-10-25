@@ -16,6 +16,20 @@ import * as utilities from "../utilities";
  *     * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
  *
  * ## Example Usage
+ * ### Bigquery Reservation Capacity Commitment Docs
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.bigquery.CapacityCommitment("example", {
+ *     capacityCommitmentId: "example-commitment",
+ *     edition: "ENTERPRISE",
+ *     location: "us-west2",
+ *     plan: "FLEX_FLAT_RATE",
+ *     slotCount: 100,
+ * });
+ * ```
  *
  * ## Import
  *

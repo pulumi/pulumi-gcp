@@ -19,6 +19,238 @@ namespace Pulumi.Gcp.Diagflow
     ///     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
     /// 
     /// ## Example Usage
+    /// ### Dialogflowcx Test Case Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var agent = new Gcp.Diagflow.CxAgent("agent", new()
+    ///     {
+    ///         DisplayName = "dialogflowcx-agent",
+    ///         Location = "global",
+    ///         DefaultLanguageCode = "en",
+    ///         SupportedLanguageCodes = new[]
+    ///         {
+    ///             "fr",
+    ///             "de",
+    ///             "es",
+    ///         },
+    ///         TimeZone = "America/New_York",
+    ///         Description = "Example description.",
+    ///         AvatarUri = "https://storage.cloud.google.com/dialogflow-test-host-image/cloud-logo.png",
+    ///         EnableStackdriverLogging = true,
+    ///         EnableSpellCorrection = true,
+    ///         SpeechToTextSettings = new Gcp.Diagflow.Inputs.CxAgentSpeechToTextSettingsArgs
+    ///         {
+    ///             EnableSpeechAdaptation = true,
+    ///         },
+    ///     });
+    /// 
+    ///     var intent = new Gcp.Diagflow.CxIntent("intent", new()
+    ///     {
+    ///         Parent = agent.Id,
+    ///         DisplayName = "MyIntent",
+    ///         Priority = 1,
+    ///         TrainingPhrases = new[]
+    ///         {
+    ///             new Gcp.Diagflow.Inputs.CxIntentTrainingPhraseArgs
+    ///             {
+    ///                 Parts = new[]
+    ///                 {
+    ///                     new Gcp.Diagflow.Inputs.CxIntentTrainingPhrasePartArgs
+    ///                     {
+    ///                         Text = "training phrase",
+    ///                     },
+    ///                 },
+    ///                 RepeatCount = 1,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var page = new Gcp.Diagflow.CxPage("page", new()
+    ///     {
+    ///         Parent = agent.StartFlow,
+    ///         DisplayName = "MyPage",
+    ///         TransitionRoutes = new[]
+    ///         {
+    ///             new Gcp.Diagflow.Inputs.CxPageTransitionRouteArgs
+    ///             {
+    ///                 Intent = intent.Id,
+    ///                 TriggerFulfillment = new Gcp.Diagflow.Inputs.CxPageTransitionRouteTriggerFulfillmentArgs
+    ///                 {
+    ///                     Messages = new[]
+    ///                     {
+    ///                         new Gcp.Diagflow.Inputs.CxPageTransitionRouteTriggerFulfillmentMessageArgs
+    ///                         {
+    ///                             Text = new Gcp.Diagflow.Inputs.CxPageTransitionRouteTriggerFulfillmentMessageTextArgs
+    ///                             {
+    ///                                 Texts = new[]
+    ///                                 {
+    ///                                     "Training phrase response",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         EventHandlers = new[]
+    ///         {
+    ///             new Gcp.Diagflow.Inputs.CxPageEventHandlerArgs
+    ///             {
+    ///                 Event = "some-event",
+    ///                 TriggerFulfillment = new Gcp.Diagflow.Inputs.CxPageEventHandlerTriggerFulfillmentArgs
+    ///                 {
+    ///                     Messages = new[]
+    ///                     {
+    ///                         new Gcp.Diagflow.Inputs.CxPageEventHandlerTriggerFulfillmentMessageArgs
+    ///                         {
+    ///                             Text = new Gcp.Diagflow.Inputs.CxPageEventHandlerTriggerFulfillmentMessageTextArgs
+    ///                             {
+    ///                                 Texts = new[]
+    ///                                 {
+    ///                                     "Handling some event",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var basicTestCase = new Gcp.Diagflow.CxTestCase("basicTestCase", new()
+    ///     {
+    ///         Parent = agent.Id,
+    ///         DisplayName = "MyTestCase",
+    ///         Tags = new[]
+    ///         {
+    ///             "#tag1",
+    ///         },
+    ///         Notes = "demonstrates a simple training phrase response",
+    ///         TestConfig = new Gcp.Diagflow.Inputs.CxTestCaseTestConfigArgs
+    ///         {
+    ///             TrackingParameters = new[]
+    ///             {
+    ///                 "some_param",
+    ///             },
+    ///             Page = page.Id,
+    ///         },
+    ///         TestCaseConversationTurns = new[]
+    ///         {
+    ///             new Gcp.Diagflow.Inputs.CxTestCaseTestCaseConversationTurnArgs
+    ///             {
+    ///                 UserInput = new Gcp.Diagflow.Inputs.CxTestCaseTestCaseConversationTurnUserInputArgs
+    ///                 {
+    ///                     Input = new Gcp.Diagflow.Inputs.CxTestCaseTestCaseConversationTurnUserInputInputArgs
+    ///                     {
+    ///                         LanguageCode = "en",
+    ///                         Text = new Gcp.Diagflow.Inputs.CxTestCaseTestCaseConversationTurnUserInputInputTextArgs
+    ///                         {
+    ///                             Text = "training phrase",
+    ///                         },
+    ///                     },
+    ///                     InjectedParameters = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["some_param"] = "1",
+    ///                     }),
+    ///                     IsWebhookEnabled = true,
+    ///                     EnableSentimentAnalysis = true,
+    ///                 },
+    ///                 VirtualAgentOutput = new Gcp.Diagflow.Inputs.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs
+    ///                 {
+    ///                     SessionParameters = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["some_param"] = "1",
+    ///                     }),
+    ///                     TriggeredIntent = new Gcp.Diagflow.Inputs.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs
+    ///                     {
+    ///                         Name = intent.Id,
+    ///                     },
+    ///                     CurrentPage = new Gcp.Diagflow.Inputs.CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs
+    ///                     {
+    ///                         Name = page.Id,
+    ///                     },
+    ///                     TextResponses = new[]
+    ///                     {
+    ///                         new Gcp.Diagflow.Inputs.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs
+    ///                         {
+    ///                             Texts = new[]
+    ///                             {
+    ///                                 "Training phrase response",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.Diagflow.Inputs.CxTestCaseTestCaseConversationTurnArgs
+    ///             {
+    ///                 UserInput = new Gcp.Diagflow.Inputs.CxTestCaseTestCaseConversationTurnUserInputArgs
+    ///                 {
+    ///                     Input = new Gcp.Diagflow.Inputs.CxTestCaseTestCaseConversationTurnUserInputInputArgs
+    ///                     {
+    ///                         Event = new Gcp.Diagflow.Inputs.CxTestCaseTestCaseConversationTurnUserInputInputEventArgs
+    ///                         {
+    ///                             Event = "some-event",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 VirtualAgentOutput = new Gcp.Diagflow.Inputs.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs
+    ///                 {
+    ///                     CurrentPage = new Gcp.Diagflow.Inputs.CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs
+    ///                     {
+    ///                         Name = page.Id,
+    ///                     },
+    ///                     TextResponses = new[]
+    ///                     {
+    ///                         new Gcp.Diagflow.Inputs.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs
+    ///                         {
+    ///                             Texts = new[]
+    ///                             {
+    ///                                 "Handling some event",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.Diagflow.Inputs.CxTestCaseTestCaseConversationTurnArgs
+    ///             {
+    ///                 UserInput = new Gcp.Diagflow.Inputs.CxTestCaseTestCaseConversationTurnUserInputArgs
+    ///                 {
+    ///                     Input = new Gcp.Diagflow.Inputs.CxTestCaseTestCaseConversationTurnUserInputInputArgs
+    ///                     {
+    ///                         Dtmf = new Gcp.Diagflow.Inputs.CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs
+    ///                         {
+    ///                             Digits = "12",
+    ///                             FinishDigit = "3",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 VirtualAgentOutput = new Gcp.Diagflow.Inputs.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs
+    ///                 {
+    ///                     TextResponses = new[]
+    ///                     {
+    ///                         new Gcp.Diagflow.Inputs.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs
+    ///                         {
+    ///                             Texts = new[]
+    ///                             {
+    ///                                 "I didn't get that. Can you say it again?",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

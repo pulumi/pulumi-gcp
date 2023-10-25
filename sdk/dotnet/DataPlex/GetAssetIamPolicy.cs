@@ -13,12 +13,60 @@ namespace Pulumi.Gcp.DataPlex
     {
         /// <summary>
         /// Retrieves the current IAM policy data for asset
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.DataPlex.GetAssetIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_dataplex_asset.Example.Project,
+        ///         Location = google_dataplex_asset.Example.Location,
+        ///         Lake = google_dataplex_asset.Example.Lake,
+        ///         DataplexZone = google_dataplex_asset.Example.Dataplex_zone,
+        ///         Asset = google_dataplex_asset.Example.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetAssetIamPolicyResult> InvokeAsync(GetAssetIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAssetIamPolicyResult>("gcp:dataplex/getAssetIamPolicy:getAssetIamPolicy", args ?? new GetAssetIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for asset
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.DataPlex.GetAssetIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_dataplex_asset.Example.Project,
+        ///         Location = google_dataplex_asset.Example.Location,
+        ///         Lake = google_dataplex_asset.Example.Lake,
+        ///         DataplexZone = google_dataplex_asset.Example.Dataplex_zone,
+        ///         Asset = google_dataplex_asset.Example.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAssetIamPolicyResult> Invoke(GetAssetIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAssetIamPolicyResult>("gcp:dataplex/getAssetIamPolicy:getAssetIamPolicy", args ?? new GetAssetIamPolicyInvokeArgs(), options.WithDefaults());

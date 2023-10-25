@@ -15,6 +15,78 @@ namespace Pulumi.Gcp.Compute
     /// and
     /// [API](https://cloud.google.com/compute/docs/reference/latest/instances).
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultAccount = new Gcp.ServiceAccount.Account("defaultAccount", new()
+    ///     {
+    ///         AccountId = "service_account_id",
+    ///         DisplayName = "Service Account",
+    ///     });
+    /// 
+    ///     var defaultInstance = new Gcp.Compute.Instance("defaultInstance", new()
+    ///     {
+    ///         MachineType = "e2-medium",
+    ///         Zone = "us-central1-a",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo",
+    ///             "bar",
+    ///         },
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///         {
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///             {
+    ///                 Image = "debian-cloud/debian-11",
+    ///                 Labels = 
+    ///                 {
+    ///                     { "my_label", "value" },
+    ///                 },
+    ///             },
+    ///         },
+    ///         ScratchDisks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceScratchDiskArgs
+    ///             {
+    ///                 Interface = "SCSI",
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 Network = "default",
+    ///                 AccessConfigs = new[]
+    ///                 {
+    ///                     null,
+    ///                 },
+    ///             },
+    ///         },
+    ///         Metadata = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         MetadataStartupScript = "echo hi &gt; /test.txt",
+    ///         ServiceAccount = new Gcp.Compute.Inputs.InstanceServiceAccountArgs
+    ///         {
+    ///             Email = defaultAccount.Email,
+    ///             Scopes = new[]
+    ///             {
+    ///                 "cloud-platform",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Instances can be imported using any of these accepted formats

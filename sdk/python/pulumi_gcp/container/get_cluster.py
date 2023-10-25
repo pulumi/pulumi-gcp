@@ -709,6 +709,20 @@ def get_cluster(location: Optional[str] = None,
     """
     Get info about a GKE cluster from its name and location.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_cluster = gcp.container.get_cluster(name="my-cluster",
+        location="us-east1-a")
+    pulumi.export("endpoint", my_cluster.endpoint)
+    pulumi.export("instanceGroupUrls", my_cluster.node_pools[0].instance_group_urls)
+    pulumi.export("nodeConfig", my_cluster.node_configs)
+    pulumi.export("nodePools", my_cluster.node_pools)
+    ```
+
 
     :param str location: The location (zone or region) this cluster has been
            created in. One of `location`, `region`, `zone`, or a provider-level `zone` must
@@ -808,6 +822,20 @@ def get_cluster_output(location: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterResult]:
     """
     Get info about a GKE cluster from its name and location.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_cluster = gcp.container.get_cluster(name="my-cluster",
+        location="us-east1-a")
+    pulumi.export("endpoint", my_cluster.endpoint)
+    pulumi.export("instanceGroupUrls", my_cluster.node_pools[0].instance_group_urls)
+    pulumi.export("nodeConfig", my_cluster.node_configs)
+    pulumi.export("nodePools", my_cluster.node_pools)
+    ```
 
 
     :param str location: The location (zone or region) this cluster has been

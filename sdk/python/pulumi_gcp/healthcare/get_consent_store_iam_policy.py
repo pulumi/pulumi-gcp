@@ -93,6 +93,16 @@ def get_consent_store_iam_policy(consent_store_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for consentstore
 
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.healthcare.get_consent_store_iam_policy(dataset=google_healthcare_consent_store["my-consent"]["dataset"],
+        consent_store_id=google_healthcare_consent_store["my-consent"]["name"])
+    ```
+
 
     :param str consent_store_id: Used to find the parent resource to bind the IAM policy to
     :param str dataset: Identifies the dataset addressed by this request. Must be in the format
@@ -119,6 +129,16 @@ def get_consent_store_iam_policy_output(consent_store_id: Optional[pulumi.Input[
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConsentStoreIamPolicyResult]:
     """
     Retrieves the current IAM policy data for consentstore
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.healthcare.get_consent_store_iam_policy(dataset=google_healthcare_consent_store["my-consent"]["dataset"],
+        consent_store_id=google_healthcare_consent_store["my-consent"]["name"])
+    ```
 
 
     :param str consent_store_id: Used to find the parent resource to bind the IAM policy to

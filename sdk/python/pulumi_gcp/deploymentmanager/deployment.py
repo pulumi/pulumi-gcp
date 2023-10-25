@@ -530,6 +530,23 @@ class Deployment(pulumi.CustomResource):
         `preview=false`).
 
         ## Example Usage
+        ### Deployment Manager Deployment Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        deployment = gcp.deploymentmanager.Deployment("deployment",
+            target=gcp.deploymentmanager.DeploymentTargetArgs(
+                config=gcp.deploymentmanager.DeploymentTargetConfigArgs(
+                    content=(lambda path: open(path).read())("path/to/config.yml"),
+                ),
+            ),
+            labels=[gcp.deploymentmanager.DeploymentLabelArgs(
+                key="foo",
+                value="bar",
+            )])
+        ```
 
         ## Import
 
@@ -604,6 +621,23 @@ class Deployment(pulumi.CustomResource):
         `preview=false`).
 
         ## Example Usage
+        ### Deployment Manager Deployment Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        deployment = gcp.deploymentmanager.Deployment("deployment",
+            target=gcp.deploymentmanager.DeploymentTargetArgs(
+                config=gcp.deploymentmanager.DeploymentTargetConfigArgs(
+                    content=(lambda path: open(path).read())("path/to/config.yml"),
+                ),
+            ),
+            labels=[gcp.deploymentmanager.DeploymentLabelArgs(
+                key="foo",
+                value="bar",
+            )])
+        ```
 
         ## Import
 

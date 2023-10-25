@@ -13,6 +13,31 @@ namespace Pulumi.Gcp.EssentialContacts
     /// The default version for the processor. Deleting this resource is a no-op, and does not unset the default version.
     /// 
     /// ## Example Usage
+    /// ### Documentai Default Version
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var processorDocumentAiProcessor = new Gcp.EssentialContacts.DocumentAiProcessor("processorDocumentAiProcessor", new()
+    ///     {
+    ///         Location = "us",
+    ///         DisplayName = "test-processor",
+    ///         Type = "OCR_PROCESSOR",
+    ///     });
+    /// 
+    ///     var processorDocumentAiProcessorDefaultVersion = new Gcp.EssentialContacts.DocumentAiProcessorDefaultVersion("processorDocumentAiProcessorDefaultVersion", new()
+    ///     {
+    ///         Processor = processorDocumentAiProcessor.Id,
+    ///         Version = processorDocumentAiProcessor.Id.Apply(id =&gt; $"{id}/processorVersions/stable"),
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

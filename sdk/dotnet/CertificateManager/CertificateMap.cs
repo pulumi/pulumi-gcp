@@ -14,6 +14,28 @@ namespace Pulumi.Gcp.CertificateManager
     /// which are usable by any associated target proxies
     /// 
     /// ## Example Usage
+    /// ### Certificate Manager Certificate Map Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CertificateManager.CertificateMap("default", new()
+    ///     {
+    ///         Description = "My acceptance test certificate map",
+    ///         Labels = 
+    ///         {
+    ///             { "terraform", "true" },
+    ///             { "acc-test", "true" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

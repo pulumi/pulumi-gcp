@@ -17,6 +17,38 @@ import (
 // for more details.
 //
 // ## Example Usage
+// ### Searching For Projects About To Be Deleted In An Org
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			my_org_projects, err := projects.GetProject(ctx, &projects.GetProjectArgs{
+//				Filter: "parent.id:012345678910 lifecycleState:DELETE_REQUESTED",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
+//				ProjectId: pulumi.StringRef(my_org_projects.Projects[0].ProjectId),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetProject(ctx *pulumi.Context, args *GetProjectArgs, opts ...pulumi.InvokeOption) (*GetProjectResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectResult

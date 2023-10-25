@@ -6,6 +6,18 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for snapshot
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.compute.getSnapshotIamPolicy({
+ *     project: google_compute_snapshot.snapshot.project,
+ *     name: google_compute_snapshot.snapshot.name,
+ * });
+ * ```
  */
 export function getSnapshotIamPolicy(args: GetSnapshotIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotIamPolicyResult> {
 
@@ -53,6 +65,18 @@ export interface GetSnapshotIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for snapshot
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.compute.getSnapshotIamPolicy({
+ *     project: google_compute_snapshot.snapshot.project,
+ *     name: google_compute_snapshot.snapshot.name,
+ * });
+ * ```
  */
 export function getSnapshotIamPolicyOutput(args: GetSnapshotIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getSnapshotIamPolicy(a, opts))

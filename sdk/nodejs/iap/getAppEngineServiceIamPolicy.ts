@@ -6,6 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for appengineservice
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.iap.getAppEngineServiceIamPolicy({
+ *     appId: google_app_engine_standard_app_version.version.project,
+ *     project: google_app_engine_standard_app_version.version.project,
+ *     service: google_app_engine_standard_app_version.version.service,
+ * });
+ * ```
  */
 export function getAppEngineServiceIamPolicy(args: GetAppEngineServiceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAppEngineServiceIamPolicyResult> {
 
@@ -59,6 +72,19 @@ export interface GetAppEngineServiceIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for appengineservice
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.iap.getAppEngineServiceIamPolicy({
+ *     appId: google_app_engine_standard_app_version.version.project,
+ *     project: google_app_engine_standard_app_version.version.project,
+ *     service: google_app_engine_standard_app_version.version.service,
+ * });
+ * ```
  */
 export function getAppEngineServiceIamPolicyOutput(args: GetAppEngineServiceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppEngineServiceIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getAppEngineServiceIamPolicy(a, opts))

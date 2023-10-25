@@ -13,12 +13,48 @@ namespace Pulumi.Gcp.PubSub
     {
         /// <summary>
         /// Retrieves the current IAM policy data for a Pubsub subscription.
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.PubSub.GetSubscriptionIamPolicy.Invoke(new()
+        ///     {
+        ///         Subscription = google_pubsub_subscription.Subscription.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetSubscriptionIamPolicyResult> InvokeAsync(GetSubscriptionIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSubscriptionIamPolicyResult>("gcp:pubsub/getSubscriptionIamPolicy:getSubscriptionIamPolicy", args ?? new GetSubscriptionIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for a Pubsub subscription.
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.PubSub.GetSubscriptionIamPolicy.Invoke(new()
+        ///     {
+        ///         Subscription = google_pubsub_subscription.Subscription.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetSubscriptionIamPolicyResult> Invoke(GetSubscriptionIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSubscriptionIamPolicyResult>("gcp:pubsub/getSubscriptionIamPolicy:getSubscriptionIamPolicy", args ?? new GetSubscriptionIamPolicyInvokeArgs(), options.WithDefaults());

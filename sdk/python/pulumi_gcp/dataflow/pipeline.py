@@ -579,6 +579,57 @@ class Pipeline(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dataflow)
 
         ## Example Usage
+        ### Data Pipeline Pipeline
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        service_account = gcp.service_account.Account("serviceAccount",
+            account_id="my-account",
+            display_name="Service Account")
+        primary = gcp.dataflow.Pipeline("primary",
+            display_name="my-pipeline",
+            type="PIPELINE_TYPE_BATCH",
+            state="STATE_ACTIVE",
+            region="us-central1",
+            workload=gcp.dataflow.PipelineWorkloadArgs(
+                dataflow_launch_template_request=gcp.dataflow.PipelineWorkloadDataflowLaunchTemplateRequestArgs(
+                    project_id="my-project",
+                    gcs_path="gs://my-bucket/path",
+                    launch_parameters=gcp.dataflow.PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs(
+                        job_name="my-job",
+                        parameters={
+                            "name": "wrench",
+                        },
+                        environment=gcp.dataflow.PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgs(
+                            num_workers=5,
+                            max_workers=5,
+                            zone="us-centra1-a",
+                            service_account_email=service_account.email,
+                            network="default",
+                            temp_location="gs://my-bucket/tmp_dir",
+                            bypass_temp_dir_validation=False,
+                            machine_type="E2",
+                            additional_user_labels={
+                                "context": "test",
+                            },
+                            worker_region="us-central1",
+                            worker_zone="us-central1-a",
+                            enable_streaming_engine=False,
+                        ),
+                        update=False,
+                        transform_name_mapping={
+                            "name": "wrench",
+                        },
+                    ),
+                    location="us-central1",
+                ),
+            ),
+            schedule_info=gcp.dataflow.PipelineScheduleInfoArgs(
+                schedule="* */2 * * *",
+            ))
+        ```
 
         ## Import
 
@@ -645,6 +696,57 @@ class Pipeline(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dataflow)
 
         ## Example Usage
+        ### Data Pipeline Pipeline
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        service_account = gcp.service_account.Account("serviceAccount",
+            account_id="my-account",
+            display_name="Service Account")
+        primary = gcp.dataflow.Pipeline("primary",
+            display_name="my-pipeline",
+            type="PIPELINE_TYPE_BATCH",
+            state="STATE_ACTIVE",
+            region="us-central1",
+            workload=gcp.dataflow.PipelineWorkloadArgs(
+                dataflow_launch_template_request=gcp.dataflow.PipelineWorkloadDataflowLaunchTemplateRequestArgs(
+                    project_id="my-project",
+                    gcs_path="gs://my-bucket/path",
+                    launch_parameters=gcp.dataflow.PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs(
+                        job_name="my-job",
+                        parameters={
+                            "name": "wrench",
+                        },
+                        environment=gcp.dataflow.PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgs(
+                            num_workers=5,
+                            max_workers=5,
+                            zone="us-centra1-a",
+                            service_account_email=service_account.email,
+                            network="default",
+                            temp_location="gs://my-bucket/tmp_dir",
+                            bypass_temp_dir_validation=False,
+                            machine_type="E2",
+                            additional_user_labels={
+                                "context": "test",
+                            },
+                            worker_region="us-central1",
+                            worker_zone="us-central1-a",
+                            enable_streaming_engine=False,
+                        ),
+                        update=False,
+                        transform_name_mapping={
+                            "name": "wrench",
+                        },
+                    ),
+                    location="us-central1",
+                ),
+            ),
+            schedule_info=gcp.dataflow.PipelineScheduleInfoArgs(
+                schedule="* */2 * * *",
+            ))
+        ```
 
         ## Import
 

@@ -15,6 +15,31 @@ import (
 // This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
 //
 // The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foo, err := container.GetRegistryRepository(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("gcrLocation", foo.RepositoryUrl)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetRegistryRepository(ctx *pulumi.Context, args *GetRegistryRepositoryArgs, opts ...pulumi.InvokeOption) (*GetRegistryRepositoryResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegistryRepositoryResult

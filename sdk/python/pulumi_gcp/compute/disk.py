@@ -1488,6 +1488,65 @@ class Disk(pulumi.CustomResource):
             * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
 
         ## Example Usage
+        ### Disk Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Disk("default",
+            image="debian-11-bullseye-v20220719",
+            labels={
+                "environment": "dev",
+            },
+            physical_block_size_bytes=4096,
+            type="pd-ssd",
+            zone="us-central1-a")
+        ```
+        ### Disk Async
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.compute.Disk("primary",
+            type="pd-ssd",
+            zone="us-central1-a",
+            physical_block_size_bytes=4096)
+        secondary = gcp.compute.Disk("secondary",
+            type="pd-ssd",
+            zone="us-east1-c",
+            async_primary_disk=gcp.compute.DiskAsyncPrimaryDiskArgs(
+                disk=primary.id,
+            ),
+            physical_block_size_bytes=4096)
+        ```
+        ### Disk Features
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Disk("default",
+            guest_os_features=[
+                gcp.compute.DiskGuestOsFeatureArgs(
+                    type="SECURE_BOOT",
+                ),
+                gcp.compute.DiskGuestOsFeatureArgs(
+                    type="MULTI_IP_SUBNET",
+                ),
+                gcp.compute.DiskGuestOsFeatureArgs(
+                    type="WINDOWS",
+                ),
+            ],
+            labels={
+                "environment": "dev",
+            },
+            licenses=["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"],
+            physical_block_size_bytes=4096,
+            type="pd-ssd",
+            zone="us-central1-a")
+        ```
 
         ## Import
 
@@ -1639,6 +1698,65 @@ class Disk(pulumi.CustomResource):
             * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
 
         ## Example Usage
+        ### Disk Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Disk("default",
+            image="debian-11-bullseye-v20220719",
+            labels={
+                "environment": "dev",
+            },
+            physical_block_size_bytes=4096,
+            type="pd-ssd",
+            zone="us-central1-a")
+        ```
+        ### Disk Async
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.compute.Disk("primary",
+            type="pd-ssd",
+            zone="us-central1-a",
+            physical_block_size_bytes=4096)
+        secondary = gcp.compute.Disk("secondary",
+            type="pd-ssd",
+            zone="us-east1-c",
+            async_primary_disk=gcp.compute.DiskAsyncPrimaryDiskArgs(
+                disk=primary.id,
+            ),
+            physical_block_size_bytes=4096)
+        ```
+        ### Disk Features
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Disk("default",
+            guest_os_features=[
+                gcp.compute.DiskGuestOsFeatureArgs(
+                    type="SECURE_BOOT",
+                ),
+                gcp.compute.DiskGuestOsFeatureArgs(
+                    type="MULTI_IP_SUBNET",
+                ),
+                gcp.compute.DiskGuestOsFeatureArgs(
+                    type="WINDOWS",
+                ),
+            ],
+            labels={
+                "environment": "dev",
+            },
+            licenses=["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"],
+            physical_block_size_bytes=4096,
+            type="pd-ssd",
+            zone="us-central1-a")
+        ```
 
         ## Import
 

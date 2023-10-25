@@ -465,6 +465,22 @@ class Reservation(pulumi.CustomResource):
             * [Reserving zonal resources](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
 
         ## Example Usage
+        ### Reservation Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        gce_reservation = gcp.compute.Reservation("gceReservation",
+            specific_reservation=gcp.compute.ReservationSpecificReservationArgs(
+                count=1,
+                instance_properties=gcp.compute.ReservationSpecificReservationInstancePropertiesArgs(
+                    machine_type="n2-standard-2",
+                    min_cpu_platform="Intel Cascade Lake",
+                ),
+            ),
+            zone="us-central1-a")
+        ```
 
         ## Import
 
@@ -530,6 +546,22 @@ class Reservation(pulumi.CustomResource):
             * [Reserving zonal resources](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
 
         ## Example Usage
+        ### Reservation Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        gce_reservation = gcp.compute.Reservation("gceReservation",
+            specific_reservation=gcp.compute.ReservationSpecificReservationArgs(
+                count=1,
+                instance_properties=gcp.compute.ReservationSpecificReservationInstancePropertiesArgs(
+                    machine_type="n2-standard-2",
+                    min_cpu_platform="Intel Cascade Lake",
+                ),
+            ),
+            zone="us-central1-a")
+        ```
 
         ## Import
 

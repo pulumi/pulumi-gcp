@@ -19,6 +19,93 @@ namespace Pulumi.Gcp.BigLake
     ///     * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_tables)
     /// 
     /// ## Example Usage
+    /// ### Biglake Table
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var catalog = new Gcp.BigLake.Catalog("catalog", new()
+    ///     {
+    ///         Location = "US",
+    ///     });
+    /// 
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+    ///     {
+    ///         Location = "US",
+    ///         ForceDestroy = true,
+    ///         UniformBucketLevelAccess = true,
+    ///     });
+    /// 
+    ///     var metadataFolder = new Gcp.Storage.BucketObject("metadataFolder", new()
+    ///     {
+    ///         Content = " ",
+    ///         Bucket = bucket.Name,
+    ///     });
+    /// 
+    ///     var dataFolder = new Gcp.Storage.BucketObject("dataFolder", new()
+    ///     {
+    ///         Content = " ",
+    ///         Bucket = bucket.Name,
+    ///     });
+    /// 
+    ///     var database = new Gcp.BigLake.Database("database", new()
+    ///     {
+    ///         Catalog = catalog.Id,
+    ///         Type = "HIVE",
+    ///         HiveOptions = new Gcp.BigLake.Inputs.DatabaseHiveOptionsArgs
+    ///         {
+    ///             LocationUri = Output.Tuple(bucket.Name, metadataFolder.Name).Apply(values =&gt;
+    ///             {
+    ///                 var bucketName = values.Item1;
+    ///                 var metadataFolderName = values.Item2;
+    ///                 return $"gs://{bucketName}/{metadataFolderName}";
+    ///             }),
+    ///             Parameters = 
+    ///             {
+    ///                 { "owner", "Alex" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var table = new Gcp.BigLake.Table("table", new()
+    ///     {
+    ///         Database = database.Id,
+    ///         Type = "HIVE",
+    ///         HiveOptions = new Gcp.BigLake.Inputs.TableHiveOptionsArgs
+    ///         {
+    ///             TableType = "MANAGED_TABLE",
+    ///             StorageDescriptor = new Gcp.BigLake.Inputs.TableHiveOptionsStorageDescriptorArgs
+    ///             {
+    ///                 LocationUri = Output.Tuple(bucket.Name, dataFolder.Name).Apply(values =&gt;
+    ///                 {
+    ///                     var bucketName = values.Item1;
+    ///                     var dataFolderName = values.Item2;
+    ///                     return $"gs://{bucketName}/{dataFolderName}";
+    ///                 }),
+    ///                 InputFormat = "org.apache.hadoop.mapred.SequenceFileInputFormat",
+    ///                 OutputFormat = "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+    ///             },
+    ///             Parameters = 
+    ///             {
+    ///                 { "spark.sql.create.version", "3.1.3" },
+    ///                 { "spark.sql.sources.schema.numParts", "1" },
+    ///                 { "transient_lastDdlTime", "1680894197" },
+    ///                 { "spark.sql.partitionProvider", "catalog" },
+    ///                 { "owner", "John Doe" },
+    ///                 { "spark.sql.sources.schema.part.0", "{\"type\":\"struct\",\"fields\":[{\"name\":\"id\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}},{\"name\":\"name\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}},{\"name\":\"age\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}}]}" },
+    ///                 { "spark.sql.sources.provider", "iceberg" },
+    ///                 { "provider", "iceberg" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -17,6 +17,35 @@ import (
 //
 // When using Google Cloud DNS to manage internal DNS, create peered DNS domains to make your DNS available to services like Google Cloud Build.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := servicenetworking.NewPeeredDnsDomain(ctx, "name", &servicenetworking.PeeredDnsDomainArgs{
+//				DnsSuffix: pulumi.String("example.com."),
+//				Network:   pulumi.String("default"),
+//				Project:   pulumi.String("10000000"),
+//				Service:   pulumi.String("peering-service"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Project peered DNS domains can be imported using the `service`, `project`, `network` and `name`, e.g.

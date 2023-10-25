@@ -348,6 +348,19 @@ class OauthIdpConfig(pulumi.CustomResource):
         the marketplace prior to using this resource.
 
         ## Example Usage
+        ### Identity Platform Oauth Idp Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        oauth_idp_config = gcp.identityplatform.OauthIdpConfig("oauthIdpConfig",
+            client_id="client-id",
+            client_secret="secret",
+            display_name="Display Name",
+            enabled=True,
+            issuer="issuer")
+        ```
 
         ## Import
 
@@ -393,6 +406,19 @@ class OauthIdpConfig(pulumi.CustomResource):
         the marketplace prior to using this resource.
 
         ## Example Usage
+        ### Identity Platform Oauth Idp Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        oauth_idp_config = gcp.identityplatform.OauthIdpConfig("oauthIdpConfig",
+            client_id="client-id",
+            client_secret="secret",
+            display_name="Display Name",
+            enabled=True,
+            issuer="issuer")
+        ```
 
         ## Import
 

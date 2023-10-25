@@ -281,6 +281,17 @@ def get_trigger(location: Optional[str] = None,
     * How-to Guides
         * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    name = gcp.cloudbuild.get_trigger(project="your-project-id",
+        trigger_id=google_cloudbuild_trigger["filename-trigger"]["trigger_id"],
+        location="location of trigger build")
+    ```
+
 
     :param str location: The Cloud Build location for the trigger.
            
@@ -335,6 +346,17 @@ def get_trigger_output(location: Optional[pulumi.Input[str]] = None,
     * [API documentation](https://cloud.google.com/build/docs/api/reference/rest/v1/projects.triggers)
     * How-to Guides
         * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    name = gcp.cloudbuild.get_trigger(project="your-project-id",
+        trigger_id=google_cloudbuild_trigger["filename-trigger"]["trigger_id"],
+        location="location of trigger build")
+    ```
 
 
     :param str location: The Cloud Build location for the trigger.

@@ -22,6 +22,779 @@ import (
 //   - [Official Documentation](https://cloud.google.com/datastream/docs/create-a-stream)
 //
 // ## Example Usage
+// ### Datastream Stream Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datastream"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+//				DatabaseVersion: pulumi.String("MYSQL_8_0"),
+//				Region:          pulumi.String("us-central1"),
+//				Settings: &sql.DatabaseInstanceSettingsArgs{
+//					Tier: pulumi.String("db-f1-micro"),
+//					BackupConfiguration: &sql.DatabaseInstanceSettingsBackupConfigurationArgs{
+//						Enabled:          pulumi.Bool(true),
+//						BinaryLogEnabled: pulumi.Bool(true),
+//					},
+//					IpConfiguration: &sql.DatabaseInstanceSettingsIpConfigurationArgs{
+//						AuthorizedNetworks: sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArray{
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.71.242.81"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.72.28.29"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.67.6.157"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.67.234.134"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.72.239.218"),
+//							},
+//						},
+//					},
+//				},
+//				DeletionProtection: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sql.NewDatabase(ctx, "db", &sql.DatabaseArgs{
+//				Instance: instance.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pwd, err := random.NewRandomPassword(ctx, "pwd", &random.RandomPasswordArgs{
+//				Length:  pulumi.Int(16),
+//				Special: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			user, err := sql.NewUser(ctx, "user", &sql.UserArgs{
+//				Instance: instance.Name,
+//				Host:     pulumi.String("%"),
+//				Password: pwd.Result,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			sourceConnectionProfile, err := datastream.NewConnectionProfile(ctx, "sourceConnectionProfile", &datastream.ConnectionProfileArgs{
+//				DisplayName:         pulumi.String("Source connection profile"),
+//				Location:            pulumi.String("us-central1"),
+//				ConnectionProfileId: pulumi.String("source-profile"),
+//				MysqlProfile: &datastream.ConnectionProfileMysqlProfileArgs{
+//					Hostname: instance.PublicIpAddress,
+//					Username: user.Name,
+//					Password: user.Password,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Location:                 pulumi.String("US"),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = storage.NewBucketIAMMember(ctx, "viewer", &storage.BucketIAMMemberArgs{
+//				Bucket: bucket.Name,
+//				Role:   pulumi.String("roles/storage.objectViewer"),
+//				Member: pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-datastream.iam.gserviceaccount.com", project.Number)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = storage.NewBucketIAMMember(ctx, "creator", &storage.BucketIAMMemberArgs{
+//				Bucket: bucket.Name,
+//				Role:   pulumi.String("roles/storage.objectCreator"),
+//				Member: pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-datastream.iam.gserviceaccount.com", project.Number)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = storage.NewBucketIAMMember(ctx, "reader", &storage.BucketIAMMemberArgs{
+//				Bucket: bucket.Name,
+//				Role:   pulumi.String("roles/storage.legacyBucketReader"),
+//				Member: pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-datastream.iam.gserviceaccount.com", project.Number)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			keyUser, err := kms.NewCryptoKeyIAMMember(ctx, "keyUser", &kms.CryptoKeyIAMMemberArgs{
+//				CryptoKeyId: pulumi.String("kms-name"),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-datastream.iam.gserviceaccount.com", project.Number)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			destinationConnectionProfile, err := datastream.NewConnectionProfile(ctx, "destinationConnectionProfile", &datastream.ConnectionProfileArgs{
+//				DisplayName:         pulumi.String("Connection profile"),
+//				Location:            pulumi.String("us-central1"),
+//				ConnectionProfileId: pulumi.String("destination-profile"),
+//				GcsProfile: &datastream.ConnectionProfileGcsProfileArgs{
+//					Bucket:   bucket.Name,
+//					RootPath: pulumi.String("/path"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datastream.NewStream(ctx, "default", &datastream.StreamArgs{
+//				StreamId:     pulumi.String("my-stream"),
+//				DesiredState: pulumi.String("NOT_STARTED"),
+//				Location:     pulumi.String("us-central1"),
+//				DisplayName:  pulumi.String("my stream"),
+//				Labels: pulumi.StringMap{
+//					"key": pulumi.String("value"),
+//				},
+//				SourceConfig: &datastream.StreamSourceConfigArgs{
+//					SourceConnectionProfile: sourceConnectionProfile.ID(),
+//					MysqlSourceConfig: &datastream.StreamSourceConfigMysqlSourceConfigArgs{
+//						IncludeObjects: &datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs{
+//							MysqlDatabases: datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArray{
+//								&datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs{
+//									Database: pulumi.String("my-database"),
+//									MysqlTables: datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArray{
+//										&datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs{
+//											Table: pulumi.String("includedTable"),
+//											MysqlColumns: datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArray{
+//												&datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs{
+//													Column:          pulumi.String("includedColumn"),
+//													DataType:        pulumi.String("VARCHAR"),
+//													Collation:       pulumi.String("utf8mb4"),
+//													PrimaryKey:      pulumi.Bool(false),
+//													Nullable:        pulumi.Bool(false),
+//													OrdinalPosition: pulumi.Int(0),
+//												},
+//											},
+//										},
+//									},
+//								},
+//							},
+//						},
+//						ExcludeObjects: &datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs{
+//							MysqlDatabases: datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArray{
+//								&datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs{
+//									Database: pulumi.String("my-database"),
+//									MysqlTables: datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArray{
+//										&datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs{
+//											Table: pulumi.String("excludedTable"),
+//											MysqlColumns: datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArray{
+//												&datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs{
+//													Column:          pulumi.String("excludedColumn"),
+//													DataType:        pulumi.String("VARCHAR"),
+//													Collation:       pulumi.String("utf8mb4"),
+//													PrimaryKey:      pulumi.Bool(false),
+//													Nullable:        pulumi.Bool(false),
+//													OrdinalPosition: pulumi.Int(0),
+//												},
+//											},
+//										},
+//									},
+//								},
+//							},
+//						},
+//						MaxConcurrentCdcTasks: pulumi.Int(5),
+//					},
+//				},
+//				DestinationConfig: &datastream.StreamDestinationConfigArgs{
+//					DestinationConnectionProfile: destinationConnectionProfile.ID(),
+//					GcsDestinationConfig: &datastream.StreamDestinationConfigGcsDestinationConfigArgs{
+//						Path:                 pulumi.String("mydata"),
+//						FileRotationMb:       pulumi.Int(200),
+//						FileRotationInterval: pulumi.String("60s"),
+//						JsonFileFormat: &datastream.StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs{
+//							SchemaFileFormat: pulumi.String("NO_SCHEMA_FILE"),
+//							Compression:      pulumi.String("GZIP"),
+//						},
+//					},
+//				},
+//				BackfillAll: &datastream.StreamBackfillAllArgs{
+//					MysqlExcludedObjects: &datastream.StreamBackfillAllMysqlExcludedObjectsArgs{
+//						MysqlDatabases: datastream.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArray{
+//							&datastream.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs{
+//								Database: pulumi.String("my-database"),
+//								MysqlTables: datastream.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArray{
+//									&datastream.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs{
+//										Table: pulumi.String("excludedTable"),
+//										MysqlColumns: datastream.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArray{
+//											&datastream.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs{
+//												Column:          pulumi.String("excludedColumn"),
+//												DataType:        pulumi.String("VARCHAR"),
+//												Collation:       pulumi.String("utf8mb4"),
+//												PrimaryKey:      pulumi.Bool(false),
+//												Nullable:        pulumi.Bool(false),
+//												OrdinalPosition: pulumi.Int(0),
+//											},
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//				CustomerManagedEncryptionKey: pulumi.String("kms-name"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				keyUser,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Datastream Stream Postgresql
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datastream"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			source, err := datastream.NewConnectionProfile(ctx, "source", &datastream.ConnectionProfileArgs{
+//				DisplayName:         pulumi.String("Postgresql Source"),
+//				Location:            pulumi.String("us-central1"),
+//				ConnectionProfileId: pulumi.String("source-profile"),
+//				PostgresqlProfile: &datastream.ConnectionProfilePostgresqlProfileArgs{
+//					Hostname: pulumi.String("hostname"),
+//					Port:     pulumi.Int(3306),
+//					Username: pulumi.String("user"),
+//					Password: pulumi.String("pass"),
+//					Database: pulumi.String("postgres"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			destination, err := datastream.NewConnectionProfile(ctx, "destination", &datastream.ConnectionProfileArgs{
+//				DisplayName:         pulumi.String("BigQuery Destination"),
+//				Location:            pulumi.String("us-central1"),
+//				ConnectionProfileId: pulumi.String("destination-profile"),
+//				BigqueryProfile:     nil,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datastream.NewStream(ctx, "default", &datastream.StreamArgs{
+//				DisplayName:  pulumi.String("Postgres to BigQuery"),
+//				Location:     pulumi.String("us-central1"),
+//				StreamId:     pulumi.String("my-stream"),
+//				DesiredState: pulumi.String("RUNNING"),
+//				SourceConfig: &datastream.StreamSourceConfigArgs{
+//					SourceConnectionProfile: source.ID(),
+//					PostgresqlSourceConfig: &datastream.StreamSourceConfigPostgresqlSourceConfigArgs{
+//						MaxConcurrentBackfillTasks: pulumi.Int(12),
+//						Publication:                pulumi.String("publication"),
+//						ReplicationSlot:            pulumi.String("replication_slot"),
+//						IncludeObjects: &datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs{
+//							PostgresqlSchemas: datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArray{
+//								&datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs{
+//									Schema: pulumi.String("schema"),
+//									PostgresqlTables: datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArray{
+//										&datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs{
+//											Table: pulumi.String("table"),
+//											PostgresqlColumns: datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray{
+//												&datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs{
+//													Column: pulumi.String("column"),
+//												},
+//											},
+//										},
+//									},
+//								},
+//							},
+//						},
+//						ExcludeObjects: &datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs{
+//							PostgresqlSchemas: datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArray{
+//								&datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs{
+//									Schema: pulumi.String("schema"),
+//									PostgresqlTables: datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArray{
+//										&datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs{
+//											Table: pulumi.String("table"),
+//											PostgresqlColumns: datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray{
+//												&datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs{
+//													Column: pulumi.String("column"),
+//												},
+//											},
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//				DestinationConfig: &datastream.StreamDestinationConfigArgs{
+//					DestinationConnectionProfile: destination.ID(),
+//					BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
+//						DataFreshness: pulumi.String("900s"),
+//						SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
+//							DatasetTemplate: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs{
+//								Location: pulumi.String("us-central1"),
+//							},
+//						},
+//					},
+//				},
+//				BackfillAll: &datastream.StreamBackfillAllArgs{
+//					PostgresqlExcludedObjects: &datastream.StreamBackfillAllPostgresqlExcludedObjectsArgs{
+//						PostgresqlSchemas: datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArray{
+//							&datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs{
+//								Schema: pulumi.String("schema"),
+//								PostgresqlTables: datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArray{
+//									&datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs{
+//										Table: pulumi.String("table"),
+//										PostgresqlColumns: datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray{
+//											&datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs{
+//												Column: pulumi.String("column"),
+//											},
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Datastream Stream Oracle
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datastream"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			source, err := datastream.NewConnectionProfile(ctx, "source", &datastream.ConnectionProfileArgs{
+//				DisplayName:         pulumi.String("Oracle Source"),
+//				Location:            pulumi.String("us-central1"),
+//				ConnectionProfileId: pulumi.String("source-profile"),
+//				OracleProfile: &datastream.ConnectionProfileOracleProfileArgs{
+//					Hostname:        pulumi.String("hostname"),
+//					Port:            pulumi.Int(1521),
+//					Username:        pulumi.String("user"),
+//					Password:        pulumi.String("pass"),
+//					DatabaseService: pulumi.String("ORCL"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			destination, err := datastream.NewConnectionProfile(ctx, "destination", &datastream.ConnectionProfileArgs{
+//				DisplayName:         pulumi.String("BigQuery Destination"),
+//				Location:            pulumi.String("us-central1"),
+//				ConnectionProfileId: pulumi.String("destination-profile"),
+//				BigqueryProfile:     nil,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datastream.NewStream(ctx, "stream5", &datastream.StreamArgs{
+//				DisplayName:  pulumi.String("Oracle to BigQuery"),
+//				Location:     pulumi.String("us-central1"),
+//				StreamId:     pulumi.String("my-stream"),
+//				DesiredState: pulumi.String("RUNNING"),
+//				SourceConfig: &datastream.StreamSourceConfigArgs{
+//					SourceConnectionProfile: source.ID(),
+//					OracleSourceConfig: &datastream.StreamSourceConfigOracleSourceConfigArgs{
+//						MaxConcurrentCdcTasks:      pulumi.Int(8),
+//						MaxConcurrentBackfillTasks: pulumi.Int(12),
+//						IncludeObjects: &datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsArgs{
+//							OracleSchemas: datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArray{
+//								&datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs{
+//									Schema: pulumi.String("schema"),
+//									OracleTables: datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArray{
+//										&datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs{
+//											Table: pulumi.String("table"),
+//											OracleColumns: datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArray{
+//												&datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs{
+//													Column: pulumi.String("column"),
+//												},
+//											},
+//										},
+//									},
+//								},
+//							},
+//						},
+//						ExcludeObjects: &datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsArgs{
+//							OracleSchemas: datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArray{
+//								&datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs{
+//									Schema: pulumi.String("schema"),
+//									OracleTables: datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArray{
+//										&datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs{
+//											Table: pulumi.String("table"),
+//											OracleColumns: datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArray{
+//												&datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs{
+//													Column: pulumi.String("column"),
+//												},
+//											},
+//										},
+//									},
+//								},
+//							},
+//						},
+//						DropLargeObjects: nil,
+//					},
+//				},
+//				DestinationConfig: &datastream.StreamDestinationConfigArgs{
+//					DestinationConnectionProfile: destination.ID(),
+//					BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
+//						DataFreshness: pulumi.String("900s"),
+//						SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
+//							DatasetTemplate: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs{
+//								Location: pulumi.String("us-central1"),
+//							},
+//						},
+//					},
+//				},
+//				BackfillAll: &datastream.StreamBackfillAllArgs{
+//					OracleExcludedObjects: &datastream.StreamBackfillAllOracleExcludedObjectsArgs{
+//						OracleSchemas: datastream.StreamBackfillAllOracleExcludedObjectsOracleSchemaArray{
+//							&datastream.StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs{
+//								Schema: pulumi.String("schema"),
+//								OracleTables: datastream.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArray{
+//									&datastream.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs{
+//										Table: pulumi.String("table"),
+//										OracleColumns: datastream.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArray{
+//											&datastream.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs{
+//												Column: pulumi.String("column"),
+//											},
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Datastream Stream Postgresql Bigquery Dataset Id
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datastream"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			postgres, err := bigquery.NewDataset(ctx, "postgres", &bigquery.DatasetArgs{
+//				DatasetId:    pulumi.String("postgres"),
+//				FriendlyName: pulumi.String("postgres"),
+//				Description:  pulumi.String("Database of postgres"),
+//				Location:     pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			destinationConnectionProfile2, err := datastream.NewConnectionProfile(ctx, "destinationConnectionProfile2", &datastream.ConnectionProfileArgs{
+//				DisplayName:         pulumi.String("Connection profile"),
+//				Location:            pulumi.String("us-central1"),
+//				ConnectionProfileId: pulumi.String("dest-profile"),
+//				BigqueryProfile:     nil,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+//				DatabaseVersion: pulumi.String("MYSQL_8_0"),
+//				Region:          pulumi.String("us-central1"),
+//				Settings: &sql.DatabaseInstanceSettingsArgs{
+//					Tier: pulumi.String("db-f1-micro"),
+//					BackupConfiguration: &sql.DatabaseInstanceSettingsBackupConfigurationArgs{
+//						Enabled:          pulumi.Bool(true),
+//						BinaryLogEnabled: pulumi.Bool(true),
+//					},
+//					IpConfiguration: &sql.DatabaseInstanceSettingsIpConfigurationArgs{
+//						AuthorizedNetworks: sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArray{
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.71.242.81"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.72.28.29"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.67.6.157"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.67.234.134"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.72.239.218"),
+//							},
+//						},
+//					},
+//				},
+//				DeletionProtection: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pwd, err := random.NewRandomPassword(ctx, "pwd", &random.RandomPasswordArgs{
+//				Length:  pulumi.Int(16),
+//				Special: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			user, err := sql.NewUser(ctx, "user", &sql.UserArgs{
+//				Instance: instance.Name,
+//				Host:     pulumi.String("%"),
+//				Password: pwd.Result,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			sourceConnectionProfile, err := datastream.NewConnectionProfile(ctx, "sourceConnectionProfile", &datastream.ConnectionProfileArgs{
+//				DisplayName:         pulumi.String("Source connection profile"),
+//				Location:            pulumi.String("us-central1"),
+//				ConnectionProfileId: pulumi.String("source-profile"),
+//				MysqlProfile: &datastream.ConnectionProfileMysqlProfileArgs{
+//					Hostname: instance.PublicIpAddress,
+//					Username: user.Name,
+//					Password: user.Password,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datastream.NewStream(ctx, "default", &datastream.StreamArgs{
+//				DisplayName: pulumi.String("postgres to bigQuery"),
+//				Location:    pulumi.String("us-central1"),
+//				StreamId:    pulumi.String("postgres-bigquery"),
+//				SourceConfig: &datastream.StreamSourceConfigArgs{
+//					SourceConnectionProfile: sourceConnectionProfile.ID(),
+//					MysqlSourceConfig:       nil,
+//				},
+//				DestinationConfig: &datastream.StreamDestinationConfigArgs{
+//					DestinationConnectionProfile: destinationConnectionProfile2.ID(),
+//					BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
+//						DataFreshness: pulumi.String("900s"),
+//						SingleTargetDataset: &datastream.StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs{
+//							DatasetId: postgres.ID(),
+//						},
+//					},
+//				},
+//				BackfillAll: nil,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sql.NewDatabase(ctx, "db", &sql.DatabaseArgs{
+//				Instance: instance.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Datastream Stream Bigquery
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datastream"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+//				DatabaseVersion: pulumi.String("MYSQL_8_0"),
+//				Region:          pulumi.String("us-central1"),
+//				Settings: &sql.DatabaseInstanceSettingsArgs{
+//					Tier: pulumi.String("db-f1-micro"),
+//					BackupConfiguration: &sql.DatabaseInstanceSettingsBackupConfigurationArgs{
+//						Enabled:          pulumi.Bool(true),
+//						BinaryLogEnabled: pulumi.Bool(true),
+//					},
+//					IpConfiguration: &sql.DatabaseInstanceSettingsIpConfigurationArgs{
+//						AuthorizedNetworks: sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArray{
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.71.242.81"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.72.28.29"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.67.6.157"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.67.234.134"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.72.239.218"),
+//							},
+//						},
+//					},
+//				},
+//				DeletionProtection: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sql.NewDatabase(ctx, "db", &sql.DatabaseArgs{
+//				Instance: instance.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pwd, err := random.NewRandomPassword(ctx, "pwd", &random.RandomPasswordArgs{
+//				Length:  pulumi.Int(16),
+//				Special: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			user, err := sql.NewUser(ctx, "user", &sql.UserArgs{
+//				Instance: instance.Name,
+//				Host:     pulumi.String("%"),
+//				Password: pwd.Result,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			sourceConnectionProfile, err := datastream.NewConnectionProfile(ctx, "sourceConnectionProfile", &datastream.ConnectionProfileArgs{
+//				DisplayName:         pulumi.String("Source connection profile"),
+//				Location:            pulumi.String("us-central1"),
+//				ConnectionProfileId: pulumi.String("source-profile"),
+//				MysqlProfile: &datastream.ConnectionProfileMysqlProfileArgs{
+//					Hostname: instance.PublicIpAddress,
+//					Username: user.Name,
+//					Password: user.Password,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bqSa, err := bigquery.GetDefaultServiceAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			bigqueryKeyUser, err := kms.NewCryptoKeyIAMMember(ctx, "bigqueryKeyUser", &kms.CryptoKeyIAMMemberArgs{
+//				CryptoKeyId: pulumi.String("bigquery-kms-name"),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Member:      pulumi.String(fmt.Sprintf("serviceAccount:%v", bqSa.Email)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			destinationConnectionProfile, err := datastream.NewConnectionProfile(ctx, "destinationConnectionProfile", &datastream.ConnectionProfileArgs{
+//				DisplayName:         pulumi.String("Connection profile"),
+//				Location:            pulumi.String("us-central1"),
+//				ConnectionProfileId: pulumi.String("destination-profile"),
+//				BigqueryProfile:     nil,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datastream.NewStream(ctx, "default", &datastream.StreamArgs{
+//				StreamId:    pulumi.String("my-stream"),
+//				Location:    pulumi.String("us-central1"),
+//				DisplayName: pulumi.String("my stream"),
+//				SourceConfig: &datastream.StreamSourceConfigArgs{
+//					SourceConnectionProfile: sourceConnectionProfile.ID(),
+//					MysqlSourceConfig:       nil,
+//				},
+//				DestinationConfig: &datastream.StreamDestinationConfigArgs{
+//					DestinationConnectionProfile: destinationConnectionProfile.ID(),
+//					BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
+//						SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
+//							DatasetTemplate: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs{
+//								Location:   pulumi.String("us-central1"),
+//								KmsKeyName: pulumi.String("bigquery-kms-name"),
+//							},
+//						},
+//					},
+//				},
+//				BackfillNone: nil,
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				bigqueryKeyUser,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

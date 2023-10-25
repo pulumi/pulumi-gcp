@@ -249,6 +249,20 @@ class NetworkFirewallPolicyAssociation(pulumi.CustomResource):
         The Compute NetworkFirewallPolicyAssociation resource
 
         ## Example Usage
+        ### Global
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network_firewall_policy = gcp.compute.NetworkFirewallPolicy("networkFirewallPolicy",
+            project="my-project-name",
+            description="Sample global network firewall policy")
+        network = gcp.compute.Network("network")
+        primary = gcp.compute.NetworkFirewallPolicyAssociation("primary",
+            attachment_target=network.id,
+            firewall_policy=network_firewall_policy.name,
+            project="my-project-name")
+        ```
 
         ## Import
 
@@ -283,6 +297,20 @@ class NetworkFirewallPolicyAssociation(pulumi.CustomResource):
         The Compute NetworkFirewallPolicyAssociation resource
 
         ## Example Usage
+        ### Global
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network_firewall_policy = gcp.compute.NetworkFirewallPolicy("networkFirewallPolicy",
+            project="my-project-name",
+            description="Sample global network firewall policy")
+        network = gcp.compute.Network("network")
+        primary = gcp.compute.NetworkFirewallPolicyAssociation("primary",
+            attachment_target=network.id,
+            firewall_policy=network_firewall_policy.name,
+            project="my-project-name")
+        ```
 
         ## Import
 

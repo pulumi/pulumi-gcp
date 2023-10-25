@@ -16,6 +16,35 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
  *
  * ## Example Usage
+ * ### Bigquery Analyticshub Listing Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const listingDataExchange = new gcp.bigqueryanalyticshub.DataExchange("listingDataExchange", {
+ *     location: "US",
+ *     dataExchangeId: "my_data_exchange",
+ *     displayName: "my_data_exchange",
+ *     description: "example data exchange",
+ * });
+ * const listingDataset = new gcp.bigquery.Dataset("listingDataset", {
+ *     datasetId: "my_listing",
+ *     friendlyName: "my_listing",
+ *     description: "example data exchange",
+ *     location: "US",
+ * });
+ * const listingListing = new gcp.bigqueryanalyticshub.Listing("listingListing", {
+ *     location: "US",
+ *     dataExchangeId: listingDataExchange.dataExchangeId,
+ *     listingId: "my_listing",
+ *     displayName: "my_listing",
+ *     description: "example data exchange",
+ *     bigqueryDataset: {
+ *         dataset: listingDataset.id,
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

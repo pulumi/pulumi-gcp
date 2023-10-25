@@ -347,6 +347,18 @@ class MuteConfig(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1/organizations.muteConfigs)
 
         ## Example Usage
+        ### Scc Mute Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.securitycenter.MuteConfig("default",
+            description="My Mute Config",
+            filter="category: \\"OS_VULNERABILITY\\"",
+            mute_config_id="my-config",
+            parent="organizations/123456789")
+        ```
 
         ## Import
 
@@ -389,6 +401,18 @@ class MuteConfig(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1/organizations.muteConfigs)
 
         ## Example Usage
+        ### Scc Mute Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.securitycenter.MuteConfig("default",
+            description="My Mute Config",
+            filter="category: \\"OS_VULNERABILITY\\"",
+            mute_config_id="my-config",
+            parent="organizations/123456789")
+        ```
 
         ## Import
 

@@ -8,6 +8,250 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### Network Services Http Route Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.networkservices.HttpRoute("default", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     description: "my description",
+ *     hostnames: ["example"],
+ *     rules: [{
+ *         matches: [{
+ *             queryParameters: [{
+ *                 queryParameter: "key",
+ *                 exactMatch: "value",
+ *             }],
+ *             fullPathMatch: "example",
+ *         }],
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Network Services Http Route Matches And Actions
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.networkservices.HttpRoute("default", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     description: "my description",
+ *     hostnames: ["example"],
+ *     rules: [{
+ *         matches: [
+ *             {
+ *                 headers: [{
+ *                     header: "header",
+ *                     invertMatch: false,
+ *                     regexMatch: "header-value",
+ *                 }],
+ *                 queryParameters: [{
+ *                     queryParameter: "key",
+ *                     exactMatch: "value",
+ *                 }],
+ *                 prefixMatch: "example",
+ *                 ignoreCase: false,
+ *             },
+ *             {
+ *                 headers: [{
+ *                     header: "header",
+ *                     invertMatch: false,
+ *                     presentMatch: true,
+ *                 }],
+ *                 queryParameters: [{
+ *                     queryParameter: "key",
+ *                     regexMatch: "value",
+ *                 }],
+ *                 regexMatch: "example",
+ *                 ignoreCase: false,
+ *             },
+ *             {
+ *                 headers: [{
+ *                     header: "header",
+ *                     invertMatch: false,
+ *                     presentMatch: true,
+ *                 }],
+ *                 queryParameters: [{
+ *                     queryParameter: "key",
+ *                     presentMatch: true,
+ *                 }],
+ *                 fullPathMatch: "example",
+ *                 ignoreCase: false,
+ *             },
+ *         ],
+ *         action: {
+ *             redirect: {
+ *                 hostRedirect: "new-host",
+ *                 pathRedirect: "new-path",
+ *                 prefixRewrite: "new-prefix",
+ *                 httpsRedirect: true,
+ *                 stripQuery: true,
+ *                 portRedirect: 8081,
+ *             },
+ *             urlRewrite: {
+ *                 pathPrefixRewrite: "new-prefix",
+ *                 hostRewrite: "new-host",
+ *             },
+ *             retryPolicy: {
+ *                 retryConditions: ["server_error"],
+ *                 numRetries: 1,
+ *                 perTryTimeout: "1s",
+ *             },
+ *             requestMirrorPolicy: {
+ *                 destination: {
+ *                     serviceName: "new",
+ *                     weight: 1,
+ *                 },
+ *             },
+ *             corsPolicy: {
+ *                 allowOrigins: ["example"],
+ *                 allowMethods: [
+ *                     "GET",
+ *                     "PUT",
+ *                 ],
+ *                 allowHeaders: [
+ *                     "version",
+ *                     "type",
+ *                 ],
+ *                 exposeHeaders: [
+ *                     "version",
+ *                     "type",
+ *                 ],
+ *                 maxAge: "1s",
+ *                 allowCredentials: true,
+ *                 disabled: false,
+ *             },
+ *         },
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Network Services Http Route Actions
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.networkservices.HttpRoute("default", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     description: "my description",
+ *     hostnames: ["example"],
+ *     rules: [{
+ *         action: {
+ *             faultInjectionPolicy: {
+ *                 delay: {
+ *                     fixedDelay: "1s",
+ *                     percentage: 1,
+ *                 },
+ *                 abort: {
+ *                     httpStatus: 500,
+ *                     percentage: 1,
+ *                 },
+ *             },
+ *             urlRewrite: {
+ *                 pathPrefixRewrite: "new-prefix",
+ *                 hostRewrite: "new-host",
+ *             },
+ *             retryPolicy: {
+ *                 retryConditions: ["server_error"],
+ *                 numRetries: 1,
+ *                 perTryTimeout: "1s",
+ *             },
+ *             requestMirrorPolicy: {
+ *                 destination: {
+ *                     serviceName: "new",
+ *                     weight: 1,
+ *                 },
+ *             },
+ *             corsPolicy: {
+ *                 allowOrigins: ["example"],
+ *                 allowMethods: [
+ *                     "GET",
+ *                     "PUT",
+ *                 ],
+ *                 allowHeaders: [
+ *                     "version",
+ *                     "type",
+ *                 ],
+ *                 exposeHeaders: [
+ *                     "version",
+ *                     "type",
+ *                 ],
+ *                 maxAge: "1s",
+ *                 allowCredentials: true,
+ *                 disabled: false,
+ *             },
+ *             requestHeaderModifier: {
+ *                 set: {
+ *                     version: "1",
+ *                     type: "json",
+ *                 },
+ *                 add: {
+ *                     "minor-version": "1",
+ *                 },
+ *                 removes: ["arg"],
+ *             },
+ *             responseHeaderModifier: {
+ *                 set: {
+ *                     version: "1",
+ *                     type: "json",
+ *                 },
+ *                 add: {
+ *                     "minor-version": "1",
+ *                 },
+ *                 removes: ["removearg"],
+ *             },
+ *         },
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Network Services Http Route Mesh Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultMesh = new gcp.networkservices.Mesh("defaultMesh", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     description: "my description",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultHttpRoute = new gcp.networkservices.HttpRoute("defaultHttpRoute", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     description: "my description",
+ *     hostnames: ["example"],
+ *     meshes: [defaultMesh.id],
+ *     rules: [{
+ *         matches: [{
+ *             queryParameters: [{
+ *                 queryParameter: "key",
+ *                 exactMatch: "value",
+ *             }],
+ *             fullPathMatch: "example",
+ *         }],
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

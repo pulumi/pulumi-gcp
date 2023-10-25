@@ -344,6 +344,62 @@ class ProjectCustomModule(pulumi.CustomResource):
             * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
 
         ## Example Usage
+        ### Scc Project Custom Module Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.securitycenter.ProjectCustomModule("example",
+            custom_config=gcp.securitycenter.ProjectCustomModuleCustomConfigArgs(
+                description="The rotation period of the identified cryptokey resource exceeds 30 days.",
+                predicate=gcp.securitycenter.ProjectCustomModuleCustomConfigPredicateArgs(
+                    expression="resource.rotationPeriod > duration(\\"2592000s\\")",
+                ),
+                recommendation="Set the rotation period to at most 30 days.",
+                resource_selector=gcp.securitycenter.ProjectCustomModuleCustomConfigResourceSelectorArgs(
+                    resource_types=["cloudkms.googleapis.com/CryptoKey"],
+                ),
+                severity="MEDIUM",
+            ),
+            display_name="basic_custom_module",
+            enablement_state="ENABLED")
+        ```
+        ### Scc Project Custom Module Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.securitycenter.ProjectCustomModule("example",
+            custom_config=gcp.securitycenter.ProjectCustomModuleCustomConfigArgs(
+                custom_output=gcp.securitycenter.ProjectCustomModuleCustomConfigCustomOutputArgs(
+                    properties=[gcp.securitycenter.ProjectCustomModuleCustomConfigCustomOutputPropertyArgs(
+                        name="duration",
+                        value_expression=gcp.securitycenter.ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs(
+                            description="description of the expression",
+                            expression="resource.rotationPeriod",
+                            location="location of the expression",
+                            title="Purpose of the expression",
+                        ),
+                    )],
+                ),
+                description="Description of the custom module",
+                predicate=gcp.securitycenter.ProjectCustomModuleCustomConfigPredicateArgs(
+                    description="description of the expression",
+                    expression="resource.rotationPeriod > duration(\\"2592000s\\")",
+                    location="location of the expression",
+                    title="Purpose of the expression",
+                ),
+                recommendation="Steps to resolve violation",
+                resource_selector=gcp.securitycenter.ProjectCustomModuleCustomConfigResourceSelectorArgs(
+                    resource_types=["cloudkms.googleapis.com/CryptoKey"],
+                ),
+                severity="LOW",
+            ),
+            display_name="full_custom_module",
+            enablement_state="ENABLED")
+        ```
 
         ## Import
 
@@ -395,6 +451,62 @@ class ProjectCustomModule(pulumi.CustomResource):
             * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
 
         ## Example Usage
+        ### Scc Project Custom Module Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.securitycenter.ProjectCustomModule("example",
+            custom_config=gcp.securitycenter.ProjectCustomModuleCustomConfigArgs(
+                description="The rotation period of the identified cryptokey resource exceeds 30 days.",
+                predicate=gcp.securitycenter.ProjectCustomModuleCustomConfigPredicateArgs(
+                    expression="resource.rotationPeriod > duration(\\"2592000s\\")",
+                ),
+                recommendation="Set the rotation period to at most 30 days.",
+                resource_selector=gcp.securitycenter.ProjectCustomModuleCustomConfigResourceSelectorArgs(
+                    resource_types=["cloudkms.googleapis.com/CryptoKey"],
+                ),
+                severity="MEDIUM",
+            ),
+            display_name="basic_custom_module",
+            enablement_state="ENABLED")
+        ```
+        ### Scc Project Custom Module Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.securitycenter.ProjectCustomModule("example",
+            custom_config=gcp.securitycenter.ProjectCustomModuleCustomConfigArgs(
+                custom_output=gcp.securitycenter.ProjectCustomModuleCustomConfigCustomOutputArgs(
+                    properties=[gcp.securitycenter.ProjectCustomModuleCustomConfigCustomOutputPropertyArgs(
+                        name="duration",
+                        value_expression=gcp.securitycenter.ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs(
+                            description="description of the expression",
+                            expression="resource.rotationPeriod",
+                            location="location of the expression",
+                            title="Purpose of the expression",
+                        ),
+                    )],
+                ),
+                description="Description of the custom module",
+                predicate=gcp.securitycenter.ProjectCustomModuleCustomConfigPredicateArgs(
+                    description="description of the expression",
+                    expression="resource.rotationPeriod > duration(\\"2592000s\\")",
+                    location="location of the expression",
+                    title="Purpose of the expression",
+                ),
+                recommendation="Steps to resolve violation",
+                resource_selector=gcp.securitycenter.ProjectCustomModuleCustomConfigResourceSelectorArgs(
+                    resource_types=["cloudkms.googleapis.com/CryptoKey"],
+                ),
+                severity="LOW",
+            ),
+            display_name="full_custom_module",
+            enablement_state="ENABLED")
+        ```
 
         ## Import
 

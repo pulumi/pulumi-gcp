@@ -23,6 +23,104 @@ namespace Pulumi.Gcp.CloudFunctions
     /// for Cloud Functions.
     /// 
     /// ## Example Usage
+    /// ### Public Function
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+    ///     {
+    ///         Location = "US",
+    ///     });
+    /// 
+    ///     var archive = new Gcp.Storage.BucketObject("archive", new()
+    ///     {
+    ///         Bucket = bucket.Name,
+    ///         Source = new FileAsset("./path/to/zip/file/which/contains/code"),
+    ///     });
+    /// 
+    ///     var function = new Gcp.CloudFunctions.Function("function", new()
+    ///     {
+    ///         Description = "My function",
+    ///         Runtime = "nodejs16",
+    ///         AvailableMemoryMb = 128,
+    ///         SourceArchiveBucket = bucket.Name,
+    ///         SourceArchiveObject = archive.Name,
+    ///         TriggerHttp = true,
+    ///         EntryPoint = "helloGET",
+    ///     });
+    /// 
+    ///     // IAM entry for all users to invoke the function
+    ///     var invoker = new Gcp.CloudFunctions.FunctionIamMember("invoker", new()
+    ///     {
+    ///         Project = function.Project,
+    ///         Region = function.Region,
+    ///         CloudFunction = function.Name,
+    ///         Role = "roles/cloudfunctions.invoker",
+    ///         Member = "allUsers",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Single User
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+    ///     {
+    ///         Location = "US",
+    ///     });
+    /// 
+    ///     var archive = new Gcp.Storage.BucketObject("archive", new()
+    ///     {
+    ///         Bucket = bucket.Name,
+    ///         Source = new FileAsset("./path/to/zip/file/which/contains/code"),
+    ///     });
+    /// 
+    ///     var function = new Gcp.CloudFunctions.Function("function", new()
+    ///     {
+    ///         Description = "My function",
+    ///         Runtime = "nodejs16",
+    ///         AvailableMemoryMb = 128,
+    ///         SourceArchiveBucket = bucket.Name,
+    ///         SourceArchiveObject = archive.Name,
+    ///         TriggerHttp = true,
+    ///         HttpsTriggerSecurityLevel = "SECURE_ALWAYS",
+    ///         Timeout = 60,
+    ///         EntryPoint = "helloGET",
+    ///         Labels = 
+    ///         {
+    ///             { "my-label", "my-label-value" },
+    ///         },
+    ///         EnvironmentVariables = 
+    ///         {
+    ///             { "MY_ENV_VAR", "my-env-var-value" },
+    ///         },
+    ///     });
+    /// 
+    ///     // IAM entry for a single user to invoke the function
+    ///     var invoker = new Gcp.CloudFunctions.FunctionIamMember("invoker", new()
+    ///     {
+    ///         Project = function.Project,
+    ///         Region = function.Region,
+    ///         CloudFunction = function.Name,
+    ///         Role = "roles/cloudfunctions.invoker",
+    ///         Member = "user:myFunctionInvoker@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

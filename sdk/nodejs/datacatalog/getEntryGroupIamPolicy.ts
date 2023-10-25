@@ -6,6 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for entrygroup
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.datacatalog.getEntryGroupIamPolicy({
+ *     entryGroup: google_data_catalog_entry_group.basic_entry_group.name,
+ * });
+ * ```
  */
 export function getEntryGroupIamPolicy(args: GetEntryGroupIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetEntryGroupIamPolicyResult> {
 
@@ -56,6 +67,17 @@ export interface GetEntryGroupIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for entrygroup
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.datacatalog.getEntryGroupIamPolicy({
+ *     entryGroup: google_data_catalog_entry_group.basic_entry_group.name,
+ * });
+ * ```
  */
 export function getEntryGroupIamPolicyOutput(args: GetEntryGroupIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEntryGroupIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getEntryGroupIamPolicy(a, opts))

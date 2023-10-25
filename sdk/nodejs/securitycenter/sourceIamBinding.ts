@@ -19,6 +19,18 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/security-command-center/docs)
  *
  * ## Example Usage
+ * ### Scc Source Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const customSource = new gcp.securitycenter.Source("customSource", {
+ *     description: "My custom Cloud Security Command Center Finding Source",
+ *     displayName: "My Source",
+ *     organization: "123456789",
+ * });
+ * ```
  *
  * ## Import
  *

@@ -11,6 +11,212 @@ namespace Pulumi.Gcp.NetworkServices
 {
     /// <summary>
     /// ## Example Usage
+    /// ### Network Services Grpc Route Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.NetworkServices.GrpcRoute("default", new()
+    ///     {
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Description = "my description",
+    ///         Hostnames = new[]
+    ///         {
+    ///             "example",
+    ///         },
+    ///         Rules = new[]
+    ///         {
+    ///             new Gcp.NetworkServices.Inputs.GrpcRouteRuleArgs
+    ///             {
+    ///                 Matches = new[]
+    ///                 {
+    ///                     new Gcp.NetworkServices.Inputs.GrpcRouteRuleMatchArgs
+    ///                     {
+    ///                         Headers = new[]
+    ///                         {
+    ///                             new Gcp.NetworkServices.Inputs.GrpcRouteRuleMatchHeaderArgs
+    ///                             {
+    ///                                 Key = "key",
+    ///                                 Value = "value",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Action = new Gcp.NetworkServices.Inputs.GrpcRouteRuleActionArgs
+    ///                 {
+    ///                     RetryPolicy = new Gcp.NetworkServices.Inputs.GrpcRouteRuleActionRetryPolicyArgs
+    ///                     {
+    ///                         RetryConditions = new[]
+    ///                         {
+    ///                             "cancelled",
+    ///                         },
+    ///                         NumRetries = 1,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Network Services Grpc Route Matches And Actions
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.NetworkServices.GrpcRoute("default", new()
+    ///     {
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Description = "my description",
+    ///         Hostnames = new[]
+    ///         {
+    ///             "example",
+    ///         },
+    ///         Rules = new[]
+    ///         {
+    ///             new Gcp.NetworkServices.Inputs.GrpcRouteRuleArgs
+    ///             {
+    ///                 Matches = new[]
+    ///                 {
+    ///                     new Gcp.NetworkServices.Inputs.GrpcRouteRuleMatchArgs
+    ///                     {
+    ///                         Headers = new[]
+    ///                         {
+    ///                             new Gcp.NetworkServices.Inputs.GrpcRouteRuleMatchHeaderArgs
+    ///                             {
+    ///                                 Key = "key",
+    ///                                 Value = "value",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Gcp.NetworkServices.Inputs.GrpcRouteRuleMatchArgs
+    ///                     {
+    ///                         Headers = new[]
+    ///                         {
+    ///                             new Gcp.NetworkServices.Inputs.GrpcRouteRuleMatchHeaderArgs
+    ///                             {
+    ///                                 Key = "key",
+    ///                                 Value = "value",
+    ///                             },
+    ///                         },
+    ///                         Method = new Gcp.NetworkServices.Inputs.GrpcRouteRuleMatchMethodArgs
+    ///                         {
+    ///                             GrpcService = "foo",
+    ///                             GrpcMethod = "bar",
+    ///                             CaseSensitive = true,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Action = new Gcp.NetworkServices.Inputs.GrpcRouteRuleActionArgs
+    ///                 {
+    ///                     FaultInjectionPolicy = new Gcp.NetworkServices.Inputs.GrpcRouteRuleActionFaultInjectionPolicyArgs
+    ///                     {
+    ///                         Delay = new Gcp.NetworkServices.Inputs.GrpcRouteRuleActionFaultInjectionPolicyDelayArgs
+    ///                         {
+    ///                             FixedDelay = "1s",
+    ///                             Percentage = 1,
+    ///                         },
+    ///                         Abort = new Gcp.NetworkServices.Inputs.GrpcRouteRuleActionFaultInjectionPolicyAbortArgs
+    ///                         {
+    ///                             HttpStatus = 500,
+    ///                             Percentage = 1,
+    ///                         },
+    ///                     },
+    ///                     RetryPolicy = new Gcp.NetworkServices.Inputs.GrpcRouteRuleActionRetryPolicyArgs
+    ///                     {
+    ///                         RetryConditions = new[]
+    ///                         {
+    ///                             "cancelled",
+    ///                         },
+    ///                         NumRetries = 1,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Network Services Grpc Route Actions
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.NetworkServices.GrpcRoute("default", new()
+    ///     {
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Description = "my description",
+    ///         Hostnames = new[]
+    ///         {
+    ///             "example",
+    ///         },
+    ///         Rules = new[]
+    ///         {
+    ///             new Gcp.NetworkServices.Inputs.GrpcRouteRuleArgs
+    ///             {
+    ///                 Action = new Gcp.NetworkServices.Inputs.GrpcRouteRuleActionArgs
+    ///                 {
+    ///                     FaultInjectionPolicy = new Gcp.NetworkServices.Inputs.GrpcRouteRuleActionFaultInjectionPolicyArgs
+    ///                     {
+    ///                         Delay = new Gcp.NetworkServices.Inputs.GrpcRouteRuleActionFaultInjectionPolicyDelayArgs
+    ///                         {
+    ///                             FixedDelay = "1s",
+    ///                             Percentage = 1,
+    ///                         },
+    ///                         Abort = new Gcp.NetworkServices.Inputs.GrpcRouteRuleActionFaultInjectionPolicyAbortArgs
+    ///                         {
+    ///                             HttpStatus = 500,
+    ///                             Percentage = 1,
+    ///                         },
+    ///                     },
+    ///                     RetryPolicy = new Gcp.NetworkServices.Inputs.GrpcRouteRuleActionRetryPolicyArgs
+    ///                     {
+    ///                         RetryConditions = new[]
+    ///                         {
+    ///                             "cancelled",
+    ///                         },
+    ///                         NumRetries = 1,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

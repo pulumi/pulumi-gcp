@@ -411,6 +411,43 @@ class Router(pulumi.CustomResource):
             * [Google Cloud Router](https://cloud.google.com/router/docs/)
 
         ## Example Usage
+        ### Router Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        foobar_network = gcp.compute.Network("foobarNetwork", auto_create_subnetworks=False)
+        foobar_router = gcp.compute.Router("foobarRouter",
+            network=foobar_network.name,
+            bgp=gcp.compute.RouterBgpArgs(
+                asn=64514,
+                advertise_mode="CUSTOM",
+                advertised_groups=["ALL_SUBNETS"],
+                advertised_ip_ranges=[
+                    gcp.compute.RouterBgpAdvertisedIpRangeArgs(
+                        range="1.2.3.4",
+                    ),
+                    gcp.compute.RouterBgpAdvertisedIpRangeArgs(
+                        range="6.7.0.0/16",
+                    ),
+                ],
+            ))
+        ```
+        ### Compute Router Encrypted Interconnect
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network", auto_create_subnetworks=False)
+        encrypted_interconnect_router = gcp.compute.Router("encrypted-interconnect-router",
+            network=network.name,
+            encrypted_interconnect_router=True,
+            bgp=gcp.compute.RouterBgpArgs(
+                asn=64514,
+            ))
+        ```
 
         ## Import
 
@@ -469,6 +506,43 @@ class Router(pulumi.CustomResource):
             * [Google Cloud Router](https://cloud.google.com/router/docs/)
 
         ## Example Usage
+        ### Router Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        foobar_network = gcp.compute.Network("foobarNetwork", auto_create_subnetworks=False)
+        foobar_router = gcp.compute.Router("foobarRouter",
+            network=foobar_network.name,
+            bgp=gcp.compute.RouterBgpArgs(
+                asn=64514,
+                advertise_mode="CUSTOM",
+                advertised_groups=["ALL_SUBNETS"],
+                advertised_ip_ranges=[
+                    gcp.compute.RouterBgpAdvertisedIpRangeArgs(
+                        range="1.2.3.4",
+                    ),
+                    gcp.compute.RouterBgpAdvertisedIpRangeArgs(
+                        range="6.7.0.0/16",
+                    ),
+                ],
+            ))
+        ```
+        ### Compute Router Encrypted Interconnect
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network", auto_create_subnetworks=False)
+        encrypted_interconnect_router = gcp.compute.Router("encrypted-interconnect-router",
+            network=network.name,
+            encrypted_interconnect_router=True,
+            bgp=gcp.compute.RouterBgpArgs(
+                asn=64514,
+            ))
+        ```
 
         ## Import
 

@@ -8,6 +8,88 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### Network Security Server Tls Policy Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.networksecurity.ServerTlsPolicy("default", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     description: "my description",
+ *     allowOpen: false,
+ *     serverCertificate: {
+ *         certificateProviderInstance: {
+ *             pluginInstance: "google_cloud_private_spiffe",
+ *         },
+ *     },
+ *     mtlsPolicy: {
+ *         clientValidationCas: [
+ *             {
+ *                 grpcEndpoint: {
+ *                     targetUri: "unix:mypath",
+ *                 },
+ *             },
+ *             {
+ *                 grpcEndpoint: {
+ *                     targetUri: "unix:abc/mypath",
+ *                 },
+ *             },
+ *             {
+ *                 certificateProviderInstance: {
+ *                     pluginInstance: "google_cloud_private_spiffe",
+ *                 },
+ *             },
+ *         ],
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Network Security Server Tls Policy Advanced
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.networksecurity.ServerTlsPolicy("default", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     description: "my description",
+ *     location: "global",
+ *     allowOpen: false,
+ *     mtlsPolicy: {
+ *         clientValidationMode: "ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Network Security Server Tls Policy Server Cert
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.networksecurity.ServerTlsPolicy("default", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     description: "my description",
+ *     location: "global",
+ *     allowOpen: false,
+ *     serverCertificate: {
+ *         grpcEndpoint: {
+ *             targetUri: "unix:mypath",
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

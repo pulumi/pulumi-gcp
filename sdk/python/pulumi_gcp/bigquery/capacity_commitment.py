@@ -485,6 +485,19 @@ class CapacityCommitment(pulumi.CustomResource):
             * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
 
         ## Example Usage
+        ### Bigquery Reservation Capacity Commitment Docs
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.bigquery.CapacityCommitment("example",
+            capacity_commitment_id="example-commitment",
+            edition="ENTERPRISE",
+            location="us-west2",
+            plan="FLEX_FLAT_RATE",
+            slot_count=100)
+        ```
 
         ## Import
 
@@ -539,6 +552,19 @@ class CapacityCommitment(pulumi.CustomResource):
             * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
 
         ## Example Usage
+        ### Bigquery Reservation Capacity Commitment Docs
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.bigquery.CapacityCommitment("example",
+            capacity_commitment_id="example-commitment",
+            edition="ENTERPRISE",
+            location="us-west2",
+            plan="FLEX_FLAT_RATE",
+            slot_count=100)
+        ```
 
         ## Import
 

@@ -485,6 +485,36 @@ class CxWebhook(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 
         ## Example Usage
+        ### Dialogflowcx Webhook Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        agent = gcp.diagflow.CxAgent("agent",
+            display_name="dialogflowcx-agent",
+            location="global",
+            default_language_code="en",
+            supported_language_codes=[
+                "it",
+                "de",
+                "es",
+            ],
+            time_zone="America/New_York",
+            description="Example description.",
+            avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+            enable_stackdriver_logging=True,
+            enable_spell_correction=True,
+            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
+                enable_speech_adaptation=True,
+            ))
+        basic_webhook = gcp.diagflow.CxWebhook("basicWebhook",
+            parent=agent.id,
+            display_name="MyFlow",
+            generic_web_service=gcp.diagflow.CxWebhookGenericWebServiceArgs(
+                uri="https://example.com",
+            ))
+        ```
 
         ## Import
 
@@ -532,6 +562,36 @@ class CxWebhook(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 
         ## Example Usage
+        ### Dialogflowcx Webhook Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        agent = gcp.diagflow.CxAgent("agent",
+            display_name="dialogflowcx-agent",
+            location="global",
+            default_language_code="en",
+            supported_language_codes=[
+                "it",
+                "de",
+                "es",
+            ],
+            time_zone="America/New_York",
+            description="Example description.",
+            avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+            enable_stackdriver_logging=True,
+            enable_spell_correction=True,
+            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
+                enable_speech_adaptation=True,
+            ))
+        basic_webhook = gcp.diagflow.CxWebhook("basicWebhook",
+            parent=agent.id,
+            display_name="MyFlow",
+            generic_web_service=gcp.diagflow.CxWebhookGenericWebServiceArgs(
+                uri="https://example.com",
+            ))
+        ```
 
         ## Import
 

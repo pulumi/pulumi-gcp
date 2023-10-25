@@ -16,6 +16,137 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/serverless-neg-concepts)
  *
  * ## Example Usage
+ * ### Region Network Endpoint Group Functions
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bucket = new gcp.storage.Bucket("bucket", {location: "US"});
+ * const archive = new gcp.storage.BucketObject("archive", {
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("path/to/index.zip"),
+ * });
+ * const functionNegFunction = new gcp.cloudfunctions.Function("functionNegFunction", {
+ *     description: "My function",
+ *     runtime: "nodejs10",
+ *     availableMemoryMb: 128,
+ *     sourceArchiveBucket: bucket.name,
+ *     sourceArchiveObject: archive.name,
+ *     triggerHttp: true,
+ *     timeout: 60,
+ *     entryPoint: "helloGET",
+ * });
+ * // Cloud Functions Example
+ * const functionNegRegionNetworkEndpointGroup = new gcp.compute.RegionNetworkEndpointGroup("functionNegRegionNetworkEndpointGroup", {
+ *     networkEndpointType: "SERVERLESS",
+ *     region: "us-central1",
+ *     cloudFunction: {
+ *         "function": functionNegFunction.name,
+ *     },
+ * });
+ * ```
+ * ### Region Network Endpoint Group Cloudrun
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cloudrunNegService = new gcp.cloudrun.Service("cloudrunNegService", {
+ *     location: "us-central1",
+ *     template: {
+ *         spec: {
+ *             containers: [{
+ *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *             }],
+ *         },
+ *     },
+ *     traffics: [{
+ *         percent: 100,
+ *         latestRevision: true,
+ *     }],
+ * });
+ * // Cloud Run Example
+ * const cloudrunNegRegionNetworkEndpointGroup = new gcp.compute.RegionNetworkEndpointGroup("cloudrunNegRegionNetworkEndpointGroup", {
+ *     networkEndpointType: "SERVERLESS",
+ *     region: "us-central1",
+ *     cloudRun: {
+ *         service: cloudrunNegService.name,
+ *     },
+ * });
+ * ```
+ * ### Region Network Endpoint Group Appengine
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const appengineNegBucket = new gcp.storage.Bucket("appengineNegBucket", {location: "US"});
+ * const appengineNegBucketObject = new gcp.storage.BucketObject("appengineNegBucketObject", {
+ *     bucket: appengineNegBucket.name,
+ *     source: new pulumi.asset.FileAsset("./test-fixtures/hello-world.zip"),
+ * });
+ * const appengineNegFlexibleAppVersion = new gcp.appengine.FlexibleAppVersion("appengineNegFlexibleAppVersion", {
+ *     versionId: "v1",
+ *     service: "appengine-network-endpoint-group",
+ *     runtime: "nodejs",
+ *     entrypoint: {
+ *         shell: "node ./app.js",
+ *     },
+ *     deployment: {
+ *         zip: {
+ *             sourceUrl: pulumi.interpolate`https://storage.googleapis.com/${appengineNegBucket.name}/${appengineNegBucketObject.name}`,
+ *         },
+ *     },
+ *     livenessCheck: {
+ *         path: "/",
+ *     },
+ *     readinessCheck: {
+ *         path: "/",
+ *     },
+ *     envVariables: {
+ *         port: "8080",
+ *     },
+ *     handlers: [{
+ *         urlRegex: ".*\\/my-path\\/*",
+ *         securityLevel: "SECURE_ALWAYS",
+ *         login: "LOGIN_REQUIRED",
+ *         authFailAction: "AUTH_FAIL_ACTION_REDIRECT",
+ *         staticFiles: {
+ *             path: "my-other-path",
+ *             uploadPathRegex: ".*\\/my-path\\/*",
+ *         },
+ *     }],
+ *     automaticScaling: {
+ *         coolDownPeriod: "120s",
+ *         cpuUtilization: {
+ *             targetUtilization: 0.5,
+ *         },
+ *     },
+ *     deleteServiceOnDestroy: true,
+ * });
+ * // App Engine Example
+ * const appengineNegRegionNetworkEndpointGroup = new gcp.compute.RegionNetworkEndpointGroup("appengineNegRegionNetworkEndpointGroup", {
+ *     networkEndpointType: "SERVERLESS",
+ *     region: "us-central1",
+ *     appEngine: {
+ *         service: appengineNegFlexibleAppVersion.service,
+ *         version: appengineNegFlexibleAppVersion.versionId,
+ *     },
+ * });
+ * ```
+ * ### Region Network Endpoint Group Psc
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const pscNeg = new gcp.compute.RegionNetworkEndpointGroup("pscNeg", {
+ *     networkEndpointType: "PRIVATE_SERVICE_CONNECT",
+ *     pscTargetService: "asia-northeast3-cloudkms.googleapis.com",
+ *     region: "asia-northeast3",
+ * });
+ * ```
  *
  * ## Import
  *

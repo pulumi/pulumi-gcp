@@ -27,6 +27,33 @@ import (
 //   - [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 //
 // ## Example Usage
+// ### Monitoring Istio Canonical Service
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := monitoring.GetIstioCanonicalService(ctx, &monitoring.GetIstioCanonicalServiceArgs{
+//				CanonicalService:          "prometheus",
+//				CanonicalServiceNamespace: "istio-system",
+//				MeshUid:                   "proj-573164786102",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetIstioCanonicalService(ctx *pulumi.Context, args *GetIstioCanonicalServiceArgs, opts ...pulumi.InvokeOption) (*GetIstioCanonicalServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIstioCanonicalServiceResult

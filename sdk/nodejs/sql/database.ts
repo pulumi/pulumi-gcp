@@ -9,6 +9,43 @@ import * as utilities from "../utilities";
  * Google's cloud.
  *
  * ## Example Usage
+ * ### Sql Database Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     region: "us-central1",
+ *     databaseVersion: "MYSQL_8_0",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *     },
+ *     deletionProtection: true,
+ * });
+ * const database = new gcp.sql.Database("database", {instance: instance.name});
+ * ```
+ * ### Sql Database Deletion Policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     region: "us-central1",
+ *     databaseVersion: "POSTGRES_14",
+ *     settings: {
+ *         tier: "db-g1-small",
+ *     },
+ *     deletionProtection: true,
+ * });
+ * const databaseDeletionPolicy = new gcp.sql.Database("databaseDeletionPolicy", {
+ *     instance: instance.name,
+ *     deletionPolicy: "ABANDON",
+ * });
+ * ```
  *
  * ## Import
  *

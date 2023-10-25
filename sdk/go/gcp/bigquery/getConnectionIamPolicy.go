@@ -13,6 +13,34 @@ import (
 )
 
 // Retrieves the current IAM policy data for connection
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigquery.LookupConnectionIamPolicy(ctx, &bigquery.LookupConnectionIamPolicyArgs{
+//				Project:      pulumi.StringRef(google_bigquery_connection.Connection.Project),
+//				Location:     pulumi.StringRef(google_bigquery_connection.Connection.Location),
+//				ConnectionId: google_bigquery_connection.Connection.Connection_id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupConnectionIamPolicy(ctx *pulumi.Context, args *LookupConnectionIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupConnectionIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectionIamPolicyResult

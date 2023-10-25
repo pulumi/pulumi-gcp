@@ -16,6 +16,73 @@ import (
 // The Dataplex Asset resource
 //
 // ## Example Usage
+// ### Basic_asset
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			basicBucket, err := storage.NewBucket(ctx, "basicBucket", &storage.BucketArgs{
+//				Location:                 pulumi.String("us-west1"),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//				Project:                  pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			basicLake, err := dataplex.NewLake(ctx, "basicLake", &dataplex.LakeArgs{
+//				Location: pulumi.String("us-west1"),
+//				Project:  pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			basicZone, err := dataplex.NewZone(ctx, "basicZone", &dataplex.ZoneArgs{
+//				Location: pulumi.String("us-west1"),
+//				Lake:     basicLake.Name,
+//				Type:     pulumi.String("RAW"),
+//				DiscoverySpec: &dataplex.ZoneDiscoverySpecArgs{
+//					Enabled: pulumi.Bool(false),
+//				},
+//				ResourceSpec: &dataplex.ZoneResourceSpecArgs{
+//					LocationType: pulumi.String("SINGLE_REGION"),
+//				},
+//				Project: pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataplex.NewAsset(ctx, "primary", &dataplex.AssetArgs{
+//				Location:     pulumi.String("us-west1"),
+//				Lake:         basicLake.Name,
+//				DataplexZone: basicZone.Name,
+//				DiscoverySpec: &dataplex.AssetDiscoverySpecArgs{
+//					Enabled: pulumi.Bool(false),
+//				},
+//				ResourceSpec: &dataplex.AssetResourceSpecArgs{
+//					Name: pulumi.String("projects/my-project-name/buckets/bucket"),
+//					Type: pulumi.String("STORAGE_BUCKET"),
+//				},
+//				Project: pulumi.String("my-project-name"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				basicBucket,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

@@ -23,6 +23,65 @@ import (
 //   - [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
 //
 // ## Example Usage
+// ### Beyondcorp App Gateway Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/beyondcorp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := beyondcorp.NewAppGateway(ctx, "appGateway", &beyondcorp.AppGatewayArgs{
+//				HostType: pulumi.String("GCP_REGIONAL_MIG"),
+//				Region:   pulumi.String("us-central1"),
+//				Type:     pulumi.String("TCP_PROXY"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Beyondcorp App Gateway Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/beyondcorp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := beyondcorp.NewAppGateway(ctx, "appGateway", &beyondcorp.AppGatewayArgs{
+//				DisplayName: pulumi.String("some display name"),
+//				HostType:    pulumi.String("GCP_REGIONAL_MIG"),
+//				Labels: pulumi.StringMap{
+//					"bar": pulumi.String("baz"),
+//					"foo": pulumi.String("bar"),
+//				},
+//				Region: pulumi.String("us-central1"),
+//				Type:   pulumi.String("TCP_PROXY"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

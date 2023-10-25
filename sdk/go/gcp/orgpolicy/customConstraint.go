@@ -14,6 +14,89 @@ import (
 )
 
 // ## Example Usage
+// ### Org Policy Custom Constraint Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/orgpolicy"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := orgpolicy.NewCustomConstraint(ctx, "constraint", &orgpolicy.CustomConstraintArgs{
+//				Parent:     pulumi.String("organizations/123456789"),
+//				ActionType: pulumi.String("ALLOW"),
+//				Condition:  pulumi.String("resource.management.autoUpgrade == false"),
+//				MethodTypes: pulumi.StringArray{
+//					pulumi.String("CREATE"),
+//					pulumi.String("UPDATE"),
+//				},
+//				ResourceTypes: pulumi.StringArray{
+//					pulumi.String("container.googleapis.com/NodePool"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Org Policy Custom Constraint Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/orgpolicy"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := orgpolicy.NewCustomConstraint(ctx, "constraint", &orgpolicy.CustomConstraintArgs{
+//				Parent:      pulumi.String("organizations/123456789"),
+//				DisplayName: pulumi.String("Disable GKE auto upgrade"),
+//				Description: pulumi.String("Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced."),
+//				ActionType:  pulumi.String("ALLOW"),
+//				Condition:   pulumi.String("resource.management.autoUpgrade == false"),
+//				MethodTypes: pulumi.StringArray{
+//					pulumi.String("CREATE"),
+//					pulumi.String("UPDATE"),
+//				},
+//				ResourceTypes: pulumi.StringArray{
+//					pulumi.String("container.googleapis.com/NodePool"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = orgpolicy.NewPolicy(ctx, "bool", &orgpolicy.PolicyArgs{
+//				Parent: pulumi.String("organizations/123456789"),
+//				Spec: &orgpolicy.PolicySpecArgs{
+//					Rules: orgpolicy.PolicySpecRuleArray{
+//						&orgpolicy.PolicySpecRuleArgs{
+//							Enforce: pulumi.String("TRUE"),
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

@@ -22,6 +22,118 @@ import (
 //   - [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 //
 // ## Example Usage
+// ### Vertex Ai Featurestore Entitytype Feature
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			featurestore, err := vertex.NewAiFeatureStore(ctx, "featurestore", &vertex.AiFeatureStoreArgs{
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Region: pulumi.String("us-central1"),
+//				OnlineServingConfig: &vertex.AiFeatureStoreOnlineServingConfigArgs{
+//					FixedNodeCount: pulumi.Int(2),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			entity, err := vertex.NewAiFeatureStoreEntityType(ctx, "entity", &vertex.AiFeatureStoreEntityTypeArgs{
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Featurestore: featurestore.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vertex.NewAiFeatureStoreEntityTypeFeature(ctx, "feature", &vertex.AiFeatureStoreEntityTypeFeatureArgs{
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Entitytype: entity.ID(),
+//				ValueType:  pulumi.String("INT64_ARRAY"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Vertex Ai Featurestore Entitytype Feature With Beta Fields
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			featurestore, err := vertex.NewAiFeatureStore(ctx, "featurestore", &vertex.AiFeatureStoreArgs{
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Region: pulumi.String("us-central1"),
+//				OnlineServingConfig: &vertex.AiFeatureStoreOnlineServingConfigArgs{
+//					FixedNodeCount: pulumi.Int(2),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			entity, err := vertex.NewAiFeatureStoreEntityType(ctx, "entity", &vertex.AiFeatureStoreEntityTypeArgs{
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Featurestore: featurestore.ID(),
+//				MonitoringConfig: &vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs{
+//					SnapshotAnalysis: &vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs{
+//						Disabled:           pulumi.Bool(false),
+//						MonitoringInterval: pulumi.String("86400s"),
+//					},
+//					CategoricalThresholdConfig: &vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs{
+//						Value: pulumi.Float64(0.3),
+//					},
+//					NumericalThresholdConfig: &vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs{
+//						Value: pulumi.Float64(0.3),
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vertex.NewAiFeatureStoreEntityTypeFeature(ctx, "feature", &vertex.AiFeatureStoreEntityTypeFeatureArgs{
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Entitytype: entity.ID(),
+//				ValueType:  pulumi.String("INT64_ARRAY"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

@@ -430,6 +430,37 @@ class Key(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Creating A New Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        myaccount = gcp.service_account.Account("myaccount",
+            account_id="myaccount",
+            display_name="My Service Account")
+        mykey = gcp.service_account.Key("mykey",
+            service_account_id=myaccount.name,
+            public_key_type="TYPE_X509_PEM_FILE")
+        ```
+        ### Creating And Regularly Rotating A Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumiverse_time as time
+
+        myaccount = gcp.service_account.Account("myaccount",
+            account_id="myaccount",
+            display_name="My Service Account")
+        # note this requires the terraform to be run regularly
+        mykey_rotation = time.Rotating("mykeyRotation", rotation_days=30)
+        mykey = gcp.service_account.Key("mykey",
+            service_account_id=myaccount.name,
+            keepers={
+                "rotation_time": mykey_rotation.rotation_rfc3339,
+            })
+        ```
 
         ## Import
 
@@ -460,6 +491,37 @@ class Key(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Creating A New Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        myaccount = gcp.service_account.Account("myaccount",
+            account_id="myaccount",
+            display_name="My Service Account")
+        mykey = gcp.service_account.Key("mykey",
+            service_account_id=myaccount.name,
+            public_key_type="TYPE_X509_PEM_FILE")
+        ```
+        ### Creating And Regularly Rotating A Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumiverse_time as time
+
+        myaccount = gcp.service_account.Account("myaccount",
+            account_id="myaccount",
+            display_name="My Service Account")
+        # note this requires the terraform to be run regularly
+        mykey_rotation = time.Rotating("mykeyRotation", rotation_days=30)
+        mykey = gcp.service_account.Key("mykey",
+            service_account_id=myaccount.name,
+            keepers={
+                "rotation_time": mykey_rotation.rotation_rfc3339,
+            })
+        ```
 
         ## Import
 

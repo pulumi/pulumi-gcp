@@ -129,6 +129,19 @@ def get_managed_zone(name: Optional[str] = None,
     and
     [API](https://cloud.google.com/dns/api/v1/managedZones).
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    env_dns_zone = gcp.dns.get_managed_zone(name="qa-zone")
+    dns = gcp.dns.RecordSet("dns",
+        name=f"my-address.{env_dns_zone.dns_name}",
+        type="TXT",
+        ttl=300,
+        managed_zone=env_dns_zone.name,
+        rrdatas=["test"])
+    ```
+
 
     :param str name: A unique name for the resource.
     :param str project: The ID of the project for the Google Cloud DNS zone.
@@ -160,6 +173,19 @@ def get_managed_zone_output(name: Optional[pulumi.Input[str]] = None,
     [the official documentation](https://cloud.google.com/dns/zones/)
     and
     [API](https://cloud.google.com/dns/api/v1/managedZones).
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    env_dns_zone = gcp.dns.get_managed_zone(name="qa-zone")
+    dns = gcp.dns.RecordSet("dns",
+        name=f"my-address.{env_dns_zone.dns_name}",
+        type="TXT",
+        ttl=300,
+        managed_zone=env_dns_zone.name,
+        rrdatas=["test"])
+    ```
 
 
     :param str name: A unique name for the resource.

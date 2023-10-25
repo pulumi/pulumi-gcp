@@ -24,6 +24,15 @@ namespace Pulumi.Gcp.Container.Outputs
         /// 
         /// This example `addons_config` disables two addons:
         /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// &lt;a name="nested_binary_authorization"&gt;&lt;/a&gt;The `binary_authorization` block supports:
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigConfigConnectorConfig? ConfigConnectorConfig;

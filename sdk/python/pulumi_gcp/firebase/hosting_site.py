@@ -238,6 +238,34 @@ class HostingSite(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Firebasehosting Site Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.firebase.HostingSite("default",
+            project="my-project-name",
+            site_id="site-no-app",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Firebasehosting Site Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.firebase.WebApp("default",
+            project="my-project-name",
+            display_name="Test web app for Firebase Hosting",
+            deletion_policy="DELETE",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        full = gcp.firebase.HostingSite("full",
+            project="my-project-name",
+            site_id="site-with-app",
+            app_id=default.app_id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -277,6 +305,34 @@ class HostingSite(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Firebasehosting Site Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.firebase.HostingSite("default",
+            project="my-project-name",
+            site_id="site-no-app",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Firebasehosting Site Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.firebase.WebApp("default",
+            project="my-project-name",
+            display_name="Test web app for Firebase Hosting",
+            deletion_policy="DELETE",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        full = gcp.firebase.HostingSite("full",
+            project="my-project-name",
+            site_id="site-with-app",
+            app_id=default.app_id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

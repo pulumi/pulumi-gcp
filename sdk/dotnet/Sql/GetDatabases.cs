@@ -13,12 +13,54 @@ namespace Pulumi.Gcp.Sql
     {
         /// <summary>
         /// Use this data source to get information about a list of databases in a Cloud SQL instance.
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var qa = Gcp.Sql.GetDatabases.Invoke(new()
+        ///     {
+        ///         Instance = google_sql_database_instance.Main.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatabasesResult> InvokeAsync(GetDatabasesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabasesResult>("gcp:sql/getDatabases:getDatabases", args ?? new GetDatabasesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get information about a list of databases in a Cloud SQL instance.
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var qa = Gcp.Sql.GetDatabases.Invoke(new()
+        ///     {
+        ///         Instance = google_sql_database_instance.Main.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDatabasesResult> Invoke(GetDatabasesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabasesResult>("gcp:sql/getDatabases:getDatabases", args ?? new GetDatabasesInvokeArgs(), options.WithDefaults());

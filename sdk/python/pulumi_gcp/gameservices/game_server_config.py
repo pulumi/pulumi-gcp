@@ -420,6 +420,73 @@ class GameServerConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/game-servers/docs)
 
         ## Example Usage
+        ### Game Service Config Basic
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        default_game_server_deployment = gcp.gameservices.GameServerDeployment("defaultGameServerDeployment",
+            deployment_id="tf-test-deployment",
+            description="a deployment description")
+        default_game_server_config = gcp.gameservices.GameServerConfig("defaultGameServerConfig",
+            config_id="tf-test-config",
+            deployment_id=default_game_server_deployment.deployment_id,
+            description="a config description",
+            fleet_configs=[gcp.gameservices.GameServerConfigFleetConfigArgs(
+                name="something-unique",
+                fleet_spec=json.dumps({
+                    "replicas": 1,
+                    "scheduling": "Packed",
+                    "template": {
+                        "metadata": {
+                            "name": "tf-test-game-server-template",
+                        },
+                        "spec": {
+                            "ports": [{
+                                "name": "default",
+                                "portPolicy": "Dynamic",
+                                "containerPort": 7654,
+                                "protocol": "UDP",
+                            }],
+                            "template": {
+                                "spec": {
+                                    "containers": [{
+                                        "name": "simple-udp-server",
+                                        "image": "gcr.io/agones-images/udp-server:0.14",
+                                    }],
+                                },
+                            },
+                        },
+                    },
+                }),
+            )],
+            scaling_configs=[gcp.gameservices.GameServerConfigScalingConfigArgs(
+                name="scaling-config-name",
+                fleet_autoscaler_spec=json.dumps({
+                    "policy": {
+                        "type": "Webhook",
+                        "webhook": {
+                            "service": {
+                                "name": "autoscaler-webhook-service",
+                                "namespace": "default",
+                                "path": "scale",
+                            },
+                        },
+                    },
+                }),
+                selectors=[gcp.gameservices.GameServerConfigScalingConfigSelectorArgs(
+                    labels={
+                        "one": "two",
+                    },
+                )],
+                schedules=[gcp.gameservices.GameServerConfigScalingConfigScheduleArgs(
+                    cron_job_duration="3.500s",
+                    cron_spec="0 0 * * 0",
+                )],
+            )])
+        ```
 
         ## Import
 
@@ -469,6 +536,73 @@ class GameServerConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/game-servers/docs)
 
         ## Example Usage
+        ### Game Service Config Basic
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        default_game_server_deployment = gcp.gameservices.GameServerDeployment("defaultGameServerDeployment",
+            deployment_id="tf-test-deployment",
+            description="a deployment description")
+        default_game_server_config = gcp.gameservices.GameServerConfig("defaultGameServerConfig",
+            config_id="tf-test-config",
+            deployment_id=default_game_server_deployment.deployment_id,
+            description="a config description",
+            fleet_configs=[gcp.gameservices.GameServerConfigFleetConfigArgs(
+                name="something-unique",
+                fleet_spec=json.dumps({
+                    "replicas": 1,
+                    "scheduling": "Packed",
+                    "template": {
+                        "metadata": {
+                            "name": "tf-test-game-server-template",
+                        },
+                        "spec": {
+                            "ports": [{
+                                "name": "default",
+                                "portPolicy": "Dynamic",
+                                "containerPort": 7654,
+                                "protocol": "UDP",
+                            }],
+                            "template": {
+                                "spec": {
+                                    "containers": [{
+                                        "name": "simple-udp-server",
+                                        "image": "gcr.io/agones-images/udp-server:0.14",
+                                    }],
+                                },
+                            },
+                        },
+                    },
+                }),
+            )],
+            scaling_configs=[gcp.gameservices.GameServerConfigScalingConfigArgs(
+                name="scaling-config-name",
+                fleet_autoscaler_spec=json.dumps({
+                    "policy": {
+                        "type": "Webhook",
+                        "webhook": {
+                            "service": {
+                                "name": "autoscaler-webhook-service",
+                                "namespace": "default",
+                                "path": "scale",
+                            },
+                        },
+                    },
+                }),
+                selectors=[gcp.gameservices.GameServerConfigScalingConfigSelectorArgs(
+                    labels={
+                        "one": "two",
+                    },
+                )],
+                schedules=[gcp.gameservices.GameServerConfigScalingConfigScheduleArgs(
+                    cron_job_duration="3.500s",
+                    cron_spec="0 0 * * 0",
+                )],
+            )])
+        ```
 
         ## Import
 

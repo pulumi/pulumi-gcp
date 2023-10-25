@@ -18,6 +18,19 @@ import * as utilities from "../utilities";
  * receive an error otherwise. The provider uses this scope by default.
  *
  * ## Example Usage
+ * ### Exporting An Email
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * export = async () => {
+ *     const me = await gcp.organizations.getClientOpenIdUserInfo({});
+ *     return {
+ *         "my-email": me.email,
+ *     };
+ * }
+ * ```
  */
 export function getClientOpenIdUserInfo(opts?: pulumi.InvokeOptions): Promise<GetClientOpenIdUserInfoResult> {
 
@@ -50,6 +63,19 @@ export interface GetClientOpenIdUserInfoResult {
  * receive an error otherwise. The provider uses this scope by default.
  *
  * ## Example Usage
+ * ### Exporting An Email
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * export = async () => {
+ *     const me = await gcp.organizations.getClientOpenIdUserInfo({});
+ *     return {
+ *         "my-email": me.email,
+ *     };
+ * }
+ * ```
  */
 export function getClientOpenIdUserInfoOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetClientOpenIdUserInfoResult> {
     return pulumi.output(getClientOpenIdUserInfo(opts))

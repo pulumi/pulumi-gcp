@@ -561,6 +561,36 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
+        ### Sql Source Representation Instance Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.SourceRepresentationInstance("instance",
+            database_version="MYSQL_8_0",
+            dump_file_path="gs://replica-bucket/source-database.sql.gz",
+            host="10.20.30.40",
+            password="password-for-the-user",
+            port=3306,
+            region="us-central1",
+            username="some-user")
+        ```
+        ### Sql Source Representation Instance Postgres
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.SourceRepresentationInstance("instance",
+            database_version="POSTGRES_9_6",
+            dump_file_path="gs://replica-bucket/source-database.sql.gz",
+            host="10.20.30.40",
+            password="password-for-the-user",
+            port=3306,
+            region="us-central1",
+            username="some-user")
+        ```
 
         ## Import
 
@@ -619,6 +649,36 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
+        ### Sql Source Representation Instance Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.SourceRepresentationInstance("instance",
+            database_version="MYSQL_8_0",
+            dump_file_path="gs://replica-bucket/source-database.sql.gz",
+            host="10.20.30.40",
+            password="password-for-the-user",
+            port=3306,
+            region="us-central1",
+            username="some-user")
+        ```
+        ### Sql Source Representation Instance Postgres
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.SourceRepresentationInstance("instance",
+            database_version="POSTGRES_9_6",
+            dump_file_path="gs://replica-bucket/source-database.sql.gz",
+            host="10.20.30.40",
+            password="password-for-the-user",
+            port=3306,
+            region="us-central1",
+            username="some-user")
+        ```
 
         ## Import
 

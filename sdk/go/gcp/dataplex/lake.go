@@ -16,6 +16,37 @@ import (
 // The Dataplex Lake resource
 //
 // ## Example Usage
+// ### Basic_lake
+// A basic example of a dataplex lake
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataplex.NewLake(ctx, "primary", &dataplex.LakeArgs{
+//				Description: pulumi.String("Lake for DCL"),
+//				DisplayName: pulumi.String("Lake for DCL"),
+//				Labels: pulumi.StringMap{
+//					"my-lake": pulumi.String("exists"),
+//				},
+//				Location: pulumi.String("us-west1"),
+//				Project:  pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

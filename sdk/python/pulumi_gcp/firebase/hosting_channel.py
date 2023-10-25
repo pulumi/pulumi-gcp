@@ -345,6 +345,41 @@ class HostingChannel(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Firebasehosting Channel Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_hosting_site = gcp.firebase.HostingSite("defaultHostingSite",
+            project="my-project-name",
+            site_id="site-with-channel",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_hosting_channel = gcp.firebase.HostingChannel("defaultHostingChannel",
+            site_id=default_hosting_site.site_id,
+            channel_id="channel-basic",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Firebasehosting Channel Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.firebase.HostingSite("default",
+            project="my-project-name",
+            site_id="site-with-channel",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        full = gcp.firebase.HostingChannel("full",
+            site_id=default.site_id,
+            channel_id="channel-full",
+            ttl="86400s",
+            retained_release_count=20,
+            labels={
+                "some-key": "some-value",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -383,6 +418,41 @@ class HostingChannel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Firebasehosting Channel Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_hosting_site = gcp.firebase.HostingSite("defaultHostingSite",
+            project="my-project-name",
+            site_id="site-with-channel",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_hosting_channel = gcp.firebase.HostingChannel("defaultHostingChannel",
+            site_id=default_hosting_site.site_id,
+            channel_id="channel-basic",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Firebasehosting Channel Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.firebase.HostingSite("default",
+            project="my-project-name",
+            site_id="site-with-channel",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        full = gcp.firebase.HostingChannel("full",
+            site_id=default.site_id,
+            channel_id="channel-full",
+            ttl="86400s",
+            retained_release_count=20,
+            labels={
+                "some-key": "some-value",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

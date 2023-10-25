@@ -13,6 +13,34 @@ import (
 )
 
 // Retrieves the current IAM policy data for job
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudrunv2.LookupJobIamPolicy(ctx, &cloudrunv2.LookupJobIamPolicyArgs{
+//				Project:  pulumi.StringRef(google_cloud_run_v2_job.Default.Project),
+//				Location: pulumi.StringRef(google_cloud_run_v2_job.Default.Location),
+//				Name:     google_cloud_run_v2_job.Default.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupJobIamPolicy(ctx *pulumi.Context, args *LookupJobIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupJobIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupJobIamPolicyResult

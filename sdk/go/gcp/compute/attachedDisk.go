@@ -27,6 +27,50 @@ import (
 //
 // **Note:** When using `compute.AttachedDisk` you **must** use `lifecycle.ignore_changes = ["attachedDisk"]` on the `compute.Instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultInstance, err := compute.NewInstance(ctx, "defaultInstance", &compute.InstanceArgs{
+//				MachineType: pulumi.String("e2-medium"),
+//				Zone:        pulumi.String("us-west1-a"),
+//				BootDisk: &compute.InstanceBootDiskArgs{
+//					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+//						Image: pulumi.String("debian-cloud/debian-11"),
+//					},
+//				},
+//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+//					&compute.InstanceNetworkInterfaceArgs{
+//						Network: pulumi.String("default"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewAttachedDisk(ctx, "defaultAttachedDisk", &compute.AttachedDiskArgs{
+//				Disk:     pulumi.Any(google_compute_disk.Default.Id),
+//				Instance: defaultInstance.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // # Attached Disk can be imported the following ways

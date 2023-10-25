@@ -11,6 +11,72 @@ namespace Pulumi.Gcp.Firebase
 {
     /// <summary>
     /// ## Example Usage
+    /// ### Firebasehosting Channel Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultHostingSite = new Gcp.Firebase.HostingSite("defaultHostingSite", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         SiteId = "site-with-channel",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultHostingChannel = new Gcp.Firebase.HostingChannel("defaultHostingChannel", new()
+    ///     {
+    ///         SiteId = defaultHostingSite.SiteId,
+    ///         ChannelId = "channel-basic",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Firebasehosting Channel Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Firebase.HostingSite("default", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         SiteId = "site-with-channel",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var full = new Gcp.Firebase.HostingChannel("full", new()
+    ///     {
+    ///         SiteId = @default.SiteId,
+    ///         ChannelId = "channel-full",
+    ///         Ttl = "86400s",
+    ///         RetainedReleaseCount = 20,
+    ///         Labels = 
+    ///         {
+    ///             { "some-key", "some-value" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

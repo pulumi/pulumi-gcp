@@ -22,6 +22,128 @@ import (
 //   - [Official Documentation](https://cloud.google.com/monitoring/dashboards)
 //
 // ## Example Usage
+// ### Monitoring Dashboard Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := monitoring.NewDashboard(ctx, "dashboard", &monitoring.DashboardArgs{
+//				DashboardJson: pulumi.String(`{
+//	  "displayName": "Demo Dashboard",
+//	  "gridLayout": {
+//	    "widgets": [
+//	      {
+//	        "blank": {}
+//	      }
+//	    ]
+//	  }
+//	}
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Monitoring Dashboard GridLayout
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := monitoring.NewDashboard(ctx, "dashboard", &monitoring.DashboardArgs{
+//				DashboardJson: pulumi.String(`{
+//	  "displayName": "Grid Layout Example",
+//	  "gridLayout": {
+//	    "columns": "2",
+//	    "widgets": [
+//	      {
+//	        "title": "Widget 1",
+//	        "xyChart": {
+//	          "dataSets": [{
+//	            "timeSeriesQuery": {
+//	              "timeSeriesFilter": {
+//	                "filter": "metric.type=\"agent.googleapis.com/nginx/connections/accepted_count\"",
+//	                "aggregation": {
+//	                  "perSeriesAligner": "ALIGN_RATE"
+//	                }
+//	              },
+//	              "unitOverride": "1"
+//	            },
+//	            "plotType": "LINE"
+//	          }],
+//	          "timeshiftDuration": "0s",
+//	          "yAxis": {
+//	            "label": "y1Axis",
+//	            "scale": "LINEAR"
+//	          }
+//	        }
+//	      },
+//	      {
+//	        "text": {
+//	          "content": "Widget 2",
+//	          "format": "MARKDOWN"
+//	        }
+//	      },
+//	      {
+//	        "title": "Widget 3",
+//	        "xyChart": {
+//	          "dataSets": [{
+//	            "timeSeriesQuery": {
+//	              "timeSeriesFilter": {
+//	                "filter": "metric.type=\"agent.googleapis.com/nginx/connections/accepted_count\"",
+//	                "aggregation": {
+//	                  "perSeriesAligner": "ALIGN_RATE"
+//	                }
+//	              },
+//	              "unitOverride": "1"
+//	            },
+//	            "plotType": "STACKED_BAR"
+//	          }],
+//	          "timeshiftDuration": "0s",
+//	          "yAxis": {
+//	            "label": "y1Axis",
+//	            "scale": "LINEAR"
+//	          }
+//	        }
+//	      }
+//	    ]
+//	  }
+//	}
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

@@ -17,6 +17,90 @@ namespace Pulumi.Gcp.Vertex
     /// * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints/)
     /// 
     /// ## Example Usage
+    /// ### Vertex Ai Index Endpoint
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var vertexNetwork = Gcp.Compute.GetNetwork.Invoke(new()
+    ///     {
+    ///         Name = "network-name",
+    ///     });
+    /// 
+    ///     var vertexRange = new Gcp.Compute.GlobalAddress("vertexRange", new()
+    ///     {
+    ///         Purpose = "VPC_PEERING",
+    ///         AddressType = "INTERNAL",
+    ///         PrefixLength = 24,
+    ///         Network = vertexNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///     });
+    /// 
+    ///     var vertexVpcConnection = new Gcp.ServiceNetworking.Connection("vertexVpcConnection", new()
+    ///     {
+    ///         Network = vertexNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             vertexRange.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var indexEndpoint = new Gcp.Vertex.AiIndexEndpoint("indexEndpoint", new()
+    ///     {
+    ///         DisplayName = "sample-endpoint",
+    ///         Description = "A sample vertex endpoint",
+    ///         Region = "us-central1",
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Network = Output.Tuple(project, vertexNetwork).Apply(values =&gt;
+    ///         {
+    ///             var project = values.Item1;
+    ///             var vertexNetwork = values.Item2;
+    ///             return $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/global/networks/{vertexNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Name)}";
+    ///         }),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             vertexVpcConnection,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Vertex Ai Index Endpoint With Public Endpoint
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var indexEndpoint = new Gcp.Vertex.AiIndexEndpoint("indexEndpoint", new()
+    ///     {
+    ///         Description = "A sample vertex endpoint with an public endpoint",
+    ///         DisplayName = "sample-endpoint",
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         PublicEndpointEnabled = true,
+    ///         Region = "us-central1",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

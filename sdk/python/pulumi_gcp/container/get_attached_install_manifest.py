@@ -100,6 +100,19 @@ def get_attached_install_manifest(cluster_id: Optional[str] = None,
     """
     Provides access to available platform versions in a location for a given project.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    manifest = gcp.container.get_attached_install_manifest(location="us-west1",
+        project="my-project",
+        cluster_id="test-cluster-1",
+        platform_version="1.25.0-gke.1")
+    pulumi.export("installManifest", manifest)
+    ```
+
 
     :param str cluster_id: The name that will be used when creating the attached cluster resource.
     :param str location: The location to list versions for.
@@ -132,6 +145,19 @@ def get_attached_install_manifest_output(cluster_id: Optional[pulumi.Input[str]]
                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAttachedInstallManifestResult]:
     """
     Provides access to available platform versions in a location for a given project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    manifest = gcp.container.get_attached_install_manifest(location="us-west1",
+        project="my-project",
+        cluster_id="test-cluster-1",
+        platform_version="1.25.0-gke.1")
+    pulumi.export("installManifest", manifest)
+    ```
 
 
     :param str cluster_id: The name that will be used when creating the attached cluster resource.

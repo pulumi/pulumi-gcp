@@ -354,6 +354,33 @@ class AutoscalingPolicy(pulumi.CustomResource):
         Describes an autoscaling policy for Dataproc cluster autoscaler.
 
         ## Example Usage
+        ### Dataproc Autoscaling Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        asp = gcp.dataproc.AutoscalingPolicy("asp",
+            policy_id="dataproc-policy",
+            location="us-central1",
+            worker_config=gcp.dataproc.AutoscalingPolicyWorkerConfigArgs(
+                max_instances=3,
+            ),
+            basic_algorithm=gcp.dataproc.AutoscalingPolicyBasicAlgorithmArgs(
+                yarn_config=gcp.dataproc.AutoscalingPolicyBasicAlgorithmYarnConfigArgs(
+                    graceful_decommission_timeout="30s",
+                    scale_up_factor=0.5,
+                    scale_down_factor=0.5,
+                ),
+            ))
+        basic = gcp.dataproc.Cluster("basic",
+            region="us-central1",
+            cluster_config=gcp.dataproc.ClusterClusterConfigArgs(
+                autoscaling_config=gcp.dataproc.ClusterClusterConfigAutoscalingConfigArgs(
+                    policy_uri=asp.name,
+                ),
+            ))
+        ```
 
         ## Import
 
@@ -400,6 +427,33 @@ class AutoscalingPolicy(pulumi.CustomResource):
         Describes an autoscaling policy for Dataproc cluster autoscaler.
 
         ## Example Usage
+        ### Dataproc Autoscaling Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        asp = gcp.dataproc.AutoscalingPolicy("asp",
+            policy_id="dataproc-policy",
+            location="us-central1",
+            worker_config=gcp.dataproc.AutoscalingPolicyWorkerConfigArgs(
+                max_instances=3,
+            ),
+            basic_algorithm=gcp.dataproc.AutoscalingPolicyBasicAlgorithmArgs(
+                yarn_config=gcp.dataproc.AutoscalingPolicyBasicAlgorithmYarnConfigArgs(
+                    graceful_decommission_timeout="30s",
+                    scale_up_factor=0.5,
+                    scale_down_factor=0.5,
+                ),
+            ))
+        basic = gcp.dataproc.Cluster("basic",
+            region="us-central1",
+            cluster_config=gcp.dataproc.ClusterClusterConfigArgs(
+                autoscaling_config=gcp.dataproc.ClusterClusterConfigAutoscalingConfigArgs(
+                    policy_uri=asp.name,
+                ),
+            ))
+        ```
 
         ## Import
 

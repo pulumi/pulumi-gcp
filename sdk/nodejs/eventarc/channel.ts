@@ -8,6 +8,36 @@ import * as utilities from "../utilities";
  * The Eventarc Channel resource
  *
  * ## Example Usage
+ * ### Basic
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const testProject = gcp.organizations.getProject({
+ *     projectId: "my-project-name",
+ * });
+ * const testKeyRing = gcp.kms.getKMSKeyRing({
+ *     name: "keyring",
+ *     location: "us-west1",
+ * });
+ * const key = testKeyRing.then(testKeyRing => gcp.kms.getKMSCryptoKey({
+ *     name: "key",
+ *     keyRing: testKeyRing.id,
+ * }));
+ * const key1Member = new gcp.kms.CryptoKeyIAMMember("key1Member", {
+ *     cryptoKeyId: data.google_kms_crypto_key.key1.id,
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     member: testProject.then(testProject => `serviceAccount:service-${testProject.number}@gcp-sa-eventarc.iam.gserviceaccount.com`),
+ * });
+ * const primary = new gcp.eventarc.Channel("primary", {
+ *     location: "us-west1",
+ *     project: testProject.then(testProject => testProject.projectId),
+ *     cryptoKeyName: data.google_kms_crypto_key.key1.id,
+ *     thirdPartyProvider: testProject.then(testProject => `projects/${testProject.projectId}/locations/us-west1/providers/datadog`),
+ * }, {
+ *     dependsOn: [key1Member],
+ * });
+ * ```
  *
  * ## Import
  *

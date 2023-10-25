@@ -9,6 +9,16 @@ import * as utilities from "../utilities";
  *
  * !> **WARNING:** Deleting this resource will not delete or close the billing subaccount.
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const subaccount = new gcp.billing.SubAccount("subaccount", {
+ *     displayName: "My Billing Account",
+ *     masterBillingAccount: "012345-567890-ABCDEF",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Billing Subaccounts can be imported using any of these accepted formats:

@@ -497,6 +497,83 @@ class AiIndex(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexes/)
 
         ## Example Usage
+        ### Vertex Ai Index
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket",
+            location="us-central1",
+            uniform_bucket_level_access=True)
+        # The sample data comes from the following link:
+        # https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
+        data = gcp.storage.BucketObject("data",
+            bucket=bucket.name,
+            content=\"\"\"{"id": "42", "embedding": [0.5, 1.0], "restricts": [{"namespace": "class", "allow": ["cat", "pet"]},{"namespace": "category", "allow": ["feline"]}]}
+        {"id": "43", "embedding": [0.6, 1.0], "restricts": [{"namespace": "class", "allow": ["dog", "pet"]},{"namespace": "category", "allow": ["canine"]}]}
+        \"\"\")
+        index = gcp.vertex.AiIndex("index",
+            labels={
+                "foo": "bar",
+            },
+            region="us-central1",
+            display_name="test-index",
+            description="index for test",
+            metadata=gcp.vertex.AiIndexMetadataArgs(
+                contents_delta_uri=bucket.name.apply(lambda name: f"gs://{name}/contents"),
+                config=gcp.vertex.AiIndexMetadataConfigArgs(
+                    dimensions=2,
+                    approximate_neighbors_count=150,
+                    shard_size="SHARD_SIZE_SMALL",
+                    distance_measure_type="DOT_PRODUCT_DISTANCE",
+                    algorithm_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigArgs(
+                        tree_ah_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs(
+                            leaf_node_embedding_count=500,
+                            leaf_nodes_to_search_percent=7,
+                        ),
+                    ),
+                ),
+            ),
+            index_update_method="BATCH_UPDATE")
+        ```
+        ### Vertex Ai Index Streaming
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket",
+            location="us-central1",
+            uniform_bucket_level_access=True)
+        # The sample data comes from the following link:
+        # https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
+        data = gcp.storage.BucketObject("data",
+            bucket=bucket.name,
+            content=\"\"\"{"id": "42", "embedding": [0.5, 1.0], "restricts": [{"namespace": "class", "allow": ["cat", "pet"]},{"namespace": "category", "allow": ["feline"]}]}
+        {"id": "43", "embedding": [0.6, 1.0], "restricts": [{"namespace": "class", "allow": ["dog", "pet"]},{"namespace": "category", "allow": ["canine"]}]}
+        \"\"\")
+        index = gcp.vertex.AiIndex("index",
+            labels={
+                "foo": "bar",
+            },
+            region="us-central1",
+            display_name="test-index",
+            description="index for test",
+            metadata=gcp.vertex.AiIndexMetadataArgs(
+                contents_delta_uri=bucket.name.apply(lambda name: f"gs://{name}/contents"),
+                config=gcp.vertex.AiIndexMetadataConfigArgs(
+                    dimensions=2,
+                    shard_size="SHARD_SIZE_LARGE",
+                    distance_measure_type="COSINE_DISTANCE",
+                    feature_norm_type="UNIT_L2_NORM",
+                    algorithm_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigArgs(
+                        brute_force_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs(),
+                    ),
+                ),
+            ),
+            index_update_method="STREAM_UPDATE")
+        ```
 
         ## Import
 
@@ -549,6 +626,83 @@ class AiIndex(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexes/)
 
         ## Example Usage
+        ### Vertex Ai Index
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket",
+            location="us-central1",
+            uniform_bucket_level_access=True)
+        # The sample data comes from the following link:
+        # https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
+        data = gcp.storage.BucketObject("data",
+            bucket=bucket.name,
+            content=\"\"\"{"id": "42", "embedding": [0.5, 1.0], "restricts": [{"namespace": "class", "allow": ["cat", "pet"]},{"namespace": "category", "allow": ["feline"]}]}
+        {"id": "43", "embedding": [0.6, 1.0], "restricts": [{"namespace": "class", "allow": ["dog", "pet"]},{"namespace": "category", "allow": ["canine"]}]}
+        \"\"\")
+        index = gcp.vertex.AiIndex("index",
+            labels={
+                "foo": "bar",
+            },
+            region="us-central1",
+            display_name="test-index",
+            description="index for test",
+            metadata=gcp.vertex.AiIndexMetadataArgs(
+                contents_delta_uri=bucket.name.apply(lambda name: f"gs://{name}/contents"),
+                config=gcp.vertex.AiIndexMetadataConfigArgs(
+                    dimensions=2,
+                    approximate_neighbors_count=150,
+                    shard_size="SHARD_SIZE_SMALL",
+                    distance_measure_type="DOT_PRODUCT_DISTANCE",
+                    algorithm_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigArgs(
+                        tree_ah_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs(
+                            leaf_node_embedding_count=500,
+                            leaf_nodes_to_search_percent=7,
+                        ),
+                    ),
+                ),
+            ),
+            index_update_method="BATCH_UPDATE")
+        ```
+        ### Vertex Ai Index Streaming
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket",
+            location="us-central1",
+            uniform_bucket_level_access=True)
+        # The sample data comes from the following link:
+        # https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
+        data = gcp.storage.BucketObject("data",
+            bucket=bucket.name,
+            content=\"\"\"{"id": "42", "embedding": [0.5, 1.0], "restricts": [{"namespace": "class", "allow": ["cat", "pet"]},{"namespace": "category", "allow": ["feline"]}]}
+        {"id": "43", "embedding": [0.6, 1.0], "restricts": [{"namespace": "class", "allow": ["dog", "pet"]},{"namespace": "category", "allow": ["canine"]}]}
+        \"\"\")
+        index = gcp.vertex.AiIndex("index",
+            labels={
+                "foo": "bar",
+            },
+            region="us-central1",
+            display_name="test-index",
+            description="index for test",
+            metadata=gcp.vertex.AiIndexMetadataArgs(
+                contents_delta_uri=bucket.name.apply(lambda name: f"gs://{name}/contents"),
+                config=gcp.vertex.AiIndexMetadataConfigArgs(
+                    dimensions=2,
+                    shard_size="SHARD_SIZE_LARGE",
+                    distance_measure_type="COSINE_DISTANCE",
+                    feature_norm_type="UNIT_L2_NORM",
+                    algorithm_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigArgs(
+                        brute_force_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs(),
+                    ),
+                ),
+            ),
+            index_update_method="STREAM_UPDATE")
+        ```
 
         ## Import
 

@@ -31,6 +31,123 @@ import (
 //
 // > **Note:** `bigquery.DatasetIamBinding` resources **can be** used in conjunction with `bigquery.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
 //
+// ## google\_bigquery\_dataset\_iam\_policy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			owner, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/bigquery.dataOwner",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			datasetDataset, err := bigquery.NewDataset(ctx, "datasetDataset", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("example_dataset"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewDatasetIamPolicy(ctx, "datasetDatasetIamPolicy", &bigquery.DatasetIamPolicyArgs{
+//				DatasetId:  datasetDataset.DatasetId,
+//				PolicyData: *pulumi.String(owner.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## google\_bigquery\_dataset\_iam\_binding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			dataset, err := bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("example_dataset"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewDatasetIamBinding(ctx, "reader", &bigquery.DatasetIamBindingArgs{
+//				DatasetId: dataset.DatasetId,
+//				Role:      pulumi.String("roles/bigquery.dataViewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## google\_bigquery\_dataset\_iam\_member
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			dataset, err := bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("example_dataset"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewDatasetIamMember(ctx, "editor", &bigquery.DatasetIamMemberArgs{
+//				DatasetId: dataset.DatasetId,
+//				Role:      pulumi.String("roles/bigquery.dataEditor"),
+//				Member:    pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.

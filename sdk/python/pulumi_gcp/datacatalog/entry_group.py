@@ -293,6 +293,25 @@ class EntryGroup(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
         ## Example Usage
+        ### Data Catalog Entry Group Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_entry_group = gcp.datacatalog.EntryGroup("basicEntryGroup", entry_group_id="my_group")
+        ```
+        ### Data Catalog Entry Group Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_entry_group = gcp.datacatalog.EntryGroup("basicEntryGroup",
+            description="example entry group",
+            display_name="entry group",
+            entry_group_id="my_group")
+        ```
 
         ## Import
 
@@ -331,6 +350,25 @@ class EntryGroup(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
         ## Example Usage
+        ### Data Catalog Entry Group Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_entry_group = gcp.datacatalog.EntryGroup("basicEntryGroup", entry_group_id="my_group")
+        ```
+        ### Data Catalog Entry Group Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_entry_group = gcp.datacatalog.EntryGroup("basicEntryGroup",
+            description="example entry group",
+            display_name="entry group",
+            entry_group_id="my_group")
+        ```
 
         ## Import
 

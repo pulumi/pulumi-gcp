@@ -6,6 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for certificatetemplate
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.certificateauthority.getCertificateTemplateIamPolicy({
+ *     certificateTemplate: google_privateca_certificate_template["default"].id,
+ * });
+ * ```
  */
 export function getCertificateTemplateIamPolicy(args: GetCertificateTemplateIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateTemplateIamPolicyResult> {
 
@@ -56,6 +67,17 @@ export interface GetCertificateTemplateIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for certificatetemplate
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.certificateauthority.getCertificateTemplateIamPolicy({
+ *     certificateTemplate: google_privateca_certificate_template["default"].id,
+ * });
+ * ```
  */
 export function getCertificateTemplateIamPolicyOutput(args: GetCertificateTemplateIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificateTemplateIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getCertificateTemplateIamPolicy(a, opts))

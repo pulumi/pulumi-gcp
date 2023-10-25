@@ -16,6 +16,29 @@ namespace Pulumi.Gcp.Storage
         /// See [the official documentation](https://cloud.google.com/storage/docs/key-terms#buckets)
         /// and
         /// [API](https://cloud.google.com/storage/docs/json_api/v1/buckets).
+        /// 
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_bucket = Gcp.Storage.GetBucket.Invoke(new()
+        ///     {
+        ///         Name = "my-bucket",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBucketResult> InvokeAsync(GetBucketArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBucketResult>("gcp:storage/getBucket:getBucket", args ?? new GetBucketArgs(), options.WithDefaults());
@@ -25,6 +48,29 @@ namespace Pulumi.Gcp.Storage
         /// See [the official documentation](https://cloud.google.com/storage/docs/key-terms#buckets)
         /// and
         /// [API](https://cloud.google.com/storage/docs/json_api/v1/buckets).
+        /// 
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_bucket = Gcp.Storage.GetBucket.Invoke(new()
+        ///     {
+        ///         Name = "my-bucket",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetBucketResult> Invoke(GetBucketInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBucketResult>("gcp:storage/getBucket:getBucket", args ?? new GetBucketInvokeArgs(), options.WithDefaults());

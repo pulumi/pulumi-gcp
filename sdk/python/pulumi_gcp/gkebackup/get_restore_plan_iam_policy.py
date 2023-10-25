@@ -103,6 +103,17 @@ def get_restore_plan_iam_policy(location: Optional[str] = None,
     """
     Retrieves the current IAM policy data for restoreplan
 
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.gkebackup.get_restore_plan_iam_policy(project=google_gke_backup_restore_plan["all_ns"]["project"],
+        location=google_gke_backup_restore_plan["all_ns"]["location"],
+        name=google_gke_backup_restore_plan["all_ns"]["name"])
+    ```
+
 
     :param str location: The region of the Restore Plan.
            Used to find the parent resource to bind the IAM policy to
@@ -133,6 +144,17 @@ def get_restore_plan_iam_policy_output(location: Optional[pulumi.Input[Optional[
                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRestorePlanIamPolicyResult]:
     """
     Retrieves the current IAM policy data for restoreplan
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.gkebackup.get_restore_plan_iam_policy(project=google_gke_backup_restore_plan["all_ns"]["project"],
+        location=google_gke_backup_restore_plan["all_ns"]["location"],
+        name=google_gke_backup_restore_plan["all_ns"]["name"])
+    ```
 
 
     :param str location: The region of the Restore Plan.

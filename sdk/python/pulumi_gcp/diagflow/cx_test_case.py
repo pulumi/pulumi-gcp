@@ -388,6 +388,136 @@ class CxTestCase(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 
         ## Example Usage
+        ### Dialogflowcx Test Case Full
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        agent = gcp.diagflow.CxAgent("agent",
+            display_name="dialogflowcx-agent",
+            location="global",
+            default_language_code="en",
+            supported_language_codes=[
+                "fr",
+                "de",
+                "es",
+            ],
+            time_zone="America/New_York",
+            description="Example description.",
+            avatar_uri="https://storage.cloud.google.com/dialogflow-test-host-image/cloud-logo.png",
+            enable_stackdriver_logging=True,
+            enable_spell_correction=True,
+            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
+                enable_speech_adaptation=True,
+            ))
+        intent = gcp.diagflow.CxIntent("intent",
+            parent=agent.id,
+            display_name="MyIntent",
+            priority=1,
+            training_phrases=[gcp.diagflow.CxIntentTrainingPhraseArgs(
+                parts=[gcp.diagflow.CxIntentTrainingPhrasePartArgs(
+                    text="training phrase",
+                )],
+                repeat_count=1,
+            )])
+        page = gcp.diagflow.CxPage("page",
+            parent=agent.start_flow,
+            display_name="MyPage",
+            transition_routes=[gcp.diagflow.CxPageTransitionRouteArgs(
+                intent=intent.id,
+                trigger_fulfillment=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentArgs(
+                    messages=[gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArgs(
+                        text=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageTextArgs(
+                            texts=["Training phrase response"],
+                        ),
+                    )],
+                ),
+            )],
+            event_handlers=[gcp.diagflow.CxPageEventHandlerArgs(
+                event="some-event",
+                trigger_fulfillment=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentArgs(
+                    messages=[gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArgs(
+                        text=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageTextArgs(
+                            texts=["Handling some event"],
+                        ),
+                    )],
+                ),
+            )])
+        basic_test_case = gcp.diagflow.CxTestCase("basicTestCase",
+            parent=agent.id,
+            display_name="MyTestCase",
+            tags=["#tag1"],
+            notes="demonstrates a simple training phrase response",
+            test_config=gcp.diagflow.CxTestCaseTestConfigArgs(
+                tracking_parameters=["some_param"],
+                page=page.id,
+            ),
+            test_case_conversation_turns=[
+                gcp.diagflow.CxTestCaseTestCaseConversationTurnArgs(
+                    user_input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputArgs(
+                        input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputArgs(
+                            language_code="en",
+                            text=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputTextArgs(
+                                text="training phrase",
+                            ),
+                        ),
+                        injected_parameters=json.dumps({
+                            "some_param": "1",
+                        }),
+                        is_webhook_enabled=True,
+                        enable_sentiment_analysis=True,
+                    ),
+                    virtual_agent_output=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs(
+                        session_parameters=json.dumps({
+                            "some_param": "1",
+                        }),
+                        triggered_intent=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs(
+                            name=intent.id,
+                        ),
+                        current_page=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs(
+                            name=page.id,
+                        ),
+                        text_responses=[gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs(
+                            texts=["Training phrase response"],
+                        )],
+                    ),
+                ),
+                gcp.diagflow.CxTestCaseTestCaseConversationTurnArgs(
+                    user_input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputArgs(
+                        input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputArgs(
+                            event=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputEventArgs(
+                                event="some-event",
+                            ),
+                        ),
+                    ),
+                    virtual_agent_output=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs(
+                        current_page=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs(
+                            name=page.id,
+                        ),
+                        text_responses=[gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs(
+                            texts=["Handling some event"],
+                        )],
+                    ),
+                ),
+                gcp.diagflow.CxTestCaseTestCaseConversationTurnArgs(
+                    user_input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputArgs(
+                        input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputArgs(
+                            dtmf=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs(
+                                digits="12",
+                                finish_digit="3",
+                            ),
+                        ),
+                    ),
+                    virtual_agent_output=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs(
+                        text_responses=[gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs(
+                            texts=["I didn't get that. Can you say it again?"],
+                        )],
+                    ),
+                ),
+            ])
+        ```
 
         ## Import
 
@@ -429,6 +559,136 @@ class CxTestCase(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 
         ## Example Usage
+        ### Dialogflowcx Test Case Full
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        agent = gcp.diagflow.CxAgent("agent",
+            display_name="dialogflowcx-agent",
+            location="global",
+            default_language_code="en",
+            supported_language_codes=[
+                "fr",
+                "de",
+                "es",
+            ],
+            time_zone="America/New_York",
+            description="Example description.",
+            avatar_uri="https://storage.cloud.google.com/dialogflow-test-host-image/cloud-logo.png",
+            enable_stackdriver_logging=True,
+            enable_spell_correction=True,
+            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
+                enable_speech_adaptation=True,
+            ))
+        intent = gcp.diagflow.CxIntent("intent",
+            parent=agent.id,
+            display_name="MyIntent",
+            priority=1,
+            training_phrases=[gcp.diagflow.CxIntentTrainingPhraseArgs(
+                parts=[gcp.diagflow.CxIntentTrainingPhrasePartArgs(
+                    text="training phrase",
+                )],
+                repeat_count=1,
+            )])
+        page = gcp.diagflow.CxPage("page",
+            parent=agent.start_flow,
+            display_name="MyPage",
+            transition_routes=[gcp.diagflow.CxPageTransitionRouteArgs(
+                intent=intent.id,
+                trigger_fulfillment=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentArgs(
+                    messages=[gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArgs(
+                        text=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageTextArgs(
+                            texts=["Training phrase response"],
+                        ),
+                    )],
+                ),
+            )],
+            event_handlers=[gcp.diagflow.CxPageEventHandlerArgs(
+                event="some-event",
+                trigger_fulfillment=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentArgs(
+                    messages=[gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArgs(
+                        text=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageTextArgs(
+                            texts=["Handling some event"],
+                        ),
+                    )],
+                ),
+            )])
+        basic_test_case = gcp.diagflow.CxTestCase("basicTestCase",
+            parent=agent.id,
+            display_name="MyTestCase",
+            tags=["#tag1"],
+            notes="demonstrates a simple training phrase response",
+            test_config=gcp.diagflow.CxTestCaseTestConfigArgs(
+                tracking_parameters=["some_param"],
+                page=page.id,
+            ),
+            test_case_conversation_turns=[
+                gcp.diagflow.CxTestCaseTestCaseConversationTurnArgs(
+                    user_input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputArgs(
+                        input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputArgs(
+                            language_code="en",
+                            text=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputTextArgs(
+                                text="training phrase",
+                            ),
+                        ),
+                        injected_parameters=json.dumps({
+                            "some_param": "1",
+                        }),
+                        is_webhook_enabled=True,
+                        enable_sentiment_analysis=True,
+                    ),
+                    virtual_agent_output=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs(
+                        session_parameters=json.dumps({
+                            "some_param": "1",
+                        }),
+                        triggered_intent=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs(
+                            name=intent.id,
+                        ),
+                        current_page=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs(
+                            name=page.id,
+                        ),
+                        text_responses=[gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs(
+                            texts=["Training phrase response"],
+                        )],
+                    ),
+                ),
+                gcp.diagflow.CxTestCaseTestCaseConversationTurnArgs(
+                    user_input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputArgs(
+                        input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputArgs(
+                            event=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputEventArgs(
+                                event="some-event",
+                            ),
+                        ),
+                    ),
+                    virtual_agent_output=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs(
+                        current_page=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs(
+                            name=page.id,
+                        ),
+                        text_responses=[gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs(
+                            texts=["Handling some event"],
+                        )],
+                    ),
+                ),
+                gcp.diagflow.CxTestCaseTestCaseConversationTurnArgs(
+                    user_input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputArgs(
+                        input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputArgs(
+                            dtmf=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs(
+                                digits="12",
+                                finish_digit="3",
+                            ),
+                        ),
+                    ),
+                    virtual_agent_output=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs(
+                        text_responses=[gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs(
+                            texts=["I didn't get that. Can you say it again?"],
+                        )],
+                    ),
+                ),
+            ])
+        ```
 
         ## Import
 

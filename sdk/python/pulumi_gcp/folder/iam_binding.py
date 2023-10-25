@@ -258,6 +258,21 @@ class IAMBinding(pulumi.CustomResource):
             Use `pulumi import` and inspect the output to ensure
             your existing members are preserved.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        department1 = gcp.organizations.Folder("department1",
+            display_name="Department 1",
+            parent="organizations/1234567")
+        admin = gcp.folder.IAMBinding("admin",
+            folder=department1.name,
+            role="roles/editor",
+            members=["user:alice@gmail.com"])
+        ```
+
         ## Import
 
         IAM binding imports use space-delimited identifiers; first the resource in question and then the role.
@@ -303,6 +318,21 @@ class IAMBinding(pulumi.CustomResource):
         > **Note:** On create, this resource will overwrite members of any existing roles.
             Use `pulumi import` and inspect the output to ensure
             your existing members are preserved.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        department1 = gcp.organizations.Folder("department1",
+            display_name="Department 1",
+            parent="organizations/1234567")
+        admin = gcp.folder.IAMBinding("admin",
+            folder=department1.name,
+            role="roles/editor",
+            members=["user:alice@gmail.com"])
+        ```
 
         ## Import
 

@@ -18,6 +18,30 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
+        /// ### Searching For Folders At The Root Of An Org
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_org_folders = Gcp.Organizations.GetFolders.Invoke(new()
+        ///     {
+        ///         ParentId = $"organizations/{@var.Organization_id}",
+        ///     });
+        /// 
+        ///     var first_folder = Gcp.Organizations.GetFolder.Invoke(new()
+        ///     {
+        ///         Folder = my_org_folders.Apply(getFoldersResult =&gt; getFoldersResult.Folders[0]?.Name),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetFoldersResult> InvokeAsync(GetFoldersArgs args, InvokeOptions? options = null)
@@ -30,6 +54,30 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
+        /// ### Searching For Folders At The Root Of An Org
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_org_folders = Gcp.Organizations.GetFolders.Invoke(new()
+        ///     {
+        ///         ParentId = $"organizations/{@var.Organization_id}",
+        ///     });
+        /// 
+        ///     var first_folder = Gcp.Organizations.GetFolder.Invoke(new()
+        ///     {
+        ///         Folder = my_org_folders.Apply(getFoldersResult =&gt; getFoldersResult.Folders[0]?.Name),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetFoldersResult> Invoke(GetFoldersInvokeArgs args, InvokeOptions? options = null)

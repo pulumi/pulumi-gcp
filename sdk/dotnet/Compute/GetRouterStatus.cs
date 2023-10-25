@@ -18,6 +18,28 @@ namespace Pulumi.Gcp.Compute
         /// For more information see [the official documentation](https://cloud.google.com/network-connectivity/docs/router/how-to/viewing-router-details)
         /// and
         /// [API](https://cloud.google.com/compute/docs/reference/rest/v1/routers/getRouterStatus).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_router = Gcp.Compute.GetRouterStatus.Invoke(new()
+        ///     {
+        ///         Name = "myrouter",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRouterStatusResult> InvokeAsync(GetRouterStatusArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRouterStatusResult>("gcp:compute/getRouterStatus:getRouterStatus", args ?? new GetRouterStatusArgs(), options.WithDefaults());
@@ -29,6 +51,28 @@ namespace Pulumi.Gcp.Compute
         /// For more information see [the official documentation](https://cloud.google.com/network-connectivity/docs/router/how-to/viewing-router-details)
         /// and
         /// [API](https://cloud.google.com/compute/docs/reference/rest/v1/routers/getRouterStatus).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_router = Gcp.Compute.GetRouterStatus.Invoke(new()
+        ///     {
+        ///         Name = "myrouter",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetRouterStatusResult> Invoke(GetRouterStatusInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRouterStatusResult>("gcp:compute/getRouterStatus:getRouterStatus", args ?? new GetRouterStatusInvokeArgs(), options.WithDefaults());

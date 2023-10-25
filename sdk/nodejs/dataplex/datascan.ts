@@ -16,6 +16,208 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/dataplex/docs)
  *
  * ## Example Usage
+ * ### Dataplex Datascan Basic Profile
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basicProfile = new gcp.dataplex.Datascan("basicProfile", {
+ *     data: {
+ *         resource: "//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
+ *     },
+ *     dataProfileSpec: {},
+ *     dataScanId: "dataprofile-basic",
+ *     executionSpec: {
+ *         trigger: {
+ *             onDemand: {},
+ *         },
+ *     },
+ *     location: "us-central1",
+ *     project: "my-project-name",
+ * });
+ * ```
+ * ### Dataplex Datascan Full Profile
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const source = new gcp.bigquery.Dataset("source", {
+ *     datasetId: "dataplex_dataset",
+ *     friendlyName: "test",
+ *     description: "This is a test description",
+ *     location: "US",
+ *     deleteContentsOnDestroy: true,
+ * });
+ * const fullProfile = new gcp.dataplex.Datascan("fullProfile", {
+ *     location: "us-central1",
+ *     displayName: "Full Datascan Profile",
+ *     dataScanId: "dataprofile-full",
+ *     description: "Example resource - Full Datascan Profile",
+ *     labels: {
+ *         author: "billing",
+ *     },
+ *     data: {
+ *         resource: "//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
+ *     },
+ *     executionSpec: {
+ *         trigger: {
+ *             schedule: {
+ *                 cron: "TZ=America/New_York 1 1 * * *",
+ *             },
+ *         },
+ *     },
+ *     dataProfileSpec: {
+ *         samplingPercent: 80,
+ *         rowFilter: "word_count > 10",
+ *         includeFields: {
+ *             fieldNames: ["word_count"],
+ *         },
+ *         excludeFields: {
+ *             fieldNames: ["property_type"],
+ *         },
+ *         postScanActions: {
+ *             bigqueryExport: {
+ *                 resultsTable: "//bigquery.googleapis.com/projects/my-project-name/datasets/dataplex_dataset/tables/profile_export",
+ *             },
+ *         },
+ *     },
+ *     project: "my-project-name",
+ * }, {
+ *     dependsOn: [source],
+ * });
+ * ```
+ * ### Dataplex Datascan Basic Quality
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basicQuality = new gcp.dataplex.Datascan("basicQuality", {
+ *     data: {
+ *         resource: "//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
+ *     },
+ *     dataQualitySpec: {
+ *         rules: [{
+ *             description: "rule 1 for validity dimension",
+ *             dimension: "VALIDITY",
+ *             name: "rule1",
+ *             tableConditionExpectation: {
+ *                 sqlExpression: "COUNT(*) > 0",
+ *             },
+ *         }],
+ *     },
+ *     dataScanId: "dataquality-basic",
+ *     executionSpec: {
+ *         trigger: {
+ *             onDemand: {},
+ *         },
+ *     },
+ *     location: "us-central1",
+ *     project: "my-project-name",
+ * });
+ * ```
+ * ### Dataplex Datascan Full Quality
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const fullQuality = new gcp.dataplex.Datascan("fullQuality", {
+ *     data: {
+ *         resource: "//bigquery.googleapis.com/projects/bigquery-public-data/datasets/austin_bikeshare/tables/bikeshare_stations",
+ *     },
+ *     dataQualitySpec: {
+ *         rowFilter: "station_id > 1000",
+ *         rules: [
+ *             {
+ *                 column: "address",
+ *                 dimension: "VALIDITY",
+ *                 nonNullExpectation: {},
+ *                 threshold: 0.99,
+ *             },
+ *             {
+ *                 column: "council_district",
+ *                 dimension: "VALIDITY",
+ *                 ignoreNull: true,
+ *                 rangeExpectation: {
+ *                     maxValue: "10",
+ *                     minValue: "1",
+ *                     strictMaxEnabled: false,
+ *                     strictMinEnabled: true,
+ *                 },
+ *                 threshold: 0.9,
+ *             },
+ *             {
+ *                 column: "power_type",
+ *                 dimension: "VALIDITY",
+ *                 ignoreNull: false,
+ *                 regexExpectation: {
+ *                     regex: ".*solar.*",
+ *                 },
+ *             },
+ *             {
+ *                 column: "property_type",
+ *                 dimension: "VALIDITY",
+ *                 ignoreNull: false,
+ *                 setExpectation: {
+ *                     values: [
+ *                         "sidewalk",
+ *                         "parkland",
+ *                     ],
+ *                 },
+ *             },
+ *             {
+ *                 column: "address",
+ *                 dimension: "UNIQUENESS",
+ *                 uniquenessExpectation: {},
+ *             },
+ *             {
+ *                 column: "number_of_docks",
+ *                 dimension: "VALIDITY",
+ *                 statisticRangeExpectation: {
+ *                     maxValue: "15",
+ *                     minValue: "5",
+ *                     statistic: "MEAN",
+ *                     strictMaxEnabled: true,
+ *                     strictMinEnabled: true,
+ *                 },
+ *             },
+ *             {
+ *                 column: "footprint_length",
+ *                 dimension: "VALIDITY",
+ *                 rowConditionExpectation: {
+ *                     sqlExpression: "footprint_length > 0 AND footprint_length <= 10",
+ *                 },
+ *             },
+ *             {
+ *                 dimension: "VALIDITY",
+ *                 tableConditionExpectation: {
+ *                     sqlExpression: "COUNT(*) > 0",
+ *                 },
+ *             },
+ *         ],
+ *         samplingPercent: 5,
+ *     },
+ *     dataScanId: "dataquality-full",
+ *     description: "Example resource - Full Datascan Quality",
+ *     displayName: "Full Datascan Quality",
+ *     executionSpec: {
+ *         field: "modified_date",
+ *         trigger: {
+ *             schedule: {
+ *                 cron: "TZ=America/New_York 1 1 * * *",
+ *             },
+ *         },
+ *     },
+ *     labels: {
+ *         author: "billing",
+ *     },
+ *     location: "us-central1",
+ *     project: "my-project-name",
+ * });
+ * ```
  *
  * ## Import
  *

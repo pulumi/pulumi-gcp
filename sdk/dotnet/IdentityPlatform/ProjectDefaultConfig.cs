@@ -19,6 +19,43 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// `billing_project` you defined.
     /// 
     /// ## Example Usage
+    /// ### Identity Platform Project Default Config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.IdentityPlatform.ProjectDefaultConfig("default", new()
+    ///     {
+    ///         SignIn = new Gcp.IdentityPlatform.Inputs.ProjectDefaultConfigSignInArgs
+    ///         {
+    ///             AllowDuplicateEmails = true,
+    ///             Anonymous = new Gcp.IdentityPlatform.Inputs.ProjectDefaultConfigSignInAnonymousArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///             Email = new Gcp.IdentityPlatform.Inputs.ProjectDefaultConfigSignInEmailArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 PasswordRequired = false,
+    ///             },
+    ///             PhoneNumber = new Gcp.IdentityPlatform.Inputs.ProjectDefaultConfigSignInPhoneNumberArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 TestPhoneNumbers = 
+    ///                 {
+    ///                     { "+11231231234", "000000" },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

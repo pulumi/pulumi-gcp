@@ -627,6 +627,19 @@ class Database(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/firestore/docs/)
 
         ## Example Usage
+        ### Firestore Database With Delete Protection
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project=google_project["project"]["project_id"],
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            opts=pulumi.ResourceOptions(depends_on=[google_project_service["firestore"]]))
+        ```
 
         ## Import
 
@@ -697,6 +710,19 @@ class Database(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/firestore/docs/)
 
         ## Example Usage
+        ### Firestore Database With Delete Protection
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project=google_project["project"]["project_id"],
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            opts=pulumi.ResourceOptions(depends_on=[google_project_service["firestore"]]))
+        ```
 
         ## Import
 

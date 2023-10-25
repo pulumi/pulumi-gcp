@@ -21,6 +21,94 @@ namespace Pulumi.Gcp.AccessContextManager
     ///     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
     /// 
     /// ## Example Usage
+    /// ### Access Context Manager Access Levels Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new()
+    ///     {
+    ///         Parent = "organizations/123456789",
+    ///         Title = "my policy",
+    ///     });
+    /// 
+    ///     var access_levels = new Gcp.AccessContextManager.AccessLevels("access-levels", new()
+    ///     {
+    ///         AccessLevelDetails = new[]
+    ///         {
+    ///             new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelArgs
+    ///             {
+    ///                 Basic = new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicArgs
+    ///                 {
+    ///                     Conditions = new[]
+    ///                     {
+    ///                         new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicConditionArgs
+    ///                         {
+    ///                             DevicePolicy = new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs
+    ///                             {
+    ///                                 OsConstraints = new[]
+    ///                                 {
+    ///                                     new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs
+    ///                                     {
+    ///                                         OsType = "DESKTOP_CHROME_OS",
+    ///                                     },
+    ///                                 },
+    ///                                 RequireScreenLock = true,
+    ///                             },
+    ///                             Regions = new[]
+    ///                             {
+    ///                                 "CH",
+    ///                                 "IT",
+    ///                                 "US",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Name = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
+    ///                 Title = "chromeos_no_lock",
+    ///             },
+    ///             new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelArgs
+    ///             {
+    ///                 Basic = new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicArgs
+    ///                 {
+    ///                     Conditions = new[]
+    ///                     {
+    ///                         new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicConditionArgs
+    ///                         {
+    ///                             DevicePolicy = new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs
+    ///                             {
+    ///                                 OsConstraints = new[]
+    ///                                 {
+    ///                                     new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs
+    ///                                     {
+    ///                                         OsType = "DESKTOP_MAC",
+    ///                                     },
+    ///                                 },
+    ///                                 RequireScreenLock = true,
+    ///                             },
+    ///                             Regions = new[]
+    ///                             {
+    ///                                 "CH",
+    ///                                 "IT",
+    ///                                 "US",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Name = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}/accessLevels/mac_no_lock"),
+    ///                 Title = "mac_no_lock",
+    ///             },
+    ///         },
+    ///         Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

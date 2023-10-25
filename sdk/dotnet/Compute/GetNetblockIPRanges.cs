@@ -16,6 +16,66 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
+        /// ### Cloud Ranges
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var netblock = Gcp.Compute.GetNetblockIPRanges.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cidrBlocks"] = netblock.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocks),
+        ///         ["cidrBlocksIpv4"] = netblock.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocksIpv4s),
+        ///         ["cidrBlocksIpv6"] = netblock.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocksIpv6s),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% example %}}
+        /// ### Allow Health Checks
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var legacy_hcs = Gcp.Compute.GetNetblockIPRanges.Invoke(new()
+        ///     {
+        ///         RangeType = "legacy-health-checkers",
+        ///     });
+        /// 
+        ///     var @default = new Gcp.Compute.Network("default");
+        /// 
+        ///     var allow_hcs = new Gcp.Compute.Firewall("allow-hcs", new()
+        ///     {
+        ///         Network = @default.Name,
+        ///         Allows = new[]
+        ///         {
+        ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+        ///             {
+        ///                 Protocol = "tcp",
+        ///                 Ports = new[]
+        ///                 {
+        ///                     "80",
+        ///                 },
+        ///             },
+        ///         },
+        ///         SourceRanges = legacy_hcs.Apply(legacy_hcs =&gt; legacy_hcs.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocksIpv4s)),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetblockIPRangesResult> InvokeAsync(GetNetblockIPRangesArgs? args = null, InvokeOptions? options = null)
@@ -26,6 +86,66 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
+        /// ### Cloud Ranges
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var netblock = Gcp.Compute.GetNetblockIPRanges.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cidrBlocks"] = netblock.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocks),
+        ///         ["cidrBlocksIpv4"] = netblock.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocksIpv4s),
+        ///         ["cidrBlocksIpv6"] = netblock.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocksIpv6s),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% example %}}
+        /// ### Allow Health Checks
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var legacy_hcs = Gcp.Compute.GetNetblockIPRanges.Invoke(new()
+        ///     {
+        ///         RangeType = "legacy-health-checkers",
+        ///     });
+        /// 
+        ///     var @default = new Gcp.Compute.Network("default");
+        /// 
+        ///     var allow_hcs = new Gcp.Compute.Firewall("allow-hcs", new()
+        ///     {
+        ///         Network = @default.Name,
+        ///         Allows = new[]
+        ///         {
+        ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+        ///             {
+        ///                 Protocol = "tcp",
+        ///                 Ports = new[]
+        ///                 {
+        ///                     "80",
+        ///                 },
+        ///             },
+        ///         },
+        ///         SourceRanges = legacy_hcs.Apply(legacy_hcs =&gt; legacy_hcs.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocksIpv4s)),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNetblockIPRangesResult> Invoke(GetNetblockIPRangesInvokeArgs? args = null, InvokeOptions? options = null)

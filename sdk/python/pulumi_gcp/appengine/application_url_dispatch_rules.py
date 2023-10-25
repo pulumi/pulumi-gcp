@@ -148,6 +148,45 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps#UrlDispatchRule)
 
         ## Example Usage
+        ### App Engine Application Url Dispatch Rules Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket", location="US")
+        object = gcp.storage.BucketObject("object",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
+        admin_v3 = gcp.appengine.StandardAppVersion("adminV3",
+            version_id="v3",
+            service="admin",
+            runtime="nodejs10",
+            entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
+                shell="node ./app.js",
+            ),
+            deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
+                zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
+                    source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
+                ),
+            ),
+            env_variables={
+                "port": "8080",
+            },
+            delete_service_on_destroy=True)
+        web_service = gcp.appengine.ApplicationUrlDispatchRules("webService", dispatch_rules=[
+            gcp.appengine.ApplicationUrlDispatchRulesDispatchRuleArgs(
+                domain="*",
+                path="/*",
+                service="default",
+            ),
+            gcp.appengine.ApplicationUrlDispatchRulesDispatchRuleArgs(
+                domain="*",
+                path="/admin/*",
+                service=admin_v3.service,
+            ),
+        ])
+        ```
 
         ## Import
 
@@ -178,6 +217,45 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps#UrlDispatchRule)
 
         ## Example Usage
+        ### App Engine Application Url Dispatch Rules Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket", location="US")
+        object = gcp.storage.BucketObject("object",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
+        admin_v3 = gcp.appengine.StandardAppVersion("adminV3",
+            version_id="v3",
+            service="admin",
+            runtime="nodejs10",
+            entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
+                shell="node ./app.js",
+            ),
+            deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
+                zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
+                    source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
+                ),
+            ),
+            env_variables={
+                "port": "8080",
+            },
+            delete_service_on_destroy=True)
+        web_service = gcp.appengine.ApplicationUrlDispatchRules("webService", dispatch_rules=[
+            gcp.appengine.ApplicationUrlDispatchRulesDispatchRuleArgs(
+                domain="*",
+                path="/*",
+                service="default",
+            ),
+            gcp.appengine.ApplicationUrlDispatchRulesDispatchRuleArgs(
+                domain="*",
+                path="/admin/*",
+                service=admin_v3.service,
+            ),
+        ])
+        ```
 
         ## Import
 

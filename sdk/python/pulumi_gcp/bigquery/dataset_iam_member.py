@@ -314,6 +314,48 @@ class DatasetIamMember(pulumi.CustomResource):
 
         > **Note:** `bigquery.DatasetIamBinding` resources **can be** used in conjunction with `bigquery.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\\_bigquery\\_dataset\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        owner = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/bigquery.dataOwner",
+            members=["user:jane@example.com"],
+        )])
+        dataset_dataset = gcp.bigquery.Dataset("datasetDataset", dataset_id="example_dataset")
+        dataset_dataset_iam_policy = gcp.bigquery.DatasetIamPolicy("datasetDatasetIamPolicy",
+            dataset_id=dataset_dataset.dataset_id,
+            policy_data=owner.policy_data)
+        ```
+
+        ## google\\_bigquery\\_dataset\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
+        reader = gcp.bigquery.DatasetIamBinding("reader",
+            dataset_id=dataset.dataset_id,
+            role="roles/bigquery.dataViewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_bigquery\\_dataset\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
+        editor = gcp.bigquery.DatasetIamMember("editor",
+            dataset_id=dataset.dataset_id,
+            role="roles/bigquery.dataEditor",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
@@ -386,6 +428,48 @@ class DatasetIamMember(pulumi.CustomResource):
         > **Note:** `bigquery.DatasetIamPolicy` **cannot** be used in conjunction with `bigquery.DatasetIamBinding` and `bigquery.DatasetIamMember` or they will fight over what your policy should be.
 
         > **Note:** `bigquery.DatasetIamBinding` resources **can be** used in conjunction with `bigquery.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_bigquery\\_dataset\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        owner = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/bigquery.dataOwner",
+            members=["user:jane@example.com"],
+        )])
+        dataset_dataset = gcp.bigquery.Dataset("datasetDataset", dataset_id="example_dataset")
+        dataset_dataset_iam_policy = gcp.bigquery.DatasetIamPolicy("datasetDatasetIamPolicy",
+            dataset_id=dataset_dataset.dataset_id,
+            policy_data=owner.policy_data)
+        ```
+
+        ## google\\_bigquery\\_dataset\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
+        reader = gcp.bigquery.DatasetIamBinding("reader",
+            dataset_id=dataset.dataset_id,
+            role="roles/bigquery.dataViewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_bigquery\\_dataset\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
+        editor = gcp.bigquery.DatasetIamMember("editor",
+            dataset_id=dataset.dataset_id,
+            role="roles/bigquery.dataEditor",
+            member="user:jane@example.com")
+        ```
 
         ## Import
 

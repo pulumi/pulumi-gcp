@@ -19,6 +19,26 @@ namespace Pulumi.Gcp.PubSub
     ///     * [Managing Reservations](https://cloud.google.com/pubsub/lite/docs/reservations)
     /// 
     /// ## Example Usage
+    /// ### Pubsub Lite Reservation Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var example = new Gcp.PubSub.LiteReservation("example", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.Number),
+    ///         ThroughputCapacity = 2,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

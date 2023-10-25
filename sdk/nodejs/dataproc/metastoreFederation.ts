@@ -8,6 +8,74 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### Dataproc Metastore Federation Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultMetastoreService = new gcp.dataproc.MetastoreService("defaultMetastoreService", {
+ *     serviceId: "",
+ *     location: "us-central1",
+ *     tier: "DEVELOPER",
+ *     hiveMetastoreConfig: {
+ *         version: "3.1.2",
+ *         endpointProtocol: "GRPC",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultMetastoreFederation = new gcp.dataproc.MetastoreFederation("defaultMetastoreFederation", {
+ *     location: "us-central1",
+ *     federationId: "",
+ *     version: "3.1.2",
+ *     backendMetastores: [{
+ *         rank: "1",
+ *         name: defaultMetastoreService.id,
+ *         metastoreType: "DATAPROC_METASTORE",
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Dataproc Metastore Federation Bigquery
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultMetastoreService = new gcp.dataproc.MetastoreService("defaultMetastoreService", {
+ *     serviceId: "",
+ *     location: "us-central1",
+ *     tier: "DEVELOPER",
+ *     hiveMetastoreConfig: {
+ *         version: "3.1.2",
+ *         endpointProtocol: "GRPC",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const defaultMetastoreFederation = new gcp.dataproc.MetastoreFederation("defaultMetastoreFederation", {
+ *     location: "us-central1",
+ *     federationId: "",
+ *     version: "3.1.2",
+ *     backendMetastores: [
+ *         {
+ *             rank: "2",
+ *             name: project.then(project => project.id),
+ *             metastoreType: "BIGQUERY",
+ *         },
+ *         {
+ *             rank: "1",
+ *             name: defaultMetastoreService.id,
+ *             metastoreType: "DATAPROC_METASTORE",
+ *         },
+ *     ],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

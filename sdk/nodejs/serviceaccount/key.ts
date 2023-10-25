@@ -6,6 +6,41 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### Creating A New Key
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myaccount = new gcp.serviceaccount.Account("myaccount", {
+ *     accountId: "myaccount",
+ *     displayName: "My Service Account",
+ * });
+ * const mykey = new gcp.serviceaccount.Key("mykey", {
+ *     serviceAccountId: myaccount.name,
+ *     publicKeyType: "TYPE_X509_PEM_FILE",
+ * });
+ * ```
+ * ### Creating And Regularly Rotating A Key
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumiverse/time";
+ *
+ * const myaccount = new gcp.serviceaccount.Account("myaccount", {
+ *     accountId: "myaccount",
+ *     displayName: "My Service Account",
+ * });
+ * // note this requires the terraform to be run regularly
+ * const mykeyRotation = new time.Rotating("mykeyRotation", {rotationDays: 30});
+ * const mykey = new gcp.serviceaccount.Key("mykey", {
+ *     serviceAccountId: myaccount.name,
+ *     keepers: {
+ *         rotation_time: mykeyRotation.rotationRfc3339,
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

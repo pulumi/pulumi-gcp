@@ -21,6 +21,90 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
  *
  * ## Example Usage
+ * ### Data Catalog Entry Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const entryGroup = new gcp.datacatalog.EntryGroup("entryGroup", {entryGroupId: "my_group"});
+ * const basicEntry = new gcp.datacatalog.Entry("basicEntry", {
+ *     entryGroup: entryGroup.id,
+ *     entryId: "my_entry",
+ *     userSpecifiedType: "my_custom_type",
+ *     userSpecifiedSystem: "SomethingExternal",
+ * });
+ * ```
+ * ### Data Catalog Entry Fileset
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const entryGroup = new gcp.datacatalog.EntryGroup("entryGroup", {entryGroupId: "my_group"});
+ * const basicEntry = new gcp.datacatalog.Entry("basicEntry", {
+ *     entryGroup: entryGroup.id,
+ *     entryId: "my_entry",
+ *     type: "FILESET",
+ *     gcsFilesetSpec: {
+ *         filePatterns: ["gs://fake_bucket/dir/*"],
+ *     },
+ * });
+ * ```
+ * ### Data Catalog Entry Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const entryGroup = new gcp.datacatalog.EntryGroup("entryGroup", {entryGroupId: "my_group"});
+ * const basicEntry = new gcp.datacatalog.Entry("basicEntry", {
+ *     entryGroup: entryGroup.id,
+ *     entryId: "my_entry",
+ *     userSpecifiedType: "my_user_specified_type",
+ *     userSpecifiedSystem: "Something_custom",
+ *     linkedResource: "my/linked/resource",
+ *     displayName: "my custom type entry",
+ *     description: "a custom type entry for a user specified system",
+ *     schema: `{
+ *   "columns": [
+ *     {
+ *       "column": "first_name",
+ *       "description": "First name",
+ *       "mode": "REQUIRED",
+ *       "type": "STRING"
+ *     },
+ *     {
+ *       "column": "last_name",
+ *       "description": "Last name",
+ *       "mode": "REQUIRED",
+ *       "type": "STRING"
+ *     },
+ *     {
+ *       "column": "address",
+ *       "description": "Address",
+ *       "mode": "REPEATED",
+ *       "subcolumns": [
+ *         {
+ *           "column": "city",
+ *           "description": "City",
+ *           "mode": "NULLABLE",
+ *           "type": "STRING"
+ *         },
+ *         {
+ *           "column": "state",
+ *           "description": "State",
+ *           "mode": "NULLABLE",
+ *           "type": "STRING"
+ *         }
+ *       ],
+ *       "type": "RECORD"
+ *     }
+ *   ]
+ * }
+ * `,
+ * });
+ * ```
  *
  * ## Import
  *

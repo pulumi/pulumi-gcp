@@ -27,6 +27,53 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/vpc/docs/firewalls)
  *
  * ## Example Usage
+ * ### Firewall Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
+ * const defaultFirewall = new gcp.compute.Firewall("defaultFirewall", {
+ *     network: defaultNetwork.name,
+ *     allows: [
+ *         {
+ *             protocol: "icmp",
+ *         },
+ *         {
+ *             protocol: "tcp",
+ *             ports: [
+ *                 "80",
+ *                 "8080",
+ *                 "1000-2000",
+ *             ],
+ *         },
+ *     ],
+ *     sourceTags: ["web"],
+ * });
+ * ```
+ * ### Firewall With Target Tags
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const rules = new gcp.compute.Firewall("rules", {
+ *     allows: [{
+ *         ports: [
+ *             "80",
+ *             "8080",
+ *             "1000-2000",
+ *         ],
+ *         protocol: "tcp",
+ *     }],
+ *     description: "Creates firewall rule targeting tagged instances",
+ *     network: "default",
+ *     project: "my-project-name",
+ *     sourceTags: ["foo"],
+ *     targetTags: ["web"],
+ * });
+ * ```
  *
  * ## Import
  *

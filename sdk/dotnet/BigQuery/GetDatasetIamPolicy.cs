@@ -13,12 +13,48 @@ namespace Pulumi.Gcp.BigQuery
     {
         /// <summary>
         /// Retrieves the current IAM policy data for a BigQuery dataset.
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.BigQuery.GetDatasetIamPolicy.Invoke(new()
+        ///     {
+        ///         DatasetId = google_bigquery_dataset.Dataset.Dataset_id,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetDatasetIamPolicyResult> InvokeAsync(GetDatasetIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatasetIamPolicyResult>("gcp:bigquery/getDatasetIamPolicy:getDatasetIamPolicy", args ?? new GetDatasetIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for a BigQuery dataset.
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.BigQuery.GetDatasetIamPolicy.Invoke(new()
+        ///     {
+        ///         DatasetId = google_bigquery_dataset.Dataset.Dataset_id,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetDatasetIamPolicyResult> Invoke(GetDatasetIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatasetIamPolicyResult>("gcp:bigquery/getDatasetIamPolicy:getDatasetIamPolicy", args ?? new GetDatasetIamPolicyInvokeArgs(), options.WithDefaults());

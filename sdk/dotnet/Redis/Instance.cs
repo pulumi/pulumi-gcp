@@ -19,6 +19,233 @@ namespace Pulumi.Gcp.Redis
     ///     * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
     /// 
     /// ## Example Usage
+    /// ### Redis Instance Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cache = new Gcp.Redis.Instance("cache", new()
+    ///     {
+    ///         MemorySizeGb = 1,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Redis Instance Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var redis_network = Gcp.Compute.GetNetwork.Invoke(new()
+    ///     {
+    ///         Name = "redis-test-network",
+    ///     });
+    /// 
+    ///     var cache = new Gcp.Redis.Instance("cache", new()
+    ///     {
+    ///         Tier = "STANDARD_HA",
+    ///         MemorySizeGb = 1,
+    ///         LocationId = "us-central1-a",
+    ///         AlternativeLocationId = "us-central1-f",
+    ///         AuthorizedNetwork = redis_network.Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
+    ///         RedisVersion = "REDIS_4_0",
+    ///         DisplayName = "Test Instance",
+    ///         ReservedIpRange = "192.168.0.0/29",
+    ///         Labels = 
+    ///         {
+    ///             { "my_key", "my_val" },
+    ///             { "other_key", "other_val" },
+    ///         },
+    ///         MaintenancePolicy = new Gcp.Redis.Inputs.InstanceMaintenancePolicyArgs
+    ///         {
+    ///             WeeklyMaintenanceWindows = new[]
+    ///             {
+    ///                 new Gcp.Redis.Inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs
+    ///                 {
+    ///                     Day = "TUESDAY",
+    ///                     StartTime = new Gcp.Redis.Inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs
+    ///                     {
+    ///                         Hours = 0,
+    ///                         Minutes = 30,
+    ///                         Seconds = 0,
+    ///                         Nanos = 0,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Redis Instance Full With Persistence Config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cache_persis = new Gcp.Redis.Instance("cache-persis", new()
+    ///     {
+    ///         AlternativeLocationId = "us-central1-f",
+    ///         LocationId = "us-central1-a",
+    ///         MemorySizeGb = 1,
+    ///         PersistenceConfig = new Gcp.Redis.Inputs.InstancePersistenceConfigArgs
+    ///         {
+    ///             PersistenceMode = "RDB",
+    ///             RdbSnapshotPeriod = "TWELVE_HOURS",
+    ///         },
+    ///         Tier = "STANDARD_HA",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Redis Instance Private Service
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var redis_network = Gcp.Compute.GetNetwork.Invoke(new()
+    ///     {
+    ///         Name = "redis-test-network",
+    ///     });
+    /// 
+    ///     var serviceRange = new Gcp.Compute.GlobalAddress("serviceRange", new()
+    ///     {
+    ///         Purpose = "VPC_PEERING",
+    ///         AddressType = "INTERNAL",
+    ///         PrefixLength = 16,
+    ///         Network = redis_network.Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
+    ///     });
+    /// 
+    ///     var privateServiceConnection = new Gcp.ServiceNetworking.Connection("privateServiceConnection", new()
+    ///     {
+    ///         Network = redis_network.Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             serviceRange.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var cache = new Gcp.Redis.Instance("cache", new()
+    ///     {
+    ///         Tier = "STANDARD_HA",
+    ///         MemorySizeGb = 1,
+    ///         LocationId = "us-central1-a",
+    ///         AlternativeLocationId = "us-central1-f",
+    ///         AuthorizedNetwork = redis_network.Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
+    ///         ConnectMode = "PRIVATE_SERVICE_ACCESS",
+    ///         RedisVersion = "REDIS_4_0",
+    ///         DisplayName = "Test Instance",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             privateServiceConnection,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Redis Instance Mrr
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var redis_network = Gcp.Compute.GetNetwork.Invoke(new()
+    ///     {
+    ///         Name = "redis-test-network",
+    ///     });
+    /// 
+    ///     var cache = new Gcp.Redis.Instance("cache", new()
+    ///     {
+    ///         Tier = "STANDARD_HA",
+    ///         MemorySizeGb = 5,
+    ///         LocationId = "us-central1-a",
+    ///         AlternativeLocationId = "us-central1-f",
+    ///         AuthorizedNetwork = redis_network.Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
+    ///         RedisVersion = "REDIS_6_X",
+    ///         DisplayName = "Terraform Test Instance",
+    ///         ReservedIpRange = "192.168.0.0/28",
+    ///         ReplicaCount = 5,
+    ///         ReadReplicasMode = "READ_REPLICAS_ENABLED",
+    ///         Labels = 
+    ///         {
+    ///             { "my_key", "my_val" },
+    ///             { "other_key", "other_val" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Redis Instance Cmek
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var redisKeyring = new Gcp.Kms.KeyRing("redisKeyring", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var redisKey = new Gcp.Kms.CryptoKey("redisKey", new()
+    ///     {
+    ///         KeyRing = redisKeyring.Id,
+    ///     });
+    /// 
+    ///     var redis_network = Gcp.Compute.GetNetwork.Invoke(new()
+    ///     {
+    ///         Name = "redis-test-network",
+    ///     });
+    /// 
+    ///     var cache = new Gcp.Redis.Instance("cache", new()
+    ///     {
+    ///         Tier = "STANDARD_HA",
+    ///         MemorySizeGb = 1,
+    ///         LocationId = "us-central1-a",
+    ///         AlternativeLocationId = "us-central1-f",
+    ///         AuthorizedNetwork = redis_network.Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
+    ///         RedisVersion = "REDIS_6_X",
+    ///         DisplayName = "Terraform Test Instance",
+    ///         ReservedIpRange = "192.168.0.0/29",
+    ///         Labels = 
+    ///         {
+    ///             { "my_key", "my_val" },
+    ///             { "other_key", "other_val" },
+    ///         },
+    ///         CustomerManagedKey = redisKey.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

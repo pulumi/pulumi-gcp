@@ -16,6 +16,46 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/logging/docs/apis)
  *
  * ## Example Usage
+ * ### Logging Linked Dataset Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const loggingLinkedDatasetProjectBucketConfig = new gcp.logging.ProjectBucketConfig("loggingLinkedDatasetProjectBucketConfig", {
+ *     location: "global",
+ *     project: "my-project-name",
+ *     enableAnalytics: true,
+ *     bucketId: "my-bucket",
+ * });
+ * const loggingLinkedDatasetLinkedDataset = new gcp.logging.LinkedDataset("loggingLinkedDatasetLinkedDataset", {
+ *     linkId: "mylink",
+ *     bucket: loggingLinkedDatasetProjectBucketConfig.id,
+ *     description: "Linked dataset test",
+ * });
+ * ```
+ * ### Logging Linked Dataset All Params
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const loggingLinkedDatasetProjectBucketConfig = new gcp.logging.ProjectBucketConfig("loggingLinkedDatasetProjectBucketConfig", {
+ *     bucketId: "my-bucket",
+ *     enableAnalytics: true,
+ *     location: "global",
+ *     project: "my-project-name",
+ * });
+ * const loggingLinkedDatasetLinkedDataset = new gcp.logging.LinkedDataset("loggingLinkedDatasetLinkedDataset", {
+ *     bucket: "my-bucket",
+ *     description: "Linked dataset test",
+ *     linkId: "mylink",
+ *     location: "global",
+ *     parent: "projects/my-project-name",
+ * }, {
+ *     dependsOn: ["google_logging_project_bucket_config.logging_linked_dataset"],
+ * });
+ * ```
  *
  * ## Import
  *

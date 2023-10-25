@@ -18,6 +18,111 @@ namespace Pulumi.Gcp.Compute
     /// &gt; **Note:** Use [gcp.compute.RegionInstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_region_instance_group_manager.html) to create a regional (multi-zone) instance group manager.
     /// 
     /// ## Example Usage
+    /// ### With Top Level Instance Template (`Google` Provider)
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var autohealing = new Gcp.Compute.HealthCheck("autohealing", new()
+    ///     {
+    ///         CheckIntervalSec = 5,
+    ///         TimeoutSec = 5,
+    ///         HealthyThreshold = 2,
+    ///         UnhealthyThreshold = 10,
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             RequestPath = "/healthz",
+    ///             Port = 8080,
+    ///         },
+    ///     });
+    /// 
+    ///     var appserver = new Gcp.Compute.InstanceGroupManager("appserver", new()
+    ///     {
+    ///         BaseInstanceName = "app",
+    ///         Zone = "us-central1-a",
+    ///         Versions = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceGroupManagerVersionArgs
+    ///             {
+    ///                 InstanceTemplate = google_compute_instance_template.Appserver.Self_link_unique,
+    ///             },
+    ///         },
+    ///         AllInstancesConfig = new Gcp.Compute.Inputs.InstanceGroupManagerAllInstancesConfigArgs
+    ///         {
+    ///             Metadata = 
+    ///             {
+    ///                 { "metadata_key", "metadata_value" },
+    ///             },
+    ///             Labels = 
+    ///             {
+    ///                 { "label_key", "label_value" },
+    ///             },
+    ///         },
+    ///         TargetPools = new[]
+    ///         {
+    ///             google_compute_target_pool.Appserver.Id,
+    ///         },
+    ///         TargetSize = 2,
+    ///         NamedPorts = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceGroupManagerNamedPortArgs
+    ///             {
+    ///                 Name = "customhttp",
+    ///                 Port = 8888,
+    ///             },
+    ///         },
+    ///         AutoHealingPolicies = new Gcp.Compute.Inputs.InstanceGroupManagerAutoHealingPoliciesArgs
+    ///         {
+    ///             HealthCheck = autohealing.Id,
+    ///             InitialDelaySec = 300,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### With Multiple Versions (`Google-Beta` Provider)
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var appserver = new Gcp.Compute.InstanceGroupManager("appserver", new()
+    ///     {
+    ///         BaseInstanceName = "app",
+    ///         Zone = "us-central1-a",
+    ///         TargetSize = 5,
+    ///         Versions = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceGroupManagerVersionArgs
+    ///             {
+    ///                 Name = "appserver",
+    ///                 InstanceTemplate = google_compute_instance_template.Appserver.Self_link_unique,
+    ///             },
+    ///             new Gcp.Compute.Inputs.InstanceGroupManagerVersionArgs
+    ///             {
+    ///                 Name = "appserver-canary",
+    ///                 InstanceTemplate = google_compute_instance_template.Appserver_canary.Self_link_unique,
+    ///                 TargetSize = new Gcp.Compute.Inputs.InstanceGroupManagerVersionTargetSizeArgs
+    ///                 {
+    ///                     Fixed = 1,
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

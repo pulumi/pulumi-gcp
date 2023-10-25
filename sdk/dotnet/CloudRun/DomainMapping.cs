@@ -19,6 +19,53 @@ namespace Pulumi.Gcp.CloudRun
     ///     * [Official Documentation](https://cloud.google.com/run/docs/mapping-custom-domains)
     /// 
     /// ## Example Usage
+    /// ### Cloud Run Domain Mapping Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultService = new Gcp.CloudRun.Service("defaultService", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
+    ///         {
+    ///             Namespace = "my-project-name",
+    ///         },
+    ///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+    ///             {
+    ///                 Containers = new[]
+    ///                 {
+    ///                     new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+    ///                     {
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultDomainMapping = new Gcp.CloudRun.DomainMapping("defaultDomainMapping", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Metadata = new Gcp.CloudRun.Inputs.DomainMappingMetadataArgs
+    ///         {
+    ///             Namespace = "my-project-name",
+    ///         },
+    ///         Spec = new Gcp.CloudRun.Inputs.DomainMappingSpecArgs
+    ///         {
+    ///             RouteName = defaultService.Name,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

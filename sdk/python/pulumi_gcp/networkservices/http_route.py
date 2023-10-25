@@ -433,6 +433,240 @@ class HttpRoute(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Network Services Http Route Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.HttpRoute("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            hostnames=["example"],
+            rules=[gcp.networkservices.HttpRouteRuleArgs(
+                matches=[gcp.networkservices.HttpRouteRuleMatchArgs(
+                    query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
+                        query_parameter="key",
+                        exact_match="value",
+                    )],
+                    full_path_match="example",
+                )],
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Network Services Http Route Matches And Actions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.HttpRoute("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            hostnames=["example"],
+            rules=[gcp.networkservices.HttpRouteRuleArgs(
+                matches=[
+                    gcp.networkservices.HttpRouteRuleMatchArgs(
+                        headers=[gcp.networkservices.HttpRouteRuleMatchHeaderArgs(
+                            header="header",
+                            invert_match=False,
+                            regex_match="header-value",
+                        )],
+                        query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
+                            query_parameter="key",
+                            exact_match="value",
+                        )],
+                        prefix_match="example",
+                        ignore_case=False,
+                    ),
+                    gcp.networkservices.HttpRouteRuleMatchArgs(
+                        headers=[gcp.networkservices.HttpRouteRuleMatchHeaderArgs(
+                            header="header",
+                            invert_match=False,
+                            present_match=True,
+                        )],
+                        query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
+                            query_parameter="key",
+                            regex_match="value",
+                        )],
+                        regex_match="example",
+                        ignore_case=False,
+                    ),
+                    gcp.networkservices.HttpRouteRuleMatchArgs(
+                        headers=[gcp.networkservices.HttpRouteRuleMatchHeaderArgs(
+                            header="header",
+                            invert_match=False,
+                            present_match=True,
+                        )],
+                        query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
+                            query_parameter="key",
+                            present_match=True,
+                        )],
+                        full_path_match="example",
+                        ignore_case=False,
+                    ),
+                ],
+                action=gcp.networkservices.HttpRouteRuleActionArgs(
+                    redirect=gcp.networkservices.HttpRouteRuleActionRedirectArgs(
+                        host_redirect="new-host",
+                        path_redirect="new-path",
+                        prefix_rewrite="new-prefix",
+                        https_redirect=True,
+                        strip_query=True,
+                        port_redirect=8081,
+                    ),
+                    url_rewrite=gcp.networkservices.HttpRouteRuleActionUrlRewriteArgs(
+                        path_prefix_rewrite="new-prefix",
+                        host_rewrite="new-host",
+                    ),
+                    retry_policy=gcp.networkservices.HttpRouteRuleActionRetryPolicyArgs(
+                        retry_conditions=["server_error"],
+                        num_retries=1,
+                        per_try_timeout="1s",
+                    ),
+                    request_mirror_policy=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyArgs(
+                        destination=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyDestinationArgs(
+                            service_name="new",
+                            weight=1,
+                        ),
+                    ),
+                    cors_policy=gcp.networkservices.HttpRouteRuleActionCorsPolicyArgs(
+                        allow_origins=["example"],
+                        allow_methods=[
+                            "GET",
+                            "PUT",
+                        ],
+                        allow_headers=[
+                            "version",
+                            "type",
+                        ],
+                        expose_headers=[
+                            "version",
+                            "type",
+                        ],
+                        max_age="1s",
+                        allow_credentials=True,
+                        disabled=False,
+                    ),
+                ),
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Network Services Http Route Actions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.HttpRoute("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            hostnames=["example"],
+            rules=[gcp.networkservices.HttpRouteRuleArgs(
+                action=gcp.networkservices.HttpRouteRuleActionArgs(
+                    fault_injection_policy=gcp.networkservices.HttpRouteRuleActionFaultInjectionPolicyArgs(
+                        delay=gcp.networkservices.HttpRouteRuleActionFaultInjectionPolicyDelayArgs(
+                            fixed_delay="1s",
+                            percentage=1,
+                        ),
+                        abort=gcp.networkservices.HttpRouteRuleActionFaultInjectionPolicyAbortArgs(
+                            http_status=500,
+                            percentage=1,
+                        ),
+                    ),
+                    url_rewrite=gcp.networkservices.HttpRouteRuleActionUrlRewriteArgs(
+                        path_prefix_rewrite="new-prefix",
+                        host_rewrite="new-host",
+                    ),
+                    retry_policy=gcp.networkservices.HttpRouteRuleActionRetryPolicyArgs(
+                        retry_conditions=["server_error"],
+                        num_retries=1,
+                        per_try_timeout="1s",
+                    ),
+                    request_mirror_policy=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyArgs(
+                        destination=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyDestinationArgs(
+                            service_name="new",
+                            weight=1,
+                        ),
+                    ),
+                    cors_policy=gcp.networkservices.HttpRouteRuleActionCorsPolicyArgs(
+                        allow_origins=["example"],
+                        allow_methods=[
+                            "GET",
+                            "PUT",
+                        ],
+                        allow_headers=[
+                            "version",
+                            "type",
+                        ],
+                        expose_headers=[
+                            "version",
+                            "type",
+                        ],
+                        max_age="1s",
+                        allow_credentials=True,
+                        disabled=False,
+                    ),
+                    request_header_modifier=gcp.networkservices.HttpRouteRuleActionRequestHeaderModifierArgs(
+                        set={
+                            "version": "1",
+                            "type": "json",
+                        },
+                        add={
+                            "minor-version": "1",
+                        },
+                        removes=["arg"],
+                    ),
+                    response_header_modifier=gcp.networkservices.HttpRouteRuleActionResponseHeaderModifierArgs(
+                        set={
+                            "version": "1",
+                            "type": "json",
+                        },
+                        add={
+                            "minor-version": "1",
+                        },
+                        removes=["removearg"],
+                    ),
+                ),
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Network Services Http Route Mesh Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_mesh = gcp.networkservices.Mesh("defaultMesh",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_http_route = gcp.networkservices.HttpRoute("defaultHttpRoute",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            hostnames=["example"],
+            meshes=[default_mesh.id],
+            rules=[gcp.networkservices.HttpRouteRuleArgs(
+                matches=[gcp.networkservices.HttpRouteRuleMatchArgs(
+                    query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
+                        query_parameter="key",
+                        exact_match="value",
+                    )],
+                    full_path_match="example",
+                )],
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -474,6 +708,240 @@ class HttpRoute(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Network Services Http Route Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.HttpRoute("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            hostnames=["example"],
+            rules=[gcp.networkservices.HttpRouteRuleArgs(
+                matches=[gcp.networkservices.HttpRouteRuleMatchArgs(
+                    query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
+                        query_parameter="key",
+                        exact_match="value",
+                    )],
+                    full_path_match="example",
+                )],
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Network Services Http Route Matches And Actions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.HttpRoute("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            hostnames=["example"],
+            rules=[gcp.networkservices.HttpRouteRuleArgs(
+                matches=[
+                    gcp.networkservices.HttpRouteRuleMatchArgs(
+                        headers=[gcp.networkservices.HttpRouteRuleMatchHeaderArgs(
+                            header="header",
+                            invert_match=False,
+                            regex_match="header-value",
+                        )],
+                        query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
+                            query_parameter="key",
+                            exact_match="value",
+                        )],
+                        prefix_match="example",
+                        ignore_case=False,
+                    ),
+                    gcp.networkservices.HttpRouteRuleMatchArgs(
+                        headers=[gcp.networkservices.HttpRouteRuleMatchHeaderArgs(
+                            header="header",
+                            invert_match=False,
+                            present_match=True,
+                        )],
+                        query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
+                            query_parameter="key",
+                            regex_match="value",
+                        )],
+                        regex_match="example",
+                        ignore_case=False,
+                    ),
+                    gcp.networkservices.HttpRouteRuleMatchArgs(
+                        headers=[gcp.networkservices.HttpRouteRuleMatchHeaderArgs(
+                            header="header",
+                            invert_match=False,
+                            present_match=True,
+                        )],
+                        query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
+                            query_parameter="key",
+                            present_match=True,
+                        )],
+                        full_path_match="example",
+                        ignore_case=False,
+                    ),
+                ],
+                action=gcp.networkservices.HttpRouteRuleActionArgs(
+                    redirect=gcp.networkservices.HttpRouteRuleActionRedirectArgs(
+                        host_redirect="new-host",
+                        path_redirect="new-path",
+                        prefix_rewrite="new-prefix",
+                        https_redirect=True,
+                        strip_query=True,
+                        port_redirect=8081,
+                    ),
+                    url_rewrite=gcp.networkservices.HttpRouteRuleActionUrlRewriteArgs(
+                        path_prefix_rewrite="new-prefix",
+                        host_rewrite="new-host",
+                    ),
+                    retry_policy=gcp.networkservices.HttpRouteRuleActionRetryPolicyArgs(
+                        retry_conditions=["server_error"],
+                        num_retries=1,
+                        per_try_timeout="1s",
+                    ),
+                    request_mirror_policy=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyArgs(
+                        destination=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyDestinationArgs(
+                            service_name="new",
+                            weight=1,
+                        ),
+                    ),
+                    cors_policy=gcp.networkservices.HttpRouteRuleActionCorsPolicyArgs(
+                        allow_origins=["example"],
+                        allow_methods=[
+                            "GET",
+                            "PUT",
+                        ],
+                        allow_headers=[
+                            "version",
+                            "type",
+                        ],
+                        expose_headers=[
+                            "version",
+                            "type",
+                        ],
+                        max_age="1s",
+                        allow_credentials=True,
+                        disabled=False,
+                    ),
+                ),
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Network Services Http Route Actions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.HttpRoute("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            hostnames=["example"],
+            rules=[gcp.networkservices.HttpRouteRuleArgs(
+                action=gcp.networkservices.HttpRouteRuleActionArgs(
+                    fault_injection_policy=gcp.networkservices.HttpRouteRuleActionFaultInjectionPolicyArgs(
+                        delay=gcp.networkservices.HttpRouteRuleActionFaultInjectionPolicyDelayArgs(
+                            fixed_delay="1s",
+                            percentage=1,
+                        ),
+                        abort=gcp.networkservices.HttpRouteRuleActionFaultInjectionPolicyAbortArgs(
+                            http_status=500,
+                            percentage=1,
+                        ),
+                    ),
+                    url_rewrite=gcp.networkservices.HttpRouteRuleActionUrlRewriteArgs(
+                        path_prefix_rewrite="new-prefix",
+                        host_rewrite="new-host",
+                    ),
+                    retry_policy=gcp.networkservices.HttpRouteRuleActionRetryPolicyArgs(
+                        retry_conditions=["server_error"],
+                        num_retries=1,
+                        per_try_timeout="1s",
+                    ),
+                    request_mirror_policy=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyArgs(
+                        destination=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyDestinationArgs(
+                            service_name="new",
+                            weight=1,
+                        ),
+                    ),
+                    cors_policy=gcp.networkservices.HttpRouteRuleActionCorsPolicyArgs(
+                        allow_origins=["example"],
+                        allow_methods=[
+                            "GET",
+                            "PUT",
+                        ],
+                        allow_headers=[
+                            "version",
+                            "type",
+                        ],
+                        expose_headers=[
+                            "version",
+                            "type",
+                        ],
+                        max_age="1s",
+                        allow_credentials=True,
+                        disabled=False,
+                    ),
+                    request_header_modifier=gcp.networkservices.HttpRouteRuleActionRequestHeaderModifierArgs(
+                        set={
+                            "version": "1",
+                            "type": "json",
+                        },
+                        add={
+                            "minor-version": "1",
+                        },
+                        removes=["arg"],
+                    ),
+                    response_header_modifier=gcp.networkservices.HttpRouteRuleActionResponseHeaderModifierArgs(
+                        set={
+                            "version": "1",
+                            "type": "json",
+                        },
+                        add={
+                            "minor-version": "1",
+                        },
+                        removes=["removearg"],
+                    ),
+                ),
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Network Services Http Route Mesh Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_mesh = gcp.networkservices.Mesh("defaultMesh",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_http_route = gcp.networkservices.HttpRoute("defaultHttpRoute",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            hostnames=["example"],
+            meshes=[default_mesh.id],
+            rules=[gcp.networkservices.HttpRouteRuleArgs(
+                matches=[gcp.networkservices.HttpRouteRuleMatchArgs(
+                    query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
+                        query_parameter="key",
+                        exact_match="value",
+                    )],
+                    full_path_match="example",
+                )],
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

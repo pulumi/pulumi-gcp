@@ -33,6 +33,87 @@ namespace Pulumi.Gcp.Compute
     /// state as plain-text.
     /// 
     /// ## Example Usage
+    /// ### Snapshot Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var debian = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var persistent = new Gcp.Compute.Disk("persistent", new()
+    ///     {
+    ///         Image = debian.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///         Size = 10,
+    ///         Type = "pd-ssd",
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    ///     var snapshot = new Gcp.Compute.Snapshot("snapshot", new()
+    ///     {
+    ///         SourceDisk = persistent.Id,
+    ///         Zone = "us-central1-a",
+    ///         Labels = 
+    ///         {
+    ///             { "my_label", "value" },
+    ///         },
+    ///         StorageLocations = new[]
+    ///         {
+    ///             "us-central1",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Snapshot Chainname
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var debian = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var persistent = new Gcp.Compute.Disk("persistent", new()
+    ///     {
+    ///         Image = debian.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///         Size = 10,
+    ///         Type = "pd-ssd",
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    ///     var snapshot = new Gcp.Compute.Snapshot("snapshot", new()
+    ///     {
+    ///         SourceDisk = persistent.Id,
+    ///         Zone = "us-central1-a",
+    ///         ChainName = "snapshot-chain",
+    ///         Labels = 
+    ///         {
+    ///             { "my_label", "value" },
+    ///         },
+    ///         StorageLocations = new[]
+    ///         {
+    ///             "us-central1",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -6,6 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for dataexchange
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.bigqueryanalyticshub.getDataExchangeIamPolicy({
+ *     project: google_bigquery_analytics_hub_data_exchange.data_exchange.project,
+ *     location: google_bigquery_analytics_hub_data_exchange.data_exchange.location,
+ *     dataExchangeId: google_bigquery_analytics_hub_data_exchange.data_exchange.data_exchange_id,
+ * });
+ * ```
  */
 export function getDataExchangeIamPolicy(args: GetDataExchangeIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDataExchangeIamPolicyResult> {
 
@@ -60,6 +73,19 @@ export interface GetDataExchangeIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for dataexchange
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.bigqueryanalyticshub.getDataExchangeIamPolicy({
+ *     project: google_bigquery_analytics_hub_data_exchange.data_exchange.project,
+ *     location: google_bigquery_analytics_hub_data_exchange.data_exchange.location,
+ *     dataExchangeId: google_bigquery_analytics_hub_data_exchange.data_exchange.data_exchange_id,
+ * });
+ * ```
  */
 export function getDataExchangeIamPolicyOutput(args: GetDataExchangeIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataExchangeIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getDataExchangeIamPolicy(a, opts))

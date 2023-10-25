@@ -485,6 +485,57 @@ class CxIntent(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 
         ## Example Usage
+        ### Dialogflowcx Intent Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        agent = gcp.diagflow.CxAgent("agent",
+            display_name="dialogflowcx-agent",
+            location="global",
+            default_language_code="en",
+            supported_language_codes=[
+                "fr",
+                "de",
+                "es",
+            ],
+            time_zone="America/New_York",
+            description="Example description.",
+            avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+            enable_stackdriver_logging=True,
+            enable_spell_correction=True,
+            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
+                enable_speech_adaptation=True,
+            ))
+        basic_intent = gcp.diagflow.CxIntent("basicIntent",
+            parent=agent.id,
+            display_name="Example",
+            priority=1,
+            description="Intent example",
+            training_phrases=[gcp.diagflow.CxIntentTrainingPhraseArgs(
+                parts=[
+                    gcp.diagflow.CxIntentTrainingPhrasePartArgs(
+                        text="training",
+                    ),
+                    gcp.diagflow.CxIntentTrainingPhrasePartArgs(
+                        text="phrase",
+                    ),
+                    gcp.diagflow.CxIntentTrainingPhrasePartArgs(
+                        text="example",
+                    ),
+                ],
+                repeat_count=1,
+            )],
+            parameters=[gcp.diagflow.CxIntentParameterArgs(
+                id="param1",
+                entity_type="projects/-/locations/-/agents/-/entityTypes/sys.date",
+            )],
+            labels={
+                "label1": "value1",
+                "label2": "value2",
+            })
+        ```
 
         ## Import
 
@@ -539,6 +590,57 @@ class CxIntent(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 
         ## Example Usage
+        ### Dialogflowcx Intent Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        agent = gcp.diagflow.CxAgent("agent",
+            display_name="dialogflowcx-agent",
+            location="global",
+            default_language_code="en",
+            supported_language_codes=[
+                "fr",
+                "de",
+                "es",
+            ],
+            time_zone="America/New_York",
+            description="Example description.",
+            avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+            enable_stackdriver_logging=True,
+            enable_spell_correction=True,
+            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
+                enable_speech_adaptation=True,
+            ))
+        basic_intent = gcp.diagflow.CxIntent("basicIntent",
+            parent=agent.id,
+            display_name="Example",
+            priority=1,
+            description="Intent example",
+            training_phrases=[gcp.diagflow.CxIntentTrainingPhraseArgs(
+                parts=[
+                    gcp.diagflow.CxIntentTrainingPhrasePartArgs(
+                        text="training",
+                    ),
+                    gcp.diagflow.CxIntentTrainingPhrasePartArgs(
+                        text="phrase",
+                    ),
+                    gcp.diagflow.CxIntentTrainingPhrasePartArgs(
+                        text="example",
+                    ),
+                ],
+                repeat_count=1,
+            )],
+            parameters=[gcp.diagflow.CxIntentParameterArgs(
+                id="param1",
+                entity_type="projects/-/locations/-/agents/-/entityTypes/sys.date",
+            )],
+            labels={
+                "label1": "value1",
+                "label2": "value2",
+            })
+        ```
 
         ## Import
 

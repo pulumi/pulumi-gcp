@@ -23,6 +23,202 @@ import (
 //   - [Creating a HL7v2 Store](https://cloud.google.com/healthcare/docs/how-tos/hl7v2)
 //
 // ## Example Usage
+// ### Healthcare Hl7 V2 Store Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			topic, err := pubsub.NewTopic(ctx, "topic", nil)
+//			if err != nil {
+//				return err
+//			}
+//			dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = healthcare.NewHl7Store(ctx, "store", &healthcare.Hl7StoreArgs{
+//				Dataset: dataset.ID(),
+//				NotificationConfigs: healthcare.Hl7StoreNotificationConfigsArray{
+//					&healthcare.Hl7StoreNotificationConfigsArgs{
+//						PubsubTopic: topic.ID(),
+//					},
+//				},
+//				Labels: pulumi.StringMap{
+//					"label1": pulumi.String("labelvalue1"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Healthcare Hl7 V2 Store Parser Config
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
+//				Location: pulumi.String("us-central1"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = healthcare.NewHl7Store(ctx, "store", &healthcare.Hl7StoreArgs{
+//				Dataset: dataset.ID(),
+//				ParserConfig: &healthcare.Hl7StoreParserConfigArgs{
+//					AllowNullHeader:   pulumi.Bool(false),
+//					SegmentTerminator: pulumi.String("Jw=="),
+//					Schema: pulumi.String(`{
+//	  "schemas": [{
+//	    "messageSchemaConfigs": {
+//	      "ADT_A01": {
+//	        "name": "ADT_A01",
+//	        "minOccurs": 1,
+//	        "maxOccurs": 1,
+//	        "members": [{
+//	            "segment": {
+//	              "type": "MSH",
+//	              "minOccurs": 1,
+//	              "maxOccurs": 1
+//	            }
+//	          },
+//	          {
+//	            "segment": {
+//	              "type": "EVN",
+//	              "minOccurs": 1,
+//	              "maxOccurs": 1
+//	            }
+//	          },
+//	          {
+//	            "segment": {
+//	              "type": "PID",
+//	              "minOccurs": 1,
+//	              "maxOccurs": 1
+//	            }
+//	          },
+//	          {
+//	            "segment": {
+//	              "type": "ZPD",
+//	              "minOccurs": 1,
+//	              "maxOccurs": 1
+//	            }
+//	          },
+//	          {
+//	            "segment": {
+//	              "type": "OBX"
+//	            }
+//	          },
+//	          {
+//	            "group": {
+//	              "name": "PROCEDURE",
+//	              "members": [{
+//	                  "segment": {
+//	                    "type": "PR1",
+//	                    "minOccurs": 1,
+//	                    "maxOccurs": 1
+//	                  }
+//	                },
+//	                {
+//	                  "segment": {
+//	                    "type": "ROL"
+//	                  }
+//	                }
+//	              ]
+//	            }
+//	          },
+//	          {
+//	            "segment": {
+//	              "type": "PDA",
+//	              "maxOccurs": 1
+//	            }
+//	          }
+//	        ]
+//	      }
+//	    }
+//	  }],
+//	  "types": [{
+//	    "type": [{
+//	        "name": "ZPD",
+//	        "primitive": "VARIES"
+//	      }
+//
+//	    ]
+//	  }],
+//	  "ignoreMinOccurs": true
+//	}
+//
+// `),
+//
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Healthcare Hl7 V2 Store Unschematized
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
+//				Location: pulumi.String("us-central1"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = healthcare.NewHl7Store(ctx, "store", &healthcare.Hl7StoreArgs{
+//				Dataset: dataset.ID(),
+//				ParserConfig: &healthcare.Hl7StoreParserConfigArgs{
+//					AllowNullHeader:   pulumi.Bool(false),
+//					SegmentTerminator: pulumi.String("Jw=="),
+//					Version:           pulumi.String("V2"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

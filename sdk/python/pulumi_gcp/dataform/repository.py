@@ -272,6 +272,36 @@ class Repository(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Dataform Repository
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
+        secret = gcp.secretmanager.Secret("secret",
+            secret_id="secret",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        secret_version = gcp.secretmanager.SecretVersion("secretVersion",
+            secret=secret.id,
+            secret_data="secret-data",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        dataform_respository = gcp.dataform.Repository("dataformRespository",
+            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
+                url=git_repository.url,
+                default_branch="main",
+                authentication_token_secret_version=secret_version.id,
+            ),
+            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArgs(
+                default_database="database",
+                schema_suffix="_suffix",
+                table_prefix="prefix_",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -315,6 +345,36 @@ class Repository(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Dataform Repository
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
+        secret = gcp.secretmanager.Secret("secret",
+            secret_id="secret",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        secret_version = gcp.secretmanager.SecretVersion("secretVersion",
+            secret=secret.id,
+            secret_data="secret-data",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        dataform_respository = gcp.dataform.Repository("dataformRespository",
+            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
+                url=git_repository.url,
+                default_branch="main",
+                authentication_token_secret_version=secret_version.id,
+            ),
+            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArgs(
+                default_database="database",
+                schema_suffix="_suffix",
+                table_prefix="prefix_",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

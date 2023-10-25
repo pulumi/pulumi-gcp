@@ -215,6 +215,14 @@ class CaExternalAccountKey(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
+        ### Public Ca External Account Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod = gcp.compute.CaExternalAccountKey("prod", project="my-project-name")
+        ```
 
         ## Import
 
@@ -254,6 +262,14 @@ class CaExternalAccountKey(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
+        ### Public Ca External Account Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod = gcp.compute.CaExternalAccountKey("prod", project="my-project-name")
+        ```
 
         ## Import
 

@@ -11,6 +11,136 @@ namespace Pulumi.Gcp.VMwareEngine
 {
     /// <summary>
     /// ## Example Usage
+    /// ### Vmware Engine Cluster Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cluster_nw = new Gcp.VMwareEngine.Network("cluster-nw", new()
+    ///     {
+    ///         Location = "us-west1",
+    ///         Type = "LEGACY",
+    ///         Description = "PC network description.",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var cluster_pc = new Gcp.VMwareEngine.PrivateCloud("cluster-pc", new()
+    ///     {
+    ///         Location = "us-west1-a",
+    ///         Description = "Sample test PC.",
+    ///         NetworkConfig = new Gcp.VMwareEngine.Inputs.PrivateCloudNetworkConfigArgs
+    ///         {
+    ///             ManagementCidr = "192.168.30.0/24",
+    ///             VmwareEngineNetwork = cluster_nw.Id,
+    ///         },
+    ///         ManagementCluster = new Gcp.VMwareEngine.Inputs.PrivateCloudManagementClusterArgs
+    ///         {
+    ///             ClusterId = "sample-mgmt-cluster",
+    ///             NodeTypeConfigs = new[]
+    ///             {
+    ///                 new Gcp.VMwareEngine.Inputs.PrivateCloudManagementClusterNodeTypeConfigArgs
+    ///                 {
+    ///                     NodeTypeId = "standard-72",
+    ///                     NodeCount = 3,
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var vmw_engine_ext_cluster = new Gcp.VMwareEngine.Cluster("vmw-engine-ext-cluster", new()
+    ///     {
+    ///         Parent = cluster_pc.Id,
+    ///         NodeTypeConfigs = new[]
+    ///         {
+    ///             new Gcp.VMwareEngine.Inputs.ClusterNodeTypeConfigArgs
+    ///             {
+    ///                 NodeTypeId = "standard-72",
+    ///                 NodeCount = 3,
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Vmware Engine Cluster Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cluster_nw = new Gcp.VMwareEngine.Network("cluster-nw", new()
+    ///     {
+    ///         Location = "us-west1",
+    ///         Type = "LEGACY",
+    ///         Description = "PC network description.",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var cluster_pc = new Gcp.VMwareEngine.PrivateCloud("cluster-pc", new()
+    ///     {
+    ///         Location = "us-west1-a",
+    ///         Description = "Sample test PC.",
+    ///         NetworkConfig = new Gcp.VMwareEngine.Inputs.PrivateCloudNetworkConfigArgs
+    ///         {
+    ///             ManagementCidr = "192.168.30.0/24",
+    ///             VmwareEngineNetwork = cluster_nw.Id,
+    ///         },
+    ///         ManagementCluster = new Gcp.VMwareEngine.Inputs.PrivateCloudManagementClusterArgs
+    ///         {
+    ///             ClusterId = "sample-mgmt-cluster",
+    ///             NodeTypeConfigs = new[]
+    ///             {
+    ///                 new Gcp.VMwareEngine.Inputs.PrivateCloudManagementClusterNodeTypeConfigArgs
+    ///                 {
+    ///                     NodeTypeId = "standard-72",
+    ///                     NodeCount = 3,
+    ///                     CustomCoreCount = 32,
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var vmw_ext_cluster = new Gcp.VMwareEngine.Cluster("vmw-ext-cluster", new()
+    ///     {
+    ///         Parent = cluster_pc.Id,
+    ///         NodeTypeConfigs = new[]
+    ///         {
+    ///             new Gcp.VMwareEngine.Inputs.ClusterNodeTypeConfigArgs
+    ///             {
+    ///                 NodeTypeId = "standard-72",
+    ///                 NodeCount = 3,
+    ///                 CustomCoreCount = 32,
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

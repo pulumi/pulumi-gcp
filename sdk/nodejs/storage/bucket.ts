@@ -19,6 +19,75 @@ import * as utilities from "../utilities";
  * determined which will require enabling the compute api.
  *
  * ## Example Usage
+ * ### Creating A Private Bucket In Standard Storage, In The EU Region. Bucket Configured As Static Website And CORS Configurations
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const static_site = new gcp.storage.Bucket("static-site", {
+ *     cors: [{
+ *         maxAgeSeconds: 3600,
+ *         methods: [
+ *             "GET",
+ *             "HEAD",
+ *             "PUT",
+ *             "POST",
+ *             "DELETE",
+ *         ],
+ *         origins: ["http://image-store.com"],
+ *         responseHeaders: ["*"],
+ *     }],
+ *     forceDestroy: true,
+ *     location: "EU",
+ *     uniformBucketLevelAccess: true,
+ *     website: {
+ *         mainPageSuffix: "index.html",
+ *         notFoundPage: "404.html",
+ *     },
+ * });
+ * ```
+ * ### Life Cycle Settings For Storage Bucket Objects
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const auto_expire = new gcp.storage.Bucket("auto-expire", {
+ *     forceDestroy: true,
+ *     lifecycleRules: [
+ *         {
+ *             action: {
+ *                 type: "Delete",
+ *             },
+ *             condition: {
+ *                 age: 3,
+ *             },
+ *         },
+ *         {
+ *             action: {
+ *                 type: "AbortIncompleteMultipartUpload",
+ *             },
+ *             condition: {
+ *                 age: 1,
+ *             },
+ *         },
+ *     ],
+ *     location: "US",
+ * });
+ * ```
+ * ### Enabling Public Access Prevention
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const auto_expire = new gcp.storage.Bucket("auto-expire", {
+ *     forceDestroy: true,
+ *     location: "US",
+ *     publicAccessPrevention: "enforced",
+ * });
+ * ```
  *
  * ## Import
  *

@@ -24,6 +24,36 @@ namespace Pulumi.Gcp.Storage
     /// &gt; Want fine-grained control over default object ACLs? Use `gcp.storage.DefaultObjectAccessControl`
     /// to control individual role entity pairs.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Example creating a default object ACL on a bucket with one owner, and one reader.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var image_store = new Gcp.Storage.Bucket("image-store", new()
+    ///     {
+    ///         Location = "EU",
+    ///     });
+    /// 
+    ///     var image_store_default_acl = new Gcp.Storage.DefaultObjectACL("image-store-default-acl", new()
+    ///     {
+    ///         Bucket = image_store.Name,
+    ///         RoleEntities = new[]
+    ///         {
+    ///             "OWNER:user-my.email@gmail.com",
+    ///             "READER:group-mygroup",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource does not support import.

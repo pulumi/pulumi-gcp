@@ -14,6 +14,91 @@ import * as utilities from "../utilities";
  * * [The resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
  * * [All valid constraints](https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints)
  * ## Example Usage
+ * ### Enforce_policy
+ * A test of an enforce orgpolicy policy for a project
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = new gcp.organizations.Project("basic", {
+ *     orgId: "123456789",
+ *     projectId: "id",
+ * });
+ * const primary = new gcp.orgpolicy.Policy("primary", {
+ *     parent: pulumi.interpolate`projects/${basic.name}`,
+ *     spec: {
+ *         rules: [{
+ *             enforce: "FALSE",
+ *         }],
+ *     },
+ * });
+ * ```
+ * ### Folder_policy
+ * A test of an orgpolicy policy for a folder
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = new gcp.organizations.Folder("basic", {
+ *     parent: "organizations/123456789",
+ *     displayName: "folder",
+ * });
+ * const primary = new gcp.orgpolicy.Policy("primary", {
+ *     parent: basic.name,
+ *     spec: {
+ *         inheritFromParent: true,
+ *         rules: [{
+ *             denyAll: "TRUE",
+ *         }],
+ *     },
+ * });
+ * ```
+ * ### Organization_policy
+ * A test of an orgpolicy policy for an organization
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.orgpolicy.Policy("primary", {
+ *     parent: "organizations/123456789",
+ *     spec: {
+ *         reset: true,
+ *     },
+ * });
+ * ```
+ * ### Project_policy
+ * A test of an orgpolicy policy for a project
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = new gcp.organizations.Project("basic", {
+ *     orgId: "123456789",
+ *     projectId: "id",
+ * });
+ * const primary = new gcp.orgpolicy.Policy("primary", {
+ *     parent: pulumi.interpolate`projects/${basic.name}`,
+ *     spec: {
+ *         rules: [
+ *             {
+ *                 condition: {
+ *                     description: "A sample condition for the policy",
+ *                     expression: "resource.matchLabels('labelKeys/123', 'labelValues/345')",
+ *                     location: "sample-location.log",
+ *                     title: "sample-condition",
+ *                 },
+ *                 values: {
+ *                     allowedValues: ["projects/allowed-project"],
+ *                     deniedValues: ["projects/denied-project"],
+ *                 },
+ *             },
+ *             {
+ *                 allowAll: "TRUE",
+ *             },
+ *         ],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

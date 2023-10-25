@@ -6,6 +6,20 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for task
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.dataplex.getTaskIamPolicy({
+ *     project: google_dataplex_task.example.project,
+ *     location: google_dataplex_task.example.location,
+ *     lake: google_dataplex_task.example.lake,
+ *     taskId: google_dataplex_task.example.task_id,
+ * });
+ * ```
  */
 export function getTaskIamPolicy(args: GetTaskIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetTaskIamPolicyResult> {
 
@@ -64,6 +78,20 @@ export interface GetTaskIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for task
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.dataplex.getTaskIamPolicy({
+ *     project: google_dataplex_task.example.project,
+ *     location: google_dataplex_task.example.location,
+ *     lake: google_dataplex_task.example.lake,
+ *     taskId: google_dataplex_task.example.task_id,
+ * });
+ * ```
  */
 export function getTaskIamPolicyOutput(args: GetTaskIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTaskIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getTaskIamPolicy(a, opts))

@@ -428,6 +428,22 @@ class NetworkPeering(pulumi.CustomResource):
 
         > Subnets IP ranges across peered VPC networks cannot overlap.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default", auto_create_subnetworks=False)
+        other = gcp.compute.Network("other", auto_create_subnetworks=False)
+        peering1 = gcp.compute.NetworkPeering("peering1",
+            network=default.self_link,
+            peer_network=other.self_link)
+        peering2 = gcp.compute.NetworkPeering("peering2",
+            network=other.self_link,
+            peer_network=default.self_link)
+        ```
+
         ## Import
 
         VPC network peerings can be imported using the name and project of the primary network the peering exists in and the name of the network peering
@@ -464,6 +480,22 @@ class NetworkPeering(pulumi.CustomResource):
         to be functional.
 
         > Subnets IP ranges across peered VPC networks cannot overlap.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default", auto_create_subnetworks=False)
+        other = gcp.compute.Network("other", auto_create_subnetworks=False)
+        peering1 = gcp.compute.NetworkPeering("peering1",
+            network=default.self_link,
+            peer_network=other.self_link)
+        peering2 = gcp.compute.NetworkPeering("peering2",
+            network=other.self_link,
+            peer_network=default.self_link)
+        ```
 
         ## Import
 

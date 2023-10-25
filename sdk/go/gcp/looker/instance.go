@@ -22,6 +22,218 @@ import (
 //   - [Configure a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-setup)
 //
 // ## Example Usage
+// ### Looker Instance Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/looker"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := looker.NewInstance(ctx, "looker-instance", &looker.InstanceArgs{
+//				OauthConfig: &looker.InstanceOauthConfigArgs{
+//					ClientId:     pulumi.String("my-client-id"),
+//					ClientSecret: pulumi.String("my-client-secret"),
+//				},
+//				PlatformEdition: pulumi.String("LOOKER_CORE_STANDARD"),
+//				Region:          pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Looker Instance Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/looker"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := looker.NewInstance(ctx, "looker-instance", &looker.InstanceArgs{
+//				AdminSettings: &looker.InstanceAdminSettingsArgs{
+//					AllowedEmailDomains: pulumi.StringArray{
+//						pulumi.String("google.com"),
+//					},
+//				},
+//				DenyMaintenancePeriod: &looker.InstanceDenyMaintenancePeriodArgs{
+//					EndDate: &looker.InstanceDenyMaintenancePeriodEndDateArgs{
+//						Day:   pulumi.Int(1),
+//						Month: pulumi.Int(2),
+//						Year:  pulumi.Int(2050),
+//					},
+//					StartDate: &looker.InstanceDenyMaintenancePeriodStartDateArgs{
+//						Day:   pulumi.Int(1),
+//						Month: pulumi.Int(1),
+//						Year:  pulumi.Int(2050),
+//					},
+//					Time: &looker.InstanceDenyMaintenancePeriodTimeArgs{
+//						Hours:   pulumi.Int(10),
+//						Minutes: pulumi.Int(0),
+//						Nanos:   pulumi.Int(0),
+//						Seconds: pulumi.Int(0),
+//					},
+//				},
+//				MaintenanceWindow: &looker.InstanceMaintenanceWindowArgs{
+//					DayOfWeek: pulumi.String("THURSDAY"),
+//					StartTime: &looker.InstanceMaintenanceWindowStartTimeArgs{
+//						Hours:   pulumi.Int(22),
+//						Minutes: pulumi.Int(0),
+//						Nanos:   pulumi.Int(0),
+//						Seconds: pulumi.Int(0),
+//					},
+//				},
+//				OauthConfig: &looker.InstanceOauthConfigArgs{
+//					ClientId:     pulumi.String("my-client-id"),
+//					ClientSecret: pulumi.String("my-client-secret"),
+//				},
+//				PlatformEdition: pulumi.String("LOOKER_CORE_STANDARD"),
+//				PublicIpEnabled: pulumi.Bool(true),
+//				Region:          pulumi.String("us-central1"),
+//				UserMetadata: &looker.InstanceUserMetadataArgs{
+//					AdditionalDeveloperUserCount: pulumi.Int(10),
+//					AdditionalStandardUserCount:  pulumi.Int(10),
+//					AdditionalViewerUserCount:    pulumi.Int(10),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Looker Instance Enterprise Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/looker"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			lookerNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+//				Name: "looker-network",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			lookerRange, err := compute.NewGlobalAddress(ctx, "lookerRange", &compute.GlobalAddressArgs{
+//				Purpose:      pulumi.String("VPC_PEERING"),
+//				AddressType:  pulumi.String("INTERNAL"),
+//				PrefixLength: pulumi.Int(20),
+//				Network:      *pulumi.String(lookerNetwork.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			lookerVpcConnection, err := servicenetworking.NewConnection(ctx, "lookerVpcConnection", &servicenetworking.ConnectionArgs{
+//				Network: *pulumi.String(lookerNetwork.Id),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					lookerRange.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = looker.NewInstance(ctx, "looker-instance", &looker.InstanceArgs{
+//				PlatformEdition:  pulumi.String("LOOKER_CORE_ENTERPRISE_ANNUAL"),
+//				Region:           pulumi.String("us-central1"),
+//				PrivateIpEnabled: pulumi.Bool(true),
+//				PublicIpEnabled:  pulumi.Bool(false),
+//				ReservedRange:    lookerRange.Name,
+//				ConsumerNetwork:  *pulumi.String(lookerNetwork.Id),
+//				AdminSettings: &looker.InstanceAdminSettingsArgs{
+//					AllowedEmailDomains: pulumi.StringArray{
+//						pulumi.String("google.com"),
+//					},
+//				},
+//				EncryptionConfig: &looker.InstanceEncryptionConfigArgs{
+//					KmsKeyName: pulumi.String("looker-kms-key"),
+//				},
+//				MaintenanceWindow: &looker.InstanceMaintenanceWindowArgs{
+//					DayOfWeek: pulumi.String("THURSDAY"),
+//					StartTime: &looker.InstanceMaintenanceWindowStartTimeArgs{
+//						Hours:   pulumi.Int(22),
+//						Minutes: pulumi.Int(0),
+//						Seconds: pulumi.Int(0),
+//						Nanos:   pulumi.Int(0),
+//					},
+//				},
+//				DenyMaintenancePeriod: &looker.InstanceDenyMaintenancePeriodArgs{
+//					StartDate: &looker.InstanceDenyMaintenancePeriodStartDateArgs{
+//						Year:  pulumi.Int(2050),
+//						Month: pulumi.Int(1),
+//						Day:   pulumi.Int(1),
+//					},
+//					EndDate: &looker.InstanceDenyMaintenancePeriodEndDateArgs{
+//						Year:  pulumi.Int(2050),
+//						Month: pulumi.Int(2),
+//						Day:   pulumi.Int(1),
+//					},
+//					Time: &looker.InstanceDenyMaintenancePeriodTimeArgs{
+//						Hours:   pulumi.Int(10),
+//						Minutes: pulumi.Int(0),
+//						Seconds: pulumi.Int(0),
+//						Nanos:   pulumi.Int(0),
+//					},
+//				},
+//				OauthConfig: &looker.InstanceOauthConfigArgs{
+//					ClientId:     pulumi.String("my-client-id"),
+//					ClientSecret: pulumi.String("my-client-secret"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				lookerVpcConnection,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kms.NewCryptoKeyIAMMember(ctx, "cryptoKey", &kms.CryptoKeyIAMMemberArgs{
+//				CryptoKeyId: pulumi.String("looker-kms-key"),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-looker.iam.gserviceaccount.com", project.Number)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

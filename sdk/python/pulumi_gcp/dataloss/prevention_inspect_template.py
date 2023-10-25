@@ -321,6 +321,130 @@ class PreventionInspectTemplate(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dlp/docs/creating-templates-inspect)
 
         ## Example Usage
+        ### Dlp Inspect Template Custom Type
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom = gcp.dataloss.PreventionInspectTemplate("custom",
+            description="My description",
+            display_name="display_name",
+            inspect_config=gcp.dataloss.PreventionInspectTemplateInspectConfigArgs(
+                custom_info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeArgs(
+                    info_type=gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs(
+                        name="MY_CUSTOM_TYPE",
+                    ),
+                    likelihood="UNLIKELY",
+                    regex=gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs(
+                        pattern="test*",
+                    ),
+                )],
+                info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs(
+                    name="EMAIL_ADDRESS",
+                )],
+                limits=gcp.dataloss.PreventionInspectTemplateInspectConfigLimitsArgs(
+                    max_findings_per_item=10,
+                    max_findings_per_request=50,
+                ),
+                min_likelihood="UNLIKELY",
+                rule_sets=[
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetArgs(
+                        info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs(
+                            name="EMAIL_ADDRESS",
+                        )],
+                        rules=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArgs(
+                            exclusion_rule=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs(
+                                matching_type="MATCHING_TYPE_FULL_MATCH",
+                                regex=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs(
+                                    pattern=".+@example.com",
+                                ),
+                            ),
+                        )],
+                    ),
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetArgs(
+                        info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs(
+                            name="MY_CUSTOM_TYPE",
+                        )],
+                        rules=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArgs(
+                            hotword_rule=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs(
+                                hotword_regex=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs(
+                                    pattern="example*",
+                                ),
+                                likelihood_adjustment=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs(
+                                    fixed_likelihood="VERY_LIKELY",
+                                ),
+                                proximity=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs(
+                                    window_before=50,
+                                ),
+                            ),
+                        )],
+                    ),
+                ],
+            ),
+            parent="projects/my-project-name")
+        ```
+        ### Dlp Inspect Template Custom Type Surrogate
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_type_surrogate = gcp.dataloss.PreventionInspectTemplate("customTypeSurrogate",
+            description="My description",
+            display_name="display_name",
+            inspect_config=gcp.dataloss.PreventionInspectTemplateInspectConfigArgs(
+                custom_info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeArgs(
+                    info_type=gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs(
+                        name="MY_CUSTOM_TYPE",
+                    ),
+                    likelihood="UNLIKELY",
+                    surrogate_type=gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateTypeArgs(),
+                )],
+                info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs(
+                    name="EMAIL_ADDRESS",
+                )],
+                limits=gcp.dataloss.PreventionInspectTemplateInspectConfigLimitsArgs(
+                    max_findings_per_item=10,
+                    max_findings_per_request=50,
+                ),
+                min_likelihood="UNLIKELY",
+                rule_sets=[
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetArgs(
+                        info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs(
+                            name="EMAIL_ADDRESS",
+                        )],
+                        rules=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArgs(
+                            exclusion_rule=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs(
+                                matching_type="MATCHING_TYPE_FULL_MATCH",
+                                regex=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs(
+                                    pattern=".+@example.com",
+                                ),
+                            ),
+                        )],
+                    ),
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetArgs(
+                        info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs(
+                            name="MY_CUSTOM_TYPE",
+                        )],
+                        rules=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArgs(
+                            hotword_rule=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs(
+                                hotword_regex=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs(
+                                    pattern="example*",
+                                ),
+                                likelihood_adjustment=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs(
+                                    fixed_likelihood="VERY_LIKELY",
+                                ),
+                                proximity=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs(
+                                    window_before=50,
+                                ),
+                            ),
+                        )],
+                    ),
+                ],
+            ),
+            parent="projects/my-project-name")
+        ```
 
         ## Import
 
@@ -368,6 +492,130 @@ class PreventionInspectTemplate(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dlp/docs/creating-templates-inspect)
 
         ## Example Usage
+        ### Dlp Inspect Template Custom Type
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom = gcp.dataloss.PreventionInspectTemplate("custom",
+            description="My description",
+            display_name="display_name",
+            inspect_config=gcp.dataloss.PreventionInspectTemplateInspectConfigArgs(
+                custom_info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeArgs(
+                    info_type=gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs(
+                        name="MY_CUSTOM_TYPE",
+                    ),
+                    likelihood="UNLIKELY",
+                    regex=gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs(
+                        pattern="test*",
+                    ),
+                )],
+                info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs(
+                    name="EMAIL_ADDRESS",
+                )],
+                limits=gcp.dataloss.PreventionInspectTemplateInspectConfigLimitsArgs(
+                    max_findings_per_item=10,
+                    max_findings_per_request=50,
+                ),
+                min_likelihood="UNLIKELY",
+                rule_sets=[
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetArgs(
+                        info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs(
+                            name="EMAIL_ADDRESS",
+                        )],
+                        rules=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArgs(
+                            exclusion_rule=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs(
+                                matching_type="MATCHING_TYPE_FULL_MATCH",
+                                regex=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs(
+                                    pattern=".+@example.com",
+                                ),
+                            ),
+                        )],
+                    ),
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetArgs(
+                        info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs(
+                            name="MY_CUSTOM_TYPE",
+                        )],
+                        rules=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArgs(
+                            hotword_rule=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs(
+                                hotword_regex=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs(
+                                    pattern="example*",
+                                ),
+                                likelihood_adjustment=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs(
+                                    fixed_likelihood="VERY_LIKELY",
+                                ),
+                                proximity=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs(
+                                    window_before=50,
+                                ),
+                            ),
+                        )],
+                    ),
+                ],
+            ),
+            parent="projects/my-project-name")
+        ```
+        ### Dlp Inspect Template Custom Type Surrogate
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_type_surrogate = gcp.dataloss.PreventionInspectTemplate("customTypeSurrogate",
+            description="My description",
+            display_name="display_name",
+            inspect_config=gcp.dataloss.PreventionInspectTemplateInspectConfigArgs(
+                custom_info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeArgs(
+                    info_type=gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs(
+                        name="MY_CUSTOM_TYPE",
+                    ),
+                    likelihood="UNLIKELY",
+                    surrogate_type=gcp.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateTypeArgs(),
+                )],
+                info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs(
+                    name="EMAIL_ADDRESS",
+                )],
+                limits=gcp.dataloss.PreventionInspectTemplateInspectConfigLimitsArgs(
+                    max_findings_per_item=10,
+                    max_findings_per_request=50,
+                ),
+                min_likelihood="UNLIKELY",
+                rule_sets=[
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetArgs(
+                        info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs(
+                            name="EMAIL_ADDRESS",
+                        )],
+                        rules=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArgs(
+                            exclusion_rule=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs(
+                                matching_type="MATCHING_TYPE_FULL_MATCH",
+                                regex=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs(
+                                    pattern=".+@example.com",
+                                ),
+                            ),
+                        )],
+                    ),
+                    gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetArgs(
+                        info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs(
+                            name="MY_CUSTOM_TYPE",
+                        )],
+                        rules=[gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleArgs(
+                            hotword_rule=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs(
+                                hotword_regex=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs(
+                                    pattern="example*",
+                                ),
+                                likelihood_adjustment=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs(
+                                    fixed_likelihood="VERY_LIKELY",
+                                ),
+                                proximity=gcp.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs(
+                                    window_before=50,
+                                ),
+                            ),
+                        )],
+                    ),
+                ],
+            ),
+            parent="projects/my-project-name")
+        ```
 
         ## Import
 

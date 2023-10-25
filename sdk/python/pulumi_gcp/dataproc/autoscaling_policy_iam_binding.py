@@ -379,6 +379,51 @@ class AutoscalingPolicyIamBinding(pulumi.CustomResource):
 
         > **Note:** `dataproc.AutoscalingPolicyIamBinding` resources **can be** used in conjunction with `dataproc.AutoscalingPolicyIamMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\\_dataproc\\_autoscaling\\_policy\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.dataproc.AutoscalingPolicyIamPolicy("policy",
+            project=google_dataproc_autoscaling_policy["basic"]["project"],
+            location=google_dataproc_autoscaling_policy["basic"]["location"],
+            policy_id=google_dataproc_autoscaling_policy["basic"]["policy_id"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_dataproc\\_autoscaling\\_policy\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.dataproc.AutoscalingPolicyIamBinding("binding",
+            project=google_dataproc_autoscaling_policy["basic"]["project"],
+            location=google_dataproc_autoscaling_policy["basic"]["location"],
+            policy_id=google_dataproc_autoscaling_policy["basic"]["policy_id"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_dataproc\\_autoscaling\\_policy\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.dataproc.AutoscalingPolicyIamMember("member",
+            project=google_dataproc_autoscaling_policy["basic"]["project"],
+            location=google_dataproc_autoscaling_policy["basic"]["location"],
+            policy_id=google_dataproc_autoscaling_policy["basic"]["policy_id"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{policy_id}} * {{project}}/{{location}}/{{policy_id}} * {{location}}/{{policy_id}} * {{policy_id}} Any variables not passed in the import command will be taken from the provider configuration. Dataproc autoscalingpolicy IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -450,6 +495,51 @@ class AutoscalingPolicyIamBinding(pulumi.CustomResource):
         > **Note:** `dataproc.AutoscalingPolicyIamPolicy` **cannot** be used in conjunction with `dataproc.AutoscalingPolicyIamBinding` and `dataproc.AutoscalingPolicyIamMember` or they will fight over what your policy should be.
 
         > **Note:** `dataproc.AutoscalingPolicyIamBinding` resources **can be** used in conjunction with `dataproc.AutoscalingPolicyIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_dataproc\\_autoscaling\\_policy\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.dataproc.AutoscalingPolicyIamPolicy("policy",
+            project=google_dataproc_autoscaling_policy["basic"]["project"],
+            location=google_dataproc_autoscaling_policy["basic"]["location"],
+            policy_id=google_dataproc_autoscaling_policy["basic"]["policy_id"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_dataproc\\_autoscaling\\_policy\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.dataproc.AutoscalingPolicyIamBinding("binding",
+            project=google_dataproc_autoscaling_policy["basic"]["project"],
+            location=google_dataproc_autoscaling_policy["basic"]["location"],
+            policy_id=google_dataproc_autoscaling_policy["basic"]["policy_id"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_dataproc\\_autoscaling\\_policy\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.dataproc.AutoscalingPolicyIamMember("member",
+            project=google_dataproc_autoscaling_policy["basic"]["project"],
+            location=google_dataproc_autoscaling_policy["basic"]["location"],
+            policy_id=google_dataproc_autoscaling_policy["basic"]["policy_id"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
 
         ## Import
 

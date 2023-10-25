@@ -19,6 +19,25 @@ namespace Pulumi.Gcp.Tags
     ///     * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
     /// 
     /// ## Example Usage
+    /// ### Tag Key Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var key = new Gcp.Tags.TagKey("key", new()
+    ///     {
+    ///         Description = "For keyname resources.",
+    ///         Parent = "organizations/123456789",
+    ///         ShortName = "keyname",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

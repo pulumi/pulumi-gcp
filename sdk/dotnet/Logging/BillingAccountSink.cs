@@ -19,6 +19,41 @@ namespace Pulumi.Gcp.Logging
     /// the credentials used with this provider. [IAM roles granted on a billing account](https://cloud.google.com/billing/docs/how-to/billing-access) are separate from the
     /// typical IAM roles granted on a project.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var log_bucket = new Gcp.Storage.Bucket("log-bucket", new()
+    ///     {
+    ///         Location = "US",
+    ///     });
+    /// 
+    ///     var my_sink = new Gcp.Logging.BillingAccountSink("my-sink", new()
+    ///     {
+    ///         Description = "some explanation on what this is",
+    ///         BillingAccount = "ABCDEF-012345-GHIJKL",
+    ///         Destination = log_bucket.Name.Apply(name =&gt; $"storage.googleapis.com/{name}"),
+    ///     });
+    /// 
+    ///     var log_writer = new Gcp.Projects.IAMBinding("log-writer", new()
+    ///     {
+    ///         Project = "your-project-id",
+    ///         Role = "roles/storage.objectCreator",
+    ///         Members = new[]
+    ///         {
+    ///             my_sink.WriterIdentity,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Billing account logging sinks can be imported using this format:

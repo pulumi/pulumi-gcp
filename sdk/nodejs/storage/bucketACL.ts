@@ -16,6 +16,24 @@ import * as utilities from "../utilities";
  *
  * **NOTE** This resource will not remove the `project-owners-<project_id>` entity from the `OWNER` role.
  *
+ * ## Example Usage
+ *
+ * Example creating an ACL on a bucket with one owner, and one reader.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const image_store = new gcp.storage.Bucket("image-store", {location: "EU"});
+ * const image_store_acl = new gcp.storage.BucketACL("image-store-acl", {
+ *     bucket: image_store.name,
+ *     roleEntities: [
+ *         "OWNER:user-my.email@gmail.com",
+ *         "READER:group-mygroup",
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * This resource does not support import.

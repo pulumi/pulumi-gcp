@@ -257,6 +257,19 @@ class Contact(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+        ### Essential Contact
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        contact = gcp.essentialcontacts.Contact("contact",
+            parent=project.id,
+            email="foo@bar.com",
+            language_tag="en-GB",
+            notification_category_subscriptions=["ALL"])
+        ```
 
         ## Import
 
@@ -298,6 +311,19 @@ class Contact(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+        ### Essential Contact
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        contact = gcp.essentialcontacts.Contact("contact",
+            parent=project.id,
+            email="foo@bar.com",
+            language_tag="en-GB",
+            notification_category_subscriptions=["ALL"])
+        ```
 
         ## Import
 

@@ -21,6 +21,75 @@ import (
 //   - [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
 //
 // ## Example Usage
+// ### Vpc Access Connector
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vpcaccess"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vpcaccess.NewConnector(ctx, "connector", &vpcaccess.ConnectorArgs{
+//				IpCidrRange: pulumi.String("10.8.0.0/28"),
+//				Network:     pulumi.String("default"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Vpc Access Connector Shared Vpc
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vpcaccess"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			customTestNetwork, err := compute.NewNetwork(ctx, "customTestNetwork", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			customTestSubnetwork, err := compute.NewSubnetwork(ctx, "customTestSubnetwork", &compute.SubnetworkArgs{
+//				IpCidrRange: pulumi.String("10.2.0.0/28"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     customTestNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpcaccess.NewConnector(ctx, "connector", &vpcaccess.ConnectorArgs{
+//				Subnet: &vpcaccess.ConnectorSubnetArgs{
+//					Name: customTestSubnetwork.Name,
+//				},
+//				MachineType: pulumi.String("e2-standard-4"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

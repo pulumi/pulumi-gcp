@@ -6,6 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for a Billing Account.
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.billing.getAccountIamPolicy({
+ *     billingAccountId: "MEEP-MEEP-MEEP-MEEP-MEEP",
+ * });
+ * ```
  */
 export function getAccountIamPolicy(args: GetAccountIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountIamPolicyResult> {
 
@@ -45,6 +56,17 @@ export interface GetAccountIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for a Billing Account.
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.billing.getAccountIamPolicy({
+ *     billingAccountId: "MEEP-MEEP-MEEP-MEEP-MEEP",
+ * });
+ * ```
  */
 export function getAccountIamPolicyOutput(args: GetAccountIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getAccountIamPolicy(a, opts))

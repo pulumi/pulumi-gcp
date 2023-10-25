@@ -26,6 +26,42 @@ import (
 //	made available again. This means a deleted role that has been deleted for more than 7 days cannot be changed at all
 //	by the provider, and new roles cannot share that name.
 //
+// ## Example Usage
+//
+// This snippet creates a customized IAM organization role.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewIAMCustomRole(ctx, "my-custom-role", &organizations.IAMCustomRoleArgs{
+//				Description: pulumi.String("A description"),
+//				OrgId:       pulumi.String("123456789"),
+//				Permissions: pulumi.StringArray{
+//					pulumi.String("iam.roles.list"),
+//					pulumi.String("iam.roles.create"),
+//					pulumi.String("iam.roles.delete"),
+//				},
+//				RoleId: pulumi.String("myCustomRole"),
+//				Title:  pulumi.String("My Custom Role"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Customized IAM organization role can be imported using their URI, e.g.

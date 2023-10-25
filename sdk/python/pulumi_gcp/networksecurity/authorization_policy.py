@@ -387,6 +387,55 @@ class AuthorizationPolicy(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Network Security Authorization Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.AuthorizationPolicy("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            action="ALLOW",
+            rules=[gcp.networksecurity.AuthorizationPolicyRuleArgs(
+                sources=[gcp.networksecurity.AuthorizationPolicyRuleSourceArgs(
+                    principals=["namespace/*"],
+                    ip_blocks=["1.2.3.0/24"],
+                )],
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Network Security Authorization Policy Destinations
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.AuthorizationPolicy("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            action="ALLOW",
+            rules=[gcp.networksecurity.AuthorizationPolicyRuleArgs(
+                sources=[gcp.networksecurity.AuthorizationPolicyRuleSourceArgs(
+                    principals=["namespace/*"],
+                    ip_blocks=["1.2.3.0/24"],
+                )],
+                destinations=[gcp.networksecurity.AuthorizationPolicyRuleDestinationArgs(
+                    hosts=["mydomain.*"],
+                    ports=[8080],
+                    methods=["GET"],
+                    http_header_match=gcp.networksecurity.AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs(
+                        header_name=":method",
+                        regex_match="GET",
+                    ),
+                )],
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -430,6 +479,55 @@ class AuthorizationPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Network Security Authorization Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.AuthorizationPolicy("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            action="ALLOW",
+            rules=[gcp.networksecurity.AuthorizationPolicyRuleArgs(
+                sources=[gcp.networksecurity.AuthorizationPolicyRuleSourceArgs(
+                    principals=["namespace/*"],
+                    ip_blocks=["1.2.3.0/24"],
+                )],
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Network Security Authorization Policy Destinations
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.AuthorizationPolicy("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            action="ALLOW",
+            rules=[gcp.networksecurity.AuthorizationPolicyRuleArgs(
+                sources=[gcp.networksecurity.AuthorizationPolicyRuleSourceArgs(
+                    principals=["namespace/*"],
+                    ip_blocks=["1.2.3.0/24"],
+                )],
+                destinations=[gcp.networksecurity.AuthorizationPolicyRuleDestinationArgs(
+                    hosts=["mydomain.*"],
+                    ports=[8080],
+                    methods=["GET"],
+                    http_header_match=gcp.networksecurity.AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs(
+                        header_name=":method",
+                        regex_match="GET",
+                    ),
+                )],
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

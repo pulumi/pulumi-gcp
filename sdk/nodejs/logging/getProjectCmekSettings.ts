@@ -13,6 +13,16 @@ import * as utilities from "../utilities";
  * * [Enable CMEK](https://cloud.google.com/logging/docs/routing/managed-encryption-storage#enable).
  *
  * ## Example Usage
+ * ### Logging Project Cmek Settings Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cmekSettings = gcp.logging.getProjectCmekSettings({
+ *     project: "my-project-name",
+ * });
+ * ```
  */
 export function getProjectCmekSettings(args: GetProjectCmekSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectCmekSettingsResult> {
 
@@ -89,6 +99,16 @@ export interface GetProjectCmekSettingsResult {
  * * [Enable CMEK](https://cloud.google.com/logging/docs/routing/managed-encryption-storage#enable).
  *
  * ## Example Usage
+ * ### Logging Project Cmek Settings Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cmekSettings = gcp.logging.getProjectCmekSettings({
+ *     project: "my-project-name",
+ * });
+ * ```
  */
 export function getProjectCmekSettingsOutput(args: GetProjectCmekSettingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectCmekSettingsResult> {
     return pulumi.output(args).apply((a: any) => getProjectCmekSettings(a, opts))

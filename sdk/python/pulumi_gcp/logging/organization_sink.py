@@ -472,6 +472,24 @@ class OrganizationSink(pulumi.CustomResource):
         * How-to Guides
             * [Exporting Logs](https://cloud.google.com/logging/docs/export)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        log_bucket = gcp.storage.Bucket("log-bucket", location="US")
+        my_sink = gcp.logging.OrganizationSink("my-sink",
+            description="some explanation on what this is",
+            org_id="123456789",
+            destination=log_bucket.name.apply(lambda name: f"storage.googleapis.com/{name}"),
+            filter="resource.type = gce_instance AND severity >= WARNING")
+        log_writer = gcp.projects.IAMMember("log-writer",
+            project="your-project-id",
+            role="roles/storage.objectCreator",
+            member=my_sink.writer_identity)
+        ```
+
         ## Import
 
         Organization-level logging sinks can be imported using this format:
@@ -514,6 +532,24 @@ class OrganizationSink(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations.sinks)
         * How-to Guides
             * [Exporting Logs](https://cloud.google.com/logging/docs/export)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        log_bucket = gcp.storage.Bucket("log-bucket", location="US")
+        my_sink = gcp.logging.OrganizationSink("my-sink",
+            description="some explanation on what this is",
+            org_id="123456789",
+            destination=log_bucket.name.apply(lambda name: f"storage.googleapis.com/{name}"),
+            filter="resource.type = gce_instance AND severity >= WARNING")
+        log_writer = gcp.projects.IAMMember("log-writer",
+            project="your-project-id",
+            role="roles/storage.objectCreator",
+            member=my_sink.writer_identity)
+        ```
 
         ## Import
 

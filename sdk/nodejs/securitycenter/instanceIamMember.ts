@@ -16,6 +16,117 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
  *
  * ## Example Usage
+ * ### Data Fusion Instance Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basicInstance = new gcp.datafusion.Instance("basicInstance", {
+ *     region: "us-central1",
+ *     type: "BASIC",
+ * });
+ * ```
+ * ### Data Fusion Instance Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default = gcp.appengine.getDefaultServiceAccount({});
+ * const network = new gcp.compute.Network("network", {});
+ * const privateIpAlloc = new gcp.compute.GlobalAddress("privateIpAlloc", {
+ *     addressType: "INTERNAL",
+ *     purpose: "VPC_PEERING",
+ *     prefixLength: 22,
+ *     network: network.id,
+ * });
+ * const extendedInstance = new gcp.datafusion.Instance("extendedInstance", {
+ *     description: "My Data Fusion instance",
+ *     displayName: "My Data Fusion instance",
+ *     region: "us-central1",
+ *     type: "BASIC",
+ *     enableStackdriverLogging: true,
+ *     enableStackdriverMonitoring: true,
+ *     privateInstance: true,
+ *     dataprocServiceAccount: _default.then(_default => _default.email),
+ *     labels: {
+ *         example_key: "example_value",
+ *     },
+ *     networkConfig: {
+ *         network: "default",
+ *         ipAllocation: pulumi.interpolate`${privateIpAlloc.address}/${privateIpAlloc.prefixLength}`,
+ *     },
+ *     accelerators: [{
+ *         acceleratorType: "CDC",
+ *         state: "ENABLED",
+ *     }],
+ * });
+ * ```
+ * ### Data Fusion Instance Cmek
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "us-central1"});
+ * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {keyRing: keyRing.id});
+ * const project = gcp.organizations.getProject({});
+ * const cryptoKeyBinding = new gcp.kms.CryptoKeyIAMBinding("cryptoKeyBinding", {
+ *     cryptoKeyId: cryptoKey.id,
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     members: [project.then(project => `serviceAccount:service-${project.number}@gcp-sa-datafusion.iam.gserviceaccount.com`)],
+ * });
+ * const cmek = new gcp.datafusion.Instance("cmek", {
+ *     region: "us-central1",
+ *     type: "BASIC",
+ *     cryptoKeyConfig: {
+ *         keyReference: cryptoKey.id,
+ *     },
+ * }, {
+ *     dependsOn: [cryptoKeyBinding],
+ * });
+ * ```
+ * ### Data Fusion Instance Enterprise
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const enterpriseInstance = new gcp.datafusion.Instance("enterpriseInstance", {
+ *     enableRbac: true,
+ *     region: "us-central1",
+ *     type: "ENTERPRISE",
+ * });
+ * ```
+ * ### Data Fusion Instance Event
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const eventTopic = new gcp.pubsub.Topic("eventTopic", {});
+ * const eventInstance = new gcp.datafusion.Instance("eventInstance", {
+ *     region: "us-central1",
+ *     type: "BASIC",
+ *     eventPublishConfig: {
+ *         enabled: true,
+ *         topic: eventTopic.id,
+ *     },
+ * });
+ * ```
+ * ### Data Fusion Instance Zone
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const zone = new gcp.datafusion.Instance("zone", {
+ *     region: "us-central1",
+ *     type: "DEVELOPER",
+ *     zone: "us-central1-a",
+ * });
+ * ```
  *
  * ## Import
  *

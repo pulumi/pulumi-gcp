@@ -19,6 +19,52 @@ namespace Pulumi.Gcp.ApiGateway
     ///     * [Official Documentation](https://cloud.google.com/api-gateway/docs/creating-api-config)
     /// 
     /// ## Example Usage
+    /// ### Apigateway Api Config Basic
+    /// 
+    /// ```csharp
+    /// using System;
+    /// using System.Collections.Generic;
+    /// using System.IO;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// 	private static string ReadFileBase64(string path) {
+    /// 		return Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(File.ReadAllText(path)));
+    /// 	}
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var apiCfgApi = new Gcp.ApiGateway.Api("apiCfgApi", new()
+    ///     {
+    ///         ApiId = "my-api",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var apiCfgApiConfig = new Gcp.ApiGateway.ApiConfig("apiCfgApiConfig", new()
+    ///     {
+    ///         Api = apiCfgApi.ApiId,
+    ///         ApiConfigId = "my-config",
+    ///         OpenapiDocuments = new[]
+    ///         {
+    ///             new Gcp.ApiGateway.Inputs.ApiConfigOpenapiDocumentArgs
+    ///             {
+    ///                 Document = new Gcp.ApiGateway.Inputs.ApiConfigOpenapiDocumentDocumentArgs
+    ///                 {
+    ///                     Path = "spec.yaml",
+    ///                     Contents = ReadFileBase64("test-fixtures/openapi.yaml"),
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

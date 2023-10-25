@@ -16,6 +16,26 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// For more information see the [official documentation](https://cloud.google.com/vpc/docs/firewall-policies)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.FirewallPolicy("default", new()
+    ///     {
+    ///         Description = "Example Resource",
+    ///         Parent = "organizations/12345",
+    ///         ShortName = "my-policy",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// FirewallPolicy can be imported using any of these accepted formats

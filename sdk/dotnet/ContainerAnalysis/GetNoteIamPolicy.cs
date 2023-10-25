@@ -13,12 +13,54 @@ namespace Pulumi.Gcp.ContainerAnalysis
     {
         /// <summary>
         /// Retrieves the current IAM policy data for note
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.ContainerAnalysis.GetNoteIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_container_analysis_note.Note.Project,
+        ///         Note = google_container_analysis_note.Note.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetNoteIamPolicyResult> InvokeAsync(GetNoteIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNoteIamPolicyResult>("gcp:containeranalysis/getNoteIamPolicy:getNoteIamPolicy", args ?? new GetNoteIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for note
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.ContainerAnalysis.GetNoteIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_container_analysis_note.Note.Project,
+        ///         Note = google_container_analysis_note.Note.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetNoteIamPolicyResult> Invoke(GetNoteIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNoteIamPolicyResult>("gcp:containeranalysis/getNoteIamPolicy:getNoteIamPolicy", args ?? new GetNoteIamPolicyInvokeArgs(), options.WithDefaults());

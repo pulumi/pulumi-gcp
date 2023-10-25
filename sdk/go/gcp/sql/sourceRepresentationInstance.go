@@ -24,6 +24,68 @@ import (
 // Read more about sensitive data in state.
 //
 // ## Example Usage
+// ### Sql Source Representation Instance Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sql.NewSourceRepresentationInstance(ctx, "instance", &sql.SourceRepresentationInstanceArgs{
+//				DatabaseVersion: pulumi.String("MYSQL_8_0"),
+//				DumpFilePath:    pulumi.String("gs://replica-bucket/source-database.sql.gz"),
+//				Host:            pulumi.String("10.20.30.40"),
+//				Password:        pulumi.String("password-for-the-user"),
+//				Port:            pulumi.Int(3306),
+//				Region:          pulumi.String("us-central1"),
+//				Username:        pulumi.String("some-user"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Sql Source Representation Instance Postgres
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sql.NewSourceRepresentationInstance(ctx, "instance", &sql.SourceRepresentationInstanceArgs{
+//				DatabaseVersion: pulumi.String("POSTGRES_9_6"),
+//				DumpFilePath:    pulumi.String("gs://replica-bucket/source-database.sql.gz"),
+//				Host:            pulumi.String("10.20.30.40"),
+//				Password:        pulumi.String("password-for-the-user"),
+//				Port:            pulumi.Int(3306),
+//				Region:          pulumi.String("us-central1"),
+//				Username:        pulumi.String("some-user"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

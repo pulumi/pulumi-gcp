@@ -15,6 +15,28 @@ namespace Pulumi.Gcp.PubSub
         /// Get information about a Google Cloud Pub/Sub Topic. For more information see
         /// the [official documentation](https://cloud.google.com/pubsub/docs/)
         /// and [API](https://cloud.google.com/pubsub/docs/apis).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_pubsub_topic = Gcp.PubSub.GetTopic.Invoke(new()
+        ///     {
+        ///         Name = "my-pubsub-topic",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTopicResult> InvokeAsync(GetTopicArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTopicResult>("gcp:pubsub/getTopic:getTopic", args ?? new GetTopicArgs(), options.WithDefaults());
@@ -23,6 +45,28 @@ namespace Pulumi.Gcp.PubSub
         /// Get information about a Google Cloud Pub/Sub Topic. For more information see
         /// the [official documentation](https://cloud.google.com/pubsub/docs/)
         /// and [API](https://cloud.google.com/pubsub/docs/apis).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_pubsub_topic = Gcp.PubSub.GetTopic.Invoke(new()
+        ///     {
+        ///         Name = "my-pubsub-topic",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetTopicResult> Invoke(GetTopicInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTopicResult>("gcp:pubsub/getTopic:getTopic", args ?? new GetTopicInvokeArgs(), options.WithDefaults());

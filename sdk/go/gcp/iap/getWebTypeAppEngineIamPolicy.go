@@ -13,6 +13,33 @@ import (
 )
 
 // Retrieves the current IAM policy data for webtypeappengine
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := iap.GetWebTypeAppEngineIamPolicy(ctx, &iap.GetWebTypeAppEngineIamPolicyArgs{
+//				Project: pulumi.StringRef(google_app_engine_application.App.Project),
+//				AppId:   google_app_engine_application.App.App_id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetWebTypeAppEngineIamPolicy(ctx *pulumi.Context, args *GetWebTypeAppEngineIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetWebTypeAppEngineIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetWebTypeAppEngineIamPolicyResult

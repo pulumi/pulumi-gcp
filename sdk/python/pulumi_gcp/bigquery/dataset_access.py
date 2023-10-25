@@ -609,6 +609,103 @@ class DatasetAccess(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Bigquery Dataset Access Basic User
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
+        bqowner = gcp.service_account.Account("bqowner", account_id="bqowner")
+        access = gcp.bigquery.DatasetAccess("access",
+            dataset_id=dataset.dataset_id,
+            role="OWNER",
+            user_by_email=bqowner.email)
+        ```
+        ### Bigquery Dataset Access View
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        private = gcp.bigquery.Dataset("private", dataset_id="example_dataset")
+        public_dataset = gcp.bigquery.Dataset("publicDataset", dataset_id="example_dataset2")
+        public_table = gcp.bigquery.Table("publicTable",
+            deletion_protection=False,
+            dataset_id=public_dataset.dataset_id,
+            table_id="example_table",
+            view=gcp.bigquery.TableViewArgs(
+                query="SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
+                use_legacy_sql=False,
+            ))
+        access = gcp.bigquery.DatasetAccess("access",
+            dataset_id=private.dataset_id,
+            view=gcp.bigquery.DatasetAccessViewArgs(
+                project_id=public_table.project,
+                dataset_id=public_dataset.dataset_id,
+                table_id=public_table.table_id,
+            ))
+        ```
+        ### Bigquery Dataset Access Authorized Dataset
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        private = gcp.bigquery.Dataset("private", dataset_id="private")
+        public = gcp.bigquery.Dataset("public", dataset_id="public")
+        access = gcp.bigquery.DatasetAccess("access",
+            dataset_id=private.dataset_id,
+            authorized_dataset=gcp.bigquery.DatasetAccessAuthorizedDatasetArgs(
+                dataset=gcp.bigquery.DatasetAccessAuthorizedDatasetDatasetArgs(
+                    project_id=public.project,
+                    dataset_id=public.dataset_id,
+                ),
+                target_types=["VIEWS"],
+            ))
+        ```
+        ### Bigquery Dataset Access Authorized Routine
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        public_dataset = gcp.bigquery.Dataset("publicDataset",
+            dataset_id="public_dataset",
+            description="This dataset is public")
+        public_routine = gcp.bigquery.Routine("publicRoutine",
+            dataset_id=public_dataset.dataset_id,
+            routine_id="public_routine",
+            routine_type="TABLE_VALUED_FUNCTION",
+            language="SQL",
+            definition_body="SELECT 1 + value AS value\\n",
+            arguments=[gcp.bigquery.RoutineArgumentArgs(
+                name="value",
+                argument_kind="FIXED_TYPE",
+                data_type=json.dumps({
+                    "typeKind": "INT64",
+                }),
+            )],
+            return_table_type=json.dumps({
+                "columns": [{
+                    "name": "value",
+                    "type": {
+                        "typeKind": "INT64",
+                    },
+                }],
+            }))
+        private = gcp.bigquery.Dataset("private",
+            dataset_id="private_dataset",
+            description="This dataset is private")
+        authorized_routine = gcp.bigquery.DatasetAccess("authorizedRoutine",
+            dataset_id=private.dataset_id,
+            routine=gcp.bigquery.DatasetAccessRoutineArgs(
+                project_id=public_routine.project,
+                dataset_id=public_routine.dataset_id,
+                routine_id=public_routine.routine_id,
+            ))
+        ```
 
         ## Import
 
@@ -661,6 +758,103 @@ class DatasetAccess(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Bigquery Dataset Access Basic User
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
+        bqowner = gcp.service_account.Account("bqowner", account_id="bqowner")
+        access = gcp.bigquery.DatasetAccess("access",
+            dataset_id=dataset.dataset_id,
+            role="OWNER",
+            user_by_email=bqowner.email)
+        ```
+        ### Bigquery Dataset Access View
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        private = gcp.bigquery.Dataset("private", dataset_id="example_dataset")
+        public_dataset = gcp.bigquery.Dataset("publicDataset", dataset_id="example_dataset2")
+        public_table = gcp.bigquery.Table("publicTable",
+            deletion_protection=False,
+            dataset_id=public_dataset.dataset_id,
+            table_id="example_table",
+            view=gcp.bigquery.TableViewArgs(
+                query="SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
+                use_legacy_sql=False,
+            ))
+        access = gcp.bigquery.DatasetAccess("access",
+            dataset_id=private.dataset_id,
+            view=gcp.bigquery.DatasetAccessViewArgs(
+                project_id=public_table.project,
+                dataset_id=public_dataset.dataset_id,
+                table_id=public_table.table_id,
+            ))
+        ```
+        ### Bigquery Dataset Access Authorized Dataset
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        private = gcp.bigquery.Dataset("private", dataset_id="private")
+        public = gcp.bigquery.Dataset("public", dataset_id="public")
+        access = gcp.bigquery.DatasetAccess("access",
+            dataset_id=private.dataset_id,
+            authorized_dataset=gcp.bigquery.DatasetAccessAuthorizedDatasetArgs(
+                dataset=gcp.bigquery.DatasetAccessAuthorizedDatasetDatasetArgs(
+                    project_id=public.project,
+                    dataset_id=public.dataset_id,
+                ),
+                target_types=["VIEWS"],
+            ))
+        ```
+        ### Bigquery Dataset Access Authorized Routine
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        public_dataset = gcp.bigquery.Dataset("publicDataset",
+            dataset_id="public_dataset",
+            description="This dataset is public")
+        public_routine = gcp.bigquery.Routine("publicRoutine",
+            dataset_id=public_dataset.dataset_id,
+            routine_id="public_routine",
+            routine_type="TABLE_VALUED_FUNCTION",
+            language="SQL",
+            definition_body="SELECT 1 + value AS value\\n",
+            arguments=[gcp.bigquery.RoutineArgumentArgs(
+                name="value",
+                argument_kind="FIXED_TYPE",
+                data_type=json.dumps({
+                    "typeKind": "INT64",
+                }),
+            )],
+            return_table_type=json.dumps({
+                "columns": [{
+                    "name": "value",
+                    "type": {
+                        "typeKind": "INT64",
+                    },
+                }],
+            }))
+        private = gcp.bigquery.Dataset("private",
+            dataset_id="private_dataset",
+            description="This dataset is private")
+        authorized_routine = gcp.bigquery.DatasetAccess("authorizedRoutine",
+            dataset_id=private.dataset_id,
+            routine=gcp.bigquery.DatasetAccessRoutineArgs(
+                project_id=public_routine.project,
+                dataset_id=public_routine.dataset_id,
+                routine_id=public_routine.routine_id,
+            ))
+        ```
 
         ## Import
 

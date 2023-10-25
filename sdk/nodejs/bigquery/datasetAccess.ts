@@ -8,6 +8,110 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### Bigquery Dataset Access Basic User
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataset = new gcp.bigquery.Dataset("dataset", {datasetId: "example_dataset"});
+ * const bqowner = new gcp.serviceaccount.Account("bqowner", {accountId: "bqowner"});
+ * const access = new gcp.bigquery.DatasetAccess("access", {
+ *     datasetId: dataset.datasetId,
+ *     role: "OWNER",
+ *     userByEmail: bqowner.email,
+ * });
+ * ```
+ * ### Bigquery Dataset Access View
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _private = new gcp.bigquery.Dataset("private", {datasetId: "example_dataset"});
+ * const publicDataset = new gcp.bigquery.Dataset("publicDataset", {datasetId: "example_dataset2"});
+ * const publicTable = new gcp.bigquery.Table("publicTable", {
+ *     deletionProtection: false,
+ *     datasetId: publicDataset.datasetId,
+ *     tableId: "example_table",
+ *     view: {
+ *         query: "SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
+ *         useLegacySql: false,
+ *     },
+ * });
+ * const access = new gcp.bigquery.DatasetAccess("access", {
+ *     datasetId: _private.datasetId,
+ *     view: {
+ *         projectId: publicTable.project,
+ *         datasetId: publicDataset.datasetId,
+ *         tableId: publicTable.tableId,
+ *     },
+ * });
+ * ```
+ * ### Bigquery Dataset Access Authorized Dataset
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _private = new gcp.bigquery.Dataset("private", {datasetId: "private"});
+ * const _public = new gcp.bigquery.Dataset("public", {datasetId: "public"});
+ * const access = new gcp.bigquery.DatasetAccess("access", {
+ *     datasetId: _private.datasetId,
+ *     authorizedDataset: {
+ *         dataset: {
+ *             projectId: _public.project,
+ *             datasetId: _public.datasetId,
+ *         },
+ *         targetTypes: ["VIEWS"],
+ *     },
+ * });
+ * ```
+ * ### Bigquery Dataset Access Authorized Routine
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const publicDataset = new gcp.bigquery.Dataset("publicDataset", {
+ *     datasetId: "public_dataset",
+ *     description: "This dataset is public",
+ * });
+ * const publicRoutine = new gcp.bigquery.Routine("publicRoutine", {
+ *     datasetId: publicDataset.datasetId,
+ *     routineId: "public_routine",
+ *     routineType: "TABLE_VALUED_FUNCTION",
+ *     language: "SQL",
+ *     definitionBody: "SELECT 1 + value AS value\n",
+ *     arguments: [{
+ *         name: "value",
+ *         argumentKind: "FIXED_TYPE",
+ *         dataType: JSON.stringify({
+ *             typeKind: "INT64",
+ *         }),
+ *     }],
+ *     returnTableType: JSON.stringify({
+ *         columns: [{
+ *             name: "value",
+ *             type: {
+ *                 typeKind: "INT64",
+ *             },
+ *         }],
+ *     }),
+ * });
+ * const _private = new gcp.bigquery.Dataset("private", {
+ *     datasetId: "private_dataset",
+ *     description: "This dataset is private",
+ * });
+ * const authorizedRoutine = new gcp.bigquery.DatasetAccess("authorizedRoutine", {
+ *     datasetId: _private.datasetId,
+ *     routine: {
+ *         projectId: publicRoutine.project,
+ *         datasetId: publicRoutine.datasetId,
+ *         routineId: publicRoutine.routineId,
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

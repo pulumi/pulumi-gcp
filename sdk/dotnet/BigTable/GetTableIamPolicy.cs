@@ -13,12 +13,50 @@ namespace Pulumi.Gcp.BigTable
     {
         /// <summary>
         /// Retrieves the current IAM policy data for a Bigtable Table.
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.BigTable.GetTableIamPolicy.Invoke(new()
+        ///     {
+        ///         Instance = google_bigtable_instance.Instance.Name,
+        ///         Table = google_bigtable_table.Table.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetTableIamPolicyResult> InvokeAsync(GetTableIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTableIamPolicyResult>("gcp:bigtable/getTableIamPolicy:getTableIamPolicy", args ?? new GetTableIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for a Bigtable Table.
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.BigTable.GetTableIamPolicy.Invoke(new()
+        ///     {
+        ///         Instance = google_bigtable_instance.Instance.Name,
+        ///         Table = google_bigtable_table.Table.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetTableIamPolicyResult> Invoke(GetTableIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTableIamPolicyResult>("gcp:bigtable/getTableIamPolicy:getTableIamPolicy", args ?? new GetTableIamPolicyInvokeArgs(), options.WithDefaults());

@@ -13,6 +13,83 @@ namespace Pulumi.Gcp.Eventarc
     /// The Eventarc Trigger resource
     /// 
     /// ## Example Usage
+    /// ### Basic
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRun.Service("default", new()
+    ///     {
+    ///         Location = "europe-west1",
+    ///         Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
+    ///         {
+    ///             Namespace = "my-project-name",
+    ///         },
+    ///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+    ///             {
+    ///                 Containers = new[]
+    ///                 {
+    ///                     new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+    ///                     {
+    ///                         Image = "gcr.io/cloudrun/hello",
+    ///                         Ports = new[]
+    ///                         {
+    ///                             new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerPortArgs
+    ///                             {
+    ///                                 ContainerPort = 8080,
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 ContainerConcurrency = 50,
+    ///                 TimeoutSeconds = 100,
+    ///             },
+    ///         },
+    ///         Traffics = new[]
+    ///         {
+    ///             new Gcp.CloudRun.Inputs.ServiceTrafficArgs
+    ///             {
+    ///                 Percent = 100,
+    ///                 LatestRevision = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Eventarc.Trigger("primary", new()
+    ///     {
+    ///         Location = "europe-west1",
+    ///         MatchingCriterias = new[]
+    ///         {
+    ///             new Gcp.Eventarc.Inputs.TriggerMatchingCriteriaArgs
+    ///             {
+    ///                 Attribute = "type",
+    ///                 Value = "google.cloud.pubsub.topic.v1.messagePublished",
+    ///             },
+    ///         },
+    ///         Destination = new Gcp.Eventarc.Inputs.TriggerDestinationArgs
+    ///         {
+    ///             CloudRunService = new Gcp.Eventarc.Inputs.TriggerDestinationCloudRunServiceArgs
+    ///             {
+    ///                 Service = @default.Name,
+    ///                 Region = "europe-west1",
+    ///             },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
+    /// 
+    ///     var foo = new Gcp.PubSub.Topic("foo");
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

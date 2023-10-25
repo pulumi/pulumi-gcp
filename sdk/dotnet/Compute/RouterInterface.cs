@@ -15,6 +15,27 @@ namespace Pulumi.Gcp.Compute
     /// and
     /// [API](https://cloud.google.com/compute/docs/reference/latest/routers).
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new Gcp.Compute.RouterInterface("foobar", new()
+    ///     {
+    ///         IpRange = "169.254.1.1/30",
+    ///         Region = "us-central1",
+    ///         Router = "router-1",
+    ///         VpnTunnel = "tunnel-1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Router interfaces can be imported using the `project` (optional), `region`, `router`, and `name`, e.g.

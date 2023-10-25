@@ -74,6 +74,15 @@ def get_folders(parent_id: Optional[str] = None,
     for more details.
 
     ## Example Usage
+    ### Searching For Folders At The Root Of An Org
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_org_folders = gcp.organizations.get_folders(parent_id=f"organizations/{var['organization_id']}")
+    first_folder = gcp.organizations.get_folder(folder=my_org_folders.folders[0].name)
+    ```
 
 
     :param str parent_id: A string parent as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list#query-parameters).
@@ -98,6 +107,15 @@ def get_folders_output(parent_id: Optional[pulumi.Input[str]] = None,
     for more details.
 
     ## Example Usage
+    ### Searching For Folders At The Root Of An Org
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_org_folders = gcp.organizations.get_folders(parent_id=f"organizations/{var['organization_id']}")
+    first_folder = gcp.organizations.get_folder(folder=my_org_folders.folders[0].name)
+    ```
 
 
     :param str parent_id: A string parent as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list#query-parameters).

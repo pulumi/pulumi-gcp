@@ -1060,6 +1060,51 @@ class Firewall(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vpc/docs/firewalls)
 
         ## Example Usage
+        ### Firewall Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork")
+        default_firewall = gcp.compute.Firewall("defaultFirewall",
+            network=default_network.name,
+            allows=[
+                gcp.compute.FirewallAllowArgs(
+                    protocol="icmp",
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                    ports=[
+                        "80",
+                        "8080",
+                        "1000-2000",
+                    ],
+                ),
+            ],
+            source_tags=["web"])
+        ```
+        ### Firewall With Target Tags
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        rules = gcp.compute.Firewall("rules",
+            allows=[gcp.compute.FirewallAllowArgs(
+                ports=[
+                    "80",
+                    "8080",
+                    "1000-2000",
+                ],
+                protocol="tcp",
+            )],
+            description="Creates firewall rule targeting tagged instances",
+            network="default",
+            project="my-project-name",
+            source_tags=["foo"],
+            target_tags=["web"])
+        ```
 
         ## Import
 
@@ -1192,6 +1237,51 @@ class Firewall(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vpc/docs/firewalls)
 
         ## Example Usage
+        ### Firewall Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork")
+        default_firewall = gcp.compute.Firewall("defaultFirewall",
+            network=default_network.name,
+            allows=[
+                gcp.compute.FirewallAllowArgs(
+                    protocol="icmp",
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                    ports=[
+                        "80",
+                        "8080",
+                        "1000-2000",
+                    ],
+                ),
+            ],
+            source_tags=["web"])
+        ```
+        ### Firewall With Target Tags
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        rules = gcp.compute.Firewall("rules",
+            allows=[gcp.compute.FirewallAllowArgs(
+                ports=[
+                    "80",
+                    "8080",
+                    "1000-2000",
+                ],
+                protocol="tcp",
+            )],
+            description="Creates firewall rule targeting tagged instances",
+            network="default",
+            project="my-project-name",
+            source_tags=["foo"],
+            target_tags=["web"])
+        ```
 
         ## Import
 

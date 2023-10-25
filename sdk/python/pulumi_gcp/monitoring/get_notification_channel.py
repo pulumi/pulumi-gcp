@@ -183,6 +183,30 @@ def get_notification_channel(display_name: Optional[str] = None,
         * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
     ## Example Usage
+    ### Notification Channel Basic
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    basic = gcp.monitoring.get_notification_channel(display_name="Test Notification Channel")
+    alert_policy = gcp.monitoring.AlertPolicy("alertPolicy",
+        display_name="My Alert Policy",
+        notification_channels=[basic.name],
+        combiner="OR",
+        conditions=[gcp.monitoring.AlertPolicyConditionArgs(
+            display_name="test condition",
+            condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArgs(
+                filter="metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
+                duration="60s",
+                comparison="COMPARISON_GT",
+                aggregations=[gcp.monitoring.AlertPolicyConditionConditionThresholdAggregationArgs(
+                    alignment_period="60s",
+                    per_series_aligner="ALIGN_RATE",
+                )],
+            ),
+        )])
+    ```
 
 
     :param str display_name: The display name for this notification channel.
@@ -242,6 +266,30 @@ def get_notification_channel_output(display_name: Optional[pulumi.Input[Optional
         * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
     ## Example Usage
+    ### Notification Channel Basic
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    basic = gcp.monitoring.get_notification_channel(display_name="Test Notification Channel")
+    alert_policy = gcp.monitoring.AlertPolicy("alertPolicy",
+        display_name="My Alert Policy",
+        notification_channels=[basic.name],
+        combiner="OR",
+        conditions=[gcp.monitoring.AlertPolicyConditionArgs(
+            display_name="test condition",
+            condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArgs(
+                filter="metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
+                duration="60s",
+                comparison="COMPARISON_GT",
+                aggregations=[gcp.monitoring.AlertPolicyConditionConditionThresholdAggregationArgs(
+                    alignment_period="60s",
+                    per_series_aligner="ALIGN_RATE",
+                )],
+            ),
+        )])
+    ```
 
 
     :param str display_name: The display name for this notification channel.

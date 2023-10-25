@@ -103,6 +103,17 @@ def get_runtime_iam_policy(location: Optional[str] = None,
     """
     Retrieves the current IAM policy data for runtime
 
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.notebooks.get_runtime_iam_policy(project=google_notebooks_runtime["runtime"]["project"],
+        location=google_notebooks_runtime["runtime"]["location"],
+        runtime_name=google_notebooks_runtime["runtime"]["name"])
+    ```
+
 
     :param str location: A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
     :param str project: The ID of the project in which the resource belongs.
@@ -132,6 +143,17 @@ def get_runtime_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRuntimeIamPolicyResult]:
     """
     Retrieves the current IAM policy data for runtime
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.notebooks.get_runtime_iam_policy(project=google_notebooks_runtime["runtime"]["project"],
+        location=google_notebooks_runtime["runtime"]["location"],
+        runtime_name=google_notebooks_runtime["runtime"]["name"])
+    ```
 
 
     :param str location: A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to

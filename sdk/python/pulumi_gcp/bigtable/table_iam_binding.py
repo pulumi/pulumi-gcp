@@ -356,6 +356,49 @@ class TableIamBinding(pulumi.CustomResource):
 
         > **Note:** `bigtable.TableIamBinding` resources **can be** used in conjunction with `bigtable.TableIamMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\\_bigtable\\_table\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/bigtable.user",
+            members=["user:jane@example.com"],
+        )])
+        editor = gcp.bigtable.TableIamPolicy("editor",
+            project="your-project",
+            instance="your-bigtable-instance",
+            table="your-bigtable-table",
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_bigtable\\_table\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        editor = gcp.bigtable.TableIamBinding("editor",
+            instance="your-bigtable-instance",
+            members=["user:jane@example.com"],
+            role="roles/bigtable.user",
+            table="your-bigtable-table")
+        ```
+
+        ## google\\_bigtable\\_table\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        editor = gcp.bigtable.TableIamMember("editor",
+            instance="your-bigtable-instance",
+            member="user:jane@example.com",
+            role="roles/bigtable.user",
+            table="your-bigtable-table")
+        ```
+
         ## Import
 
         Table IAM resources can be imported using the project, table name, role and/or member.
@@ -415,6 +458,49 @@ class TableIamBinding(pulumi.CustomResource):
         > **Note:** `bigtable.TableIamPolicy` **cannot** be used in conjunction with `bigtable.TableIamBinding` and `bigtable.TableIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the table as `bigtable.TableIamPolicy` replaces the entire policy.
 
         > **Note:** `bigtable.TableIamBinding` resources **can be** used in conjunction with `bigtable.TableIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_bigtable\\_table\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/bigtable.user",
+            members=["user:jane@example.com"],
+        )])
+        editor = gcp.bigtable.TableIamPolicy("editor",
+            project="your-project",
+            instance="your-bigtable-instance",
+            table="your-bigtable-table",
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_bigtable\\_table\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        editor = gcp.bigtable.TableIamBinding("editor",
+            instance="your-bigtable-instance",
+            members=["user:jane@example.com"],
+            role="roles/bigtable.user",
+            table="your-bigtable-table")
+        ```
+
+        ## google\\_bigtable\\_table\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        editor = gcp.bigtable.TableIamMember("editor",
+            instance="your-bigtable-instance",
+            member="user:jane@example.com",
+            role="roles/bigtable.user",
+            table="your-bigtable-table")
+        ```
 
         ## Import
 

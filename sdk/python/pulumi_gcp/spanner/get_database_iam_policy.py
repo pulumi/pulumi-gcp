@@ -102,6 +102,17 @@ def get_database_iam_policy(database: Optional[str] = None,
     """
     Retrieves the current IAM policy data for a Spanner database.
 
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.spanner.get_database_iam_policy(project=google_spanner_database["database"]["project"],
+        database=google_spanner_database["database"]["name"],
+        instance=google_spanner_database["database"]["instance"])
+    ```
+
 
     :param str database: The name of the Spanner database.
     :param str instance: The name of the Spanner instance the database belongs to.
@@ -131,6 +142,17 @@ def get_database_iam_policy_output(database: Optional[pulumi.Input[str]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a Spanner database.
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.spanner.get_database_iam_policy(project=google_spanner_database["database"]["project"],
+        database=google_spanner_database["database"]["name"],
+        instance=google_spanner_database["database"]["instance"])
+    ```
 
 
     :param str database: The name of the Spanner database.

@@ -337,6 +337,16 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
         The Compute NetworkFirewallPolicy resource
 
         ## Example Usage
+        ### Regional
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.compute.RegionNetworkFirewallPolicy("primary",
+            description="Sample regional network firewall policy",
+            project="my-project-name",
+            region="us-west1")
+        ```
 
         ## Import
 
@@ -379,6 +389,16 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
         The Compute NetworkFirewallPolicy resource
 
         ## Example Usage
+        ### Regional
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.compute.RegionNetworkFirewallPolicy("primary",
+            description="Sample regional network firewall policy",
+            project="my-project-name",
+            region="us-west1")
+        ```
 
         ## Import
 

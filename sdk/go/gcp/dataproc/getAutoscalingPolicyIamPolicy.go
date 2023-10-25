@@ -13,6 +13,34 @@ import (
 )
 
 // Retrieves the current IAM policy data for autoscalingpolicy
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataproc.LookupAutoscalingPolicyIamPolicy(ctx, &dataproc.LookupAutoscalingPolicyIamPolicyArgs{
+//				Project:  pulumi.StringRef(google_dataproc_autoscaling_policy.Basic.Project),
+//				Location: pulumi.StringRef(google_dataproc_autoscaling_policy.Basic.Location),
+//				PolicyId: google_dataproc_autoscaling_policy.Basic.Policy_id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupAutoscalingPolicyIamPolicy(ctx *pulumi.Context, args *LookupAutoscalingPolicyIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAutoscalingPolicyIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAutoscalingPolicyIamPolicyResult

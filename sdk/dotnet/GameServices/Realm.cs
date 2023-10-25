@@ -19,6 +19,26 @@ namespace Pulumi.Gcp.GameServices
     ///     * [Official Documentation](https://cloud.google.com/game-servers/docs)
     /// 
     /// ## Example Usage
+    /// ### Game Service Realm Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.GameServices.Realm("default", new()
+    ///     {
+    ///         Description = "one of the nine",
+    ///         Location = "global",
+    ///         RealmId = "tf-test-realm",
+    ///         TimeZone = "EST",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

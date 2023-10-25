@@ -488,6 +488,43 @@ class Note(pulumi.CustomResource):
             * [Creating Attestations (Occurrences)](https://cloud.google.com/binary-authorization/docs/making-attestations)
 
         ## Example Usage
+        ### Container Analysis Note Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
+            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
+                human_readable_name="Attestor Note",
+            ),
+        ))
+        ```
+        ### Container Analysis Note Attestation Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        note = gcp.containeranalysis.Note("note",
+            attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
+                hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
+                    human_readable_name="Attestor Note",
+                ),
+            ),
+            expiration_time="2120-10-02T15:01:23.045123456Z",
+            long_description="a longer description of test note",
+            related_urls=[
+                gcp.containeranalysis.NoteRelatedUrlArgs(
+                    label="foo",
+                    url="some.url",
+                ),
+                gcp.containeranalysis.NoteRelatedUrlArgs(
+                    url="google.com",
+                ),
+            ],
+            short_description="test note")
+        ```
 
         ## Import
 
@@ -545,6 +582,43 @@ class Note(pulumi.CustomResource):
             * [Creating Attestations (Occurrences)](https://cloud.google.com/binary-authorization/docs/making-attestations)
 
         ## Example Usage
+        ### Container Analysis Note Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        note = gcp.containeranalysis.Note("note", attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
+            hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
+                human_readable_name="Attestor Note",
+            ),
+        ))
+        ```
+        ### Container Analysis Note Attestation Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        note = gcp.containeranalysis.Note("note",
+            attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
+                hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
+                    human_readable_name="Attestor Note",
+                ),
+            ),
+            expiration_time="2120-10-02T15:01:23.045123456Z",
+            long_description="a longer description of test note",
+            related_urls=[
+                gcp.containeranalysis.NoteRelatedUrlArgs(
+                    label="foo",
+                    url="some.url",
+                ),
+                gcp.containeranalysis.NoteRelatedUrlArgs(
+                    url="google.com",
+                ),
+            ],
+            short_description="test note")
+        ```
 
         ## Import
 

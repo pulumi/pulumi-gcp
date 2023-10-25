@@ -361,6 +361,26 @@ class GenericService(pulumi.CustomResource):
             * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
         ## Example Usage
+        ### Monitoring Service Example
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_service = gcp.monitoring.GenericService("myService",
+            basic_service=gcp.monitoring.GenericServiceBasicServiceArgs(
+                service_labels={
+                    "moduleId": "another-module-id",
+                },
+                service_type="APP_ENGINE",
+            ),
+            display_name="My Service my-service",
+            service_id="my-service",
+            user_labels={
+                "my_key": "my_value",
+                "my_other_key": "my_other_value",
+            })
+        ```
 
         ## Import
 
@@ -419,6 +439,26 @@ class GenericService(pulumi.CustomResource):
             * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
         ## Example Usage
+        ### Monitoring Service Example
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_service = gcp.monitoring.GenericService("myService",
+            basic_service=gcp.monitoring.GenericServiceBasicServiceArgs(
+                service_labels={
+                    "moduleId": "another-module-id",
+                },
+                service_type="APP_ENGINE",
+            ),
+            display_name="My Service my-service",
+            service_id="my-service",
+            user_labels={
+                "my_key": "my_value",
+                "my_other_key": "my_other_value",
+            })
+        ```
 
         ## Import
 

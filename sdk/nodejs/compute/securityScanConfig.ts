@@ -18,6 +18,23 @@ import * as utilities from "../utilities";
  * > **Warning:** All arguments including `authentication.google_account.password` and `authentication.custom_account.password` will be stored in the raw state as plain-text.
  *
  * ## Example Usage
+ * ### Scan Config Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const scannerStaticIp = new gcp.compute.Address("scannerStaticIp", {}, {
+ *     provider: google_beta,
+ * });
+ * const scan_config = new gcp.compute.SecurityScanConfig("scan-config", {
+ *     displayName: "scan-config",
+ *     startingUrls: [pulumi.interpolate`http://${scannerStaticIp.address}`],
+ *     targetPlatforms: ["COMPUTE"],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

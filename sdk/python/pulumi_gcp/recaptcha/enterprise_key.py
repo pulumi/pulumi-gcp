@@ -391,6 +391,106 @@ class EnterpriseKey(pulumi.CustomResource):
         The RecaptchaEnterprise Key resource
 
         ## Example Usage
+        ### Android_key
+        A basic test of recaptcha enterprise key that can be used by Android apps
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.recaptcha.EnterpriseKey("primary",
+            android_settings=gcp.recaptcha.EnterpriseKeyAndroidSettingsArgs(
+                allow_all_package_names=True,
+                allowed_package_names=[],
+            ),
+            display_name="display-name-one",
+            labels={
+                "label-one": "value-one",
+            },
+            project="my-project-name",
+            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
+                testing_score=0.8,
+            ))
+        ```
+        ### Ios_key
+        A basic test of recaptcha enterprise key that can be used by iOS apps
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.recaptcha.EnterpriseKey("primary",
+            display_name="display-name-one",
+            ios_settings=gcp.recaptcha.EnterpriseKeyIosSettingsArgs(
+                allow_all_bundle_ids=True,
+                allowed_bundle_ids=[],
+            ),
+            labels={
+                "label-one": "value-one",
+            },
+            project="my-project-name",
+            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
+                testing_score=1,
+            ))
+        ```
+        ### Minimal_key
+        A minimal test of recaptcha enterprise key
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.recaptcha.EnterpriseKey("primary",
+            display_name="display-name-one",
+            labels={},
+            project="my-project-name",
+            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
+                allow_all_domains=True,
+                integration_type="SCORE",
+            ))
+        ```
+        ### Web_key
+        A basic test of recaptcha enterprise key that can be used by websites
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.recaptcha.EnterpriseKey("primary",
+            display_name="display-name-one",
+            labels={
+                "label-one": "value-one",
+            },
+            project="my-project-name",
+            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
+                testing_challenge="NOCAPTCHA",
+                testing_score=0.5,
+            ),
+            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
+                allow_all_domains=True,
+                allowed_domains=[],
+                challenge_security_preference="USABILITY",
+                integration_type="CHECKBOX",
+            ))
+        ```
+        ### Web_score_key
+        A basic test of recaptcha enterprise key with score integration type that can be used by websites
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.recaptcha.EnterpriseKey("primary",
+            display_name="display-name-one",
+            labels={
+                "label-one": "value-one",
+            },
+            project="my-project-name",
+            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
+                testing_score=0.5,
+            ),
+            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
+                allow_all_domains=True,
+                allow_amp_traffic=False,
+                allowed_domains=[],
+                integration_type="SCORE",
+            ))
+        ```
 
         ## Import
 
@@ -432,6 +532,106 @@ class EnterpriseKey(pulumi.CustomResource):
         The RecaptchaEnterprise Key resource
 
         ## Example Usage
+        ### Android_key
+        A basic test of recaptcha enterprise key that can be used by Android apps
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.recaptcha.EnterpriseKey("primary",
+            android_settings=gcp.recaptcha.EnterpriseKeyAndroidSettingsArgs(
+                allow_all_package_names=True,
+                allowed_package_names=[],
+            ),
+            display_name="display-name-one",
+            labels={
+                "label-one": "value-one",
+            },
+            project="my-project-name",
+            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
+                testing_score=0.8,
+            ))
+        ```
+        ### Ios_key
+        A basic test of recaptcha enterprise key that can be used by iOS apps
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.recaptcha.EnterpriseKey("primary",
+            display_name="display-name-one",
+            ios_settings=gcp.recaptcha.EnterpriseKeyIosSettingsArgs(
+                allow_all_bundle_ids=True,
+                allowed_bundle_ids=[],
+            ),
+            labels={
+                "label-one": "value-one",
+            },
+            project="my-project-name",
+            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
+                testing_score=1,
+            ))
+        ```
+        ### Minimal_key
+        A minimal test of recaptcha enterprise key
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.recaptcha.EnterpriseKey("primary",
+            display_name="display-name-one",
+            labels={},
+            project="my-project-name",
+            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
+                allow_all_domains=True,
+                integration_type="SCORE",
+            ))
+        ```
+        ### Web_key
+        A basic test of recaptcha enterprise key that can be used by websites
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.recaptcha.EnterpriseKey("primary",
+            display_name="display-name-one",
+            labels={
+                "label-one": "value-one",
+            },
+            project="my-project-name",
+            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
+                testing_challenge="NOCAPTCHA",
+                testing_score=0.5,
+            ),
+            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
+                allow_all_domains=True,
+                allowed_domains=[],
+                challenge_security_preference="USABILITY",
+                integration_type="CHECKBOX",
+            ))
+        ```
+        ### Web_score_key
+        A basic test of recaptcha enterprise key with score integration type that can be used by websites
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.recaptcha.EnterpriseKey("primary",
+            display_name="display-name-one",
+            labels={
+                "label-one": "value-one",
+            },
+            project="my-project-name",
+            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
+                testing_score=0.5,
+            ),
+            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
+                allow_all_domains=True,
+                allow_amp_traffic=False,
+                allowed_domains=[],
+                integration_type="SCORE",
+            ))
+        ```
 
         ## Import
 

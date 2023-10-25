@@ -408,6 +408,41 @@ class InstanceGroup(pulumi.CustomResource):
         and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
 
         ## Example Usage
+        ### Empty Instance Group
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test = gcp.compute.InstanceGroup("test",
+            description="Test instance group",
+            zone="us-central1-a",
+            network=google_compute_network["default"]["id"])
+        ```
+        ### Example Usage - With instances and named ports
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        webservers = gcp.compute.InstanceGroup("webservers",
+            description="Test instance group",
+            instances=[
+                google_compute_instance["test"]["id"],
+                google_compute_instance["test2"]["id"],
+            ],
+            named_ports=[
+                gcp.compute.InstanceGroupNamedPortArgs(
+                    name="http",
+                    port=8080,
+                ),
+                gcp.compute.InstanceGroupNamedPortArgs(
+                    name="https",
+                    port=8443,
+                ),
+            ],
+            zone="us-central1-a")
+        ```
 
         ## Import
 
@@ -459,6 +494,41 @@ class InstanceGroup(pulumi.CustomResource):
         and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
 
         ## Example Usage
+        ### Empty Instance Group
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test = gcp.compute.InstanceGroup("test",
+            description="Test instance group",
+            zone="us-central1-a",
+            network=google_compute_network["default"]["id"])
+        ```
+        ### Example Usage - With instances and named ports
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        webservers = gcp.compute.InstanceGroup("webservers",
+            description="Test instance group",
+            instances=[
+                google_compute_instance["test"]["id"],
+                google_compute_instance["test2"]["id"],
+            ],
+            named_ports=[
+                gcp.compute.InstanceGroupNamedPortArgs(
+                    name="http",
+                    port=8080,
+                ),
+                gcp.compute.InstanceGroupNamedPortArgs(
+                    name="https",
+                    port=8443,
+                ),
+            ],
+            zone="us-central1-a")
+        ```
 
         ## Import
 

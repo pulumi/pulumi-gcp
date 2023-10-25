@@ -20,6 +20,78 @@ namespace Pulumi.Gcp.PubSub
     ///     * [Creating and managing schemas](https://cloud.google.com/pubsub/docs/schemas)
     /// 
     /// ## Example Usage
+    /// ### Pubsub Schema Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.PubSub.Schema("example", new()
+    ///     {
+    ///         Definition = @"{
+    ///   ""type"" : ""record"",
+    ///   ""name"" : ""Avro"",
+    ///   ""fields"" : [
+    ///     {
+    ///       ""name"" : ""StringField"",
+    ///       ""type"" : ""string""
+    ///     },
+    ///     {
+    ///       ""name"" : ""IntField"",
+    ///       ""type"" : ""int""
+    ///     }
+    ///   ]
+    /// }
+    /// 
+    /// ",
+    ///         Type = "AVRO",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Pubsub Schema Protobuf
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleSchema = new Gcp.PubSub.Schema("exampleSchema", new()
+    ///     {
+    ///         Type = "PROTOCOL_BUFFER",
+    ///         Definition = @"syntax = ""proto3"";
+    /// message Results {
+    /// string message_request = 1;
+    /// string message_response = 2;
+    /// string timestamp_request = 3;
+    /// string timestamp_response = 4;
+    /// }",
+    ///     });
+    /// 
+    ///     var exampleTopic = new Gcp.PubSub.Topic("exampleTopic", new()
+    ///     {
+    ///         SchemaSettings = new Gcp.PubSub.Inputs.TopicSchemaSettingsArgs
+    ///         {
+    ///             Schema = "projects/my-project-name/schemas/example",
+    ///             Encoding = "JSON",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             exampleSchema,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

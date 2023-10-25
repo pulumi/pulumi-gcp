@@ -22,6 +22,43 @@ namespace Pulumi.Gcp.Storage
     /// &gt; Want fine-grained control over object ACLs? Use `gcp.storage.ObjectAccessControl` to control individual
     /// role entity pairs.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Create an object ACL with one owner and one reader.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var image_store = new Gcp.Storage.Bucket("image-store", new()
+    ///     {
+    ///         Location = "EU",
+    ///     });
+    /// 
+    ///     var image = new Gcp.Storage.BucketObject("image", new()
+    ///     {
+    ///         Bucket = image_store.Name,
+    ///         Source = new FileAsset("image1.jpg"),
+    ///     });
+    /// 
+    ///     var image_store_acl = new Gcp.Storage.ObjectACL("image-store-acl", new()
+    ///     {
+    ///         Bucket = image_store.Name,
+    ///         Object = image.OutputName,
+    ///         RoleEntities = new[]
+    ///         {
+    ///             "OWNER:user-my.email@gmail.com",
+    ///             "READER:group-mygroup",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource does not support import.

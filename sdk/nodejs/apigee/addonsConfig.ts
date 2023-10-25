@@ -16,6 +16,90 @@ import * as utilities from "../utilities";
  *     * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
  *
  * ## Example Usage
+ * ### Apigee Addons Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const testOrganization = new gcp.apigee.AddonsConfig("testOrganization", {
+ *     addonsConfig: {
+ *         apiSecurityConfig: {
+ *             enabled: true,
+ *         },
+ *         monetizationConfig: {
+ *             enabled: true,
+ *         },
+ *     },
+ *     org: "test_organization",
+ * });
+ * ```
+ * ### Apigee Addons Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const current = gcp.organizations.getClientConfig({});
+ * const apigee = new gcp.projects.Service("apigee", {
+ *     project: current.then(current => current.project),
+ *     service: "apigee.googleapis.com",
+ * });
+ * const compute = new gcp.projects.Service("compute", {
+ *     project: current.then(current => current.project),
+ *     service: "compute.googleapis.com",
+ * });
+ * const servicenetworking = new gcp.projects.Service("servicenetworking", {
+ *     project: current.then(current => current.project),
+ *     service: "servicenetworking.googleapis.com",
+ * });
+ * const apigeeNetwork = new gcp.compute.Network("apigeeNetwork", {project: current.then(current => current.project)}, {
+ *     dependsOn: [compute],
+ * });
+ * const apigeeRange = new gcp.compute.GlobalAddress("apigeeRange", {
+ *     purpose: "VPC_PEERING",
+ *     addressType: "INTERNAL",
+ *     prefixLength: 16,
+ *     network: apigeeNetwork.id,
+ *     project: current.then(current => current.project),
+ * });
+ * const apigeeVpcConnection = new gcp.servicenetworking.Connection("apigeeVpcConnection", {
+ *     network: apigeeNetwork.id,
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [apigeeRange.name],
+ * });
+ * const org = new gcp.apigee.Organization("org", {
+ *     analyticsRegion: "us-central1",
+ *     projectId: current.then(current => current.project),
+ *     authorizedNetwork: apigeeNetwork.id,
+ *     billingType: "EVALUATION",
+ * }, {
+ *     dependsOn: [
+ *         apigeeVpcConnection,
+ *         apigee,
+ *     ],
+ * });
+ * const testOrganization = new gcp.apigee.AddonsConfig("testOrganization", {
+ *     org: org.name,
+ *     addonsConfig: {
+ *         integrationConfig: {
+ *             enabled: true,
+ *         },
+ *         apiSecurityConfig: {
+ *             enabled: true,
+ *         },
+ *         connectorsPlatformConfig: {
+ *             enabled: true,
+ *         },
+ *         monetizationConfig: {
+ *             enabled: true,
+ *         },
+ *         advancedApiOpsConfig: {
+ *             enabled: true,
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

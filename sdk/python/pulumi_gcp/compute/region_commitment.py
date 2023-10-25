@@ -682,6 +682,48 @@ class RegionCommitment(pulumi.CustomResource):
             * [Committed use discounts for Compute Engine](https://cloud.google.com/compute/docs/instances/committed-use-discounts-overview)
 
         ## Example Usage
+        ### Compute Region Commitment Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        foobar = gcp.compute.RegionCommitment("foobar",
+            plan="THIRTY_SIX_MONTH",
+            resources=[
+                gcp.compute.RegionCommitmentResourceArgs(
+                    amount="4",
+                    type="VCPU",
+                ),
+                gcp.compute.RegionCommitmentResourceArgs(
+                    amount="9",
+                    type="MEMORY",
+                ),
+            ])
+        ```
+        ### Compute Region Commitment Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        foobar = gcp.compute.RegionCommitment("foobar",
+            auto_renew=True,
+            category="MACHINE",
+            description="some description",
+            plan="THIRTY_SIX_MONTH",
+            resources=[
+                gcp.compute.RegionCommitmentResourceArgs(
+                    amount="4",
+                    type="VCPU",
+                ),
+                gcp.compute.RegionCommitmentResourceArgs(
+                    amount="9",
+                    type="MEMORY",
+                ),
+            ],
+            type="MEMORY_OPTIMIZED")
+        ```
 
         ## Import
 
@@ -760,6 +802,48 @@ class RegionCommitment(pulumi.CustomResource):
             * [Committed use discounts for Compute Engine](https://cloud.google.com/compute/docs/instances/committed-use-discounts-overview)
 
         ## Example Usage
+        ### Compute Region Commitment Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        foobar = gcp.compute.RegionCommitment("foobar",
+            plan="THIRTY_SIX_MONTH",
+            resources=[
+                gcp.compute.RegionCommitmentResourceArgs(
+                    amount="4",
+                    type="VCPU",
+                ),
+                gcp.compute.RegionCommitmentResourceArgs(
+                    amount="9",
+                    type="MEMORY",
+                ),
+            ])
+        ```
+        ### Compute Region Commitment Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        foobar = gcp.compute.RegionCommitment("foobar",
+            auto_renew=True,
+            category="MACHINE",
+            description="some description",
+            plan="THIRTY_SIX_MONTH",
+            resources=[
+                gcp.compute.RegionCommitmentResourceArgs(
+                    amount="4",
+                    type="VCPU",
+                ),
+                gcp.compute.RegionCommitmentResourceArgs(
+                    amount="9",
+                    type="MEMORY",
+                ),
+            ],
+            type="MEMORY_OPTIMIZED")
+        ```
 
         ## Import
 

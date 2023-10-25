@@ -22,6 +22,397 @@ namespace Pulumi.Gcp.CloudRun
     /// developer experience and broader support of Cloud Run features.
     /// 
     /// ## Example Usage
+    /// ### Cloud Run Service Pubsub
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRun.Service("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+    ///             {
+    ///                 Containers = new[]
+    ///                 {
+    ///                     new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+    ///                     {
+    ///                         Image = "gcr.io/cloudrun/hello",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Traffics = new[]
+    ///         {
+    ///             new Gcp.CloudRun.Inputs.ServiceTrafficArgs
+    ///             {
+    ///                 Percent = 100,
+    ///                 LatestRevision = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
+    ///     {
+    ///         AccountId = "cloud-run-pubsub-invoker",
+    ///         DisplayName = "Cloud Run Pub/Sub Invoker",
+    ///     });
+    /// 
+    ///     var binding = new Gcp.CloudRun.IamBinding("binding", new()
+    ///     {
+    ///         Location = @default.Location,
+    ///         Service = @default.Name,
+    ///         Role = "roles/run.invoker",
+    ///         Members = new[]
+    ///         {
+    ///             sa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///         },
+    ///     });
+    /// 
+    ///     var project = new Gcp.Projects.IAMBinding("project", new()
+    ///     {
+    ///         Role = "roles/iam.serviceAccountTokenCreator",
+    ///         Members = new[]
+    ///         {
+    ///             sa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///         },
+    ///     });
+    /// 
+    ///     var topic = new Gcp.PubSub.Topic("topic");
+    /// 
+    ///     var subscription = new Gcp.PubSub.Subscription("subscription", new()
+    ///     {
+    ///         Topic = topic.Name,
+    ///         PushConfig = new Gcp.PubSub.Inputs.SubscriptionPushConfigArgs
+    ///         {
+    ///             PushEndpoint = @default.Statuses.Apply(statuses =&gt; statuses[0].Url),
+    ///             OidcToken = new Gcp.PubSub.Inputs.SubscriptionPushConfigOidcTokenArgs
+    ///             {
+    ///                 ServiceAccountEmail = sa.Email,
+    ///             },
+    ///             Attributes = 
+    ///             {
+    ///                 { "x-goog-version", "v1" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloud Run Service Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRun.Service("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+    ///             {
+    ///                 Containers = new[]
+    ///                 {
+    ///                     new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+    ///                     {
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Traffics = new[]
+    ///         {
+    ///             new Gcp.CloudRun.Inputs.ServiceTrafficArgs
+    ///             {
+    ///                 LatestRevision = true,
+    ///                 Percent = 100,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloud Run Service Sql
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
+    ///     {
+    ///         Region = "us-east1",
+    ///         DatabaseVersion = "MYSQL_5_7",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-f1-micro",
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.CloudRun.Service("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+    ///             {
+    ///                 Containers = new[]
+    ///                 {
+    ///                     new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+    ///                     {
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Metadata = new Gcp.CloudRun.Inputs.ServiceTemplateMetadataArgs
+    ///             {
+    ///                 Annotations = 
+    ///                 {
+    ///                     { "autoscaling.knative.dev/maxScale", "1000" },
+    ///                     { "run.googleapis.com/cloudsql-instances", instance.ConnectionName },
+    ///                     { "run.googleapis.com/client-name", "demo" },
+    ///                 },
+    ///             },
+    ///         },
+    ///         AutogenerateRevisionName = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloud Run Service Noauth
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRun.Service("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+    ///             {
+    ///                 Containers = new[]
+    ///                 {
+    ///                     new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+    ///                     {
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var noauthIAMPolicy = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/run.invoker",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "allUsers",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var noauthIamPolicy = new Gcp.CloudRun.IamPolicy("noauthIamPolicy", new()
+    ///     {
+    ///         Location = @default.Location,
+    ///         Project = @default.Project,
+    ///         Service = @default.Name,
+    ///         PolicyData = noauthIAMPolicy.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloud Run Service Probes
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRun.Service("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+    ///             {
+    ///                 Containers = new[]
+    ///                 {
+    ///                     new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+    ///                     {
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                         StartupProbe = new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerStartupProbeArgs
+    ///                         {
+    ///                             InitialDelaySeconds = 0,
+    ///                             TimeoutSeconds = 1,
+    ///                             PeriodSeconds = 3,
+    ///                             FailureThreshold = 1,
+    ///                             TcpSocket = new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerStartupProbeTcpSocketArgs
+    ///                             {
+    ///                                 Port = 8080,
+    ///                             },
+    ///                         },
+    ///                         LivenessProbe = new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerLivenessProbeArgs
+    ///                         {
+    ///                             HttpGet = new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerLivenessProbeHttpGetArgs
+    ///                             {
+    ///                                 Path = "/",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Traffics = new[]
+    ///         {
+    ///             new Gcp.CloudRun.Inputs.ServiceTrafficArgs
+    ///             {
+    ///                 Percent = 100,
+    ///                 LatestRevision = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloud Run Service Multicontainer
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRun.Service("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
+    ///         {
+    ///             Annotations = 
+    ///             {
+    ///                 { "run.googleapis.com/launch-stage", "BETA" },
+    ///             },
+    ///         },
+    ///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             Metadata = new Gcp.CloudRun.Inputs.ServiceTemplateMetadataArgs
+    ///             {
+    ///                 Annotations = 
+    ///                 {
+    ///                     { "run.googleapis.com/container-dependencies", JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["hello-1"] = new[]
+    ///                         {
+    ///                             "hello-2",
+    ///                         },
+    ///                     }) },
+    ///                 },
+    ///             },
+    ///             Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+    ///             {
+    ///                 Containers = new[]
+    ///                 {
+    ///                     new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+    ///                     {
+    ///                         Name = "hello-1",
+    ///                         Ports = new[]
+    ///                         {
+    ///                             new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerPortArgs
+    ///                             {
+    ///                                 ContainerPort = 8080,
+    ///                             },
+    ///                         },
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                         VolumeMounts = new[]
+    ///                         {
+    ///                             new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerVolumeMountArgs
+    ///                             {
+    ///                                 Name = "shared-volume",
+    ///                                 MountPath = "/mnt/shared",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+    ///                     {
+    ///                         Name = "hello-2",
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                         Envs = new[]
+    ///                         {
+    ///                             new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerEnvArgs
+    ///                             {
+    ///                                 Name = "PORT",
+    ///                                 Value = "8081",
+    ///                             },
+    ///                         },
+    ///                         StartupProbe = new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerStartupProbeArgs
+    ///                         {
+    ///                             HttpGet = new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerStartupProbeHttpGetArgs
+    ///                             {
+    ///                                 Port = 8081,
+    ///                             },
+    ///                         },
+    ///                         VolumeMounts = new[]
+    ///                         {
+    ///                             new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerVolumeMountArgs
+    ///                             {
+    ///                                 Name = "shared-volume",
+    ///                                 MountPath = "/mnt/shared",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Volumes = new[]
+    ///                 {
+    ///                     new Gcp.CloudRun.Inputs.ServiceTemplateSpecVolumeArgs
+    ///                     {
+    ///                         Name = "shared-volume",
+    ///                         EmptyDir = new Gcp.CloudRun.Inputs.ServiceTemplateSpecVolumeEmptyDirArgs
+    ///                         {
+    ///                             Medium = "Memory",
+    ///                             SizeLimit = "128Mi",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

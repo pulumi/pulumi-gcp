@@ -334,6 +334,33 @@ class Mesh(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Network Services Mesh Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.Mesh("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            interception_port=443,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Network Services Mesh No Port
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.Mesh("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -375,6 +402,33 @@ class Mesh(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Network Services Mesh Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.Mesh("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            interception_port=443,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Network Services Mesh No Port
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.Mesh("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

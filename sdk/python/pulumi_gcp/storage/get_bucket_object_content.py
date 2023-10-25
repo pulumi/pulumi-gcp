@@ -249,6 +249,19 @@ def get_bucket_object_content(bucket: Optional[str] = None,
 
     > **Warning:** The object content will be saved in the state, and visiable to everyone who has access to the state file.
 
+    ## Example Usage
+
+    Example file object  stored within a folder.
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    key = gcp.storage.get_bucket_object_content(name="encryptedkey",
+        bucket="keystore")
+    pulumi.export("encrypted", key.content)
+    ```
+
 
     :param str bucket: The name of the containing bucket.
     :param str content: (Computed) [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object content.
@@ -298,6 +311,19 @@ def get_bucket_object_content_output(bucket: Optional[pulumi.Input[str]] = None,
     [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
 
     > **Warning:** The object content will be saved in the state, and visiable to everyone who has access to the state file.
+
+    ## Example Usage
+
+    Example file object  stored within a folder.
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    key = gcp.storage.get_bucket_object_content(name="encryptedkey",
+        bucket="keystore")
+    pulumi.export("encrypted", key.content)
+    ```
 
 
     :param str bucket: The name of the containing bucket.

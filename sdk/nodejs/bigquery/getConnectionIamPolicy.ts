@@ -6,6 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for connection
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.bigquery.getConnectionIamPolicy({
+ *     project: google_bigquery_connection.connection.project,
+ *     location: google_bigquery_connection.connection.location,
+ *     connectionId: google_bigquery_connection.connection.connection_id,
+ * });
+ * ```
  */
 export function getConnectionIamPolicy(args: GetConnectionIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionIamPolicyResult> {
 
@@ -66,6 +79,19 @@ export interface GetConnectionIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for connection
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.bigquery.getConnectionIamPolicy({
+ *     project: google_bigquery_connection.connection.project,
+ *     location: google_bigquery_connection.connection.location,
+ *     connectionId: google_bigquery_connection.connection.connection_id,
+ * });
+ * ```
  */
 export function getConnectionIamPolicyOutput(args: GetConnectionIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getConnectionIamPolicy(a, opts))

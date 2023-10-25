@@ -23,6 +23,195 @@ namespace Pulumi.Gcp.PubSub
     /// by using the `gcp.projects.ServiceIdentity` resource.
     /// 
     /// ## Example Usage
+    /// ### Pubsub Subscription Push
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleTopic = new Gcp.PubSub.Topic("exampleTopic");
+    /// 
+    ///     var exampleSubscription = new Gcp.PubSub.Subscription("exampleSubscription", new()
+    ///     {
+    ///         Topic = exampleTopic.Name,
+    ///         AckDeadlineSeconds = 20,
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         PushConfig = new Gcp.PubSub.Inputs.SubscriptionPushConfigArgs
+    ///         {
+    ///             PushEndpoint = "https://example.com/push",
+    ///             Attributes = 
+    ///             {
+    ///                 { "x-goog-version", "v1" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Pubsub Subscription Pull
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleTopic = new Gcp.PubSub.Topic("exampleTopic");
+    /// 
+    ///     var exampleSubscription = new Gcp.PubSub.Subscription("exampleSubscription", new()
+    ///     {
+    ///         Topic = exampleTopic.Name,
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         MessageRetentionDuration = "1200s",
+    ///         RetainAckedMessages = true,
+    ///         AckDeadlineSeconds = 20,
+    ///         ExpirationPolicy = new Gcp.PubSub.Inputs.SubscriptionExpirationPolicyArgs
+    ///         {
+    ///             Ttl = "300000.5s",
+    ///         },
+    ///         RetryPolicy = new Gcp.PubSub.Inputs.SubscriptionRetryPolicyArgs
+    ///         {
+    ///             MinimumBackoff = "10s",
+    ///         },
+    ///         EnableMessageOrdering = false,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Pubsub Subscription Different Project
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleTopic = new Gcp.PubSub.Topic("exampleTopic", new()
+    ///     {
+    ///         Project = "topic-project",
+    ///     });
+    /// 
+    ///     var exampleSubscription = new Gcp.PubSub.Subscription("exampleSubscription", new()
+    ///     {
+    ///         Project = "subscription-project",
+    ///         Topic = exampleTopic.Name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Pubsub Subscription Dead Letter
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleTopic = new Gcp.PubSub.Topic("exampleTopic");
+    /// 
+    ///     var exampleDeadLetter = new Gcp.PubSub.Topic("exampleDeadLetter");
+    /// 
+    ///     var exampleSubscription = new Gcp.PubSub.Subscription("exampleSubscription", new()
+    ///     {
+    ///         Topic = exampleTopic.Name,
+    ///         DeadLetterPolicy = new Gcp.PubSub.Inputs.SubscriptionDeadLetterPolicyArgs
+    ///         {
+    ///             DeadLetterTopic = exampleDeadLetter.Id,
+    ///             MaxDeliveryAttempts = 10,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Pubsub Subscription Push Bq
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleTopic = new Gcp.PubSub.Topic("exampleTopic");
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var viewer = new Gcp.Projects.IAMMember("viewer", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         Role = "roles/bigquery.metadataViewer",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-pubsub.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     var editor = new Gcp.Projects.IAMMember("editor", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         Role = "roles/bigquery.dataEditor",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-pubsub.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     var testDataset = new Gcp.BigQuery.Dataset("testDataset", new()
+    ///     {
+    ///         DatasetId = "example_dataset",
+    ///     });
+    /// 
+    ///     var testTable = new Gcp.BigQuery.Table("testTable", new()
+    ///     {
+    ///         DeletionProtection = false,
+    ///         TableId = "example_table",
+    ///         DatasetId = testDataset.DatasetId,
+    ///         Schema = @"[
+    ///   {
+    ///     ""name"": ""data"",
+    ///     ""type"": ""STRING"",
+    ///     ""mode"": ""NULLABLE"",
+    ///     ""description"": ""The data""
+    ///   }
+    /// ]
+    /// ",
+    ///     });
+    /// 
+    ///     var exampleSubscription = new Gcp.PubSub.Subscription("exampleSubscription", new()
+    ///     {
+    ///         Topic = exampleTopic.Name,
+    ///         BigqueryConfig = new Gcp.PubSub.Inputs.SubscriptionBigqueryConfigArgs
+    ///         {
+    ///             Table = Output.Tuple(testTable.Project, testTable.DatasetId, testTable.TableId).Apply(values =&gt;
+    ///             {
+    ///                 var project = values.Item1;
+    ///                 var datasetId = values.Item2;
+    ///                 var tableId = values.Item3;
+    ///                 return $"{project}.{datasetId}.{tableId}";
+    ///             }),
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             viewer,
+    ///             editor,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

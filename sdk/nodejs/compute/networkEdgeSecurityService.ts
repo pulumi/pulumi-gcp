@@ -6,6 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### Compute Network Edge Security Service Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.NetworkEdgeSecurityService("default", {
+ *     region: "us-east1",
+ *     description: "My basic resource",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

@@ -249,6 +249,15 @@ class SubAccount(pulumi.CustomResource):
 
         !> **WARNING:** Deleting this resource will not delete or close the billing subaccount.
 
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        subaccount = gcp.billing.SubAccount("subaccount",
+            display_name="My Billing Account",
+            master_billing_account="012345-567890-ABCDEF")
+        ```
+
         ## Import
 
         Billing Subaccounts can be imported using any of these accepted formats:
@@ -276,6 +285,15 @@ class SubAccount(pulumi.CustomResource):
         Allows creation and management of a Google Cloud Billing Subaccount.
 
         !> **WARNING:** Deleting this resource will not delete or close the billing subaccount.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        subaccount = gcp.billing.SubAccount("subaccount",
+            display_name="My Billing Account",
+            master_billing_account="012345-567890-ABCDEF")
+        ```
 
         ## Import
 

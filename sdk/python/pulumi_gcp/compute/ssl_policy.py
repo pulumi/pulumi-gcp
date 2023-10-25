@@ -488,6 +488,24 @@ class SSLPolicy(pulumi.CustomResource):
             * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
 
         ## Example Usage
+        ### Ssl Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod_ssl_policy = gcp.compute.SSLPolicy("prod-ssl-policy", profile="MODERN")
+        nonprod_ssl_policy = gcp.compute.SSLPolicy("nonprod-ssl-policy",
+            min_tls_version="TLS_1_2",
+            profile="MODERN")
+        custom_ssl_policy = gcp.compute.SSLPolicy("custom-ssl-policy",
+            custom_features=[
+                "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+                "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+            ],
+            min_tls_version="TLS_1_2",
+            profile="CUSTOM")
+        ```
 
         ## Import
 
@@ -560,6 +578,24 @@ class SSLPolicy(pulumi.CustomResource):
             * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
 
         ## Example Usage
+        ### Ssl Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod_ssl_policy = gcp.compute.SSLPolicy("prod-ssl-policy", profile="MODERN")
+        nonprod_ssl_policy = gcp.compute.SSLPolicy("nonprod-ssl-policy",
+            min_tls_version="TLS_1_2",
+            profile="MODERN")
+        custom_ssl_policy = gcp.compute.SSLPolicy("custom-ssl-policy",
+            custom_features=[
+                "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+                "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+            ],
+            min_tls_version="TLS_1_2",
+            profile="CUSTOM")
+        ```
 
         ## Import
 

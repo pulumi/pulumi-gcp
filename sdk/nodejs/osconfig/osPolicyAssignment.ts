@@ -22,6 +22,91 @@ import * as utilities from "../utilities";
  *     *   [Official Documentation](https://cloud.google.com/compute/docs/os-configuration-management/create-os-policy-assignment)
  *
  * ## Example Usage
+ * ### Os Config Os Policy Assignment Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.osconfig.OsPolicyAssignment("primary", {
+ *     description: "A test os policy assignment",
+ *     instanceFilter: {
+ *         all: false,
+ *         exclusionLabels: [{
+ *             labels: {
+ *                 "label-two": "value-two",
+ *             },
+ *         }],
+ *         inclusionLabels: [{
+ *             labels: {
+ *                 "label-one": "value-one",
+ *             },
+ *         }],
+ *         inventories: [{
+ *             osShortName: "centos",
+ *             osVersion: "8.*",
+ *         }],
+ *     },
+ *     location: "us-central1-a",
+ *     osPolicies: [{
+ *         allowNoResourceGroupMatch: false,
+ *         description: "A test os policy",
+ *         id: "policy",
+ *         mode: "VALIDATION",
+ *         resourceGroups: [{
+ *             inventoryFilters: [{
+ *                 osShortName: "centos",
+ *                 osVersion: "8.*",
+ *             }],
+ *             resources: [
+ *                 {
+ *                     id: "apt-to-yum",
+ *                     repository: {
+ *                         apt: {
+ *                             archiveType: "DEB",
+ *                             components: ["doc"],
+ *                             distribution: "debian",
+ *                             gpgKey: ".gnupg/pubring.kbx",
+ *                             uri: "https://atl.mirrors.clouvider.net/debian",
+ *                         },
+ *                     },
+ *                 },
+ *                 {
+ *                     exec: {
+ *                         enforce: {
+ *                             args: ["arg1"],
+ *                             file: {
+ *                                 allowInsecure: true,
+ *                                 remote: {
+ *                                     sha256Checksum: "c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
+ *                                     uri: "https://www.example.com/script.sh",
+ *                                 },
+ *                             },
+ *                             interpreter: "SHELL",
+ *                             outputFilePath: "$HOME/out",
+ *                         },
+ *                         validate: {
+ *                             args: ["arg1"],
+ *                             file: {
+ *                                 localPath: "$HOME/script.sh",
+ *                             },
+ *                             interpreter: "SHELL",
+ *                             outputFilePath: "$HOME/out",
+ *                         },
+ *                     },
+ *                     id: "exec1",
+ *                 },
+ *             ],
+ *         }],
+ *     }],
+ *     rollout: {
+ *         disruptionBudget: {
+ *             percent: 100,
+ *         },
+ *         minWaitDuration: "3s",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

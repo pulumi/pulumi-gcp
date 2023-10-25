@@ -9,6 +9,23 @@ import * as utilities from "../utilities";
  *
  * For more information on applying hierarchical firewall policies see the [official documentation](https://cloud.google.com/vpc/docs/firewall-policies#managing_hierarchical_firewall_policy_resources)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultFirewallPolicy = new gcp.compute.FirewallPolicy("defaultFirewallPolicy", {
+ *     parent: "organizations/12345",
+ *     shortName: "my-policy",
+ *     description: "Example Resource",
+ * });
+ * const defaultFirewallPolicyAssociation = new gcp.compute.FirewallPolicyAssociation("defaultFirewallPolicyAssociation", {
+ *     firewallPolicy: defaultFirewallPolicy.id,
+ *     attachmentTarget: google_folder.folder.name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * FirewallPolicyAssociation can be imported using any of these accepted formats

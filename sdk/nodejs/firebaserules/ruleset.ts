@@ -10,6 +10,40 @@ import * as utilities from "../utilities";
  * For more information, see:
  * * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
  * ## Example Usage
+ * ### Basic_ruleset
+ * Creates a basic Firestore ruleset
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.firebaserules.Ruleset("primary", {
+ *     project: "my-project-name",
+ *     source: {
+ *         files: [{
+ *             content: "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
+ *             fingerprint: "",
+ *             name: "firestore.rules",
+ *         }],
+ *         language: "",
+ *     },
+ * });
+ * ```
+ * ### Minimal_ruleset
+ * Creates a minimal Firestore ruleset
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.firebaserules.Ruleset("primary", {
+ *     project: "my-project-name",
+ *     source: {
+ *         files: [{
+ *             content: "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
+ *             name: "firestore.rules",
+ *         }],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

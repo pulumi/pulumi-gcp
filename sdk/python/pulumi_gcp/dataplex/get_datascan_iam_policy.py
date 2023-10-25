@@ -103,6 +103,17 @@ def get_datascan_iam_policy(data_scan_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for datascan
 
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.dataplex.get_datascan_iam_policy(project=google_dataplex_datascan["basic_profile"]["project"],
+        location=google_dataplex_datascan["basic_profile"]["location"],
+        data_scan_id=google_dataplex_datascan["basic_profile"]["data_scan_id"])
+    ```
+
 
     :param str location: The location where the data scan should reside.
            Used to find the parent resource to bind the IAM policy to
@@ -132,6 +143,17 @@ def get_datascan_iam_policy_output(data_scan_id: Optional[pulumi.Input[str]] = N
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatascanIamPolicyResult]:
     """
     Retrieves the current IAM policy data for datascan
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.dataplex.get_datascan_iam_policy(project=google_dataplex_datascan["basic_profile"]["project"],
+        location=google_dataplex_datascan["basic_profile"]["location"],
+        data_scan_id=google_dataplex_datascan["basic_profile"]["data_scan_id"])
+    ```
 
 
     :param str location: The location where the data scan should reside.

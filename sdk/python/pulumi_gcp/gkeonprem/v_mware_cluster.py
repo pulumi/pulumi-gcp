@@ -1137,6 +1137,213 @@ class VMwareCluster(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Gkeonprem Vmware Cluster Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cluster_basic = gcp.gkeonprem.VMwareCluster("cluster-basic",
+            location="us-west1",
+            admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
+            description="test cluster",
+            on_prem_version="1.13.1-gke.35",
+            annotations={},
+            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
+                service_address_cidr_blocks=["10.96.0.0/12"],
+                pod_address_cidr_blocks=["192.168.0.0/16"],
+                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
+                cpus=4,
+                memory=8192,
+                replicas=1,
+            ),
+            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
+                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
+                    control_plane_vip="10.251.133.5",
+                    ingress_vip="10.251.135.19",
+                ),
+                metal_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigArgs(
+                    address_pools=[
+                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
+                            pool="ingress-ip",
+                            manual_assign=True,
+                            addresses=["10.251.135.19"],
+                            avoid_buggy_ips=True,
+                        ),
+                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
+                            pool="lb-test-ip",
+                            manual_assign=True,
+                            addresses=["10.251.135.19"],
+                            avoid_buggy_ips=True,
+                        ),
+                    ],
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Gkeonprem Vmware Cluster F5lb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cluster_f5lb = gcp.gkeonprem.VMwareCluster("cluster-f5lb",
+            location="us-west1",
+            admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
+            description="test cluster",
+            on_prem_version="1.13.1-gke.35",
+            annotations={},
+            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
+                service_address_cidr_blocks=["10.96.0.0/12"],
+                pod_address_cidr_blocks=["192.168.0.0/16"],
+                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArgs(
+                    enabled=True,
+                ),
+                control_plane_v2_config=gcp.gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigArgs(
+                    control_plane_ip_block=gcp.gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs(
+                        ips=[gcp.gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs(
+                            hostname="test-hostname",
+                            ip="10.0.0.1",
+                        )],
+                        netmask="10.0.0.1/32",
+                        gateway="test-gateway",
+                    ),
+                ),
+            ),
+            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
+                cpus=4,
+                memory=8192,
+                replicas=1,
+                auto_resize_config=gcp.gkeonprem.VMwareClusterControlPlaneNodeAutoResizeConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
+                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
+                    control_plane_vip="10.251.133.5",
+                    ingress_vip="10.251.135.19",
+                ),
+                f5_config=gcp.gkeonprem.VMwareClusterLoadBalancerF5ConfigArgs(
+                    address="10.0.0.1",
+                    partition="test-partition",
+                    snat_pool="test-snap-pool",
+                ),
+            ),
+            dataplane_v2=gcp.gkeonprem.VMwareClusterDataplaneV2Args(
+                dataplane_v2_enabled=True,
+                windows_dataplane_v2_enabled=True,
+                advanced_networking=True,
+            ),
+            vm_tracking_enabled=True,
+            enable_control_plane_v2=True,
+            authorization=gcp.gkeonprem.VMwareClusterAuthorizationArgs(
+                admin_users=[gcp.gkeonprem.VMwareClusterAuthorizationAdminUserArgs(
+                    username="testuser@gmail.com",
+                )],
+            ),
+            anti_affinity_groups=gcp.gkeonprem.VMwareClusterAntiAffinityGroupsArgs(
+                aag_config_disabled=True,
+            ),
+            auto_repair_config=gcp.gkeonprem.VMwareClusterAutoRepairConfigArgs(
+                enabled=True,
+            ),
+            storage=gcp.gkeonprem.VMwareClusterStorageArgs(
+                vsphere_csi_disabled=True,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Gkeonprem Vmware Cluster Manuallb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cluster_manuallb = gcp.gkeonprem.VMwareCluster("cluster-manuallb",
+            location="us-west1",
+            admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
+            description="test cluster",
+            on_prem_version="1.13.1-gke.35",
+            annotations={},
+            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
+                service_address_cidr_blocks=["10.96.0.0/12"],
+                pod_address_cidr_blocks=["192.168.0.0/16"],
+                host_config=gcp.gkeonprem.VMwareClusterNetworkConfigHostConfigArgs(
+                    dns_servers=["10.254.41.1"],
+                    ntp_servers=["216.239.35.8"],
+                    dns_search_domains=["test-domain"],
+                ),
+                static_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigArgs(
+                    ip_blocks=[gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs(
+                        netmask="255.255.252.0",
+                        gateway="10.251.31.254",
+                        ips=[
+                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs(
+                                ip="10.251.30.153",
+                                hostname="test-hostname1",
+                            ),
+                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs(
+                                ip="10.251.31.206",
+                                hostname="test-hostname2",
+                            ),
+                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs(
+                                ip="10.251.31.193",
+                                hostname="test-hostname3",
+                            ),
+                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs(
+                                ip="10.251.30.230",
+                                hostname="test-hostname4",
+                            ),
+                        ],
+                    )],
+                ),
+            ),
+            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
+                cpus=4,
+                memory=8192,
+                replicas=1,
+                auto_resize_config=gcp.gkeonprem.VMwareClusterControlPlaneNodeAutoResizeConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
+                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
+                    control_plane_vip="10.251.133.5",
+                    ingress_vip="10.251.135.19",
+                ),
+                manual_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerManualLbConfigArgs(
+                    ingress_http_node_port=30005,
+                    ingress_https_node_port=30006,
+                    control_plane_node_port=30007,
+                    konnectivity_server_node_port=30008,
+                ),
+            ),
+            dataplane_v2=gcp.gkeonprem.VMwareClusterDataplaneV2Args(
+                dataplane_v2_enabled=True,
+                windows_dataplane_v2_enabled=True,
+                advanced_networking=True,
+            ),
+            vm_tracking_enabled=True,
+            enable_control_plane_v2=True,
+            upgrade_policy=gcp.gkeonprem.VMwareClusterUpgradePolicyArgs(
+                control_plane_only=True,
+            ),
+            authorization=gcp.gkeonprem.VMwareClusterAuthorizationArgs(
+                admin_users=[gcp.gkeonprem.VMwareClusterAuthorizationAdminUserArgs(
+                    username="testuser@gmail.com",
+                )],
+            ),
+            anti_affinity_groups=gcp.gkeonprem.VMwareClusterAntiAffinityGroupsArgs(
+                aag_config_disabled=True,
+            ),
+            auto_repair_config=gcp.gkeonprem.VMwareClusterAutoRepairConfigArgs(
+                enabled=True,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -1204,6 +1411,213 @@ class VMwareCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Gkeonprem Vmware Cluster Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cluster_basic = gcp.gkeonprem.VMwareCluster("cluster-basic",
+            location="us-west1",
+            admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
+            description="test cluster",
+            on_prem_version="1.13.1-gke.35",
+            annotations={},
+            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
+                service_address_cidr_blocks=["10.96.0.0/12"],
+                pod_address_cidr_blocks=["192.168.0.0/16"],
+                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
+                cpus=4,
+                memory=8192,
+                replicas=1,
+            ),
+            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
+                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
+                    control_plane_vip="10.251.133.5",
+                    ingress_vip="10.251.135.19",
+                ),
+                metal_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigArgs(
+                    address_pools=[
+                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
+                            pool="ingress-ip",
+                            manual_assign=True,
+                            addresses=["10.251.135.19"],
+                            avoid_buggy_ips=True,
+                        ),
+                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
+                            pool="lb-test-ip",
+                            manual_assign=True,
+                            addresses=["10.251.135.19"],
+                            avoid_buggy_ips=True,
+                        ),
+                    ],
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Gkeonprem Vmware Cluster F5lb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cluster_f5lb = gcp.gkeonprem.VMwareCluster("cluster-f5lb",
+            location="us-west1",
+            admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
+            description="test cluster",
+            on_prem_version="1.13.1-gke.35",
+            annotations={},
+            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
+                service_address_cidr_blocks=["10.96.0.0/12"],
+                pod_address_cidr_blocks=["192.168.0.0/16"],
+                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArgs(
+                    enabled=True,
+                ),
+                control_plane_v2_config=gcp.gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigArgs(
+                    control_plane_ip_block=gcp.gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs(
+                        ips=[gcp.gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs(
+                            hostname="test-hostname",
+                            ip="10.0.0.1",
+                        )],
+                        netmask="10.0.0.1/32",
+                        gateway="test-gateway",
+                    ),
+                ),
+            ),
+            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
+                cpus=4,
+                memory=8192,
+                replicas=1,
+                auto_resize_config=gcp.gkeonprem.VMwareClusterControlPlaneNodeAutoResizeConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
+                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
+                    control_plane_vip="10.251.133.5",
+                    ingress_vip="10.251.135.19",
+                ),
+                f5_config=gcp.gkeonprem.VMwareClusterLoadBalancerF5ConfigArgs(
+                    address="10.0.0.1",
+                    partition="test-partition",
+                    snat_pool="test-snap-pool",
+                ),
+            ),
+            dataplane_v2=gcp.gkeonprem.VMwareClusterDataplaneV2Args(
+                dataplane_v2_enabled=True,
+                windows_dataplane_v2_enabled=True,
+                advanced_networking=True,
+            ),
+            vm_tracking_enabled=True,
+            enable_control_plane_v2=True,
+            authorization=gcp.gkeonprem.VMwareClusterAuthorizationArgs(
+                admin_users=[gcp.gkeonprem.VMwareClusterAuthorizationAdminUserArgs(
+                    username="testuser@gmail.com",
+                )],
+            ),
+            anti_affinity_groups=gcp.gkeonprem.VMwareClusterAntiAffinityGroupsArgs(
+                aag_config_disabled=True,
+            ),
+            auto_repair_config=gcp.gkeonprem.VMwareClusterAutoRepairConfigArgs(
+                enabled=True,
+            ),
+            storage=gcp.gkeonprem.VMwareClusterStorageArgs(
+                vsphere_csi_disabled=True,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Gkeonprem Vmware Cluster Manuallb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cluster_manuallb = gcp.gkeonprem.VMwareCluster("cluster-manuallb",
+            location="us-west1",
+            admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
+            description="test cluster",
+            on_prem_version="1.13.1-gke.35",
+            annotations={},
+            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
+                service_address_cidr_blocks=["10.96.0.0/12"],
+                pod_address_cidr_blocks=["192.168.0.0/16"],
+                host_config=gcp.gkeonprem.VMwareClusterNetworkConfigHostConfigArgs(
+                    dns_servers=["10.254.41.1"],
+                    ntp_servers=["216.239.35.8"],
+                    dns_search_domains=["test-domain"],
+                ),
+                static_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigArgs(
+                    ip_blocks=[gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs(
+                        netmask="255.255.252.0",
+                        gateway="10.251.31.254",
+                        ips=[
+                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs(
+                                ip="10.251.30.153",
+                                hostname="test-hostname1",
+                            ),
+                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs(
+                                ip="10.251.31.206",
+                                hostname="test-hostname2",
+                            ),
+                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs(
+                                ip="10.251.31.193",
+                                hostname="test-hostname3",
+                            ),
+                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs(
+                                ip="10.251.30.230",
+                                hostname="test-hostname4",
+                            ),
+                        ],
+                    )],
+                ),
+            ),
+            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
+                cpus=4,
+                memory=8192,
+                replicas=1,
+                auto_resize_config=gcp.gkeonprem.VMwareClusterControlPlaneNodeAutoResizeConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
+                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
+                    control_plane_vip="10.251.133.5",
+                    ingress_vip="10.251.135.19",
+                ),
+                manual_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerManualLbConfigArgs(
+                    ingress_http_node_port=30005,
+                    ingress_https_node_port=30006,
+                    control_plane_node_port=30007,
+                    konnectivity_server_node_port=30008,
+                ),
+            ),
+            dataplane_v2=gcp.gkeonprem.VMwareClusterDataplaneV2Args(
+                dataplane_v2_enabled=True,
+                windows_dataplane_v2_enabled=True,
+                advanced_networking=True,
+            ),
+            vm_tracking_enabled=True,
+            enable_control_plane_v2=True,
+            upgrade_policy=gcp.gkeonprem.VMwareClusterUpgradePolicyArgs(
+                control_plane_only=True,
+            ),
+            authorization=gcp.gkeonprem.VMwareClusterAuthorizationArgs(
+                admin_users=[gcp.gkeonprem.VMwareClusterAuthorizationAdminUserArgs(
+                    username="testuser@gmail.com",
+                )],
+            ),
+            anti_affinity_groups=gcp.gkeonprem.VMwareClusterAntiAffinityGroupsArgs(
+                aag_config_disabled=True,
+            ),
+            auto_repair_config=gcp.gkeonprem.VMwareClusterAutoRepairConfigArgs(
+                enabled=True,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

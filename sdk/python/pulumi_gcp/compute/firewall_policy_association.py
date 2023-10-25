@@ -213,6 +213,21 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
 
         For more information on applying hierarchical firewall policies see the [official documentation](https://cloud.google.com/vpc/docs/firewall-policies#managing_hierarchical_firewall_policy_resources)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_firewall_policy = gcp.compute.FirewallPolicy("defaultFirewallPolicy",
+            parent="organizations/12345",
+            short_name="my-policy",
+            description="Example Resource")
+        default_firewall_policy_association = gcp.compute.FirewallPolicyAssociation("defaultFirewallPolicyAssociation",
+            firewall_policy=default_firewall_policy.id,
+            attachment_target=google_folder["folder"]["name"])
+        ```
+
         ## Import
 
         FirewallPolicyAssociation can be imported using any of these accepted formats
@@ -245,6 +260,21 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
         Allows associating hierarchical firewall policies with the target where they are applied. This allows creating policies and rules in a different location than they are applied.
 
         For more information on applying hierarchical firewall policies see the [official documentation](https://cloud.google.com/vpc/docs/firewall-policies#managing_hierarchical_firewall_policy_resources)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_firewall_policy = gcp.compute.FirewallPolicy("defaultFirewallPolicy",
+            parent="organizations/12345",
+            short_name="my-policy",
+            description="Example Resource")
+        default_firewall_policy_association = gcp.compute.FirewallPolicyAssociation("defaultFirewallPolicyAssociation",
+            firewall_policy=default_firewall_policy.id,
+            attachment_target=google_folder["folder"]["name"])
+        ```
 
         ## Import
 

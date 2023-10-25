@@ -19,6 +19,75 @@ namespace Pulumi.Gcp.Compute
     ///     * [Google Cloud Router](https://cloud.google.com/router/docs/)
     /// 
     /// ## Example Usage
+    /// ### Router Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobarNetwork = new Gcp.Compute.Network("foobarNetwork", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var foobarRouter = new Gcp.Compute.Router("foobarRouter", new()
+    ///     {
+    ///         Network = foobarNetwork.Name,
+    ///         Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
+    ///         {
+    ///             Asn = 64514,
+    ///             AdvertiseMode = "CUSTOM",
+    ///             AdvertisedGroups = new[]
+    ///             {
+    ///                 "ALL_SUBNETS",
+    ///             },
+    ///             AdvertisedIpRanges = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RouterBgpAdvertisedIpRangeArgs
+    ///                 {
+    ///                     Range = "1.2.3.4",
+    ///                 },
+    ///                 new Gcp.Compute.Inputs.RouterBgpAdvertisedIpRangeArgs
+    ///                 {
+    ///                     Range = "6.7.0.0/16",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Compute Router Encrypted Interconnect
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network = new Gcp.Compute.Network("network", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var encrypted_interconnect_router = new Gcp.Compute.Router("encrypted-interconnect-router", new()
+    ///     {
+    ///         Network = network.Name,
+    ///         EncryptedInterconnectRouter = true,
+    ///         Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
+    ///         {
+    ///             Asn = 64514,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

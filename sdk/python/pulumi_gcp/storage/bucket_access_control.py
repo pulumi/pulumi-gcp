@@ -297,6 +297,18 @@ class BucketAccessControl(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
 
         ## Example Usage
+        ### Storage Bucket Access Control Public Bucket
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket", location="US")
+        public_rule = gcp.storage.BucketAccessControl("publicRule",
+            bucket=bucket.name,
+            role="READER",
+            entity="allUsers")
+        ```
 
         ## Import
 
@@ -361,6 +373,18 @@ class BucketAccessControl(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
 
         ## Example Usage
+        ### Storage Bucket Access Control Public Bucket
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket", location="US")
+        public_rule = gcp.storage.BucketAccessControl("publicRule",
+            bucket=bucket.name,
+            role="READER",
+            entity="allUsers")
+        ```
 
         ## Import
 

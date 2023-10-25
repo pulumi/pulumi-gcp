@@ -13,6 +13,159 @@ namespace Pulumi.Gcp.Recaptcha
     /// The RecaptchaEnterprise Key resource
     /// 
     /// ## Example Usage
+    /// ### Android_key
+    /// A basic test of recaptcha enterprise key that can be used by Android apps
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.Recaptcha.EnterpriseKey("primary", new()
+    ///     {
+    ///         AndroidSettings = new Gcp.Recaptcha.Inputs.EnterpriseKeyAndroidSettingsArgs
+    ///         {
+    ///             AllowAllPackageNames = true,
+    ///             AllowedPackageNames = new() { },
+    ///         },
+    ///         DisplayName = "display-name-one",
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Project = "my-project-name",
+    ///         TestingOptions = new Gcp.Recaptcha.Inputs.EnterpriseKeyTestingOptionsArgs
+    ///         {
+    ///             TestingScore = 0.8,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Ios_key
+    /// A basic test of recaptcha enterprise key that can be used by iOS apps
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.Recaptcha.EnterpriseKey("primary", new()
+    ///     {
+    ///         DisplayName = "display-name-one",
+    ///         IosSettings = new Gcp.Recaptcha.Inputs.EnterpriseKeyIosSettingsArgs
+    ///         {
+    ///             AllowAllBundleIds = true,
+    ///             AllowedBundleIds = new() { },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Project = "my-project-name",
+    ///         TestingOptions = new Gcp.Recaptcha.Inputs.EnterpriseKeyTestingOptionsArgs
+    ///         {
+    ///             TestingScore = 1,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Minimal_key
+    /// A minimal test of recaptcha enterprise key
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.Recaptcha.EnterpriseKey("primary", new()
+    ///     {
+    ///         DisplayName = "display-name-one",
+    ///         Labels = null,
+    ///         Project = "my-project-name",
+    ///         WebSettings = new Gcp.Recaptcha.Inputs.EnterpriseKeyWebSettingsArgs
+    ///         {
+    ///             AllowAllDomains = true,
+    ///             IntegrationType = "SCORE",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Web_key
+    /// A basic test of recaptcha enterprise key that can be used by websites
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.Recaptcha.EnterpriseKey("primary", new()
+    ///     {
+    ///         DisplayName = "display-name-one",
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Project = "my-project-name",
+    ///         TestingOptions = new Gcp.Recaptcha.Inputs.EnterpriseKeyTestingOptionsArgs
+    ///         {
+    ///             TestingChallenge = "NOCAPTCHA",
+    ///             TestingScore = 0.5,
+    ///         },
+    ///         WebSettings = new Gcp.Recaptcha.Inputs.EnterpriseKeyWebSettingsArgs
+    ///         {
+    ///             AllowAllDomains = true,
+    ///             AllowedDomains = new() { },
+    ///             ChallengeSecurityPreference = "USABILITY",
+    ///             IntegrationType = "CHECKBOX",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Web_score_key
+    /// A basic test of recaptcha enterprise key with score integration type that can be used by websites
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.Recaptcha.EnterpriseKey("primary", new()
+    ///     {
+    ///         DisplayName = "display-name-one",
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Project = "my-project-name",
+    ///         TestingOptions = new Gcp.Recaptcha.Inputs.EnterpriseKeyTestingOptionsArgs
+    ///         {
+    ///             TestingScore = 0.5,
+    ///         },
+    ///         WebSettings = new Gcp.Recaptcha.Inputs.EnterpriseKeyWebSettingsArgs
+    ///         {
+    ///             AllowAllDomains = true,
+    ///             AllowAmpTraffic = false,
+    ///             AllowedDomains = new() { },
+    ///             IntegrationType = "SCORE",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

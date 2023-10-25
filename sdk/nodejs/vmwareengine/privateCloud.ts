@@ -8,6 +8,69 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### Vmware Engine Private Cloud Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const pc_nw = new gcp.vmwareengine.Network("pc-nw", {
+ *     location: "us-west1",
+ *     type: "LEGACY",
+ *     description: "PC network description.",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const vmw_engine_pc = new gcp.vmwareengine.PrivateCloud("vmw-engine-pc", {
+ *     location: "us-west1-a",
+ *     description: "Sample test PC.",
+ *     networkConfig: {
+ *         managementCidr: "192.168.30.0/24",
+ *         vmwareEngineNetwork: pc_nw.id,
+ *     },
+ *     managementCluster: {
+ *         clusterId: "sample-mgmt-cluster",
+ *         nodeTypeConfigs: [{
+ *             nodeTypeId: "standard-72",
+ *             nodeCount: 3,
+ *         }],
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Vmware Engine Private Cloud Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const pc_nw = new gcp.vmwareengine.Network("pc-nw", {
+ *     location: "us-west1",
+ *     type: "LEGACY",
+ *     description: "PC network description.",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const vmw_engine_pc = new gcp.vmwareengine.PrivateCloud("vmw-engine-pc", {
+ *     location: "us-west1-a",
+ *     description: "Sample test PC.",
+ *     networkConfig: {
+ *         managementCidr: "192.168.30.0/24",
+ *         vmwareEngineNetwork: pc_nw.id,
+ *     },
+ *     managementCluster: {
+ *         clusterId: "sample-mgmt-cluster",
+ *         nodeTypeConfigs: [{
+ *             nodeTypeId: "standard-72",
+ *             nodeCount: 3,
+ *             customCoreCount: 32,
+ *         }],
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * Get information about a Google Artifact Registry Repository. For more information see
  * the [official documentation](https://cloud.google.com/artifact-registry/docs/)
  * and [API](https://cloud.google.com/artifact-registry/docs/apis).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-repo = gcp.artifactregistry.getRepository({
+ *     location: "us-central1",
+ *     repositoryId: "my-repository",
+ * });
+ * ```
  */
 export function getRepository(args: GetRepositoryArgs, opts?: pulumi.InvokeOptions): Promise<GetRepositoryResult> {
 
@@ -72,6 +84,18 @@ export interface GetRepositoryResult {
  * Get information about a Google Artifact Registry Repository. For more information see
  * the [official documentation](https://cloud.google.com/artifact-registry/docs/)
  * and [API](https://cloud.google.com/artifact-registry/docs/apis).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-repo = gcp.artifactregistry.getRepository({
+ *     location: "us-central1",
+ *     repositoryId: "my-repository",
+ * });
+ * ```
  */
 export function getRepositoryOutput(args: GetRepositoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepositoryResult> {
     return pulumi.output(args).apply((a: any) => getRepository(a, opts))

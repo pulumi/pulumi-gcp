@@ -13,12 +13,58 @@ namespace Pulumi.Gcp.Sql
     {
         /// <summary>
         /// Use this data source to get information about a Cloud SQL instance backup run.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var backup = Gcp.Sql.GetBackupRun.Invoke(new()
+        ///     {
+        ///         Instance = google_sql_database_instance.Main.Name,
+        ///         MostRecent = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBackupRunResult> InvokeAsync(GetBackupRunArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBackupRunResult>("gcp:sql/getBackupRun:getBackupRun", args ?? new GetBackupRunArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get information about a Cloud SQL instance backup run.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var backup = Gcp.Sql.GetBackupRun.Invoke(new()
+        ///     {
+        ///         Instance = google_sql_database_instance.Main.Name,
+        ///         MostRecent = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetBackupRunResult> Invoke(GetBackupRunInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBackupRunResult>("gcp:sql/getBackupRun:getBackupRun", args ?? new GetBackupRunInvokeArgs(), options.WithDefaults());

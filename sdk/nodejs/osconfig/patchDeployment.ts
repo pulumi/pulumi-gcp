@@ -17,6 +17,236 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/os-patch-management)
  *
  * ## Example Usage
+ * ### Os Config Patch Deployment Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const patch = new gcp.osconfig.PatchDeployment("patch", {
+ *     instanceFilter: {
+ *         all: true,
+ *     },
+ *     oneTimeSchedule: {
+ *         executeTime: "2999-10-10T10:10:10.045123456Z",
+ *     },
+ *     patchDeploymentId: "patch-deploy",
+ * });
+ * ```
+ * ### Os Config Patch Deployment Daily
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const patch = new gcp.osconfig.PatchDeployment("patch", {
+ *     instanceFilter: {
+ *         all: true,
+ *     },
+ *     patchDeploymentId: "patch-deploy",
+ *     recurringSchedule: {
+ *         timeOfDay: {
+ *             hours: 0,
+ *             minutes: 30,
+ *             nanos: 20,
+ *             seconds: 30,
+ *         },
+ *         timeZone: {
+ *             id: "America/New_York",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Os Config Patch Deployment Daily Midnight
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const patch = new gcp.osconfig.PatchDeployment("patch", {
+ *     instanceFilter: {
+ *         all: true,
+ *     },
+ *     patchDeploymentId: "patch-deploy",
+ *     recurringSchedule: {
+ *         timeOfDay: {
+ *             hours: 0,
+ *             minutes: 0,
+ *             nanos: 0,
+ *             seconds: 0,
+ *         },
+ *         timeZone: {
+ *             id: "America/New_York",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Os Config Patch Deployment Instance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myImage = gcp.compute.getImage({
+ *     family: "debian-11",
+ *     project: "debian-cloud",
+ * });
+ * const foobar = new gcp.compute.Instance("foobar", {
+ *     machineType: "e2-medium",
+ *     zone: "us-central1-a",
+ *     canIpForward: false,
+ *     tags: [
+ *         "foo",
+ *         "bar",
+ *     ],
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: myImage.then(myImage => myImage.selfLink),
+ *         },
+ *     },
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ *     metadata: {
+ *         foo: "bar",
+ *     },
+ * });
+ * const patch = new gcp.osconfig.PatchDeployment("patch", {
+ *     patchDeploymentId: "patch-deploy",
+ *     instanceFilter: {
+ *         instances: [foobar.id],
+ *     },
+ *     patchConfig: {
+ *         yum: {
+ *             security: true,
+ *             minimal: true,
+ *             excludes: ["bash"],
+ *         },
+ *     },
+ *     recurringSchedule: {
+ *         timeZone: {
+ *             id: "America/New_York",
+ *         },
+ *         timeOfDay: {
+ *             hours: 0,
+ *             minutes: 30,
+ *             seconds: 30,
+ *             nanos: 20,
+ *         },
+ *         monthly: {
+ *             monthDay: 1,
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Os Config Patch Deployment Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const patch = new gcp.osconfig.PatchDeployment("patch", {
+ *     duration: "10s",
+ *     instanceFilter: {
+ *         groupLabels: [{
+ *             labels: {
+ *                 app: "web",
+ *                 env: "dev",
+ *             },
+ *         }],
+ *         instanceNamePrefixes: ["test-"],
+ *         zones: [
+ *             "us-central1-a",
+ *             "us-central-1c",
+ *         ],
+ *     },
+ *     patchConfig: {
+ *         apt: {
+ *             excludes: ["python"],
+ *             type: "DIST",
+ *         },
+ *         goo: {
+ *             enabled: true,
+ *         },
+ *         migInstancesAllowed: true,
+ *         postStep: {
+ *             linuxExecStepConfig: {
+ *                 gcsObject: {
+ *                     bucket: "my-patch-scripts",
+ *                     generationNumber: "1523477886880",
+ *                     object: "linux/post_patch_script",
+ *                 },
+ *             },
+ *             windowsExecStepConfig: {
+ *                 gcsObject: {
+ *                     bucket: "my-patch-scripts",
+ *                     generationNumber: "135920493447",
+ *                     object: "windows/post_patch_script.ps1",
+ *                 },
+ *                 interpreter: "POWERSHELL",
+ *             },
+ *         },
+ *         preStep: {
+ *             linuxExecStepConfig: {
+ *                 allowedSuccessCodes: [
+ *                     0,
+ *                     3,
+ *                 ],
+ *                 localPath: "/tmp/pre_patch_script.sh",
+ *             },
+ *             windowsExecStepConfig: {
+ *                 allowedSuccessCodes: [
+ *                     0,
+ *                     2,
+ *                 ],
+ *                 interpreter: "SHELL",
+ *                 localPath: "C:\\Users\\user\\pre-patch-script.cmd",
+ *             },
+ *         },
+ *         rebootConfig: "ALWAYS",
+ *         windowsUpdate: {
+ *             classifications: [
+ *                 "CRITICAL",
+ *                 "SECURITY",
+ *                 "UPDATE",
+ *             ],
+ *             excludes: ["5012170"],
+ *         },
+ *         yum: {
+ *             excludes: ["bash"],
+ *             minimal: true,
+ *             security: true,
+ *         },
+ *         zypper: {
+ *             categories: ["security"],
+ *         },
+ *     },
+ *     patchDeploymentId: "patch-deploy",
+ *     recurringSchedule: {
+ *         monthly: {
+ *             weekDayOfMonth: {
+ *                 dayOfWeek: "TUESDAY",
+ *                 weekOrdinal: -1,
+ *             },
+ *         },
+ *         timeOfDay: {
+ *             hours: 0,
+ *             minutes: 30,
+ *             nanos: 20,
+ *             seconds: 30,
+ *         },
+ *         timeZone: {
+ *             id: "America/New_York",
+ *         },
+ *     },
+ *     rollout: {
+ *         disruptionBudget: {
+ *             fixed: 1,
+ *         },
+ *         mode: "ZONE_BY_ZONE",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

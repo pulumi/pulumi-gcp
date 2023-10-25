@@ -22,6 +22,23 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/security-command-center/docs)
  *
  * ## Example Usage
+ * ### Scc Notification Config Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const sccNotification = new gcp.pubsub.Topic("sccNotification", {});
+ * const customNotificationConfig = new gcp.securitycenter.NotificationConfig("customNotificationConfig", {
+ *     configId: "my-config",
+ *     organization: "123456789",
+ *     description: "My custom Cloud Security Command Center Finding Notification Configuration",
+ *     pubsubTopic: sccNotification.id,
+ *     streamingConfig: {
+ *         filter: "category = \"OPEN_FIREWALL\" AND state = \"ACTIVE\"",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

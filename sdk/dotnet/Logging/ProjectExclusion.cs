@@ -18,6 +18,25 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// &gt; You can specify exclusions for log sinks created by the provider by using the exclusions field of `gcp.logging.ProjectSink`
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_exclusion = new Gcp.Logging.ProjectExclusion("my-exclusion", new()
+    ///     {
+    ///         Description = "Exclude GCE instance debug logs",
+    ///         Filter = "resource.type = gce_instance AND severity &lt;= DEBUG",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Project-level logging exclusions can be imported using their URI, e.g.

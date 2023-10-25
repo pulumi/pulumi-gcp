@@ -21,6 +21,41 @@ namespace Pulumi.Gcp.Compute
     /// &gt; **Warning:** All arguments including `authentication.google_account.password` and `authentication.custom_account.password` will be stored in the raw state as plain-text.
     /// 
     /// ## Example Usage
+    /// ### Scan Config Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var scannerStaticIp = new Gcp.Compute.Address("scannerStaticIp", new()
+    ///     {
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var scan_config = new Gcp.Compute.SecurityScanConfig("scan-config", new()
+    ///     {
+    ///         DisplayName = "scan-config",
+    ///         StartingUrls = new[]
+    ///         {
+    ///             scannerStaticIp.IPAddress.Apply(address =&gt; $"http://{address}"),
+    ///         },
+    ///         TargetPlatforms = new[]
+    ///         {
+    ///             "COMPUTE",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

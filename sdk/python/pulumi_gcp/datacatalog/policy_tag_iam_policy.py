@@ -220,6 +220,45 @@ class PolicyTagIamPolicy(pulumi.CustomResource):
 
         > **Note:** `datacatalog.PolicyTagIamBinding` resources **can be** used in conjunction with `datacatalog.PolicyTagIamMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\\_data\\_catalog\\_policy\\_tag\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.datacatalog.PolicyTagIamPolicy("policy",
+            policy_tag=google_data_catalog_policy_tag["basic_policy_tag"]["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_data\\_catalog\\_policy\\_tag\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.datacatalog.PolicyTagIamBinding("binding",
+            policy_tag=google_data_catalog_policy_tag["basic_policy_tag"]["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_data\\_catalog\\_policy\\_tag\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.datacatalog.PolicyTagIamMember("member",
+            policy_tag=google_data_catalog_policy_tag["basic_policy_tag"]["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* {{policy_tag}} Any variables not passed in the import command will be taken from the provider configuration. Data catalog policytag IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -282,6 +321,45 @@ class PolicyTagIamPolicy(pulumi.CustomResource):
         > **Note:** `datacatalog.PolicyTagIamPolicy` **cannot** be used in conjunction with `datacatalog.PolicyTagIamBinding` and `datacatalog.PolicyTagIamMember` or they will fight over what your policy should be.
 
         > **Note:** `datacatalog.PolicyTagIamBinding` resources **can be** used in conjunction with `datacatalog.PolicyTagIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_data\\_catalog\\_policy\\_tag\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.datacatalog.PolicyTagIamPolicy("policy",
+            policy_tag=google_data_catalog_policy_tag["basic_policy_tag"]["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_data\\_catalog\\_policy\\_tag\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.datacatalog.PolicyTagIamBinding("binding",
+            policy_tag=google_data_catalog_policy_tag["basic_policy_tag"]["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_data\\_catalog\\_policy\\_tag\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.datacatalog.PolicyTagIamMember("member",
+            policy_tag=google_data_catalog_policy_tag["basic_policy_tag"]["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
 
         ## Import
 

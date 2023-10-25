@@ -341,6 +341,57 @@ class InsightsReportConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/storage/docs/insights/using-storage-insights)
 
         ## Example Usage
+        ### Storage Insights Report Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        report_bucket = gcp.storage.Bucket("reportBucket",
+            location="us-central1",
+            force_destroy=True,
+            uniform_bucket_level_access=True)
+        config = gcp.storage.InsightsReportConfig("config",
+            display_name="Test Report Config",
+            location="us-central1",
+            frequency_options=gcp.storage.InsightsReportConfigFrequencyOptionsArgs(
+                frequency="WEEKLY",
+                start_date=gcp.storage.InsightsReportConfigFrequencyOptionsStartDateArgs(
+                    day=15,
+                    month=3,
+                    year=2050,
+                ),
+                end_date=gcp.storage.InsightsReportConfigFrequencyOptionsEndDateArgs(
+                    day=15,
+                    month=4,
+                    year=2050,
+                ),
+            ),
+            csv_options=gcp.storage.InsightsReportConfigCsvOptionsArgs(
+                record_separator="\\n",
+                delimiter=",",
+                header_required=False,
+            ),
+            object_metadata_report_options=gcp.storage.InsightsReportConfigObjectMetadataReportOptionsArgs(
+                metadata_fields=[
+                    "bucket",
+                    "name",
+                    "project",
+                ],
+                storage_filters=gcp.storage.InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs(
+                    bucket=report_bucket.name,
+                ),
+                storage_destination_options=gcp.storage.InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs(
+                    bucket=report_bucket.name,
+                    destination_path="test-insights-reports",
+                ),
+            ))
+        admin = gcp.storage.BucketIAMMember("admin",
+            bucket=report_bucket.name,
+            role="roles/storage.admin",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-storageinsights.iam.gserviceaccount.com")
+        ```
 
         ## Import
 
@@ -388,6 +439,57 @@ class InsightsReportConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/storage/docs/insights/using-storage-insights)
 
         ## Example Usage
+        ### Storage Insights Report Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        report_bucket = gcp.storage.Bucket("reportBucket",
+            location="us-central1",
+            force_destroy=True,
+            uniform_bucket_level_access=True)
+        config = gcp.storage.InsightsReportConfig("config",
+            display_name="Test Report Config",
+            location="us-central1",
+            frequency_options=gcp.storage.InsightsReportConfigFrequencyOptionsArgs(
+                frequency="WEEKLY",
+                start_date=gcp.storage.InsightsReportConfigFrequencyOptionsStartDateArgs(
+                    day=15,
+                    month=3,
+                    year=2050,
+                ),
+                end_date=gcp.storage.InsightsReportConfigFrequencyOptionsEndDateArgs(
+                    day=15,
+                    month=4,
+                    year=2050,
+                ),
+            ),
+            csv_options=gcp.storage.InsightsReportConfigCsvOptionsArgs(
+                record_separator="\\n",
+                delimiter=",",
+                header_required=False,
+            ),
+            object_metadata_report_options=gcp.storage.InsightsReportConfigObjectMetadataReportOptionsArgs(
+                metadata_fields=[
+                    "bucket",
+                    "name",
+                    "project",
+                ],
+                storage_filters=gcp.storage.InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs(
+                    bucket=report_bucket.name,
+                ),
+                storage_destination_options=gcp.storage.InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs(
+                    bucket=report_bucket.name,
+                    destination_path="test-insights-reports",
+                ),
+            ))
+        admin = gcp.storage.BucketIAMMember("admin",
+            bucket=report_bucket.name,
+            role="roles/storage.admin",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-storageinsights.iam.gserviceaccount.com")
+        ```
 
         ## Import
 

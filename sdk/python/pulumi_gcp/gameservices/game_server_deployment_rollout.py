@@ -286,6 +286,52 @@ class GameServerDeploymentRollout(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/game-servers/docs)
 
         ## Example Usage
+        ### Game Service Deployment Rollout Basic
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        default_game_server_deployment = gcp.gameservices.GameServerDeployment("defaultGameServerDeployment",
+            deployment_id="tf-test-deployment",
+            description="a deployment description")
+        default_game_server_config = gcp.gameservices.GameServerConfig("defaultGameServerConfig",
+            config_id="tf-test-config",
+            deployment_id=default_game_server_deployment.deployment_id,
+            description="a config description",
+            fleet_configs=[gcp.gameservices.GameServerConfigFleetConfigArgs(
+                name="some-non-guid",
+                fleet_spec=json.dumps({
+                    "replicas": 1,
+                    "scheduling": "Packed",
+                    "template": {
+                        "metadata": {
+                            "name": "tf-test-game-server-template",
+                        },
+                        "spec": {
+                            "ports": [{
+                                "name": "default",
+                                "portPolicy": "Dynamic",
+                                "containerPort": 7654,
+                                "protocol": "UDP",
+                            }],
+                            "template": {
+                                "spec": {
+                                    "containers": [{
+                                        "name": "simple-udp-server",
+                                        "image": "gcr.io/agones-images/udp-server:0.14",
+                                    }],
+                                },
+                            },
+                        },
+                    },
+                }),
+            )])
+        default_game_server_deployment_rollout = gcp.gameservices.GameServerDeploymentRollout("defaultGameServerDeploymentRollout",
+            deployment_id=default_game_server_deployment.deployment_id,
+            default_game_server_config=default_game_server_config.name)
+        ```
 
         ## Import
 
@@ -337,6 +383,52 @@ class GameServerDeploymentRollout(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/game-servers/docs)
 
         ## Example Usage
+        ### Game Service Deployment Rollout Basic
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        default_game_server_deployment = gcp.gameservices.GameServerDeployment("defaultGameServerDeployment",
+            deployment_id="tf-test-deployment",
+            description="a deployment description")
+        default_game_server_config = gcp.gameservices.GameServerConfig("defaultGameServerConfig",
+            config_id="tf-test-config",
+            deployment_id=default_game_server_deployment.deployment_id,
+            description="a config description",
+            fleet_configs=[gcp.gameservices.GameServerConfigFleetConfigArgs(
+                name="some-non-guid",
+                fleet_spec=json.dumps({
+                    "replicas": 1,
+                    "scheduling": "Packed",
+                    "template": {
+                        "metadata": {
+                            "name": "tf-test-game-server-template",
+                        },
+                        "spec": {
+                            "ports": [{
+                                "name": "default",
+                                "portPolicy": "Dynamic",
+                                "containerPort": 7654,
+                                "protocol": "UDP",
+                            }],
+                            "template": {
+                                "spec": {
+                                    "containers": [{
+                                        "name": "simple-udp-server",
+                                        "image": "gcr.io/agones-images/udp-server:0.14",
+                                    }],
+                                },
+                            },
+                        },
+                    },
+                }),
+            )])
+        default_game_server_deployment_rollout = gcp.gameservices.GameServerDeploymentRollout("defaultGameServerDeploymentRollout",
+            deployment_id=default_game_server_deployment.deployment_id,
+            default_game_server_config=default_game_server_config.name)
+        ```
 
         ## Import
 

@@ -14,6 +14,78 @@ import (
 )
 
 // ## Example Usage
+// ### Firebase Apple App Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := firebase.NewAppleApp(ctx, "default", &firebase.AppleAppArgs{
+//				Project:     pulumi.String("my-project-name"),
+//				DisplayName: pulumi.String("Display Name Basic"),
+//				BundleId:    pulumi.String("apple.app.12345"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Firebase Apple App Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			apple, err := projects.NewApiKey(ctx, "apple", &projects.ApiKeyArgs{
+//				DisplayName: pulumi.String("Display Name Full"),
+//				Project:     pulumi.String("my-project-name"),
+//				Restrictions: &projects.ApiKeyRestrictionsArgs{
+//					IosKeyRestrictions: &projects.ApiKeyRestrictionsIosKeyRestrictionsArgs{
+//						AllowedBundleIds: pulumi.StringArray{
+//							pulumi.String("apple.app.12345"),
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firebase.NewAppleApp(ctx, "full", &firebase.AppleAppArgs{
+//				Project:     pulumi.String("my-project-name"),
+//				DisplayName: pulumi.String("Display Name Full"),
+//				BundleId:    pulumi.String("apple.app.12345"),
+//				AppStoreId:  pulumi.String("12345"),
+//				TeamId:      pulumi.String("9987654321"),
+//				ApiKeyId:    apple.Uid,
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

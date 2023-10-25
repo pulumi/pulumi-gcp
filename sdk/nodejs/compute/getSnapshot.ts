@@ -12,6 +12,21 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const snapshot = gcp.compute.getSnapshot({
+ *     name: "my-snapshot",
+ * });
+ * const latest-snapshot = gcp.compute.getSnapshot({
+ *     filter: "name != my-snapshot",
+ *     mostRecent: true,
+ * });
+ * ```
  */
 export function getSnapshot(args?: GetSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotResult> {
     args = args || {};
@@ -86,6 +101,21 @@ export interface GetSnapshotResult {
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const snapshot = gcp.compute.getSnapshot({
+ *     name: "my-snapshot",
+ * });
+ * const latest-snapshot = gcp.compute.getSnapshot({
+ *     filter: "name != my-snapshot",
+ *     mostRecent: true,
+ * });
+ * ```
  */
 export function getSnapshotOutput(args?: GetSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotResult> {
     return pulumi.output(args).apply((a: any) => getSnapshot(a, opts))

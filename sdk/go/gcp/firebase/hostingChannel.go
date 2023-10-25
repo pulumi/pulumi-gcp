@@ -14,6 +14,77 @@ import (
 )
 
 // ## Example Usage
+// ### Firebasehosting Channel Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultHostingSite, err := firebase.NewHostingSite(ctx, "defaultHostingSite", &firebase.HostingSiteArgs{
+//				Project: pulumi.String("my-project-name"),
+//				SiteId:  pulumi.String("site-with-channel"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firebase.NewHostingChannel(ctx, "defaultHostingChannel", &firebase.HostingChannelArgs{
+//				SiteId:    defaultHostingSite.SiteId,
+//				ChannelId: pulumi.String("channel-basic"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Firebasehosting Channel Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := firebase.NewHostingSite(ctx, "default", &firebase.HostingSiteArgs{
+//				Project: pulumi.String("my-project-name"),
+//				SiteId:  pulumi.String("site-with-channel"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firebase.NewHostingChannel(ctx, "full", &firebase.HostingChannelArgs{
+//				SiteId:               _default.SiteId,
+//				ChannelId:            pulumi.String("channel-full"),
+//				Ttl:                  pulumi.String("86400s"),
+//				RetainedReleaseCount: pulumi.Int(20),
+//				Labels: pulumi.StringMap{
+//					"some-key": pulumi.String("some-value"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

@@ -398,6 +398,85 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
         ## Example Usage
+        ### Vertex Ai Featurestore Entitytype
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            labels={
+                "foo": "bar",
+            },
+            region="us-central1",
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+                fixed_node_count=2,
+            ),
+            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
+                kms_key_name="kms-name",
+            ))
+        entity = gcp.vertex.AiFeatureStoreEntityType("entity",
+            labels={
+                "foo": "bar",
+            },
+            description="test description",
+            featurestore=featurestore.id,
+            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs(
+                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(
+                    disabled=False,
+                    monitoring_interval_days=1,
+                    staleness_days=21,
+                ),
+                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs(
+                    value=0.8,
+                ),
+                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs(
+                    value=10,
+                ),
+                import_features_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs(
+                    state="ENABLED",
+                    anomaly_detection_baseline="PREVIOUS_IMPORT_FEATURES_STATS",
+                ),
+            ))
+        ```
+        ### Vertex Ai Featurestore Entitytype With Beta Fields
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            labels={
+                "foo": "bar",
+            },
+            region="us-central1",
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+                fixed_node_count=2,
+            ),
+            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
+                kms_key_name="kms-name",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        entity = gcp.vertex.AiFeatureStoreEntityType("entity",
+            labels={
+                "foo": "bar",
+            },
+            featurestore=featurestore.id,
+            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs(
+                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(
+                    disabled=False,
+                    monitoring_interval="86400s",
+                ),
+                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs(
+                    value=0.3,
+                ),
+                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs(
+                    value=0.3,
+                ),
+            ),
+            offline_storage_ttl_days=30,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -439,6 +518,85 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
         ## Example Usage
+        ### Vertex Ai Featurestore Entitytype
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            labels={
+                "foo": "bar",
+            },
+            region="us-central1",
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+                fixed_node_count=2,
+            ),
+            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
+                kms_key_name="kms-name",
+            ))
+        entity = gcp.vertex.AiFeatureStoreEntityType("entity",
+            labels={
+                "foo": "bar",
+            },
+            description="test description",
+            featurestore=featurestore.id,
+            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs(
+                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(
+                    disabled=False,
+                    monitoring_interval_days=1,
+                    staleness_days=21,
+                ),
+                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs(
+                    value=0.8,
+                ),
+                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs(
+                    value=10,
+                ),
+                import_features_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs(
+                    state="ENABLED",
+                    anomaly_detection_baseline="PREVIOUS_IMPORT_FEATURES_STATS",
+                ),
+            ))
+        ```
+        ### Vertex Ai Featurestore Entitytype With Beta Fields
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            labels={
+                "foo": "bar",
+            },
+            region="us-central1",
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+                fixed_node_count=2,
+            ),
+            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
+                kms_key_name="kms-name",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        entity = gcp.vertex.AiFeatureStoreEntityType("entity",
+            labels={
+                "foo": "bar",
+            },
+            featurestore=featurestore.id,
+            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs(
+                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(
+                    disabled=False,
+                    monitoring_interval="86400s",
+                ),
+                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs(
+                    value=0.3,
+                ),
+                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs(
+                    value=0.3,
+                ),
+            ),
+            offline_storage_ttl_days=30,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

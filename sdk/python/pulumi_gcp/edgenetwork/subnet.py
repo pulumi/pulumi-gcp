@@ -557,6 +557,53 @@ class Subnet(pulumi.CustomResource):
             * [Create and manage subnetworks](https://cloud.google.com/distributed-cloud/edge/latest/docs/subnetworks#api)
 
         ## Example Usage
+        ### Edgenetwork Subnet
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_network = gcp.edgenetwork.Network("exampleNetwork",
+            network_id="example-network",
+            location="us-west1",
+            zone="",
+            description="Example network.",
+            mtu=9000)
+        example_subnet = gcp.edgenetwork.Subnet("exampleSubnet",
+            subnet_id="example-subnet",
+            location="us-west1",
+            zone="",
+            description="Example subnet.",
+            network=example_network.id,
+            ipv4_cidrs=["4.4.4.1/24"],
+            labels={
+                "environment": "dev",
+            })
+        ```
+        ### Edgenetwork Subnet With Vlan Id
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_network = gcp.edgenetwork.Network("exampleNetwork",
+            network_id="example-network",
+            location="us-west1",
+            zone="",
+            description="Example network.",
+            mtu=9000)
+        example_subnet_with_vlan_id = gcp.edgenetwork.Subnet("exampleSubnetWithVlanId",
+            subnet_id="example-subnet-with-vlan-id",
+            location="us-west1",
+            zone="",
+            description="Example subnet with VLAN ID.",
+            network=example_network.id,
+            ipv6_cidrs=["4444:4444:4444:4444::1/64"],
+            vlan_id=44,
+            labels={
+                "environment": "dev",
+            })
+        ```
 
         ## Import
 
@@ -616,6 +663,53 @@ class Subnet(pulumi.CustomResource):
             * [Create and manage subnetworks](https://cloud.google.com/distributed-cloud/edge/latest/docs/subnetworks#api)
 
         ## Example Usage
+        ### Edgenetwork Subnet
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_network = gcp.edgenetwork.Network("exampleNetwork",
+            network_id="example-network",
+            location="us-west1",
+            zone="",
+            description="Example network.",
+            mtu=9000)
+        example_subnet = gcp.edgenetwork.Subnet("exampleSubnet",
+            subnet_id="example-subnet",
+            location="us-west1",
+            zone="",
+            description="Example subnet.",
+            network=example_network.id,
+            ipv4_cidrs=["4.4.4.1/24"],
+            labels={
+                "environment": "dev",
+            })
+        ```
+        ### Edgenetwork Subnet With Vlan Id
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_network = gcp.edgenetwork.Network("exampleNetwork",
+            network_id="example-network",
+            location="us-west1",
+            zone="",
+            description="Example network.",
+            mtu=9000)
+        example_subnet_with_vlan_id = gcp.edgenetwork.Subnet("exampleSubnetWithVlanId",
+            subnet_id="example-subnet-with-vlan-id",
+            location="us-west1",
+            zone="",
+            description="Example subnet with VLAN ID.",
+            network=example_network.id,
+            ipv6_cidrs=["4444:4444:4444:4444::1/64"],
+            vlan_id=44,
+            labels={
+                "environment": "dev",
+            })
+        ```
 
         ## Import
 

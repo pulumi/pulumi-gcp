@@ -272,6 +272,21 @@ class Namespace(pulumi.CustomResource):
             * [Configuring a namespace](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_namespace)
 
         ## Example Usage
+        ### Service Directory Namespace Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.servicedirectory.Namespace("example",
+            namespace_id="example-namespace",
+            location="us-central1",
+            labels={
+                "key": "value",
+                "foo": "bar",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -322,6 +337,21 @@ class Namespace(pulumi.CustomResource):
             * [Configuring a namespace](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_namespace)
 
         ## Example Usage
+        ### Service Directory Namespace Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.servicedirectory.Namespace("example",
+            namespace_id="example-namespace",
+            location="us-central1",
+            labels={
+                "key": "value",
+                "foo": "bar",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

@@ -23,6 +23,222 @@ namespace Pulumi.Gcp.BigQuery
     /// Read more about sensitive data in state.
     /// 
     /// ## Example Usage
+    /// ### Bigquery Connection Cloud Resource
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var connection = new Gcp.BigQuery.Connection("connection", new()
+    ///     {
+    ///         CloudResource = null,
+    ///         ConnectionId = "my-connection",
+    ///         Description = "a riveting description",
+    ///         FriendlyName = "👋",
+    ///         Location = "US",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Bigquery Connection Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
+    ///     {
+    ///         DatabaseVersion = "POSTGRES_11",
+    ///         Region = "us-central1",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-f1-micro",
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
+    /// 
+    ///     var db = new Gcp.Sql.Database("db", new()
+    ///     {
+    ///         Instance = instance.Name,
+    ///     });
+    /// 
+    ///     var pwd = new Random.RandomPassword("pwd", new()
+    ///     {
+    ///         Length = 16,
+    ///         Special = false,
+    ///     });
+    /// 
+    ///     var user = new Gcp.Sql.User("user", new()
+    ///     {
+    ///         Instance = instance.Name,
+    ///         Password = pwd.Result,
+    ///     });
+    /// 
+    ///     var connection = new Gcp.BigQuery.Connection("connection", new()
+    ///     {
+    ///         FriendlyName = "👋",
+    ///         Description = "a riveting description",
+    ///         Location = "US",
+    ///         CloudSql = new Gcp.BigQuery.Inputs.ConnectionCloudSqlArgs
+    ///         {
+    ///             InstanceId = instance.ConnectionName,
+    ///             Database = db.Name,
+    ///             Type = "POSTGRES",
+    ///             Credential = new Gcp.BigQuery.Inputs.ConnectionCloudSqlCredentialArgs
+    ///             {
+    ///                 Username = user.Name,
+    ///                 Password = user.Password,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Bigquery Connection Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
+    ///     {
+    ///         DatabaseVersion = "POSTGRES_11",
+    ///         Region = "us-central1",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-f1-micro",
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
+    /// 
+    ///     var db = new Gcp.Sql.Database("db", new()
+    ///     {
+    ///         Instance = instance.Name,
+    ///     });
+    /// 
+    ///     var pwd = new Random.RandomPassword("pwd", new()
+    ///     {
+    ///         Length = 16,
+    ///         Special = false,
+    ///     });
+    /// 
+    ///     var user = new Gcp.Sql.User("user", new()
+    ///     {
+    ///         Instance = instance.Name,
+    ///         Password = pwd.Result,
+    ///     });
+    /// 
+    ///     var connection = new Gcp.BigQuery.Connection("connection", new()
+    ///     {
+    ///         ConnectionId = "my-connection",
+    ///         Location = "US",
+    ///         FriendlyName = "👋",
+    ///         Description = "a riveting description",
+    ///         CloudSql = new Gcp.BigQuery.Inputs.ConnectionCloudSqlArgs
+    ///         {
+    ///             InstanceId = instance.ConnectionName,
+    ///             Database = db.Name,
+    ///             Type = "POSTGRES",
+    ///             Credential = new Gcp.BigQuery.Inputs.ConnectionCloudSqlCredentialArgs
+    ///             {
+    ///                 Username = user.Name,
+    ///                 Password = user.Password,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Bigquery Connection Aws
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var connection = new Gcp.BigQuery.Connection("connection", new()
+    ///     {
+    ///         Aws = new Gcp.BigQuery.Inputs.ConnectionAwsArgs
+    ///         {
+    ///             AccessRole = new Gcp.BigQuery.Inputs.ConnectionAwsAccessRoleArgs
+    ///             {
+    ///                 IamRoleId = "arn:aws:iam::999999999999:role/omnirole",
+    ///             },
+    ///         },
+    ///         ConnectionId = "my-connection",
+    ///         Description = "a riveting description",
+    ///         FriendlyName = "👋",
+    ///         Location = "aws-us-east-1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Bigquery Connection Azure
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var connection = new Gcp.BigQuery.Connection("connection", new()
+    ///     {
+    ///         Azure = new Gcp.BigQuery.Inputs.ConnectionAzureArgs
+    ///         {
+    ///             CustomerTenantId = "customer-tenant-id",
+    ///             FederatedApplicationClientId = "b43eeeee-eeee-eeee-eeee-a480155501ce",
+    ///         },
+    ///         ConnectionId = "my-connection",
+    ///         Description = "a riveting description",
+    ///         FriendlyName = "👋",
+    ///         Location = "azure-eastus2",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Bigquery Connection Cloudspanner
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var connection = new Gcp.BigQuery.Connection("connection", new()
+    ///     {
+    ///         CloudSpanner = new Gcp.BigQuery.Inputs.ConnectionCloudSpannerArgs
+    ///         {
+    ///             Database = "projects/project/instances/instance/databases/database",
+    ///         },
+    ///         ConnectionId = "my-connection",
+    ///         Description = "a riveting description",
+    ///         FriendlyName = "👋",
+    ///         Location = "US",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -20,6 +20,124 @@ import * as utilities from "../utilities";
  * > **Note:** `gcp.compute.MachineImageIamBinding` resources **can be** used in conjunction with `gcp.compute.MachineImageIamMember` resources **only if** they do not grant privilege to the same role.
  *
  * > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+ * ## google\_compute\_machine\_image\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/compute.admin",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.compute.MachineImageIamPolicy("policy", {
+ *     project: google_compute_machine_image.image.project,
+ *     machineImage: google_compute_machine_image.image.name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/compute.admin",
+ *         members: ["user:jane@example.com"],
+ *         condition: {
+ *             title: "expires_after_2019_12_31",
+ *             description: "Expiring at midnight of 2019-12-31",
+ *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         },
+ *     }],
+ * });
+ * const policy = new gcp.compute.MachineImageIamPolicy("policy", {
+ *     project: google_compute_machine_image.image.project,
+ *     machineImage: google_compute_machine_image.image.name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ## google\_compute\_machine\_image\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.compute.MachineImageIamBinding("binding", {
+ *     project: google_compute_machine_image.image.project,
+ *     machineImage: google_compute_machine_image.image.name,
+ *     role: "roles/compute.admin",
+ *     members: ["user:jane@example.com"],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.compute.MachineImageIamBinding("binding", {
+ *     project: google_compute_machine_image.image.project,
+ *     machineImage: google_compute_machine_image.image.name,
+ *     role: "roles/compute.admin",
+ *     members: ["user:jane@example.com"],
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ## google\_compute\_machine\_image\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.compute.MachineImageIamMember("member", {
+ *     project: google_compute_machine_image.image.project,
+ *     machineImage: google_compute_machine_image.image.name,
+ *     role: "roles/compute.admin",
+ *     member: "user:jane@example.com",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.compute.MachineImageIamMember("member", {
+ *     project: google_compute_machine_image.image.project,
+ *     machineImage: google_compute_machine_image.image.name,
+ *     role: "roles/compute.admin",
+ *     member: "user:jane@example.com",
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

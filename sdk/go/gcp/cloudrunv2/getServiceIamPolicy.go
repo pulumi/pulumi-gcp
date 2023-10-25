@@ -13,6 +13,34 @@ import (
 )
 
 // Retrieves the current IAM policy data for service
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudrunv2.LookupServiceIamPolicy(ctx, &cloudrunv2.LookupServiceIamPolicyArgs{
+//				Project:  pulumi.StringRef(google_cloud_run_v2_service.Default.Project),
+//				Location: pulumi.StringRef(google_cloud_run_v2_service.Default.Location),
+//				Name:     google_cloud_run_v2_service.Default.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupServiceIamPolicy(ctx *pulumi.Context, args *LookupServiceIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupServiceIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceIamPolicyResult

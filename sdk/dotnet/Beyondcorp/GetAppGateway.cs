@@ -13,12 +13,56 @@ namespace Pulumi.Gcp.Beyondcorp
     {
         /// <summary>
         /// Get information about a Google BeyondCorp App Gateway.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_beyondcorp_app_gateway = Gcp.Beyondcorp.GetAppGateway.Invoke(new()
+        ///     {
+        ///         Name = "my-beyondcorp-app-gateway",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAppGatewayResult> InvokeAsync(GetAppGatewayArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppGatewayResult>("gcp:beyondcorp/getAppGateway:getAppGateway", args ?? new GetAppGatewayArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Google BeyondCorp App Gateway.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_beyondcorp_app_gateway = Gcp.Beyondcorp.GetAppGateway.Invoke(new()
+        ///     {
+        ///         Name = "my-beyondcorp-app-gateway",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAppGatewayResult> Invoke(GetAppGatewayInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppGatewayResult>("gcp:beyondcorp/getAppGateway:getAppGateway", args ?? new GetAppGatewayInvokeArgs(), options.WithDefaults());

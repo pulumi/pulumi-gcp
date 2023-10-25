@@ -22,6 +22,97 @@ import (
 //   - [Create and manage subnetworks](https://cloud.google.com/distributed-cloud/edge/latest/docs/subnetworks#api)
 //
 // ## Example Usage
+// ### Edgenetwork Subnet
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/edgenetwork"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleNetwork, err := edgenetwork.NewNetwork(ctx, "exampleNetwork", &edgenetwork.NetworkArgs{
+//				NetworkId:   pulumi.String("example-network"),
+//				Location:    pulumi.String("us-west1"),
+//				Zone:        pulumi.String(""),
+//				Description: pulumi.String("Example network."),
+//				Mtu:         pulumi.Int(9000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = edgenetwork.NewSubnet(ctx, "exampleSubnet", &edgenetwork.SubnetArgs{
+//				SubnetId:    pulumi.String("example-subnet"),
+//				Location:    pulumi.String("us-west1"),
+//				Zone:        pulumi.String(""),
+//				Description: pulumi.String("Example subnet."),
+//				Network:     exampleNetwork.ID(),
+//				Ipv4Cidrs: pulumi.StringArray{
+//					pulumi.String("4.4.4.1/24"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"environment": pulumi.String("dev"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Edgenetwork Subnet With Vlan Id
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/edgenetwork"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleNetwork, err := edgenetwork.NewNetwork(ctx, "exampleNetwork", &edgenetwork.NetworkArgs{
+//				NetworkId:   pulumi.String("example-network"),
+//				Location:    pulumi.String("us-west1"),
+//				Zone:        pulumi.String(""),
+//				Description: pulumi.String("Example network."),
+//				Mtu:         pulumi.Int(9000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = edgenetwork.NewSubnet(ctx, "exampleSubnetWithVlanId", &edgenetwork.SubnetArgs{
+//				SubnetId:    pulumi.String("example-subnet-with-vlan-id"),
+//				Location:    pulumi.String("us-west1"),
+//				Zone:        pulumi.String(""),
+//				Description: pulumi.String("Example subnet with VLAN ID."),
+//				Network:     exampleNetwork.ID(),
+//				Ipv6Cidrs: pulumi.StringArray{
+//					pulumi.String("4444:4444:4444:4444::1/64"),
+//				},
+//				VlanId: pulumi.Int(44),
+//				Labels: pulumi.StringMap{
+//					"environment": pulumi.String("dev"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

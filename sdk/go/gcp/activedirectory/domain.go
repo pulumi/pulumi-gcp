@@ -22,6 +22,35 @@ import (
 //   - [Managed Microsoft Active Directory Quickstart](https://cloud.google.com/managed-microsoft-ad/docs/quickstarts)
 //
 // ## Example Usage
+// ### Active Directory Domain Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/activedirectory"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := activedirectory.NewDomain(ctx, "ad-domain", &activedirectory.DomainArgs{
+//				DomainName: pulumi.String("tfgen.org.com"),
+//				Locations: pulumi.StringArray{
+//					pulumi.String("us-central1"),
+//				},
+//				ReservedIpRange: pulumi.String("192.168.255.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

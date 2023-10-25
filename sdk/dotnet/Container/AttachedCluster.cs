@@ -20,6 +20,81 @@ namespace Pulumi.Gcp.Container
     ///     * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
     /// 
     /// ## Example Usage
+    /// ### Container Attached Cluster Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var versions = Gcp.Container.GetAttachedVersions.Invoke(new()
+    ///     {
+    ///         Location = "us-west1",
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Container.AttachedCluster("primary", new()
+    ///     {
+    ///         Location = "us-west1",
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         Description = "Test cluster",
+    ///         Distribution = "aks",
+    ///         OidcConfig = new Gcp.Container.Inputs.AttachedClusterOidcConfigArgs
+    ///         {
+    ///             IssuerUrl = "https://oidc.issuer.url",
+    ///         },
+    ///         PlatformVersion = versions.Apply(getAttachedVersionsResult =&gt; getAttachedVersionsResult.ValidVersions[0]),
+    ///         Fleet = new Gcp.Container.Inputs.AttachedClusterFleetArgs
+    ///         {
+    ///             Project = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Container Attached Cluster Ignore Errors
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var versions = Gcp.Container.GetAttachedVersions.Invoke(new()
+    ///     {
+    ///         Location = "us-west1",
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Container.AttachedCluster("primary", new()
+    ///     {
+    ///         Location = "us-west1",
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         Description = "Test cluster",
+    ///         Distribution = "aks",
+    ///         OidcConfig = new Gcp.Container.Inputs.AttachedClusterOidcConfigArgs
+    ///         {
+    ///             IssuerUrl = "https://oidc.issuer.url",
+    ///         },
+    ///         PlatformVersion = versions.Apply(getAttachedVersionsResult =&gt; getAttachedVersionsResult.ValidVersions[0]),
+    ///         Fleet = new Gcp.Container.Inputs.AttachedClusterFleetArgs
+    ///         {
+    ///             Project = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}",
+    ///         },
+    ///         DeletionPolicy = "DELETE_IGNORE_ERRORS",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

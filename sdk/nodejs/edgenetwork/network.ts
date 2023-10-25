@@ -14,6 +14,23 @@ import * as utilities from "../utilities";
  *     * [Create and manage networks](https://cloud.google.com/distributed-cloud/edge/latest/docs/networks#api)
  *
  * ## Example Usage
+ * ### Edgenetwork Network
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const exampleNetwork = new gcp.edgenetwork.Network("exampleNetwork", {
+ *     networkId: "example-network",
+ *     location: "us-west1",
+ *     zone: "",
+ *     description: "Example network.",
+ *     mtu: 9000,
+ *     labels: {
+ *         environment: "dev",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

@@ -17,6 +17,41 @@ import (
 //
 // For more information on applying hierarchical firewall policies see the [official documentation](https://cloud.google.com/vpc/docs/firewall-policies#managing_hierarchical_firewall_policy_resources)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultFirewallPolicy, err := compute.NewFirewallPolicy(ctx, "defaultFirewallPolicy", &compute.FirewallPolicyArgs{
+//				Parent:      pulumi.String("organizations/12345"),
+//				ShortName:   pulumi.String("my-policy"),
+//				Description: pulumi.String("Example Resource"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewFirewallPolicyAssociation(ctx, "defaultFirewallPolicyAssociation", &compute.FirewallPolicyAssociationArgs{
+//				FirewallPolicy:   defaultFirewallPolicy.ID(),
+//				AttachmentTarget: pulumi.Any(google_folder.Folder.Name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // # FirewallPolicyAssociation can be imported using any of these accepted formats

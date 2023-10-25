@@ -6,6 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for tunnelinstance
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.iap.getTunnelInstanceIamPolicy({
+ *     project: google_compute_instance.tunnelvm.project,
+ *     zone: google_compute_instance.tunnelvm.zone,
+ *     instance: google_compute_instance.tunnelvm.name,
+ * });
+ * ```
  */
 export function getTunnelInstanceIamPolicy(args: GetTunnelInstanceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetTunnelInstanceIamPolicyResult> {
 
@@ -56,6 +69,19 @@ export interface GetTunnelInstanceIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for tunnelinstance
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.iap.getTunnelInstanceIamPolicy({
+ *     project: google_compute_instance.tunnelvm.project,
+ *     zone: google_compute_instance.tunnelvm.zone,
+ *     instance: google_compute_instance.tunnelvm.name,
+ * });
+ * ```
  */
 export function getTunnelInstanceIamPolicyOutput(args: GetTunnelInstanceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTunnelInstanceIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getTunnelInstanceIamPolicy(a, opts))

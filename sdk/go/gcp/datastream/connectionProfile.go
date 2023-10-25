@@ -26,6 +26,213 @@ import (
 // Read more about sensitive data in state.
 //
 // ## Example Usage
+// ### Datastream Connection Profile Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datastream"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := datastream.NewConnectionProfile(ctx, "default", &datastream.ConnectionProfileArgs{
+//				ConnectionProfileId: pulumi.String("my-profile"),
+//				DisplayName:         pulumi.String("Connection profile"),
+//				GcsProfile: &datastream.ConnectionProfileGcsProfileArgs{
+//					Bucket:   pulumi.String("my-bucket"),
+//					RootPath: pulumi.String("/path"),
+//				},
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Datastream Connection Profile Bigquery Private Connection
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datastream"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil)
+//			if err != nil {
+//				return err
+//			}
+//			privateConnection, err := datastream.NewPrivateConnection(ctx, "privateConnection", &datastream.PrivateConnectionArgs{
+//				DisplayName:         pulumi.String("Connection profile"),
+//				Location:            pulumi.String("us-central1"),
+//				PrivateConnectionId: pulumi.String("my-connection"),
+//				Labels: pulumi.StringMap{
+//					"key": pulumi.String("value"),
+//				},
+//				VpcPeeringConfig: &datastream.PrivateConnectionVpcPeeringConfigArgs{
+//					Vpc:    defaultNetwork.ID(),
+//					Subnet: pulumi.String("10.0.0.0/29"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datastream.NewConnectionProfile(ctx, "defaultConnectionProfile", &datastream.ConnectionProfileArgs{
+//				DisplayName:         pulumi.String("Connection profile"),
+//				Location:            pulumi.String("us-central1"),
+//				ConnectionProfileId: pulumi.String("my-profile"),
+//				BigqueryProfile:     nil,
+//				PrivateConnectivity: &datastream.ConnectionProfilePrivateConnectivityArgs{
+//					PrivateConnection: privateConnection.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Datastream Connection Profile Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datastream"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := datastream.NewConnectionProfile(ctx, "default", &datastream.ConnectionProfileArgs{
+//				ConnectionProfileId: pulumi.String("my-profile"),
+//				DisplayName:         pulumi.String("Connection profile"),
+//				ForwardSshConnectivity: &datastream.ConnectionProfileForwardSshConnectivityArgs{
+//					Hostname: pulumi.String("google.com"),
+//					Password: pulumi.String("swordfish"),
+//					Port:     pulumi.Int(8022),
+//					Username: pulumi.String("my-user"),
+//				},
+//				GcsProfile: &datastream.ConnectionProfileGcsProfileArgs{
+//					Bucket:   pulumi.String("my-bucket"),
+//					RootPath: pulumi.String("/path"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"key": pulumi.String("value"),
+//				},
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Datastream Connection Profile Postgres
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datastream"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+//				DatabaseVersion: pulumi.String("POSTGRES_14"),
+//				Region:          pulumi.String("us-central1"),
+//				Settings: &sql.DatabaseInstanceSettingsArgs{
+//					Tier: pulumi.String("db-f1-micro"),
+//					IpConfiguration: &sql.DatabaseInstanceSettingsIpConfigurationArgs{
+//						AuthorizedNetworks: sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArray{
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.71.242.81"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.72.28.29"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.67.6.157"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.67.234.134"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.72.239.218"),
+//							},
+//						},
+//					},
+//				},
+//				DeletionProtection: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			db, err := sql.NewDatabase(ctx, "db", &sql.DatabaseArgs{
+//				Instance: instance.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pwd, err := random.NewRandomPassword(ctx, "pwd", &random.RandomPasswordArgs{
+//				Length:  pulumi.Int(16),
+//				Special: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			user, err := sql.NewUser(ctx, "user", &sql.UserArgs{
+//				Instance: instance.Name,
+//				Password: pwd.Result,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datastream.NewConnectionProfile(ctx, "default", &datastream.ConnectionProfileArgs{
+//				DisplayName:         pulumi.String("Connection profile"),
+//				Location:            pulumi.String("us-central1"),
+//				ConnectionProfileId: pulumi.String("my-profile"),
+//				PostgresqlProfile: &datastream.ConnectionProfilePostgresqlProfileArgs{
+//					Hostname: instance.PublicIpAddress,
+//					Username: user.Name,
+//					Password: user.Password,
+//					Database: db.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

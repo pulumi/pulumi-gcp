@@ -6,6 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for datascan
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.dataplex.getDatascanIamPolicy({
+ *     project: google_dataplex_datascan.basic_profile.project,
+ *     location: google_dataplex_datascan.basic_profile.location,
+ *     dataScanId: google_dataplex_datascan.basic_profile.data_scan_id,
+ * });
+ * ```
  */
 export function getDatascanIamPolicy(args: GetDatascanIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDatascanIamPolicyResult> {
 
@@ -57,6 +70,19 @@ export interface GetDatascanIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for datascan
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.dataplex.getDatascanIamPolicy({
+ *     project: google_dataplex_datascan.basic_profile.project,
+ *     location: google_dataplex_datascan.basic_profile.location,
+ *     dataScanId: google_dataplex_datascan.basic_profile.data_scan_id,
+ * });
+ * ```
  */
 export function getDatascanIamPolicyOutput(args: GetDatascanIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatascanIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getDatascanIamPolicy(a, opts))

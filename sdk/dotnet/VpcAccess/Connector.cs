@@ -19,6 +19,57 @@ namespace Pulumi.Gcp.VpcAccess
     ///     * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
     /// 
     /// ## Example Usage
+    /// ### Vpc Access Connector
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var connector = new Gcp.VpcAccess.Connector("connector", new()
+    ///     {
+    ///         IpCidrRange = "10.8.0.0/28",
+    ///         Network = "default",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Vpc Access Connector Shared Vpc
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var customTestNetwork = new Gcp.Compute.Network("customTestNetwork", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var customTestSubnetwork = new Gcp.Compute.Subnetwork("customTestSubnetwork", new()
+    ///     {
+    ///         IpCidrRange = "10.2.0.0/28",
+    ///         Region = "us-central1",
+    ///         Network = customTestNetwork.Id,
+    ///     });
+    /// 
+    ///     var connector = new Gcp.VpcAccess.Connector("connector", new()
+    ///     {
+    ///         Subnet = new Gcp.VpcAccess.Inputs.ConnectorSubnetArgs
+    ///         {
+    ///             Name = customTestSubnetwork.Name,
+    ///         },
+    ///         MachineType = "e2-standard-4",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

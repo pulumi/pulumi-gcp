@@ -634,6 +634,81 @@ class AzureNodePool(pulumi.CustomResource):
         For more information, see:
         * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
         ## Example Usage
+        ### Basic_azure_node_pool
+        A basic example of a containerazure azure node pool
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        versions = gcp.container.get_azure_versions(project="my-project-name",
+            location="us-west1")
+        basic = gcp.container.AzureClient("basic",
+            application_id="12345678-1234-1234-1234-123456789111",
+            location="us-west1",
+            tenant_id="12345678-1234-1234-1234-123456789111",
+            project="my-project-name")
+        primary_azure_cluster = gcp.container.AzureCluster("primaryAzureCluster",
+            authorization=gcp.container.AzureClusterAuthorizationArgs(
+                admin_users=[gcp.container.AzureClusterAuthorizationAdminUserArgs(
+                    username="mmv2@google.com",
+                )],
+            ),
+            azure_region="westus2",
+            client=basic.name.apply(lambda name: f"projects/my-project-number/locations/us-west1/azureClients/{name}"),
+            control_plane=gcp.container.AzureClusterControlPlaneArgs(
+                ssh_config=gcp.container.AzureClusterControlPlaneSshConfigArgs(
+                    authorized_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
+                ),
+                subnet_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
+                version=versions.valid_versions[0],
+            ),
+            fleet=gcp.container.AzureClusterFleetArgs(
+                project="my-project-number",
+            ),
+            location="us-west1",
+            networking=gcp.container.AzureClusterNetworkingArgs(
+                pod_address_cidr_blocks=["10.200.0.0/16"],
+                service_address_cidr_blocks=["10.32.0.0/24"],
+                virtual_network_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
+            ),
+            resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
+            project="my-project-name")
+        primary_azure_node_pool = gcp.container.AzureNodePool("primaryAzureNodePool",
+            autoscaling=gcp.container.AzureNodePoolAutoscalingArgs(
+                max_node_count=3,
+                min_node_count=2,
+            ),
+            cluster=primary_azure_cluster.name,
+            config=gcp.container.AzureNodePoolConfigArgs(
+                ssh_config=gcp.container.AzureNodePoolConfigSshConfigArgs(
+                    authorized_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
+                ),
+                proxy_config=gcp.container.AzureNodePoolConfigProxyConfigArgs(
+                    resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
+                    secret_id="https://my--dev-keyvault.vault.azure.net/secrets/my--dev-secret/0000000000000000000000000000000000",
+                ),
+                root_volume=gcp.container.AzureNodePoolConfigRootVolumeArgs(
+                    size_gib=32,
+                ),
+                tags={
+                    "owner": "mmv2",
+                },
+                vm_size="Standard_DS2_v2",
+            ),
+            location="us-west1",
+            max_pods_constraint=gcp.container.AzureNodePoolMaxPodsConstraintArgs(
+                max_pods_per_node=110,
+            ),
+            subnet_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
+            version=versions.valid_versions[0],
+            annotations={
+                "annotation-one": "value-one",
+            },
+            management=gcp.container.AzureNodePoolManagementArgs(
+                auto_repair=True,
+            ),
+            project="my-project-name")
+        ```
 
         ## Import
 
@@ -678,6 +753,81 @@ class AzureNodePool(pulumi.CustomResource):
         For more information, see:
         * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
         ## Example Usage
+        ### Basic_azure_node_pool
+        A basic example of a containerazure azure node pool
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        versions = gcp.container.get_azure_versions(project="my-project-name",
+            location="us-west1")
+        basic = gcp.container.AzureClient("basic",
+            application_id="12345678-1234-1234-1234-123456789111",
+            location="us-west1",
+            tenant_id="12345678-1234-1234-1234-123456789111",
+            project="my-project-name")
+        primary_azure_cluster = gcp.container.AzureCluster("primaryAzureCluster",
+            authorization=gcp.container.AzureClusterAuthorizationArgs(
+                admin_users=[gcp.container.AzureClusterAuthorizationAdminUserArgs(
+                    username="mmv2@google.com",
+                )],
+            ),
+            azure_region="westus2",
+            client=basic.name.apply(lambda name: f"projects/my-project-number/locations/us-west1/azureClients/{name}"),
+            control_plane=gcp.container.AzureClusterControlPlaneArgs(
+                ssh_config=gcp.container.AzureClusterControlPlaneSshConfigArgs(
+                    authorized_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
+                ),
+                subnet_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
+                version=versions.valid_versions[0],
+            ),
+            fleet=gcp.container.AzureClusterFleetArgs(
+                project="my-project-number",
+            ),
+            location="us-west1",
+            networking=gcp.container.AzureClusterNetworkingArgs(
+                pod_address_cidr_blocks=["10.200.0.0/16"],
+                service_address_cidr_blocks=["10.32.0.0/24"],
+                virtual_network_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
+            ),
+            resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
+            project="my-project-name")
+        primary_azure_node_pool = gcp.container.AzureNodePool("primaryAzureNodePool",
+            autoscaling=gcp.container.AzureNodePoolAutoscalingArgs(
+                max_node_count=3,
+                min_node_count=2,
+            ),
+            cluster=primary_azure_cluster.name,
+            config=gcp.container.AzureNodePoolConfigArgs(
+                ssh_config=gcp.container.AzureNodePoolConfigSshConfigArgs(
+                    authorized_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
+                ),
+                proxy_config=gcp.container.AzureNodePoolConfigProxyConfigArgs(
+                    resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
+                    secret_id="https://my--dev-keyvault.vault.azure.net/secrets/my--dev-secret/0000000000000000000000000000000000",
+                ),
+                root_volume=gcp.container.AzureNodePoolConfigRootVolumeArgs(
+                    size_gib=32,
+                ),
+                tags={
+                    "owner": "mmv2",
+                },
+                vm_size="Standard_DS2_v2",
+            ),
+            location="us-west1",
+            max_pods_constraint=gcp.container.AzureNodePoolMaxPodsConstraintArgs(
+                max_pods_per_node=110,
+            ),
+            subnet_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
+            version=versions.valid_versions[0],
+            annotations={
+                "annotation-one": "value-one",
+            },
+            management=gcp.container.AzureNodePoolManagementArgs(
+                auto_repair=True,
+            ),
+            project="my-project-name")
+        ```
 
         ## Import
 

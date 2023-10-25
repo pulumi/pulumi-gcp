@@ -23,6 +23,100 @@ namespace Pulumi.Gcp.Compute
     ///     * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
     /// 
     /// ## Example Usage
+    /// ### Region Autoscaler Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobarInstanceTemplate = new Gcp.Compute.InstanceTemplate("foobarInstanceTemplate", new()
+    ///     {
+    ///         MachineType = "e2-standard-4",
+    ///         Disks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///             {
+    ///                 SourceImage = "debian-cloud/debian-11",
+    ///                 DiskSizeGb = 250,
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///             {
+    ///                 Network = "default",
+    ///                 AccessConfigs = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceAccessConfigArgs
+    ///                     {
+    ///                         NetworkTier = "PREMIUM",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         ServiceAccount = new Gcp.Compute.Inputs.InstanceTemplateServiceAccountArgs
+    ///         {
+    ///             Scopes = new[]
+    ///             {
+    ///                 "https://www.googleapis.com/auth/devstorage.read_only",
+    ///                 "https://www.googleapis.com/auth/logging.write",
+    ///                 "https://www.googleapis.com/auth/monitoring.write",
+    ///                 "https://www.googleapis.com/auth/pubsub",
+    ///                 "https://www.googleapis.com/auth/service.management.readonly",
+    ///                 "https://www.googleapis.com/auth/servicecontrol",
+    ///                 "https://www.googleapis.com/auth/trace.append",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var foobarTargetPool = new Gcp.Compute.TargetPool("foobarTargetPool");
+    /// 
+    ///     var foobarRegionInstanceGroupManager = new Gcp.Compute.RegionInstanceGroupManager("foobarRegionInstanceGroupManager", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Versions = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
+    ///             {
+    ///                 InstanceTemplate = foobarInstanceTemplate.Id,
+    ///                 Name = "primary",
+    ///             },
+    ///         },
+    ///         TargetPools = new[]
+    ///         {
+    ///             foobarTargetPool.Id,
+    ///         },
+    ///         BaseInstanceName = "foobar",
+    ///     });
+    /// 
+    ///     var foobarRegionAutoscaler = new Gcp.Compute.RegionAutoscaler("foobarRegionAutoscaler", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Target = foobarRegionInstanceGroupManager.Id,
+    ///         AutoscalingPolicy = new Gcp.Compute.Inputs.RegionAutoscalerAutoscalingPolicyArgs
+    ///         {
+    ///             MaxReplicas = 5,
+    ///             MinReplicas = 1,
+    ///             CooldownPeriod = 60,
+    ///             CpuUtilization = new Gcp.Compute.Inputs.RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs
+    ///             {
+    ///                 Target = 0.5,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var debian9 = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

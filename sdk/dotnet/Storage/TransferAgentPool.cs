@@ -19,6 +19,45 @@ namespace Pulumi.Gcp.Storage
     ///     * [Official Documentation](https://cloud.google.com/storage-transfer/docs/on-prem-agent-pools)
     /// 
     /// ## Example Usage
+    /// ### Agent Pool Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = Gcp.Storage.GetTransferProjectServiceAccount.Invoke(new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    ///     var pubsubEditorRole = new Gcp.Projects.IAMMember("pubsubEditorRole", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Role = "roles/pubsub.editor",
+    ///         Member = @default.Apply(@default =&gt; $"serviceAccount:{@default.Apply(getTransferProjectServiceAccountResult =&gt; getTransferProjectServiceAccountResult.Email)}"),
+    ///     });
+    /// 
+    ///     var example = new Gcp.Storage.TransferAgentPool("example", new()
+    ///     {
+    ///         DisplayName = "Source A to destination Z",
+    ///         BandwidthLimit = new Gcp.Storage.Inputs.TransferAgentPoolBandwidthLimitArgs
+    ///         {
+    ///             LimitMbps = "120",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             pubsubEditorRole,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

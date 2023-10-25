@@ -22,6 +22,124 @@ namespace Pulumi.Gcp.PubSub
     /// by using the `gcp.projects.ServiceIdentity` resource.
     /// 
     /// ## Example Usage
+    /// ### Pubsub Topic Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.PubSub.Topic("example", new()
+    ///     {
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         MessageRetentionDuration = "86600s",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Pubsub Topic Cmek
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var keyRing = new Gcp.Kms.KeyRing("keyRing", new()
+    ///     {
+    ///         Location = "global",
+    ///     });
+    /// 
+    ///     var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new()
+    ///     {
+    ///         KeyRing = keyRing.Id,
+    ///     });
+    /// 
+    ///     var example = new Gcp.PubSub.Topic("example", new()
+    ///     {
+    ///         KmsKeyName = cryptoKey.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Pubsub Topic Geo Restricted
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.PubSub.Topic("example", new()
+    ///     {
+    ///         MessageStoragePolicy = new Gcp.PubSub.Inputs.TopicMessageStoragePolicyArgs
+    ///         {
+    ///             AllowedPersistenceRegions = new[]
+    ///             {
+    ///                 "europe-west3",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Pubsub Topic Schema Settings
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleSchema = new Gcp.PubSub.Schema("exampleSchema", new()
+    ///     {
+    ///         Type = "AVRO",
+    ///         Definition = @"{
+    ///   ""type"" : ""record"",
+    ///   ""name"" : ""Avro"",
+    ///   ""fields"" : [
+    ///     {
+    ///       ""name"" : ""StringField"",
+    ///       ""type"" : ""string""
+    ///     },
+    ///     {
+    ///       ""name"" : ""IntField"",
+    ///       ""type"" : ""int""
+    ///     }
+    ///   ]
+    /// }
+    /// ",
+    ///     });
+    /// 
+    ///     var exampleTopic = new Gcp.PubSub.Topic("exampleTopic", new()
+    ///     {
+    ///         SchemaSettings = new Gcp.PubSub.Inputs.TopicSchemaSettingsArgs
+    ///         {
+    ///             Schema = "projects/my-project-name/schemas/example",
+    ///             Encoding = "JSON",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             exampleSchema,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

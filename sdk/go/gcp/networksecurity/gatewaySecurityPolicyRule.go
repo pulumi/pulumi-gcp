@@ -21,6 +21,84 @@ import (
 // * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.gatewaySecurityPolicies.rules)
 //
 // ## Example Usage
+// ### Network Security Gateway Security Policy Rules Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultGatewaySecurityPolicy, err := networksecurity.NewGatewaySecurityPolicy(ctx, "defaultGatewaySecurityPolicy", &networksecurity.GatewaySecurityPolicyArgs{
+//				Location:    pulumi.String("us-central1"),
+//				Description: pulumi.String("gateway security policy created to be used as reference by the rule."),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networksecurity.NewGatewaySecurityPolicyRule(ctx, "defaultGatewaySecurityPolicyRule", &networksecurity.GatewaySecurityPolicyRuleArgs{
+//				Location:              pulumi.String("us-central1"),
+//				GatewaySecurityPolicy: defaultGatewaySecurityPolicy.Name,
+//				Enabled:               pulumi.Bool(true),
+//				Description:           pulumi.String("my description"),
+//				Priority:              pulumi.Int(0),
+//				SessionMatcher:        pulumi.String("host() == 'example.com'"),
+//				BasicProfile:          pulumi.String("ALLOW"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Network Security Gateway Security Policy Rules Advanced
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultGatewaySecurityPolicy, err := networksecurity.NewGatewaySecurityPolicy(ctx, "defaultGatewaySecurityPolicy", &networksecurity.GatewaySecurityPolicyArgs{
+//				Location:    pulumi.String("us-central1"),
+//				Description: pulumi.String("gateway security policy created to be used as reference by the rule."),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networksecurity.NewGatewaySecurityPolicyRule(ctx, "defaultGatewaySecurityPolicyRule", &networksecurity.GatewaySecurityPolicyRuleArgs{
+//				Location:              pulumi.String("us-central1"),
+//				GatewaySecurityPolicy: defaultGatewaySecurityPolicy.Name,
+//				Enabled:               pulumi.Bool(true),
+//				Description:           pulumi.String("my description"),
+//				Priority:              pulumi.Int(0),
+//				SessionMatcher:        pulumi.String("host() == 'example.com'"),
+//				ApplicationMatcher:    pulumi.String("request.method == 'POST'"),
+//				TlsInspectionEnabled:  pulumi.Bool(false),
+//				BasicProfile:          pulumi.String("ALLOW"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

@@ -29,6 +29,29 @@ namespace Pulumi.Gcp.Monitoring
         /// 
         /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
+        /// ### Monitoring Cluster Istio Service
+        /// 
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = Gcp.Monitoring.GetClusterIstioService.Invoke(new()
+        ///     {
+        ///         ClusterName = "west",
+        ///         Location = "us-west2-a",
+        ///         ServiceName = "istio-policy",
+        ///         ServiceNamespace = "istio-system",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClusterIstioServiceResult> InvokeAsync(GetClusterIstioServiceArgs args, InvokeOptions? options = null)
@@ -52,6 +75,29 @@ namespace Pulumi.Gcp.Monitoring
         /// 
         /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
+        /// ### Monitoring Cluster Istio Service
+        /// 
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = Gcp.Monitoring.GetClusterIstioService.Invoke(new()
+        ///     {
+        ///         ClusterName = "west",
+        ///         Location = "us-west2-a",
+        ///         ServiceName = "istio-policy",
+        ///         ServiceNamespace = "istio-system",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetClusterIstioServiceResult> Invoke(GetClusterIstioServiceInvokeArgs args, InvokeOptions? options = null)

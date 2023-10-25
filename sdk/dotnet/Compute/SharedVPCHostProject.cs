@@ -18,6 +18,39 @@ namespace Pulumi.Gcp.Compute
     /// [the Project API documentation](https://cloud.google.com/compute/docs/reference/latest/projects),
     /// where the Shared VPC feature is referred to by its former name "XPN".
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // A host project provides network resources to associated service projects.
+    ///     var host = new Gcp.Compute.SharedVPCHostProject("host", new()
+    ///     {
+    ///         Project = "host-project-id",
+    ///     });
+    /// 
+    ///     // A service project gains access to network resources provided by its
+    ///     // associated host project.
+    ///     var service1 = new Gcp.Compute.SharedVPCServiceProject("service1", new()
+    ///     {
+    ///         HostProject = host.Project,
+    ///         ServiceProject = "service-project-id-1",
+    ///     });
+    /// 
+    ///     var service2 = new Gcp.Compute.SharedVPCServiceProject("service2", new()
+    ///     {
+    ///         HostProject = host.Project,
+    ///         ServiceProject = "service-project-id-2",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Google Compute Engine Shared VPC host project feature can be imported using the `project`, e.g.

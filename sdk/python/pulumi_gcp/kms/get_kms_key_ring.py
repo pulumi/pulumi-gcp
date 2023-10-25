@@ -84,6 +84,16 @@ def get_kms_key_ring(location: Optional[str] = None,
     A KeyRing is a grouping of CryptoKeys for organizational purposes. A KeyRing belongs to a Google Cloud Platform Project
     and resides in a specific location.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_key_ring = gcp.kms.get_kms_key_ring(location="us-central1",
+        name="my-key-ring")
+    ```
+
 
     :param str location: The Google Cloud Platform location for the KeyRing.
            A full list of valid locations can be found by running `gcloud kms locations list`.
@@ -121,6 +131,16 @@ def get_kms_key_ring_output(location: Optional[pulumi.Input[str]] = None,
 
     A KeyRing is a grouping of CryptoKeys for organizational purposes. A KeyRing belongs to a Google Cloud Platform Project
     and resides in a specific location.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_key_ring = gcp.kms.get_kms_key_ring(location="us-central1",
+        name="my-key-ring")
+    ```
 
 
     :param str location: The Google Cloud Platform location for the KeyRing.

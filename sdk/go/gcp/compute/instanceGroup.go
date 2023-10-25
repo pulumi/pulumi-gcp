@@ -17,6 +17,73 @@ import (
 // and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
 //
 // ## Example Usage
+// ### Empty Instance Group
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewInstanceGroup(ctx, "test", &compute.InstanceGroupArgs{
+//				Description: pulumi.String("Test instance group"),
+//				Zone:        pulumi.String("us-central1-a"),
+//				Network:     pulumi.Any(google_compute_network.Default.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Example Usage - With instances and named ports
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewInstanceGroup(ctx, "webservers", &compute.InstanceGroupArgs{
+//				Description: pulumi.String("Test instance group"),
+//				Instances: pulumi.StringArray{
+//					google_compute_instance.Test.Id,
+//					google_compute_instance.Test2.Id,
+//				},
+//				NamedPorts: compute.InstanceGroupNamedPortTypeArray{
+//					&compute.InstanceGroupNamedPortTypeArgs{
+//						Name: pulumi.String("http"),
+//						Port: pulumi.Int(8080),
+//					},
+//					&compute.InstanceGroupNamedPortTypeArgs{
+//						Name: pulumi.String("https"),
+//						Port: pulumi.Int(8443),
+//					},
+//				},
+//				Zone: pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

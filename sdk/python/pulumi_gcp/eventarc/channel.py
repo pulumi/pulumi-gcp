@@ -381,6 +381,27 @@ class Channel(pulumi.CustomResource):
         The Eventarc Channel resource
 
         ## Example Usage
+        ### Basic
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_project = gcp.organizations.get_project(project_id="my-project-name")
+        test_key_ring = gcp.kms.get_kms_key_ring(name="keyring",
+            location="us-west1")
+        key = gcp.kms.get_kms_crypto_key(name="key",
+            key_ring=test_key_ring.id)
+        key1_member = gcp.kms.CryptoKeyIAMMember("key1Member",
+            crypto_key_id=data["google_kms_crypto_key"]["key1"]["id"],
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:service-{test_project.number}@gcp-sa-eventarc.iam.gserviceaccount.com")
+        primary = gcp.eventarc.Channel("primary",
+            location="us-west1",
+            project=test_project.project_id,
+            crypto_key_name=data["google_kms_crypto_key"]["key1"]["id"],
+            third_party_provider=f"projects/{test_project.project_id}/locations/us-west1/providers/datadog",
+            opts=pulumi.ResourceOptions(depends_on=[key1_member]))
+        ```
 
         ## Import
 
@@ -420,6 +441,27 @@ class Channel(pulumi.CustomResource):
         The Eventarc Channel resource
 
         ## Example Usage
+        ### Basic
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_project = gcp.organizations.get_project(project_id="my-project-name")
+        test_key_ring = gcp.kms.get_kms_key_ring(name="keyring",
+            location="us-west1")
+        key = gcp.kms.get_kms_crypto_key(name="key",
+            key_ring=test_key_ring.id)
+        key1_member = gcp.kms.CryptoKeyIAMMember("key1Member",
+            crypto_key_id=data["google_kms_crypto_key"]["key1"]["id"],
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:service-{test_project.number}@gcp-sa-eventarc.iam.gserviceaccount.com")
+        primary = gcp.eventarc.Channel("primary",
+            location="us-west1",
+            project=test_project.project_id,
+            crypto_key_name=data["google_kms_crypto_key"]["key1"]["id"],
+            third_party_provider=f"projects/{test_project.project_id}/locations/us-west1/providers/datadog",
+            opts=pulumi.ResourceOptions(depends_on=[key1_member]))
+        ```
 
         ## Import
 

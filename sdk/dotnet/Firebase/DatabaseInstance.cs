@@ -11,6 +11,109 @@ namespace Pulumi.Gcp.Firebase
 {
     /// <summary>
     /// ## Example Usage
+    /// ### Firebase Database Instance Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basic = new Gcp.Firebase.DatabaseInstance("basic", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Region = "us-central1",
+    ///         InstanceId = "active-db",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Firebase Database Instance Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var full = new Gcp.Firebase.DatabaseInstance("full", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Region = "europe-west1",
+    ///         InstanceId = "disabled-db",
+    ///         Type = "USER_DATABASE",
+    ///         DesiredState = "DISABLED",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Firebase Database Instance Default Database
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultProject = new Gcp.Organizations.Project("defaultProject", new()
+    ///     {
+    ///         ProjectId = "rtdb-project",
+    ///         OrgId = "123456789",
+    ///         Labels = 
+    ///         {
+    ///             { "firebase", "enabled" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultFirebase_projectProject = new Gcp.Firebase.Project("defaultFirebase/projectProject", new()
+    ///     {
+    ///         ProjectID = defaultProject.ProjectId,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var firebaseDatabase = new Gcp.Projects.Service("firebaseDatabase", new()
+    ///     {
+    ///         Project = defaultFirebase / projectProject.Project,
+    ///         ServiceName = "firebasedatabase.googleapis.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultDatabaseInstance = new Gcp.Firebase.DatabaseInstance("defaultDatabaseInstance", new()
+    ///     {
+    ///         Project = defaultFirebase / projectProject.Project,
+    ///         Region = "us-central1",
+    ///         InstanceId = "rtdb-project-default-rtdb",
+    ///         Type = "DEFAULT_DATABASE",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///         DependsOn = new[]
+    ///         {
+    ///             firebaseDatabase,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

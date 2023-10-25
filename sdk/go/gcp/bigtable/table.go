@@ -17,6 +17,59 @@ import (
 // [the official documentation](https://cloud.google.com/bigtable/) and
 // [API](https://cloud.google.com/bigtable/docs/go/reference).
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instance, err := bigtable.NewInstance(ctx, "instance", &bigtable.InstanceArgs{
+//				Clusters: bigtable.InstanceClusterArray{
+//					&bigtable.InstanceClusterArgs{
+//						ClusterId:   pulumi.String("tf-instance-cluster"),
+//						Zone:        pulumi.String("us-central1-b"),
+//						NumNodes:    pulumi.Int(3),
+//						StorageType: pulumi.String("HDD"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigtable.NewTable(ctx, "table", &bigtable.TableArgs{
+//				InstanceName: instance.Name,
+//				SplitKeys: pulumi.StringArray{
+//					pulumi.String("a"),
+//					pulumi.String("b"),
+//					pulumi.String("c"),
+//				},
+//				ColumnFamilies: bigtable.TableColumnFamilyArray{
+//					&bigtable.TableColumnFamilyArgs{
+//						Family: pulumi.String("family-first"),
+//					},
+//					&bigtable.TableColumnFamilyArgs{
+//						Family: pulumi.String("family-second"),
+//					},
+//				},
+//				ChangeStreamRetention: pulumi.String("24h0m0s"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // # Bigtable Tables can be imported using any of these accepted formats

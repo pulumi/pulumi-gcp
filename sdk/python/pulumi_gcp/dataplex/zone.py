@@ -540,6 +540,35 @@ class Zone(pulumi.CustomResource):
         The Dataplex Zone resource
 
         ## Example Usage
+        ### Basic_zone
+        A basic example of a dataplex zone
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.dataplex.Lake("basic",
+            location="us-west1",
+            description="Lake for DCL",
+            display_name="Lake for DCL",
+            labels={
+                "my-lake": "exists",
+            },
+            project="my-project-name")
+        primary = gcp.dataplex.Zone("primary",
+            discovery_spec=gcp.dataplex.ZoneDiscoverySpecArgs(
+                enabled=False,
+            ),
+            lake=basic.name,
+            location="us-west1",
+            resource_spec=gcp.dataplex.ZoneResourceSpecArgs(
+                location_type="MULTI_REGION",
+            ),
+            type="RAW",
+            description="Zone for DCL",
+            display_name="Zone for DCL",
+            labels={},
+            project="my-project-name")
+        ```
 
         ## Import
 
@@ -580,6 +609,35 @@ class Zone(pulumi.CustomResource):
         The Dataplex Zone resource
 
         ## Example Usage
+        ### Basic_zone
+        A basic example of a dataplex zone
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.dataplex.Lake("basic",
+            location="us-west1",
+            description="Lake for DCL",
+            display_name="Lake for DCL",
+            labels={
+                "my-lake": "exists",
+            },
+            project="my-project-name")
+        primary = gcp.dataplex.Zone("primary",
+            discovery_spec=gcp.dataplex.ZoneDiscoverySpecArgs(
+                enabled=False,
+            ),
+            lake=basic.name,
+            location="us-west1",
+            resource_spec=gcp.dataplex.ZoneResourceSpecArgs(
+                location_type="MULTI_REGION",
+            ),
+            type="RAW",
+            description="Zone for DCL",
+            display_name="Zone for DCL",
+            labels={},
+            project="my-project-name")
+        ```
 
         ## Import
 

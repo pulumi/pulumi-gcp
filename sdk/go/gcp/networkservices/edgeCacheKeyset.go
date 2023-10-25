@@ -25,6 +25,94 @@ import (
 // Read more about sensitive data in state.
 //
 // ## Example Usage
+// ### Network Services Edge Cache Keyset Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networkservices.NewEdgeCacheKeyset(ctx, "default", &networkservices.EdgeCacheKeysetArgs{
+//				Description: pulumi.String("The default keyset"),
+//				PublicKeys: networkservices.EdgeCacheKeysetPublicKeyArray{
+//					&networkservices.EdgeCacheKeysetPublicKeyArgs{
+//						Id:    pulumi.String("my-public-key"),
+//						Value: pulumi.String("FHsTyFHNmvNpw4o7-rp-M1yqMyBF8vXSBRkZtkQ0RKY"),
+//					},
+//					&networkservices.EdgeCacheKeysetPublicKeyArgs{
+//						Id:    pulumi.String("my-public-key-2"),
+//						Value: pulumi.String("hzd03llxB1u5FOLKFkZ6_wCJqC7jtN0bg7xlBqS6WVM"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Network Services Edge Cache Keyset Dual Token
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
+//				SecretId: pulumi.String("secret-name"),
+//				Replication: &secretmanager.SecretReplicationArgs{
+//					Auto: nil,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-basic", &secretmanager.SecretVersionArgs{
+//				Secret:     secret_basic.ID(),
+//				SecretData: pulumi.String("secret-data"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkservices.NewEdgeCacheKeyset(ctx, "default", &networkservices.EdgeCacheKeysetArgs{
+//				Description: pulumi.String("The default keyset"),
+//				PublicKeys: networkservices.EdgeCacheKeysetPublicKeyArray{
+//					&networkservices.EdgeCacheKeysetPublicKeyArgs{
+//						Id:      pulumi.String("my-public-key"),
+//						Managed: pulumi.Bool(true),
+//					},
+//				},
+//				ValidationSharedKeys: networkservices.EdgeCacheKeysetValidationSharedKeyArray{
+//					&networkservices.EdgeCacheKeysetValidationSharedKeyArgs{
+//						SecretVersion: secret_version_basic.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

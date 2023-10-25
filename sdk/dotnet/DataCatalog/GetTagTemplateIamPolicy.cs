@@ -13,12 +13,52 @@ namespace Pulumi.Gcp.DataCatalog
     {
         /// <summary>
         /// Retrieves the current IAM policy data for tagtemplate
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.DataCatalog.GetTagTemplateIamPolicy.Invoke(new()
+        ///     {
+        ///         TagTemplate = google_data_catalog_tag_template.Basic_tag_template.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetTagTemplateIamPolicyResult> InvokeAsync(GetTagTemplateIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagTemplateIamPolicyResult>("gcp:datacatalog/getTagTemplateIamPolicy:getTagTemplateIamPolicy", args ?? new GetTagTemplateIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for tagtemplate
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.DataCatalog.GetTagTemplateIamPolicy.Invoke(new()
+        ///     {
+        ///         TagTemplate = google_data_catalog_tag_template.Basic_tag_template.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetTagTemplateIamPolicyResult> Invoke(GetTagTemplateIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTagTemplateIamPolicyResult>("gcp:datacatalog/getTagTemplateIamPolicy:getTagTemplateIamPolicy", args ?? new GetTagTemplateIamPolicyInvokeArgs(), options.WithDefaults());

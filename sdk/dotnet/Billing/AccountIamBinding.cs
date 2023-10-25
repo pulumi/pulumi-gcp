@@ -20,6 +20,83 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// &gt; **Note:** `gcp.billing.AccountIamBinding` resources **can be** used in conjunction with `gcp.billing.AccountIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
+    /// ## google\_billing\_account\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/billing.viewer",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var editor = new Gcp.Billing.AccountIamPolicy("editor", new()
+    ///     {
+    ///         BillingAccountId = "00AA00-000AAA-00AA0A",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## google\_billing\_account\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var editor = new Gcp.Billing.AccountIamBinding("editor", new()
+    ///     {
+    ///         BillingAccountId = "00AA00-000AAA-00AA0A",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Role = "roles/billing.viewer",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## google\_billing\_account\_iam\_member
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var editor = new Gcp.Billing.AccountIamMember("editor", new()
+    ///     {
+    ///         BillingAccountId = "00AA00-000AAA-00AA0A",
+    ///         Member = "user:jane@example.com",
+    ///         Role = "roles/billing.viewer",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Instance IAM resources can be imported using the project, table name, role and/or member.

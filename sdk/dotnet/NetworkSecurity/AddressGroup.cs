@@ -19,6 +19,79 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///     * [Use AddressGroups](https://cloud.google.com/vpc/docs/use-address-groups-firewall-policies)
     /// 
     /// ## Example Usage
+    /// ### Network Security Address Groups Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.NetworkSecurity.AddressGroup("default", new()
+    ///     {
+    ///         Capacity = 100,
+    ///         Items = new[]
+    ///         {
+    ///             "208.80.154.224/32",
+    ///         },
+    ///         Location = "us-central1",
+    ///         Parent = "projects/my-project-name",
+    ///         Type = "IPV4",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Network Security Address Groups Organization Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.NetworkSecurity.AddressGroup("default", new()
+    ///     {
+    ///         Capacity = 100,
+    ///         Items = new[]
+    ///         {
+    ///             "208.80.154.224/32",
+    ///         },
+    ///         Location = "us-central1",
+    ///         Parent = "organizations/123456789",
+    ///         Type = "IPV4",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Network Security Address Groups Advanced
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.NetworkSecurity.AddressGroup("default", new()
+    ///     {
+    ///         Capacity = 100,
+    ///         Description = "my description",
+    ///         Items = new[]
+    ///         {
+    ///             "208.80.154.224/32",
+    ///         },
+    ///         Location = "us-central1",
+    ///         Parent = "projects/my-project-name",
+    ///         Type = "IPV4",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

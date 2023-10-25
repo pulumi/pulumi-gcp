@@ -23,6 +23,70 @@ namespace Pulumi.Gcp.Compute
     ///     * [Committed use discounts for Compute Engine](https://cloud.google.com/compute/docs/instances/committed-use-discounts-overview)
     /// 
     /// ## Example Usage
+    /// ### Compute Region Commitment Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new Gcp.Compute.RegionCommitment("foobar", new()
+    ///     {
+    ///         Plan = "THIRTY_SIX_MONTH",
+    ///         Resources = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionCommitmentResourceArgs
+    ///             {
+    ///                 Amount = "4",
+    ///                 Type = "VCPU",
+    ///             },
+    ///             new Gcp.Compute.Inputs.RegionCommitmentResourceArgs
+    ///             {
+    ///                 Amount = "9",
+    ///                 Type = "MEMORY",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Compute Region Commitment Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new Gcp.Compute.RegionCommitment("foobar", new()
+    ///     {
+    ///         AutoRenew = true,
+    ///         Category = "MACHINE",
+    ///         Description = "some description",
+    ///         Plan = "THIRTY_SIX_MONTH",
+    ///         Resources = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionCommitmentResourceArgs
+    ///             {
+    ///                 Amount = "4",
+    ///                 Type = "VCPU",
+    ///             },
+    ///             new Gcp.Compute.Inputs.RegionCommitmentResourceArgs
+    ///             {
+    ///                 Amount = "9",
+    ///                 Type = "MEMORY",
+    ///             },
+    ///         },
+    ///         Type = "MEMORY_OPTIMIZED",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

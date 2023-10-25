@@ -26,6 +26,36 @@ import (
 //	Use `pulumi import` and inspect the `output to ensure
 //	your existing members are preserved.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewIAMBinding(ctx, "binding", &organizations.IAMBindingArgs{
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:alice@gmail.com"),
+//				},
+//				OrgId: pulumi.String("123456789"),
+//				Role:  pulumi.String("roles/browser"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // IAM binding imports use space-delimited identifiers; first the resource in question and then the role.

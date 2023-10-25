@@ -20,6 +20,34 @@ import (
 // the marketplace prior to using this resource.
 //
 // ## Example Usage
+// ### Identity Platform Default Supported Idp Config Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/identityplatform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := identityplatform.NewDefaultSupportedIdpConfig(ctx, "idpConfig", &identityplatform.DefaultSupportedIdpConfigArgs{
+//				ClientId:     pulumi.String("client-id"),
+//				ClientSecret: pulumi.String("secret"),
+//				Enabled:      pulumi.Bool(true),
+//				IdpId:        pulumi.String("playgames.google.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

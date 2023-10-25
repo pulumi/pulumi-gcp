@@ -8,6 +8,141 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### Firebasehosting Version Redirect
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHostingSite = new gcp.firebase.HostingSite("defaultHostingSite", {
+ *     project: "my-project-name",
+ *     siteId: "site-id",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultHostingVersion = new gcp.firebase.HostingVersion("defaultHostingVersion", {
+ *     siteId: defaultHostingSite.siteId,
+ *     config: {
+ *         redirects: [{
+ *             glob: "/google/**",
+ *             statusCode: 302,
+ *             location: "https://www.google.com",
+ *         }],
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultHostingRelease = new gcp.firebase.HostingRelease("defaultHostingRelease", {
+ *     siteId: defaultHostingSite.siteId,
+ *     versionName: defaultHostingVersion.name,
+ *     message: "Redirect to Google",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Firebasehosting Version Cloud Run
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHostingSite = new gcp.firebase.HostingSite("defaultHostingSite", {
+ *     project: "my-project-name",
+ *     siteId: "site-id",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultService = new gcp.cloudrunv2.Service("defaultService", {
+ *     project: "my-project-name",
+ *     location: "us-central1",
+ *     ingress: "INGRESS_TRAFFIC_ALL",
+ *     template: {
+ *         containers: [{
+ *             image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *         }],
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultHostingVersion = new gcp.firebase.HostingVersion("defaultHostingVersion", {
+ *     siteId: defaultHostingSite.siteId,
+ *     config: {
+ *         rewrites: [{
+ *             glob: "/hello/**",
+ *             run: {
+ *                 serviceId: defaultService.name,
+ *                 region: defaultService.location,
+ *             },
+ *         }],
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultHostingRelease = new gcp.firebase.HostingRelease("defaultHostingRelease", {
+ *     siteId: defaultHostingSite.siteId,
+ *     versionName: defaultHostingVersion.name,
+ *     message: "Cloud Run Integration",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Firebasehosting Version Cloud Functions
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHostingSite = new gcp.firebase.HostingSite("defaultHostingSite", {
+ *     project: "my-project-name",
+ *     siteId: "site-id",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     project: "my-project-name",
+ *     location: "US",
+ *     uniformBucketLevelAccess: true,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const object = new gcp.storage.BucketObject("object", {
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("function-source.zip"),
+ * }, {
+ *     provider: google_beta,
+ * });
+ * // Add path to the zipped function source code
+ * const _function = new gcp.cloudfunctions.Function("function", {
+ *     project: "my-project-name",
+ *     description: "A Cloud Function connected to Firebase Hosing",
+ *     runtime: "nodejs16",
+ *     availableMemoryMb: 128,
+ *     sourceArchiveBucket: bucket.name,
+ *     sourceArchiveObject: object.name,
+ *     triggerHttp: true,
+ *     entryPoint: "helloHttp",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultHostingVersion = new gcp.firebase.HostingVersion("defaultHostingVersion", {
+ *     siteId: defaultHostingSite.siteId,
+ *     config: {
+ *         rewrites: [{
+ *             glob: "/hello/**",
+ *             "function": _function.name,
+ *         }],
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultHostingRelease = new gcp.firebase.HostingRelease("defaultHostingRelease", {
+ *     siteId: defaultHostingSite.siteId,
+ *     versionName: defaultHostingVersion.name,
+ *     message: "Cloud Functions Integration",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

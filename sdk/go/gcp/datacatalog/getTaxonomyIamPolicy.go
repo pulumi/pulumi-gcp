@@ -13,6 +13,32 @@ import (
 )
 
 // Retrieves the current IAM policy data for taxonomy
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := datacatalog.LookupTaxonomyIamPolicy(ctx, &datacatalog.LookupTaxonomyIamPolicyArgs{
+//				Taxonomy: google_data_catalog_taxonomy.Basic_taxonomy.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupTaxonomyIamPolicy(ctx *pulumi.Context, args *LookupTaxonomyIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupTaxonomyIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTaxonomyIamPolicyResult

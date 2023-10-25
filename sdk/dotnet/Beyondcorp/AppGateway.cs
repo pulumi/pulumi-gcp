@@ -21,6 +21,50 @@ namespace Pulumi.Gcp.Beyondcorp
     ///     * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
     /// 
     /// ## Example Usage
+    /// ### Beyondcorp App Gateway Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var appGateway = new Gcp.Beyondcorp.AppGateway("appGateway", new()
+    ///     {
+    ///         HostType = "GCP_REGIONAL_MIG",
+    ///         Region = "us-central1",
+    ///         Type = "TCP_PROXY",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Beyondcorp App Gateway Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var appGateway = new Gcp.Beyondcorp.AppGateway("appGateway", new()
+    ///     {
+    ///         DisplayName = "some display name",
+    ///         HostType = "GCP_REGIONAL_MIG",
+    ///         Labels = 
+    ///         {
+    ///             { "bar", "baz" },
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Region = "us-central1",
+    ///         Type = "TCP_PROXY",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

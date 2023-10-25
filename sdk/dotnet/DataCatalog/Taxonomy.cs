@@ -19,6 +19,28 @@ namespace Pulumi.Gcp.DataCatalog
     ///     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
     /// 
     /// ## Example Usage
+    /// ### Data Catalog Taxonomy Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basicTaxonomy = new Gcp.DataCatalog.Taxonomy("basicTaxonomy", new()
+    ///     {
+    ///         ActivatedPolicyTypes = new[]
+    ///         {
+    ///             "FINE_GRAINED_ACCESS_CONTROL",
+    ///         },
+    ///         Description = "A collection of policy tags",
+    ///         DisplayName = "my_taxonomy",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

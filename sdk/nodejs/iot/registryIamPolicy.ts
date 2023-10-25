@@ -19,6 +19,53 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.iot.RegistryIamBinding` resources **can be** used in conjunction with `gcp.iot.RegistryIamMember` resources **only if** they do not grant privilege to the same role.
  *
+ * ## google\_cloudiot\_registry\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/viewer",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.iot.RegistryIamPolicy("policy", {
+ *     project: google_cloudiot_registry["test-registry"].project,
+ *     region: google_cloudiot_registry["test-registry"].region,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## google\_cloudiot\_registry\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.iot.RegistryIamBinding("binding", {
+ *     project: google_cloudiot_registry["test-registry"].project,
+ *     region: google_cloudiot_registry["test-registry"].region,
+ *     role: "roles/viewer",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * ## google\_cloudiot\_registry\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.iot.RegistryIamMember("member", {
+ *     project: google_cloudiot_registry["test-registry"].project,
+ *     region: google_cloudiot_registry["test-registry"].region,
+ *     role: "roles/viewer",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/registries/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud IoT Core deviceregistry IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

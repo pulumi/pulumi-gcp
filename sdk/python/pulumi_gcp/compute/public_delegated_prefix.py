@@ -391,6 +391,22 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
             * [Using bring your own IP](https://cloud.google.com/vpc/docs/using-bring-your-own-ip)
 
         ## Example Usage
+        ### Public Delegated Prefixes Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        advertised = gcp.compute.PublicAdvertisedPrefix("advertised",
+            description="description",
+            dns_verification_ip="127.127.0.0",
+            ip_cidr_range="127.127.0.0/16")
+        prefixes = gcp.compute.PublicDelegatedPrefix("prefixes",
+            region="us-central1",
+            description="my description",
+            ip_cidr_range="127.127.0.0/24",
+            parent_prefix=advertised.id)
+        ```
 
         ## Import
 
@@ -447,6 +463,22 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
             * [Using bring your own IP](https://cloud.google.com/vpc/docs/using-bring-your-own-ip)
 
         ## Example Usage
+        ### Public Delegated Prefixes Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        advertised = gcp.compute.PublicAdvertisedPrefix("advertised",
+            description="description",
+            dns_verification_ip="127.127.0.0",
+            ip_cidr_range="127.127.0.0/16")
+        prefixes = gcp.compute.PublicDelegatedPrefix("prefixes",
+            region="us-central1",
+            description="my description",
+            ip_cidr_range="127.127.0.0/24",
+            parent_prefix=advertised.id)
+        ```
 
         ## Import
 

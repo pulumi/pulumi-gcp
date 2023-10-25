@@ -317,6 +317,15 @@ class Api(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
 
         ## Example Usage
+        ### Apigateway Api Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        api = gcp.apigateway.Api("api", api_id="my-api",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -363,6 +372,15 @@ class Api(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
 
         ## Example Usage
+        ### Apigateway Api Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        api = gcp.apigateway.Api("api", api_id="my-api",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

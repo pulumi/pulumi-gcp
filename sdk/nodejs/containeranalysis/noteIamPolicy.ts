@@ -19,6 +19,53 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.containeranalysis.NoteIamBinding` resources **can be** used in conjunction with `gcp.containeranalysis.NoteIamMember` resources **only if** they do not grant privilege to the same role.
  *
+ * ## google\_container\_analysis\_note\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/containeranalysis.notes.occurrences.viewer",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.containeranalysis.NoteIamPolicy("policy", {
+ *     project: google_container_analysis_note.note.project,
+ *     note: google_container_analysis_note.note.name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## google\_container\_analysis\_note\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.containeranalysis.NoteIamBinding("binding", {
+ *     project: google_container_analysis_note.note.project,
+ *     note: google_container_analysis_note.note.name,
+ *     role: "roles/containeranalysis.notes.occurrences.viewer",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * ## google\_container\_analysis\_note\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.containeranalysis.NoteIamMember("member", {
+ *     project: google_container_analysis_note.note.project,
+ *     note: google_container_analysis_note.note.name,
+ *     role: "roles/containeranalysis.notes.occurrences.viewer",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/notes/{{name}} * {{project}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Container Registry note IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

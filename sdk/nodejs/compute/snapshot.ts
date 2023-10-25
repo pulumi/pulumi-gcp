@@ -30,6 +30,57 @@ import * as utilities from "../utilities";
  * state as plain-text.
  *
  * ## Example Usage
+ * ### Snapshot Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const debian = gcp.compute.getImage({
+ *     family: "debian-11",
+ *     project: "debian-cloud",
+ * });
+ * const persistent = new gcp.compute.Disk("persistent", {
+ *     image: debian.then(debian => debian.selfLink),
+ *     size: 10,
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
+ * });
+ * const snapshot = new gcp.compute.Snapshot("snapshot", {
+ *     sourceDisk: persistent.id,
+ *     zone: "us-central1-a",
+ *     labels: {
+ *         my_label: "value",
+ *     },
+ *     storageLocations: ["us-central1"],
+ * });
+ * ```
+ * ### Snapshot Chainname
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const debian = gcp.compute.getImage({
+ *     family: "debian-11",
+ *     project: "debian-cloud",
+ * });
+ * const persistent = new gcp.compute.Disk("persistent", {
+ *     image: debian.then(debian => debian.selfLink),
+ *     size: 10,
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
+ * });
+ * const snapshot = new gcp.compute.Snapshot("snapshot", {
+ *     sourceDisk: persistent.id,
+ *     zone: "us-central1-a",
+ *     chainName: "snapshot-chain",
+ *     labels: {
+ *         my_label: "value",
+ *     },
+ *     storageLocations: ["us-central1"],
+ * });
+ * ```
  *
  * ## Import
  *

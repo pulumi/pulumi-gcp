@@ -298,6 +298,18 @@ class DomainMapping(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/mapping-custom-domains)
 
         ## Example Usage
+        ### App Engine Domain Mapping Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        domain_mapping = gcp.appengine.DomainMapping("domainMapping",
+            domain_name="verified-domain.com",
+            ssl_settings=gcp.appengine.DomainMappingSslSettingsArgs(
+                ssl_management_type="AUTOMATIC",
+            ))
+        ```
 
         ## Import
 
@@ -346,6 +358,18 @@ class DomainMapping(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/mapping-custom-domains)
 
         ## Example Usage
+        ### App Engine Domain Mapping Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        domain_mapping = gcp.appengine.DomainMapping("domainMapping",
+            domain_name="verified-domain.com",
+            ssl_settings=gcp.appengine.DomainMappingSslSettingsArgs(
+                ssl_management_type="AUTOMATIC",
+            ))
+        ```
 
         ## Import
 

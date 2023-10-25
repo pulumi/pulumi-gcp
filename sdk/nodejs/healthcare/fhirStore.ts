@@ -17,6 +17,125 @@ import * as utilities from "../utilities";
  *     * [Creating a FHIR store](https://cloud.google.com/healthcare/docs/how-tos/fhir)
  *
  * ## Example Usage
+ * ### Healthcare Fhir Store Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const topic = new gcp.pubsub.Topic("topic", {});
+ * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
+ * const _default = new gcp.healthcare.FhirStore("default", {
+ *     dataset: dataset.id,
+ *     version: "R4",
+ *     complexDataTypeReferenceParsing: "DISABLED",
+ *     enableUpdateCreate: false,
+ *     disableReferentialIntegrity: false,
+ *     disableResourceVersioning: false,
+ *     enableHistoryImport: false,
+ *     defaultSearchHandlingStrict: false,
+ *     notificationConfig: {
+ *         pubsubTopic: topic.id,
+ *     },
+ *     labels: {
+ *         label1: "labelvalue1",
+ *     },
+ * });
+ * ```
+ * ### Healthcare Fhir Store Streaming Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
+ * const bqDataset = new gcp.bigquery.Dataset("bqDataset", {
+ *     datasetId: "bq_example_dataset",
+ *     friendlyName: "test",
+ *     description: "This is a test description",
+ *     location: "US",
+ *     deleteContentsOnDestroy: true,
+ * });
+ * const _default = new gcp.healthcare.FhirStore("default", {
+ *     dataset: dataset.id,
+ *     version: "R4",
+ *     enableUpdateCreate: false,
+ *     disableReferentialIntegrity: false,
+ *     disableResourceVersioning: false,
+ *     enableHistoryImport: false,
+ *     labels: {
+ *         label1: "labelvalue1",
+ *     },
+ *     streamConfigs: [{
+ *         resourceTypes: ["Observation"],
+ *         bigqueryDestination: {
+ *             datasetUri: pulumi.interpolate`bq://${bqDataset.project}.${bqDataset.datasetId}`,
+ *             schemaConfig: {
+ *                 recursiveStructureDepth: 3,
+ *                 lastUpdatedPartitionConfig: {
+ *                     type: "HOUR",
+ *                     expirationMs: "1000000",
+ *                 },
+ *             },
+ *         },
+ *     }],
+ * });
+ * const topic = new gcp.pubsub.Topic("topic", {});
+ * ```
+ * ### Healthcare Fhir Store Notification Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const topic = new gcp.pubsub.Topic("topic", {});
+ * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
+ * const _default = new gcp.healthcare.FhirStore("default", {
+ *     dataset: dataset.id,
+ *     version: "R4",
+ *     enableUpdateCreate: false,
+ *     disableReferentialIntegrity: false,
+ *     disableResourceVersioning: false,
+ *     enableHistoryImport: false,
+ *     labels: {
+ *         label1: "labelvalue1",
+ *     },
+ *     notificationConfig: {
+ *         pubsubTopic: topic.id,
+ *     },
+ * });
+ * ```
+ * ### Healthcare Fhir Store Notification Configs
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const topic = new gcp.pubsub.Topic("topic", {}, {
+ *     provider: google_beta,
+ * });
+ * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"}, {
+ *     provider: google_beta,
+ * });
+ * const _default = new gcp.healthcare.FhirStore("default", {
+ *     dataset: dataset.id,
+ *     version: "R4",
+ *     enableUpdateCreate: false,
+ *     disableReferentialIntegrity: false,
+ *     disableResourceVersioning: false,
+ *     enableHistoryImport: false,
+ *     labels: {
+ *         label1: "labelvalue1",
+ *     },
+ *     notificationConfigs: [{
+ *         pubsubTopic: topic.id,
+ *         sendFullResource: true,
+ *         sendPreviousResourceOnDelete: true,
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

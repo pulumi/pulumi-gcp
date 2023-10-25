@@ -23,6 +23,119 @@ import * as utilities from "../utilities";
  *
  * > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
  *
+ * ## google\_compute\_instance\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/compute.osLogin",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.compute.InstanceIAMPolicy("policy", {
+ *     project: google_compute_instance["default"].project,
+ *     zone: google_compute_instance["default"].zone,
+ *     instanceName: google_compute_instance["default"].name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/compute.osLogin",
+ *         members: ["user:jane@example.com"],
+ *         condition: {
+ *             title: "expires_after_2019_12_31",
+ *             description: "Expiring at midnight of 2019-12-31",
+ *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         },
+ *     }],
+ * });
+ * const policy = new gcp.compute.InstanceIAMPolicy("policy", {
+ *     project: google_compute_instance["default"].project,
+ *     zone: google_compute_instance["default"].zone,
+ *     instanceName: google_compute_instance["default"].name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * ## google\_compute\_instance\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.compute.InstanceIAMBinding("binding", {
+ *     project: google_compute_instance["default"].project,
+ *     zone: google_compute_instance["default"].zone,
+ *     instanceName: google_compute_instance["default"].name,
+ *     role: "roles/compute.osLogin",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.compute.InstanceIAMBinding("binding", {
+ *     project: google_compute_instance["default"].project,
+ *     zone: google_compute_instance["default"].zone,
+ *     instanceName: google_compute_instance["default"].name,
+ *     role: "roles/compute.osLogin",
+ *     members: ["user:jane@example.com"],
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ * ## google\_compute\_instance\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.compute.InstanceIAMMember("member", {
+ *     project: google_compute_instance["default"].project,
+ *     zone: google_compute_instance["default"].zone,
+ *     instanceName: google_compute_instance["default"].name,
+ *     role: "roles/compute.osLogin",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.compute.InstanceIAMMember("member", {
+ *     project: google_compute_instance["default"].project,
+ *     zone: google_compute_instance["default"].zone,
+ *     instanceName: google_compute_instance["default"].name,
+ *     role: "roles/compute.osLogin",
+ *     member: "user:jane@example.com",
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/zones/{{zone}}/instances/{{name}} * {{project}}/{{zone}}/{{name}} * {{zone}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Compute Engine instance IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

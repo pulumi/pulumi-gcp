@@ -283,6 +283,33 @@ class DomainMapping(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/run/docs/mapping-custom-domains)
 
         ## Example Usage
+        ### Cloud Run Domain Mapping Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_service = gcp.cloudrun.Service("defaultService",
+            location="us-central1",
+            metadata=gcp.cloudrun.ServiceMetadataArgs(
+                namespace="my-project-name",
+            ),
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                    )],
+                ),
+            ))
+        default_domain_mapping = gcp.cloudrun.DomainMapping("defaultDomainMapping",
+            location="us-central1",
+            metadata=gcp.cloudrun.DomainMappingMetadataArgs(
+                namespace="my-project-name",
+            ),
+            spec=gcp.cloudrun.DomainMappingSpecArgs(
+                route_name=default_service.name,
+            ))
+        ```
 
         ## Import
 
@@ -327,6 +354,33 @@ class DomainMapping(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/run/docs/mapping-custom-domains)
 
         ## Example Usage
+        ### Cloud Run Domain Mapping Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_service = gcp.cloudrun.Service("defaultService",
+            location="us-central1",
+            metadata=gcp.cloudrun.ServiceMetadataArgs(
+                namespace="my-project-name",
+            ),
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                    )],
+                ),
+            ))
+        default_domain_mapping = gcp.cloudrun.DomainMapping("defaultDomainMapping",
+            location="us-central1",
+            metadata=gcp.cloudrun.DomainMappingMetadataArgs(
+                namespace="my-project-name",
+            ),
+            spec=gcp.cloudrun.DomainMappingSpecArgs(
+                route_name=default_service.name,
+            ))
+        ```
 
         ## Import
 

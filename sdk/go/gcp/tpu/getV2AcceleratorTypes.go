@@ -13,6 +13,65 @@ import (
 )
 
 // Get accelerator types available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.acceleratorTypes).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/tpu"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := tpu.GetV2AcceleratorTypes(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Configure Basic TPU VM With Available Type
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/tpu"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			availableV2AcceleratorTypes, err := tpu.GetV2AcceleratorTypes(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			availableV2RuntimeVersions, err := tpu.GetV2RuntimeVersions(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = tpu.NewV2Vm(ctx, "tpu", &tpu.V2VmArgs{
+//				Zone:            pulumi.String("us-central1-b"),
+//				RuntimeVersion:  *pulumi.String(availableV2RuntimeVersions.Versions[0]),
+//				AcceleratorType: *pulumi.String(availableV2AcceleratorTypes.Types[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetV2AcceleratorTypes(ctx *pulumi.Context, args *GetV2AcceleratorTypesArgs, opts ...pulumi.InvokeOption) (*GetV2AcceleratorTypesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetV2AcceleratorTypesResult

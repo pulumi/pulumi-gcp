@@ -17,6 +17,29 @@ namespace Pulumi.Gcp.Compute
         /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
         /// * How-to Guides
         ///     * [Official Documentation](https://cloud.google.com/router/docs/)
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Gcp.Compute.GetRouterNat.Invoke(new()
+        ///     {
+        ///         Name = "my-nat",
+        ///         Router = "my-router",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRouterNatResult> InvokeAsync(GetRouterNatArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRouterNatResult>("gcp:compute/getRouterNat:getRouterNat", args ?? new GetRouterNatArgs(), options.WithDefaults());
@@ -27,6 +50,29 @@ namespace Pulumi.Gcp.Compute
         /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
         /// * How-to Guides
         ///     * [Official Documentation](https://cloud.google.com/router/docs/)
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Gcp.Compute.GetRouterNat.Invoke(new()
+        ///     {
+        ///         Name = "my-nat",
+        ///         Router = "my-router",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetRouterNatResult> Invoke(GetRouterNatInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRouterNatResult>("gcp:compute/getRouterNat:getRouterNat", args ?? new GetRouterNatInvokeArgs(), options.WithDefaults());

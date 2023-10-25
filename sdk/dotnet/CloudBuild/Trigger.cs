@@ -21,6 +21,519 @@ namespace Pulumi.Gcp.CloudBuild
     /// &gt; **Note:** You can retrieve the email of the Cloud Build Service Account used in jobs by using the `gcp.projects.ServiceIdentity` resource.
     /// 
     /// ## Example Usage
+    /// ### Cloudbuild Trigger Filename
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var filename_trigger = new Gcp.CloudBuild.Trigger("filename-trigger", new()
+    ///     {
+    ///         Filename = "cloudbuild.yaml",
+    ///         Location = "us-central1",
+    ///         Substitutions = 
+    ///         {
+    ///             { "_BAZ", "qux" },
+    ///             { "_FOO", "bar" },
+    ///         },
+    ///         TriggerTemplate = new Gcp.CloudBuild.Inputs.TriggerTriggerTemplateArgs
+    ///         {
+    ///             BranchName = "main",
+    ///             RepoName = "my-repo",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudbuild Trigger Service Account
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var cloudbuildServiceAccount = new Gcp.ServiceAccount.Account("cloudbuildServiceAccount", new()
+    ///     {
+    ///         AccountId = "cloud-sa",
+    ///     });
+    /// 
+    ///     var actAs = new Gcp.Projects.IAMMember("actAs", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         Role = "roles/iam.serviceAccountUser",
+    ///         Member = cloudbuildServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    ///     var logsWriter = new Gcp.Projects.IAMMember("logsWriter", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         Role = "roles/logging.logWriter",
+    ///         Member = cloudbuildServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    ///     var service_account_trigger = new Gcp.CloudBuild.Trigger("service-account-trigger", new()
+    ///     {
+    ///         TriggerTemplate = new Gcp.CloudBuild.Inputs.TriggerTriggerTemplateArgs
+    ///         {
+    ///             BranchName = "main",
+    ///             RepoName = "my-repo",
+    ///         },
+    ///         ServiceAccount = cloudbuildServiceAccount.Id,
+    ///         Filename = "cloudbuild.yaml",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             actAs,
+    ///             logsWriter,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudbuild Trigger Include Build Logs
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var include_build_logs_trigger = new Gcp.CloudBuild.Trigger("include-build-logs-trigger", new()
+    ///     {
+    ///         Filename = "cloudbuild.yaml",
+    ///         Github = new Gcp.CloudBuild.Inputs.TriggerGithubArgs
+    ///         {
+    ///             Name = "terraform-provider-google-beta",
+    ///             Owner = "hashicorp",
+    ///             Push = new Gcp.CloudBuild.Inputs.TriggerGithubPushArgs
+    ///             {
+    ///                 Branch = "^main$",
+    ///             },
+    ///         },
+    ///         IncludeBuildLogs = "INCLUDE_BUILD_LOGS_WITH_STATUS",
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudbuild Trigger Pubsub Config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mytopic = new Gcp.PubSub.Topic("mytopic");
+    /// 
+    ///     var pubsub_config_trigger = new Gcp.CloudBuild.Trigger("pubsub-config-trigger", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Description = "acceptance test example pubsub build trigger",
+    ///         PubsubConfig = new Gcp.CloudBuild.Inputs.TriggerPubsubConfigArgs
+    ///         {
+    ///             Topic = mytopic.Id,
+    ///         },
+    ///         SourceToBuild = new Gcp.CloudBuild.Inputs.TriggerSourceToBuildArgs
+    ///         {
+    ///             Uri = "https://hashicorp/terraform-provider-google-beta",
+    ///             Ref = "refs/heads/main",
+    ///             RepoType = "GITHUB",
+    ///         },
+    ///         GitFileSource = new Gcp.CloudBuild.Inputs.TriggerGitFileSourceArgs
+    ///         {
+    ///             Path = "cloudbuild.yaml",
+    ///             Uri = "https://hashicorp/terraform-provider-google-beta",
+    ///             Revision = "refs/heads/main",
+    ///             RepoType = "GITHUB",
+    ///         },
+    ///         Substitutions = 
+    ///         {
+    ///             { "_ACTION", "$(body.message.data.action)" },
+    ///         },
+    ///         Filter = "_ACTION.matches('INSERT')",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudbuild Trigger Webhook Config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var webhookTriggerSecretKey = new Gcp.SecretManager.Secret("webhookTriggerSecretKey", new()
+    ///     {
+    ///         SecretId = "webhook-trigger-secret-key",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             UserManaged = new Gcp.SecretManager.Inputs.SecretReplicationUserManagedArgs
+    ///             {
+    ///                 Replicas = new[]
+    ///                 {
+    ///                     new Gcp.SecretManager.Inputs.SecretReplicationUserManagedReplicaArgs
+    ///                     {
+    ///                         Location = "us-central1",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var webhookTriggerSecretKeyData = new Gcp.SecretManager.SecretVersion("webhookTriggerSecretKeyData", new()
+    ///     {
+    ///         Secret = webhookTriggerSecretKey.Id,
+    ///         SecretData = "secretkeygoeshere",
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var secretAccessor = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/secretmanager.secretAccessor",
+    ///                 Members = new[]
+    ///                 {
+    ///                     $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-cloudbuild.iam.gserviceaccount.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.SecretManager.SecretIamPolicy("policy", new()
+    ///     {
+    ///         Project = webhookTriggerSecretKey.Project,
+    ///         SecretId = webhookTriggerSecretKey.SecretId,
+    ///         PolicyData = secretAccessor.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    ///     var webhook_config_trigger = new Gcp.CloudBuild.Trigger("webhook-config-trigger", new()
+    ///     {
+    ///         Description = "acceptance test example webhook build trigger",
+    ///         WebhookConfig = new Gcp.CloudBuild.Inputs.TriggerWebhookConfigArgs
+    ///         {
+    ///             Secret = webhookTriggerSecretKeyData.Id,
+    ///         },
+    ///         SourceToBuild = new Gcp.CloudBuild.Inputs.TriggerSourceToBuildArgs
+    ///         {
+    ///             Uri = "https://hashicorp/terraform-provider-google-beta",
+    ///             Ref = "refs/heads/main",
+    ///             RepoType = "GITHUB",
+    ///         },
+    ///         GitFileSource = new Gcp.CloudBuild.Inputs.TriggerGitFileSourceArgs
+    ///         {
+    ///             Path = "cloudbuild.yaml",
+    ///             Uri = "https://hashicorp/terraform-provider-google-beta",
+    ///             Revision = "refs/heads/main",
+    ///             RepoType = "GITHUB",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudbuild Trigger Manual
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var manual_trigger = new Gcp.CloudBuild.Trigger("manual-trigger", new()
+    ///     {
+    ///         ApprovalConfig = new Gcp.CloudBuild.Inputs.TriggerApprovalConfigArgs
+    ///         {
+    ///             ApprovalRequired = true,
+    ///         },
+    ///         GitFileSource = new Gcp.CloudBuild.Inputs.TriggerGitFileSourceArgs
+    ///         {
+    ///             Path = "cloudbuild.yaml",
+    ///             RepoType = "GITHUB",
+    ///             Revision = "refs/heads/main",
+    ///             Uri = "https://hashicorp/terraform-provider-google-beta",
+    ///         },
+    ///         SourceToBuild = new Gcp.CloudBuild.Inputs.TriggerSourceToBuildArgs
+    ///         {
+    ///             Ref = "refs/heads/main",
+    ///             RepoType = "GITHUB",
+    ///             Uri = "https://hashicorp/terraform-provider-google-beta",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudbuild Trigger Manual Github Enterprise
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var manual_ghe_trigger = new Gcp.CloudBuild.Trigger("manual-ghe-trigger", new()
+    ///     {
+    ///         GitFileSource = new Gcp.CloudBuild.Inputs.TriggerGitFileSourceArgs
+    ///         {
+    ///             GithubEnterpriseConfig = "projects/myProject/locations/global/githubEnterpriseConfigs/configID",
+    ///             Path = "cloudbuild.yaml",
+    ///             RepoType = "GITHUB",
+    ///             Revision = "refs/heads/main",
+    ///             Uri = "https://hashicorp/terraform-provider-google-beta",
+    ///         },
+    ///         SourceToBuild = new Gcp.CloudBuild.Inputs.TriggerSourceToBuildArgs
+    ///         {
+    ///             GithubEnterpriseConfig = "projects/myProject/locations/global/githubEnterpriseConfigs/configID",
+    ///             Ref = "refs/heads/main",
+    ///             RepoType = "GITHUB",
+    ///             Uri = "https://hashicorp/terraform-provider-google-beta",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudbuild Trigger Manual Bitbucket Server
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var manual_bitbucket_trigger = new Gcp.CloudBuild.Trigger("manual-bitbucket-trigger", new()
+    ///     {
+    ///         GitFileSource = new Gcp.CloudBuild.Inputs.TriggerGitFileSourceArgs
+    ///         {
+    ///             BitbucketServerConfig = "projects/myProject/locations/global/bitbucketServerConfigs/configID",
+    ///             Path = "cloudbuild.yaml",
+    ///             RepoType = "BITBUCKET_SERVER",
+    ///             Revision = "refs/heads/main",
+    ///             Uri = "https://bbs.com/scm/stag/test-repo.git",
+    ///         },
+    ///         SourceToBuild = new Gcp.CloudBuild.Inputs.TriggerSourceToBuildArgs
+    ///         {
+    ///             BitbucketServerConfig = "projects/myProject/locations/global/bitbucketServerConfigs/configID",
+    ///             Ref = "refs/heads/main",
+    ///             RepoType = "BITBUCKET_SERVER",
+    ///             Uri = "https://bbs.com/scm/stag/test-repo.git",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudbuild Trigger Repo
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_connection = new Gcp.CloudBuildV2.Connection("my-connection", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         GithubConfig = new Gcp.CloudBuildV2.Inputs.ConnectionGithubConfigArgs
+    ///         {
+    ///             AppInstallationId = 123123,
+    ///             AuthorizerCredential = new Gcp.CloudBuildV2.Inputs.ConnectionGithubConfigAuthorizerCredentialArgs
+    ///             {
+    ///                 OauthTokenSecretVersion = "projects/my-project/secrets/github-pat-secret/versions/latest",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var my_repository = new Gcp.CloudBuildV2.Repository("my-repository", new()
+    ///     {
+    ///         ParentConnection = my_connection.Id,
+    ///         RemoteUri = "https://github.com/myuser/my-repo.git",
+    ///     });
+    /// 
+    ///     var repo_trigger = new Gcp.CloudBuild.Trigger("repo-trigger", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         RepositoryEventConfig = new Gcp.CloudBuild.Inputs.TriggerRepositoryEventConfigArgs
+    ///         {
+    ///             Repository = my_repository.Id,
+    ///             Push = new Gcp.CloudBuild.Inputs.TriggerRepositoryEventConfigPushArgs
+    ///             {
+    ///                 Branch = "feature-.*",
+    ///             },
+    ///         },
+    ///         Filename = "cloudbuild.yaml",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudbuild Trigger Bitbucket Server Push
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bbs_push_trigger = new Gcp.CloudBuild.Trigger("bbs-push-trigger", new()
+    ///     {
+    ///         BitbucketServerTriggerConfig = new Gcp.CloudBuild.Inputs.TriggerBitbucketServerTriggerConfigArgs
+    ///         {
+    ///             BitbucketServerConfigResource = "projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
+    ///             ProjectKey = "STAG",
+    ///             Push = new Gcp.CloudBuild.Inputs.TriggerBitbucketServerTriggerConfigPushArgs
+    ///             {
+    ///                 InvertRegex = true,
+    ///                 Tag = "^0.1.*",
+    ///             },
+    ///             RepoSlug = "bbs-push-trigger",
+    ///         },
+    ///         Filename = "cloudbuild.yaml",
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudbuild Trigger Bitbucket Server Pull Request
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bbs_pull_request_trigger = new Gcp.CloudBuild.Trigger("bbs-pull-request-trigger", new()
+    ///     {
+    ///         BitbucketServerTriggerConfig = new Gcp.CloudBuild.Inputs.TriggerBitbucketServerTriggerConfigArgs
+    ///         {
+    ///             BitbucketServerConfigResource = "projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
+    ///             ProjectKey = "STAG",
+    ///             PullRequest = new Gcp.CloudBuild.Inputs.TriggerBitbucketServerTriggerConfigPullRequestArgs
+    ///             {
+    ///                 Branch = "^master$",
+    ///                 CommentControl = "COMMENTS_ENABLED",
+    ///                 InvertRegex = false,
+    ///             },
+    ///             RepoSlug = "terraform-provider-google",
+    ///         },
+    ///         Filename = "cloudbuild.yaml",
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudbuild Trigger Github Enterprise
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ghe_trigger = new Gcp.CloudBuild.Trigger("ghe-trigger", new()
+    ///     {
+    ///         Filename = "cloudbuild.yaml",
+    ///         Github = new Gcp.CloudBuild.Inputs.TriggerGithubArgs
+    ///         {
+    ///             EnterpriseConfigResourceName = "projects/123456789/locations/us-central1/githubEnterpriseConfigs/configID",
+    ///             Name = "terraform-provider-google",
+    ///             Owner = "hashicorp",
+    ///             Push = new Gcp.CloudBuild.Inputs.TriggerGithubPushArgs
+    ///             {
+    ///                 Branch = "^main$",
+    ///             },
+    ///         },
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudbuild Trigger Pubsub With Repo
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_connection = new Gcp.CloudBuildV2.Connection("my-connection", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         GithubConfig = new Gcp.CloudBuildV2.Inputs.ConnectionGithubConfigArgs
+    ///         {
+    ///             AppInstallationId = 123123,
+    ///             AuthorizerCredential = new Gcp.CloudBuildV2.Inputs.ConnectionGithubConfigAuthorizerCredentialArgs
+    ///             {
+    ///                 OauthTokenSecretVersion = "projects/my-project/secrets/github-pat-secret/versions/latest",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var my_repository = new Gcp.CloudBuildV2.Repository("my-repository", new()
+    ///     {
+    ///         ParentConnection = my_connection.Id,
+    ///         RemoteUri = "https://github.com/myuser/my-repo.git",
+    ///     });
+    /// 
+    ///     var mytopic = new Gcp.PubSub.Topic("mytopic");
+    /// 
+    ///     var pubsub_with_repo_trigger = new Gcp.CloudBuild.Trigger("pubsub-with-repo-trigger", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         PubsubConfig = new Gcp.CloudBuild.Inputs.TriggerPubsubConfigArgs
+    ///         {
+    ///             Topic = mytopic.Id,
+    ///         },
+    ///         SourceToBuild = new Gcp.CloudBuild.Inputs.TriggerSourceToBuildArgs
+    ///         {
+    ///             Repository = my_repository.Id,
+    ///             Ref = "refs/heads/main",
+    ///             RepoType = "GITHUB",
+    ///         },
+    ///         GitFileSource = new Gcp.CloudBuild.Inputs.TriggerGitFileSourceArgs
+    ///         {
+    ///             Path = "cloudbuild.yaml",
+    ///             Repository = my_repository.Id,
+    ///             Revision = "refs/heads/main",
+    ///             RepoType = "GITHUB",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

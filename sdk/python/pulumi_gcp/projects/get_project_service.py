@@ -98,6 +98,15 @@ def get_project_service(project: Optional[str] = None,
     * How-to Guides
         * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_project_service = gcp.projects.get_project_service(service="my-project-service")
+    ```
+
 
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
@@ -137,6 +146,15 @@ def get_project_service_output(project: Optional[pulumi.Input[Optional[str]]] = 
     * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
     * How-to Guides
         * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_project_service = gcp.projects.get_project_service(service="my-project-service")
+    ```
 
 
     :param str project: The project in which the resource belongs. If it

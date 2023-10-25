@@ -13,12 +13,50 @@ namespace Pulumi.Gcp.Dataproc
     {
         /// <summary>
         /// Retrieves the current IAM policy data for a Dataproc cluster.
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Dataproc.GetClusterIamPolicy.Invoke(new()
+        ///     {
+        ///         Cluster = google_dataproc_cluster.Cluster.Name,
+        ///         Region = "us-central1",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetClusterIamPolicyResult> InvokeAsync(GetClusterIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterIamPolicyResult>("gcp:dataproc/getClusterIamPolicy:getClusterIamPolicy", args ?? new GetClusterIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for a Dataproc cluster.
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Dataproc.GetClusterIamPolicy.Invoke(new()
+        ///     {
+        ///         Cluster = google_dataproc_cluster.Cluster.Name,
+        ///         Region = "us-central1",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetClusterIamPolicyResult> Invoke(GetClusterIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClusterIamPolicyResult>("gcp:dataproc/getClusterIamPolicy:getClusterIamPolicy", args ?? new GetClusterIamPolicyInvokeArgs(), options.WithDefaults());

@@ -22,6 +22,522 @@ import (
 //   - [Official Documentation](https://cloud.google.com/document-warehouse/docs/manage-document-schemas)
 //
 // ## Example Usage
+// ### Document Ai Warehouse Document Schema Text
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/essentialcontacts"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "exampleText", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
+//				ProjectNumber:    *pulumi.String(project.Number),
+//				DisplayName:      pulumi.String("test-property-text"),
+//				Location:         pulumi.String("us"),
+//				DocumentIsFolder: pulumi.Bool(false),
+//				PropertyDefinitions: essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArray{
+//					&essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs{
+//						Name:                pulumi.String("prop3"),
+//						DisplayName:         pulumi.String("propdisp3"),
+//						IsRepeatable:        pulumi.Bool(false),
+//						IsFilterable:        pulumi.Bool(true),
+//						IsSearchable:        pulumi.Bool(true),
+//						IsMetadata:          pulumi.Bool(false),
+//						IsRequired:          pulumi.Bool(false),
+//						RetrievalImportance: pulumi.String("HIGHEST"),
+//						SchemaSources: essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArray{
+//							&essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs{
+//								Name:          pulumi.String("dummy_source"),
+//								ProcessorType: pulumi.String("dummy_processor"),
+//							},
+//						},
+//						TextTypeOptions: nil,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Document Ai Warehouse Document Schema Integer
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/essentialcontacts"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "exampleInteger", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
+//				ProjectNumber: *pulumi.String(project.Number),
+//				DisplayName:   pulumi.String("test-property-integer"),
+//				Location:      pulumi.String("us"),
+//				PropertyDefinitions: essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArray{
+//					&essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs{
+//						Name:                pulumi.String("prop1"),
+//						DisplayName:         pulumi.String("propdisp1"),
+//						IsRepeatable:        pulumi.Bool(false),
+//						IsFilterable:        pulumi.Bool(true),
+//						IsSearchable:        pulumi.Bool(true),
+//						IsMetadata:          pulumi.Bool(false),
+//						IsRequired:          pulumi.Bool(false),
+//						RetrievalImportance: pulumi.String("HIGHEST"),
+//						SchemaSources: essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArray{
+//							&essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs{
+//								Name:          pulumi.String("dummy_source"),
+//								ProcessorType: pulumi.String("dummy_processor"),
+//							},
+//						},
+//						IntegerTypeOptions: nil,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Document Ai Warehouse Document Schema Float
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/essentialcontacts"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "exampleFloat", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
+//				ProjectNumber: *pulumi.String(project.Number),
+//				DisplayName:   pulumi.String("test-property-float"),
+//				Location:      pulumi.String("us"),
+//				PropertyDefinitions: essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArray{
+//					&essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs{
+//						Name:                pulumi.String("prop2"),
+//						DisplayName:         pulumi.String("propdisp2"),
+//						IsRepeatable:        pulumi.Bool(false),
+//						IsFilterable:        pulumi.Bool(true),
+//						IsSearchable:        pulumi.Bool(true),
+//						IsMetadata:          pulumi.Bool(false),
+//						IsRequired:          pulumi.Bool(false),
+//						RetrievalImportance: pulumi.String("HIGHEST"),
+//						SchemaSources: essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArray{
+//							&essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs{
+//								Name:          pulumi.String("dummy_source"),
+//								ProcessorType: pulumi.String("dummy_processor"),
+//							},
+//						},
+//						FloatTypeOptions: nil,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Document Ai Warehouse Document Schema Property
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/essentialcontacts"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "exampleProperty", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
+//				ProjectNumber:    *pulumi.String(project.Number),
+//				DisplayName:      pulumi.String("test-property-property"),
+//				Location:         pulumi.String("us"),
+//				DocumentIsFolder: pulumi.Bool(false),
+//				PropertyDefinitions: essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArray{
+//					&essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs{
+//						Name:                pulumi.String("prop8"),
+//						DisplayName:         pulumi.String("propdisp8"),
+//						IsRepeatable:        pulumi.Bool(false),
+//						IsFilterable:        pulumi.Bool(true),
+//						IsSearchable:        pulumi.Bool(true),
+//						IsMetadata:          pulumi.Bool(false),
+//						IsRequired:          pulumi.Bool(false),
+//						RetrievalImportance: pulumi.String("HIGHEST"),
+//						SchemaSources: essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArray{
+//							&essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs{
+//								Name:          pulumi.String("dummy_source"),
+//								ProcessorType: pulumi.String("dummy_processor"),
+//							},
+//						},
+//						PropertyTypeOptions: &essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgs{
+//							PropertyDefinitions: essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArray{
+//								&essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArgs{
+//									Name:                pulumi.String("prop8_nested"),
+//									DisplayName:         pulumi.String("propdisp8_nested"),
+//									IsRepeatable:        pulumi.Bool(false),
+//									IsFilterable:        pulumi.Bool(true),
+//									IsSearchable:        pulumi.Bool(true),
+//									IsMetadata:          pulumi.Bool(false),
+//									IsRequired:          pulumi.Bool(false),
+//									RetrievalImportance: pulumi.String("HIGHEST"),
+//									SchemaSources: essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArray{
+//										&essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgs{
+//											Name:          pulumi.String("dummy_source_nested"),
+//											ProcessorType: pulumi.String("dummy_processor_nested"),
+//										},
+//									},
+//									TextTypeOptions: nil,
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Document Ai Warehouse Document Schema Property Enum
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/essentialcontacts"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "examplePropertyEnum", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
+//				ProjectNumber:    *pulumi.String(project.Number),
+//				DisplayName:      pulumi.String("test-property-property"),
+//				Location:         pulumi.String("us"),
+//				DocumentIsFolder: pulumi.Bool(false),
+//				PropertyDefinitions: essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArray{
+//					&essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs{
+//						Name:                pulumi.String("prop8"),
+//						DisplayName:         pulumi.String("propdisp8"),
+//						IsRepeatable:        pulumi.Bool(false),
+//						IsFilterable:        pulumi.Bool(true),
+//						IsSearchable:        pulumi.Bool(true),
+//						IsMetadata:          pulumi.Bool(false),
+//						IsRequired:          pulumi.Bool(false),
+//						RetrievalImportance: pulumi.String("HIGHEST"),
+//						SchemaSources: essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArray{
+//							&essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs{
+//								Name:          pulumi.String("dummy_source"),
+//								ProcessorType: pulumi.String("dummy_processor"),
+//							},
+//						},
+//						PropertyTypeOptions: &essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgs{
+//							PropertyDefinitions: essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArray{
+//								&essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArgs{
+//									Name:                pulumi.String("prop8_nested"),
+//									DisplayName:         pulumi.String("propdisp8_nested"),
+//									IsRepeatable:        pulumi.Bool(false),
+//									IsFilterable:        pulumi.Bool(true),
+//									IsSearchable:        pulumi.Bool(true),
+//									IsMetadata:          pulumi.Bool(false),
+//									IsRequired:          pulumi.Bool(false),
+//									RetrievalImportance: pulumi.String("HIGHEST"),
+//									SchemaSources: essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArray{
+//										&essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgs{
+//											Name:          pulumi.String("dummy_source_nested"),
+//											ProcessorType: pulumi.String("dummy_processor_nested"),
+//										},
+//									},
+//									EnumTypeOptions: &essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArgs{
+//										PossibleValues: pulumi.StringArray{
+//											pulumi.String("M"),
+//											pulumi.String("F"),
+//											pulumi.String("X"),
+//										},
+//										ValidationCheckDisabled: pulumi.Bool(false),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Document Ai Warehouse Document Schema Enum
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/essentialcontacts"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "exampleEnum", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
+//				ProjectNumber: *pulumi.String(project.Number),
+//				DisplayName:   pulumi.String("test-property-enum"),
+//				Location:      pulumi.String("us"),
+//				PropertyDefinitions: essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArray{
+//					&essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs{
+//						Name:                pulumi.String("prop6"),
+//						DisplayName:         pulumi.String("propdisp6"),
+//						IsRepeatable:        pulumi.Bool(false),
+//						IsFilterable:        pulumi.Bool(true),
+//						IsSearchable:        pulumi.Bool(true),
+//						IsMetadata:          pulumi.Bool(false),
+//						IsRequired:          pulumi.Bool(false),
+//						RetrievalImportance: pulumi.String("HIGHEST"),
+//						SchemaSources: essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArray{
+//							&essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs{
+//								Name:          pulumi.String("dummy_source"),
+//								ProcessorType: pulumi.String("dummy_processor"),
+//							},
+//						},
+//						EnumTypeOptions: &essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs{
+//							PossibleValues: pulumi.StringArray{
+//								pulumi.String("M"),
+//								pulumi.String("F"),
+//								pulumi.String("X"),
+//							},
+//							ValidationCheckDisabled: pulumi.Bool(false),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Document Ai Warehouse Document Schema Map
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/essentialcontacts"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "exampleMap", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
+//				ProjectNumber: *pulumi.String(project.Number),
+//				DisplayName:   pulumi.String("test-property-map"),
+//				Location:      pulumi.String("us"),
+//				PropertyDefinitions: essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArray{
+//					&essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs{
+//						Name:                pulumi.String("prop4"),
+//						DisplayName:         pulumi.String("propdisp4"),
+//						IsRepeatable:        pulumi.Bool(false),
+//						IsFilterable:        pulumi.Bool(true),
+//						IsSearchable:        pulumi.Bool(true),
+//						IsMetadata:          pulumi.Bool(false),
+//						IsRequired:          pulumi.Bool(false),
+//						RetrievalImportance: pulumi.String("HIGHEST"),
+//						SchemaSources: essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArray{
+//							&essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs{
+//								Name:          pulumi.String("dummy_source"),
+//								ProcessorType: pulumi.String("dummy_processor"),
+//							},
+//						},
+//						MapTypeOptions: nil,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Document Ai Warehouse Document Schema Datetime
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/essentialcontacts"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "exampleDatetime", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
+//				ProjectNumber: *pulumi.String(project.Number),
+//				DisplayName:   pulumi.String("test-property-date_time"),
+//				Location:      pulumi.String("us"),
+//				PropertyDefinitions: essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArray{
+//					&essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs{
+//						Name:                pulumi.String("prop7"),
+//						DisplayName:         pulumi.String("propdisp7"),
+//						IsRepeatable:        pulumi.Bool(false),
+//						IsFilterable:        pulumi.Bool(true),
+//						IsSearchable:        pulumi.Bool(true),
+//						IsMetadata:          pulumi.Bool(false),
+//						IsRequired:          pulumi.Bool(false),
+//						RetrievalImportance: pulumi.String("HIGHEST"),
+//						SchemaSources: essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArray{
+//							&essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs{
+//								Name:          pulumi.String("dummy_source"),
+//								ProcessorType: pulumi.String("dummy_processor"),
+//							},
+//						},
+//						DateTimeTypeOptions: nil,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Document Ai Warehouse Document Schema Timestamp
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/essentialcontacts"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "exampleTimestamp", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
+//				ProjectNumber: *pulumi.String(project.Number),
+//				DisplayName:   pulumi.String("test-property-timestamp"),
+//				Location:      pulumi.String("us"),
+//				PropertyDefinitions: essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArray{
+//					&essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs{
+//						Name:                pulumi.String("prop5"),
+//						DisplayName:         pulumi.String("propdisp5"),
+//						IsRepeatable:        pulumi.Bool(false),
+//						IsFilterable:        pulumi.Bool(true),
+//						IsSearchable:        pulumi.Bool(true),
+//						IsMetadata:          pulumi.Bool(false),
+//						IsRequired:          pulumi.Bool(false),
+//						RetrievalImportance: pulumi.String("HIGHEST"),
+//						SchemaSources: essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArray{
+//							&essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs{
+//								Name:          pulumi.String("dummy_source"),
+//								ProcessorType: pulumi.String("dummy_processor"),
+//							},
+//						},
+//						TimestampTypeOptions: nil,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

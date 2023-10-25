@@ -589,6 +589,44 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.gatewaySecurityPolicies.rules)
 
         ## Example Usage
+        ### Network Security Gateway Security Policy Rules Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy",
+            location="us-central1",
+            description="gateway security policy created to be used as reference by the rule.")
+        default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule",
+            location="us-central1",
+            gateway_security_policy=default_gateway_security_policy.name,
+            enabled=True,
+            description="my description",
+            priority=0,
+            session_matcher="host() == 'example.com'",
+            basic_profile="ALLOW")
+        ```
+        ### Network Security Gateway Security Policy Rules Advanced
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy",
+            location="us-central1",
+            description="gateway security policy created to be used as reference by the rule.")
+        default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule",
+            location="us-central1",
+            gateway_security_policy=default_gateway_security_policy.name,
+            enabled=True,
+            description="my description",
+            priority=0,
+            session_matcher="host() == 'example.com'",
+            application_matcher="request.method == 'POST'",
+            tls_inspection_enabled=False,
+            basic_profile="ALLOW")
+        ```
 
         ## Import
 
@@ -642,6 +680,44 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.gatewaySecurityPolicies.rules)
 
         ## Example Usage
+        ### Network Security Gateway Security Policy Rules Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy",
+            location="us-central1",
+            description="gateway security policy created to be used as reference by the rule.")
+        default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule",
+            location="us-central1",
+            gateway_security_policy=default_gateway_security_policy.name,
+            enabled=True,
+            description="my description",
+            priority=0,
+            session_matcher="host() == 'example.com'",
+            basic_profile="ALLOW")
+        ```
+        ### Network Security Gateway Security Policy Rules Advanced
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy",
+            location="us-central1",
+            description="gateway security policy created to be used as reference by the rule.")
+        default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule",
+            location="us-central1",
+            gateway_security_policy=default_gateway_security_policy.name,
+            enabled=True,
+            description="my description",
+            priority=0,
+            session_matcher="host() == 'example.com'",
+            application_matcher="request.method == 'POST'",
+            tls_inspection_enabled=False,
+            basic_profile="ALLOW")
+        ```
 
         ## Import
 

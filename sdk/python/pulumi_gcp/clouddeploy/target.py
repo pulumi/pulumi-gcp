@@ -671,6 +671,99 @@ class Target(pulumi.CustomResource):
         The Cloud Deploy `Target` resource
 
         ## Example Usage
+        ### Multi_target
+        tests creating and updating a multi-target
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.clouddeploy.Target("primary",
+            location="us-west1",
+            annotations={
+                "my_first_annotation": "example-annotation-1",
+                "my_second_annotation": "example-annotation-2",
+            },
+            deploy_parameters={},
+            description="multi-target description",
+            execution_configs=[gcp.clouddeploy.TargetExecutionConfigArgs(
+                usages=[
+                    "RENDER",
+                    "DEPLOY",
+                ],
+                execution_timeout="3600s",
+            )],
+            labels={
+                "my_first_label": "example-label-1",
+                "my_second_label": "example-label-2",
+            },
+            multi_target=gcp.clouddeploy.TargetMultiTargetArgs(
+                target_ids=[
+                    "1",
+                    "2",
+                ],
+            ),
+            project="my-project-name",
+            require_approval=False,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Run_target
+        tests creating and updating a cloud run target
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.clouddeploy.Target("primary",
+            location="us-west1",
+            annotations={
+                "my_first_annotation": "example-annotation-1",
+                "my_second_annotation": "example-annotation-2",
+            },
+            deploy_parameters={},
+            description="basic description",
+            execution_configs=[gcp.clouddeploy.TargetExecutionConfigArgs(
+                usages=[
+                    "RENDER",
+                    "DEPLOY",
+                ],
+                execution_timeout="3600s",
+            )],
+            labels={
+                "my_first_label": "example-label-1",
+                "my_second_label": "example-label-2",
+            },
+            project="my-project-name",
+            require_approval=False,
+            run=gcp.clouddeploy.TargetRunArgs(
+                location="projects/my-project-name/locations/us-west1",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Target
+        Creates a basic Cloud Deploy target
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.clouddeploy.Target("primary",
+            annotations={
+                "my_first_annotation": "example-annotation-1",
+                "my_second_annotation": "example-annotation-2",
+            },
+            deploy_parameters={
+                "deployParameterKey": "deployParameterValue",
+            },
+            description="basic description",
+            gke=gcp.clouddeploy.TargetGkeArgs(
+                cluster="projects/my-project-name/locations/us-west1/clusters/example-cluster-name",
+            ),
+            labels={
+                "my_first_label": "example-label-1",
+                "my_second_label": "example-label-2",
+            },
+            location="us-west1",
+            project="my-project-name",
+            require_approval=False)
+        ```
 
         ## Import
 
@@ -718,6 +811,99 @@ class Target(pulumi.CustomResource):
         The Cloud Deploy `Target` resource
 
         ## Example Usage
+        ### Multi_target
+        tests creating and updating a multi-target
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.clouddeploy.Target("primary",
+            location="us-west1",
+            annotations={
+                "my_first_annotation": "example-annotation-1",
+                "my_second_annotation": "example-annotation-2",
+            },
+            deploy_parameters={},
+            description="multi-target description",
+            execution_configs=[gcp.clouddeploy.TargetExecutionConfigArgs(
+                usages=[
+                    "RENDER",
+                    "DEPLOY",
+                ],
+                execution_timeout="3600s",
+            )],
+            labels={
+                "my_first_label": "example-label-1",
+                "my_second_label": "example-label-2",
+            },
+            multi_target=gcp.clouddeploy.TargetMultiTargetArgs(
+                target_ids=[
+                    "1",
+                    "2",
+                ],
+            ),
+            project="my-project-name",
+            require_approval=False,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Run_target
+        tests creating and updating a cloud run target
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.clouddeploy.Target("primary",
+            location="us-west1",
+            annotations={
+                "my_first_annotation": "example-annotation-1",
+                "my_second_annotation": "example-annotation-2",
+            },
+            deploy_parameters={},
+            description="basic description",
+            execution_configs=[gcp.clouddeploy.TargetExecutionConfigArgs(
+                usages=[
+                    "RENDER",
+                    "DEPLOY",
+                ],
+                execution_timeout="3600s",
+            )],
+            labels={
+                "my_first_label": "example-label-1",
+                "my_second_label": "example-label-2",
+            },
+            project="my-project-name",
+            require_approval=False,
+            run=gcp.clouddeploy.TargetRunArgs(
+                location="projects/my-project-name/locations/us-west1",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Target
+        Creates a basic Cloud Deploy target
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.clouddeploy.Target("primary",
+            annotations={
+                "my_first_annotation": "example-annotation-1",
+                "my_second_annotation": "example-annotation-2",
+            },
+            deploy_parameters={
+                "deployParameterKey": "deployParameterValue",
+            },
+            description="basic description",
+            gke=gcp.clouddeploy.TargetGkeArgs(
+                cluster="projects/my-project-name/locations/us-west1/clusters/example-cluster-name",
+            ),
+            labels={
+                "my_first_label": "example-label-1",
+                "my_second_label": "example-label-2",
+            },
+            location="us-west1",
+            project="my-project-name",
+            require_approval=False)
+        ```
 
         ## Import
 

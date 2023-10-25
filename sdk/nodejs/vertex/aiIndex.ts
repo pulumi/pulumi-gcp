@@ -14,6 +14,89 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexes/)
  *
  * ## Example Usage
+ * ### Vertex Ai Index
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     location: "us-central1",
+ *     uniformBucketLevelAccess: true,
+ * });
+ * // The sample data comes from the following link:
+ * // https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
+ * const data = new gcp.storage.BucketObject("data", {
+ *     bucket: bucket.name,
+ *     content: `{"id": "42", "embedding": [0.5, 1.0], "restricts": [{"namespace": "class", "allow": ["cat", "pet"]},{"namespace": "category", "allow": ["feline"]}]}
+ * {"id": "43", "embedding": [0.6, 1.0], "restricts": [{"namespace": "class", "allow": ["dog", "pet"]},{"namespace": "category", "allow": ["canine"]}]}
+ * `,
+ * });
+ * const index = new gcp.vertex.AiIndex("index", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     region: "us-central1",
+ *     displayName: "test-index",
+ *     description: "index for test",
+ *     metadata: {
+ *         contentsDeltaUri: pulumi.interpolate`gs://${bucket.name}/contents`,
+ *         config: {
+ *             dimensions: 2,
+ *             approximateNeighborsCount: 150,
+ *             shardSize: "SHARD_SIZE_SMALL",
+ *             distanceMeasureType: "DOT_PRODUCT_DISTANCE",
+ *             algorithmConfig: {
+ *                 treeAhConfig: {
+ *                     leafNodeEmbeddingCount: 500,
+ *                     leafNodesToSearchPercent: 7,
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     indexUpdateMethod: "BATCH_UPDATE",
+ * });
+ * ```
+ * ### Vertex Ai Index Streaming
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     location: "us-central1",
+ *     uniformBucketLevelAccess: true,
+ * });
+ * // The sample data comes from the following link:
+ * // https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
+ * const data = new gcp.storage.BucketObject("data", {
+ *     bucket: bucket.name,
+ *     content: `{"id": "42", "embedding": [0.5, 1.0], "restricts": [{"namespace": "class", "allow": ["cat", "pet"]},{"namespace": "category", "allow": ["feline"]}]}
+ * {"id": "43", "embedding": [0.6, 1.0], "restricts": [{"namespace": "class", "allow": ["dog", "pet"]},{"namespace": "category", "allow": ["canine"]}]}
+ * `,
+ * });
+ * const index = new gcp.vertex.AiIndex("index", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     region: "us-central1",
+ *     displayName: "test-index",
+ *     description: "index for test",
+ *     metadata: {
+ *         contentsDeltaUri: pulumi.interpolate`gs://${bucket.name}/contents`,
+ *         config: {
+ *             dimensions: 2,
+ *             shardSize: "SHARD_SIZE_LARGE",
+ *             distanceMeasureType: "COSINE_DISTANCE",
+ *             featureNormType: "UNIT_L2_NORM",
+ *             algorithmConfig: {
+ *                 bruteForceConfig: {},
+ *             },
+ *         },
+ *     },
+ *     indexUpdateMethod: "STREAM_UPDATE",
+ * });
+ * ```
  *
  * ## Import
  *

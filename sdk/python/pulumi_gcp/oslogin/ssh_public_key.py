@@ -245,6 +245,17 @@ class SshPublicKey(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/oslogin)
 
         ## Example Usage
+        ### Os Login Ssh Key Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        me = gcp.organizations.get_client_open_id_user_info()
+        cache = gcp.oslogin.SshPublicKey("cache",
+            user=me.email,
+            key=(lambda path: open(path).read())("path/to/id_rsa.pub"))
+        ```
 
         ## Import
 
@@ -284,6 +295,17 @@ class SshPublicKey(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/oslogin)
 
         ## Example Usage
+        ### Os Login Ssh Key Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        me = gcp.organizations.get_client_open_id_user_info()
+        cache = gcp.oslogin.SshPublicKey("cache",
+            user=me.email,
+            key=(lambda path: open(path).read())("path/to/id_rsa.pub"))
+        ```
 
         ## Import
 

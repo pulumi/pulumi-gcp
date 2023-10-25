@@ -1502,6 +1502,74 @@ class BackendService(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
+        ### Backend Service Cache Include Http Headers
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.BackendService("default",
+            cdn_policy=gcp.compute.BackendServiceCdnPolicyArgs(
+                cache_key_policy=gcp.compute.BackendServiceCdnPolicyCacheKeyPolicyArgs(
+                    include_host=True,
+                    include_http_headers=["X-My-Header-Field"],
+                    include_protocol=True,
+                    include_query_string=True,
+                ),
+                cache_mode="USE_ORIGIN_HEADERS",
+            ),
+            enable_cdn=True)
+        ```
+        ### Backend Service Cache Include Named Cookies
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.BackendService("default",
+            cdn_policy=gcp.compute.BackendServiceCdnPolicyArgs(
+                cache_key_policy=gcp.compute.BackendServiceCdnPolicyCacheKeyPolicyArgs(
+                    include_host=True,
+                    include_named_cookies=[
+                        "__next_preview_data",
+                        "__prerender_bypass",
+                    ],
+                    include_protocol=True,
+                    include_query_string=True,
+                ),
+                cache_mode="CACHE_ALL_STATIC",
+                client_ttl=7200,
+                default_ttl=3600,
+                max_ttl=10800,
+            ),
+            enable_cdn=True)
+        ```
+        ### Backend Service Network Endpoint
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        external_proxy = gcp.compute.GlobalNetworkEndpointGroup("externalProxy",
+            network_endpoint_type="INTERNET_FQDN_PORT",
+            default_port=443,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        proxy = gcp.compute.GlobalNetworkEndpoint("proxy",
+            global_network_endpoint_group=external_proxy.id,
+            fqdn="test.example.com",
+            port=external_proxy.default_port,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default = gcp.compute.BackendService("default",
+            enable_cdn=True,
+            timeout_sec=10,
+            connection_draining_timeout_sec=10,
+            custom_request_headers=[proxy.fqdn.apply(lambda fqdn: f"host: {fqdn}")],
+            custom_response_headers=["X-Cache-Hit: {cdn_cache_status}"],
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=external_proxy.id,
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -1640,6 +1708,74 @@ class BackendService(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
+        ### Backend Service Cache Include Http Headers
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.BackendService("default",
+            cdn_policy=gcp.compute.BackendServiceCdnPolicyArgs(
+                cache_key_policy=gcp.compute.BackendServiceCdnPolicyCacheKeyPolicyArgs(
+                    include_host=True,
+                    include_http_headers=["X-My-Header-Field"],
+                    include_protocol=True,
+                    include_query_string=True,
+                ),
+                cache_mode="USE_ORIGIN_HEADERS",
+            ),
+            enable_cdn=True)
+        ```
+        ### Backend Service Cache Include Named Cookies
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.BackendService("default",
+            cdn_policy=gcp.compute.BackendServiceCdnPolicyArgs(
+                cache_key_policy=gcp.compute.BackendServiceCdnPolicyCacheKeyPolicyArgs(
+                    include_host=True,
+                    include_named_cookies=[
+                        "__next_preview_data",
+                        "__prerender_bypass",
+                    ],
+                    include_protocol=True,
+                    include_query_string=True,
+                ),
+                cache_mode="CACHE_ALL_STATIC",
+                client_ttl=7200,
+                default_ttl=3600,
+                max_ttl=10800,
+            ),
+            enable_cdn=True)
+        ```
+        ### Backend Service Network Endpoint
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        external_proxy = gcp.compute.GlobalNetworkEndpointGroup("externalProxy",
+            network_endpoint_type="INTERNET_FQDN_PORT",
+            default_port=443,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        proxy = gcp.compute.GlobalNetworkEndpoint("proxy",
+            global_network_endpoint_group=external_proxy.id,
+            fqdn="test.example.com",
+            port=external_proxy.default_port,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default = gcp.compute.BackendService("default",
+            enable_cdn=True,
+            timeout_sec=10,
+            connection_draining_timeout_sec=10,
+            custom_request_headers=[proxy.fqdn.apply(lambda fqdn: f"host: {fqdn}")],
+            custom_response_headers=["X-Cache-Hit: {cdn_cache_status}"],
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=external_proxy.id,
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

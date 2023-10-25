@@ -278,6 +278,20 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 
         ## Example Usage
+        ### Global Network Endpoint
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        neg = gcp.compute.GlobalNetworkEndpointGroup("neg",
+            default_port=90,
+            network_endpoint_type="INTERNET_FQDN_PORT")
+        default_endpoint = gcp.compute.GlobalNetworkEndpoint("default-endpoint",
+            global_network_endpoint_group=neg.name,
+            fqdn="www.example.com",
+            port=90)
+        ```
 
         ## Import
 
@@ -326,6 +340,20 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 
         ## Example Usage
+        ### Global Network Endpoint
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        neg = gcp.compute.GlobalNetworkEndpointGroup("neg",
+            default_port=90,
+            network_endpoint_type="INTERNET_FQDN_PORT")
+        default_endpoint = gcp.compute.GlobalNetworkEndpoint("default-endpoint",
+            global_network_endpoint_group=neg.name,
+            fqdn="www.example.com",
+            port=90)
+        ```
 
         ## Import
 

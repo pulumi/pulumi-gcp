@@ -24,6 +24,90 @@ import (
 //   - [Official Documentation](https://cloud.google.com/iot/docs/)
 //
 // ## Example Usage
+// ### Cloudiot Device Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iot"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			registry, err := iot.NewRegistry(ctx, "registry", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iot.NewDevice(ctx, "test-device", &iot.DeviceArgs{
+//				Registry: registry.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Cloudiot Device Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"os"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iot"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := os.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			registry, err := iot.NewRegistry(ctx, "registry", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iot.NewDevice(ctx, "test-device", &iot.DeviceArgs{
+//				Registry: registry.ID(),
+//				Credentials: iot.DeviceCredentialArray{
+//					&iot.DeviceCredentialArgs{
+//						PublicKey: &iot.DeviceCredentialPublicKeyArgs{
+//							Format: pulumi.String("RSA_PEM"),
+//							Key:    readFileOrPanic("test-fixtures/rsa_public.pem"),
+//						},
+//					},
+//				},
+//				Blocked:  pulumi.Bool(false),
+//				LogLevel: pulumi.String("INFO"),
+//				Metadata: pulumi.StringMap{
+//					"test_key_1": pulumi.String("test_value_1"),
+//				},
+//				GatewayConfig: &iot.DeviceGatewayConfigArgs{
+//					GatewayType: pulumi.String("NON_GATEWAY"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

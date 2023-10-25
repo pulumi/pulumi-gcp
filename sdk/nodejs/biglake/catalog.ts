@@ -14,6 +14,14 @@ import * as utilities from "../utilities";
  *     * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_catalogs)
  *
  * ## Example Usage
+ * ### Bigquery Biglake Catalog
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.biglake.Catalog("default", {location: "US"});
+ * ```
  *
  * ## Import
  *

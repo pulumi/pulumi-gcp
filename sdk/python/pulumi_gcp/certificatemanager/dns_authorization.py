@@ -301,6 +301,19 @@ class DnsAuthorization(pulumi.CustomResource):
         DnsAuthorization represents a HTTP-reachable backend for a DnsAuthorization.
 
         ## Example Usage
+        ### Certificate Manager Dns Authorization Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificatemanager.DnsAuthorization("default",
+            description="The default dnss",
+            domain="subdomain.hashicorptest.com")
+        pulumi.export("recordNameToInsert", default.dns_resource_records[0].name)
+        pulumi.export("recordTypeToInsert", default.dns_resource_records[0].type)
+        pulumi.export("recordDataToInsert", default.dns_resource_records[0].data)
+        ```
 
         ## Import
 
@@ -344,6 +357,19 @@ class DnsAuthorization(pulumi.CustomResource):
         DnsAuthorization represents a HTTP-reachable backend for a DnsAuthorization.
 
         ## Example Usage
+        ### Certificate Manager Dns Authorization Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificatemanager.DnsAuthorization("default",
+            description="The default dnss",
+            domain="subdomain.hashicorptest.com")
+        pulumi.export("recordNameToInsert", default.dns_resource_records[0].name)
+        pulumi.export("recordTypeToInsert", default.dns_resource_records[0].type)
+        pulumi.export("recordDataToInsert", default.dns_resource_records[0].data)
+        ```
 
         ## Import
 

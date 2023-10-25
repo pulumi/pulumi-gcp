@@ -23,6 +23,106 @@ import (
 //   - [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/stateful-migs#per-instance_configs)
 //
 // ## Example Usage
+// ### Stateful Igm
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+//				Family:  pulumi.StringRef("debian-11"),
+//				Project: pulumi.StringRef("debian-cloud"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstanceTemplate(ctx, "igm-basic", &compute.InstanceTemplateArgs{
+//				MachineType:  pulumi.String("e2-medium"),
+//				CanIpForward: pulumi.Bool(false),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo"),
+//					pulumi.String("bar"),
+//				},
+//				Disks: compute.InstanceTemplateDiskArray{
+//					&compute.InstanceTemplateDiskArgs{
+//						SourceImage: *pulumi.String(myImage.SelfLink),
+//						AutoDelete:  pulumi.Bool(true),
+//						Boot:        pulumi.Bool(true),
+//					},
+//				},
+//				NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
+//					&compute.InstanceTemplateNetworkInterfaceArgs{
+//						Network: pulumi.String("default"),
+//					},
+//				},
+//				ServiceAccount: &compute.InstanceTemplateServiceAccountArgs{
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("userinfo-email"),
+//						pulumi.String("compute-ro"),
+//						pulumi.String("storage-ro"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstanceGroupManager(ctx, "igm-no-tp", &compute.InstanceGroupManagerArgs{
+//				Description: pulumi.String("Test instance group manager"),
+//				Versions: compute.InstanceGroupManagerVersionArray{
+//					&compute.InstanceGroupManagerVersionArgs{
+//						Name:             pulumi.String("prod"),
+//						InstanceTemplate: igm_basic.SelfLink,
+//					},
+//				},
+//				BaseInstanceName: pulumi.String("igm-no-tp"),
+//				Zone:             pulumi.String("us-central1-c"),
+//				TargetSize:       pulumi.Int(2),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewDisk(ctx, "default", &compute.DiskArgs{
+//				Type:                   pulumi.String("pd-ssd"),
+//				Zone:                   pulumi.Any(google_compute_instance_group_manager.Igm.Zone),
+//				Image:                  pulumi.String("debian-11-bullseye-v20220719"),
+//				PhysicalBlockSizeBytes: pulumi.Int(4096),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewPerInstanceConfig(ctx, "withDisk", &compute.PerInstanceConfigArgs{
+//				Zone:                 pulumi.Any(google_compute_instance_group_manager.Igm.Zone),
+//				InstanceGroupManager: pulumi.Any(google_compute_instance_group_manager.Igm.Name),
+//				PreservedState: &compute.PerInstanceConfigPreservedStateArgs{
+//					Metadata: pulumi.StringMap{
+//						"foo":               pulumi.String("bar"),
+//						"instance_template": igm_basic.SelfLink,
+//					},
+//					Disks: compute.PerInstanceConfigPreservedStateDiskArray{
+//						&compute.PerInstanceConfigPreservedStateDiskArgs{
+//							DeviceName: pulumi.String("my-stateful-disk"),
+//							Source:     _default.ID(),
+//							Mode:       pulumi.String("READ_ONLY"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

@@ -16,6 +16,54 @@ namespace Pulumi.Gcp.Compute
     /// &gt; **Note:** This resource does not support regional disks (`gcp.compute.RegionDisk`). For regional disks, please refer to the `gcp.compute.RegionDiskResourcePolicyAttachment` resource.
     /// 
     /// ## Example Usage
+    /// ### Disk Resource Policy Attachment Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var ssd = new Gcp.Compute.Disk("ssd", new()
+    ///     {
+    ///         Image = myImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///         Size = 50,
+    ///         Type = "pd-ssd",
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    ///     var attachment = new Gcp.Compute.DiskResourcePolicyAttachment("attachment", new()
+    ///     {
+    ///         Disk = ssd.Name,
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    ///     var policy = new Gcp.Compute.ResourcePolicy("policy", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         SnapshotSchedulePolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyArgs
+    ///         {
+    ///             Schedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs
+    ///             {
+    ///                 DailySchedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs
+    ///                 {
+    ///                     DaysInCycle = 1,
+    ///                     StartTime = "04:00",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -11,6 +11,217 @@ namespace Pulumi.Gcp.Compute
 {
     /// <summary>
     /// ## Example Usage
+    /// ### Region Security Policy Rule Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.RegionSecurityPolicy("default", new()
+    ///     {
+    ///         Region = "us-west2",
+    ///         Description = "basic region security policy",
+    ///         Type = "CLOUD_ARMOR",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var policyRule = new Gcp.Compute.RegionSecurityPolicyRule("policyRule", new()
+    ///     {
+    ///         Region = "us-west2",
+    ///         SecurityPolicy = @default.Name,
+    ///         Description = "new rule",
+    ///         Priority = 100,
+    ///         Match = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchArgs
+    ///         {
+    ///             VersionedExpr = "SRC_IPS_V1",
+    ///             Config = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchConfigArgs
+    ///             {
+    ///                 SrcIpRanges = new[]
+    ///                 {
+    ///                     "10.10.0.0/16",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Action = "allow",
+    ///         Preview = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Region Security Policy Rule Multiple Rules
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.RegionSecurityPolicy("default", new()
+    ///     {
+    ///         Region = "us-west2",
+    ///         Description = "basic region security policy",
+    ///         Type = "CLOUD_ARMOR",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var policyRuleOne = new Gcp.Compute.RegionSecurityPolicyRule("policyRuleOne", new()
+    ///     {
+    ///         Region = "us-west2",
+    ///         SecurityPolicy = @default.Name,
+    ///         Description = "new rule one",
+    ///         Priority = 100,
+    ///         Match = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchArgs
+    ///         {
+    ///             VersionedExpr = "SRC_IPS_V1",
+    ///             Config = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchConfigArgs
+    ///             {
+    ///                 SrcIpRanges = new[]
+    ///                 {
+    ///                     "10.10.0.0/16",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Action = "allow",
+    ///         Preview = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var policyRuleTwo = new Gcp.Compute.RegionSecurityPolicyRule("policyRuleTwo", new()
+    ///     {
+    ///         Region = "us-west2",
+    ///         SecurityPolicy = @default.Name,
+    ///         Description = "new rule two",
+    ///         Priority = 101,
+    ///         Match = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchArgs
+    ///         {
+    ///             VersionedExpr = "SRC_IPS_V1",
+    ///             Config = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchConfigArgs
+    ///             {
+    ///                 SrcIpRanges = new[]
+    ///                 {
+    ///                     "192.168.0.0/16",
+    ///                     "10.0.0.0/8",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Action = "allow",
+    ///         Preview = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Region Security Policy Rule With Network Match
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // First activate advanced network DDoS protection for the desired region
+    ///     var policyddosprotection = new Gcp.Compute.RegionSecurityPolicy("policyddosprotection", new()
+    ///     {
+    ///         Region = "us-west2",
+    ///         Description = "policy for activating network DDoS protection for the desired region",
+    ///         Type = "CLOUD_ARMOR_NETWORK",
+    ///         DdosProtectionConfig = new Gcp.Compute.Inputs.RegionSecurityPolicyDdosProtectionConfigArgs
+    ///         {
+    ///             DdosProtection = "ADVANCED_PREVIEW",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var edgeSecService = new Gcp.Compute.NetworkEdgeSecurityService("edgeSecService", new()
+    ///     {
+    ///         Region = "us-west2",
+    ///         Description = "linking policy to edge security service",
+    ///         SecurityPolicy = policyddosprotection.SelfLink,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     // Add the desired policy and custom rule.
+    ///     var policynetworkmatch = new Gcp.Compute.RegionSecurityPolicy("policynetworkmatch", new()
+    ///     {
+    ///         Region = "us-west2",
+    ///         Description = "region security policy for network match",
+    ///         Type = "CLOUD_ARMOR_NETWORK",
+    ///         UserDefinedFields = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionSecurityPolicyUserDefinedFieldArgs
+    ///             {
+    ///                 Name = "SIG1_AT_0",
+    ///                 Base = "TCP",
+    ///                 Offset = 8,
+    ///                 Size = 2,
+    ///                 Mask = "0x8F00",
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///         DependsOn = new[]
+    ///         {
+    ///             edgeSecService,
+    ///         },
+    ///     });
+    /// 
+    ///     var policyRuleNetworkMatch = new Gcp.Compute.RegionSecurityPolicyRule("policyRuleNetworkMatch", new()
+    ///     {
+    ///         Region = "us-west2",
+    ///         SecurityPolicy = policynetworkmatch.Name,
+    ///         Description = "custom rule for network match",
+    ///         Priority = 100,
+    ///         NetworkMatch = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleNetworkMatchArgs
+    ///         {
+    ///             SrcIpRanges = new[]
+    ///             {
+    ///                 "10.10.0.0/16",
+    ///             },
+    ///             UserDefinedFields = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs
+    ///                 {
+    ///                     Name = "SIG1_AT_0",
+    ///                     Values = new[]
+    ///                     {
+    ///                         "0x8F00",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Action = "allow",
+    ///         Preview = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -16,6 +16,82 @@ import (
 // The Eventarc Trigger resource
 //
 // ## Example Usage
+// ### Basic
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrun"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/eventarc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudrun.NewService(ctx, "default", &cloudrun.ServiceArgs{
+//				Location: pulumi.String("europe-west1"),
+//				Metadata: &cloudrun.ServiceMetadataArgs{
+//					Namespace: pulumi.String("my-project-name"),
+//				},
+//				Template: &cloudrun.ServiceTemplateArgs{
+//					Spec: &cloudrun.ServiceTemplateSpecArgs{
+//						Containers: cloudrun.ServiceTemplateSpecContainerArray{
+//							&cloudrun.ServiceTemplateSpecContainerArgs{
+//								Image: pulumi.String("gcr.io/cloudrun/hello"),
+//								Ports: cloudrun.ServiceTemplateSpecContainerPortArray{
+//									&cloudrun.ServiceTemplateSpecContainerPortArgs{
+//										ContainerPort: pulumi.Int(8080),
+//									},
+//								},
+//							},
+//						},
+//						ContainerConcurrency: pulumi.Int(50),
+//						TimeoutSeconds:       pulumi.Int(100),
+//					},
+//				},
+//				Traffics: cloudrun.ServiceTrafficArray{
+//					&cloudrun.ServiceTrafficArgs{
+//						Percent:        pulumi.Int(100),
+//						LatestRevision: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = eventarc.NewTrigger(ctx, "primary", &eventarc.TriggerArgs{
+//				Location: pulumi.String("europe-west1"),
+//				MatchingCriterias: eventarc.TriggerMatchingCriteriaArray{
+//					&eventarc.TriggerMatchingCriteriaArgs{
+//						Attribute: pulumi.String("type"),
+//						Value:     pulumi.String("google.cloud.pubsub.topic.v1.messagePublished"),
+//					},
+//				},
+//				Destination: &eventarc.TriggerDestinationArgs{
+//					CloudRunService: &eventarc.TriggerDestinationCloudRunServiceArgs{
+//						Service: _default.Name,
+//						Region:  pulumi.String("europe-west1"),
+//					},
+//				},
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewTopic(ctx, "foo", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

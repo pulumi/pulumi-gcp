@@ -367,6 +367,54 @@ class Table(pulumi.CustomResource):
             * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_tables)
 
         ## Example Usage
+        ### Biglake Table
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        catalog = gcp.biglake.Catalog("catalog", location="US")
+        bucket = gcp.storage.Bucket("bucket",
+            location="US",
+            force_destroy=True,
+            uniform_bucket_level_access=True)
+        metadata_folder = gcp.storage.BucketObject("metadataFolder",
+            content=" ",
+            bucket=bucket.name)
+        data_folder = gcp.storage.BucketObject("dataFolder",
+            content=" ",
+            bucket=bucket.name)
+        database = gcp.biglake.Database("database",
+            catalog=catalog.id,
+            type="HIVE",
+            hive_options=gcp.biglake.DatabaseHiveOptionsArgs(
+                location_uri=pulumi.Output.all(bucket.name, metadata_folder.name).apply(lambda bucketName, metadataFolderName: f"gs://{bucket_name}/{metadata_folder_name}"),
+                parameters={
+                    "owner": "Alex",
+                },
+            ))
+        table = gcp.biglake.Table("table",
+            database=database.id,
+            type="HIVE",
+            hive_options=gcp.biglake.TableHiveOptionsArgs(
+                table_type="MANAGED_TABLE",
+                storage_descriptor=gcp.biglake.TableHiveOptionsStorageDescriptorArgs(
+                    location_uri=pulumi.Output.all(bucket.name, data_folder.name).apply(lambda bucketName, dataFolderName: f"gs://{bucket_name}/{data_folder_name}"),
+                    input_format="org.apache.hadoop.mapred.SequenceFileInputFormat",
+                    output_format="org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+                ),
+                parameters={
+                    "spark.sql.create.version": "3.1.3",
+                    "spark.sql.sources.schema.numParts": "1",
+                    "transient_lastDdlTime": "1680894197",
+                    "spark.sql.partitionProvider": "catalog",
+                    "owner": "John Doe",
+                    "spark.sql.sources.schema.part.0": "{\\"type\\":\\"struct\\",\\"fields\\":[{\\"name\\":\\"id\\",\\"type\\":\\"integer\\",\\"nullable\\":true,\\"metadata\\":{}},{\\"name\\":\\"name\\",\\"type\\":\\"string\\",\\"nullable\\":true,\\"metadata\\":{}},{\\"name\\":\\"age\\",\\"type\\":\\"integer\\",\\"nullable\\":true,\\"metadata\\":{}}]}",
+                    "spark.sql.sources.provider": "iceberg",
+                    "provider": "iceberg",
+                },
+            ))
+        ```
 
         ## Import
 
@@ -405,6 +453,54 @@ class Table(pulumi.CustomResource):
             * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_tables)
 
         ## Example Usage
+        ### Biglake Table
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        catalog = gcp.biglake.Catalog("catalog", location="US")
+        bucket = gcp.storage.Bucket("bucket",
+            location="US",
+            force_destroy=True,
+            uniform_bucket_level_access=True)
+        metadata_folder = gcp.storage.BucketObject("metadataFolder",
+            content=" ",
+            bucket=bucket.name)
+        data_folder = gcp.storage.BucketObject("dataFolder",
+            content=" ",
+            bucket=bucket.name)
+        database = gcp.biglake.Database("database",
+            catalog=catalog.id,
+            type="HIVE",
+            hive_options=gcp.biglake.DatabaseHiveOptionsArgs(
+                location_uri=pulumi.Output.all(bucket.name, metadata_folder.name).apply(lambda bucketName, metadataFolderName: f"gs://{bucket_name}/{metadata_folder_name}"),
+                parameters={
+                    "owner": "Alex",
+                },
+            ))
+        table = gcp.biglake.Table("table",
+            database=database.id,
+            type="HIVE",
+            hive_options=gcp.biglake.TableHiveOptionsArgs(
+                table_type="MANAGED_TABLE",
+                storage_descriptor=gcp.biglake.TableHiveOptionsStorageDescriptorArgs(
+                    location_uri=pulumi.Output.all(bucket.name, data_folder.name).apply(lambda bucketName, dataFolderName: f"gs://{bucket_name}/{data_folder_name}"),
+                    input_format="org.apache.hadoop.mapred.SequenceFileInputFormat",
+                    output_format="org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+                ),
+                parameters={
+                    "spark.sql.create.version": "3.1.3",
+                    "spark.sql.sources.schema.numParts": "1",
+                    "transient_lastDdlTime": "1680894197",
+                    "spark.sql.partitionProvider": "catalog",
+                    "owner": "John Doe",
+                    "spark.sql.sources.schema.part.0": "{\\"type\\":\\"struct\\",\\"fields\\":[{\\"name\\":\\"id\\",\\"type\\":\\"integer\\",\\"nullable\\":true,\\"metadata\\":{}},{\\"name\\":\\"name\\",\\"type\\":\\"string\\",\\"nullable\\":true,\\"metadata\\":{}},{\\"name\\":\\"age\\",\\"type\\":\\"integer\\",\\"nullable\\":true,\\"metadata\\":{}}]}",
+                    "spark.sql.sources.provider": "iceberg",
+                    "provider": "iceberg",
+                },
+            ))
+        ```
 
         ## Import
 

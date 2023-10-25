@@ -316,6 +316,31 @@ class UrlList(pulumi.CustomResource):
             * Use UrlLists
 
         ## Example Usage
+        ### Network Security Url Lists Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.UrlList("default",
+            location="us-central1",
+            values=["www.example.com"])
+        ```
+        ### Network Security Url Lists Advanced
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.UrlList("default",
+            description="my description",
+            location="us-central1",
+            values=[
+                "www.example.com",
+                "about.example.com",
+                "github.com/example-org/*",
+            ])
+        ```
 
         ## Import
 
@@ -362,6 +387,31 @@ class UrlList(pulumi.CustomResource):
             * Use UrlLists
 
         ## Example Usage
+        ### Network Security Url Lists Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.UrlList("default",
+            location="us-central1",
+            values=["www.example.com"])
+        ```
+        ### Network Security Url Lists Advanced
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.UrlList("default",
+            description="my description",
+            location="us-central1",
+            values=[
+                "www.example.com",
+                "about.example.com",
+                "github.com/example-org/*",
+            ])
+        ```
 
         ## Import
 

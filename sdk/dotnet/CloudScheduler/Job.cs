@@ -20,6 +20,106 @@ namespace Pulumi.Gcp.CloudScheduler
     ///     * [Official Documentation](https://cloud.google.com/scheduler/)
     /// 
     /// ## Example Usage
+    /// ### Scheduler Job App Engine
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var job = new Gcp.CloudScheduler.Job("job", new()
+    ///     {
+    ///         AppEngineHttpTarget = new Gcp.CloudScheduler.Inputs.JobAppEngineHttpTargetArgs
+    ///         {
+    ///             AppEngineRouting = new Gcp.CloudScheduler.Inputs.JobAppEngineHttpTargetAppEngineRoutingArgs
+    ///             {
+    ///                 Instance = "my-instance-001",
+    ///                 Service = "web",
+    ///                 Version = "prod",
+    ///             },
+    ///             HttpMethod = "POST",
+    ///             RelativeUri = "/ping",
+    ///         },
+    ///         AttemptDeadline = "320s",
+    ///         Description = "test app engine job",
+    ///         RetryConfig = new Gcp.CloudScheduler.Inputs.JobRetryConfigArgs
+    ///         {
+    ///             MaxDoublings = 2,
+    ///             MaxRetryDuration = "10s",
+    ///             MinBackoffDuration = "1s",
+    ///             RetryCount = 3,
+    ///         },
+    ///         Schedule = "*/4 * * * *",
+    ///         TimeZone = "Europe/London",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Scheduler Job Oauth
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = Gcp.Compute.GetDefaultServiceAccount.Invoke();
+    /// 
+    ///     var job = new Gcp.CloudScheduler.Job("job", new()
+    ///     {
+    ///         Description = "test http job",
+    ///         Schedule = "*/8 * * * *",
+    ///         TimeZone = "America/New_York",
+    ///         AttemptDeadline = "320s",
+    ///         HttpTarget = new Gcp.CloudScheduler.Inputs.JobHttpTargetArgs
+    ///         {
+    ///             HttpMethod = "GET",
+    ///             Uri = "https://cloudscheduler.googleapis.com/v1/projects/my-project-name/locations/us-west1/jobs",
+    ///             OauthToken = new Gcp.CloudScheduler.Inputs.JobHttpTargetOauthTokenArgs
+    ///             {
+    ///                 ServiceAccountEmail = @default.Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Scheduler Job Oidc
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = Gcp.Compute.GetDefaultServiceAccount.Invoke();
+    /// 
+    ///     var job = new Gcp.CloudScheduler.Job("job", new()
+    ///     {
+    ///         Description = "test http job",
+    ///         Schedule = "*/8 * * * *",
+    ///         TimeZone = "America/New_York",
+    ///         AttemptDeadline = "320s",
+    ///         HttpTarget = new Gcp.CloudScheduler.Inputs.JobHttpTargetArgs
+    ///         {
+    ///             HttpMethod = "GET",
+    ///             Uri = "https://example.com/ping",
+    ///             OidcToken = new Gcp.CloudScheduler.Inputs.JobHttpTargetOidcTokenArgs
+    ///             {
+    ///                 ServiceAccountEmail = @default.Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -13,6 +13,62 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
  *
+ * ## Example Usage
+ *
+ * To bind a tag to a Cloud Run instance:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = new gcp.organizations.Project("project", {
+ *     orgId: "123456789",
+ *     projectId: "project_id",
+ * });
+ * const key = new gcp.tags.TagKey("key", {
+ *     description: "For keyname resources.",
+ *     parent: "organizations/123456789",
+ *     shortName: "keyname",
+ * });
+ * const value = new gcp.tags.TagValue("value", {
+ *     description: "For valuename resources.",
+ *     parent: pulumi.interpolate`tagKeys/${key.name}`,
+ *     shortName: "valuename",
+ * });
+ * const binding = new gcp.tags.LocationTagBinding("binding", {
+ *     location: "us-central1",
+ *     parent: pulumi.interpolate`//run.googleapis.com/projects/${project.number}/locations/${google_cloud_run_service["default"].location}/services/${google_cloud_run_service["default"].name}`,
+ *     tagValue: pulumi.interpolate`tagValues/${value.name}`,
+ * });
+ * ```
+ *
+ * To bind a (firewall) tag to compute instance:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = new gcp.organizations.Project("project", {
+ *     orgId: "123456789",
+ *     projectId: "project_id",
+ * });
+ * const key = new gcp.tags.TagKey("key", {
+ *     description: "For keyname resources.",
+ *     parent: "organizations/123456789",
+ *     shortName: "keyname",
+ * });
+ * const value = new gcp.tags.TagValue("value", {
+ *     description: "For valuename resources.",
+ *     parent: pulumi.interpolate`tagKeys/${key.name}`,
+ *     shortName: "valuename",
+ * });
+ * const binding = new gcp.tags.LocationTagBinding("binding", {
+ *     location: "us-central1-a",
+ *     parent: pulumi.interpolate`//compute.googleapis.com/projects/${project.number}/zones/us-central1-a/instances/${google_compute_instance.instance.instance_id}`,
+ *     tagValue: pulumi.interpolate`tagValues/${value.name}`,
+ * });
+ * ```
+ *
  * ## Import
  *
  * TagBinding can be imported using any of these accepted formats:

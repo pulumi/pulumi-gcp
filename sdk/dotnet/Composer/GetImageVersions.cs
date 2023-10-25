@@ -13,12 +13,74 @@ namespace Pulumi.Gcp.Composer
     {
         /// <summary>
         /// Provides access to available Cloud Composer versions in a region for a given project.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Gcp.Composer.GetImageVersions.Invoke();
+        /// 
+        ///     var test = new Gcp.Composer.Environment("test", new()
+        ///     {
+        ///         Region = "us-central1",
+        ///         Config = new Gcp.Composer.Inputs.EnvironmentConfigArgs
+        ///         {
+        ///             SoftwareConfig = new Gcp.Composer.Inputs.EnvironmentConfigSoftwareConfigArgs
+        ///             {
+        ///                 ImageVersion = all.Apply(getImageVersionsResult =&gt; getImageVersionsResult.ImageVersions[0]?.ImageVersionId),
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetImageVersionsResult> InvokeAsync(GetImageVersionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetImageVersionsResult>("gcp:composer/getImageVersions:getImageVersions", args ?? new GetImageVersionsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides access to available Cloud Composer versions in a region for a given project.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Gcp.Composer.GetImageVersions.Invoke();
+        /// 
+        ///     var test = new Gcp.Composer.Environment("test", new()
+        ///     {
+        ///         Region = "us-central1",
+        ///         Config = new Gcp.Composer.Inputs.EnvironmentConfigArgs
+        ///         {
+        ///             SoftwareConfig = new Gcp.Composer.Inputs.EnvironmentConfigSoftwareConfigArgs
+        ///             {
+        ///                 ImageVersion = all.Apply(getImageVersionsResult =&gt; getImageVersionsResult.ImageVersions[0]?.ImageVersionId),
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetImageVersionsResult> Invoke(GetImageVersionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetImageVersionsResult>("gcp:composer/getImageVersions:getImageVersions", args ?? new GetImageVersionsInvokeArgs(), options.WithDefaults());

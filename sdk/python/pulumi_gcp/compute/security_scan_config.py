@@ -541,6 +541,19 @@ class SecurityScanConfig(pulumi.CustomResource):
         > **Warning:** All arguments including `authentication.google_account.password` and `authentication.custom_account.password` will be stored in the raw state as plain-text.
 
         ## Example Usage
+        ### Scan Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        scanner_static_ip = gcp.compute.Address("scannerStaticIp", opts=pulumi.ResourceOptions(provider=google_beta))
+        scan_config = gcp.compute.SecurityScanConfig("scan-config",
+            display_name="scan-config",
+            starting_urls=[scanner_static_ip.address.apply(lambda address: f"http://{address}")],
+            target_platforms=["COMPUTE"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -603,6 +616,19 @@ class SecurityScanConfig(pulumi.CustomResource):
         > **Warning:** All arguments including `authentication.google_account.password` and `authentication.custom_account.password` will be stored in the raw state as plain-text.
 
         ## Example Usage
+        ### Scan Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        scanner_static_ip = gcp.compute.Address("scannerStaticIp", opts=pulumi.ResourceOptions(provider=google_beta))
+        scan_config = gcp.compute.SecurityScanConfig("scan-config",
+            display_name="scan-config",
+            starting_urls=[scanner_static_ip.address.apply(lambda address: f"http://{address}")],
+            target_platforms=["COMPUTE"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

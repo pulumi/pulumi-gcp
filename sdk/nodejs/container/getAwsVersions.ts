@@ -6,6 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Provides access to available Kubernetes versions in a location for a given project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const central1b = gcp.container.getAwsVersions({
+ *     location: "us-west1",
+ *     project: "my-project",
+ * });
+ * export const firstAvailableVersion = data.google_container_aws_versions.versions.valid_versions[0];
+ * ```
  */
 export function getAwsVersions(args?: GetAwsVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsVersionsResult> {
     args = args || {};
@@ -53,6 +66,19 @@ export interface GetAwsVersionsResult {
 }
 /**
  * Provides access to available Kubernetes versions in a location for a given project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const central1b = gcp.container.getAwsVersions({
+ *     location: "us-west1",
+ *     project: "my-project",
+ * });
+ * export const firstAvailableVersion = data.google_container_aws_versions.versions.valid_versions[0];
+ * ```
  */
 export function getAwsVersionsOutput(args?: GetAwsVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsVersionsResult> {
     return pulumi.output(args).apply((a: any) => getAwsVersions(a, opts))

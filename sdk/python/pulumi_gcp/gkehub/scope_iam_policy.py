@@ -253,6 +253,48 @@ class ScopeIamPolicy(pulumi.CustomResource):
 
         > **Note:** `gkehub.ScopeIamBinding` resources **can be** used in conjunction with `gkehub.ScopeIamMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\\_gke\\_hub\\_scope\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.gkehub.ScopeIamPolicy("policy",
+            project=google_gke_hub_scope["scope"]["project"],
+            scope_id=google_gke_hub_scope["scope"]["scope_id"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_gke\\_hub\\_scope\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.gkehub.ScopeIamBinding("binding",
+            project=google_gke_hub_scope["scope"]["project"],
+            scope_id=google_gke_hub_scope["scope"]["scope_id"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_gke\\_hub\\_scope\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.gkehub.ScopeIamMember("member",
+            project=google_gke_hub_scope["scope"]["project"],
+            scope_id=google_gke_hub_scope["scope"]["scope_id"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/global/scopes/{{scope_id}} * {{project}}/{{scope_id}} * {{scope_id}} Any variables not passed in the import command will be taken from the provider configuration. GKEHub scope IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -316,6 +358,48 @@ class ScopeIamPolicy(pulumi.CustomResource):
         > **Note:** `gkehub.ScopeIamPolicy` **cannot** be used in conjunction with `gkehub.ScopeIamBinding` and `gkehub.ScopeIamMember` or they will fight over what your policy should be.
 
         > **Note:** `gkehub.ScopeIamBinding` resources **can be** used in conjunction with `gkehub.ScopeIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_gke\\_hub\\_scope\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.gkehub.ScopeIamPolicy("policy",
+            project=google_gke_hub_scope["scope"]["project"],
+            scope_id=google_gke_hub_scope["scope"]["scope_id"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_gke\\_hub\\_scope\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.gkehub.ScopeIamBinding("binding",
+            project=google_gke_hub_scope["scope"]["project"],
+            scope_id=google_gke_hub_scope["scope"]["scope_id"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_gke\\_hub\\_scope\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.gkehub.ScopeIamMember("member",
+            project=google_gke_hub_scope["scope"]["project"],
+            scope_id=google_gke_hub_scope["scope"]["scope_id"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
 
         ## Import
 

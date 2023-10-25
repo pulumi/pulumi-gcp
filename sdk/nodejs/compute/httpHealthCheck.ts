@@ -21,6 +21,18 @@ import * as utilities from "../utilities";
  *     * [Adding Health Checks](https://cloud.google.com/compute/docs/load-balancing/health-checks#legacy_health_checks)
  *
  * ## Example Usage
+ * ### Http Health Check Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.HttpHealthCheck("default", {
+ *     checkIntervalSec: 1,
+ *     requestPath: "/health_check",
+ *     timeoutSec: 1,
+ * });
+ * ```
  *
  * ## Import
  *
