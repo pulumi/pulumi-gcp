@@ -325,6 +325,68 @@ class GroupMembership(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+        ### Cloud Identity Group Membership
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        group = gcp.cloudidentity.Group("group",
+            display_name="my-identity-group",
+            parent="customers/A01b123xz",
+            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
+                id="my-identity-group@example.com",
+            ),
+            labels={
+                "cloudidentity.googleapis.com/groups.discussion_forum": "",
+            })
+        child_group = gcp.cloudidentity.Group("child-group",
+            display_name="my-identity-group-child",
+            parent="customers/A01b123xz",
+            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
+                id="my-identity-group-child@example.com",
+            ),
+            labels={
+                "cloudidentity.googleapis.com/groups.discussion_forum": "",
+            })
+        cloud_identity_group_membership_basic = gcp.cloudidentity.GroupMembership("cloudIdentityGroupMembershipBasic",
+            group=group.id,
+            preferred_member_key=gcp.cloudidentity.GroupMembershipPreferredMemberKeyArgs(
+                id=child_group.group_key.id,
+            ),
+            roles=[gcp.cloudidentity.GroupMembershipRoleArgs(
+                name="MEMBER",
+            )])
+        ```
+        ### Cloud Identity Group Membership User
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        group = gcp.cloudidentity.Group("group",
+            display_name="my-identity-group",
+            parent="customers/A01b123xz",
+            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
+                id="my-identity-group@example.com",
+            ),
+            labels={
+                "cloudidentity.googleapis.com/groups.discussion_forum": "",
+            })
+        cloud_identity_group_membership_basic = gcp.cloudidentity.GroupMembership("cloudIdentityGroupMembershipBasic",
+            group=group.id,
+            preferred_member_key=gcp.cloudidentity.GroupMembershipPreferredMemberKeyArgs(
+                id="cloud_identity_user@example.com",
+            ),
+            roles=[
+                gcp.cloudidentity.GroupMembershipRoleArgs(
+                    name="MEMBER",
+                ),
+                gcp.cloudidentity.GroupMembershipRoleArgs(
+                    name="MANAGER",
+                ),
+            ])
+        ```
 
         ## Import
 
@@ -367,6 +429,68 @@ class GroupMembership(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+        ### Cloud Identity Group Membership
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        group = gcp.cloudidentity.Group("group",
+            display_name="my-identity-group",
+            parent="customers/A01b123xz",
+            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
+                id="my-identity-group@example.com",
+            ),
+            labels={
+                "cloudidentity.googleapis.com/groups.discussion_forum": "",
+            })
+        child_group = gcp.cloudidentity.Group("child-group",
+            display_name="my-identity-group-child",
+            parent="customers/A01b123xz",
+            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
+                id="my-identity-group-child@example.com",
+            ),
+            labels={
+                "cloudidentity.googleapis.com/groups.discussion_forum": "",
+            })
+        cloud_identity_group_membership_basic = gcp.cloudidentity.GroupMembership("cloudIdentityGroupMembershipBasic",
+            group=group.id,
+            preferred_member_key=gcp.cloudidentity.GroupMembershipPreferredMemberKeyArgs(
+                id=child_group.group_key.id,
+            ),
+            roles=[gcp.cloudidentity.GroupMembershipRoleArgs(
+                name="MEMBER",
+            )])
+        ```
+        ### Cloud Identity Group Membership User
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        group = gcp.cloudidentity.Group("group",
+            display_name="my-identity-group",
+            parent="customers/A01b123xz",
+            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
+                id="my-identity-group@example.com",
+            ),
+            labels={
+                "cloudidentity.googleapis.com/groups.discussion_forum": "",
+            })
+        cloud_identity_group_membership_basic = gcp.cloudidentity.GroupMembership("cloudIdentityGroupMembershipBasic",
+            group=group.id,
+            preferred_member_key=gcp.cloudidentity.GroupMembershipPreferredMemberKeyArgs(
+                id="cloud_identity_user@example.com",
+            ),
+            roles=[
+                gcp.cloudidentity.GroupMembershipRoleArgs(
+                    name="MEMBER",
+                ),
+                gcp.cloudidentity.GroupMembershipRoleArgs(
+                    name="MANAGER",
+                ),
+            ])
+        ```
 
         ## Import
 

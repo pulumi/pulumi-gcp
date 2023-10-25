@@ -15,6 +15,160 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1/projects.locations.gateways)
  *
  * ## Example Usage
+ * ### Network Services Gateway Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.networkservices.Gateway("default", {
+ *     ports: [443],
+ *     scope: "default-scope-basic",
+ *     type: "OPEN_MESH",
+ * });
+ * ```
+ * ### Network Services Gateway Advanced
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.networkservices.Gateway("default", {
+ *     description: "my description",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     ports: [443],
+ *     scope: "default-scope-advance",
+ *     type: "OPEN_MESH",
+ * });
+ * ```
+ * ### Network Services Gateway Secure Web Proxy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultCertificate = new gcp.certificatemanager.Certificate("defaultCertificate", {
+ *     location: "us-central1",
+ *     selfManaged: {
+ *         pemCertificate: fs.readFileSync("test-fixtures/cert.pem"),
+ *         pemPrivateKey: fs.readFileSync("test-fixtures/private-key.pem"),
+ *     },
+ * });
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {
+ *     routingMode: "REGIONAL",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
+ *     purpose: "PRIVATE",
+ *     ipCidrRange: "10.128.0.0/20",
+ *     region: "us-central1",
+ *     network: defaultNetwork.id,
+ *     role: "ACTIVE",
+ * });
+ * const proxyonlysubnet = new gcp.compute.Subnetwork("proxyonlysubnet", {
+ *     purpose: "REGIONAL_MANAGED_PROXY",
+ *     ipCidrRange: "192.168.0.0/23",
+ *     region: "us-central1",
+ *     network: defaultNetwork.id,
+ *     role: "ACTIVE",
+ * });
+ * const defaultGatewaySecurityPolicy = new gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", {location: "us-central1"});
+ * const defaultGatewaySecurityPolicyRule = new gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", {
+ *     location: "us-central1",
+ *     gatewaySecurityPolicy: defaultGatewaySecurityPolicy.name,
+ *     enabled: true,
+ *     priority: 1,
+ *     sessionMatcher: "host() == 'example.com'",
+ *     basicProfile: "ALLOW",
+ * });
+ * const defaultGateway = new gcp.networkservices.Gateway("defaultGateway", {
+ *     location: "us-central1",
+ *     addresses: ["10.128.0.99"],
+ *     type: "SECURE_WEB_GATEWAY",
+ *     ports: [443],
+ *     scope: "my-default-scope1",
+ *     certificateUrls: [defaultCertificate.id],
+ *     gatewaySecurityPolicy: defaultGatewaySecurityPolicy.id,
+ *     network: defaultNetwork.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     deleteSwgAutogenRouterOnDestroy: true,
+ * }, {
+ *     dependsOn: [proxyonlysubnet],
+ * });
+ * ```
+ * ### Network Services Gateway Multiple Swp Same Network
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultCertificate = new gcp.certificatemanager.Certificate("defaultCertificate", {
+ *     location: "us-south1",
+ *     selfManaged: {
+ *         pemCertificate: fs.readFileSync("test-fixtures/cert.pem"),
+ *         pemPrivateKey: fs.readFileSync("test-fixtures/private-key.pem"),
+ *     },
+ * });
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {
+ *     routingMode: "REGIONAL",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
+ *     purpose: "PRIVATE",
+ *     ipCidrRange: "10.128.0.0/20",
+ *     region: "us-south1",
+ *     network: defaultNetwork.id,
+ *     role: "ACTIVE",
+ * });
+ * const proxyonlysubnet = new gcp.compute.Subnetwork("proxyonlysubnet", {
+ *     purpose: "REGIONAL_MANAGED_PROXY",
+ *     ipCidrRange: "192.168.0.0/23",
+ *     region: "us-south1",
+ *     network: defaultNetwork.id,
+ *     role: "ACTIVE",
+ * });
+ * const defaultGatewaySecurityPolicy = new gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", {location: "us-south1"});
+ * const defaultGatewaySecurityPolicyRule = new gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", {
+ *     location: "us-south1",
+ *     gatewaySecurityPolicy: defaultGatewaySecurityPolicy.name,
+ *     enabled: true,
+ *     priority: 1,
+ *     sessionMatcher: "host() == 'example.com'",
+ *     basicProfile: "ALLOW",
+ * });
+ * const defaultGateway = new gcp.networkservices.Gateway("defaultGateway", {
+ *     location: "us-south1",
+ *     addresses: ["10.128.0.99"],
+ *     type: "SECURE_WEB_GATEWAY",
+ *     ports: [443],
+ *     scope: "my-default-scope1",
+ *     certificateUrls: [defaultCertificate.id],
+ *     gatewaySecurityPolicy: defaultGatewaySecurityPolicy.id,
+ *     network: defaultNetwork.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     deleteSwgAutogenRouterOnDestroy: true,
+ * }, {
+ *     dependsOn: [proxyonlysubnet],
+ * });
+ * const gateway2 = new gcp.networkservices.Gateway("gateway2", {
+ *     location: "us-south1",
+ *     addresses: ["10.128.0.98"],
+ *     type: "SECURE_WEB_GATEWAY",
+ *     ports: [443],
+ *     scope: "my-default-scope2",
+ *     certificateUrls: [defaultCertificate.id],
+ *     gatewaySecurityPolicy: defaultGatewaySecurityPolicy.id,
+ *     network: defaultNetwork.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     deleteSwgAutogenRouterOnDestroy: true,
+ * }, {
+ *     dependsOn: [proxyonlysubnet],
+ * });
+ * ```
  *
  * ## Import
  *

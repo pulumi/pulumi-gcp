@@ -92,6 +92,16 @@ def get_instance_iam_policy(instance: Optional[str] = None,
     """
     Retrieves the current IAM policy data for a Spanner instance.
 
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.spanner.get_instance_iam_policy(project=google_spanner_instance["instance"]["project"],
+        instance=google_spanner_instance["instance"]["name"])
+    ```
+
 
     :param str instance: The name of the instance.
     :param str project: The ID of the project in which the resource belongs. If it
@@ -117,6 +127,16 @@ def get_instance_iam_policy_output(instance: Optional[pulumi.Input[str]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a Spanner instance.
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.spanner.get_instance_iam_policy(project=google_spanner_instance["instance"]["project"],
+        instance=google_spanner_instance["instance"]["name"])
+    ```
 
 
     :param str instance: The name of the instance.

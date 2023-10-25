@@ -12,6 +12,143 @@ import * as utilities from "../utilities";
  * and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
  *
  * Security Policy is used by google_compute_backend_service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = new gcp.compute.SecurityPolicy("policy", {rules: [
+ *     {
+ *         action: "deny(403)",
+ *         description: "Deny access to IPs in 9.9.9.0/24",
+ *         match: {
+ *             config: {
+ *                 srcIpRanges: ["9.9.9.0/24"],
+ *             },
+ *             versionedExpr: "SRC_IPS_V1",
+ *         },
+ *         priority: 1000,
+ *     },
+ *     {
+ *         action: "allow",
+ *         description: "default rule",
+ *         match: {
+ *             config: {
+ *                 srcIpRanges: ["*"],
+ *             },
+ *             versionedExpr: "SRC_IPS_V1",
+ *         },
+ *         priority: 2147483647,
+ *     },
+ * ]});
+ * ```
+ * ### With ReCAPTCHA Configuration Options
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.recaptcha.EnterpriseKey("primary", {
+ *     displayName: "display-name",
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ *     project: "my-project-name",
+ *     webSettings: {
+ *         integrationType: "INVISIBLE",
+ *         allowAllDomains: true,
+ *         allowedDomains: ["localhost"],
+ *     },
+ * });
+ * const policy = new gcp.compute.SecurityPolicy("policy", {
+ *     description: "basic security policy",
+ *     type: "CLOUD_ARMOR",
+ *     recaptchaOptionsConfig: {
+ *         redirectSiteKey: primary.name,
+ *     },
+ * });
+ * ```
+ * ### With Header Actions
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = new gcp.compute.SecurityPolicy("policy", {rules: [
+ *     {
+ *         action: "allow",
+ *         description: "default rule",
+ *         match: {
+ *             config: {
+ *                 srcIpRanges: ["*"],
+ *             },
+ *             versionedExpr: "SRC_IPS_V1",
+ *         },
+ *         priority: 2147483647,
+ *     },
+ *     {
+ *         action: "allow",
+ *         headerAction: {
+ *             requestHeadersToAdds: [
+ *                 {
+ *                     headerName: "reCAPTCHA-Warning",
+ *                     headerValue: "high",
+ *                 },
+ *                 {
+ *                     headerName: "X-Resource",
+ *                     headerValue: "test",
+ *                 },
+ *             ],
+ *         },
+ *         match: {
+ *             expr: {
+ *                 expression: "request.path.matches(\"/login.html\") && token.recaptcha_session.score < 0.2",
+ *             },
+ *         },
+ *         priority: 1000,
+ *     },
+ * ]});
+ * ```
+ * ### With EnforceOnKey Value As Empty String
+ * A scenario example that won't cause any conflict between `enforceOnKey` and `enforceOnKeyConfigs`, because `enforceOnKey` was specified as an empty string:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = new gcp.compute.SecurityPolicy("policy", {
+ *     description: "throttle rule with enforce_on_key_configs",
+ *     rules: [{
+ *         action: "throttle",
+ *         description: "default rule",
+ *         match: {
+ *             config: {
+ *                 srcIpRanges: ["*"],
+ *             },
+ *             versionedExpr: "SRC_IPS_V1",
+ *         },
+ *         priority: 2147483647,
+ *         rateLimitOptions: {
+ *             conformAction: "allow",
+ *             enforceOnKey: "",
+ *             enforceOnKeyConfigs: [{
+ *                 enforceOnKeyType: "IP",
+ *             }],
+ *             exceedAction: "redirect",
+ *             exceedRedirectOptions: {
+ *                 target: "<https://www.example.com>",
+ *                 type: "EXTERNAL_302",
+ *             },
+ *             rateLimitThreshold: {
+ *                 count: 10,
+ *                 intervalSec: 60,
+ *             },
+ *         },
+ *     }],
+ * });
+ * ```
  */
 export class SecurityPolicy extends pulumi.CustomResource {
     /**

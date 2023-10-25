@@ -13,12 +13,52 @@ namespace Pulumi.Gcp.Iap
     {
         /// <summary>
         /// Retrieves the current IAM policy data for webtypecompute
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Iap.GetWebTypeComputeIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_project_service.Project_service.Project,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetWebTypeComputeIamPolicyResult> InvokeAsync(GetWebTypeComputeIamPolicyArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWebTypeComputeIamPolicyResult>("gcp:iap/getWebTypeComputeIamPolicy:getWebTypeComputeIamPolicy", args ?? new GetWebTypeComputeIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for webtypecompute
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Iap.GetWebTypeComputeIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_project_service.Project_service.Project,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetWebTypeComputeIamPolicyResult> Invoke(GetWebTypeComputeIamPolicyInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWebTypeComputeIamPolicyResult>("gcp:iap/getWebTypeComputeIamPolicy:getWebTypeComputeIamPolicy", args ?? new GetWebTypeComputeIamPolicyInvokeArgs(), options.WithDefaults());

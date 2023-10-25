@@ -13,12 +13,56 @@ namespace Pulumi.Gcp.Iap
     {
         /// <summary>
         /// Retrieves the current IAM policy data for webregionbackendservice
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Iap.GetWebRegionBackendServiceIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_compute_region_backend_service.Default.Project,
+        ///         Region = google_compute_region_backend_service.Default.Region,
+        ///         WebRegionBackendService = google_compute_region_backend_service.Default.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetWebRegionBackendServiceIamPolicyResult> InvokeAsync(GetWebRegionBackendServiceIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWebRegionBackendServiceIamPolicyResult>("gcp:iap/getWebRegionBackendServiceIamPolicy:getWebRegionBackendServiceIamPolicy", args ?? new GetWebRegionBackendServiceIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for webregionbackendservice
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Iap.GetWebRegionBackendServiceIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_compute_region_backend_service.Default.Project,
+        ///         Region = google_compute_region_backend_service.Default.Region,
+        ///         WebRegionBackendService = google_compute_region_backend_service.Default.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetWebRegionBackendServiceIamPolicyResult> Invoke(GetWebRegionBackendServiceIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWebRegionBackendServiceIamPolicyResult>("gcp:iap/getWebRegionBackendServiceIamPolicy:getWebRegionBackendServiceIamPolicy", args ?? new GetWebRegionBackendServiceIamPolicyInvokeArgs(), options.WithDefaults());

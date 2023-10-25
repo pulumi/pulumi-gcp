@@ -435,6 +435,32 @@ class WorkforcePool(pulumi.CustomResource):
         your billing/quota project. The account team notifies you when the project is granted access.
 
         ## Example Usage
+        ### Iam Workforce Pool Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.iam.WorkforcePool("example",
+            location="global",
+            parent="organizations/123456789",
+            workforce_pool_id="example-pool")
+        ```
+        ### Iam Workforce Pool Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.iam.WorkforcePool("example",
+            description="A sample workforce pool.",
+            disabled=False,
+            display_name="Display name",
+            location="global",
+            parent="organizations/123456789",
+            session_duration="7200s",
+            workforce_pool_id="example-pool")
+        ```
 
         ## Import
 
@@ -488,6 +514,32 @@ class WorkforcePool(pulumi.CustomResource):
         your billing/quota project. The account team notifies you when the project is granted access.
 
         ## Example Usage
+        ### Iam Workforce Pool Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.iam.WorkforcePool("example",
+            location="global",
+            parent="organizations/123456789",
+            workforce_pool_id="example-pool")
+        ```
+        ### Iam Workforce Pool Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.iam.WorkforcePool("example",
+            description="A sample workforce pool.",
+            disabled=False,
+            display_name="Display name",
+            location="global",
+            parent="organizations/123456789",
+            session_duration="7200s",
+            workforce_pool_id="example-pool")
+        ```
 
         ## Import
 

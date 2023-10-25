@@ -311,6 +311,31 @@ class LiteSubscription(pulumi.CustomResource):
             * [Managing Subscriptions](https://cloud.google.com/pubsub/lite/docs/subscriptions)
 
         ## Example Usage
+        ### Pubsub Lite Subscription Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example_lite_topic = gcp.pubsub.LiteTopic("exampleLiteTopic",
+            project=project.number,
+            partition_config=gcp.pubsub.LiteTopicPartitionConfigArgs(
+                count=1,
+                capacity=gcp.pubsub.LiteTopicPartitionConfigCapacityArgs(
+                    publish_mib_per_sec=4,
+                    subscribe_mib_per_sec=8,
+                ),
+            ),
+            retention_config=gcp.pubsub.LiteTopicRetentionConfigArgs(
+                per_partition_bytes="32212254720",
+            ))
+        example_lite_subscription = gcp.pubsub.LiteSubscription("exampleLiteSubscription",
+            topic=example_lite_topic.name,
+            delivery_config=gcp.pubsub.LiteSubscriptionDeliveryConfigArgs(
+                delivery_requirement="DELIVER_AFTER_STORED",
+            ))
+        ```
 
         ## Import
 
@@ -363,6 +388,31 @@ class LiteSubscription(pulumi.CustomResource):
             * [Managing Subscriptions](https://cloud.google.com/pubsub/lite/docs/subscriptions)
 
         ## Example Usage
+        ### Pubsub Lite Subscription Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example_lite_topic = gcp.pubsub.LiteTopic("exampleLiteTopic",
+            project=project.number,
+            partition_config=gcp.pubsub.LiteTopicPartitionConfigArgs(
+                count=1,
+                capacity=gcp.pubsub.LiteTopicPartitionConfigCapacityArgs(
+                    publish_mib_per_sec=4,
+                    subscribe_mib_per_sec=8,
+                ),
+            ),
+            retention_config=gcp.pubsub.LiteTopicRetentionConfigArgs(
+                per_partition_bytes="32212254720",
+            ))
+        example_lite_subscription = gcp.pubsub.LiteSubscription("exampleLiteSubscription",
+            topic=example_lite_topic.name,
+            delivery_config=gcp.pubsub.LiteSubscriptionDeliveryConfigArgs(
+                delivery_requirement="DELIVER_AFTER_STORED",
+            ))
+        ```
 
         ## Import
 

@@ -13,12 +13,54 @@ namespace Pulumi.Gcp.Iap
     {
         /// <summary>
         /// Retrieves the current IAM policy data for webbackendservice
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Iap.GetWebBackendServiceIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_compute_backend_service.Default.Project,
+        ///         WebBackendService = google_compute_backend_service.Default.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetWebBackendServiceIamPolicyResult> InvokeAsync(GetWebBackendServiceIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWebBackendServiceIamPolicyResult>("gcp:iap/getWebBackendServiceIamPolicy:getWebBackendServiceIamPolicy", args ?? new GetWebBackendServiceIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for webbackendservice
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Iap.GetWebBackendServiceIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_compute_backend_service.Default.Project,
+        ///         WebBackendService = google_compute_backend_service.Default.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetWebBackendServiceIamPolicyResult> Invoke(GetWebBackendServiceIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWebBackendServiceIamPolicyResult>("gcp:iap/getWebBackendServiceIamPolicy:getWebBackendServiceIamPolicy", args ?? new GetWebBackendServiceIamPolicyInvokeArgs(), options.WithDefaults());

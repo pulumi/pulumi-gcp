@@ -6,6 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for a project.
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.projects.getIamPolicy({
+ *     project: "myproject",
+ * });
+ * ```
  */
 export function getIamPolicy(args: GetIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetIamPolicyResult> {
 
@@ -46,6 +57,17 @@ export interface GetIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for a project.
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.projects.getIamPolicy({
+ *     project: "myproject",
+ * });
+ * ```
  */
 export function getIamPolicyOutput(args: GetIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getIamPolicy(a, opts))

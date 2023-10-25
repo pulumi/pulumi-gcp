@@ -18,6 +18,35 @@ namespace Pulumi.Gcp.Storage
         /// [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
         /// 
         /// &gt; **Warning:** The object content will be saved in the state, and visiable to everyone who has access to the state file.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Example file object  stored within a folder.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var key = Gcp.Storage.GetBucketObjectContent.Invoke(new()
+        ///     {
+        ///         Name = "encryptedkey",
+        ///         Bucket = "keystore",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["encrypted"] = key.Apply(getBucketObjectContentResult =&gt; getBucketObjectContentResult.Content),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBucketObjectContentResult> InvokeAsync(GetBucketObjectContentArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBucketObjectContentResult>("gcp:storage/getBucketObjectContent:getBucketObjectContent", args ?? new GetBucketObjectContentArgs(), options.WithDefaults());
@@ -29,6 +58,35 @@ namespace Pulumi.Gcp.Storage
         /// [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
         /// 
         /// &gt; **Warning:** The object content will be saved in the state, and visiable to everyone who has access to the state file.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Example file object  stored within a folder.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var key = Gcp.Storage.GetBucketObjectContent.Invoke(new()
+        ///     {
+        ///         Name = "encryptedkey",
+        ///         Bucket = "keystore",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["encrypted"] = key.Apply(getBucketObjectContentResult =&gt; getBucketObjectContentResult.Content),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetBucketObjectContentResult> Invoke(GetBucketObjectContentInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBucketObjectContentResult>("gcp:storage/getBucketObjectContent:getBucketObjectContent", args ?? new GetBucketObjectContentInvokeArgs(), options.WithDefaults());

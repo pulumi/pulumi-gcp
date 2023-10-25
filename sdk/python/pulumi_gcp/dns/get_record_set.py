@@ -113,6 +113,18 @@ def get_record_set(managed_zone: Optional[str] = None,
     and
     [API](https://cloud.google.com/dns/docs/reference/v1/resourceRecordSets)
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    sample = gcp.dns.get_managed_zone(name="sample-zone")
+    rs = gcp.dns.get_record_set(managed_zone=sample.name,
+        name=f"my-record.{sample.dns_name}",
+        type="A")
+    ```
+
 
     :param str managed_zone: The Name of the zone.
     :param str name: The DNS name for the resource.
@@ -149,6 +161,18 @@ def get_record_set_output(managed_zone: Optional[pulumi.Input[str]] = None,
     [the official documentation](https://cloud.google.com/dns/docs/records)
     and
     [API](https://cloud.google.com/dns/docs/reference/v1/resourceRecordSets)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    sample = gcp.dns.get_managed_zone(name="sample-zone")
+    rs = gcp.dns.get_record_set(managed_zone=sample.name,
+        name=f"my-record.{sample.dns_name}",
+        type="A")
+    ```
 
 
     :param str managed_zone: The Name of the zone.

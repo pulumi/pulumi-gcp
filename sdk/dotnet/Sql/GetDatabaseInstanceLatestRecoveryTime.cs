@@ -16,6 +16,33 @@ namespace Pulumi.Gcp.Sql
         /// [official documentation](https://cloud.google.com/sql/)
         /// and
         /// [API](https://cloud.google.com/sql/docs/postgres/backup-recovery/pitr#get-the-latest-recovery-time).
+        /// 
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = Gcp.Sql.GetDatabaseInstanceLatestRecoveryTime.Invoke(new()
+        ///     {
+        ///         Instance = "sample-instance",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["latestRecoveryTime"] = @default,
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatabaseInstanceLatestRecoveryTimeResult> InvokeAsync(GetDatabaseInstanceLatestRecoveryTimeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseInstanceLatestRecoveryTimeResult>("gcp:sql/getDatabaseInstanceLatestRecoveryTime:getDatabaseInstanceLatestRecoveryTime", args ?? new GetDatabaseInstanceLatestRecoveryTimeArgs(), options.WithDefaults());
@@ -25,6 +52,33 @@ namespace Pulumi.Gcp.Sql
         /// [official documentation](https://cloud.google.com/sql/)
         /// and
         /// [API](https://cloud.google.com/sql/docs/postgres/backup-recovery/pitr#get-the-latest-recovery-time).
+        /// 
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = Gcp.Sql.GetDatabaseInstanceLatestRecoveryTime.Invoke(new()
+        ///     {
+        ///         Instance = "sample-instance",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["latestRecoveryTime"] = @default,
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDatabaseInstanceLatestRecoveryTimeResult> Invoke(GetDatabaseInstanceLatestRecoveryTimeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseInstanceLatestRecoveryTimeResult>("gcp:sql/getDatabaseInstanceLatestRecoveryTime:getDatabaseInstanceLatestRecoveryTime", args ?? new GetDatabaseInstanceLatestRecoveryTimeInvokeArgs(), options.WithDefaults());

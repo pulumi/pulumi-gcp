@@ -19,6 +19,40 @@ import (
 //
 // A CryptoKey is an interface to key material which can be used to encrypt and decrypt data. A CryptoKey belongs to a
 // Google Cloud KMS KeyRing.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myKeyRing, err := kms.GetKMSKeyRing(ctx, &kms.GetKMSKeyRingArgs{
+//				Name:     "my-key-ring",
+//				Location: "us-central1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kms.GetKMSCryptoKey(ctx, &kms.GetKMSCryptoKeyArgs{
+//				Name:    "my-crypto-key",
+//				KeyRing: myKeyRing.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetKMSCryptoKey(ctx *pulumi.Context, args *GetKMSCryptoKeyArgs, opts ...pulumi.InvokeOption) (*GetKMSCryptoKeyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKMSCryptoKeyResult

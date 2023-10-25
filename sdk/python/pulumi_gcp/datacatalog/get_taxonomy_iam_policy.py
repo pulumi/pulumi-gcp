@@ -103,6 +103,15 @@ def get_taxonomy_iam_policy(project: Optional[str] = None,
     """
     Retrieves the current IAM policy data for taxonomy
 
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.datacatalog.get_taxonomy_iam_policy(taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"])
+    ```
+
 
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -131,6 +140,15 @@ def get_taxonomy_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTaxonomyIamPolicyResult]:
     """
     Retrieves the current IAM policy data for taxonomy
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.datacatalog.get_taxonomy_iam_policy(taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"])
+    ```
 
 
     :param str project: The ID of the project in which the resource belongs.

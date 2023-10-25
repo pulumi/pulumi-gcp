@@ -387,6 +387,51 @@ class ConnectionIamBinding(pulumi.CustomResource):
 
         > **Note:** `bigquery.ConnectionIamBinding` resources **can be** used in conjunction with `bigquery.ConnectionIamMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\\_bigquery\\_connection\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.bigquery.ConnectionIamPolicy("policy",
+            project=google_bigquery_connection["connection"]["project"],
+            location=google_bigquery_connection["connection"]["location"],
+            connection_id=google_bigquery_connection["connection"]["connection_id"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_bigquery\\_connection\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.bigquery.ConnectionIamBinding("binding",
+            project=google_bigquery_connection["connection"]["project"],
+            location=google_bigquery_connection["connection"]["location"],
+            connection_id=google_bigquery_connection["connection"]["connection_id"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_bigquery\\_connection\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.bigquery.ConnectionIamMember("member",
+            project=google_bigquery_connection["connection"]["project"],
+            location=google_bigquery_connection["connection"]["location"],
+            connection_id=google_bigquery_connection["connection"]["connection_id"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/connections/{{connection_id}} * {{project}}/{{location}}/{{connection_id}} * {{location}}/{{connection_id}} * {{connection_id}} Any variables not passed in the import command will be taken from the provider configuration. BigQuery Connection connection IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -460,6 +505,51 @@ class ConnectionIamBinding(pulumi.CustomResource):
         > **Note:** `bigquery.ConnectionIamPolicy` **cannot** be used in conjunction with `bigquery.ConnectionIamBinding` and `bigquery.ConnectionIamMember` or they will fight over what your policy should be.
 
         > **Note:** `bigquery.ConnectionIamBinding` resources **can be** used in conjunction with `bigquery.ConnectionIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_bigquery\\_connection\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.bigquery.ConnectionIamPolicy("policy",
+            project=google_bigquery_connection["connection"]["project"],
+            location=google_bigquery_connection["connection"]["location"],
+            connection_id=google_bigquery_connection["connection"]["connection_id"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_bigquery\\_connection\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.bigquery.ConnectionIamBinding("binding",
+            project=google_bigquery_connection["connection"]["project"],
+            location=google_bigquery_connection["connection"]["location"],
+            connection_id=google_bigquery_connection["connection"]["connection_id"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_bigquery\\_connection\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.bigquery.ConnectionIamMember("member",
+            project=google_bigquery_connection["connection"]["project"],
+            location=google_bigquery_connection["connection"]["location"],
+            connection_id=google_bigquery_connection["connection"]["connection_id"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
 
         ## Import
 

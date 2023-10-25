@@ -625,6 +625,36 @@ class Network(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vpc/docs/vpc)
 
         ## Example Usage
+        ### Network Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vpc_network = gcp.compute.Network("vpcNetwork")
+        ```
+        ### Network Custom Mtu
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vpc_network = gcp.compute.Network("vpcNetwork",
+            auto_create_subnetworks=True,
+            mtu=1460,
+            project="my-project-name")
+        ```
+        ### Network Custom Firewall Enforcement Order
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vpc_network = gcp.compute.Network("vpcNetwork",
+            auto_create_subnetworks=True,
+            network_firewall_policy_enforcement_order="BEFORE_CLASSIC_FIREWALL",
+            project="my-project-name")
+        ```
 
         ## Import
 
@@ -703,6 +733,36 @@ class Network(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vpc/docs/vpc)
 
         ## Example Usage
+        ### Network Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vpc_network = gcp.compute.Network("vpcNetwork")
+        ```
+        ### Network Custom Mtu
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vpc_network = gcp.compute.Network("vpcNetwork",
+            auto_create_subnetworks=True,
+            mtu=1460,
+            project="my-project-name")
+        ```
+        ### Network Custom Firewall Enforcement Order
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vpc_network = gcp.compute.Network("vpcNetwork",
+            auto_create_subnetworks=True,
+            network_firewall_policy_enforcement_order="BEFORE_CLASSIC_FIREWALL",
+            project="my-project-name")
+        ```
 
         ## Import
 

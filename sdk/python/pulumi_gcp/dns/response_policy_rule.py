@@ -329,6 +329,37 @@ class ResponsePolicyRule(pulumi.CustomResource):
         as identified by the dns_name field with the longest matching suffix.
 
         ## Example Usage
+        ### Dns Response Policy Rule Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
+        network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False)
+        response_policy = gcp.dns.ResponsePolicy("response-policy",
+            response_policy_name="example-response-policy",
+            networks=[
+                gcp.dns.ResponsePolicyNetworkArgs(
+                    network_url=network_1.id,
+                ),
+                gcp.dns.ResponsePolicyNetworkArgs(
+                    network_url=network_2.id,
+                ),
+            ])
+        example_response_policy_rule = gcp.dns.ResponsePolicyRule("example-response-policy-rule",
+            response_policy=response_policy.response_policy_name,
+            rule_name="example-rule",
+            dns_name="dns.example.com.",
+            local_data=gcp.dns.ResponsePolicyRuleLocalDataArgs(
+                local_datas=[gcp.dns.ResponsePolicyRuleLocalDataLocalDataArgs(
+                    name="dns.example.com.",
+                    type="A",
+                    ttl=300,
+                    rrdatas=["192.0.2.91"],
+                )],
+            ))
+        ```
 
         ## Import
 
@@ -375,6 +406,37 @@ class ResponsePolicyRule(pulumi.CustomResource):
         as identified by the dns_name field with the longest matching suffix.
 
         ## Example Usage
+        ### Dns Response Policy Rule Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
+        network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False)
+        response_policy = gcp.dns.ResponsePolicy("response-policy",
+            response_policy_name="example-response-policy",
+            networks=[
+                gcp.dns.ResponsePolicyNetworkArgs(
+                    network_url=network_1.id,
+                ),
+                gcp.dns.ResponsePolicyNetworkArgs(
+                    network_url=network_2.id,
+                ),
+            ])
+        example_response_policy_rule = gcp.dns.ResponsePolicyRule("example-response-policy-rule",
+            response_policy=response_policy.response_policy_name,
+            rule_name="example-rule",
+            dns_name="dns.example.com.",
+            local_data=gcp.dns.ResponsePolicyRuleLocalDataArgs(
+                local_datas=[gcp.dns.ResponsePolicyRuleLocalDataLocalDataArgs(
+                    name="dns.example.com.",
+                    type="A",
+                    ttl=300,
+                    rrdatas=["192.0.2.91"],
+                )],
+            ))
+        ```
 
         ## Import
 

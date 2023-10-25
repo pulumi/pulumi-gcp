@@ -90,6 +90,34 @@ def get_resources_search_all(asset_types: Optional[Sequence[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetResourcesSearchAllResult:
     """
     ## Example Usage
+    ### Searching For All Projects In An Org
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    projects = gcp.cloudasset.get_resources_search_all(scope="organizations/0123456789",
+        asset_types=["cloudresourcemanager.googleapis.com/Project"])
+    ```
+    ### Searching For All Projects With CloudBuild API Enabled
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    cloud_build_projects = gcp.cloudasset.get_resources_search_all(scope="organizations/0123456789",
+        asset_types=["serviceusage.googleapis.com/Service"],
+        query="displayName:cloudbuild.googleapis.com AND state:ENABLED")
+    ```
+    ### Searching For All Service Accounts In A Project
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    project_service_accounts = gcp.cloudasset.get_resources_search_all(scope="projects/my-project-id",
+        asset_types=["iam.googleapis.com/ServiceAccount"])
+    ```
 
 
     :param Sequence[str] asset_types: A list of asset types that this request searches for. If empty, it will search all the [supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types).
@@ -118,6 +146,34 @@ def get_resources_search_all_output(asset_types: Optional[pulumi.Input[Optional[
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResourcesSearchAllResult]:
     """
     ## Example Usage
+    ### Searching For All Projects In An Org
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    projects = gcp.cloudasset.get_resources_search_all(scope="organizations/0123456789",
+        asset_types=["cloudresourcemanager.googleapis.com/Project"])
+    ```
+    ### Searching For All Projects With CloudBuild API Enabled
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    cloud_build_projects = gcp.cloudasset.get_resources_search_all(scope="organizations/0123456789",
+        asset_types=["serviceusage.googleapis.com/Service"],
+        query="displayName:cloudbuild.googleapis.com AND state:ENABLED")
+    ```
+    ### Searching For All Service Accounts In A Project
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    project_service_accounts = gcp.cloudasset.get_resources_search_all(scope="projects/my-project-id",
+        asset_types=["iam.googleapis.com/ServiceAccount"])
+    ```
 
 
     :param Sequence[str] asset_types: A list of asset types that this request searches for. If empty, it will search all the [supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types).

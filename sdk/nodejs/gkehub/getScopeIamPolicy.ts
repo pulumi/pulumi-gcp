@@ -6,6 +6,18 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for scope
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.gkehub.getScopeIamPolicy({
+ *     project: google_gke_hub_scope.scope.project,
+ *     scopeId: google_gke_hub_scope.scope.scope_id,
+ * });
+ * ```
  */
 export function getScopeIamPolicy(args: GetScopeIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetScopeIamPolicyResult> {
 
@@ -50,6 +62,18 @@ export interface GetScopeIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for scope
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.gkehub.getScopeIamPolicy({
+ *     project: google_gke_hub_scope.scope.project,
+ *     scopeId: google_gke_hub_scope.scope.scope_id,
+ * });
+ * ```
  */
 export function getScopeIamPolicyOutput(args: GetScopeIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScopeIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getScopeIamPolicy(a, opts))

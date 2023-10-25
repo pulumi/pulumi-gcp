@@ -670,6 +670,75 @@ class Routine(pulumi.CustomResource):
             * [Routines Intro](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
 
         ## Example Usage
+        ### Big Query Routine Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test = gcp.bigquery.Dataset("test", dataset_id="dataset_id")
+        sproc = gcp.bigquery.Routine("sproc",
+            dataset_id=test.dataset_id,
+            routine_id="routine_id",
+            routine_type="PROCEDURE",
+            language="SQL",
+            definition_body="CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);")
+        ```
+        ### Big Query Routine Json
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test = gcp.bigquery.Dataset("test", dataset_id="dataset_id")
+        sproc = gcp.bigquery.Routine("sproc",
+            dataset_id=test.dataset_id,
+            routine_id="routine_id",
+            routine_type="SCALAR_FUNCTION",
+            language="JAVASCRIPT",
+            definition_body="CREATE FUNCTION multiplyInputs return x*y;",
+            arguments=[
+                gcp.bigquery.RoutineArgumentArgs(
+                    name="x",
+                    data_type="{\\"typeKind\\" :  \\"FLOAT64\\"}",
+                ),
+                gcp.bigquery.RoutineArgumentArgs(
+                    name="y",
+                    data_type="{\\"typeKind\\" :  \\"FLOAT64\\"}",
+                ),
+            ],
+            return_type="{\\"typeKind\\" :  \\"FLOAT64\\"}")
+        ```
+        ### Big Query Routine Tvf
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        test = gcp.bigquery.Dataset("test", dataset_id="dataset_id")
+        sproc = gcp.bigquery.Routine("sproc",
+            dataset_id=test.dataset_id,
+            routine_id="routine_id",
+            routine_type="TABLE_VALUED_FUNCTION",
+            language="SQL",
+            definition_body="SELECT 1 + value AS value\\n",
+            arguments=[gcp.bigquery.RoutineArgumentArgs(
+                name="value",
+                argument_kind="FIXED_TYPE",
+                data_type=json.dumps({
+                    "typeKind": "INT64",
+                }),
+            )],
+            return_table_type=json.dumps({
+                "columns": [{
+                    "name": "value",
+                    "type": {
+                        "typeKind": "INT64",
+                    },
+                }],
+            }))
+        ```
 
         ## Import
 
@@ -739,6 +808,75 @@ class Routine(pulumi.CustomResource):
             * [Routines Intro](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
 
         ## Example Usage
+        ### Big Query Routine Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test = gcp.bigquery.Dataset("test", dataset_id="dataset_id")
+        sproc = gcp.bigquery.Routine("sproc",
+            dataset_id=test.dataset_id,
+            routine_id="routine_id",
+            routine_type="PROCEDURE",
+            language="SQL",
+            definition_body="CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);")
+        ```
+        ### Big Query Routine Json
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test = gcp.bigquery.Dataset("test", dataset_id="dataset_id")
+        sproc = gcp.bigquery.Routine("sproc",
+            dataset_id=test.dataset_id,
+            routine_id="routine_id",
+            routine_type="SCALAR_FUNCTION",
+            language="JAVASCRIPT",
+            definition_body="CREATE FUNCTION multiplyInputs return x*y;",
+            arguments=[
+                gcp.bigquery.RoutineArgumentArgs(
+                    name="x",
+                    data_type="{\\"typeKind\\" :  \\"FLOAT64\\"}",
+                ),
+                gcp.bigquery.RoutineArgumentArgs(
+                    name="y",
+                    data_type="{\\"typeKind\\" :  \\"FLOAT64\\"}",
+                ),
+            ],
+            return_type="{\\"typeKind\\" :  \\"FLOAT64\\"}")
+        ```
+        ### Big Query Routine Tvf
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        test = gcp.bigquery.Dataset("test", dataset_id="dataset_id")
+        sproc = gcp.bigquery.Routine("sproc",
+            dataset_id=test.dataset_id,
+            routine_id="routine_id",
+            routine_type="TABLE_VALUED_FUNCTION",
+            language="SQL",
+            definition_body="SELECT 1 + value AS value\\n",
+            arguments=[gcp.bigquery.RoutineArgumentArgs(
+                name="value",
+                argument_kind="FIXED_TYPE",
+                data_type=json.dumps({
+                    "typeKind": "INT64",
+                }),
+            )],
+            return_table_type=json.dumps({
+                "columns": [{
+                    "name": "value",
+                    "type": {
+                        "typeKind": "INT64",
+                    },
+                }],
+            }))
+        ```
 
         ## Import
 

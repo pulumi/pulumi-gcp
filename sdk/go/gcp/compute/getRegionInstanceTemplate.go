@@ -16,6 +16,39 @@ import (
 // [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
 // and
 // [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.LookupRegionInstanceTemplate(ctx, &compute.LookupRegionInstanceTemplateArgs{
+//				Name: pulumi.StringRef("generic-tpl-20200107"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.LookupRegionInstanceTemplate(ctx, &compute.LookupRegionInstanceTemplateArgs{
+//				Filter:     pulumi.StringRef("name != generic-tpl-20200107"),
+//				MostRecent: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupRegionInstanceTemplate(ctx *pulumi.Context, args *LookupRegionInstanceTemplateArgs, opts ...pulumi.InvokeOption) (*LookupRegionInstanceTemplateResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegionInstanceTemplateResult

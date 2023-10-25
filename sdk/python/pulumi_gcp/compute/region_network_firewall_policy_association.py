@@ -286,6 +286,22 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
         The Compute NetworkFirewallPolicyAssociation resource
 
         ## Example Usage
+        ### Regional
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_regional_network_firewall_policy = gcp.compute.RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy",
+            project="my-project-name",
+            description="Sample global network firewall policy",
+            region="us-west1")
+        basic_network = gcp.compute.Network("basicNetwork")
+        primary = gcp.compute.RegionNetworkFirewallPolicyAssociation("primary",
+            attachment_target=basic_network.id,
+            firewall_policy=basic_regional_network_firewall_policy.name,
+            project="my-project-name",
+            region="us-west1")
+        ```
 
         ## Import
 
@@ -321,6 +337,22 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
         The Compute NetworkFirewallPolicyAssociation resource
 
         ## Example Usage
+        ### Regional
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_regional_network_firewall_policy = gcp.compute.RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy",
+            project="my-project-name",
+            description="Sample global network firewall policy",
+            region="us-west1")
+        basic_network = gcp.compute.Network("basicNetwork")
+        primary = gcp.compute.RegionNetworkFirewallPolicyAssociation("primary",
+            attachment_target=basic_network.id,
+            firewall_policy=basic_regional_network_firewall_policy.name,
+            project="my-project-name",
+            region="us-west1")
+        ```
 
         ## Import
 

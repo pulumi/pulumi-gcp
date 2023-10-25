@@ -27,6 +27,44 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
  *
  * ## Example Usage
+ * ### Network Endpoint Group
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false});
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
+ *     ipCidrRange: "10.0.0.0/16",
+ *     region: "us-central1",
+ *     network: defaultNetwork.id,
+ * });
+ * const neg = new gcp.compute.NetworkEndpointGroup("neg", {
+ *     network: defaultNetwork.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     defaultPort: 90,
+ *     zone: "us-central1-a",
+ * });
+ * ```
+ * ### Network Endpoint Group Non Gcp
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {});
+ * const neg = new gcp.compute.NetworkEndpointGroup("neg", {
+ *     network: _default.id,
+ *     defaultPort: 90,
+ *     zone: "us-central1-a",
+ *     networkEndpointType: "NON_GCP_PRIVATE_IP_PORT",
+ * });
+ * const default_endpoint = new gcp.compute.NetworkEndpoint("default-endpoint", {
+ *     networkEndpointGroup: neg.name,
+ *     port: neg.defaultPort,
+ *     ipAddress: "127.0.0.1",
+ * });
+ * ```
  *
  * ## Import
  *

@@ -14,6 +14,65 @@ namespace Pulumi.Gcp.Sql
     /// Google's cloud.
     /// 
     /// ## Example Usage
+    /// ### Sql Database Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+    ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         DatabaseVersion = "MYSQL_8_0",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-f1-micro",
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
+    /// 
+    ///     var database = new Gcp.Sql.Database("database", new()
+    ///     {
+    ///         Instance = instance.Name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Sql Database Deletion Policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+    ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         DatabaseVersion = "POSTGRES_14",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-g1-small",
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
+    /// 
+    ///     var databaseDeletionPolicy = new Gcp.Sql.Database("databaseDeletionPolicy", new()
+    ///     {
+    ///         Instance = instance.Name,
+    ///         DeletionPolicy = "ABANDON",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -14,6 +14,109 @@ import (
 )
 
 // ## Example Usage
+// ### Network Security Authorization Policy Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networksecurity.NewAuthorizationPolicy(ctx, "default", &networksecurity.AuthorizationPolicyArgs{
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Description: pulumi.String("my description"),
+//				Action:      pulumi.String("ALLOW"),
+//				Rules: networksecurity.AuthorizationPolicyRuleArray{
+//					&networksecurity.AuthorizationPolicyRuleArgs{
+//						Sources: networksecurity.AuthorizationPolicyRuleSourceArray{
+//							&networksecurity.AuthorizationPolicyRuleSourceArgs{
+//								Principals: pulumi.StringArray{
+//									pulumi.String("namespace/*"),
+//								},
+//								IpBlocks: pulumi.StringArray{
+//									pulumi.String("1.2.3.0/24"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Network Security Authorization Policy Destinations
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networksecurity.NewAuthorizationPolicy(ctx, "default", &networksecurity.AuthorizationPolicyArgs{
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Description: pulumi.String("my description"),
+//				Action:      pulumi.String("ALLOW"),
+//				Rules: networksecurity.AuthorizationPolicyRuleArray{
+//					&networksecurity.AuthorizationPolicyRuleArgs{
+//						Sources: networksecurity.AuthorizationPolicyRuleSourceArray{
+//							&networksecurity.AuthorizationPolicyRuleSourceArgs{
+//								Principals: pulumi.StringArray{
+//									pulumi.String("namespace/*"),
+//								},
+//								IpBlocks: pulumi.StringArray{
+//									pulumi.String("1.2.3.0/24"),
+//								},
+//							},
+//						},
+//						Destinations: networksecurity.AuthorizationPolicyRuleDestinationArray{
+//							&networksecurity.AuthorizationPolicyRuleDestinationArgs{
+//								Hosts: pulumi.StringArray{
+//									pulumi.String("mydomain.*"),
+//								},
+//								Ports: pulumi.IntArray{
+//									pulumi.Int(8080),
+//								},
+//								Methods: pulumi.StringArray{
+//									pulumi.String("GET"),
+//								},
+//								HttpHeaderMatch: &networksecurity.AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs{
+//									HeaderName: pulumi.String(":method"),
+//									RegexMatch: pulumi.String("GET"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

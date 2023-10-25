@@ -246,6 +246,23 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
+        ### Backend Bucket Signed Url Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        url_signature = random.RandomId("urlSignature", byte_length=16)
+        bucket = gcp.storage.Bucket("bucket", location="EU")
+        test_backend = gcp.compute.BackendBucket("testBackend",
+            description="Contains beautiful images",
+            bucket_name=bucket.name,
+            enable_cdn=True)
+        backend_key = gcp.compute.BackendBucketSignedUrlKey("backendKey",
+            key_value=url_signature.b64_url,
+            backend_bucket=test_backend.name)
+        ```
 
         ## Import
 
@@ -283,6 +300,23 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
+        ### Backend Bucket Signed Url Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        url_signature = random.RandomId("urlSignature", byte_length=16)
+        bucket = gcp.storage.Bucket("bucket", location="EU")
+        test_backend = gcp.compute.BackendBucket("testBackend",
+            description="Contains beautiful images",
+            bucket_name=bucket.name,
+            enable_cdn=True)
+        backend_key = gcp.compute.BackendBucketSignedUrlKey("backendKey",
+            key_value=url_signature.b64_url,
+            backend_bucket=test_backend.name)
+        ```
 
         ## Import
 

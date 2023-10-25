@@ -8,6 +8,40 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### Searching For All Projects In An Org
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const projects = gcp.cloudasset.getResourcesSearchAll({
+ *     scope: "organizations/0123456789",
+ *     assetTypes: ["cloudresourcemanager.googleapis.com/Project"],
+ * });
+ * ```
+ * ### Searching For All Projects With CloudBuild API Enabled
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cloudBuildProjects = gcp.cloudasset.getResourcesSearchAll({
+ *     scope: "organizations/0123456789",
+ *     assetTypes: ["serviceusage.googleapis.com/Service"],
+ *     query: "displayName:cloudbuild.googleapis.com AND state:ENABLED",
+ * });
+ * ```
+ * ### Searching For All Service Accounts In A Project
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const projectServiceAccounts = gcp.cloudasset.getResourcesSearchAll({
+ *     scope: "projects/my-project-id",
+ *     assetTypes: ["iam.googleapis.com/ServiceAccount"],
+ * });
+ * ```
  */
 export function getResourcesSearchAll(args: GetResourcesSearchAllArgs, opts?: pulumi.InvokeOptions): Promise<GetResourcesSearchAllResult> {
 
@@ -55,6 +89,40 @@ export interface GetResourcesSearchAllResult {
 }
 /**
  * ## Example Usage
+ * ### Searching For All Projects In An Org
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const projects = gcp.cloudasset.getResourcesSearchAll({
+ *     scope: "organizations/0123456789",
+ *     assetTypes: ["cloudresourcemanager.googleapis.com/Project"],
+ * });
+ * ```
+ * ### Searching For All Projects With CloudBuild API Enabled
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cloudBuildProjects = gcp.cloudasset.getResourcesSearchAll({
+ *     scope: "organizations/0123456789",
+ *     assetTypes: ["serviceusage.googleapis.com/Service"],
+ *     query: "displayName:cloudbuild.googleapis.com AND state:ENABLED",
+ * });
+ * ```
+ * ### Searching For All Service Accounts In A Project
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const projectServiceAccounts = gcp.cloudasset.getResourcesSearchAll({
+ *     scope: "projects/my-project-id",
+ *     assetTypes: ["iam.googleapis.com/ServiceAccount"],
+ * });
+ * ```
  */
 export function getResourcesSearchAllOutput(args: GetResourcesSearchAllOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourcesSearchAllResult> {
     return pulumi.output(args).apply((a: any) => getResourcesSearchAll(a, opts))

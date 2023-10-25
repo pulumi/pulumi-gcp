@@ -20,6 +20,136 @@ import * as utilities from "../utilities";
  * Read more about sensitive data in state.
  *
  * ## Example Usage
+ * ### Database Migration Service Connection Profile Cloudsql
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const cloudsqldb = new gcp.sql.DatabaseInstance("cloudsqldb", {
+ *     databaseVersion: "MYSQL_5_7",
+ *     settings: {
+ *         tier: "db-n1-standard-1",
+ *         deletionProtectionEnabled: false,
+ *     },
+ *     deletionProtection: false,
+ * });
+ * const sqlClientCert = new gcp.sql.SslCert("sqlClientCert", {
+ *     commonName: "my-cert",
+ *     instance: cloudsqldb.name,
+ * }, {
+ *     dependsOn: [cloudsqldb],
+ * });
+ * const sqldbUser = new gcp.sql.User("sqldbUser", {
+ *     instance: cloudsqldb.name,
+ *     password: "my-password",
+ * }, {
+ *     dependsOn: [sqlClientCert],
+ * });
+ * const cloudsqlprofile = new gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofile", {
+ *     location: "us-central1",
+ *     connectionProfileId: "my-fromprofileid",
+ *     displayName: "my-fromprofileid_display",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     mysql: {
+ *         host: cloudsqldb.ipAddresses.apply(ipAddresses => ipAddresses[0].ipAddress),
+ *         port: 3306,
+ *         username: sqldbUser.name,
+ *         password: sqldbUser.password,
+ *         ssl: {
+ *             clientKey: sqlClientCert.privateKey,
+ *             clientCertificate: sqlClientCert.cert,
+ *             caCertificate: sqlClientCert.serverCaCert,
+ *         },
+ *         cloudSqlId: "my-database",
+ *     },
+ * }, {
+ *     dependsOn: [sqldbUser],
+ * });
+ * const cloudsqlprofileDestination = new gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofileDestination", {
+ *     location: "us-central1",
+ *     connectionProfileId: "my-toprofileid",
+ *     displayName: "my-toprofileid_displayname",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     cloudsql: {
+ *         settings: {
+ *             databaseVersion: "MYSQL_5_7",
+ *             userLabels: {
+ *                 cloudfoo: "cloudbar",
+ *             },
+ *             tier: "db-n1-standard-1",
+ *             edition: "ENTERPRISE",
+ *             storageAutoResizeLimit: "0",
+ *             activationPolicy: "ALWAYS",
+ *             ipConfig: {
+ *                 enableIpv4: true,
+ *                 requireSsl: true,
+ *             },
+ *             autoStorageIncrease: true,
+ *             dataDiskType: "PD_HDD",
+ *             dataDiskSizeGb: "11",
+ *             zone: "us-central1-b",
+ *             sourceId: project.then(project => `projects/${project.projectId}/locations/us-central1/connectionProfiles/my-fromprofileid`),
+ *             rootPassword: "testpasscloudsql",
+ *         },
+ *     },
+ * }, {
+ *     dependsOn: [cloudsqlprofile],
+ * });
+ * ```
+ * ### Database Migration Service Connection Profile Postgres
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const postgresqldb = new gcp.sql.DatabaseInstance("postgresqldb", {
+ *     databaseVersion: "POSTGRES_12",
+ *     settings: {
+ *         tier: "db-custom-2-13312",
+ *     },
+ *     deletionProtection: false,
+ * });
+ * const sqlClientCert = new gcp.sql.SslCert("sqlClientCert", {
+ *     commonName: "my-cert",
+ *     instance: postgresqldb.name,
+ * }, {
+ *     dependsOn: [postgresqldb],
+ * });
+ * const sqldbUser = new gcp.sql.User("sqldbUser", {
+ *     instance: postgresqldb.name,
+ *     password: "my-password",
+ * }, {
+ *     dependsOn: [sqlClientCert],
+ * });
+ * const postgresprofile = new gcp.databasemigrationservice.ConnectionProfile("postgresprofile", {
+ *     location: "us-central1",
+ *     connectionProfileId: "my-profileid",
+ *     displayName: "my-profileid_display",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     postgresql: {
+ *         host: postgresqldb.ipAddresses.apply(ipAddresses => ipAddresses[0].ipAddress),
+ *         port: 5432,
+ *         username: sqldbUser.name,
+ *         password: sqldbUser.password,
+ *         ssl: {
+ *             clientKey: sqlClientCert.privateKey,
+ *             clientCertificate: sqlClientCert.cert,
+ *             caCertificate: sqlClientCert.serverCaCert,
+ *         },
+ *         cloudSqlId: "my-database",
+ *     },
+ * }, {
+ *     dependsOn: [sqldbUser],
+ * });
+ * ```
  *
  * ## Import
  *

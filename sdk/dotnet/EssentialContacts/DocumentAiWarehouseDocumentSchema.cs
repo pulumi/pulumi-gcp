@@ -19,6 +19,473 @@ namespace Pulumi.Gcp.EssentialContacts
     ///     * [Official Documentation](https://cloud.google.com/document-warehouse/docs/manage-document-schemas)
     /// 
     /// ## Example Usage
+    /// ### Document Ai Warehouse Document Schema Text
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var exampleText = new Gcp.EssentialContacts.DocumentAiWarehouseDocumentSchema("exampleText", new()
+    ///     {
+    ///         ProjectNumber = project.Apply(getProjectResult =&gt; getProjectResult.Number),
+    ///         DisplayName = "test-property-text",
+    ///         Location = "us",
+    ///         DocumentIsFolder = false,
+    ///         PropertyDefinitions = new[]
+    ///         {
+    ///             new Gcp.EssentialContacts.Inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs
+    ///             {
+    ///                 Name = "prop3",
+    ///                 DisplayName = "propdisp3",
+    ///                 IsRepeatable = false,
+    ///                 IsFilterable = true,
+    ///                 IsSearchable = true,
+    ///                 IsMetadata = false,
+    ///                 IsRequired = false,
+    ///                 RetrievalImportance = "HIGHEST",
+    ///                 SchemaSources = new[]
+    ///                 {
+    ///                     new Gcp.EssentialContacts.Inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs
+    ///                     {
+    ///                         Name = "dummy_source",
+    ///                         ProcessorType = "dummy_processor",
+    ///                     },
+    ///                 },
+    ///                 TextTypeOptions = null,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Document Ai Warehouse Document Schema Integer
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var exampleInteger = new Gcp.EssentialContacts.DocumentAiWarehouseDocumentSchema("exampleInteger", new()
+    ///     {
+    ///         ProjectNumber = project.Apply(getProjectResult =&gt; getProjectResult.Number),
+    ///         DisplayName = "test-property-integer",
+    ///         Location = "us",
+    ///         PropertyDefinitions = new[]
+    ///         {
+    ///             new Gcp.EssentialContacts.Inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs
+    ///             {
+    ///                 Name = "prop1",
+    ///                 DisplayName = "propdisp1",
+    ///                 IsRepeatable = false,
+    ///                 IsFilterable = true,
+    ///                 IsSearchable = true,
+    ///                 IsMetadata = false,
+    ///                 IsRequired = false,
+    ///                 RetrievalImportance = "HIGHEST",
+    ///                 SchemaSources = new[]
+    ///                 {
+    ///                     new Gcp.EssentialContacts.Inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs
+    ///                     {
+    ///                         Name = "dummy_source",
+    ///                         ProcessorType = "dummy_processor",
+    ///                     },
+    ///                 },
+    ///                 IntegerTypeOptions = null,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Document Ai Warehouse Document Schema Float
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var exampleFloat = new Gcp.EssentialContacts.DocumentAiWarehouseDocumentSchema("exampleFloat", new()
+    ///     {
+    ///         ProjectNumber = project.Apply(getProjectResult =&gt; getProjectResult.Number),
+    ///         DisplayName = "test-property-float",
+    ///         Location = "us",
+    ///         PropertyDefinitions = new[]
+    ///         {
+    ///             new Gcp.EssentialContacts.Inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs
+    ///             {
+    ///                 Name = "prop2",
+    ///                 DisplayName = "propdisp2",
+    ///                 IsRepeatable = false,
+    ///                 IsFilterable = true,
+    ///                 IsSearchable = true,
+    ///                 IsMetadata = false,
+    ///                 IsRequired = false,
+    ///                 RetrievalImportance = "HIGHEST",
+    ///                 SchemaSources = new[]
+    ///                 {
+    ///                     new Gcp.EssentialContacts.Inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs
+    ///                     {
+    ///                         Name = "dummy_source",
+    ///                         ProcessorType = "dummy_processor",
+    ///                     },
+    ///                 },
+    ///                 FloatTypeOptions = null,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Document Ai Warehouse Document Schema Property
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var exampleProperty = new Gcp.EssentialContacts.DocumentAiWarehouseDocumentSchema("exampleProperty", new()
+    ///     {
+    ///         ProjectNumber = project.Apply(getProjectResult =&gt; getProjectResult.Number),
+    ///         DisplayName = "test-property-property",
+    ///         Location = "us",
+    ///         DocumentIsFolder = false,
+    ///         PropertyDefinitions = new[]
+    ///         {
+    ///             new Gcp.EssentialContacts.Inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs
+    ///             {
+    ///                 Name = "prop8",
+    ///                 DisplayName = "propdisp8",
+    ///                 IsRepeatable = false,
+    ///                 IsFilterable = true,
+    ///                 IsSearchable = true,
+    ///                 IsMetadata = false,
+    ///                 IsRequired = false,
+    ///                 RetrievalImportance = "HIGHEST",
+    ///                 SchemaSources = new[]
+    ///                 {
+    ///                     new Gcp.EssentialContacts.Inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs
+    ///                     {
+    ///                         Name = "dummy_source",
+    ///                         ProcessorType = "dummy_processor",
+    ///                     },
+    ///                 },
+    ///                 PropertyTypeOptions = new Gcp.EssentialContacts.Inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgs
+    ///                 {
+    ///                     PropertyDefinitions = new[]
+    ///                     {
+    ///                         new Gcp.EssentialContacts.Inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArgs
+    ///                         {
+    ///                             Name = "prop8_nested",
+    ///                             DisplayName = "propdisp8_nested",
+    ///                             IsRepeatable = false,
+    ///                             IsFilterable = true,
+    ///                             IsSearchable = true,
+    ///                             IsMetadata = false,
+    ///                             IsRequired = false,
+    ///                             RetrievalImportance = "HIGHEST",
+    ///                             SchemaSources = new[]
+    ///                             {
+    ///                                 new Gcp.EssentialContacts.Inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgs
+    ///                                 {
+    ///                                     Name = "dummy_source_nested",
+    ///                                     ProcessorType = "dummy_processor_nested",
+    ///                                 },
+    ///                             },
+    ///                             TextTypeOptions = null,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Document Ai Warehouse Document Schema Property Enum
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var examplePropertyEnum = new Gcp.EssentialContacts.DocumentAiWarehouseDocumentSchema("examplePropertyEnum", new()
+    ///     {
+    ///         ProjectNumber = project.Apply(getProjectResult =&gt; getProjectResult.Number),
+    ///         DisplayName = "test-property-property",
+    ///         Location = "us",
+    ///         DocumentIsFolder = false,
+    ///         PropertyDefinitions = new[]
+    ///         {
+    ///             new Gcp.EssentialContacts.Inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs
+    ///             {
+    ///                 Name = "prop8",
+    ///                 DisplayName = "propdisp8",
+    ///                 IsRepeatable = false,
+    ///                 IsFilterable = true,
+    ///                 IsSearchable = true,
+    ///                 IsMetadata = false,
+    ///                 IsRequired = false,
+    ///                 RetrievalImportance = "HIGHEST",
+    ///                 SchemaSources = new[]
+    ///                 {
+    ///                     new Gcp.EssentialContacts.Inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs
+    ///                     {
+    ///                         Name = "dummy_source",
+    ///                         ProcessorType = "dummy_processor",
+    ///                     },
+    ///                 },
+    ///                 PropertyTypeOptions = new Gcp.EssentialContacts.Inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgs
+    ///                 {
+    ///                     PropertyDefinitions = new[]
+    ///                     {
+    ///                         new Gcp.EssentialContacts.Inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArgs
+    ///                         {
+    ///                             Name = "prop8_nested",
+    ///                             DisplayName = "propdisp8_nested",
+    ///                             IsRepeatable = false,
+    ///                             IsFilterable = true,
+    ///                             IsSearchable = true,
+    ///                             IsMetadata = false,
+    ///                             IsRequired = false,
+    ///                             RetrievalImportance = "HIGHEST",
+    ///                             SchemaSources = new[]
+    ///                             {
+    ///                                 new Gcp.EssentialContacts.Inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgs
+    ///                                 {
+    ///                                     Name = "dummy_source_nested",
+    ///                                     ProcessorType = "dummy_processor_nested",
+    ///                                 },
+    ///                             },
+    ///                             EnumTypeOptions = new Gcp.EssentialContacts.Inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArgs
+    ///                             {
+    ///                                 PossibleValues = new[]
+    ///                                 {
+    ///                                     "M",
+    ///                                     "F",
+    ///                                     "X",
+    ///                                 },
+    ///                                 ValidationCheckDisabled = false,
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Document Ai Warehouse Document Schema Enum
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var exampleEnum = new Gcp.EssentialContacts.DocumentAiWarehouseDocumentSchema("exampleEnum", new()
+    ///     {
+    ///         ProjectNumber = project.Apply(getProjectResult =&gt; getProjectResult.Number),
+    ///         DisplayName = "test-property-enum",
+    ///         Location = "us",
+    ///         PropertyDefinitions = new[]
+    ///         {
+    ///             new Gcp.EssentialContacts.Inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs
+    ///             {
+    ///                 Name = "prop6",
+    ///                 DisplayName = "propdisp6",
+    ///                 IsRepeatable = false,
+    ///                 IsFilterable = true,
+    ///                 IsSearchable = true,
+    ///                 IsMetadata = false,
+    ///                 IsRequired = false,
+    ///                 RetrievalImportance = "HIGHEST",
+    ///                 SchemaSources = new[]
+    ///                 {
+    ///                     new Gcp.EssentialContacts.Inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs
+    ///                     {
+    ///                         Name = "dummy_source",
+    ///                         ProcessorType = "dummy_processor",
+    ///                     },
+    ///                 },
+    ///                 EnumTypeOptions = new Gcp.EssentialContacts.Inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs
+    ///                 {
+    ///                     PossibleValues = new[]
+    ///                     {
+    ///                         "M",
+    ///                         "F",
+    ///                         "X",
+    ///                     },
+    ///                     ValidationCheckDisabled = false,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Document Ai Warehouse Document Schema Map
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var exampleMap = new Gcp.EssentialContacts.DocumentAiWarehouseDocumentSchema("exampleMap", new()
+    ///     {
+    ///         ProjectNumber = project.Apply(getProjectResult =&gt; getProjectResult.Number),
+    ///         DisplayName = "test-property-map",
+    ///         Location = "us",
+    ///         PropertyDefinitions = new[]
+    ///         {
+    ///             new Gcp.EssentialContacts.Inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs
+    ///             {
+    ///                 Name = "prop4",
+    ///                 DisplayName = "propdisp4",
+    ///                 IsRepeatable = false,
+    ///                 IsFilterable = true,
+    ///                 IsSearchable = true,
+    ///                 IsMetadata = false,
+    ///                 IsRequired = false,
+    ///                 RetrievalImportance = "HIGHEST",
+    ///                 SchemaSources = new[]
+    ///                 {
+    ///                     new Gcp.EssentialContacts.Inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs
+    ///                     {
+    ///                         Name = "dummy_source",
+    ///                         ProcessorType = "dummy_processor",
+    ///                     },
+    ///                 },
+    ///                 MapTypeOptions = null,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Document Ai Warehouse Document Schema Datetime
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var exampleDatetime = new Gcp.EssentialContacts.DocumentAiWarehouseDocumentSchema("exampleDatetime", new()
+    ///     {
+    ///         ProjectNumber = project.Apply(getProjectResult =&gt; getProjectResult.Number),
+    ///         DisplayName = "test-property-date_time",
+    ///         Location = "us",
+    ///         PropertyDefinitions = new[]
+    ///         {
+    ///             new Gcp.EssentialContacts.Inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs
+    ///             {
+    ///                 Name = "prop7",
+    ///                 DisplayName = "propdisp7",
+    ///                 IsRepeatable = false,
+    ///                 IsFilterable = true,
+    ///                 IsSearchable = true,
+    ///                 IsMetadata = false,
+    ///                 IsRequired = false,
+    ///                 RetrievalImportance = "HIGHEST",
+    ///                 SchemaSources = new[]
+    ///                 {
+    ///                     new Gcp.EssentialContacts.Inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs
+    ///                     {
+    ///                         Name = "dummy_source",
+    ///                         ProcessorType = "dummy_processor",
+    ///                     },
+    ///                 },
+    ///                 DateTimeTypeOptions = null,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Document Ai Warehouse Document Schema Timestamp
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var exampleTimestamp = new Gcp.EssentialContacts.DocumentAiWarehouseDocumentSchema("exampleTimestamp", new()
+    ///     {
+    ///         ProjectNumber = project.Apply(getProjectResult =&gt; getProjectResult.Number),
+    ///         DisplayName = "test-property-timestamp",
+    ///         Location = "us",
+    ///         PropertyDefinitions = new[]
+    ///         {
+    ///             new Gcp.EssentialContacts.Inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs
+    ///             {
+    ///                 Name = "prop5",
+    ///                 DisplayName = "propdisp5",
+    ///                 IsRepeatable = false,
+    ///                 IsFilterable = true,
+    ///                 IsSearchable = true,
+    ///                 IsMetadata = false,
+    ///                 IsRequired = false,
+    ///                 RetrievalImportance = "HIGHEST",
+    ///                 SchemaSources = new[]
+    ///                 {
+    ///                     new Gcp.EssentialContacts.Inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs
+    ///                     {
+    ///                         Name = "dummy_source",
+    ///                         ProcessorType = "dummy_processor",
+    ///                     },
+    ///                 },
+    ///                 TimestampTypeOptions = null,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

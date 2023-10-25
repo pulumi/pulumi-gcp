@@ -15,6 +15,39 @@ namespace Pulumi.Gcp.Logging
     /// * How-to Guides
     ///     * [Exporting Logs](https://cloud.google.com/logging/docs/export)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var log_bucket = new Gcp.Storage.Bucket("log-bucket", new()
+    ///     {
+    ///         Location = "US",
+    ///     });
+    /// 
+    ///     var my_sink = new Gcp.Logging.OrganizationSink("my-sink", new()
+    ///     {
+    ///         Description = "some explanation on what this is",
+    ///         OrgId = "123456789",
+    ///         Destination = log_bucket.Name.Apply(name =&gt; $"storage.googleapis.com/{name}"),
+    ///         Filter = "resource.type = gce_instance AND severity &gt;= WARNING",
+    ///     });
+    /// 
+    ///     var log_writer = new Gcp.Projects.IAMMember("log-writer", new()
+    ///     {
+    ///         Project = "your-project-id",
+    ///         Role = "roles/storage.objectCreator",
+    ///         Member = my_sink.WriterIdentity,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Organization-level logging sinks can be imported using this format:

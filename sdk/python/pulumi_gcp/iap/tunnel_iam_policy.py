@@ -221,6 +221,97 @@ class TunnelIamPolicy(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
+        ## google\\_iap\\_tunnel\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/iap.tunnelResourceAccessor",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.iap.TunnelIamPolicy("policy",
+            project=google_project_service["project_service"]["project"],
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/iap.tunnelResourceAccessor",
+            members=["user:jane@example.com"],
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ),
+        )])
+        policy = gcp.iap.TunnelIamPolicy("policy",
+            project=google_project_service["project_service"]["project"],
+            policy_data=admin.policy_data)
+        ```
+        ## google\\_iap\\_tunnel\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.iap.TunnelIamBinding("binding",
+            project=google_project_service["project_service"]["project"],
+            role="roles/iap.tunnelResourceAccessor",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.iap.TunnelIamBinding("binding",
+            project=google_project_service["project_service"]["project"],
+            role="roles/iap.tunnelResourceAccessor",
+            members=["user:jane@example.com"],
+            condition=gcp.iap.TunnelIamBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+        ## google\\_iap\\_tunnel\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.iap.TunnelIamMember("member",
+            project=google_project_service["project_service"]["project"],
+            role="roles/iap.tunnelResourceAccessor",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.iap.TunnelIamMember("member",
+            project=google_project_service["project_service"]["project"],
+            role="roles/iap.tunnelResourceAccessor",
+            member="user:jane@example.com",
+            condition=gcp.iap.TunnelIamMemberConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/iap_tunnel * {{project}} Any variables not passed in the import command will be taken from the provider configuration. Identity-Aware Proxy tunnel IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -286,6 +377,97 @@ class TunnelIamPolicy(pulumi.CustomResource):
         > **Note:** `iap.TunnelIamBinding` resources **can be** used in conjunction with `iap.TunnelIamMember` resources **only if** they do not grant privilege to the same role.
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
+        ## google\\_iap\\_tunnel\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/iap.tunnelResourceAccessor",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.iap.TunnelIamPolicy("policy",
+            project=google_project_service["project_service"]["project"],
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/iap.tunnelResourceAccessor",
+            members=["user:jane@example.com"],
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ),
+        )])
+        policy = gcp.iap.TunnelIamPolicy("policy",
+            project=google_project_service["project_service"]["project"],
+            policy_data=admin.policy_data)
+        ```
+        ## google\\_iap\\_tunnel\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.iap.TunnelIamBinding("binding",
+            project=google_project_service["project_service"]["project"],
+            role="roles/iap.tunnelResourceAccessor",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.iap.TunnelIamBinding("binding",
+            project=google_project_service["project_service"]["project"],
+            role="roles/iap.tunnelResourceAccessor",
+            members=["user:jane@example.com"],
+            condition=gcp.iap.TunnelIamBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+        ## google\\_iap\\_tunnel\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.iap.TunnelIamMember("member",
+            project=google_project_service["project_service"]["project"],
+            role="roles/iap.tunnelResourceAccessor",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.iap.TunnelIamMember("member",
+            project=google_project_service["project_service"]["project"],
+            role="roles/iap.tunnelResourceAccessor",
+            member="user:jane@example.com",
+            condition=gcp.iap.TunnelIamMemberConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
 
         ## Import
 

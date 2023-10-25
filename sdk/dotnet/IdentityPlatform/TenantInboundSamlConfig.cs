@@ -17,6 +17,48 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// the marketplace prior to using this resource.
     /// 
     /// ## Example Usage
+    /// ### Identity Platform Tenant Inbound Saml Config Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.IO;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var tenant = new Gcp.IdentityPlatform.Tenant("tenant", new()
+    ///     {
+    ///         DisplayName = "tenant",
+    ///     });
+    /// 
+    ///     var tenantSamlConfig = new Gcp.IdentityPlatform.TenantInboundSamlConfig("tenantSamlConfig", new()
+    ///     {
+    ///         DisplayName = "Display Name",
+    ///         Tenant = tenant.Name,
+    ///         IdpConfig = new Gcp.IdentityPlatform.Inputs.TenantInboundSamlConfigIdpConfigArgs
+    ///         {
+    ///             IdpEntityId = "tf-idp",
+    ///             SignRequest = true,
+    ///             SsoUrl = "https://example.com",
+    ///             IdpCertificates = new[]
+    ///             {
+    ///                 new Gcp.IdentityPlatform.Inputs.TenantInboundSamlConfigIdpConfigIdpCertificateArgs
+    ///                 {
+    ///                     X509Certificate = File.ReadAllText("test-fixtures/rsa_cert.pem"),
+    ///                 },
+    ///             },
+    ///         },
+    ///         SpConfig = new Gcp.IdentityPlatform.Inputs.TenantInboundSamlConfigSpConfigArgs
+    ///         {
+    ///             SpEntityId = "tf-sp",
+    ///             CallbackUri = "https://example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -15,6 +15,51 @@ namespace Pulumi.Gcp.ServiceNetworking
     /// and
     /// [API](https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/v1/services.connections).
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a VPC network
+    ///     var peeringNetwork = new Gcp.Compute.Network("peeringNetwork");
+    /// 
+    ///     // Create an IP address
+    ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("privateIpAlloc", new()
+    ///     {
+    ///         Purpose = "VPC_PEERING",
+    ///         AddressType = "INTERNAL",
+    ///         PrefixLength = 16,
+    ///         Network = peeringNetwork.Id,
+    ///     });
+    /// 
+    ///     // Create a private connection
+    ///     var @default = new Gcp.ServiceNetworking.Connection("default", new()
+    ///     {
+    ///         Network = peeringNetwork.Id,
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             privateIpAlloc.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     // (Optional) Import or export custom routes
+    ///     var peeringRoutes = new Gcp.Compute.NetworkPeeringRoutesConfig("peeringRoutes", new()
+    ///     {
+    ///         Peering = @default.Peering,
+    ///         Network = peeringNetwork.Name,
+    ///         ImportCustomRoutes = true,
+    ///         ExportCustomRoutes = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ServiceNetworkingConnection can be imported using any of these accepted formats

@@ -21,6 +21,26 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
+        /// ### Logging Project Cmek Settings Basic
+        /// 
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var cmekSettings = Gcp.Logging.GetProjectCmekSettings.Invoke(new()
+        ///     {
+        ///         Project = "my-project-name",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectCmekSettingsResult> InvokeAsync(GetProjectCmekSettingsArgs args, InvokeOptions? options = null)
@@ -36,6 +56,26 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
+        /// ### Logging Project Cmek Settings Basic
+        /// 
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var cmekSettings = Gcp.Logging.GetProjectCmekSettings.Invoke(new()
+        ///     {
+        ///         Project = "my-project-name",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectCmekSettingsResult> Invoke(GetProjectCmekSettingsInvokeArgs args, InvokeOptions? options = null)

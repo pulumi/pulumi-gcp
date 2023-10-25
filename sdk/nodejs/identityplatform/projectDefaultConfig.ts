@@ -16,6 +16,29 @@ import * as utilities from "../utilities";
  * `billingProject` you defined.
  *
  * ## Example Usage
+ * ### Identity Platform Project Default Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.identityplatform.ProjectDefaultConfig("default", {signIn: {
+ *     allowDuplicateEmails: true,
+ *     anonymous: {
+ *         enabled: true,
+ *     },
+ *     email: {
+ *         enabled: true,
+ *         passwordRequired: false,
+ *     },
+ *     phoneNumber: {
+ *         enabled: true,
+ *         testPhoneNumbers: {
+ *             "+11231231234": "000000",
+ *         },
+ *     },
+ * }});
+ * ```
  *
  * ## Import
  *

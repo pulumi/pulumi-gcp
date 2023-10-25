@@ -457,6 +457,68 @@ class AiFeatureStore(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
         ## Example Usage
+        ### Vertex Ai Featurestore
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
+                kms_key_name="kms-name",
+            ),
+            force_destroy=True,
+            labels={
+                "foo": "bar",
+            },
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+                fixed_node_count=2,
+            ),
+            region="us-central1")
+        ```
+        ### Vertex Ai Featurestore With Beta Fields
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            labels={
+                "foo": "bar",
+            },
+            region="us-central1",
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+                fixed_node_count=2,
+            ),
+            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
+                kms_key_name="kms-name",
+            ),
+            online_storage_ttl_days=30,
+            force_destroy=True,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Vertex Ai Featurestore Scaling
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
+                kms_key_name="kms-name",
+            ),
+            force_destroy=True,
+            labels={
+                "foo": "bar",
+            },
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+                scaling=gcp.vertex.AiFeatureStoreOnlineServingConfigScalingArgs(
+                    max_node_count=10,
+                    min_node_count=2,
+                ),
+            ),
+            region="us-central1")
+        ```
 
         ## Import
 
@@ -511,6 +573,68 @@ class AiFeatureStore(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
         ## Example Usage
+        ### Vertex Ai Featurestore
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
+                kms_key_name="kms-name",
+            ),
+            force_destroy=True,
+            labels={
+                "foo": "bar",
+            },
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+                fixed_node_count=2,
+            ),
+            region="us-central1")
+        ```
+        ### Vertex Ai Featurestore With Beta Fields
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            labels={
+                "foo": "bar",
+            },
+            region="us-central1",
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+                fixed_node_count=2,
+            ),
+            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
+                kms_key_name="kms-name",
+            ),
+            online_storage_ttl_days=30,
+            force_destroy=True,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Vertex Ai Featurestore Scaling
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
+                kms_key_name="kms-name",
+            ),
+            force_destroy=True,
+            labels={
+                "foo": "bar",
+            },
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+                scaling=gcp.vertex.AiFeatureStoreOnlineServingConfigScalingArgs(
+                    max_node_count=10,
+                    min_node_count=2,
+                ),
+            ),
+            region="us-central1")
+        ```
 
         ## Import
 

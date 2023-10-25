@@ -20,6 +20,130 @@ import * as utilities from "../utilities";
  *     * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
  *
  * ## Example Usage
+ * ### Autoscaler Single Instance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const debian9 = gcp.compute.getImage({
+ *     family: "debian-11",
+ *     project: "debian-cloud",
+ * });
+ * const defaultInstanceTemplate = new gcp.compute.InstanceTemplate("defaultInstanceTemplate", {
+ *     machineType: "e2-medium",
+ *     canIpForward: false,
+ *     tags: [
+ *         "foo",
+ *         "bar",
+ *     ],
+ *     disks: [{
+ *         sourceImage: debian9.then(debian9 => debian9.id),
+ *     }],
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ *     metadata: {
+ *         foo: "bar",
+ *     },
+ *     serviceAccount: {
+ *         scopes: [
+ *             "userinfo-email",
+ *             "compute-ro",
+ *             "storage-ro",
+ *         ],
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultTargetPool = new gcp.compute.TargetPool("defaultTargetPool", {}, {
+ *     provider: google_beta,
+ * });
+ * const defaultInstanceGroupManager = new gcp.compute.InstanceGroupManager("defaultInstanceGroupManager", {
+ *     zone: "us-central1-f",
+ *     versions: [{
+ *         instanceTemplate: defaultInstanceTemplate.id,
+ *         name: "primary",
+ *     }],
+ *     targetPools: [defaultTargetPool.id],
+ *     baseInstanceName: "autoscaler-sample",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultAutoscaler = new gcp.compute.Autoscaler("defaultAutoscaler", {
+ *     zone: "us-central1-f",
+ *     target: defaultInstanceGroupManager.id,
+ *     autoscalingPolicy: {
+ *         maxReplicas: 5,
+ *         minReplicas: 1,
+ *         cooldownPeriod: 60,
+ *         metrics: [{
+ *             name: "pubsub.googleapis.com/subscription/num_undelivered_messages",
+ *             filter: "resource.type = pubsub_subscription AND resource.label.subscription_id = our-subscription",
+ *             singleInstanceAssignment: 65535,
+ *         }],
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Autoscaler Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const debian9 = gcp.compute.getImage({
+ *     family: "debian-11",
+ *     project: "debian-cloud",
+ * });
+ * const foobarInstanceTemplate = new gcp.compute.InstanceTemplate("foobarInstanceTemplate", {
+ *     machineType: "e2-medium",
+ *     canIpForward: false,
+ *     tags: [
+ *         "foo",
+ *         "bar",
+ *     ],
+ *     disks: [{
+ *         sourceImage: debian9.then(debian9 => debian9.id),
+ *     }],
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ *     metadata: {
+ *         foo: "bar",
+ *     },
+ *     serviceAccount: {
+ *         scopes: [
+ *             "userinfo-email",
+ *             "compute-ro",
+ *             "storage-ro",
+ *         ],
+ *     },
+ * });
+ * const foobarTargetPool = new gcp.compute.TargetPool("foobarTargetPool", {});
+ * const foobarInstanceGroupManager = new gcp.compute.InstanceGroupManager("foobarInstanceGroupManager", {
+ *     zone: "us-central1-f",
+ *     versions: [{
+ *         instanceTemplate: foobarInstanceTemplate.id,
+ *         name: "primary",
+ *     }],
+ *     targetPools: [foobarTargetPool.id],
+ *     baseInstanceName: "foobar",
+ * });
+ * const foobarAutoscaler = new gcp.compute.Autoscaler("foobarAutoscaler", {
+ *     zone: "us-central1-f",
+ *     target: foobarInstanceGroupManager.id,
+ *     autoscalingPolicy: {
+ *         maxReplicas: 5,
+ *         minReplicas: 1,
+ *         cooldownPeriod: 60,
+ *         cpuUtilization: {
+ *             target: 0.5,
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

@@ -13,6 +13,33 @@ import (
 )
 
 // Retrieves the current IAM policy data for webbackendservice
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := iap.LookupWebBackendServiceIamPolicy(ctx, &iap.LookupWebBackendServiceIamPolicyArgs{
+//				Project:           pulumi.StringRef(google_compute_backend_service.Default.Project),
+//				WebBackendService: google_compute_backend_service.Default.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupWebBackendServiceIamPolicy(ctx *pulumi.Context, args *LookupWebBackendServiceIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupWebBackendServiceIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebBackendServiceIamPolicyResult

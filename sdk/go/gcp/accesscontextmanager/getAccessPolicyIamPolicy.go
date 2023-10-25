@@ -13,6 +13,32 @@ import (
 )
 
 // Retrieves the current IAM policy data for accesspolicy
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/accesscontextmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := accesscontextmanager.LookupAccessPolicyIamPolicy(ctx, &accesscontextmanager.LookupAccessPolicyIamPolicyArgs{
+//				Name: google_access_context_manager_access_policy.AccessPolicy.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupAccessPolicyIamPolicy(ctx *pulumi.Context, args *LookupAccessPolicyIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAccessPolicyIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccessPolicyIamPolicyResult

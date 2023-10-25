@@ -24,6 +24,153 @@ import (
 //   - [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
 //
 // ## Example Usage
+// ### Filestore Instance Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/filestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
+//				FileShares: &filestore.InstanceFileSharesArgs{
+//					CapacityGb: pulumi.Int(1024),
+//					Name:       pulumi.String("share1"),
+//				},
+//				Location: pulumi.String("us-central1-b"),
+//				Networks: filestore.InstanceNetworkArray{
+//					&filestore.InstanceNetworkArgs{
+//						Modes: pulumi.StringArray{
+//							pulumi.String("MODE_IPV4"),
+//						},
+//						Network: pulumi.String("default"),
+//					},
+//				},
+//				Tier: pulumi.String("BASIC_HDD"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Filestore Instance Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/filestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
+//				FileShares: &filestore.InstanceFileSharesArgs{
+//					CapacityGb: pulumi.Int(2560),
+//					Name:       pulumi.String("share1"),
+//					NfsExportOptions: filestore.InstanceFileSharesNfsExportOptionArray{
+//						&filestore.InstanceFileSharesNfsExportOptionArgs{
+//							AccessMode: pulumi.String("READ_WRITE"),
+//							IpRanges: pulumi.StringArray{
+//								pulumi.String("10.0.0.0/24"),
+//							},
+//							SquashMode: pulumi.String("NO_ROOT_SQUASH"),
+//						},
+//						&filestore.InstanceFileSharesNfsExportOptionArgs{
+//							AccessMode: pulumi.String("READ_ONLY"),
+//							AnonGid:    pulumi.Int(456),
+//							AnonUid:    pulumi.Int(123),
+//							IpRanges: pulumi.StringArray{
+//								pulumi.String("10.10.0.0/24"),
+//							},
+//							SquashMode: pulumi.String("ROOT_SQUASH"),
+//						},
+//					},
+//				},
+//				Location: pulumi.String("us-central1-b"),
+//				Networks: filestore.InstanceNetworkArray{
+//					&filestore.InstanceNetworkArgs{
+//						ConnectMode: pulumi.String("DIRECT_PEERING"),
+//						Modes: pulumi.StringArray{
+//							pulumi.String("MODE_IPV4"),
+//						},
+//						Network: pulumi.String("default"),
+//					},
+//				},
+//				Tier: pulumi.String("BASIC_SSD"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Filestore Instance Enterprise
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/filestore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			filestoreKeyring, err := kms.NewKeyRing(ctx, "filestoreKeyring", &kms.KeyRingArgs{
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			filestoreKey, err := kms.NewCryptoKey(ctx, "filestoreKey", &kms.CryptoKeyArgs{
+//				KeyRing: filestoreKeyring.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
+//				Location: pulumi.String("us-central1"),
+//				Tier:     pulumi.String("ENTERPRISE"),
+//				FileShares: &filestore.InstanceFileSharesArgs{
+//					CapacityGb: pulumi.Int(1024),
+//					Name:       pulumi.String("share1"),
+//				},
+//				Networks: filestore.InstanceNetworkArray{
+//					&filestore.InstanceNetworkArgs{
+//						Network: pulumi.String("default"),
+//						Modes: pulumi.StringArray{
+//							pulumi.String("MODE_IPV4"),
+//						},
+//					},
+//				},
+//				KmsKeyName: filestoreKey.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

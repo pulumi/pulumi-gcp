@@ -23,6 +23,173 @@ namespace Pulumi.Gcp.ServiceAccount
     /// &gt; **Note:** `gcp.serviceAccount.IAMBinding` resources **can be** used in conjunction with `gcp.serviceAccount.IAMMember` resources **only if** they do not grant privilege to the same role.
     /// 
     /// ## Example Usage
+    /// ### Service Account IAM Policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/iam.serviceAccountUser",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
+    ///     {
+    ///         AccountId = "my-service-account",
+    ///         DisplayName = "A service account that only Jane can interact with",
+    ///     });
+    /// 
+    ///     var admin_account_iam = new Gcp.ServiceAccount.IAMPolicy("admin-account-iam", new()
+    ///     {
+    ///         ServiceAccountId = sa.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Service Account IAM Binding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
+    ///     {
+    ///         AccountId = "my-service-account",
+    ///         DisplayName = "A service account that only Jane can use",
+    ///     });
+    /// 
+    ///     var admin_account_iam = new Gcp.ServiceAccount.IAMBinding("admin-account-iam", new()
+    ///     {
+    ///         ServiceAccountId = sa.Name,
+    ///         Role = "roles/iam.serviceAccountUser",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Service Account IAM Binding With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
+    ///     {
+    ///         AccountId = "my-service-account",
+    ///         DisplayName = "A service account that only Jane can use",
+    ///     });
+    /// 
+    ///     var admin_account_iam = new Gcp.ServiceAccount.IAMBinding("admin-account-iam", new()
+    ///     {
+    ///         ServiceAccountId = sa.Name,
+    ///         Role = "roles/iam.serviceAccountUser",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Condition = new Gcp.ServiceAccount.Inputs.IAMBindingConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Service Account IAM Member
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = Gcp.Compute.GetDefaultServiceAccount.Invoke();
+    /// 
+    ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
+    ///     {
+    ///         AccountId = "my-service-account",
+    ///         DisplayName = "A service account that Jane can use",
+    ///     });
+    /// 
+    ///     var admin_account_iam = new Gcp.ServiceAccount.IAMMember("admin-account-iam", new()
+    ///     {
+    ///         ServiceAccountId = sa.Name,
+    ///         Role = "roles/iam.serviceAccountUser",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    ///     // Allow SA service account use the default GCE account
+    ///     var gce_default_account_iam = new Gcp.ServiceAccount.IAMMember("gce-default-account-iam", new()
+    ///     {
+    ///         ServiceAccountId = @default.Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Name)),
+    ///         Role = "roles/iam.serviceAccountUser",
+    ///         Member = sa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Service Account IAM Member With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
+    ///     {
+    ///         AccountId = "my-service-account",
+    ///         DisplayName = "A service account that Jane can use",
+    ///     });
+    /// 
+    ///     var admin_account_iam = new Gcp.ServiceAccount.IAMMember("admin-account-iam", new()
+    ///     {
+    ///         ServiceAccountId = sa.Name,
+    ///         Role = "roles/iam.serviceAccountUser",
+    ///         Member = "user:jane@example.com",
+    ///         Condition = new Gcp.ServiceAccount.Inputs.IAMMemberConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -13,6 +13,23 @@ import * as utilities from "../utilities";
  *
  * > You can specify exclusions for log sinks created by the provider by using the exclusions field of `gcp.logging.FolderSink`
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_folder = new gcp.organizations.Folder("my-folder", {
+ *     displayName: "My folder",
+ *     parent: "organizations/123456",
+ * });
+ * const my_exclusion = new gcp.logging.FolderExclusion("my-exclusion", {
+ *     folder: my_folder.name,
+ *     description: "Exclude GCE instance debug logs",
+ *     filter: "resource.type = gce_instance AND severity <= DEBUG",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Folder-level logging exclusions can be imported using their URI, e.g.

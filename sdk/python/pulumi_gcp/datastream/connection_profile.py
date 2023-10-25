@@ -608,6 +608,123 @@ class ConnectionProfile(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
+        ### Datastream Connection Profile Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.datastream.ConnectionProfile("default",
+            connection_profile_id="my-profile",
+            display_name="Connection profile",
+            gcs_profile=gcp.datastream.ConnectionProfileGcsProfileArgs(
+                bucket="my-bucket",
+                root_path="/path",
+            ),
+            location="us-central1")
+        ```
+        ### Datastream Connection Profile Bigquery Private Connection
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork")
+        private_connection = gcp.datastream.PrivateConnection("privateConnection",
+            display_name="Connection profile",
+            location="us-central1",
+            private_connection_id="my-connection",
+            labels={
+                "key": "value",
+            },
+            vpc_peering_config=gcp.datastream.PrivateConnectionVpcPeeringConfigArgs(
+                vpc=default_network.id,
+                subnet="10.0.0.0/29",
+            ))
+        default_connection_profile = gcp.datastream.ConnectionProfile("defaultConnectionProfile",
+            display_name="Connection profile",
+            location="us-central1",
+            connection_profile_id="my-profile",
+            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs(),
+            private_connectivity=gcp.datastream.ConnectionProfilePrivateConnectivityArgs(
+                private_connection=private_connection.id,
+            ))
+        ```
+        ### Datastream Connection Profile Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.datastream.ConnectionProfile("default",
+            connection_profile_id="my-profile",
+            display_name="Connection profile",
+            forward_ssh_connectivity=gcp.datastream.ConnectionProfileForwardSshConnectivityArgs(
+                hostname="google.com",
+                password="swordfish",
+                port=8022,
+                username="my-user",
+            ),
+            gcs_profile=gcp.datastream.ConnectionProfileGcsProfileArgs(
+                bucket="my-bucket",
+                root_path="/path",
+            ),
+            labels={
+                "key": "value",
+            },
+            location="us-central1")
+        ```
+        ### Datastream Connection Profile Postgres
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            database_version="POSTGRES_14",
+            region="us-central1",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
+                    authorized_networks=[
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.71.242.81",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.28.29",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.6.157",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.234.134",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.239.218",
+                        ),
+                    ],
+                ),
+            ),
+            deletion_protection=True)
+        db = gcp.sql.Database("db", instance=instance.name)
+        pwd = random.RandomPassword("pwd",
+            length=16,
+            special=False)
+        user = gcp.sql.User("user",
+            instance=instance.name,
+            password=pwd.result)
+        default = gcp.datastream.ConnectionProfile("default",
+            display_name="Connection profile",
+            location="us-central1",
+            connection_profile_id="my-profile",
+            postgresql_profile=gcp.datastream.ConnectionProfilePostgresqlProfileArgs(
+                hostname=instance.public_ip_address,
+                username=user.name,
+                password=user.password,
+                database=db.name,
+            ))
+        ```
 
         ## Import
 
@@ -670,6 +787,123 @@ class ConnectionProfile(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
+        ### Datastream Connection Profile Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.datastream.ConnectionProfile("default",
+            connection_profile_id="my-profile",
+            display_name="Connection profile",
+            gcs_profile=gcp.datastream.ConnectionProfileGcsProfileArgs(
+                bucket="my-bucket",
+                root_path="/path",
+            ),
+            location="us-central1")
+        ```
+        ### Datastream Connection Profile Bigquery Private Connection
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork")
+        private_connection = gcp.datastream.PrivateConnection("privateConnection",
+            display_name="Connection profile",
+            location="us-central1",
+            private_connection_id="my-connection",
+            labels={
+                "key": "value",
+            },
+            vpc_peering_config=gcp.datastream.PrivateConnectionVpcPeeringConfigArgs(
+                vpc=default_network.id,
+                subnet="10.0.0.0/29",
+            ))
+        default_connection_profile = gcp.datastream.ConnectionProfile("defaultConnectionProfile",
+            display_name="Connection profile",
+            location="us-central1",
+            connection_profile_id="my-profile",
+            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs(),
+            private_connectivity=gcp.datastream.ConnectionProfilePrivateConnectivityArgs(
+                private_connection=private_connection.id,
+            ))
+        ```
+        ### Datastream Connection Profile Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.datastream.ConnectionProfile("default",
+            connection_profile_id="my-profile",
+            display_name="Connection profile",
+            forward_ssh_connectivity=gcp.datastream.ConnectionProfileForwardSshConnectivityArgs(
+                hostname="google.com",
+                password="swordfish",
+                port=8022,
+                username="my-user",
+            ),
+            gcs_profile=gcp.datastream.ConnectionProfileGcsProfileArgs(
+                bucket="my-bucket",
+                root_path="/path",
+            ),
+            labels={
+                "key": "value",
+            },
+            location="us-central1")
+        ```
+        ### Datastream Connection Profile Postgres
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            database_version="POSTGRES_14",
+            region="us-central1",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
+                    authorized_networks=[
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.71.242.81",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.28.29",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.6.157",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.234.134",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.239.218",
+                        ),
+                    ],
+                ),
+            ),
+            deletion_protection=True)
+        db = gcp.sql.Database("db", instance=instance.name)
+        pwd = random.RandomPassword("pwd",
+            length=16,
+            special=False)
+        user = gcp.sql.User("user",
+            instance=instance.name,
+            password=pwd.result)
+        default = gcp.datastream.ConnectionProfile("default",
+            display_name="Connection profile",
+            location="us-central1",
+            connection_profile_id="my-profile",
+            postgresql_profile=gcp.datastream.ConnectionProfilePostgresqlProfileArgs(
+                hostname=instance.public_ip_address,
+                username=user.name,
+                password=user.password,
+                database=db.name,
+            ))
+        ```
 
         ## Import
 

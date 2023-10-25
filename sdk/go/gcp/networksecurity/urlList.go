@@ -22,6 +22,65 @@ import (
 //   - Use UrlLists
 //
 // ## Example Usage
+// ### Network Security Url Lists Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networksecurity.NewUrlList(ctx, "default", &networksecurity.UrlListArgs{
+//				Location: pulumi.String("us-central1"),
+//				Values: pulumi.StringArray{
+//					pulumi.String("www.example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Network Security Url Lists Advanced
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networksecurity.NewUrlList(ctx, "default", &networksecurity.UrlListArgs{
+//				Description: pulumi.String("my description"),
+//				Location:    pulumi.String("us-central1"),
+//				Values: pulumi.StringArray{
+//					pulumi.String("www.example.com"),
+//					pulumi.String("about.example.com"),
+//					pulumi.String("github.com/example-org/*"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

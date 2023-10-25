@@ -6,6 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for feature
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.gkehub.getFeatureIamPolicy({
+ *     project: google_gke_hub_feature.feature.project,
+ *     location: google_gke_hub_feature.feature.location,
+ *     name: google_gke_hub_feature.feature.name,
+ * });
+ * ```
  */
 export function getFeatureIamPolicy(args: GetFeatureIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetFeatureIamPolicyResult> {
 
@@ -59,6 +72,19 @@ export interface GetFeatureIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for feature
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.gkehub.getFeatureIamPolicy({
+ *     project: google_gke_hub_feature.feature.project,
+ *     location: google_gke_hub_feature.feature.location,
+ *     name: google_gke_hub_feature.feature.name,
+ * });
+ * ```
  */
 export function getFeatureIamPolicyOutput(args: GetFeatureIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFeatureIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getFeatureIamPolicy(a, opts))

@@ -35,6 +35,20 @@ import * as utilities from "../utilities";
  *     * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
  *
  * ## Example Usage
+ * ### Route Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
+ * const defaultRoute = new gcp.compute.Route("defaultRoute", {
+ *     destRange: "15.0.0.0/24",
+ *     network: defaultNetwork.name,
+ *     nextHopIp: "10.132.1.5",
+ *     priority: 100,
+ * });
+ * ```
  *
  * ## Import
  *

@@ -164,6 +164,52 @@ class ServicePerimeters(pulumi.CustomResource):
             * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
 
         ## Example Usage
+        ### Access Context Manager Service Perimeters Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
+            parent="organizations/123456789",
+            title="my policy")
+        service_perimeter = gcp.accesscontextmanager.ServicePerimeters("service-perimeter",
+            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
+            service_perimeters=[
+                gcp.accesscontextmanager.ServicePerimetersServicePerimeterArgs(
+                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
+                    status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs(
+                        restricted_services=["storage.googleapis.com"],
+                    ),
+                    title="",
+                ),
+                gcp.accesscontextmanager.ServicePerimetersServicePerimeterArgs(
+                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
+                    status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs(
+                        restricted_services=["bigtable.googleapis.com"],
+                    ),
+                    title="",
+                ),
+            ])
+        access_level = gcp.accesscontextmanager.AccessLevel("access-level",
+            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
+                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
+                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
+                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
+                            os_type="DESKTOP_CHROME_OS",
+                        )],
+                        require_screen_lock=False,
+                    ),
+                    regions=[
+                        "CH",
+                        "IT",
+                        "US",
+                    ],
+                )],
+            ),
+            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
+            title="chromeos_no_lock")
+        ```
 
         ## Import
 
@@ -205,6 +251,52 @@ class ServicePerimeters(pulumi.CustomResource):
             * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
 
         ## Example Usage
+        ### Access Context Manager Service Perimeters Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
+            parent="organizations/123456789",
+            title="my policy")
+        service_perimeter = gcp.accesscontextmanager.ServicePerimeters("service-perimeter",
+            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
+            service_perimeters=[
+                gcp.accesscontextmanager.ServicePerimetersServicePerimeterArgs(
+                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
+                    status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs(
+                        restricted_services=["storage.googleapis.com"],
+                    ),
+                    title="",
+                ),
+                gcp.accesscontextmanager.ServicePerimetersServicePerimeterArgs(
+                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
+                    status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs(
+                        restricted_services=["bigtable.googleapis.com"],
+                    ),
+                    title="",
+                ),
+            ])
+        access_level = gcp.accesscontextmanager.AccessLevel("access-level",
+            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
+                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
+                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
+                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
+                            os_type="DESKTOP_CHROME_OS",
+                        )],
+                        require_screen_lock=False,
+                    ),
+                    regions=[
+                        "CH",
+                        "IT",
+                        "US",
+                    ],
+                )],
+            ),
+            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
+            title="chromeos_no_lock")
+        ```
 
         ## Import
 

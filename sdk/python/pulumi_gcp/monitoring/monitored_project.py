@@ -172,6 +172,17 @@ class MonitoredProject(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/monitoring/settings/manage-api)
 
         ## Example Usage
+        ### Monitoring Monitored Project Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.monitoring.MonitoredProject("primary", metrics_scope="my-project-name")
+        basic = gcp.organizations.Project("basic",
+            project_id="m-id",
+            org_id="123456789")
+        ```
 
         ## Import
 
@@ -209,6 +220,17 @@ class MonitoredProject(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/monitoring/settings/manage-api)
 
         ## Example Usage
+        ### Monitoring Monitored Project Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.monitoring.MonitoredProject("primary", metrics_scope="my-project-name")
+        basic = gcp.organizations.Project("basic",
+            project_id="m-id",
+            org_id="123456789")
+        ```
 
         ## Import
 

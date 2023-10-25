@@ -103,7 +103,16 @@ def get_cluster(name: Optional[str] = None,
                 parent: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_cluster = gcp.vmwareengine.get_cluster(name="my-cluster",
+        parent="project/locations/us-west1-a/privateClouds/my-cloud")
+    ```
+
 
     :param str name: Name of the resource.
     :param str parent: The resource name of the private cloud that this cluster belongs.
@@ -129,7 +138,16 @@ def get_cluster_output(name: Optional[pulumi.Input[str]] = None,
                        parent: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_cluster = gcp.vmwareengine.get_cluster(name="my-cluster",
+        parent="project/locations/us-west1-a/privateClouds/my-cloud")
+    ```
+
 
     :param str name: Name of the resource.
     :param str parent: The resource name of the private cloud that this cluster belongs.

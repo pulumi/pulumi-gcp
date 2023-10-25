@@ -13,6 +13,34 @@ import (
 )
 
 // Retrieves the current IAM policy data for tunnelinstance
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := iap.GetTunnelInstanceIamPolicy(ctx, &iap.GetTunnelInstanceIamPolicyArgs{
+//				Project:  pulumi.StringRef(google_compute_instance.Tunnelvm.Project),
+//				Zone:     pulumi.StringRef(google_compute_instance.Tunnelvm.Zone),
+//				Instance: google_compute_instance.Tunnelvm.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetTunnelInstanceIamPolicy(ctx *pulumi.Context, args *GetTunnelInstanceIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetTunnelInstanceIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTunnelInstanceIamPolicyResult

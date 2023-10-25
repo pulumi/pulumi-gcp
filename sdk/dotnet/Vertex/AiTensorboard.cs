@@ -19,6 +19,73 @@ namespace Pulumi.Gcp.Vertex
     ///     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
     /// 
     /// ## Example Usage
+    /// ### Vertex Ai Tensorboard
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var tensorboard = new Gcp.Vertex.AiTensorboard("tensorboard", new()
+    ///     {
+    ///         DisplayName = "terraform",
+    ///         Description = "sample description",
+    ///         Labels = 
+    ///         {
+    ///             { "key1", "value1" },
+    ///             { "key2", "value2" },
+    ///         },
+    ///         Region = "us-central1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Vertex Ai Tensorboard Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMMember("cryptoKey", new()
+    ///     {
+    ///         CryptoKeyId = "kms-name",
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-aiplatform.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     var tensorboard = new Gcp.Vertex.AiTensorboard("tensorboard", new()
+    ///     {
+    ///         DisplayName = "terraform",
+    ///         Description = "sample description",
+    ///         Labels = 
+    ///         {
+    ///             { "key1", "value1" },
+    ///             { "key2", "value2" },
+    ///         },
+    ///         Region = "us-central1",
+    ///         EncryptionSpec = new Gcp.Vertex.Inputs.AiTensorboardEncryptionSpecArgs
+    ///         {
+    ///             KmsKeyName = "kms-name",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             cryptoKey,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

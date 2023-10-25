@@ -13,12 +13,56 @@ namespace Pulumi.Gcp.CloudTasks
     {
         /// <summary>
         /// Retrieves the current IAM policy data for queue
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.CloudTasks.GetQueueIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_cloud_tasks_queue.Default.Project,
+        ///         Location = google_cloud_tasks_queue.Default.Location,
+        ///         Name = google_cloud_tasks_queue.Default.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetQueueIamPolicyResult> InvokeAsync(GetQueueIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetQueueIamPolicyResult>("gcp:cloudtasks/getQueueIamPolicy:getQueueIamPolicy", args ?? new GetQueueIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for queue
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.CloudTasks.GetQueueIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_cloud_tasks_queue.Default.Project,
+        ///         Location = google_cloud_tasks_queue.Default.Location,
+        ///         Name = google_cloud_tasks_queue.Default.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetQueueIamPolicyResult> Invoke(GetQueueIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetQueueIamPolicyResult>("gcp:cloudtasks/getQueueIamPolicy:getQueueIamPolicy", args ?? new GetQueueIamPolicyInvokeArgs(), options.WithDefaults());

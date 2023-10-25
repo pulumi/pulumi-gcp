@@ -8,6 +8,17 @@ import * as utilities from "../utilities";
 
 /**
  * Get information about a Google BeyondCorp App Connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-beyondcorp-app-connector = gcp.beyondcorp.getAppConnector({
+ *     name: "my-beyondcorp-app-connector",
+ * });
+ * ```
  */
 export function getAppConnector(args: GetAppConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetAppConnectorResult> {
 
@@ -59,6 +70,17 @@ export interface GetAppConnectorResult {
 }
 /**
  * Get information about a Google BeyondCorp App Connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-beyondcorp-app-connector = gcp.beyondcorp.getAppConnector({
+ *     name: "my-beyondcorp-app-connector",
+ * });
+ * ```
  */
 export function getAppConnectorOutput(args: GetAppConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppConnectorResult> {
     return pulumi.output(args).apply((a: any) => getAppConnector(a, opts))

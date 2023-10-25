@@ -17,6 +17,20 @@ import * as utilities from "../utilities";
  * errors when you try to apply ACLs to service accounts immediately after
  * creation.
  *
+ * ## Example Usage
+ *
+ * This snippet creates a service account in a project.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const serviceAccount = new gcp.serviceaccount.Account("serviceAccount", {
+ *     accountId: "service-account-id",
+ *     displayName: "Service Account",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Service accounts can be imported using their URI, e.g.

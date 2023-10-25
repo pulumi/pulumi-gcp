@@ -13,6 +13,33 @@ import (
 )
 
 // Retrieves the current IAM policy data for topic
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := pubsub.GetTopicIamPolicy(ctx, &pubsub.GetTopicIamPolicyArgs{
+//				Project: pulumi.StringRef(google_pubsub_topic.Example.Project),
+//				Topic:   google_pubsub_topic.Example.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetTopicIamPolicy(ctx *pulumi.Context, args *GetTopicIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetTopicIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTopicIamPolicyResult

@@ -16,6 +16,49 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
  *
  * ## Example Usage
+ * ### Vertex Ai Tensorboard
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const tensorboard = new gcp.vertex.AiTensorboard("tensorboard", {
+ *     displayName: "terraform",
+ *     description: "sample description",
+ *     labels: {
+ *         key1: "value1",
+ *         key2: "value2",
+ *     },
+ *     region: "us-central1",
+ * });
+ * ```
+ * ### Vertex Ai Tensorboard Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const cryptoKey = new gcp.kms.CryptoKeyIAMMember("cryptoKey", {
+ *     cryptoKeyId: "kms-name",
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com`),
+ * });
+ * const tensorboard = new gcp.vertex.AiTensorboard("tensorboard", {
+ *     displayName: "terraform",
+ *     description: "sample description",
+ *     labels: {
+ *         key1: "value1",
+ *         key2: "value2",
+ *     },
+ *     region: "us-central1",
+ *     encryptionSpec: {
+ *         kmsKeyName: "kms-name",
+ *     },
+ * }, {
+ *     dependsOn: [cryptoKey],
+ * });
+ * ```
  *
  * ## Import
  *

@@ -13,6 +13,36 @@ import (
 )
 
 // Provides access to available platform versions in a location for a given project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			manifest, err := container.GetAttachedInstallManifest(ctx, &container.GetAttachedInstallManifestArgs{
+//				Location:        "us-west1",
+//				Project:         "my-project",
+//				ClusterId:       "test-cluster-1",
+//				PlatformVersion: "1.25.0-gke.1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("installManifest", manifest)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAttachedInstallManifest(ctx *pulumi.Context, args *GetAttachedInstallManifestArgs, opts ...pulumi.InvokeOption) (*GetAttachedInstallManifestResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAttachedInstallManifestResult

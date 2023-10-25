@@ -19,6 +19,19 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = new gcp.projects.Service("project", {
+ *     disableDependentServices: true,
+ *     project: "your-project-id",
+ *     service: "iam.googleapis.com",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Project services can be imported using the `project_id` and `service`, e.g.

@@ -16,6 +16,54 @@ import (
 // Starts and stops asynchronous persistent disk replication. For more information
 // see [the official documentation](https://cloud.google.com/compute/docs/disks/async-pd/about)
 // and the [API](https://cloud.google.com/compute/docs/reference/rest/v1/disks).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewDisk(ctx, "primary-disk", &compute.DiskArgs{
+//				Type:                   pulumi.String("pd-ssd"),
+//				Zone:                   pulumi.String("europe-west4-a"),
+//				PhysicalBlockSizeBytes: pulumi.Int(4096),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewDisk(ctx, "secondary-disk", &compute.DiskArgs{
+//				Type: pulumi.String("pd-ssd"),
+//				Zone: pulumi.String("europe-west3-a"),
+//				AsyncPrimaryDisk: &compute.DiskAsyncPrimaryDiskArgs{
+//					Disk: primary_disk.ID(),
+//				},
+//				PhysicalBlockSizeBytes: pulumi.Int(4096),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewDiskAsyncReplication(ctx, "replication", &compute.DiskAsyncReplicationArgs{
+//				PrimaryDisk: primary_disk.ID(),
+//				SecondaryDisk: &compute.DiskAsyncReplicationSecondaryDiskArgs{
+//					Disk: secondary_disk.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type DiskAsyncReplication struct {
 	pulumi.CustomResourceState
 

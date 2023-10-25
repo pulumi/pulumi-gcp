@@ -6,6 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for deviceregistry
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.iot.getRegistryIamPolicy({
+ *     project: google_cloudiot_registry["test-registry"].project,
+ *     region: google_cloudiot_registry["test-registry"].region,
+ *     name: google_cloudiot_registry["test-registry"].name,
+ * });
+ * ```
  */
 export function getRegistryIamPolicy(args: GetRegistryIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryIamPolicyResult> {
 
@@ -63,6 +76,19 @@ export interface GetRegistryIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for deviceregistry
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.iot.getRegistryIamPolicy({
+ *     project: google_cloudiot_registry["test-registry"].project,
+ *     region: google_cloudiot_registry["test-registry"].region,
+ *     name: google_cloudiot_registry["test-registry"].name,
+ * });
+ * ```
  */
 export function getRegistryIamPolicyOutput(args: GetRegistryIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getRegistryIamPolicy(a, opts))

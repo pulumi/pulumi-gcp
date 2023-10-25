@@ -21,6 +21,31 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
     /// 
     /// ## Example Usage
+    /// ### Global Network Endpoint
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var neg = new Gcp.Compute.GlobalNetworkEndpointGroup("neg", new()
+    ///     {
+    ///         DefaultPort = 90,
+    ///         NetworkEndpointType = "INTERNET_FQDN_PORT",
+    ///     });
+    /// 
+    ///     var default_endpoint = new Gcp.Compute.GlobalNetworkEndpoint("default-endpoint", new()
+    ///     {
+    ///         GlobalNetworkEndpointGroup = neg.Name,
+    ///         Fqdn = "www.example.com",
+    ///         Port = 90,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

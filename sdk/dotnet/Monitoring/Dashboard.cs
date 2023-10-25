@@ -19,6 +19,112 @@ namespace Pulumi.Gcp.Monitoring
     ///     * [Official Documentation](https://cloud.google.com/monitoring/dashboards)
     /// 
     /// ## Example Usage
+    /// ### Monitoring Dashboard Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dashboard = new Gcp.Monitoring.Dashboard("dashboard", new()
+    ///     {
+    ///         DashboardJson = @"{
+    ///   ""displayName"": ""Demo Dashboard"",
+    ///   ""gridLayout"": {
+    ///     ""widgets"": [
+    ///       {
+    ///         ""blank"": {}
+    ///       }
+    ///     ]
+    ///   }
+    /// }
+    /// 
+    /// 
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Monitoring Dashboard GridLayout
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dashboard = new Gcp.Monitoring.Dashboard("dashboard", new()
+    ///     {
+    ///         DashboardJson = @"{
+    ///   ""displayName"": ""Grid Layout Example"",
+    ///   ""gridLayout"": {
+    ///     ""columns"": ""2"",
+    ///     ""widgets"": [
+    ///       {
+    ///         ""title"": ""Widget 1"",
+    ///         ""xyChart"": {
+    ///           ""dataSets"": [{
+    ///             ""timeSeriesQuery"": {
+    ///               ""timeSeriesFilter"": {
+    ///                 ""filter"": ""metric.type=\""agent.googleapis.com/nginx/connections/accepted_count\"""",
+    ///                 ""aggregation"": {
+    ///                   ""perSeriesAligner"": ""ALIGN_RATE""
+    ///                 }
+    ///               },
+    ///               ""unitOverride"": ""1""
+    ///             },
+    ///             ""plotType"": ""LINE""
+    ///           }],
+    ///           ""timeshiftDuration"": ""0s"",
+    ///           ""yAxis"": {
+    ///             ""label"": ""y1Axis"",
+    ///             ""scale"": ""LINEAR""
+    ///           }
+    ///         }
+    ///       },
+    ///       {
+    ///         ""text"": {
+    ///           ""content"": ""Widget 2"",
+    ///           ""format"": ""MARKDOWN""
+    ///         }
+    ///       },
+    ///       {
+    ///         ""title"": ""Widget 3"",
+    ///         ""xyChart"": {
+    ///           ""dataSets"": [{
+    ///             ""timeSeriesQuery"": {
+    ///               ""timeSeriesFilter"": {
+    ///                 ""filter"": ""metric.type=\""agent.googleapis.com/nginx/connections/accepted_count\"""",
+    ///                 ""aggregation"": {
+    ///                   ""perSeriesAligner"": ""ALIGN_RATE""
+    ///                 }
+    ///               },
+    ///               ""unitOverride"": ""1""
+    ///             },
+    ///             ""plotType"": ""STACKED_BAR""
+    ///           }],
+    ///           ""timeshiftDuration"": ""0s"",
+    ///           ""yAxis"": {
+    ///             ""label"": ""y1Axis"",
+    ///             ""scale"": ""LINEAR""
+    ///           }
+    ///         }
+    ///       }
+    ///     ]
+    ///   }
+    /// }
+    /// 
+    /// 
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

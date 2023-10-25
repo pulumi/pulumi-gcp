@@ -82,6 +82,16 @@ def get_registry_repository(project: Optional[str] = None,
 
     The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.container.get_registry_repository()
+    pulumi.export("gcrLocation", foo.repository_url)
+    ```
+
 
     :param str project: The project ID that this repository is attached to.  If not provided, provider project will be used instead.
     :param str region: The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
@@ -107,6 +117,16 @@ def get_registry_repository_output(project: Optional[pulumi.Input[Optional[str]]
     This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
 
     The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.container.get_registry_repository()
+    pulumi.export("gcrLocation", foo.repository_url)
+    ```
 
 
     :param str project: The project ID that this repository is attached to.  If not provided, provider project will be used instead.

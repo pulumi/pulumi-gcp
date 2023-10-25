@@ -82,6 +82,15 @@ def get_account_iam_policy(billing_account_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for a Billing Account.
 
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.billing.get_account_iam_policy(billing_account_id="MEEP-MEEP-MEEP-MEEP-MEEP")
+    ```
+
 
     :param str billing_account_id: The billing account id.
     """
@@ -102,6 +111,15 @@ def get_account_iam_policy_output(billing_account_id: Optional[pulumi.Input[str]
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a Billing Account.
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.billing.get_account_iam_policy(billing_account_id="MEEP-MEEP-MEEP-MEEP-MEEP")
+    ```
 
 
     :param str billing_account_id: The billing account id.

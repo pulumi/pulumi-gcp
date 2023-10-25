@@ -16,6 +16,26 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/datastream/docs/create-a-private-connectivity-configuration)
  *
  * ## Example Usage
+ * ### Datastream Private Connection Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
+ * const defaultPrivateConnection = new gcp.datastream.PrivateConnection("defaultPrivateConnection", {
+ *     displayName: "Connection profile",
+ *     location: "us-central1",
+ *     privateConnectionId: "my-connection",
+ *     labels: {
+ *         key: "value",
+ *     },
+ *     vpcPeeringConfig: {
+ *         vpc: defaultNetwork.id,
+ *         subnet: "10.0.0.0/29",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

@@ -24,6 +24,127 @@ namespace Pulumi.Gcp.DataCatalog
     ///     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
     /// 
     /// ## Example Usage
+    /// ### Data Catalog Entry Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var entryGroup = new Gcp.DataCatalog.EntryGroup("entryGroup", new()
+    ///     {
+    ///         EntryGroupId = "my_group",
+    ///     });
+    /// 
+    ///     var basicEntry = new Gcp.DataCatalog.Entry("basicEntry", new()
+    ///     {
+    ///         EntryGroup = entryGroup.Id,
+    ///         EntryId = "my_entry",
+    ///         UserSpecifiedType = "my_custom_type",
+    ///         UserSpecifiedSystem = "SomethingExternal",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Data Catalog Entry Fileset
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var entryGroup = new Gcp.DataCatalog.EntryGroup("entryGroup", new()
+    ///     {
+    ///         EntryGroupId = "my_group",
+    ///     });
+    /// 
+    ///     var basicEntry = new Gcp.DataCatalog.Entry("basicEntry", new()
+    ///     {
+    ///         EntryGroup = entryGroup.Id,
+    ///         EntryId = "my_entry",
+    ///         Type = "FILESET",
+    ///         GcsFilesetSpec = new Gcp.DataCatalog.Inputs.EntryGcsFilesetSpecArgs
+    ///         {
+    ///             FilePatterns = new[]
+    ///             {
+    ///                 "gs://fake_bucket/dir/*",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Data Catalog Entry Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var entryGroup = new Gcp.DataCatalog.EntryGroup("entryGroup", new()
+    ///     {
+    ///         EntryGroupId = "my_group",
+    ///     });
+    /// 
+    ///     var basicEntry = new Gcp.DataCatalog.Entry("basicEntry", new()
+    ///     {
+    ///         EntryGroup = entryGroup.Id,
+    ///         EntryId = "my_entry",
+    ///         UserSpecifiedType = "my_user_specified_type",
+    ///         UserSpecifiedSystem = "Something_custom",
+    ///         LinkedResource = "my/linked/resource",
+    ///         DisplayName = "my custom type entry",
+    ///         Description = "a custom type entry for a user specified system",
+    ///         Schema = @"{
+    ///   ""columns"": [
+    ///     {
+    ///       ""column"": ""first_name"",
+    ///       ""description"": ""First name"",
+    ///       ""mode"": ""REQUIRED"",
+    ///       ""type"": ""STRING""
+    ///     },
+    ///     {
+    ///       ""column"": ""last_name"",
+    ///       ""description"": ""Last name"",
+    ///       ""mode"": ""REQUIRED"",
+    ///       ""type"": ""STRING""
+    ///     },
+    ///     {
+    ///       ""column"": ""address"",
+    ///       ""description"": ""Address"",
+    ///       ""mode"": ""REPEATED"",
+    ///       ""subcolumns"": [
+    ///         {
+    ///           ""column"": ""city"",
+    ///           ""description"": ""City"",
+    ///           ""mode"": ""NULLABLE"",
+    ///           ""type"": ""STRING""
+    ///         },
+    ///         {
+    ///           ""column"": ""state"",
+    ///           ""description"": ""State"",
+    ///           ""mode"": ""NULLABLE"",
+    ///           ""type"": ""STRING""
+    ///         }
+    ///       ],
+    ///       ""type"": ""RECORD""
+    ///     }
+    ///   ]
+    /// }
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

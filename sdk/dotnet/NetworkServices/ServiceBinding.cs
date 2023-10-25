@@ -11,6 +11,54 @@ namespace Pulumi.Gcp.NetworkServices
 {
     /// <summary>
     /// ## Example Usage
+    /// ### Network Services Service Binding Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultNamespace = new Gcp.ServiceDirectory.Namespace("defaultNamespace", new()
+    ///     {
+    ///         NamespaceId = "my-namespace",
+    ///         Location = "us-central1",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultService = new Gcp.ServiceDirectory.Service("defaultService", new()
+    ///     {
+    ///         ServiceId = "my-service",
+    ///         Namespace = defaultNamespace.Id,
+    ///         Metadata = 
+    ///         {
+    ///             { "stage", "prod" },
+    ///             { "region", "us-central1" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultServiceBinding = new Gcp.NetworkServices.ServiceBinding("defaultServiceBinding", new()
+    ///     {
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Description = "my description",
+    ///         Service = defaultService.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

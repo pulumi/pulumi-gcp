@@ -13,6 +13,33 @@ import (
 )
 
 // Retrieves the current IAM policy data for membership
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gkehub.LookupMembershipIamPolicy(ctx, &gkehub.LookupMembershipIamPolicyArgs{
+//				Project:      pulumi.StringRef(google_gke_hub_membership.Membership.Project),
+//				MembershipId: google_gke_hub_membership.Membership.Membership_id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupMembershipIamPolicy(ctx *pulumi.Context, args *LookupMembershipIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupMembershipIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMembershipIamPolicyResult

@@ -19,6 +19,40 @@ namespace Pulumi.Gcp.Diagflow
     ///     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
     /// 
     /// ## Example Usage
+    /// ### Dialogflowcx Agent Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var fullAgent = new Gcp.Diagflow.CxAgent("fullAgent", new()
+    ///     {
+    ///         AvatarUri = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+    ///         DefaultLanguageCode = "en",
+    ///         Description = "Example description.",
+    ///         DisplayName = "dialogflowcx-agent",
+    ///         EnableSpellCorrection = true,
+    ///         EnableStackdriverLogging = true,
+    ///         Location = "global",
+    ///         SpeechToTextSettings = new Gcp.Diagflow.Inputs.CxAgentSpeechToTextSettingsArgs
+    ///         {
+    ///             EnableSpeechAdaptation = true,
+    ///         },
+    ///         SupportedLanguageCodes = new[]
+    ///         {
+    ///             "fr",
+    ///             "de",
+    ///             "es",
+    ///         },
+    ///         TimeZone = "America/New_York",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

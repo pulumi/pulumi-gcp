@@ -19,6 +19,31 @@ namespace Pulumi.Gcp.BigQuery
     ///     * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
     /// 
     /// ## Example Usage
+    /// ### Bigquery Reservation Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var reservation = new Gcp.BigQuery.Reservation("reservation", new()
+    ///     {
+    ///         Autoscale = new Gcp.BigQuery.Inputs.ReservationAutoscaleArgs
+    ///         {
+    ///             MaxSlots = 100,
+    ///         },
+    ///         Concurrency = 0,
+    ///         Edition = "STANDARD",
+    ///         IgnoreIdleSlots = true,
+    ///         Location = "us-west2",
+    ///         SlotCapacity = 0,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

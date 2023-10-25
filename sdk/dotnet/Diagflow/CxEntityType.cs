@@ -20,6 +20,69 @@ namespace Pulumi.Gcp.Diagflow
     ///     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
     /// 
     /// ## Example Usage
+    /// ### Dialogflowcx Entity Type Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var agent = new Gcp.Diagflow.CxAgent("agent", new()
+    ///     {
+    ///         DisplayName = "dialogflowcx-agent",
+    ///         Location = "global",
+    ///         DefaultLanguageCode = "en",
+    ///         SupportedLanguageCodes = new[]
+    ///         {
+    ///             "fr",
+    ///             "de",
+    ///             "es",
+    ///         },
+    ///         TimeZone = "America/New_York",
+    ///         Description = "Example description.",
+    ///         AvatarUri = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+    ///         EnableStackdriverLogging = true,
+    ///         EnableSpellCorrection = true,
+    ///         SpeechToTextSettings = new Gcp.Diagflow.Inputs.CxAgentSpeechToTextSettingsArgs
+    ///         {
+    ///             EnableSpeechAdaptation = true,
+    ///         },
+    ///     });
+    /// 
+    ///     var basicEntityType = new Gcp.Diagflow.CxEntityType("basicEntityType", new()
+    ///     {
+    ///         Parent = agent.Id,
+    ///         DisplayName = "MyEntity",
+    ///         Kind = "KIND_MAP",
+    ///         Entities = new[]
+    ///         {
+    ///             new Gcp.Diagflow.Inputs.CxEntityTypeEntityArgs
+    ///             {
+    ///                 Value = "value1",
+    ///                 Synonyms = new[]
+    ///                 {
+    ///                     "synonym1",
+    ///                     "synonym2",
+    ///                 },
+    ///             },
+    ///             new Gcp.Diagflow.Inputs.CxEntityTypeEntityArgs
+    ///             {
+    ///                 Value = "value2",
+    ///                 Synonyms = new[]
+    ///                 {
+    ///                     "synonym3",
+    ///                     "synonym4",
+    ///                 },
+    ///             },
+    ///         },
+    ///         EnableFuzzyExtraction = false,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

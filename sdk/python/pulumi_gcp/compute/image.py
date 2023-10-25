@@ -860,6 +860,47 @@ class Image(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/images)
 
         ## Example Usage
+        ### Image Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.compute.Image("example", raw_disk=gcp.compute.ImageRawDiskArgs(
+            source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
+        ))
+        ```
+        ### Image Guest Os
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.compute.Image("example",
+            guest_os_features=[
+                gcp.compute.ImageGuestOsFeatureArgs(
+                    type="SECURE_BOOT",
+                ),
+                gcp.compute.ImageGuestOsFeatureArgs(
+                    type="MULTI_IP_SUBNET",
+                ),
+            ],
+            raw_disk=gcp.compute.ImageRawDiskArgs(
+                source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
+            ))
+        ```
+        ### Image Basic Storage Location
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.compute.Image("example",
+            raw_disk=gcp.compute.ImageRawDiskArgs(
+                source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
+            ),
+            storage_locations=["us-central1"])
+        ```
 
         ## Import
 
@@ -962,6 +1003,47 @@ class Image(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/images)
 
         ## Example Usage
+        ### Image Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.compute.Image("example", raw_disk=gcp.compute.ImageRawDiskArgs(
+            source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
+        ))
+        ```
+        ### Image Guest Os
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.compute.Image("example",
+            guest_os_features=[
+                gcp.compute.ImageGuestOsFeatureArgs(
+                    type="SECURE_BOOT",
+                ),
+                gcp.compute.ImageGuestOsFeatureArgs(
+                    type="MULTI_IP_SUBNET",
+                ),
+            ],
+            raw_disk=gcp.compute.ImageRawDiskArgs(
+                source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
+            ))
+        ```
+        ### Image Basic Storage Location
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.compute.Image("example",
+            raw_disk=gcp.compute.ImageRawDiskArgs(
+                source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
+            ),
+            storage_locations=["us-central1"])
+        ```
 
         ## Import
 

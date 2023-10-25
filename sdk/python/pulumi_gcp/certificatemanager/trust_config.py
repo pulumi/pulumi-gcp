@@ -366,6 +366,27 @@ class TrustConfig(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
+        ### Certificate Manager Trust Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificatemanager.TrustConfig("default",
+            description="sample description for the trust config",
+            location="us-central1",
+            trust_stores=[gcp.certificatemanager.TrustConfigTrustStoreArgs(
+                trust_anchors=[gcp.certificatemanager.TrustConfigTrustStoreTrustAnchorArgs(
+                    pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
+                )],
+                intermediate_cas=[gcp.certificatemanager.TrustConfigTrustStoreIntermediateCaArgs(
+                    pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
+                )],
+            )],
+            labels={
+                "foo": "bar",
+            })
+        ```
 
         ## Import
 
@@ -418,6 +439,27 @@ class TrustConfig(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
+        ### Certificate Manager Trust Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificatemanager.TrustConfig("default",
+            description="sample description for the trust config",
+            location="us-central1",
+            trust_stores=[gcp.certificatemanager.TrustConfigTrustStoreArgs(
+                trust_anchors=[gcp.certificatemanager.TrustConfigTrustStoreTrustAnchorArgs(
+                    pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
+                )],
+                intermediate_cas=[gcp.certificatemanager.TrustConfigTrustStoreIntermediateCaArgs(
+                    pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
+                )],
+            )],
+            labels={
+                "foo": "bar",
+            })
+        ```
 
         ## Import
 

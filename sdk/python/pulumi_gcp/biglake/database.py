@@ -326,6 +326,30 @@ class Database(pulumi.CustomResource):
             * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_databases)
 
         ## Example Usage
+        ### Biglake Database
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        catalog = gcp.biglake.Catalog("catalog", location="US")
+        bucket = gcp.storage.Bucket("bucket",
+            location="US",
+            force_destroy=True,
+            uniform_bucket_level_access=True)
+        metadata_folder = gcp.storage.BucketObject("metadataFolder",
+            content=" ",
+            bucket=bucket.name)
+        database = gcp.biglake.Database("database",
+            catalog=catalog.id,
+            type="HIVE",
+            hive_options=gcp.biglake.DatabaseHiveOptionsArgs(
+                location_uri=pulumi.Output.all(bucket.name, metadata_folder.name).apply(lambda bucketName, metadataFolderName: f"gs://{bucket_name}/{metadata_folder_name}"),
+                parameters={
+                    "owner": "John Doe",
+                },
+            ))
+        ```
 
         ## Import
 
@@ -359,6 +383,30 @@ class Database(pulumi.CustomResource):
             * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_databases)
 
         ## Example Usage
+        ### Biglake Database
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        catalog = gcp.biglake.Catalog("catalog", location="US")
+        bucket = gcp.storage.Bucket("bucket",
+            location="US",
+            force_destroy=True,
+            uniform_bucket_level_access=True)
+        metadata_folder = gcp.storage.BucketObject("metadataFolder",
+            content=" ",
+            bucket=bucket.name)
+        database = gcp.biglake.Database("database",
+            catalog=catalog.id,
+            type="HIVE",
+            hive_options=gcp.biglake.DatabaseHiveOptionsArgs(
+                location_uri=pulumi.Output.all(bucket.name, metadata_folder.name).apply(lambda bucketName, metadataFolderName: f"gs://{bucket_name}/{metadata_folder_name}"),
+                parameters={
+                    "owner": "John Doe",
+                },
+            ))
+        ```
 
         ## Import
 

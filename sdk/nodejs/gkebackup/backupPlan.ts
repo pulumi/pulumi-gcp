@@ -16,6 +16,147 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
  *
  * ## Example Usage
+ * ### Gkebackup Backupplan Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.container.Cluster("primary", {
+ *     location: "us-central1",
+ *     initialNodeCount: 1,
+ *     workloadIdentityConfig: {
+ *         workloadPool: "my-project-name.svc.id.goog",
+ *     },
+ *     addonsConfig: {
+ *         gkeBackupAgentConfig: {
+ *             enabled: true,
+ *         },
+ *     },
+ * });
+ * const basic = new gcp.gkebackup.BackupPlan("basic", {
+ *     cluster: primary.id,
+ *     location: "us-central1",
+ *     backupConfig: {
+ *         includeVolumeData: true,
+ *         includeSecrets: true,
+ *         allNamespaces: true,
+ *     },
+ * });
+ * ```
+ * ### Gkebackup Backupplan Autopilot
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.container.Cluster("primary", {
+ *     location: "us-central1",
+ *     enableAutopilot: true,
+ *     ipAllocationPolicy: {},
+ *     releaseChannel: {
+ *         channel: "RAPID",
+ *     },
+ *     addonsConfig: {
+ *         gkeBackupAgentConfig: {
+ *             enabled: true,
+ *         },
+ *     },
+ * });
+ * const autopilot = new gcp.gkebackup.BackupPlan("autopilot", {
+ *     cluster: primary.id,
+ *     location: "us-central1",
+ *     backupConfig: {
+ *         includeVolumeData: true,
+ *         includeSecrets: true,
+ *         allNamespaces: true,
+ *     },
+ * });
+ * ```
+ * ### Gkebackup Backupplan Cmek
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.container.Cluster("primary", {
+ *     location: "us-central1",
+ *     initialNodeCount: 1,
+ *     workloadIdentityConfig: {
+ *         workloadPool: "my-project-name.svc.id.goog",
+ *     },
+ *     addonsConfig: {
+ *         gkeBackupAgentConfig: {
+ *             enabled: true,
+ *         },
+ *     },
+ * });
+ * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "us-central1"});
+ * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {keyRing: keyRing.id});
+ * const cmek = new gcp.gkebackup.BackupPlan("cmek", {
+ *     cluster: primary.id,
+ *     location: "us-central1",
+ *     backupConfig: {
+ *         includeVolumeData: true,
+ *         includeSecrets: true,
+ *         selectedNamespaces: {
+ *             namespaces: [
+ *                 "default",
+ *                 "test",
+ *             ],
+ *         },
+ *         encryptionKey: {
+ *             gcpKmsEncryptionKey: cryptoKey.id,
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Gkebackup Backupplan Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.container.Cluster("primary", {
+ *     location: "us-central1",
+ *     initialNodeCount: 1,
+ *     workloadIdentityConfig: {
+ *         workloadPool: "my-project-name.svc.id.goog",
+ *     },
+ *     addonsConfig: {
+ *         gkeBackupAgentConfig: {
+ *             enabled: true,
+ *         },
+ *     },
+ * });
+ * const full = new gcp.gkebackup.BackupPlan("full", {
+ *     cluster: primary.id,
+ *     location: "us-central1",
+ *     retentionPolicy: {
+ *         backupDeleteLockDays: 30,
+ *         backupRetainDays: 180,
+ *     },
+ *     backupSchedule: {
+ *         cronSchedule: "0 9 * * 1",
+ *     },
+ *     backupConfig: {
+ *         includeVolumeData: true,
+ *         includeSecrets: true,
+ *         selectedApplications: {
+ *             namespacedNames: [
+ *                 {
+ *                     name: "app1",
+ *                     namespace: "ns1",
+ *                 },
+ *                 {
+ *                     name: "app2",
+ *                     namespace: "ns2",
+ *                 },
+ *             ],
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

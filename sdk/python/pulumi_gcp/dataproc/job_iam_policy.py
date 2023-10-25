@@ -246,6 +246,47 @@ class JobIAMPolicy(pulumi.CustomResource):
 
         > **Note:** `dataproc.JobIAMBinding` resources **can be** used in conjunction with `dataproc.JobIAMMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\\_dataproc\\_job\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        editor = gcp.dataproc.JobIAMPolicy("editor",
+            project="your-project",
+            region="your-region",
+            job_id="your-dataproc-job",
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_dataproc\\_job\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        editor = gcp.dataproc.JobIAMBinding("editor",
+            job_id="your-dataproc-job",
+            members=["user:jane@example.com"],
+            role="roles/editor")
+        ```
+
+        ## google\\_dataproc\\_job\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        editor = gcp.dataproc.JobIAMMember("editor",
+            job_id="your-dataproc-job",
+            member="user:jane@example.com",
+            role="roles/editor")
+        ```
+
         ## Import
 
         Job IAM resources can be imported using the project, region, job id, role and/or member.
@@ -292,6 +333,47 @@ class JobIAMPolicy(pulumi.CustomResource):
         > **Note:** `dataproc.JobIAMPolicy` **cannot** be used in conjunction with `dataproc.JobIAMBinding` and `dataproc.JobIAMMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the job as `dataproc.JobIAMPolicy` replaces the entire policy.
 
         > **Note:** `dataproc.JobIAMBinding` resources **can be** used in conjunction with `dataproc.JobIAMMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_dataproc\\_job\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        editor = gcp.dataproc.JobIAMPolicy("editor",
+            project="your-project",
+            region="your-region",
+            job_id="your-dataproc-job",
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_dataproc\\_job\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        editor = gcp.dataproc.JobIAMBinding("editor",
+            job_id="your-dataproc-job",
+            members=["user:jane@example.com"],
+            role="roles/editor")
+        ```
+
+        ## google\\_dataproc\\_job\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        editor = gcp.dataproc.JobIAMMember("editor",
+            job_id="your-dataproc-job",
+            member="user:jane@example.com",
+            role="roles/editor")
+        ```
 
         ## Import
 

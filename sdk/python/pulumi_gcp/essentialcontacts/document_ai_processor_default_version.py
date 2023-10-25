@@ -147,6 +147,20 @@ class DocumentAiProcessorDefaultVersion(pulumi.CustomResource):
         The default version for the processor. Deleting this resource is a no-op, and does not unset the default version.
 
         ## Example Usage
+        ### Documentai Default Version
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        processor_document_ai_processor = gcp.essentialcontacts.DocumentAiProcessor("processorDocumentAiProcessor",
+            location="us",
+            display_name="test-processor",
+            type="OCR_PROCESSOR")
+        processor_document_ai_processor_default_version = gcp.essentialcontacts.DocumentAiProcessorDefaultVersion("processorDocumentAiProcessorDefaultVersion",
+            processor=processor_document_ai_processor.id,
+            version=processor_document_ai_processor.id.apply(lambda id: f"{id}/processorVersions/stable"))
+        ```
 
         ## Import
 
@@ -175,6 +189,20 @@ class DocumentAiProcessorDefaultVersion(pulumi.CustomResource):
         The default version for the processor. Deleting this resource is a no-op, and does not unset the default version.
 
         ## Example Usage
+        ### Documentai Default Version
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        processor_document_ai_processor = gcp.essentialcontacts.DocumentAiProcessor("processorDocumentAiProcessor",
+            location="us",
+            display_name="test-processor",
+            type="OCR_PROCESSOR")
+        processor_document_ai_processor_default_version = gcp.essentialcontacts.DocumentAiProcessorDefaultVersion("processorDocumentAiProcessorDefaultVersion",
+            processor=processor_document_ai_processor.id,
+            version=processor_document_ai_processor.id.apply(lambda id: f"{id}/processorVersions/stable"))
+        ```
 
         ## Import
 

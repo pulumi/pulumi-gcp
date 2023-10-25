@@ -13,6 +13,47 @@ import (
 )
 
 // This data source provides a [self-signed JWT](https://cloud.google.com/iam/docs/create-short-lived-credentials-direct#sa-credentials-jwt).  Tokens issued from this data source are typically used to call external services that accept JWTs for authentication.
+//
+// ## Example Usage
+//
+// Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `targetServiceAccount`.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"foo": "bar",
+//				"sub": "subject",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			foo, err := serviceAccount.GetAccountJwt(ctx, &serviceaccount.GetAccountJwtArgs{
+//				TargetServiceAccount: "impersonated-account@project.iam.gserviceaccount.com",
+//				Payload:              json0,
+//				ExpiresIn:            pulumi.IntRef(60),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("jwt", foo.Jwt)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAccountJwt(ctx *pulumi.Context, args *GetAccountJwtArgs, opts ...pulumi.InvokeOption) (*GetAccountJwtResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountJwtResult

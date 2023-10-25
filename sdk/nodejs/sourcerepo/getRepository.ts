@@ -11,6 +11,17 @@ import * as utilities from "../utilities";
  * For more information see [the official documentation](https://cloud.google.com/source-repositories)
  * and
  * [API](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-repo = gcp.sourcerepo.getRepository({
+ *     name: "my-repository",
+ * });
+ * ```
  */
 export function getRepository(args: GetRepositoryArgs, opts?: pulumi.InvokeOptions): Promise<GetRepositoryResult> {
 
@@ -54,6 +65,17 @@ export interface GetRepositoryResult {
  * For more information see [the official documentation](https://cloud.google.com/source-repositories)
  * and
  * [API](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-repo = gcp.sourcerepo.getRepository({
+ *     name: "my-repository",
+ * });
+ * ```
  */
 export function getRepositoryOutput(args: GetRepositoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepositoryResult> {
     return pulumi.output(args).apply((a: any) => getRepository(a, opts))

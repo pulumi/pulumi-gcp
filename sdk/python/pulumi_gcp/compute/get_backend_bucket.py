@@ -150,6 +150,15 @@ def get_backend_bucket(name: Optional[str] = None,
     """
     Get information about a BackendBucket.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_backend_bucket = gcp.compute.get_backend_bucket(name="my-backend")
+    ```
+
 
     :param str name: Name of the resource.
            
@@ -184,6 +193,15 @@ def get_backend_bucket_output(name: Optional[pulumi.Input[str]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackendBucketResult]:
     """
     Get information about a BackendBucket.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_backend_bucket = gcp.compute.get_backend_bucket(name="my-backend")
+    ```
 
 
     :param str name: Name of the resource.

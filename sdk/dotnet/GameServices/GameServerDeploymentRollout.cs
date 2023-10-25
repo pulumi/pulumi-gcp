@@ -20,6 +20,84 @@ namespace Pulumi.Gcp.GameServices
     ///     * [Official Documentation](https://cloud.google.com/game-servers/docs)
     /// 
     /// ## Example Usage
+    /// ### Game Service Deployment Rollout Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultGameServerDeployment = new Gcp.GameServices.GameServerDeployment("defaultGameServerDeployment", new()
+    ///     {
+    ///         DeploymentId = "tf-test-deployment",
+    ///         Description = "a deployment description",
+    ///     });
+    /// 
+    ///     var defaultGameServerConfig = new Gcp.GameServices.GameServerConfig("defaultGameServerConfig", new()
+    ///     {
+    ///         ConfigId = "tf-test-config",
+    ///         DeploymentId = defaultGameServerDeployment.DeploymentId,
+    ///         Description = "a config description",
+    ///         FleetConfigs = new[]
+    ///         {
+    ///             new Gcp.GameServices.Inputs.GameServerConfigFleetConfigArgs
+    ///             {
+    ///                 Name = "some-non-guid",
+    ///                 FleetSpec = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["replicas"] = 1,
+    ///                     ["scheduling"] = "Packed",
+    ///                     ["template"] = new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["metadata"] = new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             ["name"] = "tf-test-game-server-template",
+    ///                         },
+    ///                         ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             ["ports"] = new[]
+    ///                             {
+    ///                                 new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["name"] = "default",
+    ///                                     ["portPolicy"] = "Dynamic",
+    ///                                     ["containerPort"] = 7654,
+    ///                                     ["protocol"] = "UDP",
+    ///                                 },
+    ///                             },
+    ///                             ["template"] = new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["containers"] = new[]
+    ///                                     {
+    ///                                         new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["name"] = "simple-udp-server",
+    ///                                             ["image"] = "gcr.io/agones-images/udp-server:0.14",
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 }),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultGameServerDeploymentRollout = new Gcp.GameServices.GameServerDeploymentRollout("defaultGameServerDeploymentRollout", new()
+    ///     {
+    ///         DeploymentId = defaultGameServerDeployment.DeploymentId,
+    ///         DefaultGameServerConfig = defaultGameServerConfig.Name,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

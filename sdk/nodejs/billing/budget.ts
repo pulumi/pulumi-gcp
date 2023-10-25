@@ -22,6 +22,183 @@ import * as utilities from "../utilities";
  * `billingProject` you defined.
  *
  * ## Example Usage
+ * ### Billing Budget Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const account = gcp.organizations.getBillingAccount({
+ *     billingAccount: "000000-0000000-0000000-000000",
+ * });
+ * const budget = new gcp.billing.Budget("budget", {
+ *     billingAccount: account.then(account => account.id),
+ *     displayName: "Example Billing Budget",
+ *     amount: {
+ *         specifiedAmount: {
+ *             currencyCode: "USD",
+ *             units: "100000",
+ *         },
+ *     },
+ *     thresholdRules: [{
+ *         thresholdPercent: 0.5,
+ *     }],
+ * });
+ * ```
+ * ### Billing Budget Lastperiod
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const account = gcp.organizations.getBillingAccount({
+ *     billingAccount: "000000-0000000-0000000-000000",
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const budget = new gcp.billing.Budget("budget", {
+ *     billingAccount: account.then(account => account.id),
+ *     displayName: "Example Billing Budget",
+ *     budgetFilter: {
+ *         projects: [project.then(project => `projects/${project.number}`)],
+ *     },
+ *     amount: {
+ *         lastPeriodAmount: true,
+ *     },
+ *     thresholdRules: [{
+ *         thresholdPercent: 10,
+ *     }],
+ * });
+ * ```
+ * ### Billing Budget Filter
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const account = gcp.organizations.getBillingAccount({
+ *     billingAccount: "000000-0000000-0000000-000000",
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const budget = new gcp.billing.Budget("budget", {
+ *     billingAccount: account.then(account => account.id),
+ *     displayName: "Example Billing Budget",
+ *     budgetFilter: {
+ *         projects: [project.then(project => `projects/${project.number}`)],
+ *         creditTypesTreatment: "INCLUDE_SPECIFIED_CREDITS",
+ *         services: ["services/24E6-581D-38E5"],
+ *         creditTypes: [
+ *             "PROMOTION",
+ *             "FREE_TIER",
+ *         ],
+ *         resourceAncestors: ["organizations/123456789"],
+ *     },
+ *     amount: {
+ *         specifiedAmount: {
+ *             currencyCode: "USD",
+ *             units: "100000",
+ *         },
+ *     },
+ *     thresholdRules: [
+ *         {
+ *             thresholdPercent: 0.5,
+ *         },
+ *         {
+ *             thresholdPercent: 0.9,
+ *             spendBasis: "FORECASTED_SPEND",
+ *         },
+ *     ],
+ * });
+ * ```
+ * ### Billing Budget Notify
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const account = gcp.organizations.getBillingAccount({
+ *     billingAccount: "000000-0000000-0000000-000000",
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const notificationChannel = new gcp.monitoring.NotificationChannel("notificationChannel", {
+ *     displayName: "Example Notification Channel",
+ *     type: "email",
+ *     labels: {
+ *         email_address: "address@example.com",
+ *     },
+ * });
+ * const budget = new gcp.billing.Budget("budget", {
+ *     billingAccount: account.then(account => account.id),
+ *     displayName: "Example Billing Budget",
+ *     budgetFilter: {
+ *         projects: [project.then(project => `projects/${project.number}`)],
+ *     },
+ *     amount: {
+ *         specifiedAmount: {
+ *             currencyCode: "USD",
+ *             units: "100000",
+ *         },
+ *     },
+ *     thresholdRules: [
+ *         {
+ *             thresholdPercent: 1,
+ *         },
+ *         {
+ *             thresholdPercent: 1,
+ *             spendBasis: "FORECASTED_SPEND",
+ *         },
+ *     ],
+ *     allUpdatesRule: {
+ *         monitoringNotificationChannels: [notificationChannel.id],
+ *         disableDefaultIamRecipients: true,
+ *     },
+ * });
+ * ```
+ * ### Billing Budget Customperiod
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const account = gcp.organizations.getBillingAccount({
+ *     billingAccount: "000000-0000000-0000000-000000",
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const budget = new gcp.billing.Budget("budget", {
+ *     billingAccount: account.then(account => account.id),
+ *     displayName: "Example Billing Budget",
+ *     budgetFilter: {
+ *         projects: [project.then(project => `projects/${project.number}`)],
+ *         creditTypesTreatment: "EXCLUDE_ALL_CREDITS",
+ *         services: ["services/24E6-581D-38E5"],
+ *         customPeriod: {
+ *             startDate: {
+ *                 year: 2022,
+ *                 month: 1,
+ *                 day: 1,
+ *             },
+ *             endDate: {
+ *                 year: 2023,
+ *                 month: 12,
+ *                 day: 31,
+ *             },
+ *         },
+ *     },
+ *     amount: {
+ *         specifiedAmount: {
+ *             currencyCode: "USD",
+ *             units: "100000",
+ *         },
+ *     },
+ *     thresholdRules: [
+ *         {
+ *             thresholdPercent: 0.5,
+ *         },
+ *         {
+ *             thresholdPercent: 0.9,
+ *         },
+ *     ],
+ * });
+ * ```
  *
  * ## Import
  *

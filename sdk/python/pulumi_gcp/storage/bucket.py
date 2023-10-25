@@ -864,6 +864,72 @@ class Bucket(pulumi.CustomResource):
         determined which will require enabling the compute api.
 
         ## Example Usage
+        ### Creating A Private Bucket In Standard Storage, In The EU Region. Bucket Configured As Static Website And CORS Configurations
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        static_site = gcp.storage.Bucket("static-site",
+            cors=[gcp.storage.BucketCorArgs(
+                max_age_seconds=3600,
+                methods=[
+                    "GET",
+                    "HEAD",
+                    "PUT",
+                    "POST",
+                    "DELETE",
+                ],
+                origins=["http://image-store.com"],
+                response_headers=["*"],
+            )],
+            force_destroy=True,
+            location="EU",
+            uniform_bucket_level_access=True,
+            website=gcp.storage.BucketWebsiteArgs(
+                main_page_suffix="index.html",
+                not_found_page="404.html",
+            ))
+        ```
+        ### Life Cycle Settings For Storage Bucket Objects
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        auto_expire = gcp.storage.Bucket("auto-expire",
+            force_destroy=True,
+            lifecycle_rules=[
+                gcp.storage.BucketLifecycleRuleArgs(
+                    action=gcp.storage.BucketLifecycleRuleActionArgs(
+                        type="Delete",
+                    ),
+                    condition=gcp.storage.BucketLifecycleRuleConditionArgs(
+                        age=3,
+                    ),
+                ),
+                gcp.storage.BucketLifecycleRuleArgs(
+                    action=gcp.storage.BucketLifecycleRuleActionArgs(
+                        type="AbortIncompleteMultipartUpload",
+                    ),
+                    condition=gcp.storage.BucketLifecycleRuleConditionArgs(
+                        age=1,
+                    ),
+                ),
+            ],
+            location="US")
+        ```
+        ### Enabling Public Access Prevention
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        auto_expire = gcp.storage.Bucket("auto-expire",
+            force_destroy=True,
+            location="US",
+            public_access_prevention="enforced")
+        ```
 
         ## Import
 
@@ -927,6 +993,72 @@ class Bucket(pulumi.CustomResource):
         determined which will require enabling the compute api.
 
         ## Example Usage
+        ### Creating A Private Bucket In Standard Storage, In The EU Region. Bucket Configured As Static Website And CORS Configurations
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        static_site = gcp.storage.Bucket("static-site",
+            cors=[gcp.storage.BucketCorArgs(
+                max_age_seconds=3600,
+                methods=[
+                    "GET",
+                    "HEAD",
+                    "PUT",
+                    "POST",
+                    "DELETE",
+                ],
+                origins=["http://image-store.com"],
+                response_headers=["*"],
+            )],
+            force_destroy=True,
+            location="EU",
+            uniform_bucket_level_access=True,
+            website=gcp.storage.BucketWebsiteArgs(
+                main_page_suffix="index.html",
+                not_found_page="404.html",
+            ))
+        ```
+        ### Life Cycle Settings For Storage Bucket Objects
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        auto_expire = gcp.storage.Bucket("auto-expire",
+            force_destroy=True,
+            lifecycle_rules=[
+                gcp.storage.BucketLifecycleRuleArgs(
+                    action=gcp.storage.BucketLifecycleRuleActionArgs(
+                        type="Delete",
+                    ),
+                    condition=gcp.storage.BucketLifecycleRuleConditionArgs(
+                        age=3,
+                    ),
+                ),
+                gcp.storage.BucketLifecycleRuleArgs(
+                    action=gcp.storage.BucketLifecycleRuleActionArgs(
+                        type="AbortIncompleteMultipartUpload",
+                    ),
+                    condition=gcp.storage.BucketLifecycleRuleConditionArgs(
+                        age=1,
+                    ),
+                ),
+            ],
+            location="US")
+        ```
+        ### Enabling Public Access Prevention
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        auto_expire = gcp.storage.Bucket("auto-expire",
+            force_destroy=True,
+            location="US",
+            public_access_prevention="enforced")
+        ```
 
         ## Import
 

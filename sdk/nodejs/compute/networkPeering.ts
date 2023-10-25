@@ -15,6 +15,24 @@ import * as utilities from "../utilities";
  *
  * > Subnets IP ranges across peered VPC networks cannot overlap.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {autoCreateSubnetworks: false});
+ * const other = new gcp.compute.Network("other", {autoCreateSubnetworks: false});
+ * const peering1 = new gcp.compute.NetworkPeering("peering1", {
+ *     network: _default.selfLink,
+ *     peerNetwork: other.selfLink,
+ * });
+ * const peering2 = new gcp.compute.NetworkPeering("peering2", {
+ *     network: other.selfLink,
+ *     peerNetwork: _default.selfLink,
+ * });
+ * ```
+ *
  * ## Import
  *
  * VPC network peerings can be imported using the name and project of the primary network the peering exists in and the name of the network peering

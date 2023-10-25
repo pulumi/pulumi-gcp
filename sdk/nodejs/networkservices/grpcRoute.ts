@@ -8,6 +8,123 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### Network Services Grpc Route Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.networkservices.GrpcRoute("default", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     description: "my description",
+ *     hostnames: ["example"],
+ *     rules: [{
+ *         matches: [{
+ *             headers: [{
+ *                 key: "key",
+ *                 value: "value",
+ *             }],
+ *         }],
+ *         action: {
+ *             retryPolicy: {
+ *                 retryConditions: ["cancelled"],
+ *                 numRetries: 1,
+ *             },
+ *         },
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Network Services Grpc Route Matches And Actions
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.networkservices.GrpcRoute("default", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     description: "my description",
+ *     hostnames: ["example"],
+ *     rules: [{
+ *         matches: [
+ *             {
+ *                 headers: [{
+ *                     key: "key",
+ *                     value: "value",
+ *                 }],
+ *             },
+ *             {
+ *                 headers: [{
+ *                     key: "key",
+ *                     value: "value",
+ *                 }],
+ *                 method: {
+ *                     grpcService: "foo",
+ *                     grpcMethod: "bar",
+ *                     caseSensitive: true,
+ *                 },
+ *             },
+ *         ],
+ *         action: {
+ *             faultInjectionPolicy: {
+ *                 delay: {
+ *                     fixedDelay: "1s",
+ *                     percentage: 1,
+ *                 },
+ *                 abort: {
+ *                     httpStatus: 500,
+ *                     percentage: 1,
+ *                 },
+ *             },
+ *             retryPolicy: {
+ *                 retryConditions: ["cancelled"],
+ *                 numRetries: 1,
+ *             },
+ *         },
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Network Services Grpc Route Actions
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.networkservices.GrpcRoute("default", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     description: "my description",
+ *     hostnames: ["example"],
+ *     rules: [{
+ *         action: {
+ *             faultInjectionPolicy: {
+ *                 delay: {
+ *                     fixedDelay: "1s",
+ *                     percentage: 1,
+ *                 },
+ *                 abort: {
+ *                     httpStatus: 500,
+ *                     percentage: 1,
+ *                 },
+ *             },
+ *             retryPolicy: {
+ *                 retryConditions: ["cancelled"],
+ *                 numRetries: 1,
+ *             },
+ *         },
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

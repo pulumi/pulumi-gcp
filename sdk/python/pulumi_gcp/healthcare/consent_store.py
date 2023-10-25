@@ -307,6 +307,47 @@ class ConsentStore(pulumi.CustomResource):
             * [Creating a Consent store](https://cloud.google.com/healthcare/docs/how-tos/consent)
 
         ## Example Usage
+        ### Healthcare Consent Store Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
+        my_consent = gcp.healthcare.ConsentStore("my-consent", dataset=dataset.id)
+        ```
+        ### Healthcare Consent Store Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
+        my_consent = gcp.healthcare.ConsentStore("my-consent",
+            dataset=dataset.id,
+            enable_consent_create_on_update=True,
+            default_consent_ttl="90000s",
+            labels={
+                "label1": "labelvalue1",
+            })
+        ```
+        ### Healthcare Consent Store Iam
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
+        my_consent = gcp.healthcare.ConsentStore("my-consent", dataset=dataset.id)
+        test_account = gcp.service_account.Account("test-account",
+            account_id="my-account",
+            display_name="Test Service Account")
+        test_iam = gcp.healthcare.ConsentStoreIamMember("test-iam",
+            dataset=dataset.id,
+            consent_store_id=my_consent.name,
+            role="roles/editor",
+            member=test_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        ```
 
         ## Import
 
@@ -353,6 +394,47 @@ class ConsentStore(pulumi.CustomResource):
             * [Creating a Consent store](https://cloud.google.com/healthcare/docs/how-tos/consent)
 
         ## Example Usage
+        ### Healthcare Consent Store Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
+        my_consent = gcp.healthcare.ConsentStore("my-consent", dataset=dataset.id)
+        ```
+        ### Healthcare Consent Store Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
+        my_consent = gcp.healthcare.ConsentStore("my-consent",
+            dataset=dataset.id,
+            enable_consent_create_on_update=True,
+            default_consent_ttl="90000s",
+            labels={
+                "label1": "labelvalue1",
+            })
+        ```
+        ### Healthcare Consent Store Iam
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
+        my_consent = gcp.healthcare.ConsentStore("my-consent", dataset=dataset.id)
+        test_account = gcp.service_account.Account("test-account",
+            account_id="my-account",
+            display_name="Test Service Account")
+        test_iam = gcp.healthcare.ConsentStoreIamMember("test-iam",
+            dataset=dataset.id,
+            consent_store_id=my_consent.name,
+            role="roles/editor",
+            member=test_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        ```
 
         ## Import
 

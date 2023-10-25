@@ -6,6 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for a BigQuery dataset.
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.bigquery.getDatasetIamPolicy({
+ *     datasetId: google_bigquery_dataset.dataset.dataset_id,
+ * });
+ * ```
  */
 export function getDatasetIamPolicy(args: GetDatasetIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDatasetIamPolicyResult> {
 
@@ -52,6 +63,17 @@ export interface GetDatasetIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for a BigQuery dataset.
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.bigquery.getDatasetIamPolicy({
+ *     datasetId: google_bigquery_dataset.dataset.dataset_id,
+ * });
+ * ```
  */
 export function getDatasetIamPolicyOutput(args: GetDatasetIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatasetIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getDatasetIamPolicy(a, opts))

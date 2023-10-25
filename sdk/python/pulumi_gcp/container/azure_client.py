@@ -325,6 +325,18 @@ class AzureClient(pulumi.CustomResource):
         For more information, see:
         * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
         ## Example Usage
+        ### Basic_azure_client
+        A basic example of a containerazure azure client
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.AzureClient("primary",
+            application_id="12345678-1234-1234-1234-123456789111",
+            location="us-west1",
+            project="my-project-name",
+            tenant_id="12345678-1234-1234-1234-123456789111")
+        ```
 
         ## Import
 
@@ -366,6 +378,18 @@ class AzureClient(pulumi.CustomResource):
         For more information, see:
         * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
         ## Example Usage
+        ### Basic_azure_client
+        A basic example of a containerazure azure client
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.AzureClient("primary",
+            application_id="12345678-1234-1234-1234-123456789111",
+            location="us-west1",
+            project="my-project-name",
+            tenant_id="12345678-1234-1234-1234-123456789111")
+        ```
 
         ## Import
 

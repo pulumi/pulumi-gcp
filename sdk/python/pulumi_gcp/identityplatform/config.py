@@ -341,6 +341,65 @@ class Config(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/identity-platform/docs)
 
         ## Example Usage
+        ### Identity Platform Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_project = gcp.organizations.Project("defaultProject",
+            project_id="my-project",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000",
+            labels={
+                "firebase": "enabled",
+            })
+        identitytoolkit = gcp.projects.Service("identitytoolkit",
+            project=default_project.project_id,
+            service="identitytoolkit.googleapis.com")
+        default_config = gcp.identityplatform.Config("defaultConfig",
+            project=default_project.project_id,
+            autodelete_anonymous_users=True,
+            sign_in=gcp.identityplatform.ConfigSignInArgs(
+                allow_duplicate_emails=True,
+                anonymous=gcp.identityplatform.ConfigSignInAnonymousArgs(
+                    enabled=True,
+                ),
+                email=gcp.identityplatform.ConfigSignInEmailArgs(
+                    enabled=True,
+                    password_required=False,
+                ),
+                phone_number=gcp.identityplatform.ConfigSignInPhoneNumberArgs(
+                    enabled=True,
+                    test_phone_numbers={
+                        "+11231231234": "000000",
+                    },
+                ),
+            ),
+            blocking_functions=gcp.identityplatform.ConfigBlockingFunctionsArgs(
+                triggers=[gcp.identityplatform.ConfigBlockingFunctionsTriggerArgs(
+                    event_type="beforeSignIn",
+                    function_uri="https://us-east1-my-project.cloudfunctions.net/before-sign-in",
+                )],
+                forward_inbound_credentials=gcp.identityplatform.ConfigBlockingFunctionsForwardInboundCredentialsArgs(
+                    refresh_token=True,
+                    access_token=True,
+                    id_token=True,
+                ),
+            ),
+            quota=gcp.identityplatform.ConfigQuotaArgs(
+                sign_up_quota_config=gcp.identityplatform.ConfigQuotaSignUpQuotaConfigArgs(
+                    quota=1000,
+                    start_time="",
+                    quota_duration="7200s",
+                ),
+            ),
+            authorized_domains=[
+                "localhost",
+                "my-project.firebaseapp.com",
+                "my-project.web.app",
+            ])
+        ```
 
         ## Import
 
@@ -393,6 +452,65 @@ class Config(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/identity-platform/docs)
 
         ## Example Usage
+        ### Identity Platform Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_project = gcp.organizations.Project("defaultProject",
+            project_id="my-project",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000",
+            labels={
+                "firebase": "enabled",
+            })
+        identitytoolkit = gcp.projects.Service("identitytoolkit",
+            project=default_project.project_id,
+            service="identitytoolkit.googleapis.com")
+        default_config = gcp.identityplatform.Config("defaultConfig",
+            project=default_project.project_id,
+            autodelete_anonymous_users=True,
+            sign_in=gcp.identityplatform.ConfigSignInArgs(
+                allow_duplicate_emails=True,
+                anonymous=gcp.identityplatform.ConfigSignInAnonymousArgs(
+                    enabled=True,
+                ),
+                email=gcp.identityplatform.ConfigSignInEmailArgs(
+                    enabled=True,
+                    password_required=False,
+                ),
+                phone_number=gcp.identityplatform.ConfigSignInPhoneNumberArgs(
+                    enabled=True,
+                    test_phone_numbers={
+                        "+11231231234": "000000",
+                    },
+                ),
+            ),
+            blocking_functions=gcp.identityplatform.ConfigBlockingFunctionsArgs(
+                triggers=[gcp.identityplatform.ConfigBlockingFunctionsTriggerArgs(
+                    event_type="beforeSignIn",
+                    function_uri="https://us-east1-my-project.cloudfunctions.net/before-sign-in",
+                )],
+                forward_inbound_credentials=gcp.identityplatform.ConfigBlockingFunctionsForwardInboundCredentialsArgs(
+                    refresh_token=True,
+                    access_token=True,
+                    id_token=True,
+                ),
+            ),
+            quota=gcp.identityplatform.ConfigQuotaArgs(
+                sign_up_quota_config=gcp.identityplatform.ConfigQuotaSignUpQuotaConfigArgs(
+                    quota=1000,
+                    start_time="",
+                    quota_duration="7200s",
+                ),
+            ),
+            authorized_domains=[
+                "localhost",
+                "my-project.firebaseapp.com",
+                "my-project.web.app",
+            ])
+        ```
 
         ## Import
 

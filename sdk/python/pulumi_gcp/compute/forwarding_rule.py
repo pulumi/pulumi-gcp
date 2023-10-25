@@ -1813,6 +1813,43 @@ class ForwardingRule(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
 
         ## Example Usage
+        ### Forwarding Rule Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_target_pool = gcp.compute.TargetPool("defaultTargetPool")
+        default_forwarding_rule = gcp.compute.ForwardingRule("defaultForwardingRule",
+            target=default_target_pool.id,
+            port_range="80")
+        ```
+        ### Forwarding Rule Regional Steering
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.compute.Address("basic", region="us-central1")
+        external_region_backend_service = gcp.compute.RegionBackendService("externalRegionBackendService",
+            region="us-central1",
+            load_balancing_scheme="EXTERNAL")
+        external_forwarding_rule = gcp.compute.ForwardingRule("externalForwardingRule",
+            region="us-central1",
+            ip_address=basic.self_link,
+            backend_service=external_region_backend_service.self_link,
+            load_balancing_scheme="EXTERNAL")
+        steering = gcp.compute.ForwardingRule("steering",
+            region="us-central1",
+            ip_address=basic.self_link,
+            backend_service=external_region_backend_service.self_link,
+            load_balancing_scheme="EXTERNAL",
+            source_ip_ranges=[
+                "34.121.88.0/24",
+                "35.187.239.137",
+            ],
+            opts=pulumi.ResourceOptions(depends_on=[external_forwarding_rule]))
+        ```
 
         ## Import
 
@@ -2043,6 +2080,43 @@ class ForwardingRule(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
 
         ## Example Usage
+        ### Forwarding Rule Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_target_pool = gcp.compute.TargetPool("defaultTargetPool")
+        default_forwarding_rule = gcp.compute.ForwardingRule("defaultForwardingRule",
+            target=default_target_pool.id,
+            port_range="80")
+        ```
+        ### Forwarding Rule Regional Steering
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.compute.Address("basic", region="us-central1")
+        external_region_backend_service = gcp.compute.RegionBackendService("externalRegionBackendService",
+            region="us-central1",
+            load_balancing_scheme="EXTERNAL")
+        external_forwarding_rule = gcp.compute.ForwardingRule("externalForwardingRule",
+            region="us-central1",
+            ip_address=basic.self_link,
+            backend_service=external_region_backend_service.self_link,
+            load_balancing_scheme="EXTERNAL")
+        steering = gcp.compute.ForwardingRule("steering",
+            region="us-central1",
+            ip_address=basic.self_link,
+            backend_service=external_region_backend_service.self_link,
+            load_balancing_scheme="EXTERNAL",
+            source_ip_ranges=[
+                "34.121.88.0/24",
+                "35.187.239.137",
+            ],
+            opts=pulumi.ResourceOptions(depends_on=[external_forwarding_rule]))
+        ```
 
         ## Import
 

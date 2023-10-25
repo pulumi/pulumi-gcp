@@ -19,6 +19,407 @@ namespace Pulumi.Gcp.CloudRunV2
     ///     * [Official Documentation](https://cloud.google.com/run/docs/)
     /// 
     /// ## Example Usage
+    /// ### Cloudrunv2 Job Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRunV2.Job("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
+    ///         {
+    ///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs
+    ///             {
+    ///                 Containers = new[]
+    ///                 {
+    ///                     new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerArgs
+    ///                     {
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudrunv2 Job Sql
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var secret = new Gcp.SecretManager.Secret("secret", new()
+    ///     {
+    ///         SecretId = "secret",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         DatabaseVersion = "MYSQL_5_7",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-f1-micro",
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.CloudRunV2.Job("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
+    ///         {
+    ///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs
+    ///             {
+    ///                 Volumes = new[]
+    ///                 {
+    ///                     new Gcp.CloudRunV2.Inputs.JobTemplateTemplateVolumeArgs
+    ///                     {
+    ///                         Name = "cloudsql",
+    ///                         CloudSqlInstance = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateVolumeCloudSqlInstanceArgs
+    ///                         {
+    ///                             Instances = new[]
+    ///                             {
+    ///                                 instance.ConnectionName,
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Containers = new[]
+    ///                 {
+    ///                     new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerArgs
+    ///                     {
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                         Envs = new[]
+    ///                         {
+    ///                             new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerEnvArgs
+    ///                             {
+    ///                                 Name = "FOO",
+    ///                                 Value = "bar",
+    ///                             },
+    ///                             new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerEnvArgs
+    ///                             {
+    ///                                 Name = "latestdclsecret",
+    ///                                 ValueSource = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerEnvValueSourceArgs
+    ///                                 {
+    ///                                     SecretKeyRef = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs
+    ///                                     {
+    ///                                         Secret = secret.SecretId,
+    ///                                         Version = "1",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                         VolumeMounts = new[]
+    ///                         {
+    ///                             new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerVolumeMountArgs
+    ///                             {
+    ///                                 Name = "cloudsql",
+    ///                                 MountPath = "/cloudsql",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var secret_version_data = new Gcp.SecretManager.SecretVersion("secret-version-data", new()
+    ///     {
+    ///         Secret = secret.Name,
+    ///         SecretData = "secret-data",
+    ///     });
+    /// 
+    ///     var secret_access = new Gcp.SecretManager.SecretIamMember("secret-access", new()
+    ///     {
+    ///         SecretId = secret.Id,
+    ///         Role = "roles/secretmanager.secretAccessor",
+    ///         Member = $"serviceAccount:{project.Apply(getProjectResult =&gt; getProjectResult.Number)}-compute@developer.gserviceaccount.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             secret,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudrunv2 Job Vpcaccess
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var customTestNetwork = new Gcp.Compute.Network("customTestNetwork", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var customTestSubnetwork = new Gcp.Compute.Subnetwork("customTestSubnetwork", new()
+    ///     {
+    ///         IpCidrRange = "10.2.0.0/28",
+    ///         Region = "us-central1",
+    ///         Network = customTestNetwork.Id,
+    ///     });
+    /// 
+    ///     var connector = new Gcp.VpcAccess.Connector("connector", new()
+    ///     {
+    ///         Subnet = new Gcp.VpcAccess.Inputs.ConnectorSubnetArgs
+    ///         {
+    ///             Name = customTestSubnetwork.Name,
+    ///         },
+    ///         MachineType = "e2-standard-4",
+    ///         MinInstances = 2,
+    ///         MaxInstances = 3,
+    ///         Region = "us-central1",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.CloudRunV2.Job("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
+    ///         {
+    ///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs
+    ///             {
+    ///                 Containers = new[]
+    ///                 {
+    ///                     new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerArgs
+    ///                     {
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                     },
+    ///                 },
+    ///                 VpcAccess = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateVpcAccessArgs
+    ///                 {
+    ///                     Connector = connector.Id,
+    ///                     Egress = "ALL_TRAFFIC",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudrunv2 Job Directvpc
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRunV2.Job("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         LaunchStage = "BETA",
+    ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
+    ///         {
+    ///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs
+    ///             {
+    ///                 Containers = new[]
+    ///                 {
+    ///                     new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerArgs
+    ///                     {
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/job",
+    ///                     },
+    ///                 },
+    ///                 VpcAccess = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateVpcAccessArgs
+    ///                 {
+    ///                     NetworkInterfaces = new[]
+    ///                     {
+    ///                         new Gcp.CloudRunV2.Inputs.JobTemplateTemplateVpcAccessNetworkInterfaceArgs
+    ///                         {
+    ///                             Network = "default",
+    ///                             Subnetwork = "default",
+    ///                             Tags = new[]
+    ///                             {
+    ///                                 "tag1",
+    ///                                 "tag2",
+    ///                                 "tag3",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     Egress = "ALL_TRAFFIC",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudrunv2 Job Secret
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var secret = new Gcp.SecretManager.Secret("secret", new()
+    ///     {
+    ///         SecretId = "secret",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var secret_version_data = new Gcp.SecretManager.SecretVersion("secret-version-data", new()
+    ///     {
+    ///         Secret = secret.Name,
+    ///         SecretData = "secret-data",
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var secret_access = new Gcp.SecretManager.SecretIamMember("secret-access", new()
+    ///     {
+    ///         SecretId = secret.Id,
+    ///         Role = "roles/secretmanager.secretAccessor",
+    ///         Member = $"serviceAccount:{project.Apply(getProjectResult =&gt; getProjectResult.Number)}-compute@developer.gserviceaccount.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             secret,
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.CloudRunV2.Job("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
+    ///         {
+    ///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs
+    ///             {
+    ///                 Volumes = new[]
+    ///                 {
+    ///                     new Gcp.CloudRunV2.Inputs.JobTemplateTemplateVolumeArgs
+    ///                     {
+    ///                         Name = "a-volume",
+    ///                         Secret = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateVolumeSecretArgs
+    ///                         {
+    ///                             Secret = secret.SecretId,
+    ///                             DefaultMode = 292,
+    ///                             Items = new[]
+    ///                             {
+    ///                                 new Gcp.CloudRunV2.Inputs.JobTemplateTemplateVolumeSecretItemArgs
+    ///                                 {
+    ///                                     Version = "1",
+    ///                                     Path = "my-secret",
+    ///                                     Mode = 256,
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Containers = new[]
+    ///                 {
+    ///                     new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerArgs
+    ///                     {
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                         VolumeMounts = new[]
+    ///                         {
+    ///                             new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerVolumeMountArgs
+    ///                             {
+    ///                                 Name = "a-volume",
+    ///                                 MountPath = "/secrets",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             secret_version_data,
+    ///             secret_access,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudrunv2 Job Emptydir
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRunV2.Job("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         LaunchStage = "BETA",
+    ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
+    ///         {
+    ///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs
+    ///             {
+    ///                 Containers = new[]
+    ///                 {
+    ///                     new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerArgs
+    ///                     {
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                         VolumeMounts = new[]
+    ///                         {
+    ///                             new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerVolumeMountArgs
+    ///                             {
+    ///                                 Name = "empty-dir-volume",
+    ///                                 MountPath = "/mnt",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Volumes = new[]
+    ///                 {
+    ///                     new Gcp.CloudRunV2.Inputs.JobTemplateTemplateVolumeArgs
+    ///                     {
+    ///                         Name = "empty-dir-volume",
+    ///                         EmptyDir = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateVolumeEmptyDirArgs
+    ///                         {
+    ///                             Medium = "MEMORY",
+    ///                             SizeLimit = "128Mi",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -29,6 +29,94 @@ import (
 //   - [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 //
 // ## Example Usage
+// ### Monitoring Slo Appengine
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := monitoring.GetAppEngineService(ctx, &monitoring.GetAppEngineServiceArgs{
+//				ModuleId: "default",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = monitoring.NewSlo(ctx, "appengSlo", &monitoring.SloArgs{
+//				Service:        *pulumi.String(_default.ServiceId),
+//				SloId:          pulumi.String("ae-slo"),
+//				DisplayName:    pulumi.String("Test SLO for App Engine"),
+//				Goal:           pulumi.Float64(0.9),
+//				CalendarPeriod: pulumi.String("DAY"),
+//				BasicSli: &monitoring.SloBasicSliArgs{
+//					Latency: &monitoring.SloBasicSliLatencyArgs{
+//						Threshold: pulumi.String("1s"),
+//					},
+//				},
+//				UserLabels: pulumi.StringMap{
+//					"my_key":       pulumi.String("my_value"),
+//					"my_other_key": pulumi.String("my_other_value"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Monitoring Slo Request Based
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			customsrv, err := monitoring.NewCustomService(ctx, "customsrv", &monitoring.CustomServiceArgs{
+//				ServiceId:   pulumi.String("custom-srv-request-slos"),
+//				DisplayName: pulumi.String("My Custom Service"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = monitoring.NewSlo(ctx, "requestBasedSlo", &monitoring.SloArgs{
+//				Service:           customsrv.ServiceId,
+//				SloId:             pulumi.String("consumed-api-slo"),
+//				DisplayName:       pulumi.String("Test SLO with request based SLI (good total ratio)"),
+//				Goal:              pulumi.Float64(0.9),
+//				RollingPeriodDays: pulumi.Int(30),
+//				RequestBasedSli: &monitoring.SloRequestBasedSliArgs{
+//					DistributionCut: &monitoring.SloRequestBasedSliDistributionCutArgs{
+//						DistributionFilter: pulumi.String("metric.type=\"serviceruntime.googleapis.com/api/request_latencies\" resource.type=\"api\"  "),
+//						Range: &monitoring.SloRequestBasedSliDistributionCutRangeArgs{
+//							Max: pulumi.Float64(0.5),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

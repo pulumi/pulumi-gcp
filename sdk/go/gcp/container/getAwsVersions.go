@@ -13,6 +13,34 @@ import (
 )
 
 // Provides access to available Kubernetes versions in a location for a given project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := container.GetAwsVersions(ctx, &container.GetAwsVersionsArgs{
+//				Location: pulumi.StringRef("us-west1"),
+//				Project:  pulumi.StringRef("my-project"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstAvailableVersion", data.Google_container_aws_versions.Versions.Valid_versions[0])
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAwsVersions(ctx *pulumi.Context, args *GetAwsVersionsArgs, opts ...pulumi.InvokeOption) (*GetAwsVersionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAwsVersionsResult

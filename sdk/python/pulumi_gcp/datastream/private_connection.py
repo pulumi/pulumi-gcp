@@ -369,6 +369,25 @@ class PrivateConnection(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/datastream/docs/create-a-private-connectivity-configuration)
 
         ## Example Usage
+        ### Datastream Private Connection Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork")
+        default_private_connection = gcp.datastream.PrivateConnection("defaultPrivateConnection",
+            display_name="Connection profile",
+            location="us-central1",
+            private_connection_id="my-connection",
+            labels={
+                "key": "value",
+            },
+            vpc_peering_config=gcp.datastream.PrivateConnectionVpcPeeringConfigArgs(
+                vpc=default_network.id,
+                subnet="10.0.0.0/29",
+            ))
+        ```
 
         ## Import
 
@@ -414,6 +433,25 @@ class PrivateConnection(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/datastream/docs/create-a-private-connectivity-configuration)
 
         ## Example Usage
+        ### Datastream Private Connection Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork")
+        default_private_connection = gcp.datastream.PrivateConnection("defaultPrivateConnection",
+            display_name="Connection profile",
+            location="us-central1",
+            private_connection_id="my-connection",
+            labels={
+                "key": "value",
+            },
+            vpc_peering_config=gcp.datastream.PrivateConnectionVpcPeeringConfigArgs(
+                vpc=default_network.id,
+                subnet="10.0.0.0/29",
+            ))
+        ```
 
         ## Import
 

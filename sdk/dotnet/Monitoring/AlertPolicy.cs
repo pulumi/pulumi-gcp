@@ -21,6 +21,140 @@ namespace Pulumi.Gcp.Monitoring
     ///     * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
     /// 
     /// ## Example Usage
+    /// ### Monitoring Alert Policy Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var alertPolicy = new Gcp.Monitoring.AlertPolicy("alertPolicy", new()
+    ///     {
+    ///         Combiner = "OR",
+    ///         Conditions = new[]
+    ///         {
+    ///             new Gcp.Monitoring.Inputs.AlertPolicyConditionArgs
+    ///             {
+    ///                 ConditionThreshold = new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdArgs
+    ///                 {
+    ///                     Aggregations = new[]
+    ///                     {
+    ///                         new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdAggregationArgs
+    ///                         {
+    ///                             AlignmentPeriod = "60s",
+    ///                             PerSeriesAligner = "ALIGN_RATE",
+    ///                         },
+    ///                     },
+    ///                     Comparison = "COMPARISON_GT",
+    ///                     Duration = "60s",
+    ///                     Filter = "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
+    ///                 },
+    ///                 DisplayName = "test condition",
+    ///             },
+    ///         },
+    ///         DisplayName = "My Alert Policy",
+    ///         UserLabels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Monitoring Alert Policy Evaluation Missing Data
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var alertPolicy = new Gcp.Monitoring.AlertPolicy("alertPolicy", new()
+    ///     {
+    ///         Combiner = "OR",
+    ///         Conditions = new[]
+    ///         {
+    ///             new Gcp.Monitoring.Inputs.AlertPolicyConditionArgs
+    ///             {
+    ///                 ConditionThreshold = new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdArgs
+    ///                 {
+    ///                     Aggregations = new[]
+    ///                     {
+    ///                         new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdAggregationArgs
+    ///                         {
+    ///                             AlignmentPeriod = "60s",
+    ///                             PerSeriesAligner = "ALIGN_RATE",
+    ///                         },
+    ///                     },
+    ///                     Comparison = "COMPARISON_GT",
+    ///                     Duration = "60s",
+    ///                     EvaluationMissingData = "EVALUATION_MISSING_DATA_INACTIVE",
+    ///                     Filter = "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
+    ///                 },
+    ///                 DisplayName = "test condition",
+    ///             },
+    ///         },
+    ///         DisplayName = "My Alert Policy",
+    ///         UserLabels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Monitoring Alert Policy Forecast Options
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var alertPolicy = new Gcp.Monitoring.AlertPolicy("alertPolicy", new()
+    ///     {
+    ///         Combiner = "OR",
+    ///         Conditions = new[]
+    ///         {
+    ///             new Gcp.Monitoring.Inputs.AlertPolicyConditionArgs
+    ///             {
+    ///                 ConditionThreshold = new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdArgs
+    ///                 {
+    ///                     Aggregations = new[]
+    ///                     {
+    ///                         new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdAggregationArgs
+    ///                         {
+    ///                             AlignmentPeriod = "60s",
+    ///                             PerSeriesAligner = "ALIGN_RATE",
+    ///                         },
+    ///                     },
+    ///                     Comparison = "COMPARISON_GT",
+    ///                     Duration = "60s",
+    ///                     Filter = "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
+    ///                     ForecastOptions = new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdForecastOptionsArgs
+    ///                     {
+    ///                         ForecastHorizon = "3600s",
+    ///                     },
+    ///                 },
+    ///                 DisplayName = "test condition",
+    ///             },
+    ///         },
+    ///         DisplayName = "My Alert Policy",
+    ///         UserLabels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

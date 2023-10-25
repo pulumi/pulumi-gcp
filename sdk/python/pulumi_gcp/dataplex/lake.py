@@ -473,6 +473,21 @@ class Lake(pulumi.CustomResource):
         The Dataplex Lake resource
 
         ## Example Usage
+        ### Basic_lake
+        A basic example of a dataplex lake
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.dataplex.Lake("primary",
+            description="Lake for DCL",
+            display_name="Lake for DCL",
+            labels={
+                "my-lake": "exists",
+            },
+            location="us-west1",
+            project="my-project-name")
+        ```
 
         ## Import
 
@@ -514,6 +529,21 @@ class Lake(pulumi.CustomResource):
         The Dataplex Lake resource
 
         ## Example Usage
+        ### Basic_lake
+        A basic example of a dataplex lake
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.dataplex.Lake("primary",
+            description="Lake for DCL",
+            display_name="Lake for DCL",
+            labels={
+                "my-lake": "exists",
+            },
+            location="us-west1",
+            project="my-project-name")
+        ```
 
         ## Import
 

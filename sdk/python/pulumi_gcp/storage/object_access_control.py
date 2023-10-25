@@ -370,6 +370,22 @@ class ObjectAccessControl(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
 
         ## Example Usage
+        ### Storage Object Access Control Public Object
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket", location="US")
+        object = gcp.storage.BucketObject("object",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("../static/img/header-logo.png"))
+        public_rule = gcp.storage.ObjectAccessControl("publicRule",
+            object=object.output_name,
+            bucket=bucket.name,
+            role="READER",
+            entity="allUsers")
+        ```
 
         ## Import
 
@@ -425,6 +441,22 @@ class ObjectAccessControl(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
 
         ## Example Usage
+        ### Storage Object Access Control Public Object
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket", location="US")
+        object = gcp.storage.BucketObject("object",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("../static/img/header-logo.png"))
+        public_rule = gcp.storage.ObjectAccessControl("publicRule",
+            object=object.output_name,
+            bucket=bucket.name,
+            role="READER",
+            entity="allUsers")
+        ```
 
         ## Import
 

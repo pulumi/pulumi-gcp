@@ -360,6 +360,22 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
         ## Example Usage
+        ### Region Target Http Proxy Https Redirect
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_region_url_map = gcp.compute.RegionUrlMap("defaultRegionUrlMap",
+            region="us-central1",
+            default_url_redirect=gcp.compute.RegionUrlMapDefaultUrlRedirectArgs(
+                https_redirect=True,
+                strip_query=False,
+            ))
+        default_region_target_http_proxy = gcp.compute.RegionTargetHttpProxy("defaultRegionTargetHttpProxy",
+            region="us-central1",
+            url_map=default_region_url_map.id)
+        ```
 
         ## Import
 
@@ -418,6 +434,22 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
         ## Example Usage
+        ### Region Target Http Proxy Https Redirect
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_region_url_map = gcp.compute.RegionUrlMap("defaultRegionUrlMap",
+            region="us-central1",
+            default_url_redirect=gcp.compute.RegionUrlMapDefaultUrlRedirectArgs(
+                https_redirect=True,
+                strip_query=False,
+            ))
+        default_region_target_http_proxy = gcp.compute.RegionTargetHttpProxy("defaultRegionTargetHttpProxy",
+            region="us-central1",
+            url_map=default_region_url_map.id)
+        ```
 
         ## Import
 

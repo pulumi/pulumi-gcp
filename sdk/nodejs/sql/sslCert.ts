@@ -9,6 +9,28 @@ import * as utilities from "../utilities";
  *
  * > **Note:** All arguments including the private key will be stored in the raw state as plain-text
  *
+ * ## Example Usage
+ *
+ * Example creating a SQL Client Certificate.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
+ *
+ * const dbNameSuffix = new random.RandomId("dbNameSuffix", {byteLength: 4});
+ * const main = new gcp.sql.DatabaseInstance("main", {
+ *     databaseVersion: "MYSQL_5_7",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *     },
+ * });
+ * const clientCert = new gcp.sql.SslCert("clientCert", {
+ *     commonName: "client-name",
+ *     instance: main.name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Since the contents of the certificate cannot be accessed after its creation, this resource cannot be imported.

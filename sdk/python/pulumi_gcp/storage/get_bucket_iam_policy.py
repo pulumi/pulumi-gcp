@@ -83,6 +83,15 @@ def get_bucket_iam_policy(bucket: Optional[str] = None,
     """
     Retrieves the current IAM policy data for bucket
 
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.storage.get_bucket_iam_policy(bucket=google_storage_bucket["default"]["name"])
+    ```
+
 
     :param str bucket: Used to find the parent resource to bind the IAM policy to
     """
@@ -103,6 +112,15 @@ def get_bucket_iam_policy_output(bucket: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBucketIamPolicyResult]:
     """
     Retrieves the current IAM policy data for bucket
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.storage.get_bucket_iam_policy(bucket=google_storage_bucket["default"]["name"])
+    ```
 
 
     :param str bucket: Used to find the parent resource to bind the IAM policy to

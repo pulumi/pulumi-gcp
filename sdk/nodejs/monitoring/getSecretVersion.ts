@@ -6,6 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Get the value and metadata from a Secret Manager secret version. For more information see the official documentation datasource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = gcp.secretmanager.getSecretVersion({
+ *     secret: "my-secret",
+ * });
+ * ```
  */
 /** @deprecated gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion */
 export function getSecretVersion(args: GetSecretVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretVersionResult> {
@@ -74,6 +85,17 @@ export interface GetSecretVersionResult {
 }
 /**
  * Get the value and metadata from a Secret Manager secret version. For more information see the official documentation datasource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = gcp.secretmanager.getSecretVersion({
+ *     secret: "my-secret",
+ * });
+ * ```
  */
 /** @deprecated gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion */
 export function getSecretVersionOutput(args: GetSecretVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretVersionResult> {

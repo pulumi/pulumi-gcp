@@ -25,6 +25,31 @@ namespace Pulumi.Gcp.EssentialContacts
     /// `billing_project` you defined.
     /// 
     /// ## Example Usage
+    /// ### Essential Contact
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var contact = new Gcp.EssentialContacts.Contact("contact", new()
+    ///     {
+    ///         Parent = project.Apply(getProjectResult =&gt; getProjectResult.Id),
+    ///         Email = "foo@bar.com",
+    ///         LanguageTag = "en-GB",
+    ///         NotificationCategorySubscriptions = new[]
+    ///         {
+    ///             "ALL",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

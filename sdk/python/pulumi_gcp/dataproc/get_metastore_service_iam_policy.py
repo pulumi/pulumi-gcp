@@ -103,6 +103,17 @@ def get_metastore_service_iam_policy(location: Optional[str] = None,
     """
     Retrieves the current IAM policy data for service
 
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.dataproc.get_metastore_service_iam_policy(project=google_dataproc_metastore_service["default"]["project"],
+        location=google_dataproc_metastore_service["default"]["location"],
+        service_id=google_dataproc_metastore_service["default"]["service_id"])
+    ```
+
 
     :param str location: The location where the metastore service should reside.
            The default value is `global`.
@@ -133,6 +144,17 @@ def get_metastore_service_iam_policy_output(location: Optional[pulumi.Input[Opti
                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMetastoreServiceIamPolicyResult]:
     """
     Retrieves the current IAM policy data for service
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.dataproc.get_metastore_service_iam_policy(project=google_dataproc_metastore_service["default"]["project"],
+        location=google_dataproc_metastore_service["default"]["location"],
+        service_id=google_dataproc_metastore_service["default"]["service_id"])
+    ```
 
 
     :param str location: The location where the metastore service should reside.

@@ -13,6 +13,28 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// The NetworkConnectivity Hub resource
     /// 
     /// ## Example Usage
+    /// ### Basic_hub
+    /// A basic test of a networkconnectivity hub
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.NetworkConnectivity.Hub("primary", new()
+    ///     {
+    ///         Description = "A sample hub",
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

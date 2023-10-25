@@ -12,6 +12,253 @@ import * as utilities from "../utilities";
  * > **Warning:** These resources require allow-listing to use, and are not openly available to all Cloud customers. Engage with your Cloud account team to discuss how to onboard.
  *
  * ## Example Usage
+ * ### Network Services Edge Cache Service Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dest = new gcp.storage.Bucket("dest", {
+ *     location: "US",
+ *     forceDestroy: true,
+ * });
+ * const instanceEdgeCacheOrigin = new gcp.networkservices.EdgeCacheOrigin("instanceEdgeCacheOrigin", {
+ *     originAddress: dest.url,
+ *     description: "The default bucket for media edge test",
+ *     maxAttempts: 2,
+ *     timeout: {
+ *         connectTimeout: "10s",
+ *     },
+ * });
+ * const instanceEdgeCacheService = new gcp.networkservices.EdgeCacheService("instanceEdgeCacheService", {
+ *     description: "some description",
+ *     routing: {
+ *         hostRules: [{
+ *             description: "host rule description",
+ *             hosts: ["sslcert.tf-test.club"],
+ *             pathMatcher: "routes",
+ *         }],
+ *         pathMatchers: [{
+ *             name: "routes",
+ *             routeRules: [{
+ *                 description: "a route rule to match against",
+ *                 priority: "1",
+ *                 matchRules: [{
+ *                     prefixMatch: "/",
+ *                 }],
+ *                 origin: instanceEdgeCacheOrigin.name,
+ *                 routeAction: {
+ *                     cdnPolicy: {
+ *                         cacheMode: "CACHE_ALL_STATIC",
+ *                         defaultTtl: "3600s",
+ *                     },
+ *                 },
+ *                 headerAction: {
+ *                     responseHeaderToAdds: [{
+ *                         headerName: "x-cache-status",
+ *                         headerValue: "{cdn_cache_status}",
+ *                     }],
+ *                 },
+ *             }],
+ *         }],
+ *     },
+ * });
+ * ```
+ * ### Network Services Edge Cache Service Advanced
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dest = new gcp.storage.Bucket("dest", {
+ *     location: "US",
+ *     forceDestroy: true,
+ * });
+ * const google = new gcp.networkservices.EdgeCacheOrigin("google", {
+ *     originAddress: "google.com",
+ *     description: "The default bucket for media edge test",
+ *     maxAttempts: 2,
+ *     timeout: {
+ *         connectTimeout: "10s",
+ *     },
+ * });
+ * const instanceEdgeCacheOrigin = new gcp.networkservices.EdgeCacheOrigin("instanceEdgeCacheOrigin", {
+ *     originAddress: dest.url,
+ *     description: "The default bucket for media edge test",
+ *     maxAttempts: 2,
+ *     timeout: {
+ *         connectTimeout: "10s",
+ *     },
+ * });
+ * const instanceEdgeCacheService = new gcp.networkservices.EdgeCacheService("instanceEdgeCacheService", {
+ *     description: "some description",
+ *     disableQuic: true,
+ *     disableHttp2: true,
+ *     labels: {
+ *         a: "b",
+ *     },
+ *     routing: {
+ *         hostRules: [
+ *             {
+ *                 description: "host rule description",
+ *                 hosts: ["sslcert.tf-test.club"],
+ *                 pathMatcher: "routes",
+ *             },
+ *             {
+ *                 description: "host rule2",
+ *                 hosts: ["sslcert.tf-test2.club"],
+ *                 pathMatcher: "routes",
+ *             },
+ *             {
+ *                 description: "host rule3",
+ *                 hosts: ["sslcert.tf-test3.club"],
+ *                 pathMatcher: "routesAdvanced",
+ *             },
+ *         ],
+ *         pathMatchers: [
+ *             {
+ *                 name: "routes",
+ *                 routeRules: [{
+ *                     description: "a route rule to match against",
+ *                     priority: "1",
+ *                     matchRules: [{
+ *                         prefixMatch: "/",
+ *                     }],
+ *                     origin: instanceEdgeCacheOrigin.name,
+ *                     routeAction: {
+ *                         cdnPolicy: {
+ *                             cacheMode: "CACHE_ALL_STATIC",
+ *                             defaultTtl: "3600s",
+ *                         },
+ *                     },
+ *                     headerAction: {
+ *                         responseHeaderToAdds: [{
+ *                             headerName: "x-cache-status",
+ *                             headerValue: "{cdn_cache_status}",
+ *                         }],
+ *                     },
+ *                 }],
+ *             },
+ *             {
+ *                 name: "routesAdvanced",
+ *                 description: "an advanced ruleset",
+ *                 routeRules: [
+ *                     {
+ *                         description: "an advanced route rule to match against",
+ *                         priority: "1",
+ *                         matchRules: [
+ *                             {
+ *                                 prefixMatch: "/potato/",
+ *                                 queryParameterMatches: [
+ *                                     {
+ *                                         name: "debug",
+ *                                         presentMatch: true,
+ *                                     },
+ *                                     {
+ *                                         name: "state",
+ *                                         exactMatch: "debug",
+ *                                     },
+ *                                 ],
+ *                             },
+ *                             {
+ *                                 fullPathMatch: "/apple",
+ *                             },
+ *                         ],
+ *                         headerAction: {
+ *                             requestHeaderToAdds: [
+ *                                 {
+ *                                     headerName: "debug",
+ *                                     headerValue: "true",
+ *                                     replace: true,
+ *                                 },
+ *                                 {
+ *                                     headerName: "potato",
+ *                                     headerValue: "plant",
+ *                                 },
+ *                             ],
+ *                             responseHeaderToAdds: [{
+ *                                 headerName: "potato",
+ *                                 headerValue: "plant",
+ *                                 replace: true,
+ *                             }],
+ *                             requestHeaderToRemoves: [{
+ *                                 headerName: "prod",
+ *                             }],
+ *                             responseHeaderToRemoves: [{
+ *                                 headerName: "prod",
+ *                             }],
+ *                         },
+ *                         origin: instanceEdgeCacheOrigin.name,
+ *                         routeAction: {
+ *                             cdnPolicy: {
+ *                                 cacheMode: "CACHE_ALL_STATIC",
+ *                                 defaultTtl: "3800s",
+ *                                 clientTtl: "3600s",
+ *                                 maxTtl: "9000s",
+ *                                 cacheKeyPolicy: {
+ *                                     includeProtocol: true,
+ *                                     excludeHost: true,
+ *                                     includedQueryParameters: [
+ *                                         "apple",
+ *                                         "dev",
+ *                                         "santa",
+ *                                         "claus",
+ *                                     ],
+ *                                     includedHeaderNames: ["banana"],
+ *                                     includedCookieNames: ["orange"],
+ *                                 },
+ *                                 negativeCaching: true,
+ *                                 signedRequestMode: "DISABLED",
+ *                                 negativeCachingPolicy: {
+ *                                     "500": "3000s",
+ *                                 },
+ *                             },
+ *                             urlRewrite: {
+ *                                 pathPrefixRewrite: "/dev",
+ *                                 hostRewrite: "dev.club",
+ *                             },
+ *                             corsPolicy: {
+ *                                 maxAge: "2500s",
+ *                                 allowCredentials: true,
+ *                                 allowOrigins: ["*"],
+ *                                 allowMethods: ["GET"],
+ *                                 allowHeaders: ["dev"],
+ *                                 exposeHeaders: ["prod"],
+ *                             },
+ *                         },
+ *                     },
+ *                     {
+ *                         description: "a second route rule to match against",
+ *                         priority: "2",
+ *                         matchRules: [{
+ *                             fullPathMatch: "/yay",
+ *                         }],
+ *                         origin: instanceEdgeCacheOrigin.name,
+ *                         routeAction: {
+ *                             cdnPolicy: {
+ *                                 cacheMode: "CACHE_ALL_STATIC",
+ *                                 defaultTtl: "3600s",
+ *                                 cacheKeyPolicy: {
+ *                                     excludedQueryParameters: ["dev"],
+ *                                 },
+ *                             },
+ *                             corsPolicy: {
+ *                                 maxAge: "3000s",
+ *                                 allowHeaders: ["dev"],
+ *                                 disabled: true,
+ *                             },
+ *                         },
+ *                     },
+ *                 ],
+ *             },
+ *         ],
+ *     },
+ *     logConfig: {
+ *         enable: true,
+ *         sampleRate: 0.01,
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

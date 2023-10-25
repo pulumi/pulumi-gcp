@@ -14,6 +14,188 @@ import (
 )
 
 // ## Example Usage
+// ### Network Services Grpc Route Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networkservices.NewGrpcRoute(ctx, "default", &networkservices.GrpcRouteArgs{
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Description: pulumi.String("my description"),
+//				Hostnames: pulumi.StringArray{
+//					pulumi.String("example"),
+//				},
+//				Rules: networkservices.GrpcRouteRuleArray{
+//					&networkservices.GrpcRouteRuleArgs{
+//						Matches: networkservices.GrpcRouteRuleMatchArray{
+//							&networkservices.GrpcRouteRuleMatchArgs{
+//								Headers: networkservices.GrpcRouteRuleMatchHeaderArray{
+//									&networkservices.GrpcRouteRuleMatchHeaderArgs{
+//										Key:   pulumi.String("key"),
+//										Value: pulumi.String("value"),
+//									},
+//								},
+//							},
+//						},
+//						Action: &networkservices.GrpcRouteRuleActionArgs{
+//							RetryPolicy: &networkservices.GrpcRouteRuleActionRetryPolicyArgs{
+//								RetryConditions: pulumi.StringArray{
+//									pulumi.String("cancelled"),
+//								},
+//								NumRetries: pulumi.Int(1),
+//							},
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Network Services Grpc Route Matches And Actions
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networkservices.NewGrpcRoute(ctx, "default", &networkservices.GrpcRouteArgs{
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Description: pulumi.String("my description"),
+//				Hostnames: pulumi.StringArray{
+//					pulumi.String("example"),
+//				},
+//				Rules: networkservices.GrpcRouteRuleArray{
+//					&networkservices.GrpcRouteRuleArgs{
+//						Matches: networkservices.GrpcRouteRuleMatchArray{
+//							&networkservices.GrpcRouteRuleMatchArgs{
+//								Headers: networkservices.GrpcRouteRuleMatchHeaderArray{
+//									&networkservices.GrpcRouteRuleMatchHeaderArgs{
+//										Key:   pulumi.String("key"),
+//										Value: pulumi.String("value"),
+//									},
+//								},
+//							},
+//							&networkservices.GrpcRouteRuleMatchArgs{
+//								Headers: networkservices.GrpcRouteRuleMatchHeaderArray{
+//									&networkservices.GrpcRouteRuleMatchHeaderArgs{
+//										Key:   pulumi.String("key"),
+//										Value: pulumi.String("value"),
+//									},
+//								},
+//								Method: &networkservices.GrpcRouteRuleMatchMethodArgs{
+//									GrpcService:   pulumi.String("foo"),
+//									GrpcMethod:    pulumi.String("bar"),
+//									CaseSensitive: pulumi.Bool(true),
+//								},
+//							},
+//						},
+//						Action: &networkservices.GrpcRouteRuleActionArgs{
+//							FaultInjectionPolicy: &networkservices.GrpcRouteRuleActionFaultInjectionPolicyArgs{
+//								Delay: &networkservices.GrpcRouteRuleActionFaultInjectionPolicyDelayArgs{
+//									FixedDelay: pulumi.String("1s"),
+//									Percentage: pulumi.Int(1),
+//								},
+//								Abort: &networkservices.GrpcRouteRuleActionFaultInjectionPolicyAbortArgs{
+//									HttpStatus: pulumi.Int(500),
+//									Percentage: pulumi.Int(1),
+//								},
+//							},
+//							RetryPolicy: &networkservices.GrpcRouteRuleActionRetryPolicyArgs{
+//								RetryConditions: pulumi.StringArray{
+//									pulumi.String("cancelled"),
+//								},
+//								NumRetries: pulumi.Int(1),
+//							},
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Network Services Grpc Route Actions
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networkservices.NewGrpcRoute(ctx, "default", &networkservices.GrpcRouteArgs{
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Description: pulumi.String("my description"),
+//				Hostnames: pulumi.StringArray{
+//					pulumi.String("example"),
+//				},
+//				Rules: networkservices.GrpcRouteRuleArray{
+//					&networkservices.GrpcRouteRuleArgs{
+//						Action: &networkservices.GrpcRouteRuleActionArgs{
+//							FaultInjectionPolicy: &networkservices.GrpcRouteRuleActionFaultInjectionPolicyArgs{
+//								Delay: &networkservices.GrpcRouteRuleActionFaultInjectionPolicyDelayArgs{
+//									FixedDelay: pulumi.String("1s"),
+//									Percentage: pulumi.Int(1),
+//								},
+//								Abort: &networkservices.GrpcRouteRuleActionFaultInjectionPolicyAbortArgs{
+//									HttpStatus: pulumi.Int(500),
+//									Percentage: pulumi.Int(1),
+//								},
+//							},
+//							RetryPolicy: &networkservices.GrpcRouteRuleActionRetryPolicyArgs{
+//								RetryConditions: pulumi.StringArray{
+//									pulumi.String("cancelled"),
+//								},
+//								NumRetries: pulumi.Int(1),
+//							},
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

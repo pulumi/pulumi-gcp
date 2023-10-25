@@ -160,6 +160,16 @@ def get_workload_identity_pool_provider(project: Optional[str] = None,
     """
     Get a IAM workload identity provider from Google Cloud by its id.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.iam.get_workload_identity_pool_provider(workload_identity_pool_id="foo-pool",
+        workload_identity_pool_provider_id="bar-provider")
+    ```
+
 
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
@@ -200,6 +210,16 @@ def get_workload_identity_pool_provider_output(project: Optional[pulumi.Input[Op
                                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWorkloadIdentityPoolProviderResult]:
     """
     Get a IAM workload identity provider from Google Cloud by its id.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.iam.get_workload_identity_pool_provider(workload_identity_pool_id="foo-pool",
+        workload_identity_pool_provider_id="bar-provider")
+    ```
 
 
     :param str project: The project in which the resource belongs. If it

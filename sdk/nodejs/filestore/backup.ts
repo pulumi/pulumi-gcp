@@ -15,6 +15,36 @@ import * as utilities from "../utilities";
  *     * [Creating Backups](https://cloud.google.com/filestore/docs/create-backups)
  *
  * ## Example Usage
+ * ### Filestore Backup Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.filestore.Instance("instance", {
+ *     location: "us-central1-b",
+ *     tier: "BASIC_HDD",
+ *     fileShares: {
+ *         capacityGb: 1024,
+ *         name: "share1",
+ *     },
+ *     networks: [{
+ *         network: "default",
+ *         modes: ["MODE_IPV4"],
+ *         connectMode: "DIRECT_PEERING",
+ *     }],
+ * });
+ * const backup = new gcp.filestore.Backup("backup", {
+ *     location: "us-central1",
+ *     description: "This is a filestore backup for the test instance",
+ *     sourceInstance: instance.id,
+ *     sourceFileShare: "share1",
+ *     labels: {
+ *         files: "label1",
+ *         "other-label": "label2",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

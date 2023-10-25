@@ -19,6 +19,57 @@ namespace Pulumi.Gcp.Compute
     /// `source_instance_template`. To create an instance without a template, use the
     /// `gcp.compute.Instance` resource.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var tplInstanceTemplate = new Gcp.Compute.InstanceTemplate("tplInstanceTemplate", new()
+    ///     {
+    ///         MachineType = "e2-medium",
+    ///         Disks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///             {
+    ///                 SourceImage = "debian-cloud/debian-11",
+    ///                 AutoDelete = true,
+    ///                 DiskSizeGb = 100,
+    ///                 Boot = true,
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///             {
+    ///                 Network = "default",
+    ///             },
+    ///         },
+    ///         Metadata = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         CanIpForward = true,
+    ///     });
+    /// 
+    ///     var tplInstanceFromTemplate = new Gcp.Compute.InstanceFromTemplate("tplInstanceFromTemplate", new()
+    ///     {
+    ///         Zone = "us-central1-a",
+    ///         SourceInstanceTemplate = tplInstanceTemplate.SelfLinkUnique,
+    ///         CanIpForward = false,
+    ///         Labels = 
+    ///         {
+    ///             { "my_key", "my_value" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource does not support import.

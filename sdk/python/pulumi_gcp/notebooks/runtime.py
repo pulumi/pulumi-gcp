@@ -394,6 +394,152 @@ class Runtime(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
 
         ## Example Usage
+        ### Notebook Runtime Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        runtime = gcp.notebooks.Runtime("runtime",
+            access_config=gcp.notebooks.RuntimeAccessConfigArgs(
+                access_type="SINGLE_USER",
+                runtime_owner="admin@hashicorptest.com",
+            ),
+            location="us-central1",
+            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArgs(
+                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArgs(
+                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs(
+                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs(
+                            disk_size_gb=100,
+                            disk_type="PD_STANDARD",
+                        ),
+                    ),
+                    machine_type="n1-standard-4",
+                ),
+            ))
+        ```
+        ### Notebook Runtime Basic Gpu
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        runtime_gpu = gcp.notebooks.Runtime("runtimeGpu",
+            access_config=gcp.notebooks.RuntimeAccessConfigArgs(
+                access_type="SINGLE_USER",
+                runtime_owner="admin@hashicorptest.com",
+            ),
+            location="us-central1",
+            software_config=gcp.notebooks.RuntimeSoftwareConfigArgs(
+                install_gpu_driver=True,
+            ),
+            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArgs(
+                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArgs(
+                    accelerator_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs(
+                        core_count=1,
+                        type="NVIDIA_TESLA_V100",
+                    ),
+                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs(
+                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs(
+                            disk_size_gb=100,
+                            disk_type="PD_STANDARD",
+                        ),
+                    ),
+                    machine_type="n1-standard-4",
+                ),
+            ))
+        ```
+        ### Notebook Runtime Basic Container
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        runtime_container = gcp.notebooks.Runtime("runtimeContainer",
+            access_config=gcp.notebooks.RuntimeAccessConfigArgs(
+                access_type="SINGLE_USER",
+                runtime_owner="admin@hashicorptest.com",
+            ),
+            location="us-central1",
+            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArgs(
+                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArgs(
+                    container_images=[
+                        gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs(
+                            repository="gcr.io/deeplearning-platform-release/base-cpu",
+                            tag="latest",
+                        ),
+                        gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs(
+                            repository="gcr.io/deeplearning-platform-release/beam-notebooks",
+                            tag="latest",
+                        ),
+                    ],
+                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs(
+                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs(
+                            disk_size_gb=100,
+                            disk_type="PD_STANDARD",
+                        ),
+                    ),
+                    machine_type="n1-standard-4",
+                ),
+            ))
+        ```
+        ### Notebook Runtime Kernels
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        runtime_container = gcp.notebooks.Runtime("runtimeContainer",
+            access_config=gcp.notebooks.RuntimeAccessConfigArgs(
+                access_type="SINGLE_USER",
+                runtime_owner="admin@hashicorptest.com",
+            ),
+            location="us-central1",
+            software_config=gcp.notebooks.RuntimeSoftwareConfigArgs(
+                kernels=[gcp.notebooks.RuntimeSoftwareConfigKernelArgs(
+                    repository="gcr.io/deeplearning-platform-release/base-cpu",
+                    tag="latest",
+                )],
+            ),
+            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArgs(
+                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArgs(
+                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs(
+                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs(
+                            disk_size_gb=100,
+                            disk_type="PD_STANDARD",
+                        ),
+                    ),
+                    machine_type="n1-standard-4",
+                ),
+            ))
+        ```
+        ### Notebook Runtime Script
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        runtime_container = gcp.notebooks.Runtime("runtimeContainer",
+            access_config=gcp.notebooks.RuntimeAccessConfigArgs(
+                access_type="SINGLE_USER",
+                runtime_owner="admin@hashicorptest.com",
+            ),
+            location="us-central1",
+            software_config=gcp.notebooks.RuntimeSoftwareConfigArgs(
+                post_startup_script_behavior="RUN_EVERY_START",
+            ),
+            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArgs(
+                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArgs(
+                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs(
+                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs(
+                            disk_size_gb=100,
+                            disk_type="PD_STANDARD",
+                        ),
+                    ),
+                    machine_type="n1-standard-4",
+                ),
+            ))
+        ```
 
         ## Import
 
@@ -447,6 +593,152 @@ class Runtime(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
 
         ## Example Usage
+        ### Notebook Runtime Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        runtime = gcp.notebooks.Runtime("runtime",
+            access_config=gcp.notebooks.RuntimeAccessConfigArgs(
+                access_type="SINGLE_USER",
+                runtime_owner="admin@hashicorptest.com",
+            ),
+            location="us-central1",
+            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArgs(
+                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArgs(
+                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs(
+                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs(
+                            disk_size_gb=100,
+                            disk_type="PD_STANDARD",
+                        ),
+                    ),
+                    machine_type="n1-standard-4",
+                ),
+            ))
+        ```
+        ### Notebook Runtime Basic Gpu
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        runtime_gpu = gcp.notebooks.Runtime("runtimeGpu",
+            access_config=gcp.notebooks.RuntimeAccessConfigArgs(
+                access_type="SINGLE_USER",
+                runtime_owner="admin@hashicorptest.com",
+            ),
+            location="us-central1",
+            software_config=gcp.notebooks.RuntimeSoftwareConfigArgs(
+                install_gpu_driver=True,
+            ),
+            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArgs(
+                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArgs(
+                    accelerator_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs(
+                        core_count=1,
+                        type="NVIDIA_TESLA_V100",
+                    ),
+                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs(
+                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs(
+                            disk_size_gb=100,
+                            disk_type="PD_STANDARD",
+                        ),
+                    ),
+                    machine_type="n1-standard-4",
+                ),
+            ))
+        ```
+        ### Notebook Runtime Basic Container
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        runtime_container = gcp.notebooks.Runtime("runtimeContainer",
+            access_config=gcp.notebooks.RuntimeAccessConfigArgs(
+                access_type="SINGLE_USER",
+                runtime_owner="admin@hashicorptest.com",
+            ),
+            location="us-central1",
+            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArgs(
+                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArgs(
+                    container_images=[
+                        gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs(
+                            repository="gcr.io/deeplearning-platform-release/base-cpu",
+                            tag="latest",
+                        ),
+                        gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs(
+                            repository="gcr.io/deeplearning-platform-release/beam-notebooks",
+                            tag="latest",
+                        ),
+                    ],
+                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs(
+                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs(
+                            disk_size_gb=100,
+                            disk_type="PD_STANDARD",
+                        ),
+                    ),
+                    machine_type="n1-standard-4",
+                ),
+            ))
+        ```
+        ### Notebook Runtime Kernels
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        runtime_container = gcp.notebooks.Runtime("runtimeContainer",
+            access_config=gcp.notebooks.RuntimeAccessConfigArgs(
+                access_type="SINGLE_USER",
+                runtime_owner="admin@hashicorptest.com",
+            ),
+            location="us-central1",
+            software_config=gcp.notebooks.RuntimeSoftwareConfigArgs(
+                kernels=[gcp.notebooks.RuntimeSoftwareConfigKernelArgs(
+                    repository="gcr.io/deeplearning-platform-release/base-cpu",
+                    tag="latest",
+                )],
+            ),
+            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArgs(
+                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArgs(
+                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs(
+                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs(
+                            disk_size_gb=100,
+                            disk_type="PD_STANDARD",
+                        ),
+                    ),
+                    machine_type="n1-standard-4",
+                ),
+            ))
+        ```
+        ### Notebook Runtime Script
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        runtime_container = gcp.notebooks.Runtime("runtimeContainer",
+            access_config=gcp.notebooks.RuntimeAccessConfigArgs(
+                access_type="SINGLE_USER",
+                runtime_owner="admin@hashicorptest.com",
+            ),
+            location="us-central1",
+            software_config=gcp.notebooks.RuntimeSoftwareConfigArgs(
+                post_startup_script_behavior="RUN_EVERY_START",
+            ),
+            virtual_machine=gcp.notebooks.RuntimeVirtualMachineArgs(
+                virtual_machine_config=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigArgs(
+                    data_disk=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs(
+                        initialize_params=gcp.notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs(
+                            disk_size_gb=100,
+                            disk_type="PD_STANDARD",
+                        ),
+                    ),
+                    machine_type="n1-standard-4",
+                ),
+            ))
+        ```
 
         ## Import
 

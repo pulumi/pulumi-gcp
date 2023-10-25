@@ -24,6 +24,98 @@ namespace Pulumi.Gcp.ApiGateway
     /// 
     /// &gt; **Note:** `gcp.apigateway.GatewayIamBinding` resources **can be** used in conjunction with `gcp.apigateway.GatewayIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
+    /// ## google\_api\_gateway\_gateway\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/apigateway.viewer",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.ApiGateway.GatewayIamPolicy("policy", new()
+    ///     {
+    ///         Project = google_api_gateway_gateway.Api_gw.Project,
+    ///         Region = google_api_gateway_gateway.Api_gw.Region,
+    ///         Gateway = google_api_gateway_gateway.Api_gw.Gateway_id,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## google\_api\_gateway\_gateway\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var binding = new Gcp.ApiGateway.GatewayIamBinding("binding", new()
+    ///     {
+    ///         Project = google_api_gateway_gateway.Api_gw.Project,
+    ///         Region = google_api_gateway_gateway.Api_gw.Region,
+    ///         Gateway = google_api_gateway_gateway.Api_gw.Gateway_id,
+    ///         Role = "roles/apigateway.viewer",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## google\_api\_gateway\_gateway\_iam\_member
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var member = new Gcp.ApiGateway.GatewayIamMember("member", new()
+    ///     {
+    ///         Project = google_api_gateway_gateway.Api_gw.Project,
+    ///         Region = google_api_gateway_gateway.Api_gw.Region,
+    ///         Gateway = google_api_gateway_gateway.Api_gw.Gateway_id,
+    ///         Role = "roles/apigateway.viewer",
+    ///         Member = "user:jane@example.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{region}}/gateways/{{gateway}} * {{project}}/{{region}}/{{gateway}} * {{region}}/{{gateway}} * {{gateway}} Any variables not passed in the import command will be taken from the provider configuration. API Gateway gateway IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

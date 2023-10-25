@@ -6,6 +6,40 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### Firebasehosting Site Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.firebase.HostingSite("default", {
+ *     project: "my-project-name",
+ *     siteId: "site-no-app",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Firebasehosting Site Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.firebase.WebApp("default", {
+ *     project: "my-project-name",
+ *     displayName: "Test web app for Firebase Hosting",
+ *     deletionPolicy: "DELETE",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const full = new gcp.firebase.HostingSite("full", {
+ *     project: "my-project-name",
+ *     siteId: "site-with-app",
+ *     appId: _default.appId,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

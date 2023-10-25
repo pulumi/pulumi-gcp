@@ -21,6 +21,38 @@ import * as utilities from "../utilities";
  * > **Warning:** All arguments including `plaintext` and `additionalAuthenticatedData` will be stored in the raw state as plain-text.
  *
  * ## Example Usage
+ * ### Kms Secret Ciphertext Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const keyring = new gcp.kms.KeyRing("keyring", {location: "global"});
+ * const cryptokey = new gcp.kms.CryptoKey("cryptokey", {
+ *     keyRing: keyring.id,
+ *     rotationPeriod: "100000s",
+ * });
+ * const myPassword = new gcp.kms.SecretCiphertext("myPassword", {
+ *     cryptoKey: cryptokey.id,
+ *     plaintext: "my-secret-password",
+ * });
+ * const instance = new gcp.compute.Instance("instance", {
+ *     machineType: "e2-medium",
+ *     zone: "us-central1-a",
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: "debian-cloud/debian-11",
+ *         },
+ *     },
+ *     networkInterfaces: [{
+ *         network: "default",
+ *         accessConfigs: [{}],
+ *     }],
+ *     metadata: {
+ *         password: myPassword.ciphertext,
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

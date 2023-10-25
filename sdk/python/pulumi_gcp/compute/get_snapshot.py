@@ -228,6 +228,17 @@ def get_snapshot(filter: Optional[str] = None,
     * How-to Guides
         * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    snapshot = gcp.compute.get_snapshot(name="my-snapshot")
+    latest_snapshot = gcp.compute.get_snapshot(filter="name != my-snapshot",
+        most_recent=True)
+    ```
+
 
     :param str filter: A filter to retrieve the compute snapshot.
            See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
@@ -282,6 +293,17 @@ def get_snapshot_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
     * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
     * How-to Guides
         * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    snapshot = gcp.compute.get_snapshot(name="my-snapshot")
+    latest_snapshot = gcp.compute.get_snapshot(filter="name != my-snapshot",
+        most_recent=True)
+    ```
 
 
     :param str filter: A filter to retrieve the compute snapshot.

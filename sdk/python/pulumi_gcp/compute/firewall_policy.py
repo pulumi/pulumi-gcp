@@ -327,6 +327,18 @@ class FirewallPolicy(pulumi.CustomResource):
 
         For more information see the [official documentation](https://cloud.google.com/vpc/docs/firewall-policies)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.FirewallPolicy("default",
+            description="Example Resource",
+            parent="organizations/12345",
+            short_name="my-policy")
+        ```
+
         ## Import
 
         FirewallPolicy can be imported using any of these accepted formats
@@ -361,6 +373,18 @@ class FirewallPolicy(pulumi.CustomResource):
         This resource should be generally be used with `compute.FirewallPolicyAssociation` and `compute.FirewallPolicyRule`
 
         For more information see the [official documentation](https://cloud.google.com/vpc/docs/firewall-policies)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.FirewallPolicy("default",
+            description="Example Resource",
+            parent="organizations/12345",
+            short_name="my-policy")
+        ```
 
         ## Import
 

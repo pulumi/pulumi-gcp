@@ -23,6 +23,32 @@ import (
 // the Cloud Console prior to creating tenants.
 //
 // ## Example Usage
+// ### Identity Platform Tenant Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/identityplatform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := identityplatform.NewTenant(ctx, "tenant", &identityplatform.TenantArgs{
+//				AllowPasswordSignup: pulumi.Bool(true),
+//				DisplayName:         pulumi.String("tenant"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

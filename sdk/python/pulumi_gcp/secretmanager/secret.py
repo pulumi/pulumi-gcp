@@ -601,6 +601,74 @@ class Secret(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets)
 
         ## Example Usage
+        ### Secret Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        secret_basic = gcp.secretmanager.Secret("secret-basic",
+            labels={
+                "label": "my-label",
+            },
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
+                    replicas=[
+                        gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+                            location="us-central1",
+                        ),
+                        gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+                            location="us-east1",
+                        ),
+                    ],
+                ),
+            ),
+            secret_id="secret")
+        ```
+        ### Secret With Annotations
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        secret_with_annotations = gcp.secretmanager.Secret("secret-with-annotations",
+            annotations={
+                "key1": "someval",
+                "key2": "someval2",
+                "key3": "someval3",
+                "key4": "someval4",
+                "key5": "someval5",
+            },
+            labels={
+                "label": "my-label",
+            },
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            ),
+            secret_id="secret")
+        ```
+        ### Secret With Automatic Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        kms_secret_binding = gcp.kms.CryptoKeyIAMMember("kms-secret-binding",
+            crypto_key_id="kms-key",
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-secretmanager.iam.gserviceaccount.com")
+        secret_with_automatic_cmek = gcp.secretmanager.Secret("secret-with-automatic-cmek",
+            secret_id="secret",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(
+                    customer_managed_encryption=gcp.secretmanager.SecretReplicationAutoCustomerManagedEncryptionArgs(
+                        kms_key_name="kms-key",
+                    ),
+                ),
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[kms_secret_binding]))
+        ```
 
         ## Import
 
@@ -674,6 +742,74 @@ class Secret(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets)
 
         ## Example Usage
+        ### Secret Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        secret_basic = gcp.secretmanager.Secret("secret-basic",
+            labels={
+                "label": "my-label",
+            },
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
+                    replicas=[
+                        gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+                            location="us-central1",
+                        ),
+                        gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+                            location="us-east1",
+                        ),
+                    ],
+                ),
+            ),
+            secret_id="secret")
+        ```
+        ### Secret With Annotations
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        secret_with_annotations = gcp.secretmanager.Secret("secret-with-annotations",
+            annotations={
+                "key1": "someval",
+                "key2": "someval2",
+                "key3": "someval3",
+                "key4": "someval4",
+                "key5": "someval5",
+            },
+            labels={
+                "label": "my-label",
+            },
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            ),
+            secret_id="secret")
+        ```
+        ### Secret With Automatic Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        kms_secret_binding = gcp.kms.CryptoKeyIAMMember("kms-secret-binding",
+            crypto_key_id="kms-key",
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-secretmanager.iam.gserviceaccount.com")
+        secret_with_automatic_cmek = gcp.secretmanager.Secret("secret-with-automatic-cmek",
+            secret_id="secret",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(
+                    customer_managed_encryption=gcp.secretmanager.SecretReplicationAutoCustomerManagedEncryptionArgs(
+                        kms_key_name="kms-key",
+                    ),
+                ),
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[kms_secret_binding]))
+        ```
 
         ## Import
 

@@ -13,6 +13,34 @@ import (
 )
 
 // Retrieves the current IAM policy data for instance
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.GetInstanceIamPolicy(ctx, &compute.GetInstanceIamPolicyArgs{
+//				Project:      pulumi.StringRef(google_compute_instance.Default.Project),
+//				Zone:         pulumi.StringRef(google_compute_instance.Default.Zone),
+//				InstanceName: google_compute_instance.Default.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetInstanceIamPolicy(ctx *pulumi.Context, args *GetInstanceIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetInstanceIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstanceIamPolicyResult

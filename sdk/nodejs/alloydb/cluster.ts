@@ -20,6 +20,129 @@ import * as utilities from "../utilities";
  * Read more about sensitive data in state.
  *
  * ## Example Usage
+ * ### Alloydb Cluster Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
+ * const defaultCluster = new gcp.alloydb.Cluster("defaultCluster", {
+ *     clusterId: "alloydb-cluster",
+ *     location: "us-central1",
+ *     network: defaultNetwork.id,
+ * });
+ * const project = gcp.organizations.getProject({});
+ * ```
+ * ### Alloydb Cluster Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {});
+ * const full = new gcp.alloydb.Cluster("full", {
+ *     clusterId: "alloydb-cluster-full",
+ *     location: "us-central1",
+ *     network: _default.id,
+ *     initialUser: {
+ *         user: "alloydb-cluster-full",
+ *         password: "alloydb-cluster-full",
+ *     },
+ *     continuousBackupConfig: {
+ *         enabled: true,
+ *         recoveryWindowDays: 14,
+ *     },
+ *     automatedBackupPolicy: {
+ *         location: "us-central1",
+ *         backupWindow: "1800s",
+ *         enabled: true,
+ *         weeklySchedule: {
+ *             daysOfWeeks: ["MONDAY"],
+ *             startTimes: [{
+ *                 hours: 23,
+ *                 minutes: 0,
+ *                 seconds: 0,
+ *                 nanos: 0,
+ *             }],
+ *         },
+ *         quantityBasedRetention: {
+ *             count: 1,
+ *         },
+ *         labels: {
+ *             test: "alloydb-cluster-full",
+ *         },
+ *     },
+ *     labels: {
+ *         test: "alloydb-cluster-full",
+ *     },
+ * });
+ * const project = gcp.organizations.getProject({});
+ * ```
+ * ### Alloydb Cluster Restore
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default = gcp.compute.getNetwork({
+ *     name: "alloydb-network",
+ * });
+ * const sourceCluster = new gcp.alloydb.Cluster("sourceCluster", {
+ *     clusterId: "alloydb-source-cluster",
+ *     location: "us-central1",
+ *     network: _default.then(_default => _default.id),
+ *     initialUser: {
+ *         password: "alloydb-source-cluster",
+ *     },
+ * });
+ * const privateIpAlloc = new gcp.compute.GlobalAddress("privateIpAlloc", {
+ *     addressType: "INTERNAL",
+ *     purpose: "VPC_PEERING",
+ *     prefixLength: 16,
+ *     network: _default.then(_default => _default.id),
+ * });
+ * const vpcConnection = new gcp.servicenetworking.Connection("vpcConnection", {
+ *     network: _default.then(_default => _default.id),
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [privateIpAlloc.name],
+ * });
+ * const sourceInstance = new gcp.alloydb.Instance("sourceInstance", {
+ *     cluster: sourceCluster.name,
+ *     instanceId: "alloydb-instance",
+ *     instanceType: "PRIMARY",
+ *     machineConfig: {
+ *         cpuCount: 2,
+ *     },
+ * }, {
+ *     dependsOn: [vpcConnection],
+ * });
+ * const sourceBackup = new gcp.alloydb.Backup("sourceBackup", {
+ *     backupId: "alloydb-backup",
+ *     location: "us-central1",
+ *     clusterName: sourceCluster.name,
+ * }, {
+ *     dependsOn: [sourceInstance],
+ * });
+ * const restoredFromBackup = new gcp.alloydb.Cluster("restoredFromBackup", {
+ *     clusterId: "alloydb-backup-restored",
+ *     location: "us-central1",
+ *     network: _default.then(_default => _default.id),
+ *     restoreBackupSource: {
+ *         backupName: sourceBackup.name,
+ *     },
+ * });
+ * const restoredViaPitr = new gcp.alloydb.Cluster("restoredViaPitr", {
+ *     clusterId: "alloydb-pitr-restored",
+ *     location: "us-central1",
+ *     network: _default.then(_default => _default.id),
+ *     restoreContinuousBackupSource: {
+ *         cluster: sourceCluster.name,
+ *         pointInTime: "2023-08-03T19:19:00.094Z",
+ *     },
+ * });
+ * const project = gcp.organizations.getProject({});
+ * ```
  *
  * ## Import
  *

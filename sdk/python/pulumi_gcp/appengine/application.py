@@ -514,6 +514,20 @@ class Application(pulumi.CustomResource):
         > **Warning:** All arguments including `iap.oauth2_client_secret` will be stored in the raw
         state as plain-text. Read more about sensitive data in state.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.organizations.Project("myProject",
+            project_id="your-project-id",
+            org_id="1234567")
+        app = gcp.appengine.Application("app",
+            project=my_project.project_id,
+            location_id="us-central")
+        ```
+
         ## Import
 
         Applications can be imported using the ID of the project the application belongs to, e.g.
@@ -556,6 +570,20 @@ class Application(pulumi.CustomResource):
 
         > **Warning:** All arguments including `iap.oauth2_client_secret` will be stored in the raw
         state as plain-text. Read more about sensitive data in state.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.organizations.Project("myProject",
+            project_id="your-project-id",
+            org_id="1234567")
+        app = gcp.appengine.Application("app",
+            project=my_project.project_id,
+            location_id="us-central")
+        ```
 
         ## Import
 

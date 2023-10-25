@@ -6,6 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for lake
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.dataplex.getLakeIamPolicy({
+ *     project: google_dataplex_lake.example.project,
+ *     location: google_dataplex_lake.example.location,
+ *     lake: google_dataplex_lake.example.name,
+ * });
+ * ```
  */
 export function getLakeIamPolicy(args: GetLakeIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetLakeIamPolicyResult> {
 
@@ -56,6 +69,19 @@ export interface GetLakeIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for lake
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.dataplex.getLakeIamPolicy({
+ *     project: google_dataplex_lake.example.project,
+ *     location: google_dataplex_lake.example.location,
+ *     lake: google_dataplex_lake.example.name,
+ * });
+ * ```
  */
 export function getLakeIamPolicyOutput(args: GetLakeIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLakeIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getLakeIamPolicy(a, opts))

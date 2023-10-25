@@ -11,6 +11,24 @@ namespace Pulumi.Gcp.Vertex
 {
     /// <summary>
     /// ## Example Usage
+    /// ### Vertex Ai Metadata Store
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var store = new Gcp.Vertex.AiMetadataStore("store", new()
+    ///     {
+    ///         Description = "Store to test the terraform module",
+    ///         Region = "us-central1",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

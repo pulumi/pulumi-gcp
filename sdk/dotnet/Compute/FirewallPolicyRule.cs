@@ -13,6 +13,98 @@ namespace Pulumi.Gcp.Compute
     /// The Compute FirewallPolicyRule resource
     /// 
     /// ## Example Usage
+    /// ### Basic_fir_sec_rule
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basicGlobalNetworksecurityAddressGroup = new Gcp.NetworkSecurity.AddressGroup("basicGlobalNetworksecurityAddressGroup", new()
+    ///     {
+    ///         Parent = "organizations/123456789",
+    ///         Description = "Sample global networksecurity_address_group",
+    ///         Location = "global",
+    ///         Items = new[]
+    ///         {
+    ///             "208.80.154.224/32",
+    ///         },
+    ///         Type = "IPV4",
+    ///         Capacity = 100,
+    ///     });
+    /// 
+    ///     var folder = new Gcp.Organizations.Folder("folder", new()
+    ///     {
+    ///         DisplayName = "policy",
+    ///         Parent = "organizations/123456789",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.FirewallPolicy("default", new()
+    ///     {
+    ///         Parent = folder.Id,
+    ///         ShortName = "policy",
+    ///         Description = "Resource created for Terraform acceptance testing",
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Compute.FirewallPolicyRule("primary", new()
+    ///     {
+    ///         FirewallPolicy = @default.Name,
+    ///         Description = "Resource created for Terraform acceptance testing",
+    ///         Priority = 9000,
+    ///         EnableLogging = true,
+    ///         Action = "allow",
+    ///         Direction = "EGRESS",
+    ///         Disabled = false,
+    ///         Match = new Gcp.Compute.Inputs.FirewallPolicyRuleMatchArgs
+    ///         {
+    ///             Layer4Configs = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.FirewallPolicyRuleMatchLayer4ConfigArgs
+    ///                 {
+    ///                     IpProtocol = "tcp",
+    ///                     Ports = new[]
+    ///                     {
+    ///                         "8080",
+    ///                     },
+    ///                 },
+    ///                 new Gcp.Compute.Inputs.FirewallPolicyRuleMatchLayer4ConfigArgs
+    ///                 {
+    ///                     IpProtocol = "udp",
+    ///                     Ports = new[]
+    ///                     {
+    ///                         "22",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             DestIpRanges = new[]
+    ///             {
+    ///                 "11.100.0.1/32",
+    ///             },
+    ///             DestFqdns = new() { },
+    ///             DestRegionCodes = new[]
+    ///             {
+    ///                 "US",
+    ///             },
+    ///             DestThreatIntelligences = new[]
+    ///             {
+    ///                 "iplist-known-malicious-ips",
+    ///             },
+    ///             SrcAddressGroups = new() { },
+    ///             DestAddressGroups = new[]
+    ///             {
+    ///                 basicGlobalNetworksecurityAddressGroup.Id,
+    ///             },
+    ///         },
+    ///         TargetServiceAccounts = new[]
+    ///         {
+    ///             "my@service-account.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

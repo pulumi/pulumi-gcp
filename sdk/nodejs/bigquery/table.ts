@@ -15,6 +15,61 @@ import * as utilities from "../utilities";
  * (and run `pulumi update` to write the field to state) in order to destroy an instance.
  * It is recommended to not set this field (or set it to true) until you're ready to destroy.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultDataset = new gcp.bigquery.Dataset("defaultDataset", {
+ *     datasetId: "foo",
+ *     friendlyName: "test",
+ *     description: "This is a test description",
+ *     location: "EU",
+ *     defaultTableExpirationMs: 3600000,
+ *     labels: {
+ *         env: "default",
+ *     },
+ * });
+ * const defaultTable = new gcp.bigquery.Table("defaultTable", {
+ *     datasetId: defaultDataset.datasetId,
+ *     tableId: "bar",
+ *     timePartitioning: {
+ *         type: "DAY",
+ *     },
+ *     labels: {
+ *         env: "default",
+ *     },
+ *     schema: `[
+ *   {
+ *     "name": "permalink",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE",
+ *     "description": "The Permalink"
+ *   },
+ *   {
+ *     "name": "state",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE",
+ *     "description": "State where the head office is located"
+ *   }
+ * ]
+ * `,
+ * });
+ * const sheet = new gcp.bigquery.Table("sheet", {
+ *     datasetId: defaultDataset.datasetId,
+ *     tableId: "sheet",
+ *     externalDataConfiguration: {
+ *         autodetect: true,
+ *         sourceFormat: "GOOGLE_SHEETS",
+ *         googleSheetsOptions: {
+ *             skipLeadingRows: 1,
+ *         },
+ *         sourceUris: ["https://docs.google.com/spreadsheets/d/123456789012345"],
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * BigQuery tables imported using any of these accepted formats

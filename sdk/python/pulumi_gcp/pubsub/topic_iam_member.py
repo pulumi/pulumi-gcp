@@ -318,6 +318,48 @@ class TopicIAMMember(pulumi.CustomResource):
 
         > **Note:** `pubsub.TopicIAMBinding` resources **can be** used in conjunction with `pubsub.TopicIAMMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\\_pubsub\\_topic\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.pubsub.TopicIAMPolicy("policy",
+            project=google_pubsub_topic["example"]["project"],
+            topic=google_pubsub_topic["example"]["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_pubsub\\_topic\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.pubsub.TopicIAMBinding("binding",
+            project=google_pubsub_topic["example"]["project"],
+            topic=google_pubsub_topic["example"]["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_pubsub\\_topic\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.pubsub.TopicIAMMember("member",
+            project=google_pubsub_topic["example"]["project"],
+            topic=google_pubsub_topic["example"]["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/topics/{{name}} * {{project}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Pub/Sub topic IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -383,6 +425,48 @@ class TopicIAMMember(pulumi.CustomResource):
         > **Note:** `pubsub.TopicIAMPolicy` **cannot** be used in conjunction with `pubsub.TopicIAMBinding` and `pubsub.TopicIAMMember` or they will fight over what your policy should be.
 
         > **Note:** `pubsub.TopicIAMBinding` resources **can be** used in conjunction with `pubsub.TopicIAMMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_pubsub\\_topic\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.pubsub.TopicIAMPolicy("policy",
+            project=google_pubsub_topic["example"]["project"],
+            topic=google_pubsub_topic["example"]["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_pubsub\\_topic\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.pubsub.TopicIAMBinding("binding",
+            project=google_pubsub_topic["example"]["project"],
+            topic=google_pubsub_topic["example"]["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_pubsub\\_topic\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.pubsub.TopicIAMMember("member",
+            project=google_pubsub_topic["example"]["project"],
+            topic=google_pubsub_topic["example"]["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
 
         ## Import
 

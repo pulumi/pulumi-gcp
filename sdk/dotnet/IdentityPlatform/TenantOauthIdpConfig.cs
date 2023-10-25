@@ -17,6 +17,33 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// the marketplace prior to using this resource.
     /// 
     /// ## Example Usage
+    /// ### Identity Platform Tenant Oauth Idp Config Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var tenant = new Gcp.IdentityPlatform.Tenant("tenant", new()
+    ///     {
+    ///         DisplayName = "tenant",
+    ///     });
+    /// 
+    ///     var tenantOauthIdpConfig = new Gcp.IdentityPlatform.TenantOauthIdpConfig("tenantOauthIdpConfig", new()
+    ///     {
+    ///         Tenant = tenant.Name,
+    ///         DisplayName = "Display Name",
+    ///         ClientId = "client-id",
+    ///         Issuer = "issuer",
+    ///         Enabled = true,
+    ///         ClientSecret = "secret",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

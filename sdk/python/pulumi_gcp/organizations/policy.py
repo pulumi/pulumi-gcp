@@ -374,6 +374,69 @@ class Policy(pulumi.CustomResource):
         * How-to Guides
             * [Introduction to the Organization Policy Service](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
 
+        ## Example Usage
+
+        To set policy with a [boolean constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-boolean-constraints):
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        serial_port_policy = gcp.organizations.Policy("serialPortPolicy",
+            boolean_policy=gcp.organizations.PolicyBooleanPolicyArgs(
+                enforced=True,
+            ),
+            constraint="compute.disableSerialPortAccess",
+            org_id="123456789")
+        ```
+
+        To set a policy with a [list constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        services_policy = gcp.organizations.Policy("servicesPolicy",
+            constraint="serviceuser.services",
+            list_policy=gcp.organizations.PolicyListPolicyArgs(
+                allow=gcp.organizations.PolicyListPolicyAllowArgs(
+                    all=True,
+                ),
+            ),
+            org_id="123456789")
+        ```
+
+        Or to deny some services, use the following instead:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        services_policy = gcp.organizations.Policy("servicesPolicy",
+            constraint="serviceuser.services",
+            list_policy=gcp.organizations.PolicyListPolicyArgs(
+                deny=gcp.organizations.PolicyListPolicyDenyArgs(
+                    values=["cloudresourcemanager.googleapis.com"],
+                ),
+                suggested_value="compute.googleapis.com",
+            ),
+            org_id="123456789")
+        ```
+
+        To restore the default organization policy, use the following instead:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        services_policy = gcp.organizations.Policy("servicesPolicy",
+            constraint="serviceuser.services",
+            org_id="123456789",
+            restore_policy=gcp.organizations.PolicyRestorePolicyArgs(
+                default=True,
+            ))
+        ```
+
         ## Import
 
         Organization Policies can be imported using the `org_id` and the `constraint`, e.g.
@@ -416,6 +479,69 @@ class Policy(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/setOrgPolicy)
         * How-to Guides
             * [Introduction to the Organization Policy Service](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+
+        ## Example Usage
+
+        To set policy with a [boolean constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-boolean-constraints):
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        serial_port_policy = gcp.organizations.Policy("serialPortPolicy",
+            boolean_policy=gcp.organizations.PolicyBooleanPolicyArgs(
+                enforced=True,
+            ),
+            constraint="compute.disableSerialPortAccess",
+            org_id="123456789")
+        ```
+
+        To set a policy with a [list constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        services_policy = gcp.organizations.Policy("servicesPolicy",
+            constraint="serviceuser.services",
+            list_policy=gcp.organizations.PolicyListPolicyArgs(
+                allow=gcp.organizations.PolicyListPolicyAllowArgs(
+                    all=True,
+                ),
+            ),
+            org_id="123456789")
+        ```
+
+        Or to deny some services, use the following instead:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        services_policy = gcp.organizations.Policy("servicesPolicy",
+            constraint="serviceuser.services",
+            list_policy=gcp.organizations.PolicyListPolicyArgs(
+                deny=gcp.organizations.PolicyListPolicyDenyArgs(
+                    values=["cloudresourcemanager.googleapis.com"],
+                ),
+                suggested_value="compute.googleapis.com",
+            ),
+            org_id="123456789")
+        ```
+
+        To restore the default organization policy, use the following instead:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        services_policy = gcp.organizations.Policy("servicesPolicy",
+            constraint="serviceuser.services",
+            org_id="123456789",
+            restore_policy=gcp.organizations.PolicyRestorePolicyArgs(
+                default=True,
+            ))
+        ```
 
         ## Import
 

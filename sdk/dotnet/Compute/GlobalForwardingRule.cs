@@ -19,6 +19,190 @@ namespace Pulumi.Gcp.Compute
     /// https://cloud.google.com/compute/docs/load-balancing/http/
     /// 
     /// ## Example Usage
+    /// ### Global Forwarding Rule External Managed
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultBackendService = new Gcp.Compute.BackendService("defaultBackendService", new()
+    ///     {
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///     });
+    /// 
+    ///     var defaultURLMap = new Gcp.Compute.URLMap("defaultURLMap", new()
+    ///     {
+    ///         Description = "a description",
+    ///         DefaultService = defaultBackendService.Id,
+    ///         HostRules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapHostRuleArgs
+    ///             {
+    ///                 Hosts = new[]
+    ///                 {
+    ///                     "mysite.com",
+    ///                 },
+    ///                 PathMatcher = "allpaths",
+    ///             },
+    ///         },
+    ///         PathMatchers = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapPathMatcherArgs
+    ///             {
+    ///                 Name = "allpaths",
+    ///                 DefaultService = defaultBackendService.Id,
+    ///                 PathRules = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleArgs
+    ///                     {
+    ///                         Paths = new[]
+    ///                         {
+    ///                             "/*",
+    ///                         },
+    ///                         Service = defaultBackendService.Id,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultTargetHttpProxy = new Gcp.Compute.TargetHttpProxy("defaultTargetHttpProxy", new()
+    ///     {
+    ///         Description = "a description",
+    ///         UrlMap = defaultURLMap.Id,
+    ///     });
+    /// 
+    ///     var defaultGlobalForwardingRule = new Gcp.Compute.GlobalForwardingRule("defaultGlobalForwardingRule", new()
+    ///     {
+    ///         Target = defaultTargetHttpProxy.Id,
+    ///         PortRange = "80",
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Private Service Connect Google Apis
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network = new Gcp.Compute.Network("network", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         AutoCreateSubnetworks = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var vpcSubnetwork = new Gcp.Compute.Subnetwork("vpcSubnetwork", new()
+    ///     {
+    ///         Project = network.Project,
+    ///         IpCidrRange = "10.2.0.0/16",
+    ///         Region = "us-central1",
+    ///         Network = network.Id,
+    ///         PrivateIpGoogleAccess = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultGlobalAddress = new Gcp.Compute.GlobalAddress("defaultGlobalAddress", new()
+    ///     {
+    ///         Project = network.Project,
+    ///         AddressType = "INTERNAL",
+    ///         Purpose = "PRIVATE_SERVICE_CONNECT",
+    ///         Network = network.Id,
+    ///         Address = "100.100.100.106",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultGlobalForwardingRule = new Gcp.Compute.GlobalForwardingRule("defaultGlobalForwardingRule", new()
+    ///     {
+    ///         Project = network.Project,
+    ///         Target = "all-apis",
+    ///         Network = network.Id,
+    ///         IpAddress = defaultGlobalAddress.Id,
+    ///         LoadBalancingScheme = "",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Private Service Connect Google Apis No Automate Dns
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network = new Gcp.Compute.Network("network", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         AutoCreateSubnetworks = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var vpcSubnetwork = new Gcp.Compute.Subnetwork("vpcSubnetwork", new()
+    ///     {
+    ///         Project = network.Project,
+    ///         IpCidrRange = "10.2.0.0/16",
+    ///         Region = "us-central1",
+    ///         Network = network.Id,
+    ///         PrivateIpGoogleAccess = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultGlobalAddress = new Gcp.Compute.GlobalAddress("defaultGlobalAddress", new()
+    ///     {
+    ///         Project = network.Project,
+    ///         AddressType = "INTERNAL",
+    ///         Purpose = "PRIVATE_SERVICE_CONNECT",
+    ///         Network = network.Id,
+    ///         Address = "100.100.100.106",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultGlobalForwardingRule = new Gcp.Compute.GlobalForwardingRule("defaultGlobalForwardingRule", new()
+    ///     {
+    ///         Project = network.Project,
+    ///         Target = "all-apis",
+    ///         Network = network.Id,
+    ///         IpAddress = defaultGlobalAddress.Id,
+    ///         LoadBalancingScheme = "",
+    ///         NoAutomateDnsZone = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

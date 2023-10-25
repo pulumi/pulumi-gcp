@@ -25,6 +25,270 @@ import (
 // Read more about sensitive data in state.
 //
 // ## Example Usage
+// ### Bigquery Connection Cloud Resource
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigquery.NewConnection(ctx, "connection", &bigquery.ConnectionArgs{
+//				CloudResource: nil,
+//				ConnectionId:  pulumi.String("my-connection"),
+//				Description:   pulumi.String("a riveting description"),
+//				FriendlyName:  pulumi.String("👋"),
+//				Location:      pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Bigquery Connection Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+//				DatabaseVersion: pulumi.String("POSTGRES_11"),
+//				Region:          pulumi.String("us-central1"),
+//				Settings: &sql.DatabaseInstanceSettingsArgs{
+//					Tier: pulumi.String("db-f1-micro"),
+//				},
+//				DeletionProtection: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			db, err := sql.NewDatabase(ctx, "db", &sql.DatabaseArgs{
+//				Instance: instance.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pwd, err := random.NewRandomPassword(ctx, "pwd", &random.RandomPasswordArgs{
+//				Length:  pulumi.Int(16),
+//				Special: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			user, err := sql.NewUser(ctx, "user", &sql.UserArgs{
+//				Instance: instance.Name,
+//				Password: pwd.Result,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewConnection(ctx, "connection", &bigquery.ConnectionArgs{
+//				FriendlyName: pulumi.String("👋"),
+//				Description:  pulumi.String("a riveting description"),
+//				Location:     pulumi.String("US"),
+//				CloudSql: &bigquery.ConnectionCloudSqlArgs{
+//					InstanceId: instance.ConnectionName,
+//					Database:   db.Name,
+//					Type:       pulumi.String("POSTGRES"),
+//					Credential: &bigquery.ConnectionCloudSqlCredentialArgs{
+//						Username: user.Name,
+//						Password: user.Password,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Bigquery Connection Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+//				DatabaseVersion: pulumi.String("POSTGRES_11"),
+//				Region:          pulumi.String("us-central1"),
+//				Settings: &sql.DatabaseInstanceSettingsArgs{
+//					Tier: pulumi.String("db-f1-micro"),
+//				},
+//				DeletionProtection: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			db, err := sql.NewDatabase(ctx, "db", &sql.DatabaseArgs{
+//				Instance: instance.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pwd, err := random.NewRandomPassword(ctx, "pwd", &random.RandomPasswordArgs{
+//				Length:  pulumi.Int(16),
+//				Special: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			user, err := sql.NewUser(ctx, "user", &sql.UserArgs{
+//				Instance: instance.Name,
+//				Password: pwd.Result,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewConnection(ctx, "connection", &bigquery.ConnectionArgs{
+//				ConnectionId: pulumi.String("my-connection"),
+//				Location:     pulumi.String("US"),
+//				FriendlyName: pulumi.String("👋"),
+//				Description:  pulumi.String("a riveting description"),
+//				CloudSql: &bigquery.ConnectionCloudSqlArgs{
+//					InstanceId: instance.ConnectionName,
+//					Database:   db.Name,
+//					Type:       pulumi.String("POSTGRES"),
+//					Credential: &bigquery.ConnectionCloudSqlCredentialArgs{
+//						Username: user.Name,
+//						Password: user.Password,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Bigquery Connection Aws
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigquery.NewConnection(ctx, "connection", &bigquery.ConnectionArgs{
+//				Aws: &bigquery.ConnectionAwsArgs{
+//					AccessRole: &bigquery.ConnectionAwsAccessRoleArgs{
+//						IamRoleId: pulumi.String("arn:aws:iam::999999999999:role/omnirole"),
+//					},
+//				},
+//				ConnectionId: pulumi.String("my-connection"),
+//				Description:  pulumi.String("a riveting description"),
+//				FriendlyName: pulumi.String("👋"),
+//				Location:     pulumi.String("aws-us-east-1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Bigquery Connection Azure
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigquery.NewConnection(ctx, "connection", &bigquery.ConnectionArgs{
+//				Azure: &bigquery.ConnectionAzureArgs{
+//					CustomerTenantId:             pulumi.String("customer-tenant-id"),
+//					FederatedApplicationClientId: pulumi.String("b43eeeee-eeee-eeee-eeee-a480155501ce"),
+//				},
+//				ConnectionId: pulumi.String("my-connection"),
+//				Description:  pulumi.String("a riveting description"),
+//				FriendlyName: pulumi.String("👋"),
+//				Location:     pulumi.String("azure-eastus2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Bigquery Connection Cloudspanner
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigquery.NewConnection(ctx, "connection", &bigquery.ConnectionArgs{
+//				CloudSpanner: &bigquery.ConnectionCloudSpannerArgs{
+//					Database: pulumi.String("projects/project/instances/instance/databases/database"),
+//				},
+//				ConnectionId: pulumi.String("my-connection"),
+//				Description:  pulumi.String("a riveting description"),
+//				FriendlyName: pulumi.String("👋"),
+//				Location:     pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

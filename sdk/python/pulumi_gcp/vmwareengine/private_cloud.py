@@ -398,6 +398,61 @@ class PrivateCloud(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Vmware Engine Private Cloud Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pc_nw = gcp.vmwareengine.Network("pc-nw",
+            location="us-west1",
+            type="LEGACY",
+            description="PC network description.",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        vmw_engine_pc = gcp.vmwareengine.PrivateCloud("vmw-engine-pc",
+            location="us-west1-a",
+            description="Sample test PC.",
+            network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
+                management_cidr="192.168.30.0/24",
+                vmware_engine_network=pc_nw.id,
+            ),
+            management_cluster=gcp.vmwareengine.PrivateCloudManagementClusterArgs(
+                cluster_id="sample-mgmt-cluster",
+                node_type_configs=[gcp.vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArgs(
+                    node_type_id="standard-72",
+                    node_count=3,
+                )],
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Vmware Engine Private Cloud Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pc_nw = gcp.vmwareengine.Network("pc-nw",
+            location="us-west1",
+            type="LEGACY",
+            description="PC network description.",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        vmw_engine_pc = gcp.vmwareengine.PrivateCloud("vmw-engine-pc",
+            location="us-west1-a",
+            description="Sample test PC.",
+            network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
+                management_cidr="192.168.30.0/24",
+                vmware_engine_network=pc_nw.id,
+            ),
+            management_cluster=gcp.vmwareengine.PrivateCloudManagementClusterArgs(
+                cluster_id="sample-mgmt-cluster",
+                node_type_configs=[gcp.vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArgs(
+                    node_type_id="standard-72",
+                    node_count=3,
+                    custom_core_count=32,
+                )],
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -435,6 +490,61 @@ class PrivateCloud(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Vmware Engine Private Cloud Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pc_nw = gcp.vmwareengine.Network("pc-nw",
+            location="us-west1",
+            type="LEGACY",
+            description="PC network description.",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        vmw_engine_pc = gcp.vmwareengine.PrivateCloud("vmw-engine-pc",
+            location="us-west1-a",
+            description="Sample test PC.",
+            network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
+                management_cidr="192.168.30.0/24",
+                vmware_engine_network=pc_nw.id,
+            ),
+            management_cluster=gcp.vmwareengine.PrivateCloudManagementClusterArgs(
+                cluster_id="sample-mgmt-cluster",
+                node_type_configs=[gcp.vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArgs(
+                    node_type_id="standard-72",
+                    node_count=3,
+                )],
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Vmware Engine Private Cloud Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pc_nw = gcp.vmwareengine.Network("pc-nw",
+            location="us-west1",
+            type="LEGACY",
+            description="PC network description.",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        vmw_engine_pc = gcp.vmwareengine.PrivateCloud("vmw-engine-pc",
+            location="us-west1-a",
+            description="Sample test PC.",
+            network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
+                management_cidr="192.168.30.0/24",
+                vmware_engine_network=pc_nw.id,
+            ),
+            management_cluster=gcp.vmwareengine.PrivateCloudManagementClusterArgs(
+                cluster_id="sample-mgmt-cluster",
+                node_type_configs=[gcp.vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArgs(
+                    node_type_id="standard-72",
+                    node_count=3,
+                    custom_core_count=32,
+                )],
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

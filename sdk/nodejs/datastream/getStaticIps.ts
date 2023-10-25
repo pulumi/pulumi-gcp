@@ -7,6 +7,19 @@ import * as utilities from "../utilities";
 /**
  * Returns the list of IP addresses that Datastream connects from. For more information see
  * the [official documentation](https://cloud.google.com/datastream/docs/ip-allowlists-and-regions).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const datastreamIps = gcp.datastream.getStaticIps({
+ *     location: "us-west1",
+ *     project: "my-project",
+ * });
+ * export const ipList = datastreamIps.then(datastreamIps => datastreamIps.staticIps);
+ * ```
  */
 export function getStaticIps(args: GetStaticIpsArgs, opts?: pulumi.InvokeOptions): Promise<GetStaticIpsResult> {
 
@@ -49,6 +62,19 @@ export interface GetStaticIpsResult {
 /**
  * Returns the list of IP addresses that Datastream connects from. For more information see
  * the [official documentation](https://cloud.google.com/datastream/docs/ip-allowlists-and-regions).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const datastreamIps = gcp.datastream.getStaticIps({
+ *     location: "us-west1",
+ *     project: "my-project",
+ * });
+ * export const ipList = datastreamIps.then(datastreamIps => datastreamIps.staticIps);
+ * ```
  */
 export function getStaticIpsOutput(args: GetStaticIpsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStaticIpsResult> {
     return pulumi.output(args).apply((a: any) => getStaticIps(a, opts))

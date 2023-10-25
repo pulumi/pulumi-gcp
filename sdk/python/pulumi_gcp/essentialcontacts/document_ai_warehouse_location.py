@@ -347,6 +347,21 @@ class DocumentAiWarehouseLocation(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/document-warehouse/docs/overview)
 
         ## Example Usage
+        ### Document Ai Warehouse Location
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example = gcp.essentialcontacts.DocumentAiWarehouseLocation("example",
+            location="us",
+            project_number=project.number,
+            access_control_mode="ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI",
+            database_type="DB_INFRA_SPANNER",
+            kms_key="dummy_key",
+            document_creator_default_role="DOCUMENT_ADMIN")
+        ```
 
         ## Import
 
@@ -387,6 +402,21 @@ class DocumentAiWarehouseLocation(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/document-warehouse/docs/overview)
 
         ## Example Usage
+        ### Document Ai Warehouse Location
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example = gcp.essentialcontacts.DocumentAiWarehouseLocation("example",
+            location="us",
+            project_number=project.number,
+            access_control_mode="ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI",
+            database_type="DB_INFRA_SPANNER",
+            kms_key="dummy_key",
+            document_creator_default_role="DOCUMENT_ADMIN")
+        ```
 
         ## Import
 

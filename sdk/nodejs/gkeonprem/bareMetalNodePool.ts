@@ -8,6 +8,193 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### Gkeonprem Bare Metal Node Pool Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default_basic = new gcp.gkeonprem.BareMetalCluster("default-basic", {
+ *     location: "us-west1",
+ *     adminClusterMembership: "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
+ *     bareMetalVersion: "1.12.3",
+ *     networkConfig: {
+ *         islandModeCidr: {
+ *             serviceAddressCidrBlocks: ["172.26.0.0/16"],
+ *             podAddressCidrBlocks: ["10.240.0.0/13"],
+ *         },
+ *     },
+ *     controlPlane: {
+ *         controlPlaneNodePoolConfig: {
+ *             nodePoolConfig: {
+ *                 labels: {},
+ *                 operatingSystem: "LINUX",
+ *                 nodeConfigs: [{
+ *                     labels: {},
+ *                     nodeIp: "10.200.0.9",
+ *                 }],
+ *             },
+ *         },
+ *     },
+ *     loadBalancer: {
+ *         portConfig: {
+ *             controlPlaneLoadBalancerPort: 443,
+ *         },
+ *         vipConfig: {
+ *             controlPlaneVip: "10.200.0.13",
+ *             ingressVip: "10.200.0.14",
+ *         },
+ *         metalLbConfig: {
+ *             addressPools: [{
+ *                 pool: "pool1",
+ *                 addresses: [
+ *                     "10.200.0.14/32",
+ *                     "10.200.0.15/32",
+ *                     "10.200.0.16/32",
+ *                     "10.200.0.17/32",
+ *                     "10.200.0.18/32",
+ *                     "fd00:1::f/128",
+ *                     "fd00:1::10/128",
+ *                     "fd00:1::11/128",
+ *                     "fd00:1::12/128",
+ *                 ],
+ *             }],
+ *         },
+ *     },
+ *     storage: {
+ *         lvpShareConfig: {
+ *             lvpConfig: {
+ *                 path: "/mnt/localpv-share",
+ *                 storageClass: "local-shared",
+ *             },
+ *             sharedPathPvCount: 5,
+ *         },
+ *         lvpNodeMountsConfig: {
+ *             path: "/mnt/localpv-disk",
+ *             storageClass: "local-disks",
+ *         },
+ *     },
+ *     securityConfig: {
+ *         authorization: {
+ *             adminUsers: [{
+ *                 username: "admin@hashicorptest.com",
+ *             }],
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const nodepool_basic = new gcp.gkeonprem.BareMetalNodePool("nodepool-basic", {
+ *     bareMetalCluster: default_basic.name,
+ *     location: "us-west1",
+ *     nodePoolConfig: {
+ *         operatingSystem: "LINUX",
+ *         nodeConfigs: [{
+ *             nodeIp: "10.200.0.11",
+ *         }],
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Gkeonprem Bare Metal Node Pool Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default_full = new gcp.gkeonprem.BareMetalCluster("default-full", {
+ *     location: "us-west1",
+ *     adminClusterMembership: "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
+ *     bareMetalVersion: "1.12.3",
+ *     networkConfig: {
+ *         islandModeCidr: {
+ *             serviceAddressCidrBlocks: ["172.26.0.0/16"],
+ *             podAddressCidrBlocks: ["10.240.0.0/13"],
+ *         },
+ *     },
+ *     controlPlane: {
+ *         controlPlaneNodePoolConfig: {
+ *             nodePoolConfig: {
+ *                 labels: {},
+ *                 operatingSystem: "LINUX",
+ *                 nodeConfigs: [{
+ *                     labels: {},
+ *                     nodeIp: "10.200.0.9",
+ *                 }],
+ *             },
+ *         },
+ *     },
+ *     loadBalancer: {
+ *         portConfig: {
+ *             controlPlaneLoadBalancerPort: 443,
+ *         },
+ *         vipConfig: {
+ *             controlPlaneVip: "10.200.0.13",
+ *             ingressVip: "10.200.0.14",
+ *         },
+ *         metalLbConfig: {
+ *             addressPools: [{
+ *                 pool: "pool1",
+ *                 addresses: [
+ *                     "10.200.0.14/32",
+ *                     "10.200.0.15/32",
+ *                     "10.200.0.16/32",
+ *                     "10.200.0.17/32",
+ *                     "10.200.0.18/32",
+ *                     "fd00:1::f/128",
+ *                     "fd00:1::10/128",
+ *                     "fd00:1::11/128",
+ *                     "fd00:1::12/128",
+ *                 ],
+ *             }],
+ *         },
+ *     },
+ *     storage: {
+ *         lvpShareConfig: {
+ *             lvpConfig: {
+ *                 path: "/mnt/localpv-share",
+ *                 storageClass: "local-shared",
+ *             },
+ *             sharedPathPvCount: 5,
+ *         },
+ *         lvpNodeMountsConfig: {
+ *             path: "/mnt/localpv-disk",
+ *             storageClass: "local-disks",
+ *         },
+ *     },
+ *     securityConfig: {
+ *         authorization: {
+ *             adminUsers: [{
+ *                 username: "admin@hashicorptest.com",
+ *             }],
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const nodepool_full = new gcp.gkeonprem.BareMetalNodePool("nodepool-full", {
+ *     displayName: "test-name",
+ *     bareMetalCluster: default_full.name,
+ *     location: "us-west1",
+ *     annotations: {},
+ *     nodePoolConfig: {
+ *         operatingSystem: "LINUX",
+ *         labels: {},
+ *         nodeConfigs: [{
+ *             nodeIp: "10.200.0.11",
+ *             labels: {},
+ *         }],
+ *         taints: [{
+ *             key: "test-key",
+ *             value: "test-value",
+ *             effect: "NO_EXECUTE",
+ *         }],
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

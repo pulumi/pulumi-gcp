@@ -371,6 +371,20 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
         the marketplace prior to using this resource.
 
         ## Example Usage
+        ### Identity Platform Tenant Default Supported Idp Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tenant = gcp.identityplatform.Tenant("tenant", display_name="tenant")
+        idp_config = gcp.identityplatform.TenantDefaultSupportedIdpConfig("idpConfig",
+            enabled=True,
+            tenant=tenant.name,
+            idp_id="playgames.google.com",
+            client_id="my-client-id",
+            client_secret="secret")
+        ```
 
         ## Import
 
@@ -425,6 +439,20 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
         the marketplace prior to using this resource.
 
         ## Example Usage
+        ### Identity Platform Tenant Default Supported Idp Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tenant = gcp.identityplatform.Tenant("tenant", display_name="tenant")
+        idp_config = gcp.identityplatform.TenantDefaultSupportedIdpConfig("idpConfig",
+            enabled=True,
+            tenant=tenant.name,
+            idp_id="playgames.google.com",
+            client_id="my-client-id",
+            client_secret="secret")
+        ```
 
         ## Import
 

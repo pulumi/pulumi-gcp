@@ -19,6 +19,111 @@ namespace Pulumi.Gcp.BinaryAuthorization
     ///     * [Official Documentation](https://cloud.google.com/binary-authorization/)
     /// 
     /// ## Example Usage
+    /// ### Binary Authorization Policy Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var note = new Gcp.ContainerAnalysis.Note("note", new()
+    ///     {
+    ///         AttestationAuthority = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityArgs
+    ///         {
+    ///             Hint = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityHintArgs
+    ///             {
+    ///                 HumanReadableName = "My attestor",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var attestor = new Gcp.BinaryAuthorization.Attestor("attestor", new()
+    ///     {
+    ///         AttestationAuthorityNote = new Gcp.BinaryAuthorization.Inputs.AttestorAttestationAuthorityNoteArgs
+    ///         {
+    ///             NoteReference = note.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.BinaryAuthorization.Policy("policy", new()
+    ///     {
+    ///         AdmissionWhitelistPatterns = new[]
+    ///         {
+    ///             new Gcp.BinaryAuthorization.Inputs.PolicyAdmissionWhitelistPatternArgs
+    ///             {
+    ///                 NamePattern = "gcr.io/google_containers/*",
+    ///             },
+    ///         },
+    ///         DefaultAdmissionRule = new Gcp.BinaryAuthorization.Inputs.PolicyDefaultAdmissionRuleArgs
+    ///         {
+    ///             EvaluationMode = "ALWAYS_ALLOW",
+    ///             EnforcementMode = "ENFORCED_BLOCK_AND_AUDIT_LOG",
+    ///         },
+    ///         ClusterAdmissionRules = new[]
+    ///         {
+    ///             new Gcp.BinaryAuthorization.Inputs.PolicyClusterAdmissionRuleArgs
+    ///             {
+    ///                 Cluster = "us-central1-a.prod-cluster",
+    ///                 EvaluationMode = "REQUIRE_ATTESTATION",
+    ///                 EnforcementMode = "ENFORCED_BLOCK_AND_AUDIT_LOG",
+    ///                 RequireAttestationsBies = new[]
+    ///                 {
+    ///                     attestor.Name,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Binary Authorization Policy Global Evaluation
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var note = new Gcp.ContainerAnalysis.Note("note", new()
+    ///     {
+    ///         AttestationAuthority = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityArgs
+    ///         {
+    ///             Hint = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityHintArgs
+    ///             {
+    ///                 HumanReadableName = "My attestor",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var attestor = new Gcp.BinaryAuthorization.Attestor("attestor", new()
+    ///     {
+    ///         AttestationAuthorityNote = new Gcp.BinaryAuthorization.Inputs.AttestorAttestationAuthorityNoteArgs
+    ///         {
+    ///             NoteReference = note.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.BinaryAuthorization.Policy("policy", new()
+    ///     {
+    ///         DefaultAdmissionRule = new Gcp.BinaryAuthorization.Inputs.PolicyDefaultAdmissionRuleArgs
+    ///         {
+    ///             EvaluationMode = "REQUIRE_ATTESTATION",
+    ///             EnforcementMode = "ENFORCED_BLOCK_AND_AUDIT_LOG",
+    ///             RequireAttestationsBies = new[]
+    ///             {
+    ///                 attestor.Name,
+    ///             },
+    ///         },
+    ///         GlobalPolicyEvaluationMode = "ENABLE",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -266,6 +266,25 @@ class DataStoreIndex(pulumi.CustomResource):
         Datastore location will be the same as the App Engine location specified.
 
         ## Example Usage
+        ### Datastore Index
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.datastore.DataStoreIndex("default",
+            kind="foo",
+            properties=[
+                gcp.datastore.DataStoreIndexPropertyArgs(
+                    direction="ASCENDING",
+                    name="property_a",
+                ),
+                gcp.datastore.DataStoreIndexPropertyArgs(
+                    direction="ASCENDING",
+                    name="property_b",
+                ),
+            ])
+        ```
 
         ## Import
 
@@ -319,6 +338,25 @@ class DataStoreIndex(pulumi.CustomResource):
         Datastore location will be the same as the App Engine location specified.
 
         ## Example Usage
+        ### Datastore Index
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.datastore.DataStoreIndex("default",
+            kind="foo",
+            properties=[
+                gcp.datastore.DataStoreIndexPropertyArgs(
+                    direction="ASCENDING",
+                    name="property_a",
+                ),
+                gcp.datastore.DataStoreIndexPropertyArgs(
+                    direction="ASCENDING",
+                    name="property_b",
+                ),
+            ])
+        ```
 
         ## Import
 

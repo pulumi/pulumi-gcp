@@ -375,6 +375,58 @@ class RegionAutoscaler(pulumi.CustomResource):
             * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
 
         ## Example Usage
+        ### Region Autoscaler Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        foobar_instance_template = gcp.compute.InstanceTemplate("foobarInstanceTemplate",
+            machine_type="e2-standard-4",
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image="debian-cloud/debian-11",
+                disk_size_gb=250,
+            )],
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network="default",
+                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs(
+                    network_tier="PREMIUM",
+                )],
+            )],
+            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
+                scopes=[
+                    "https://www.googleapis.com/auth/devstorage.read_only",
+                    "https://www.googleapis.com/auth/logging.write",
+                    "https://www.googleapis.com/auth/monitoring.write",
+                    "https://www.googleapis.com/auth/pubsub",
+                    "https://www.googleapis.com/auth/service.management.readonly",
+                    "https://www.googleapis.com/auth/servicecontrol",
+                    "https://www.googleapis.com/auth/trace.append",
+                ],
+            ))
+        foobar_target_pool = gcp.compute.TargetPool("foobarTargetPool")
+        foobar_region_instance_group_manager = gcp.compute.RegionInstanceGroupManager("foobarRegionInstanceGroupManager",
+            region="us-central1",
+            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
+                instance_template=foobar_instance_template.id,
+                name="primary",
+            )],
+            target_pools=[foobar_target_pool.id],
+            base_instance_name="foobar")
+        foobar_region_autoscaler = gcp.compute.RegionAutoscaler("foobarRegionAutoscaler",
+            region="us-central1",
+            target=foobar_region_instance_group_manager.id,
+            autoscaling_policy=gcp.compute.RegionAutoscalerAutoscalingPolicyArgs(
+                max_replicas=5,
+                min_replicas=1,
+                cooldown_period=60,
+                cpu_utilization=gcp.compute.RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs(
+                    target=0.5,
+                ),
+            ))
+        debian9 = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        ```
 
         ## Import
 
@@ -435,6 +487,58 @@ class RegionAutoscaler(pulumi.CustomResource):
             * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
 
         ## Example Usage
+        ### Region Autoscaler Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        foobar_instance_template = gcp.compute.InstanceTemplate("foobarInstanceTemplate",
+            machine_type="e2-standard-4",
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image="debian-cloud/debian-11",
+                disk_size_gb=250,
+            )],
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network="default",
+                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs(
+                    network_tier="PREMIUM",
+                )],
+            )],
+            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
+                scopes=[
+                    "https://www.googleapis.com/auth/devstorage.read_only",
+                    "https://www.googleapis.com/auth/logging.write",
+                    "https://www.googleapis.com/auth/monitoring.write",
+                    "https://www.googleapis.com/auth/pubsub",
+                    "https://www.googleapis.com/auth/service.management.readonly",
+                    "https://www.googleapis.com/auth/servicecontrol",
+                    "https://www.googleapis.com/auth/trace.append",
+                ],
+            ))
+        foobar_target_pool = gcp.compute.TargetPool("foobarTargetPool")
+        foobar_region_instance_group_manager = gcp.compute.RegionInstanceGroupManager("foobarRegionInstanceGroupManager",
+            region="us-central1",
+            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
+                instance_template=foobar_instance_template.id,
+                name="primary",
+            )],
+            target_pools=[foobar_target_pool.id],
+            base_instance_name="foobar")
+        foobar_region_autoscaler = gcp.compute.RegionAutoscaler("foobarRegionAutoscaler",
+            region="us-central1",
+            target=foobar_region_instance_group_manager.id,
+            autoscaling_policy=gcp.compute.RegionAutoscalerAutoscalingPolicyArgs(
+                max_replicas=5,
+                min_replicas=1,
+                cooldown_period=60,
+                cpu_utilization=gcp.compute.RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs(
+                    target=0.5,
+                ),
+            ))
+        debian9 = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        ```
 
         ## Import
 

@@ -563,6 +563,501 @@ class Stream(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/datastream/docs/create-a-stream)
 
         ## Example Usage
+        ### Datastream Stream Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        project = gcp.organizations.get_project()
+        instance = gcp.sql.DatabaseInstance("instance",
+            database_version="MYSQL_8_0",
+            region="us-central1",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+                backup_configuration=gcp.sql.DatabaseInstanceSettingsBackupConfigurationArgs(
+                    enabled=True,
+                    binary_log_enabled=True,
+                ),
+                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
+                    authorized_networks=[
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.71.242.81",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.28.29",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.6.157",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.234.134",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.239.218",
+                        ),
+                    ],
+                ),
+            ),
+            deletion_protection=True)
+        db = gcp.sql.Database("db", instance=instance.name)
+        pwd = random.RandomPassword("pwd",
+            length=16,
+            special=False)
+        user = gcp.sql.User("user",
+            instance=instance.name,
+            host="%",
+            password=pwd.result)
+        source_connection_profile = gcp.datastream.ConnectionProfile("sourceConnectionProfile",
+            display_name="Source connection profile",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            mysql_profile=gcp.datastream.ConnectionProfileMysqlProfileArgs(
+                hostname=instance.public_ip_address,
+                username=user.name,
+                password=user.password,
+            ))
+        bucket = gcp.storage.Bucket("bucket",
+            location="US",
+            uniform_bucket_level_access=True)
+        viewer = gcp.storage.BucketIAMMember("viewer",
+            bucket=bucket.name,
+            role="roles/storage.objectViewer",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-datastream.iam.gserviceaccount.com")
+        creator = gcp.storage.BucketIAMMember("creator",
+            bucket=bucket.name,
+            role="roles/storage.objectCreator",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-datastream.iam.gserviceaccount.com")
+        reader = gcp.storage.BucketIAMMember("reader",
+            bucket=bucket.name,
+            role="roles/storage.legacyBucketReader",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-datastream.iam.gserviceaccount.com")
+        key_user = gcp.kms.CryptoKeyIAMMember("keyUser",
+            crypto_key_id="kms-name",
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-datastream.iam.gserviceaccount.com")
+        destination_connection_profile = gcp.datastream.ConnectionProfile("destinationConnectionProfile",
+            display_name="Connection profile",
+            location="us-central1",
+            connection_profile_id="destination-profile",
+            gcs_profile=gcp.datastream.ConnectionProfileGcsProfileArgs(
+                bucket=bucket.name,
+                root_path="/path",
+            ))
+        default = gcp.datastream.Stream("default",
+            stream_id="my-stream",
+            desired_state="NOT_STARTED",
+            location="us-central1",
+            display_name="my stream",
+            labels={
+                "key": "value",
+            },
+            source_config=gcp.datastream.StreamSourceConfigArgs(
+                source_connection_profile=source_connection_profile.id,
+                mysql_source_config=gcp.datastream.StreamSourceConfigMysqlSourceConfigArgs(
+                    include_objects=gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs(
+                        mysql_databases=[gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs(
+                            database="my-database",
+                            mysql_tables=[gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs(
+                                table="includedTable",
+                                mysql_columns=[gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs(
+                                    column="includedColumn",
+                                    data_type="VARCHAR",
+                                    collation="utf8mb4",
+                                    primary_key=False,
+                                    nullable=False,
+                                    ordinal_position=0,
+                                )],
+                            )],
+                        )],
+                    ),
+                    exclude_objects=gcp.datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs(
+                        mysql_databases=[gcp.datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs(
+                            database="my-database",
+                            mysql_tables=[gcp.datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs(
+                                table="excludedTable",
+                                mysql_columns=[gcp.datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs(
+                                    column="excludedColumn",
+                                    data_type="VARCHAR",
+                                    collation="utf8mb4",
+                                    primary_key=False,
+                                    nullable=False,
+                                    ordinal_position=0,
+                                )],
+                            )],
+                        )],
+                    ),
+                    max_concurrent_cdc_tasks=5,
+                ),
+            ),
+            destination_config=gcp.datastream.StreamDestinationConfigArgs(
+                destination_connection_profile=destination_connection_profile.id,
+                gcs_destination_config=gcp.datastream.StreamDestinationConfigGcsDestinationConfigArgs(
+                    path="mydata",
+                    file_rotation_mb=200,
+                    file_rotation_interval="60s",
+                    json_file_format=gcp.datastream.StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs(
+                        schema_file_format="NO_SCHEMA_FILE",
+                        compression="GZIP",
+                    ),
+                ),
+            ),
+            backfill_all=gcp.datastream.StreamBackfillAllArgs(
+                mysql_excluded_objects=gcp.datastream.StreamBackfillAllMysqlExcludedObjectsArgs(
+                    mysql_databases=[gcp.datastream.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs(
+                        database="my-database",
+                        mysql_tables=[gcp.datastream.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs(
+                            table="excludedTable",
+                            mysql_columns=[gcp.datastream.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs(
+                                column="excludedColumn",
+                                data_type="VARCHAR",
+                                collation="utf8mb4",
+                                primary_key=False,
+                                nullable=False,
+                                ordinal_position=0,
+                            )],
+                        )],
+                    )],
+                ),
+            ),
+            customer_managed_encryption_key="kms-name",
+            opts=pulumi.ResourceOptions(depends_on=[key_user]))
+        ```
+        ### Datastream Stream Postgresql
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        source = gcp.datastream.ConnectionProfile("source",
+            display_name="Postgresql Source",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            postgresql_profile=gcp.datastream.ConnectionProfilePostgresqlProfileArgs(
+                hostname="hostname",
+                port=3306,
+                username="user",
+                password="pass",
+                database="postgres",
+            ))
+        destination = gcp.datastream.ConnectionProfile("destination",
+            display_name="BigQuery Destination",
+            location="us-central1",
+            connection_profile_id="destination-profile",
+            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
+        default = gcp.datastream.Stream("default",
+            display_name="Postgres to BigQuery",
+            location="us-central1",
+            stream_id="my-stream",
+            desired_state="RUNNING",
+            source_config=gcp.datastream.StreamSourceConfigArgs(
+                source_connection_profile=source.id,
+                postgresql_source_config=gcp.datastream.StreamSourceConfigPostgresqlSourceConfigArgs(
+                    max_concurrent_backfill_tasks=12,
+                    publication="publication",
+                    replication_slot="replication_slot",
+                    include_objects=gcp.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs(
+                        postgresql_schemas=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs(
+                            schema="schema",
+                            postgresql_tables=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs(
+                                table="table",
+                                postgresql_columns=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs(
+                                    column="column",
+                                )],
+                            )],
+                        )],
+                    ),
+                    exclude_objects=gcp.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs(
+                        postgresql_schemas=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs(
+                            schema="schema",
+                            postgresql_tables=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs(
+                                table="table",
+                                postgresql_columns=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs(
+                                    column="column",
+                                )],
+                            )],
+                        )],
+                    ),
+                ),
+            ),
+            destination_config=gcp.datastream.StreamDestinationConfigArgs(
+                destination_connection_profile=destination.id,
+                bigquery_destination_config=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigArgs(
+                    data_freshness="900s",
+                    source_hierarchy_datasets=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs(
+                        dataset_template=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs(
+                            location="us-central1",
+                        ),
+                    ),
+                ),
+            ),
+            backfill_all=gcp.datastream.StreamBackfillAllArgs(
+                postgresql_excluded_objects=gcp.datastream.StreamBackfillAllPostgresqlExcludedObjectsArgs(
+                    postgresql_schemas=[gcp.datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs(
+                        schema="schema",
+                        postgresql_tables=[gcp.datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs(
+                            table="table",
+                            postgresql_columns=[gcp.datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs(
+                                column="column",
+                            )],
+                        )],
+                    )],
+                ),
+            ))
+        ```
+        ### Datastream Stream Oracle
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        source = gcp.datastream.ConnectionProfile("source",
+            display_name="Oracle Source",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            oracle_profile=gcp.datastream.ConnectionProfileOracleProfileArgs(
+                hostname="hostname",
+                port=1521,
+                username="user",
+                password="pass",
+                database_service="ORCL",
+            ))
+        destination = gcp.datastream.ConnectionProfile("destination",
+            display_name="BigQuery Destination",
+            location="us-central1",
+            connection_profile_id="destination-profile",
+            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
+        stream5 = gcp.datastream.Stream("stream5",
+            display_name="Oracle to BigQuery",
+            location="us-central1",
+            stream_id="my-stream",
+            desired_state="RUNNING",
+            source_config=gcp.datastream.StreamSourceConfigArgs(
+                source_connection_profile=source.id,
+                oracle_source_config=gcp.datastream.StreamSourceConfigOracleSourceConfigArgs(
+                    max_concurrent_cdc_tasks=8,
+                    max_concurrent_backfill_tasks=12,
+                    include_objects=gcp.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsArgs(
+                        oracle_schemas=[gcp.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs(
+                            schema="schema",
+                            oracle_tables=[gcp.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs(
+                                table="table",
+                                oracle_columns=[gcp.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs(
+                                    column="column",
+                                )],
+                            )],
+                        )],
+                    ),
+                    exclude_objects=gcp.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsArgs(
+                        oracle_schemas=[gcp.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs(
+                            schema="schema",
+                            oracle_tables=[gcp.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs(
+                                table="table",
+                                oracle_columns=[gcp.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs(
+                                    column="column",
+                                )],
+                            )],
+                        )],
+                    ),
+                    drop_large_objects=gcp.datastream.StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs(),
+                ),
+            ),
+            destination_config=gcp.datastream.StreamDestinationConfigArgs(
+                destination_connection_profile=destination.id,
+                bigquery_destination_config=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigArgs(
+                    data_freshness="900s",
+                    source_hierarchy_datasets=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs(
+                        dataset_template=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs(
+                            location="us-central1",
+                        ),
+                    ),
+                ),
+            ),
+            backfill_all=gcp.datastream.StreamBackfillAllArgs(
+                oracle_excluded_objects=gcp.datastream.StreamBackfillAllOracleExcludedObjectsArgs(
+                    oracle_schemas=[gcp.datastream.StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs(
+                        schema="schema",
+                        oracle_tables=[gcp.datastream.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs(
+                            table="table",
+                            oracle_columns=[gcp.datastream.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs(
+                                column="column",
+                            )],
+                        )],
+                    )],
+                ),
+            ))
+        ```
+        ### Datastream Stream Postgresql Bigquery Dataset Id
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        postgres = gcp.bigquery.Dataset("postgres",
+            dataset_id="postgres",
+            friendly_name="postgres",
+            description="Database of postgres",
+            location="us-central1")
+        destination_connection_profile2 = gcp.datastream.ConnectionProfile("destinationConnectionProfile2",
+            display_name="Connection profile",
+            location="us-central1",
+            connection_profile_id="dest-profile",
+            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
+        instance = gcp.sql.DatabaseInstance("instance",
+            database_version="MYSQL_8_0",
+            region="us-central1",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+                backup_configuration=gcp.sql.DatabaseInstanceSettingsBackupConfigurationArgs(
+                    enabled=True,
+                    binary_log_enabled=True,
+                ),
+                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
+                    authorized_networks=[
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.71.242.81",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.28.29",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.6.157",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.234.134",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.239.218",
+                        ),
+                    ],
+                ),
+            ),
+            deletion_protection=False)
+        pwd = random.RandomPassword("pwd",
+            length=16,
+            special=False)
+        user = gcp.sql.User("user",
+            instance=instance.name,
+            host="%",
+            password=pwd.result)
+        source_connection_profile = gcp.datastream.ConnectionProfile("sourceConnectionProfile",
+            display_name="Source connection profile",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            mysql_profile=gcp.datastream.ConnectionProfileMysqlProfileArgs(
+                hostname=instance.public_ip_address,
+                username=user.name,
+                password=user.password,
+            ))
+        default = gcp.datastream.Stream("default",
+            display_name="postgres to bigQuery",
+            location="us-central1",
+            stream_id="postgres-bigquery",
+            source_config=gcp.datastream.StreamSourceConfigArgs(
+                source_connection_profile=source_connection_profile.id,
+                mysql_source_config=gcp.datastream.StreamSourceConfigMysqlSourceConfigArgs(),
+            ),
+            destination_config=gcp.datastream.StreamDestinationConfigArgs(
+                destination_connection_profile=destination_connection_profile2.id,
+                bigquery_destination_config=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigArgs(
+                    data_freshness="900s",
+                    single_target_dataset=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs(
+                        dataset_id=postgres.id,
+                    ),
+                ),
+            ),
+            backfill_all=gcp.datastream.StreamBackfillAllArgs())
+        db = gcp.sql.Database("db", instance=instance.name)
+        ```
+        ### Datastream Stream Bigquery
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        project = gcp.organizations.get_project()
+        instance = gcp.sql.DatabaseInstance("instance",
+            database_version="MYSQL_8_0",
+            region="us-central1",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+                backup_configuration=gcp.sql.DatabaseInstanceSettingsBackupConfigurationArgs(
+                    enabled=True,
+                    binary_log_enabled=True,
+                ),
+                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
+                    authorized_networks=[
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.71.242.81",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.28.29",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.6.157",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.234.134",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.239.218",
+                        ),
+                    ],
+                ),
+            ),
+            deletion_protection=True)
+        db = gcp.sql.Database("db", instance=instance.name)
+        pwd = random.RandomPassword("pwd",
+            length=16,
+            special=False)
+        user = gcp.sql.User("user",
+            instance=instance.name,
+            host="%",
+            password=pwd.result)
+        source_connection_profile = gcp.datastream.ConnectionProfile("sourceConnectionProfile",
+            display_name="Source connection profile",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            mysql_profile=gcp.datastream.ConnectionProfileMysqlProfileArgs(
+                hostname=instance.public_ip_address,
+                username=user.name,
+                password=user.password,
+            ))
+        bq_sa = gcp.bigquery.get_default_service_account()
+        bigquery_key_user = gcp.kms.CryptoKeyIAMMember("bigqueryKeyUser",
+            crypto_key_id="bigquery-kms-name",
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:{bq_sa.email}")
+        destination_connection_profile = gcp.datastream.ConnectionProfile("destinationConnectionProfile",
+            display_name="Connection profile",
+            location="us-central1",
+            connection_profile_id="destination-profile",
+            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
+        default = gcp.datastream.Stream("default",
+            stream_id="my-stream",
+            location="us-central1",
+            display_name="my stream",
+            source_config=gcp.datastream.StreamSourceConfigArgs(
+                source_connection_profile=source_connection_profile.id,
+                mysql_source_config=gcp.datastream.StreamSourceConfigMysqlSourceConfigArgs(),
+            ),
+            destination_config=gcp.datastream.StreamDestinationConfigArgs(
+                destination_connection_profile=destination_connection_profile.id,
+                bigquery_destination_config=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigArgs(
+                    source_hierarchy_datasets=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs(
+                        dataset_template=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs(
+                            location="us-central1",
+                            kms_key_name="bigquery-kms-name",
+                        ),
+                    ),
+                ),
+            ),
+            backfill_none=gcp.datastream.StreamBackfillNoneArgs(),
+            opts=pulumi.ResourceOptions(depends_on=[bigquery_key_user]))
+        ```
 
         ## Import
 
@@ -615,6 +1110,501 @@ class Stream(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/datastream/docs/create-a-stream)
 
         ## Example Usage
+        ### Datastream Stream Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        project = gcp.organizations.get_project()
+        instance = gcp.sql.DatabaseInstance("instance",
+            database_version="MYSQL_8_0",
+            region="us-central1",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+                backup_configuration=gcp.sql.DatabaseInstanceSettingsBackupConfigurationArgs(
+                    enabled=True,
+                    binary_log_enabled=True,
+                ),
+                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
+                    authorized_networks=[
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.71.242.81",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.28.29",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.6.157",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.234.134",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.239.218",
+                        ),
+                    ],
+                ),
+            ),
+            deletion_protection=True)
+        db = gcp.sql.Database("db", instance=instance.name)
+        pwd = random.RandomPassword("pwd",
+            length=16,
+            special=False)
+        user = gcp.sql.User("user",
+            instance=instance.name,
+            host="%",
+            password=pwd.result)
+        source_connection_profile = gcp.datastream.ConnectionProfile("sourceConnectionProfile",
+            display_name="Source connection profile",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            mysql_profile=gcp.datastream.ConnectionProfileMysqlProfileArgs(
+                hostname=instance.public_ip_address,
+                username=user.name,
+                password=user.password,
+            ))
+        bucket = gcp.storage.Bucket("bucket",
+            location="US",
+            uniform_bucket_level_access=True)
+        viewer = gcp.storage.BucketIAMMember("viewer",
+            bucket=bucket.name,
+            role="roles/storage.objectViewer",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-datastream.iam.gserviceaccount.com")
+        creator = gcp.storage.BucketIAMMember("creator",
+            bucket=bucket.name,
+            role="roles/storage.objectCreator",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-datastream.iam.gserviceaccount.com")
+        reader = gcp.storage.BucketIAMMember("reader",
+            bucket=bucket.name,
+            role="roles/storage.legacyBucketReader",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-datastream.iam.gserviceaccount.com")
+        key_user = gcp.kms.CryptoKeyIAMMember("keyUser",
+            crypto_key_id="kms-name",
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-datastream.iam.gserviceaccount.com")
+        destination_connection_profile = gcp.datastream.ConnectionProfile("destinationConnectionProfile",
+            display_name="Connection profile",
+            location="us-central1",
+            connection_profile_id="destination-profile",
+            gcs_profile=gcp.datastream.ConnectionProfileGcsProfileArgs(
+                bucket=bucket.name,
+                root_path="/path",
+            ))
+        default = gcp.datastream.Stream("default",
+            stream_id="my-stream",
+            desired_state="NOT_STARTED",
+            location="us-central1",
+            display_name="my stream",
+            labels={
+                "key": "value",
+            },
+            source_config=gcp.datastream.StreamSourceConfigArgs(
+                source_connection_profile=source_connection_profile.id,
+                mysql_source_config=gcp.datastream.StreamSourceConfigMysqlSourceConfigArgs(
+                    include_objects=gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs(
+                        mysql_databases=[gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs(
+                            database="my-database",
+                            mysql_tables=[gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs(
+                                table="includedTable",
+                                mysql_columns=[gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs(
+                                    column="includedColumn",
+                                    data_type="VARCHAR",
+                                    collation="utf8mb4",
+                                    primary_key=False,
+                                    nullable=False,
+                                    ordinal_position=0,
+                                )],
+                            )],
+                        )],
+                    ),
+                    exclude_objects=gcp.datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs(
+                        mysql_databases=[gcp.datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs(
+                            database="my-database",
+                            mysql_tables=[gcp.datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs(
+                                table="excludedTable",
+                                mysql_columns=[gcp.datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs(
+                                    column="excludedColumn",
+                                    data_type="VARCHAR",
+                                    collation="utf8mb4",
+                                    primary_key=False,
+                                    nullable=False,
+                                    ordinal_position=0,
+                                )],
+                            )],
+                        )],
+                    ),
+                    max_concurrent_cdc_tasks=5,
+                ),
+            ),
+            destination_config=gcp.datastream.StreamDestinationConfigArgs(
+                destination_connection_profile=destination_connection_profile.id,
+                gcs_destination_config=gcp.datastream.StreamDestinationConfigGcsDestinationConfigArgs(
+                    path="mydata",
+                    file_rotation_mb=200,
+                    file_rotation_interval="60s",
+                    json_file_format=gcp.datastream.StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs(
+                        schema_file_format="NO_SCHEMA_FILE",
+                        compression="GZIP",
+                    ),
+                ),
+            ),
+            backfill_all=gcp.datastream.StreamBackfillAllArgs(
+                mysql_excluded_objects=gcp.datastream.StreamBackfillAllMysqlExcludedObjectsArgs(
+                    mysql_databases=[gcp.datastream.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs(
+                        database="my-database",
+                        mysql_tables=[gcp.datastream.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs(
+                            table="excludedTable",
+                            mysql_columns=[gcp.datastream.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs(
+                                column="excludedColumn",
+                                data_type="VARCHAR",
+                                collation="utf8mb4",
+                                primary_key=False,
+                                nullable=False,
+                                ordinal_position=0,
+                            )],
+                        )],
+                    )],
+                ),
+            ),
+            customer_managed_encryption_key="kms-name",
+            opts=pulumi.ResourceOptions(depends_on=[key_user]))
+        ```
+        ### Datastream Stream Postgresql
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        source = gcp.datastream.ConnectionProfile("source",
+            display_name="Postgresql Source",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            postgresql_profile=gcp.datastream.ConnectionProfilePostgresqlProfileArgs(
+                hostname="hostname",
+                port=3306,
+                username="user",
+                password="pass",
+                database="postgres",
+            ))
+        destination = gcp.datastream.ConnectionProfile("destination",
+            display_name="BigQuery Destination",
+            location="us-central1",
+            connection_profile_id="destination-profile",
+            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
+        default = gcp.datastream.Stream("default",
+            display_name="Postgres to BigQuery",
+            location="us-central1",
+            stream_id="my-stream",
+            desired_state="RUNNING",
+            source_config=gcp.datastream.StreamSourceConfigArgs(
+                source_connection_profile=source.id,
+                postgresql_source_config=gcp.datastream.StreamSourceConfigPostgresqlSourceConfigArgs(
+                    max_concurrent_backfill_tasks=12,
+                    publication="publication",
+                    replication_slot="replication_slot",
+                    include_objects=gcp.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs(
+                        postgresql_schemas=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs(
+                            schema="schema",
+                            postgresql_tables=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs(
+                                table="table",
+                                postgresql_columns=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs(
+                                    column="column",
+                                )],
+                            )],
+                        )],
+                    ),
+                    exclude_objects=gcp.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs(
+                        postgresql_schemas=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs(
+                            schema="schema",
+                            postgresql_tables=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs(
+                                table="table",
+                                postgresql_columns=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs(
+                                    column="column",
+                                )],
+                            )],
+                        )],
+                    ),
+                ),
+            ),
+            destination_config=gcp.datastream.StreamDestinationConfigArgs(
+                destination_connection_profile=destination.id,
+                bigquery_destination_config=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigArgs(
+                    data_freshness="900s",
+                    source_hierarchy_datasets=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs(
+                        dataset_template=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs(
+                            location="us-central1",
+                        ),
+                    ),
+                ),
+            ),
+            backfill_all=gcp.datastream.StreamBackfillAllArgs(
+                postgresql_excluded_objects=gcp.datastream.StreamBackfillAllPostgresqlExcludedObjectsArgs(
+                    postgresql_schemas=[gcp.datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs(
+                        schema="schema",
+                        postgresql_tables=[gcp.datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs(
+                            table="table",
+                            postgresql_columns=[gcp.datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs(
+                                column="column",
+                            )],
+                        )],
+                    )],
+                ),
+            ))
+        ```
+        ### Datastream Stream Oracle
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        source = gcp.datastream.ConnectionProfile("source",
+            display_name="Oracle Source",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            oracle_profile=gcp.datastream.ConnectionProfileOracleProfileArgs(
+                hostname="hostname",
+                port=1521,
+                username="user",
+                password="pass",
+                database_service="ORCL",
+            ))
+        destination = gcp.datastream.ConnectionProfile("destination",
+            display_name="BigQuery Destination",
+            location="us-central1",
+            connection_profile_id="destination-profile",
+            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
+        stream5 = gcp.datastream.Stream("stream5",
+            display_name="Oracle to BigQuery",
+            location="us-central1",
+            stream_id="my-stream",
+            desired_state="RUNNING",
+            source_config=gcp.datastream.StreamSourceConfigArgs(
+                source_connection_profile=source.id,
+                oracle_source_config=gcp.datastream.StreamSourceConfigOracleSourceConfigArgs(
+                    max_concurrent_cdc_tasks=8,
+                    max_concurrent_backfill_tasks=12,
+                    include_objects=gcp.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsArgs(
+                        oracle_schemas=[gcp.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs(
+                            schema="schema",
+                            oracle_tables=[gcp.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs(
+                                table="table",
+                                oracle_columns=[gcp.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs(
+                                    column="column",
+                                )],
+                            )],
+                        )],
+                    ),
+                    exclude_objects=gcp.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsArgs(
+                        oracle_schemas=[gcp.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs(
+                            schema="schema",
+                            oracle_tables=[gcp.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs(
+                                table="table",
+                                oracle_columns=[gcp.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs(
+                                    column="column",
+                                )],
+                            )],
+                        )],
+                    ),
+                    drop_large_objects=gcp.datastream.StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs(),
+                ),
+            ),
+            destination_config=gcp.datastream.StreamDestinationConfigArgs(
+                destination_connection_profile=destination.id,
+                bigquery_destination_config=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigArgs(
+                    data_freshness="900s",
+                    source_hierarchy_datasets=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs(
+                        dataset_template=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs(
+                            location="us-central1",
+                        ),
+                    ),
+                ),
+            ),
+            backfill_all=gcp.datastream.StreamBackfillAllArgs(
+                oracle_excluded_objects=gcp.datastream.StreamBackfillAllOracleExcludedObjectsArgs(
+                    oracle_schemas=[gcp.datastream.StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs(
+                        schema="schema",
+                        oracle_tables=[gcp.datastream.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs(
+                            table="table",
+                            oracle_columns=[gcp.datastream.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs(
+                                column="column",
+                            )],
+                        )],
+                    )],
+                ),
+            ))
+        ```
+        ### Datastream Stream Postgresql Bigquery Dataset Id
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        postgres = gcp.bigquery.Dataset("postgres",
+            dataset_id="postgres",
+            friendly_name="postgres",
+            description="Database of postgres",
+            location="us-central1")
+        destination_connection_profile2 = gcp.datastream.ConnectionProfile("destinationConnectionProfile2",
+            display_name="Connection profile",
+            location="us-central1",
+            connection_profile_id="dest-profile",
+            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
+        instance = gcp.sql.DatabaseInstance("instance",
+            database_version="MYSQL_8_0",
+            region="us-central1",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+                backup_configuration=gcp.sql.DatabaseInstanceSettingsBackupConfigurationArgs(
+                    enabled=True,
+                    binary_log_enabled=True,
+                ),
+                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
+                    authorized_networks=[
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.71.242.81",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.28.29",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.6.157",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.234.134",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.239.218",
+                        ),
+                    ],
+                ),
+            ),
+            deletion_protection=False)
+        pwd = random.RandomPassword("pwd",
+            length=16,
+            special=False)
+        user = gcp.sql.User("user",
+            instance=instance.name,
+            host="%",
+            password=pwd.result)
+        source_connection_profile = gcp.datastream.ConnectionProfile("sourceConnectionProfile",
+            display_name="Source connection profile",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            mysql_profile=gcp.datastream.ConnectionProfileMysqlProfileArgs(
+                hostname=instance.public_ip_address,
+                username=user.name,
+                password=user.password,
+            ))
+        default = gcp.datastream.Stream("default",
+            display_name="postgres to bigQuery",
+            location="us-central1",
+            stream_id="postgres-bigquery",
+            source_config=gcp.datastream.StreamSourceConfigArgs(
+                source_connection_profile=source_connection_profile.id,
+                mysql_source_config=gcp.datastream.StreamSourceConfigMysqlSourceConfigArgs(),
+            ),
+            destination_config=gcp.datastream.StreamDestinationConfigArgs(
+                destination_connection_profile=destination_connection_profile2.id,
+                bigquery_destination_config=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigArgs(
+                    data_freshness="900s",
+                    single_target_dataset=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs(
+                        dataset_id=postgres.id,
+                    ),
+                ),
+            ),
+            backfill_all=gcp.datastream.StreamBackfillAllArgs())
+        db = gcp.sql.Database("db", instance=instance.name)
+        ```
+        ### Datastream Stream Bigquery
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        project = gcp.organizations.get_project()
+        instance = gcp.sql.DatabaseInstance("instance",
+            database_version="MYSQL_8_0",
+            region="us-central1",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+                backup_configuration=gcp.sql.DatabaseInstanceSettingsBackupConfigurationArgs(
+                    enabled=True,
+                    binary_log_enabled=True,
+                ),
+                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
+                    authorized_networks=[
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.71.242.81",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.28.29",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.6.157",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.234.134",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.239.218",
+                        ),
+                    ],
+                ),
+            ),
+            deletion_protection=True)
+        db = gcp.sql.Database("db", instance=instance.name)
+        pwd = random.RandomPassword("pwd",
+            length=16,
+            special=False)
+        user = gcp.sql.User("user",
+            instance=instance.name,
+            host="%",
+            password=pwd.result)
+        source_connection_profile = gcp.datastream.ConnectionProfile("sourceConnectionProfile",
+            display_name="Source connection profile",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            mysql_profile=gcp.datastream.ConnectionProfileMysqlProfileArgs(
+                hostname=instance.public_ip_address,
+                username=user.name,
+                password=user.password,
+            ))
+        bq_sa = gcp.bigquery.get_default_service_account()
+        bigquery_key_user = gcp.kms.CryptoKeyIAMMember("bigqueryKeyUser",
+            crypto_key_id="bigquery-kms-name",
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:{bq_sa.email}")
+        destination_connection_profile = gcp.datastream.ConnectionProfile("destinationConnectionProfile",
+            display_name="Connection profile",
+            location="us-central1",
+            connection_profile_id="destination-profile",
+            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
+        default = gcp.datastream.Stream("default",
+            stream_id="my-stream",
+            location="us-central1",
+            display_name="my stream",
+            source_config=gcp.datastream.StreamSourceConfigArgs(
+                source_connection_profile=source_connection_profile.id,
+                mysql_source_config=gcp.datastream.StreamSourceConfigMysqlSourceConfigArgs(),
+            ),
+            destination_config=gcp.datastream.StreamDestinationConfigArgs(
+                destination_connection_profile=destination_connection_profile.id,
+                bigquery_destination_config=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigArgs(
+                    source_hierarchy_datasets=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs(
+                        dataset_template=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs(
+                            location="us-central1",
+                            kms_key_name="bigquery-kms-name",
+                        ),
+                    ),
+                ),
+            ),
+            backfill_none=gcp.datastream.StreamBackfillNoneArgs(),
+            opts=pulumi.ResourceOptions(depends_on=[bigquery_key_user]))
+        ```
 
         ## Import
 

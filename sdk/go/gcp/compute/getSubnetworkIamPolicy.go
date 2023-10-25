@@ -13,6 +13,34 @@ import (
 )
 
 // Retrieves the current IAM policy data for subnetwork
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.GetSubnetworkIamPolicy(ctx, &compute.GetSubnetworkIamPolicyArgs{
+//				Project:    pulumi.StringRef(google_compute_subnetwork.NetworkWithPrivateSecondaryIpRanges.Project),
+//				Region:     pulumi.StringRef(google_compute_subnetwork.NetworkWithPrivateSecondaryIpRanges.Region),
+//				Subnetwork: google_compute_subnetwork.NetworkWithPrivateSecondaryIpRanges.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetSubnetworkIamPolicy(ctx *pulumi.Context, args *GetSubnetworkIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetSubnetworkIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSubnetworkIamPolicyResult

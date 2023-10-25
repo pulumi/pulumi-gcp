@@ -20,6 +20,124 @@ import (
 // * [API documentation](https://cloud.google.com/access-approval/docs/reference/rest/v1/organizations)
 //
 // ## Example Usage
+// ### Organization Access Approval Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewAccessApprovalSettings(ctx, "organizationAccessApproval", &organizations.AccessApprovalSettingsArgs{
+//				EnrolledServices: organizations.AccessApprovalSettingsEnrolledServiceArray{
+//					&organizations.AccessApprovalSettingsEnrolledServiceArgs{
+//						CloudProduct: pulumi.String("appengine.googleapis.com"),
+//					},
+//					&organizations.AccessApprovalSettingsEnrolledServiceArgs{
+//						CloudProduct:    pulumi.String("dataflow.googleapis.com"),
+//						EnrollmentLevel: pulumi.String("BLOCK_ALL"),
+//					},
+//				},
+//				NotificationEmails: pulumi.StringArray{
+//					pulumi.String("testuser@example.com"),
+//					pulumi.String("example.user@example.com"),
+//				},
+//				OrganizationId: pulumi.String("123456789"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Organization Access Approval Active Key Version
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/accessapproval"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myProject, err := organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
+//				ProjectId: pulumi.String("your-project-id"),
+//				OrgId:     pulumi.String("123456789"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			keyRing, err := kms.NewKeyRing(ctx, "keyRing", &kms.KeyRingArgs{
+//				Location: pulumi.String("global"),
+//				Project:  myProject.ProjectId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cryptoKey, err := kms.NewCryptoKey(ctx, "cryptoKey", &kms.CryptoKeyArgs{
+//				KeyRing: keyRing.ID(),
+//				Purpose: pulumi.String("ASYMMETRIC_SIGN"),
+//				VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
+//					Algorithm: pulumi.String("EC_SIGN_P384_SHA384"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			serviceAccount, err := accessapproval.GetOrganizationServiceAccount(ctx, &accessapproval.GetOrganizationServiceAccountArgs{
+//				OrganizationId: "123456789",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			iam, err := kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
+//				CryptoKeyId: cryptoKey.ID(),
+//				Role:        pulumi.String("roles/cloudkms.signerVerifier"),
+//				Member:      pulumi.String(fmt.Sprintf("serviceAccount:%v", serviceAccount.AccountEmail)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cryptoKeyVersion := kms.GetKMSCryptoKeyVersionOutput(ctx, kms.GetKMSCryptoKeyVersionOutputArgs{
+//				CryptoKey: cryptoKey.ID(),
+//			}, nil)
+//			_, err = organizations.NewAccessApprovalSettings(ctx, "organizationAccessApproval", &organizations.AccessApprovalSettingsArgs{
+//				OrganizationId: pulumi.String("123456789"),
+//				ActiveKeyVersion: cryptoKeyVersion.ApplyT(func(cryptoKeyVersion kms.GetKMSCryptoKeyVersionResult) (*string, error) {
+//					return &cryptoKeyVersion.Name, nil
+//				}).(pulumi.StringPtrOutput),
+//				EnrolledServices: organizations.AccessApprovalSettingsEnrolledServiceArray{
+//					&organizations.AccessApprovalSettingsEnrolledServiceArgs{
+//						CloudProduct: pulumi.String("all"),
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				iam,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

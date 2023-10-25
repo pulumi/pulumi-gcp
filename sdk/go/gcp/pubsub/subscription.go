@@ -26,6 +26,246 @@ import (
 // by using the `projects.ServiceIdentity` resource.
 //
 // ## Example Usage
+// ### Pubsub Subscription Push
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleTopic, err := pubsub.NewTopic(ctx, "exampleTopic", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewSubscription(ctx, "exampleSubscription", &pubsub.SubscriptionArgs{
+//				Topic:              exampleTopic.Name,
+//				AckDeadlineSeconds: pulumi.Int(20),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				PushConfig: &pubsub.SubscriptionPushConfigArgs{
+//					PushEndpoint: pulumi.String("https://example.com/push"),
+//					Attributes: pulumi.StringMap{
+//						"x-goog-version": pulumi.String("v1"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Pubsub Subscription Pull
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleTopic, err := pubsub.NewTopic(ctx, "exampleTopic", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewSubscription(ctx, "exampleSubscription", &pubsub.SubscriptionArgs{
+//				Topic: exampleTopic.Name,
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				MessageRetentionDuration: pulumi.String("1200s"),
+//				RetainAckedMessages:      pulumi.Bool(true),
+//				AckDeadlineSeconds:       pulumi.Int(20),
+//				ExpirationPolicy: &pubsub.SubscriptionExpirationPolicyArgs{
+//					Ttl: pulumi.String("300000.5s"),
+//				},
+//				RetryPolicy: &pubsub.SubscriptionRetryPolicyArgs{
+//					MinimumBackoff: pulumi.String("10s"),
+//				},
+//				EnableMessageOrdering: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Pubsub Subscription Different Project
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleTopic, err := pubsub.NewTopic(ctx, "exampleTopic", &pubsub.TopicArgs{
+//				Project: pulumi.String("topic-project"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewSubscription(ctx, "exampleSubscription", &pubsub.SubscriptionArgs{
+//				Project: pulumi.String("subscription-project"),
+//				Topic:   exampleTopic.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Pubsub Subscription Dead Letter
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleTopic, err := pubsub.NewTopic(ctx, "exampleTopic", nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleDeadLetter, err := pubsub.NewTopic(ctx, "exampleDeadLetter", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewSubscription(ctx, "exampleSubscription", &pubsub.SubscriptionArgs{
+//				Topic: exampleTopic.Name,
+//				DeadLetterPolicy: &pubsub.SubscriptionDeadLetterPolicyArgs{
+//					DeadLetterTopic:     exampleDeadLetter.ID(),
+//					MaxDeliveryAttempts: pulumi.Int(10),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Pubsub Subscription Push Bq
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleTopic, err := pubsub.NewTopic(ctx, "exampleTopic", nil)
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			viewer, err := projects.NewIAMMember(ctx, "viewer", &projects.IAMMemberArgs{
+//				Project: *pulumi.String(project.ProjectId),
+//				Role:    pulumi.String("roles/bigquery.metadataViewer"),
+//				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			editor, err := projects.NewIAMMember(ctx, "editor", &projects.IAMMemberArgs{
+//				Project: *pulumi.String(project.ProjectId),
+//				Role:    pulumi.String("roles/bigquery.dataEditor"),
+//				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			testDataset, err := bigquery.NewDataset(ctx, "testDataset", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("example_dataset"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			testTable, err := bigquery.NewTable(ctx, "testTable", &bigquery.TableArgs{
+//				DeletionProtection: pulumi.Bool(false),
+//				TableId:            pulumi.String("example_table"),
+//				DatasetId:          testDataset.DatasetId,
+//				Schema: pulumi.String(`[
+//	  {
+//	    "name": "data",
+//	    "type": "STRING",
+//	    "mode": "NULLABLE",
+//	    "description": "The data"
+//	  }
+//
+// ]
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewSubscription(ctx, "exampleSubscription", &pubsub.SubscriptionArgs{
+//				Topic: exampleTopic.Name,
+//				BigqueryConfig: &pubsub.SubscriptionBigqueryConfigArgs{
+//					Table: pulumi.All(testTable.Project, testTable.DatasetId, testTable.TableId).ApplyT(func(_args []interface{}) (string, error) {
+//						project := _args[0].(string)
+//						datasetId := _args[1].(string)
+//						tableId := _args[2].(string)
+//						return fmt.Sprintf("%v.%v.%v", project, datasetId, tableId), nil
+//					}).(pulumi.StringOutput),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				viewer,
+//				editor,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

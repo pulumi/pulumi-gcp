@@ -423,6 +423,20 @@ class DomainTrust(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
+        ### Active Directory Domain Trust Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ad_domain_trust = gcp.activedirectory.DomainTrust("ad-domain-trust",
+            domain="test-managed-ad.com",
+            target_dns_ip_addresses=["10.1.0.100"],
+            target_domain_name="example-gcp.com",
+            trust_direction="OUTBOUND",
+            trust_handshake_secret="Testing1!",
+            trust_type="FOREST")
+        ```
 
         ## Import
 
@@ -479,6 +493,20 @@ class DomainTrust(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
+        ### Active Directory Domain Trust Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ad_domain_trust = gcp.activedirectory.DomainTrust("ad-domain-trust",
+            domain="test-managed-ad.com",
+            target_dns_ip_addresses=["10.1.0.100"],
+            target_domain_name="example-gcp.com",
+            trust_direction="OUTBOUND",
+            trust_handshake_secret="Testing1!",
+            trust_type="FOREST")
+        ```
 
         ## Import
 

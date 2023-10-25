@@ -25,6 +25,32 @@ import (
 // * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
 // * How-to Guides
 //   - [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := projects.GetProjectService(ctx, &projects.GetProjectServiceArgs{
+//				Service: "my-project-service",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetProjectService(ctx *pulumi.Context, args *GetProjectServiceArgs, opts ...pulumi.InvokeOption) (*GetProjectServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectServiceResult

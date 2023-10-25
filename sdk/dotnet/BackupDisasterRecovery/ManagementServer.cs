@@ -11,6 +11,70 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 {
     /// <summary>
     /// ## Example Usage
+    /// ### Backup Dr Management Server
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new()
+    ///     {
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var privateIpAddress = new Gcp.Compute.GlobalAddress("privateIpAddress", new()
+    ///     {
+    ///         AddressType = "INTERNAL",
+    ///         Purpose = "VPC_PEERING",
+    ///         PrefixLength = 20,
+    ///         Network = defaultNetwork.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultConnection = new Gcp.ServiceNetworking.Connection("defaultConnection", new()
+    ///     {
+    ///         Network = defaultNetwork.Id,
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             privateIpAddress.Name,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var ms_console = new Gcp.BackupDisasterRecovery.ManagementServer("ms-console", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Type = "BACKUP_RESTORE",
+    ///         Networks = new[]
+    ///         {
+    ///             new Gcp.BackupDisasterRecovery.Inputs.ManagementServerNetworkArgs
+    ///             {
+    ///                 Network = defaultNetwork.Id,
+    ///                 PeeringMode = "PRIVATE_SERVICE_ACCESS",
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///         DependsOn = new[]
+    ///         {
+    ///             defaultConnection,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

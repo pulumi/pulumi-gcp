@@ -24,6 +24,92 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// &gt; **Note:** `gcp.dataplex.TaskIamBinding` resources **can be** used in conjunction with `gcp.dataplex.TaskIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
+    /// ## google\_dataplex\_task\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/viewer",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.DataPlex.TaskIamPolicy("policy", new()
+    ///     {
+    ///         Project = google_dataplex_task.Example.Project,
+    ///         Location = google_dataplex_task.Example.Location,
+    ///         Lake = google_dataplex_task.Example.Lake,
+    ///         TaskId = google_dataplex_task.Example.Task_id,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## google\_dataplex\_task\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var binding = new Gcp.DataPlex.TaskIamBinding("binding", new()
+    ///     {
+    ///         Project = google_dataplex_task.Example.Project,
+    ///         Location = google_dataplex_task.Example.Location,
+    ///         Lake = google_dataplex_task.Example.Lake,
+    ///         TaskId = google_dataplex_task.Example.Task_id,
+    ///         Role = "roles/viewer",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## google\_dataplex\_task\_iam\_member
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var member = new Gcp.DataPlex.TaskIamMember("member", new()
+    ///     {
+    ///         Project = google_dataplex_task.Example.Project,
+    ///         Location = google_dataplex_task.Example.Location,
+    ///         Lake = google_dataplex_task.Example.Lake,
+    ///         TaskId = google_dataplex_task.Example.Task_id,
+    ///         Role = "roles/viewer",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}} * {{project}}/{{location}}/{{lake}}/{{task_id}} * {{location}}/{{lake}}/{{task_id}} * {{task_id}} Any variables not passed in the import command will be taken from the provider configuration. Dataplex task IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

@@ -125,6 +125,14 @@ def get_project_cmek_settings(kms_key_name: Optional[str] = None,
     * [Enable CMEK](https://cloud.google.com/logging/docs/routing/managed-encryption-storage#enable).
 
     ## Example Usage
+    ### Logging Project Cmek Settings Basic
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    cmek_settings = gcp.logging.get_project_cmek_settings(project="my-project-name")
+    ```
 
 
     :param str kms_key_name: The resource name for the configured Cloud KMS key.
@@ -163,6 +171,14 @@ def get_project_cmek_settings_output(kms_key_name: Optional[pulumi.Input[Optiona
     * [Enable CMEK](https://cloud.google.com/logging/docs/routing/managed-encryption-storage#enable).
 
     ## Example Usage
+    ### Logging Project Cmek Settings Basic
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    cmek_settings = gcp.logging.get_project_cmek_settings(project="my-project-name")
+    ```
 
 
     :param str kms_key_name: The resource name for the configured Cloud KMS key.

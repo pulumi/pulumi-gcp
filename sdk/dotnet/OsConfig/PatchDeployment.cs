@@ -20,6 +20,352 @@ namespace Pulumi.Gcp.OsConfig
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/os-patch-management)
     /// 
     /// ## Example Usage
+    /// ### Os Config Patch Deployment Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var patch = new Gcp.OsConfig.PatchDeployment("patch", new()
+    ///     {
+    ///         InstanceFilter = new Gcp.OsConfig.Inputs.PatchDeploymentInstanceFilterArgs
+    ///         {
+    ///             All = true,
+    ///         },
+    ///         OneTimeSchedule = new Gcp.OsConfig.Inputs.PatchDeploymentOneTimeScheduleArgs
+    ///         {
+    ///             ExecuteTime = "2999-10-10T10:10:10.045123456Z",
+    ///         },
+    ///         PatchDeploymentId = "patch-deploy",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Os Config Patch Deployment Daily
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var patch = new Gcp.OsConfig.PatchDeployment("patch", new()
+    ///     {
+    ///         InstanceFilter = new Gcp.OsConfig.Inputs.PatchDeploymentInstanceFilterArgs
+    ///         {
+    ///             All = true,
+    ///         },
+    ///         PatchDeploymentId = "patch-deploy",
+    ///         RecurringSchedule = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleArgs
+    ///         {
+    ///             TimeOfDay = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleTimeOfDayArgs
+    ///             {
+    ///                 Hours = 0,
+    ///                 Minutes = 30,
+    ///                 Nanos = 20,
+    ///                 Seconds = 30,
+    ///             },
+    ///             TimeZone = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleTimeZoneArgs
+    ///             {
+    ///                 Id = "America/New_York",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Os Config Patch Deployment Daily Midnight
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var patch = new Gcp.OsConfig.PatchDeployment("patch", new()
+    ///     {
+    ///         InstanceFilter = new Gcp.OsConfig.Inputs.PatchDeploymentInstanceFilterArgs
+    ///         {
+    ///             All = true,
+    ///         },
+    ///         PatchDeploymentId = "patch-deploy",
+    ///         RecurringSchedule = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleArgs
+    ///         {
+    ///             TimeOfDay = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleTimeOfDayArgs
+    ///             {
+    ///                 Hours = 0,
+    ///                 Minutes = 0,
+    ///                 Nanos = 0,
+    ///                 Seconds = 0,
+    ///             },
+    ///             TimeZone = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleTimeZoneArgs
+    ///             {
+    ///                 Id = "America/New_York",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Os Config Patch Deployment Instance
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var foobar = new Gcp.Compute.Instance("foobar", new()
+    ///     {
+    ///         MachineType = "e2-medium",
+    ///         Zone = "us-central1-a",
+    ///         CanIpForward = false,
+    ///         Tags = new[]
+    ///         {
+    ///             "foo",
+    ///             "bar",
+    ///         },
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///         {
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///             {
+    ///                 Image = myImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 Network = "default",
+    ///             },
+    ///         },
+    ///         Metadata = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
+    /// 
+    ///     var patch = new Gcp.OsConfig.PatchDeployment("patch", new()
+    ///     {
+    ///         PatchDeploymentId = "patch-deploy",
+    ///         InstanceFilter = new Gcp.OsConfig.Inputs.PatchDeploymentInstanceFilterArgs
+    ///         {
+    ///             Instances = new[]
+    ///             {
+    ///                 foobar.Id,
+    ///             },
+    ///         },
+    ///         PatchConfig = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigArgs
+    ///         {
+    ///             Yum = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigYumArgs
+    ///             {
+    ///                 Security = true,
+    ///                 Minimal = true,
+    ///                 Excludes = new[]
+    ///                 {
+    ///                     "bash",
+    ///                 },
+    ///             },
+    ///         },
+    ///         RecurringSchedule = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleArgs
+    ///         {
+    ///             TimeZone = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleTimeZoneArgs
+    ///             {
+    ///                 Id = "America/New_York",
+    ///             },
+    ///             TimeOfDay = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleTimeOfDayArgs
+    ///             {
+    ///                 Hours = 0,
+    ///                 Minutes = 30,
+    ///                 Seconds = 30,
+    ///                 Nanos = 20,
+    ///             },
+    ///             Monthly = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleMonthlyArgs
+    ///             {
+    ///                 MonthDay = 1,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Os Config Patch Deployment Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var patch = new Gcp.OsConfig.PatchDeployment("patch", new()
+    ///     {
+    ///         Duration = "10s",
+    ///         InstanceFilter = new Gcp.OsConfig.Inputs.PatchDeploymentInstanceFilterArgs
+    ///         {
+    ///             GroupLabels = new[]
+    ///             {
+    ///                 new Gcp.OsConfig.Inputs.PatchDeploymentInstanceFilterGroupLabelArgs
+    ///                 {
+    ///                     Labels = 
+    ///                     {
+    ///                         { "app", "web" },
+    ///                         { "env", "dev" },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             InstanceNamePrefixes = new[]
+    ///             {
+    ///                 "test-",
+    ///             },
+    ///             Zones = new[]
+    ///             {
+    ///                 "us-central1-a",
+    ///                 "us-central-1c",
+    ///             },
+    ///         },
+    ///         PatchConfig = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigArgs
+    ///         {
+    ///             Apt = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigAptArgs
+    ///             {
+    ///                 Excludes = new[]
+    ///                 {
+    ///                     "python",
+    ///                 },
+    ///                 Type = "DIST",
+    ///             },
+    ///             Goo = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigGooArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///             MigInstancesAllowed = true,
+    ///             PostStep = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigPostStepArgs
+    ///             {
+    ///                 LinuxExecStepConfig = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs
+    ///                 {
+    ///                     GcsObject = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs
+    ///                     {
+    ///                         Bucket = "my-patch-scripts",
+    ///                         GenerationNumber = "1523477886880",
+    ///                         Object = "linux/post_patch_script",
+    ///                     },
+    ///                 },
+    ///                 WindowsExecStepConfig = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs
+    ///                 {
+    ///                     GcsObject = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs
+    ///                     {
+    ///                         Bucket = "my-patch-scripts",
+    ///                         GenerationNumber = "135920493447",
+    ///                         Object = "windows/post_patch_script.ps1",
+    ///                     },
+    ///                     Interpreter = "POWERSHELL",
+    ///                 },
+    ///             },
+    ///             PreStep = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigPreStepArgs
+    ///             {
+    ///                 LinuxExecStepConfig = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs
+    ///                 {
+    ///                     AllowedSuccessCodes = new[]
+    ///                     {
+    ///                         0,
+    ///                         3,
+    ///                     },
+    ///                     LocalPath = "/tmp/pre_patch_script.sh",
+    ///                 },
+    ///                 WindowsExecStepConfig = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs
+    ///                 {
+    ///                     AllowedSuccessCodes = new[]
+    ///                     {
+    ///                         0,
+    ///                         2,
+    ///                     },
+    ///                     Interpreter = "SHELL",
+    ///                     LocalPath = "C:\\Users\\user\\pre-patch-script.cmd",
+    ///                 },
+    ///             },
+    ///             RebootConfig = "ALWAYS",
+    ///             WindowsUpdate = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigWindowsUpdateArgs
+    ///             {
+    ///                 Classifications = new[]
+    ///                 {
+    ///                     "CRITICAL",
+    ///                     "SECURITY",
+    ///                     "UPDATE",
+    ///                 },
+    ///                 Excludes = new[]
+    ///                 {
+    ///                     "5012170",
+    ///                 },
+    ///             },
+    ///             Yum = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigYumArgs
+    ///             {
+    ///                 Excludes = new[]
+    ///                 {
+    ///                     "bash",
+    ///                 },
+    ///                 Minimal = true,
+    ///                 Security = true,
+    ///             },
+    ///             Zypper = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigZypperArgs
+    ///             {
+    ///                 Categories = new[]
+    ///                 {
+    ///                     "security",
+    ///                 },
+    ///             },
+    ///         },
+    ///         PatchDeploymentId = "patch-deploy",
+    ///         RecurringSchedule = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleArgs
+    ///         {
+    ///             Monthly = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleMonthlyArgs
+    ///             {
+    ///                 WeekDayOfMonth = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs
+    ///                 {
+    ///                     DayOfWeek = "TUESDAY",
+    ///                     WeekOrdinal = -1,
+    ///                 },
+    ///             },
+    ///             TimeOfDay = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleTimeOfDayArgs
+    ///             {
+    ///                 Hours = 0,
+    ///                 Minutes = 30,
+    ///                 Nanos = 20,
+    ///                 Seconds = 30,
+    ///             },
+    ///             TimeZone = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleTimeZoneArgs
+    ///             {
+    ///                 Id = "America/New_York",
+    ///             },
+    ///         },
+    ///         Rollout = new Gcp.OsConfig.Inputs.PatchDeploymentRolloutArgs
+    ///         {
+    ///             DisruptionBudget = new Gcp.OsConfig.Inputs.PatchDeploymentRolloutDisruptionBudgetArgs
+    ///             {
+    ///                 Fixed = 1,
+    ///             },
+    ///             Mode = "ZONE_BY_ZONE",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

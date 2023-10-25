@@ -8,6 +8,17 @@ import * as utilities from "../utilities";
 
 /**
  * Get a forwarding rule within GCE from its name.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-forwarding-rule = gcp.compute.getForwardingRule({
+ *     name: "forwarding-rule-us-east1",
+ * });
+ * ```
  */
 export function getForwardingRule(args: GetForwardingRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetForwardingRuleResult> {
 
@@ -84,6 +95,17 @@ export interface GetForwardingRuleResult {
 }
 /**
  * Get a forwarding rule within GCE from its name.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-forwarding-rule = gcp.compute.getForwardingRule({
+ *     name: "forwarding-rule-us-east1",
+ * });
+ * ```
  */
 export function getForwardingRuleOutput(args: GetForwardingRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetForwardingRuleResult> {
     return pulumi.output(args).apply((a: any) => getForwardingRule(a, opts))

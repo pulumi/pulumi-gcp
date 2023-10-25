@@ -142,6 +142,15 @@ def get_app_gateway(name: Optional[str] = None,
     """
     Get information about a Google BeyondCorp App Gateway.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_beyondcorp_app_gateway = gcp.beyondcorp.get_app_gateway(name="my-beyondcorp-app-gateway")
+    ```
+
 
     :param str name: The name of the App Gateway.
            
@@ -179,6 +188,15 @@ def get_app_gateway_output(name: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppGatewayResult]:
     """
     Get information about a Google BeyondCorp App Gateway.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_beyondcorp_app_gateway = gcp.beyondcorp.get_app_gateway(name="my-beyondcorp-app-gateway")
+    ```
 
 
     :param str name: The name of the App Gateway.

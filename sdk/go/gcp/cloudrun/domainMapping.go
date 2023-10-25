@@ -22,6 +22,55 @@ import (
 //   - [Official Documentation](https://cloud.google.com/run/docs/mapping-custom-domains)
 //
 // ## Example Usage
+// ### Cloud Run Domain Mapping Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrun"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultService, err := cloudrun.NewService(ctx, "defaultService", &cloudrun.ServiceArgs{
+//				Location: pulumi.String("us-central1"),
+//				Metadata: &cloudrun.ServiceMetadataArgs{
+//					Namespace: pulumi.String("my-project-name"),
+//				},
+//				Template: &cloudrun.ServiceTemplateArgs{
+//					Spec: &cloudrun.ServiceTemplateSpecArgs{
+//						Containers: cloudrun.ServiceTemplateSpecContainerArray{
+//							&cloudrun.ServiceTemplateSpecContainerArgs{
+//								Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudrun.NewDomainMapping(ctx, "defaultDomainMapping", &cloudrun.DomainMappingArgs{
+//				Location: pulumi.String("us-central1"),
+//				Metadata: &cloudrun.DomainMappingMetadataArgs{
+//					Namespace: pulumi.String("my-project-name"),
+//				},
+//				Spec: &cloudrun.DomainMappingSpecArgs{
+//					RouteName: defaultService.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

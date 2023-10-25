@@ -93,6 +93,16 @@ def get_membership_iam_policy(membership_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for membership
 
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.gkehub.get_membership_iam_policy(project=google_gke_hub_membership["membership"]["project"],
+        membership_id=google_gke_hub_membership["membership"]["membership_id"])
+    ```
+
 
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -117,6 +127,16 @@ def get_membership_iam_policy_output(membership_id: Optional[pulumi.Input[str]] 
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMembershipIamPolicyResult]:
     """
     Retrieves the current IAM policy data for membership
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.gkehub.get_membership_iam_policy(project=google_gke_hub_membership["membership"]["project"],
+        membership_id=google_gke_hub_membership["membership"]["membership_id"])
+    ```
 
 
     :param str project: The ID of the project in which the resource belongs.

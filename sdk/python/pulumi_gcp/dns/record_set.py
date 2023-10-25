@@ -361,8 +361,171 @@ class RecordSet(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Binding a DNS name to the ephemeral IP of a new instance:
 
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        frontend_instance = gcp.compute.Instance("frontendInstance",
+            machine_type="g1-small",
+            zone="us-central1-b",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-11",
+                ),
+            ),
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network="default",
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+            )])
+        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        frontend_record_set = gcp.dns.RecordSet("frontendRecordSet",
+            name=prod.dns_name.apply(lambda dns_name: f"frontend.{dns_name}"),
+            type="A",
+            ttl=300,
+            managed_zone=prod.name,
+            rrdatas=[frontend_instance.network_interfaces[0].access_configs[0].nat_ip])
+        ```
+        ### Adding an A record
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        record_set = gcp.dns.RecordSet("recordSet",
+            name=prod.dns_name.apply(lambda dns_name: f"backend.{dns_name}"),
+            managed_zone=prod.name,
+            type="A",
+            ttl=300,
+            rrdatas=["8.8.8.8"])
+        ```
+        ### Adding an MX record
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        mx = gcp.dns.RecordSet("mx",
+            name=prod.dns_name,
+            managed_zone=prod.name,
+            type="MX",
+            ttl=3600,
+            rrdatas=[
+                "1 aspmx.l.google.com.",
+                "5 alt1.aspmx.l.google.com.",
+                "5 alt2.aspmx.l.google.com.",
+                "10 alt3.aspmx.l.google.com.",
+                "10 alt4.aspmx.l.google.com.",
+            ])
+        ```
+        ### Adding an SPF record
+
+        Quotes (`""`) must be added around your `rrdatas` for a SPF record. Otherwise `rrdatas` string gets split on spaces.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        spf = gcp.dns.RecordSet("spf",
+            name=prod.dns_name.apply(lambda dns_name: f"frontend.{dns_name}"),
+            managed_zone=prod.name,
+            type="TXT",
+            ttl=300,
+            rrdatas=["\\"v=spf1 ip4:111.111.111.111 include:backoff.email-example.com -all\\""])
+        ```
+        ### Adding a CNAME record
+
+         The list of `rrdatas` should only contain a single string corresponding to the Canonical Name intended.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        cname = gcp.dns.RecordSet("cname",
+            name=prod.dns_name.apply(lambda dns_name: f"frontend.{dns_name}"),
+            managed_zone=prod.name,
+            type="CNAME",
+            ttl=300,
+            rrdatas=["frontend.mydomain.com."])
+        ```
         ### Setting Routing Policy instead of using rrdatas
+        ### Geolocation
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        geo = gcp.dns.RecordSet("geo",
+            name=f"backend.{google_dns_managed_zone['prod']['dns_name']}",
+            managed_zone=google_dns_managed_zone["prod"]["name"],
+            type="A",
+            ttl=300,
+            routing_policy=gcp.dns.RecordSetRoutingPolicyArgs(
+                geos=[
+                    gcp.dns.RecordSetRoutingPolicyGeoArgs(
+                        location="asia-east1",
+                        rrdatas=["10.128.1.1"],
+                    ),
+                    gcp.dns.RecordSetRoutingPolicyGeoArgs(
+                        location="us-central1",
+                        rrdatas=["10.130.1.1"],
+                    ),
+                ],
+            ))
+        ```
+        ### Primary-Backup
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod_managed_zone = gcp.dns.ManagedZone("prodManagedZone", dns_name="prod.mydomain.com.")
+        prod_region_backend_service = gcp.compute.RegionBackendService("prodRegionBackendService", region="us-central1")
+        prod_network = gcp.compute.Network("prodNetwork")
+        prod_forwarding_rule = gcp.compute.ForwardingRule("prodForwardingRule",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL",
+            backend_service=prod_region_backend_service.id,
+            all_ports=True,
+            network=prod_network.name,
+            allow_global_access=True)
+        record_set = gcp.dns.RecordSet("recordSet",
+            name=prod_managed_zone.dns_name.apply(lambda dns_name: f"backend.{dns_name}"),
+            managed_zone=prod_managed_zone.name,
+            type="A",
+            ttl=300,
+            routing_policy=gcp.dns.RecordSetRoutingPolicyArgs(
+                primary_backup=gcp.dns.RecordSetRoutingPolicyPrimaryBackupArgs(
+                    trickle_ratio=0.1,
+                    primary=gcp.dns.RecordSetRoutingPolicyPrimaryBackupPrimaryArgs(
+                        internal_load_balancers=[gcp.dns.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs(
+                            load_balancer_type="regionalL4ilb",
+                            ip_address=prod_forwarding_rule.ip_address,
+                            port="80",
+                            ip_protocol="tcp",
+                            network_url=prod_network.id,
+                            project=prod_forwarding_rule.project,
+                            region=prod_forwarding_rule.region,
+                        )],
+                    ),
+                    backup_geos=[
+                        gcp.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs(
+                            location="asia-east1",
+                            rrdatas=["10.128.1.1"],
+                        ),
+                        gcp.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs(
+                            location="us-west1",
+                            rrdatas=["10.130.1.1"],
+                        ),
+                    ],
+                ),
+            ))
+        ```
 
         ## Import
 
@@ -409,8 +572,171 @@ class RecordSet(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Binding a DNS name to the ephemeral IP of a new instance:
 
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        frontend_instance = gcp.compute.Instance("frontendInstance",
+            machine_type="g1-small",
+            zone="us-central1-b",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-11",
+                ),
+            ),
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network="default",
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+            )])
+        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        frontend_record_set = gcp.dns.RecordSet("frontendRecordSet",
+            name=prod.dns_name.apply(lambda dns_name: f"frontend.{dns_name}"),
+            type="A",
+            ttl=300,
+            managed_zone=prod.name,
+            rrdatas=[frontend_instance.network_interfaces[0].access_configs[0].nat_ip])
+        ```
+        ### Adding an A record
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        record_set = gcp.dns.RecordSet("recordSet",
+            name=prod.dns_name.apply(lambda dns_name: f"backend.{dns_name}"),
+            managed_zone=prod.name,
+            type="A",
+            ttl=300,
+            rrdatas=["8.8.8.8"])
+        ```
+        ### Adding an MX record
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        mx = gcp.dns.RecordSet("mx",
+            name=prod.dns_name,
+            managed_zone=prod.name,
+            type="MX",
+            ttl=3600,
+            rrdatas=[
+                "1 aspmx.l.google.com.",
+                "5 alt1.aspmx.l.google.com.",
+                "5 alt2.aspmx.l.google.com.",
+                "10 alt3.aspmx.l.google.com.",
+                "10 alt4.aspmx.l.google.com.",
+            ])
+        ```
+        ### Adding an SPF record
+
+        Quotes (`""`) must be added around your `rrdatas` for a SPF record. Otherwise `rrdatas` string gets split on spaces.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        spf = gcp.dns.RecordSet("spf",
+            name=prod.dns_name.apply(lambda dns_name: f"frontend.{dns_name}"),
+            managed_zone=prod.name,
+            type="TXT",
+            ttl=300,
+            rrdatas=["\\"v=spf1 ip4:111.111.111.111 include:backoff.email-example.com -all\\""])
+        ```
+        ### Adding a CNAME record
+
+         The list of `rrdatas` should only contain a single string corresponding to the Canonical Name intended.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        cname = gcp.dns.RecordSet("cname",
+            name=prod.dns_name.apply(lambda dns_name: f"frontend.{dns_name}"),
+            managed_zone=prod.name,
+            type="CNAME",
+            ttl=300,
+            rrdatas=["frontend.mydomain.com."])
+        ```
         ### Setting Routing Policy instead of using rrdatas
+        ### Geolocation
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        geo = gcp.dns.RecordSet("geo",
+            name=f"backend.{google_dns_managed_zone['prod']['dns_name']}",
+            managed_zone=google_dns_managed_zone["prod"]["name"],
+            type="A",
+            ttl=300,
+            routing_policy=gcp.dns.RecordSetRoutingPolicyArgs(
+                geos=[
+                    gcp.dns.RecordSetRoutingPolicyGeoArgs(
+                        location="asia-east1",
+                        rrdatas=["10.128.1.1"],
+                    ),
+                    gcp.dns.RecordSetRoutingPolicyGeoArgs(
+                        location="us-central1",
+                        rrdatas=["10.130.1.1"],
+                    ),
+                ],
+            ))
+        ```
+        ### Primary-Backup
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod_managed_zone = gcp.dns.ManagedZone("prodManagedZone", dns_name="prod.mydomain.com.")
+        prod_region_backend_service = gcp.compute.RegionBackendService("prodRegionBackendService", region="us-central1")
+        prod_network = gcp.compute.Network("prodNetwork")
+        prod_forwarding_rule = gcp.compute.ForwardingRule("prodForwardingRule",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL",
+            backend_service=prod_region_backend_service.id,
+            all_ports=True,
+            network=prod_network.name,
+            allow_global_access=True)
+        record_set = gcp.dns.RecordSet("recordSet",
+            name=prod_managed_zone.dns_name.apply(lambda dns_name: f"backend.{dns_name}"),
+            managed_zone=prod_managed_zone.name,
+            type="A",
+            ttl=300,
+            routing_policy=gcp.dns.RecordSetRoutingPolicyArgs(
+                primary_backup=gcp.dns.RecordSetRoutingPolicyPrimaryBackupArgs(
+                    trickle_ratio=0.1,
+                    primary=gcp.dns.RecordSetRoutingPolicyPrimaryBackupPrimaryArgs(
+                        internal_load_balancers=[gcp.dns.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs(
+                            load_balancer_type="regionalL4ilb",
+                            ip_address=prod_forwarding_rule.ip_address,
+                            port="80",
+                            ip_protocol="tcp",
+                            network_url=prod_network.id,
+                            project=prod_forwarding_rule.project,
+                            region=prod_forwarding_rule.region,
+                        )],
+                    ),
+                    backup_geos=[
+                        gcp.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs(
+                            location="asia-east1",
+                            rrdatas=["10.128.1.1"],
+                        ),
+                        gcp.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs(
+                            location="us-west1",
+                            rrdatas=["10.130.1.1"],
+                        ),
+                    ],
+                ),
+            ))
+        ```
 
         ## Import
 

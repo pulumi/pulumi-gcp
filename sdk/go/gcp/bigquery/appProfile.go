@@ -20,6 +20,166 @@ import (
 // * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.appProfiles)
 //
 // ## Example Usage
+// ### Bigtable App Profile Anycluster
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instance, err := bigtable.NewInstance(ctx, "instance", &bigtable.InstanceArgs{
+//				Clusters: bigtable.InstanceClusterArray{
+//					&bigtable.InstanceClusterArgs{
+//						ClusterId:   pulumi.String("cluster-1"),
+//						Zone:        pulumi.String("us-central1-a"),
+//						NumNodes:    pulumi.Int(3),
+//						StorageType: pulumi.String("HDD"),
+//					},
+//					&bigtable.InstanceClusterArgs{
+//						ClusterId:   pulumi.String("cluster-2"),
+//						Zone:        pulumi.String("us-central1-b"),
+//						NumNodes:    pulumi.Int(3),
+//						StorageType: pulumi.String("HDD"),
+//					},
+//					&bigtable.InstanceClusterArgs{
+//						ClusterId:   pulumi.String("cluster-3"),
+//						Zone:        pulumi.String("us-central1-c"),
+//						NumNodes:    pulumi.Int(3),
+//						StorageType: pulumi.String("HDD"),
+//					},
+//				},
+//				DeletionProtection: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewAppProfile(ctx, "ap", &bigquery.AppProfileArgs{
+//				Instance:                  instance.Name,
+//				AppProfileId:              pulumi.String("bt-profile"),
+//				MultiClusterRoutingUseAny: pulumi.Bool(true),
+//				IgnoreWarnings:            pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Bigtable App Profile Singlecluster
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instance, err := bigtable.NewInstance(ctx, "instance", &bigtable.InstanceArgs{
+//				Clusters: bigtable.InstanceClusterArray{
+//					&bigtable.InstanceClusterArgs{
+//						ClusterId:   pulumi.String("cluster-1"),
+//						Zone:        pulumi.String("us-central1-b"),
+//						NumNodes:    pulumi.Int(3),
+//						StorageType: pulumi.String("HDD"),
+//					},
+//				},
+//				DeletionProtection: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewAppProfile(ctx, "ap", &bigquery.AppProfileArgs{
+//				Instance:     instance.Name,
+//				AppProfileId: pulumi.String("bt-profile"),
+//				SingleClusterRouting: &bigquery.AppProfileSingleClusterRoutingArgs{
+//					ClusterId:                pulumi.String("cluster-1"),
+//					AllowTransactionalWrites: pulumi.Bool(true),
+//				},
+//				IgnoreWarnings: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Bigtable App Profile Multicluster
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instance, err := bigtable.NewInstance(ctx, "instance", &bigtable.InstanceArgs{
+//				Clusters: bigtable.InstanceClusterArray{
+//					&bigtable.InstanceClusterArgs{
+//						ClusterId:   pulumi.String("cluster-1"),
+//						Zone:        pulumi.String("us-central1-a"),
+//						NumNodes:    pulumi.Int(3),
+//						StorageType: pulumi.String("HDD"),
+//					},
+//					&bigtable.InstanceClusterArgs{
+//						ClusterId:   pulumi.String("cluster-2"),
+//						Zone:        pulumi.String("us-central1-b"),
+//						NumNodes:    pulumi.Int(3),
+//						StorageType: pulumi.String("HDD"),
+//					},
+//					&bigtable.InstanceClusterArgs{
+//						ClusterId:   pulumi.String("cluster-3"),
+//						Zone:        pulumi.String("us-central1-c"),
+//						NumNodes:    pulumi.Int(3),
+//						StorageType: pulumi.String("HDD"),
+//					},
+//				},
+//				DeletionProtection: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewAppProfile(ctx, "ap", &bigquery.AppProfileArgs{
+//				Instance:                  instance.Name,
+//				AppProfileId:              pulumi.String("bt-profile"),
+//				MultiClusterRoutingUseAny: pulumi.Bool(true),
+//				MultiClusterRoutingClusterIds: pulumi.StringArray{
+//					pulumi.String("cluster-1"),
+//					pulumi.String("cluster-2"),
+//				},
+//				IgnoreWarnings: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

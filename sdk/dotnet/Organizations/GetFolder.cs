@@ -13,12 +13,66 @@ namespace Pulumi.Gcp.Organizations
     {
         /// <summary>
         /// Use this data source to get information about a Google Cloud Folder.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myFolder1 = Gcp.Organizations.GetFolder.Invoke(new()
+        ///     {
+        ///         Folder = "folders/12345",
+        ///         LookupOrganization = true,
+        ///     });
+        /// 
+        ///     var myFolder2 = Gcp.Organizations.GetFolder.Invoke(new()
+        ///     {
+        ///         Folder = "folders/23456",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myFolder1Organization"] = myFolder1.Apply(getFolderResult =&gt; getFolderResult.Organization),
+        ///         ["myFolder2Parent"] = myFolder2.Apply(getFolderResult =&gt; getFolderResult.Parent),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetFolderResult> InvokeAsync(GetFolderArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFolderResult>("gcp:organizations/getFolder:getFolder", args ?? new GetFolderArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get information about a Google Cloud Folder.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myFolder1 = Gcp.Organizations.GetFolder.Invoke(new()
+        ///     {
+        ///         Folder = "folders/12345",
+        ///         LookupOrganization = true,
+        ///     });
+        /// 
+        ///     var myFolder2 = Gcp.Organizations.GetFolder.Invoke(new()
+        ///     {
+        ///         Folder = "folders/23456",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myFolder1Organization"] = myFolder1.Apply(getFolderResult =&gt; getFolderResult.Organization),
+        ///         ["myFolder2Parent"] = myFolder2.Apply(getFolderResult =&gt; getFolderResult.Parent),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetFolderResult> Invoke(GetFolderInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFolderResult>("gcp:organizations/getFolder:getFolder", args ?? new GetFolderInvokeArgs(), options.WithDefaults());

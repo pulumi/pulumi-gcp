@@ -19,6 +19,31 @@ namespace Pulumi.Gcp.EdgeNetwork
     ///     * [Create and manage networks](https://cloud.google.com/distributed-cloud/edge/latest/docs/networks#api)
     /// 
     /// ## Example Usage
+    /// ### Edgenetwork Network
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleNetwork = new Gcp.EdgeNetwork.Network("exampleNetwork", new()
+    ///     {
+    ///         NetworkId = "example-network",
+    ///         Location = "us-west1",
+    ///         Zone = "",
+    ///         Description = "Example network.",
+    ///         Mtu = 9000,
+    ///         Labels = 
+    ///         {
+    ///             { "environment", "dev" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

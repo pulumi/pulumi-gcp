@@ -19,6 +19,138 @@ namespace Pulumi.Gcp.DataLoss
     ///     * [Official Documentation](https://cloud.google.com/dlp/docs/creating-stored-infotypes)
     /// 
     /// ## Example Usage
+    /// ### Dlp Stored Info Type Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basic = new Gcp.DataLoss.PreventionStoredInfoType("basic", new()
+    ///     {
+    ///         Description = "Description",
+    ///         DisplayName = "Displayname",
+    ///         Parent = "projects/my-project-name",
+    ///         Regex = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeRegexArgs
+    ///         {
+    ///             GroupIndexes = new[]
+    ///             {
+    ///                 2,
+    ///             },
+    ///             Pattern = "patient",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dlp Stored Info Type Dictionary
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dictionary = new Gcp.DataLoss.PreventionStoredInfoType("dictionary", new()
+    ///     {
+    ///         Description = "Description",
+    ///         Dictionary = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeDictionaryArgs
+    ///         {
+    ///             WordList = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeDictionaryWordListArgs
+    ///             {
+    ///                 Words = new[]
+    ///                 {
+    ///                     "word",
+    ///                     "word2",
+    ///                 },
+    ///             },
+    ///         },
+    ///         DisplayName = "Displayname",
+    ///         Parent = "projects/my-project-name",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dlp Stored Info Type Large Custom Dictionary
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+    ///     {
+    ///         Location = "US",
+    ///         ForceDestroy = true,
+    ///     });
+    /// 
+    ///     var @object = new Gcp.Storage.BucketObject("object", new()
+    ///     {
+    ///         Bucket = bucket.Name,
+    ///         Source = new FileAsset("./test-fixtures/words.txt"),
+    ///     });
+    /// 
+    ///     var large = new Gcp.DataLoss.PreventionStoredInfoType("large", new()
+    ///     {
+    ///         Parent = "projects/my-project-name",
+    ///         Description = "Description",
+    ///         DisplayName = "Displayname",
+    ///         LargeCustomDictionary = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeLargeCustomDictionaryArgs
+    ///         {
+    ///             CloudStorageFileSet = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs
+    ///             {
+    ///                 Url = Output.Tuple(bucket.Name, @object.Name).Apply(values =&gt;
+    ///                 {
+    ///                     var bucketName = values.Item1;
+    ///                     var objectName = values.Item2;
+    ///                     return $"gs://{bucketName}/{objectName}";
+    ///                 }),
+    ///             },
+    ///             OutputPath = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs
+    ///             {
+    ///                 Path = bucket.Name.Apply(name =&gt; $"gs://{name}/output/dictionary.txt"),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dlp Stored Info Type With Id
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var withStoredInfoTypeId = new Gcp.DataLoss.PreventionStoredInfoType("withStoredInfoTypeId", new()
+    ///     {
+    ///         Description = "Description",
+    ///         DisplayName = "Displayname",
+    ///         Parent = "projects/my-project-name",
+    ///         Regex = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeRegexArgs
+    ///         {
+    ///             GroupIndexes = new[]
+    ///             {
+    ///                 2,
+    ///             },
+    ///             Pattern = "patient",
+    ///         },
+    ///         StoredInfoTypeId = "id-",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -22,6 +22,78 @@ import (
 //   - [Official Documentation](https://cloud.google.com/dataflow)
 //
 // ## Example Usage
+// ### Data Pipeline Pipeline
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataflow"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			serviceAccount, err := serviceAccount.NewAccount(ctx, "serviceAccount", &serviceAccount.AccountArgs{
+//				AccountId:   pulumi.String("my-account"),
+//				DisplayName: pulumi.String("Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataflow.NewPipeline(ctx, "primary", &dataflow.PipelineArgs{
+//				DisplayName: pulumi.String("my-pipeline"),
+//				Type:        pulumi.String("PIPELINE_TYPE_BATCH"),
+//				State:       pulumi.String("STATE_ACTIVE"),
+//				Region:      pulumi.String("us-central1"),
+//				Workload: &dataflow.PipelineWorkloadArgs{
+//					DataflowLaunchTemplateRequest: &dataflow.PipelineWorkloadDataflowLaunchTemplateRequestArgs{
+//						ProjectId: pulumi.String("my-project"),
+//						GcsPath:   pulumi.String("gs://my-bucket/path"),
+//						LaunchParameters: &dataflow.PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs{
+//							JobName: pulumi.String("my-job"),
+//							Parameters: pulumi.StringMap{
+//								"name": pulumi.String("wrench"),
+//							},
+//							Environment: &dataflow.PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgs{
+//								NumWorkers:              pulumi.Int(5),
+//								MaxWorkers:              pulumi.Int(5),
+//								Zone:                    pulumi.String("us-centra1-a"),
+//								ServiceAccountEmail:     serviceAccount.Email,
+//								Network:                 pulumi.String("default"),
+//								TempLocation:            pulumi.String("gs://my-bucket/tmp_dir"),
+//								BypassTempDirValidation: pulumi.Bool(false),
+//								MachineType:             pulumi.String("E2"),
+//								AdditionalUserLabels: pulumi.StringMap{
+//									"context": pulumi.String("test"),
+//								},
+//								WorkerRegion:          pulumi.String("us-central1"),
+//								WorkerZone:            pulumi.String("us-central1-a"),
+//								EnableStreamingEngine: pulumi.Bool(false),
+//							},
+//							Update: pulumi.Bool(false),
+//							TransformNameMapping: pulumi.StringMap{
+//								"name": pulumi.String("wrench"),
+//							},
+//						},
+//						Location: pulumi.String("us-central1"),
+//					},
+//				},
+//				ScheduleInfo: &dataflow.PipelineScheduleInfoArgs{
+//					Schedule: pulumi.String("* */2 * * *"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

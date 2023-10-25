@@ -299,6 +299,47 @@ class PolicyTag(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
         ## Example Usage
+        ### Data Catalog Taxonomies Policy Tag Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_taxonomy = gcp.datacatalog.Taxonomy("myTaxonomy",
+            display_name="taxonomy_display_name",
+            description="A collection of policy tags",
+            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"])
+        basic_policy_tag = gcp.datacatalog.PolicyTag("basicPolicyTag",
+            taxonomy=my_taxonomy.id,
+            display_name="Low security",
+            description="A policy tag normally associated with low security items")
+        ```
+        ### Data Catalog Taxonomies Policy Tag Child Policies
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_taxonomy = gcp.datacatalog.Taxonomy("myTaxonomy",
+            display_name="taxonomy_display_name",
+            description="A collection of policy tags",
+            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"])
+        parent_policy = gcp.datacatalog.PolicyTag("parentPolicy",
+            taxonomy=my_taxonomy.id,
+            display_name="High",
+            description="A policy tag category used for high security access")
+        child_policy = gcp.datacatalog.PolicyTag("childPolicy",
+            taxonomy=my_taxonomy.id,
+            display_name="ssn",
+            description="A hash of the users ssn",
+            parent_policy_tag=parent_policy.id)
+        child_policy2 = gcp.datacatalog.PolicyTag("childPolicy2",
+            taxonomy=my_taxonomy.id,
+            display_name="dob",
+            description="The users date of birth",
+            parent_policy_tag=parent_policy.id,
+            opts=pulumi.ResourceOptions(depends_on=[child_policy]))
+        ```
 
         ## Import
 
@@ -341,6 +382,47 @@ class PolicyTag(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
         ## Example Usage
+        ### Data Catalog Taxonomies Policy Tag Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_taxonomy = gcp.datacatalog.Taxonomy("myTaxonomy",
+            display_name="taxonomy_display_name",
+            description="A collection of policy tags",
+            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"])
+        basic_policy_tag = gcp.datacatalog.PolicyTag("basicPolicyTag",
+            taxonomy=my_taxonomy.id,
+            display_name="Low security",
+            description="A policy tag normally associated with low security items")
+        ```
+        ### Data Catalog Taxonomies Policy Tag Child Policies
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_taxonomy = gcp.datacatalog.Taxonomy("myTaxonomy",
+            display_name="taxonomy_display_name",
+            description="A collection of policy tags",
+            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"])
+        parent_policy = gcp.datacatalog.PolicyTag("parentPolicy",
+            taxonomy=my_taxonomy.id,
+            display_name="High",
+            description="A policy tag category used for high security access")
+        child_policy = gcp.datacatalog.PolicyTag("childPolicy",
+            taxonomy=my_taxonomy.id,
+            display_name="ssn",
+            description="A hash of the users ssn",
+            parent_policy_tag=parent_policy.id)
+        child_policy2 = gcp.datacatalog.PolicyTag("childPolicy2",
+            taxonomy=my_taxonomy.id,
+            display_name="dob",
+            description="The users date of birth",
+            parent_policy_tag=parent_policy.id,
+            opts=pulumi.ResourceOptions(depends_on=[child_policy]))
+        ```
 
         ## Import
 

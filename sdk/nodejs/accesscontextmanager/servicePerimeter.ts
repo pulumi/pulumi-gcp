@@ -30,6 +30,175 @@ import * as utilities from "../utilities";
  * `billingProject` you defined.
  *
  * ## Example Usage
+ * ### Access Context Manager Service Perimeter Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
+ *     parent: "organizations/123456789",
+ *     title: "my policy",
+ * });
+ * const service_perimeter = new gcp.accesscontextmanager.ServicePerimeter("service-perimeter", {
+ *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
+ *     status: {
+ *         restrictedServices: ["storage.googleapis.com"],
+ *     },
+ *     title: "restrict_storage",
+ * });
+ * const access_level = new gcp.accesscontextmanager.AccessLevel("access-level", {
+ *     basic: {
+ *         conditions: [{
+ *             devicePolicy: {
+ *                 osConstraints: [{
+ *                     osType: "DESKTOP_CHROME_OS",
+ *                 }],
+ *                 requireScreenLock: false,
+ *             },
+ *             regions: [
+ *                 "CH",
+ *                 "IT",
+ *                 "US",
+ *             ],
+ *         }],
+ *     },
+ *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
+ *     title: "chromeos_no_lock",
+ * });
+ * ```
+ * ### Access Context Manager Service Perimeter Secure Data Exchange
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
+ *     parent: "organizations/123456789",
+ *     title: "my policy",
+ * });
+ * const secure_data_exchange = new gcp.accesscontextmanager.ServicePerimeters("secure-data-exchange", {
+ *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
+ *     servicePerimeters: [
+ *         {
+ *             name: pulumi.interpolate`accessPolicies/${access_policy.name}/servicePerimeters/`,
+ *             title: "",
+ *             status: {
+ *                 restrictedServices: ["storage.googleapis.com"],
+ *             },
+ *         },
+ *         {
+ *             name: pulumi.interpolate`accessPolicies/${access_policy.name}/servicePerimeters/`,
+ *             title: "",
+ *             status: {
+ *                 restrictedServices: ["bigtable.googleapis.com"],
+ *                 vpcAccessibleServices: {
+ *                     enableRestriction: true,
+ *                     allowedServices: ["bigquery.googleapis.com"],
+ *                 },
+ *             },
+ *         },
+ *     ],
+ * });
+ * const access_level = new gcp.accesscontextmanager.AccessLevel("access-level", {
+ *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
+ *     title: "secure_data_exchange",
+ *     basic: {
+ *         conditions: [{
+ *             devicePolicy: {
+ *                 requireScreenLock: false,
+ *                 osConstraints: [{
+ *                     osType: "DESKTOP_CHROME_OS",
+ *                 }],
+ *             },
+ *             regions: [
+ *                 "CH",
+ *                 "IT",
+ *                 "US",
+ *             ],
+ *         }],
+ *     },
+ * });
+ * const test_access = new gcp.accesscontextmanager.ServicePerimeter("test-access", {
+ *     parent: `accessPolicies/${google_access_context_manager_access_policy["test-access"].name}`,
+ *     title: "%s",
+ *     perimeterType: "PERIMETER_TYPE_REGULAR",
+ *     status: {
+ *         restrictedServices: [
+ *             "bigquery.googleapis.com",
+ *             "storage.googleapis.com",
+ *         ],
+ *         accessLevels: [access_level.name],
+ *         vpcAccessibleServices: {
+ *             enableRestriction: true,
+ *             allowedServices: [
+ *                 "bigquery.googleapis.com",
+ *                 "storage.googleapis.com",
+ *             ],
+ *         },
+ *         ingressPolicies: [{
+ *             ingressFrom: {
+ *                 sources: [{
+ *                     accessLevel: google_access_context_manager_access_level["test-access"].name,
+ *                 }],
+ *                 identityType: "ANY_IDENTITY",
+ *             },
+ *             ingressTo: {
+ *                 resources: ["*"],
+ *                 operations: [
+ *                     {
+ *                         serviceName: "bigquery.googleapis.com",
+ *                         methodSelectors: [
+ *                             {
+ *                                 method: "BigQueryStorage.ReadRows",
+ *                             },
+ *                             {
+ *                                 method: "TableService.ListTables",
+ *                             },
+ *                             {
+ *                                 permission: "bigquery.jobs.get",
+ *                             },
+ *                         ],
+ *                     },
+ *                     {
+ *                         serviceName: "storage.googleapis.com",
+ *                         methodSelectors: [{
+ *                             method: "google.storage.objects.create",
+ *                         }],
+ *                     },
+ *                 ],
+ *             },
+ *         }],
+ *         egressPolicies: [{
+ *             egressFrom: {
+ *                 identityType: "ANY_USER_ACCOUNT",
+ *             },
+ *         }],
+ *     },
+ * });
+ * ```
+ * ### Access Context Manager Service Perimeter Dry-Run
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
+ *     parent: "organizations/123456789",
+ *     title: "my policy",
+ * });
+ * const service_perimeter = new gcp.accesscontextmanager.ServicePerimeter("service-perimeter", {
+ *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
+ *     spec: {
+ *         restrictedServices: ["storage.googleapis.com"],
+ *     },
+ *     status: {
+ *         restrictedServices: ["bigquery.googleapis.com"],
+ *     },
+ *     title: "restrict_bigquery_dryrun_storage",
+ *     useExplicitDryRunSpec: true,
+ * });
+ * ```
  *
  * ## Import
  *

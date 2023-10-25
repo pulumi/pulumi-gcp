@@ -83,6 +83,15 @@ def get_web_iam_policy(project: Optional[str] = None,
     """
     Retrieves the current IAM policy data for web
 
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.iap.get_web_iam_policy(project=google_project_service["project_service"]["project"])
+    ```
+
 
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -104,6 +113,15 @@ def get_web_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] = N
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWebIamPolicyResult]:
     """
     Retrieves the current IAM policy data for web
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.iap.get_web_iam_policy(project=google_project_service["project_service"]["project"])
+    ```
 
 
     :param str project: The ID of the project in which the resource belongs.

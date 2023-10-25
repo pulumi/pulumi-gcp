@@ -332,6 +332,26 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
 
         ## Example Usage
+        ### Global Network Endpoint Group
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        neg = gcp.compute.GlobalNetworkEndpointGroup("neg",
+            default_port=90,
+            network_endpoint_type="INTERNET_FQDN_PORT")
+        ```
+        ### Global Network Endpoint Group Ip Address
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        neg = gcp.compute.GlobalNetworkEndpointGroup("neg",
+            default_port=90,
+            network_endpoint_type="INTERNET_IP_PORT")
+        ```
 
         ## Import
 
@@ -391,6 +411,26 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
 
         ## Example Usage
+        ### Global Network Endpoint Group
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        neg = gcp.compute.GlobalNetworkEndpointGroup("neg",
+            default_port=90,
+            network_endpoint_type="INTERNET_FQDN_PORT")
+        ```
+        ### Global Network Endpoint Group Ip Address
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        neg = gcp.compute.GlobalNetworkEndpointGroup("neg",
+            default_port=90,
+            network_endpoint_type="INTERNET_IP_PORT")
+        ```
 
         ## Import
 

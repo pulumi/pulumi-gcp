@@ -8,6 +8,17 @@ import * as utilities from "../utilities";
 
 /**
  * Get information about a Google BeyondCorp App Gateway.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-beyondcorp-app-gateway = gcp.beyondcorp.getAppGateway({
+ *     name: "my-beyondcorp-app-gateway",
+ * });
+ * ```
  */
 export function getAppGateway(args: GetAppGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetAppGatewayResult> {
 
@@ -62,6 +73,17 @@ export interface GetAppGatewayResult {
 }
 /**
  * Get information about a Google BeyondCorp App Gateway.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-beyondcorp-app-gateway = gcp.beyondcorp.getAppGateway({
+ *     name: "my-beyondcorp-app-gateway",
+ * });
+ * ```
  */
 export function getAppGatewayOutput(args: GetAppGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppGatewayResult> {
     return pulumi.output(args).apply((a: any) => getAppGateway(a, opts))

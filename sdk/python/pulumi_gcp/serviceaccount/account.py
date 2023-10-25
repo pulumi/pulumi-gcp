@@ -364,6 +364,19 @@ class Account(pulumi.CustomResource):
         errors when you try to apply ACLs to service accounts immediately after
         creation.
 
+        ## Example Usage
+
+        This snippet creates a service account in a project.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        service_account = gcp.service_account.Account("serviceAccount",
+            account_id="service-account-id",
+            display_name="Service Account")
+        ```
+
         ## Import
 
         Service accounts can be imported using their URI, e.g.
@@ -405,6 +418,19 @@ class Account(pulumi.CustomResource):
         > Creation of service accounts is eventually consistent, and that can lead to
         errors when you try to apply ACLs to service accounts immediately after
         creation.
+
+        ## Example Usage
+
+        This snippet creates a service account in a project.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        service_account = gcp.service_account.Account("serviceAccount",
+            account_id="service-account-id",
+            display_name="Service Account")
+        ```
 
         ## Import
 

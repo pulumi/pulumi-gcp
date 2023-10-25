@@ -473,6 +473,31 @@ class Project(pulumi.CustomResource):
         * How-to Guides
             * [Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.organizations.Project("myProject",
+            org_id="1234567",
+            project_id="your-project-id")
+        ```
+
+        To create a project under a specific folder
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        department1 = gcp.organizations.Folder("department1",
+            display_name="Department 1",
+            parent="organizations/1234567")
+        my_project_in_a_folder = gcp.organizations.Project("myProject-in-a-folder",
+            project_id="your-project-id",
+            folder_id=department1.name)
+        ```
+
         ## Import
 
         Projects can be imported using the `project_id`, e.g.
@@ -532,6 +557,31 @@ class Project(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/projects)
         * How-to Guides
             * [Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.organizations.Project("myProject",
+            org_id="1234567",
+            project_id="your-project-id")
+        ```
+
+        To create a project under a specific folder
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        department1 = gcp.organizations.Folder("department1",
+            display_name="Department 1",
+            parent="organizations/1234567")
+        my_project_in_a_folder = gcp.organizations.Project("myProject-in-a-folder",
+            project_id="your-project-id",
+            folder_id=department1.name)
+        ```
 
         ## Import
 

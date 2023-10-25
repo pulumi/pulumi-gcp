@@ -6,6 +6,18 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for managedzone
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.dns.getManagedZoneIamPolicy({
+ *     project: google_dns_managed_zone["default"].project,
+ *     managedZone: google_dns_managed_zone["default"].name,
+ * });
+ * ```
  */
 export function getManagedZoneIamPolicy(args: GetManagedZoneIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedZoneIamPolicyResult> {
 
@@ -53,6 +65,18 @@ export interface GetManagedZoneIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for managedzone
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.dns.getManagedZoneIamPolicy({
+ *     project: google_dns_managed_zone["default"].project,
+ *     managedZone: google_dns_managed_zone["default"].name,
+ * });
+ * ```
  */
 export function getManagedZoneIamPolicyOutput(args: GetManagedZoneIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagedZoneIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getManagedZoneIamPolicy(a, opts))

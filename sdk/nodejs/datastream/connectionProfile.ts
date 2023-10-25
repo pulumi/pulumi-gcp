@@ -20,6 +20,131 @@ import * as utilities from "../utilities";
  * Read more about sensitive data in state.
  *
  * ## Example Usage
+ * ### Datastream Connection Profile Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.datastream.ConnectionProfile("default", {
+ *     connectionProfileId: "my-profile",
+ *     displayName: "Connection profile",
+ *     gcsProfile: {
+ *         bucket: "my-bucket",
+ *         rootPath: "/path",
+ *     },
+ *     location: "us-central1",
+ * });
+ * ```
+ * ### Datastream Connection Profile Bigquery Private Connection
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
+ * const privateConnection = new gcp.datastream.PrivateConnection("privateConnection", {
+ *     displayName: "Connection profile",
+ *     location: "us-central1",
+ *     privateConnectionId: "my-connection",
+ *     labels: {
+ *         key: "value",
+ *     },
+ *     vpcPeeringConfig: {
+ *         vpc: defaultNetwork.id,
+ *         subnet: "10.0.0.0/29",
+ *     },
+ * });
+ * const defaultConnectionProfile = new gcp.datastream.ConnectionProfile("defaultConnectionProfile", {
+ *     displayName: "Connection profile",
+ *     location: "us-central1",
+ *     connectionProfileId: "my-profile",
+ *     bigqueryProfile: {},
+ *     privateConnectivity: {
+ *         privateConnection: privateConnection.id,
+ *     },
+ * });
+ * ```
+ * ### Datastream Connection Profile Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.datastream.ConnectionProfile("default", {
+ *     connectionProfileId: "my-profile",
+ *     displayName: "Connection profile",
+ *     forwardSshConnectivity: {
+ *         hostname: "google.com",
+ *         password: "swordfish",
+ *         port: 8022,
+ *         username: "my-user",
+ *     },
+ *     gcsProfile: {
+ *         bucket: "my-bucket",
+ *         rootPath: "/path",
+ *     },
+ *     labels: {
+ *         key: "value",
+ *     },
+ *     location: "us-central1",
+ * });
+ * ```
+ * ### Datastream Connection Profile Postgres
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
+ *
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     databaseVersion: "POSTGRES_14",
+ *     region: "us-central1",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *         ipConfiguration: {
+ *             authorizedNetworks: [
+ *                 {
+ *                     value: "34.71.242.81",
+ *                 },
+ *                 {
+ *                     value: "34.72.28.29",
+ *                 },
+ *                 {
+ *                     value: "34.67.6.157",
+ *                 },
+ *                 {
+ *                     value: "34.67.234.134",
+ *                 },
+ *                 {
+ *                     value: "34.72.239.218",
+ *                 },
+ *             ],
+ *         },
+ *     },
+ *     deletionProtection: true,
+ * });
+ * const db = new gcp.sql.Database("db", {instance: instance.name});
+ * const pwd = new random.RandomPassword("pwd", {
+ *     length: 16,
+ *     special: false,
+ * });
+ * const user = new gcp.sql.User("user", {
+ *     instance: instance.name,
+ *     password: pwd.result,
+ * });
+ * const _default = new gcp.datastream.ConnectionProfile("default", {
+ *     displayName: "Connection profile",
+ *     location: "us-central1",
+ *     connectionProfileId: "my-profile",
+ *     postgresqlProfile: {
+ *         hostname: instance.publicIpAddress,
+ *         username: user.name,
+ *         password: user.password,
+ *         database: db.name,
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

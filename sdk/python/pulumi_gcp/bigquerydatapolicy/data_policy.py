@@ -347,6 +347,27 @@ class DataPolicy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/bigquery/docs/column-data-masking-intro)
 
         ## Example Usage
+        ### Bigquery Datapolicy Data Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        taxonomy = gcp.datacatalog.Taxonomy("taxonomy",
+            region="us-central1",
+            display_name="taxonomy",
+            description="A collection of policy tags",
+            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"])
+        policy_tag = gcp.datacatalog.PolicyTag("policyTag",
+            taxonomy=taxonomy.id,
+            display_name="Low security",
+            description="A policy tag normally associated with low security items")
+        data_policy = gcp.bigquerydatapolicy.DataPolicy("dataPolicy",
+            location="us-central1",
+            data_policy_id="data_policy",
+            policy_tag=policy_tag.name,
+            data_policy_type="COLUMN_LEVEL_SECURITY_POLICY")
+        ```
 
         ## Import
 
@@ -395,6 +416,27 @@ class DataPolicy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/bigquery/docs/column-data-masking-intro)
 
         ## Example Usage
+        ### Bigquery Datapolicy Data Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        taxonomy = gcp.datacatalog.Taxonomy("taxonomy",
+            region="us-central1",
+            display_name="taxonomy",
+            description="A collection of policy tags",
+            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"])
+        policy_tag = gcp.datacatalog.PolicyTag("policyTag",
+            taxonomy=taxonomy.id,
+            display_name="Low security",
+            description="A policy tag normally associated with low security items")
+        data_policy = gcp.bigquerydatapolicy.DataPolicy("dataPolicy",
+            location="us-central1",
+            data_policy_id="data_policy",
+            policy_tag=policy_tag.name,
+            data_policy_type="COLUMN_LEVEL_SECURITY_POLICY")
+        ```
 
         ## Import
 

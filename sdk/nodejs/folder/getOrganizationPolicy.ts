@@ -10,6 +10,19 @@ import * as utilities from "../utilities";
  * Allows management of Organization policies for a Google Folder. For more information see
  * [the official
  * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.folder.getOrganizationPolicy({
+ *     folder: "folders/folderid",
+ *     constraint: "constraints/compute.trustedImageProjects",
+ * });
+ * export const version = policy.then(policy => policy.version);
+ * ```
  */
 export function getOrganizationPolicy(args: GetOrganizationPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationPolicyResult> {
 
@@ -55,6 +68,19 @@ export interface GetOrganizationPolicyResult {
  * Allows management of Organization policies for a Google Folder. For more information see
  * [the official
  * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.folder.getOrganizationPolicy({
+ *     folder: "folders/folderid",
+ *     constraint: "constraints/compute.trustedImageProjects",
+ * });
+ * export const version = policy.then(policy => policy.version);
+ * ```
  */
 export function getOrganizationPolicyOutput(args: GetOrganizationPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationPolicyResult> {
     return pulumi.output(args).apply((a: any) => getOrganizationPolicy(a, opts))

@@ -383,6 +383,41 @@ class LinkedDataset(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/logging/docs/apis)
 
         ## Example Usage
+        ### Logging Linked Dataset Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        logging_linked_dataset_project_bucket_config = gcp.logging.ProjectBucketConfig("loggingLinkedDatasetProjectBucketConfig",
+            location="global",
+            project="my-project-name",
+            enable_analytics=True,
+            bucket_id="my-bucket")
+        logging_linked_dataset_linked_dataset = gcp.logging.LinkedDataset("loggingLinkedDatasetLinkedDataset",
+            link_id="mylink",
+            bucket=logging_linked_dataset_project_bucket_config.id,
+            description="Linked dataset test")
+        ```
+        ### Logging Linked Dataset All Params
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        logging_linked_dataset_project_bucket_config = gcp.logging.ProjectBucketConfig("loggingLinkedDatasetProjectBucketConfig",
+            bucket_id="my-bucket",
+            enable_analytics=True,
+            location="global",
+            project="my-project-name")
+        logging_linked_dataset_linked_dataset = gcp.logging.LinkedDataset("loggingLinkedDatasetLinkedDataset",
+            bucket="my-bucket",
+            description="Linked dataset test",
+            link_id="mylink",
+            location="global",
+            parent="projects/my-project-name",
+            opts=pulumi.ResourceOptions(depends_on=["google_logging_project_bucket_config.logging_linked_dataset"]))
+        ```
 
         ## Import
 
@@ -423,6 +458,41 @@ class LinkedDataset(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/logging/docs/apis)
 
         ## Example Usage
+        ### Logging Linked Dataset Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        logging_linked_dataset_project_bucket_config = gcp.logging.ProjectBucketConfig("loggingLinkedDatasetProjectBucketConfig",
+            location="global",
+            project="my-project-name",
+            enable_analytics=True,
+            bucket_id="my-bucket")
+        logging_linked_dataset_linked_dataset = gcp.logging.LinkedDataset("loggingLinkedDatasetLinkedDataset",
+            link_id="mylink",
+            bucket=logging_linked_dataset_project_bucket_config.id,
+            description="Linked dataset test")
+        ```
+        ### Logging Linked Dataset All Params
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        logging_linked_dataset_project_bucket_config = gcp.logging.ProjectBucketConfig("loggingLinkedDatasetProjectBucketConfig",
+            bucket_id="my-bucket",
+            enable_analytics=True,
+            location="global",
+            project="my-project-name")
+        logging_linked_dataset_linked_dataset = gcp.logging.LinkedDataset("loggingLinkedDatasetLinkedDataset",
+            bucket="my-bucket",
+            description="Linked dataset test",
+            link_id="mylink",
+            location="global",
+            parent="projects/my-project-name",
+            opts=pulumi.ResourceOptions(depends_on=["google_logging_project_bucket_config.logging_linked_dataset"]))
+        ```
 
         ## Import
 

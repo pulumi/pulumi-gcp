@@ -371,6 +371,40 @@ class Database(pulumi.CustomResource):
         Google's cloud.
 
         ## Example Usage
+        ### Sql Database Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+        instance = gcp.sql.DatabaseInstance("instance",
+            region="us-central1",
+            database_version="MYSQL_8_0",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+            ),
+            deletion_protection=True)
+        database = gcp.sql.Database("database", instance=instance.name)
+        ```
+        ### Sql Database Deletion Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+        instance = gcp.sql.DatabaseInstance("instance",
+            region="us-central1",
+            database_version="POSTGRES_14",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-g1-small",
+            ),
+            deletion_protection=True)
+        database_deletion_policy = gcp.sql.Database("databaseDeletionPolicy",
+            instance=instance.name,
+            deletion_policy="ABANDON")
+        ```
 
         ## Import
 
@@ -433,6 +467,40 @@ class Database(pulumi.CustomResource):
         Google's cloud.
 
         ## Example Usage
+        ### Sql Database Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+        instance = gcp.sql.DatabaseInstance("instance",
+            region="us-central1",
+            database_version="MYSQL_8_0",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+            ),
+            deletion_protection=True)
+        database = gcp.sql.Database("database", instance=instance.name)
+        ```
+        ### Sql Database Deletion Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+        instance = gcp.sql.DatabaseInstance("instance",
+            region="us-central1",
+            database_version="POSTGRES_14",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-g1-small",
+            ),
+            deletion_protection=True)
+        database_deletion_policy = gcp.sql.Database("databaseDeletionPolicy",
+            instance=instance.name,
+            deletion_policy="ABANDON")
+        ```
 
         ## Import
 

@@ -13,12 +13,48 @@ namespace Pulumi.Gcp.Billing
     {
         /// <summary>
         /// Retrieves the current IAM policy data for a Billing Account.
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Billing.GetAccountIamPolicy.Invoke(new()
+        ///     {
+        ///         BillingAccountId = "MEEP-MEEP-MEEP-MEEP-MEEP",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetAccountIamPolicyResult> InvokeAsync(GetAccountIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountIamPolicyResult>("gcp:billing/getAccountIamPolicy:getAccountIamPolicy", args ?? new GetAccountIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for a Billing Account.
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Billing.GetAccountIamPolicy.Invoke(new()
+        ///     {
+        ///         BillingAccountId = "MEEP-MEEP-MEEP-MEEP-MEEP",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAccountIamPolicyResult> Invoke(GetAccountIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountIamPolicyResult>("gcp:billing/getAccountIamPolicy:getAccountIamPolicy", args ?? new GetAccountIamPolicyInvokeArgs(), options.WithDefaults());

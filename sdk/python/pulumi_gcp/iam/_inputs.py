@@ -959,12 +959,18 @@ class WorkloadIdentityPoolProviderOidcArgs:
                If this list is empty, the OIDC token audience must be equal to the full canonical
                resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
                For example:
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[str] jwks_json: OIDC JWKs in JSON String format. For details on definition of a
                JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
                use the `jwks_uri` from the discovery document fetched from the
                .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
                keys are supported. The JWK must use following format and include only
                the following fields:
+               ```python
+               import pulumi
+               ```
         """
         WorkloadIdentityPoolProviderOidcArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -1018,6 +1024,9 @@ class WorkloadIdentityPoolProviderOidcArgs:
         If this list is empty, the OIDC token audience must be equal to the full canonical
         resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
         For example:
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "allowed_audiences")
 
@@ -1035,6 +1044,9 @@ class WorkloadIdentityPoolProviderOidcArgs:
         .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
         keys are supported. The JWK must use following format and include only
         the following fields:
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "jwks_json")
 

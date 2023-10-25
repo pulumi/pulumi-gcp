@@ -96,6 +96,22 @@ def get_addresses(filter: Optional[str] = None,
     the official API [list](https://cloud.google.com/compute/docs/reference/latest/addresses/list) and
     [aggregated list](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    test = gcp.compute.get_addresses(filter="name:test-*")
+    prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+    frontend = gcp.dns.RecordSet("frontend",
+        name=prod.dns_name.apply(lambda dns_name: f"frontend.{dns_name}"),
+        type="A",
+        ttl=300,
+        managed_zone=prod.name,
+        rrdatas=[__item.address for __item in test.addresses])
+    ```
+
 
     :param str filter: A filter expression that
            filters resources listed in the response. The expression must specify
@@ -148,6 +164,22 @@ def get_addresses_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
     List IP addresses in a project. For more information see
     the official API [list](https://cloud.google.com/compute/docs/reference/latest/addresses/list) and
     [aggregated list](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    test = gcp.compute.get_addresses(filter="name:test-*")
+    prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+    frontend = gcp.dns.RecordSet("frontend",
+        name=prod.dns_name.apply(lambda dns_name: f"frontend.{dns_name}"),
+        type="A",
+        ttl=300,
+        managed_zone=prod.name,
+        rrdatas=[__item.address for __item in test.addresses])
+    ```
 
 
     :param str filter: A filter expression that

@@ -13,6 +13,34 @@ import (
 )
 
 // Retrieves the current IAM policy data for function
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudfunctionsv2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudfunctionsv2.LookupFunctionIamPolicy(ctx, &cloudfunctionsv2.LookupFunctionIamPolicyArgs{
+//				Project:       pulumi.StringRef(google_cloudfunctions2_function.Function.Project),
+//				Location:      pulumi.StringRef(google_cloudfunctions2_function.Function.Location),
+//				CloudFunction: google_cloudfunctions2_function.Function.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupFunctionIamPolicy(ctx *pulumi.Context, args *LookupFunctionIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupFunctionIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFunctionIamPolicyResult

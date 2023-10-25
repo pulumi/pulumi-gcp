@@ -18,6 +18,31 @@ import (
 // [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/sinks)
 //
 // ## Example Usage
+// ### Retrieve Project Logging Sink Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := logging.GetSink(ctx, &logging.GetSinkArgs{
+//				Id: "projects/0123456789/sinks/my-sink-name",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetSink(ctx *pulumi.Context, args *GetSinkArgs, opts ...pulumi.InvokeOption) (*GetSinkResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSinkResult

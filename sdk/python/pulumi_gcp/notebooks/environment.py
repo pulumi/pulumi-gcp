@@ -428,6 +428,18 @@ class Environment(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
 
         ## Example Usage
+        ### Notebook Environment Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        environment = gcp.notebooks.Environment("environment",
+            container_image=gcp.notebooks.EnvironmentContainerImageArgs(
+                repository="gcr.io/deeplearning-platform-release/base-cpu",
+            ),
+            location="us-west1-a")
+        ```
 
         ## Import
 
@@ -480,6 +492,18 @@ class Environment(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
 
         ## Example Usage
+        ### Notebook Environment Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        environment = gcp.notebooks.Environment("environment",
+            container_image=gcp.notebooks.EnvironmentContainerImageArgs(
+                repository="gcr.io/deeplearning-platform-release/base-cpu",
+            ),
+            location="us-west1-a")
+        ```
 
         ## Import
 

@@ -11,6 +11,68 @@ import * as utilities from "../utilities";
  * made against one or more Virtual Private Cloud networks.
  *
  * ## Example Usage
+ * ### Dns Response Policy Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const network_1 = new gcp.compute.Network("network-1", {autoCreateSubnetworks: false});
+ * const network_2 = new gcp.compute.Network("network-2", {autoCreateSubnetworks: false});
+ * const subnetwork_1 = new gcp.compute.Subnetwork("subnetwork-1", {
+ *     network: network_1.name,
+ *     ipCidrRange: "10.0.36.0/24",
+ *     region: "us-central1",
+ *     privateIpGoogleAccess: true,
+ *     secondaryIpRanges: [
+ *         {
+ *             rangeName: "pod",
+ *             ipCidrRange: "10.0.0.0/19",
+ *         },
+ *         {
+ *             rangeName: "svc",
+ *             ipCidrRange: "10.0.32.0/22",
+ *         },
+ *     ],
+ * });
+ * const cluster_1 = new gcp.container.Cluster("cluster-1", {
+ *     location: "us-central1-c",
+ *     initialNodeCount: 1,
+ *     networkingMode: "VPC_NATIVE",
+ *     defaultSnatStatus: {
+ *         disabled: true,
+ *     },
+ *     network: network_1.name,
+ *     subnetwork: subnetwork_1.name,
+ *     privateClusterConfig: {
+ *         enablePrivateEndpoint: true,
+ *         enablePrivateNodes: true,
+ *         masterIpv4CidrBlock: "10.42.0.0/28",
+ *         masterGlobalAccessConfig: {
+ *             enabled: true,
+ *         },
+ *     },
+ *     masterAuthorizedNetworksConfig: {},
+ *     ipAllocationPolicy: {
+ *         clusterSecondaryRangeName: subnetwork_1.secondaryIpRanges.apply(secondaryIpRanges => secondaryIpRanges[0].rangeName),
+ *         servicesSecondaryRangeName: subnetwork_1.secondaryIpRanges.apply(secondaryIpRanges => secondaryIpRanges[1].rangeName),
+ *     },
+ * });
+ * const example_response_policy = new gcp.dns.ResponsePolicy("example-response-policy", {
+ *     responsePolicyName: "example-response-policy",
+ *     networks: [
+ *         {
+ *             networkUrl: network_1.id,
+ *         },
+ *         {
+ *             networkUrl: network_2.id,
+ *         },
+ *     ],
+ *     gkeClusters: [{
+ *         gkeClusterName: cluster_1.id,
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *

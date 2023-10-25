@@ -17,6 +17,35 @@ namespace Pulumi.Gcp.Dns
         /// [the official documentation](https://cloud.google.com/dns/docs/records)
         /// and
         /// [API](https://cloud.google.com/dns/docs/reference/v1/resourceRecordSets)
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var sample = Gcp.Dns.GetManagedZone.Invoke(new()
+        ///     {
+        ///         Name = "sample-zone",
+        ///     });
+        /// 
+        ///     var rs = Gcp.Dns.GetRecordSet.Invoke(new()
+        ///     {
+        ///         ManagedZone = sample.Apply(getManagedZoneResult =&gt; getManagedZoneResult.Name),
+        ///         Name = $"my-record.{sample.Apply(getManagedZoneResult =&gt; getManagedZoneResult.DnsName)}",
+        ///         Type = "A",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRecordSetResult> InvokeAsync(GetRecordSetArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRecordSetResult>("gcp:dns/getRecordSet:getRecordSet", args ?? new GetRecordSetArgs(), options.WithDefaults());
@@ -27,6 +56,35 @@ namespace Pulumi.Gcp.Dns
         /// [the official documentation](https://cloud.google.com/dns/docs/records)
         /// and
         /// [API](https://cloud.google.com/dns/docs/reference/v1/resourceRecordSets)
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var sample = Gcp.Dns.GetManagedZone.Invoke(new()
+        ///     {
+        ///         Name = "sample-zone",
+        ///     });
+        /// 
+        ///     var rs = Gcp.Dns.GetRecordSet.Invoke(new()
+        ///     {
+        ///         ManagedZone = sample.Apply(getManagedZoneResult =&gt; getManagedZoneResult.Name),
+        ///         Name = $"my-record.{sample.Apply(getManagedZoneResult =&gt; getManagedZoneResult.DnsName)}",
+        ///         Type = "A",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetRecordSetResult> Invoke(GetRecordSetInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRecordSetResult>("gcp:dns/getRecordSet:getRecordSet", args ?? new GetRecordSetInvokeArgs(), options.WithDefaults());

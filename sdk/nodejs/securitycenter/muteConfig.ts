@@ -15,6 +15,19 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1/organizations.muteConfigs)
  *
  * ## Example Usage
+ * ### Scc Mute Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.securitycenter.MuteConfig("default", {
+ *     description: "My Mute Config",
+ *     filter: "category: \"OS_VULNERABILITY\"",
+ *     muteConfigId: "my-config",
+ *     parent: "organizations/123456789",
+ * });
+ * ```
  *
  * ## Import
  *

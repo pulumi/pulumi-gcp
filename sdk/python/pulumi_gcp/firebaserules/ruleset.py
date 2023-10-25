@@ -192,6 +192,38 @@ class Ruleset(pulumi.CustomResource):
         For more information, see:
         * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
         ## Example Usage
+        ### Basic_ruleset
+        Creates a basic Firestore ruleset
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.firebaserules.Ruleset("primary",
+            project="my-project-name",
+            source=gcp.firebaserules.RulesetSourceArgs(
+                files=[gcp.firebaserules.RulesetSourceFileArgs(
+                    content="service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
+                    fingerprint="",
+                    name="firestore.rules",
+                )],
+                language="",
+            ))
+        ```
+        ### Minimal_ruleset
+        Creates a minimal Firestore ruleset
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.firebaserules.Ruleset("primary",
+            project="my-project-name",
+            source=gcp.firebaserules.RulesetSourceArgs(
+                files=[gcp.firebaserules.RulesetSourceFileArgs(
+                    content="service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
+                    name="firestore.rules",
+                )],
+            ))
+        ```
 
         ## Import
 
@@ -224,6 +256,38 @@ class Ruleset(pulumi.CustomResource):
         For more information, see:
         * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
         ## Example Usage
+        ### Basic_ruleset
+        Creates a basic Firestore ruleset
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.firebaserules.Ruleset("primary",
+            project="my-project-name",
+            source=gcp.firebaserules.RulesetSourceArgs(
+                files=[gcp.firebaserules.RulesetSourceFileArgs(
+                    content="service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
+                    fingerprint="",
+                    name="firestore.rules",
+                )],
+                language="",
+            ))
+        ```
+        ### Minimal_ruleset
+        Creates a minimal Firestore ruleset
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.firebaserules.Ruleset("primary",
+            project="my-project-name",
+            source=gcp.firebaserules.RulesetSourceArgs(
+                files=[gcp.firebaserules.RulesetSourceFileArgs(
+                    content="service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
+                    name="firestore.rules",
+                )],
+            ))
+        ```
 
         ## Import
 

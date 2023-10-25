@@ -6,6 +6,27 @@ import * as utilities from "../utilities";
 
 /**
  * Get runtime versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.runtimeVersions).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const available = gcp.tpu.getV2RuntimeVersions({});
+ * ```
+ * ### Configure Basic TPU VM With Available Version
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const available = gcp.tpu.getV2RuntimeVersions({});
+ * const tpu = new gcp.tpu.V2Vm("tpu", {
+ *     zone: "us-central1-b",
+ *     runtimeVersion: available.then(available => available.versions?.[0]),
+ * });
+ * ```
  */
 export function getV2RuntimeVersions(args?: GetV2RuntimeVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetV2RuntimeVersionsResult> {
     args = args || {};
@@ -50,6 +71,27 @@ export interface GetV2RuntimeVersionsResult {
 }
 /**
  * Get runtime versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.runtimeVersions).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const available = gcp.tpu.getV2RuntimeVersions({});
+ * ```
+ * ### Configure Basic TPU VM With Available Version
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const available = gcp.tpu.getV2RuntimeVersions({});
+ * const tpu = new gcp.tpu.V2Vm("tpu", {
+ *     zone: "us-central1-b",
+ *     runtimeVersion: available.then(available => available.versions?.[0]),
+ * });
+ * ```
  */
 export function getV2RuntimeVersionsOutput(args?: GetV2RuntimeVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetV2RuntimeVersionsResult> {
     return pulumi.output(args).apply((a: any) => getV2RuntimeVersions(a, opts))

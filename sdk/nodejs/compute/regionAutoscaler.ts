@@ -20,6 +20,63 @@ import * as utilities from "../utilities";
  *     * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
  *
  * ## Example Usage
+ * ### Region Autoscaler Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const foobarInstanceTemplate = new gcp.compute.InstanceTemplate("foobarInstanceTemplate", {
+ *     machineType: "e2-standard-4",
+ *     disks: [{
+ *         sourceImage: "debian-cloud/debian-11",
+ *         diskSizeGb: 250,
+ *     }],
+ *     networkInterfaces: [{
+ *         network: "default",
+ *         accessConfigs: [{
+ *             networkTier: "PREMIUM",
+ *         }],
+ *     }],
+ *     serviceAccount: {
+ *         scopes: [
+ *             "https://www.googleapis.com/auth/devstorage.read_only",
+ *             "https://www.googleapis.com/auth/logging.write",
+ *             "https://www.googleapis.com/auth/monitoring.write",
+ *             "https://www.googleapis.com/auth/pubsub",
+ *             "https://www.googleapis.com/auth/service.management.readonly",
+ *             "https://www.googleapis.com/auth/servicecontrol",
+ *             "https://www.googleapis.com/auth/trace.append",
+ *         ],
+ *     },
+ * });
+ * const foobarTargetPool = new gcp.compute.TargetPool("foobarTargetPool", {});
+ * const foobarRegionInstanceGroupManager = new gcp.compute.RegionInstanceGroupManager("foobarRegionInstanceGroupManager", {
+ *     region: "us-central1",
+ *     versions: [{
+ *         instanceTemplate: foobarInstanceTemplate.id,
+ *         name: "primary",
+ *     }],
+ *     targetPools: [foobarTargetPool.id],
+ *     baseInstanceName: "foobar",
+ * });
+ * const foobarRegionAutoscaler = new gcp.compute.RegionAutoscaler("foobarRegionAutoscaler", {
+ *     region: "us-central1",
+ *     target: foobarRegionInstanceGroupManager.id,
+ *     autoscalingPolicy: {
+ *         maxReplicas: 5,
+ *         minReplicas: 1,
+ *         cooldownPeriod: 60,
+ *         cpuUtilization: {
+ *             target: 0.5,
+ *         },
+ *     },
+ * });
+ * const debian9 = gcp.compute.getImage({
+ *     family: "debian-11",
+ *     project: "debian-cloud",
+ * });
+ * ```
  *
  * ## Import
  *

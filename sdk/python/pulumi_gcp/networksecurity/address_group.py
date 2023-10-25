@@ -432,6 +432,46 @@ class AddressGroup(pulumi.CustomResource):
             * [Use AddressGroups](https://cloud.google.com/vpc/docs/use-address-groups-firewall-policies)
 
         ## Example Usage
+        ### Network Security Address Groups Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.AddressGroup("default",
+            capacity=100,
+            items=["208.80.154.224/32"],
+            location="us-central1",
+            parent="projects/my-project-name",
+            type="IPV4")
+        ```
+        ### Network Security Address Groups Organization Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.AddressGroup("default",
+            capacity=100,
+            items=["208.80.154.224/32"],
+            location="us-central1",
+            parent="organizations/123456789",
+            type="IPV4")
+        ```
+        ### Network Security Address Groups Advanced
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.AddressGroup("default",
+            capacity=100,
+            description="my description",
+            items=["208.80.154.224/32"],
+            location="us-central1",
+            parent="projects/my-project-name",
+            type="IPV4")
+        ```
 
         ## Import
 
@@ -474,6 +514,46 @@ class AddressGroup(pulumi.CustomResource):
             * [Use AddressGroups](https://cloud.google.com/vpc/docs/use-address-groups-firewall-policies)
 
         ## Example Usage
+        ### Network Security Address Groups Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.AddressGroup("default",
+            capacity=100,
+            items=["208.80.154.224/32"],
+            location="us-central1",
+            parent="projects/my-project-name",
+            type="IPV4")
+        ```
+        ### Network Security Address Groups Organization Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.AddressGroup("default",
+            capacity=100,
+            items=["208.80.154.224/32"],
+            location="us-central1",
+            parent="organizations/123456789",
+            type="IPV4")
+        ```
+        ### Network Security Address Groups Advanced
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.AddressGroup("default",
+            capacity=100,
+            description="my description",
+            items=["208.80.154.224/32"],
+            location="us-central1",
+            parent="projects/my-project-name",
+            type="IPV4")
+        ```
 
         ## Import
 

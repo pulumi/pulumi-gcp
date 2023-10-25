@@ -19,6 +19,29 @@ namespace Pulumi.Gcp.Monitoring
     ///     * [Official Documentation](https://cloud.google.com/monitoring/settings/manage-api)
     /// 
     /// ## Example Usage
+    /// ### Monitoring Monitored Project Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.Monitoring.MonitoredProject("primary", new()
+    ///     {
+    ///         MetricsScope = "my-project-name",
+    ///     });
+    /// 
+    ///     var basic = new Gcp.Organizations.Project("basic", new()
+    ///     {
+    ///         ProjectId = "m-id",
+    ///         OrgId = "123456789",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -13,12 +13,54 @@ namespace Pulumi.Gcp.Dns
     {
         /// <summary>
         /// Retrieves the current IAM policy data for managedzone
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Dns.GetManagedZoneIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_dns_managed_zone.Default.Project,
+        ///         ManagedZone = google_dns_managed_zone.Default.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetManagedZoneIamPolicyResult> InvokeAsync(GetManagedZoneIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetManagedZoneIamPolicyResult>("gcp:dns/getManagedZoneIamPolicy:getManagedZoneIamPolicy", args ?? new GetManagedZoneIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for managedzone
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Dns.GetManagedZoneIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_dns_managed_zone.Default.Project,
+        ///         ManagedZone = google_dns_managed_zone.Default.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetManagedZoneIamPolicyResult> Invoke(GetManagedZoneIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetManagedZoneIamPolicyResult>("gcp:dns/getManagedZoneIamPolicy:getManagedZoneIamPolicy", args ?? new GetManagedZoneIamPolicyInvokeArgs(), options.WithDefaults());

@@ -301,6 +301,29 @@ class Fulfillment(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/es/docs/fulfillment-overview)
 
         ## Example Usage
+        ### Dialogflow Fulfillment Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_agent = gcp.diagflow.Agent("basicAgent",
+            display_name="example_agent",
+            default_language_code="en",
+            time_zone="America/New_York")
+        basic_fulfillment = gcp.diagflow.Fulfillment("basicFulfillment",
+            display_name="basic-fulfillment",
+            enabled=True,
+            generic_web_service=gcp.diagflow.FulfillmentGenericWebServiceArgs(
+                uri="https://google.com",
+                username="admin",
+                password="password",
+                request_headers={
+                    "name": "wrench",
+                },
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
+        ```
 
         ## Import
 
@@ -340,6 +363,29 @@ class Fulfillment(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/es/docs/fulfillment-overview)
 
         ## Example Usage
+        ### Dialogflow Fulfillment Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_agent = gcp.diagflow.Agent("basicAgent",
+            display_name="example_agent",
+            default_language_code="en",
+            time_zone="America/New_York")
+        basic_fulfillment = gcp.diagflow.Fulfillment("basicFulfillment",
+            display_name="basic-fulfillment",
+            enabled=True,
+            generic_web_service=gcp.diagflow.FulfillmentGenericWebServiceArgs(
+                uri="https://google.com",
+                username="admin",
+                password="password",
+                request_headers={
+                    "name": "wrench",
+                },
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
+        ```
 
         ## Import
 

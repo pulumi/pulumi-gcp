@@ -19,6 +19,83 @@ namespace Pulumi.Gcp.Diagflow
     ///     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
     /// 
     /// ## Example Usage
+    /// ### Dialogflowcx Intent Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var agent = new Gcp.Diagflow.CxAgent("agent", new()
+    ///     {
+    ///         DisplayName = "dialogflowcx-agent",
+    ///         Location = "global",
+    ///         DefaultLanguageCode = "en",
+    ///         SupportedLanguageCodes = new[]
+    ///         {
+    ///             "fr",
+    ///             "de",
+    ///             "es",
+    ///         },
+    ///         TimeZone = "America/New_York",
+    ///         Description = "Example description.",
+    ///         AvatarUri = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+    ///         EnableStackdriverLogging = true,
+    ///         EnableSpellCorrection = true,
+    ///         SpeechToTextSettings = new Gcp.Diagflow.Inputs.CxAgentSpeechToTextSettingsArgs
+    ///         {
+    ///             EnableSpeechAdaptation = true,
+    ///         },
+    ///     });
+    /// 
+    ///     var basicIntent = new Gcp.Diagflow.CxIntent("basicIntent", new()
+    ///     {
+    ///         Parent = agent.Id,
+    ///         DisplayName = "Example",
+    ///         Priority = 1,
+    ///         Description = "Intent example",
+    ///         TrainingPhrases = new[]
+    ///         {
+    ///             new Gcp.Diagflow.Inputs.CxIntentTrainingPhraseArgs
+    ///             {
+    ///                 Parts = new[]
+    ///                 {
+    ///                     new Gcp.Diagflow.Inputs.CxIntentTrainingPhrasePartArgs
+    ///                     {
+    ///                         Text = "training",
+    ///                     },
+    ///                     new Gcp.Diagflow.Inputs.CxIntentTrainingPhrasePartArgs
+    ///                     {
+    ///                         Text = "phrase",
+    ///                     },
+    ///                     new Gcp.Diagflow.Inputs.CxIntentTrainingPhrasePartArgs
+    ///                     {
+    ///                         Text = "example",
+    ///                     },
+    ///                 },
+    ///                 RepeatCount = 1,
+    ///             },
+    ///         },
+    ///         Parameters = new[]
+    ///         {
+    ///             new Gcp.Diagflow.Inputs.CxIntentParameterArgs
+    ///             {
+    ///                 Id = "param1",
+    ///                 EntityType = "projects/-/locations/-/agents/-/entityTypes/sys.date",
+    ///             },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "label1", "value1" },
+    ///             { "label2", "value2" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -428,6 +428,18 @@ class DataExchange(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
 
         ## Example Usage
+        ### Bigquery Analyticshub Data Exchange Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        data_exchange = gcp.bigqueryanalyticshub.DataExchange("dataExchange",
+            data_exchange_id="my_data_exchange",
+            description="example data exchange",
+            display_name="my_data_exchange",
+            location="US")
+        ```
 
         ## Import
 
@@ -480,6 +492,18 @@ class DataExchange(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
 
         ## Example Usage
+        ### Bigquery Analyticshub Data Exchange Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        data_exchange = gcp.bigqueryanalyticshub.DataExchange("dataExchange",
+            data_exchange_id="my_data_exchange",
+            description="example data exchange",
+            display_name="my_data_exchange",
+            location="US")
+        ```
 
         ## Import
 

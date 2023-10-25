@@ -506,6 +506,33 @@ class NodeTemplate(pulumi.CustomResource):
             * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
 
         ## Example Usage
+        ### Node Template Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        template = gcp.compute.NodeTemplate("template",
+            node_type="n1-node-96-624",
+            region="us-central1")
+        ```
+        ### Node Template Server Binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        central1a = gcp.compute.get_node_types(zone="us-central1-a")
+        template = gcp.compute.NodeTemplate("template",
+            node_affinity_labels={
+                "foo": "baz",
+            },
+            node_type="n1-node-96-624",
+            region="us-central1",
+            server_binding=gcp.compute.NodeTemplateServerBindingArgs(
+                type="RESTART_NODE_ON_MINIMAL_SERVERS",
+            ))
+        ```
 
         ## Import
 
@@ -569,6 +596,33 @@ class NodeTemplate(pulumi.CustomResource):
             * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
 
         ## Example Usage
+        ### Node Template Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        template = gcp.compute.NodeTemplate("template",
+            node_type="n1-node-96-624",
+            region="us-central1")
+        ```
+        ### Node Template Server Binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        central1a = gcp.compute.get_node_types(zone="us-central1-a")
+        template = gcp.compute.NodeTemplate("template",
+            node_affinity_labels={
+                "foo": "baz",
+            },
+            node_type="n1-node-96-624",
+            region="us-central1",
+            server_binding=gcp.compute.NodeTemplateServerBindingArgs(
+                type="RESTART_NODE_ON_MINIMAL_SERVERS",
+            ))
+        ```
 
         ## Import
 

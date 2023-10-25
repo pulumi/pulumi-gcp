@@ -103,6 +103,17 @@ def get_tunnel_instance_iam_policy(instance: Optional[str] = None,
     """
     Retrieves the current IAM policy data for tunnelinstance
 
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.iap.get_tunnel_instance_iam_policy(project=google_compute_instance["tunnelvm"]["project"],
+        zone=google_compute_instance["tunnelvm"]["zone"],
+        instance=google_compute_instance["tunnelvm"]["name"])
+    ```
+
 
     :param str instance: Used to find the parent resource to bind the IAM policy to
     :param str project: The ID of the project in which the resource belongs.
@@ -131,6 +142,17 @@ def get_tunnel_instance_iam_policy_output(instance: Optional[pulumi.Input[str]] 
                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTunnelInstanceIamPolicyResult]:
     """
     Retrieves the current IAM policy data for tunnelinstance
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.iap.get_tunnel_instance_iam_policy(project=google_compute_instance["tunnelvm"]["project"],
+        zone=google_compute_instance["tunnelvm"]["zone"],
+        instance=google_compute_instance["tunnelvm"]["name"])
+    ```
 
 
     :param str instance: Used to find the parent resource to bind the IAM policy to

@@ -16,6 +16,29 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/storage-transfer/docs/on-prem-agent-pools)
  *
  * ## Example Usage
+ * ### Agent Pool Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default = gcp.storage.getTransferProjectServiceAccount({
+ *     project: "my-project-name",
+ * });
+ * const pubsubEditorRole = new gcp.projects.IAMMember("pubsubEditorRole", {
+ *     project: "my-project-name",
+ *     role: "roles/pubsub.editor",
+ *     member: _default.then(_default => `serviceAccount:${_default.email}`),
+ * });
+ * const example = new gcp.storage.TransferAgentPool("example", {
+ *     displayName: "Source A to destination Z",
+ *     bandwidthLimit: {
+ *         limitMbps: "120",
+ *     },
+ * }, {
+ *     dependsOn: [pubsubEditorRole],
+ * });
+ * ```
  *
  * ## Import
  *

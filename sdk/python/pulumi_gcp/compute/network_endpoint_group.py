@@ -505,6 +505,40 @@ class NetworkEndpointGroup(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 
         ## Example Usage
+        ### Network Endpoint Group
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=default_network.id)
+        neg = gcp.compute.NetworkEndpointGroup("neg",
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            default_port=90,
+            zone="us-central1-a")
+        ```
+        ### Network Endpoint Group Non Gcp
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default")
+        neg = gcp.compute.NetworkEndpointGroup("neg",
+            network=default.id,
+            default_port=90,
+            zone="us-central1-a",
+            network_endpoint_type="NON_GCP_PRIVATE_IP_PORT")
+        default_endpoint = gcp.compute.NetworkEndpoint("default-endpoint",
+            network_endpoint_group=neg.name,
+            port=neg.default_port,
+            ip_address="127.0.0.1")
+        ```
 
         ## Import
 
@@ -588,6 +622,40 @@ class NetworkEndpointGroup(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 
         ## Example Usage
+        ### Network Endpoint Group
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=default_network.id)
+        neg = gcp.compute.NetworkEndpointGroup("neg",
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            default_port=90,
+            zone="us-central1-a")
+        ```
+        ### Network Endpoint Group Non Gcp
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default")
+        neg = gcp.compute.NetworkEndpointGroup("neg",
+            network=default.id,
+            default_port=90,
+            zone="us-central1-a",
+            network_endpoint_type="NON_GCP_PRIVATE_IP_PORT")
+        default_endpoint = gcp.compute.NetworkEndpoint("default-endpoint",
+            network_endpoint_group=neg.name,
+            port=neg.default_port,
+            ip_address="127.0.0.1")
+        ```
 
         ## Import
 

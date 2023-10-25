@@ -19,6 +19,48 @@ import * as utilities from "../utilities";
  * state as plain-text.
  *
  * ## Example Usage
+ * ### Ssl Certificate Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.SSLCertificate("default", {
+ *     namePrefix: "my-certificate-",
+ *     description: "a description",
+ *     privateKey: fs.readFileSync("path/to/private.key"),
+ *     certificate: fs.readFileSync("path/to/certificate.crt"),
+ * });
+ * ```
+ * ### Ssl Certificate Random Provider
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as crypto from "crypto";
+ * import * as fs from "fs";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
+ *
+ * function computeFilebase64sha256(path string) string {
+ * 	const fileData = Buffer.from(fs.readFileSync(path), 'binary')
+ * 	return crypto.createHash('sha256').update(fileData).digest('hex')
+ * }
+ *
+ * // You may also want to control name generation explicitly:
+ * const _default = new gcp.compute.SSLCertificate("default", {
+ *     privateKey: fs.readFileSync("path/to/private.key"),
+ *     certificate: fs.readFileSync("path/to/certificate.crt"),
+ * });
+ * const certificate = new random.RandomId("certificate", {
+ *     byteLength: 4,
+ *     prefix: "my-certificate-",
+ *     keepers: {
+ *         private_key: computeFilebase64sha256("path/to/private.key"),
+ *         certificate: computeFilebase64sha256("path/to/certificate.crt"),
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

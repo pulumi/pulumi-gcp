@@ -472,6 +472,27 @@ class FolderSink(pulumi.CustomResource):
         * How-to Guides
             * [Exporting Logs](https://cloud.google.com/logging/docs/export)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        log_bucket = gcp.storage.Bucket("log-bucket", location="US")
+        my_folder = gcp.organizations.Folder("my-folder",
+            display_name="My folder",
+            parent="organizations/123456")
+        my_sink = gcp.logging.FolderSink("my-sink",
+            description="some explanation on what this is",
+            folder=my_folder.name,
+            destination=log_bucket.name.apply(lambda name: f"storage.googleapis.com/{name}"),
+            filter="resource.type = gce_instance AND severity >= WARNING")
+        log_writer = gcp.projects.IAMBinding("log-writer",
+            project="your-project-id",
+            role="roles/storage.objectCreator",
+            members=[my_sink.writer_identity])
+        ```
+
         ## Import
 
         Folder-level logging sinks can be imported using this format:
@@ -515,6 +536,27 @@ class FolderSink(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/folders.sinks)
         * How-to Guides
             * [Exporting Logs](https://cloud.google.com/logging/docs/export)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        log_bucket = gcp.storage.Bucket("log-bucket", location="US")
+        my_folder = gcp.organizations.Folder("my-folder",
+            display_name="My folder",
+            parent="organizations/123456")
+        my_sink = gcp.logging.FolderSink("my-sink",
+            description="some explanation on what this is",
+            folder=my_folder.name,
+            destination=log_bucket.name.apply(lambda name: f"storage.googleapis.com/{name}"),
+            filter="resource.type = gce_instance AND severity >= WARNING")
+        log_writer = gcp.projects.IAMBinding("log-writer",
+            project="your-project-id",
+            role="roles/storage.objectCreator",
+            members=[my_sink.writer_identity])
+        ```
 
         ## Import
 

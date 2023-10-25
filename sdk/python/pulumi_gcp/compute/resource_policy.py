@@ -449,6 +449,140 @@ class ResourcePolicy(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/resourcePolicies)
 
         ## Example Usage
+        ### Resource Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        foo = gcp.compute.ResourcePolicy("foo",
+            region="us-central1",
+            snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
+                schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
+                    daily_schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs(
+                        days_in_cycle=1,
+                        start_time="04:00",
+                    ),
+                ),
+            ))
+        ```
+        ### Resource Policy Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bar = gcp.compute.ResourcePolicy("bar",
+            region="us-central1",
+            snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
+                retention_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs(
+                    max_retention_days=10,
+                    on_source_disk_delete="KEEP_AUTO_SNAPSHOTS",
+                ),
+                schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
+                    hourly_schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs(
+                        hours_in_cycle=20,
+                        start_time="23:00",
+                    ),
+                ),
+                snapshot_properties=gcp.compute.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs(
+                    guest_flush=True,
+                    labels={
+                        "myLabel": "value",
+                    },
+                    storage_locations="us",
+                ),
+            ))
+        ```
+        ### Resource Policy Placement Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        baz = gcp.compute.ResourcePolicy("baz",
+            group_placement_policy=gcp.compute.ResourcePolicyGroupPlacementPolicyArgs(
+                collocation="COLLOCATED",
+                vm_count=2,
+            ),
+            region="us-central1")
+        ```
+        ### Resource Policy Placement Policy Max Distance
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        baz = gcp.compute.ResourcePolicy("baz",
+            region="us-central1",
+            group_placement_policy=gcp.compute.ResourcePolicyGroupPlacementPolicyArgs(
+                vm_count=2,
+                collocation="COLLOCATED",
+                max_distance=2,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Resource Policy Instance Schedule Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hourly = gcp.compute.ResourcePolicy("hourly",
+            description="Start and stop instances",
+            instance_schedule_policy=gcp.compute.ResourcePolicyInstanceSchedulePolicyArgs(
+                time_zone="US/Central",
+                vm_start_schedule=gcp.compute.ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs(
+                    schedule="0 * * * *",
+                ),
+                vm_stop_schedule=gcp.compute.ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs(
+                    schedule="15 * * * *",
+                ),
+            ),
+            region="us-central1")
+        ```
+        ### Resource Policy Snapshot Schedule Chain Name
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hourly = gcp.compute.ResourcePolicy("hourly",
+            description="chain name snapshot",
+            region="us-central1",
+            snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
+                retention_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs(
+                    max_retention_days=14,
+                    on_source_disk_delete="KEEP_AUTO_SNAPSHOTS",
+                ),
+                schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
+                    hourly_schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs(
+                        hours_in_cycle=20,
+                        start_time="23:00",
+                    ),
+                ),
+                snapshot_properties=gcp.compute.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs(
+                    chain_name="test-schedule-chain-name",
+                    guest_flush=True,
+                    labels={
+                        "myLabel": "value",
+                    },
+                    storage_locations="us",
+                ),
+            ))
+        ```
+        ### Resource Policy Consistency Group
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cgroup = gcp.compute.ResourcePolicy("cgroup",
+            disk_consistency_group_policy=gcp.compute.ResourcePolicyDiskConsistencyGroupPolicyArgs(
+                enabled=True,
+            ),
+            region="europe-west1")
+        ```
 
         ## Import
 
@@ -509,6 +643,140 @@ class ResourcePolicy(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/resourcePolicies)
 
         ## Example Usage
+        ### Resource Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        foo = gcp.compute.ResourcePolicy("foo",
+            region="us-central1",
+            snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
+                schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
+                    daily_schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs(
+                        days_in_cycle=1,
+                        start_time="04:00",
+                    ),
+                ),
+            ))
+        ```
+        ### Resource Policy Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bar = gcp.compute.ResourcePolicy("bar",
+            region="us-central1",
+            snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
+                retention_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs(
+                    max_retention_days=10,
+                    on_source_disk_delete="KEEP_AUTO_SNAPSHOTS",
+                ),
+                schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
+                    hourly_schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs(
+                        hours_in_cycle=20,
+                        start_time="23:00",
+                    ),
+                ),
+                snapshot_properties=gcp.compute.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs(
+                    guest_flush=True,
+                    labels={
+                        "myLabel": "value",
+                    },
+                    storage_locations="us",
+                ),
+            ))
+        ```
+        ### Resource Policy Placement Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        baz = gcp.compute.ResourcePolicy("baz",
+            group_placement_policy=gcp.compute.ResourcePolicyGroupPlacementPolicyArgs(
+                collocation="COLLOCATED",
+                vm_count=2,
+            ),
+            region="us-central1")
+        ```
+        ### Resource Policy Placement Policy Max Distance
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        baz = gcp.compute.ResourcePolicy("baz",
+            region="us-central1",
+            group_placement_policy=gcp.compute.ResourcePolicyGroupPlacementPolicyArgs(
+                vm_count=2,
+                collocation="COLLOCATED",
+                max_distance=2,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Resource Policy Instance Schedule Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hourly = gcp.compute.ResourcePolicy("hourly",
+            description="Start and stop instances",
+            instance_schedule_policy=gcp.compute.ResourcePolicyInstanceSchedulePolicyArgs(
+                time_zone="US/Central",
+                vm_start_schedule=gcp.compute.ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs(
+                    schedule="0 * * * *",
+                ),
+                vm_stop_schedule=gcp.compute.ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs(
+                    schedule="15 * * * *",
+                ),
+            ),
+            region="us-central1")
+        ```
+        ### Resource Policy Snapshot Schedule Chain Name
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hourly = gcp.compute.ResourcePolicy("hourly",
+            description="chain name snapshot",
+            region="us-central1",
+            snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
+                retention_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs(
+                    max_retention_days=14,
+                    on_source_disk_delete="KEEP_AUTO_SNAPSHOTS",
+                ),
+                schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
+                    hourly_schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs(
+                        hours_in_cycle=20,
+                        start_time="23:00",
+                    ),
+                ),
+                snapshot_properties=gcp.compute.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs(
+                    chain_name="test-schedule-chain-name",
+                    guest_flush=True,
+                    labels={
+                        "myLabel": "value",
+                    },
+                    storage_locations="us",
+                ),
+            ))
+        ```
+        ### Resource Policy Consistency Group
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cgroup = gcp.compute.ResourcePolicy("cgroup",
+            disk_consistency_group_policy=gcp.compute.ResourcePolicyDiskConsistencyGroupPolicyArgs(
+                enabled=True,
+            ),
+            region="europe-west1")
+        ```
 
         ## Import
 

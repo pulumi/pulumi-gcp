@@ -13,6 +13,34 @@ import (
 )
 
 // Retrieves the current IAM policy data for datapolicy
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquerydatapolicy"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigquerydatapolicy.GetIamPolicy(ctx, &bigquerydatapolicy.GetIamPolicyArgs{
+//				Project:      pulumi.StringRef(google_bigquery_datapolicy_data_policy.Data_policy.Project),
+//				Location:     pulumi.StringRef(google_bigquery_datapolicy_data_policy.Data_policy.Location),
+//				DataPolicyId: google_bigquery_datapolicy_data_policy.Data_policy.Data_policy_id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetIamPolicy(ctx *pulumi.Context, args *GetIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIamPolicyResult

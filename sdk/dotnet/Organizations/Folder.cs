@@ -24,6 +24,33 @@ namespace Pulumi.Gcp.Organizations
     /// [Access Control for Folders Using IAM](https://cloud.google.com/resource-manager/docs/access-control-folders)
     /// doc for more information.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Top-level folder under an organization.
+    ///     var department1 = new Gcp.Organizations.Folder("department1", new()
+    ///     {
+    ///         DisplayName = "Department 1",
+    ///         Parent = "organizations/1234567",
+    ///     });
+    /// 
+    ///     // Folder nested under another folder.
+    ///     var team_abc = new Gcp.Organizations.Folder("team-abc", new()
+    ///     {
+    ///         DisplayName = "Team ABC",
+    ///         Parent = department1.Name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Folders can be imported using the folder's id, e.g. Both syntaxes are valid

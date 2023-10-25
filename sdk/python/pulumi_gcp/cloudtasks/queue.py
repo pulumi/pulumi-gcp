@@ -398,6 +398,42 @@ class Queue(pulumi.CustomResource):
         resource's location will be the same as the App Engine location specified.
 
         ## Example Usage
+        ### Queue Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudtasks.Queue("default", location="us-central1")
+        ```
+        ### Cloud Tasks Queue Advanced
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        advanced_configuration = gcp.cloudtasks.Queue("advancedConfiguration",
+            app_engine_routing_override=gcp.cloudtasks.QueueAppEngineRoutingOverrideArgs(
+                instance="test",
+                service="worker",
+                version="1.0",
+            ),
+            location="us-central1",
+            rate_limits=gcp.cloudtasks.QueueRateLimitsArgs(
+                max_concurrent_dispatches=3,
+                max_dispatches_per_second=2,
+            ),
+            retry_config=gcp.cloudtasks.QueueRetryConfigArgs(
+                max_attempts=5,
+                max_backoff="3s",
+                max_doublings=1,
+                max_retry_duration="4s",
+                min_backoff="2s",
+            ),
+            stackdriver_logging_config=gcp.cloudtasks.QueueStackdriverLoggingConfigArgs(
+                sampling_ratio=0.9,
+            ))
+        ```
 
         ## Import
 
@@ -455,6 +491,42 @@ class Queue(pulumi.CustomResource):
         resource's location will be the same as the App Engine location specified.
 
         ## Example Usage
+        ### Queue Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudtasks.Queue("default", location="us-central1")
+        ```
+        ### Cloud Tasks Queue Advanced
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        advanced_configuration = gcp.cloudtasks.Queue("advancedConfiguration",
+            app_engine_routing_override=gcp.cloudtasks.QueueAppEngineRoutingOverrideArgs(
+                instance="test",
+                service="worker",
+                version="1.0",
+            ),
+            location="us-central1",
+            rate_limits=gcp.cloudtasks.QueueRateLimitsArgs(
+                max_concurrent_dispatches=3,
+                max_dispatches_per_second=2,
+            ),
+            retry_config=gcp.cloudtasks.QueueRetryConfigArgs(
+                max_attempts=5,
+                max_backoff="3s",
+                max_doublings=1,
+                max_retry_duration="4s",
+                min_backoff="2s",
+            ),
+            stackdriver_logging_config=gcp.cloudtasks.QueueStackdriverLoggingConfigArgs(
+                sampling_ratio=0.9,
+            ))
+        ```
 
         ## Import
 

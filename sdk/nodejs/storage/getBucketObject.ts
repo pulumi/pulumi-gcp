@@ -11,6 +11,20 @@ import * as utilities from "../utilities";
  * See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
  * and
  * [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
+ *
+ * ## Example Usage
+ *
+ * Example picture stored within a folder.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const picture = gcp.storage.getBucketObject({
+ *     bucket: "image-store",
+ *     name: "folder/butterfly01.jpg",
+ * });
+ * ```
  */
 export function getBucketObject(args?: GetBucketObjectArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketObjectResult> {
     args = args || {};
@@ -110,6 +124,20 @@ export interface GetBucketObjectResult {
  * See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
  * and
  * [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
+ *
+ * ## Example Usage
+ *
+ * Example picture stored within a folder.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const picture = gcp.storage.getBucketObject({
+ *     bucket: "image-store",
+ *     name: "folder/butterfly01.jpg",
+ * });
+ * ```
  */
 export function getBucketObjectOutput(args?: GetBucketObjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketObjectResult> {
     return pulumi.output(args).apply((a: any) => getBucketObject(a, opts))

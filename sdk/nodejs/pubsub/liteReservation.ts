@@ -14,6 +14,18 @@ import * as utilities from "../utilities";
  *     * [Managing Reservations](https://cloud.google.com/pubsub/lite/docs/reservations)
  *
  * ## Example Usage
+ * ### Pubsub Lite Reservation Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const example = new gcp.pubsub.LiteReservation("example", {
+ *     project: project.then(project => project.number),
+ *     throughputCapacity: 2,
+ * });
+ * ```
  *
  * ## Import
  *

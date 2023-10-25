@@ -435,6 +435,47 @@ class AndroidApp(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Firebase Android App Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.firebase.AndroidApp("basic",
+            project="my-project-name",
+            display_name="Display Name Basic",
+            package_name="android.package.app",
+            sha1_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21c"],
+            sha256_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Firebase Android App Custom Api Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        android = gcp.projects.ApiKey("android",
+            display_name="Display Name",
+            project="my-project-name",
+            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
+                android_key_restrictions=gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsArgs(
+                    allowed_applications=[gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs(
+                        package_name="android.package.app",
+                        sha1_fingerprint="2145bdf698b8715039bd0e83f2069bed435ac21c",
+                    )],
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default = gcp.firebase.AndroidApp("default",
+            project="my-project-name",
+            display_name="Display Name",
+            package_name="android.package.app",
+            sha1_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21c"],
+            sha256_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"],
+            api_key_id=android.uid,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -487,6 +528,47 @@ class AndroidApp(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Firebase Android App Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.firebase.AndroidApp("basic",
+            project="my-project-name",
+            display_name="Display Name Basic",
+            package_name="android.package.app",
+            sha1_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21c"],
+            sha256_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Firebase Android App Custom Api Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        android = gcp.projects.ApiKey("android",
+            display_name="Display Name",
+            project="my-project-name",
+            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
+                android_key_restrictions=gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsArgs(
+                    allowed_applications=[gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs(
+                        package_name="android.package.app",
+                        sha1_fingerprint="2145bdf698b8715039bd0e83f2069bed435ac21c",
+                    )],
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default = gcp.firebase.AndroidApp("default",
+            project="my-project-name",
+            display_name="Display Name",
+            package_name="android.package.app",
+            sha1_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21c"],
+            sha256_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"],
+            api_key_id=android.uid,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

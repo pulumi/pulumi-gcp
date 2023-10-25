@@ -454,6 +454,25 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+        ### Access Context Manager Authorized Orgs Desc Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_access = gcp.accesscontextmanager.AccessPolicy("test-access",
+            parent="organizations/",
+            title="my policy")
+        authorized_orgs_desc = gcp.accesscontextmanager.AuthorizedOrgsDesc("authorized-orgs-desc",
+            asset_type="ASSET_TYPE_CREDENTIAL_STRENGTH",
+            authorization_direction="AUTHORIZATION_DIRECTION_TO",
+            authorization_type="AUTHORIZATION_TYPE_TRUST",
+            orgs=[
+                "organizations/12345",
+                "organizations/98765",
+            ],
+            parent=test_access.name.apply(lambda name: f"accessPolicies/{name}"))
+        ```
 
         ## Import
 
@@ -525,6 +544,25 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+        ### Access Context Manager Authorized Orgs Desc Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_access = gcp.accesscontextmanager.AccessPolicy("test-access",
+            parent="organizations/",
+            title="my policy")
+        authorized_orgs_desc = gcp.accesscontextmanager.AuthorizedOrgsDesc("authorized-orgs-desc",
+            asset_type="ASSET_TYPE_CREDENTIAL_STRENGTH",
+            authorization_direction="AUTHORIZATION_DIRECTION_TO",
+            authorization_type="AUTHORIZATION_TYPE_TRUST",
+            orgs=[
+                "organizations/12345",
+                "organizations/98765",
+            ],
+            parent=test_access.name.apply(lambda name: f"accessPolicies/{name}"))
+        ```
 
         ## Import
 

@@ -300,6 +300,15 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
         The Compute NetworkFirewallPolicy resource
 
         ## Example Usage
+        ### Global
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.compute.NetworkFirewallPolicy("primary",
+            description="Sample global network firewall policy",
+            project="my-project-name")
+        ```
 
         ## Import
 
@@ -337,6 +346,15 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
         The Compute NetworkFirewallPolicy resource
 
         ## Example Usage
+        ### Global
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.compute.NetworkFirewallPolicy("primary",
+            description="Sample global network firewall policy",
+            project="my-project-name")
+        ```
 
         ## Import
 

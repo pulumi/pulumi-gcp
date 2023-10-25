@@ -22,6 +22,38 @@ import (
 //   - [Create and manage networks](https://cloud.google.com/distributed-cloud/edge/latest/docs/networks#api)
 //
 // ## Example Usage
+// ### Edgenetwork Network
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/edgenetwork"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := edgenetwork.NewNetwork(ctx, "exampleNetwork", &edgenetwork.NetworkArgs{
+//				NetworkId:   pulumi.String("example-network"),
+//				Location:    pulumi.String("us-west1"),
+//				Zone:        pulumi.String(""),
+//				Description: pulumi.String("Example network."),
+//				Mtu:         pulumi.Int(9000),
+//				Labels: pulumi.StringMap{
+//					"environment": pulumi.String("dev"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

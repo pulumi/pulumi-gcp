@@ -12,6 +12,30 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Exporting Logs](https://cloud.google.com/logging/docs/export)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const log_bucket = new gcp.storage.Bucket("log-bucket", {location: "US"});
+ * const my_folder = new gcp.organizations.Folder("my-folder", {
+ *     displayName: "My folder",
+ *     parent: "organizations/123456",
+ * });
+ * const my_sink = new gcp.logging.FolderSink("my-sink", {
+ *     description: "some explanation on what this is",
+ *     folder: my_folder.name,
+ *     destination: pulumi.interpolate`storage.googleapis.com/${log_bucket.name}`,
+ *     filter: "resource.type = gce_instance AND severity >= WARNING",
+ * });
+ * const log_writer = new gcp.projects.IAMBinding("log-writer", {
+ *     project: "your-project-id",
+ *     role: "roles/storage.objectCreator",
+ *     members: [my_sink.writerIdentity],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Folder-level logging sinks can be imported using this format:

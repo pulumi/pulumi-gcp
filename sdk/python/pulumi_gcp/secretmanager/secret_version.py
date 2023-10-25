@@ -371,6 +371,85 @@ class SecretVersion(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
+        ### Secret Version Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        secret_basic = gcp.secretmanager.Secret("secret-basic",
+            secret_id="secret-version",
+            labels={
+                "label": "my-label",
+            },
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            ))
+        secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
+            secret=secret_basic.id,
+            secret_data="secret-data")
+        ```
+        ### Secret Version Deletion Policy Abandon
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        secret_basic = gcp.secretmanager.Secret("secret-basic",
+            secret_id="secret-version",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
+                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+                        location="us-central1",
+                    )],
+                ),
+            ))
+        secret_version_deletion_policy = gcp.secretmanager.SecretVersion("secret-version-deletion-policy",
+            secret=secret_basic.id,
+            secret_data="secret-data",
+            deletion_policy="ABANDON")
+        ```
+        ### Secret Version Deletion Policy Disable
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        secret_basic = gcp.secretmanager.Secret("secret-basic",
+            secret_id="secret-version",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
+                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+                        location="us-central1",
+                    )],
+                ),
+            ))
+        secret_version_deletion_policy = gcp.secretmanager.SecretVersion("secret-version-deletion-policy",
+            secret=secret_basic.id,
+            secret_data="secret-data",
+            deletion_policy="DISABLE")
+        ```
+        ### Secret Version With Base64 String Secret Data
+
+        ```python
+        import pulumi
+        import base64
+        import pulumi_gcp as gcp
+
+        secret_basic = gcp.secretmanager.Secret("secret-basic",
+            secret_id="secret-version",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
+                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+                        location="us-central1",
+                    )],
+                ),
+            ))
+        secret_version_base64 = gcp.secretmanager.SecretVersion("secret-version-base64",
+            secret=secret_basic.id,
+            is_secret_data_base64=True,
+            secret_data=(lambda path: base64.b64encode(open(path).read().encode()).decode())("secret-data.pfx"))
+        ```
 
         ## Import
 
@@ -410,6 +489,85 @@ class SecretVersion(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
+        ### Secret Version Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        secret_basic = gcp.secretmanager.Secret("secret-basic",
+            secret_id="secret-version",
+            labels={
+                "label": "my-label",
+            },
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            ))
+        secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
+            secret=secret_basic.id,
+            secret_data="secret-data")
+        ```
+        ### Secret Version Deletion Policy Abandon
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        secret_basic = gcp.secretmanager.Secret("secret-basic",
+            secret_id="secret-version",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
+                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+                        location="us-central1",
+                    )],
+                ),
+            ))
+        secret_version_deletion_policy = gcp.secretmanager.SecretVersion("secret-version-deletion-policy",
+            secret=secret_basic.id,
+            secret_data="secret-data",
+            deletion_policy="ABANDON")
+        ```
+        ### Secret Version Deletion Policy Disable
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        secret_basic = gcp.secretmanager.Secret("secret-basic",
+            secret_id="secret-version",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
+                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+                        location="us-central1",
+                    )],
+                ),
+            ))
+        secret_version_deletion_policy = gcp.secretmanager.SecretVersion("secret-version-deletion-policy",
+            secret=secret_basic.id,
+            secret_data="secret-data",
+            deletion_policy="DISABLE")
+        ```
+        ### Secret Version With Base64 String Secret Data
+
+        ```python
+        import pulumi
+        import base64
+        import pulumi_gcp as gcp
+
+        secret_basic = gcp.secretmanager.Secret("secret-basic",
+            secret_id="secret-version",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
+                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+                        location="us-central1",
+                    )],
+                ),
+            ))
+        secret_version_base64 = gcp.secretmanager.SecretVersion("secret-version-base64",
+            secret=secret_basic.id,
+            is_secret_data_base64=True,
+            secret_data=(lambda path: base64.b64encode(open(path).read().encode()).decode())("secret-data.pfx"))
+        ```
 
         ## Import
 

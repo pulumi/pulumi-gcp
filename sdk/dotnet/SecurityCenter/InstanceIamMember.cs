@@ -19,6 +19,195 @@ namespace Pulumi.Gcp.SecurityCenter
     ///     * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
     /// 
     /// ## Example Usage
+    /// ### Data Fusion Instance Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basicInstance = new Gcp.DataFusion.Instance("basicInstance", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Type = "BASIC",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Data Fusion Instance Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = Gcp.AppEngine.GetDefaultServiceAccount.Invoke();
+    /// 
+    ///     var network = new Gcp.Compute.Network("network");
+    /// 
+    ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("privateIpAlloc", new()
+    ///     {
+    ///         AddressType = "INTERNAL",
+    ///         Purpose = "VPC_PEERING",
+    ///         PrefixLength = 22,
+    ///         Network = network.Id,
+    ///     });
+    /// 
+    ///     var extendedInstance = new Gcp.DataFusion.Instance("extendedInstance", new()
+    ///     {
+    ///         Description = "My Data Fusion instance",
+    ///         DisplayName = "My Data Fusion instance",
+    ///         Region = "us-central1",
+    ///         Type = "BASIC",
+    ///         EnableStackdriverLogging = true,
+    ///         EnableStackdriverMonitoring = true,
+    ///         PrivateInstance = true,
+    ///         DataprocServiceAccount = @default.Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)),
+    ///         Labels = 
+    ///         {
+    ///             { "example_key", "example_value" },
+    ///         },
+    ///         NetworkConfig = new Gcp.DataFusion.Inputs.InstanceNetworkConfigArgs
+    ///         {
+    ///             Network = "default",
+    ///             IpAllocation = Output.Tuple(privateIpAlloc.Address, privateIpAlloc.PrefixLength).Apply(values =&gt;
+    ///             {
+    ///                 var address = values.Item1;
+    ///                 var prefixLength = values.Item2;
+    ///                 return $"{address}/{prefixLength}";
+    ///             }),
+    ///         },
+    ///         Accelerators = new[]
+    ///         {
+    ///             new Gcp.DataFusion.Inputs.InstanceAcceleratorArgs
+    ///             {
+    ///                 AcceleratorType = "CDC",
+    ///                 State = "ENABLED",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Data Fusion Instance Cmek
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var keyRing = new Gcp.Kms.KeyRing("keyRing", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new()
+    ///     {
+    ///         KeyRing = keyRing.Id,
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var cryptoKeyBinding = new Gcp.Kms.CryptoKeyIAMBinding("cryptoKeyBinding", new()
+    ///     {
+    ///         CryptoKeyId = cryptoKey.Id,
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Members = new[]
+    ///         {
+    ///             $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-datafusion.iam.gserviceaccount.com",
+    ///         },
+    ///     });
+    /// 
+    ///     var cmek = new Gcp.DataFusion.Instance("cmek", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Type = "BASIC",
+    ///         CryptoKeyConfig = new Gcp.DataFusion.Inputs.InstanceCryptoKeyConfigArgs
+    ///         {
+    ///             KeyReference = cryptoKey.Id,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             cryptoKeyBinding,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Data Fusion Instance Enterprise
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var enterpriseInstance = new Gcp.DataFusion.Instance("enterpriseInstance", new()
+    ///     {
+    ///         EnableRbac = true,
+    ///         Region = "us-central1",
+    ///         Type = "ENTERPRISE",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Data Fusion Instance Event
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var eventTopic = new Gcp.PubSub.Topic("eventTopic");
+    /// 
+    ///     var eventInstance = new Gcp.DataFusion.Instance("eventInstance", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Type = "BASIC",
+    ///         EventPublishConfig = new Gcp.DataFusion.Inputs.InstanceEventPublishConfigArgs
+    ///         {
+    ///             Enabled = true,
+    ///             Topic = eventTopic.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Data Fusion Instance Zone
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var zone = new Gcp.DataFusion.Instance("zone", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Type = "DEVELOPER",
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

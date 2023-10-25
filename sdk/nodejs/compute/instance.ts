@@ -12,6 +12,49 @@ import * as utilities from "../utilities";
  * and
  * [API](https://cloud.google.com/compute/docs/reference/latest/instances).
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultAccount = new gcp.serviceaccount.Account("defaultAccount", {
+ *     accountId: "service_account_id",
+ *     displayName: "Service Account",
+ * });
+ * const defaultInstance = new gcp.compute.Instance("defaultInstance", {
+ *     machineType: "e2-medium",
+ *     zone: "us-central1-a",
+ *     tags: [
+ *         "foo",
+ *         "bar",
+ *     ],
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: "debian-cloud/debian-11",
+ *             labels: {
+ *                 my_label: "value",
+ *             },
+ *         },
+ *     },
+ *     scratchDisks: [{
+ *         "interface": "SCSI",
+ *     }],
+ *     networkInterfaces: [{
+ *         network: "default",
+ *         accessConfigs: [{}],
+ *     }],
+ *     metadata: {
+ *         foo: "bar",
+ *     },
+ *     metadataStartupScript: "echo hi > /test.txt",
+ *     serviceAccount: {
+ *         email: defaultAccount.email,
+ *         scopes: ["cloud-platform"],
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Instances can be imported using any of these accepted formats

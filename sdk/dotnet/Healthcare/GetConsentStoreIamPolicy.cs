@@ -13,12 +13,54 @@ namespace Pulumi.Gcp.Healthcare
     {
         /// <summary>
         /// Retrieves the current IAM policy data for consentstore
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Healthcare.GetConsentStoreIamPolicy.Invoke(new()
+        ///     {
+        ///         Dataset = google_healthcare_consent_store.My_consent.Dataset,
+        ///         ConsentStoreId = google_healthcare_consent_store.My_consent.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetConsentStoreIamPolicyResult> InvokeAsync(GetConsentStoreIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConsentStoreIamPolicyResult>("gcp:healthcare/getConsentStoreIamPolicy:getConsentStoreIamPolicy", args ?? new GetConsentStoreIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for consentstore
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Healthcare.GetConsentStoreIamPolicy.Invoke(new()
+        ///     {
+        ///         Dataset = google_healthcare_consent_store.My_consent.Dataset,
+        ///         ConsentStoreId = google_healthcare_consent_store.My_consent.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetConsentStoreIamPolicyResult> Invoke(GetConsentStoreIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConsentStoreIamPolicyResult>("gcp:healthcare/getConsentStoreIamPolicy:getConsentStoreIamPolicy", args ?? new GetConsentStoreIamPolicyInvokeArgs(), options.WithDefaults());

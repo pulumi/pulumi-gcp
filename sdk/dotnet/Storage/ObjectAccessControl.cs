@@ -30,6 +30,37 @@ namespace Pulumi.Gcp.Storage
     ///     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
     /// 
     /// ## Example Usage
+    /// ### Storage Object Access Control Public Object
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+    ///     {
+    ///         Location = "US",
+    ///     });
+    /// 
+    ///     var @object = new Gcp.Storage.BucketObject("object", new()
+    ///     {
+    ///         Bucket = bucket.Name,
+    ///         Source = new FileAsset("../static/img/header-logo.png"),
+    ///     });
+    /// 
+    ///     var publicRule = new Gcp.Storage.ObjectAccessControl("publicRule", new()
+    ///     {
+    ///         Object = @object.OutputName,
+    ///         Bucket = bucket.Name,
+    ///         Role = "READER",
+    ///         Entity = "allUsers",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

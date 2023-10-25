@@ -340,6 +340,87 @@ class TlsInspectionPolicy(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Network Security Tls Inspection Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_ca_pool = gcp.certificateauthority.CaPool("defaultCaPool",
+            location="us-central1",
+            tier="DEVOPS",
+            publishing_options=gcp.certificateauthority.CaPoolPublishingOptionsArgs(
+                publish_ca_cert=False,
+                publish_crl=False,
+            ),
+            issuance_policy=gcp.certificateauthority.CaPoolIssuancePolicyArgs(
+                maximum_lifetime="1209600s",
+                baseline_values=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesArgs(
+                    ca_options=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesCaOptionsArgs(
+                        is_ca=False,
+                    ),
+                    key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs(),
+                        extended_key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs(
+                            server_auth=True,
+                        ),
+                    ),
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_authority = gcp.certificateauthority.Authority("defaultAuthority",
+            pool=default_ca_pool.name,
+            certificate_authority_id="my-basic-certificate-authority",
+            location="us-central1",
+            lifetime="86400s",
+            type="SELF_SIGNED",
+            deletion_protection=False,
+            skip_grace_period=True,
+            ignore_active_certificates_on_deletion=True,
+            config=gcp.certificateauthority.AuthorityConfigArgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+                        organization="Test LLC",
+                        common_name="my-ca",
+                    ),
+                ),
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                        is_ca=True,
+                    ),
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                            cert_sign=True,
+                            crl_sign=True,
+                        ),
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                            server_auth=False,
+                        ),
+                    ),
+                ),
+            ),
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+                algorithm="RSA_PKCS1_4096_SHA256",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ns_sa = gcp.projects.ServiceIdentity("nsSa", service="networksecurity.googleapis.com",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        tls_inspection_permission = gcp.certificateauthority.CaPoolIamMember("tlsInspectionPermission",
+            ca_pool=default_ca_pool.id,
+            role="roles/privateca.certificateManager",
+            member=ns_sa.email.apply(lambda email: f"serviceAccount:{email}"),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_tls_inspection_policy = gcp.networksecurity.TlsInspectionPolicy("defaultTlsInspectionPolicy",
+            location="us-central1",
+            ca_pool=default_ca_pool.id,
+            exclude_public_ca_set=False,
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[
+                    default_ca_pool,
+                    default_authority,
+                    tls_inspection_permission,
+                ]))
+        ```
 
         ## Import
 
@@ -378,6 +459,87 @@ class TlsInspectionPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Network Security Tls Inspection Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_ca_pool = gcp.certificateauthority.CaPool("defaultCaPool",
+            location="us-central1",
+            tier="DEVOPS",
+            publishing_options=gcp.certificateauthority.CaPoolPublishingOptionsArgs(
+                publish_ca_cert=False,
+                publish_crl=False,
+            ),
+            issuance_policy=gcp.certificateauthority.CaPoolIssuancePolicyArgs(
+                maximum_lifetime="1209600s",
+                baseline_values=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesArgs(
+                    ca_options=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesCaOptionsArgs(
+                        is_ca=False,
+                    ),
+                    key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs(),
+                        extended_key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs(
+                            server_auth=True,
+                        ),
+                    ),
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_authority = gcp.certificateauthority.Authority("defaultAuthority",
+            pool=default_ca_pool.name,
+            certificate_authority_id="my-basic-certificate-authority",
+            location="us-central1",
+            lifetime="86400s",
+            type="SELF_SIGNED",
+            deletion_protection=False,
+            skip_grace_period=True,
+            ignore_active_certificates_on_deletion=True,
+            config=gcp.certificateauthority.AuthorityConfigArgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+                        organization="Test LLC",
+                        common_name="my-ca",
+                    ),
+                ),
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                        is_ca=True,
+                    ),
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                            cert_sign=True,
+                            crl_sign=True,
+                        ),
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                            server_auth=False,
+                        ),
+                    ),
+                ),
+            ),
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+                algorithm="RSA_PKCS1_4096_SHA256",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ns_sa = gcp.projects.ServiceIdentity("nsSa", service="networksecurity.googleapis.com",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        tls_inspection_permission = gcp.certificateauthority.CaPoolIamMember("tlsInspectionPermission",
+            ca_pool=default_ca_pool.id,
+            role="roles/privateca.certificateManager",
+            member=ns_sa.email.apply(lambda email: f"serviceAccount:{email}"),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_tls_inspection_policy = gcp.networksecurity.TlsInspectionPolicy("defaultTlsInspectionPolicy",
+            location="us-central1",
+            ca_pool=default_ca_pool.id,
+            exclude_public_ca_set=False,
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[
+                    default_ca_pool,
+                    default_authority,
+                    tls_inspection_permission,
+                ]))
+        ```
 
         ## Import
 

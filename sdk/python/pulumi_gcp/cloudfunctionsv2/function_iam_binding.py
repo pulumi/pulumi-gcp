@@ -359,6 +359,51 @@ class FunctionIamBinding(pulumi.CustomResource):
 
         > **Note:** `cloudfunctionsv2.FunctionIamBinding` resources **can be** used in conjunction with `cloudfunctionsv2.FunctionIamMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\\_cloudfunctions2\\_function\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.cloudfunctionsv2.FunctionIamPolicy("policy",
+            project=google_cloudfunctions2_function["function"]["project"],
+            location=google_cloudfunctions2_function["function"]["location"],
+            cloud_function=google_cloudfunctions2_function["function"]["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_cloudfunctions2\\_function\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.cloudfunctionsv2.FunctionIamBinding("binding",
+            project=google_cloudfunctions2_function["function"]["project"],
+            location=google_cloudfunctions2_function["function"]["location"],
+            cloud_function=google_cloudfunctions2_function["function"]["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_cloudfunctions2\\_function\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.cloudfunctionsv2.FunctionIamMember("member",
+            project=google_cloudfunctions2_function["function"]["project"],
+            location=google_cloudfunctions2_function["function"]["location"],
+            cloud_function=google_cloudfunctions2_function["function"]["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/functions/{{cloud_function}} * {{project}}/{{location}}/{{cloud_function}} * {{location}}/{{cloud_function}} * {{cloud_function}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Functions (2nd gen) function IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -425,6 +470,51 @@ class FunctionIamBinding(pulumi.CustomResource):
         > **Note:** `cloudfunctionsv2.FunctionIamPolicy` **cannot** be used in conjunction with `cloudfunctionsv2.FunctionIamBinding` and `cloudfunctionsv2.FunctionIamMember` or they will fight over what your policy should be.
 
         > **Note:** `cloudfunctionsv2.FunctionIamBinding` resources **can be** used in conjunction with `cloudfunctionsv2.FunctionIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_cloudfunctions2\\_function\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.cloudfunctionsv2.FunctionIamPolicy("policy",
+            project=google_cloudfunctions2_function["function"]["project"],
+            location=google_cloudfunctions2_function["function"]["location"],
+            cloud_function=google_cloudfunctions2_function["function"]["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_cloudfunctions2\\_function\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.cloudfunctionsv2.FunctionIamBinding("binding",
+            project=google_cloudfunctions2_function["function"]["project"],
+            location=google_cloudfunctions2_function["function"]["location"],
+            cloud_function=google_cloudfunctions2_function["function"]["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_cloudfunctions2\\_function\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.cloudfunctionsv2.FunctionIamMember("member",
+            project=google_cloudfunctions2_function["function"]["project"],
+            location=google_cloudfunctions2_function["function"]["location"],
+            cloud_function=google_cloudfunctions2_function["function"]["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
 
         ## Import
 

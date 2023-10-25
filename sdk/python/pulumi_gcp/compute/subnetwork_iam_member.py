@@ -381,6 +381,109 @@ class SubnetworkIAMMember(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
+        ## google\\_compute\\_subnetwork\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/compute.networkUser",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.compute.SubnetworkIAMPolicy("policy",
+            project=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["project"],
+            region=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["region"],
+            subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/compute.networkUser",
+            members=["user:jane@example.com"],
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ),
+        )])
+        policy = gcp.compute.SubnetworkIAMPolicy("policy",
+            project=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["project"],
+            region=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["region"],
+            subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"],
+            policy_data=admin.policy_data)
+        ```
+        ## google\\_compute\\_subnetwork\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.SubnetworkIAMBinding("binding",
+            project=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["project"],
+            region=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["region"],
+            subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"],
+            role="roles/compute.networkUser",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.SubnetworkIAMBinding("binding",
+            project=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["project"],
+            region=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["region"],
+            subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"],
+            role="roles/compute.networkUser",
+            members=["user:jane@example.com"],
+            condition=gcp.compute.SubnetworkIAMBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+        ## google\\_compute\\_subnetwork\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.SubnetworkIAMMember("member",
+            project=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["project"],
+            region=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["region"],
+            subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"],
+            role="roles/compute.networkUser",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.SubnetworkIAMMember("member",
+            project=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["project"],
+            region=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["region"],
+            subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"],
+            role="roles/compute.networkUser",
+            member="user:jane@example.com",
+            condition=gcp.compute.SubnetworkIAMMemberConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/regions/{{region}}/subnetworks/{{name}} * {{project}}/{{region}}/{{name}} * {{region}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Compute Engine subnetwork IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -454,6 +557,109 @@ class SubnetworkIAMMember(pulumi.CustomResource):
         > **Note:** `compute.SubnetworkIAMBinding` resources **can be** used in conjunction with `compute.SubnetworkIAMMember` resources **only if** they do not grant privilege to the same role.
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
+        ## google\\_compute\\_subnetwork\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/compute.networkUser",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.compute.SubnetworkIAMPolicy("policy",
+            project=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["project"],
+            region=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["region"],
+            subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/compute.networkUser",
+            members=["user:jane@example.com"],
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ),
+        )])
+        policy = gcp.compute.SubnetworkIAMPolicy("policy",
+            project=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["project"],
+            region=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["region"],
+            subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"],
+            policy_data=admin.policy_data)
+        ```
+        ## google\\_compute\\_subnetwork\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.SubnetworkIAMBinding("binding",
+            project=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["project"],
+            region=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["region"],
+            subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"],
+            role="roles/compute.networkUser",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.SubnetworkIAMBinding("binding",
+            project=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["project"],
+            region=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["region"],
+            subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"],
+            role="roles/compute.networkUser",
+            members=["user:jane@example.com"],
+            condition=gcp.compute.SubnetworkIAMBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+        ## google\\_compute\\_subnetwork\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.SubnetworkIAMMember("member",
+            project=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["project"],
+            region=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["region"],
+            subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"],
+            role="roles/compute.networkUser",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.SubnetworkIAMMember("member",
+            project=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["project"],
+            region=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["region"],
+            subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"],
+            role="roles/compute.networkUser",
+            member="user:jane@example.com",
+            condition=gcp.compute.SubnetworkIAMMemberConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
 
         ## Import
 

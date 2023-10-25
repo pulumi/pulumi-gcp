@@ -15,6 +15,28 @@ namespace Pulumi.Gcp.CloudIdentity
         /// Use this data source to get list of the Cloud Identity Groups under a customer or namespace.
         /// 
         /// https://cloud.google.com/identity/docs/concepts/overview#groups
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var groups = Gcp.CloudIdentity.GetGroups.Invoke(new()
+        ///     {
+        ///         Parent = "customers/A01b123xz",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupsResult> InvokeAsync(GetGroupsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("gcp:cloudidentity/getGroups:getGroups", args ?? new GetGroupsArgs(), options.WithDefaults());
@@ -23,6 +45,28 @@ namespace Pulumi.Gcp.CloudIdentity
         /// Use this data source to get list of the Cloud Identity Groups under a customer or namespace.
         /// 
         /// https://cloud.google.com/identity/docs/concepts/overview#groups
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var groups = Gcp.CloudIdentity.GetGroups.Invoke(new()
+        ///     {
+        ///         Parent = "customers/A01b123xz",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetGroupsResult> Invoke(GetGroupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("gcp:cloudidentity/getGroups:getGroups", args ?? new GetGroupsInvokeArgs(), options.WithDefaults());

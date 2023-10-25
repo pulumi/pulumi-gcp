@@ -224,6 +224,108 @@ class InstanceIamPolicy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
 
         ## Example Usage
+        ### Data Fusion Instance Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_instance = gcp.datafusion.Instance("basicInstance",
+            region="us-central1",
+            type="BASIC")
+        ```
+        ### Data Fusion Instance Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.appengine.get_default_service_account()
+        network = gcp.compute.Network("network")
+        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
+            address_type="INTERNAL",
+            purpose="VPC_PEERING",
+            prefix_length=22,
+            network=network.id)
+        extended_instance = gcp.datafusion.Instance("extendedInstance",
+            description="My Data Fusion instance",
+            display_name="My Data Fusion instance",
+            region="us-central1",
+            type="BASIC",
+            enable_stackdriver_logging=True,
+            enable_stackdriver_monitoring=True,
+            private_instance=True,
+            dataproc_service_account=default.email,
+            labels={
+                "example_key": "example_value",
+            },
+            network_config=gcp.datafusion.InstanceNetworkConfigArgs(
+                network="default",
+                ip_allocation=pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
+            ),
+            accelerators=[gcp.datafusion.InstanceAcceleratorArgs(
+                accelerator_type="CDC",
+                state="ENABLED",
+            )])
+        ```
+        ### Data Fusion Instance Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRing("keyRing", location="us-central1")
+        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
+        project = gcp.organizations.get_project()
+        crypto_key_binding = gcp.kms.CryptoKeyIAMBinding("cryptoKeyBinding",
+            crypto_key_id=crypto_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            members=[f"serviceAccount:service-{project.number}@gcp-sa-datafusion.iam.gserviceaccount.com"])
+        cmek = gcp.datafusion.Instance("cmek",
+            region="us-central1",
+            type="BASIC",
+            crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArgs(
+                key_reference=crypto_key.id,
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
+        ```
+        ### Data Fusion Instance Enterprise
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        enterprise_instance = gcp.datafusion.Instance("enterpriseInstance",
+            enable_rbac=True,
+            region="us-central1",
+            type="ENTERPRISE")
+        ```
+        ### Data Fusion Instance Event
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        event_topic = gcp.pubsub.Topic("eventTopic")
+        event_instance = gcp.datafusion.Instance("eventInstance",
+            region="us-central1",
+            type="BASIC",
+            event_publish_config=gcp.datafusion.InstanceEventPublishConfigArgs(
+                enabled=True,
+                topic=event_topic.id,
+            ))
+        ```
+        ### Data Fusion Instance Zone
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        zone = gcp.datafusion.Instance("zone",
+            region="us-central1",
+            type="DEVELOPER",
+            zone="us-central1-a")
+        ```
 
         ## Import
 
@@ -268,6 +370,108 @@ class InstanceIamPolicy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
 
         ## Example Usage
+        ### Data Fusion Instance Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_instance = gcp.datafusion.Instance("basicInstance",
+            region="us-central1",
+            type="BASIC")
+        ```
+        ### Data Fusion Instance Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.appengine.get_default_service_account()
+        network = gcp.compute.Network("network")
+        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
+            address_type="INTERNAL",
+            purpose="VPC_PEERING",
+            prefix_length=22,
+            network=network.id)
+        extended_instance = gcp.datafusion.Instance("extendedInstance",
+            description="My Data Fusion instance",
+            display_name="My Data Fusion instance",
+            region="us-central1",
+            type="BASIC",
+            enable_stackdriver_logging=True,
+            enable_stackdriver_monitoring=True,
+            private_instance=True,
+            dataproc_service_account=default.email,
+            labels={
+                "example_key": "example_value",
+            },
+            network_config=gcp.datafusion.InstanceNetworkConfigArgs(
+                network="default",
+                ip_allocation=pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
+            ),
+            accelerators=[gcp.datafusion.InstanceAcceleratorArgs(
+                accelerator_type="CDC",
+                state="ENABLED",
+            )])
+        ```
+        ### Data Fusion Instance Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRing("keyRing", location="us-central1")
+        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
+        project = gcp.organizations.get_project()
+        crypto_key_binding = gcp.kms.CryptoKeyIAMBinding("cryptoKeyBinding",
+            crypto_key_id=crypto_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            members=[f"serviceAccount:service-{project.number}@gcp-sa-datafusion.iam.gserviceaccount.com"])
+        cmek = gcp.datafusion.Instance("cmek",
+            region="us-central1",
+            type="BASIC",
+            crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArgs(
+                key_reference=crypto_key.id,
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
+        ```
+        ### Data Fusion Instance Enterprise
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        enterprise_instance = gcp.datafusion.Instance("enterpriseInstance",
+            enable_rbac=True,
+            region="us-central1",
+            type="ENTERPRISE")
+        ```
+        ### Data Fusion Instance Event
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        event_topic = gcp.pubsub.Topic("eventTopic")
+        event_instance = gcp.datafusion.Instance("eventInstance",
+            region="us-central1",
+            type="BASIC",
+            event_publish_config=gcp.datafusion.InstanceEventPublishConfigArgs(
+                enabled=True,
+                topic=event_topic.id,
+            ))
+        ```
+        ### Data Fusion Instance Zone
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        zone = gcp.datafusion.Instance("zone",
+            region="us-central1",
+            type="DEVELOPER",
+            zone="us-central1-a")
+        ```
 
         ## Import
 

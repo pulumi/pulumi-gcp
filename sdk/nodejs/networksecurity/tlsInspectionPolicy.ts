@@ -6,6 +6,96 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### Network Security Tls Inspection Policy Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultCaPool = new gcp.certificateauthority.CaPool("defaultCaPool", {
+ *     location: "us-central1",
+ *     tier: "DEVOPS",
+ *     publishingOptions: {
+ *         publishCaCert: false,
+ *         publishCrl: false,
+ *     },
+ *     issuancePolicy: {
+ *         maximumLifetime: "1209600s",
+ *         baselineValues: {
+ *             caOptions: {
+ *                 isCa: false,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {},
+ *                 extendedKeyUsage: {
+ *                     serverAuth: true,
+ *                 },
+ *             },
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultAuthority = new gcp.certificateauthority.Authority("defaultAuthority", {
+ *     pool: defaultCaPool.name,
+ *     certificateAuthorityId: "my-basic-certificate-authority",
+ *     location: "us-central1",
+ *     lifetime: "86400s",
+ *     type: "SELF_SIGNED",
+ *     deletionProtection: false,
+ *     skipGracePeriod: true,
+ *     ignoreActiveCertificatesOnDeletion: true,
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 organization: "Test LLC",
+ *                 commonName: "my-ca",
+ *             },
+ *         },
+ *         x509Config: {
+ *             caOptions: {
+ *                 isCa: true,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     certSign: true,
+ *                     crlSign: true,
+ *                 },
+ *                 extendedKeyUsage: {
+ *                     serverAuth: false,
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     keySpec: {
+ *         algorithm: "RSA_PKCS1_4096_SHA256",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const nsSa = new gcp.projects.ServiceIdentity("nsSa", {service: "networksecurity.googleapis.com"}, {
+ *     provider: google_beta,
+ * });
+ * const tlsInspectionPermission = new gcp.certificateauthority.CaPoolIamMember("tlsInspectionPermission", {
+ *     caPool: defaultCaPool.id,
+ *     role: "roles/privateca.certificateManager",
+ *     member: pulumi.interpolate`serviceAccount:${nsSa.email}`,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultTlsInspectionPolicy = new gcp.networksecurity.TlsInspectionPolicy("defaultTlsInspectionPolicy", {
+ *     location: "us-central1",
+ *     caPool: defaultCaPool.id,
+ *     excludePublicCaSet: false,
+ * }, {
+ *     provider: google_beta,
+ *     dependsOn: [
+ *         defaultCaPool,
+ *         defaultAuthority,
+ *         tlsInspectionPermission,
+ *     ],
+ * });
+ * ```
  *
  * ## Import
  *

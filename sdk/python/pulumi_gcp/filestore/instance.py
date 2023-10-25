@@ -534,6 +534,78 @@ class Instance(pulumi.CustomResource):
             * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
 
         ## Example Usage
+        ### Filestore Instance Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.filestore.Instance("instance",
+            file_shares=gcp.filestore.InstanceFileSharesArgs(
+                capacity_gb=1024,
+                name="share1",
+            ),
+            location="us-central1-b",
+            networks=[gcp.filestore.InstanceNetworkArgs(
+                modes=["MODE_IPV4"],
+                network="default",
+            )],
+            tier="BASIC_HDD")
+        ```
+        ### Filestore Instance Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.filestore.Instance("instance",
+            file_shares=gcp.filestore.InstanceFileSharesArgs(
+                capacity_gb=2560,
+                name="share1",
+                nfs_export_options=[
+                    gcp.filestore.InstanceFileSharesNfsExportOptionArgs(
+                        access_mode="READ_WRITE",
+                        ip_ranges=["10.0.0.0/24"],
+                        squash_mode="NO_ROOT_SQUASH",
+                    ),
+                    gcp.filestore.InstanceFileSharesNfsExportOptionArgs(
+                        access_mode="READ_ONLY",
+                        anon_gid=456,
+                        anon_uid=123,
+                        ip_ranges=["10.10.0.0/24"],
+                        squash_mode="ROOT_SQUASH",
+                    ),
+                ],
+            ),
+            location="us-central1-b",
+            networks=[gcp.filestore.InstanceNetworkArgs(
+                connect_mode="DIRECT_PEERING",
+                modes=["MODE_IPV4"],
+                network="default",
+            )],
+            tier="BASIC_SSD")
+        ```
+        ### Filestore Instance Enterprise
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        filestore_keyring = gcp.kms.KeyRing("filestoreKeyring", location="us-central1")
+        filestore_key = gcp.kms.CryptoKey("filestoreKey", key_ring=filestore_keyring.id)
+        instance = gcp.filestore.Instance("instance",
+            location="us-central1",
+            tier="ENTERPRISE",
+            file_shares=gcp.filestore.InstanceFileSharesArgs(
+                capacity_gb=1024,
+                name="share1",
+            ),
+            networks=[gcp.filestore.InstanceNetworkArgs(
+                network="default",
+                modes=["MODE_IPV4"],
+            )],
+            kms_key_name=filestore_key.id)
+        ```
 
         ## Import
 
@@ -591,6 +663,78 @@ class Instance(pulumi.CustomResource):
             * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
 
         ## Example Usage
+        ### Filestore Instance Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.filestore.Instance("instance",
+            file_shares=gcp.filestore.InstanceFileSharesArgs(
+                capacity_gb=1024,
+                name="share1",
+            ),
+            location="us-central1-b",
+            networks=[gcp.filestore.InstanceNetworkArgs(
+                modes=["MODE_IPV4"],
+                network="default",
+            )],
+            tier="BASIC_HDD")
+        ```
+        ### Filestore Instance Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.filestore.Instance("instance",
+            file_shares=gcp.filestore.InstanceFileSharesArgs(
+                capacity_gb=2560,
+                name="share1",
+                nfs_export_options=[
+                    gcp.filestore.InstanceFileSharesNfsExportOptionArgs(
+                        access_mode="READ_WRITE",
+                        ip_ranges=["10.0.0.0/24"],
+                        squash_mode="NO_ROOT_SQUASH",
+                    ),
+                    gcp.filestore.InstanceFileSharesNfsExportOptionArgs(
+                        access_mode="READ_ONLY",
+                        anon_gid=456,
+                        anon_uid=123,
+                        ip_ranges=["10.10.0.0/24"],
+                        squash_mode="ROOT_SQUASH",
+                    ),
+                ],
+            ),
+            location="us-central1-b",
+            networks=[gcp.filestore.InstanceNetworkArgs(
+                connect_mode="DIRECT_PEERING",
+                modes=["MODE_IPV4"],
+                network="default",
+            )],
+            tier="BASIC_SSD")
+        ```
+        ### Filestore Instance Enterprise
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        filestore_keyring = gcp.kms.KeyRing("filestoreKeyring", location="us-central1")
+        filestore_key = gcp.kms.CryptoKey("filestoreKey", key_ring=filestore_keyring.id)
+        instance = gcp.filestore.Instance("instance",
+            location="us-central1",
+            tier="ENTERPRISE",
+            file_shares=gcp.filestore.InstanceFileSharesArgs(
+                capacity_gb=1024,
+                name="share1",
+            ),
+            networks=[gcp.filestore.InstanceNetworkArgs(
+                network="default",
+                modes=["MODE_IPV4"],
+            )],
+            kms_key_name=filestore_key.id)
+        ```
 
         ## Import
 

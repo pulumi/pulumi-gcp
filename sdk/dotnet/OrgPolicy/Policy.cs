@@ -17,6 +17,148 @@ namespace Pulumi.Gcp.OrgPolicy
     /// * [The resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
     /// * [All valid constraints](https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints)
     /// ## Example Usage
+    /// ### Enforce_policy
+    /// A test of an enforce orgpolicy policy for a project
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basic = new Gcp.Organizations.Project("basic", new()
+    ///     {
+    ///         OrgId = "123456789",
+    ///         ProjectId = "id",
+    ///     });
+    /// 
+    ///     var primary = new Gcp.OrgPolicy.Policy("primary", new()
+    ///     {
+    ///         Parent = basic.Name.Apply(name =&gt; $"projects/{name}"),
+    ///         Spec = new Gcp.OrgPolicy.Inputs.PolicySpecArgs
+    ///         {
+    ///             Rules = new[]
+    ///             {
+    ///                 new Gcp.OrgPolicy.Inputs.PolicySpecRuleArgs
+    ///                 {
+    ///                     Enforce = "FALSE",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Folder_policy
+    /// A test of an orgpolicy policy for a folder
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basic = new Gcp.Organizations.Folder("basic", new()
+    ///     {
+    ///         Parent = "organizations/123456789",
+    ///         DisplayName = "folder",
+    ///     });
+    /// 
+    ///     var primary = new Gcp.OrgPolicy.Policy("primary", new()
+    ///     {
+    ///         Parent = basic.Name,
+    ///         Spec = new Gcp.OrgPolicy.Inputs.PolicySpecArgs
+    ///         {
+    ///             InheritFromParent = true,
+    ///             Rules = new[]
+    ///             {
+    ///                 new Gcp.OrgPolicy.Inputs.PolicySpecRuleArgs
+    ///                 {
+    ///                     DenyAll = "TRUE",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Organization_policy
+    /// A test of an orgpolicy policy for an organization
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.OrgPolicy.Policy("primary", new()
+    ///     {
+    ///         Parent = "organizations/123456789",
+    ///         Spec = new Gcp.OrgPolicy.Inputs.PolicySpecArgs
+    ///         {
+    ///             Reset = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Project_policy
+    /// A test of an orgpolicy policy for a project
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basic = new Gcp.Organizations.Project("basic", new()
+    ///     {
+    ///         OrgId = "123456789",
+    ///         ProjectId = "id",
+    ///     });
+    /// 
+    ///     var primary = new Gcp.OrgPolicy.Policy("primary", new()
+    ///     {
+    ///         Parent = basic.Name.Apply(name =&gt; $"projects/{name}"),
+    ///         Spec = new Gcp.OrgPolicy.Inputs.PolicySpecArgs
+    ///         {
+    ///             Rules = new[]
+    ///             {
+    ///                 new Gcp.OrgPolicy.Inputs.PolicySpecRuleArgs
+    ///                 {
+    ///                     Condition = new Gcp.OrgPolicy.Inputs.PolicySpecRuleConditionArgs
+    ///                     {
+    ///                         Description = "A sample condition for the policy",
+    ///                         Expression = "resource.matchLabels('labelKeys/123', 'labelValues/345')",
+    ///                         Location = "sample-location.log",
+    ///                         Title = "sample-condition",
+    ///                     },
+    ///                     Values = new Gcp.OrgPolicy.Inputs.PolicySpecRuleValuesArgs
+    ///                     {
+    ///                         AllowedValues = new[]
+    ///                         {
+    ///                             "projects/allowed-project",
+    ///                         },
+    ///                         DeniedValues = new[]
+    ///                         {
+    ///                             "projects/denied-project",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 new Gcp.OrgPolicy.Inputs.PolicySpecRuleArgs
+    ///                 {
+    ///                     AllowAll = "TRUE",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -10,6 +10,22 @@ import * as utilities from "../utilities";
  * The Dataplex Lake resource
  *
  * ## Example Usage
+ * ### Basic_lake
+ * A basic example of a dataplex lake
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.dataplex.Lake("primary", {
+ *     description: "Lake for DCL",
+ *     displayName: "Lake for DCL",
+ *     labels: {
+ *         "my-lake": "exists",
+ *     },
+ *     location: "us-west1",
+ *     project: "my-project-name",
+ * });
+ * ```
  *
  * ## Import
  *

@@ -14,6 +14,18 @@ import * as utilities from "../utilities";
  *     * [Using bring your own IP](https://cloud.google.com/vpc/docs/using-bring-your-own-ip)
  *
  * ## Example Usage
+ * ### Public Advertised Prefixes Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const prefixes = new gcp.compute.PublicAdvertisedPrefix("prefixes", {
+ *     description: "description",
+ *     dnsVerificationIp: "127.127.0.0",
+ *     ipCidrRange: "127.127.0.0/16",
+ * });
+ * ```
  *
  * ## Import
  *

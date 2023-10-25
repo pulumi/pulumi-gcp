@@ -23,6 +23,209 @@ namespace Pulumi.Gcp.Compute
     ///     * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
     /// 
     /// ## Example Usage
+    /// ### Autoscaler Single Instance
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var debian9 = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var defaultInstanceTemplate = new Gcp.Compute.InstanceTemplate("defaultInstanceTemplate", new()
+    ///     {
+    ///         MachineType = "e2-medium",
+    ///         CanIpForward = false,
+    ///         Tags = new[]
+    ///         {
+    ///             "foo",
+    ///             "bar",
+    ///         },
+    ///         Disks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///             {
+    ///                 SourceImage = debian9.Apply(getImageResult =&gt; getImageResult.Id),
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///             {
+    ///                 Network = "default",
+    ///             },
+    ///         },
+    ///         Metadata = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         ServiceAccount = new Gcp.Compute.Inputs.InstanceTemplateServiceAccountArgs
+    ///         {
+    ///             Scopes = new[]
+    ///             {
+    ///                 "userinfo-email",
+    ///                 "compute-ro",
+    ///                 "storage-ro",
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultTargetPool = new Gcp.Compute.TargetPool("defaultTargetPool", new()
+    ///     {
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultInstanceGroupManager = new Gcp.Compute.InstanceGroupManager("defaultInstanceGroupManager", new()
+    ///     {
+    ///         Zone = "us-central1-f",
+    ///         Versions = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceGroupManagerVersionArgs
+    ///             {
+    ///                 InstanceTemplate = defaultInstanceTemplate.Id,
+    ///                 Name = "primary",
+    ///             },
+    ///         },
+    ///         TargetPools = new[]
+    ///         {
+    ///             defaultTargetPool.Id,
+    ///         },
+    ///         BaseInstanceName = "autoscaler-sample",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultAutoscaler = new Gcp.Compute.Autoscaler("defaultAutoscaler", new()
+    ///     {
+    ///         Zone = "us-central1-f",
+    ///         Target = defaultInstanceGroupManager.Id,
+    ///         AutoscalingPolicy = new Gcp.Compute.Inputs.AutoscalerAutoscalingPolicyArgs
+    ///         {
+    ///             MaxReplicas = 5,
+    ///             MinReplicas = 1,
+    ///             CooldownPeriod = 60,
+    ///             Metrics = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.AutoscalerAutoscalingPolicyMetricArgs
+    ///                 {
+    ///                     Name = "pubsub.googleapis.com/subscription/num_undelivered_messages",
+    ///                     Filter = "resource.type = pubsub_subscription AND resource.label.subscription_id = our-subscription",
+    ///                     SingleInstanceAssignment = 65535,
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Autoscaler Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var debian9 = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var foobarInstanceTemplate = new Gcp.Compute.InstanceTemplate("foobarInstanceTemplate", new()
+    ///     {
+    ///         MachineType = "e2-medium",
+    ///         CanIpForward = false,
+    ///         Tags = new[]
+    ///         {
+    ///             "foo",
+    ///             "bar",
+    ///         },
+    ///         Disks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///             {
+    ///                 SourceImage = debian9.Apply(getImageResult =&gt; getImageResult.Id),
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///             {
+    ///                 Network = "default",
+    ///             },
+    ///         },
+    ///         Metadata = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         ServiceAccount = new Gcp.Compute.Inputs.InstanceTemplateServiceAccountArgs
+    ///         {
+    ///             Scopes = new[]
+    ///             {
+    ///                 "userinfo-email",
+    ///                 "compute-ro",
+    ///                 "storage-ro",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var foobarTargetPool = new Gcp.Compute.TargetPool("foobarTargetPool");
+    /// 
+    ///     var foobarInstanceGroupManager = new Gcp.Compute.InstanceGroupManager("foobarInstanceGroupManager", new()
+    ///     {
+    ///         Zone = "us-central1-f",
+    ///         Versions = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceGroupManagerVersionArgs
+    ///             {
+    ///                 InstanceTemplate = foobarInstanceTemplate.Id,
+    ///                 Name = "primary",
+    ///             },
+    ///         },
+    ///         TargetPools = new[]
+    ///         {
+    ///             foobarTargetPool.Id,
+    ///         },
+    ///         BaseInstanceName = "foobar",
+    ///     });
+    /// 
+    ///     var foobarAutoscaler = new Gcp.Compute.Autoscaler("foobarAutoscaler", new()
+    ///     {
+    ///         Zone = "us-central1-f",
+    ///         Target = foobarInstanceGroupManager.Id,
+    ///         AutoscalingPolicy = new Gcp.Compute.Inputs.AutoscalerAutoscalingPolicyArgs
+    ///         {
+    ///             MaxReplicas = 5,
+    ///             MinReplicas = 1,
+    ///             CooldownPeriod = 60,
+    ///             CpuUtilization = new Gcp.Compute.Inputs.AutoscalerAutoscalingPolicyCpuUtilizationArgs
+    ///             {
+    ///                 Target = 0.5,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -768,6 +768,96 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins)
 
         ## Example Usage
+        ### Network Services Edge Cache Origin Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.EdgeCacheOrigin("default",
+            description="The default bucket for media edge test",
+            origin_address="gs://media-edge-default")
+        ```
+        ### Network Services Edge Cache Origin Advanced
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        fallback = gcp.networkservices.EdgeCacheOrigin("fallback",
+            origin_address="fallback.example.com",
+            description="The default bucket for media edge test",
+            max_attempts=3,
+            protocol="HTTP",
+            port=80,
+            retry_conditions=[
+                "CONNECT_FAILURE",
+                "NOT_FOUND",
+                "HTTP_5XX",
+                "FORBIDDEN",
+            ],
+            timeout=gcp.networkservices.EdgeCacheOriginTimeoutArgs(
+                connect_timeout="10s",
+                max_attempts_timeout="20s",
+                response_timeout="60s",
+                read_timeout="5s",
+            ),
+            origin_override_action=gcp.networkservices.EdgeCacheOriginOriginOverrideActionArgs(
+                url_rewrite=gcp.networkservices.EdgeCacheOriginOriginOverrideActionUrlRewriteArgs(
+                    host_rewrite="example.com",
+                ),
+                header_action=gcp.networkservices.EdgeCacheOriginOriginOverrideActionHeaderActionArgs(
+                    request_headers_to_adds=[gcp.networkservices.EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs(
+                        header_name="x-header",
+                        header_value="value",
+                        replace=True,
+                    )],
+                ),
+            ),
+            origin_redirect=gcp.networkservices.EdgeCacheOriginOriginRedirectArgs(
+                redirect_conditions=[
+                    "MOVED_PERMANENTLY",
+                    "FOUND",
+                    "SEE_OTHER",
+                    "TEMPORARY_REDIRECT",
+                    "PERMANENT_REDIRECT",
+                ],
+            ))
+        default = gcp.networkservices.EdgeCacheOrigin("default",
+            origin_address="gs://media-edge-default",
+            failover_origin=fallback.id,
+            description="The default bucket for media edge test",
+            max_attempts=2,
+            labels={
+                "a": "b",
+            },
+            timeout=gcp.networkservices.EdgeCacheOriginTimeoutArgs(
+                connect_timeout="10s",
+            ))
+        ```
+        ### Network Services Edge Cache Origin V4auth
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        secret_basic = gcp.secretmanager.Secret("secret-basic",
+            secret_id="secret-name",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            ))
+        secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
+            secret=secret_basic.id,
+            secret_data="secret-data")
+        default = gcp.networkservices.EdgeCacheOrigin("default",
+            origin_address="gs://media-edge-default",
+            description="The default bucket for V4 authentication",
+            aws_v4_authentication=gcp.networkservices.EdgeCacheOriginAwsV4AuthenticationArgs(
+                access_key_id="ACCESSKEYID",
+                secret_access_key_version=secret_version_basic.id,
+                origin_region="auto",
+            ))
+        ```
 
         ## Import
 
@@ -856,6 +946,96 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins)
 
         ## Example Usage
+        ### Network Services Edge Cache Origin Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.EdgeCacheOrigin("default",
+            description="The default bucket for media edge test",
+            origin_address="gs://media-edge-default")
+        ```
+        ### Network Services Edge Cache Origin Advanced
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        fallback = gcp.networkservices.EdgeCacheOrigin("fallback",
+            origin_address="fallback.example.com",
+            description="The default bucket for media edge test",
+            max_attempts=3,
+            protocol="HTTP",
+            port=80,
+            retry_conditions=[
+                "CONNECT_FAILURE",
+                "NOT_FOUND",
+                "HTTP_5XX",
+                "FORBIDDEN",
+            ],
+            timeout=gcp.networkservices.EdgeCacheOriginTimeoutArgs(
+                connect_timeout="10s",
+                max_attempts_timeout="20s",
+                response_timeout="60s",
+                read_timeout="5s",
+            ),
+            origin_override_action=gcp.networkservices.EdgeCacheOriginOriginOverrideActionArgs(
+                url_rewrite=gcp.networkservices.EdgeCacheOriginOriginOverrideActionUrlRewriteArgs(
+                    host_rewrite="example.com",
+                ),
+                header_action=gcp.networkservices.EdgeCacheOriginOriginOverrideActionHeaderActionArgs(
+                    request_headers_to_adds=[gcp.networkservices.EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs(
+                        header_name="x-header",
+                        header_value="value",
+                        replace=True,
+                    )],
+                ),
+            ),
+            origin_redirect=gcp.networkservices.EdgeCacheOriginOriginRedirectArgs(
+                redirect_conditions=[
+                    "MOVED_PERMANENTLY",
+                    "FOUND",
+                    "SEE_OTHER",
+                    "TEMPORARY_REDIRECT",
+                    "PERMANENT_REDIRECT",
+                ],
+            ))
+        default = gcp.networkservices.EdgeCacheOrigin("default",
+            origin_address="gs://media-edge-default",
+            failover_origin=fallback.id,
+            description="The default bucket for media edge test",
+            max_attempts=2,
+            labels={
+                "a": "b",
+            },
+            timeout=gcp.networkservices.EdgeCacheOriginTimeoutArgs(
+                connect_timeout="10s",
+            ))
+        ```
+        ### Network Services Edge Cache Origin V4auth
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        secret_basic = gcp.secretmanager.Secret("secret-basic",
+            secret_id="secret-name",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            ))
+        secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
+            secret=secret_basic.id,
+            secret_data="secret-data")
+        default = gcp.networkservices.EdgeCacheOrigin("default",
+            origin_address="gs://media-edge-default",
+            description="The default bucket for V4 authentication",
+            aws_v4_authentication=gcp.networkservices.EdgeCacheOriginAwsV4AuthenticationArgs(
+                access_key_id="ACCESSKEYID",
+                secret_access_key_version=secret_version_basic.id,
+                origin_region="auto",
+            ))
+        ```
 
         ## Import
 

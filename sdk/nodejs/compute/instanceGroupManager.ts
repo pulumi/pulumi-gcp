@@ -15,6 +15,74 @@ import * as utilities from "../utilities";
  * > **Note:** Use [gcp.compute.RegionInstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_region_instance_group_manager.html) to create a regional (multi-zone) instance group manager.
  *
  * ## Example Usage
+ * ### With Top Level Instance Template (`Google` Provider)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const autohealing = new gcp.compute.HealthCheck("autohealing", {
+ *     checkIntervalSec: 5,
+ *     timeoutSec: 5,
+ *     healthyThreshold: 2,
+ *     unhealthyThreshold: 10,
+ *     httpHealthCheck: {
+ *         requestPath: "/healthz",
+ *         port: 8080,
+ *     },
+ * });
+ * const appserver = new gcp.compute.InstanceGroupManager("appserver", {
+ *     baseInstanceName: "app",
+ *     zone: "us-central1-a",
+ *     versions: [{
+ *         instanceTemplate: google_compute_instance_template.appserver.self_link_unique,
+ *     }],
+ *     allInstancesConfig: {
+ *         metadata: {
+ *             metadata_key: "metadata_value",
+ *         },
+ *         labels: {
+ *             label_key: "label_value",
+ *         },
+ *     },
+ *     targetPools: [google_compute_target_pool.appserver.id],
+ *     targetSize: 2,
+ *     namedPorts: [{
+ *         name: "customhttp",
+ *         port: 8888,
+ *     }],
+ *     autoHealingPolicies: {
+ *         healthCheck: autohealing.id,
+ *         initialDelaySec: 300,
+ *     },
+ * });
+ * ```
+ * ### With Multiple Versions (`Google-Beta` Provider)
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const appserver = new gcp.compute.InstanceGroupManager("appserver", {
+ *     baseInstanceName: "app",
+ *     zone: "us-central1-a",
+ *     targetSize: 5,
+ *     versions: [
+ *         {
+ *             name: "appserver",
+ *             instanceTemplate: google_compute_instance_template.appserver.self_link_unique,
+ *         },
+ *         {
+ *             name: "appserver-canary",
+ *             instanceTemplate: google_compute_instance_template["appserver-canary"].self_link_unique,
+ *             targetSize: {
+ *                 fixed: 1,
+ *             },
+ *         },
+ *     ],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

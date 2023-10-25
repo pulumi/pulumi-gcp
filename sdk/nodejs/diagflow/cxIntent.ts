@@ -16,6 +16,59 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
  *
  * ## Example Usage
+ * ### Dialogflowcx Intent Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const agent = new gcp.diagflow.CxAgent("agent", {
+ *     displayName: "dialogflowcx-agent",
+ *     location: "global",
+ *     defaultLanguageCode: "en",
+ *     supportedLanguageCodes: [
+ *         "fr",
+ *         "de",
+ *         "es",
+ *     ],
+ *     timeZone: "America/New_York",
+ *     description: "Example description.",
+ *     avatarUri: "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+ *     enableStackdriverLogging: true,
+ *     enableSpellCorrection: true,
+ *     speechToTextSettings: {
+ *         enableSpeechAdaptation: true,
+ *     },
+ * });
+ * const basicIntent = new gcp.diagflow.CxIntent("basicIntent", {
+ *     parent: agent.id,
+ *     displayName: "Example",
+ *     priority: 1,
+ *     description: "Intent example",
+ *     trainingPhrases: [{
+ *         parts: [
+ *             {
+ *                 text: "training",
+ *             },
+ *             {
+ *                 text: "phrase",
+ *             },
+ *             {
+ *                 text: "example",
+ *             },
+ *         ],
+ *         repeatCount: 1,
+ *     }],
+ *     parameters: [{
+ *         id: "param1",
+ *         entityType: "projects/-/locations/-/agents/-/entityTypes/sys.date",
+ *     }],
+ *     labels: {
+ *         label1: "value1",
+ *         label2: "value2",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

@@ -21,6 +21,62 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.dataplex.AssetIamBinding` resources **can be** used in conjunction with `gcp.dataplex.AssetIamMember` resources **only if** they do not grant privilege to the same role.
  *
+ * ## google\_dataplex\_asset\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/viewer",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.dataplex.AssetIamPolicy("policy", {
+ *     project: google_dataplex_asset.example.project,
+ *     location: google_dataplex_asset.example.location,
+ *     lake: google_dataplex_asset.example.lake,
+ *     dataplexZone: google_dataplex_asset.example.dataplex_zone,
+ *     asset: google_dataplex_asset.example.name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## google\_dataplex\_asset\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.dataplex.AssetIamBinding("binding", {
+ *     project: google_dataplex_asset.example.project,
+ *     location: google_dataplex_asset.example.location,
+ *     lake: google_dataplex_asset.example.lake,
+ *     dataplexZone: google_dataplex_asset.example.dataplex_zone,
+ *     asset: google_dataplex_asset.example.name,
+ *     role: "roles/viewer",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * ## google\_dataplex\_asset\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.dataplex.AssetIamMember("member", {
+ *     project: google_dataplex_asset.example.project,
+ *     location: google_dataplex_asset.example.location,
+ *     lake: google_dataplex_asset.example.lake,
+ *     dataplexZone: google_dataplex_asset.example.dataplex_zone,
+ *     asset: google_dataplex_asset.example.name,
+ *     role: "roles/viewer",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{dataplex_zone}}/assets/{{name}} * {{project}}/{{location}}/{{lake}}/{{dataplex_zone}}/{{name}} * {{location}}/{{lake}}/{{dataplex_zone}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Dataplex asset IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

@@ -15,6 +15,64 @@ import (
 
 // This resource creates and rolls out a Cloud Endpoints service using OpenAPI or gRPC.  View the relevant docs for [OpenAPI](https://cloud.google.com/endpoints/docs/openapi/) and [gRPC](https://cloud.google.com/endpoints/docs/grpc/).
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/base64"
+//	"os"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/endpoints"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func filebase64OrPanic(path string) pulumi.StringPtrInput {
+//		if fileData, err := os.ReadFile(path); err == nil {
+//			return pulumi.String(base64.StdEncoding.EncodeToString(fileData[:]))
+//		} else {
+//			panic(err.Error())
+//		}
+//	}
+//
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := os.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := endpoints.NewService(ctx, "openapiService", &endpoints.ServiceArgs{
+//				ServiceName:   pulumi.String("api-name.endpoints.project-id.cloud.goog"),
+//				Project:       pulumi.String("project-id"),
+//				OpenapiConfig: readFileOrPanic("openapi_spec.yml"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = endpoints.NewService(ctx, "grpcService", &endpoints.ServiceArgs{
+//				ServiceName:        pulumi.String("api-name.endpoints.project-id.cloud.goog"),
+//				Project:            pulumi.String("project-id"),
+//				GrpcConfig:         readFileOrPanic("service_spec.yml"),
+//				ProtocOutputBase64: filebase64OrPanic("compiled_descriptor_file.pb"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// The example in `examples/endpoints_on_compute_engine` shows the API from the quickstart running on a Compute Engine VM and reachable through Cloud Endpoints, which may also be useful.
+//
 // ## Import
 //
 // This resource does not support import.

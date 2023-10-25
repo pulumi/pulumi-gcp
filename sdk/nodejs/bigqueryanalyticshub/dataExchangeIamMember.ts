@@ -21,6 +21,56 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.bigqueryanalyticshub.DataExchangeIamBinding` resources **can be** used in conjunction with `gcp.bigqueryanalyticshub.DataExchangeIamMember` resources **only if** they do not grant privilege to the same role.
  *
+ * ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/viewer",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.bigqueryanalyticshub.DataExchangeIamPolicy("policy", {
+ *     project: google_bigquery_analytics_hub_data_exchange.data_exchange.project,
+ *     location: google_bigquery_analytics_hub_data_exchange.data_exchange.location,
+ *     dataExchangeId: google_bigquery_analytics_hub_data_exchange.data_exchange.data_exchange_id,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.bigqueryanalyticshub.DataExchangeIamBinding("binding", {
+ *     project: google_bigquery_analytics_hub_data_exchange.data_exchange.project,
+ *     location: google_bigquery_analytics_hub_data_exchange.data_exchange.location,
+ *     dataExchangeId: google_bigquery_analytics_hub_data_exchange.data_exchange.data_exchange_id,
+ *     role: "roles/viewer",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.bigqueryanalyticshub.DataExchangeIamMember("member", {
+ *     project: google_bigquery_analytics_hub_data_exchange.data_exchange.project,
+ *     location: google_bigquery_analytics_hub_data_exchange.data_exchange.location,
+ *     dataExchangeId: google_bigquery_analytics_hub_data_exchange.data_exchange.data_exchange_id,
+ *     role: "roles/viewer",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}} * {{project}}/{{location}}/{{data_exchange_id}} * {{location}}/{{data_exchange_id}} * {{data_exchange_id}} Any variables not passed in the import command will be taken from the provider configuration. Bigquery Analytics Hub dataexchange IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

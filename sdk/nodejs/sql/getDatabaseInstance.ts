@@ -8,6 +8,17 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get information about a Cloud SQL instance.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const qa = gcp.sql.getDatabaseInstance({
+ *     name: "test-sql-instance",
+ * });
+ * ```
  */
 export function getDatabaseInstance(args: GetDatabaseInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseInstanceResult> {
 
@@ -68,6 +79,17 @@ export interface GetDatabaseInstanceResult {
 }
 /**
  * Use this data source to get information about a Cloud SQL instance.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const qa = gcp.sql.getDatabaseInstance({
+ *     name: "test-sql-instance",
+ * });
+ * ```
  */
 export function getDatabaseInstanceOutput(args: GetDatabaseInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseInstanceResult> {
     return pulumi.output(args).apply((a: any) => getDatabaseInstance(a, opts))

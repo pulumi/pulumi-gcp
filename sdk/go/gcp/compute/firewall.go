@@ -33,6 +33,94 @@ import (
 //   - [Official Documentation](https://cloud.google.com/vpc/docs/firewalls)
 //
 // ## Example Usage
+// ### Firewall Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewFirewall(ctx, "defaultFirewall", &compute.FirewallArgs{
+//				Network: defaultNetwork.Name,
+//				Allows: compute.FirewallAllowArray{
+//					&compute.FirewallAllowArgs{
+//						Protocol: pulumi.String("icmp"),
+//					},
+//					&compute.FirewallAllowArgs{
+//						Protocol: pulumi.String("tcp"),
+//						Ports: pulumi.StringArray{
+//							pulumi.String("80"),
+//							pulumi.String("8080"),
+//							pulumi.String("1000-2000"),
+//						},
+//					},
+//				},
+//				SourceTags: pulumi.StringArray{
+//					pulumi.String("web"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Firewall With Target Tags
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewFirewall(ctx, "rules", &compute.FirewallArgs{
+//				Allows: compute.FirewallAllowArray{
+//					&compute.FirewallAllowArgs{
+//						Ports: pulumi.StringArray{
+//							pulumi.String("80"),
+//							pulumi.String("8080"),
+//							pulumi.String("1000-2000"),
+//						},
+//						Protocol: pulumi.String("tcp"),
+//					},
+//				},
+//				Description: pulumi.String("Creates firewall rule targeting tagged instances"),
+//				Network:     pulumi.String("default"),
+//				Project:     pulumi.String("my-project-name"),
+//				SourceTags: pulumi.StringArray{
+//					pulumi.String("foo"),
+//				},
+//				TargetTags: pulumi.StringArray{
+//					pulumi.String("web"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

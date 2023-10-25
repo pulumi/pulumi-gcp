@@ -7,6 +7,64 @@ import * as utilities from "../utilities";
 /**
  * Get the serial port output from a Compute Instance. For more information see
  * the official [API](https://cloud.google.com/compute/docs/instances/viewing-serial-port-output) documentation.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const serial = gcp.compute.getInstanceSerialPort({
+ *     instance: "my-instance",
+ *     zone: "us-central1-a",
+ *     port: 1,
+ * });
+ * export const serialOut = serial.then(serial => serial.contents);
+ * ```
+ *
+ * Using the serial port output to generate a windows password, derived from the [official guide](https://cloud.google.com/compute/docs/instances/windows/automate-pw-generation):
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const windows = new gcp.compute.Instance("windows", {
+ *     machineType: "e2-medium",
+ *     zone: "us-central1-a",
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: "windows-cloud/windows-2019",
+ *         },
+ *     },
+ *     networkInterfaces: [{
+ *         network: "default",
+ *         accessConfigs: [{}],
+ *     }],
+ *     metadata: {
+ *         "serial-port-logging-enable": "TRUE",
+ *         "windows-keys": JSON.stringify({
+ *             email: "example.user@example.com",
+ *             expireOn: "2020-04-14T01:37:19Z",
+ *             exponent: "AQAB",
+ *             modulus: "wgsquN4IBNPqIUnu+h/5Za1kujb2YRhX1vCQVQAkBwnWigcCqOBVfRa5JoZfx6KIvEXjWqa77jPvlsxM4WPqnDIM2qiK36up3SKkYwFjff6F2ni/ry8vrwXCX3sGZ1hbIHlK0O012HpA3ISeEswVZmX2X67naOvJXfY5v0hGPWqCADao+xVxrmxsZD4IWnKl1UaZzI5lhAzr8fw6utHwx1EZ/MSgsEki6tujcZfN+GUDRnmJGQSnPTXmsf7Q4DKreTZk49cuyB3prV91S0x3DYjCUpSXrkVy1Ha5XicGD/q+ystuFsJnrrhbNXJbpSjM6sjo/aduAkZJl4FmOt0R7Q==",
+ *             userName: "example-user",
+ *         }),
+ *     },
+ *     serviceAccount: {
+ *         scopes: [
+ *             "userinfo-email",
+ *             "compute-ro",
+ *             "storage-ro",
+ *         ],
+ *     },
+ * });
+ * const serial = pulumi.all([windows.name, windows.zone]).apply(([name, zone]) => gcp.compute.getInstanceSerialPortOutput({
+ *     instance: name,
+ *     zone: zone,
+ *     port: 4,
+ * }));
+ * export const serialOut = serial.apply(serial => serial.contents);
+ * ```
  */
 export function getInstanceSerialPort(args: GetInstanceSerialPortArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceSerialPortResult> {
 
@@ -65,6 +123,64 @@ export interface GetInstanceSerialPortResult {
 /**
  * Get the serial port output from a Compute Instance. For more information see
  * the official [API](https://cloud.google.com/compute/docs/instances/viewing-serial-port-output) documentation.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const serial = gcp.compute.getInstanceSerialPort({
+ *     instance: "my-instance",
+ *     zone: "us-central1-a",
+ *     port: 1,
+ * });
+ * export const serialOut = serial.then(serial => serial.contents);
+ * ```
+ *
+ * Using the serial port output to generate a windows password, derived from the [official guide](https://cloud.google.com/compute/docs/instances/windows/automate-pw-generation):
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const windows = new gcp.compute.Instance("windows", {
+ *     machineType: "e2-medium",
+ *     zone: "us-central1-a",
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: "windows-cloud/windows-2019",
+ *         },
+ *     },
+ *     networkInterfaces: [{
+ *         network: "default",
+ *         accessConfigs: [{}],
+ *     }],
+ *     metadata: {
+ *         "serial-port-logging-enable": "TRUE",
+ *         "windows-keys": JSON.stringify({
+ *             email: "example.user@example.com",
+ *             expireOn: "2020-04-14T01:37:19Z",
+ *             exponent: "AQAB",
+ *             modulus: "wgsquN4IBNPqIUnu+h/5Za1kujb2YRhX1vCQVQAkBwnWigcCqOBVfRa5JoZfx6KIvEXjWqa77jPvlsxM4WPqnDIM2qiK36up3SKkYwFjff6F2ni/ry8vrwXCX3sGZ1hbIHlK0O012HpA3ISeEswVZmX2X67naOvJXfY5v0hGPWqCADao+xVxrmxsZD4IWnKl1UaZzI5lhAzr8fw6utHwx1EZ/MSgsEki6tujcZfN+GUDRnmJGQSnPTXmsf7Q4DKreTZk49cuyB3prV91S0x3DYjCUpSXrkVy1Ha5XicGD/q+ystuFsJnrrhbNXJbpSjM6sjo/aduAkZJl4FmOt0R7Q==",
+ *             userName: "example-user",
+ *         }),
+ *     },
+ *     serviceAccount: {
+ *         scopes: [
+ *             "userinfo-email",
+ *             "compute-ro",
+ *             "storage-ro",
+ *         ],
+ *     },
+ * });
+ * const serial = pulumi.all([windows.name, windows.zone]).apply(([name, zone]) => gcp.compute.getInstanceSerialPortOutput({
+ *     instance: name,
+ *     zone: zone,
+ *     port: 4,
+ * }));
+ * export const serialOut = serial.apply(serial => serial.contents);
+ * ```
  */
 export function getInstanceSerialPortOutput(args: GetInstanceSerialPortOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceSerialPortResult> {
     return pulumi.output(args).apply((a: any) => getInstanceSerialPort(a, opts))

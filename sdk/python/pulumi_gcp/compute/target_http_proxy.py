@@ -425,6 +425,18 @@ class TargetHttpProxy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
         ## Example Usage
+        ### Target Http Proxy Https Redirect
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_url_map = gcp.compute.URLMap("defaultURLMap", default_url_redirect=gcp.compute.URLMapDefaultUrlRedirectArgs(
+            https_redirect=True,
+            strip_query=False,
+        ))
+        default_target_http_proxy = gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", url_map=default_url_map.id)
+        ```
 
         ## Import
 
@@ -485,6 +497,18 @@ class TargetHttpProxy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
         ## Example Usage
+        ### Target Http Proxy Https Redirect
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_url_map = gcp.compute.URLMap("defaultURLMap", default_url_redirect=gcp.compute.URLMapDefaultUrlRedirectArgs(
+            https_redirect=True,
+            strip_query=False,
+        ))
+        default_target_http_proxy = gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", url_map=default_url_map.id)
+        ```
 
         ## Import
 

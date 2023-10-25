@@ -238,6 +238,17 @@ class LiteReservation(pulumi.CustomResource):
             * [Managing Reservations](https://cloud.google.com/pubsub/lite/docs/reservations)
 
         ## Example Usage
+        ### Pubsub Lite Reservation Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example = gcp.pubsub.LiteReservation("example",
+            project=project.number,
+            throughput_capacity=2)
+        ```
 
         ## Import
 
@@ -288,6 +299,17 @@ class LiteReservation(pulumi.CustomResource):
             * [Managing Reservations](https://cloud.google.com/pubsub/lite/docs/reservations)
 
         ## Example Usage
+        ### Pubsub Lite Reservation Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example = gcp.pubsub.LiteReservation("example",
+            project=project.number,
+            throughput_capacity=2)
+        ```
 
         ## Import
 

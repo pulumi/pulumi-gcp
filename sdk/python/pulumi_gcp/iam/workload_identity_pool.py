@@ -342,6 +342,26 @@ class WorkloadIdentityPool(pulumi.CustomResource):
             * [Managing workload identity pools](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#pools)
 
         ## Example Usage
+        ### Iam Workload Identity Pool Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.iam.WorkloadIdentityPool("example", workload_identity_pool_id="example-pool")
+        ```
+        ### Iam Workload Identity Pool Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.iam.WorkloadIdentityPool("example",
+            description="Identity pool for automated test",
+            disabled=True,
+            display_name="Name of pool",
+            workload_identity_pool_id="example-pool")
+        ```
 
         ## Import
 
@@ -392,6 +412,26 @@ class WorkloadIdentityPool(pulumi.CustomResource):
             * [Managing workload identity pools](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#pools)
 
         ## Example Usage
+        ### Iam Workload Identity Pool Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.iam.WorkloadIdentityPool("example", workload_identity_pool_id="example-pool")
+        ```
+        ### Iam Workload Identity Pool Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.iam.WorkloadIdentityPool("example",
+            description="Identity pool for automated test",
+            disabled=True,
+            display_name="Name of pool",
+            workload_identity_pool_id="example-pool")
+        ```
 
         ## Import
 

@@ -19,6 +19,177 @@ namespace Pulumi.Gcp.Dataproc
     ///     * [Official Documentation](https://cloud.google.com/dataproc-metastore/docs/overview)
     /// 
     /// ## Example Usage
+    /// ### Dataproc Metastore Service Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Dataproc.MetastoreService("default", new()
+    ///     {
+    ///         HiveMetastoreConfig = new Gcp.Dataproc.Inputs.MetastoreServiceHiveMetastoreConfigArgs
+    ///         {
+    ///             Version = "2.3.6",
+    ///         },
+    ///         Location = "us-central1",
+    ///         MaintenanceWindow = new Gcp.Dataproc.Inputs.MetastoreServiceMaintenanceWindowArgs
+    ///         {
+    ///             DayOfWeek = "SUNDAY",
+    ///             HourOfDay = 2,
+    ///         },
+    ///         Port = 9080,
+    ///         ServiceId = "metastore-srv",
+    ///         Tier = "DEVELOPER",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dataproc Metastore Service Cmek Example
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var keyRing = new Gcp.Kms.KeyRing("keyRing", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new()
+    ///     {
+    ///         KeyRing = keyRing.Id,
+    ///         Purpose = "ENCRYPT_DECRYPT",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Dataproc.MetastoreService("default", new()
+    ///     {
+    ///         ServiceId = "example-service",
+    ///         Location = "us-central1",
+    ///         EncryptionConfig = new Gcp.Dataproc.Inputs.MetastoreServiceEncryptionConfigArgs
+    ///         {
+    ///             KmsKey = cryptoKey.Id,
+    ///         },
+    ///         HiveMetastoreConfig = new Gcp.Dataproc.Inputs.MetastoreServiceHiveMetastoreConfigArgs
+    ///         {
+    ///             Version = "3.1.2",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dataproc Metastore Service Private Service Connect
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var net = new Gcp.Compute.Network("net", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var subnet = new Gcp.Compute.Subnetwork("subnet", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Network = net.Id,
+    ///         IpCidrRange = "10.0.0.0/22",
+    ///         PrivateIpGoogleAccess = true,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Dataproc.MetastoreService("default", new()
+    ///     {
+    ///         ServiceId = "metastore-srv",
+    ///         Location = "us-central1",
+    ///         HiveMetastoreConfig = new Gcp.Dataproc.Inputs.MetastoreServiceHiveMetastoreConfigArgs
+    ///         {
+    ///             Version = "3.1.2",
+    ///         },
+    ///         NetworkConfig = new Gcp.Dataproc.Inputs.MetastoreServiceNetworkConfigArgs
+    ///         {
+    ///             Consumers = new[]
+    ///             {
+    ///                 new Gcp.Dataproc.Inputs.MetastoreServiceNetworkConfigConsumerArgs
+    ///                 {
+    ///                     Subnetwork = subnet.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dataproc Metastore Service Dpms2
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dpms2 = new Gcp.Dataproc.MetastoreService("dpms2", new()
+    ///     {
+    ///         DatabaseType = "SPANNER",
+    ///         HiveMetastoreConfig = new Gcp.Dataproc.Inputs.MetastoreServiceHiveMetastoreConfigArgs
+    ///         {
+    ///             Version = "3.1.2",
+    ///         },
+    ///         Location = "us-central1",
+    ///         ScalingConfig = new Gcp.Dataproc.Inputs.MetastoreServiceScalingConfigArgs
+    ///         {
+    ///             InstanceSize = "EXTRA_SMALL",
+    ///         },
+    ///         ServiceId = "dpms2",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dataproc Metastore Service Dpms2 Scaling Factor
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dpms2ScalingFactor = new Gcp.Dataproc.MetastoreService("dpms2ScalingFactor", new()
+    ///     {
+    ///         DatabaseType = "SPANNER",
+    ///         HiveMetastoreConfig = new Gcp.Dataproc.Inputs.MetastoreServiceHiveMetastoreConfigArgs
+    ///         {
+    ///             Version = "3.1.2",
+    ///         },
+    ///         Location = "us-central1",
+    ///         ScalingConfig = new Gcp.Dataproc.Inputs.MetastoreServiceScalingConfigArgs
+    ///         {
+    ///             ScalingFactor = 2,
+    ///         },
+    ///         ServiceId = "dpms2sf",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

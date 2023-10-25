@@ -17,6 +17,117 @@ namespace Pulumi.Gcp.Folder
     /// * [API documentation](https://cloud.google.com/access-approval/docs/reference/rest/v1/folders)
     /// 
     /// ## Example Usage
+    /// ### Folder Access Approval Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myFolder = new Gcp.Organizations.Folder("myFolder", new()
+    ///     {
+    ///         DisplayName = "my-folder",
+    ///         Parent = "organizations/123456789",
+    ///     });
+    /// 
+    ///     var folderAccessApproval = new Gcp.Folder.AccessApprovalSettings("folderAccessApproval", new()
+    ///     {
+    ///         FolderId = myFolder.FolderId,
+    ///         NotificationEmails = new[]
+    ///         {
+    ///             "testuser@example.com",
+    ///             "example.user@example.com",
+    ///         },
+    ///         EnrolledServices = new[]
+    ///         {
+    ///             new Gcp.Folder.Inputs.AccessApprovalSettingsEnrolledServiceArgs
+    ///             {
+    ///                 CloudProduct = "all",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Folder Access Approval Active Key Version
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myFolder = new Gcp.Organizations.Folder("myFolder", new()
+    ///     {
+    ///         DisplayName = "my-folder",
+    ///         Parent = "organizations/123456789",
+    ///     });
+    /// 
+    ///     var myProject = new Gcp.Organizations.Project("myProject", new()
+    ///     {
+    ///         ProjectId = "your-project-id",
+    ///         FolderId = myFolder.Name,
+    ///     });
+    /// 
+    ///     var keyRing = new Gcp.Kms.KeyRing("keyRing", new()
+    ///     {
+    ///         Location = "global",
+    ///         Project = myProject.ProjectId,
+    ///     });
+    /// 
+    ///     var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new()
+    ///     {
+    ///         KeyRing = keyRing.Id,
+    ///         Purpose = "ASYMMETRIC_SIGN",
+    ///         VersionTemplate = new Gcp.Kms.Inputs.CryptoKeyVersionTemplateArgs
+    ///         {
+    ///             Algorithm = "EC_SIGN_P384_SHA384",
+    ///         },
+    ///     });
+    /// 
+    ///     var serviceAccount = Gcp.AccessApproval.GetFolderServiceAccount.Invoke(new()
+    ///     {
+    ///         FolderId = myFolder.FolderId,
+    ///     });
+    /// 
+    ///     var iam = new Gcp.Kms.CryptoKeyIAMMember("iam", new()
+    ///     {
+    ///         CryptoKeyId = cryptoKey.Id,
+    ///         Role = "roles/cloudkms.signerVerifier",
+    ///         Member = $"serviceAccount:{serviceAccount.Apply(getFolderServiceAccountResult =&gt; getFolderServiceAccountResult.AccountEmail)}",
+    ///     });
+    /// 
+    ///     var cryptoKeyVersion = Gcp.Kms.GetKMSCryptoKeyVersion.Invoke(new()
+    ///     {
+    ///         CryptoKey = cryptoKey.Id,
+    ///     });
+    /// 
+    ///     var folderAccessApproval = new Gcp.Folder.AccessApprovalSettings("folderAccessApproval", new()
+    ///     {
+    ///         FolderId = myFolder.FolderId,
+    ///         ActiveKeyVersion = cryptoKeyVersion.Apply(getKMSCryptoKeyVersionResult =&gt; getKMSCryptoKeyVersionResult.Name),
+    ///         EnrolledServices = new[]
+    ///         {
+    ///             new Gcp.Folder.Inputs.AccessApprovalSettingsEnrolledServiceArgs
+    ///             {
+    ///                 CloudProduct = "all",
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             iam,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

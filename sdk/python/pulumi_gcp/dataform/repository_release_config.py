@@ -410,6 +410,57 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Dataform Repository Release Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
+        secret = gcp.secretmanager.Secret("secret",
+            secret_id="my_secret",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        secret_version = gcp.secretmanager.SecretVersion("secretVersion",
+            secret=secret.id,
+            secret_data="secret-data",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        repository = gcp.dataform.Repository("repository",
+            region="us-central1",
+            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
+                url=git_repository.url,
+                default_branch="main",
+                authentication_token_secret_version=secret_version.id,
+            ),
+            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArgs(
+                default_database="database",
+                schema_suffix="_suffix",
+                table_prefix="prefix_",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        release = gcp.dataform.RepositoryReleaseConfig("release",
+            project=repository.project,
+            region=repository.region,
+            repository=repository.name,
+            git_commitish="main",
+            cron_schedule="0 7 * * *",
+            time_zone="America/New_York",
+            code_compilation_config=gcp.dataform.RepositoryReleaseConfigCodeCompilationConfigArgs(
+                default_database="gcp-example-project",
+                default_schema="example-dataset",
+                default_location="us-central1",
+                assertion_schema="example-assertion-dataset",
+                database_suffix="",
+                schema_suffix="",
+                table_prefix="",
+                vars={
+                    "var1": "value",
+                },
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -455,6 +506,57 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Dataform Repository Release Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
+        secret = gcp.secretmanager.Secret("secret",
+            secret_id="my_secret",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        secret_version = gcp.secretmanager.SecretVersion("secretVersion",
+            secret=secret.id,
+            secret_data="secret-data",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        repository = gcp.dataform.Repository("repository",
+            region="us-central1",
+            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
+                url=git_repository.url,
+                default_branch="main",
+                authentication_token_secret_version=secret_version.id,
+            ),
+            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArgs(
+                default_database="database",
+                schema_suffix="_suffix",
+                table_prefix="prefix_",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        release = gcp.dataform.RepositoryReleaseConfig("release",
+            project=repository.project,
+            region=repository.region,
+            repository=repository.name,
+            git_commitish="main",
+            cron_schedule="0 7 * * *",
+            time_zone="America/New_York",
+            code_compilation_config=gcp.dataform.RepositoryReleaseConfigCodeCompilationConfigArgs(
+                default_database="gcp-example-project",
+                default_schema="example-dataset",
+                default_location="us-central1",
+                assertion_schema="example-assertion-dataset",
+                database_suffix="",
+                schema_suffix="",
+                table_prefix="",
+                vars={
+                    "var1": "value",
+                },
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

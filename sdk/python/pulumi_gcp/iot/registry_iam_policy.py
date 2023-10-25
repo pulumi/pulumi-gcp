@@ -309,6 +309,48 @@ class RegistryIamPolicy(pulumi.CustomResource):
 
         > **Note:** `iot.RegistryIamBinding` resources **can be** used in conjunction with `iot.RegistryIamMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\\_cloudiot\\_registry\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.iot.RegistryIamPolicy("policy",
+            project=google_cloudiot_registry["test-registry"]["project"],
+            region=google_cloudiot_registry["test-registry"]["region"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_cloudiot\\_registry\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.iot.RegistryIamBinding("binding",
+            project=google_cloudiot_registry["test-registry"]["project"],
+            region=google_cloudiot_registry["test-registry"]["region"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_cloudiot\\_registry\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.iot.RegistryIamMember("member",
+            project=google_cloudiot_registry["test-registry"]["project"],
+            region=google_cloudiot_registry["test-registry"]["region"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/registries/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud IoT Core deviceregistry IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -378,6 +420,48 @@ class RegistryIamPolicy(pulumi.CustomResource):
         > **Note:** `iot.RegistryIamPolicy` **cannot** be used in conjunction with `iot.RegistryIamBinding` and `iot.RegistryIamMember` or they will fight over what your policy should be.
 
         > **Note:** `iot.RegistryIamBinding` resources **can be** used in conjunction with `iot.RegistryIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_cloudiot\\_registry\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.iot.RegistryIamPolicy("policy",
+            project=google_cloudiot_registry["test-registry"]["project"],
+            region=google_cloudiot_registry["test-registry"]["region"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_cloudiot\\_registry\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.iot.RegistryIamBinding("binding",
+            project=google_cloudiot_registry["test-registry"]["project"],
+            region=google_cloudiot_registry["test-registry"]["region"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_cloudiot\\_registry\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.iot.RegistryIamMember("member",
+            project=google_cloudiot_registry["test-registry"]["project"],
+            region=google_cloudiot_registry["test-registry"]["region"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
 
         ## Import
 

@@ -99,6 +99,18 @@ def get_account_key(name: Optional[str] = None,
     """
     Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    myaccount = gcp.service_account.Account("myaccount", account_id="dev-foo-account")
+    mykey_key = gcp.service_account.Key("mykeyKey", service_account_id=myaccount.name)
+    mykey_account_key = gcp.serviceAccount.get_account_key_output(name=mykey_key.name,
+        public_key_type="TYPE_X509_PEM_FILE")
+    ```
+
 
     :param str name: The name of the service account key. This must have format
            `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{KEYID}`, where `{ACCOUNT}`
@@ -130,6 +142,18 @@ def get_account_key_output(name: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountKeyResult]:
     """
     Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    myaccount = gcp.service_account.Account("myaccount", account_id="dev-foo-account")
+    mykey_key = gcp.service_account.Key("mykeyKey", service_account_id=myaccount.name)
+    mykey_account_key = gcp.serviceAccount.get_account_key_output(name=mykey_key.name,
+        public_key_type="TYPE_X509_PEM_FILE")
+    ```
 
 
     :param str name: The name of the service account key. This must have format

@@ -12,6 +12,22 @@ import * as utilities from "../utilities";
  * [custom signing key](https://cloud.google.com/cloud-provider-access-management/access-approval/docs/review-approve-access-requests-custom-keys),
  * this account needs to be granted the `cloudkms.signerVerifier` IAM role on the
  * Cloud KMS key used to sign approvals.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const serviceAccount = gcp.accessapproval.getFolderServiceAccount({
+ *     folderId: "my-folder",
+ * });
+ * const iam = new gcp.kms.CryptoKeyIAMMember("iam", {
+ *     cryptoKeyId: google_kms_crypto_key.crypto_key.id,
+ *     role: "roles/cloudkms.signerVerifier",
+ *     member: serviceAccount.then(serviceAccount => `serviceAccount:${serviceAccount.accountEmail}`),
+ * });
+ * ```
  */
 export function getFolderServiceAccount(args: GetFolderServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderServiceAccountResult> {
 
@@ -58,6 +74,22 @@ export interface GetFolderServiceAccountResult {
  * [custom signing key](https://cloud.google.com/cloud-provider-access-management/access-approval/docs/review-approve-access-requests-custom-keys),
  * this account needs to be granted the `cloudkms.signerVerifier` IAM role on the
  * Cloud KMS key used to sign approvals.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const serviceAccount = gcp.accessapproval.getFolderServiceAccount({
+ *     folderId: "my-folder",
+ * });
+ * const iam = new gcp.kms.CryptoKeyIAMMember("iam", {
+ *     cryptoKeyId: google_kms_crypto_key.crypto_key.id,
+ *     role: "roles/cloudkms.signerVerifier",
+ *     member: serviceAccount.then(serviceAccount => `serviceAccount:${serviceAccount.accountEmail}`),
+ * });
+ * ```
  */
 export function getFolderServiceAccountOutput(args: GetFolderServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFolderServiceAccountResult> {
     return pulumi.output(args).apply((a: any) => getFolderServiceAccount(a, opts))

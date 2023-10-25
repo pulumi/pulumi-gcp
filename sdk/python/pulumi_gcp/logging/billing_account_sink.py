@@ -431,6 +431,23 @@ class BillingAccountSink(pulumi.CustomResource):
         the credentials used with this provider. [IAM roles granted on a billing account](https://cloud.google.com/billing/docs/how-to/billing-access) are separate from the
         typical IAM roles granted on a project.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        log_bucket = gcp.storage.Bucket("log-bucket", location="US")
+        my_sink = gcp.logging.BillingAccountSink("my-sink",
+            description="some explanation on what this is",
+            billing_account="ABCDEF-012345-GHIJKL",
+            destination=log_bucket.name.apply(lambda name: f"storage.googleapis.com/{name}"))
+        log_writer = gcp.projects.IAMBinding("log-writer",
+            project="your-project-id",
+            role="roles/storage.objectCreator",
+            members=[my_sink.writer_identity])
+        ```
+
         ## Import
 
         Billing account logging sinks can be imported using this format:
@@ -475,6 +492,23 @@ class BillingAccountSink(pulumi.CustomResource):
         [granted on the billing account](https://cloud.google.com/billing/reference/rest/v1/billingAccounts/getIamPolicy) to
         the credentials used with this provider. [IAM roles granted on a billing account](https://cloud.google.com/billing/docs/how-to/billing-access) are separate from the
         typical IAM roles granted on a project.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        log_bucket = gcp.storage.Bucket("log-bucket", location="US")
+        my_sink = gcp.logging.BillingAccountSink("my-sink",
+            description="some explanation on what this is",
+            billing_account="ABCDEF-012345-GHIJKL",
+            destination=log_bucket.name.apply(lambda name: f"storage.googleapis.com/{name}"))
+        log_writer = gcp.projects.IAMBinding("log-writer",
+            project="your-project-id",
+            role="roles/storage.objectCreator",
+            members=[my_sink.writer_identity])
+        ```
 
         ## Import
 

@@ -355,6 +355,30 @@ class Gateway(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
 
         ## Example Usage
+        ### Apigateway Gateway Basic
+
+        ```python
+        import pulumi
+        import base64
+        import pulumi_gcp as gcp
+
+        api_gw_api = gcp.apigateway.Api("apiGwApi", api_id="my-api",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        api_gw_api_config = gcp.apigateway.ApiConfig("apiGwApiConfig",
+            api=api_gw_api.api_id,
+            api_config_id="my-config",
+            openapi_documents=[gcp.apigateway.ApiConfigOpenapiDocumentArgs(
+                document=gcp.apigateway.ApiConfigOpenapiDocumentDocumentArgs(
+                    path="spec.yaml",
+                    contents=(lambda path: base64.b64encode(open(path).read().encode()).decode())("test-fixtures/openapi.yaml"),
+                ),
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        api_gw_gateway = gcp.apigateway.Gateway("apiGwGateway",
+            api_config=api_gw_api_config.id,
+            gateway_id="my-gateway",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -406,6 +430,30 @@ class Gateway(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
 
         ## Example Usage
+        ### Apigateway Gateway Basic
+
+        ```python
+        import pulumi
+        import base64
+        import pulumi_gcp as gcp
+
+        api_gw_api = gcp.apigateway.Api("apiGwApi", api_id="my-api",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        api_gw_api_config = gcp.apigateway.ApiConfig("apiGwApiConfig",
+            api=api_gw_api.api_id,
+            api_config_id="my-config",
+            openapi_documents=[gcp.apigateway.ApiConfigOpenapiDocumentArgs(
+                document=gcp.apigateway.ApiConfigOpenapiDocumentDocumentArgs(
+                    path="spec.yaml",
+                    contents=(lambda path: base64.b64encode(open(path).read().encode()).decode())("test-fixtures/openapi.yaml"),
+                ),
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        api_gw_gateway = gcp.apigateway.Gateway("apiGwGateway",
+            api_config=api_gw_api_config.id,
+            gateway_id="my-gateway",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

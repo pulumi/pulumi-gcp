@@ -25,6 +25,36 @@ namespace Pulumi.Gcp.Datastore
     /// Datastore location will be the same as the App Engine location specified.
     /// 
     /// ## Example Usage
+    /// ### Datastore Index
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Datastore.DataStoreIndex("default", new()
+    ///     {
+    ///         Kind = "foo",
+    ///         Properties = new[]
+    ///         {
+    ///             new Gcp.Datastore.Inputs.DataStoreIndexPropertyArgs
+    ///             {
+    ///                 Direction = "ASCENDING",
+    ///                 Name = "property_a",
+    ///             },
+    ///             new Gcp.Datastore.Inputs.DataStoreIndexPropertyArgs
+    ///             {
+    ///                 Direction = "ASCENDING",
+    ///                 Name = "property_b",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

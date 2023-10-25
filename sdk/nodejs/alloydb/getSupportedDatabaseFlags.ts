@@ -8,6 +8,17 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get information about the supported alloydb database flags in a location.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const qa = gcp.alloydb.getSupportedDatabaseFlags({
+ *     location: "us-central1",
+ * });
+ * ```
  */
 export function getSupportedDatabaseFlags(args: GetSupportedDatabaseFlagsArgs, opts?: pulumi.InvokeOptions): Promise<GetSupportedDatabaseFlagsResult> {
 
@@ -49,6 +60,17 @@ export interface GetSupportedDatabaseFlagsResult {
 }
 /**
  * Use this data source to get information about the supported alloydb database flags in a location.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const qa = gcp.alloydb.getSupportedDatabaseFlags({
+ *     location: "us-central1",
+ * });
+ * ```
  */
 export function getSupportedDatabaseFlagsOutput(args: GetSupportedDatabaseFlagsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSupportedDatabaseFlagsResult> {
     return pulumi.output(args).apply((a: any) => getSupportedDatabaseFlags(a, opts))

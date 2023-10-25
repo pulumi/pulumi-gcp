@@ -16,6 +16,99 @@ import (
 // The Compute FirewallPolicyRule resource
 //
 // ## Example Usage
+// ### Basic_fir_sec_rule
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			basicGlobalNetworksecurityAddressGroup, err := networksecurity.NewAddressGroup(ctx, "basicGlobalNetworksecurityAddressGroup", &networksecurity.AddressGroupArgs{
+//				Parent:      pulumi.String("organizations/123456789"),
+//				Description: pulumi.String("Sample global networksecurity_address_group"),
+//				Location:    pulumi.String("global"),
+//				Items: pulumi.StringArray{
+//					pulumi.String("208.80.154.224/32"),
+//				},
+//				Type:     pulumi.String("IPV4"),
+//				Capacity: pulumi.Int(100),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			folder, err := organizations.NewFolder(ctx, "folder", &organizations.FolderArgs{
+//				DisplayName: pulumi.String("policy"),
+//				Parent:      pulumi.String("organizations/123456789"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewFirewallPolicy(ctx, "default", &compute.FirewallPolicyArgs{
+//				Parent:      folder.ID(),
+//				ShortName:   pulumi.String("policy"),
+//				Description: pulumi.String("Resource created for Terraform acceptance testing"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewFirewallPolicyRule(ctx, "primary", &compute.FirewallPolicyRuleArgs{
+//				FirewallPolicy: _default.Name,
+//				Description:    pulumi.String("Resource created for Terraform acceptance testing"),
+//				Priority:       pulumi.Int(9000),
+//				EnableLogging:  pulumi.Bool(true),
+//				Action:         pulumi.String("allow"),
+//				Direction:      pulumi.String("EGRESS"),
+//				Disabled:       pulumi.Bool(false),
+//				Match: &compute.FirewallPolicyRuleMatchArgs{
+//					Layer4Configs: compute.FirewallPolicyRuleMatchLayer4ConfigArray{
+//						&compute.FirewallPolicyRuleMatchLayer4ConfigArgs{
+//							IpProtocol: pulumi.String("tcp"),
+//							Ports: pulumi.StringArray{
+//								pulumi.String("8080"),
+//							},
+//						},
+//						&compute.FirewallPolicyRuleMatchLayer4ConfigArgs{
+//							IpProtocol: pulumi.String("udp"),
+//							Ports: pulumi.StringArray{
+//								pulumi.String("22"),
+//							},
+//						},
+//					},
+//					DestIpRanges: pulumi.StringArray{
+//						pulumi.String("11.100.0.1/32"),
+//					},
+//					DestFqdns: pulumi.StringArray{},
+//					DestRegionCodes: pulumi.StringArray{
+//						pulumi.String("US"),
+//					},
+//					DestThreatIntelligences: pulumi.StringArray{
+//						pulumi.String("iplist-known-malicious-ips"),
+//					},
+//					SrcAddressGroups: pulumi.StringArray{},
+//					DestAddressGroups: pulumi.StringArray{
+//						basicGlobalNetworksecurityAddressGroup.ID(),
+//					},
+//				},
+//				TargetServiceAccounts: pulumi.StringArray{
+//					pulumi.String("my@service-account.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

@@ -384,6 +384,52 @@ class Snapshot(pulumi.CustomResource):
             * [Creating Snapshots](https://cloud.google.com/filestore/docs/create-snapshots)
 
         ## Example Usage
+        ### Filestore Snapshot Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.filestore.Instance("instance",
+            location="us-east1",
+            tier="ENTERPRISE",
+            file_shares=gcp.filestore.InstanceFileSharesArgs(
+                capacity_gb=1024,
+                name="share1",
+            ),
+            networks=[gcp.filestore.InstanceNetworkArgs(
+                network="default",
+                modes=["MODE_IPV4"],
+            )])
+        snapshot = gcp.filestore.Snapshot("snapshot",
+            instance=instance.name,
+            location="us-east1")
+        ```
+        ### Filestore Snapshot Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.filestore.Instance("instance",
+            location="us-west1",
+            tier="ENTERPRISE",
+            file_shares=gcp.filestore.InstanceFileSharesArgs(
+                capacity_gb=1024,
+                name="share1",
+            ),
+            networks=[gcp.filestore.InstanceNetworkArgs(
+                network="default",
+                modes=["MODE_IPV4"],
+            )])
+        snapshot = gcp.filestore.Snapshot("snapshot",
+            instance=instance.name,
+            location="us-west1",
+            description="Snapshot of test-instance-for-snapshot",
+            labels={
+                "my_label": "value",
+            })
+        ```
 
         ## Import
 
@@ -437,6 +483,52 @@ class Snapshot(pulumi.CustomResource):
             * [Creating Snapshots](https://cloud.google.com/filestore/docs/create-snapshots)
 
         ## Example Usage
+        ### Filestore Snapshot Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.filestore.Instance("instance",
+            location="us-east1",
+            tier="ENTERPRISE",
+            file_shares=gcp.filestore.InstanceFileSharesArgs(
+                capacity_gb=1024,
+                name="share1",
+            ),
+            networks=[gcp.filestore.InstanceNetworkArgs(
+                network="default",
+                modes=["MODE_IPV4"],
+            )])
+        snapshot = gcp.filestore.Snapshot("snapshot",
+            instance=instance.name,
+            location="us-east1")
+        ```
+        ### Filestore Snapshot Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.filestore.Instance("instance",
+            location="us-west1",
+            tier="ENTERPRISE",
+            file_shares=gcp.filestore.InstanceFileSharesArgs(
+                capacity_gb=1024,
+                name="share1",
+            ),
+            networks=[gcp.filestore.InstanceNetworkArgs(
+                network="default",
+                modes=["MODE_IPV4"],
+            )])
+        snapshot = gcp.filestore.Snapshot("snapshot",
+            instance=instance.name,
+            location="us-west1",
+            description="Snapshot of test-instance-for-snapshot",
+            labels={
+                "my_label": "value",
+            })
+        ```
 
         ## Import
 

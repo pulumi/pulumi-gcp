@@ -299,6 +299,32 @@ class ServiceBinding(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Network Services Service Binding Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_namespace = gcp.servicedirectory.Namespace("defaultNamespace",
+            namespace_id="my-namespace",
+            location="us-central1",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_service = gcp.servicedirectory.Service("defaultService",
+            service_id="my-service",
+            namespace=default_namespace.id,
+            metadata={
+                "stage": "prod",
+                "region": "us-central1",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_service_binding = gcp.networkservices.ServiceBinding("defaultServiceBinding",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            service=default_service.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -337,6 +363,32 @@ class ServiceBinding(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Network Services Service Binding Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_namespace = gcp.servicedirectory.Namespace("defaultNamespace",
+            namespace_id="my-namespace",
+            location="us-central1",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_service = gcp.servicedirectory.Service("defaultService",
+            service_id="my-service",
+            namespace=default_namespace.id,
+            metadata={
+                "stage": "prod",
+                "region": "us-central1",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_service_binding = gcp.networkservices.ServiceBinding("defaultServiceBinding",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            service=default_service.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

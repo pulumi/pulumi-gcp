@@ -17,6 +17,30 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
  *
  * ## Example Usage
+ * ### Dialogflow Agent Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const fullAgent = new gcp.diagflow.Agent("fullAgent", {
+ *     apiVersion: "API_VERSION_V2_BETA_1",
+ *     avatarUri: "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+ *     classificationThreshold: 0.3,
+ *     defaultLanguageCode: "en",
+ *     description: "Example description.",
+ *     displayName: "dialogflow-agent",
+ *     enableLogging: true,
+ *     matchMode: "MATCH_MODE_ML_ONLY",
+ *     supportedLanguageCodes: [
+ *         "fr",
+ *         "de",
+ *         "es",
+ *     ],
+ *     tier: "TIER_STANDARD",
+ *     timeZone: "America/New_York",
+ * });
+ * ```
  *
  * ## Import
  *

@@ -981,6 +981,79 @@ class StandardAppVersion(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/appengine/docs/standard)
 
         ## Example Usage
+        ### App Engine Standard App Version
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_service_account = gcp.service_account.Account("customServiceAccount",
+            account_id="my-account",
+            display_name="Custom Service Account")
+        gae_api = gcp.projects.IAMMember("gaeApi",
+            project=custom_service_account.project,
+            role="roles/compute.networkUser",
+            member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        storage_viewer = gcp.projects.IAMMember("storageViewer",
+            project=custom_service_account.project,
+            role="roles/storage.objectViewer",
+            member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        bucket = gcp.storage.Bucket("bucket", location="US")
+        object = gcp.storage.BucketObject("object",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
+        myapp_v1 = gcp.appengine.StandardAppVersion("myappV1",
+            version_id="v1",
+            service="myapp",
+            runtime="nodejs10",
+            entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
+                shell="node ./app.js",
+            ),
+            deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
+                zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
+                    source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
+                ),
+            ),
+            env_variables={
+                "port": "8080",
+            },
+            automatic_scaling=gcp.appengine.StandardAppVersionAutomaticScalingArgs(
+                max_concurrent_requests=10,
+                min_idle_instances=1,
+                max_idle_instances=3,
+                min_pending_latency="1s",
+                max_pending_latency="5s",
+                standard_scheduler_settings=gcp.appengine.StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs(
+                    target_cpu_utilization=0.5,
+                    target_throughput_utilization=0.75,
+                    min_instances=2,
+                    max_instances=10,
+                ),
+            ),
+            delete_service_on_destroy=True,
+            service_account=custom_service_account.email)
+        myapp_v2 = gcp.appengine.StandardAppVersion("myappV2",
+            version_id="v2",
+            service="myapp",
+            runtime="nodejs10",
+            app_engine_apis=True,
+            entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
+                shell="node ./app.js",
+            ),
+            deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
+                zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
+                    source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
+                ),
+            ),
+            env_variables={
+                "port": "8080",
+            },
+            basic_scaling=gcp.appengine.StandardAppVersionBasicScalingArgs(
+                max_instances=5,
+            ),
+            noop_on_destroy=True,
+            service_account=custom_service_account.email)
+        ```
 
         ## Import
 
@@ -1057,6 +1130,79 @@ class StandardAppVersion(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/appengine/docs/standard)
 
         ## Example Usage
+        ### App Engine Standard App Version
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_service_account = gcp.service_account.Account("customServiceAccount",
+            account_id="my-account",
+            display_name="Custom Service Account")
+        gae_api = gcp.projects.IAMMember("gaeApi",
+            project=custom_service_account.project,
+            role="roles/compute.networkUser",
+            member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        storage_viewer = gcp.projects.IAMMember("storageViewer",
+            project=custom_service_account.project,
+            role="roles/storage.objectViewer",
+            member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        bucket = gcp.storage.Bucket("bucket", location="US")
+        object = gcp.storage.BucketObject("object",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
+        myapp_v1 = gcp.appengine.StandardAppVersion("myappV1",
+            version_id="v1",
+            service="myapp",
+            runtime="nodejs10",
+            entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
+                shell="node ./app.js",
+            ),
+            deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
+                zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
+                    source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
+                ),
+            ),
+            env_variables={
+                "port": "8080",
+            },
+            automatic_scaling=gcp.appengine.StandardAppVersionAutomaticScalingArgs(
+                max_concurrent_requests=10,
+                min_idle_instances=1,
+                max_idle_instances=3,
+                min_pending_latency="1s",
+                max_pending_latency="5s",
+                standard_scheduler_settings=gcp.appengine.StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs(
+                    target_cpu_utilization=0.5,
+                    target_throughput_utilization=0.75,
+                    min_instances=2,
+                    max_instances=10,
+                ),
+            ),
+            delete_service_on_destroy=True,
+            service_account=custom_service_account.email)
+        myapp_v2 = gcp.appengine.StandardAppVersion("myappV2",
+            version_id="v2",
+            service="myapp",
+            runtime="nodejs10",
+            app_engine_apis=True,
+            entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
+                shell="node ./app.js",
+            ),
+            deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
+                zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
+                    source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
+                ),
+            ),
+            env_variables={
+                "port": "8080",
+            },
+            basic_scaling=gcp.appengine.StandardAppVersionBasicScalingArgs(
+                max_instances=5,
+            ),
+            noop_on_destroy=True,
+            service_account=custom_service_account.email)
+        ```
 
         ## Import
 

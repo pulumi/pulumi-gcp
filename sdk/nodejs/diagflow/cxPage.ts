@@ -16,6 +16,561 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
  *
  * ## Example Usage
+ * ### Dialogflowcx Page Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const agent = new gcp.diagflow.CxAgent("agent", {
+ *     displayName: "dialogflowcx-agent",
+ *     location: "global",
+ *     defaultLanguageCode: "en",
+ *     supportedLanguageCodes: [
+ *         "fr",
+ *         "de",
+ *         "es",
+ *     ],
+ *     timeZone: "America/New_York",
+ *     description: "Example description.",
+ *     avatarUri: "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+ *     enableStackdriverLogging: true,
+ *     enableSpellCorrection: true,
+ *     speechToTextSettings: {
+ *         enableSpeechAdaptation: true,
+ *     },
+ * });
+ * const myPage2 = new gcp.diagflow.CxPage("myPage2", {
+ *     parent: agent.startFlow,
+ *     displayName: "MyPage2",
+ * });
+ * const myWebhook = new gcp.diagflow.CxWebhook("myWebhook", {
+ *     parent: agent.id,
+ *     displayName: "MyWebhook",
+ *     genericWebService: {
+ *         uri: "https://example.com",
+ *     },
+ * });
+ * const basicPage = new gcp.diagflow.CxPage("basicPage", {
+ *     parent: agent.startFlow,
+ *     displayName: "MyPage",
+ *     entryFulfillment: {
+ *         messages: [
+ *             {
+ *                 channel: "some-channel",
+ *                 text: {
+ *                     texts: ["Welcome to page"],
+ *                 },
+ *             },
+ *             {
+ *                 payload: "        {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}\n",
+ *             },
+ *             {
+ *                 conversationSuccess: {
+ *                     metadata: "          {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n",
+ *                 },
+ *             },
+ *             {
+ *                 outputAudioText: {
+ *                     text: "some output text",
+ *                 },
+ *             },
+ *             {
+ *                 outputAudioText: {
+ *                     ssml: "          <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>\n",
+ *                 },
+ *             },
+ *             {
+ *                 liveAgentHandoff: {
+ *                     metadata: "          {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n",
+ *                 },
+ *             },
+ *             {
+ *                 playAudio: {
+ *                     audioUri: "http://example.com/some-audio-file.mp3",
+ *                 },
+ *             },
+ *             {
+ *                 telephonyTransferCall: {
+ *                     phoneNumber: "1-234-567-8901",
+ *                 },
+ *             },
+ *         ],
+ *         setParameterActions: [
+ *             {
+ *                 parameter: "some-param",
+ *                 value: "123.45",
+ *             },
+ *             {
+ *                 parameter: "another-param",
+ *                 value: JSON.stringify("abc"),
+ *             },
+ *             {
+ *                 parameter: "other-param",
+ *                 value: JSON.stringify(["foo"]),
+ *             },
+ *         ],
+ *         conditionalCases: [{
+ *             cases: JSON.stringify([
+ *                 {
+ *                     condition: "$sys.func.RAND() < 0.5",
+ *                     caseContent: [
+ *                         {
+ *                             message: {
+ *                                 text: {
+ *                                     text: ["First case"],
+ *                                 },
+ *                             },
+ *                         },
+ *                         {
+ *                             additionalCases: {
+ *                                 cases: [{
+ *                                     condition: "$sys.func.RAND() < 0.2",
+ *                                     caseContent: [{
+ *                                         message: {
+ *                                             text: {
+ *                                                 text: ["Nested case"],
+ *                                             },
+ *                                         },
+ *                                     }],
+ *                                 }],
+ *                             },
+ *                         },
+ *                     ],
+ *                 },
+ *                 {
+ *                     caseContent: [{
+ *                         message: {
+ *                             text: {
+ *                                 text: ["Final case"],
+ *                             },
+ *                         },
+ *                     }],
+ *                 },
+ *             ]),
+ *         }],
+ *     },
+ *     eventHandlers: [{
+ *         event: "some-event",
+ *         triggerFulfillment: {
+ *             returnPartialResponses: true,
+ *             messages: [
+ *                 {
+ *                     channel: "some-channel",
+ *                     text: {
+ *                         texts: ["Some text"],
+ *                     },
+ *                 },
+ *                 {
+ *                     payload: "          {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}\n",
+ *                 },
+ *                 {
+ *                     conversationSuccess: {
+ *                         metadata: "            {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n",
+ *                     },
+ *                 },
+ *                 {
+ *                     outputAudioText: {
+ *                         text: "some output text",
+ *                     },
+ *                 },
+ *                 {
+ *                     outputAudioText: {
+ *                         ssml: "            <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>\n",
+ *                     },
+ *                 },
+ *                 {
+ *                     liveAgentHandoff: {
+ *                         metadata: "            {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n",
+ *                     },
+ *                 },
+ *                 {
+ *                     playAudio: {
+ *                         audioUri: "http://example.com/some-audio-file.mp3",
+ *                     },
+ *                 },
+ *                 {
+ *                     telephonyTransferCall: {
+ *                         phoneNumber: "1-234-567-8901",
+ *                     },
+ *                 },
+ *             ],
+ *             setParameterActions: [
+ *                 {
+ *                     parameter: "some-param",
+ *                     value: "123.45",
+ *                 },
+ *                 {
+ *                     parameter: "another-param",
+ *                     value: JSON.stringify("abc"),
+ *                 },
+ *                 {
+ *                     parameter: "other-param",
+ *                     value: JSON.stringify(["foo"]),
+ *                 },
+ *             ],
+ *             conditionalCases: [{
+ *                 cases: JSON.stringify([
+ *                     {
+ *                         condition: "$sys.func.RAND() < 0.5",
+ *                         caseContent: [
+ *                             {
+ *                                 message: {
+ *                                     text: {
+ *                                         text: ["First case"],
+ *                                     },
+ *                                 },
+ *                             },
+ *                             {
+ *                                 additionalCases: {
+ *                                     cases: [{
+ *                                         condition: "$sys.func.RAND() < 0.2",
+ *                                         caseContent: [{
+ *                                             message: {
+ *                                                 text: {
+ *                                                     text: ["Nested case"],
+ *                                                 },
+ *                                             },
+ *                                         }],
+ *                                     }],
+ *                                 },
+ *                             },
+ *                         ],
+ *                     },
+ *                     {
+ *                         caseContent: [{
+ *                             message: {
+ *                                 text: {
+ *                                     text: ["Final case"],
+ *                                 },
+ *                             },
+ *                         }],
+ *                     },
+ *                 ]),
+ *             }],
+ *         },
+ *     }],
+ *     form: {
+ *         parameters: [{
+ *             displayName: "param1",
+ *             entityType: "projects/-/locations/-/agents/-/entityTypes/sys.date",
+ *             defaultValue: JSON.stringify("2000-01-01"),
+ *             fillBehavior: {
+ *                 initialPromptFulfillment: {
+ *                     messages: [
+ *                         {
+ *                             channel: "some-channel",
+ *                             text: {
+ *                                 texts: ["Please provide param1"],
+ *                             },
+ *                         },
+ *                         {
+ *                             payload: "              {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}\n",
+ *                         },
+ *                         {
+ *                             conversationSuccess: {
+ *                                 metadata: "                {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n",
+ *                             },
+ *                         },
+ *                         {
+ *                             outputAudioText: {
+ *                                 text: "some output text",
+ *                             },
+ *                         },
+ *                         {
+ *                             outputAudioText: {
+ *                                 ssml: "                <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>\n",
+ *                             },
+ *                         },
+ *                         {
+ *                             liveAgentHandoff: {
+ *                                 metadata: "                {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n",
+ *                             },
+ *                         },
+ *                         {
+ *                             playAudio: {
+ *                                 audioUri: "http://example.com/some-audio-file.mp3",
+ *                             },
+ *                         },
+ *                         {
+ *                             telephonyTransferCall: {
+ *                                 phoneNumber: "1-234-567-8901",
+ *                             },
+ *                         },
+ *                     ],
+ *                     setParameterActions: [
+ *                         {
+ *                             parameter: "some-param",
+ *                             value: "123.45",
+ *                         },
+ *                         {
+ *                             parameter: "another-param",
+ *                             value: JSON.stringify("abc"),
+ *                         },
+ *                         {
+ *                             parameter: "other-param",
+ *                             value: JSON.stringify(["foo"]),
+ *                         },
+ *                     ],
+ *                     conditionalCases: [{
+ *                         cases: JSON.stringify([
+ *                             {
+ *                                 condition: "$sys.func.RAND() < 0.5",
+ *                                 caseContent: [
+ *                                     {
+ *                                         message: {
+ *                                             text: {
+ *                                                 text: ["First case"],
+ *                                             },
+ *                                         },
+ *                                     },
+ *                                     {
+ *                                         additionalCases: {
+ *                                             cases: [{
+ *                                                 condition: "$sys.func.RAND() < 0.2",
+ *                                                 caseContent: [{
+ *                                                     message: {
+ *                                                         text: {
+ *                                                             text: ["Nested case"],
+ *                                                         },
+ *                                                     },
+ *                                                 }],
+ *                                             }],
+ *                                         },
+ *                                     },
+ *                                 ],
+ *                             },
+ *                             {
+ *                                 caseContent: [{
+ *                                     message: {
+ *                                         text: {
+ *                                             text: ["Final case"],
+ *                                         },
+ *                                     },
+ *                                 }],
+ *                             },
+ *                         ]),
+ *                     }],
+ *                 },
+ *                 repromptEventHandlers: [
+ *                     {
+ *                         event: "sys.no-match-1",
+ *                         triggerFulfillment: {
+ *                             returnPartialResponses: true,
+ *                             webhook: myWebhook.id,
+ *                             tag: "some-tag",
+ *                             messages: [
+ *                                 {
+ *                                     channel: "some-channel",
+ *                                     text: {
+ *                                         texts: ["Please provide param1"],
+ *                                     },
+ *                                 },
+ *                                 {
+ *                                     payload: "                {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}\n",
+ *                                 },
+ *                                 {
+ *                                     conversationSuccess: {
+ *                                         metadata: "                  {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n",
+ *                                     },
+ *                                 },
+ *                                 {
+ *                                     outputAudioText: {
+ *                                         text: "some output text",
+ *                                     },
+ *                                 },
+ *                                 {
+ *                                     outputAudioText: {
+ *                                         ssml: "                  <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>\n",
+ *                                     },
+ *                                 },
+ *                                 {
+ *                                     liveAgentHandoff: {
+ *                                         metadata: "                  {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n",
+ *                                     },
+ *                                 },
+ *                                 {
+ *                                     playAudio: {
+ *                                         audioUri: "http://example.com/some-audio-file.mp3",
+ *                                     },
+ *                                 },
+ *                                 {
+ *                                     telephonyTransferCall: {
+ *                                         phoneNumber: "1-234-567-8901",
+ *                                     },
+ *                                 },
+ *                             ],
+ *                             setParameterActions: [
+ *                                 {
+ *                                     parameter: "some-param",
+ *                                     value: "123.45",
+ *                                 },
+ *                                 {
+ *                                     parameter: "another-param",
+ *                                     value: JSON.stringify("abc"),
+ *                                 },
+ *                                 {
+ *                                     parameter: "other-param",
+ *                                     value: JSON.stringify(["foo"]),
+ *                                 },
+ *                             ],
+ *                             conditionalCases: [{
+ *                                 cases: JSON.stringify([
+ *                                     {
+ *                                         condition: "$sys.func.RAND() < 0.5",
+ *                                         caseContent: [
+ *                                             {
+ *                                                 message: {
+ *                                                     text: {
+ *                                                         text: ["First case"],
+ *                                                     },
+ *                                                 },
+ *                                             },
+ *                                             {
+ *                                                 additionalCases: {
+ *                                                     cases: [{
+ *                                                         condition: "$sys.func.RAND() < 0.2",
+ *                                                         caseContent: [{
+ *                                                             message: {
+ *                                                                 text: {
+ *                                                                     text: ["Nested case"],
+ *                                                                 },
+ *                                                             },
+ *                                                         }],
+ *                                                     }],
+ *                                                 },
+ *                                             },
+ *                                         ],
+ *                                     },
+ *                                     {
+ *                                         caseContent: [{
+ *                                             message: {
+ *                                                 text: {
+ *                                                     text: ["Final case"],
+ *                                                 },
+ *                                             },
+ *                                         }],
+ *                                     },
+ *                                 ]),
+ *                             }],
+ *                         },
+ *                     },
+ *                     {
+ *                         event: "sys.no-match-2",
+ *                         targetFlow: agent.startFlow,
+ *                     },
+ *                     {
+ *                         event: "sys.no-match-3",
+ *                         targetPage: myPage2.id,
+ *                     },
+ *                 ],
+ *             },
+ *             required: true,
+ *             redact: true,
+ *         }],
+ *     },
+ *     transitionRoutes: [{
+ *         condition: "$page.params.status = 'FINAL'",
+ *         triggerFulfillment: {
+ *             messages: [
+ *                 {
+ *                     channel: "some-channel",
+ *                     text: {
+ *                         texts: ["information completed, navigating to page 2"],
+ *                     },
+ *                 },
+ *                 {
+ *                     payload: "          {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}\n",
+ *                 },
+ *                 {
+ *                     conversationSuccess: {
+ *                         metadata: "            {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n",
+ *                     },
+ *                 },
+ *                 {
+ *                     outputAudioText: {
+ *                         text: "some output text",
+ *                     },
+ *                 },
+ *                 {
+ *                     outputAudioText: {
+ *                         ssml: "            <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>\n",
+ *                     },
+ *                 },
+ *                 {
+ *                     liveAgentHandoff: {
+ *                         metadata: "            {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n",
+ *                     },
+ *                 },
+ *                 {
+ *                     playAudio: {
+ *                         audioUri: "http://example.com/some-audio-file.mp3",
+ *                     },
+ *                 },
+ *                 {
+ *                     telephonyTransferCall: {
+ *                         phoneNumber: "1-234-567-8901",
+ *                     },
+ *                 },
+ *             ],
+ *             setParameterActions: [
+ *                 {
+ *                     parameter: "some-param",
+ *                     value: "123.45",
+ *                 },
+ *                 {
+ *                     parameter: "another-param",
+ *                     value: JSON.stringify("abc"),
+ *                 },
+ *                 {
+ *                     parameter: "other-param",
+ *                     value: JSON.stringify(["foo"]),
+ *                 },
+ *             ],
+ *             conditionalCases: [{
+ *                 cases: JSON.stringify([
+ *                     {
+ *                         condition: "$sys.func.RAND() < 0.5",
+ *                         caseContent: [
+ *                             {
+ *                                 message: {
+ *                                     text: {
+ *                                         text: ["First case"],
+ *                                     },
+ *                                 },
+ *                             },
+ *                             {
+ *                                 additionalCases: {
+ *                                     cases: [{
+ *                                         condition: "$sys.func.RAND() < 0.2",
+ *                                         caseContent: [{
+ *                                             message: {
+ *                                                 text: {
+ *                                                     text: ["Nested case"],
+ *                                                 },
+ *                                             },
+ *                                         }],
+ *                                     }],
+ *                                 },
+ *                             },
+ *                         ],
+ *                     },
+ *                     {
+ *                         caseContent: [{
+ *                             message: {
+ *                                 text: {
+ *                                     text: ["Final case"],
+ *                                 },
+ *                             },
+ *                         }],
+ *                     },
+ *                 ]),
+ *             }],
+ *         },
+ *         targetPage: myPage2.id,
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *

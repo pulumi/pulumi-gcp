@@ -271,6 +271,17 @@ def get_instance_group_manager(name: Optional[str] = None,
     For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups#managed_instance_groups)
     and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroupManagers)
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    igm1 = gcp.compute.get_instance_group_manager(name="my-igm",
+        zone="us-central1-a")
+    igm2 = gcp.compute.get_instance_group_manager(self_link="https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm")
+    ```
+
 
     :param str name: The name of the instance group. Either `name` or `self_link` must be provided.
     :param str project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
@@ -323,6 +334,17 @@ def get_instance_group_manager_output(name: Optional[pulumi.Input[Optional[str]]
     Get a Compute Instance Group Manager within GCE.
     For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups#managed_instance_groups)
     and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroupManagers)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    igm1 = gcp.compute.get_instance_group_manager(name="my-igm",
+        zone="us-central1-a")
+    igm2 = gcp.compute.get_instance_group_manager(self_link="https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm")
+    ```
 
 
     :param str name: The name of the instance group. Either `name` or `self_link` must be provided.

@@ -22,6 +22,60 @@ import (
 // `sourceInstanceTemplate`. To create an instance without a template, use the
 // `compute.Instance` resource.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tplInstanceTemplate, err := compute.NewInstanceTemplate(ctx, "tplInstanceTemplate", &compute.InstanceTemplateArgs{
+//				MachineType: pulumi.String("e2-medium"),
+//				Disks: compute.InstanceTemplateDiskArray{
+//					&compute.InstanceTemplateDiskArgs{
+//						SourceImage: pulumi.String("debian-cloud/debian-11"),
+//						AutoDelete:  pulumi.Bool(true),
+//						DiskSizeGb:  pulumi.Int(100),
+//						Boot:        pulumi.Bool(true),
+//					},
+//				},
+//				NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
+//					&compute.InstanceTemplateNetworkInterfaceArgs{
+//						Network: pulumi.String("default"),
+//					},
+//				},
+//				Metadata: pulumi.Map{
+//					"foo": pulumi.Any("bar"),
+//				},
+//				CanIpForward: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstanceFromTemplate(ctx, "tplInstanceFromTemplate", &compute.InstanceFromTemplateArgs{
+//				Zone:                   pulumi.String("us-central1-a"),
+//				SourceInstanceTemplate: tplInstanceTemplate.SelfLinkUnique,
+//				CanIpForward:           pulumi.Bool(false),
+//				Labels: pulumi.StringMap{
+//					"my_key": pulumi.String("my_value"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // This resource does not support import.

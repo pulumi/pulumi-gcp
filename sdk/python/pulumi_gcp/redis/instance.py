@@ -1382,6 +1382,136 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
 
         ## Example Usage
+        ### Redis Instance Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cache = gcp.redis.Instance("cache", memory_size_gb=1)
+        ```
+        ### Redis Instance Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        redis_network = gcp.compute.get_network(name="redis-test-network")
+        cache = gcp.redis.Instance("cache",
+            tier="STANDARD_HA",
+            memory_size_gb=1,
+            location_id="us-central1-a",
+            alternative_location_id="us-central1-f",
+            authorized_network=redis_network.id,
+            redis_version="REDIS_4_0",
+            display_name="Test Instance",
+            reserved_ip_range="192.168.0.0/29",
+            labels={
+                "my_key": "my_val",
+                "other_key": "other_val",
+            },
+            maintenance_policy=gcp.redis.InstanceMaintenancePolicyArgs(
+                weekly_maintenance_windows=[gcp.redis.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs(
+                    day="TUESDAY",
+                    start_time=gcp.redis.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs(
+                        hours=0,
+                        minutes=30,
+                        seconds=0,
+                        nanos=0,
+                    ),
+                )],
+            ))
+        ```
+        ### Redis Instance Full With Persistence Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cache_persis = gcp.redis.Instance("cache-persis",
+            alternative_location_id="us-central1-f",
+            location_id="us-central1-a",
+            memory_size_gb=1,
+            persistence_config=gcp.redis.InstancePersistenceConfigArgs(
+                persistence_mode="RDB",
+                rdb_snapshot_period="TWELVE_HOURS",
+            ),
+            tier="STANDARD_HA")
+        ```
+        ### Redis Instance Private Service
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        redis_network = gcp.compute.get_network(name="redis-test-network")
+        service_range = gcp.compute.GlobalAddress("serviceRange",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=redis_network.id)
+        private_service_connection = gcp.servicenetworking.Connection("privateServiceConnection",
+            network=redis_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[service_range.name])
+        cache = gcp.redis.Instance("cache",
+            tier="STANDARD_HA",
+            memory_size_gb=1,
+            location_id="us-central1-a",
+            alternative_location_id="us-central1-f",
+            authorized_network=redis_network.id,
+            connect_mode="PRIVATE_SERVICE_ACCESS",
+            redis_version="REDIS_4_0",
+            display_name="Test Instance",
+            opts=pulumi.ResourceOptions(depends_on=[private_service_connection]))
+        ```
+        ### Redis Instance Mrr
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        redis_network = gcp.compute.get_network(name="redis-test-network")
+        cache = gcp.redis.Instance("cache",
+            tier="STANDARD_HA",
+            memory_size_gb=5,
+            location_id="us-central1-a",
+            alternative_location_id="us-central1-f",
+            authorized_network=redis_network.id,
+            redis_version="REDIS_6_X",
+            display_name="Terraform Test Instance",
+            reserved_ip_range="192.168.0.0/28",
+            replica_count=5,
+            read_replicas_mode="READ_REPLICAS_ENABLED",
+            labels={
+                "my_key": "my_val",
+                "other_key": "other_val",
+            })
+        ```
+        ### Redis Instance Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        redis_keyring = gcp.kms.KeyRing("redisKeyring", location="us-central1")
+        redis_key = gcp.kms.CryptoKey("redisKey", key_ring=redis_keyring.id)
+        redis_network = gcp.compute.get_network(name="redis-test-network")
+        cache = gcp.redis.Instance("cache",
+            tier="STANDARD_HA",
+            memory_size_gb=1,
+            location_id="us-central1-a",
+            alternative_location_id="us-central1-f",
+            authorized_network=redis_network.id,
+            redis_version="REDIS_6_X",
+            display_name="Terraform Test Instance",
+            reserved_ip_range="192.168.0.0/29",
+            labels={
+                "my_key": "my_val",
+                "other_key": "other_val",
+            },
+            customer_managed_key=redis_key.id)
+        ```
 
         ## Import
 
@@ -1491,6 +1621,136 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
 
         ## Example Usage
+        ### Redis Instance Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cache = gcp.redis.Instance("cache", memory_size_gb=1)
+        ```
+        ### Redis Instance Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        redis_network = gcp.compute.get_network(name="redis-test-network")
+        cache = gcp.redis.Instance("cache",
+            tier="STANDARD_HA",
+            memory_size_gb=1,
+            location_id="us-central1-a",
+            alternative_location_id="us-central1-f",
+            authorized_network=redis_network.id,
+            redis_version="REDIS_4_0",
+            display_name="Test Instance",
+            reserved_ip_range="192.168.0.0/29",
+            labels={
+                "my_key": "my_val",
+                "other_key": "other_val",
+            },
+            maintenance_policy=gcp.redis.InstanceMaintenancePolicyArgs(
+                weekly_maintenance_windows=[gcp.redis.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs(
+                    day="TUESDAY",
+                    start_time=gcp.redis.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs(
+                        hours=0,
+                        minutes=30,
+                        seconds=0,
+                        nanos=0,
+                    ),
+                )],
+            ))
+        ```
+        ### Redis Instance Full With Persistence Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cache_persis = gcp.redis.Instance("cache-persis",
+            alternative_location_id="us-central1-f",
+            location_id="us-central1-a",
+            memory_size_gb=1,
+            persistence_config=gcp.redis.InstancePersistenceConfigArgs(
+                persistence_mode="RDB",
+                rdb_snapshot_period="TWELVE_HOURS",
+            ),
+            tier="STANDARD_HA")
+        ```
+        ### Redis Instance Private Service
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        redis_network = gcp.compute.get_network(name="redis-test-network")
+        service_range = gcp.compute.GlobalAddress("serviceRange",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=redis_network.id)
+        private_service_connection = gcp.servicenetworking.Connection("privateServiceConnection",
+            network=redis_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[service_range.name])
+        cache = gcp.redis.Instance("cache",
+            tier="STANDARD_HA",
+            memory_size_gb=1,
+            location_id="us-central1-a",
+            alternative_location_id="us-central1-f",
+            authorized_network=redis_network.id,
+            connect_mode="PRIVATE_SERVICE_ACCESS",
+            redis_version="REDIS_4_0",
+            display_name="Test Instance",
+            opts=pulumi.ResourceOptions(depends_on=[private_service_connection]))
+        ```
+        ### Redis Instance Mrr
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        redis_network = gcp.compute.get_network(name="redis-test-network")
+        cache = gcp.redis.Instance("cache",
+            tier="STANDARD_HA",
+            memory_size_gb=5,
+            location_id="us-central1-a",
+            alternative_location_id="us-central1-f",
+            authorized_network=redis_network.id,
+            redis_version="REDIS_6_X",
+            display_name="Terraform Test Instance",
+            reserved_ip_range="192.168.0.0/28",
+            replica_count=5,
+            read_replicas_mode="READ_REPLICAS_ENABLED",
+            labels={
+                "my_key": "my_val",
+                "other_key": "other_val",
+            })
+        ```
+        ### Redis Instance Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        redis_keyring = gcp.kms.KeyRing("redisKeyring", location="us-central1")
+        redis_key = gcp.kms.CryptoKey("redisKey", key_ring=redis_keyring.id)
+        redis_network = gcp.compute.get_network(name="redis-test-network")
+        cache = gcp.redis.Instance("cache",
+            tier="STANDARD_HA",
+            memory_size_gb=1,
+            location_id="us-central1-a",
+            alternative_location_id="us-central1-f",
+            authorized_network=redis_network.id,
+            redis_version="REDIS_6_X",
+            display_name="Terraform Test Instance",
+            reserved_ip_range="192.168.0.0/29",
+            labels={
+                "my_key": "my_val",
+                "other_key": "other_val",
+            },
+            customer_managed_key=redis_key.id)
+        ```
 
         ## Import
 

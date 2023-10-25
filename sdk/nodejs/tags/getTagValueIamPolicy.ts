@@ -6,6 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for tagvalue
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.tags.getTagValueIamPolicy({
+ *     tagValue: google_tags_tag_value.value.name,
+ * });
+ * ```
  */
 export function getTagValueIamPolicy(args: GetTagValueIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetTagValueIamPolicyResult> {
 
@@ -46,6 +57,17 @@ export interface GetTagValueIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for tagvalue
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.tags.getTagValueIamPolicy({
+ *     tagValue: google_tags_tag_value.value.name,
+ * });
+ * ```
  */
 export function getTagValueIamPolicyOutput(args: GetTagValueIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagValueIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getTagValueIamPolicy(a, opts))

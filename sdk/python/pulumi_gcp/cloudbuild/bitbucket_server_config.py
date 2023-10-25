@@ -533,6 +533,52 @@ class BitbucketServerConfig(pulumi.CustomResource):
             * [Connect to a Bitbucket Server host](https://cloud.google.com/build/docs/automating-builds/bitbucket/connect-host-bitbucket-server)
 
         ## Example Usage
+        ### Cloudbuild Bitbucket Server Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bbs_config = gcp.cloudbuild.BitbucketServerConfig("bbs-config",
+            api_key="<api-key>",
+            config_id="bbs-config",
+            host_uri="https://bbs.com",
+            location="us-central1",
+            secrets=gcp.cloudbuild.BitbucketServerConfigSecretsArgs(
+                admin_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
+                read_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
+                webhook_secret_version_name="projects/myProject/secrets/mybbspat/versions/1",
+            ),
+            username="test")
+        ```
+        ### Cloudbuild Bitbucket Server Config Repositories
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bbs_config_with_repos = gcp.cloudbuild.BitbucketServerConfig("bbs-config-with-repos",
+            api_key="<api-key>",
+            config_id="bbs-config",
+            connected_repositories=[
+                gcp.cloudbuild.BitbucketServerConfigConnectedRepositoryArgs(
+                    project_key="DEV",
+                    repo_slug="repo1",
+                ),
+                gcp.cloudbuild.BitbucketServerConfigConnectedRepositoryArgs(
+                    project_key="PROD",
+                    repo_slug="repo1",
+                ),
+            ],
+            host_uri="https://bbs.com",
+            location="us-central1",
+            secrets=gcp.cloudbuild.BitbucketServerConfigSecretsArgs(
+                admin_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
+                read_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
+                webhook_secret_version_name="projects/myProject/secrets/mybbspat/versions/1",
+            ),
+            username="test")
+        ```
 
         ## Import
 
@@ -587,6 +633,52 @@ class BitbucketServerConfig(pulumi.CustomResource):
             * [Connect to a Bitbucket Server host](https://cloud.google.com/build/docs/automating-builds/bitbucket/connect-host-bitbucket-server)
 
         ## Example Usage
+        ### Cloudbuild Bitbucket Server Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bbs_config = gcp.cloudbuild.BitbucketServerConfig("bbs-config",
+            api_key="<api-key>",
+            config_id="bbs-config",
+            host_uri="https://bbs.com",
+            location="us-central1",
+            secrets=gcp.cloudbuild.BitbucketServerConfigSecretsArgs(
+                admin_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
+                read_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
+                webhook_secret_version_name="projects/myProject/secrets/mybbspat/versions/1",
+            ),
+            username="test")
+        ```
+        ### Cloudbuild Bitbucket Server Config Repositories
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bbs_config_with_repos = gcp.cloudbuild.BitbucketServerConfig("bbs-config-with-repos",
+            api_key="<api-key>",
+            config_id="bbs-config",
+            connected_repositories=[
+                gcp.cloudbuild.BitbucketServerConfigConnectedRepositoryArgs(
+                    project_key="DEV",
+                    repo_slug="repo1",
+                ),
+                gcp.cloudbuild.BitbucketServerConfigConnectedRepositoryArgs(
+                    project_key="PROD",
+                    repo_slug="repo1",
+                ),
+            ],
+            host_uri="https://bbs.com",
+            location="us-central1",
+            secrets=gcp.cloudbuild.BitbucketServerConfigSecretsArgs(
+                admin_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
+                read_access_token_version_name="projects/myProject/secrets/mybbspat/versions/1",
+                webhook_secret_version_name="projects/myProject/secrets/mybbspat/versions/1",
+            ),
+            username="test")
+        ```
 
         ## Import
 

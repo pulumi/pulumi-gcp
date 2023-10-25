@@ -32,6 +32,140 @@ namespace Pulumi.Gcp.Compute
     ///     * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
     /// 
     /// ## Example Usage
+    /// ### Address Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ipAddress = new Gcp.Compute.Address("ipAddress");
+    /// 
+    /// });
+    /// ```
+    /// ### Address With Subnetwork
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork");
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new()
+    ///     {
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///         Region = "us-central1",
+    ///         Network = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var internalWithSubnetAndAddress = new Gcp.Compute.Address("internalWithSubnetAndAddress", new()
+    ///     {
+    ///         Subnetwork = defaultSubnetwork.Id,
+    ///         AddressType = "INTERNAL",
+    ///         IPAddress = "10.0.42.42",
+    ///         Region = "us-central1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Address With Gce Endpoint
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var internalWithGceEndpoint = new Gcp.Compute.Address("internalWithGceEndpoint", new()
+    ///     {
+    ///         AddressType = "INTERNAL",
+    ///         Purpose = "GCE_ENDPOINT",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Instance With Ip
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @static = new Gcp.Compute.Address("static");
+    /// 
+    ///     var debianImage = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var instanceWithIp = new Gcp.Compute.Instance("instanceWithIp", new()
+    ///     {
+    ///         MachineType = "f1-micro",
+    ///         Zone = "us-central1-a",
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///         {
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///             {
+    ///                 Image = debianImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 Network = "default",
+    ///                 AccessConfigs = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.InstanceNetworkInterfaceAccessConfigArgs
+    ///                     {
+    ///                         NatIp = @static.IPAddress,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Compute Address Ipsec Interconnect
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network = new Gcp.Compute.Network("network", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var ipsec_interconnect_address = new Gcp.Compute.Address("ipsec-interconnect-address", new()
+    ///     {
+    ///         AddressType = "INTERNAL",
+    ///         Purpose = "IPSEC_INTERCONNECT",
+    ///         IPAddress = "192.168.1.0",
+    ///         PrefixLength = 29,
+    ///         Network = network.SelfLink,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

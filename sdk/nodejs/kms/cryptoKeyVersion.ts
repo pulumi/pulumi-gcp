@@ -18,6 +18,19 @@ import * as utilities from "../utilities";
  *     * [Creating a key Version](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions/create)
  *
  * ## Example Usage
+ * ### Kms Crypto Key Version Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const keyring = new gcp.kms.KeyRing("keyring", {location: "global"});
+ * const cryptokey = new gcp.kms.CryptoKey("cryptokey", {
+ *     keyRing: keyring.id,
+ *     rotationPeriod: "100000s",
+ * });
+ * const example_key = new gcp.kms.CryptoKeyVersion("example-key", {cryptoKey: cryptokey.id});
+ * ```
  *
  * ## Import
  *

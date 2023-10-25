@@ -582,6 +582,9 @@ class HostingVersionConfigRedirect(dict):
         :param str location: The value to put in the HTTP location header of the response.
                The location can contain capture group values from the pattern using a : prefix to identify
                the segment and an optional * to capture the rest of the URL. For example:
+               ```python
+               import pulumi
+               ```
         :param int status_code: The status HTTP code to return in the response. It must be a valid 3xx status code.
         :param str glob: The user-supplied glob to match against the request URL path.
         :param str regex: The user-supplied RE2 regular expression to match against the request URL path.
@@ -623,6 +626,9 @@ class HostingVersionConfigRedirect(dict):
         The value to put in the HTTP location header of the response.
         The location can contain capture group values from the pattern using a : prefix to identify
         the segment and an optional * to capture the rest of the URL. For example:
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "location")
 

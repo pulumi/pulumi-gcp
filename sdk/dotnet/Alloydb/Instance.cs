@@ -19,6 +19,71 @@ namespace Pulumi.Gcp.Alloydb
     ///     * [AlloyDB](https://cloud.google.com/alloydb/docs/)
     /// 
     /// ## Example Usage
+    /// ### Alloydb Instance Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultNetwork = Gcp.Compute.GetNetwork.Invoke(new()
+    ///     {
+    ///         Name = "alloydb-network",
+    ///     });
+    /// 
+    ///     var defaultCluster = new Gcp.Alloydb.Cluster("defaultCluster", new()
+    ///     {
+    ///         ClusterId = "alloydb-cluster",
+    ///         Location = "us-central1",
+    ///         Network = defaultNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///         InitialUser = new Gcp.Alloydb.Inputs.ClusterInitialUserArgs
+    ///         {
+    ///             Password = "alloydb-cluster",
+    ///         },
+    ///     });
+    /// 
+    ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("privateIpAlloc", new()
+    ///     {
+    ///         AddressType = "INTERNAL",
+    ///         Purpose = "VPC_PEERING",
+    ///         PrefixLength = 16,
+    ///         Network = defaultNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///     });
+    /// 
+    ///     var vpcConnection = new Gcp.ServiceNetworking.Connection("vpcConnection", new()
+    ///     {
+    ///         Network = defaultNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             privateIpAlloc.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultInstance = new Gcp.Alloydb.Instance("defaultInstance", new()
+    ///     {
+    ///         Cluster = defaultCluster.Name,
+    ///         InstanceId = "alloydb-instance",
+    ///         InstanceType = "PRIMARY",
+    ///         MachineConfig = new Gcp.Alloydb.Inputs.InstanceMachineConfigArgs
+    ///         {
+    ///             CpuCount = 2,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             vpcConnection,
+    ///         },
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

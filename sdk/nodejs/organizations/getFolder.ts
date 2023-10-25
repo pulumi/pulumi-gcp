@@ -6,6 +6,21 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get information about a Google Cloud Folder.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myFolder1 = gcp.organizations.getFolder({
+ *     folder: "folders/12345",
+ *     lookupOrganization: true,
+ * });
+ * const myFolder2 = gcp.organizations.getFolder({
+ *     folder: "folders/23456",
+ * });
+ * export const myFolder1Organization = myFolder1.then(myFolder1 => myFolder1.organization);
+ * export const myFolder2Parent = myFolder2.then(myFolder2 => myFolder2.parent);
+ * ```
  */
 export function getFolder(args: GetFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderResult> {
 
@@ -68,6 +83,21 @@ export interface GetFolderResult {
 }
 /**
  * Use this data source to get information about a Google Cloud Folder.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myFolder1 = gcp.organizations.getFolder({
+ *     folder: "folders/12345",
+ *     lookupOrganization: true,
+ * });
+ * const myFolder2 = gcp.organizations.getFolder({
+ *     folder: "folders/23456",
+ * });
+ * export const myFolder1Organization = myFolder1.then(myFolder1 => myFolder1.organization);
+ * export const myFolder2Parent = myFolder2.then(myFolder2 => myFolder2.parent);
+ * ```
  */
 export function getFolderOutput(args: GetFolderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFolderResult> {
     return pulumi.output(args).apply((a: any) => getFolder(a, opts))

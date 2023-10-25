@@ -13,12 +13,56 @@ namespace Pulumi.Gcp.BigQuery
     {
         /// <summary>
         /// Retrieves the current IAM policy data for connection
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.BigQuery.GetConnectionIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_bigquery_connection.Connection.Project,
+        ///         Location = google_bigquery_connection.Connection.Location,
+        ///         ConnectionId = google_bigquery_connection.Connection.Connection_id,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetConnectionIamPolicyResult> InvokeAsync(GetConnectionIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectionIamPolicyResult>("gcp:bigquery/getConnectionIamPolicy:getConnectionIamPolicy", args ?? new GetConnectionIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for connection
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.BigQuery.GetConnectionIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_bigquery_connection.Connection.Project,
+        ///         Location = google_bigquery_connection.Connection.Location,
+        ///         ConnectionId = google_bigquery_connection.Connection.Connection_id,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetConnectionIamPolicyResult> Invoke(GetConnectionIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectionIamPolicyResult>("gcp:bigquery/getConnectionIamPolicy:getConnectionIamPolicy", args ?? new GetConnectionIamPolicyInvokeArgs(), options.WithDefaults());

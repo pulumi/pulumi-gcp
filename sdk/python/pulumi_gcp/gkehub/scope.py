@@ -311,6 +311,20 @@ class Scope(pulumi.CustomResource):
             * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 
         ## Example Usage
+        ### Gkehub Scope Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        scope = gcp.gkehub.Scope("scope",
+            labels={
+                "keya": "valuea",
+                "keyb": "valueb",
+                "keyc": "valuec",
+            },
+            scope_id="tf-test-scope%{random_suffix}")
+        ```
 
         ## Import
 
@@ -354,6 +368,20 @@ class Scope(pulumi.CustomResource):
             * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 
         ## Example Usage
+        ### Gkehub Scope Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        scope = gcp.gkehub.Scope("scope",
+            labels={
+                "keya": "valuea",
+                "keyb": "valueb",
+                "keyc": "valuec",
+            },
+            scope_id="tf-test-scope%{random_suffix}")
+        ```
 
         ## Import
 

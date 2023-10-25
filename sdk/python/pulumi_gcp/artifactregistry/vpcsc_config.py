@@ -196,6 +196,17 @@ class VpcscConfig(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Artifact Registry Vpcsc Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_config = gcp.artifactregistry.VpcscConfig("my-config",
+            location="us-central1",
+            vpcsc_policy="ALLOW",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -229,6 +240,17 @@ class VpcscConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Artifact Registry Vpcsc Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_config = gcp.artifactregistry.VpcscConfig("my-config",
+            location="us-central1",
+            vpcsc_policy="ALLOW",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

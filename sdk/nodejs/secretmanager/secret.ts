@@ -14,6 +14,79 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets)
  *
  * ## Example Usage
+ * ### Secret Config Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const secret_basic = new gcp.secretmanager.Secret("secret-basic", {
+ *     labels: {
+ *         label: "my-label",
+ *     },
+ *     replication: {
+ *         userManaged: {
+ *             replicas: [
+ *                 {
+ *                     location: "us-central1",
+ *                 },
+ *                 {
+ *                     location: "us-east1",
+ *                 },
+ *             ],
+ *         },
+ *     },
+ *     secretId: "secret",
+ * });
+ * ```
+ * ### Secret With Annotations
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const secret_with_annotations = new gcp.secretmanager.Secret("secret-with-annotations", {
+ *     annotations: {
+ *         key1: "someval",
+ *         key2: "someval2",
+ *         key3: "someval3",
+ *         key4: "someval4",
+ *         key5: "someval5",
+ *     },
+ *     labels: {
+ *         label: "my-label",
+ *     },
+ *     replication: {
+ *         auto: {},
+ *     },
+ *     secretId: "secret",
+ * });
+ * ```
+ * ### Secret With Automatic Cmek
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const kms_secret_binding = new gcp.kms.CryptoKeyIAMMember("kms-secret-binding", {
+ *     cryptoKeyId: "kms-key",
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-secretmanager.iam.gserviceaccount.com`),
+ * });
+ * const secret_with_automatic_cmek = new gcp.secretmanager.Secret("secret-with-automatic-cmek", {
+ *     secretId: "secret",
+ *     replication: {
+ *         auto: {
+ *             customerManagedEncryption: {
+ *                 kmsKeyName: "kms-key",
+ *             },
+ *         },
+ *     },
+ * }, {
+ *     dependsOn: [kms_secret_binding],
+ * });
+ * ```
  *
  * ## Import
  *

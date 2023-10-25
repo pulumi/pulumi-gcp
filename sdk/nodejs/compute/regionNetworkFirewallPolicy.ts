@@ -8,6 +8,17 @@ import * as utilities from "../utilities";
  * The Compute NetworkFirewallPolicy resource
  *
  * ## Example Usage
+ * ### Regional
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.compute.RegionNetworkFirewallPolicy("primary", {
+ *     description: "Sample regional network firewall policy",
+ *     project: "my-project-name",
+ *     region: "us-west1",
+ * });
+ * ```
  *
  * ## Import
  *

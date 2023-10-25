@@ -662,6 +662,70 @@ class CxSecuritySettings(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 
         ## Example Usage
+        ### Dialogflowcx Security Settings Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_security_settings = gcp.diagflow.CxSecuritySettings("basicSecuritySettings",
+            display_name="dialogflowcx-security-settings",
+            location="global",
+            purge_data_types=[],
+            retention_window_days=7)
+        ```
+        ### Dialogflowcx Security Settings Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        inspect = gcp.dataloss.PreventionInspectTemplate("inspect",
+            parent="projects/my-project-name/locations/global",
+            display_name="dialogflowcx-inspect-template",
+            inspect_config=gcp.dataloss.PreventionInspectTemplateInspectConfigArgs(
+                info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs(
+                    name="EMAIL_ADDRESS",
+                )],
+            ))
+        deidentify = gcp.dataloss.PreventionDeidentifyTemplate("deidentify",
+            parent="projects/my-project-name/locations/global",
+            display_name="dialogflowcx-deidentify-template",
+            deidentify_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigArgs(
+                info_type_transformations=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs(
+                    transformations=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
+                        primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
+                            replace_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs(
+                                new_value=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs(
+                                    string_value="[REDACTED]",
+                                ),
+                            ),
+                        ),
+                    )],
+                ),
+            ))
+        bucket = gcp.storage.Bucket("bucket",
+            location="US",
+            uniform_bucket_level_access=True)
+        basic_security_settings = gcp.diagflow.CxSecuritySettings("basicSecuritySettings",
+            display_name="dialogflowcx-security-settings",
+            location="global",
+            redaction_strategy="REDACT_WITH_SERVICE",
+            redaction_scope="REDACT_DISK_STORAGE",
+            inspect_template=inspect.id,
+            deidentify_template=deidentify.id,
+            purge_data_types=["DIALOGFLOW_HISTORY"],
+            audio_export_settings=gcp.diagflow.CxSecuritySettingsAudioExportSettingsArgs(
+                gcs_bucket=bucket.id,
+                audio_export_pattern="export",
+                enable_audio_redaction=True,
+                audio_format="OGG",
+            ),
+            insights_export_settings=gcp.diagflow.CxSecuritySettingsInsightsExportSettingsArgs(
+                enable_insights_export=True,
+            ),
+            retention_strategy="REMOVE_AFTER_CONVERSATION")
+        ```
 
         ## Import
 
@@ -734,6 +798,70 @@ class CxSecuritySettings(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 
         ## Example Usage
+        ### Dialogflowcx Security Settings Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_security_settings = gcp.diagflow.CxSecuritySettings("basicSecuritySettings",
+            display_name="dialogflowcx-security-settings",
+            location="global",
+            purge_data_types=[],
+            retention_window_days=7)
+        ```
+        ### Dialogflowcx Security Settings Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        inspect = gcp.dataloss.PreventionInspectTemplate("inspect",
+            parent="projects/my-project-name/locations/global",
+            display_name="dialogflowcx-inspect-template",
+            inspect_config=gcp.dataloss.PreventionInspectTemplateInspectConfigArgs(
+                info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs(
+                    name="EMAIL_ADDRESS",
+                )],
+            ))
+        deidentify = gcp.dataloss.PreventionDeidentifyTemplate("deidentify",
+            parent="projects/my-project-name/locations/global",
+            display_name="dialogflowcx-deidentify-template",
+            deidentify_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigArgs(
+                info_type_transformations=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs(
+                    transformations=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
+                        primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
+                            replace_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs(
+                                new_value=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs(
+                                    string_value="[REDACTED]",
+                                ),
+                            ),
+                        ),
+                    )],
+                ),
+            ))
+        bucket = gcp.storage.Bucket("bucket",
+            location="US",
+            uniform_bucket_level_access=True)
+        basic_security_settings = gcp.diagflow.CxSecuritySettings("basicSecuritySettings",
+            display_name="dialogflowcx-security-settings",
+            location="global",
+            redaction_strategy="REDACT_WITH_SERVICE",
+            redaction_scope="REDACT_DISK_STORAGE",
+            inspect_template=inspect.id,
+            deidentify_template=deidentify.id,
+            purge_data_types=["DIALOGFLOW_HISTORY"],
+            audio_export_settings=gcp.diagflow.CxSecuritySettingsAudioExportSettingsArgs(
+                gcs_bucket=bucket.id,
+                audio_export_pattern="export",
+                enable_audio_redaction=True,
+                audio_format="OGG",
+            ),
+            insights_export_settings=gcp.diagflow.CxSecuritySettingsInsightsExportSettingsArgs(
+                enable_insights_export=True,
+            ),
+            retention_strategy="REMOVE_AFTER_CONVERSATION")
+        ```
 
         ## Import
 

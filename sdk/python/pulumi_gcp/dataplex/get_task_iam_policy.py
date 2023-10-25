@@ -113,6 +113,18 @@ def get_task_iam_policy(lake: Optional[str] = None,
     """
     Retrieves the current IAM policy data for task
 
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.dataplex.get_task_iam_policy(project=google_dataplex_task["example"]["project"],
+        location=google_dataplex_task["example"]["location"],
+        lake=google_dataplex_task["example"]["lake"],
+        task_id=google_dataplex_task["example"]["task_id"])
+    ```
+
 
     :param str lake: The lake in which the task will be created in.
            Used to find the parent resource to bind the IAM policy to
@@ -147,6 +159,18 @@ def get_task_iam_policy_output(lake: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTaskIamPolicyResult]:
     """
     Retrieves the current IAM policy data for task
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.dataplex.get_task_iam_policy(project=google_dataplex_task["example"]["project"],
+        location=google_dataplex_task["example"]["location"],
+        lake=google_dataplex_task["example"]["lake"],
+        task_id=google_dataplex_task["example"]["task_id"])
+    ```
 
 
     :param str lake: The lake in which the task will be created in.

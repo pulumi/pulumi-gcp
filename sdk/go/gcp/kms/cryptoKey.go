@@ -30,6 +30,73 @@ import (
 //   - [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
 //
 // ## Example Usage
+// ### Kms Crypto Key Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			keyring, err := kms.NewKeyRing(ctx, "keyring", &kms.KeyRingArgs{
+//				Location: pulumi.String("global"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kms.NewCryptoKey(ctx, "example-key", &kms.CryptoKeyArgs{
+//				KeyRing:        keyring.ID(),
+//				RotationPeriod: pulumi.String("100000s"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Kms Crypto Key Asymmetric Sign
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			keyring, err := kms.NewKeyRing(ctx, "keyring", &kms.KeyRingArgs{
+//				Location: pulumi.String("global"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kms.NewCryptoKey(ctx, "example-asymmetric-sign-key", &kms.CryptoKeyArgs{
+//				KeyRing: keyring.ID(),
+//				Purpose: pulumi.String("ASYMMETRIC_SIGN"),
+//				VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
+//					Algorithm: pulumi.String("EC_SIGN_P384_SHA384"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

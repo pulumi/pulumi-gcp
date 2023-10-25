@@ -24,6 +24,89 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// &gt; **Note:** `gcp.bigqueryanalyticshub.DataExchangeIamBinding` resources **can be** used in conjunction with `gcp.bigqueryanalyticshub.DataExchangeIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
+    /// ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/viewer",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.BigQueryAnalyticsHub.DataExchangeIamPolicy("policy", new()
+    ///     {
+    ///         Project = google_bigquery_analytics_hub_data_exchange.Data_exchange.Project,
+    ///         Location = google_bigquery_analytics_hub_data_exchange.Data_exchange.Location,
+    ///         DataExchangeId = google_bigquery_analytics_hub_data_exchange.Data_exchange.Data_exchange_id,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var binding = new Gcp.BigQueryAnalyticsHub.DataExchangeIamBinding("binding", new()
+    ///     {
+    ///         Project = google_bigquery_analytics_hub_data_exchange.Data_exchange.Project,
+    ///         Location = google_bigquery_analytics_hub_data_exchange.Data_exchange.Location,
+    ///         DataExchangeId = google_bigquery_analytics_hub_data_exchange.Data_exchange.Data_exchange_id,
+    ///         Role = "roles/viewer",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_member
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var member = new Gcp.BigQueryAnalyticsHub.DataExchangeIamMember("member", new()
+    ///     {
+    ///         Project = google_bigquery_analytics_hub_data_exchange.Data_exchange.Project,
+    ///         Location = google_bigquery_analytics_hub_data_exchange.Data_exchange.Location,
+    ///         DataExchangeId = google_bigquery_analytics_hub_data_exchange.Data_exchange.Data_exchange_id,
+    ///         Role = "roles/viewer",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}} * {{project}}/{{location}}/{{data_exchange_id}} * {{location}}/{{data_exchange_id}} * {{data_exchange_id}} Any variables not passed in the import command will be taken from the provider configuration. Bigquery Analytics Hub dataexchange IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

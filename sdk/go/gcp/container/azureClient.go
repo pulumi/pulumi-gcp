@@ -18,6 +18,34 @@ import (
 // For more information, see:
 // * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
 // ## Example Usage
+// ### Basic_azure_client
+// A basic example of a containerazure azure client
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := container.NewAzureClient(ctx, "primary", &container.AzureClientArgs{
+//				ApplicationId: pulumi.String("12345678-1234-1234-1234-123456789111"),
+//				Location:      pulumi.String("us-west1"),
+//				Project:       pulumi.String("my-project-name"),
+//				TenantId:      pulumi.String("12345678-1234-1234-1234-123456789111"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

@@ -6,6 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for table
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.bigquery.getTableIamPolicy({
+ *     project: google_bigquery_table.test.project,
+ *     datasetId: google_bigquery_table.test.dataset_id,
+ *     tableId: google_bigquery_table.test.table_id,
+ * });
+ * ```
  */
 export function getTableIamPolicy(args: GetTableIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetTableIamPolicyResult> {
 
@@ -53,6 +66,19 @@ export interface GetTableIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for table
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.bigquery.getTableIamPolicy({
+ *     project: google_bigquery_table.test.project,
+ *     datasetId: google_bigquery_table.test.dataset_id,
+ *     tableId: google_bigquery_table.test.table_id,
+ * });
+ * ```
  */
 export function getTableIamPolicyOutput(args: GetTableIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTableIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getTableIamPolicy(a, opts))

@@ -402,6 +402,31 @@ class EngineModel(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/ai-platform/prediction/docs/deploying-models)
 
         ## Example Usage
+        ### Ml Model Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.ml.EngineModel("default",
+            description="My model",
+            regions="us-central1")
+        ```
+        ### Ml Model Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.ml.EngineModel("default",
+            description="My model",
+            labels={
+                "my_model": "foo",
+            },
+            online_prediction_console_logging=True,
+            online_prediction_logging=True,
+            regions="us-central1")
+        ```
 
         ## Import
 
@@ -456,6 +481,31 @@ class EngineModel(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/ai-platform/prediction/docs/deploying-models)
 
         ## Example Usage
+        ### Ml Model Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.ml.EngineModel("default",
+            description="My model",
+            regions="us-central1")
+        ```
+        ### Ml Model Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.ml.EngineModel("default",
+            description="My model",
+            labels={
+                "my_model": "foo",
+            },
+            online_prediction_console_logging=True,
+            online_prediction_logging=True,
+            regions="us-central1")
+        ```
 
         ## Import
 

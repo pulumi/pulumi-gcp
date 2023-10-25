@@ -103,6 +103,15 @@ def get_certificate_template_iam_policy(certificate_template: Optional[str] = No
     """
     Retrieves the current IAM policy data for certificatetemplate
 
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.certificateauthority.get_certificate_template_iam_policy(certificate_template=google_privateca_certificate_template["default"]["id"])
+    ```
+
 
     :param str certificate_template: Used to find the parent resource to bind the IAM policy to
     :param str project: The ID of the project in which the resource belongs.
@@ -131,6 +140,15 @@ def get_certificate_template_iam_policy_output(certificate_template: Optional[pu
                                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateTemplateIamPolicyResult]:
     """
     Retrieves the current IAM policy data for certificatetemplate
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.certificateauthority.get_certificate_template_iam_policy(certificate_template=google_privateca_certificate_template["default"]["id"])
+    ```
 
 
     :param str certificate_template: Used to find the parent resource to bind the IAM policy to

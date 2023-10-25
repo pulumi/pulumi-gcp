@@ -6,6 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for source
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.securitycenter.getSourceIamPolicy({
+ *     source: google_scc_source.custom_source.name,
+ * });
+ * ```
  */
 export function getSourceIamPolicy(args: GetSourceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetSourceIamPolicyResult> {
 
@@ -49,6 +60,17 @@ export interface GetSourceIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for source
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.securitycenter.getSourceIamPolicy({
+ *     source: google_scc_source.custom_source.name,
+ * });
+ * ```
  */
 export function getSourceIamPolicyOutput(args: GetSourceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSourceIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getSourceIamPolicy(a, opts))

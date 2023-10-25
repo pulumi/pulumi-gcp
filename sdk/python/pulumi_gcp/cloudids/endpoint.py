@@ -425,6 +425,28 @@ class Endpoint(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/intrusion-detection-system/docs/configuring-ids)
 
         ## Example Usage
+        ### Cloudids Endpoint
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default")
+        service_range = gcp.compute.GlobalAddress("serviceRange",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=default.id)
+        private_service_connection = gcp.servicenetworking.Connection("privateServiceConnection",
+            network=default.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[service_range.name])
+        example_endpoint = gcp.cloudids.Endpoint("example-endpoint",
+            location="us-central1-f",
+            network=default.id,
+            severity="INFORMATIONAL",
+            opts=pulumi.ResourceOptions(depends_on=[private_service_connection]))
+        ```
 
         ## Import
 
@@ -471,6 +493,28 @@ class Endpoint(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/intrusion-detection-system/docs/configuring-ids)
 
         ## Example Usage
+        ### Cloudids Endpoint
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default")
+        service_range = gcp.compute.GlobalAddress("serviceRange",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=default.id)
+        private_service_connection = gcp.servicenetworking.Connection("privateServiceConnection",
+            network=default.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[service_range.name])
+        example_endpoint = gcp.cloudids.Endpoint("example-endpoint",
+            location="us-central1-f",
+            network=default.id,
+            severity="INFORMATIONAL",
+            opts=pulumi.ResourceOptions(depends_on=[private_service_connection]))
+        ```
 
         ## Import
 

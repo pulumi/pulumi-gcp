@@ -14,6 +14,33 @@ import * as utilities from "../utilities";
  *     * Use UrlLists
  *
  * ## Example Usage
+ * ### Network Security Url Lists Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.networksecurity.UrlList("default", {
+ *     location: "us-central1",
+ *     values: ["www.example.com"],
+ * });
+ * ```
+ * ### Network Security Url Lists Advanced
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.networksecurity.UrlList("default", {
+ *     description: "my description",
+ *     location: "us-central1",
+ *     values: [
+ *         "www.example.com",
+ *         "about.example.com",
+ *         "github.com/example-org/*",
+ *     ],
+ * });
+ * ```
  *
  * ## Import
  *

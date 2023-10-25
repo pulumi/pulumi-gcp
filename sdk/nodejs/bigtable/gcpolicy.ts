@@ -20,6 +20,116 @@ import * as utilities from "../utilities";
  * The workaround is unreplicating the instance first by updating the instance to have one
  * cluster.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.bigtable.Instance("instance", {clusters: [{
+ *     clusterId: "tf-instance-cluster",
+ *     numNodes: 3,
+ *     storageType: "HDD",
+ * }]});
+ * const table = new gcp.bigtable.Table("table", {
+ *     instanceName: instance.name,
+ *     columnFamilies: [{
+ *         family: "name",
+ *     }],
+ * });
+ * const policy = new gcp.bigtable.GCPolicy("policy", {
+ *     instanceName: instance.name,
+ *     table: table.name,
+ *     columnFamily: "name",
+ *     deletionPolicy: "ABANDON",
+ *     gcRules: `  {
+ *     "rules": [
+ *       {
+ *         "max_age": "168h"
+ *       }
+ *     ]
+ *   }
+ * `,
+ * });
+ * ```
+ *
+ * Multiple conditions is also supported. `UNION` when any of its sub-policies apply (OR). `INTERSECTION` when all its sub-policies apply (AND)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = new gcp.bigtable.GCPolicy("policy", {
+ *     instanceName: google_bigtable_instance.instance.name,
+ *     table: google_bigtable_table.table.name,
+ *     columnFamily: "name",
+ *     deletionPolicy: "ABANDON",
+ *     gcRules: `  {
+ *     "mode": "union",
+ *     "rules": [
+ *       {
+ *         "max_age": "168h"
+ *       },
+ *       {
+ *         "max_version": 10
+ *       }
+ *     ]
+ *   }
+ * `,
+ * });
+ * ```
+ *
+ * An example of more complex GC policy:
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.bigtable.Instance("instance", {
+ *     clusters: [{
+ *         clusterId: "cid",
+ *         zone: "us-central1-b",
+ *     }],
+ *     instanceType: "DEVELOPMENT",
+ *     deletionProtection: false,
+ * });
+ * const table = new gcp.bigtable.Table("table", {
+ *     instanceName: instance.id,
+ *     columnFamilies: [{
+ *         family: "cf1",
+ *     }],
+ * });
+ * const policy = new gcp.bigtable.GCPolicy("policy", {
+ *     instanceName: instance.id,
+ *     table: table.name,
+ *     columnFamily: "cf1",
+ *     deletionPolicy: "ABANDON",
+ *     gcRules: `  {
+ *     "mode": "union",
+ *     "rules": [
+ *       {
+ *         "max_age": "10h"
+ *       },
+ *       {
+ *         "mode": "intersection",
+ *         "rules": [
+ *           {
+ *             "max_age": "2h"
+ *           },
+ *           {
+ *             "max_version": 2
+ *           }
+ *         ]
+ *       }
+ *     ]
+ *   }
+ * `,
+ * });
+ * ```
+ * This is equivalent to running the following `cbt` command:
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
+ *
  * ## Import
  *
  * This resource does not support import.

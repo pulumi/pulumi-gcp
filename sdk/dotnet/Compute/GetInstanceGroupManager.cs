@@ -15,6 +15,34 @@ namespace Pulumi.Gcp.Compute
         /// Get a Compute Instance Group Manager within GCE.
         /// For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups#managed_instance_groups)
         /// and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroupManagers)
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var igm1 = Gcp.Compute.GetInstanceGroupManager.Invoke(new()
+        ///     {
+        ///         Name = "my-igm",
+        ///         Zone = "us-central1-a",
+        ///     });
+        /// 
+        ///     var igm2 = Gcp.Compute.GetInstanceGroupManager.Invoke(new()
+        ///     {
+        ///         SelfLink = "https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceGroupManagerResult> InvokeAsync(GetInstanceGroupManagerArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceGroupManagerResult>("gcp:compute/getInstanceGroupManager:getInstanceGroupManager", args ?? new GetInstanceGroupManagerArgs(), options.WithDefaults());
@@ -23,6 +51,34 @@ namespace Pulumi.Gcp.Compute
         /// Get a Compute Instance Group Manager within GCE.
         /// For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups#managed_instance_groups)
         /// and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroupManagers)
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var igm1 = Gcp.Compute.GetInstanceGroupManager.Invoke(new()
+        ///     {
+        ///         Name = "my-igm",
+        ///         Zone = "us-central1-a",
+        ///     });
+        /// 
+        ///     var igm2 = Gcp.Compute.GetInstanceGroupManager.Invoke(new()
+        ///     {
+        ///         SelfLink = "https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstanceGroupManagerResult> Invoke(GetInstanceGroupManagerInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceGroupManagerResult>("gcp:compute/getInstanceGroupManager:getInstanceGroupManager", args ?? new GetInstanceGroupManagerInvokeArgs(), options.WithDefaults());

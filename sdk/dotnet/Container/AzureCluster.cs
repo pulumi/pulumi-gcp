@@ -15,6 +15,163 @@ namespace Pulumi.Gcp.Container
     /// For more information, see:
     /// * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
     /// ## Example Usage
+    /// ### Basic_azure_cluster
+    /// A basic example of a containerazure azure cluster
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var versions = Gcp.Container.GetAzureVersions.Invoke(new()
+    ///     {
+    ///         Location = "us-west1",
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    ///     var basic = new Gcp.Container.AzureClient("basic", new()
+    ///     {
+    ///         ApplicationId = "12345678-1234-1234-1234-123456789111",
+    ///         Location = "us-west1",
+    ///         Project = "my-project-name",
+    ///         TenantId = "12345678-1234-1234-1234-123456789111",
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Container.AzureCluster("primary", new()
+    ///     {
+    ///         Authorization = new Gcp.Container.Inputs.AzureClusterAuthorizationArgs
+    ///         {
+    ///             AdminUsers = new[]
+    ///             {
+    ///                 new Gcp.Container.Inputs.AzureClusterAuthorizationAdminUserArgs
+    ///                 {
+    ///                     Username = "mmv2@google.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///         AzureRegion = "westus2",
+    ///         Client = basic.Name.Apply(name =&gt; $"projects/my-project-number/locations/us-west1/azureClients/{name}"),
+    ///         ControlPlane = new Gcp.Container.Inputs.AzureClusterControlPlaneArgs
+    ///         {
+    ///             SshConfig = new Gcp.Container.Inputs.AzureClusterControlPlaneSshConfigArgs
+    ///             {
+    ///                 AuthorizedKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
+    ///             },
+    ///             SubnetId = "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
+    ///             Version = versions.Apply(getAzureVersionsResult =&gt; getAzureVersionsResult.ValidVersions[0]),
+    ///         },
+    ///         Fleet = new Gcp.Container.Inputs.AzureClusterFleetArgs
+    ///         {
+    ///             Project = "my-project-number",
+    ///         },
+    ///         Location = "us-west1",
+    ///         Networking = new Gcp.Container.Inputs.AzureClusterNetworkingArgs
+    ///         {
+    ///             PodAddressCidrBlocks = new[]
+    ///             {
+    ///                 "10.200.0.0/16",
+    ///             },
+    ///             ServiceAddressCidrBlocks = new[]
+    ///             {
+    ///                 "10.32.0.0/24",
+    ///             },
+    ///             VirtualNetworkId = "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
+    ///         },
+    ///         Project = "my-project-name",
+    ///         ResourceGroupId = "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Beta_basic_enum_azure_cluster
+    /// A basic example of a containerazure azure cluster with lowercase enums (beta)
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var versions = Gcp.Container.GetAzureVersions.Invoke(new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Location = "us-west1",
+    ///     });
+    /// 
+    ///     var basic = new Gcp.Container.AzureClient("basic", new()
+    ///     {
+    ///         ApplicationId = "12345678-1234-1234-1234-123456789111",
+    ///         Location = "us-west1",
+    ///         TenantId = "12345678-1234-1234-1234-123456789111",
+    ///         Project = "my-project-name",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Container.AzureCluster("primary", new()
+    ///     {
+    ///         Authorization = new Gcp.Container.Inputs.AzureClusterAuthorizationArgs
+    ///         {
+    ///             AdminUsers = new[]
+    ///             {
+    ///                 new Gcp.Container.Inputs.AzureClusterAuthorizationAdminUserArgs
+    ///                 {
+    ///                     Username = "mmv2@google.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///         AzureRegion = "westus2",
+    ///         Client = basic.Name.Apply(name =&gt; $"projects/my-project-number/locations/us-west1/azureClients/{name}"),
+    ///         ControlPlane = new Gcp.Container.Inputs.AzureClusterControlPlaneArgs
+    ///         {
+    ///             SshConfig = new Gcp.Container.Inputs.AzureClusterControlPlaneSshConfigArgs
+    ///             {
+    ///                 AuthorizedKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
+    ///             },
+    ///             SubnetId = "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
+    ///             Version = versions.Apply(getAzureVersionsResult =&gt; getAzureVersionsResult.ValidVersions[0]),
+    ///         },
+    ///         Fleet = new Gcp.Container.Inputs.AzureClusterFleetArgs
+    ///         {
+    ///             Project = "my-project-number",
+    ///         },
+    ///         Location = "us-west1",
+    ///         Networking = new Gcp.Container.Inputs.AzureClusterNetworkingArgs
+    ///         {
+    ///             PodAddressCidrBlocks = new[]
+    ///             {
+    ///                 "10.200.0.0/16",
+    ///             },
+    ///             ServiceAddressCidrBlocks = new[]
+    ///             {
+    ///                 "10.32.0.0/24",
+    ///             },
+    ///             VirtualNetworkId = "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
+    ///         },
+    ///         ResourceGroupId = "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
+    ///         Project = "my-project-name",
+    ///         LoggingConfig = new Gcp.Container.Inputs.AzureClusterLoggingConfigArgs
+    ///         {
+    ///             ComponentConfig = new Gcp.Container.Inputs.AzureClusterLoggingConfigComponentConfigArgs
+    ///             {
+    ///                 EnableComponents = new[]
+    ///                 {
+    ///                     "system_components",
+    ///                     "workloads",
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

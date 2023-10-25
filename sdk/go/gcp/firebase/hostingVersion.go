@@ -14,6 +14,200 @@ import (
 )
 
 // ## Example Usage
+// ### Firebasehosting Version Redirect
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultHostingSite, err := firebase.NewHostingSite(ctx, "defaultHostingSite", &firebase.HostingSiteArgs{
+//				Project: pulumi.String("my-project-name"),
+//				SiteId:  pulumi.String("site-id"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			defaultHostingVersion, err := firebase.NewHostingVersion(ctx, "defaultHostingVersion", &firebase.HostingVersionArgs{
+//				SiteId: defaultHostingSite.SiteId,
+//				Config: &firebase.HostingVersionConfigArgs{
+//					Redirects: firebase.HostingVersionConfigRedirectArray{
+//						&firebase.HostingVersionConfigRedirectArgs{
+//							Glob:       pulumi.String("/google/**"),
+//							StatusCode: pulumi.Int(302),
+//							Location:   pulumi.String("https://www.google.com"),
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firebase.NewHostingRelease(ctx, "defaultHostingRelease", &firebase.HostingReleaseArgs{
+//				SiteId:      defaultHostingSite.SiteId,
+//				VersionName: defaultHostingVersion.Name,
+//				Message:     pulumi.String("Redirect to Google"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Firebasehosting Version Cloud Run
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultHostingSite, err := firebase.NewHostingSite(ctx, "defaultHostingSite", &firebase.HostingSiteArgs{
+//				Project: pulumi.String("my-project-name"),
+//				SiteId:  pulumi.String("site-id"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			defaultService, err := cloudrunv2.NewService(ctx, "defaultService", &cloudrunv2.ServiceArgs{
+//				Project:  pulumi.String("my-project-name"),
+//				Location: pulumi.String("us-central1"),
+//				Ingress:  pulumi.String("INGRESS_TRAFFIC_ALL"),
+//				Template: &cloudrunv2.ServiceTemplateArgs{
+//					Containers: cloudrunv2.ServiceTemplateContainerArray{
+//						&cloudrunv2.ServiceTemplateContainerArgs{
+//							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			defaultHostingVersion, err := firebase.NewHostingVersion(ctx, "defaultHostingVersion", &firebase.HostingVersionArgs{
+//				SiteId: defaultHostingSite.SiteId,
+//				Config: &firebase.HostingVersionConfigArgs{
+//					Rewrites: firebase.HostingVersionConfigRewriteArray{
+//						&firebase.HostingVersionConfigRewriteArgs{
+//							Glob: pulumi.String("/hello/**"),
+//							Run: &firebase.HostingVersionConfigRewriteRunArgs{
+//								ServiceId: defaultService.Name,
+//								Region:    defaultService.Location,
+//							},
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firebase.NewHostingRelease(ctx, "defaultHostingRelease", &firebase.HostingReleaseArgs{
+//				SiteId:      defaultHostingSite.SiteId,
+//				VersionName: defaultHostingVersion.Name,
+//				Message:     pulumi.String("Cloud Run Integration"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Firebasehosting Version Cloud Functions
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudfunctions"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultHostingSite, err := firebase.NewHostingSite(ctx, "defaultHostingSite", &firebase.HostingSiteArgs{
+//				Project: pulumi.String("my-project-name"),
+//				SiteId:  pulumi.String("site-id"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Project:                  pulumi.String("my-project-name"),
+//				Location:                 pulumi.String("US"),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
+//				Bucket: bucket.Name,
+//				Source: pulumi.NewFileAsset("function-source.zip"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			function, err := cloudfunctions.NewFunction(ctx, "function", &cloudfunctions.FunctionArgs{
+//				Project:             pulumi.String("my-project-name"),
+//				Description:         pulumi.String("A Cloud Function connected to Firebase Hosing"),
+//				Runtime:             pulumi.String("nodejs16"),
+//				AvailableMemoryMb:   pulumi.Int(128),
+//				SourceArchiveBucket: bucket.Name,
+//				SourceArchiveObject: object.Name,
+//				TriggerHttp:         pulumi.Bool(true),
+//				EntryPoint:          pulumi.String("helloHttp"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			defaultHostingVersion, err := firebase.NewHostingVersion(ctx, "defaultHostingVersion", &firebase.HostingVersionArgs{
+//				SiteId: defaultHostingSite.SiteId,
+//				Config: &firebase.HostingVersionConfigArgs{
+//					Rewrites: firebase.HostingVersionConfigRewriteArray{
+//						&firebase.HostingVersionConfigRewriteArgs{
+//							Glob:     pulumi.String("/hello/**"),
+//							Function: function.Name,
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firebase.NewHostingRelease(ctx, "defaultHostingRelease", &firebase.HostingReleaseArgs{
+//				SiteId:      defaultHostingSite.SiteId,
+//				VersionName: defaultHostingVersion.Name,
+//				Message:     pulumi.String("Cloud Functions Integration"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

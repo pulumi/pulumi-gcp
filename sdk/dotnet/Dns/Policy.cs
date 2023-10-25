@@ -20,6 +20,60 @@ namespace Pulumi.Gcp.Dns
     ///     * [Using DNS server policies](https://cloud.google.com/dns/zones/#using-dns-server-policies)
     /// 
     /// ## Example Usage
+    /// ### Dns Policy Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network_1 = new Gcp.Compute.Network("network-1", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var network_2 = new Gcp.Compute.Network("network-2", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var example_policy = new Gcp.Dns.Policy("example-policy", new()
+    ///     {
+    ///         EnableInboundForwarding = true,
+    ///         EnableLogging = true,
+    ///         AlternativeNameServerConfig = new Gcp.Dns.Inputs.PolicyAlternativeNameServerConfigArgs
+    ///         {
+    ///             TargetNameServers = new[]
+    ///             {
+    ///                 new Gcp.Dns.Inputs.PolicyAlternativeNameServerConfigTargetNameServerArgs
+    ///                 {
+    ///                     Ipv4Address = "172.16.1.10",
+    ///                     ForwardingPath = "private",
+    ///                 },
+    ///                 new Gcp.Dns.Inputs.PolicyAlternativeNameServerConfigTargetNameServerArgs
+    ///                 {
+    ///                     Ipv4Address = "172.16.1.20",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Networks = new[]
+    ///         {
+    ///             new Gcp.Dns.Inputs.PolicyNetworkArgs
+    ///             {
+    ///                 NetworkUrl = network_1.Id,
+    ///             },
+    ///             new Gcp.Dns.Inputs.PolicyNetworkArgs
+    ///             {
+    ///                 NetworkUrl = network_2.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

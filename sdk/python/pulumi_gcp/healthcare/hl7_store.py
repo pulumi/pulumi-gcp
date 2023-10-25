@@ -411,6 +411,135 @@ class Hl7Store(pulumi.CustomResource):
             * [Creating a HL7v2 Store](https://cloud.google.com/healthcare/docs/how-tos/hl7v2)
 
         ## Example Usage
+        ### Healthcare Hl7 V2 Store Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        topic = gcp.pubsub.Topic("topic")
+        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
+        store = gcp.healthcare.Hl7Store("store",
+            dataset=dataset.id,
+            notification_configs=[gcp.healthcare.Hl7StoreNotificationConfigsArgs(
+                pubsub_topic=topic.id,
+            )],
+            labels={
+                "label1": "labelvalue1",
+            })
+        ```
+        ### Healthcare Hl7 V2 Store Parser Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        store = gcp.healthcare.Hl7Store("store",
+            dataset=dataset.id,
+            parser_config=gcp.healthcare.Hl7StoreParserConfigArgs(
+                allow_null_header=False,
+                segment_terminator="Jw==",
+                schema=\"\"\"{
+          "schemas": [{
+            "messageSchemaConfigs": {
+              "ADT_A01": {
+                "name": "ADT_A01",
+                "minOccurs": 1,
+                "maxOccurs": 1,
+                "members": [{
+                    "segment": {
+                      "type": "MSH",
+                      "minOccurs": 1,
+                      "maxOccurs": 1
+                    }
+                  },
+                  {
+                    "segment": {
+                      "type": "EVN",
+                      "minOccurs": 1,
+                      "maxOccurs": 1
+                    }
+                  },
+                  {
+                    "segment": {
+                      "type": "PID",
+                      "minOccurs": 1,
+                      "maxOccurs": 1
+                    }
+                  },
+                  {
+                    "segment": {
+                      "type": "ZPD",
+                      "minOccurs": 1,
+                      "maxOccurs": 1
+                    }
+                  },
+                  {
+                    "segment": {
+                      "type": "OBX"
+                    }
+                  },
+                  {
+                    "group": {
+                      "name": "PROCEDURE",
+                      "members": [{
+                          "segment": {
+                            "type": "PR1",
+                            "minOccurs": 1,
+                            "maxOccurs": 1
+                          }
+                        },
+                        {
+                          "segment": {
+                            "type": "ROL"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "segment": {
+                      "type": "PDA",
+                      "maxOccurs": 1
+                    }
+                  }
+                ]
+              }
+            }
+          }],
+          "types": [{
+            "type": [{
+                "name": "ZPD",
+                "primitive": "VARIES"
+              }
+
+            ]
+          }],
+          "ignoreMinOccurs": true
+        }
+        \"\"\",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Healthcare Hl7 V2 Store Unschematized
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        store = gcp.healthcare.Hl7Store("store",
+            dataset=dataset.id,
+            parser_config=gcp.healthcare.Hl7StoreParserConfigArgs(
+                allow_null_header=False,
+                segment_terminator="Jw==",
+                version="V2",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -470,6 +599,135 @@ class Hl7Store(pulumi.CustomResource):
             * [Creating a HL7v2 Store](https://cloud.google.com/healthcare/docs/how-tos/hl7v2)
 
         ## Example Usage
+        ### Healthcare Hl7 V2 Store Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        topic = gcp.pubsub.Topic("topic")
+        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
+        store = gcp.healthcare.Hl7Store("store",
+            dataset=dataset.id,
+            notification_configs=[gcp.healthcare.Hl7StoreNotificationConfigsArgs(
+                pubsub_topic=topic.id,
+            )],
+            labels={
+                "label1": "labelvalue1",
+            })
+        ```
+        ### Healthcare Hl7 V2 Store Parser Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        store = gcp.healthcare.Hl7Store("store",
+            dataset=dataset.id,
+            parser_config=gcp.healthcare.Hl7StoreParserConfigArgs(
+                allow_null_header=False,
+                segment_terminator="Jw==",
+                schema=\"\"\"{
+          "schemas": [{
+            "messageSchemaConfigs": {
+              "ADT_A01": {
+                "name": "ADT_A01",
+                "minOccurs": 1,
+                "maxOccurs": 1,
+                "members": [{
+                    "segment": {
+                      "type": "MSH",
+                      "minOccurs": 1,
+                      "maxOccurs": 1
+                    }
+                  },
+                  {
+                    "segment": {
+                      "type": "EVN",
+                      "minOccurs": 1,
+                      "maxOccurs": 1
+                    }
+                  },
+                  {
+                    "segment": {
+                      "type": "PID",
+                      "minOccurs": 1,
+                      "maxOccurs": 1
+                    }
+                  },
+                  {
+                    "segment": {
+                      "type": "ZPD",
+                      "minOccurs": 1,
+                      "maxOccurs": 1
+                    }
+                  },
+                  {
+                    "segment": {
+                      "type": "OBX"
+                    }
+                  },
+                  {
+                    "group": {
+                      "name": "PROCEDURE",
+                      "members": [{
+                          "segment": {
+                            "type": "PR1",
+                            "minOccurs": 1,
+                            "maxOccurs": 1
+                          }
+                        },
+                        {
+                          "segment": {
+                            "type": "ROL"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "segment": {
+                      "type": "PDA",
+                      "maxOccurs": 1
+                    }
+                  }
+                ]
+              }
+            }
+          }],
+          "types": [{
+            "type": [{
+                "name": "ZPD",
+                "primitive": "VARIES"
+              }
+
+            ]
+          }],
+          "ignoreMinOccurs": true
+        }
+        \"\"\",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Healthcare Hl7 V2 Store Unschematized
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        store = gcp.healthcare.Hl7Store("store",
+            dataset=dataset.id,
+            parser_config=gcp.healthcare.Hl7StoreParserConfigArgs(
+                allow_null_header=False,
+                segment_terminator="Jw==",
+                version="V2",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

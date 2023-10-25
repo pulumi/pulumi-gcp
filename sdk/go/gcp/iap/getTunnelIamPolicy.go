@@ -13,6 +13,32 @@ import (
 )
 
 // Retrieves the current IAM policy data for tunnel
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := iap.LookupTunnelIamPolicy(ctx, &iap.LookupTunnelIamPolicyArgs{
+//				Project: pulumi.StringRef(google_project_service.Project_service.Project),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupTunnelIamPolicy(ctx *pulumi.Context, args *LookupTunnelIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupTunnelIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTunnelIamPolicyResult

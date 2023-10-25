@@ -6,6 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for restoreplan
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.gkebackup.getRestorePlanIamPolicy({
+ *     project: google_gke_backup_restore_plan.all_ns.project,
+ *     location: google_gke_backup_restore_plan.all_ns.location,
+ *     name: google_gke_backup_restore_plan.all_ns.name,
+ * });
+ * ```
  */
 export function getRestorePlanIamPolicy(args: GetRestorePlanIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetRestorePlanIamPolicyResult> {
 
@@ -60,6 +73,19 @@ export interface GetRestorePlanIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for restoreplan
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.gkebackup.getRestorePlanIamPolicy({
+ *     project: google_gke_backup_restore_plan.all_ns.project,
+ *     location: google_gke_backup_restore_plan.all_ns.location,
+ *     name: google_gke_backup_restore_plan.all_ns.name,
+ * });
+ * ```
  */
 export function getRestorePlanIamPolicyOutput(args: GetRestorePlanIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRestorePlanIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getRestorePlanIamPolicy(a, opts))

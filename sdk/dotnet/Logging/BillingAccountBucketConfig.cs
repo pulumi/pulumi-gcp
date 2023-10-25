@@ -16,6 +16,32 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// &gt; **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = Gcp.Organizations.GetBillingAccount.Invoke(new()
+    ///     {
+    ///         BillingAccount = "00AA00-000AAA-00AA0A",
+    ///     });
+    /// 
+    ///     var basic = new Gcp.Logging.BillingAccountBucketConfig("basic", new()
+    ///     {
+    ///         BillingAccount = @default.Apply(@default =&gt; @default.Apply(getBillingAccountResult =&gt; getBillingAccountResult.BillingAccount)),
+    ///         Location = "global",
+    ///         RetentionDays = 30,
+    ///         BucketId = "_Default",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported using the following format:

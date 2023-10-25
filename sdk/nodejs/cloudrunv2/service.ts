@@ -16,6 +16,281 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/run/docs/)
  *
  * ## Example Usage
+ * ### Cloudrunv2 Service Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.Service("default", {
+ *     ingress: "INGRESS_TRAFFIC_ALL",
+ *     location: "us-central1",
+ *     template: {
+ *         containers: [{
+ *             image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *         }],
+ *     },
+ * });
+ * ```
+ * ### Cloudrunv2 Service Sql
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const secret = new gcp.secretmanager.Secret("secret", {
+ *     secretId: "secret-1",
+ *     replication: {
+ *         auto: {},
+ *     },
+ * });
+ * const secret_version_data = new gcp.secretmanager.SecretVersion("secret-version-data", {
+ *     secret: secret.name,
+ *     secretData: "secret-data",
+ * });
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     region: "us-central1",
+ *     databaseVersion: "MYSQL_5_7",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *     },
+ *     deletionProtection: true,
+ * });
+ * const _default = new gcp.cloudrunv2.Service("default", {
+ *     location: "us-central1",
+ *     ingress: "INGRESS_TRAFFIC_ALL",
+ *     template: {
+ *         scaling: {
+ *             maxInstanceCount: 2,
+ *         },
+ *         volumes: [{
+ *             name: "cloudsql",
+ *             cloudSqlInstance: {
+ *                 instances: [instance.connectionName],
+ *             },
+ *         }],
+ *         containers: [{
+ *             image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *             envs: [
+ *                 {
+ *                     name: "FOO",
+ *                     value: "bar",
+ *                 },
+ *                 {
+ *                     name: "SECRET_ENV_VAR",
+ *                     valueSource: {
+ *                         secretKeyRef: {
+ *                             secret: secret.secretId,
+ *                             version: "1",
+ *                         },
+ *                     },
+ *                 },
+ *             ],
+ *             volumeMounts: [{
+ *                 name: "cloudsql",
+ *                 mountPath: "/cloudsql",
+ *             }],
+ *         }],
+ *     },
+ *     traffics: [{
+ *         type: "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST",
+ *         percent: 100,
+ *     }],
+ * }, {
+ *     dependsOn: [secret_version_data],
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const secret_access = new gcp.secretmanager.SecretIamMember("secret-access", {
+ *     secretId: secret.id,
+ *     role: "roles/secretmanager.secretAccessor",
+ *     member: project.then(project => `serviceAccount:${project.number}-compute@developer.gserviceaccount.com`),
+ * }, {
+ *     dependsOn: [secret],
+ * });
+ * ```
+ * ### Cloudrunv2 Service Vpcaccess
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const customTestNetwork = new gcp.compute.Network("customTestNetwork", {autoCreateSubnetworks: false});
+ * const customTestSubnetwork = new gcp.compute.Subnetwork("customTestSubnetwork", {
+ *     ipCidrRange: "10.2.0.0/28",
+ *     region: "us-central1",
+ *     network: customTestNetwork.id,
+ * });
+ * const connector = new gcp.vpcaccess.Connector("connector", {
+ *     subnet: {
+ *         name: customTestSubnetwork.name,
+ *     },
+ *     machineType: "e2-standard-4",
+ *     minInstances: 2,
+ *     maxInstances: 3,
+ *     region: "us-central1",
+ * });
+ * const _default = new gcp.cloudrunv2.Service("default", {
+ *     location: "us-central1",
+ *     template: {
+ *         containers: [{
+ *             image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *         }],
+ *         vpcAccess: {
+ *             connector: connector.id,
+ *             egress: "ALL_TRAFFIC",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Cloudrunv2 Service Directvpc
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.Service("default", {
+ *     launchStage: "BETA",
+ *     location: "us-central1",
+ *     template: {
+ *         containers: [{
+ *             image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *         }],
+ *         vpcAccess: {
+ *             egress: "ALL_TRAFFIC",
+ *             networkInterfaces: [{
+ *                 network: "default",
+ *                 subnetwork: "default",
+ *                 tags: [
+ *                     "tag1",
+ *                     "tag2",
+ *                     "tag3",
+ *                 ],
+ *             }],
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Cloudrunv2 Service Probes
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.Service("default", {
+ *     location: "us-central1",
+ *     template: {
+ *         containers: [{
+ *             image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *             livenessProbe: {
+ *                 httpGet: {
+ *                     path: "/",
+ *                 },
+ *             },
+ *             startupProbe: {
+ *                 failureThreshold: 1,
+ *                 initialDelaySeconds: 0,
+ *                 periodSeconds: 3,
+ *                 tcpSocket: {
+ *                     port: 8080,
+ *                 },
+ *                 timeoutSeconds: 1,
+ *             },
+ *         }],
+ *     },
+ * });
+ * ```
+ * ### Cloudrunv2 Service Secret
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const secret = new gcp.secretmanager.Secret("secret", {
+ *     secretId: "secret-1",
+ *     replication: {
+ *         auto: {},
+ *     },
+ * });
+ * const secret_version_data = new gcp.secretmanager.SecretVersion("secret-version-data", {
+ *     secret: secret.name,
+ *     secretData: "secret-data",
+ * });
+ * const _default = new gcp.cloudrunv2.Service("default", {
+ *     location: "us-central1",
+ *     ingress: "INGRESS_TRAFFIC_ALL",
+ *     template: {
+ *         volumes: [{
+ *             name: "a-volume",
+ *             secret: {
+ *                 secret: secret.secretId,
+ *                 defaultMode: 292,
+ *                 items: [{
+ *                     version: "1",
+ *                     path: "my-secret",
+ *                 }],
+ *             },
+ *         }],
+ *         containers: [{
+ *             image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *             volumeMounts: [{
+ *                 name: "a-volume",
+ *                 mountPath: "/secrets",
+ *             }],
+ *         }],
+ *     },
+ * }, {
+ *     dependsOn: [secret_version_data],
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const secret_access = new gcp.secretmanager.SecretIamMember("secret-access", {
+ *     secretId: secret.id,
+ *     role: "roles/secretmanager.secretAccessor",
+ *     member: project.then(project => `serviceAccount:${project.number}-compute@developer.gserviceaccount.com`),
+ * }, {
+ *     dependsOn: [secret],
+ * });
+ * ```
+ * ### Cloudrunv2 Service Multicontainer
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.Service("default", {
+ *     location: "us-central1",
+ *     launchStage: "BETA",
+ *     ingress: "INGRESS_TRAFFIC_ALL",
+ *     template: {
+ *         containers: [
+ *             {
+ *                 name: "hello-1",
+ *                 ports: [{
+ *                     containerPort: 8080,
+ *                 }],
+ *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *                 dependsOns: ["hello-2"],
+ *                 volumeMounts: [{
+ *                     name: "empty-dir-volume",
+ *                     mountPath: "/mnt",
+ *                 }],
+ *             },
+ *             {
+ *                 name: "hello-2",
+ *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *             },
+ *         ],
+ *         volumes: [{
+ *             name: "empty-dir-volume",
+ *             emptyDir: {
+ *                 medium: "MEMORY",
+ *                 sizeLimit: "256Mi",
+ *             },
+ *         }],
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

@@ -27,6 +27,34 @@ import (
 // * How-to Guides
 //   - [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := projects.NewService(ctx, "project", &projects.ServiceArgs{
+//				DisableDependentServices: pulumi.Bool(true),
+//				Project:                  pulumi.String("your-project-id"),
+//				Service:                  pulumi.String("iam.googleapis.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Project services can be imported using the `project_id` and `service`, e.g.

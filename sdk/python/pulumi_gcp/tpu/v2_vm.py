@@ -300,6 +300,33 @@ class V2Vm(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Tpu V2 Vm Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        available = gcp.tpu.get_v2_runtime_versions()
+        tpu = gcp.tpu.V2Vm("tpu",
+            zone="us-central1-c",
+            runtime_version="tpu-vm-tf-2.13.0",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Tpu V2 Vm Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        available_v2_runtime_versions = gcp.tpu.get_v2_runtime_versions()
+        available_v2_accelerator_types = gcp.tpu.get_v2_accelerator_types()
+        tpu = gcp.tpu.V2Vm("tpu",
+            zone="us-central1-c",
+            description="Text description of the TPU.",
+            runtime_version="tpu-vm-tf-2.13.0",
+            accelerator_type="v2-8",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -342,6 +369,33 @@ class V2Vm(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Tpu V2 Vm Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        available = gcp.tpu.get_v2_runtime_versions()
+        tpu = gcp.tpu.V2Vm("tpu",
+            zone="us-central1-c",
+            runtime_version="tpu-vm-tf-2.13.0",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Tpu V2 Vm Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        available_v2_runtime_versions = gcp.tpu.get_v2_runtime_versions()
+        available_v2_accelerator_types = gcp.tpu.get_v2_accelerator_types()
+        tpu = gcp.tpu.V2Vm("tpu",
+            zone="us-central1-c",
+            description="Text description of the TPU.",
+            runtime_version="tpu-vm-tf-2.13.0",
+            accelerator_type="v2-8",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

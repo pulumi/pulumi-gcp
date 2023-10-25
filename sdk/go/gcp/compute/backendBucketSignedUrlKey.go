@@ -25,6 +25,54 @@ import (
 // state as plain-text.
 //
 // ## Example Usage
+// ### Backend Bucket Signed Url Key
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			urlSignature, err := random.NewRandomId(ctx, "urlSignature", &random.RandomIdArgs{
+//				ByteLength: pulumi.Int(16),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Location: pulumi.String("EU"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			testBackend, err := compute.NewBackendBucket(ctx, "testBackend", &compute.BackendBucketArgs{
+//				Description: pulumi.String("Contains beautiful images"),
+//				BucketName:  bucket.Name,
+//				EnableCdn:   pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendBucketSignedUrlKey(ctx, "backendKey", &compute.BackendBucketSignedUrlKeyArgs{
+//				KeyValue:      urlSignature.B64Url,
+//				BackendBucket: testBackend.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

@@ -157,6 +157,16 @@ def get_mesh_istio_service(mesh_uid: Optional[str] = None,
         * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
     ## Example Usage
+    ### Monitoring Mesh Istio Service
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    default = gcp.monitoring.get_mesh_istio_service(mesh_uid="proj-573164786102",
+        service_name="prometheus",
+        service_namespace="istio-system")
+    ```
 
 
     :param str mesh_uid: Identifier for the mesh in which this Istio service is defined.
@@ -215,6 +225,16 @@ def get_mesh_istio_service_output(mesh_uid: Optional[pulumi.Input[str]] = None,
         * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
     ## Example Usage
+    ### Monitoring Mesh Istio Service
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    default = gcp.monitoring.get_mesh_istio_service(mesh_uid="proj-573164786102",
+        service_name="prometheus",
+        service_namespace="istio-system")
+    ```
 
 
     :param str mesh_uid: Identifier for the mesh in which this Istio service is defined.

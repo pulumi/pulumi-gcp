@@ -225,6 +225,45 @@ class ServiceIamMember(pulumi.CustomResource):
 
         > **Note:** `endpoints.ServiceIamBinding` resources **can be** used in conjunction with `endpoints.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\\_endpoints\\_service\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.endpoints.ServiceIamPolicy("policy",
+            service_name=google_endpoints_service["endpoints_service"]["service_name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_endpoints\\_service\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.endpoints.ServiceIamBinding("binding",
+            service_name=google_endpoints_service["endpoints_service"]["service_name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_endpoints\\_service\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.endpoints.ServiceIamMember("member",
+            service_name=google_endpoints_service["endpoints_service"]["service_name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* services/{{service_name}} * {{service_name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Endpoints service IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -275,6 +314,45 @@ class ServiceIamMember(pulumi.CustomResource):
         > **Note:** `endpoints.ServiceIamPolicy` **cannot** be used in conjunction with `endpoints.ServiceIamBinding` and `endpoints.ServiceIamMember` or they will fight over what your policy should be.
 
         > **Note:** `endpoints.ServiceIamBinding` resources **can be** used in conjunction with `endpoints.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_endpoints\\_service\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.endpoints.ServiceIamPolicy("policy",
+            service_name=google_endpoints_service["endpoints_service"]["service_name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_endpoints\\_service\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.endpoints.ServiceIamBinding("binding",
+            service_name=google_endpoints_service["endpoints_service"]["service_name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_endpoints\\_service\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.endpoints.ServiceIamMember("member",
+            service_name=google_endpoints_service["endpoints_service"]["service_name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
 
         ## Import
 

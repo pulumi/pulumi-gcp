@@ -319,6 +319,19 @@ class Hub(pulumi.CustomResource):
         The NetworkConnectivity Hub resource
 
         ## Example Usage
+        ### Basic_hub
+        A basic test of a networkconnectivity hub
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.networkconnectivity.Hub("primary",
+            description="A sample hub",
+            labels={
+                "label-one": "value-one",
+            },
+            project="my-project-name")
+        ```
 
         ## Import
 
@@ -357,6 +370,19 @@ class Hub(pulumi.CustomResource):
         The NetworkConnectivity Hub resource
 
         ## Example Usage
+        ### Basic_hub
+        A basic test of a networkconnectivity hub
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.networkconnectivity.Hub("primary",
+            description="A sample hub",
+            labels={
+                "label-one": "value-one",
+            },
+            project="my-project-name")
+        ```
 
         ## Import
 

@@ -92,6 +92,15 @@ def get_subscription_iam_policy(project: Optional[str] = None,
     """
     Retrieves the current IAM policy data for a Pubsub subscription.
 
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.pubsub.get_subscription_iam_policy(subscription=google_pubsub_subscription["subscription"]["id"])
+    ```
+
 
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
@@ -117,6 +126,15 @@ def get_subscription_iam_policy_output(project: Optional[pulumi.Input[Optional[s
                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubscriptionIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a Pubsub subscription.
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.pubsub.get_subscription_iam_policy(subscription=google_pubsub_subscription["subscription"]["id"])
+    ```
 
 
     :param str project: The project in which the resource belongs. If it

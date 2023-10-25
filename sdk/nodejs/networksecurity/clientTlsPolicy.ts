@@ -8,6 +8,54 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### Network Security Client Tls Policy Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.networksecurity.ClientTlsPolicy("default", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     description: "my description",
+ *     sni: "secure.example.com",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Network Security Client Tls Policy Advanced
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.networksecurity.ClientTlsPolicy("default", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     description: "my description",
+ *     clientCertificate: {
+ *         certificateProviderInstance: {
+ *             pluginInstance: "google_cloud_private_spiffe",
+ *         },
+ *     },
+ *     serverValidationCas: [
+ *         {
+ *             grpcEndpoint: {
+ *                 targetUri: "unix:mypath",
+ *             },
+ *         },
+ *         {
+ *             grpcEndpoint: {
+ *                 targetUri: "unix:mypath1",
+ *             },
+ *         },
+ *     ],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

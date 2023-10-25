@@ -23,6 +23,135 @@ namespace Pulumi.Gcp.Notebooks
     ///     * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
     /// 
     /// ## Example Usage
+    /// ### Notebook Instance Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.Notebooks.Instance("instance", new()
+    ///     {
+    ///         Location = "us-west1-a",
+    ///         MachineType = "e2-medium",
+    ///         VmImage = new Gcp.Notebooks.Inputs.InstanceVmImageArgs
+    ///         {
+    ///             ImageFamily = "tf-latest-cpu",
+    ///             Project = "deeplearning-platform-release",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Notebook Instance Basic Container
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.Notebooks.Instance("instance", new()
+    ///     {
+    ///         ContainerImage = new Gcp.Notebooks.Inputs.InstanceContainerImageArgs
+    ///         {
+    ///             Repository = "gcr.io/deeplearning-platform-release/base-cpu",
+    ///             Tag = "latest",
+    ///         },
+    ///         Location = "us-west1-a",
+    ///         MachineType = "e2-medium",
+    ///         Metadata = 
+    ///         {
+    ///             { "proxy-mode", "service_account" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Notebook Instance Basic Gpu
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.Notebooks.Instance("instance", new()
+    ///     {
+    ///         AcceleratorConfig = new Gcp.Notebooks.Inputs.InstanceAcceleratorConfigArgs
+    ///         {
+    ///             CoreCount = 1,
+    ///             Type = "NVIDIA_TESLA_T4",
+    ///         },
+    ///         InstallGpuDriver = true,
+    ///         Location = "us-west1-a",
+    ///         MachineType = "n1-standard-1",
+    ///         VmImage = new Gcp.Notebooks.Inputs.InstanceVmImageArgs
+    ///         {
+    ///             ImageFamily = "tf-latest-gpu",
+    ///             Project = "deeplearning-platform-release",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Notebook Instance Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myNetwork = Gcp.Compute.GetNetwork.Invoke(new()
+    ///     {
+    ///         Name = "default",
+    ///     });
+    /// 
+    ///     var mySubnetwork = Gcp.Compute.GetSubnetwork.Invoke(new()
+    ///     {
+    ///         Name = "default",
+    ///         Region = "us-central1",
+    ///     });
+    /// 
+    ///     var instance = new Gcp.Notebooks.Instance("instance", new()
+    ///     {
+    ///         Location = "us-central1-a",
+    ///         MachineType = "e2-medium",
+    ///         VmImage = new Gcp.Notebooks.Inputs.InstanceVmImageArgs
+    ///         {
+    ///             Project = "deeplearning-platform-release",
+    ///             ImageFamily = "tf-latest-cpu",
+    ///         },
+    ///         InstanceOwners = new[]
+    ///         {
+    ///             "my@service-account.com",
+    ///         },
+    ///         ServiceAccount = "my@service-account.com",
+    ///         InstallGpuDriver = true,
+    ///         BootDiskType = "PD_SSD",
+    ///         BootDiskSizeGb = 110,
+    ///         NoPublicIp = true,
+    ///         NoProxyAccess = true,
+    ///         Network = myNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///         Subnet = mySubnetwork.Apply(getSubnetworkResult =&gt; getSubnetworkResult.Id),
+    ///         Labels = 
+    ///         {
+    ///             { "k", "val" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -21,6 +21,56 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.bigquerydatapolicy.DataPolicyIamBinding` resources **can be** used in conjunction with `gcp.bigquerydatapolicy.DataPolicyIamMember` resources **only if** they do not grant privilege to the same role.
  *
+ * ## google\_bigquery\_datapolicy\_data\_policy\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/viewer",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.bigquerydatapolicy.DataPolicyIamPolicy("policy", {
+ *     project: google_bigquery_datapolicy_data_policy.data_policy.project,
+ *     location: google_bigquery_datapolicy_data_policy.data_policy.location,
+ *     dataPolicyId: google_bigquery_datapolicy_data_policy.data_policy.data_policy_id,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## google\_bigquery\_datapolicy\_data\_policy\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.bigquerydatapolicy.DataPolicyIamBinding("binding", {
+ *     project: google_bigquery_datapolicy_data_policy.data_policy.project,
+ *     location: google_bigquery_datapolicy_data_policy.data_policy.location,
+ *     dataPolicyId: google_bigquery_datapolicy_data_policy.data_policy.data_policy_id,
+ *     role: "roles/viewer",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * ## google\_bigquery\_datapolicy\_data\_policy\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.bigquerydatapolicy.DataPolicyIamMember("member", {
+ *     project: google_bigquery_datapolicy_data_policy.data_policy.project,
+ *     location: google_bigquery_datapolicy_data_policy.data_policy.location,
+ *     dataPolicyId: google_bigquery_datapolicy_data_policy.data_policy.data_policy_id,
+ *     role: "roles/viewer",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/dataPolicies/{{data_policy_id}} * {{project}}/{{location}}/{{data_policy_id}} * {{location}}/{{data_policy_id}} * {{data_policy_id}} Any variables not passed in the import command will be taken from the provider configuration. BigQuery Data Policy datapolicy IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

@@ -16,6 +16,59 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/dataflow)
  *
  * ## Example Usage
+ * ### Data Pipeline Pipeline
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const serviceAccount = new gcp.serviceaccount.Account("serviceAccount", {
+ *     accountId: "my-account",
+ *     displayName: "Service Account",
+ * });
+ * const primary = new gcp.dataflow.Pipeline("primary", {
+ *     displayName: "my-pipeline",
+ *     type: "PIPELINE_TYPE_BATCH",
+ *     state: "STATE_ACTIVE",
+ *     region: "us-central1",
+ *     workload: {
+ *         dataflowLaunchTemplateRequest: {
+ *             projectId: "my-project",
+ *             gcsPath: "gs://my-bucket/path",
+ *             launchParameters: {
+ *                 jobName: "my-job",
+ *                 parameters: {
+ *                     name: "wrench",
+ *                 },
+ *                 environment: {
+ *                     numWorkers: 5,
+ *                     maxWorkers: 5,
+ *                     zone: "us-centra1-a",
+ *                     serviceAccountEmail: serviceAccount.email,
+ *                     network: "default",
+ *                     tempLocation: "gs://my-bucket/tmp_dir",
+ *                     bypassTempDirValidation: false,
+ *                     machineType: "E2",
+ *                     additionalUserLabels: {
+ *                         context: "test",
+ *                     },
+ *                     workerRegion: "us-central1",
+ *                     workerZone: "us-central1-a",
+ *                     enableStreamingEngine: false,
+ *                 },
+ *                 update: false,
+ *                 transformNameMapping: {
+ *                     name: "wrench",
+ *                 },
+ *             },
+ *             location: "us-central1",
+ *         },
+ *     },
+ *     scheduleInfo: {
+ *         schedule: "* *&#47;2 * * *",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

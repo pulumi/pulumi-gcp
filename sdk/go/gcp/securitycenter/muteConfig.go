@@ -23,6 +23,34 @@ import (
 // * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1/organizations.muteConfigs)
 //
 // ## Example Usage
+// ### Scc Mute Config
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/securitycenter"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := securitycenter.NewMuteConfig(ctx, "default", &securitycenter.MuteConfigArgs{
+//				Description:  pulumi.String("My Mute Config"),
+//				Filter:       pulumi.String("category: \"OS_VULNERABILITY\""),
+//				MuteConfigId: pulumi.String("my-config"),
+//				Parent:       pulumi.String("organizations/123456789"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

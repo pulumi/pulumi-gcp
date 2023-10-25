@@ -599,6 +599,139 @@ class BackupPlan(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
 
         ## Example Usage
+        ### Gkebackup Backupplan Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            location="us-central1",
+            initial_node_count=1,
+            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
+                workload_pool="my-project-name.svc.id.goog",
+            ),
+            addons_config=gcp.container.ClusterAddonsConfigArgs(
+                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
+                    enabled=True,
+                ),
+            ))
+        basic = gcp.gkebackup.BackupPlan("basic",
+            cluster=primary.id,
+            location="us-central1",
+            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
+                include_volume_data=True,
+                include_secrets=True,
+                all_namespaces=True,
+            ))
+        ```
+        ### Gkebackup Backupplan Autopilot
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            location="us-central1",
+            enable_autopilot=True,
+            ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(),
+            release_channel=gcp.container.ClusterReleaseChannelArgs(
+                channel="RAPID",
+            ),
+            addons_config=gcp.container.ClusterAddonsConfigArgs(
+                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
+                    enabled=True,
+                ),
+            ))
+        autopilot = gcp.gkebackup.BackupPlan("autopilot",
+            cluster=primary.id,
+            location="us-central1",
+            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
+                include_volume_data=True,
+                include_secrets=True,
+                all_namespaces=True,
+            ))
+        ```
+        ### Gkebackup Backupplan Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            location="us-central1",
+            initial_node_count=1,
+            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
+                workload_pool="my-project-name.svc.id.goog",
+            ),
+            addons_config=gcp.container.ClusterAddonsConfigArgs(
+                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
+                    enabled=True,
+                ),
+            ))
+        key_ring = gcp.kms.KeyRing("keyRing", location="us-central1")
+        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
+        cmek = gcp.gkebackup.BackupPlan("cmek",
+            cluster=primary.id,
+            location="us-central1",
+            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
+                include_volume_data=True,
+                include_secrets=True,
+                selected_namespaces=gcp.gkebackup.BackupPlanBackupConfigSelectedNamespacesArgs(
+                    namespaces=[
+                        "default",
+                        "test",
+                    ],
+                ),
+                encryption_key=gcp.gkebackup.BackupPlanBackupConfigEncryptionKeyArgs(
+                    gcp_kms_encryption_key=crypto_key.id,
+                ),
+            ))
+        ```
+        ### Gkebackup Backupplan Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            location="us-central1",
+            initial_node_count=1,
+            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
+                workload_pool="my-project-name.svc.id.goog",
+            ),
+            addons_config=gcp.container.ClusterAddonsConfigArgs(
+                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
+                    enabled=True,
+                ),
+            ))
+        full = gcp.gkebackup.BackupPlan("full",
+            cluster=primary.id,
+            location="us-central1",
+            retention_policy=gcp.gkebackup.BackupPlanRetentionPolicyArgs(
+                backup_delete_lock_days=30,
+                backup_retain_days=180,
+            ),
+            backup_schedule=gcp.gkebackup.BackupPlanBackupScheduleArgs(
+                cron_schedule="0 9 * * 1",
+            ),
+            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
+                include_volume_data=True,
+                include_secrets=True,
+                selected_applications=gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsArgs(
+                    namespaced_names=[
+                        gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs(
+                            name="app1",
+                            namespace="ns1",
+                        ),
+                        gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs(
+                            name="app2",
+                            namespace="ns2",
+                        ),
+                    ],
+                ),
+            ))
+        ```
 
         ## Import
 
@@ -657,6 +790,139 @@ class BackupPlan(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
 
         ## Example Usage
+        ### Gkebackup Backupplan Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            location="us-central1",
+            initial_node_count=1,
+            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
+                workload_pool="my-project-name.svc.id.goog",
+            ),
+            addons_config=gcp.container.ClusterAddonsConfigArgs(
+                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
+                    enabled=True,
+                ),
+            ))
+        basic = gcp.gkebackup.BackupPlan("basic",
+            cluster=primary.id,
+            location="us-central1",
+            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
+                include_volume_data=True,
+                include_secrets=True,
+                all_namespaces=True,
+            ))
+        ```
+        ### Gkebackup Backupplan Autopilot
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            location="us-central1",
+            enable_autopilot=True,
+            ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(),
+            release_channel=gcp.container.ClusterReleaseChannelArgs(
+                channel="RAPID",
+            ),
+            addons_config=gcp.container.ClusterAddonsConfigArgs(
+                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
+                    enabled=True,
+                ),
+            ))
+        autopilot = gcp.gkebackup.BackupPlan("autopilot",
+            cluster=primary.id,
+            location="us-central1",
+            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
+                include_volume_data=True,
+                include_secrets=True,
+                all_namespaces=True,
+            ))
+        ```
+        ### Gkebackup Backupplan Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            location="us-central1",
+            initial_node_count=1,
+            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
+                workload_pool="my-project-name.svc.id.goog",
+            ),
+            addons_config=gcp.container.ClusterAddonsConfigArgs(
+                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
+                    enabled=True,
+                ),
+            ))
+        key_ring = gcp.kms.KeyRing("keyRing", location="us-central1")
+        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
+        cmek = gcp.gkebackup.BackupPlan("cmek",
+            cluster=primary.id,
+            location="us-central1",
+            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
+                include_volume_data=True,
+                include_secrets=True,
+                selected_namespaces=gcp.gkebackup.BackupPlanBackupConfigSelectedNamespacesArgs(
+                    namespaces=[
+                        "default",
+                        "test",
+                    ],
+                ),
+                encryption_key=gcp.gkebackup.BackupPlanBackupConfigEncryptionKeyArgs(
+                    gcp_kms_encryption_key=crypto_key.id,
+                ),
+            ))
+        ```
+        ### Gkebackup Backupplan Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            location="us-central1",
+            initial_node_count=1,
+            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
+                workload_pool="my-project-name.svc.id.goog",
+            ),
+            addons_config=gcp.container.ClusterAddonsConfigArgs(
+                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
+                    enabled=True,
+                ),
+            ))
+        full = gcp.gkebackup.BackupPlan("full",
+            cluster=primary.id,
+            location="us-central1",
+            retention_policy=gcp.gkebackup.BackupPlanRetentionPolicyArgs(
+                backup_delete_lock_days=30,
+                backup_retain_days=180,
+            ),
+            backup_schedule=gcp.gkebackup.BackupPlanBackupScheduleArgs(
+                cron_schedule="0 9 * * 1",
+            ),
+            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
+                include_volume_data=True,
+                include_secrets=True,
+                selected_applications=gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsArgs(
+                    namespaced_names=[
+                        gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs(
+                            name="app1",
+                            namespace="ns1",
+                        ),
+                        gcp.gkebackup.BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs(
+                            name="app2",
+                            namespace="ns2",
+                        ),
+                    ],
+                ),
+            ))
+        ```
 
         ## Import
 

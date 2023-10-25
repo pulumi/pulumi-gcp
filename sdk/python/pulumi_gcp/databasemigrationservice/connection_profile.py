@@ -535,6 +535,120 @@ class ConnectionProfile(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
+        ### Database Migration Service Connection Profile Cloudsql
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        cloudsqldb = gcp.sql.DatabaseInstance("cloudsqldb",
+            database_version="MYSQL_5_7",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-n1-standard-1",
+                deletion_protection_enabled=False,
+            ),
+            deletion_protection=False)
+        sql_client_cert = gcp.sql.SslCert("sqlClientCert",
+            common_name="my-cert",
+            instance=cloudsqldb.name,
+            opts=pulumi.ResourceOptions(depends_on=[cloudsqldb]))
+        sqldb_user = gcp.sql.User("sqldbUser",
+            instance=cloudsqldb.name,
+            password="my-password",
+            opts=pulumi.ResourceOptions(depends_on=[sql_client_cert]))
+        cloudsqlprofile = gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofile",
+            location="us-central1",
+            connection_profile_id="my-fromprofileid",
+            display_name="my-fromprofileid_display",
+            labels={
+                "foo": "bar",
+            },
+            mysql=gcp.databasemigrationservice.ConnectionProfileMysqlArgs(
+                host=cloudsqldb.ip_addresses[0].ip_address,
+                port=3306,
+                username=sqldb_user.name,
+                password=sqldb_user.password,
+                ssl=gcp.databasemigrationservice.ConnectionProfileMysqlSslArgs(
+                    client_key=sql_client_cert.private_key,
+                    client_certificate=sql_client_cert.cert,
+                    ca_certificate=sql_client_cert.server_ca_cert,
+                ),
+                cloud_sql_id="my-database",
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[sqldb_user]))
+        cloudsqlprofile_destination = gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofileDestination",
+            location="us-central1",
+            connection_profile_id="my-toprofileid",
+            display_name="my-toprofileid_displayname",
+            labels={
+                "foo": "bar",
+            },
+            cloudsql=gcp.databasemigrationservice.ConnectionProfileCloudsqlArgs(
+                settings=gcp.databasemigrationservice.ConnectionProfileCloudsqlSettingsArgs(
+                    database_version="MYSQL_5_7",
+                    user_labels={
+                        "cloudfoo": "cloudbar",
+                    },
+                    tier="db-n1-standard-1",
+                    edition="ENTERPRISE",
+                    storage_auto_resize_limit="0",
+                    activation_policy="ALWAYS",
+                    ip_config=gcp.databasemigrationservice.ConnectionProfileCloudsqlSettingsIpConfigArgs(
+                        enable_ipv4=True,
+                        require_ssl=True,
+                    ),
+                    auto_storage_increase=True,
+                    data_disk_type="PD_HDD",
+                    data_disk_size_gb="11",
+                    zone="us-central1-b",
+                    source_id=f"projects/{project.project_id}/locations/us-central1/connectionProfiles/my-fromprofileid",
+                    root_password="testpasscloudsql",
+                ),
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[cloudsqlprofile]))
+        ```
+        ### Database Migration Service Connection Profile Postgres
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        postgresqldb = gcp.sql.DatabaseInstance("postgresqldb",
+            database_version="POSTGRES_12",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-custom-2-13312",
+            ),
+            deletion_protection=False)
+        sql_client_cert = gcp.sql.SslCert("sqlClientCert",
+            common_name="my-cert",
+            instance=postgresqldb.name,
+            opts=pulumi.ResourceOptions(depends_on=[postgresqldb]))
+        sqldb_user = gcp.sql.User("sqldbUser",
+            instance=postgresqldb.name,
+            password="my-password",
+            opts=pulumi.ResourceOptions(depends_on=[sql_client_cert]))
+        postgresprofile = gcp.databasemigrationservice.ConnectionProfile("postgresprofile",
+            location="us-central1",
+            connection_profile_id="my-profileid",
+            display_name="my-profileid_display",
+            labels={
+                "foo": "bar",
+            },
+            postgresql=gcp.databasemigrationservice.ConnectionProfilePostgresqlArgs(
+                host=postgresqldb.ip_addresses[0].ip_address,
+                port=5432,
+                username=sqldb_user.name,
+                password=sqldb_user.password,
+                ssl=gcp.databasemigrationservice.ConnectionProfilePostgresqlSslArgs(
+                    client_key=sql_client_cert.private_key,
+                    client_certificate=sql_client_cert.cert,
+                    ca_certificate=sql_client_cert.server_ca_cert,
+                ),
+                cloud_sql_id="my-database",
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[sqldb_user]))
+        ```
 
         ## Import
 
@@ -592,6 +706,120 @@ class ConnectionProfile(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
+        ### Database Migration Service Connection Profile Cloudsql
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        cloudsqldb = gcp.sql.DatabaseInstance("cloudsqldb",
+            database_version="MYSQL_5_7",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-n1-standard-1",
+                deletion_protection_enabled=False,
+            ),
+            deletion_protection=False)
+        sql_client_cert = gcp.sql.SslCert("sqlClientCert",
+            common_name="my-cert",
+            instance=cloudsqldb.name,
+            opts=pulumi.ResourceOptions(depends_on=[cloudsqldb]))
+        sqldb_user = gcp.sql.User("sqldbUser",
+            instance=cloudsqldb.name,
+            password="my-password",
+            opts=pulumi.ResourceOptions(depends_on=[sql_client_cert]))
+        cloudsqlprofile = gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofile",
+            location="us-central1",
+            connection_profile_id="my-fromprofileid",
+            display_name="my-fromprofileid_display",
+            labels={
+                "foo": "bar",
+            },
+            mysql=gcp.databasemigrationservice.ConnectionProfileMysqlArgs(
+                host=cloudsqldb.ip_addresses[0].ip_address,
+                port=3306,
+                username=sqldb_user.name,
+                password=sqldb_user.password,
+                ssl=gcp.databasemigrationservice.ConnectionProfileMysqlSslArgs(
+                    client_key=sql_client_cert.private_key,
+                    client_certificate=sql_client_cert.cert,
+                    ca_certificate=sql_client_cert.server_ca_cert,
+                ),
+                cloud_sql_id="my-database",
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[sqldb_user]))
+        cloudsqlprofile_destination = gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofileDestination",
+            location="us-central1",
+            connection_profile_id="my-toprofileid",
+            display_name="my-toprofileid_displayname",
+            labels={
+                "foo": "bar",
+            },
+            cloudsql=gcp.databasemigrationservice.ConnectionProfileCloudsqlArgs(
+                settings=gcp.databasemigrationservice.ConnectionProfileCloudsqlSettingsArgs(
+                    database_version="MYSQL_5_7",
+                    user_labels={
+                        "cloudfoo": "cloudbar",
+                    },
+                    tier="db-n1-standard-1",
+                    edition="ENTERPRISE",
+                    storage_auto_resize_limit="0",
+                    activation_policy="ALWAYS",
+                    ip_config=gcp.databasemigrationservice.ConnectionProfileCloudsqlSettingsIpConfigArgs(
+                        enable_ipv4=True,
+                        require_ssl=True,
+                    ),
+                    auto_storage_increase=True,
+                    data_disk_type="PD_HDD",
+                    data_disk_size_gb="11",
+                    zone="us-central1-b",
+                    source_id=f"projects/{project.project_id}/locations/us-central1/connectionProfiles/my-fromprofileid",
+                    root_password="testpasscloudsql",
+                ),
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[cloudsqlprofile]))
+        ```
+        ### Database Migration Service Connection Profile Postgres
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        postgresqldb = gcp.sql.DatabaseInstance("postgresqldb",
+            database_version="POSTGRES_12",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-custom-2-13312",
+            ),
+            deletion_protection=False)
+        sql_client_cert = gcp.sql.SslCert("sqlClientCert",
+            common_name="my-cert",
+            instance=postgresqldb.name,
+            opts=pulumi.ResourceOptions(depends_on=[postgresqldb]))
+        sqldb_user = gcp.sql.User("sqldbUser",
+            instance=postgresqldb.name,
+            password="my-password",
+            opts=pulumi.ResourceOptions(depends_on=[sql_client_cert]))
+        postgresprofile = gcp.databasemigrationservice.ConnectionProfile("postgresprofile",
+            location="us-central1",
+            connection_profile_id="my-profileid",
+            display_name="my-profileid_display",
+            labels={
+                "foo": "bar",
+            },
+            postgresql=gcp.databasemigrationservice.ConnectionProfilePostgresqlArgs(
+                host=postgresqldb.ip_addresses[0].ip_address,
+                port=5432,
+                username=sqldb_user.name,
+                password=sqldb_user.password,
+                ssl=gcp.databasemigrationservice.ConnectionProfilePostgresqlSslArgs(
+                    client_key=sql_client_cert.private_key,
+                    client_certificate=sql_client_cert.cert,
+                    ca_certificate=sql_client_cert.server_ca_cert,
+                ),
+                cloud_sql_id="my-database",
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[sqldb_user]))
+        ```
 
         ## Import
 

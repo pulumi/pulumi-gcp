@@ -103,6 +103,17 @@ def get_service_iam_policy(location: Optional[str] = None,
     """
     Retrieves the current IAM policy data for service
 
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.cloudrun.get_service_iam_policy(location=google_cloud_run_service["default"]["location"],
+        project=google_cloud_run_service["default"]["project"],
+        service=google_cloud_run_service["default"]["name"])
+    ```
+
 
     :param str location: The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
     :param str project: The ID of the project in which the resource belongs.
@@ -132,6 +143,17 @@ def get_service_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceIamPolicyResult]:
     """
     Retrieves the current IAM policy data for service
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.cloudrun.get_service_iam_policy(location=google_cloud_run_service["default"]["location"],
+        project=google_cloud_run_service["default"]["project"],
+        service=google_cloud_run_service["default"]["name"])
+    ```
 
 
     :param str location: The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to

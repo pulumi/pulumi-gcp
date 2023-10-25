@@ -25,6 +25,94 @@ namespace Pulumi.Gcp.IdentityPlatform
     ///     * [Official Documentation](https://cloud.google.com/identity-platform/docs)
     /// 
     /// ## Example Usage
+    /// ### Identity Platform Config Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultProject = new Gcp.Organizations.Project("defaultProject", new()
+    ///     {
+    ///         ProjectId = "my-project",
+    ///         OrgId = "123456789",
+    ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///         Labels = 
+    ///         {
+    ///             { "firebase", "enabled" },
+    ///         },
+    ///     });
+    /// 
+    ///     var identitytoolkit = new Gcp.Projects.Service("identitytoolkit", new()
+    ///     {
+    ///         Project = defaultProject.ProjectId,
+    ///         ServiceName = "identitytoolkit.googleapis.com",
+    ///     });
+    /// 
+    ///     var defaultConfig = new Gcp.IdentityPlatform.Config("defaultConfig", new()
+    ///     {
+    ///         Project = defaultProject.ProjectId,
+    ///         AutodeleteAnonymousUsers = true,
+    ///         SignIn = new Gcp.IdentityPlatform.Inputs.ConfigSignInArgs
+    ///         {
+    ///             AllowDuplicateEmails = true,
+    ///             Anonymous = new Gcp.IdentityPlatform.Inputs.ConfigSignInAnonymousArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///             Email = new Gcp.IdentityPlatform.Inputs.ConfigSignInEmailArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 PasswordRequired = false,
+    ///             },
+    ///             PhoneNumber = new Gcp.IdentityPlatform.Inputs.ConfigSignInPhoneNumberArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 TestPhoneNumbers = 
+    ///                 {
+    ///                     { "+11231231234", "000000" },
+    ///                 },
+    ///             },
+    ///         },
+    ///         BlockingFunctions = new Gcp.IdentityPlatform.Inputs.ConfigBlockingFunctionsArgs
+    ///         {
+    ///             Triggers = new[]
+    ///             {
+    ///                 new Gcp.IdentityPlatform.Inputs.ConfigBlockingFunctionsTriggerArgs
+    ///                 {
+    ///                     EventType = "beforeSignIn",
+    ///                     FunctionUri = "https://us-east1-my-project.cloudfunctions.net/before-sign-in",
+    ///                 },
+    ///             },
+    ///             ForwardInboundCredentials = new Gcp.IdentityPlatform.Inputs.ConfigBlockingFunctionsForwardInboundCredentialsArgs
+    ///             {
+    ///                 RefreshToken = true,
+    ///                 AccessToken = true,
+    ///                 IdToken = true,
+    ///             },
+    ///         },
+    ///         Quota = new Gcp.IdentityPlatform.Inputs.ConfigQuotaArgs
+    ///         {
+    ///             SignUpQuotaConfig = new Gcp.IdentityPlatform.Inputs.ConfigQuotaSignUpQuotaConfigArgs
+    ///             {
+    ///                 Quota = 1000,
+    ///                 StartTime = "",
+    ///                 QuotaDuration = "7200s",
+    ///             },
+    ///         },
+    ///         AuthorizedDomains = new[]
+    ///         {
+    ///             "localhost",
+    ///             "my-project.firebaseapp.com",
+    ///             "my-project.web.app",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

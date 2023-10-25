@@ -82,6 +82,15 @@ def get_iam_policy(service_account_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for a service account.
 
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.serviceAccount.get_iam_policy(service_account_id=google_service_account["test_account"]["name"])
+    ```
+
 
     :param str service_account_id: The fully-qualified name of the service account to apply policy to.
     """
@@ -102,6 +111,15 @@ def get_iam_policy_output(service_account_id: Optional[pulumi.Input[str]] = None
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a service account.
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.serviceAccount.get_iam_policy(service_account_id=google_service_account["test_account"]["name"])
+    ```
 
 
     :param str service_account_id: The fully-qualified name of the service account to apply policy to.

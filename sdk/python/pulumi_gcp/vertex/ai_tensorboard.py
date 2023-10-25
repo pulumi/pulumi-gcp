@@ -412,6 +412,45 @@ class AiTensorboard(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
         ## Example Usage
+        ### Vertex Ai Tensorboard
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tensorboard = gcp.vertex.AiTensorboard("tensorboard",
+            display_name="terraform",
+            description="sample description",
+            labels={
+                "key1": "value1",
+                "key2": "value2",
+            },
+            region="us-central1")
+        ```
+        ### Vertex Ai Tensorboard Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
+            crypto_key_id="kms-name",
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com")
+        tensorboard = gcp.vertex.AiTensorboard("tensorboard",
+            display_name="terraform",
+            description="sample description",
+            labels={
+                "key1": "value1",
+                "key2": "value2",
+            },
+            region="us-central1",
+            encryption_spec=gcp.vertex.AiTensorboardEncryptionSpecArgs(
+                kms_key_name="kms-name",
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[crypto_key]))
+        ```
 
         ## Import
 
@@ -463,6 +502,45 @@ class AiTensorboard(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
         ## Example Usage
+        ### Vertex Ai Tensorboard
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tensorboard = gcp.vertex.AiTensorboard("tensorboard",
+            display_name="terraform",
+            description="sample description",
+            labels={
+                "key1": "value1",
+                "key2": "value2",
+            },
+            region="us-central1")
+        ```
+        ### Vertex Ai Tensorboard Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
+            crypto_key_id="kms-name",
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com")
+        tensorboard = gcp.vertex.AiTensorboard("tensorboard",
+            display_name="terraform",
+            description="sample description",
+            labels={
+                "key1": "value1",
+                "key2": "value2",
+            },
+            region="us-central1",
+            encryption_spec=gcp.vertex.AiTensorboardEncryptionSpecArgs(
+                kms_key_name="kms-name",
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[crypto_key]))
+        ```
 
         ## Import
 

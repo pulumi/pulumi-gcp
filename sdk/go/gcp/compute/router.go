@@ -22,6 +22,87 @@ import (
 //   - [Google Cloud Router](https://cloud.google.com/router/docs/)
 //
 // ## Example Usage
+// ### Router Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foobarNetwork, err := compute.NewNetwork(ctx, "foobarNetwork", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRouter(ctx, "foobarRouter", &compute.RouterArgs{
+//				Network: foobarNetwork.Name,
+//				Bgp: &compute.RouterBgpArgs{
+//					Asn:           pulumi.Int(64514),
+//					AdvertiseMode: pulumi.String("CUSTOM"),
+//					AdvertisedGroups: pulumi.StringArray{
+//						pulumi.String("ALL_SUBNETS"),
+//					},
+//					AdvertisedIpRanges: compute.RouterBgpAdvertisedIpRangeArray{
+//						&compute.RouterBgpAdvertisedIpRangeArgs{
+//							Range: pulumi.String("1.2.3.4"),
+//						},
+//						&compute.RouterBgpAdvertisedIpRangeArgs{
+//							Range: pulumi.String("6.7.0.0/16"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Compute Router Encrypted Interconnect
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRouter(ctx, "encrypted-interconnect-router", &compute.RouterArgs{
+//				Network:                     network.Name,
+//				EncryptedInterconnectRouter: pulumi.Bool(true),
+//				Bgp: &compute.RouterBgpArgs{
+//					Asn: pulumi.Int(64514),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

@@ -17,6 +17,27 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// the marketplace prior to using this resource.
     /// 
     /// ## Example Usage
+    /// ### Identity Platform Oauth Idp Config Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var oauthIdpConfig = new Gcp.IdentityPlatform.OauthIdpConfig("oauthIdpConfig", new()
+    ///     {
+    ///         ClientId = "client-id",
+    ///         ClientSecret = "secret",
+    ///         DisplayName = "Display Name",
+    ///         Enabled = true,
+    ///         Issuer = "issuer",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

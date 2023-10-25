@@ -186,6 +186,38 @@ class ServiceNetworkSettings(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services)
 
         ## Example Usage
+        ### App Engine Service Network Settings
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket", location="US")
+        object = gcp.storage.BucketObject("object",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
+        internalapp_standard_app_version = gcp.appengine.StandardAppVersion("internalappStandardAppVersion",
+            version_id="v1",
+            service="internalapp",
+            delete_service_on_destroy=True,
+            runtime="nodejs10",
+            entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
+                shell="node ./app.js",
+            ),
+            deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
+                zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
+                    source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
+                ),
+            ),
+            env_variables={
+                "port": "8080",
+            })
+        internalapp_service_network_settings = gcp.appengine.ServiceNetworkSettings("internalappServiceNetworkSettings",
+            service=internalapp_standard_app_version.service,
+            network_settings=gcp.appengine.ServiceNetworkSettingsNetworkSettingsArgs(
+                ingress_traffic_allowed="INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY",
+            ))
+        ```
 
         ## Import
 
@@ -225,6 +257,38 @@ class ServiceNetworkSettings(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services)
 
         ## Example Usage
+        ### App Engine Service Network Settings
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket", location="US")
+        object = gcp.storage.BucketObject("object",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
+        internalapp_standard_app_version = gcp.appengine.StandardAppVersion("internalappStandardAppVersion",
+            version_id="v1",
+            service="internalapp",
+            delete_service_on_destroy=True,
+            runtime="nodejs10",
+            entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
+                shell="node ./app.js",
+            ),
+            deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
+                zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
+                    source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
+                ),
+            ),
+            env_variables={
+                "port": "8080",
+            })
+        internalapp_service_network_settings = gcp.appengine.ServiceNetworkSettings("internalappServiceNetworkSettings",
+            service=internalapp_standard_app_version.service,
+            network_settings=gcp.appengine.ServiceNetworkSettingsNetworkSettingsArgs(
+                ingress_traffic_allowed="INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY",
+            ))
+        ```
 
         ## Import
 

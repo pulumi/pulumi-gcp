@@ -824,6 +824,31 @@ class BucketObject(pulumi.CustomResource):
         and
         [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
 
+        ## Example Usage
+
+        Example creating a public object in an existing `image-store` bucket.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        picture = gcp.storage.BucketObject("picture",
+            bucket="image-store",
+            source=pulumi.FileAsset("/images/nature/garden-tiger-moth.jpg"))
+        ```
+
+        Example creating an empty folder in an existing `image-store` bucket.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        empty_folder = gcp.storage.BucketObject("emptyFolder",
+            bucket="image-store",
+            content=" ")
+        # folder name should end with '/'
+        ```
+
         ## Import
 
         This resource does not support import.
@@ -868,6 +893,31 @@ class BucketObject(pulumi.CustomResource):
         [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
         and
         [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
+
+        ## Example Usage
+
+        Example creating a public object in an existing `image-store` bucket.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        picture = gcp.storage.BucketObject("picture",
+            bucket="image-store",
+            source=pulumi.FileAsset("/images/nature/garden-tiger-moth.jpg"))
+        ```
+
+        Example creating an empty folder in an existing `image-store` bucket.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        empty_folder = gcp.storage.BucketObject("emptyFolder",
+            bucket="image-store",
+            content=" ")
+        # folder name should end with '/'
+        ```
 
         ## Import
 

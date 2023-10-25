@@ -305,6 +305,45 @@ class InstanceIAMMember(pulumi.CustomResource):
 
         > **Note:** `spanner.InstanceIAMBinding` resources **can be** used in conjunction with `spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\\_spanner\\_instance\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        instance = gcp.spanner.InstanceIAMPolicy("instance",
+            instance="your-instance-name",
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_spanner\\_instance\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.spanner.InstanceIAMBinding("instance",
+            instance="your-instance-name",
+            members=["user:jane@example.com"],
+            role="roles/spanner.databaseAdmin")
+        ```
+
+        ## google\\_spanner\\_instance\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.spanner.InstanceIAMMember("instance",
+            instance="your-instance-name",
+            member="user:jane@example.com",
+            role="roles/spanner.databaseAdmin")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* {{project}}/{{name}} * {{name}} (project is taken from provider project) IAM member imports use space-delimited identifiers; the resource in question, the role, and the account, e.g.
@@ -366,6 +405,45 @@ class InstanceIAMMember(pulumi.CustomResource):
         > **Note:** `spanner.InstanceIAMPolicy` **cannot** be used in conjunction with `spanner.InstanceIAMBinding` and `spanner.InstanceIAMMember` or they will fight over what your policy should be.
 
         > **Note:** `spanner.InstanceIAMBinding` resources **can be** used in conjunction with `spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_spanner\\_instance\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        instance = gcp.spanner.InstanceIAMPolicy("instance",
+            instance="your-instance-name",
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_spanner\\_instance\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.spanner.InstanceIAMBinding("instance",
+            instance="your-instance-name",
+            members=["user:jane@example.com"],
+            role="roles/spanner.databaseAdmin")
+        ```
+
+        ## google\\_spanner\\_instance\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.spanner.InstanceIAMMember("instance",
+            instance="your-instance-name",
+            member="user:jane@example.com",
+            role="roles/spanner.databaseAdmin")
+        ```
 
         ## Import
 

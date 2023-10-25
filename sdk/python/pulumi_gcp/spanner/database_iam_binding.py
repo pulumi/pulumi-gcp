@@ -343,6 +343,48 @@ class DatabaseIAMBinding(pulumi.CustomResource):
 
         > **Note:** `spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\\_spanner\\_database\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        database = gcp.spanner.DatabaseIAMPolicy("database",
+            instance="your-instance-name",
+            database="your-database-name",
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_spanner\\_database\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.spanner.DatabaseIAMBinding("database",
+            database="your-database-name",
+            instance="your-instance-name",
+            members=["user:jane@example.com"],
+            role="roles/compute.networkUser")
+        ```
+
+        ## google\\_spanner\\_database\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.spanner.DatabaseIAMMember("database",
+            database="your-database-name",
+            instance="your-instance-name",
+            member="user:jane@example.com",
+            role="roles/compute.networkUser")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* {{project}}/{{instance}}/{{database}} * {{instance}}/{{database}} (project is taken from provider project) IAM member imports use space-delimited identifiers; the resource in question, the role, and the member identity, e.g.
@@ -405,6 +447,48 @@ class DatabaseIAMBinding(pulumi.CustomResource):
         > **Note:** `spanner.DatabaseIAMPolicy` **cannot** be used in conjunction with `spanner.DatabaseIAMBinding` and `spanner.DatabaseIAMMember` or they will fight over what your policy should be.
 
         > **Note:** `spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_spanner\\_database\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        database = gcp.spanner.DatabaseIAMPolicy("database",
+            instance="your-instance-name",
+            database="your-database-name",
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_spanner\\_database\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.spanner.DatabaseIAMBinding("database",
+            database="your-database-name",
+            instance="your-instance-name",
+            members=["user:jane@example.com"],
+            role="roles/compute.networkUser")
+        ```
+
+        ## google\\_spanner\\_database\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.spanner.DatabaseIAMMember("database",
+            database="your-database-name",
+            instance="your-instance-name",
+            member="user:jane@example.com",
+            role="roles/compute.networkUser")
+        ```
 
         ## Import
 

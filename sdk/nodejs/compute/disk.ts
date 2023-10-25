@@ -30,6 +30,69 @@ import * as utilities from "../utilities";
  *     * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
  *
  * ## Example Usage
+ * ### Disk Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Disk("default", {
+ *     image: "debian-11-bullseye-v20220719",
+ *     labels: {
+ *         environment: "dev",
+ *     },
+ *     physicalBlockSizeBytes: 4096,
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
+ * });
+ * ```
+ * ### Disk Async
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.compute.Disk("primary", {
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
+ *     physicalBlockSizeBytes: 4096,
+ * });
+ * const secondary = new gcp.compute.Disk("secondary", {
+ *     type: "pd-ssd",
+ *     zone: "us-east1-c",
+ *     asyncPrimaryDisk: {
+ *         disk: primary.id,
+ *     },
+ *     physicalBlockSizeBytes: 4096,
+ * });
+ * ```
+ * ### Disk Features
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Disk("default", {
+ *     guestOsFeatures: [
+ *         {
+ *             type: "SECURE_BOOT",
+ *         },
+ *         {
+ *             type: "MULTI_IP_SUBNET",
+ *         },
+ *         {
+ *             type: "WINDOWS",
+ *         },
+ *     ],
+ *     labels: {
+ *         environment: "dev",
+ *     },
+ *     licenses: ["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"],
+ *     physicalBlockSizeBytes: 4096,
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
+ * });
+ * ```
  *
  * ## Import
  *

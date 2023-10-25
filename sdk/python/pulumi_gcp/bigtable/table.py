@@ -358,6 +358,36 @@ class Table(pulumi.CustomResource):
         [the official documentation](https://cloud.google.com/bigtable/) and
         [API](https://cloud.google.com/bigtable/docs/go/reference).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.bigtable.Instance("instance", clusters=[gcp.bigtable.InstanceClusterArgs(
+            cluster_id="tf-instance-cluster",
+            zone="us-central1-b",
+            num_nodes=3,
+            storage_type="HDD",
+        )])
+        table = gcp.bigtable.Table("table",
+            instance_name=instance.name,
+            split_keys=[
+                "a",
+                "b",
+                "c",
+            ],
+            column_families=[
+                gcp.bigtable.TableColumnFamilyArgs(
+                    family="family-first",
+                ),
+                gcp.bigtable.TableColumnFamilyArgs(
+                    family="family-second",
+                ),
+            ],
+            change_stream_retention="24h0m0s")
+        ```
+
         ## Import
 
         Bigtable Tables can be imported using any of these accepted formats
@@ -401,6 +431,36 @@ class Table(pulumi.CustomResource):
         Creates a Google Cloud Bigtable table inside an instance. For more information see
         [the official documentation](https://cloud.google.com/bigtable/) and
         [API](https://cloud.google.com/bigtable/docs/go/reference).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.bigtable.Instance("instance", clusters=[gcp.bigtable.InstanceClusterArgs(
+            cluster_id="tf-instance-cluster",
+            zone="us-central1-b",
+            num_nodes=3,
+            storage_type="HDD",
+        )])
+        table = gcp.bigtable.Table("table",
+            instance_name=instance.name,
+            split_keys=[
+                "a",
+                "b",
+                "c",
+            ],
+            column_families=[
+                gcp.bigtable.TableColumnFamilyArgs(
+                    family="family-first",
+                ),
+                gcp.bigtable.TableColumnFamilyArgs(
+                    family="family-second",
+                ),
+            ],
+            change_stream_retention="24h0m0s")
+        ```
 
         ## Import
 

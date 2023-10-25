@@ -6,6 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for a Google Cloud Healthcare HL7v2 store.
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const foo = gcp.healthcare.getHl7V2StoreIamPolicy({
+ *     hl7V2StoreId: google_healthcare_hl7_v2_store.hl7_v2_store.id,
+ * });
+ * ```
  */
 export function getHl7V2StoreIamPolicy(args: GetHl7V2StoreIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetHl7V2StoreIamPolicyResult> {
 
@@ -48,6 +59,17 @@ export interface GetHl7V2StoreIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for a Google Cloud Healthcare HL7v2 store.
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const foo = gcp.healthcare.getHl7V2StoreIamPolicy({
+ *     hl7V2StoreId: google_healthcare_hl7_v2_store.hl7_v2_store.id,
+ * });
+ * ```
  */
 export function getHl7V2StoreIamPolicyOutput(args: GetHl7V2StoreIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHl7V2StoreIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getHl7V2StoreIamPolicy(a, opts))

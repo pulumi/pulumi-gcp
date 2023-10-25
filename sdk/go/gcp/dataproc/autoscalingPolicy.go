@@ -16,6 +16,53 @@ import (
 // Describes an autoscaling policy for Dataproc cluster autoscaler.
 //
 // ## Example Usage
+// ### Dataproc Autoscaling Policy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			asp, err := dataproc.NewAutoscalingPolicy(ctx, "asp", &dataproc.AutoscalingPolicyArgs{
+//				PolicyId: pulumi.String("dataproc-policy"),
+//				Location: pulumi.String("us-central1"),
+//				WorkerConfig: &dataproc.AutoscalingPolicyWorkerConfigArgs{
+//					MaxInstances: pulumi.Int(3),
+//				},
+//				BasicAlgorithm: &dataproc.AutoscalingPolicyBasicAlgorithmArgs{
+//					YarnConfig: &dataproc.AutoscalingPolicyBasicAlgorithmYarnConfigArgs{
+//						GracefulDecommissionTimeout: pulumi.String("30s"),
+//						ScaleUpFactor:               pulumi.Float64(0.5),
+//						ScaleDownFactor:             pulumi.Float64(0.5),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataproc.NewCluster(ctx, "basic", &dataproc.ClusterArgs{
+//				Region: pulumi.String("us-central1"),
+//				ClusterConfig: &dataproc.ClusterClusterConfigArgs{
+//					AutoscalingConfig: &dataproc.ClusterClusterConfigAutoscalingConfigArgs{
+//						PolicyUri: asp.Name,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

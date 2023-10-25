@@ -6,6 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for a Google Cloud Healthcare FHIR store.
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const foo = gcp.healthcare.getFhirStoreIamPolicy({
+ *     fhirStoreId: google_healthcare_fhir_store.fhir_store.id,
+ * });
+ * ```
  */
 export function getFhirStoreIamPolicy(args: GetFhirStoreIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetFhirStoreIamPolicyResult> {
 
@@ -48,6 +59,17 @@ export interface GetFhirStoreIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for a Google Cloud Healthcare FHIR store.
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const foo = gcp.healthcare.getFhirStoreIamPolicy({
+ *     fhirStoreId: google_healthcare_fhir_store.fhir_store.id,
+ * });
+ * ```
  */
 export function getFhirStoreIamPolicyOutput(args: GetFhirStoreIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFhirStoreIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getFhirStoreIamPolicy(a, opts))

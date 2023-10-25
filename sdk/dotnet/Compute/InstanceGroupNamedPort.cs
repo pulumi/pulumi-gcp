@@ -22,6 +22,57 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/)
     /// 
     /// ## Example Usage
+    /// ### Instance Group Named Port Gke
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var containerNetwork = new Gcp.Compute.Network("containerNetwork", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var containerSubnetwork = new Gcp.Compute.Subnetwork("containerSubnetwork", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Network = containerNetwork.Name,
+    ///         IpCidrRange = "10.0.36.0/24",
+    ///     });
+    /// 
+    ///     var myCluster = new Gcp.Container.Cluster("myCluster", new()
+    ///     {
+    ///         Location = "us-central1-a",
+    ///         InitialNodeCount = 1,
+    ///         Network = containerNetwork.Name,
+    ///         Subnetwork = containerSubnetwork.Name,
+    ///         IpAllocationPolicy = new Gcp.Container.Inputs.ClusterIpAllocationPolicyArgs
+    ///         {
+    ///             ClusterIpv4CidrBlock = "/19",
+    ///             ServicesIpv4CidrBlock = "/22",
+    ///         },
+    ///     });
+    /// 
+    ///     var myPort = new Gcp.Compute.InstanceGroupNamedPort("myPort", new()
+    ///     {
+    ///         Group = myCluster.NodePools.Apply(nodePools =&gt; nodePools[0].InstanceGroupUrls[0]),
+    ///         Zone = "us-central1-a",
+    ///         Port = 8080,
+    ///     });
+    /// 
+    ///     var myPorts = new Gcp.Compute.InstanceGroupNamedPort("myPorts", new()
+    ///     {
+    ///         Group = myCluster.NodePools.Apply(nodePools =&gt; nodePools[0].InstanceGroupUrls[0]),
+    ///         Zone = "us-central1-a",
+    ///         Port = 4443,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

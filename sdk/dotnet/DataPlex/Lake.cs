@@ -13,6 +13,30 @@ namespace Pulumi.Gcp.DataPlex
     /// The Dataplex Lake resource
     /// 
     /// ## Example Usage
+    /// ### Basic_lake
+    /// A basic example of a dataplex lake
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.DataPlex.Lake("primary", new()
+    ///     {
+    ///         Description = "Lake for DCL",
+    ///         DisplayName = "Lake for DCL",
+    ///         Labels = 
+    ///         {
+    ///             { "my-lake", "exists" },
+    ///         },
+    ///         Location = "us-west1",
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

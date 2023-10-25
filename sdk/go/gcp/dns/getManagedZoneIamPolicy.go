@@ -13,6 +13,33 @@ import (
 )
 
 // Retrieves the current IAM policy data for managedzone
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dns.GetManagedZoneIamPolicy(ctx, &dns.GetManagedZoneIamPolicyArgs{
+//				Project:     pulumi.StringRef(google_dns_managed_zone.Default.Project),
+//				ManagedZone: google_dns_managed_zone.Default.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetManagedZoneIamPolicy(ctx *pulumi.Context, args *GetManagedZoneIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetManagedZoneIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetManagedZoneIamPolicyResult

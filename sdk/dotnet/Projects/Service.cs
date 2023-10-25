@@ -24,6 +24,26 @@ namespace Pulumi.Gcp.Projects
     /// * How-to Guides
     ///     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = new Gcp.Projects.Service("project", new()
+    ///     {
+    ///         DisableDependentServices = true,
+    ///         Project = "your-project-id",
+    ///         ServiceName = "iam.googleapis.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Project services can be imported using the `project_id` and `service`, e.g.

@@ -13,12 +13,48 @@ namespace Pulumi.Gcp.Healthcare
     {
         /// <summary>
         /// Retrieves the current IAM policy data for a Google Cloud Healthcare HL7v2 store.
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Gcp.Healthcare.GetHl7V2StoreIamPolicy.Invoke(new()
+        ///     {
+        ///         Hl7V2StoreId = google_healthcare_hl7_v2_store.Hl7_v2_store.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetHl7V2StoreIamPolicyResult> InvokeAsync(GetHl7V2StoreIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHl7V2StoreIamPolicyResult>("gcp:healthcare/getHl7V2StoreIamPolicy:getHl7V2StoreIamPolicy", args ?? new GetHl7V2StoreIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for a Google Cloud Healthcare HL7v2 store.
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Gcp.Healthcare.GetHl7V2StoreIamPolicy.Invoke(new()
+        ///     {
+        ///         Hl7V2StoreId = google_healthcare_hl7_v2_store.Hl7_v2_store.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetHl7V2StoreIamPolicyResult> Invoke(GetHl7V2StoreIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHl7V2StoreIamPolicyResult>("gcp:healthcare/getHl7V2StoreIamPolicy:getHl7V2StoreIamPolicy", args ?? new GetHl7V2StoreIamPolicyInvokeArgs(), options.WithDefaults());

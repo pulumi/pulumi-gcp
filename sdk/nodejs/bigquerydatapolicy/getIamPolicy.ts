@@ -6,6 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for datapolicy
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.bigquerydatapolicy.getIamPolicy({
+ *     project: google_bigquery_datapolicy_data_policy.data_policy.project,
+ *     location: google_bigquery_datapolicy_data_policy.data_policy.location,
+ *     dataPolicyId: google_bigquery_datapolicy_data_policy.data_policy.data_policy_id,
+ * });
+ * ```
  */
 export function getIamPolicy(args: GetIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetIamPolicyResult> {
 
@@ -57,6 +70,19 @@ export interface GetIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for datapolicy
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.bigquerydatapolicy.getIamPolicy({
+ *     project: google_bigquery_datapolicy_data_policy.data_policy.project,
+ *     location: google_bigquery_datapolicy_data_policy.data_policy.location,
+ *     dataPolicyId: google_bigquery_datapolicy_data_policy.data_policy.data_policy_id,
+ * });
+ * ```
  */
 export function getIamPolicyOutput(args: GetIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getIamPolicy(a, opts))

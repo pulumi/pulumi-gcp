@@ -28,6 +28,50 @@ namespace Pulumi.Gcp.Organizations
     /// * How-to Guides
     ///     * [Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myProject = new Gcp.Organizations.Project("myProject", new()
+    ///     {
+    ///         OrgId = "1234567",
+    ///         ProjectId = "your-project-id",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// To create a project under a specific folder
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var department1 = new Gcp.Organizations.Folder("department1", new()
+    ///     {
+    ///         DisplayName = "Department 1",
+    ///         Parent = "organizations/1234567",
+    ///     });
+    /// 
+    ///     var myProject_in_a_folder = new Gcp.Organizations.Project("myProject-in-a-folder", new()
+    ///     {
+    ///         ProjectId = "your-project-id",
+    ///         FolderId = department1.Name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Projects can be imported using the `project_id`, e.g.

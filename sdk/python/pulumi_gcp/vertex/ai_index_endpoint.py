@@ -451,6 +451,48 @@ class AiIndexEndpoint(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints/)
 
         ## Example Usage
+        ### Vertex Ai Index Endpoint
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vertex_network = gcp.compute.get_network(name="network-name")
+        vertex_range = gcp.compute.GlobalAddress("vertexRange",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=24,
+            network=vertex_network.id)
+        vertex_vpc_connection = gcp.servicenetworking.Connection("vertexVpcConnection",
+            network=vertex_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[vertex_range.name])
+        project = gcp.organizations.get_project()
+        index_endpoint = gcp.vertex.AiIndexEndpoint("indexEndpoint",
+            display_name="sample-endpoint",
+            description="A sample vertex endpoint",
+            region="us-central1",
+            labels={
+                "label-one": "value-one",
+            },
+            network=f"projects/{project.number}/global/networks/{vertex_network.name}",
+            opts=pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
+        ```
+        ### Vertex Ai Index Endpoint With Public Endpoint
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        index_endpoint = gcp.vertex.AiIndexEndpoint("indexEndpoint",
+            description="A sample vertex endpoint with an public endpoint",
+            display_name="sample-endpoint",
+            labels={
+                "label-one": "value-one",
+            },
+            public_endpoint_enabled=True,
+            region="us-central1")
+        ```
 
         ## Import
 
@@ -503,6 +545,48 @@ class AiIndexEndpoint(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints/)
 
         ## Example Usage
+        ### Vertex Ai Index Endpoint
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vertex_network = gcp.compute.get_network(name="network-name")
+        vertex_range = gcp.compute.GlobalAddress("vertexRange",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=24,
+            network=vertex_network.id)
+        vertex_vpc_connection = gcp.servicenetworking.Connection("vertexVpcConnection",
+            network=vertex_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[vertex_range.name])
+        project = gcp.organizations.get_project()
+        index_endpoint = gcp.vertex.AiIndexEndpoint("indexEndpoint",
+            display_name="sample-endpoint",
+            description="A sample vertex endpoint",
+            region="us-central1",
+            labels={
+                "label-one": "value-one",
+            },
+            network=f"projects/{project.number}/global/networks/{vertex_network.name}",
+            opts=pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
+        ```
+        ### Vertex Ai Index Endpoint With Public Endpoint
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        index_endpoint = gcp.vertex.AiIndexEndpoint("indexEndpoint",
+            description="A sample vertex endpoint with an public endpoint",
+            display_name="sample-endpoint",
+            labels={
+                "label-one": "value-one",
+            },
+            public_endpoint_enabled=True,
+            region="us-central1")
+        ```
 
         ## Import
 

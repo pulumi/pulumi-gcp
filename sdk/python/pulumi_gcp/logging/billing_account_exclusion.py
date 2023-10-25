@@ -255,6 +255,18 @@ class BillingAccountExclusion(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_exclusion = gcp.logging.BillingAccountExclusion("my-exclusion",
+            billing_account="ABCDEF-012345-GHIJKL",
+            description="Exclude GCE instance debug logs",
+            filter="resource.type = gce_instance AND severity <= DEBUG")
+        ```
+
         ## Import
 
         Billing account logging exclusions can be imported using their URI, e.g.
@@ -281,6 +293,18 @@ class BillingAccountExclusion(pulumi.CustomResource):
                  args: BillingAccountExclusionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_exclusion = gcp.logging.BillingAccountExclusion("my-exclusion",
+            billing_account="ABCDEF-012345-GHIJKL",
+            description="Exclude GCE instance debug logs",
+            filter="resource.type = gce_instance AND severity <= DEBUG")
+        ```
+
         ## Import
 
         Billing account logging exclusions can be imported using their URI, e.g.

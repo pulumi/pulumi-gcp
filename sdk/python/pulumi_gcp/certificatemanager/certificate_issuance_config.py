@@ -496,6 +496,66 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
             * [Manage certificate issuance configs](https://cloud.google.com/certificate-manager/docs/issuance-configs)
 
         ## Example Usage
+        ### Certificate Manager Certificate Issuance Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.certificateauthority.CaPool("pool",
+            location="us-central1",
+            tier="ENTERPRISE")
+        ca_authority = gcp.certificateauthority.Authority("caAuthority",
+            location="us-central1",
+            pool=pool.name,
+            certificate_authority_id="ca-authority",
+            config=gcp.certificateauthority.AuthorityConfigArgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+                        organization="HashiCorp",
+                        common_name="my-certificate-authority",
+                    ),
+                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
+                        dns_names=["hashicorp.com"],
+                    ),
+                ),
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                        is_ca=True,
+                    ),
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                            cert_sign=True,
+                            crl_sign=True,
+                        ),
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                            server_auth=True,
+                        ),
+                    ),
+                ),
+            ),
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+                algorithm="RSA_PKCS1_4096_SHA256",
+            ),
+            deletion_protection=False,
+            skip_grace_period=True,
+            ignore_active_certificates_on_deletion=True)
+        default = gcp.certificatemanager.CertificateIssuanceConfig("default",
+            description="sample description for the certificate issuanceConfigs",
+            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
+                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
+                    ca_pool=pool.id,
+                ),
+            ),
+            lifetime="1814400s",
+            rotation_window_percentage=34,
+            key_algorithm="ECDSA_P256",
+            labels={
+                "name": "wrench",
+                "count": "3",
+            },
+            opts=pulumi.ResourceOptions(depends_on=[ca_authority]))
+        ```
 
         ## Import
 
@@ -550,6 +610,66 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
             * [Manage certificate issuance configs](https://cloud.google.com/certificate-manager/docs/issuance-configs)
 
         ## Example Usage
+        ### Certificate Manager Certificate Issuance Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.certificateauthority.CaPool("pool",
+            location="us-central1",
+            tier="ENTERPRISE")
+        ca_authority = gcp.certificateauthority.Authority("caAuthority",
+            location="us-central1",
+            pool=pool.name,
+            certificate_authority_id="ca-authority",
+            config=gcp.certificateauthority.AuthorityConfigArgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+                        organization="HashiCorp",
+                        common_name="my-certificate-authority",
+                    ),
+                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
+                        dns_names=["hashicorp.com"],
+                    ),
+                ),
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                        is_ca=True,
+                    ),
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                            cert_sign=True,
+                            crl_sign=True,
+                        ),
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                            server_auth=True,
+                        ),
+                    ),
+                ),
+            ),
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+                algorithm="RSA_PKCS1_4096_SHA256",
+            ),
+            deletion_protection=False,
+            skip_grace_period=True,
+            ignore_active_certificates_on_deletion=True)
+        default = gcp.certificatemanager.CertificateIssuanceConfig("default",
+            description="sample description for the certificate issuanceConfigs",
+            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
+                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
+                    ca_pool=pool.id,
+                ),
+            ),
+            lifetime="1814400s",
+            rotation_window_percentage=34,
+            key_algorithm="ECDSA_P256",
+            labels={
+                "name": "wrench",
+                "count": "3",
+            },
+            opts=pulumi.ResourceOptions(depends_on=[ca_authority]))
+        ```
 
         ## Import
 

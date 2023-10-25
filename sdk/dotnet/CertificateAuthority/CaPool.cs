@@ -15,6 +15,33 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// trust anchor.
     /// 
     /// ## Example Usage
+    /// ### Privateca Capool Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CertificateAuthority.CaPool("default", new()
+    ///     {
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Location = "us-central1",
+    ///         PublishingOptions = new Gcp.CertificateAuthority.Inputs.CaPoolPublishingOptionsArgs
+    ///         {
+    ///             PublishCaCert = true,
+    ///             PublishCrl = true,
+    ///         },
+    ///         Tier = "ENTERPRISE",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

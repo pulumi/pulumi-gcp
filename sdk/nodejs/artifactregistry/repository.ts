@@ -16,6 +16,160 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
  *
  * ## Example Usage
+ * ### Artifact Registry Repository Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
+ *     description: "example docker repository",
+ *     format: "DOCKER",
+ *     location: "us-central1",
+ *     repositoryId: "my-repository",
+ * });
+ * ```
+ * ### Artifact Registry Repository Docker
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
+ *     description: "example docker repository",
+ *     dockerConfig: {
+ *         immutableTags: true,
+ *     },
+ *     format: "DOCKER",
+ *     location: "us-central1",
+ *     repositoryId: "my-repository",
+ * });
+ * ```
+ * ### Artifact Registry Repository Cmek
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const cryptoKey = new gcp.kms.CryptoKeyIAMMember("cryptoKey", {
+ *     cryptoKeyId: "kms-key",
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com`),
+ * });
+ * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
+ *     location: "us-central1",
+ *     repositoryId: "my-repository",
+ *     description: "example docker repository with cmek",
+ *     format: "DOCKER",
+ *     kmsKeyName: "kms-key",
+ * }, {
+ *     dependsOn: [cryptoKey],
+ * });
+ * ```
+ * ### Artifact Registry Repository Virtual
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_repo_upstream = new gcp.artifactregistry.Repository("my-repo-upstream", {
+ *     location: "us-central1",
+ *     repositoryId: "my-repository-upstream",
+ *     description: "example docker repository (upstream source)",
+ *     format: "DOCKER",
+ * });
+ * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
+ *     location: "us-central1",
+ *     repositoryId: "my-repository",
+ *     description: "example virtual docker repository",
+ *     format: "DOCKER",
+ *     mode: "VIRTUAL_REPOSITORY",
+ *     virtualRepositoryConfig: {
+ *         upstreamPolicies: [{
+ *             id: "my-repository-upstream",
+ *             repository: my_repo_upstream.id,
+ *             priority: 1,
+ *         }],
+ *     },
+ * }, {
+ *     dependsOn: [],
+ * });
+ * ```
+ * ### Artifact Registry Repository Remote
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
+ *     description: "example remote docker repository",
+ *     format: "DOCKER",
+ *     location: "us-central1",
+ *     mode: "REMOTE_REPOSITORY",
+ *     remoteRepositoryConfig: {
+ *         description: "docker hub",
+ *         dockerRepository: {
+ *             publicRepository: "DOCKER_HUB",
+ *         },
+ *     },
+ *     repositoryId: "my-repository",
+ * });
+ * ```
+ * ### Artifact Registry Repository Cleanup
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
+ *     location: "us-central1",
+ *     repositoryId: "my-repository",
+ *     description: "example docker repository with cleanup policies",
+ *     format: "DOCKER",
+ *     cleanupPolicyDryRun: false,
+ *     cleanupPolicies: [
+ *         {
+ *             id: "delete-prerelease",
+ *             action: "DELETE",
+ *             condition: {
+ *                 tagState: "TAGGED",
+ *                 tagPrefixes: [
+ *                     "alpha",
+ *                     "v0",
+ *                 ],
+ *                 olderThan: "2592000s",
+ *             },
+ *         },
+ *         {
+ *             id: "keep-tagged-release",
+ *             action: "KEEP",
+ *             condition: {
+ *                 tagState: "TAGGED",
+ *                 tagPrefixes: ["release"],
+ *                 packageNamePrefixes: [
+ *                     "webapp",
+ *                     "mobile",
+ *                 ],
+ *             },
+ *         },
+ *         {
+ *             id: "keep-minimum-versions",
+ *             action: "KEEP",
+ *             mostRecentVersions: {
+ *                 packageNamePrefixes: [
+ *                     "webapp",
+ *                     "mobile",
+ *                     "sandbox",
+ *                 ],
+ *                 keepCount: 5,
+ *             },
+ *         },
+ *     ],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

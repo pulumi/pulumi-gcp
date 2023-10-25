@@ -24,6 +24,27 @@ import * as utilities from "../utilities";
  * `billingProject` you defined.
  *
  * ## Example Usage
+ * ### Access Context Manager Authorized Orgs Desc Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const test_access = new gcp.accesscontextmanager.AccessPolicy("test-access", {
+ *     parent: "organizations/",
+ *     title: "my policy",
+ * });
+ * const authorized_orgs_desc = new gcp.accesscontextmanager.AuthorizedOrgsDesc("authorized-orgs-desc", {
+ *     assetType: "ASSET_TYPE_CREDENTIAL_STRENGTH",
+ *     authorizationDirection: "AUTHORIZATION_DIRECTION_TO",
+ *     authorizationType: "AUTHORIZATION_TYPE_TRUST",
+ *     orgs: [
+ *         "organizations/12345",
+ *         "organizations/98765",
+ *     ],
+ *     parent: pulumi.interpolate`accessPolicies/${test_access.name}`,
+ * });
+ * ```
  *
  * ## Import
  *

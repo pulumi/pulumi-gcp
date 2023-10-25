@@ -322,6 +322,27 @@ class InboundSamlConfig(pulumi.CustomResource):
         the marketplace prior to using this resource.
 
         ## Example Usage
+        ### Identity Platform Inbound Saml Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        saml_config = gcp.identityplatform.InboundSamlConfig("samlConfig",
+            display_name="Display Name",
+            idp_config=gcp.identityplatform.InboundSamlConfigIdpConfigArgs(
+                idp_entity_id="tf-idp",
+                sign_request=True,
+                sso_url="https://example.com",
+                idp_certificates=[gcp.identityplatform.InboundSamlConfigIdpConfigIdpCertificateArgs(
+                    x509_certificate=(lambda path: open(path).read())("test-fixtures/rsa_cert.pem"),
+                )],
+            ),
+            sp_config=gcp.identityplatform.InboundSamlConfigSpConfigArgs(
+                sp_entity_id="tf-sp",
+                callback_uri="https://example.com",
+            ))
+        ```
 
         ## Import
 
@@ -368,6 +389,27 @@ class InboundSamlConfig(pulumi.CustomResource):
         the marketplace prior to using this resource.
 
         ## Example Usage
+        ### Identity Platform Inbound Saml Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        saml_config = gcp.identityplatform.InboundSamlConfig("samlConfig",
+            display_name="Display Name",
+            idp_config=gcp.identityplatform.InboundSamlConfigIdpConfigArgs(
+                idp_entity_id="tf-idp",
+                sign_request=True,
+                sso_url="https://example.com",
+                idp_certificates=[gcp.identityplatform.InboundSamlConfigIdpConfigIdpCertificateArgs(
+                    x509_certificate=(lambda path: open(path).read())("test-fixtures/rsa_cert.pem"),
+                )],
+            ),
+            sp_config=gcp.identityplatform.InboundSamlConfigSpConfigArgs(
+                sp_entity_id="tf-sp",
+                callback_uri="https://example.com",
+            ))
+        ```
 
         ## Import
 

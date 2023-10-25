@@ -492,6 +492,27 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
             * [About Service Connection Policies](https://cloud.google.com/vpc/docs/about-service-connection-policies#service-policies)
 
         ## Example Usage
+        ### Network Connectivity Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        producer_net = gcp.compute.Network("producerNet", auto_create_subnetworks=False)
+        producer_subnet = gcp.compute.Subnetwork("producerSubnet",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=producer_net.id)
+        default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
+            location="us-central1",
+            service_class="my-basic-service-class",
+            description="my basic service connection policy",
+            network=producer_net.id,
+            psc_config=gcp.networkconnectivity.ServiceConnectionPolicyPscConfigArgs(
+                subnetworks=[producer_subnet.id],
+                limit="2",
+            ))
+        ```
 
         ## Import
 
@@ -542,6 +563,27 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
             * [About Service Connection Policies](https://cloud.google.com/vpc/docs/about-service-connection-policies#service-policies)
 
         ## Example Usage
+        ### Network Connectivity Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        producer_net = gcp.compute.Network("producerNet", auto_create_subnetworks=False)
+        producer_subnet = gcp.compute.Subnetwork("producerSubnet",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=producer_net.id)
+        default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
+            location="us-central1",
+            service_class="my-basic-service-class",
+            description="my basic service connection policy",
+            network=producer_net.id,
+            psc_config=gcp.networkconnectivity.ServiceConnectionPolicyPscConfigArgs(
+                subnetworks=[producer_subnet.id],
+                limit="2",
+            ))
+        ```
 
         ## Import
 

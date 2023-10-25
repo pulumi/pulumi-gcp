@@ -21,6 +21,73 @@ import (
 //   - [Managing Workflows](https://cloud.google.com/workflows/docs/creating-updating-workflow)
 //
 // ## Example Usage
+// ### Workflow Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/workflows"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			testAccount, err := serviceAccount.NewAccount(ctx, "testAccount", &serviceAccount.AccountArgs{
+//				AccountId:   pulumi.String("my-account"),
+//				DisplayName: pulumi.String("Test Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = workflows.NewWorkflow(ctx, "example", &workflows.WorkflowArgs{
+//				Region:         pulumi.String("us-central1"),
+//				Description:    pulumi.String("Magic"),
+//				ServiceAccount: testAccount.ID(),
+//				SourceContents: pulumi.String(fmt.Sprintf(`# This is a sample workflow. You can replace it with your source code.
+//
+// #
+// # This workflow does the following:
+// # - reads current time and date information from an external API and stores
+// #   the response in currentTime variable
+// # - retrieves a list of Wikipedia articles related to the day of the week
+// #   from currentTime
+// # - returns the list of articles as an output of the workflow
+// #
+// # Note: In Terraform you need to escape the $$ or it will cause errors.
+//
+//   - getCurrentTime:
+//     call: http.get
+//     args:
+//     url: https://timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam
+//     result: currentTime
+//   - readWikipedia:
+//     call: http.get
+//     args:
+//     url: https://en.wikipedia.org/w/api.php
+//     query:
+//     action: opensearch
+//     search: %v
+//     result: wikiResult
+//   - returnOutput:
+//     return: %v
+//
+// `, currentTime.Body.DayOfWeek, wikiResult.Body[1])),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

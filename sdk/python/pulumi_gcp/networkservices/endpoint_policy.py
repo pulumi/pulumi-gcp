@@ -503,6 +503,54 @@ class EndpointPolicy(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Network Services Endpoint Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.EndpointPolicy("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            type="SIDECAR_PROXY",
+            traffic_port_selector=gcp.networkservices.EndpointPolicyTrafficPortSelectorArgs(
+                ports=["8081"],
+            ),
+            endpoint_matcher=gcp.networkservices.EndpointPolicyEndpointMatcherArgs(
+                metadata_label_matcher=gcp.networkservices.EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs(
+                    metadata_label_match_criteria="MATCH_ANY",
+                    metadata_labels=[gcp.networkservices.EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs(
+                        label_name="foo",
+                        label_value="bar",
+                    )],
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Network Services Endpoint Policy Empty Match
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.EndpointPolicy("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            type="SIDECAR_PROXY",
+            traffic_port_selector=gcp.networkservices.EndpointPolicyTrafficPortSelectorArgs(
+                ports=["8081"],
+            ),
+            endpoint_matcher=gcp.networkservices.EndpointPolicyEndpointMatcherArgs(
+                metadata_label_matcher=gcp.networkservices.EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs(
+                    metadata_label_match_criteria="MATCH_ANY",
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -545,6 +593,54 @@ class EndpointPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Network Services Endpoint Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.EndpointPolicy("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            type="SIDECAR_PROXY",
+            traffic_port_selector=gcp.networkservices.EndpointPolicyTrafficPortSelectorArgs(
+                ports=["8081"],
+            ),
+            endpoint_matcher=gcp.networkservices.EndpointPolicyEndpointMatcherArgs(
+                metadata_label_matcher=gcp.networkservices.EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs(
+                    metadata_label_match_criteria="MATCH_ANY",
+                    metadata_labels=[gcp.networkservices.EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs(
+                        label_name="foo",
+                        label_value="bar",
+                    )],
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Network Services Endpoint Policy Empty Match
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.EndpointPolicy("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            type="SIDECAR_PROXY",
+            traffic_port_selector=gcp.networkservices.EndpointPolicyTrafficPortSelectorArgs(
+                ports=["8081"],
+            ),
+            endpoint_matcher=gcp.networkservices.EndpointPolicyEndpointMatcherArgs(
+                metadata_label_matcher=gcp.networkservices.EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs(
+                    metadata_label_match_criteria="MATCH_ANY",
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

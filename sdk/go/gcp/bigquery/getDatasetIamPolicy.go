@@ -13,6 +13,32 @@ import (
 )
 
 // Retrieves the current IAM policy data for a BigQuery dataset.
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigquery.LookupDatasetIamPolicy(ctx, &bigquery.LookupDatasetIamPolicyArgs{
+//				DatasetId: google_bigquery_dataset.Dataset.Dataset_id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupDatasetIamPolicy(ctx *pulumi.Context, args *LookupDatasetIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupDatasetIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatasetIamPolicyResult

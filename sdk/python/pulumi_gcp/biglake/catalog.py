@@ -291,6 +291,14 @@ class Catalog(pulumi.CustomResource):
             * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_catalogs)
 
         ## Example Usage
+        ### Bigquery Biglake Catalog
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.biglake.Catalog("default", location="US")
+        ```
 
         ## Import
 
@@ -335,6 +343,14 @@ class Catalog(pulumi.CustomResource):
             * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_catalogs)
 
         ## Example Usage
+        ### Bigquery Biglake Catalog
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.biglake.Catalog("default", location="US")
+        ```
 
         ## Import
 

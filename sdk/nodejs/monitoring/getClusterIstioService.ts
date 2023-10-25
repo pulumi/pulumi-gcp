@@ -22,6 +22,19 @@ import * as utilities from "../utilities";
  *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
  *
  * ## Example Usage
+ * ### Monitoring Cluster Istio Service
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default = gcp.monitoring.getClusterIstioService({
+ *     clusterName: "west",
+ *     location: "us-west2-a",
+ *     serviceName: "istio-policy",
+ *     serviceNamespace: "istio-system",
+ * });
+ * ```
  */
 export function getClusterIstioService(args: GetClusterIstioServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterIstioServiceResult> {
 
@@ -115,6 +128,19 @@ export interface GetClusterIstioServiceResult {
  *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
  *
  * ## Example Usage
+ * ### Monitoring Cluster Istio Service
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default = gcp.monitoring.getClusterIstioService({
+ *     clusterName: "west",
+ *     location: "us-west2-a",
+ *     serviceName: "istio-policy",
+ *     serviceNamespace: "istio-system",
+ * });
+ * ```
  */
 export function getClusterIstioServiceOutput(args: GetClusterIstioServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterIstioServiceResult> {
     return pulumi.output(args).apply((a: any) => getClusterIstioService(a, opts))

@@ -276,6 +276,16 @@ class BiReservation(pulumi.CustomResource):
             * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
 
         ## Example Usage
+        ### Bigquery Reservation Bi Reservation Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        reservation = gcp.bigquery.BiReservation("reservation",
+            location="us-west2",
+            size=3000000000)
+        ```
 
         ## Import
 
@@ -321,6 +331,16 @@ class BiReservation(pulumi.CustomResource):
             * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
 
         ## Example Usage
+        ### Bigquery Reservation Bi Reservation Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        reservation = gcp.bigquery.BiReservation("reservation",
+            location="us-west2",
+            size=3000000000)
+        ```
 
         ## Import
 

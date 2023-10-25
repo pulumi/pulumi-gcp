@@ -281,6 +281,45 @@ class TagKeyIamMember(pulumi.CustomResource):
 
         > **Note:** `tags.TagKeyIamBinding` resources **can be** used in conjunction with `tags.TagKeyIamMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\\_tags\\_tag\\_key\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.tags.TagKeyIamPolicy("policy",
+            tag_key=google_tags_tag_key["key"]["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_tags\\_tag\\_key\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.tags.TagKeyIamBinding("binding",
+            tag_key=google_tags_tag_key["key"]["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_tags\\_tag\\_key\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.tags.TagKeyIamMember("member",
+            tag_key=google_tags_tag_key["key"]["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* tagKeys/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Tags tagkey IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -344,6 +383,45 @@ class TagKeyIamMember(pulumi.CustomResource):
         > **Note:** `tags.TagKeyIamPolicy` **cannot** be used in conjunction with `tags.TagKeyIamBinding` and `tags.TagKeyIamMember` or they will fight over what your policy should be.
 
         > **Note:** `tags.TagKeyIamBinding` resources **can be** used in conjunction with `tags.TagKeyIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_tags\\_tag\\_key\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.tags.TagKeyIamPolicy("policy",
+            tag_key=google_tags_tag_key["key"]["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_tags\\_tag\\_key\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.tags.TagKeyIamBinding("binding",
+            tag_key=google_tags_tag_key["key"]["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_tags\\_tag\\_key\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.tags.TagKeyIamMember("member",
+            tag_key=google_tags_tag_key["key"]["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
 
         ## Import
 

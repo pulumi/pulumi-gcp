@@ -93,6 +93,16 @@ def get_image_iam_policy(image: Optional[str] = None,
     """
     Retrieves the current IAM policy data for image
 
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.compute.get_image_iam_policy(project=google_compute_image["example"]["project"],
+        image=google_compute_image["example"]["name"])
+    ```
+
 
     :param str image: Used to find the parent resource to bind the IAM policy to
     :param str project: The ID of the project in which the resource belongs.
@@ -118,6 +128,16 @@ def get_image_iam_policy_output(image: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageIamPolicyResult]:
     """
     Retrieves the current IAM policy data for image
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.compute.get_image_iam_policy(project=google_compute_image["example"]["project"],
+        image=google_compute_image["example"]["name"])
+    ```
 
 
     :param str image: Used to find the parent resource to bind the IAM policy to

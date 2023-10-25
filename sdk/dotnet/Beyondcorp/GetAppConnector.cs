@@ -13,12 +13,56 @@ namespace Pulumi.Gcp.Beyondcorp
     {
         /// <summary>
         /// Get information about a Google BeyondCorp App Connector.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_beyondcorp_app_connector = Gcp.Beyondcorp.GetAppConnector.Invoke(new()
+        ///     {
+        ///         Name = "my-beyondcorp-app-connector",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAppConnectorResult> InvokeAsync(GetAppConnectorArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppConnectorResult>("gcp:beyondcorp/getAppConnector:getAppConnector", args ?? new GetAppConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Google BeyondCorp App Connector.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_beyondcorp_app_connector = Gcp.Beyondcorp.GetAppConnector.Invoke(new()
+        ///     {
+        ///         Name = "my-beyondcorp-app-connector",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAppConnectorResult> Invoke(GetAppConnectorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppConnectorResult>("gcp:beyondcorp/getAppConnector:getAppConnector", args ?? new GetAppConnectorInvokeArgs(), options.WithDefaults());

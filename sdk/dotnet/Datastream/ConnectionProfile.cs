@@ -23,6 +23,188 @@ namespace Pulumi.Gcp.Datastream
     /// Read more about sensitive data in state.
     /// 
     /// ## Example Usage
+    /// ### Datastream Connection Profile Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Datastream.ConnectionProfile("default", new()
+    ///     {
+    ///         ConnectionProfileId = "my-profile",
+    ///         DisplayName = "Connection profile",
+    ///         GcsProfile = new Gcp.Datastream.Inputs.ConnectionProfileGcsProfileArgs
+    ///         {
+    ///             Bucket = "my-bucket",
+    ///             RootPath = "/path",
+    ///         },
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Datastream Connection Profile Bigquery Private Connection
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork");
+    /// 
+    ///     var privateConnection = new Gcp.Datastream.PrivateConnection("privateConnection", new()
+    ///     {
+    ///         DisplayName = "Connection profile",
+    ///         Location = "us-central1",
+    ///         PrivateConnectionId = "my-connection",
+    ///         Labels = 
+    ///         {
+    ///             { "key", "value" },
+    ///         },
+    ///         VpcPeeringConfig = new Gcp.Datastream.Inputs.PrivateConnectionVpcPeeringConfigArgs
+    ///         {
+    ///             Vpc = defaultNetwork.Id,
+    ///             Subnet = "10.0.0.0/29",
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultConnectionProfile = new Gcp.Datastream.ConnectionProfile("defaultConnectionProfile", new()
+    ///     {
+    ///         DisplayName = "Connection profile",
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "my-profile",
+    ///         BigqueryProfile = null,
+    ///         PrivateConnectivity = new Gcp.Datastream.Inputs.ConnectionProfilePrivateConnectivityArgs
+    ///         {
+    ///             PrivateConnection = privateConnection.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Datastream Connection Profile Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Datastream.ConnectionProfile("default", new()
+    ///     {
+    ///         ConnectionProfileId = "my-profile",
+    ///         DisplayName = "Connection profile",
+    ///         ForwardSshConnectivity = new Gcp.Datastream.Inputs.ConnectionProfileForwardSshConnectivityArgs
+    ///         {
+    ///             Hostname = "google.com",
+    ///             Password = "swordfish",
+    ///             Port = 8022,
+    ///             Username = "my-user",
+    ///         },
+    ///         GcsProfile = new Gcp.Datastream.Inputs.ConnectionProfileGcsProfileArgs
+    ///         {
+    ///             Bucket = "my-bucket",
+    ///             RootPath = "/path",
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "key", "value" },
+    ///         },
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Datastream Connection Profile Postgres
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
+    ///     {
+    ///         DatabaseVersion = "POSTGRES_14",
+    ///         Region = "us-central1",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-f1-micro",
+    ///             IpConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationArgs
+    ///             {
+    ///                 AuthorizedNetworks = new[]
+    ///                 {
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.71.242.81",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.72.28.29",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.67.6.157",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.67.234.134",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.72.239.218",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
+    /// 
+    ///     var db = new Gcp.Sql.Database("db", new()
+    ///     {
+    ///         Instance = instance.Name,
+    ///     });
+    /// 
+    ///     var pwd = new Random.RandomPassword("pwd", new()
+    ///     {
+    ///         Length = 16,
+    ///         Special = false,
+    ///     });
+    /// 
+    ///     var user = new Gcp.Sql.User("user", new()
+    ///     {
+    ///         Instance = instance.Name,
+    ///         Password = pwd.Result,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Datastream.ConnectionProfile("default", new()
+    ///     {
+    ///         DisplayName = "Connection profile",
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "my-profile",
+    ///         PostgresqlProfile = new Gcp.Datastream.Inputs.ConnectionProfilePostgresqlProfileArgs
+    ///         {
+    ///             Hostname = instance.PublicIpAddress,
+    ///             Username = user.Name,
+    ///             Password = user.Password,
+    ///             Database = db.Name,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

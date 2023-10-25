@@ -24,6 +24,45 @@ import (
 // > **Warning:** It is strongly recommended to set `lifecycle { preventDestroy = true }` on databases in order to prevent accidental data loss.
 //
 // ## Example Usage
+// ### Spanner Database Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/spanner"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			main, err := spanner.NewInstance(ctx, "main", &spanner.InstanceArgs{
+//				Config:      pulumi.String("regional-europe-west1"),
+//				DisplayName: pulumi.String("main-instance"),
+//				NumNodes:    pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = spanner.NewDatabase(ctx, "database", &spanner.DatabaseArgs{
+//				Instance:               main.Name,
+//				VersionRetentionPeriod: pulumi.String("3d"),
+//				Ddls: pulumi.StringArray{
+//					pulumi.String("CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)"),
+//					pulumi.String("CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)"),
+//				},
+//				DeletionProtection: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

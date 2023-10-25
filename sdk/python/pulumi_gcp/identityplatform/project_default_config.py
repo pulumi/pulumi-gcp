@@ -167,6 +167,29 @@ class ProjectDefaultConfig(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+        ### Identity Platform Project Default Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.identityplatform.ProjectDefaultConfig("default", sign_in=gcp.identityplatform.ProjectDefaultConfigSignInArgs(
+            allow_duplicate_emails=True,
+            anonymous=gcp.identityplatform.ProjectDefaultConfigSignInAnonymousArgs(
+                enabled=True,
+            ),
+            email=gcp.identityplatform.ProjectDefaultConfigSignInEmailArgs(
+                enabled=True,
+                password_required=False,
+            ),
+            phone_number=gcp.identityplatform.ProjectDefaultConfigSignInPhoneNumberArgs(
+                enabled=True,
+                test_phone_numbers={
+                    "+11231231234": "000000",
+                },
+            ),
+        ))
+        ```
 
         ## Import
 
@@ -207,6 +230,29 @@ class ProjectDefaultConfig(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+        ### Identity Platform Project Default Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.identityplatform.ProjectDefaultConfig("default", sign_in=gcp.identityplatform.ProjectDefaultConfigSignInArgs(
+            allow_duplicate_emails=True,
+            anonymous=gcp.identityplatform.ProjectDefaultConfigSignInAnonymousArgs(
+                enabled=True,
+            ),
+            email=gcp.identityplatform.ProjectDefaultConfigSignInEmailArgs(
+                enabled=True,
+                password_required=False,
+            ),
+            phone_number=gcp.identityplatform.ProjectDefaultConfigSignInPhoneNumberArgs(
+                enabled=True,
+                test_phone_numbers={
+                    "+11231231234": "000000",
+                },
+            ),
+        ))
+        ```
 
         ## Import
 

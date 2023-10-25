@@ -883,6 +883,51 @@ class AttachedCluster(pulumi.CustomResource):
             * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
 
         ## Example Usage
+        ### Container Attached Cluster Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        versions = gcp.container.get_attached_versions(location="us-west1",
+            project=project.project_id)
+        primary = gcp.container.AttachedCluster("primary",
+            location="us-west1",
+            project=project.project_id,
+            description="Test cluster",
+            distribution="aks",
+            oidc_config=gcp.container.AttachedClusterOidcConfigArgs(
+                issuer_url="https://oidc.issuer.url",
+            ),
+            platform_version=versions.valid_versions[0],
+            fleet=gcp.container.AttachedClusterFleetArgs(
+                project=f"projects/{project.number}",
+            ))
+        ```
+        ### Container Attached Cluster Ignore Errors
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        versions = gcp.container.get_attached_versions(location="us-west1",
+            project=project.project_id)
+        primary = gcp.container.AttachedCluster("primary",
+            location="us-west1",
+            project=project.project_id,
+            description="Test cluster",
+            distribution="aks",
+            oidc_config=gcp.container.AttachedClusterOidcConfigArgs(
+                issuer_url="https://oidc.issuer.url",
+            ),
+            platform_version=versions.valid_versions[0],
+            fleet=gcp.container.AttachedClusterFleetArgs(
+                project=f"projects/{project.number}",
+            ),
+            deletion_policy="DELETE_IGNORE_ERRORS")
+        ```
 
         ## Import
 
@@ -956,6 +1001,51 @@ class AttachedCluster(pulumi.CustomResource):
             * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
 
         ## Example Usage
+        ### Container Attached Cluster Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        versions = gcp.container.get_attached_versions(location="us-west1",
+            project=project.project_id)
+        primary = gcp.container.AttachedCluster("primary",
+            location="us-west1",
+            project=project.project_id,
+            description="Test cluster",
+            distribution="aks",
+            oidc_config=gcp.container.AttachedClusterOidcConfigArgs(
+                issuer_url="https://oidc.issuer.url",
+            ),
+            platform_version=versions.valid_versions[0],
+            fleet=gcp.container.AttachedClusterFleetArgs(
+                project=f"projects/{project.number}",
+            ))
+        ```
+        ### Container Attached Cluster Ignore Errors
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        versions = gcp.container.get_attached_versions(location="us-west1",
+            project=project.project_id)
+        primary = gcp.container.AttachedCluster("primary",
+            location="us-west1",
+            project=project.project_id,
+            description="Test cluster",
+            distribution="aks",
+            oidc_config=gcp.container.AttachedClusterOidcConfigArgs(
+                issuer_url="https://oidc.issuer.url",
+            ),
+            platform_version=versions.valid_versions[0],
+            fleet=gcp.container.AttachedClusterFleetArgs(
+                project=f"projects/{project.number}",
+            ),
+            deletion_policy="DELETE_IGNORE_ERRORS")
+        ```
 
         ## Import
 

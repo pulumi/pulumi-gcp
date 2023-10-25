@@ -446,6 +446,44 @@ class SSLCertificate(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
+        ### Ssl Certificate Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.SSLCertificate("default",
+            name_prefix="my-certificate-",
+            description="a description",
+            private_key=(lambda path: open(path).read())("path/to/private.key"),
+            certificate=(lambda path: open(path).read())("path/to/certificate.crt"))
+        ```
+        ### Ssl Certificate Random Provider
+
+        ```python
+        import pulumi
+        import base64
+        import hashlib
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        def computeFilebase64sha256(path):
+        	fileData = open(path).read().encode()
+        	hashedData = hashlib.sha256(fileData.encode()).digest()
+        	return base64.b64encode(hashedData).decode()
+
+        # You may also want to control name generation explicitly:
+        default = gcp.compute.SSLCertificate("default",
+            private_key=(lambda path: open(path).read())("path/to/private.key"),
+            certificate=(lambda path: open(path).read())("path/to/certificate.crt"))
+        certificate = random.RandomId("certificate",
+            byte_length=4,
+            prefix="my-certificate-",
+            keepers={
+                "private_key": computeFilebase64sha256("path/to/private.key"),
+                "certificate": computeFilebase64sha256("path/to/certificate.crt"),
+            })
+        ```
 
         ## Import
 
@@ -510,6 +548,44 @@ class SSLCertificate(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
+        ### Ssl Certificate Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.SSLCertificate("default",
+            name_prefix="my-certificate-",
+            description="a description",
+            private_key=(lambda path: open(path).read())("path/to/private.key"),
+            certificate=(lambda path: open(path).read())("path/to/certificate.crt"))
+        ```
+        ### Ssl Certificate Random Provider
+
+        ```python
+        import pulumi
+        import base64
+        import hashlib
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        def computeFilebase64sha256(path):
+        	fileData = open(path).read().encode()
+        	hashedData = hashlib.sha256(fileData.encode()).digest()
+        	return base64.b64encode(hashedData).decode()
+
+        # You may also want to control name generation explicitly:
+        default = gcp.compute.SSLCertificate("default",
+            private_key=(lambda path: open(path).read())("path/to/private.key"),
+            certificate=(lambda path: open(path).read())("path/to/certificate.crt"))
+        certificate = random.RandomId("certificate",
+            byte_length=4,
+            prefix="my-certificate-",
+            keepers={
+                "private_key": computeFilebase64sha256("path/to/private.key"),
+                "certificate": computeFilebase64sha256("path/to/certificate.crt"),
+            })
+        ```
 
         ## Import
 

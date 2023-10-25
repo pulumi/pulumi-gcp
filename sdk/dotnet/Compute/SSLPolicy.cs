@@ -20,6 +20,40 @@ namespace Pulumi.Gcp.Compute
     ///     * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
     /// 
     /// ## Example Usage
+    /// ### Ssl Policy Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var prod_ssl_policy = new Gcp.Compute.SSLPolicy("prod-ssl-policy", new()
+    ///     {
+    ///         Profile = "MODERN",
+    ///     });
+    /// 
+    ///     var nonprod_ssl_policy = new Gcp.Compute.SSLPolicy("nonprod-ssl-policy", new()
+    ///     {
+    ///         MinTlsVersion = "TLS_1_2",
+    ///         Profile = "MODERN",
+    ///     });
+    /// 
+    ///     var custom_ssl_policy = new Gcp.Compute.SSLPolicy("custom-ssl-policy", new()
+    ///     {
+    ///         CustomFeatures = new[]
+    ///         {
+    ///             "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+    ///             "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+    ///         },
+    ///         MinTlsVersion = "TLS_1_2",
+    ///         Profile = "CUSTOM",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

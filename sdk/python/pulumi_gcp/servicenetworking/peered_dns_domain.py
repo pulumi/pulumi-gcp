@@ -265,6 +265,19 @@ class PeeredDnsDomain(pulumi.CustomResource):
 
         When using Google Cloud DNS to manage internal DNS, create peered DNS domains to make your DNS available to services like Google Cloud Build.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        name = gcp.servicenetworking.PeeredDnsDomain("name",
+            dns_suffix="example.com.",
+            network="default",
+            project="10000000",
+            service="peering-service")
+        ```
+
         ## Import
 
         Project peered DNS domains can be imported using the `service`, `project`, `network` and `name`, e.g.
@@ -293,6 +306,19 @@ class PeeredDnsDomain(pulumi.CustomResource):
         Allows management of a single peered DNS domain for an existing Google Cloud Platform project.
 
         When using Google Cloud DNS to manage internal DNS, create peered DNS domains to make your DNS available to services like Google Cloud Build.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        name = gcp.servicenetworking.PeeredDnsDomain("name",
+            dns_suffix="example.com.",
+            network="default",
+            project="10000000",
+            service="peering-service")
+        ```
 
         ## Import
 

@@ -3463,6 +3463,47 @@ class Cluster(pulumi.CustomResource):
         plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 
         ## Example Usage
+        ### With A Separately Managed Node Pool (Recommended)
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.service_account.Account("default",
+            account_id="service-account-id",
+            display_name="Service Account")
+        primary = gcp.container.Cluster("primary",
+            location="us-central1",
+            remove_default_node_pool=True,
+            initial_node_count=1)
+        primary_preemptible_nodes = gcp.container.NodePool("primaryPreemptibleNodes",
+            location="us-central1",
+            cluster=primary.name,
+            node_count=1,
+            node_config=gcp.container.NodePoolNodeConfigArgs(
+                preemptible=True,
+                machine_type="e2-medium",
+                service_account=default.email,
+                oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],
+            ))
+        ```
+
+        > **Note:** It is recommended that node pools be created and managed as separate resources as in the example above.
+        This allows node pools to be added and removed without recreating the cluster.  Node pools defined directly in the
+        `container.Cluster` resource cannot be removed without re-creating the cluster.
+        ### Autopilot
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.service_account.Account("default",
+            account_id="service-account-id",
+            display_name="Service Account")
+        primary = gcp.container.Cluster("primary",
+            enable_autopilot=True,
+            location="us-central1-a")
+        ```
 
         ## Import
 
@@ -3707,6 +3748,47 @@ class Cluster(pulumi.CustomResource):
         plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 
         ## Example Usage
+        ### With A Separately Managed Node Pool (Recommended)
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.service_account.Account("default",
+            account_id="service-account-id",
+            display_name="Service Account")
+        primary = gcp.container.Cluster("primary",
+            location="us-central1",
+            remove_default_node_pool=True,
+            initial_node_count=1)
+        primary_preemptible_nodes = gcp.container.NodePool("primaryPreemptibleNodes",
+            location="us-central1",
+            cluster=primary.name,
+            node_count=1,
+            node_config=gcp.container.NodePoolNodeConfigArgs(
+                preemptible=True,
+                machine_type="e2-medium",
+                service_account=default.email,
+                oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],
+            ))
+        ```
+
+        > **Note:** It is recommended that node pools be created and managed as separate resources as in the example above.
+        This allows node pools to be added and removed without recreating the cluster.  Node pools defined directly in the
+        `container.Cluster` resource cannot be removed without re-creating the cluster.
+        ### Autopilot
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.service_account.Account("default",
+            account_id="service-account-id",
+            display_name="Service Account")
+        primary = gcp.container.Cluster("primary",
+            enable_autopilot=True,
+            location="us-central1-a")
+        ```
 
         ## Import
 

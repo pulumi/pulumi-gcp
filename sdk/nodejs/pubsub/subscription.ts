@@ -20,6 +20,124 @@ import * as utilities from "../utilities";
  * by using the `gcp.projects.ServiceIdentity` resource.
  *
  * ## Example Usage
+ * ### Pubsub Subscription Push
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const exampleTopic = new gcp.pubsub.Topic("exampleTopic", {});
+ * const exampleSubscription = new gcp.pubsub.Subscription("exampleSubscription", {
+ *     topic: exampleTopic.name,
+ *     ackDeadlineSeconds: 20,
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     pushConfig: {
+ *         pushEndpoint: "https://example.com/push",
+ *         attributes: {
+ *             "x-goog-version": "v1",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Pubsub Subscription Pull
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const exampleTopic = new gcp.pubsub.Topic("exampleTopic", {});
+ * const exampleSubscription = new gcp.pubsub.Subscription("exampleSubscription", {
+ *     topic: exampleTopic.name,
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     messageRetentionDuration: "1200s",
+ *     retainAckedMessages: true,
+ *     ackDeadlineSeconds: 20,
+ *     expirationPolicy: {
+ *         ttl: "300000.5s",
+ *     },
+ *     retryPolicy: {
+ *         minimumBackoff: "10s",
+ *     },
+ *     enableMessageOrdering: false,
+ * });
+ * ```
+ * ### Pubsub Subscription Different Project
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const exampleTopic = new gcp.pubsub.Topic("exampleTopic", {project: "topic-project"});
+ * const exampleSubscription = new gcp.pubsub.Subscription("exampleSubscription", {
+ *     project: "subscription-project",
+ *     topic: exampleTopic.name,
+ * });
+ * ```
+ * ### Pubsub Subscription Dead Letter
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const exampleTopic = new gcp.pubsub.Topic("exampleTopic", {});
+ * const exampleDeadLetter = new gcp.pubsub.Topic("exampleDeadLetter", {});
+ * const exampleSubscription = new gcp.pubsub.Subscription("exampleSubscription", {
+ *     topic: exampleTopic.name,
+ *     deadLetterPolicy: {
+ *         deadLetterTopic: exampleDeadLetter.id,
+ *         maxDeliveryAttempts: 10,
+ *     },
+ * });
+ * ```
+ * ### Pubsub Subscription Push Bq
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const exampleTopic = new gcp.pubsub.Topic("exampleTopic", {});
+ * const project = gcp.organizations.getProject({});
+ * const viewer = new gcp.projects.IAMMember("viewer", {
+ *     project: project.then(project => project.projectId),
+ *     role: "roles/bigquery.metadataViewer",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-pubsub.iam.gserviceaccount.com`),
+ * });
+ * const editor = new gcp.projects.IAMMember("editor", {
+ *     project: project.then(project => project.projectId),
+ *     role: "roles/bigquery.dataEditor",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-pubsub.iam.gserviceaccount.com`),
+ * });
+ * const testDataset = new gcp.bigquery.Dataset("testDataset", {datasetId: "example_dataset"});
+ * const testTable = new gcp.bigquery.Table("testTable", {
+ *     deletionProtection: false,
+ *     tableId: "example_table",
+ *     datasetId: testDataset.datasetId,
+ *     schema: `[
+ *   {
+ *     "name": "data",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE",
+ *     "description": "The data"
+ *   }
+ * ]
+ * `,
+ * });
+ * const exampleSubscription = new gcp.pubsub.Subscription("exampleSubscription", {
+ *     topic: exampleTopic.name,
+ *     bigqueryConfig: {
+ *         table: pulumi.interpolate`${testTable.project}.${testTable.datasetId}.${testTable.tableId}`,
+ *     },
+ * }, {
+ *     dependsOn: [
+ *         viewer,
+ *         editor,
+ *     ],
+ * });
+ * ```
  *
  * ## Import
  *

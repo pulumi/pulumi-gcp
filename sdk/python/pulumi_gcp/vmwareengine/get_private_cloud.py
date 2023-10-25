@@ -149,7 +149,16 @@ def get_private_cloud(location: Optional[str] = None,
                       project: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPrivateCloudResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_pc = gcp.vmwareengine.get_private_cloud(name="my-pc",
+        location="us-central1-a")
+    ```
+
 
     :param str location: Location of the resource.
            
@@ -186,7 +195,16 @@ def get_private_cloud_output(location: Optional[pulumi.Input[str]] = None,
                              project: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPrivateCloudResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_pc = gcp.vmwareengine.get_private_cloud(name="my-pc",
+        location="us-central1-a")
+    ```
+
 
     :param str location: Location of the resource.
            

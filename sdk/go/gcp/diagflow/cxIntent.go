@@ -22,6 +22,81 @@ import (
 //   - [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 //
 // ## Example Usage
+// ### Dialogflowcx Intent Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/diagflow"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			agent, err := diagflow.NewCxAgent(ctx, "agent", &diagflow.CxAgentArgs{
+//				DisplayName:         pulumi.String("dialogflowcx-agent"),
+//				Location:            pulumi.String("global"),
+//				DefaultLanguageCode: pulumi.String("en"),
+//				SupportedLanguageCodes: pulumi.StringArray{
+//					pulumi.String("fr"),
+//					pulumi.String("de"),
+//					pulumi.String("es"),
+//				},
+//				TimeZone:                 pulumi.String("America/New_York"),
+//				Description:              pulumi.String("Example description."),
+//				AvatarUri:                pulumi.String("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"),
+//				EnableStackdriverLogging: pulumi.Bool(true),
+//				EnableSpellCorrection:    pulumi.Bool(true),
+//				SpeechToTextSettings: &diagflow.CxAgentSpeechToTextSettingsArgs{
+//					EnableSpeechAdaptation: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = diagflow.NewCxIntent(ctx, "basicIntent", &diagflow.CxIntentArgs{
+//				Parent:      agent.ID(),
+//				DisplayName: pulumi.String("Example"),
+//				Priority:    pulumi.Int(1),
+//				Description: pulumi.String("Intent example"),
+//				TrainingPhrases: diagflow.CxIntentTrainingPhraseArray{
+//					&diagflow.CxIntentTrainingPhraseArgs{
+//						Parts: diagflow.CxIntentTrainingPhrasePartArray{
+//							&diagflow.CxIntentTrainingPhrasePartArgs{
+//								Text: pulumi.String("training"),
+//							},
+//							&diagflow.CxIntentTrainingPhrasePartArgs{
+//								Text: pulumi.String("phrase"),
+//							},
+//							&diagflow.CxIntentTrainingPhrasePartArgs{
+//								Text: pulumi.String("example"),
+//							},
+//						},
+//						RepeatCount: pulumi.Int(1),
+//					},
+//				},
+//				Parameters: diagflow.CxIntentParameterArray{
+//					&diagflow.CxIntentParameterArgs{
+//						Id:         pulumi.String("param1"),
+//						EntityType: pulumi.String("projects/-/locations/-/agents/-/entityTypes/sys.date"),
+//					},
+//				},
+//				Labels: pulumi.StringMap{
+//					"label1": pulumi.String("value1"),
+//					"label2": pulumi.String("value2"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

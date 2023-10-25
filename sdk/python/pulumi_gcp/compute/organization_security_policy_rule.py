@@ -497,6 +497,41 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             * [Creating firewall rules](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
 
         ## Example Usage
+        ### Organization Security Policy Rule Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy_organization_security_policy = gcp.compute.OrganizationSecurityPolicy("policyOrganizationSecurityPolicy",
+            display_name="tf-test",
+            parent="organizations/123456789",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule",
+            policy_id=policy_organization_security_policy.id,
+            action="allow",
+            direction="INGRESS",
+            enable_logging=True,
+            match=gcp.compute.OrganizationSecurityPolicyRuleMatchArgs(
+                config=gcp.compute.OrganizationSecurityPolicyRuleMatchConfigArgs(
+                    src_ip_ranges=[
+                        "192.168.0.0/16",
+                        "10.0.0.0/8",
+                    ],
+                    layer4_configs=[
+                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
+                            ip_protocol="tcp",
+                            ports=["22"],
+                        ),
+                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
+                            ip_protocol="icmp",
+                        ),
+                    ],
+                ),
+            ),
+            priority=100,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -546,6 +581,41 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             * [Creating firewall rules](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
 
         ## Example Usage
+        ### Organization Security Policy Rule Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy_organization_security_policy = gcp.compute.OrganizationSecurityPolicy("policyOrganizationSecurityPolicy",
+            display_name="tf-test",
+            parent="organizations/123456789",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule",
+            policy_id=policy_organization_security_policy.id,
+            action="allow",
+            direction="INGRESS",
+            enable_logging=True,
+            match=gcp.compute.OrganizationSecurityPolicyRuleMatchArgs(
+                config=gcp.compute.OrganizationSecurityPolicyRuleMatchConfigArgs(
+                    src_ip_ranges=[
+                        "192.168.0.0/16",
+                        "10.0.0.0/8",
+                    ],
+                    layer4_configs=[
+                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
+                            ip_protocol="tcp",
+                            ports=["22"],
+                        ),
+                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
+                            ip_protocol="icmp",
+                        ),
+                    ],
+                ),
+            ),
+            priority=100,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

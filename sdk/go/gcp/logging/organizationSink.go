@@ -18,6 +18,55 @@ import (
 // * How-to Guides
 //   - [Exporting Logs](https://cloud.google.com/logging/docs/export)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := storage.NewBucket(ctx, "log-bucket", &storage.BucketArgs{
+//				Location: pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = logging.NewOrganizationSink(ctx, "my-sink", &logging.OrganizationSinkArgs{
+//				Description: pulumi.String("some explanation on what this is"),
+//				OrgId:       pulumi.String("123456789"),
+//				Destination: log_bucket.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("storage.googleapis.com/%v", name), nil
+//				}).(pulumi.StringOutput),
+//				Filter: pulumi.String("resource.type = gce_instance AND severity >= WARNING"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewIAMMember(ctx, "log-writer", &projects.IAMMemberArgs{
+//				Project: pulumi.String("your-project-id"),
+//				Role:    pulumi.String("roles/storage.objectCreator"),
+//				Member:  my_sink.WriterIdentity,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Organization-level logging sinks can be imported using this format:

@@ -15,6 +15,33 @@ import (
 // Get information about a Google Cloud Function (2nd gen). For more information see:
 //
 // * [API documentation](https://cloud.google.com/functions/docs/reference/rest/v2beta/projects.locations.functions).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudfunctionsv2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudfunctionsv2.LookupFunction(ctx, &cloudfunctionsv2.LookupFunctionArgs{
+//				Location: "us-central1",
+//				Name:     "function",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupFunction(ctx *pulumi.Context, args *LookupFunctionArgs, opts ...pulumi.InvokeOption) (*LookupFunctionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFunctionResult

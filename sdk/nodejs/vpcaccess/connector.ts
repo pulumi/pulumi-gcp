@@ -16,6 +16,36 @@ import * as utilities from "../utilities";
  *     * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
  *
  * ## Example Usage
+ * ### Vpc Access Connector
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const connector = new gcp.vpcaccess.Connector("connector", {
+ *     ipCidrRange: "10.8.0.0/28",
+ *     network: "default",
+ * });
+ * ```
+ * ### Vpc Access Connector Shared Vpc
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const customTestNetwork = new gcp.compute.Network("customTestNetwork", {autoCreateSubnetworks: false});
+ * const customTestSubnetwork = new gcp.compute.Subnetwork("customTestSubnetwork", {
+ *     ipCidrRange: "10.2.0.0/28",
+ *     region: "us-central1",
+ *     network: customTestNetwork.id,
+ * });
+ * const connector = new gcp.vpcaccess.Connector("connector", {
+ *     subnet: {
+ *         name: customTestSubnetwork.name,
+ *     },
+ *     machineType: "e2-standard-4",
+ * });
+ * ```
  *
  * ## Import
  *

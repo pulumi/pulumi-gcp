@@ -10,6 +10,26 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Logging
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_exclusion = new Gcp.Logging.BillingAccountExclusion("my-exclusion", new()
+    ///     {
+    ///         BillingAccount = "ABCDEF-012345-GHIJKL",
+    ///         Description = "Exclude GCE instance debug logs",
+    ///         Filter = "resource.type = gce_instance AND severity &lt;= DEBUG",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Billing account logging exclusions can be imported using their URI, e.g.

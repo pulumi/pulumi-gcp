@@ -500,6 +500,275 @@ class CxFlow(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 
         ## Example Usage
+        ### Dialogflowcx Flow Full
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        agent = gcp.diagflow.CxAgent("agent",
+            display_name="dialogflowcx-agent",
+            location="global",
+            default_language_code="en",
+            supported_language_codes=[
+                "fr",
+                "de",
+                "es",
+            ],
+            time_zone="America/New_York",
+            description="Example description.",
+            avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+            enable_stackdriver_logging=True,
+            enable_spell_correction=True,
+            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
+                enable_speech_adaptation=True,
+            ))
+        basic_flow = gcp.diagflow.CxFlow("basicFlow",
+            parent=agent.id,
+            display_name="MyFlow",
+            description="Test Flow",
+            nlu_settings=gcp.diagflow.CxFlowNluSettingsArgs(
+                classification_threshold=0.3,
+                model_type="MODEL_TYPE_STANDARD",
+            ),
+            event_handlers=[
+                gcp.diagflow.CxFlowEventHandlerArgs(
+                    event="custom-event",
+                    trigger_fulfillment=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentArgs(
+                        return_partial_responses=False,
+                        messages=[gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
+                            text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs(
+                                texts=["I didn't get that. Can you say it again?"],
+                            ),
+                        )],
+                    ),
+                ),
+                gcp.diagflow.CxFlowEventHandlerArgs(
+                    event="sys.no-match-default",
+                    trigger_fulfillment=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentArgs(
+                        return_partial_responses=False,
+                        messages=[gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
+                            text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs(
+                                texts=["Sorry, could you say that again?"],
+                            ),
+                        )],
+                    ),
+                ),
+                gcp.diagflow.CxFlowEventHandlerArgs(
+                    event="sys.no-input-default",
+                    trigger_fulfillment=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentArgs(
+                        return_partial_responses=False,
+                        messages=[gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
+                            text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs(
+                                texts=["One more time?"],
+                            ),
+                        )],
+                    ),
+                ),
+                gcp.diagflow.CxFlowEventHandlerArgs(
+                    event="another-event",
+                    trigger_fulfillment=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentArgs(
+                        return_partial_responses=True,
+                        messages=[
+                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
+                                channel="some-channel",
+                                text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs(
+                                    texts=["Some text"],
+                                ),
+                            ),
+                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
+                                payload="          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
+                            ),
+                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
+                                conversation_success=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs(
+                                    metadata="            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                                ),
+                            ),
+                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
+                                output_audio_text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs(
+                                    text="some output text",
+                                ),
+                            ),
+                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
+                                output_audio_text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs(
+                                    ssml="            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
+                                ),
+                            ),
+                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
+                                live_agent_handoff=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs(
+                                    metadata="            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                                ),
+                            ),
+                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
+                                play_audio=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs(
+                                    audio_uri="http://example.com/some-audio-file.mp3",
+                                ),
+                            ),
+                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
+                                telephony_transfer_call=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs(
+                                    phone_number="1-234-567-8901",
+                                ),
+                            ),
+                        ],
+                        set_parameter_actions=[
+                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs(
+                                parameter="some-param",
+                                value="123.45",
+                            ),
+                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs(
+                                parameter="another-param",
+                                value=json.dumps("abc"),
+                            ),
+                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs(
+                                parameter="other-param",
+                                value=json.dumps(["foo"]),
+                            ),
+                        ],
+                        conditional_cases=[gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs(
+                            cases=json.dumps([
+                                {
+                                    "condition": "$sys.func.RAND() < 0.5",
+                                    "caseContent": [
+                                        {
+                                            "message": {
+                                                "text": {
+                                                    "text": ["First case"],
+                                                },
+                                            },
+                                        },
+                                        {
+                                            "additionalCases": {
+                                                "cases": [{
+                                                    "condition": "$sys.func.RAND() < 0.2",
+                                                    "caseContent": [{
+                                                        "message": {
+                                                            "text": {
+                                                                "text": ["Nested case"],
+                                                            },
+                                                        },
+                                                    }],
+                                                }],
+                                            },
+                                        },
+                                    ],
+                                },
+                                {
+                                    "caseContent": [{
+                                        "message": {
+                                            "text": {
+                                                "text": ["Final case"],
+                                            },
+                                        },
+                                    }],
+                                },
+                            ]),
+                        )],
+                    ),
+                ),
+            ],
+            transition_routes=[gcp.diagflow.CxFlowTransitionRouteArgs(
+                condition="true",
+                trigger_fulfillment=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentArgs(
+                    return_partial_responses=True,
+                    messages=[
+                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
+                            channel="some-channel",
+                            text=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs(
+                                texts=["Some text"],
+                            ),
+                        ),
+                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
+                            payload="          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
+                        ),
+                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
+                            conversation_success=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs(
+                                metadata="            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                            ),
+                        ),
+                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
+                            output_audio_text=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs(
+                                text="some output text",
+                            ),
+                        ),
+                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
+                            output_audio_text=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs(
+                                ssml="            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
+                            ),
+                        ),
+                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
+                            live_agent_handoff=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs(
+                                metadata="            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                            ),
+                        ),
+                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
+                            play_audio=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs(
+                                audio_uri="http://example.com/some-audio-file.mp3",
+                            ),
+                        ),
+                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
+                            telephony_transfer_call=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs(
+                                phone_number="1-234-567-8901",
+                            ),
+                        ),
+                    ],
+                    set_parameter_actions=[
+                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs(
+                            parameter="some-param",
+                            value="123.45",
+                        ),
+                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs(
+                            parameter="another-param",
+                            value=json.dumps("abc"),
+                        ),
+                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs(
+                            parameter="other-param",
+                            value=json.dumps(["foo"]),
+                        ),
+                    ],
+                    conditional_cases=[gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs(
+                        cases=json.dumps([
+                            {
+                                "condition": "$sys.func.RAND() < 0.5",
+                                "caseContent": [
+                                    {
+                                        "message": {
+                                            "text": {
+                                                "text": ["First case"],
+                                            },
+                                        },
+                                    },
+                                    {
+                                        "additionalCases": {
+                                            "cases": [{
+                                                "condition": "$sys.func.RAND() < 0.2",
+                                                "caseContent": [{
+                                                    "message": {
+                                                        "text": {
+                                                            "text": ["Nested case"],
+                                                        },
+                                                    },
+                                                }],
+                                            }],
+                                        },
+                                    },
+                                ],
+                            },
+                            {
+                                "caseContent": [{
+                                    "message": {
+                                        "text": {
+                                            "text": ["Final case"],
+                                        },
+                                    },
+                                }],
+                            },
+                        ]),
+                    )],
+                ),
+                target_flow=agent.start_flow,
+            )])
+        ```
 
         ## Import
 
@@ -564,6 +833,275 @@ class CxFlow(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 
         ## Example Usage
+        ### Dialogflowcx Flow Full
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        agent = gcp.diagflow.CxAgent("agent",
+            display_name="dialogflowcx-agent",
+            location="global",
+            default_language_code="en",
+            supported_language_codes=[
+                "fr",
+                "de",
+                "es",
+            ],
+            time_zone="America/New_York",
+            description="Example description.",
+            avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+            enable_stackdriver_logging=True,
+            enable_spell_correction=True,
+            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
+                enable_speech_adaptation=True,
+            ))
+        basic_flow = gcp.diagflow.CxFlow("basicFlow",
+            parent=agent.id,
+            display_name="MyFlow",
+            description="Test Flow",
+            nlu_settings=gcp.diagflow.CxFlowNluSettingsArgs(
+                classification_threshold=0.3,
+                model_type="MODEL_TYPE_STANDARD",
+            ),
+            event_handlers=[
+                gcp.diagflow.CxFlowEventHandlerArgs(
+                    event="custom-event",
+                    trigger_fulfillment=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentArgs(
+                        return_partial_responses=False,
+                        messages=[gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
+                            text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs(
+                                texts=["I didn't get that. Can you say it again?"],
+                            ),
+                        )],
+                    ),
+                ),
+                gcp.diagflow.CxFlowEventHandlerArgs(
+                    event="sys.no-match-default",
+                    trigger_fulfillment=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentArgs(
+                        return_partial_responses=False,
+                        messages=[gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
+                            text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs(
+                                texts=["Sorry, could you say that again?"],
+                            ),
+                        )],
+                    ),
+                ),
+                gcp.diagflow.CxFlowEventHandlerArgs(
+                    event="sys.no-input-default",
+                    trigger_fulfillment=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentArgs(
+                        return_partial_responses=False,
+                        messages=[gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
+                            text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs(
+                                texts=["One more time?"],
+                            ),
+                        )],
+                    ),
+                ),
+                gcp.diagflow.CxFlowEventHandlerArgs(
+                    event="another-event",
+                    trigger_fulfillment=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentArgs(
+                        return_partial_responses=True,
+                        messages=[
+                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
+                                channel="some-channel",
+                                text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs(
+                                    texts=["Some text"],
+                                ),
+                            ),
+                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
+                                payload="          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
+                            ),
+                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
+                                conversation_success=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs(
+                                    metadata="            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                                ),
+                            ),
+                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
+                                output_audio_text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs(
+                                    text="some output text",
+                                ),
+                            ),
+                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
+                                output_audio_text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs(
+                                    ssml="            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
+                                ),
+                            ),
+                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
+                                live_agent_handoff=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs(
+                                    metadata="            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                                ),
+                            ),
+                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
+                                play_audio=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs(
+                                    audio_uri="http://example.com/some-audio-file.mp3",
+                                ),
+                            ),
+                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
+                                telephony_transfer_call=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs(
+                                    phone_number="1-234-567-8901",
+                                ),
+                            ),
+                        ],
+                        set_parameter_actions=[
+                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs(
+                                parameter="some-param",
+                                value="123.45",
+                            ),
+                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs(
+                                parameter="another-param",
+                                value=json.dumps("abc"),
+                            ),
+                            gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs(
+                                parameter="other-param",
+                                value=json.dumps(["foo"]),
+                            ),
+                        ],
+                        conditional_cases=[gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs(
+                            cases=json.dumps([
+                                {
+                                    "condition": "$sys.func.RAND() < 0.5",
+                                    "caseContent": [
+                                        {
+                                            "message": {
+                                                "text": {
+                                                    "text": ["First case"],
+                                                },
+                                            },
+                                        },
+                                        {
+                                            "additionalCases": {
+                                                "cases": [{
+                                                    "condition": "$sys.func.RAND() < 0.2",
+                                                    "caseContent": [{
+                                                        "message": {
+                                                            "text": {
+                                                                "text": ["Nested case"],
+                                                            },
+                                                        },
+                                                    }],
+                                                }],
+                                            },
+                                        },
+                                    ],
+                                },
+                                {
+                                    "caseContent": [{
+                                        "message": {
+                                            "text": {
+                                                "text": ["Final case"],
+                                            },
+                                        },
+                                    }],
+                                },
+                            ]),
+                        )],
+                    ),
+                ),
+            ],
+            transition_routes=[gcp.diagflow.CxFlowTransitionRouteArgs(
+                condition="true",
+                trigger_fulfillment=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentArgs(
+                    return_partial_responses=True,
+                    messages=[
+                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
+                            channel="some-channel",
+                            text=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs(
+                                texts=["Some text"],
+                            ),
+                        ),
+                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
+                            payload="          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
+                        ),
+                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
+                            conversation_success=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs(
+                                metadata="            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                            ),
+                        ),
+                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
+                            output_audio_text=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs(
+                                text="some output text",
+                            ),
+                        ),
+                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
+                            output_audio_text=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs(
+                                ssml="            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
+                            ),
+                        ),
+                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
+                            live_agent_handoff=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs(
+                                metadata="            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                            ),
+                        ),
+                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
+                            play_audio=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs(
+                                audio_uri="http://example.com/some-audio-file.mp3",
+                            ),
+                        ),
+                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs(
+                            telephony_transfer_call=gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs(
+                                phone_number="1-234-567-8901",
+                            ),
+                        ),
+                    ],
+                    set_parameter_actions=[
+                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs(
+                            parameter="some-param",
+                            value="123.45",
+                        ),
+                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs(
+                            parameter="another-param",
+                            value=json.dumps("abc"),
+                        ),
+                        gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs(
+                            parameter="other-param",
+                            value=json.dumps(["foo"]),
+                        ),
+                    ],
+                    conditional_cases=[gcp.diagflow.CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs(
+                        cases=json.dumps([
+                            {
+                                "condition": "$sys.func.RAND() < 0.5",
+                                "caseContent": [
+                                    {
+                                        "message": {
+                                            "text": {
+                                                "text": ["First case"],
+                                            },
+                                        },
+                                    },
+                                    {
+                                        "additionalCases": {
+                                            "cases": [{
+                                                "condition": "$sys.func.RAND() < 0.2",
+                                                "caseContent": [{
+                                                    "message": {
+                                                        "text": {
+                                                            "text": ["Nested case"],
+                                                        },
+                                                    },
+                                                }],
+                                            }],
+                                        },
+                                    },
+                                ],
+                            },
+                            {
+                                "caseContent": [{
+                                    "message": {
+                                        "text": {
+                                            "text": ["Final case"],
+                                        },
+                                    },
+                                }],
+                            },
+                        ]),
+                    )],
+                ),
+                target_flow=agent.start_flow,
+            )])
+        ```
 
         ## Import
 

@@ -11,6 +11,65 @@ namespace Pulumi.Gcp.Dataform
 {
     /// <summary>
     /// ## Example Usage
+    /// ### Dataform Repository
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var gitRepository = new Gcp.SourceRepo.Repository("gitRepository", new()
+    ///     {
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var secret = new Gcp.SecretManager.Secret("secret", new()
+    ///     {
+    ///         SecretId = "secret",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = null,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var secretVersion = new Gcp.SecretManager.SecretVersion("secretVersion", new()
+    ///     {
+    ///         Secret = secret.Id,
+    ///         SecretData = "secret-data",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var dataformRespository = new Gcp.Dataform.Repository("dataformRespository", new()
+    ///     {
+    ///         GitRemoteSettings = new Gcp.Dataform.Inputs.RepositoryGitRemoteSettingsArgs
+    ///         {
+    ///             Url = gitRepository.Url,
+    ///             DefaultBranch = "main",
+    ///             AuthenticationTokenSecretVersion = secretVersion.Id,
+    ///         },
+    ///         WorkspaceCompilationOverrides = new Gcp.Dataform.Inputs.RepositoryWorkspaceCompilationOverridesArgs
+    ///         {
+    ///             DefaultDatabase = "database",
+    ///             SchemaSuffix = "_suffix",
+    ///             TablePrefix = "prefix_",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

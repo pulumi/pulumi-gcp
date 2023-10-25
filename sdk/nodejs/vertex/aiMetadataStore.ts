@@ -8,6 +8,17 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### Vertex Ai Metadata Store
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const store = new gcp.vertex.AiMetadataStore("store", {
+ *     description: "Store to test the terraform module",
+ *     region: "us-central1",
+ * });
+ * ```
  *
  * ## Import
  *

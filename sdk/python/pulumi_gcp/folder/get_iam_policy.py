@@ -82,6 +82,15 @@ def get_iam_policy(folder: Optional[str] = None,
     """
     Retrieves the current IAM policy data for a folder.
 
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    test = gcp.folder.get_iam_policy(folder=google_folder["permissiontest"]["name"])
+    ```
+
 
     :param str folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
     """
@@ -102,6 +111,15 @@ def get_iam_policy_output(folder: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a folder.
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    test = gcp.folder.get_iam_policy(folder=google_folder["permissiontest"]["name"])
+    ```
 
 
     :param str folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.

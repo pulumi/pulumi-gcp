@@ -13,6 +13,34 @@ import (
 )
 
 // Retrieves the current IAM policy data for a Spanner database.
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/spanner"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := spanner.GetDatabaseIamPolicy(ctx, &spanner.GetDatabaseIamPolicyArgs{
+//				Project:  pulumi.StringRef(google_spanner_database.Database.Project),
+//				Database: google_spanner_database.Database.Name,
+//				Instance: google_spanner_database.Database.Instance,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDatabaseIamPolicy(ctx *pulumi.Context, args *GetDatabaseIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetDatabaseIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabaseIamPolicyResult

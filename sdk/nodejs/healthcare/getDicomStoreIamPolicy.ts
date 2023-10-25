@@ -6,6 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for a Google Cloud Healthcare DICOM store.
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const foo = gcp.healthcare.getDicomStoreIamPolicy({
+ *     dicomStoreId: google_healthcare_dicom_store.dicom_store.id,
+ * });
+ * ```
  */
 export function getDicomStoreIamPolicy(args: GetDicomStoreIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDicomStoreIamPolicyResult> {
 
@@ -48,6 +59,17 @@ export interface GetDicomStoreIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for a Google Cloud Healthcare DICOM store.
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const foo = gcp.healthcare.getDicomStoreIamPolicy({
+ *     dicomStoreId: google_healthcare_dicom_store.dicom_store.id,
+ * });
+ * ```
  */
 export function getDicomStoreIamPolicyOutput(args: GetDicomStoreIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDicomStoreIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getDicomStoreIamPolicy(a, opts))

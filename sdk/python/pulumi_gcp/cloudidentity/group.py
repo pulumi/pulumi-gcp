@@ -422,6 +422,23 @@ class Group(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+        ### Cloud Identity Groups Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cloud_identity_group_basic = gcp.cloudidentity.Group("cloudIdentityGroupBasic",
+            display_name="my-identity-group",
+            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
+                id="my-identity-group@example.com",
+            ),
+            initial_group_config="WITH_INITIAL_OWNER",
+            labels={
+                "cloudidentity.googleapis.com/groups.discussion_forum": "",
+            },
+            parent="customers/A01b123xz")
+        ```
 
         ## Import
 
@@ -476,6 +493,23 @@ class Group(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+        ### Cloud Identity Groups Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cloud_identity_group_basic = gcp.cloudidentity.Group("cloudIdentityGroupBasic",
+            display_name="my-identity-group",
+            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
+                id="my-identity-group@example.com",
+            ),
+            initial_group_config="WITH_INITIAL_OWNER",
+            labels={
+                "cloudidentity.googleapis.com/groups.discussion_forum": "",
+            },
+            parent="customers/A01b123xz")
+        ```
 
         ## Import
 

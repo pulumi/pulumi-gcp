@@ -30,6 +30,38 @@ import (
 // state as plain-text.
 //
 // ## Example Usage
+// ### Storage Hmac Key
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			serviceAccount, err := serviceAccount.NewAccount(ctx, "serviceAccount", &serviceAccount.AccountArgs{
+//				AccountId: pulumi.String("my-svc-acc"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = storage.NewHmacKey(ctx, "key", &storage.HmacKeyArgs{
+//				ServiceAccountEmail: serviceAccount.Email,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

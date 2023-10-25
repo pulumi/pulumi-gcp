@@ -16,6 +16,52 @@ import * as utilities from "../utilities";
  * plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
  *
  * ## Example Usage
+ * ### With A Separately Managed Node Pool (Recommended)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.serviceaccount.Account("default", {
+ *     accountId: "service-account-id",
+ *     displayName: "Service Account",
+ * });
+ * const primary = new gcp.container.Cluster("primary", {
+ *     location: "us-central1",
+ *     removeDefaultNodePool: true,
+ *     initialNodeCount: 1,
+ * });
+ * const primaryPreemptibleNodes = new gcp.container.NodePool("primaryPreemptibleNodes", {
+ *     location: "us-central1",
+ *     cluster: primary.name,
+ *     nodeCount: 1,
+ *     nodeConfig: {
+ *         preemptible: true,
+ *         machineType: "e2-medium",
+ *         serviceAccount: _default.email,
+ *         oauthScopes: ["https://www.googleapis.com/auth/cloud-platform"],
+ *     },
+ * });
+ * ```
+ *
+ * > **Note:** It is recommended that node pools be created and managed as separate resources as in the example above.
+ * This allows node pools to be added and removed without recreating the cluster.  Node pools defined directly in the
+ * `gcp.container.Cluster` resource cannot be removed without re-creating the cluster.
+ * ### Autopilot
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.serviceaccount.Account("default", {
+ *     accountId: "service-account-id",
+ *     displayName: "Service Account",
+ * });
+ * const primary = new gcp.container.Cluster("primary", {
+ *     enableAutopilot: true,
+ *     location: "us-central1-a",
+ * });
+ * ```
  *
  * ## Import
  *

@@ -18,6 +18,81 @@ import * as utilities from "../utilities";
  *     * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
  *
  * ## Example Usage
+ * ### Filestore Instance Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.filestore.Instance("instance", {
+ *     fileShares: {
+ *         capacityGb: 1024,
+ *         name: "share1",
+ *     },
+ *     location: "us-central1-b",
+ *     networks: [{
+ *         modes: ["MODE_IPV4"],
+ *         network: "default",
+ *     }],
+ *     tier: "BASIC_HDD",
+ * });
+ * ```
+ * ### Filestore Instance Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.filestore.Instance("instance", {
+ *     fileShares: {
+ *         capacityGb: 2560,
+ *         name: "share1",
+ *         nfsExportOptions: [
+ *             {
+ *                 accessMode: "READ_WRITE",
+ *                 ipRanges: ["10.0.0.0/24"],
+ *                 squashMode: "NO_ROOT_SQUASH",
+ *             },
+ *             {
+ *                 accessMode: "READ_ONLY",
+ *                 anonGid: 456,
+ *                 anonUid: 123,
+ *                 ipRanges: ["10.10.0.0/24"],
+ *                 squashMode: "ROOT_SQUASH",
+ *             },
+ *         ],
+ *     },
+ *     location: "us-central1-b",
+ *     networks: [{
+ *         connectMode: "DIRECT_PEERING",
+ *         modes: ["MODE_IPV4"],
+ *         network: "default",
+ *     }],
+ *     tier: "BASIC_SSD",
+ * });
+ * ```
+ * ### Filestore Instance Enterprise
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const filestoreKeyring = new gcp.kms.KeyRing("filestoreKeyring", {location: "us-central1"});
+ * const filestoreKey = new gcp.kms.CryptoKey("filestoreKey", {keyRing: filestoreKeyring.id});
+ * const instance = new gcp.filestore.Instance("instance", {
+ *     location: "us-central1",
+ *     tier: "ENTERPRISE",
+ *     fileShares: {
+ *         capacityGb: 1024,
+ *         name: "share1",
+ *     },
+ *     networks: [{
+ *         network: "default",
+ *         modes: ["MODE_IPV4"],
+ *     }],
+ *     kmsKeyName: filestoreKey.id,
+ * });
+ * ```
  *
  * ## Import
  *

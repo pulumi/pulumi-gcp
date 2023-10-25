@@ -13,6 +13,32 @@ import (
 )
 
 // Retrieves the current IAM policy data for a Google Cloud Healthcare FHIR store.
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := healthcare.LookupFhirStoreIamPolicy(ctx, &healthcare.LookupFhirStoreIamPolicyArgs{
+//				FhirStoreId: google_healthcare_fhir_store.Fhir_store.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupFhirStoreIamPolicy(ctx *pulumi.Context, args *LookupFhirStoreIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupFhirStoreIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFhirStoreIamPolicyResult

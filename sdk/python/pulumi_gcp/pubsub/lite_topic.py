@@ -362,6 +362,32 @@ class LiteTopic(pulumi.CustomResource):
             * [Managing Topics](https://cloud.google.com/pubsub/lite/docs/topics)
 
         ## Example Usage
+        ### Pubsub Lite Topic Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example_lite_reservation = gcp.pubsub.LiteReservation("exampleLiteReservation",
+            project=project.number,
+            throughput_capacity=2)
+        example_lite_topic = gcp.pubsub.LiteTopic("exampleLiteTopic",
+            project=project.number,
+            partition_config=gcp.pubsub.LiteTopicPartitionConfigArgs(
+                count=1,
+                capacity=gcp.pubsub.LiteTopicPartitionConfigCapacityArgs(
+                    publish_mib_per_sec=4,
+                    subscribe_mib_per_sec=8,
+                ),
+            ),
+            retention_config=gcp.pubsub.LiteTopicRetentionConfigArgs(
+                per_partition_bytes="32212254720",
+            ),
+            reservation_config=gcp.pubsub.LiteTopicReservationConfigArgs(
+                throughput_reservation=example_lite_reservation.name,
+            ))
+        ```
 
         ## Import
 
@@ -416,6 +442,32 @@ class LiteTopic(pulumi.CustomResource):
             * [Managing Topics](https://cloud.google.com/pubsub/lite/docs/topics)
 
         ## Example Usage
+        ### Pubsub Lite Topic Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example_lite_reservation = gcp.pubsub.LiteReservation("exampleLiteReservation",
+            project=project.number,
+            throughput_capacity=2)
+        example_lite_topic = gcp.pubsub.LiteTopic("exampleLiteTopic",
+            project=project.number,
+            partition_config=gcp.pubsub.LiteTopicPartitionConfigArgs(
+                count=1,
+                capacity=gcp.pubsub.LiteTopicPartitionConfigCapacityArgs(
+                    publish_mib_per_sec=4,
+                    subscribe_mib_per_sec=8,
+                ),
+            ),
+            retention_config=gcp.pubsub.LiteTopicRetentionConfigArgs(
+                per_partition_bytes="32212254720",
+            ),
+            reservation_config=gcp.pubsub.LiteTopicReservationConfigArgs(
+                throughput_reservation=example_lite_reservation.name,
+            ))
+        ```
 
         ## Import
 

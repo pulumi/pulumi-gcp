@@ -483,6 +483,53 @@ class TargetInstance(pulumi.CustomResource):
             * [Using Protocol Forwarding](https://cloud.google.com/compute/docs/protocol-forwarding)
 
         ## Example Usage
+        ### Target Instance Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vmimage = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        target_vm = gcp.compute.Instance("target-vm",
+            machine_type="e2-medium",
+            zone="us-central1-a",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image=vmimage.self_link,
+                ),
+            ),
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network="default",
+            )])
+        default = gcp.compute.TargetInstance("default", instance=target_vm.id)
+        ```
+        ### Target Instance Custom Network
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        target_vm_network = gcp.compute.get_network(name="default")
+        vmimage = gcp.compute.get_image(family="debian-10",
+            project="debian-cloud")
+        target_vm_instance = gcp.compute.Instance("target-vmInstance",
+            machine_type="e2-medium",
+            zone="us-central1-a",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image=vmimage.self_link,
+                ),
+            ),
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network="default",
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        custom_network = gcp.compute.TargetInstance("customNetwork",
+            instance=target_vm_instance.id,
+            network=target_vm_network.self_link,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -554,6 +601,53 @@ class TargetInstance(pulumi.CustomResource):
             * [Using Protocol Forwarding](https://cloud.google.com/compute/docs/protocol-forwarding)
 
         ## Example Usage
+        ### Target Instance Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vmimage = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        target_vm = gcp.compute.Instance("target-vm",
+            machine_type="e2-medium",
+            zone="us-central1-a",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image=vmimage.self_link,
+                ),
+            ),
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network="default",
+            )])
+        default = gcp.compute.TargetInstance("default", instance=target_vm.id)
+        ```
+        ### Target Instance Custom Network
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        target_vm_network = gcp.compute.get_network(name="default")
+        vmimage = gcp.compute.get_image(family="debian-10",
+            project="debian-cloud")
+        target_vm_instance = gcp.compute.Instance("target-vmInstance",
+            machine_type="e2-medium",
+            zone="us-central1-a",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image=vmimage.self_link,
+                ),
+            ),
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network="default",
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        custom_network = gcp.compute.TargetInstance("customNetwork",
+            instance=target_vm_instance.id,
+            network=target_vm_network.self_link,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

@@ -10,6 +10,17 @@ import * as utilities from "../utilities";
  * Use this data source to get the rollout state.
  *
  * https://cloud.google.com/game-servers/docs/reference/rest/v1beta/GameServerDeploymentRollout
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const qa = gcp.gameservices.getGameServerDeploymentRollout({
+ *     deploymentId: "tf-test-deployment-s8sn12jt2c",
+ * });
+ * ```
  */
 export function getGameServerDeploymentRollout(args: GetGameServerDeploymentRolloutArgs, opts?: pulumi.InvokeOptions): Promise<GetGameServerDeploymentRolloutResult> {
 
@@ -66,6 +77,17 @@ export interface GetGameServerDeploymentRolloutResult {
  * Use this data source to get the rollout state.
  *
  * https://cloud.google.com/game-servers/docs/reference/rest/v1beta/GameServerDeploymentRollout
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const qa = gcp.gameservices.getGameServerDeploymentRollout({
+ *     deploymentId: "tf-test-deployment-s8sn12jt2c",
+ * });
+ * ```
  */
 export function getGameServerDeploymentRolloutOutput(args: GetGameServerDeploymentRolloutOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGameServerDeploymentRolloutResult> {
     return pulumi.output(args).apply((a: any) => getGameServerDeploymentRollout(a, opts))

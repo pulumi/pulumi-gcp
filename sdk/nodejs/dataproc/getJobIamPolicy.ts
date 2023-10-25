@@ -6,6 +6,18 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for a Dataproc job.
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.dataproc.getJobIamPolicy({
+ *     jobId: google_dataproc_job.pyspark.reference[0].job_id,
+ *     region: "us-central1",
+ * });
+ * ```
  */
 export function getJobIamPolicy(args: GetJobIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetJobIamPolicyResult> {
 
@@ -51,6 +63,18 @@ export interface GetJobIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for a Dataproc job.
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.dataproc.getJobIamPolicy({
+ *     jobId: google_dataproc_job.pyspark.reference[0].job_id,
+ *     region: "us-central1",
+ * });
+ * ```
  */
 export function getJobIamPolicyOutput(args: GetJobIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getJobIamPolicy(a, opts))

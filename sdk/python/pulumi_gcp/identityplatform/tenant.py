@@ -306,6 +306,16 @@ class Tenant(pulumi.CustomResource):
         the Cloud Console prior to creating tenants.
 
         ## Example Usage
+        ### Identity Platform Tenant Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tenant = gcp.identityplatform.Tenant("tenant",
+            allow_password_signup=True,
+            display_name="tenant")
+        ```
 
         ## Import
 
@@ -354,6 +364,16 @@ class Tenant(pulumi.CustomResource):
         the Cloud Console prior to creating tenants.
 
         ## Example Usage
+        ### Identity Platform Tenant Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tenant = gcp.identityplatform.Tenant("tenant",
+            allow_password_signup=True,
+            display_name="tenant")
+        ```
 
         ## Import
 

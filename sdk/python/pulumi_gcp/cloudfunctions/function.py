@@ -1308,6 +1308,66 @@ class Function(pulumi.CustomResource):
         for Cloud Functions.
 
         ## Example Usage
+        ### Public Function
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket", location="US")
+        archive = gcp.storage.BucketObject("archive",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("./path/to/zip/file/which/contains/code"))
+        function = gcp.cloudfunctions.Function("function",
+            description="My function",
+            runtime="nodejs16",
+            available_memory_mb=128,
+            source_archive_bucket=bucket.name,
+            source_archive_object=archive.name,
+            trigger_http=True,
+            entry_point="helloGET")
+        # IAM entry for all users to invoke the function
+        invoker = gcp.cloudfunctions.FunctionIamMember("invoker",
+            project=function.project,
+            region=function.region,
+            cloud_function=function.name,
+            role="roles/cloudfunctions.invoker",
+            member="allUsers")
+        ```
+        ### Single User
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket", location="US")
+        archive = gcp.storage.BucketObject("archive",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("./path/to/zip/file/which/contains/code"))
+        function = gcp.cloudfunctions.Function("function",
+            description="My function",
+            runtime="nodejs16",
+            available_memory_mb=128,
+            source_archive_bucket=bucket.name,
+            source_archive_object=archive.name,
+            trigger_http=True,
+            https_trigger_security_level="SECURE_ALWAYS",
+            timeout=60,
+            entry_point="helloGET",
+            labels={
+                "my-label": "my-label-value",
+            },
+            environment_variables={
+                "MY_ENV_VAR": "my-env-var-value",
+            })
+        # IAM entry for a single user to invoke the function
+        invoker = gcp.cloudfunctions.FunctionIamMember("invoker",
+            project=function.project,
+            region=function.region,
+            cloud_function=function.name,
+            role="roles/cloudfunctions.invoker",
+            member="user:myFunctionInvoker@example.com")
+        ```
 
         ## Import
 
@@ -1379,6 +1439,66 @@ class Function(pulumi.CustomResource):
         for Cloud Functions.
 
         ## Example Usage
+        ### Public Function
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket", location="US")
+        archive = gcp.storage.BucketObject("archive",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("./path/to/zip/file/which/contains/code"))
+        function = gcp.cloudfunctions.Function("function",
+            description="My function",
+            runtime="nodejs16",
+            available_memory_mb=128,
+            source_archive_bucket=bucket.name,
+            source_archive_object=archive.name,
+            trigger_http=True,
+            entry_point="helloGET")
+        # IAM entry for all users to invoke the function
+        invoker = gcp.cloudfunctions.FunctionIamMember("invoker",
+            project=function.project,
+            region=function.region,
+            cloud_function=function.name,
+            role="roles/cloudfunctions.invoker",
+            member="allUsers")
+        ```
+        ### Single User
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket", location="US")
+        archive = gcp.storage.BucketObject("archive",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("./path/to/zip/file/which/contains/code"))
+        function = gcp.cloudfunctions.Function("function",
+            description="My function",
+            runtime="nodejs16",
+            available_memory_mb=128,
+            source_archive_bucket=bucket.name,
+            source_archive_object=archive.name,
+            trigger_http=True,
+            https_trigger_security_level="SECURE_ALWAYS",
+            timeout=60,
+            entry_point="helloGET",
+            labels={
+                "my-label": "my-label-value",
+            },
+            environment_variables={
+                "MY_ENV_VAR": "my-env-var-value",
+            })
+        # IAM entry for a single user to invoke the function
+        invoker = gcp.cloudfunctions.FunctionIamMember("invoker",
+            project=function.project,
+            region=function.region,
+            cloud_function=function.name,
+            role="roles/cloudfunctions.invoker",
+            member="user:myFunctionInvoker@example.com")
+        ```
 
         ## Import
 

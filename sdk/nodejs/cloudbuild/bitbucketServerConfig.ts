@@ -16,6 +16,54 @@ import * as utilities from "../utilities";
  *     * [Connect to a Bitbucket Server host](https://cloud.google.com/build/docs/automating-builds/bitbucket/connect-host-bitbucket-server)
  *
  * ## Example Usage
+ * ### Cloudbuild Bitbucket Server Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bbs_config = new gcp.cloudbuild.BitbucketServerConfig("bbs-config", {
+ *     apiKey: "<api-key>",
+ *     configId: "bbs-config",
+ *     hostUri: "https://bbs.com",
+ *     location: "us-central1",
+ *     secrets: {
+ *         adminAccessTokenVersionName: "projects/myProject/secrets/mybbspat/versions/1",
+ *         readAccessTokenVersionName: "projects/myProject/secrets/mybbspat/versions/1",
+ *         webhookSecretVersionName: "projects/myProject/secrets/mybbspat/versions/1",
+ *     },
+ *     username: "test",
+ * });
+ * ```
+ * ### Cloudbuild Bitbucket Server Config Repositories
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bbs_config_with_repos = new gcp.cloudbuild.BitbucketServerConfig("bbs-config-with-repos", {
+ *     apiKey: "<api-key>",
+ *     configId: "bbs-config",
+ *     connectedRepositories: [
+ *         {
+ *             projectKey: "DEV",
+ *             repoSlug: "repo1",
+ *         },
+ *         {
+ *             projectKey: "PROD",
+ *             repoSlug: "repo1",
+ *         },
+ *     ],
+ *     hostUri: "https://bbs.com",
+ *     location: "us-central1",
+ *     secrets: {
+ *         adminAccessTokenVersionName: "projects/myProject/secrets/mybbspat/versions/1",
+ *         readAccessTokenVersionName: "projects/myProject/secrets/mybbspat/versions/1",
+ *         webhookSecretVersionName: "projects/myProject/secrets/mybbspat/versions/1",
+ *     },
+ *     username: "test",
+ * });
+ * ```
  *
  * ## Import
  *

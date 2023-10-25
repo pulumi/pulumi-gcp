@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * Get a Compute Instance Group Manager within GCE.
  * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups#managed_instance_groups)
  * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroupManagers)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const igm1 = gcp.compute.getInstanceGroupManager({
+ *     name: "my-igm",
+ *     zone: "us-central1-a",
+ * });
+ * const igm2 = gcp.compute.getInstanceGroupManager({
+ *     selfLink: "https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm",
+ * });
+ * ```
  */
 export function getInstanceGroupManager(args?: GetInstanceGroupManagerArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceGroupManagerResult> {
     args = args || {};
@@ -82,6 +97,21 @@ export interface GetInstanceGroupManagerResult {
  * Get a Compute Instance Group Manager within GCE.
  * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups#managed_instance_groups)
  * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroupManagers)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const igm1 = gcp.compute.getInstanceGroupManager({
+ *     name: "my-igm",
+ *     zone: "us-central1-a",
+ * });
+ * const igm2 = gcp.compute.getInstanceGroupManager({
+ *     selfLink: "https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm",
+ * });
+ * ```
  */
 export function getInstanceGroupManagerOutput(args?: GetInstanceGroupManagerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceGroupManagerResult> {
     return pulumi.output(args).apply((a: any) => getInstanceGroupManager(a, opts))

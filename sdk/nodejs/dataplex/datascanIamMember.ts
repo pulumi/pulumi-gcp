@@ -21,6 +21,56 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.dataplex.DatascanIamBinding` resources **can be** used in conjunction with `gcp.dataplex.DatascanIamMember` resources **only if** they do not grant privilege to the same role.
  *
+ * ## google\_dataplex\_datascan\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/viewer",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.dataplex.DatascanIamPolicy("policy", {
+ *     project: google_dataplex_datascan.basic_profile.project,
+ *     location: google_dataplex_datascan.basic_profile.location,
+ *     dataScanId: google_dataplex_datascan.basic_profile.data_scan_id,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## google\_dataplex\_datascan\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.dataplex.DatascanIamBinding("binding", {
+ *     project: google_dataplex_datascan.basic_profile.project,
+ *     location: google_dataplex_datascan.basic_profile.location,
+ *     dataScanId: google_dataplex_datascan.basic_profile.data_scan_id,
+ *     role: "roles/viewer",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * ## google\_dataplex\_datascan\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.dataplex.DatascanIamMember("member", {
+ *     project: google_dataplex_datascan.basic_profile.project,
+ *     location: google_dataplex_datascan.basic_profile.location,
+ *     dataScanId: google_dataplex_datascan.basic_profile.data_scan_id,
+ *     role: "roles/viewer",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}} * {{project}}/{{location}}/{{data_scan_id}} * {{location}}/{{data_scan_id}} * {{data_scan_id}} Any variables not passed in the import command will be taken from the provider configuration. Dataplex datascan IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

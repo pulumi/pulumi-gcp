@@ -336,6 +336,22 @@ class LogView(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/logging/docs/apis)
 
         ## Example Usage
+        ### Logging Log View Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        logging_log_view_project_bucket_config = gcp.logging.ProjectBucketConfig("loggingLogViewProjectBucketConfig",
+            project="my-project-name",
+            location="global",
+            retention_days=30,
+            bucket_id="_Default")
+        logging_log_view_log_view = gcp.logging.LogView("loggingLogViewLogView",
+            bucket=logging_log_view_project_bucket_config.id,
+            description="A logging view configured with Terraform",
+            filter="SOURCE(\\"projects/myproject\\") AND resource.type = \\"gce_instance\\" AND LOG_ID(\\"stdout\\")")
+        ```
 
         ## Import
 
@@ -373,6 +389,22 @@ class LogView(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/logging/docs/apis)
 
         ## Example Usage
+        ### Logging Log View Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        logging_log_view_project_bucket_config = gcp.logging.ProjectBucketConfig("loggingLogViewProjectBucketConfig",
+            project="my-project-name",
+            location="global",
+            retention_days=30,
+            bucket_id="_Default")
+        logging_log_view_log_view = gcp.logging.LogView("loggingLogViewLogView",
+            bucket=logging_log_view_project_bucket_config.id,
+            description="A logging view configured with Terraform",
+            filter="SOURCE(\\"projects/myproject\\") AND resource.type = \\"gce_instance\\" AND LOG_ID(\\"stdout\\")")
+        ```
 
         ## Import
 

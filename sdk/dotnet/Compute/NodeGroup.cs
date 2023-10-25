@@ -24,6 +24,113 @@ namespace Pulumi.Gcp.Compute
     /// the provider to delete and recreate the node group.
     /// 
     /// ## Example Usage
+    /// ### Node Group Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var soletenant_tmpl = new Gcp.Compute.NodeTemplate("soletenant-tmpl", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         NodeType = "n1-node-96-624",
+    ///     });
+    /// 
+    ///     var nodes = new Gcp.Compute.NodeGroup("nodes", new()
+    ///     {
+    ///         Zone = "us-central1-a",
+    ///         Description = "example google_compute_node_group for the Google Provider",
+    ///         Size = 1,
+    ///         NodeTemplate = soletenant_tmpl.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Node Group Autoscaling Policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var soletenant_tmpl = new Gcp.Compute.NodeTemplate("soletenant-tmpl", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         NodeType = "n1-node-96-624",
+    ///     });
+    /// 
+    ///     var nodes = new Gcp.Compute.NodeGroup("nodes", new()
+    ///     {
+    ///         Zone = "us-central1-a",
+    ///         Description = "example google_compute_node_group for Google Provider",
+    ///         MaintenancePolicy = "RESTART_IN_PLACE",
+    ///         MaintenanceWindow = new Gcp.Compute.Inputs.NodeGroupMaintenanceWindowArgs
+    ///         {
+    ///             StartTime = "08:00",
+    ///         },
+    ///         InitialSize = 1,
+    ///         NodeTemplate = soletenant_tmpl.Id,
+    ///         AutoscalingPolicy = new Gcp.Compute.Inputs.NodeGroupAutoscalingPolicyArgs
+    ///         {
+    ///             Mode = "ONLY_SCALE_OUT",
+    ///             MinNodes = 1,
+    ///             MaxNodes = 10,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Node Group Share Settings
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var guestProject = new Gcp.Organizations.Project("guestProject", new()
+    ///     {
+    ///         ProjectId = "project-id",
+    ///         OrgId = "123456789",
+    ///     });
+    /// 
+    ///     var soletenant_tmpl = new Gcp.Compute.NodeTemplate("soletenant-tmpl", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         NodeType = "n1-node-96-624",
+    ///     });
+    /// 
+    ///     var nodes = new Gcp.Compute.NodeGroup("nodes", new()
+    ///     {
+    ///         Zone = "us-central1-f",
+    ///         Description = "example google_compute_node_group for Terraform Google Provider",
+    ///         Size = 1,
+    ///         NodeTemplate = soletenant_tmpl.Id,
+    ///         ShareSettings = new Gcp.Compute.Inputs.NodeGroupShareSettingsArgs
+    ///         {
+    ///             ShareType = "SPECIFIC_PROJECTS",
+    ///             ProjectMaps = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.NodeGroupShareSettingsProjectMapArgs
+    ///                 {
+    ///                     Id = guestProject.ProjectId,
+    ///                     ProjectId = guestProject.ProjectId,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

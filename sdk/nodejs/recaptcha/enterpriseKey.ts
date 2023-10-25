@@ -10,6 +10,111 @@ import * as utilities from "../utilities";
  * The RecaptchaEnterprise Key resource
  *
  * ## Example Usage
+ * ### Android_key
+ * A basic test of recaptcha enterprise key that can be used by Android apps
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.recaptcha.EnterpriseKey("primary", {
+ *     androidSettings: {
+ *         allowAllPackageNames: true,
+ *         allowedPackageNames: [],
+ *     },
+ *     displayName: "display-name-one",
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ *     project: "my-project-name",
+ *     testingOptions: {
+ *         testingScore: 0.8,
+ *     },
+ * });
+ * ```
+ * ### Ios_key
+ * A basic test of recaptcha enterprise key that can be used by iOS apps
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.recaptcha.EnterpriseKey("primary", {
+ *     displayName: "display-name-one",
+ *     iosSettings: {
+ *         allowAllBundleIds: true,
+ *         allowedBundleIds: [],
+ *     },
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ *     project: "my-project-name",
+ *     testingOptions: {
+ *         testingScore: 1,
+ *     },
+ * });
+ * ```
+ * ### Minimal_key
+ * A minimal test of recaptcha enterprise key
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.recaptcha.EnterpriseKey("primary", {
+ *     displayName: "display-name-one",
+ *     labels: {},
+ *     project: "my-project-name",
+ *     webSettings: {
+ *         allowAllDomains: true,
+ *         integrationType: "SCORE",
+ *     },
+ * });
+ * ```
+ * ### Web_key
+ * A basic test of recaptcha enterprise key that can be used by websites
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.recaptcha.EnterpriseKey("primary", {
+ *     displayName: "display-name-one",
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ *     project: "my-project-name",
+ *     testingOptions: {
+ *         testingChallenge: "NOCAPTCHA",
+ *         testingScore: 0.5,
+ *     },
+ *     webSettings: {
+ *         allowAllDomains: true,
+ *         allowedDomains: [],
+ *         challengeSecurityPreference: "USABILITY",
+ *         integrationType: "CHECKBOX",
+ *     },
+ * });
+ * ```
+ * ### Web_score_key
+ * A basic test of recaptcha enterprise key with score integration type that can be used by websites
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.recaptcha.EnterpriseKey("primary", {
+ *     displayName: "display-name-one",
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ *     project: "my-project-name",
+ *     testingOptions: {
+ *         testingScore: 0.5,
+ *     },
+ *     webSettings: {
+ *         allowAllDomains: true,
+ *         allowAmpTraffic: false,
+ *         allowedDomains: [],
+ *         integrationType: "SCORE",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

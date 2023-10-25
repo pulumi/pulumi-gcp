@@ -277,6 +277,71 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vpc/docs/vpc-peering)
 
         ## Example Usage
+        ### Network Peering Routes Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network_primary = gcp.compute.Network("networkPrimary", auto_create_subnetworks=False)
+        network_secondary = gcp.compute.Network("networkSecondary", auto_create_subnetworks=False)
+        peering_primary = gcp.compute.NetworkPeering("peeringPrimary",
+            network=network_primary.id,
+            peer_network=network_secondary.id,
+            import_custom_routes=True,
+            export_custom_routes=True)
+        peering_primary_routes = gcp.compute.NetworkPeeringRoutesConfig("peeringPrimaryRoutes",
+            peering=peering_primary.name,
+            network=network_primary.name,
+            import_custom_routes=True,
+            export_custom_routes=True)
+        peering_secondary = gcp.compute.NetworkPeering("peeringSecondary",
+            network=network_secondary.id,
+            peer_network=network_primary.id)
+        ```
+        ### Network Peering Routes Config Gke
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        container_network = gcp.compute.Network("containerNetwork", auto_create_subnetworks=False)
+        container_subnetwork = gcp.compute.Subnetwork("containerSubnetwork",
+            region="us-central1",
+            network=container_network.name,
+            ip_cidr_range="10.0.36.0/24",
+            private_ip_google_access=True,
+            secondary_ip_ranges=[
+                gcp.compute.SubnetworkSecondaryIpRangeArgs(
+                    range_name="pod",
+                    ip_cidr_range="10.0.0.0/19",
+                ),
+                gcp.compute.SubnetworkSecondaryIpRangeArgs(
+                    range_name="svc",
+                    ip_cidr_range="10.0.32.0/22",
+                ),
+            ])
+        private_cluster = gcp.container.Cluster("privateCluster",
+            location="us-central1-a",
+            initial_node_count=1,
+            network=container_network.name,
+            subnetwork=container_subnetwork.name,
+            private_cluster_config=gcp.container.ClusterPrivateClusterConfigArgs(
+                enable_private_endpoint=True,
+                enable_private_nodes=True,
+                master_ipv4_cidr_block="10.42.0.0/28",
+            ),
+            master_authorized_networks_config=gcp.container.ClusterMasterAuthorizedNetworksConfigArgs(),
+            ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(
+                cluster_secondary_range_name=container_subnetwork.secondary_ip_ranges[0].range_name,
+                services_secondary_range_name=container_subnetwork.secondary_ip_ranges[1].range_name,
+            ))
+        peering_gke_routes = gcp.compute.NetworkPeeringRoutesConfig("peeringGkeRoutes",
+            peering=private_cluster.private_cluster_config.peering_name,
+            network=container_network.name,
+            import_custom_routes=True,
+            export_custom_routes=True)
+        ```
 
         ## Import
 
@@ -325,6 +390,71 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vpc/docs/vpc-peering)
 
         ## Example Usage
+        ### Network Peering Routes Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network_primary = gcp.compute.Network("networkPrimary", auto_create_subnetworks=False)
+        network_secondary = gcp.compute.Network("networkSecondary", auto_create_subnetworks=False)
+        peering_primary = gcp.compute.NetworkPeering("peeringPrimary",
+            network=network_primary.id,
+            peer_network=network_secondary.id,
+            import_custom_routes=True,
+            export_custom_routes=True)
+        peering_primary_routes = gcp.compute.NetworkPeeringRoutesConfig("peeringPrimaryRoutes",
+            peering=peering_primary.name,
+            network=network_primary.name,
+            import_custom_routes=True,
+            export_custom_routes=True)
+        peering_secondary = gcp.compute.NetworkPeering("peeringSecondary",
+            network=network_secondary.id,
+            peer_network=network_primary.id)
+        ```
+        ### Network Peering Routes Config Gke
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        container_network = gcp.compute.Network("containerNetwork", auto_create_subnetworks=False)
+        container_subnetwork = gcp.compute.Subnetwork("containerSubnetwork",
+            region="us-central1",
+            network=container_network.name,
+            ip_cidr_range="10.0.36.0/24",
+            private_ip_google_access=True,
+            secondary_ip_ranges=[
+                gcp.compute.SubnetworkSecondaryIpRangeArgs(
+                    range_name="pod",
+                    ip_cidr_range="10.0.0.0/19",
+                ),
+                gcp.compute.SubnetworkSecondaryIpRangeArgs(
+                    range_name="svc",
+                    ip_cidr_range="10.0.32.0/22",
+                ),
+            ])
+        private_cluster = gcp.container.Cluster("privateCluster",
+            location="us-central1-a",
+            initial_node_count=1,
+            network=container_network.name,
+            subnetwork=container_subnetwork.name,
+            private_cluster_config=gcp.container.ClusterPrivateClusterConfigArgs(
+                enable_private_endpoint=True,
+                enable_private_nodes=True,
+                master_ipv4_cidr_block="10.42.0.0/28",
+            ),
+            master_authorized_networks_config=gcp.container.ClusterMasterAuthorizedNetworksConfigArgs(),
+            ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(
+                cluster_secondary_range_name=container_subnetwork.secondary_ip_ranges[0].range_name,
+                services_secondary_range_name=container_subnetwork.secondary_ip_ranges[1].range_name,
+            ))
+        peering_gke_routes = gcp.compute.NetworkPeeringRoutesConfig("peeringGkeRoutes",
+            peering=private_cluster.private_cluster_config.peering_name,
+            network=container_network.name,
+            import_custom_routes=True,
+            export_custom_routes=True)
+        ```
 
         ## Import
 

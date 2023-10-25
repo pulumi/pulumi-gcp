@@ -13,6 +13,33 @@ import (
 )
 
 // Retrieves the current IAM policy data for scope
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gkehub.LookupScopeIamPolicy(ctx, &gkehub.LookupScopeIamPolicyArgs{
+//				Project: pulumi.StringRef(google_gke_hub_scope.Scope.Project),
+//				ScopeId: google_gke_hub_scope.Scope.Scope_id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupScopeIamPolicy(ctx *pulumi.Context, args *LookupScopeIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupScopeIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupScopeIamPolicyResult

@@ -22,6 +22,38 @@ import (
 //   - [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
 //
 // ## Example Usage
+// ### Bigquery Reservation Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigquery.NewReservation(ctx, "reservation", &bigquery.ReservationArgs{
+//				Autoscale: &bigquery.ReservationAutoscaleArgs{
+//					MaxSlots: pulumi.Int(100),
+//				},
+//				Concurrency:     pulumi.Int(0),
+//				Edition:         pulumi.String("STANDARD"),
+//				IgnoreIdleSlots: pulumi.Bool(true),
+//				Location:        pulumi.String("us-west2"),
+//				SlotCapacity:    pulumi.Int(0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

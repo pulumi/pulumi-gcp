@@ -16,6 +16,29 @@ import * as utilities from "../utilities";
  *     * [About Service Connection Policies](https://cloud.google.com/vpc/docs/about-service-connection-policies#service-policies)
  *
  * ## Example Usage
+ * ### Network Connectivity Policy Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const producerNet = new gcp.compute.Network("producerNet", {autoCreateSubnetworks: false});
+ * const producerSubnet = new gcp.compute.Subnetwork("producerSubnet", {
+ *     ipCidrRange: "10.0.0.0/16",
+ *     region: "us-central1",
+ *     network: producerNet.id,
+ * });
+ * const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
+ *     location: "us-central1",
+ *     serviceClass: "my-basic-service-class",
+ *     description: "my basic service connection policy",
+ *     network: producerNet.id,
+ *     pscConfig: {
+ *         subnetworks: [producerSubnet.id],
+ *         limit: "2",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

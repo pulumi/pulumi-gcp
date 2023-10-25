@@ -572,6 +572,70 @@ class NodeGroup(pulumi.CustomResource):
         the provider to delete and recreate the node group.
 
         ## Example Usage
+        ### Node Group Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
+            region="us-central1",
+            node_type="n1-node-96-624")
+        nodes = gcp.compute.NodeGroup("nodes",
+            zone="us-central1-a",
+            description="example google_compute_node_group for the Google Provider",
+            size=1,
+            node_template=soletenant_tmpl.id)
+        ```
+        ### Node Group Autoscaling Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
+            region="us-central1",
+            node_type="n1-node-96-624")
+        nodes = gcp.compute.NodeGroup("nodes",
+            zone="us-central1-a",
+            description="example google_compute_node_group for Google Provider",
+            maintenance_policy="RESTART_IN_PLACE",
+            maintenance_window=gcp.compute.NodeGroupMaintenanceWindowArgs(
+                start_time="08:00",
+            ),
+            initial_size=1,
+            node_template=soletenant_tmpl.id,
+            autoscaling_policy=gcp.compute.NodeGroupAutoscalingPolicyArgs(
+                mode="ONLY_SCALE_OUT",
+                min_nodes=1,
+                max_nodes=10,
+            ))
+        ```
+        ### Node Group Share Settings
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        guest_project = gcp.organizations.Project("guestProject",
+            project_id="project-id",
+            org_id="123456789")
+        soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
+            region="us-central1",
+            node_type="n1-node-96-624")
+        nodes = gcp.compute.NodeGroup("nodes",
+            zone="us-central1-f",
+            description="example google_compute_node_group for Terraform Google Provider",
+            size=1,
+            node_template=soletenant_tmpl.id,
+            share_settings=gcp.compute.NodeGroupShareSettingsArgs(
+                share_type="SPECIFIC_PROJECTS",
+                project_maps=[gcp.compute.NodeGroupShareSettingsProjectMapArgs(
+                    id=guest_project.project_id,
+                    project_id=guest_project.project_id,
+                )],
+            ))
+        ```
 
         ## Import
 
@@ -636,6 +700,70 @@ class NodeGroup(pulumi.CustomResource):
         the provider to delete and recreate the node group.
 
         ## Example Usage
+        ### Node Group Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
+            region="us-central1",
+            node_type="n1-node-96-624")
+        nodes = gcp.compute.NodeGroup("nodes",
+            zone="us-central1-a",
+            description="example google_compute_node_group for the Google Provider",
+            size=1,
+            node_template=soletenant_tmpl.id)
+        ```
+        ### Node Group Autoscaling Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
+            region="us-central1",
+            node_type="n1-node-96-624")
+        nodes = gcp.compute.NodeGroup("nodes",
+            zone="us-central1-a",
+            description="example google_compute_node_group for Google Provider",
+            maintenance_policy="RESTART_IN_PLACE",
+            maintenance_window=gcp.compute.NodeGroupMaintenanceWindowArgs(
+                start_time="08:00",
+            ),
+            initial_size=1,
+            node_template=soletenant_tmpl.id,
+            autoscaling_policy=gcp.compute.NodeGroupAutoscalingPolicyArgs(
+                mode="ONLY_SCALE_OUT",
+                min_nodes=1,
+                max_nodes=10,
+            ))
+        ```
+        ### Node Group Share Settings
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        guest_project = gcp.organizations.Project("guestProject",
+            project_id="project-id",
+            org_id="123456789")
+        soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
+            region="us-central1",
+            node_type="n1-node-96-624")
+        nodes = gcp.compute.NodeGroup("nodes",
+            zone="us-central1-f",
+            description="example google_compute_node_group for Terraform Google Provider",
+            size=1,
+            node_template=soletenant_tmpl.id,
+            share_settings=gcp.compute.NodeGroupShareSettingsArgs(
+                share_type="SPECIFIC_PROJECTS",
+                project_maps=[gcp.compute.NodeGroupShareSettingsProjectMapArgs(
+                    id=guest_project.project_id,
+                    project_id=guest_project.project_id,
+                )],
+            ))
+        ```
 
         ## Import
 

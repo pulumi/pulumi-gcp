@@ -588,6 +588,135 @@ class VMwareNodePool(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Gkeonprem Vmware Node Pool Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_basic = gcp.gkeonprem.VMwareCluster("default-basic",
+            location="us-west1",
+            admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
+            description="test cluster",
+            on_prem_version="1.13.1-gke.35",
+            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
+                service_address_cidr_blocks=["10.96.0.0/12"],
+                pod_address_cidr_blocks=["192.168.0.0/16"],
+                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
+                cpus=4,
+                memory=8192,
+                replicas=1,
+            ),
+            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
+                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
+                    control_plane_vip="10.251.133.5",
+                    ingress_vip="10.251.135.19",
+                ),
+                metal_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigArgs(
+                    address_pools=[
+                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
+                            pool="ingress-ip",
+                            manual_assign=True,
+                            addresses=["10.251.135.19"],
+                        ),
+                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
+                            pool="lb-test-ip",
+                            manual_assign=True,
+                            addresses=["10.251.135.19"],
+                        ),
+                    ],
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        nodepool_basic = gcp.gkeonprem.VMwareNodePool("nodepool-basic",
+            location="us-west1",
+            vmware_cluster=default_basic.name,
+            config=gcp.gkeonprem.VMwareNodePoolConfigArgs(
+                replicas=3,
+                image_type="ubuntu_containerd",
+                enable_load_balancer=True,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Gkeonprem Vmware Node Pool Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_full = gcp.gkeonprem.VMwareCluster("default-full",
+            location="us-west1",
+            admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
+            description="test cluster",
+            on_prem_version="1.13.1-gke.35",
+            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
+                service_address_cidr_blocks=["10.96.0.0/12"],
+                pod_address_cidr_blocks=["192.168.0.0/16"],
+                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
+                cpus=4,
+                memory=8192,
+                replicas=1,
+            ),
+            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
+                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
+                    control_plane_vip="10.251.133.5",
+                    ingress_vip="10.251.135.19",
+                ),
+                metal_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigArgs(
+                    address_pools=[
+                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
+                            pool="ingress-ip",
+                            manual_assign=True,
+                            addresses=["10.251.135.19"],
+                        ),
+                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
+                            pool="lb-test-ip",
+                            manual_assign=True,
+                            addresses=["10.251.135.19"],
+                        ),
+                    ],
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        nodepool_full = gcp.gkeonprem.VMwareNodePool("nodepool-full",
+            location="us-west1",
+            vmware_cluster=default_full.name,
+            annotations={},
+            config=gcp.gkeonprem.VMwareNodePoolConfigArgs(
+                cpus=4,
+                memory_mb=8196,
+                replicas=3,
+                image_type="ubuntu_containerd",
+                image="image",
+                boot_disk_size_gb=10,
+                taints=[
+                    gcp.gkeonprem.VMwareNodePoolConfigTaintArgs(
+                        key="key",
+                        value="value",
+                    ),
+                    gcp.gkeonprem.VMwareNodePoolConfigTaintArgs(
+                        key="key",
+                        value="value",
+                        effect="NO_SCHEDULE",
+                    ),
+                ],
+                labels={},
+                enable_load_balancer=True,
+            ),
+            node_pool_autoscaling=gcp.gkeonprem.VMwareNodePoolNodePoolAutoscalingArgs(
+                min_replicas=1,
+                max_replicas=5,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -634,6 +763,135 @@ class VMwareNodePool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Gkeonprem Vmware Node Pool Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_basic = gcp.gkeonprem.VMwareCluster("default-basic",
+            location="us-west1",
+            admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
+            description="test cluster",
+            on_prem_version="1.13.1-gke.35",
+            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
+                service_address_cidr_blocks=["10.96.0.0/12"],
+                pod_address_cidr_blocks=["192.168.0.0/16"],
+                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
+                cpus=4,
+                memory=8192,
+                replicas=1,
+            ),
+            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
+                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
+                    control_plane_vip="10.251.133.5",
+                    ingress_vip="10.251.135.19",
+                ),
+                metal_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigArgs(
+                    address_pools=[
+                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
+                            pool="ingress-ip",
+                            manual_assign=True,
+                            addresses=["10.251.135.19"],
+                        ),
+                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
+                            pool="lb-test-ip",
+                            manual_assign=True,
+                            addresses=["10.251.135.19"],
+                        ),
+                    ],
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        nodepool_basic = gcp.gkeonprem.VMwareNodePool("nodepool-basic",
+            location="us-west1",
+            vmware_cluster=default_basic.name,
+            config=gcp.gkeonprem.VMwareNodePoolConfigArgs(
+                replicas=3,
+                image_type="ubuntu_containerd",
+                enable_load_balancer=True,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Gkeonprem Vmware Node Pool Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_full = gcp.gkeonprem.VMwareCluster("default-full",
+            location="us-west1",
+            admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
+            description="test cluster",
+            on_prem_version="1.13.1-gke.35",
+            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
+                service_address_cidr_blocks=["10.96.0.0/12"],
+                pod_address_cidr_blocks=["192.168.0.0/16"],
+                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
+                cpus=4,
+                memory=8192,
+                replicas=1,
+            ),
+            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
+                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
+                    control_plane_vip="10.251.133.5",
+                    ingress_vip="10.251.135.19",
+                ),
+                metal_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigArgs(
+                    address_pools=[
+                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
+                            pool="ingress-ip",
+                            manual_assign=True,
+                            addresses=["10.251.135.19"],
+                        ),
+                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
+                            pool="lb-test-ip",
+                            manual_assign=True,
+                            addresses=["10.251.135.19"],
+                        ),
+                    ],
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        nodepool_full = gcp.gkeonprem.VMwareNodePool("nodepool-full",
+            location="us-west1",
+            vmware_cluster=default_full.name,
+            annotations={},
+            config=gcp.gkeonprem.VMwareNodePoolConfigArgs(
+                cpus=4,
+                memory_mb=8196,
+                replicas=3,
+                image_type="ubuntu_containerd",
+                image="image",
+                boot_disk_size_gb=10,
+                taints=[
+                    gcp.gkeonprem.VMwareNodePoolConfigTaintArgs(
+                        key="key",
+                        value="value",
+                    ),
+                    gcp.gkeonprem.VMwareNodePoolConfigTaintArgs(
+                        key="key",
+                        value="value",
+                        effect="NO_SCHEDULE",
+                    ),
+                ],
+                labels={},
+                enable_load_balancer=True,
+            ),
+            node_pool_autoscaling=gcp.gkeonprem.VMwareNodePoolNodePoolAutoscalingArgs(
+                min_replicas=1,
+                max_replicas=5,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

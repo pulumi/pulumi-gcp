@@ -396,6 +396,46 @@ class ExtensionsInstance(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Firebase Extentions Instance Resize Image
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        images = gcp.storage.Bucket("images",
+            project="my-project-name",
+            location="US",
+            uniform_bucket_level_access=True,
+            force_destroy=True,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        resize_image = gcp.firebase.ExtensionsInstance("resizeImage",
+            project="my-project-name",
+            instance_id="storage-resize-images",
+            config=gcp.firebase.ExtensionsInstanceConfigArgs(
+                extension_ref="firebase/storage-resize-images",
+                extension_version="0.1.37",
+                params={
+                    "DELETE_ORIGINAL_FILE": "false",
+                    "MAKE_PUBLIC": "false",
+                    "IMAGE_TYPE": "false",
+                    "IS_ANIMATED": "true",
+                    "FUNCTION_MEMORY": "1024",
+                    "DO_BACKFILL": "false",
+                    "IMG_SIZES": "200x200",
+                    "IMG_BUCKET": images.name,
+                    "LOCATION": "",
+                },
+                system_params={
+                    "firebaseextensions.v1beta.function/maxInstances": "3000",
+                    "firebaseextensions.v1beta.function/memory": "256",
+                    "firebaseextensions.v1beta.function/minInstances": "0",
+                    "firebaseextensions.v1beta.function/vpcConnectorEgressSettings": "VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED",
+                },
+                allowed_event_types=["firebase.extensions.storage-resize-images.v1.complete"],
+                eventarc_channel="projects/my-project-name/locations//channels/firebase",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -430,6 +470,46 @@ class ExtensionsInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Firebase Extentions Instance Resize Image
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        images = gcp.storage.Bucket("images",
+            project="my-project-name",
+            location="US",
+            uniform_bucket_level_access=True,
+            force_destroy=True,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        resize_image = gcp.firebase.ExtensionsInstance("resizeImage",
+            project="my-project-name",
+            instance_id="storage-resize-images",
+            config=gcp.firebase.ExtensionsInstanceConfigArgs(
+                extension_ref="firebase/storage-resize-images",
+                extension_version="0.1.37",
+                params={
+                    "DELETE_ORIGINAL_FILE": "false",
+                    "MAKE_PUBLIC": "false",
+                    "IMAGE_TYPE": "false",
+                    "IS_ANIMATED": "true",
+                    "FUNCTION_MEMORY": "1024",
+                    "DO_BACKFILL": "false",
+                    "IMG_SIZES": "200x200",
+                    "IMG_BUCKET": images.name,
+                    "LOCATION": "",
+                },
+                system_params={
+                    "firebaseextensions.v1beta.function/maxInstances": "3000",
+                    "firebaseextensions.v1beta.function/memory": "256",
+                    "firebaseextensions.v1beta.function/minInstances": "0",
+                    "firebaseextensions.v1beta.function/vpcConnectorEgressSettings": "VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED",
+                },
+                allowed_event_types=["firebase.extensions.storage-resize-images.v1.complete"],
+                eventarc_channel="projects/my-project-name/locations//channels/firebase",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

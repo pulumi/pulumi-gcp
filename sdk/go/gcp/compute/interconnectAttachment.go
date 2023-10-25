@@ -17,6 +17,106 @@ import (
 // information, see Creating VLAN Attachments.
 //
 // ## Example Usage
+// ### Interconnect Attachment Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foobarNetwork, err := compute.NewNetwork(ctx, "foobarNetwork", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			foobarRouter, err := compute.NewRouter(ctx, "foobarRouter", &compute.RouterArgs{
+//				Network: foobarNetwork.Name,
+//				Bgp: &compute.RouterBgpArgs{
+//					Asn: pulumi.Int(16550),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInterconnectAttachment(ctx, "onPrem", &compute.InterconnectAttachmentArgs{
+//				EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
+//				Type:                   pulumi.String("PARTNER"),
+//				Router:                 foobarRouter.ID(),
+//				Mtu:                    pulumi.String("1500"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Compute Interconnect Attachment Ipsec Encryption
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			address, err := compute.NewAddress(ctx, "address", &compute.AddressArgs{
+//				AddressType:  pulumi.String("INTERNAL"),
+//				Purpose:      pulumi.String("IPSEC_INTERCONNECT"),
+//				Address:      pulumi.String("192.168.1.0"),
+//				PrefixLength: pulumi.Int(29),
+//				Network:      network.SelfLink,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
+//				Network:                     network.Name,
+//				EncryptedInterconnectRouter: pulumi.Bool(true),
+//				Bgp: &compute.RouterBgpArgs{
+//					Asn: pulumi.Int(16550),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInterconnectAttachment(ctx, "ipsec-encrypted-interconnect-attachment", &compute.InterconnectAttachmentArgs{
+//				EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
+//				Type:                   pulumi.String("PARTNER"),
+//				Router:                 router.ID(),
+//				Encryption:             pulumi.String("IPSEC"),
+//				IpsecInternalAddresses: pulumi.StringArray{
+//					address.SelfLink,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

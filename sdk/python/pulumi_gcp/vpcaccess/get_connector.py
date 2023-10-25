@@ -184,6 +184,19 @@ def get_connector(name: Optional[str] = None,
     * How-to Guides
         * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    sample = gcp.vpcaccess.get_connector(name="vpc-con")
+    connector = gcp.vpcaccess.Connector("connector",
+        ip_cidr_range="10.8.0.0/28",
+        network="default",
+        region="us-central1")
+    ```
+
 
     :param str name: Name of the resource.
            
@@ -231,6 +244,19 @@ def get_connector_output(name: Optional[pulumi.Input[str]] = None,
     * [API documentation](https://cloud.google.com/vpc/docs/reference/vpcaccess/rest/v1/projects.locations.connectors)
     * How-to Guides
         * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    sample = gcp.vpcaccess.get_connector(name="vpc-con")
+    connector = gcp.vpcaccess.Connector("connector",
+        ip_cidr_range="10.8.0.0/28",
+        network="default",
+        region="us-central1")
+    ```
 
 
     :param str name: Name of the resource.

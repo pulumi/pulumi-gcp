@@ -966,6 +966,70 @@ class DatabaseInstance(pulumi.CustomResource):
         It is recommended to not set this field (or set it to true) until you're ready to destroy the instance and its databases.
 
         ## Example Usage
+        ### SQL Second Generation Instance
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        main = gcp.sql.DatabaseInstance("main",
+            database_version="POSTGRES_15",
+            region="us-central1",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+            ))
+        ```
+        ### Private IP Instance
+        > **NOTE:** For private IP instance setup, note that the `sql.DatabaseInstance` does not actually interpolate values from `servicenetworking.Connection`. You must explicitly add a `depends_on`reference as shown below.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        private_network = gcp.compute.Network("privateNetwork", opts=pulumi.ResourceOptions(provider=google_beta))
+        private_ip_address = gcp.compute.GlobalAddress("privateIpAddress",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=private_network.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        private_vpc_connection = gcp.servicenetworking.Connection("privateVpcConnection",
+            network=private_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[private_ip_address.name],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        db_name_suffix = random.RandomId("dbNameSuffix", byte_length=4)
+        instance = gcp.sql.DatabaseInstance("instance",
+            region="us-central1",
+            database_version="MYSQL_5_7",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
+                    ipv4_enabled=False,
+                    private_network=private_network.id,
+                    enable_private_path_for_google_cloud_services=True,
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[private_vpc_connection]))
+        ```
+        ### ENTERPRISE_PLUS Instance with data_cache_config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        main = gcp.sql.DatabaseInstance("main",
+            database_version="MYSQL_8_0_31",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                data_cache_config=gcp.sql.DatabaseInstanceSettingsDataCacheConfigArgs(
+                    data_cache_enabled=True,
+                ),
+                edition="ENTERPRISE_PLUS",
+                tier="db-perf-optimized-N-2",
+            ))
+        ```
 
         ## Import
 
@@ -1054,6 +1118,70 @@ class DatabaseInstance(pulumi.CustomResource):
         It is recommended to not set this field (or set it to true) until you're ready to destroy the instance and its databases.
 
         ## Example Usage
+        ### SQL Second Generation Instance
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        main = gcp.sql.DatabaseInstance("main",
+            database_version="POSTGRES_15",
+            region="us-central1",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+            ))
+        ```
+        ### Private IP Instance
+        > **NOTE:** For private IP instance setup, note that the `sql.DatabaseInstance` does not actually interpolate values from `servicenetworking.Connection`. You must explicitly add a `depends_on`reference as shown below.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        private_network = gcp.compute.Network("privateNetwork", opts=pulumi.ResourceOptions(provider=google_beta))
+        private_ip_address = gcp.compute.GlobalAddress("privateIpAddress",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=private_network.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        private_vpc_connection = gcp.servicenetworking.Connection("privateVpcConnection",
+            network=private_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[private_ip_address.name],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        db_name_suffix = random.RandomId("dbNameSuffix", byte_length=4)
+        instance = gcp.sql.DatabaseInstance("instance",
+            region="us-central1",
+            database_version="MYSQL_5_7",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
+                    ipv4_enabled=False,
+                    private_network=private_network.id,
+                    enable_private_path_for_google_cloud_services=True,
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[private_vpc_connection]))
+        ```
+        ### ENTERPRISE_PLUS Instance with data_cache_config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        main = gcp.sql.DatabaseInstance("main",
+            database_version="MYSQL_8_0_31",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                data_cache_config=gcp.sql.DatabaseInstanceSettingsDataCacheConfigArgs(
+                    data_cache_enabled=True,
+                ),
+                edition="ENTERPRISE_PLUS",
+                tier="db-perf-optimized-N-2",
+            ))
+        ```
 
         ## Import
 

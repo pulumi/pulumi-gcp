@@ -6,6 +6,25 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### Firebasestorage Bucket Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultBucket = new gcp.storage.Bucket("defaultBucket", {
+ *     location: "US",
+ *     uniformBucketLevelAccess: true,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultStorageBucket = new gcp.firebase.StorageBucket("defaultStorageBucket", {
+ *     project: "my-project-name",
+ *     bucketId: defaultBucket.id,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

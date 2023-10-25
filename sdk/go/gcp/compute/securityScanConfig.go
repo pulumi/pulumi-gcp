@@ -24,6 +24,45 @@ import (
 // > **Warning:** All arguments including `authentication.google_account.password` and `authentication.custom_account.password` will be stored in the raw state as plain-text.
 //
 // ## Example Usage
+// ### Scan Config Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			scannerStaticIp, err := compute.NewAddress(ctx, "scannerStaticIp", nil, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSecurityScanConfig(ctx, "scan-config", &compute.SecurityScanConfigArgs{
+//				DisplayName: pulumi.String("scan-config"),
+//				StartingUrls: pulumi.StringArray{
+//					scannerStaticIp.Address.ApplyT(func(address string) (string, error) {
+//						return fmt.Sprintf("http://%v", address), nil
+//					}).(pulumi.StringOutput),
+//				},
+//				TargetPlatforms: pulumi.StringArray{
+//					pulumi.String("COMPUTE"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

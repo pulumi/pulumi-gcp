@@ -22,6 +22,73 @@ import * as utilities from "../utilities";
  * `billingProject` you defined.
  *
  * ## Example Usage
+ * ### Cloud Identity Group Membership
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const group = new gcp.cloudidentity.Group("group", {
+ *     displayName: "my-identity-group",
+ *     parent: "customers/A01b123xz",
+ *     groupKey: {
+ *         id: "my-identity-group@example.com",
+ *     },
+ *     labels: {
+ *         "cloudidentity.googleapis.com/groups.discussion_forum": "",
+ *     },
+ * });
+ * const child_group = new gcp.cloudidentity.Group("child-group", {
+ *     displayName: "my-identity-group-child",
+ *     parent: "customers/A01b123xz",
+ *     groupKey: {
+ *         id: "my-identity-group-child@example.com",
+ *     },
+ *     labels: {
+ *         "cloudidentity.googleapis.com/groups.discussion_forum": "",
+ *     },
+ * });
+ * const cloudIdentityGroupMembershipBasic = new gcp.cloudidentity.GroupMembership("cloudIdentityGroupMembershipBasic", {
+ *     group: group.id,
+ *     preferredMemberKey: {
+ *         id: child_group.groupKey.apply(groupKey => groupKey.id),
+ *     },
+ *     roles: [{
+ *         name: "MEMBER",
+ *     }],
+ * });
+ * ```
+ * ### Cloud Identity Group Membership User
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const group = new gcp.cloudidentity.Group("group", {
+ *     displayName: "my-identity-group",
+ *     parent: "customers/A01b123xz",
+ *     groupKey: {
+ *         id: "my-identity-group@example.com",
+ *     },
+ *     labels: {
+ *         "cloudidentity.googleapis.com/groups.discussion_forum": "",
+ *     },
+ * });
+ * const cloudIdentityGroupMembershipBasic = new gcp.cloudidentity.GroupMembership("cloudIdentityGroupMembershipBasic", {
+ *     group: group.id,
+ *     preferredMemberKey: {
+ *         id: "cloud_identity_user@example.com",
+ *     },
+ *     roles: [
+ *         {
+ *             name: "MEMBER",
+ *         },
+ *         {
+ *             name: "MANAGER",
+ *         },
+ *     ],
+ * });
+ * ```
  *
  * ## Import
  *

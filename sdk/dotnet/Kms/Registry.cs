@@ -21,6 +21,106 @@ namespace Pulumi.Gcp.Kms
     ///     * [Official Documentation](https://cloud.google.com/iot/docs/)
     /// 
     /// ## Example Usage
+    /// ### Cloudiot Device Registry Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test_registry = new Gcp.Iot.Registry("test-registry");
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudiot Device Registry Single Event Notification Configs
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var default_telemetry = new Gcp.PubSub.Topic("default-telemetry");
+    /// 
+    ///     var test_registry = new Gcp.Iot.Registry("test-registry", new()
+    ///     {
+    ///         EventNotificationConfigs = new[]
+    ///         {
+    ///             new Gcp.Iot.Inputs.RegistryEventNotificationConfigItemArgs
+    ///             {
+    ///                 PubsubTopicName = default_telemetry.Id,
+    ///                 SubfolderMatches = "",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudiot Device Registry Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.IO;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var default_devicestatus = new Gcp.PubSub.Topic("default-devicestatus");
+    /// 
+    ///     var default_telemetry = new Gcp.PubSub.Topic("default-telemetry");
+    /// 
+    ///     var additional_telemetry = new Gcp.PubSub.Topic("additional-telemetry");
+    /// 
+    ///     var test_registry = new Gcp.Iot.Registry("test-registry", new()
+    ///     {
+    ///         EventNotificationConfigs = new[]
+    ///         {
+    ///             new Gcp.Iot.Inputs.RegistryEventNotificationConfigItemArgs
+    ///             {
+    ///                 PubsubTopicName = additional_telemetry.Id,
+    ///                 SubfolderMatches = "test/path",
+    ///             },
+    ///             new Gcp.Iot.Inputs.RegistryEventNotificationConfigItemArgs
+    ///             {
+    ///                 PubsubTopicName = default_telemetry.Id,
+    ///                 SubfolderMatches = "",
+    ///             },
+    ///         },
+    ///         StateNotificationConfig = 
+    ///         {
+    ///             { "pubsub_topic_name", default_devicestatus.Id },
+    ///         },
+    ///         MqttConfig = 
+    ///         {
+    ///             { "mqtt_enabled_state", "MQTT_ENABLED" },
+    ///         },
+    ///         HttpConfig = 
+    ///         {
+    ///             { "http_enabled_state", "HTTP_ENABLED" },
+    ///         },
+    ///         LogLevel = "INFO",
+    ///         Credentials = new[]
+    ///         {
+    ///             new Gcp.Iot.Inputs.RegistryCredentialArgs
+    ///             {
+    ///                 PublicKeyCertificate = 
+    ///                 {
+    ///                     { "format", "X509_CERTIFICATE_PEM" },
+    ///                     { "certificate", File.ReadAllText("test-fixtures/rsa_cert.pem") },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

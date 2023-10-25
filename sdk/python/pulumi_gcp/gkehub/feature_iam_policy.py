@@ -293,6 +293,48 @@ class FeatureIamPolicy(pulumi.CustomResource):
 
         > **Note:** `gkehub.FeatureIamBinding` resources **can be** used in conjunction with `gkehub.FeatureIamMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\\_gke\\_hub\\_feature\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.gkehub.FeatureIamPolicy("policy",
+            project=google_gke_hub_feature["feature"]["project"],
+            location=google_gke_hub_feature["feature"]["location"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_gke\\_hub\\_feature\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.gkehub.FeatureIamBinding("binding",
+            project=google_gke_hub_feature["feature"]["project"],
+            location=google_gke_hub_feature["feature"]["location"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_gke\\_hub\\_feature\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.gkehub.FeatureIamMember("member",
+            project=google_gke_hub_feature["feature"]["project"],
+            location=google_gke_hub_feature["feature"]["location"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/features/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. GKEHub feature IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -358,6 +400,48 @@ class FeatureIamPolicy(pulumi.CustomResource):
         > **Note:** `gkehub.FeatureIamPolicy` **cannot** be used in conjunction with `gkehub.FeatureIamBinding` and `gkehub.FeatureIamMember` or they will fight over what your policy should be.
 
         > **Note:** `gkehub.FeatureIamBinding` resources **can be** used in conjunction with `gkehub.FeatureIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_gke\\_hub\\_feature\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.gkehub.FeatureIamPolicy("policy",
+            project=google_gke_hub_feature["feature"]["project"],
+            location=google_gke_hub_feature["feature"]["location"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_gke\\_hub\\_feature\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.gkehub.FeatureIamBinding("binding",
+            project=google_gke_hub_feature["feature"]["project"],
+            location=google_gke_hub_feature["feature"]["location"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_gke\\_hub\\_feature\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.gkehub.FeatureIamMember("member",
+            project=google_gke_hub_feature["feature"]["project"],
+            location=google_gke_hub_feature["feature"]["location"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
 
         ## Import
 

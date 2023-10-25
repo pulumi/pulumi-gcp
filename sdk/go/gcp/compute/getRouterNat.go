@@ -17,6 +17,33 @@ import (
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/router/docs/)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.LookupRouterNat(ctx, &compute.LookupRouterNatArgs{
+//				Name:   "my-nat",
+//				Router: "my-router",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupRouterNat(ctx *pulumi.Context, args *LookupRouterNatArgs, opts ...pulumi.InvokeOption) (*LookupRouterNatResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRouterNatResult

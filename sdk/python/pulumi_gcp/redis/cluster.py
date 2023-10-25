@@ -563,6 +563,40 @@ class Cluster(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Redis Cluster Ha
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        producer_net = gcp.compute.Network("producerNet", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        producer_subnet = gcp.compute.Subnetwork("producerSubnet",
+            ip_cidr_range="10.0.0.248/29",
+            region="us-central1",
+            network=producer_net.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
+            location="us-central1",
+            service_class="gcp-memorystore-redis",
+            description="my basic service connection policy",
+            network=producer_net.id,
+            psc_config=gcp.networkconnectivity.ServiceConnectionPolicyPscConfigArgs(
+                subnetworks=[producer_subnet.id],
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        cluster_ha = gcp.redis.Cluster("cluster-ha",
+            shard_count=3,
+            psc_configs=[gcp.redis.ClusterPscConfigArgs(
+                network=producer_net.id,
+            )],
+            region="us-central1",
+            replica_count=1,
+            transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
+            authorization_mode="AUTH_MODE_DISABLED",
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[default]))
+        ```
 
         ## Import
 
@@ -613,6 +647,40 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Redis Cluster Ha
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        producer_net = gcp.compute.Network("producerNet", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        producer_subnet = gcp.compute.Subnetwork("producerSubnet",
+            ip_cidr_range="10.0.0.248/29",
+            region="us-central1",
+            network=producer_net.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
+            location="us-central1",
+            service_class="gcp-memorystore-redis",
+            description="my basic service connection policy",
+            network=producer_net.id,
+            psc_config=gcp.networkconnectivity.ServiceConnectionPolicyPscConfigArgs(
+                subnetworks=[producer_subnet.id],
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        cluster_ha = gcp.redis.Cluster("cluster-ha",
+            shard_count=3,
+            psc_configs=[gcp.redis.ClusterPscConfigArgs(
+                network=producer_net.id,
+            )],
+            region="us-central1",
+            replica_count=1,
+            transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
+            authorization_mode="AUTH_MODE_DISABLED",
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[default]))
+        ```
 
         ## Import
 

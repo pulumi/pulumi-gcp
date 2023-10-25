@@ -22,6 +22,43 @@ import (
 //   - [Configuring a service](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_service)
 //
 // ## Example Usage
+// ### Service Directory Service Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicedirectory"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleNamespace, err := servicedirectory.NewNamespace(ctx, "exampleNamespace", &servicedirectory.NamespaceArgs{
+//				NamespaceId: pulumi.String("example-namespace"),
+//				Location:    pulumi.String("us-central1"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = servicedirectory.NewService(ctx, "exampleService", &servicedirectory.ServiceArgs{
+//				ServiceId: pulumi.String("example-service"),
+//				Namespace: exampleNamespace.ID(),
+//				Metadata: pulumi.StringMap{
+//					"stage":  pulumi.String("prod"),
+//					"region": pulumi.String("us-central1"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

@@ -103,6 +103,17 @@ def get_instance_iam_policy(instance_name: Optional[str] = None,
     """
     Retrieves the current IAM policy data for instance
 
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.notebooks.get_instance_iam_policy(project=google_notebooks_instance["instance"]["project"],
+        location=google_notebooks_instance["instance"]["location"],
+        instance_name=google_notebooks_instance["instance"]["name"])
+    ```
+
 
     :param str instance_name: Used to find the parent resource to bind the IAM policy to
     :param str location: A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to
@@ -132,6 +143,17 @@ def get_instance_iam_policy_output(instance_name: Optional[pulumi.Input[str]] = 
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceIamPolicyResult]:
     """
     Retrieves the current IAM policy data for instance
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.notebooks.get_instance_iam_policy(project=google_notebooks_instance["instance"]["project"],
+        location=google_notebooks_instance["instance"]["location"],
+        instance_name=google_notebooks_instance["instance"]["name"])
+    ```
 
 
     :param str instance_name: Used to find the parent resource to bind the IAM policy to

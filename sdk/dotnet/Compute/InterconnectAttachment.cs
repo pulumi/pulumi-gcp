@@ -14,6 +14,88 @@ namespace Pulumi.Gcp.Compute
     /// information, see Creating VLAN Attachments.
     /// 
     /// ## Example Usage
+    /// ### Interconnect Attachment Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobarNetwork = new Gcp.Compute.Network("foobarNetwork", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var foobarRouter = new Gcp.Compute.Router("foobarRouter", new()
+    ///     {
+    ///         Network = foobarNetwork.Name,
+    ///         Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
+    ///         {
+    ///             Asn = 16550,
+    ///         },
+    ///     });
+    /// 
+    ///     var onPrem = new Gcp.Compute.InterconnectAttachment("onPrem", new()
+    ///     {
+    ///         EdgeAvailabilityDomain = "AVAILABILITY_DOMAIN_1",
+    ///         Type = "PARTNER",
+    ///         Router = foobarRouter.Id,
+    ///         Mtu = "1500",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Compute Interconnect Attachment Ipsec Encryption
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network = new Gcp.Compute.Network("network", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var address = new Gcp.Compute.Address("address", new()
+    ///     {
+    ///         AddressType = "INTERNAL",
+    ///         Purpose = "IPSEC_INTERCONNECT",
+    ///         IPAddress = "192.168.1.0",
+    ///         PrefixLength = 29,
+    ///         Network = network.SelfLink,
+    ///     });
+    /// 
+    ///     var router = new Gcp.Compute.Router("router", new()
+    ///     {
+    ///         Network = network.Name,
+    ///         EncryptedInterconnectRouter = true,
+    ///         Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
+    ///         {
+    ///             Asn = 16550,
+    ///         },
+    ///     });
+    /// 
+    ///     var ipsec_encrypted_interconnect_attachment = new Gcp.Compute.InterconnectAttachment("ipsec-encrypted-interconnect-attachment", new()
+    ///     {
+    ///         EdgeAvailabilityDomain = "AVAILABILITY_DOMAIN_1",
+    ///         Type = "PARTNER",
+    ///         Router = router.Id,
+    ///         Encryption = "IPSEC",
+    ///         IpsecInternalAddresses = new[]
+    ///         {
+    ///             address.SelfLink,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

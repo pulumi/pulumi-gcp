@@ -276,6 +276,65 @@ class ResponsePolicy(pulumi.CustomResource):
         made against one or more Virtual Private Cloud networks.
 
         ## Example Usage
+        ### Dns Response Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
+        network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False)
+        subnetwork_1 = gcp.compute.Subnetwork("subnetwork-1",
+            network=network_1.name,
+            ip_cidr_range="10.0.36.0/24",
+            region="us-central1",
+            private_ip_google_access=True,
+            secondary_ip_ranges=[
+                gcp.compute.SubnetworkSecondaryIpRangeArgs(
+                    range_name="pod",
+                    ip_cidr_range="10.0.0.0/19",
+                ),
+                gcp.compute.SubnetworkSecondaryIpRangeArgs(
+                    range_name="svc",
+                    ip_cidr_range="10.0.32.0/22",
+                ),
+            ])
+        cluster_1 = gcp.container.Cluster("cluster-1",
+            location="us-central1-c",
+            initial_node_count=1,
+            networking_mode="VPC_NATIVE",
+            default_snat_status=gcp.container.ClusterDefaultSnatStatusArgs(
+                disabled=True,
+            ),
+            network=network_1.name,
+            subnetwork=subnetwork_1.name,
+            private_cluster_config=gcp.container.ClusterPrivateClusterConfigArgs(
+                enable_private_endpoint=True,
+                enable_private_nodes=True,
+                master_ipv4_cidr_block="10.42.0.0/28",
+                master_global_access_config=gcp.container.ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            master_authorized_networks_config=gcp.container.ClusterMasterAuthorizedNetworksConfigArgs(),
+            ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(
+                cluster_secondary_range_name=subnetwork_1.secondary_ip_ranges[0].range_name,
+                services_secondary_range_name=subnetwork_1.secondary_ip_ranges[1].range_name,
+            ))
+        example_response_policy = gcp.dns.ResponsePolicy("example-response-policy",
+            response_policy_name="example-response-policy",
+            networks=[
+                gcp.dns.ResponsePolicyNetworkArgs(
+                    network_url=network_1.id,
+                ),
+                gcp.dns.ResponsePolicyNetworkArgs(
+                    network_url=network_2.id,
+                ),
+            ],
+            gke_clusters=[gcp.dns.ResponsePolicyGkeClusterArgs(
+                gke_cluster_name=cluster_1.id,
+            )])
+        ```
 
         ## Import
 
@@ -318,6 +377,65 @@ class ResponsePolicy(pulumi.CustomResource):
         made against one or more Virtual Private Cloud networks.
 
         ## Example Usage
+        ### Dns Response Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
+        network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False)
+        subnetwork_1 = gcp.compute.Subnetwork("subnetwork-1",
+            network=network_1.name,
+            ip_cidr_range="10.0.36.0/24",
+            region="us-central1",
+            private_ip_google_access=True,
+            secondary_ip_ranges=[
+                gcp.compute.SubnetworkSecondaryIpRangeArgs(
+                    range_name="pod",
+                    ip_cidr_range="10.0.0.0/19",
+                ),
+                gcp.compute.SubnetworkSecondaryIpRangeArgs(
+                    range_name="svc",
+                    ip_cidr_range="10.0.32.0/22",
+                ),
+            ])
+        cluster_1 = gcp.container.Cluster("cluster-1",
+            location="us-central1-c",
+            initial_node_count=1,
+            networking_mode="VPC_NATIVE",
+            default_snat_status=gcp.container.ClusterDefaultSnatStatusArgs(
+                disabled=True,
+            ),
+            network=network_1.name,
+            subnetwork=subnetwork_1.name,
+            private_cluster_config=gcp.container.ClusterPrivateClusterConfigArgs(
+                enable_private_endpoint=True,
+                enable_private_nodes=True,
+                master_ipv4_cidr_block="10.42.0.0/28",
+                master_global_access_config=gcp.container.ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            master_authorized_networks_config=gcp.container.ClusterMasterAuthorizedNetworksConfigArgs(),
+            ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(
+                cluster_secondary_range_name=subnetwork_1.secondary_ip_ranges[0].range_name,
+                services_secondary_range_name=subnetwork_1.secondary_ip_ranges[1].range_name,
+            ))
+        example_response_policy = gcp.dns.ResponsePolicy("example-response-policy",
+            response_policy_name="example-response-policy",
+            networks=[
+                gcp.dns.ResponsePolicyNetworkArgs(
+                    network_url=network_1.id,
+                ),
+                gcp.dns.ResponsePolicyNetworkArgs(
+                    network_url=network_2.id,
+                ),
+            ],
+            gke_clusters=[gcp.dns.ResponsePolicyGkeClusterArgs(
+                gke_cluster_name=cluster_1.id,
+            )])
+        ```
 
         ## Import
 

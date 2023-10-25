@@ -16,6 +16,296 @@ import (
 // The Cloud Deploy `DeliveryPipeline` resource
 //
 // ## Example Usage
+// ### Canary_delivery_pipeline
+// Creates a basic Cloud Deploy delivery pipeline
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/clouddeploy"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := clouddeploy.NewDeliveryPipeline(ctx, "primary", &clouddeploy.DeliveryPipelineArgs{
+//				Location: pulumi.String("us-west1"),
+//				Annotations: pulumi.StringMap{
+//					"my_first_annotation":  pulumi.String("example-annotation-1"),
+//					"my_second_annotation": pulumi.String("example-annotation-2"),
+//				},
+//				Description: pulumi.String("basic description"),
+//				Labels: pulumi.StringMap{
+//					"my_first_label":  pulumi.String("example-label-1"),
+//					"my_second_label": pulumi.String("example-label-2"),
+//				},
+//				Project: pulumi.String("my-project-name"),
+//				SerialPipeline: &clouddeploy.DeliveryPipelineSerialPipelineArgs{
+//					Stages: clouddeploy.DeliveryPipelineSerialPipelineStageArray{
+//						&clouddeploy.DeliveryPipelineSerialPipelineStageArgs{
+//							DeployParameters: clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArray{
+//								&clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs{
+//									Values: pulumi.StringMap{
+//										"deployParameterKey": pulumi.String("deployParameterValue"),
+//									},
+//									MatchTargetLabels: nil,
+//								},
+//							},
+//							Profiles: pulumi.StringArray{
+//								pulumi.String("example-profile-one"),
+//								pulumi.String("example-profile-two"),
+//							},
+//							TargetId: pulumi.String("example-target-one"),
+//						},
+//						&clouddeploy.DeliveryPipelineSerialPipelineStageArgs{
+//							Profiles: pulumi.StringArray{},
+//							TargetId: pulumi.String("example-target-two"),
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Canary_service_networking_delivery_pipeline
+// Creates a basic Cloud Deploy delivery pipeline
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/clouddeploy"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := clouddeploy.NewDeliveryPipeline(ctx, "primary", &clouddeploy.DeliveryPipelineArgs{
+//				Location: pulumi.String("us-west1"),
+//				Annotations: pulumi.StringMap{
+//					"my_first_annotation":  pulumi.String("example-annotation-1"),
+//					"my_second_annotation": pulumi.String("example-annotation-2"),
+//				},
+//				Description: pulumi.String("basic description"),
+//				Labels: pulumi.StringMap{
+//					"my_first_label":  pulumi.String("example-label-1"),
+//					"my_second_label": pulumi.String("example-label-2"),
+//				},
+//				Project: pulumi.String("my-project-name"),
+//				SerialPipeline: &clouddeploy.DeliveryPipelineSerialPipelineArgs{
+//					Stages: clouddeploy.DeliveryPipelineSerialPipelineStageArray{
+//						&clouddeploy.DeliveryPipelineSerialPipelineStageArgs{
+//							DeployParameters: clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArray{
+//								&clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs{
+//									Values: pulumi.StringMap{
+//										"deployParameterKey": pulumi.String("deployParameterValue"),
+//									},
+//									MatchTargetLabels: nil,
+//								},
+//							},
+//							Profiles: pulumi.StringArray{
+//								pulumi.String("example-profile-one"),
+//								pulumi.String("example-profile-two"),
+//							},
+//							TargetId: pulumi.String("example-target-one"),
+//						},
+//						&clouddeploy.DeliveryPipelineSerialPipelineStageArgs{
+//							Profiles: pulumi.StringArray{},
+//							TargetId: pulumi.String("example-target-two"),
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Canaryrun_delivery_pipeline
+// Creates a basic Cloud Deploy delivery pipeline
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/clouddeploy"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := clouddeploy.NewDeliveryPipeline(ctx, "primary", &clouddeploy.DeliveryPipelineArgs{
+//				Location: pulumi.String("us-west1"),
+//				Annotations: pulumi.StringMap{
+//					"my_first_annotation":  pulumi.String("example-annotation-1"),
+//					"my_second_annotation": pulumi.String("example-annotation-2"),
+//				},
+//				Description: pulumi.String("basic description"),
+//				Labels: pulumi.StringMap{
+//					"my_first_label":  pulumi.String("example-label-1"),
+//					"my_second_label": pulumi.String("example-label-2"),
+//				},
+//				Project: pulumi.String("my-project-name"),
+//				SerialPipeline: &clouddeploy.DeliveryPipelineSerialPipelineArgs{
+//					Stages: clouddeploy.DeliveryPipelineSerialPipelineStageArray{
+//						&clouddeploy.DeliveryPipelineSerialPipelineStageArgs{
+//							DeployParameters: clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArray{
+//								&clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs{
+//									Values: pulumi.StringMap{
+//										"deployParameterKey": pulumi.String("deployParameterValue"),
+//									},
+//									MatchTargetLabels: nil,
+//								},
+//							},
+//							Profiles: pulumi.StringArray{
+//								pulumi.String("example-profile-one"),
+//								pulumi.String("example-profile-two"),
+//							},
+//							TargetId: pulumi.String("example-target-one"),
+//						},
+//						&clouddeploy.DeliveryPipelineSerialPipelineStageArgs{
+//							Profiles: pulumi.StringArray{},
+//							TargetId: pulumi.String("example-target-two"),
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Delivery_pipeline
+// Creates a basic Cloud Deploy delivery pipeline
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/clouddeploy"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := clouddeploy.NewDeliveryPipeline(ctx, "primary", &clouddeploy.DeliveryPipelineArgs{
+//				Annotations: pulumi.StringMap{
+//					"my_first_annotation":  pulumi.String("example-annotation-1"),
+//					"my_second_annotation": pulumi.String("example-annotation-2"),
+//				},
+//				Description: pulumi.String("basic description"),
+//				Labels: pulumi.StringMap{
+//					"my_first_label":  pulumi.String("example-label-1"),
+//					"my_second_label": pulumi.String("example-label-2"),
+//				},
+//				Location: pulumi.String("us-west1"),
+//				Project:  pulumi.String("my-project-name"),
+//				SerialPipeline: &clouddeploy.DeliveryPipelineSerialPipelineArgs{
+//					Stages: clouddeploy.DeliveryPipelineSerialPipelineStageArray{
+//						&clouddeploy.DeliveryPipelineSerialPipelineStageArgs{
+//							DeployParameters: clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArray{
+//								&clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs{
+//									MatchTargetLabels: nil,
+//									Values: pulumi.StringMap{
+//										"deployParameterKey": pulumi.String("deployParameterValue"),
+//									},
+//								},
+//							},
+//							Profiles: pulumi.StringArray{
+//								pulumi.String("example-profile-one"),
+//								pulumi.String("example-profile-two"),
+//							},
+//							TargetId: pulumi.String("example-target-one"),
+//						},
+//						&clouddeploy.DeliveryPipelineSerialPipelineStageArgs{
+//							Profiles: pulumi.StringArray{},
+//							TargetId: pulumi.String("example-target-two"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Verify_delivery_pipeline
+// tests creating and updating a delivery pipeline with deployment verification strategy
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/clouddeploy"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := clouddeploy.NewDeliveryPipeline(ctx, "primary", &clouddeploy.DeliveryPipelineArgs{
+//				Location: pulumi.String("us-west1"),
+//				Annotations: pulumi.StringMap{
+//					"my_first_annotation":  pulumi.String("example-annotation-1"),
+//					"my_second_annotation": pulumi.String("example-annotation-2"),
+//				},
+//				Description: pulumi.String("basic description"),
+//				Labels: pulumi.StringMap{
+//					"my_first_label":  pulumi.String("example-label-1"),
+//					"my_second_label": pulumi.String("example-label-2"),
+//				},
+//				Project: pulumi.String("my-project-name"),
+//				SerialPipeline: &clouddeploy.DeliveryPipelineSerialPipelineArgs{
+//					Stages: clouddeploy.DeliveryPipelineSerialPipelineStageArray{
+//						&clouddeploy.DeliveryPipelineSerialPipelineStageArgs{
+//							DeployParameters: clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArray{
+//								&clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs{
+//									Values: pulumi.StringMap{
+//										"deployParameterKey": pulumi.String("deployParameterValue"),
+//									},
+//									MatchTargetLabels: nil,
+//								},
+//							},
+//							Profiles: pulumi.StringArray{
+//								pulumi.String("example-profile-one"),
+//								pulumi.String("example-profile-two"),
+//							},
+//							TargetId: pulumi.String("example-target-one"),
+//						},
+//						&clouddeploy.DeliveryPipelineSerialPipelineStageArgs{
+//							Profiles: pulumi.StringArray{},
+//							TargetId: pulumi.String("example-target-two"),
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

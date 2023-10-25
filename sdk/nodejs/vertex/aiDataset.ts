@@ -16,6 +16,18 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
  *
  * ## Example Usage
+ * ### Vertex Ai Dataset
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataset = new gcp.vertex.AiDataset("dataset", {
+ *     displayName: "terraform",
+ *     metadataSchemaUri: "gs://google-cloud-aiplatform/schema/dataset/metadata/image_1.0.0.yaml",
+ *     region: "us-central1",
+ * });
+ * ```
  *
  * ## Import
  *

@@ -347,6 +347,51 @@ class LakeIamMember(pulumi.CustomResource):
 
         > **Note:** `dataplex.LakeIamBinding` resources **can be** used in conjunction with `dataplex.LakeIamMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\\_dataplex\\_lake\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.dataplex.LakeIamPolicy("policy",
+            project=google_dataplex_lake["example"]["project"],
+            location=google_dataplex_lake["example"]["location"],
+            lake=google_dataplex_lake["example"]["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_dataplex\\_lake\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.dataplex.LakeIamBinding("binding",
+            project=google_dataplex_lake["example"]["project"],
+            location=google_dataplex_lake["example"]["location"],
+            lake=google_dataplex_lake["example"]["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_dataplex\\_lake\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.dataplex.LakeIamMember("member",
+            project=google_dataplex_lake["example"]["project"],
+            location=google_dataplex_lake["example"]["location"],
+            lake=google_dataplex_lake["example"]["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/lakes/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Dataplex lake IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -412,6 +457,51 @@ class LakeIamMember(pulumi.CustomResource):
         > **Note:** `dataplex.LakeIamPolicy` **cannot** be used in conjunction with `dataplex.LakeIamBinding` and `dataplex.LakeIamMember` or they will fight over what your policy should be.
 
         > **Note:** `dataplex.LakeIamBinding` resources **can be** used in conjunction with `dataplex.LakeIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_dataplex\\_lake\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.dataplex.LakeIamPolicy("policy",
+            project=google_dataplex_lake["example"]["project"],
+            location=google_dataplex_lake["example"]["location"],
+            lake=google_dataplex_lake["example"]["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_dataplex\\_lake\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.dataplex.LakeIamBinding("binding",
+            project=google_dataplex_lake["example"]["project"],
+            location=google_dataplex_lake["example"]["location"],
+            lake=google_dataplex_lake["example"]["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_dataplex\\_lake\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.dataplex.LakeIamMember("member",
+            project=google_dataplex_lake["example"]["project"],
+            location=google_dataplex_lake["example"]["location"],
+            lake=google_dataplex_lake["example"]["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
 
         ## Import
 

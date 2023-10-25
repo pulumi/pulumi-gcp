@@ -21,6 +21,55 @@ namespace Pulumi.Gcp.Compute
     ///     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
     /// 
     /// ## Example Usage
+    /// ### Node Template Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var template = new Gcp.Compute.NodeTemplate("template", new()
+    ///     {
+    ///         NodeType = "n1-node-96-624",
+    ///         Region = "us-central1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Node Template Server Binding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var central1a = Gcp.Compute.GetNodeTypes.Invoke(new()
+    ///     {
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    ///     var template = new Gcp.Compute.NodeTemplate("template", new()
+    ///     {
+    ///         NodeAffinityLabels = 
+    ///         {
+    ///             { "foo", "baz" },
+    ///         },
+    ///         NodeType = "n1-node-96-624",
+    ///         Region = "us-central1",
+    ///         ServerBinding = new Gcp.Compute.Inputs.NodeTemplateServerBindingArgs
+    ///         {
+    ///             Type = "RESTART_NODE_ON_MINIMAL_SERVERS",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

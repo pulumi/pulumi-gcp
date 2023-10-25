@@ -19,6 +19,35 @@ namespace Pulumi.Gcp.AccessApproval
         /// [custom signing key](https://cloud.google.com/cloud-provider-access-management/access-approval/docs/review-approve-access-requests-custom-keys),
         /// this account needs to be granted the `cloudkms.signerVerifier` IAM role on the
         /// Cloud KMS key used to sign approvals.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var serviceAccount = Gcp.AccessApproval.GetProjectServiceAccount.Invoke(new()
+        ///     {
+        ///         ProjectId = "my-project",
+        ///     });
+        /// 
+        ///     var iam = new Gcp.Kms.CryptoKeyIAMMember("iam", new()
+        ///     {
+        ///         CryptoKeyId = google_kms_crypto_key.Crypto_key.Id,
+        ///         Role = "roles/cloudkms.signerVerifier",
+        ///         Member = $"serviceAccount:{serviceAccount.Apply(getProjectServiceAccountResult =&gt; getProjectServiceAccountResult.AccountEmail)}",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectServiceAccountResult> InvokeAsync(GetProjectServiceAccountArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectServiceAccountResult>("gcp:accessapproval/getProjectServiceAccount:getProjectServiceAccount", args ?? new GetProjectServiceAccountArgs(), options.WithDefaults());
@@ -31,6 +60,35 @@ namespace Pulumi.Gcp.AccessApproval
         /// [custom signing key](https://cloud.google.com/cloud-provider-access-management/access-approval/docs/review-approve-access-requests-custom-keys),
         /// this account needs to be granted the `cloudkms.signerVerifier` IAM role on the
         /// Cloud KMS key used to sign approvals.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var serviceAccount = Gcp.AccessApproval.GetProjectServiceAccount.Invoke(new()
+        ///     {
+        ///         ProjectId = "my-project",
+        ///     });
+        /// 
+        ///     var iam = new Gcp.Kms.CryptoKeyIAMMember("iam", new()
+        ///     {
+        ///         CryptoKeyId = google_kms_crypto_key.Crypto_key.Id,
+        ///         Role = "roles/cloudkms.signerVerifier",
+        ///         Member = $"serviceAccount:{serviceAccount.Apply(getProjectServiceAccountResult =&gt; getProjectServiceAccountResult.AccountEmail)}",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectServiceAccountResult> Invoke(GetProjectServiceAccountInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectServiceAccountResult>("gcp:accessapproval/getProjectServiceAccount:getProjectServiceAccount", args ?? new GetProjectServiceAccountInvokeArgs(), options.WithDefaults());

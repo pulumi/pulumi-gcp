@@ -26,6 +26,77 @@ namespace Pulumi.Gcp.BigTable
     ///     * [Official Documentation](https://cloud.google.com/bigtable/docs)
     /// 
     /// ## Example Usage
+    /// ### Simple Instance
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var production_instance = new Gcp.BigTable.Instance("production-instance", new()
+    ///     {
+    ///         Clusters = new[]
+    ///         {
+    ///             new Gcp.BigTable.Inputs.InstanceClusterArgs
+    ///             {
+    ///                 ClusterId = "tf-instance-cluster",
+    ///                 NumNodes = 1,
+    ///                 StorageType = "HDD",
+    ///             },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "my-label", "prod-label" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Replicated Instance
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var production_instance = new Gcp.BigTable.Instance("production-instance", new()
+    ///     {
+    ///         Clusters = new[]
+    ///         {
+    ///             new Gcp.BigTable.Inputs.InstanceClusterArgs
+    ///             {
+    ///                 ClusterId = "tf-instance-cluster1",
+    ///                 NumNodes = 1,
+    ///                 StorageType = "HDD",
+    ///                 Zone = "us-central1-c",
+    ///             },
+    ///             new Gcp.BigTable.Inputs.InstanceClusterArgs
+    ///             {
+    ///                 AutoscalingConfig = new Gcp.BigTable.Inputs.InstanceClusterAutoscalingConfigArgs
+    ///                 {
+    ///                     CpuTarget = 50,
+    ///                     MaxNodes = 3,
+    ///                     MinNodes = 1,
+    ///                 },
+    ///                 ClusterId = "tf-instance-cluster2",
+    ///                 StorageType = "HDD",
+    ///                 Zone = "us-central1-b",
+    ///             },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "my-label", "prod-label" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

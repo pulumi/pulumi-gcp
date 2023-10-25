@@ -21,6 +21,34 @@ namespace Pulumi.Gcp.Kms
     ///     * [Creating a key Version](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions/create)
     /// 
     /// ## Example Usage
+    /// ### Kms Crypto Key Version Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var keyring = new Gcp.Kms.KeyRing("keyring", new()
+    ///     {
+    ///         Location = "global",
+    ///     });
+    /// 
+    ///     var cryptokey = new Gcp.Kms.CryptoKey("cryptokey", new()
+    ///     {
+    ///         KeyRing = keyring.Id,
+    ///         RotationPeriod = "100000s",
+    ///     });
+    /// 
+    ///     var example_key = new Gcp.Kms.CryptoKeyVersion("example-key", new()
+    ///     {
+    ///         CryptoKey = cryptokey.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

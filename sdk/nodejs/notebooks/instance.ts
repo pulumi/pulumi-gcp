@@ -20,6 +20,93 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
  *
  * ## Example Usage
+ * ### Notebook Instance Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.notebooks.Instance("instance", {
+ *     location: "us-west1-a",
+ *     machineType: "e2-medium",
+ *     vmImage: {
+ *         imageFamily: "tf-latest-cpu",
+ *         project: "deeplearning-platform-release",
+ *     },
+ * });
+ * ```
+ * ### Notebook Instance Basic Container
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.notebooks.Instance("instance", {
+ *     containerImage: {
+ *         repository: "gcr.io/deeplearning-platform-release/base-cpu",
+ *         tag: "latest",
+ *     },
+ *     location: "us-west1-a",
+ *     machineType: "e2-medium",
+ *     metadata: {
+ *         "proxy-mode": "service_account",
+ *     },
+ * });
+ * ```
+ * ### Notebook Instance Basic Gpu
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.notebooks.Instance("instance", {
+ *     acceleratorConfig: {
+ *         coreCount: 1,
+ *         type: "NVIDIA_TESLA_T4",
+ *     },
+ *     installGpuDriver: true,
+ *     location: "us-west1-a",
+ *     machineType: "n1-standard-1",
+ *     vmImage: {
+ *         imageFamily: "tf-latest-gpu",
+ *         project: "deeplearning-platform-release",
+ *     },
+ * });
+ * ```
+ * ### Notebook Instance Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myNetwork = gcp.compute.getNetwork({
+ *     name: "default",
+ * });
+ * const mySubnetwork = gcp.compute.getSubnetwork({
+ *     name: "default",
+ *     region: "us-central1",
+ * });
+ * const instance = new gcp.notebooks.Instance("instance", {
+ *     location: "us-central1-a",
+ *     machineType: "e2-medium",
+ *     vmImage: {
+ *         project: "deeplearning-platform-release",
+ *         imageFamily: "tf-latest-cpu",
+ *     },
+ *     instanceOwners: ["my@service-account.com"],
+ *     serviceAccount: "my@service-account.com",
+ *     installGpuDriver: true,
+ *     bootDiskType: "PD_SSD",
+ *     bootDiskSizeGb: 110,
+ *     noPublicIp: true,
+ *     noProxyAccess: true,
+ *     network: myNetwork.then(myNetwork => myNetwork.id),
+ *     subnet: mySubnetwork.then(mySubnetwork => mySubnetwork.id),
+ *     labels: {
+ *         k: "val",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

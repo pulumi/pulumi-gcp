@@ -22,6 +22,116 @@ import (
 //   - [Official Documentation](https://cloud.google.com/game-servers/docs)
 //
 // ## Example Usage
+// ### Game Service Config Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gameservices"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultGameServerDeployment, err := gameservices.NewGameServerDeployment(ctx, "defaultGameServerDeployment", &gameservices.GameServerDeploymentArgs{
+//				DeploymentId: pulumi.String("tf-test-deployment"),
+//				Description:  pulumi.String("a deployment description"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"replicas":   1,
+//				"scheduling": "Packed",
+//				"template": map[string]interface{}{
+//					"metadata": map[string]interface{}{
+//						"name": "tf-test-game-server-template",
+//					},
+//					"spec": map[string]interface{}{
+//						"ports": []map[string]interface{}{
+//							map[string]interface{}{
+//								"name":          "default",
+//								"portPolicy":    "Dynamic",
+//								"containerPort": 7654,
+//								"protocol":      "UDP",
+//							},
+//						},
+//						"template": map[string]interface{}{
+//							"spec": map[string]interface{}{
+//								"containers": []map[string]interface{}{
+//									map[string]interface{}{
+//										"name":  "simple-udp-server",
+//										"image": "gcr.io/agones-images/udp-server:0.14",
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//				"policy": map[string]interface{}{
+//					"type": "Webhook",
+//					"webhook": map[string]interface{}{
+//						"service": map[string]interface{}{
+//							"name":      "autoscaler-webhook-service",
+//							"namespace": "default",
+//							"path":      "scale",
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json1 := string(tmpJSON1)
+//			_, err = gameservices.NewGameServerConfig(ctx, "defaultGameServerConfig", &gameservices.GameServerConfigArgs{
+//				ConfigId:     pulumi.String("tf-test-config"),
+//				DeploymentId: defaultGameServerDeployment.DeploymentId,
+//				Description:  pulumi.String("a config description"),
+//				FleetConfigs: gameservices.GameServerConfigFleetConfigArray{
+//					&gameservices.GameServerConfigFleetConfigArgs{
+//						Name:      pulumi.String("something-unique"),
+//						FleetSpec: pulumi.String(json0),
+//					},
+//				},
+//				ScalingConfigs: gameservices.GameServerConfigScalingConfigArray{
+//					&gameservices.GameServerConfigScalingConfigArgs{
+//						Name:                pulumi.String("scaling-config-name"),
+//						FleetAutoscalerSpec: pulumi.String(json1),
+//						Selectors: gameservices.GameServerConfigScalingConfigSelectorArray{
+//							&gameservices.GameServerConfigScalingConfigSelectorArgs{
+//								Labels: pulumi.StringMap{
+//									"one": pulumi.String("two"),
+//								},
+//							},
+//						},
+//						Schedules: gameservices.GameServerConfigScalingConfigScheduleArray{
+//							&gameservices.GameServerConfigScalingConfigScheduleArgs{
+//								CronJobDuration: pulumi.String("3.500s"),
+//								CronSpec:        pulumi.String("0 0 * * 0"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

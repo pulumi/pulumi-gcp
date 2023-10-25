@@ -13,12 +13,52 @@ namespace Pulumi.Gcp.DataCatalog
     {
         /// <summary>
         /// Retrieves the current IAM policy data for entrygroup
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.DataCatalog.GetEntryGroupIamPolicy.Invoke(new()
+        ///     {
+        ///         EntryGroup = google_data_catalog_entry_group.Basic_entry_group.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetEntryGroupIamPolicyResult> InvokeAsync(GetEntryGroupIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEntryGroupIamPolicyResult>("gcp:datacatalog/getEntryGroupIamPolicy:getEntryGroupIamPolicy", args ?? new GetEntryGroupIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for entrygroup
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.DataCatalog.GetEntryGroupIamPolicy.Invoke(new()
+        ///     {
+        ///         EntryGroup = google_data_catalog_entry_group.Basic_entry_group.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetEntryGroupIamPolicyResult> Invoke(GetEntryGroupIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEntryGroupIamPolicyResult>("gcp:datacatalog/getEntryGroupIamPolicy:getEntryGroupIamPolicy", args ?? new GetEntryGroupIamPolicyInvokeArgs(), options.WithDefaults());

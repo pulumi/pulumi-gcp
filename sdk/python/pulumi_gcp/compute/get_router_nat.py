@@ -237,6 +237,16 @@ def get_router_nat(name: Optional[str] = None,
     * How-to Guides
         * [Official Documentation](https://cloud.google.com/router/docs/)
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.compute.get_router_nat(name="my-nat",
+        router="my-router")
+    ```
+
 
     :param str name: Name of the NAT service. The name must be 1-63 characters long and
            comply with RFC1035.
@@ -291,6 +301,16 @@ def get_router_nat_output(name: Optional[pulumi.Input[str]] = None,
     * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
     * How-to Guides
         * [Official Documentation](https://cloud.google.com/router/docs/)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.compute.get_router_nat(name="my-nat",
+        router="my-router")
+    ```
 
 
     :param str name: Name of the NAT service. The name must be 1-63 characters long and

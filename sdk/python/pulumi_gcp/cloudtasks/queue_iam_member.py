@@ -354,6 +354,48 @@ class QueueIamMember(pulumi.CustomResource):
 
         > **Note:** `cloudtasks.QueueIamBinding` resources **can be** used in conjunction with `cloudtasks.QueueIamMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\\_cloud\\_tasks\\_queue\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.cloudtasks.QueueIamPolicy("policy",
+            project=google_cloud_tasks_queue["default"]["project"],
+            location=google_cloud_tasks_queue["default"]["location"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_cloud\\_tasks\\_queue\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.cloudtasks.QueueIamBinding("binding",
+            project=google_cloud_tasks_queue["default"]["project"],
+            location=google_cloud_tasks_queue["default"]["location"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_cloud\\_tasks\\_queue\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.cloudtasks.QueueIamMember("member",
+            project=google_cloud_tasks_queue["default"]["project"],
+            location=google_cloud_tasks_queue["default"]["location"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/queues/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Tasks queue IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -420,6 +462,48 @@ class QueueIamMember(pulumi.CustomResource):
         > **Note:** `cloudtasks.QueueIamPolicy` **cannot** be used in conjunction with `cloudtasks.QueueIamBinding` and `cloudtasks.QueueIamMember` or they will fight over what your policy should be.
 
         > **Note:** `cloudtasks.QueueIamBinding` resources **can be** used in conjunction with `cloudtasks.QueueIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_cloud\\_tasks\\_queue\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.cloudtasks.QueueIamPolicy("policy",
+            project=google_cloud_tasks_queue["default"]["project"],
+            location=google_cloud_tasks_queue["default"]["location"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_cloud\\_tasks\\_queue\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.cloudtasks.QueueIamBinding("binding",
+            project=google_cloud_tasks_queue["default"]["project"],
+            location=google_cloud_tasks_queue["default"]["location"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_cloud\\_tasks\\_queue\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.cloudtasks.QueueIamMember("member",
+            project=google_cloud_tasks_queue["default"]["project"],
+            location=google_cloud_tasks_queue["default"]["location"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
 
         ## Import
 

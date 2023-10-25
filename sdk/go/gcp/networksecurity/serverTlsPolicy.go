@@ -13,6 +13,127 @@ import (
 )
 
 // ## Example Usage
+// ### Network Security Server Tls Policy Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networksecurity.NewServerTlsPolicy(ctx, "default", &networksecurity.ServerTlsPolicyArgs{
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Description: pulumi.String("my description"),
+//				AllowOpen:   pulumi.Bool(false),
+//				ServerCertificate: &networksecurity.ServerTlsPolicyServerCertificateArgs{
+//					CertificateProviderInstance: &networksecurity.ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs{
+//						PluginInstance: pulumi.String("google_cloud_private_spiffe"),
+//					},
+//				},
+//				MtlsPolicy: &networksecurity.ServerTlsPolicyMtlsPolicyArgs{
+//					ClientValidationCas: networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaArray{
+//						&networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaArgs{
+//							GrpcEndpoint: &networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs{
+//								TargetUri: pulumi.String("unix:mypath"),
+//							},
+//						},
+//						&networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaArgs{
+//							GrpcEndpoint: &networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs{
+//								TargetUri: pulumi.String("unix:abc/mypath"),
+//							},
+//						},
+//						&networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaArgs{
+//							CertificateProviderInstance: &networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs{
+//								PluginInstance: pulumi.String("google_cloud_private_spiffe"),
+//							},
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Network Security Server Tls Policy Advanced
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networksecurity.NewServerTlsPolicy(ctx, "default", &networksecurity.ServerTlsPolicyArgs{
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Description: pulumi.String("my description"),
+//				Location:    pulumi.String("global"),
+//				AllowOpen:   pulumi.Bool(false),
+//				MtlsPolicy: &networksecurity.ServerTlsPolicyMtlsPolicyArgs{
+//					ClientValidationMode: pulumi.String("ALLOW_INVALID_OR_MISSING_CLIENT_CERT"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Network Security Server Tls Policy Server Cert
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networksecurity.NewServerTlsPolicy(ctx, "default", &networksecurity.ServerTlsPolicyArgs{
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Description: pulumi.String("my description"),
+//				Location:    pulumi.String("global"),
+//				AllowOpen:   pulumi.Bool(false),
+//				ServerCertificate: &networksecurity.ServerTlsPolicyServerCertificateArgs{
+//					GrpcEndpoint: &networksecurity.ServerTlsPolicyServerCertificateGrpcEndpointArgs{
+//						TargetUri: pulumi.String("unix:mypath"),
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

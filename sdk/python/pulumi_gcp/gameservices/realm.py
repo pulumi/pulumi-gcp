@@ -357,6 +357,18 @@ class Realm(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/game-servers/docs)
 
         ## Example Usage
+        ### Game Service Realm Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.gameservices.Realm("default",
+            description="one of the nine",
+            location="global",
+            realm_id="tf-test-realm",
+            time_zone="EST")
+        ```
 
         ## Import
 
@@ -405,6 +417,18 @@ class Realm(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/game-servers/docs)
 
         ## Example Usage
+        ### Game Service Realm Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.gameservices.Realm("default",
+            description="one of the nine",
+            location="global",
+            realm_id="tf-test-realm",
+            time_zone="EST")
+        ```
 
         ## Import
 

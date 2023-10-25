@@ -523,6 +523,78 @@ class Spoke(pulumi.CustomResource):
         The NetworkConnectivity Spoke resource
 
         ## Example Usage
+        ### Linked_vpc_network
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network", auto_create_subnetworks=False)
+        basic_hub = gcp.networkconnectivity.Hub("basicHub",
+            description="A sample hub",
+            labels={
+                "label-two": "value-one",
+            })
+        primary = gcp.networkconnectivity.Spoke("primary",
+            location="global",
+            description="A sample spoke with a linked routher appliance instance",
+            labels={
+                "label-one": "value-one",
+            },
+            hub=basic_hub.id,
+            linked_vpc_network=gcp.networkconnectivity.SpokeLinkedVpcNetworkArgs(
+                exclude_export_ranges=[
+                    "198.51.100.0/24",
+                    "10.10.0.0/16",
+                ],
+                uri=network.self_link,
+            ))
+        ```
+        ### Router_appliance
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network", auto_create_subnetworks=False)
+        subnetwork = gcp.compute.Subnetwork("subnetwork",
+            ip_cidr_range="10.0.0.0/28",
+            region="us-west1",
+            network=network.self_link)
+        instance = gcp.compute.Instance("instance",
+            machine_type="e2-medium",
+            can_ip_forward=True,
+            zone="us-west1-a",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="projects/debian-cloud/global/images/debian-10-buster-v20210817",
+                ),
+            ),
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                subnetwork=subnetwork.name,
+                network_ip="10.0.0.2",
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs(
+                    network_tier="PREMIUM",
+                )],
+            )])
+        basic_hub = gcp.networkconnectivity.Hub("basicHub",
+            description="A sample hub",
+            labels={
+                "label-two": "value-one",
+            })
+        primary = gcp.networkconnectivity.Spoke("primary",
+            location="us-west1",
+            description="A sample spoke with a linked routher appliance instance",
+            labels={
+                "label-one": "value-one",
+            },
+            hub=basic_hub.id,
+            linked_router_appliance_instances=gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesArgs(
+                instances=[gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArgs(
+                    virtual_machine=instance.self_link,
+                    ip_address="10.0.0.2",
+                )],
+                site_to_site_data_transfer=True,
+            ))
+        ```
 
         ## Import
 
@@ -563,6 +635,78 @@ class Spoke(pulumi.CustomResource):
         The NetworkConnectivity Spoke resource
 
         ## Example Usage
+        ### Linked_vpc_network
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network", auto_create_subnetworks=False)
+        basic_hub = gcp.networkconnectivity.Hub("basicHub",
+            description="A sample hub",
+            labels={
+                "label-two": "value-one",
+            })
+        primary = gcp.networkconnectivity.Spoke("primary",
+            location="global",
+            description="A sample spoke with a linked routher appliance instance",
+            labels={
+                "label-one": "value-one",
+            },
+            hub=basic_hub.id,
+            linked_vpc_network=gcp.networkconnectivity.SpokeLinkedVpcNetworkArgs(
+                exclude_export_ranges=[
+                    "198.51.100.0/24",
+                    "10.10.0.0/16",
+                ],
+                uri=network.self_link,
+            ))
+        ```
+        ### Router_appliance
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network", auto_create_subnetworks=False)
+        subnetwork = gcp.compute.Subnetwork("subnetwork",
+            ip_cidr_range="10.0.0.0/28",
+            region="us-west1",
+            network=network.self_link)
+        instance = gcp.compute.Instance("instance",
+            machine_type="e2-medium",
+            can_ip_forward=True,
+            zone="us-west1-a",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="projects/debian-cloud/global/images/debian-10-buster-v20210817",
+                ),
+            ),
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                subnetwork=subnetwork.name,
+                network_ip="10.0.0.2",
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs(
+                    network_tier="PREMIUM",
+                )],
+            )])
+        basic_hub = gcp.networkconnectivity.Hub("basicHub",
+            description="A sample hub",
+            labels={
+                "label-two": "value-one",
+            })
+        primary = gcp.networkconnectivity.Spoke("primary",
+            location="us-west1",
+            description="A sample spoke with a linked routher appliance instance",
+            labels={
+                "label-one": "value-one",
+            },
+            hub=basic_hub.id,
+            linked_router_appliance_instances=gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesArgs(
+                instances=[gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArgs(
+                    virtual_machine=instance.self_link,
+                    ip_address="10.0.0.2",
+                )],
+                site_to_site_data_transfer=True,
+            ))
+        ```
 
         ## Import
 

@@ -22,6 +22,56 @@ import (
 // the credentials used with this provider. [IAM roles granted on a billing account](https://cloud.google.com/billing/docs/how-to/billing-access) are separate from the
 // typical IAM roles granted on a project.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := storage.NewBucket(ctx, "log-bucket", &storage.BucketArgs{
+//				Location: pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = logging.NewBillingAccountSink(ctx, "my-sink", &logging.BillingAccountSinkArgs{
+//				Description:    pulumi.String("some explanation on what this is"),
+//				BillingAccount: pulumi.String("ABCDEF-012345-GHIJKL"),
+//				Destination: log_bucket.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("storage.googleapis.com/%v", name), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewIAMBinding(ctx, "log-writer", &projects.IAMBindingArgs{
+//				Project: pulumi.String("your-project-id"),
+//				Role:    pulumi.String("roles/storage.objectCreator"),
+//				Members: pulumi.StringArray{
+//					my_sink.WriterIdentity,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Billing account logging sinks can be imported using this format:

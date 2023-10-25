@@ -377,6 +377,17 @@ class AiDataset(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
         ## Example Usage
+        ### Vertex Ai Dataset
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.vertex.AiDataset("dataset",
+            display_name="terraform",
+            metadata_schema_uri="gs://google-cloud-aiplatform/schema/dataset/metadata/image_1.0.0.yaml",
+            region="us-central1")
+        ```
 
         ## Import
 
@@ -412,6 +423,17 @@ class AiDataset(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
         ## Example Usage
+        ### Vertex Ai Dataset
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.vertex.AiDataset("dataset",
+            display_name="terraform",
+            metadata_schema_uri="gs://google-cloud-aiplatform/schema/dataset/metadata/image_1.0.0.yaml",
+            region="us-central1")
+        ```
 
         ## Import
 

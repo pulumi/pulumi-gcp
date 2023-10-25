@@ -23,6 +23,358 @@ import (
 //   - [BigQuery Jobs Intro](https://cloud.google.com/bigquery/docs/jobs-overview)
 //
 // ## Example Usage
+// ### Bigquery Job Query
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			bar, err := bigquery.NewDataset(ctx, "bar", &bigquery.DatasetArgs{
+//				DatasetId:    pulumi.String("job_query_dataset"),
+//				FriendlyName: pulumi.String("test"),
+//				Description:  pulumi.String("This is a test description"),
+//				Location:     pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			foo, err := bigquery.NewTable(ctx, "foo", &bigquery.TableArgs{
+//				DeletionProtection: pulumi.Bool(false),
+//				DatasetId:          bar.DatasetId,
+//				TableId:            pulumi.String("job_query_table"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewJob(ctx, "job", &bigquery.JobArgs{
+//				JobId: pulumi.String("job_query"),
+//				Labels: pulumi.StringMap{
+//					"example-label": pulumi.String("example-value"),
+//				},
+//				Query: &bigquery.JobQueryArgs{
+//					Query: pulumi.String("SELECT state FROM [lookerdata:cdc.project_tycho_reports]"),
+//					DestinationTable: &bigquery.JobQueryDestinationTableArgs{
+//						ProjectId: foo.Project,
+//						DatasetId: foo.DatasetId,
+//						TableId:   foo.TableId,
+//					},
+//					AllowLargeResults: pulumi.Bool(true),
+//					FlattenResults:    pulumi.Bool(true),
+//					ScriptOptions: &bigquery.JobQueryScriptOptionsArgs{
+//						KeyResultStatement: pulumi.String("LAST"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Bigquery Job Query Table Reference
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			bar, err := bigquery.NewDataset(ctx, "bar", &bigquery.DatasetArgs{
+//				DatasetId:    pulumi.String("job_query_dataset"),
+//				FriendlyName: pulumi.String("test"),
+//				Description:  pulumi.String("This is a test description"),
+//				Location:     pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			foo, err := bigquery.NewTable(ctx, "foo", &bigquery.TableArgs{
+//				DeletionProtection: pulumi.Bool(false),
+//				DatasetId:          bar.DatasetId,
+//				TableId:            pulumi.String("job_query_table"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewJob(ctx, "job", &bigquery.JobArgs{
+//				JobId: pulumi.String("job_query"),
+//				Labels: pulumi.StringMap{
+//					"example-label": pulumi.String("example-value"),
+//				},
+//				Query: &bigquery.JobQueryArgs{
+//					Query: pulumi.String("SELECT state FROM [lookerdata:cdc.project_tycho_reports]"),
+//					DestinationTable: &bigquery.JobQueryDestinationTableArgs{
+//						TableId: foo.ID(),
+//					},
+//					DefaultDataset: &bigquery.JobQueryDefaultDatasetArgs{
+//						DatasetId: bar.ID(),
+//					},
+//					AllowLargeResults: pulumi.Bool(true),
+//					FlattenResults:    pulumi.Bool(true),
+//					ScriptOptions: &bigquery.JobQueryScriptOptionsArgs{
+//						KeyResultStatement: pulumi.String("LAST"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Bigquery Job Load
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			bar, err := bigquery.NewDataset(ctx, "bar", &bigquery.DatasetArgs{
+//				DatasetId:    pulumi.String("job_load_dataset"),
+//				FriendlyName: pulumi.String("test"),
+//				Description:  pulumi.String("This is a test description"),
+//				Location:     pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			foo, err := bigquery.NewTable(ctx, "foo", &bigquery.TableArgs{
+//				DeletionProtection: pulumi.Bool(false),
+//				DatasetId:          bar.DatasetId,
+//				TableId:            pulumi.String("job_load_table"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewJob(ctx, "job", &bigquery.JobArgs{
+//				JobId: pulumi.String("job_load"),
+//				Labels: pulumi.StringMap{
+//					"my_job": pulumi.String("load"),
+//				},
+//				Load: &bigquery.JobLoadArgs{
+//					SourceUris: pulumi.StringArray{
+//						pulumi.String("gs://cloud-samples-data/bigquery/us-states/us-states-by-date.csv"),
+//					},
+//					DestinationTable: &bigquery.JobLoadDestinationTableArgs{
+//						ProjectId: foo.Project,
+//						DatasetId: foo.DatasetId,
+//						TableId:   foo.TableId,
+//					},
+//					SkipLeadingRows: pulumi.Int(1),
+//					SchemaUpdateOptions: pulumi.StringArray{
+//						pulumi.String("ALLOW_FIELD_RELAXATION"),
+//						pulumi.String("ALLOW_FIELD_ADDITION"),
+//					},
+//					WriteDisposition: pulumi.String("WRITE_APPEND"),
+//					Autodetect:       pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Bigquery Job Load Parquet
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			testBucket, err := storage.NewBucket(ctx, "testBucket", &storage.BucketArgs{
+//				Location:                 pulumi.String("US"),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			testBucketObject, err := storage.NewBucketObject(ctx, "testBucketObject", &storage.BucketObjectArgs{
+//				Source: pulumi.NewFileAsset("./test-fixtures/test.parquet.gzip"),
+//				Bucket: testBucket.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			testDataset, err := bigquery.NewDataset(ctx, "testDataset", &bigquery.DatasetArgs{
+//				DatasetId:    pulumi.String("job_load_dataset"),
+//				FriendlyName: pulumi.String("test"),
+//				Description:  pulumi.String("This is a test description"),
+//				Location:     pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			testTable, err := bigquery.NewTable(ctx, "testTable", &bigquery.TableArgs{
+//				DeletionProtection: pulumi.Bool(false),
+//				TableId:            pulumi.String("job_load_table"),
+//				DatasetId:          testDataset.DatasetId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewJob(ctx, "job", &bigquery.JobArgs{
+//				JobId: pulumi.String("job_load"),
+//				Labels: pulumi.StringMap{
+//					"my_job": pulumi.String("load"),
+//				},
+//				Load: &bigquery.JobLoadArgs{
+//					SourceUris: pulumi.StringArray{
+//						pulumi.All(testBucketObject.Bucket, testBucketObject.Name).ApplyT(func(_args []interface{}) (string, error) {
+//							bucket := _args[0].(string)
+//							name := _args[1].(string)
+//							return fmt.Sprintf("gs://%v/%v", bucket, name), nil
+//						}).(pulumi.StringOutput),
+//					},
+//					DestinationTable: &bigquery.JobLoadDestinationTableArgs{
+//						ProjectId: testTable.Project,
+//						DatasetId: testTable.DatasetId,
+//						TableId:   testTable.TableId,
+//					},
+//					SchemaUpdateOptions: pulumi.StringArray{
+//						pulumi.String("ALLOW_FIELD_RELAXATION"),
+//						pulumi.String("ALLOW_FIELD_ADDITION"),
+//					},
+//					WriteDisposition: pulumi.String("WRITE_APPEND"),
+//					SourceFormat:     pulumi.String("PARQUET"),
+//					Autodetect:       pulumi.Bool(true),
+//					ParquetOptions: &bigquery.JobLoadParquetOptionsArgs{
+//						EnumAsString:        pulumi.Bool(true),
+//						EnableListInference: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Bigquery Job Extract
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigquery.NewDataset(ctx, "source-oneDataset", &bigquery.DatasetArgs{
+//				DatasetId:    pulumi.String("job_extract_dataset"),
+//				FriendlyName: pulumi.String("test"),
+//				Description:  pulumi.String("This is a test description"),
+//				Location:     pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewTable(ctx, "source-oneTable", &bigquery.TableArgs{
+//				DeletionProtection: pulumi.Bool(false),
+//				DatasetId:          source_oneDataset.DatasetId,
+//				TableId:            pulumi.String("job_extract_table"),
+//				Schema: pulumi.String(`[
+//	  {
+//	    "name": "name",
+//	    "type": "STRING",
+//	    "mode": "NULLABLE"
+//	  },
+//	  {
+//	    "name": "post_abbr",
+//	    "type": "STRING",
+//	    "mode": "NULLABLE"
+//	  },
+//	  {
+//	    "name": "date",
+//	    "type": "DATE",
+//	    "mode": "NULLABLE"
+//	  }
+//
+// ]
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			dest, err := storage.NewBucket(ctx, "dest", &storage.BucketArgs{
+//				Location:     pulumi.String("US"),
+//				ForceDestroy: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewJob(ctx, "job", &bigquery.JobArgs{
+//				JobId: pulumi.String("job_extract"),
+//				Extract: &bigquery.JobExtractArgs{
+//					DestinationUris: pulumi.StringArray{
+//						dest.Url.ApplyT(func(url string) (string, error) {
+//							return fmt.Sprintf("%v/extract", url), nil
+//						}).(pulumi.StringOutput),
+//					},
+//					SourceTable: &bigquery.JobExtractSourceTableArgs{
+//						ProjectId: source_oneTable.Project,
+//						DatasetId: source_oneTable.DatasetId,
+//						TableId:   source_oneTable.TableId,
+//					},
+//					DestinationFormat: pulumi.String("NEWLINE_DELIMITED_JSON"),
+//					Compression:       pulumi.String("GZIP"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

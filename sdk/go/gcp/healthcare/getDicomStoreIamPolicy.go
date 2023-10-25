@@ -13,6 +13,32 @@ import (
 )
 
 // Retrieves the current IAM policy data for a Google Cloud Healthcare DICOM store.
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := healthcare.LookupDicomStoreIamPolicy(ctx, &healthcare.LookupDicomStoreIamPolicyArgs{
+//				DicomStoreId: google_healthcare_dicom_store.Dicom_store.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupDicomStoreIamPolicy(ctx *pulumi.Context, args *LookupDicomStoreIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupDicomStoreIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDicomStoreIamPolicyResult

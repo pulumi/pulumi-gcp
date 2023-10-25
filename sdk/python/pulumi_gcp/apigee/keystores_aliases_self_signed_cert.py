@@ -478,6 +478,69 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
             * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
 
         ## Example Usage
+        ### Apigee Env Keystore Alias Self Signed Cert
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.Project("project",
+            project_id="my-project",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000")
+        apigee = gcp.projects.Service("apigee",
+            project=project.project_id,
+            service="apigee.googleapis.com")
+        servicenetworking = gcp.projects.Service("servicenetworking",
+            project=project.project_id,
+            service="servicenetworking.googleapis.com",
+            opts=pulumi.ResourceOptions(depends_on=[apigee]))
+        compute = gcp.projects.Service("compute",
+            project=project.project_id,
+            service="compute.googleapis.com",
+            opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
+        apigee_network = gcp.compute.Network("apigeeNetwork", project=project.project_id,
+        opts=pulumi.ResourceOptions(depends_on=[compute]))
+        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=apigee_network.id,
+            project=project.project_id)
+        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
+            network=apigee_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[apigee_range.name],
+            opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
+        apigee_org = gcp.apigee.Organization("apigeeOrg",
+            analytics_region="us-central1",
+            project_id=project.project_id,
+            authorized_network=apigee_network.id,
+            opts=pulumi.ResourceOptions(depends_on=[
+                    apigee_vpc_connection,
+                    apigee,
+                ]))
+        apigee_environment_keystore_ss_alias_environment = gcp.apigee.Environment("apigeeEnvironmentKeystoreSsAliasEnvironment",
+            org_id=apigee_org.id,
+            description="Apigee Environment",
+            display_name="environment-1")
+        apigee_environment_keystore_alias = gcp.apigee.EnvKeystore("apigeeEnvironmentKeystoreAlias", env_id=apigee_environment_keystore_ss_alias_environment.id)
+        apigee_environment_keystore_ss_alias_keystores_aliases_self_signed_cert = gcp.apigee.KeystoresAliasesSelfSignedCert("apigeeEnvironmentKeystoreSsAliasKeystoresAliasesSelfSignedCert",
+            environment=apigee_environment_keystore_ss_alias_environment.name,
+            org_id=apigee_org.name,
+            keystore=apigee_environment_keystore_alias.name,
+            alias="alias",
+            key_size="1024",
+            sig_alg="SHA512withRSA",
+            cert_validity_in_days=4,
+            subject=gcp.apigee.KeystoresAliasesSelfSignedCertSubjectArgs(
+                common_name="selfsigned_example",
+                country_code="US",
+                locality="TX",
+                org="CCE",
+                org_unit="PSO",
+            ))
+        ```
 
         ## Import
 
@@ -523,6 +586,69 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
             * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
 
         ## Example Usage
+        ### Apigee Env Keystore Alias Self Signed Cert
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.Project("project",
+            project_id="my-project",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000")
+        apigee = gcp.projects.Service("apigee",
+            project=project.project_id,
+            service="apigee.googleapis.com")
+        servicenetworking = gcp.projects.Service("servicenetworking",
+            project=project.project_id,
+            service="servicenetworking.googleapis.com",
+            opts=pulumi.ResourceOptions(depends_on=[apigee]))
+        compute = gcp.projects.Service("compute",
+            project=project.project_id,
+            service="compute.googleapis.com",
+            opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
+        apigee_network = gcp.compute.Network("apigeeNetwork", project=project.project_id,
+        opts=pulumi.ResourceOptions(depends_on=[compute]))
+        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=apigee_network.id,
+            project=project.project_id)
+        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
+            network=apigee_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[apigee_range.name],
+            opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
+        apigee_org = gcp.apigee.Organization("apigeeOrg",
+            analytics_region="us-central1",
+            project_id=project.project_id,
+            authorized_network=apigee_network.id,
+            opts=pulumi.ResourceOptions(depends_on=[
+                    apigee_vpc_connection,
+                    apigee,
+                ]))
+        apigee_environment_keystore_ss_alias_environment = gcp.apigee.Environment("apigeeEnvironmentKeystoreSsAliasEnvironment",
+            org_id=apigee_org.id,
+            description="Apigee Environment",
+            display_name="environment-1")
+        apigee_environment_keystore_alias = gcp.apigee.EnvKeystore("apigeeEnvironmentKeystoreAlias", env_id=apigee_environment_keystore_ss_alias_environment.id)
+        apigee_environment_keystore_ss_alias_keystores_aliases_self_signed_cert = gcp.apigee.KeystoresAliasesSelfSignedCert("apigeeEnvironmentKeystoreSsAliasKeystoresAliasesSelfSignedCert",
+            environment=apigee_environment_keystore_ss_alias_environment.name,
+            org_id=apigee_org.name,
+            keystore=apigee_environment_keystore_alias.name,
+            alias="alias",
+            key_size="1024",
+            sig_alg="SHA512withRSA",
+            cert_validity_in_days=4,
+            subject=gcp.apigee.KeystoresAliasesSelfSignedCertSubjectArgs(
+                common_name="selfsigned_example",
+                country_code="US",
+                locality="TX",
+                org="CCE",
+                org_unit="PSO",
+            ))
+        ```
 
         ## Import
 

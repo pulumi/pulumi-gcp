@@ -13,6 +13,33 @@ import (
 )
 
 // Retrieves the current IAM policy data for note
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/containeranalysis"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := containeranalysis.LookupNoteIamPolicy(ctx, &containeranalysis.LookupNoteIamPolicyArgs{
+//				Project: pulumi.StringRef(google_container_analysis_note.Note.Project),
+//				Note:    google_container_analysis_note.Note.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupNoteIamPolicy(ctx *pulumi.Context, args *LookupNoteIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupNoteIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNoteIamPolicyResult

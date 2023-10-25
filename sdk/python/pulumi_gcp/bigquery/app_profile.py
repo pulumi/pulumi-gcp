@@ -428,6 +428,101 @@ class AppProfile(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.appProfiles)
 
         ## Example Usage
+        ### Bigtable App Profile Anycluster
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.bigtable.Instance("instance",
+            clusters=[
+                gcp.bigtable.InstanceClusterArgs(
+                    cluster_id="cluster-1",
+                    zone="us-central1-a",
+                    num_nodes=3,
+                    storage_type="HDD",
+                ),
+                gcp.bigtable.InstanceClusterArgs(
+                    cluster_id="cluster-2",
+                    zone="us-central1-b",
+                    num_nodes=3,
+                    storage_type="HDD",
+                ),
+                gcp.bigtable.InstanceClusterArgs(
+                    cluster_id="cluster-3",
+                    zone="us-central1-c",
+                    num_nodes=3,
+                    storage_type="HDD",
+                ),
+            ],
+            deletion_protection=True)
+        ap = gcp.bigquery.AppProfile("ap",
+            instance=instance.name,
+            app_profile_id="bt-profile",
+            multi_cluster_routing_use_any=True,
+            ignore_warnings=True)
+        ```
+        ### Bigtable App Profile Singlecluster
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.bigtable.Instance("instance",
+            clusters=[gcp.bigtable.InstanceClusterArgs(
+                cluster_id="cluster-1",
+                zone="us-central1-b",
+                num_nodes=3,
+                storage_type="HDD",
+            )],
+            deletion_protection=True)
+        ap = gcp.bigquery.AppProfile("ap",
+            instance=instance.name,
+            app_profile_id="bt-profile",
+            single_cluster_routing=gcp.bigquery.AppProfileSingleClusterRoutingArgs(
+                cluster_id="cluster-1",
+                allow_transactional_writes=True,
+            ),
+            ignore_warnings=True)
+        ```
+        ### Bigtable App Profile Multicluster
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.bigtable.Instance("instance",
+            clusters=[
+                gcp.bigtable.InstanceClusterArgs(
+                    cluster_id="cluster-1",
+                    zone="us-central1-a",
+                    num_nodes=3,
+                    storage_type="HDD",
+                ),
+                gcp.bigtable.InstanceClusterArgs(
+                    cluster_id="cluster-2",
+                    zone="us-central1-b",
+                    num_nodes=3,
+                    storage_type="HDD",
+                ),
+                gcp.bigtable.InstanceClusterArgs(
+                    cluster_id="cluster-3",
+                    zone="us-central1-c",
+                    num_nodes=3,
+                    storage_type="HDD",
+                ),
+            ],
+            deletion_protection=True)
+        ap = gcp.bigquery.AppProfile("ap",
+            instance=instance.name,
+            app_profile_id="bt-profile",
+            multi_cluster_routing_use_any=True,
+            multi_cluster_routing_cluster_ids=[
+                "cluster-1",
+                "cluster-2",
+            ],
+            ignore_warnings=True)
+        ```
 
         ## Import
 
@@ -478,6 +573,101 @@ class AppProfile(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.appProfiles)
 
         ## Example Usage
+        ### Bigtable App Profile Anycluster
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.bigtable.Instance("instance",
+            clusters=[
+                gcp.bigtable.InstanceClusterArgs(
+                    cluster_id="cluster-1",
+                    zone="us-central1-a",
+                    num_nodes=3,
+                    storage_type="HDD",
+                ),
+                gcp.bigtable.InstanceClusterArgs(
+                    cluster_id="cluster-2",
+                    zone="us-central1-b",
+                    num_nodes=3,
+                    storage_type="HDD",
+                ),
+                gcp.bigtable.InstanceClusterArgs(
+                    cluster_id="cluster-3",
+                    zone="us-central1-c",
+                    num_nodes=3,
+                    storage_type="HDD",
+                ),
+            ],
+            deletion_protection=True)
+        ap = gcp.bigquery.AppProfile("ap",
+            instance=instance.name,
+            app_profile_id="bt-profile",
+            multi_cluster_routing_use_any=True,
+            ignore_warnings=True)
+        ```
+        ### Bigtable App Profile Singlecluster
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.bigtable.Instance("instance",
+            clusters=[gcp.bigtable.InstanceClusterArgs(
+                cluster_id="cluster-1",
+                zone="us-central1-b",
+                num_nodes=3,
+                storage_type="HDD",
+            )],
+            deletion_protection=True)
+        ap = gcp.bigquery.AppProfile("ap",
+            instance=instance.name,
+            app_profile_id="bt-profile",
+            single_cluster_routing=gcp.bigquery.AppProfileSingleClusterRoutingArgs(
+                cluster_id="cluster-1",
+                allow_transactional_writes=True,
+            ),
+            ignore_warnings=True)
+        ```
+        ### Bigtable App Profile Multicluster
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.bigtable.Instance("instance",
+            clusters=[
+                gcp.bigtable.InstanceClusterArgs(
+                    cluster_id="cluster-1",
+                    zone="us-central1-a",
+                    num_nodes=3,
+                    storage_type="HDD",
+                ),
+                gcp.bigtable.InstanceClusterArgs(
+                    cluster_id="cluster-2",
+                    zone="us-central1-b",
+                    num_nodes=3,
+                    storage_type="HDD",
+                ),
+                gcp.bigtable.InstanceClusterArgs(
+                    cluster_id="cluster-3",
+                    zone="us-central1-c",
+                    num_nodes=3,
+                    storage_type="HDD",
+                ),
+            ],
+            deletion_protection=True)
+        ap = gcp.bigquery.AppProfile("ap",
+            instance=instance.name,
+            app_profile_id="bt-profile",
+            multi_cluster_routing_use_any=True,
+            multi_cluster_routing_cluster_ids=[
+                "cluster-1",
+                "cluster-2",
+            ],
+            ignore_warnings=True)
+        ```
 
         ## Import
 

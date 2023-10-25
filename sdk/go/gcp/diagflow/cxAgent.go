@@ -22,6 +22,46 @@ import (
 //   - [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 //
 // ## Example Usage
+// ### Dialogflowcx Agent Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/diagflow"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := diagflow.NewCxAgent(ctx, "fullAgent", &diagflow.CxAgentArgs{
+//				AvatarUri:                pulumi.String("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"),
+//				DefaultLanguageCode:      pulumi.String("en"),
+//				Description:              pulumi.String("Example description."),
+//				DisplayName:              pulumi.String("dialogflowcx-agent"),
+//				EnableSpellCorrection:    pulumi.Bool(true),
+//				EnableStackdriverLogging: pulumi.Bool(true),
+//				Location:                 pulumi.String("global"),
+//				SpeechToTextSettings: &diagflow.CxAgentSpeechToTextSettingsArgs{
+//					EnableSpeechAdaptation: pulumi.Bool(true),
+//				},
+//				SupportedLanguageCodes: pulumi.StringArray{
+//					pulumi.String("fr"),
+//					pulumi.String("de"),
+//					pulumi.String("es"),
+//				},
+//				TimeZone: pulumi.String("America/New_York"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

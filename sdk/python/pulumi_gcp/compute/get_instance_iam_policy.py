@@ -103,6 +103,17 @@ def get_instance_iam_policy(instance_name: Optional[str] = None,
     """
     Retrieves the current IAM policy data for instance
 
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.compute.get_instance_iam_policy(project=google_compute_instance["default"]["project"],
+        zone=google_compute_instance["default"]["zone"],
+        instance_name=google_compute_instance["default"]["name"])
+    ```
+
 
     :param str instance_name: Used to find the parent resource to bind the IAM policy to
     :param str project: The ID of the project in which the resource belongs.
@@ -134,6 +145,17 @@ def get_instance_iam_policy_output(instance_name: Optional[pulumi.Input[str]] = 
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceIamPolicyResult]:
     """
     Retrieves the current IAM policy data for instance
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.compute.get_instance_iam_policy(project=google_compute_instance["default"]["project"],
+        zone=google_compute_instance["default"]["zone"],
+        instance_name=google_compute_instance["default"]["name"])
+    ```
 
 
     :param str instance_name: Used to find the parent resource to bind the IAM policy to

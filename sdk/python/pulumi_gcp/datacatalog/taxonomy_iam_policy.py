@@ -286,6 +286,45 @@ class TaxonomyIamPolicy(pulumi.CustomResource):
 
         > **Note:** `datacatalog.TaxonomyIamBinding` resources **can be** used in conjunction with `datacatalog.TaxonomyIamMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\\_data\\_catalog\\_taxonomy\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.datacatalog.TaxonomyIamPolicy("policy",
+            taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_data\\_catalog\\_taxonomy\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.datacatalog.TaxonomyIamBinding("binding",
+            taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_data\\_catalog\\_taxonomy\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.datacatalog.TaxonomyIamMember("member",
+            taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{region}}/taxonomies/{{taxonomy}} * {{project}}/{{region}}/{{taxonomy}} * {{region}}/{{taxonomy}} * {{taxonomy}} Any variables not passed in the import command will be taken from the provider configuration. Data catalog taxonomy IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -350,6 +389,45 @@ class TaxonomyIamPolicy(pulumi.CustomResource):
         > **Note:** `datacatalog.TaxonomyIamPolicy` **cannot** be used in conjunction with `datacatalog.TaxonomyIamBinding` and `datacatalog.TaxonomyIamMember` or they will fight over what your policy should be.
 
         > **Note:** `datacatalog.TaxonomyIamBinding` resources **can be** used in conjunction with `datacatalog.TaxonomyIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_data\\_catalog\\_taxonomy\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.datacatalog.TaxonomyIamPolicy("policy",
+            taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_data\\_catalog\\_taxonomy\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.datacatalog.TaxonomyIamBinding("binding",
+            taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_data\\_catalog\\_taxonomy\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.datacatalog.TaxonomyIamMember("member",
+            taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
 
         ## Import
 

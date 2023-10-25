@@ -158,6 +158,80 @@ class AddonsConfig(pulumi.CustomResource):
             * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
 
         ## Example Usage
+        ### Apigee Addons Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_organization = gcp.apigee.AddonsConfig("testOrganization",
+            addons_config=gcp.apigee.AddonsConfigAddonsConfigArgs(
+                api_security_config=gcp.apigee.AddonsConfigAddonsConfigApiSecurityConfigArgs(
+                    enabled=True,
+                ),
+                monetization_config=gcp.apigee.AddonsConfigAddonsConfigMonetizationConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            org="test_organization")
+        ```
+        ### Apigee Addons Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        current = gcp.organizations.get_client_config()
+        apigee = gcp.projects.Service("apigee",
+            project=current.project,
+            service="apigee.googleapis.com")
+        compute = gcp.projects.Service("compute",
+            project=current.project,
+            service="compute.googleapis.com")
+        servicenetworking = gcp.projects.Service("servicenetworking",
+            project=current.project,
+            service="servicenetworking.googleapis.com")
+        apigee_network = gcp.compute.Network("apigeeNetwork", project=current.project,
+        opts=pulumi.ResourceOptions(depends_on=[compute]))
+        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=apigee_network.id,
+            project=current.project)
+        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
+            network=apigee_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[apigee_range.name])
+        org = gcp.apigee.Organization("org",
+            analytics_region="us-central1",
+            project_id=current.project,
+            authorized_network=apigee_network.id,
+            billing_type="EVALUATION",
+            opts=pulumi.ResourceOptions(depends_on=[
+                    apigee_vpc_connection,
+                    apigee,
+                ]))
+        test_organization = gcp.apigee.AddonsConfig("testOrganization",
+            org=org.name,
+            addons_config=gcp.apigee.AddonsConfigAddonsConfigArgs(
+                integration_config=gcp.apigee.AddonsConfigAddonsConfigIntegrationConfigArgs(
+                    enabled=True,
+                ),
+                api_security_config=gcp.apigee.AddonsConfigAddonsConfigApiSecurityConfigArgs(
+                    enabled=True,
+                ),
+                connectors_platform_config=gcp.apigee.AddonsConfigAddonsConfigConnectorsPlatformConfigArgs(
+                    enabled=True,
+                ),
+                monetization_config=gcp.apigee.AddonsConfigAddonsConfigMonetizationConfigArgs(
+                    enabled=True,
+                ),
+                advanced_api_ops_config=gcp.apigee.AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs(
+                    enabled=True,
+                ),
+            ))
+        ```
 
         ## Import
 
@@ -196,6 +270,80 @@ class AddonsConfig(pulumi.CustomResource):
             * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
 
         ## Example Usage
+        ### Apigee Addons Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_organization = gcp.apigee.AddonsConfig("testOrganization",
+            addons_config=gcp.apigee.AddonsConfigAddonsConfigArgs(
+                api_security_config=gcp.apigee.AddonsConfigAddonsConfigApiSecurityConfigArgs(
+                    enabled=True,
+                ),
+                monetization_config=gcp.apigee.AddonsConfigAddonsConfigMonetizationConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            org="test_organization")
+        ```
+        ### Apigee Addons Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        current = gcp.organizations.get_client_config()
+        apigee = gcp.projects.Service("apigee",
+            project=current.project,
+            service="apigee.googleapis.com")
+        compute = gcp.projects.Service("compute",
+            project=current.project,
+            service="compute.googleapis.com")
+        servicenetworking = gcp.projects.Service("servicenetworking",
+            project=current.project,
+            service="servicenetworking.googleapis.com")
+        apigee_network = gcp.compute.Network("apigeeNetwork", project=current.project,
+        opts=pulumi.ResourceOptions(depends_on=[compute]))
+        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=apigee_network.id,
+            project=current.project)
+        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
+            network=apigee_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[apigee_range.name])
+        org = gcp.apigee.Organization("org",
+            analytics_region="us-central1",
+            project_id=current.project,
+            authorized_network=apigee_network.id,
+            billing_type="EVALUATION",
+            opts=pulumi.ResourceOptions(depends_on=[
+                    apigee_vpc_connection,
+                    apigee,
+                ]))
+        test_organization = gcp.apigee.AddonsConfig("testOrganization",
+            org=org.name,
+            addons_config=gcp.apigee.AddonsConfigAddonsConfigArgs(
+                integration_config=gcp.apigee.AddonsConfigAddonsConfigIntegrationConfigArgs(
+                    enabled=True,
+                ),
+                api_security_config=gcp.apigee.AddonsConfigAddonsConfigApiSecurityConfigArgs(
+                    enabled=True,
+                ),
+                connectors_platform_config=gcp.apigee.AddonsConfigAddonsConfigConnectorsPlatformConfigArgs(
+                    enabled=True,
+                ),
+                monetization_config=gcp.apigee.AddonsConfigAddonsConfigMonetizationConfigArgs(
+                    enabled=True,
+                ),
+                advanced_api_ops_config=gcp.apigee.AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs(
+                    enabled=True,
+                ),
+            ))
+        ```
 
         ## Import
 

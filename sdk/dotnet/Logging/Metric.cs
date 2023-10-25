@@ -21,6 +21,165 @@ namespace Pulumi.Gcp.Logging
     ///     * [Official Documentation](https://cloud.google.com/logging/docs/apis)
     /// 
     /// ## Example Usage
+    /// ### Logging Metric Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var loggingMetric = new Gcp.Logging.Metric("loggingMetric", new()
+    ///     {
+    ///         BucketOptions = new Gcp.Logging.Inputs.MetricBucketOptionsArgs
+    ///         {
+    ///             LinearBuckets = new Gcp.Logging.Inputs.MetricBucketOptionsLinearBucketsArgs
+    ///             {
+    ///                 NumFiniteBuckets = 3,
+    ///                 Offset = 1,
+    ///                 Width = 1,
+    ///             },
+    ///         },
+    ///         Filter = "resource.type=gae_app AND severity&gt;=ERROR",
+    ///         LabelExtractors = 
+    ///         {
+    ///             { "mass", "EXTRACT(jsonPayload.request)" },
+    ///             { "sku", "EXTRACT(jsonPayload.id)" },
+    ///         },
+    ///         MetricDescriptor = new Gcp.Logging.Inputs.MetricMetricDescriptorArgs
+    ///         {
+    ///             DisplayName = "My metric",
+    ///             Labels = new[]
+    ///             {
+    ///                 new Gcp.Logging.Inputs.MetricMetricDescriptorLabelArgs
+    ///                 {
+    ///                     Description = "amount of matter",
+    ///                     Key = "mass",
+    ///                     ValueType = "STRING",
+    ///                 },
+    ///                 new Gcp.Logging.Inputs.MetricMetricDescriptorLabelArgs
+    ///                 {
+    ///                     Description = "Identifying number for item",
+    ///                     Key = "sku",
+    ///                     ValueType = "INT64",
+    ///                 },
+    ///             },
+    ///             MetricKind = "DELTA",
+    ///             Unit = "1",
+    ///             ValueType = "DISTRIBUTION",
+    ///         },
+    ///         ValueExtractor = "EXTRACT(jsonPayload.request)",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Logging Metric Counter Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var loggingMetric = new Gcp.Logging.Metric("loggingMetric", new()
+    ///     {
+    ///         Filter = "resource.type=gae_app AND severity&gt;=ERROR",
+    ///         MetricDescriptor = new Gcp.Logging.Inputs.MetricMetricDescriptorArgs
+    ///         {
+    ///             MetricKind = "DELTA",
+    ///             ValueType = "INT64",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Logging Metric Counter Labels
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var loggingMetric = new Gcp.Logging.Metric("loggingMetric", new()
+    ///     {
+    ///         Filter = "resource.type=gae_app AND severity&gt;=ERROR",
+    ///         LabelExtractors = 
+    ///         {
+    ///             { "mass", "EXTRACT(jsonPayload.request)" },
+    ///         },
+    ///         MetricDescriptor = new Gcp.Logging.Inputs.MetricMetricDescriptorArgs
+    ///         {
+    ///             Labels = new[]
+    ///             {
+    ///                 new Gcp.Logging.Inputs.MetricMetricDescriptorLabelArgs
+    ///                 {
+    ///                     Description = "amount of matter",
+    ///                     Key = "mass",
+    ///                     ValueType = "STRING",
+    ///                 },
+    ///             },
+    ///             MetricKind = "DELTA",
+    ///             ValueType = "INT64",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Logging Metric Logging Bucket
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var loggingMetricProjectBucketConfig = new Gcp.Logging.ProjectBucketConfig("loggingMetricProjectBucketConfig", new()
+    ///     {
+    ///         Location = "global",
+    ///         Project = "my-project-name",
+    ///         BucketId = "_Default",
+    ///     });
+    /// 
+    ///     var loggingMetricMetric = new Gcp.Logging.Metric("loggingMetricMetric", new()
+    ///     {
+    ///         Filter = "resource.type=gae_app AND severity&gt;=ERROR",
+    ///         BucketName = loggingMetricProjectBucketConfig.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Logging Metric Disabled
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var loggingMetric = new Gcp.Logging.Metric("loggingMetric", new()
+    ///     {
+    ///         Disabled = true,
+    ///         Filter = "resource.type=gae_app AND severity&gt;=ERROR",
+    ///         MetricDescriptor = new Gcp.Logging.Inputs.MetricMetricDescriptorArgs
+    ///         {
+    ///             MetricKind = "DELTA",
+    ///             ValueType = "INT64",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

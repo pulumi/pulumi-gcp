@@ -22,6 +22,57 @@ import (
 //   - [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
 //
 // ## Example Usage
+// ### Bigquery Analyticshub Listing Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigqueryanalyticshub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			listingDataExchange, err := bigqueryanalyticshub.NewDataExchange(ctx, "listingDataExchange", &bigqueryanalyticshub.DataExchangeArgs{
+//				Location:       pulumi.String("US"),
+//				DataExchangeId: pulumi.String("my_data_exchange"),
+//				DisplayName:    pulumi.String("my_data_exchange"),
+//				Description:    pulumi.String("example data exchange"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			listingDataset, err := bigquery.NewDataset(ctx, "listingDataset", &bigquery.DatasetArgs{
+//				DatasetId:    pulumi.String("my_listing"),
+//				FriendlyName: pulumi.String("my_listing"),
+//				Description:  pulumi.String("example data exchange"),
+//				Location:     pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigqueryanalyticshub.NewListing(ctx, "listingListing", &bigqueryanalyticshub.ListingArgs{
+//				Location:       pulumi.String("US"),
+//				DataExchangeId: listingDataExchange.DataExchangeId,
+//				ListingId:      pulumi.String("my_listing"),
+//				DisplayName:    pulumi.String("my_listing"),
+//				Description:    pulumi.String("example data exchange"),
+//				BigqueryDataset: &bigqueryanalyticshub.ListingBigqueryDatasetArgs{
+//					Dataset: listingDataset.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

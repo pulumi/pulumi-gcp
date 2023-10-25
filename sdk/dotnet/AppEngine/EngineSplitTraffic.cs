@@ -17,6 +17,105 @@ namespace Pulumi.Gcp.AppEngine
     /// * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services)
     /// 
     /// ## Example Usage
+    /// ### App Engine Service Split Traffic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+    ///     {
+    ///         Location = "US",
+    ///     });
+    /// 
+    ///     var @object = new Gcp.Storage.BucketObject("object", new()
+    ///     {
+    ///         Bucket = bucket.Name,
+    ///         Source = new FileAsset("./test-fixtures/hello-world.zip"),
+    ///     });
+    /// 
+    ///     var liveappV1 = new Gcp.AppEngine.StandardAppVersion("liveappV1", new()
+    ///     {
+    ///         VersionId = "v1",
+    ///         Service = "liveapp",
+    ///         DeleteServiceOnDestroy = true,
+    ///         Runtime = "nodejs10",
+    ///         Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
+    ///         {
+    ///             Shell = "node ./app.js",
+    ///         },
+    ///         Deployment = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentArgs
+    ///         {
+    ///             Zip = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentZipArgs
+    ///             {
+    ///                 SourceUrl = Output.Tuple(bucket.Name, @object.Name).Apply(values =&gt;
+    ///                 {
+    ///                     var bucketName = values.Item1;
+    ///                     var objectName = values.Item2;
+    ///                     return $"https://storage.googleapis.com/{bucketName}/{objectName}";
+    ///                 }),
+    ///             },
+    ///         },
+    ///         EnvVariables = 
+    ///         {
+    ///             { "port", "8080" },
+    ///         },
+    ///     });
+    /// 
+    ///     var liveappV2 = new Gcp.AppEngine.StandardAppVersion("liveappV2", new()
+    ///     {
+    ///         VersionId = "v2",
+    ///         Service = "liveapp",
+    ///         NoopOnDestroy = true,
+    ///         Runtime = "nodejs10",
+    ///         Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
+    ///         {
+    ///             Shell = "node ./app.js",
+    ///         },
+    ///         Deployment = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentArgs
+    ///         {
+    ///             Zip = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentZipArgs
+    ///             {
+    ///                 SourceUrl = Output.Tuple(bucket.Name, @object.Name).Apply(values =&gt;
+    ///                 {
+    ///                     var bucketName = values.Item1;
+    ///                     var objectName = values.Item2;
+    ///                     return $"https://storage.googleapis.com/{bucketName}/{objectName}";
+    ///                 }),
+    ///             },
+    ///         },
+    ///         EnvVariables = 
+    ///         {
+    ///             { "port", "8080" },
+    ///         },
+    ///     });
+    /// 
+    ///     var liveapp = new Gcp.AppEngine.EngineSplitTraffic("liveapp", new()
+    ///     {
+    ///         Service = liveappV2.Service,
+    ///         MigrateTraffic = false,
+    ///         Split = new Gcp.AppEngine.Inputs.EngineSplitTrafficSplitArgs
+    ///         {
+    ///             ShardBy = "IP",
+    ///             Allocations = Output.Tuple(liveappV1.VersionId, liveappV2.VersionId).Apply(values =&gt;
+    ///             {
+    ///                 var liveappV1VersionId = values.Item1;
+    ///                 var liveappV2VersionId = values.Item2;
+    ///                 return 
+    ///                 {
+    ///                     { liveappV1VersionId, 0.75 },
+    ///                     { liveappV2VersionId, 0.25 },
+    ///                 };
+    ///             }),
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

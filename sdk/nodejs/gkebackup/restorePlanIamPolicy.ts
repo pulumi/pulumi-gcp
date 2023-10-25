@@ -14,6 +14,324 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
  *
  * ## Example Usage
+ * ### Gkebackup Restoreplan All Namespaces
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.container.Cluster("primary", {
+ *     location: "us-central1",
+ *     initialNodeCount: 1,
+ *     workloadIdentityConfig: {
+ *         workloadPool: "my-project-name.svc.id.goog",
+ *     },
+ *     addonsConfig: {
+ *         gkeBackupAgentConfig: {
+ *             enabled: true,
+ *         },
+ *     },
+ * });
+ * const basic = new gcp.gkebackup.BackupPlan("basic", {
+ *     cluster: primary.id,
+ *     location: "us-central1",
+ *     backupConfig: {
+ *         includeVolumeData: true,
+ *         includeSecrets: true,
+ *         allNamespaces: true,
+ *     },
+ * });
+ * const allNs = new gcp.gkebackup.RestorePlan("allNs", {
+ *     location: "us-central1",
+ *     backupPlan: basic.id,
+ *     cluster: primary.id,
+ *     restoreConfig: {
+ *         allNamespaces: true,
+ *         namespacedResourceRestoreMode: "FAIL_ON_CONFLICT",
+ *         volumeDataRestorePolicy: "RESTORE_VOLUME_DATA_FROM_BACKUP",
+ *         clusterResourceRestoreScope: {
+ *             allGroupKinds: true,
+ *         },
+ *         clusterResourceConflictPolicy: "USE_EXISTING_VERSION",
+ *     },
+ * });
+ * ```
+ * ### Gkebackup Restoreplan Rollback Namespace
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.container.Cluster("primary", {
+ *     location: "us-central1",
+ *     initialNodeCount: 1,
+ *     workloadIdentityConfig: {
+ *         workloadPool: "my-project-name.svc.id.goog",
+ *     },
+ *     addonsConfig: {
+ *         gkeBackupAgentConfig: {
+ *             enabled: true,
+ *         },
+ *     },
+ * });
+ * const basic = new gcp.gkebackup.BackupPlan("basic", {
+ *     cluster: primary.id,
+ *     location: "us-central1",
+ *     backupConfig: {
+ *         includeVolumeData: true,
+ *         includeSecrets: true,
+ *         allNamespaces: true,
+ *     },
+ * });
+ * const rollbackNs = new gcp.gkebackup.RestorePlan("rollbackNs", {
+ *     location: "us-central1",
+ *     backupPlan: basic.id,
+ *     cluster: primary.id,
+ *     restoreConfig: {
+ *         selectedNamespaces: {
+ *             namespaces: ["my-ns"],
+ *         },
+ *         namespacedResourceRestoreMode: "DELETE_AND_RESTORE",
+ *         volumeDataRestorePolicy: "RESTORE_VOLUME_DATA_FROM_BACKUP",
+ *         clusterResourceRestoreScope: {
+ *             selectedGroupKinds: [
+ *                 {
+ *                     resourceGroup: "apiextension.k8s.io",
+ *                     resourceKind: "CustomResourceDefinition",
+ *                 },
+ *                 {
+ *                     resourceGroup: "storage.k8s.io",
+ *                     resourceKind: "StorageClass",
+ *                 },
+ *             ],
+ *         },
+ *         clusterResourceConflictPolicy: "USE_EXISTING_VERSION",
+ *     },
+ * });
+ * ```
+ * ### Gkebackup Restoreplan Protected Application
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.container.Cluster("primary", {
+ *     location: "us-central1",
+ *     initialNodeCount: 1,
+ *     workloadIdentityConfig: {
+ *         workloadPool: "my-project-name.svc.id.goog",
+ *     },
+ *     addonsConfig: {
+ *         gkeBackupAgentConfig: {
+ *             enabled: true,
+ *         },
+ *     },
+ * });
+ * const basic = new gcp.gkebackup.BackupPlan("basic", {
+ *     cluster: primary.id,
+ *     location: "us-central1",
+ *     backupConfig: {
+ *         includeVolumeData: true,
+ *         includeSecrets: true,
+ *         allNamespaces: true,
+ *     },
+ * });
+ * const rollbackApp = new gcp.gkebackup.RestorePlan("rollbackApp", {
+ *     location: "us-central1",
+ *     backupPlan: basic.id,
+ *     cluster: primary.id,
+ *     restoreConfig: {
+ *         selectedApplications: {
+ *             namespacedNames: [{
+ *                 name: "my-app",
+ *                 namespace: "my-ns",
+ *             }],
+ *         },
+ *         namespacedResourceRestoreMode: "DELETE_AND_RESTORE",
+ *         volumeDataRestorePolicy: "REUSE_VOLUME_HANDLE_FROM_BACKUP",
+ *         clusterResourceRestoreScope: {
+ *             noGroupKinds: true,
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Gkebackup Restoreplan All Cluster Resources
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.container.Cluster("primary", {
+ *     location: "us-central1",
+ *     initialNodeCount: 1,
+ *     workloadIdentityConfig: {
+ *         workloadPool: "my-project-name.svc.id.goog",
+ *     },
+ *     addonsConfig: {
+ *         gkeBackupAgentConfig: {
+ *             enabled: true,
+ *         },
+ *     },
+ * });
+ * const basic = new gcp.gkebackup.BackupPlan("basic", {
+ *     cluster: primary.id,
+ *     location: "us-central1",
+ *     backupConfig: {
+ *         includeVolumeData: true,
+ *         includeSecrets: true,
+ *         allNamespaces: true,
+ *     },
+ * });
+ * const allClusterResources = new gcp.gkebackup.RestorePlan("allClusterResources", {
+ *     location: "us-central1",
+ *     backupPlan: basic.id,
+ *     cluster: primary.id,
+ *     restoreConfig: {
+ *         noNamespaces: true,
+ *         namespacedResourceRestoreMode: "FAIL_ON_CONFLICT",
+ *         clusterResourceRestoreScope: {
+ *             allGroupKinds: true,
+ *         },
+ *         clusterResourceConflictPolicy: "USE_EXISTING_VERSION",
+ *     },
+ * });
+ * ```
+ * ### Gkebackup Restoreplan Rename Namespace
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.container.Cluster("primary", {
+ *     location: "us-central1",
+ *     initialNodeCount: 1,
+ *     workloadIdentityConfig: {
+ *         workloadPool: "my-project-name.svc.id.goog",
+ *     },
+ *     addonsConfig: {
+ *         gkeBackupAgentConfig: {
+ *             enabled: true,
+ *         },
+ *     },
+ * });
+ * const basic = new gcp.gkebackup.BackupPlan("basic", {
+ *     cluster: primary.id,
+ *     location: "us-central1",
+ *     backupConfig: {
+ *         includeVolumeData: true,
+ *         includeSecrets: true,
+ *         allNamespaces: true,
+ *     },
+ * });
+ * const renameNs = new gcp.gkebackup.RestorePlan("renameNs", {
+ *     location: "us-central1",
+ *     backupPlan: basic.id,
+ *     cluster: primary.id,
+ *     restoreConfig: {
+ *         selectedNamespaces: {
+ *             namespaces: ["ns1"],
+ *         },
+ *         namespacedResourceRestoreMode: "FAIL_ON_CONFLICT",
+ *         volumeDataRestorePolicy: "REUSE_VOLUME_HANDLE_FROM_BACKUP",
+ *         clusterResourceRestoreScope: {
+ *             noGroupKinds: true,
+ *         },
+ *         transformationRules: [
+ *             {
+ *                 description: "rename namespace from ns1 to ns2",
+ *                 resourceFilter: {
+ *                     groupKinds: [{
+ *                         resourceKind: "Namespace",
+ *                     }],
+ *                     jsonPath: ".metadata[?(@.name == 'ns1')]",
+ *                 },
+ *                 fieldActions: [{
+ *                     op: "REPLACE",
+ *                     path: "/metadata/name",
+ *                     value: "ns2",
+ *                 }],
+ *             },
+ *             {
+ *                 description: "move all resources from ns1 to ns2",
+ *                 resourceFilter: {
+ *                     namespaces: ["ns1"],
+ *                 },
+ *                 fieldActions: [{
+ *                     op: "REPLACE",
+ *                     path: "/metadata/namespace",
+ *                     value: "ns2",
+ *                 }],
+ *             },
+ *         ],
+ *     },
+ * });
+ * ```
+ * ### Gkebackup Restoreplan Second Transformation
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.container.Cluster("primary", {
+ *     location: "us-central1",
+ *     initialNodeCount: 1,
+ *     workloadIdentityConfig: {
+ *         workloadPool: "my-project-name.svc.id.goog",
+ *     },
+ *     addonsConfig: {
+ *         gkeBackupAgentConfig: {
+ *             enabled: true,
+ *         },
+ *     },
+ * });
+ * const basic = new gcp.gkebackup.BackupPlan("basic", {
+ *     cluster: primary.id,
+ *     location: "us-central1",
+ *     backupConfig: {
+ *         includeVolumeData: true,
+ *         includeSecrets: true,
+ *         allNamespaces: true,
+ *     },
+ * });
+ * const transformRule = new gcp.gkebackup.RestorePlan("transformRule", {
+ *     description: "copy nginx env variables",
+ *     labels: {
+ *         app: "nginx",
+ *     },
+ *     location: "us-central1",
+ *     backupPlan: basic.id,
+ *     cluster: primary.id,
+ *     restoreConfig: {
+ *         excludedNamespaces: {
+ *             namespaces: ["my-ns"],
+ *         },
+ *         namespacedResourceRestoreMode: "DELETE_AND_RESTORE",
+ *         volumeDataRestorePolicy: "RESTORE_VOLUME_DATA_FROM_BACKUP",
+ *         clusterResourceRestoreScope: {
+ *             excludedGroupKinds: [{
+ *                 resourceGroup: "apiextension.k8s.io",
+ *                 resourceKind: "CustomResourceDefinition",
+ *             }],
+ *         },
+ *         clusterResourceConflictPolicy: "USE_EXISTING_VERSION",
+ *         transformationRules: [{
+ *             description: "Copy environment variables from the nginx container to the install init container.",
+ *             resourceFilter: {
+ *                 groupKinds: [{
+ *                     resourceKind: "Pod",
+ *                     resourceGroup: "",
+ *                 }],
+ *                 jsonPath: ".metadata[?(@.name == 'nginx')]",
+ *             },
+ *             fieldActions: [{
+ *                 op: "COPY",
+ *                 path: "/spec/initContainers/0/env",
+ *                 fromPath: "/spec/containers/0/env",
+ *             }],
+ *         }],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

@@ -6,6 +6,97 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### Firebasehosting Release In Site
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHostingSite = new gcp.firebase.HostingSite("defaultHostingSite", {
+ *     project: "my-project-name",
+ *     siteId: "site-id",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultHostingVersion = new gcp.firebase.HostingVersion("defaultHostingVersion", {
+ *     siteId: defaultHostingSite.siteId,
+ *     config: {
+ *         redirects: [{
+ *             glob: "/google/**",
+ *             statusCode: 302,
+ *             location: "https://www.google.com",
+ *         }],
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultHostingRelease = new gcp.firebase.HostingRelease("defaultHostingRelease", {
+ *     siteId: defaultHostingSite.siteId,
+ *     versionName: defaultHostingVersion.name,
+ *     message: "Test release",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Firebasehosting Release In Channel
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHostingSite = new gcp.firebase.HostingSite("defaultHostingSite", {
+ *     project: "my-project-name",
+ *     siteId: "site-with-channel",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultHostingVersion = new gcp.firebase.HostingVersion("defaultHostingVersion", {
+ *     siteId: defaultHostingSite.siteId,
+ *     config: {
+ *         redirects: [{
+ *             glob: "/google/**",
+ *             statusCode: 302,
+ *             location: "https://www.google.com",
+ *         }],
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultHostingChannel = new gcp.firebase.HostingChannel("defaultHostingChannel", {
+ *     siteId: defaultHostingSite.siteId,
+ *     channelId: "channel-id",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultHostingRelease = new gcp.firebase.HostingRelease("defaultHostingRelease", {
+ *     siteId: defaultHostingSite.siteId,
+ *     channelId: defaultHostingChannel.channelId,
+ *     versionName: defaultHostingVersion.name,
+ *     message: "Test release in channel",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Firebasehosting Release Disable
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHostingSite = new gcp.firebase.HostingSite("defaultHostingSite", {
+ *     project: "my-project-name",
+ *     siteId: "site-id",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultHostingRelease = new gcp.firebase.HostingRelease("defaultHostingRelease", {
+ *     siteId: defaultHostingSite.siteId,
+ *     type: "SITE_DISABLE",
+ *     message: "Take down site",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

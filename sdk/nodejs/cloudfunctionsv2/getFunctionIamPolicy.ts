@@ -6,6 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for function
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.cloudfunctionsv2.getFunctionIamPolicy({
+ *     project: google_cloudfunctions2_function["function"].project,
+ *     location: google_cloudfunctions2_function["function"].location,
+ *     cloudFunction: google_cloudfunctions2_function["function"].name,
+ * });
+ * ```
  */
 export function getFunctionIamPolicy(args: GetFunctionIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetFunctionIamPolicyResult> {
 
@@ -59,6 +72,19 @@ export interface GetFunctionIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for function
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.cloudfunctionsv2.getFunctionIamPolicy({
+ *     project: google_cloudfunctions2_function["function"].project,
+ *     location: google_cloudfunctions2_function["function"].location,
+ *     cloudFunction: google_cloudfunctions2_function["function"].name,
+ * });
+ * ```
  */
 export function getFunctionIamPolicyOutput(args: GetFunctionIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFunctionIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getFunctionIamPolicy(a, opts))

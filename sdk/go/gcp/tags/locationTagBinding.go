@@ -21,6 +21,128 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 //
+// ## Example Usage
+//
+// To bind a tag to a Cloud Run instance:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/tags"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+//				OrgId:     pulumi.String("123456789"),
+//				ProjectId: pulumi.String("project_id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			key, err := tags.NewTagKey(ctx, "key", &tags.TagKeyArgs{
+//				Description: pulumi.String("For keyname resources."),
+//				Parent:      pulumi.String("organizations/123456789"),
+//				ShortName:   pulumi.String("keyname"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			value, err := tags.NewTagValue(ctx, "value", &tags.TagValueArgs{
+//				Description: pulumi.String("For valuename resources."),
+//				Parent: key.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("tagKeys/%v", name), nil
+//				}).(pulumi.StringOutput),
+//				ShortName: pulumi.String("valuename"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = tags.NewLocationTagBinding(ctx, "binding", &tags.LocationTagBindingArgs{
+//				Location: pulumi.String("us-central1"),
+//				Parent: project.Number.ApplyT(func(number string) (string, error) {
+//					return fmt.Sprintf("//run.googleapis.com/projects/%v/locations/%v/services/%v", number, google_cloud_run_service.Default.Location, google_cloud_run_service.Default.Name), nil
+//				}).(pulumi.StringOutput),
+//				TagValue: value.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("tagValues/%v", name), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// To bind a (firewall) tag to compute instance:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/tags"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+//				OrgId:     pulumi.String("123456789"),
+//				ProjectId: pulumi.String("project_id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			key, err := tags.NewTagKey(ctx, "key", &tags.TagKeyArgs{
+//				Description: pulumi.String("For keyname resources."),
+//				Parent:      pulumi.String("organizations/123456789"),
+//				ShortName:   pulumi.String("keyname"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			value, err := tags.NewTagValue(ctx, "value", &tags.TagValueArgs{
+//				Description: pulumi.String("For valuename resources."),
+//				Parent: key.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("tagKeys/%v", name), nil
+//				}).(pulumi.StringOutput),
+//				ShortName: pulumi.String("valuename"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = tags.NewLocationTagBinding(ctx, "binding", &tags.LocationTagBindingArgs{
+//				Location: pulumi.String("us-central1-a"),
+//				Parent: project.Number.ApplyT(func(number string) (string, error) {
+//					return fmt.Sprintf("//compute.googleapis.com/projects/%v/zones/us-central1-a/instances/%v", number, google_compute_instance.Instance.Instance_id), nil
+//				}).(pulumi.StringOutput),
+//				TagValue: value.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("tagValues/%v", name), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // TagBinding can be imported using any of these accepted formats:

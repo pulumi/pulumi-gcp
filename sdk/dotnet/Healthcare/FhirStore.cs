@@ -20,6 +20,205 @@ namespace Pulumi.Gcp.Healthcare
     ///     * [Creating a FHIR store](https://cloud.google.com/healthcare/docs/how-tos/fhir)
     /// 
     /// ## Example Usage
+    /// ### Healthcare Fhir Store Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var topic = new Gcp.PubSub.Topic("topic");
+    /// 
+    ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Healthcare.FhirStore("default", new()
+    ///     {
+    ///         Dataset = dataset.Id,
+    ///         Version = "R4",
+    ///         ComplexDataTypeReferenceParsing = "DISABLED",
+    ///         EnableUpdateCreate = false,
+    ///         DisableReferentialIntegrity = false,
+    ///         DisableResourceVersioning = false,
+    ///         EnableHistoryImport = false,
+    ///         DefaultSearchHandlingStrict = false,
+    ///         NotificationConfig = new Gcp.Healthcare.Inputs.FhirStoreNotificationConfigArgs
+    ///         {
+    ///             PubsubTopic = topic.Id,
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "label1", "labelvalue1" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Healthcare Fhir Store Streaming Config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var bqDataset = new Gcp.BigQuery.Dataset("bqDataset", new()
+    ///     {
+    ///         DatasetId = "bq_example_dataset",
+    ///         FriendlyName = "test",
+    ///         Description = "This is a test description",
+    ///         Location = "US",
+    ///         DeleteContentsOnDestroy = true,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Healthcare.FhirStore("default", new()
+    ///     {
+    ///         Dataset = dataset.Id,
+    ///         Version = "R4",
+    ///         EnableUpdateCreate = false,
+    ///         DisableReferentialIntegrity = false,
+    ///         DisableResourceVersioning = false,
+    ///         EnableHistoryImport = false,
+    ///         Labels = 
+    ///         {
+    ///             { "label1", "labelvalue1" },
+    ///         },
+    ///         StreamConfigs = new[]
+    ///         {
+    ///             new Gcp.Healthcare.Inputs.FhirStoreStreamConfigArgs
+    ///             {
+    ///                 ResourceTypes = new[]
+    ///                 {
+    ///                     "Observation",
+    ///                 },
+    ///                 BigqueryDestination = new Gcp.Healthcare.Inputs.FhirStoreStreamConfigBigqueryDestinationArgs
+    ///                 {
+    ///                     DatasetUri = Output.Tuple(bqDataset.Project, bqDataset.DatasetId).Apply(values =&gt;
+    ///                     {
+    ///                         var project = values.Item1;
+    ///                         var datasetId = values.Item2;
+    ///                         return $"bq://{project}.{datasetId}";
+    ///                     }),
+    ///                     SchemaConfig = new Gcp.Healthcare.Inputs.FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs
+    ///                     {
+    ///                         RecursiveStructureDepth = 3,
+    ///                         LastUpdatedPartitionConfig = new Gcp.Healthcare.Inputs.FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs
+    ///                         {
+    ///                             Type = "HOUR",
+    ///                             ExpirationMs = "1000000",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var topic = new Gcp.PubSub.Topic("topic");
+    /// 
+    /// });
+    /// ```
+    /// ### Healthcare Fhir Store Notification Config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var topic = new Gcp.PubSub.Topic("topic");
+    /// 
+    ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Healthcare.FhirStore("default", new()
+    ///     {
+    ///         Dataset = dataset.Id,
+    ///         Version = "R4",
+    ///         EnableUpdateCreate = false,
+    ///         DisableReferentialIntegrity = false,
+    ///         DisableResourceVersioning = false,
+    ///         EnableHistoryImport = false,
+    ///         Labels = 
+    ///         {
+    ///             { "label1", "labelvalue1" },
+    ///         },
+    ///         NotificationConfig = new Gcp.Healthcare.Inputs.FhirStoreNotificationConfigArgs
+    ///         {
+    ///             PubsubTopic = topic.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Healthcare Fhir Store Notification Configs
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var topic = new Gcp.PubSub.Topic("topic", new()
+    ///     {
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Healthcare.FhirStore("default", new()
+    ///     {
+    ///         Dataset = dataset.Id,
+    ///         Version = "R4",
+    ///         EnableUpdateCreate = false,
+    ///         DisableReferentialIntegrity = false,
+    ///         DisableResourceVersioning = false,
+    ///         EnableHistoryImport = false,
+    ///         Labels = 
+    ///         {
+    ///             { "label1", "labelvalue1" },
+    ///         },
+    ///         NotificationConfigs = new[]
+    ///         {
+    ///             new Gcp.Healthcare.Inputs.FhirStoreNotificationConfigArgs
+    ///             {
+    ///                 PubsubTopic = topic.Id,
+    ///                 SendFullResource = true,
+    ///                 SendPreviousResourceOnDelete = true,
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -92,6 +92,15 @@ def get_instance_iam_policy(instance: Optional[str] = None,
     """
     Retrieves the current IAM policy data for a Bigtable instance.
 
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.bigtable.get_instance_iam_policy(instance=google_bigtable_instance["instance"]["name"])
+    ```
+
 
     :param str instance: The name or relative resource id of the instance to manage IAM policies for.
     """
@@ -115,6 +124,15 @@ def get_instance_iam_policy_output(instance: Optional[pulumi.Input[str]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a Bigtable instance.
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.bigtable.get_instance_iam_policy(instance=google_bigtable_instance["instance"]["name"])
+    ```
 
 
     :param str instance: The name or relative resource id of the instance to manage IAM policies for.

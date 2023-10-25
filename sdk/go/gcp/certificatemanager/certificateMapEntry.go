@@ -17,6 +17,81 @@ import (
 // that have been issued for a particular hostname
 //
 // ## Example Usage
+// ### Certificate Manager Certificate Map Entry Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			certificateMap, err := certificatemanager.NewCertificateMap(ctx, "certificateMap", &certificatemanager.CertificateMapArgs{
+//				Description: pulumi.String("My acceptance test certificate map"),
+//				Labels: pulumi.StringMap{
+//					"terraform": pulumi.String("true"),
+//					"acc-test":  pulumi.String("true"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			instance, err := certificatemanager.NewDnsAuthorization(ctx, "instance", &certificatemanager.DnsAuthorizationArgs{
+//				Description: pulumi.String("The default dnss"),
+//				Domain:      pulumi.String("subdomain.hashicorptest.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			instance2, err := certificatemanager.NewDnsAuthorization(ctx, "instance2", &certificatemanager.DnsAuthorizationArgs{
+//				Description: pulumi.String("The default dnss"),
+//				Domain:      pulumi.String("subdomain2.hashicorptest.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			certificate, err := certificatemanager.NewCertificate(ctx, "certificate", &certificatemanager.CertificateArgs{
+//				Description: pulumi.String("The default cert"),
+//				Scope:       pulumi.String("DEFAULT"),
+//				Managed: &certificatemanager.CertificateManagedArgs{
+//					Domains: pulumi.StringArray{
+//						instance.Domain,
+//						instance2.Domain,
+//					},
+//					DnsAuthorizations: pulumi.StringArray{
+//						instance.ID(),
+//						instance2.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = certificatemanager.NewCertificateMapEntry(ctx, "default", &certificatemanager.CertificateMapEntryArgs{
+//				Description: pulumi.String("My acceptance test certificate map entry"),
+//				Map:         certificateMap.Name,
+//				Labels: pulumi.StringMap{
+//					"terraform": pulumi.String("true"),
+//					"acc-test":  pulumi.String("true"),
+//				},
+//				Certificates: pulumi.StringArray{
+//					certificate.ID(),
+//				},
+//				Matcher: pulumi.String("PRIMARY"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

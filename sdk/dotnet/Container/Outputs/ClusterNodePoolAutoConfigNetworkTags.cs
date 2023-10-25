@@ -15,6 +15,16 @@ namespace Pulumi.Gcp.Container.Outputs
     {
         /// <summary>
         /// List of network tags applied to auto-provisioned node pools.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public readonly ImmutableArray<string> Tags;
 

@@ -13,12 +13,56 @@ namespace Pulumi.Gcp.BigQuery
     {
         /// <summary>
         /// Retrieves the current IAM policy data for table
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.BigQuery.GetTableIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_bigquery_table.Test.Project,
+        ///         DatasetId = google_bigquery_table.Test.Dataset_id,
+        ///         TableId = google_bigquery_table.Test.Table_id,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetTableIamPolicyResult> InvokeAsync(GetTableIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTableIamPolicyResult>("gcp:bigquery/getTableIamPolicy:getTableIamPolicy", args ?? new GetTableIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for table
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.BigQuery.GetTableIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_bigquery_table.Test.Project,
+        ///         DatasetId = google_bigquery_table.Test.Dataset_id,
+        ///         TableId = google_bigquery_table.Test.Table_id,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetTableIamPolicyResult> Invoke(GetTableIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTableIamPolicyResult>("gcp:bigquery/getTableIamPolicy:getTableIamPolicy", args ?? new GetTableIamPolicyInvokeArgs(), options.WithDefaults());

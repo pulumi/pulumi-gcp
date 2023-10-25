@@ -22,6 +22,71 @@ namespace Pulumi.Gcp.Beyondcorp
     ///     * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
     /// 
     /// ## Example Usage
+    /// ### Beyondcorp App Connector Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var serviceAccount = new Gcp.ServiceAccount.Account("serviceAccount", new()
+    ///     {
+    ///         AccountId = "my-account",
+    ///         DisplayName = "Test Service Account",
+    ///     });
+    /// 
+    ///     var appConnector = new Gcp.Beyondcorp.AppConnector("appConnector", new()
+    ///     {
+    ///         PrincipalInfo = new Gcp.Beyondcorp.Inputs.AppConnectorPrincipalInfoArgs
+    ///         {
+    ///             ServiceAccount = new Gcp.Beyondcorp.Inputs.AppConnectorPrincipalInfoServiceAccountArgs
+    ///             {
+    ///                 Email = serviceAccount.Email,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Beyondcorp App Connector Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var serviceAccount = new Gcp.ServiceAccount.Account("serviceAccount", new()
+    ///     {
+    ///         AccountId = "my-account",
+    ///         DisplayName = "Test Service Account",
+    ///     });
+    /// 
+    ///     var appConnector = new Gcp.Beyondcorp.AppConnector("appConnector", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         DisplayName = "some display name",
+    ///         PrincipalInfo = new Gcp.Beyondcorp.Inputs.AppConnectorPrincipalInfoArgs
+    ///         {
+    ///             ServiceAccount = new Gcp.Beyondcorp.Inputs.AppConnectorPrincipalInfoServiceAccountArgs
+    ///             {
+    ///                 Email = serviceAccount.Email,
+    ///             },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///             { "bar", "baz" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -13,6 +13,32 @@ import (
 )
 
 // Retrieves the current IAM policy data for tagkey
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/tags"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := tags.LookupTagKeyIamPolicy(ctx, &tags.LookupTagKeyIamPolicyArgs{
+//				TagKey: google_tags_tag_key.Key.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupTagKeyIamPolicy(ctx *pulumi.Context, args *LookupTagKeyIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupTagKeyIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTagKeyIamPolicyResult

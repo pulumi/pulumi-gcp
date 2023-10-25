@@ -22,6 +22,150 @@ import (
 //   - [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
 //
 // ## Example Usage
+// ### Apigee Addons Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigee"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := apigee.NewAddonsConfig(ctx, "testOrganization", &apigee.AddonsConfigArgs{
+//				AddonsConfig: &apigee.AddonsConfigAddonsConfigArgs{
+//					ApiSecurityConfig: &apigee.AddonsConfigAddonsConfigApiSecurityConfigArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//					MonetizationConfig: &apigee.AddonsConfigAddonsConfigMonetizationConfigArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//				},
+//				Org: pulumi.String("test_organization"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Apigee Addons Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigee"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			current, err := organizations.GetClientConfig(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			apigee, err := projects.NewService(ctx, "apigee", &projects.ServiceArgs{
+//				Project: *pulumi.String(current.Project),
+//				Service: pulumi.String("apigee.googleapis.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			compute, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
+//				Project: *pulumi.String(current.Project),
+//				Service: pulumi.String("compute.googleapis.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
+//				Project: *pulumi.String(current.Project),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeNetwork, err := compute.NewNetwork(ctx, "apigeeNetwork", &compute.NetworkArgs{
+//				Project: *pulumi.String(current.Project),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				compute,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			apigeeRange, err := compute.NewGlobalAddress(ctx, "apigeeRange", &compute.GlobalAddressArgs{
+//				Purpose:      pulumi.String("VPC_PEERING"),
+//				AddressType:  pulumi.String("INTERNAL"),
+//				PrefixLength: pulumi.Int(16),
+//				Network:      apigeeNetwork.ID(),
+//				Project:      *pulumi.String(current.Project),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigeeVpcConnection", &servicenetworking.ConnectionArgs{
+//				Network: apigeeNetwork.ID(),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					apigeeRange.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			org, err := apigee.NewOrganization(ctx, "org", &apigee.OrganizationArgs{
+//				AnalyticsRegion:   pulumi.String("us-central1"),
+//				ProjectId:         *pulumi.String(current.Project),
+//				AuthorizedNetwork: apigeeNetwork.ID(),
+//				BillingType:       pulumi.String("EVALUATION"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				apigeeVpcConnection,
+//				apigee,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = apigee.NewAddonsConfig(ctx, "testOrganization", &apigee.AddonsConfigArgs{
+//				Org: org.Name,
+//				AddonsConfig: &apigee.AddonsConfigAddonsConfigArgs{
+//					IntegrationConfig: &apigee.AddonsConfigAddonsConfigIntegrationConfigArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//					ApiSecurityConfig: &apigee.AddonsConfigAddonsConfigApiSecurityConfigArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//					ConnectorsPlatformConfig: &apigee.AddonsConfigAddonsConfigConnectorsPlatformConfigArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//					MonetizationConfig: &apigee.AddonsConfigAddonsConfigMonetizationConfigArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//					AdvancedApiOpsConfig: &apigee.AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

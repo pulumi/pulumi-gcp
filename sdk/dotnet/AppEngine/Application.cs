@@ -20,6 +20,31 @@ namespace Pulumi.Gcp.AppEngine
     /// &gt; **Warning:** All arguments including `iap.oauth2_client_secret` will be stored in the raw
     /// state as plain-text. Read more about sensitive data in state.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myProject = new Gcp.Organizations.Project("myProject", new()
+    ///     {
+    ///         ProjectId = "your-project-id",
+    ///         OrgId = "1234567",
+    ///     });
+    /// 
+    ///     var app = new Gcp.AppEngine.Application("app", new()
+    ///     {
+    ///         Project = myProject.ProjectId,
+    ///         LocationId = "us-central",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Applications can be imported using the ID of the project the application belongs to, e.g.

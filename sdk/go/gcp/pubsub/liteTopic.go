@@ -21,6 +21,56 @@ import (
 //   - [Managing Topics](https://cloud.google.com/pubsub/lite/docs/topics)
 //
 // ## Example Usage
+// ### Pubsub Lite Topic Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleLiteReservation, err := pubsub.NewLiteReservation(ctx, "exampleLiteReservation", &pubsub.LiteReservationArgs{
+//				Project:            *pulumi.String(project.Number),
+//				ThroughputCapacity: pulumi.Int(2),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewLiteTopic(ctx, "exampleLiteTopic", &pubsub.LiteTopicArgs{
+//				Project: *pulumi.String(project.Number),
+//				PartitionConfig: &pubsub.LiteTopicPartitionConfigArgs{
+//					Count: pulumi.Int(1),
+//					Capacity: &pubsub.LiteTopicPartitionConfigCapacityArgs{
+//						PublishMibPerSec:   pulumi.Int(4),
+//						SubscribeMibPerSec: pulumi.Int(8),
+//					},
+//				},
+//				RetentionConfig: &pubsub.LiteTopicRetentionConfigArgs{
+//					PerPartitionBytes: pulumi.String("32212254720"),
+//				},
+//				ReservationConfig: &pubsub.LiteTopicReservationConfigArgs{
+//					ThroughputReservation: exampleLiteReservation.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

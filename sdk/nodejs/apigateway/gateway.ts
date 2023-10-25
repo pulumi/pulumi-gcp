@@ -14,6 +14,35 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
  *
  * ## Example Usage
+ * ### Apigateway Gateway Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const apiGwApi = new gcp.apigateway.Api("apiGwApi", {apiId: "my-api"}, {
+ *     provider: google_beta,
+ * });
+ * const apiGwApiConfig = new gcp.apigateway.ApiConfig("apiGwApiConfig", {
+ *     api: apiGwApi.apiId,
+ *     apiConfigId: "my-config",
+ *     openapiDocuments: [{
+ *         document: {
+ *             path: "spec.yaml",
+ *             contents: Buffer.from(fs.readFileSync("test-fixtures/openapi.yaml"), 'binary').toString('base64'),
+ *         },
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const apiGwGateway = new gcp.apigateway.Gateway("apiGwGateway", {
+ *     apiConfig: apiGwApiConfig.id,
+ *     gatewayId: "my-gateway",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

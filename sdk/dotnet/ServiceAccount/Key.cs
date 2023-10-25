@@ -11,6 +11,64 @@ namespace Pulumi.Gcp.ServiceAccount
 {
     /// <summary>
     /// ## Example Usage
+    /// ### Creating A New Key
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myaccount = new Gcp.ServiceAccount.Account("myaccount", new()
+    ///     {
+    ///         AccountId = "myaccount",
+    ///         DisplayName = "My Service Account",
+    ///     });
+    /// 
+    ///     var mykey = new Gcp.ServiceAccount.Key("mykey", new()
+    ///     {
+    ///         ServiceAccountId = myaccount.Name,
+    ///         PublicKeyType = "TYPE_X509_PEM_FILE",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Creating And Regularly Rotating A Key
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumiverse.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myaccount = new Gcp.ServiceAccount.Account("myaccount", new()
+    ///     {
+    ///         AccountId = "myaccount",
+    ///         DisplayName = "My Service Account",
+    ///     });
+    /// 
+    ///     // note this requires the terraform to be run regularly
+    ///     var mykeyRotation = new Time.Rotating("mykeyRotation", new()
+    ///     {
+    ///         RotationDays = 30,
+    ///     });
+    /// 
+    ///     var mykey = new Gcp.ServiceAccount.Key("mykey", new()
+    ///     {
+    ///         ServiceAccountId = myaccount.Name,
+    ///         Keepers = 
+    ///         {
+    ///             { "rotation_time", mykeyRotation.RotationRfc3339 },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

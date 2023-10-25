@@ -6,6 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for bucket
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.storage.getBucketIamPolicy({
+ *     bucket: google_storage_bucket["default"].name,
+ * });
+ * ```
  */
 export function getBucketIamPolicy(args: GetBucketIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketIamPolicyResult> {
 
@@ -46,6 +57,17 @@ export interface GetBucketIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for bucket
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.storage.getBucketIamPolicy({
+ *     bucket: google_storage_bucket["default"].name,
+ * });
+ * ```
  */
 export function getBucketIamPolicyOutput(args: GetBucketIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getBucketIamPolicy(a, opts))

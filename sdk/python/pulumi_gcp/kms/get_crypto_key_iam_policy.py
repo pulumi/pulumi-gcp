@@ -82,6 +82,15 @@ def get_crypto_key_iam_policy(crypto_key_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for a Google Cloud KMS crypto key.
 
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.kms.get_crypto_key_iam_policy(crypto_key_id=google_kms_crypto_key["crypto_key"]["id"])
+    ```
+
 
     :param str crypto_key_id: The crypto key ID, in the form
     """
@@ -102,6 +111,15 @@ def get_crypto_key_iam_policy_output(crypto_key_id: Optional[pulumi.Input[str]] 
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCryptoKeyIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a Google Cloud KMS crypto key.
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.kms.get_crypto_key_iam_policy(crypto_key_id=google_kms_crypto_key["crypto_key"]["id"])
+    ```
 
 
     :param str crypto_key_id: The crypto key ID, in the form

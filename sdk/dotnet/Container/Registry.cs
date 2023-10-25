@@ -14,6 +14,51 @@ namespace Pulumi.Gcp.Container
     /// 
     /// This resource can be used to ensure that the GCS bucket exists prior to assigning permissions. For more information see the [access control page](https://cloud.google.com/container-registry/docs/access-control) for GCR.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var registry = new Gcp.Container.Registry("registry", new()
+    ///     {
+    ///         Location = "EU",
+    ///         Project = "my-project",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// The `id` field of the `gcp.container.Registry` is the identifier of the storage bucket that backs GCR and can be used to assign permissions to the bucket.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var registry = new Gcp.Container.Registry("registry", new()
+    ///     {
+    ///         Project = "my-project",
+    ///         Location = "EU",
+    ///     });
+    /// 
+    ///     var viewer = new Gcp.Storage.BucketIAMMember("viewer", new()
+    ///     {
+    ///         Bucket = registry.Id,
+    ///         Role = "roles/storage.objectViewer",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource does not support import.

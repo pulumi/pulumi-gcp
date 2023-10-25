@@ -273,6 +273,45 @@ class AccountIamBinding(pulumi.CustomResource):
 
         > **Note:** `billing.AccountIamBinding` resources **can be** used in conjunction with `billing.AccountIamMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\\_billing\\_account\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/billing.viewer",
+            members=["user:jane@example.com"],
+        )])
+        editor = gcp.billing.AccountIamPolicy("editor",
+            billing_account_id="00AA00-000AAA-00AA0A",
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_billing\\_account\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        editor = gcp.billing.AccountIamBinding("editor",
+            billing_account_id="00AA00-000AAA-00AA0A",
+            members=["user:jane@example.com"],
+            role="roles/billing.viewer")
+        ```
+
+        ## google\\_billing\\_account\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        editor = gcp.billing.AccountIamMember("editor",
+            billing_account_id="00AA00-000AAA-00AA0A",
+            member="user:jane@example.com",
+            role="roles/billing.viewer")
+        ```
+
         ## Import
 
         Instance IAM resources can be imported using the project, table name, role and/or member.
@@ -327,6 +366,45 @@ class AccountIamBinding(pulumi.CustomResource):
         > **Note:** `billing.AccountIamPolicy` **cannot** be used in conjunction with `billing.AccountIamBinding` and `billing.AccountIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the billing account as `billing.AccountIamPolicy` replaces the entire policy.
 
         > **Note:** `billing.AccountIamBinding` resources **can be** used in conjunction with `billing.AccountIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_billing\\_account\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/billing.viewer",
+            members=["user:jane@example.com"],
+        )])
+        editor = gcp.billing.AccountIamPolicy("editor",
+            billing_account_id="00AA00-000AAA-00AA0A",
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_billing\\_account\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        editor = gcp.billing.AccountIamBinding("editor",
+            billing_account_id="00AA00-000AAA-00AA0A",
+            members=["user:jane@example.com"],
+            role="roles/billing.viewer")
+        ```
+
+        ## google\\_billing\\_account\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        editor = gcp.billing.AccountIamMember("editor",
+            billing_account_id="00AA00-000AAA-00AA0A",
+            member="user:jane@example.com",
+            role="roles/billing.viewer")
+        ```
 
         ## Import
 

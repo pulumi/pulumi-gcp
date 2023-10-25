@@ -13,6 +13,158 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// The Cloudbuildv2 Connection resource
     /// 
     /// ## Example Usage
+    /// ### Ghe
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.IO;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var private_key_secret = new Gcp.SecretManager.Secret("private-key-secret", new()
+    ///     {
+    ///         SecretId = "ghe-pk-secret",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var private_key_secret_version = new Gcp.SecretManager.SecretVersion("private-key-secret-version", new()
+    ///     {
+    ///         Secret = private_key_secret.Id,
+    ///         SecretData = File.ReadAllText("private-key.pem"),
+    ///     });
+    /// 
+    ///     var webhook_secret_secret = new Gcp.SecretManager.Secret("webhook-secret-secret", new()
+    ///     {
+    ///         SecretId = "github-token-secret",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var webhook_secret_secret_version = new Gcp.SecretManager.SecretVersion("webhook-secret-secret-version", new()
+    ///     {
+    ///         Secret = webhook_secret_secret.Id,
+    ///         SecretData = "&lt;webhook-secret-data&gt;",
+    ///     });
+    /// 
+    ///     var p4sa_secretAccessor = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/secretmanager.secretAccessor",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy_pk = new Gcp.SecretManager.SecretIamPolicy("policy-pk", new()
+    ///     {
+    ///         SecretId = private_key_secret.SecretId,
+    ///         PolicyData = p4sa_secretAccessor.Apply(p4sa_secretAccessor =&gt; p4sa_secretAccessor.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData)),
+    ///     });
+    /// 
+    ///     var policy_whs = new Gcp.SecretManager.SecretIamPolicy("policy-whs", new()
+    ///     {
+    ///         SecretId = webhook_secret_secret.SecretId,
+    ///         PolicyData = p4sa_secretAccessor.Apply(p4sa_secretAccessor =&gt; p4sa_secretAccessor.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData)),
+    ///     });
+    /// 
+    ///     var my_connection = new Gcp.CloudBuildV2.Connection("my-connection", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         GithubEnterpriseConfig = new Gcp.CloudBuildV2.Inputs.ConnectionGithubEnterpriseConfigArgs
+    ///         {
+    ///             HostUri = "https://ghe.com",
+    ///             PrivateKeySecretVersion = private_key_secret_version.Id,
+    ///             WebhookSecretSecretVersion = webhook_secret_secret_version.Id,
+    ///             AppId = 200,
+    ///             AppSlug = "gcb-app",
+    ///             AppInstallationId = 300,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             policy_pk,
+    ///             policy_whs,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### GitHub Connection
+    /// Creates a Connection to github.com
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.IO;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var github_token_secret = new Gcp.SecretManager.Secret("github-token-secret", new()
+    ///     {
+    ///         SecretId = "github-token-secret",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var github_token_secret_version = new Gcp.SecretManager.SecretVersion("github-token-secret-version", new()
+    ///     {
+    ///         Secret = github_token_secret.Id,
+    ///         SecretData = File.ReadAllText("my-github-token.txt"),
+    ///     });
+    /// 
+    ///     var p4sa_secretAccessor = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/secretmanager.secretAccessor",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.SecretManager.SecretIamPolicy("policy", new()
+    ///     {
+    ///         SecretId = github_token_secret.SecretId,
+    ///         PolicyData = p4sa_secretAccessor.Apply(p4sa_secretAccessor =&gt; p4sa_secretAccessor.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData)),
+    ///     });
+    /// 
+    ///     var my_connection = new Gcp.CloudBuildV2.Connection("my-connection", new()
+    ///     {
+    ///         Location = "us-west1",
+    ///         GithubConfig = new Gcp.CloudBuildV2.Inputs.ConnectionGithubConfigArgs
+    ///         {
+    ///             AppInstallationId = 123123,
+    ///             AuthorizerCredential = new Gcp.CloudBuildV2.Inputs.ConnectionGithubConfigAuthorizerCredentialArgs
+    ///             {
+    ///                 OauthTokenSecretVersion = github_token_secret_version.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

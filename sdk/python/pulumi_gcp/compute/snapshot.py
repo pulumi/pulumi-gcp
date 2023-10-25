@@ -730,6 +730,49 @@ class Snapshot(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
+        ### Snapshot Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        persistent = gcp.compute.Disk("persistent",
+            image=debian.self_link,
+            size=10,
+            type="pd-ssd",
+            zone="us-central1-a")
+        snapshot = gcp.compute.Snapshot("snapshot",
+            source_disk=persistent.id,
+            zone="us-central1-a",
+            labels={
+                "my_label": "value",
+            },
+            storage_locations=["us-central1"])
+        ```
+        ### Snapshot Chainname
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        persistent = gcp.compute.Disk("persistent",
+            image=debian.self_link,
+            size=10,
+            type="pd-ssd",
+            zone="us-central1-a")
+        snapshot = gcp.compute.Snapshot("snapshot",
+            source_disk=persistent.id,
+            zone="us-central1-a",
+            chain_name="snapshot-chain",
+            labels={
+                "my_label": "value",
+            },
+            storage_locations=["us-central1"])
+        ```
 
         ## Import
 
@@ -818,6 +861,49 @@ class Snapshot(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
+        ### Snapshot Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        persistent = gcp.compute.Disk("persistent",
+            image=debian.self_link,
+            size=10,
+            type="pd-ssd",
+            zone="us-central1-a")
+        snapshot = gcp.compute.Snapshot("snapshot",
+            source_disk=persistent.id,
+            zone="us-central1-a",
+            labels={
+                "my_label": "value",
+            },
+            storage_locations=["us-central1"])
+        ```
+        ### Snapshot Chainname
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        persistent = gcp.compute.Disk("persistent",
+            image=debian.self_link,
+            size=10,
+            type="pd-ssd",
+            zone="us-central1-a")
+        snapshot = gcp.compute.Snapshot("snapshot",
+            source_disk=persistent.id,
+            zone="us-central1-a",
+            chain_name="snapshot-chain",
+            labels={
+                "my_label": "value",
+            },
+            storage_locations=["us-central1"])
+        ```
 
         ## Import
 

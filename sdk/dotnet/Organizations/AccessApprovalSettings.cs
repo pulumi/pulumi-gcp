@@ -17,6 +17,110 @@ namespace Pulumi.Gcp.Organizations
     /// * [API documentation](https://cloud.google.com/access-approval/docs/reference/rest/v1/organizations)
     /// 
     /// ## Example Usage
+    /// ### Organization Access Approval Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var organizationAccessApproval = new Gcp.Organizations.AccessApprovalSettings("organizationAccessApproval", new()
+    ///     {
+    ///         EnrolledServices = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.AccessApprovalSettingsEnrolledServiceArgs
+    ///             {
+    ///                 CloudProduct = "appengine.googleapis.com",
+    ///             },
+    ///             new Gcp.Organizations.Inputs.AccessApprovalSettingsEnrolledServiceArgs
+    ///             {
+    ///                 CloudProduct = "dataflow.googleapis.com",
+    ///                 EnrollmentLevel = "BLOCK_ALL",
+    ///             },
+    ///         },
+    ///         NotificationEmails = new[]
+    ///         {
+    ///             "testuser@example.com",
+    ///             "example.user@example.com",
+    ///         },
+    ///         OrganizationId = "123456789",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Organization Access Approval Active Key Version
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myProject = new Gcp.Organizations.Project("myProject", new()
+    ///     {
+    ///         ProjectId = "your-project-id",
+    ///         OrgId = "123456789",
+    ///     });
+    /// 
+    ///     var keyRing = new Gcp.Kms.KeyRing("keyRing", new()
+    ///     {
+    ///         Location = "global",
+    ///         Project = myProject.ProjectId,
+    ///     });
+    /// 
+    ///     var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new()
+    ///     {
+    ///         KeyRing = keyRing.Id,
+    ///         Purpose = "ASYMMETRIC_SIGN",
+    ///         VersionTemplate = new Gcp.Kms.Inputs.CryptoKeyVersionTemplateArgs
+    ///         {
+    ///             Algorithm = "EC_SIGN_P384_SHA384",
+    ///         },
+    ///     });
+    /// 
+    ///     var serviceAccount = Gcp.AccessApproval.GetOrganizationServiceAccount.Invoke(new()
+    ///     {
+    ///         OrganizationId = "123456789",
+    ///     });
+    /// 
+    ///     var iam = new Gcp.Kms.CryptoKeyIAMMember("iam", new()
+    ///     {
+    ///         CryptoKeyId = cryptoKey.Id,
+    ///         Role = "roles/cloudkms.signerVerifier",
+    ///         Member = $"serviceAccount:{serviceAccount.Apply(getOrganizationServiceAccountResult =&gt; getOrganizationServiceAccountResult.AccountEmail)}",
+    ///     });
+    /// 
+    ///     var cryptoKeyVersion = Gcp.Kms.GetKMSCryptoKeyVersion.Invoke(new()
+    ///     {
+    ///         CryptoKey = cryptoKey.Id,
+    ///     });
+    /// 
+    ///     var organizationAccessApproval = new Gcp.Organizations.AccessApprovalSettings("organizationAccessApproval", new()
+    ///     {
+    ///         OrganizationId = "123456789",
+    ///         ActiveKeyVersion = cryptoKeyVersion.Apply(getKMSCryptoKeyVersionResult =&gt; getKMSCryptoKeyVersionResult.Name),
+    ///         EnrolledServices = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.AccessApprovalSettingsEnrolledServiceArgs
+    ///             {
+    ///                 CloudProduct = "all",
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             iam,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -19,6 +19,41 @@ namespace Pulumi.Gcp.ServiceDirectory
     ///     * [Configuring a service](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_service)
     /// 
     /// ## Example Usage
+    /// ### Service Directory Service Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleNamespace = new Gcp.ServiceDirectory.Namespace("exampleNamespace", new()
+    ///     {
+    ///         NamespaceId = "example-namespace",
+    ///         Location = "us-central1",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var exampleService = new Gcp.ServiceDirectory.Service("exampleService", new()
+    ///     {
+    ///         ServiceId = "example-service",
+    ///         Namespace = exampleNamespace.Id,
+    ///         Metadata = 
+    ///         {
+    ///             { "stage", "prod" },
+    ///             { "region", "us-central1" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

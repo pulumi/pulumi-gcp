@@ -255,6 +255,61 @@ class NetworkEndpointList(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 
         ## Example Usage
+        ### Network Endpoints
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_image = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            ip_cidr_range="10.0.0.1/16",
+            region="us-central1",
+            network=default_network.id)
+        endpoint_instance1 = gcp.compute.Instance("endpoint-instance1",
+            machine_type="e2-medium",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image=my_image.self_link,
+                ),
+            ),
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                subnetwork=default_subnetwork.id,
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+            )])
+        endpoint_instance2 = gcp.compute.Instance("endpoint-instance2",
+            machine_type="e2-medium",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image=my_image.self_link,
+                ),
+            ),
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                subnetwork=default_subnetwork.id,
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+            )])
+        default_endpoints = gcp.compute.NetworkEndpointList("default-endpoints",
+            network_endpoint_group=google_compute_network_endpoint_group["neg"]["name"],
+            network_endpoints=[
+                gcp.compute.NetworkEndpointListNetworkEndpointArgs(
+                    instance=endpoint_instance1.name,
+                    port=google_compute_network_endpoint_group["neg"]["default_port"],
+                    ip_address=endpoint_instance1.network_interfaces[0].network_ip,
+                ),
+                gcp.compute.NetworkEndpointListNetworkEndpointArgs(
+                    instance=endpoint_instance2.name,
+                    port=google_compute_network_endpoint_group["neg"]["default_port"],
+                    ip_address=endpoint_instance2.network_interfaces[0].network_ip,
+                ),
+            ])
+        group = gcp.compute.NetworkEndpointGroup("group",
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            default_port=90,
+            zone="us-central1-a")
+        ```
 
         ## Import
 
@@ -313,6 +368,61 @@ class NetworkEndpointList(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 
         ## Example Usage
+        ### Network Endpoints
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_image = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            ip_cidr_range="10.0.0.1/16",
+            region="us-central1",
+            network=default_network.id)
+        endpoint_instance1 = gcp.compute.Instance("endpoint-instance1",
+            machine_type="e2-medium",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image=my_image.self_link,
+                ),
+            ),
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                subnetwork=default_subnetwork.id,
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+            )])
+        endpoint_instance2 = gcp.compute.Instance("endpoint-instance2",
+            machine_type="e2-medium",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image=my_image.self_link,
+                ),
+            ),
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                subnetwork=default_subnetwork.id,
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+            )])
+        default_endpoints = gcp.compute.NetworkEndpointList("default-endpoints",
+            network_endpoint_group=google_compute_network_endpoint_group["neg"]["name"],
+            network_endpoints=[
+                gcp.compute.NetworkEndpointListNetworkEndpointArgs(
+                    instance=endpoint_instance1.name,
+                    port=google_compute_network_endpoint_group["neg"]["default_port"],
+                    ip_address=endpoint_instance1.network_interfaces[0].network_ip,
+                ),
+                gcp.compute.NetworkEndpointListNetworkEndpointArgs(
+                    instance=endpoint_instance2.name,
+                    port=google_compute_network_endpoint_group["neg"]["default_port"],
+                    ip_address=endpoint_instance2.network_interfaces[0].network_ip,
+                ),
+            ])
+        group = gcp.compute.NetworkEndpointGroup("group",
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            default_port=90,
+            zone="us-central1-a")
+        ```
 
         ## Import
 

@@ -93,6 +93,16 @@ def get_web_type_app_engine_iam_policy(app_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for webtypeappengine
 
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.iap.get_web_type_app_engine_iam_policy(project=google_app_engine_application["app"]["project"],
+        app_id=google_app_engine_application["app"]["app_id"])
+    ```
+
 
     :param str app_id: Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
     :param str project: The ID of the project in which the resource belongs.
@@ -118,6 +128,16 @@ def get_web_type_app_engine_iam_policy_output(app_id: Optional[pulumi.Input[str]
                                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWebTypeAppEngineIamPolicyResult]:
     """
     Retrieves the current IAM policy data for webtypeappengine
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.iap.get_web_type_app_engine_iam_policy(project=google_app_engine_application["app"]["project"],
+        app_id=google_app_engine_application["app"]["app_id"])
+    ```
 
 
     :param str app_id: Id of the App Engine application. Used to find the parent resource to bind the IAM policy to

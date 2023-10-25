@@ -19,6 +19,76 @@ namespace Pulumi.Gcp.Dataflow
     ///     * [Official Documentation](https://cloud.google.com/dataflow)
     /// 
     /// ## Example Usage
+    /// ### Data Pipeline Pipeline
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var serviceAccount = new Gcp.ServiceAccount.Account("serviceAccount", new()
+    ///     {
+    ///         AccountId = "my-account",
+    ///         DisplayName = "Service Account",
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Dataflow.Pipeline("primary", new()
+    ///     {
+    ///         DisplayName = "my-pipeline",
+    ///         Type = "PIPELINE_TYPE_BATCH",
+    ///         State = "STATE_ACTIVE",
+    ///         Region = "us-central1",
+    ///         Workload = new Gcp.Dataflow.Inputs.PipelineWorkloadArgs
+    ///         {
+    ///             DataflowLaunchTemplateRequest = new Gcp.Dataflow.Inputs.PipelineWorkloadDataflowLaunchTemplateRequestArgs
+    ///             {
+    ///                 ProjectId = "my-project",
+    ///                 GcsPath = "gs://my-bucket/path",
+    ///                 LaunchParameters = new Gcp.Dataflow.Inputs.PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs
+    ///                 {
+    ///                     JobName = "my-job",
+    ///                     Parameters = 
+    ///                     {
+    ///                         { "name", "wrench" },
+    ///                     },
+    ///                     Environment = new Gcp.Dataflow.Inputs.PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgs
+    ///                     {
+    ///                         NumWorkers = 5,
+    ///                         MaxWorkers = 5,
+    ///                         Zone = "us-centra1-a",
+    ///                         ServiceAccountEmail = serviceAccount.Email,
+    ///                         Network = "default",
+    ///                         TempLocation = "gs://my-bucket/tmp_dir",
+    ///                         BypassTempDirValidation = false,
+    ///                         MachineType = "E2",
+    ///                         AdditionalUserLabels = 
+    ///                         {
+    ///                             { "context", "test" },
+    ///                         },
+    ///                         WorkerRegion = "us-central1",
+    ///                         WorkerZone = "us-central1-a",
+    ///                         EnableStreamingEngine = false,
+    ///                     },
+    ///                     Update = false,
+    ///                     TransformNameMapping = 
+    ///                     {
+    ///                         { "name", "wrench" },
+    ///                     },
+    ///                 },
+    ///                 Location = "us-central1",
+    ///             },
+    ///         },
+    ///         ScheduleInfo = new Gcp.Dataflow.Inputs.PipelineScheduleInfoArgs
+    ///         {
+    ///             Schedule = "* */2 * * *",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

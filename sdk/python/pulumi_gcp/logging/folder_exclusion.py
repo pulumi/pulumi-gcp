@@ -263,6 +263,21 @@ class FolderExclusion(pulumi.CustomResource):
 
         > You can specify exclusions for log sinks created by the provider by using the exclusions field of `logging.FolderSink`
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_folder = gcp.organizations.Folder("my-folder",
+            display_name="My folder",
+            parent="organizations/123456")
+        my_exclusion = gcp.logging.FolderExclusion("my-exclusion",
+            folder=my_folder.name,
+            description="Exclude GCE instance debug logs",
+            filter="resource.type = gce_instance AND severity <= DEBUG")
+        ```
+
         ## Import
 
         Folder-level logging exclusions can be imported using their URI, e.g.
@@ -297,6 +312,21 @@ class FolderExclusion(pulumi.CustomResource):
             * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
 
         > You can specify exclusions for log sinks created by the provider by using the exclusions field of `logging.FolderSink`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_folder = gcp.organizations.Folder("my-folder",
+            display_name="My folder",
+            parent="organizations/123456")
+        my_exclusion = gcp.logging.FolderExclusion("my-exclusion",
+            folder=my_folder.name,
+            description="Exclude GCE instance debug logs",
+            filter="resource.type = gce_instance AND severity <= DEBUG")
+        ```
 
         ## Import
 

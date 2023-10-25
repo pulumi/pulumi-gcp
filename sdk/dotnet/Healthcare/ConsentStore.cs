@@ -19,6 +19,92 @@ namespace Pulumi.Gcp.Healthcare
     ///     * [Creating a Consent store](https://cloud.google.com/healthcare/docs/how-tos/consent)
     /// 
     /// ## Example Usage
+    /// ### Healthcare Consent Store Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var my_consent = new Gcp.Healthcare.ConsentStore("my-consent", new()
+    ///     {
+    ///         Dataset = dataset.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Healthcare Consent Store Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var my_consent = new Gcp.Healthcare.ConsentStore("my-consent", new()
+    ///     {
+    ///         Dataset = dataset.Id,
+    ///         EnableConsentCreateOnUpdate = true,
+    ///         DefaultConsentTtl = "90000s",
+    ///         Labels = 
+    ///         {
+    ///             { "label1", "labelvalue1" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Healthcare Consent Store Iam
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var my_consent = new Gcp.Healthcare.ConsentStore("my-consent", new()
+    ///     {
+    ///         Dataset = dataset.Id,
+    ///     });
+    /// 
+    ///     var test_account = new Gcp.ServiceAccount.Account("test-account", new()
+    ///     {
+    ///         AccountId = "my-account",
+    ///         DisplayName = "Test Service Account",
+    ///     });
+    /// 
+    ///     var test_iam = new Gcp.Healthcare.ConsentStoreIamMember("test-iam", new()
+    ///     {
+    ///         Dataset = dataset.Id,
+    ///         ConsentStoreId = my_consent.Name,
+    ///         Role = "roles/editor",
+    ///         Member = test_account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

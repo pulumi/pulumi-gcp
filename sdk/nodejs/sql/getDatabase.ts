@@ -6,6 +6,18 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get information about a database in a Cloud SQL instance.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const qa = gcp.sql.getDatabase({
+ *     name: "test-sql-database",
+ *     instance: google_sql_database_instance.main.name,
+ * });
+ * ```
  */
 export function getDatabase(args: GetDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseResult> {
 
@@ -53,6 +65,18 @@ export interface GetDatabaseResult {
 }
 /**
  * Use this data source to get information about a database in a Cloud SQL instance.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const qa = gcp.sql.getDatabase({
+ *     name: "test-sql-database",
+ *     instance: google_sql_database_instance.main.name,
+ * });
+ * ```
  */
 export function getDatabaseOutput(args: GetDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseResult> {
     return pulumi.output(args).apply((a: any) => getDatabase(a, opts))

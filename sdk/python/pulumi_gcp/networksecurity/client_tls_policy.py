@@ -427,6 +427,50 @@ class ClientTlsPolicy(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Network Security Client Tls Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.ClientTlsPolicy("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            sni="secure.example.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Network Security Client Tls Policy Advanced
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.ClientTlsPolicy("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            client_certificate=gcp.networksecurity.ClientTlsPolicyClientCertificateArgs(
+                certificate_provider_instance=gcp.networksecurity.ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs(
+                    plugin_instance="google_cloud_private_spiffe",
+                ),
+            ),
+            server_validation_cas=[
+                gcp.networksecurity.ClientTlsPolicyServerValidationCaArgs(
+                    grpc_endpoint=gcp.networksecurity.ClientTlsPolicyServerValidationCaGrpcEndpointArgs(
+                        target_uri="unix:mypath",
+                    ),
+                ),
+                gcp.networksecurity.ClientTlsPolicyServerValidationCaArgs(
+                    grpc_endpoint=gcp.networksecurity.ClientTlsPolicyServerValidationCaGrpcEndpointArgs(
+                        target_uri="unix:mypath1",
+                    ),
+                ),
+            ],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -470,6 +514,50 @@ class ClientTlsPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Network Security Client Tls Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.ClientTlsPolicy("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            sni="secure.example.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Network Security Client Tls Policy Advanced
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.ClientTlsPolicy("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            client_certificate=gcp.networksecurity.ClientTlsPolicyClientCertificateArgs(
+                certificate_provider_instance=gcp.networksecurity.ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs(
+                    plugin_instance="google_cloud_private_spiffe",
+                ),
+            ),
+            server_validation_cas=[
+                gcp.networksecurity.ClientTlsPolicyServerValidationCaArgs(
+                    grpc_endpoint=gcp.networksecurity.ClientTlsPolicyServerValidationCaGrpcEndpointArgs(
+                        target_uri="unix:mypath",
+                    ),
+                ),
+                gcp.networksecurity.ClientTlsPolicyServerValidationCaArgs(
+                    grpc_endpoint=gcp.networksecurity.ClientTlsPolicyServerValidationCaGrpcEndpointArgs(
+                        target_uri="unix:mypath1",
+                    ),
+                ),
+            ],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

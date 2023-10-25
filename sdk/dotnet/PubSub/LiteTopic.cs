@@ -19,6 +19,48 @@ namespace Pulumi.Gcp.PubSub
     ///     * [Managing Topics](https://cloud.google.com/pubsub/lite/docs/topics)
     /// 
     /// ## Example Usage
+    /// ### Pubsub Lite Topic Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var exampleLiteReservation = new Gcp.PubSub.LiteReservation("exampleLiteReservation", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.Number),
+    ///         ThroughputCapacity = 2,
+    ///     });
+    /// 
+    ///     var exampleLiteTopic = new Gcp.PubSub.LiteTopic("exampleLiteTopic", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.Number),
+    ///         PartitionConfig = new Gcp.PubSub.Inputs.LiteTopicPartitionConfigArgs
+    ///         {
+    ///             Count = 1,
+    ///             Capacity = new Gcp.PubSub.Inputs.LiteTopicPartitionConfigCapacityArgs
+    ///             {
+    ///                 PublishMibPerSec = 4,
+    ///                 SubscribeMibPerSec = 8,
+    ///             },
+    ///         },
+    ///         RetentionConfig = new Gcp.PubSub.Inputs.LiteTopicRetentionConfigArgs
+    ///         {
+    ///             PerPartitionBytes = "32212254720",
+    ///         },
+    ///         ReservationConfig = new Gcp.PubSub.Inputs.LiteTopicReservationConfigArgs
+    ///         {
+    ///             ThroughputReservation = exampleLiteReservation.Name,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

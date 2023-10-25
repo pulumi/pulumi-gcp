@@ -13,6 +13,33 @@ import (
 )
 
 // Use this data source to get information about a Cloud SQL instance backup run.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sql.GetBackupRun(ctx, &sql.GetBackupRunArgs{
+//				Instance:   google_sql_database_instance.Main.Name,
+//				MostRecent: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetBackupRun(ctx *pulumi.Context, args *GetBackupRunArgs, opts ...pulumi.InvokeOption) (*GetBackupRunResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBackupRunResult

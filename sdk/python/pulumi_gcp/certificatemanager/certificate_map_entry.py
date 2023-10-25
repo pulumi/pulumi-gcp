@@ -468,6 +468,47 @@ class CertificateMapEntry(pulumi.CustomResource):
         that have been issued for a particular hostname
 
         ## Example Usage
+        ### Certificate Manager Certificate Map Entry Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        certificate_map = gcp.certificatemanager.CertificateMap("certificateMap",
+            description="My acceptance test certificate map",
+            labels={
+                "terraform": "true",
+                "acc-test": "true",
+            })
+        instance = gcp.certificatemanager.DnsAuthorization("instance",
+            description="The default dnss",
+            domain="subdomain.hashicorptest.com")
+        instance2 = gcp.certificatemanager.DnsAuthorization("instance2",
+            description="The default dnss",
+            domain="subdomain2.hashicorptest.com")
+        certificate = gcp.certificatemanager.Certificate("certificate",
+            description="The default cert",
+            scope="DEFAULT",
+            managed=gcp.certificatemanager.CertificateManagedArgs(
+                domains=[
+                    instance.domain,
+                    instance2.domain,
+                ],
+                dns_authorizations=[
+                    instance.id,
+                    instance2.id,
+                ],
+            ))
+        default = gcp.certificatemanager.CertificateMapEntry("default",
+            description="My acceptance test certificate map entry",
+            map=certificate_map.name,
+            labels={
+                "terraform": "true",
+                "acc-test": "true",
+            },
+            certificates=[certificate.id],
+            matcher="PRIMARY")
+        ```
 
         ## Import
 
@@ -519,6 +560,47 @@ class CertificateMapEntry(pulumi.CustomResource):
         that have been issued for a particular hostname
 
         ## Example Usage
+        ### Certificate Manager Certificate Map Entry Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        certificate_map = gcp.certificatemanager.CertificateMap("certificateMap",
+            description="My acceptance test certificate map",
+            labels={
+                "terraform": "true",
+                "acc-test": "true",
+            })
+        instance = gcp.certificatemanager.DnsAuthorization("instance",
+            description="The default dnss",
+            domain="subdomain.hashicorptest.com")
+        instance2 = gcp.certificatemanager.DnsAuthorization("instance2",
+            description="The default dnss",
+            domain="subdomain2.hashicorptest.com")
+        certificate = gcp.certificatemanager.Certificate("certificate",
+            description="The default cert",
+            scope="DEFAULT",
+            managed=gcp.certificatemanager.CertificateManagedArgs(
+                domains=[
+                    instance.domain,
+                    instance2.domain,
+                ],
+                dns_authorizations=[
+                    instance.id,
+                    instance2.id,
+                ],
+            ))
+        default = gcp.certificatemanager.CertificateMapEntry("default",
+            description="My acceptance test certificate map entry",
+            map=certificate_map.name,
+            labels={
+                "terraform": "true",
+                "acc-test": "true",
+            },
+            certificates=[certificate.id],
+            matcher="PRIMARY")
+        ```
 
         ## Import
 

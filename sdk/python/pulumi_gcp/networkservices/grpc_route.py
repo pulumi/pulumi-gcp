@@ -421,6 +421,117 @@ class GrpcRoute(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Network Services Grpc Route Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.GrpcRoute("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            hostnames=["example"],
+            rules=[gcp.networkservices.GrpcRouteRuleArgs(
+                matches=[gcp.networkservices.GrpcRouteRuleMatchArgs(
+                    headers=[gcp.networkservices.GrpcRouteRuleMatchHeaderArgs(
+                        key="key",
+                        value="value",
+                    )],
+                )],
+                action=gcp.networkservices.GrpcRouteRuleActionArgs(
+                    retry_policy=gcp.networkservices.GrpcRouteRuleActionRetryPolicyArgs(
+                        retry_conditions=["cancelled"],
+                        num_retries=1,
+                    ),
+                ),
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Network Services Grpc Route Matches And Actions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.GrpcRoute("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            hostnames=["example"],
+            rules=[gcp.networkservices.GrpcRouteRuleArgs(
+                matches=[
+                    gcp.networkservices.GrpcRouteRuleMatchArgs(
+                        headers=[gcp.networkservices.GrpcRouteRuleMatchHeaderArgs(
+                            key="key",
+                            value="value",
+                        )],
+                    ),
+                    gcp.networkservices.GrpcRouteRuleMatchArgs(
+                        headers=[gcp.networkservices.GrpcRouteRuleMatchHeaderArgs(
+                            key="key",
+                            value="value",
+                        )],
+                        method=gcp.networkservices.GrpcRouteRuleMatchMethodArgs(
+                            grpc_service="foo",
+                            grpc_method="bar",
+                            case_sensitive=True,
+                        ),
+                    ),
+                ],
+                action=gcp.networkservices.GrpcRouteRuleActionArgs(
+                    fault_injection_policy=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyArgs(
+                        delay=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyDelayArgs(
+                            fixed_delay="1s",
+                            percentage=1,
+                        ),
+                        abort=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyAbortArgs(
+                            http_status=500,
+                            percentage=1,
+                        ),
+                    ),
+                    retry_policy=gcp.networkservices.GrpcRouteRuleActionRetryPolicyArgs(
+                        retry_conditions=["cancelled"],
+                        num_retries=1,
+                    ),
+                ),
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Network Services Grpc Route Actions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.GrpcRoute("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            hostnames=["example"],
+            rules=[gcp.networkservices.GrpcRouteRuleArgs(
+                action=gcp.networkservices.GrpcRouteRuleActionArgs(
+                    fault_injection_policy=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyArgs(
+                        delay=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyDelayArgs(
+                            fixed_delay="1s",
+                            percentage=1,
+                        ),
+                        abort=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyAbortArgs(
+                            http_status=500,
+                            percentage=1,
+                        ),
+                    ),
+                    retry_policy=gcp.networkservices.GrpcRouteRuleActionRetryPolicyArgs(
+                        retry_conditions=["cancelled"],
+                        num_retries=1,
+                    ),
+                ),
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -459,6 +570,117 @@ class GrpcRoute(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Network Services Grpc Route Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.GrpcRoute("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            hostnames=["example"],
+            rules=[gcp.networkservices.GrpcRouteRuleArgs(
+                matches=[gcp.networkservices.GrpcRouteRuleMatchArgs(
+                    headers=[gcp.networkservices.GrpcRouteRuleMatchHeaderArgs(
+                        key="key",
+                        value="value",
+                    )],
+                )],
+                action=gcp.networkservices.GrpcRouteRuleActionArgs(
+                    retry_policy=gcp.networkservices.GrpcRouteRuleActionRetryPolicyArgs(
+                        retry_conditions=["cancelled"],
+                        num_retries=1,
+                    ),
+                ),
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Network Services Grpc Route Matches And Actions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.GrpcRoute("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            hostnames=["example"],
+            rules=[gcp.networkservices.GrpcRouteRuleArgs(
+                matches=[
+                    gcp.networkservices.GrpcRouteRuleMatchArgs(
+                        headers=[gcp.networkservices.GrpcRouteRuleMatchHeaderArgs(
+                            key="key",
+                            value="value",
+                        )],
+                    ),
+                    gcp.networkservices.GrpcRouteRuleMatchArgs(
+                        headers=[gcp.networkservices.GrpcRouteRuleMatchHeaderArgs(
+                            key="key",
+                            value="value",
+                        )],
+                        method=gcp.networkservices.GrpcRouteRuleMatchMethodArgs(
+                            grpc_service="foo",
+                            grpc_method="bar",
+                            case_sensitive=True,
+                        ),
+                    ),
+                ],
+                action=gcp.networkservices.GrpcRouteRuleActionArgs(
+                    fault_injection_policy=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyArgs(
+                        delay=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyDelayArgs(
+                            fixed_delay="1s",
+                            percentage=1,
+                        ),
+                        abort=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyAbortArgs(
+                            http_status=500,
+                            percentage=1,
+                        ),
+                    ),
+                    retry_policy=gcp.networkservices.GrpcRouteRuleActionRetryPolicyArgs(
+                        retry_conditions=["cancelled"],
+                        num_retries=1,
+                    ),
+                ),
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Network Services Grpc Route Actions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.GrpcRoute("default",
+            labels={
+                "foo": "bar",
+            },
+            description="my description",
+            hostnames=["example"],
+            rules=[gcp.networkservices.GrpcRouteRuleArgs(
+                action=gcp.networkservices.GrpcRouteRuleActionArgs(
+                    fault_injection_policy=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyArgs(
+                        delay=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyDelayArgs(
+                            fixed_delay="1s",
+                            percentage=1,
+                        ),
+                        abort=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyAbortArgs(
+                            http_status=500,
+                            percentage=1,
+                        ),
+                    ),
+                    retry_policy=gcp.networkservices.GrpcRouteRuleActionRetryPolicyArgs(
+                        retry_conditions=["cancelled"],
+                        num_retries=1,
+                    ),
+                ),
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

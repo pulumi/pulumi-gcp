@@ -547,6 +547,63 @@ class WorkstationCluster(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Workstation Cluster Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default_network.name,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
+            workstation_cluster_id="workstation-cluster",
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1",
+            labels={
+                "label": "key",
+            },
+            annotations={
+                "label-one": "value-one",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        project = gcp.organizations.get_project()
+        ```
+        ### Workstation Cluster Private
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default_network.name,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
+            workstation_cluster_id="workstation-cluster-private",
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1",
+            private_cluster_config=gcp.workstations.WorkstationClusterPrivateClusterConfigArgs(
+                enable_private_endpoint=True,
+            ),
+            labels={
+                "label": "key",
+            },
+            annotations={
+                "label-one": "value-one",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        project = gcp.organizations.get_project()
+        ```
 
         ## Import
 
@@ -591,6 +648,63 @@ class WorkstationCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Workstation Cluster Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default_network.name,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
+            workstation_cluster_id="workstation-cluster",
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1",
+            labels={
+                "label": "key",
+            },
+            annotations={
+                "label-one": "value-one",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        project = gcp.organizations.get_project()
+        ```
+        ### Workstation Cluster Private
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default_network.name,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
+            workstation_cluster_id="workstation-cluster-private",
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1",
+            private_cluster_config=gcp.workstations.WorkstationClusterPrivateClusterConfigArgs(
+                enable_private_endpoint=True,
+            ),
+            labels={
+                "label": "key",
+            },
+            annotations={
+                "label-one": "value-one",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        project = gcp.organizations.get_project()
+        ```
 
         ## Import
 

@@ -20,6 +20,87 @@ namespace Pulumi.Gcp.BigTable
     /// 
     /// &gt; **Note:** `gcp.bigtable.TableIamBinding` resources **can be** used in conjunction with `gcp.bigtable.TableIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
+    /// ## google\_bigtable\_table\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/bigtable.user",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var editor = new Gcp.BigTable.TableIamPolicy("editor", new()
+    ///     {
+    ///         Project = "your-project",
+    ///         Instance = "your-bigtable-instance",
+    ///         Table = "your-bigtable-table",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## google\_bigtable\_table\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var editor = new Gcp.BigTable.TableIamBinding("editor", new()
+    ///     {
+    ///         Instance = "your-bigtable-instance",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Role = "roles/bigtable.user",
+    ///         Table = "your-bigtable-table",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## google\_bigtable\_table\_iam\_member
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var editor = new Gcp.BigTable.TableIamMember("editor", new()
+    ///     {
+    ///         Instance = "your-bigtable-instance",
+    ///         Member = "user:jane@example.com",
+    ///         Role = "roles/bigtable.user",
+    ///         Table = "your-bigtable-table",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Table IAM resources can be imported using the project, table name, role and/or member.

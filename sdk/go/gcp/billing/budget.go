@@ -28,6 +28,322 @@ import (
 // `billingProject` you defined.
 //
 // ## Example Usage
+// ### Billing Budget Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/billing"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			account, err := organizations.GetBillingAccount(ctx, &organizations.GetBillingAccountArgs{
+//				BillingAccount: pulumi.StringRef("000000-0000000-0000000-000000"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = billing.NewBudget(ctx, "budget", &billing.BudgetArgs{
+//				BillingAccount: *pulumi.String(account.Id),
+//				DisplayName:    pulumi.String("Example Billing Budget"),
+//				Amount: &billing.BudgetAmountArgs{
+//					SpecifiedAmount: &billing.BudgetAmountSpecifiedAmountArgs{
+//						CurrencyCode: pulumi.String("USD"),
+//						Units:        pulumi.String("100000"),
+//					},
+//				},
+//				ThresholdRules: billing.BudgetThresholdRuleArray{
+//					&billing.BudgetThresholdRuleArgs{
+//						ThresholdPercent: pulumi.Float64(0.5),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Billing Budget Lastperiod
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/billing"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			account, err := organizations.GetBillingAccount(ctx, &organizations.GetBillingAccountArgs{
+//				BillingAccount: pulumi.StringRef("000000-0000000-0000000-000000"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = billing.NewBudget(ctx, "budget", &billing.BudgetArgs{
+//				BillingAccount: *pulumi.String(account.Id),
+//				DisplayName:    pulumi.String("Example Billing Budget"),
+//				BudgetFilter: &billing.BudgetBudgetFilterArgs{
+//					Projects: pulumi.StringArray{
+//						pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
+//					},
+//				},
+//				Amount: &billing.BudgetAmountArgs{
+//					LastPeriodAmount: pulumi.Bool(true),
+//				},
+//				ThresholdRules: billing.BudgetThresholdRuleArray{
+//					&billing.BudgetThresholdRuleArgs{
+//						ThresholdPercent: pulumi.Float64(10),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Billing Budget Filter
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/billing"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			account, err := organizations.GetBillingAccount(ctx, &organizations.GetBillingAccountArgs{
+//				BillingAccount: pulumi.StringRef("000000-0000000-0000000-000000"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = billing.NewBudget(ctx, "budget", &billing.BudgetArgs{
+//				BillingAccount: *pulumi.String(account.Id),
+//				DisplayName:    pulumi.String("Example Billing Budget"),
+//				BudgetFilter: &billing.BudgetBudgetFilterArgs{
+//					Projects: pulumi.StringArray{
+//						pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
+//					},
+//					CreditTypesTreatment: pulumi.String("INCLUDE_SPECIFIED_CREDITS"),
+//					Services: pulumi.StringArray{
+//						pulumi.String("services/24E6-581D-38E5"),
+//					},
+//					CreditTypes: pulumi.StringArray{
+//						pulumi.String("PROMOTION"),
+//						pulumi.String("FREE_TIER"),
+//					},
+//					ResourceAncestors: pulumi.StringArray{
+//						pulumi.String("organizations/123456789"),
+//					},
+//				},
+//				Amount: &billing.BudgetAmountArgs{
+//					SpecifiedAmount: &billing.BudgetAmountSpecifiedAmountArgs{
+//						CurrencyCode: pulumi.String("USD"),
+//						Units:        pulumi.String("100000"),
+//					},
+//				},
+//				ThresholdRules: billing.BudgetThresholdRuleArray{
+//					&billing.BudgetThresholdRuleArgs{
+//						ThresholdPercent: pulumi.Float64(0.5),
+//					},
+//					&billing.BudgetThresholdRuleArgs{
+//						ThresholdPercent: pulumi.Float64(0.9),
+//						SpendBasis:       pulumi.String("FORECASTED_SPEND"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Billing Budget Notify
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/billing"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			account, err := organizations.GetBillingAccount(ctx, &organizations.GetBillingAccountArgs{
+//				BillingAccount: pulumi.StringRef("000000-0000000-0000000-000000"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			notificationChannel, err := monitoring.NewNotificationChannel(ctx, "notificationChannel", &monitoring.NotificationChannelArgs{
+//				DisplayName: pulumi.String("Example Notification Channel"),
+//				Type:        pulumi.String("email"),
+//				Labels: pulumi.StringMap{
+//					"email_address": pulumi.String("address@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = billing.NewBudget(ctx, "budget", &billing.BudgetArgs{
+//				BillingAccount: *pulumi.String(account.Id),
+//				DisplayName:    pulumi.String("Example Billing Budget"),
+//				BudgetFilter: &billing.BudgetBudgetFilterArgs{
+//					Projects: pulumi.StringArray{
+//						pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
+//					},
+//				},
+//				Amount: &billing.BudgetAmountArgs{
+//					SpecifiedAmount: &billing.BudgetAmountSpecifiedAmountArgs{
+//						CurrencyCode: pulumi.String("USD"),
+//						Units:        pulumi.String("100000"),
+//					},
+//				},
+//				ThresholdRules: billing.BudgetThresholdRuleArray{
+//					&billing.BudgetThresholdRuleArgs{
+//						ThresholdPercent: pulumi.Float64(1),
+//					},
+//					&billing.BudgetThresholdRuleArgs{
+//						ThresholdPercent: pulumi.Float64(1),
+//						SpendBasis:       pulumi.String("FORECASTED_SPEND"),
+//					},
+//				},
+//				AllUpdatesRule: &billing.BudgetAllUpdatesRuleArgs{
+//					MonitoringNotificationChannels: pulumi.StringArray{
+//						notificationChannel.ID(),
+//					},
+//					DisableDefaultIamRecipients: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Billing Budget Customperiod
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/billing"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			account, err := organizations.GetBillingAccount(ctx, &organizations.GetBillingAccountArgs{
+//				BillingAccount: pulumi.StringRef("000000-0000000-0000000-000000"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = billing.NewBudget(ctx, "budget", &billing.BudgetArgs{
+//				BillingAccount: *pulumi.String(account.Id),
+//				DisplayName:    pulumi.String("Example Billing Budget"),
+//				BudgetFilter: &billing.BudgetBudgetFilterArgs{
+//					Projects: pulumi.StringArray{
+//						pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
+//					},
+//					CreditTypesTreatment: pulumi.String("EXCLUDE_ALL_CREDITS"),
+//					Services: pulumi.StringArray{
+//						pulumi.String("services/24E6-581D-38E5"),
+//					},
+//					CustomPeriod: &billing.BudgetBudgetFilterCustomPeriodArgs{
+//						StartDate: &billing.BudgetBudgetFilterCustomPeriodStartDateArgs{
+//							Year:  pulumi.Int(2022),
+//							Month: pulumi.Int(1),
+//							Day:   pulumi.Int(1),
+//						},
+//						EndDate: &billing.BudgetBudgetFilterCustomPeriodEndDateArgs{
+//							Year:  pulumi.Int(2023),
+//							Month: pulumi.Int(12),
+//							Day:   pulumi.Int(31),
+//						},
+//					},
+//				},
+//				Amount: &billing.BudgetAmountArgs{
+//					SpecifiedAmount: &billing.BudgetAmountSpecifiedAmountArgs{
+//						CurrencyCode: pulumi.String("USD"),
+//						Units:        pulumi.String("100000"),
+//					},
+//				},
+//				ThresholdRules: billing.BudgetThresholdRuleArray{
+//					&billing.BudgetThresholdRuleArgs{
+//						ThresholdPercent: pulumi.Float64(0.5),
+//					},
+//					&billing.BudgetThresholdRuleArgs{
+//						ThresholdPercent: pulumi.Float64(0.9),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

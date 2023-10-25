@@ -13,6 +13,33 @@ import (
 )
 
 // Retrieves the current IAM policy data for a Dataproc cluster.
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataproc.GetClusterIamPolicy(ctx, &dataproc.GetClusterIamPolicyArgs{
+//				Cluster: google_dataproc_cluster.Cluster.Name,
+//				Region:  pulumi.StringRef("us-central1"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetClusterIamPolicy(ctx *pulumi.Context, args *GetClusterIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetClusterIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClusterIamPolicyResult

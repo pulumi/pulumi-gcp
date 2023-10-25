@@ -13,6 +13,30 @@ namespace Pulumi.Gcp.CertificateManager
     /// DnsAuthorization represents a HTTP-reachable backend for a DnsAuthorization.
     /// 
     /// ## Example Usage
+    /// ### Certificate Manager Dns Authorization Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CertificateManager.DnsAuthorization("default", new()
+    ///     {
+    ///         Description = "The default dnss",
+    ///         Domain = "subdomain.hashicorptest.com",
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["recordNameToInsert"] = @default.DnsResourceRecords.Apply(dnsResourceRecords =&gt; dnsResourceRecords[0].Name),
+    ///         ["recordTypeToInsert"] = @default.DnsResourceRecords.Apply(dnsResourceRecords =&gt; dnsResourceRecords[0].Type),
+    ///         ["recordDataToInsert"] = @default.DnsResourceRecords.Apply(dnsResourceRecords =&gt; dnsResourceRecords[0].Data),
+    ///     };
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

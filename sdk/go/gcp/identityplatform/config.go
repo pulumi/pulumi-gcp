@@ -27,6 +27,93 @@ import (
 //   - [Official Documentation](https://cloud.google.com/identity-platform/docs)
 //
 // ## Example Usage
+// ### Identity Platform Config Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/identityplatform"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultProject, err := organizations.NewProject(ctx, "defaultProject", &organizations.ProjectArgs{
+//				ProjectId:      pulumi.String("my-project"),
+//				OrgId:          pulumi.String("123456789"),
+//				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
+//				Labels: pulumi.StringMap{
+//					"firebase": pulumi.String("enabled"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewService(ctx, "identitytoolkit", &projects.ServiceArgs{
+//				Project: defaultProject.ProjectId,
+//				Service: pulumi.String("identitytoolkit.googleapis.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = identityplatform.NewConfig(ctx, "defaultConfig", &identityplatform.ConfigArgs{
+//				Project:                  defaultProject.ProjectId,
+//				AutodeleteAnonymousUsers: pulumi.Bool(true),
+//				SignIn: &identityplatform.ConfigSignInArgs{
+//					AllowDuplicateEmails: pulumi.Bool(true),
+//					Anonymous: &identityplatform.ConfigSignInAnonymousArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//					Email: &identityplatform.ConfigSignInEmailArgs{
+//						Enabled:          pulumi.Bool(true),
+//						PasswordRequired: pulumi.Bool(false),
+//					},
+//					PhoneNumber: &identityplatform.ConfigSignInPhoneNumberArgs{
+//						Enabled: pulumi.Bool(true),
+//						TestPhoneNumbers: pulumi.StringMap{
+//							"+11231231234": pulumi.String("000000"),
+//						},
+//					},
+//				},
+//				BlockingFunctions: &identityplatform.ConfigBlockingFunctionsArgs{
+//					Triggers: identityplatform.ConfigBlockingFunctionsTriggerArray{
+//						&identityplatform.ConfigBlockingFunctionsTriggerArgs{
+//							EventType:   pulumi.String("beforeSignIn"),
+//							FunctionUri: pulumi.String("https://us-east1-my-project.cloudfunctions.net/before-sign-in"),
+//						},
+//					},
+//					ForwardInboundCredentials: &identityplatform.ConfigBlockingFunctionsForwardInboundCredentialsArgs{
+//						RefreshToken: pulumi.Bool(true),
+//						AccessToken:  pulumi.Bool(true),
+//						IdToken:      pulumi.Bool(true),
+//					},
+//				},
+//				Quota: &identityplatform.ConfigQuotaArgs{
+//					SignUpQuotaConfig: &identityplatform.ConfigQuotaSignUpQuotaConfigArgs{
+//						Quota:         pulumi.Int(1000),
+//						StartTime:     pulumi.String(""),
+//						QuotaDuration: pulumi.String("7200s"),
+//					},
+//				},
+//				AuthorizedDomains: pulumi.StringArray{
+//					pulumi.String("localhost"),
+//					pulumi.String("my-project.firebaseapp.com"),
+//					pulumi.String("my-project.web.app"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

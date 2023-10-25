@@ -22,6 +22,116 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/vpc/docs/vpc-peering)
     /// 
     /// ## Example Usage
+    /// ### Network Peering Routes Config Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var networkPrimary = new Gcp.Compute.Network("networkPrimary", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var networkSecondary = new Gcp.Compute.Network("networkSecondary", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var peeringPrimary = new Gcp.Compute.NetworkPeering("peeringPrimary", new()
+    ///     {
+    ///         Network = networkPrimary.Id,
+    ///         PeerNetwork = networkSecondary.Id,
+    ///         ImportCustomRoutes = true,
+    ///         ExportCustomRoutes = true,
+    ///     });
+    /// 
+    ///     var peeringPrimaryRoutes = new Gcp.Compute.NetworkPeeringRoutesConfig("peeringPrimaryRoutes", new()
+    ///     {
+    ///         Peering = peeringPrimary.Name,
+    ///         Network = networkPrimary.Name,
+    ///         ImportCustomRoutes = true,
+    ///         ExportCustomRoutes = true,
+    ///     });
+    /// 
+    ///     var peeringSecondary = new Gcp.Compute.NetworkPeering("peeringSecondary", new()
+    ///     {
+    ///         Network = networkSecondary.Id,
+    ///         PeerNetwork = networkPrimary.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Network Peering Routes Config Gke
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var containerNetwork = new Gcp.Compute.Network("containerNetwork", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var containerSubnetwork = new Gcp.Compute.Subnetwork("containerSubnetwork", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Network = containerNetwork.Name,
+    ///         IpCidrRange = "10.0.36.0/24",
+    ///         PrivateIpGoogleAccess = true,
+    ///         SecondaryIpRanges = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.SubnetworkSecondaryIpRangeArgs
+    ///             {
+    ///                 RangeName = "pod",
+    ///                 IpCidrRange = "10.0.0.0/19",
+    ///             },
+    ///             new Gcp.Compute.Inputs.SubnetworkSecondaryIpRangeArgs
+    ///             {
+    ///                 RangeName = "svc",
+    ///                 IpCidrRange = "10.0.32.0/22",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var privateCluster = new Gcp.Container.Cluster("privateCluster", new()
+    ///     {
+    ///         Location = "us-central1-a",
+    ///         InitialNodeCount = 1,
+    ///         Network = containerNetwork.Name,
+    ///         Subnetwork = containerSubnetwork.Name,
+    ///         PrivateClusterConfig = new Gcp.Container.Inputs.ClusterPrivateClusterConfigArgs
+    ///         {
+    ///             EnablePrivateEndpoint = true,
+    ///             EnablePrivateNodes = true,
+    ///             MasterIpv4CidrBlock = "10.42.0.0/28",
+    ///         },
+    ///         MasterAuthorizedNetworksConfig = null,
+    ///         IpAllocationPolicy = new Gcp.Container.Inputs.ClusterIpAllocationPolicyArgs
+    ///         {
+    ///             ClusterSecondaryRangeName = containerSubnetwork.SecondaryIpRanges.Apply(secondaryIpRanges =&gt; secondaryIpRanges[0].RangeName),
+    ///             ServicesSecondaryRangeName = containerSubnetwork.SecondaryIpRanges.Apply(secondaryIpRanges =&gt; secondaryIpRanges[1].RangeName),
+    ///         },
+    ///     });
+    /// 
+    ///     var peeringGkeRoutes = new Gcp.Compute.NetworkPeeringRoutesConfig("peeringGkeRoutes", new()
+    ///     {
+    ///         Peering = privateCluster.PrivateClusterConfig.Apply(privateClusterConfig =&gt; privateClusterConfig.PeeringName),
+    ///         Network = containerNetwork.Name,
+    ///         ImportCustomRoutes = true,
+    ///         ExportCustomRoutes = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

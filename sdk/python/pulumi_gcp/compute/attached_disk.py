@@ -382,6 +382,28 @@ class AttachedDisk(pulumi.CustomResource):
 
         **Note:** When using `compute.AttachedDisk` you **must** use `lifecycle.ignore_changes = ["attached_disk"]` on the `compute.Instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_instance = gcp.compute.Instance("defaultInstance",
+            machine_type="e2-medium",
+            zone="us-west1-a",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-11",
+                ),
+            ),
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network="default",
+            )])
+        default_attached_disk = gcp.compute.AttachedDisk("defaultAttachedDisk",
+            disk=google_compute_disk["default"]["id"],
+            instance=default_instance.id)
+        ```
+
         ## Import
 
         Attached Disk can be imported the following ways
@@ -445,6 +467,28 @@ class AttachedDisk(pulumi.CustomResource):
             * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
 
         **Note:** When using `compute.AttachedDisk` you **must** use `lifecycle.ignore_changes = ["attached_disk"]` on the `compute.Instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_instance = gcp.compute.Instance("defaultInstance",
+            machine_type="e2-medium",
+            zone="us-west1-a",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-11",
+                ),
+            ),
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network="default",
+            )])
+        default_attached_disk = gcp.compute.AttachedDisk("defaultAttachedDisk",
+            disk=google_compute_disk["default"]["id"],
+            instance=default_instance.id)
+        ```
 
         ## Import
 

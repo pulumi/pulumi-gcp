@@ -4000,6 +4000,9 @@ class ClusterAddonsConfigArgs:
                
                This example `addons_config` disables two addons:
                
+               ```python
+               import pulumi
+               ```
                <a name="nested_binary_authorization"></a>The `binary_authorization` block supports:
         :param pulumi.Input['ClusterAddonsConfigDnsCacheConfigArgs'] dns_cache_config: .
                The status of the NodeLocal DNSCache addon. It is disabled by default.
@@ -4142,6 +4145,9 @@ class ClusterAddonsConfigArgs:
 
         This example `addons_config` disables two addons:
 
+        ```python
+        import pulumi
+        ```
         <a name="nested_binary_authorization"></a>The `binary_authorization` block supports:
         """
         return pulumi.get(self, "config_connector_config")
@@ -6401,6 +6407,9 @@ class ClusterMaintenancePolicyArgs:
                where HH : \\[00-23\\] and MM : \\[00-59\\] GMT. For example:
                
                Examples:
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArgs']]] maintenance_exclusions: Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
         :param pulumi.Input['ClusterMaintenancePolicyRecurringWindowArgs'] recurring_window: Time window for recurring maintenance operations.
                
@@ -6410,6 +6419,13 @@ class ClusterMaintenancePolicyArgs:
                Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
                
                Examples:
+               ```python
+               import pulumi
+               ```
+               
+               ```python
+               import pulumi
+               ```
         """
         ClusterMaintenancePolicyArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -6448,6 +6464,9 @@ class ClusterMaintenancePolicyArgs:
         where HH : \\[00-23\\] and MM : \\[00-59\\] GMT. For example:
 
         Examples:
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "daily_maintenance_window")
 
@@ -6479,6 +6498,13 @@ class ClusterMaintenancePolicyArgs:
         Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
 
         Examples:
+        ```python
+        import pulumi
+        ```
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "recurring_window")
 
@@ -6632,6 +6658,10 @@ class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs:
                Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
                
                Examples:
+               
+               ```python
+               import pulumi
+               ```
         """
         ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -6660,6 +6690,10 @@ class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs:
         Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
 
         Examples:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "scope")
 
@@ -6741,6 +6775,9 @@ class ClusterMasterAuthArgs:
         """
         :param pulumi.Input['ClusterMasterAuthClientCertificateConfigArgs'] client_certificate_config: Whether client certificate authorization is enabled for this cluster.  For example:
                
+               ```python
+               import pulumi
+               ```
                
                This block also contains several computed attributes, documented below.
         """
@@ -6785,6 +6822,9 @@ class ClusterMasterAuthArgs:
         """
         Whether client certificate authorization is enabled for this cluster.  For example:
 
+        ```python
+        import pulumi
+        ```
 
         This block also contains several computed attributes, documented below.
         """
@@ -7278,7 +7318,15 @@ class ClusterNodeConfigArgs:
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
         :param pulumi.Input['ClusterNodeConfigEphemeralStorageConfigArgs'] ephemeral_storage_config: ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input['ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs'] ephemeral_storage_local_ssd_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input['ClusterNodeConfigFastSocketArgs'] fast_socket: Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
                Node Pool must enable gvnic.
                GKE version 1.25.2-gke.1700 or later.
@@ -7289,6 +7337,10 @@ class ClusterNodeConfigArgs:
                A `machine_type` that has more than 16 GiB of memory is also recommended.
                GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
                Structure is documented below.
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
                Structure documented below.
         :param pulumi.Input['ClusterNodeConfigGvnicArgs'] gvnic: Google Virtual NIC (gVNIC) is a virtual network interface.
@@ -7296,15 +7348,28 @@ class ClusterNodeConfigArgs:
                gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
                GKE node version 1.15.11-gke.15 or later
                Structure is documented below.
+               
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[str] image_type: The image type to use for this node. Note that changing the image type
                will delete and recreate all nodes in the node pool.
         :param pulumi.Input['ClusterNodeConfigKubeletConfigArgs'] kubelet_config: Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Structure is documented below.
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
                reserved by Kubernetes Core components and cannot be specified.
         :param pulumi.Input['ClusterNodeConfigLinuxNodeConfigArgs'] linux_node_config: Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Note that validations happen all server side. All attributes are optional.
                Structure is documented below.
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input['ClusterNodeConfigLocalNvmeSsdBlockConfigArgs'] local_nvme_ssd_block_config: Parameters for the local NVMe SSDs. Structure is documented below.
         :param pulumi.Input[int] local_ssd_count: The amount of local SSD disks that will be
                attached to each cluster node. Defaults to 0.
@@ -7338,6 +7403,10 @@ class ClusterNodeConfigArgs:
                If not specified, the "default" service account is used.
         :param pulumi.Input['ClusterNodeConfigShieldedInstanceConfigArgs'] shielded_instance_config: Shielded Instance options. Structure is documented below.
         :param pulumi.Input['ClusterNodeConfigSoleTenantConfigArgs'] sole_tenant_config: Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[bool] spot: A boolean that represents whether the underlying node VMs are spot.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
                for more information. Defaults to false.
@@ -7628,6 +7697,10 @@ class ClusterNodeConfigArgs:
     def ephemeral_storage_config(self) -> Optional[pulumi.Input['ClusterNodeConfigEphemeralStorageConfigArgs']]:
         """
         ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "ephemeral_storage_config")
 
@@ -7640,6 +7713,10 @@ class ClusterNodeConfigArgs:
     def ephemeral_storage_local_ssd_config(self) -> Optional[pulumi.Input['ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs']]:
         """
         Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "ephemeral_storage_local_ssd_config")
 
@@ -7672,6 +7749,10 @@ class ClusterNodeConfigArgs:
         A `machine_type` that has more than 16 GiB of memory is also recommended.
         GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
         Structure is documented below.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "gcfs_config")
 
@@ -7701,6 +7782,11 @@ class ClusterNodeConfigArgs:
         gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
         GKE node version 1.15.11-gke.15 or later
         Structure is documented below.
+
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "gvnic")
 
@@ -7736,6 +7822,10 @@ class ClusterNodeConfigArgs:
         """
         Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
         Structure is documented below.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "kubelet_config")
 
@@ -7763,6 +7853,10 @@ class ClusterNodeConfigArgs:
         Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
         Note that validations happen all server side. All attributes are optional.
         Structure is documented below.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "linux_node_config")
 
@@ -7959,6 +8053,10 @@ class ClusterNodeConfigArgs:
     def sole_tenant_config(self) -> Optional[pulumi.Input['ClusterNodeConfigSoleTenantConfigArgs']]:
         """
         Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "sole_tenant_config")
 
@@ -9506,6 +9604,10 @@ class ClusterNodePoolAutoConfigNetworkTagsArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: List of network tags applied to auto-provisioned node pools.
+               
+               ```python
+               import pulumi
+               ```
         """
         ClusterNodePoolAutoConfigNetworkTagsArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -9526,6 +9628,10 @@ class ClusterNodePoolAutoConfigNetworkTagsArgs:
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of network tags applied to auto-provisioned node pools.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "tags")
 
@@ -10178,7 +10284,15 @@ class ClusterNodePoolNodeConfigArgs:
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
         :param pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageConfigArgs'] ephemeral_storage_config: ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs'] ephemeral_storage_local_ssd_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input['ClusterNodePoolNodeConfigFastSocketArgs'] fast_socket: Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
                Node Pool must enable gvnic.
                GKE version 1.25.2-gke.1700 or later.
@@ -10189,6 +10303,10 @@ class ClusterNodePoolNodeConfigArgs:
                A `machine_type` that has more than 16 GiB of memory is also recommended.
                GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
                Structure is documented below.
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
                Structure documented below.
         :param pulumi.Input['ClusterNodePoolNodeConfigGvnicArgs'] gvnic: Google Virtual NIC (gVNIC) is a virtual network interface.
@@ -10196,15 +10314,28 @@ class ClusterNodePoolNodeConfigArgs:
                gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
                GKE node version 1.15.11-gke.15 or later
                Structure is documented below.
+               
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[str] image_type: The image type to use for this node. Note that changing the image type
                will delete and recreate all nodes in the node pool.
         :param pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigArgs'] kubelet_config: Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Structure is documented below.
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
                reserved by Kubernetes Core components and cannot be specified.
         :param pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigArgs'] linux_node_config: Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Note that validations happen all server side. All attributes are optional.
                Structure is documented below.
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input['ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs'] local_nvme_ssd_block_config: Parameters for the local NVMe SSDs. Structure is documented below.
         :param pulumi.Input[int] local_ssd_count: The amount of local SSD disks that will be
                attached to each cluster node. Defaults to 0.
@@ -10238,6 +10369,10 @@ class ClusterNodePoolNodeConfigArgs:
                If not specified, the "default" service account is used.
         :param pulumi.Input['ClusterNodePoolNodeConfigShieldedInstanceConfigArgs'] shielded_instance_config: Shielded Instance options. Structure is documented below.
         :param pulumi.Input['ClusterNodePoolNodeConfigSoleTenantConfigArgs'] sole_tenant_config: Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[bool] spot: A boolean that represents whether the underlying node VMs are spot.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
                for more information. Defaults to false.
@@ -10528,6 +10663,10 @@ class ClusterNodePoolNodeConfigArgs:
     def ephemeral_storage_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageConfigArgs']]:
         """
         ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "ephemeral_storage_config")
 
@@ -10540,6 +10679,10 @@ class ClusterNodePoolNodeConfigArgs:
     def ephemeral_storage_local_ssd_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs']]:
         """
         Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "ephemeral_storage_local_ssd_config")
 
@@ -10572,6 +10715,10 @@ class ClusterNodePoolNodeConfigArgs:
         A `machine_type` that has more than 16 GiB of memory is also recommended.
         GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
         Structure is documented below.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "gcfs_config")
 
@@ -10601,6 +10748,11 @@ class ClusterNodePoolNodeConfigArgs:
         gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
         GKE node version 1.15.11-gke.15 or later
         Structure is documented below.
+
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "gvnic")
 
@@ -10636,6 +10788,10 @@ class ClusterNodePoolNodeConfigArgs:
         """
         Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
         Structure is documented below.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "kubelet_config")
 
@@ -10663,6 +10819,10 @@ class ClusterNodePoolNodeConfigArgs:
         Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
         Note that validations happen all server side. All attributes are optional.
         Structure is documented below.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "linux_node_config")
 
@@ -10859,6 +11019,10 @@ class ClusterNodePoolNodeConfigArgs:
     def sole_tenant_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigSoleTenantConfigArgs']]:
         """
         Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "sole_tenant_config")
 
@@ -12382,6 +12546,10 @@ class ClusterNotificationConfigPubsubArgs:
         """
         :param pulumi.Input[bool] enabled: Whether or not the notification config is enabled
         :param pulumi.Input['ClusterNotificationConfigPubsubFilterArgs'] filter: Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[str] topic: The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
         """
         ClusterNotificationConfigPubsubArgs._configure(
@@ -12424,6 +12592,10 @@ class ClusterNotificationConfigPubsubArgs:
     def filter(self) -> Optional[pulumi.Input['ClusterNotificationConfigPubsubFilterArgs']]:
         """
         Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "filter")
 
@@ -12915,6 +13087,10 @@ class ClusterResourceUsageExportConfigArgs:
         :param pulumi.Input['ClusterResourceUsageExportConfigBigqueryDestinationArgs'] bigquery_destination: Parameters for using BigQuery as the destination of resource usage export.
                
                * `bigquery_destination.dataset_id` (Required) - The ID of a BigQuery Dataset. For Example:
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[bool] enable_network_egress_metering: Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created
                in the cluster to meter network egress traffic.
         :param pulumi.Input[bool] enable_resource_consumption_metering: Whether to enable resource
@@ -12959,6 +13135,10 @@ class ClusterResourceUsageExportConfigArgs:
         Parameters for using BigQuery as the destination of resource usage export.
 
         * `bigquery_destination.dataset_id` (Required) - The ID of a BigQuery Dataset. For Example:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "bigquery_destination")
 
@@ -13224,6 +13404,10 @@ class ClusterWorkloadIdentityConfigArgs:
                  workload_pool: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] workload_pool: The workload pool to attach all Kubernetes service accounts to.
+               
+               ```python
+               import pulumi
+               ```
         """
         ClusterWorkloadIdentityConfigArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -13246,6 +13430,10 @@ class ClusterWorkloadIdentityConfigArgs:
     def workload_pool(self) -> Optional[pulumi.Input[str]]:
         """
         The workload pool to attach all Kubernetes service accounts to.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "workload_pool")
 

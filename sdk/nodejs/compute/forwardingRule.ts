@@ -18,6 +18,48 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
  *
  * ## Example Usage
+ * ### Forwarding Rule Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultTargetPool = new gcp.compute.TargetPool("defaultTargetPool", {});
+ * const defaultForwardingRule = new gcp.compute.ForwardingRule("defaultForwardingRule", {
+ *     target: defaultTargetPool.id,
+ *     portRange: "80",
+ * });
+ * ```
+ * ### Forwarding Rule Regional Steering
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = new gcp.compute.Address("basic", {region: "us-central1"});
+ * const externalRegionBackendService = new gcp.compute.RegionBackendService("externalRegionBackendService", {
+ *     region: "us-central1",
+ *     loadBalancingScheme: "EXTERNAL",
+ * });
+ * const externalForwardingRule = new gcp.compute.ForwardingRule("externalForwardingRule", {
+ *     region: "us-central1",
+ *     ipAddress: basic.selfLink,
+ *     backendService: externalRegionBackendService.selfLink,
+ *     loadBalancingScheme: "EXTERNAL",
+ * });
+ * const steering = new gcp.compute.ForwardingRule("steering", {
+ *     region: "us-central1",
+ *     ipAddress: basic.selfLink,
+ *     backendService: externalRegionBackendService.selfLink,
+ *     loadBalancingScheme: "EXTERNAL",
+ *     sourceIpRanges: [
+ *         "34.121.88.0/24",
+ *         "35.187.239.137",
+ *     ],
+ * }, {
+ *     dependsOn: [externalForwardingRule],
+ * });
+ * ```
  *
  * ## Import
  *

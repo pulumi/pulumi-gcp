@@ -20,6 +20,134 @@ import (
 // * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets)
 //
 // ## Example Usage
+// ### Secret Config Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
+//				Labels: pulumi.StringMap{
+//					"label": pulumi.String("my-label"),
+//				},
+//				Replication: &secretmanager.SecretReplicationArgs{
+//					UserManaged: &secretmanager.SecretReplicationUserManagedArgs{
+//						Replicas: secretmanager.SecretReplicationUserManagedReplicaArray{
+//							&secretmanager.SecretReplicationUserManagedReplicaArgs{
+//								Location: pulumi.String("us-central1"),
+//							},
+//							&secretmanager.SecretReplicationUserManagedReplicaArgs{
+//								Location: pulumi.String("us-east1"),
+//							},
+//						},
+//					},
+//				},
+//				SecretId: pulumi.String("secret"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Secret With Annotations
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := secretmanager.NewSecret(ctx, "secret-with-annotations", &secretmanager.SecretArgs{
+//				Annotations: pulumi.StringMap{
+//					"key1": pulumi.String("someval"),
+//					"key2": pulumi.String("someval2"),
+//					"key3": pulumi.String("someval3"),
+//					"key4": pulumi.String("someval4"),
+//					"key5": pulumi.String("someval5"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"label": pulumi.String("my-label"),
+//				},
+//				Replication: &secretmanager.SecretReplicationArgs{
+//					Auto: nil,
+//				},
+//				SecretId: pulumi.String("secret"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Secret With Automatic Cmek
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kms.NewCryptoKeyIAMMember(ctx, "kms-secret-binding", &kms.CryptoKeyIAMMemberArgs{
+//				CryptoKeyId: pulumi.String("kms-key"),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-secretmanager.iam.gserviceaccount.com", project.Number)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = secretmanager.NewSecret(ctx, "secret-with-automatic-cmek", &secretmanager.SecretArgs{
+//				SecretId: pulumi.String("secret"),
+//				Replication: &secretmanager.SecretReplicationArgs{
+//					Auto: &secretmanager.SecretReplicationAutoArgs{
+//						CustomerManagedEncryption: &secretmanager.SecretReplicationAutoCustomerManagedEncryptionArgs{
+//							KmsKeyName: pulumi.String("kms-key"),
+//						},
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				kms_secret_binding,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

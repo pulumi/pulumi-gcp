@@ -12,6 +12,32 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/intrusion-detection-system/docs/configuring-ids)
  *
  * ## Example Usage
+ * ### Cloudids Endpoint
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {});
+ * const serviceRange = new gcp.compute.GlobalAddress("serviceRange", {
+ *     purpose: "VPC_PEERING",
+ *     addressType: "INTERNAL",
+ *     prefixLength: 16,
+ *     network: _default.id,
+ * });
+ * const privateServiceConnection = new gcp.servicenetworking.Connection("privateServiceConnection", {
+ *     network: _default.id,
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [serviceRange.name],
+ * });
+ * const example_endpoint = new gcp.cloudids.Endpoint("example-endpoint", {
+ *     location: "us-central1-f",
+ *     network: _default.id,
+ *     severity: "INFORMATIONAL",
+ * }, {
+ *     dependsOn: [privateServiceConnection],
+ * });
+ * ```
  *
  * ## Import
  *

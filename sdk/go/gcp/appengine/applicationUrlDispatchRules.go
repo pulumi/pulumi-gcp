@@ -20,6 +20,82 @@ import (
 // * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps#UrlDispatchRule)
 //
 // ## Example Usage
+// ### App Engine Application Url Dispatch Rules Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/appengine"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Location: pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
+//				Bucket: bucket.Name,
+//				Source: pulumi.NewFileAsset("./test-fixtures/hello-world.zip"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			adminV3, err := appengine.NewStandardAppVersion(ctx, "adminV3", &appengine.StandardAppVersionArgs{
+//				VersionId: pulumi.String("v3"),
+//				Service:   pulumi.String("admin"),
+//				Runtime:   pulumi.String("nodejs10"),
+//				Entrypoint: &appengine.StandardAppVersionEntrypointArgs{
+//					Shell: pulumi.String("node ./app.js"),
+//				},
+//				Deployment: &appengine.StandardAppVersionDeploymentArgs{
+//					Zip: &appengine.StandardAppVersionDeploymentZipArgs{
+//						SourceUrl: pulumi.All(bucket.Name, object.Name).ApplyT(func(_args []interface{}) (string, error) {
+//							bucketName := _args[0].(string)
+//							objectName := _args[1].(string)
+//							return fmt.Sprintf("https://storage.googleapis.com/%v/%v", bucketName, objectName), nil
+//						}).(pulumi.StringOutput),
+//					},
+//				},
+//				EnvVariables: pulumi.StringMap{
+//					"port": pulumi.String("8080"),
+//				},
+//				DeleteServiceOnDestroy: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = appengine.NewApplicationUrlDispatchRules(ctx, "webService", &appengine.ApplicationUrlDispatchRulesArgs{
+//				DispatchRules: appengine.ApplicationUrlDispatchRulesDispatchRuleArray{
+//					&appengine.ApplicationUrlDispatchRulesDispatchRuleArgs{
+//						Domain:  pulumi.String("*"),
+//						Path:    pulumi.String("/*"),
+//						Service: pulumi.String("default"),
+//					},
+//					&appengine.ApplicationUrlDispatchRulesDispatchRuleArgs{
+//						Domain:  pulumi.String("*"),
+//						Path:    pulumi.String("/admin/*"),
+//						Service: adminV3.Service,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

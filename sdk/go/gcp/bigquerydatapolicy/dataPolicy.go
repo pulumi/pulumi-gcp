@@ -22,6 +22,54 @@ import (
 //   - [Official Documentation](https://cloud.google.com/bigquery/docs/column-data-masking-intro)
 //
 // ## Example Usage
+// ### Bigquery Datapolicy Data Policy Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquerydatapolicy"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			taxonomy, err := datacatalog.NewTaxonomy(ctx, "taxonomy", &datacatalog.TaxonomyArgs{
+//				Region:      pulumi.String("us-central1"),
+//				DisplayName: pulumi.String("taxonomy"),
+//				Description: pulumi.String("A collection of policy tags"),
+//				ActivatedPolicyTypes: pulumi.StringArray{
+//					pulumi.String("FINE_GRAINED_ACCESS_CONTROL"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			policyTag, err := datacatalog.NewPolicyTag(ctx, "policyTag", &datacatalog.PolicyTagArgs{
+//				Taxonomy:    taxonomy.ID(),
+//				DisplayName: pulumi.String("Low security"),
+//				Description: pulumi.String("A policy tag normally associated with low security items"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquerydatapolicy.NewDataPolicy(ctx, "dataPolicy", &bigquerydatapolicy.DataPolicyArgs{
+//				Location:       pulumi.String("us-central1"),
+//				DataPolicyId:   pulumi.String("data_policy"),
+//				PolicyTag:      policyTag.Name,
+//				DataPolicyType: pulumi.String("COLUMN_LEVEL_SECURITY_POLICY"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

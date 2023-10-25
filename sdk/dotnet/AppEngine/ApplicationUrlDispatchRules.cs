@@ -17,6 +17,76 @@ namespace Pulumi.Gcp.AppEngine
     /// * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps#UrlDispatchRule)
     /// 
     /// ## Example Usage
+    /// ### App Engine Application Url Dispatch Rules Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+    ///     {
+    ///         Location = "US",
+    ///     });
+    /// 
+    ///     var @object = new Gcp.Storage.BucketObject("object", new()
+    ///     {
+    ///         Bucket = bucket.Name,
+    ///         Source = new FileAsset("./test-fixtures/hello-world.zip"),
+    ///     });
+    /// 
+    ///     var adminV3 = new Gcp.AppEngine.StandardAppVersion("adminV3", new()
+    ///     {
+    ///         VersionId = "v3",
+    ///         Service = "admin",
+    ///         Runtime = "nodejs10",
+    ///         Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
+    ///         {
+    ///             Shell = "node ./app.js",
+    ///         },
+    ///         Deployment = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentArgs
+    ///         {
+    ///             Zip = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentZipArgs
+    ///             {
+    ///                 SourceUrl = Output.Tuple(bucket.Name, @object.Name).Apply(values =&gt;
+    ///                 {
+    ///                     var bucketName = values.Item1;
+    ///                     var objectName = values.Item2;
+    ///                     return $"https://storage.googleapis.com/{bucketName}/{objectName}";
+    ///                 }),
+    ///             },
+    ///         },
+    ///         EnvVariables = 
+    ///         {
+    ///             { "port", "8080" },
+    ///         },
+    ///         DeleteServiceOnDestroy = true,
+    ///     });
+    /// 
+    ///     var webService = new Gcp.AppEngine.ApplicationUrlDispatchRules("webService", new()
+    ///     {
+    ///         DispatchRules = new[]
+    ///         {
+    ///             new Gcp.AppEngine.Inputs.ApplicationUrlDispatchRulesDispatchRuleArgs
+    ///             {
+    ///                 Domain = "*",
+    ///                 Path = "/*",
+    ///                 Service = "default",
+    ///             },
+    ///             new Gcp.AppEngine.Inputs.ApplicationUrlDispatchRulesDispatchRuleArgs
+    ///             {
+    ///                 Domain = "*",
+    ///                 Path = "/admin/*",
+    ///                 Service = adminV3.Service,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

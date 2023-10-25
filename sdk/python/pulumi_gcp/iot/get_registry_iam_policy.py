@@ -103,6 +103,17 @@ def get_registry_iam_policy(name: Optional[str] = None,
     """
     Retrieves the current IAM policy data for deviceregistry
 
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.iot.get_registry_iam_policy(project=google_cloudiot_registry["test-registry"]["project"],
+        region=google_cloudiot_registry["test-registry"]["region"],
+        name=google_cloudiot_registry["test-registry"]["name"])
+    ```
+
 
     :param str name: Used to find the parent resource to bind the IAM policy to
     :param str project: The ID of the project in which the resource belongs.
@@ -136,6 +147,17 @@ def get_registry_iam_policy_output(name: Optional[pulumi.Input[str]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegistryIamPolicyResult]:
     """
     Retrieves the current IAM policy data for deviceregistry
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.iot.get_registry_iam_policy(project=google_cloudiot_registry["test-registry"]["project"],
+        region=google_cloudiot_registry["test-registry"]["region"],
+        name=google_cloudiot_registry["test-registry"]["name"])
+    ```
 
 
     :param str name: Used to find the parent resource to bind the IAM policy to

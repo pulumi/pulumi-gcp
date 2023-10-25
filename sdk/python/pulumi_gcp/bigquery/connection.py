@@ -545,6 +545,138 @@ class Connection(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
+        ### Bigquery Connection Cloud Resource
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        connection = gcp.bigquery.Connection("connection",
+            cloud_resource=gcp.bigquery.ConnectionCloudResourceArgs(),
+            connection_id="my-connection",
+            description="a riveting description",
+            friendly_name="👋",
+            location="US")
+        ```
+        ### Bigquery Connection Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            database_version="POSTGRES_11",
+            region="us-central1",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+            ),
+            deletion_protection=True)
+        db = gcp.sql.Database("db", instance=instance.name)
+        pwd = random.RandomPassword("pwd",
+            length=16,
+            special=False)
+        user = gcp.sql.User("user",
+            instance=instance.name,
+            password=pwd.result)
+        connection = gcp.bigquery.Connection("connection",
+            friendly_name="👋",
+            description="a riveting description",
+            location="US",
+            cloud_sql=gcp.bigquery.ConnectionCloudSqlArgs(
+                instance_id=instance.connection_name,
+                database=db.name,
+                type="POSTGRES",
+                credential=gcp.bigquery.ConnectionCloudSqlCredentialArgs(
+                    username=user.name,
+                    password=user.password,
+                ),
+            ))
+        ```
+        ### Bigquery Connection Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            database_version="POSTGRES_11",
+            region="us-central1",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+            ),
+            deletion_protection=True)
+        db = gcp.sql.Database("db", instance=instance.name)
+        pwd = random.RandomPassword("pwd",
+            length=16,
+            special=False)
+        user = gcp.sql.User("user",
+            instance=instance.name,
+            password=pwd.result)
+        connection = gcp.bigquery.Connection("connection",
+            connection_id="my-connection",
+            location="US",
+            friendly_name="👋",
+            description="a riveting description",
+            cloud_sql=gcp.bigquery.ConnectionCloudSqlArgs(
+                instance_id=instance.connection_name,
+                database=db.name,
+                type="POSTGRES",
+                credential=gcp.bigquery.ConnectionCloudSqlCredentialArgs(
+                    username=user.name,
+                    password=user.password,
+                ),
+            ))
+        ```
+        ### Bigquery Connection Aws
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        connection = gcp.bigquery.Connection("connection",
+            aws=gcp.bigquery.ConnectionAwsArgs(
+                access_role=gcp.bigquery.ConnectionAwsAccessRoleArgs(
+                    iam_role_id="arn:aws:iam::999999999999:role/omnirole",
+                ),
+            ),
+            connection_id="my-connection",
+            description="a riveting description",
+            friendly_name="👋",
+            location="aws-us-east-1")
+        ```
+        ### Bigquery Connection Azure
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        connection = gcp.bigquery.Connection("connection",
+            azure=gcp.bigquery.ConnectionAzureArgs(
+                customer_tenant_id="customer-tenant-id",
+                federated_application_client_id="b43eeeee-eeee-eeee-eeee-a480155501ce",
+            ),
+            connection_id="my-connection",
+            description="a riveting description",
+            friendly_name="👋",
+            location="azure-eastus2")
+        ```
+        ### Bigquery Connection Cloudspanner
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        connection = gcp.bigquery.Connection("connection",
+            cloud_spanner=gcp.bigquery.ConnectionCloudSpannerArgs(
+                database="projects/project/instances/instance/databases/database",
+            ),
+            connection_id="my-connection",
+            description="a riveting description",
+            friendly_name="👋",
+            location="US")
+        ```
 
         ## Import
 
@@ -607,6 +739,138 @@ class Connection(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
+        ### Bigquery Connection Cloud Resource
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        connection = gcp.bigquery.Connection("connection",
+            cloud_resource=gcp.bigquery.ConnectionCloudResourceArgs(),
+            connection_id="my-connection",
+            description="a riveting description",
+            friendly_name="👋",
+            location="US")
+        ```
+        ### Bigquery Connection Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            database_version="POSTGRES_11",
+            region="us-central1",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+            ),
+            deletion_protection=True)
+        db = gcp.sql.Database("db", instance=instance.name)
+        pwd = random.RandomPassword("pwd",
+            length=16,
+            special=False)
+        user = gcp.sql.User("user",
+            instance=instance.name,
+            password=pwd.result)
+        connection = gcp.bigquery.Connection("connection",
+            friendly_name="👋",
+            description="a riveting description",
+            location="US",
+            cloud_sql=gcp.bigquery.ConnectionCloudSqlArgs(
+                instance_id=instance.connection_name,
+                database=db.name,
+                type="POSTGRES",
+                credential=gcp.bigquery.ConnectionCloudSqlCredentialArgs(
+                    username=user.name,
+                    password=user.password,
+                ),
+            ))
+        ```
+        ### Bigquery Connection Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            database_version="POSTGRES_11",
+            region="us-central1",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+            ),
+            deletion_protection=True)
+        db = gcp.sql.Database("db", instance=instance.name)
+        pwd = random.RandomPassword("pwd",
+            length=16,
+            special=False)
+        user = gcp.sql.User("user",
+            instance=instance.name,
+            password=pwd.result)
+        connection = gcp.bigquery.Connection("connection",
+            connection_id="my-connection",
+            location="US",
+            friendly_name="👋",
+            description="a riveting description",
+            cloud_sql=gcp.bigquery.ConnectionCloudSqlArgs(
+                instance_id=instance.connection_name,
+                database=db.name,
+                type="POSTGRES",
+                credential=gcp.bigquery.ConnectionCloudSqlCredentialArgs(
+                    username=user.name,
+                    password=user.password,
+                ),
+            ))
+        ```
+        ### Bigquery Connection Aws
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        connection = gcp.bigquery.Connection("connection",
+            aws=gcp.bigquery.ConnectionAwsArgs(
+                access_role=gcp.bigquery.ConnectionAwsAccessRoleArgs(
+                    iam_role_id="arn:aws:iam::999999999999:role/omnirole",
+                ),
+            ),
+            connection_id="my-connection",
+            description="a riveting description",
+            friendly_name="👋",
+            location="aws-us-east-1")
+        ```
+        ### Bigquery Connection Azure
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        connection = gcp.bigquery.Connection("connection",
+            azure=gcp.bigquery.ConnectionAzureArgs(
+                customer_tenant_id="customer-tenant-id",
+                federated_application_client_id="b43eeeee-eeee-eeee-eeee-a480155501ce",
+            ),
+            connection_id="my-connection",
+            description="a riveting description",
+            friendly_name="👋",
+            location="azure-eastus2")
+        ```
+        ### Bigquery Connection Cloudspanner
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        connection = gcp.bigquery.Connection("connection",
+            cloud_spanner=gcp.bigquery.ConnectionCloudSpannerArgs(
+                database="projects/project/instances/instance/databases/database",
+            ),
+            connection_id="my-connection",
+            description="a riveting description",
+            friendly_name="👋",
+            location="US")
+        ```
 
         ## Import
 

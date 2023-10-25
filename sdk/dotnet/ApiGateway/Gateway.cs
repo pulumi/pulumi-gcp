@@ -19,6 +19,61 @@ namespace Pulumi.Gcp.ApiGateway
     ///     * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
     /// 
     /// ## Example Usage
+    /// ### Apigateway Gateway Basic
+    /// 
+    /// ```csharp
+    /// using System;
+    /// using System.Collections.Generic;
+    /// using System.IO;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// 	private static string ReadFileBase64(string path) {
+    /// 		return Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(File.ReadAllText(path)));
+    /// 	}
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var apiGwApi = new Gcp.ApiGateway.Api("apiGwApi", new()
+    ///     {
+    ///         ApiId = "my-api",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var apiGwApiConfig = new Gcp.ApiGateway.ApiConfig("apiGwApiConfig", new()
+    ///     {
+    ///         Api = apiGwApi.ApiId,
+    ///         ApiConfigId = "my-config",
+    ///         OpenapiDocuments = new[]
+    ///         {
+    ///             new Gcp.ApiGateway.Inputs.ApiConfigOpenapiDocumentArgs
+    ///             {
+    ///                 Document = new Gcp.ApiGateway.Inputs.ApiConfigOpenapiDocumentDocumentArgs
+    ///                 {
+    ///                     Path = "spec.yaml",
+    ///                     Contents = ReadFileBase64("test-fixtures/openapi.yaml"),
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var apiGwGateway = new Gcp.ApiGateway.Gateway("apiGwGateway", new()
+    ///     {
+    ///         ApiConfig = apiGwApiConfig.Id,
+    ///         GatewayId = "my-gateway",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

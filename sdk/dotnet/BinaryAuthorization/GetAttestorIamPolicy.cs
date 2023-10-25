@@ -13,12 +13,54 @@ namespace Pulumi.Gcp.BinaryAuthorization
     {
         /// <summary>
         /// Retrieves the current IAM policy data for attestor
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.BinaryAuthorization.GetAttestorIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_binary_authorization_attestor.Attestor.Project,
+        ///         Attestor = google_binary_authorization_attestor.Attestor.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetAttestorIamPolicyResult> InvokeAsync(GetAttestorIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAttestorIamPolicyResult>("gcp:binaryauthorization/getAttestorIamPolicy:getAttestorIamPolicy", args ?? new GetAttestorIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for attestor
+        /// 
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.BinaryAuthorization.GetAttestorIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = google_binary_authorization_attestor.Attestor.Project,
+        ///         Attestor = google_binary_authorization_attestor.Attestor.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAttestorIamPolicyResult> Invoke(GetAttestorIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAttestorIamPolicyResult>("gcp:binaryauthorization/getAttestorIamPolicy:getAttestorIamPolicy", args ?? new GetAttestorIamPolicyInvokeArgs(), options.WithDefaults());

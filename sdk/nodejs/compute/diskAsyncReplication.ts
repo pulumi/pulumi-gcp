@@ -10,6 +10,33 @@ import * as utilities from "../utilities";
  * Starts and stops asynchronous persistent disk replication. For more information
  * see [the official documentation](https://cloud.google.com/compute/docs/disks/async-pd/about)
  * and the [API](https://cloud.google.com/compute/docs/reference/rest/v1/disks).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary_disk = new gcp.compute.Disk("primary-disk", {
+ *     type: "pd-ssd",
+ *     zone: "europe-west4-a",
+ *     physicalBlockSizeBytes: 4096,
+ * });
+ * const secondary_disk = new gcp.compute.Disk("secondary-disk", {
+ *     type: "pd-ssd",
+ *     zone: "europe-west3-a",
+ *     asyncPrimaryDisk: {
+ *         disk: primary_disk.id,
+ *     },
+ *     physicalBlockSizeBytes: 4096,
+ * });
+ * const replication = new gcp.compute.DiskAsyncReplication("replication", {
+ *     primaryDisk: primary_disk.id,
+ *     secondaryDisk: {
+ *         disk: secondary_disk.id,
+ *     },
+ * });
+ * ```
  */
 export class DiskAsyncReplication extends pulumi.CustomResource {
     /**

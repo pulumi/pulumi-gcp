@@ -319,6 +319,17 @@ class Taxonomy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
         ## Example Usage
+        ### Data Catalog Taxonomy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_taxonomy = gcp.datacatalog.Taxonomy("basicTaxonomy",
+            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"],
+            description="A collection of policy tags",
+            display_name="my_taxonomy")
+        ```
 
         ## Import
 
@@ -363,6 +374,17 @@ class Taxonomy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
         ## Example Usage
+        ### Data Catalog Taxonomy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_taxonomy = gcp.datacatalog.Taxonomy("basicTaxonomy",
+            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"],
+            description="A collection of policy tags",
+            display_name="my_taxonomy")
+        ```
 
         ## Import
 

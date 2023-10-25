@@ -462,6 +462,58 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Region Security Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        region_sec_policy_basic = gcp.compute.RegionSecurityPolicy("region-sec-policy-basic",
+            description="basic region security policy",
+            type="CLOUD_ARMOR",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Region Security Policy With Ddos Protection Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        region_sec_policy_ddos_protection = gcp.compute.RegionSecurityPolicy("region-sec-policy-ddos-protection",
+            description="with ddos protection config",
+            type="CLOUD_ARMOR_NETWORK",
+            ddos_protection_config=gcp.compute.RegionSecurityPolicyDdosProtectionConfigArgs(
+                ddos_protection="ADVANCED_PREVIEW",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Region Security Policy With User Defined Fields
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        region_sec_policy_user_defined_fields = gcp.compute.RegionSecurityPolicy("region-sec-policy-user-defined-fields",
+            description="with user defined fields",
+            type="CLOUD_ARMOR_NETWORK",
+            user_defined_fields=[
+                gcp.compute.RegionSecurityPolicyUserDefinedFieldArgs(
+                    name="SIG1_AT_0",
+                    base="UDP",
+                    offset=8,
+                    size=2,
+                    mask="0x8F00",
+                ),
+                gcp.compute.RegionSecurityPolicyUserDefinedFieldArgs(
+                    name="SIG2_AT_8",
+                    base="UDP",
+                    offset=16,
+                    size=4,
+                    mask="0xFFFFFFFF",
+                ),
+            ],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -516,6 +568,58 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Region Security Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        region_sec_policy_basic = gcp.compute.RegionSecurityPolicy("region-sec-policy-basic",
+            description="basic region security policy",
+            type="CLOUD_ARMOR",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Region Security Policy With Ddos Protection Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        region_sec_policy_ddos_protection = gcp.compute.RegionSecurityPolicy("region-sec-policy-ddos-protection",
+            description="with ddos protection config",
+            type="CLOUD_ARMOR_NETWORK",
+            ddos_protection_config=gcp.compute.RegionSecurityPolicyDdosProtectionConfigArgs(
+                ddos_protection="ADVANCED_PREVIEW",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Region Security Policy With User Defined Fields
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        region_sec_policy_user_defined_fields = gcp.compute.RegionSecurityPolicy("region-sec-policy-user-defined-fields",
+            description="with user defined fields",
+            type="CLOUD_ARMOR_NETWORK",
+            user_defined_fields=[
+                gcp.compute.RegionSecurityPolicyUserDefinedFieldArgs(
+                    name="SIG1_AT_0",
+                    base="UDP",
+                    offset=8,
+                    size=2,
+                    mask="0x8F00",
+                ),
+                gcp.compute.RegionSecurityPolicyUserDefinedFieldArgs(
+                    name="SIG2_AT_8",
+                    base="UDP",
+                    offset=16,
+                    size=4,
+                    mask="0xFFFFFFFF",
+                ),
+            ],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

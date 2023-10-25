@@ -337,6 +337,60 @@ class AccessApprovalSettings(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/access-approval/docs/reference/rest/v1/organizations)
 
         ## Example Usage
+        ### Organization Access Approval Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization_access_approval = gcp.organizations.AccessApprovalSettings("organizationAccessApproval",
+            enrolled_services=[
+                gcp.organizations.AccessApprovalSettingsEnrolledServiceArgs(
+                    cloud_product="appengine.googleapis.com",
+                ),
+                gcp.organizations.AccessApprovalSettingsEnrolledServiceArgs(
+                    cloud_product="dataflow.googleapis.com",
+                    enrollment_level="BLOCK_ALL",
+                ),
+            ],
+            notification_emails=[
+                "testuser@example.com",
+                "example.user@example.com",
+            ],
+            organization_id="123456789")
+        ```
+        ### Organization Access Approval Active Key Version
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.organizations.Project("myProject",
+            project_id="your-project-id",
+            org_id="123456789")
+        key_ring = gcp.kms.KeyRing("keyRing",
+            location="global",
+            project=my_project.project_id)
+        crypto_key = gcp.kms.CryptoKey("cryptoKey",
+            key_ring=key_ring.id,
+            purpose="ASYMMETRIC_SIGN",
+            version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
+                algorithm="EC_SIGN_P384_SHA384",
+            ))
+        service_account = gcp.accessapproval.get_organization_service_account(organization_id="123456789")
+        iam = gcp.kms.CryptoKeyIAMMember("iam",
+            crypto_key_id=crypto_key.id,
+            role="roles/cloudkms.signerVerifier",
+            member=f"serviceAccount:{service_account.account_email}")
+        crypto_key_version = gcp.kms.get_kms_crypto_key_version_output(crypto_key=crypto_key.id)
+        organization_access_approval = gcp.organizations.AccessApprovalSettings("organizationAccessApproval",
+            organization_id="123456789",
+            active_key_version=crypto_key_version.name,
+            enrolled_services=[gcp.organizations.AccessApprovalSettingsEnrolledServiceArgs(
+                cloud_product="all",
+            )],
+            opts=pulumi.ResourceOptions(depends_on=[iam]))
+        ```
 
         ## Import
 
@@ -378,6 +432,60 @@ class AccessApprovalSettings(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/access-approval/docs/reference/rest/v1/organizations)
 
         ## Example Usage
+        ### Organization Access Approval Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization_access_approval = gcp.organizations.AccessApprovalSettings("organizationAccessApproval",
+            enrolled_services=[
+                gcp.organizations.AccessApprovalSettingsEnrolledServiceArgs(
+                    cloud_product="appengine.googleapis.com",
+                ),
+                gcp.organizations.AccessApprovalSettingsEnrolledServiceArgs(
+                    cloud_product="dataflow.googleapis.com",
+                    enrollment_level="BLOCK_ALL",
+                ),
+            ],
+            notification_emails=[
+                "testuser@example.com",
+                "example.user@example.com",
+            ],
+            organization_id="123456789")
+        ```
+        ### Organization Access Approval Active Key Version
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.organizations.Project("myProject",
+            project_id="your-project-id",
+            org_id="123456789")
+        key_ring = gcp.kms.KeyRing("keyRing",
+            location="global",
+            project=my_project.project_id)
+        crypto_key = gcp.kms.CryptoKey("cryptoKey",
+            key_ring=key_ring.id,
+            purpose="ASYMMETRIC_SIGN",
+            version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
+                algorithm="EC_SIGN_P384_SHA384",
+            ))
+        service_account = gcp.accessapproval.get_organization_service_account(organization_id="123456789")
+        iam = gcp.kms.CryptoKeyIAMMember("iam",
+            crypto_key_id=crypto_key.id,
+            role="roles/cloudkms.signerVerifier",
+            member=f"serviceAccount:{service_account.account_email}")
+        crypto_key_version = gcp.kms.get_kms_crypto_key_version_output(crypto_key=crypto_key.id)
+        organization_access_approval = gcp.organizations.AccessApprovalSettings("organizationAccessApproval",
+            organization_id="123456789",
+            active_key_version=crypto_key_version.name,
+            enrolled_services=[gcp.organizations.AccessApprovalSettingsEnrolledServiceArgs(
+                cloud_product="all",
+            )],
+            opts=pulumi.ResourceOptions(depends_on=[iam]))
+        ```
 
         ## Import
 

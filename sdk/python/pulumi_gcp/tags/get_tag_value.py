@@ -127,6 +127,16 @@ def get_tag_value(parent: Optional[str] = None,
     """
     Get a tag value by `parent` key and `short_name`.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    environment_prod_tag_value = gcp.tags.get_tag_value(parent="tagKeys/56789",
+        short_name="production")
+    ```
+
 
     :param str parent: The resource name of the parent tagKey in format `tagKey/{name}`.
     :param str short_name: The tag value's short_name.
@@ -154,6 +164,16 @@ def get_tag_value_output(parent: Optional[pulumi.Input[str]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTagValueResult]:
     """
     Get a tag value by `parent` key and `short_name`.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    environment_prod_tag_value = gcp.tags.get_tag_value(parent="tagKeys/56789",
+        short_name="production")
+    ```
 
 
     :param str parent: The resource name of the parent tagKey in format `tagKey/{name}`.

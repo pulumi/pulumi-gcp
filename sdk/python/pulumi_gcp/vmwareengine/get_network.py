@@ -122,7 +122,16 @@ def get_network(location: Optional[str] = None,
                 project: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_nw = gcp.vmwareengine.get_network(name="us-central1-default",
+        location="us-central1")
+    ```
+
 
     :param str location: Location of the resource.
            
@@ -155,7 +164,16 @@ def get_network_output(location: Optional[pulumi.Input[str]] = None,
                        project: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_nw = gcp.vmwareengine.get_network(name="us-central1-default",
+        location="us-central1")
+    ```
+
 
     :param str location: Location of the resource.
            

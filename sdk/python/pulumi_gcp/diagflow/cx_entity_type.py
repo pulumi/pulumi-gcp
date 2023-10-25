@@ -500,6 +500,51 @@ class CxEntityType(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 
         ## Example Usage
+        ### Dialogflowcx Entity Type Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        agent = gcp.diagflow.CxAgent("agent",
+            display_name="dialogflowcx-agent",
+            location="global",
+            default_language_code="en",
+            supported_language_codes=[
+                "fr",
+                "de",
+                "es",
+            ],
+            time_zone="America/New_York",
+            description="Example description.",
+            avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+            enable_stackdriver_logging=True,
+            enable_spell_correction=True,
+            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
+                enable_speech_adaptation=True,
+            ))
+        basic_entity_type = gcp.diagflow.CxEntityType("basicEntityType",
+            parent=agent.id,
+            display_name="MyEntity",
+            kind="KIND_MAP",
+            entities=[
+                gcp.diagflow.CxEntityTypeEntityArgs(
+                    value="value1",
+                    synonyms=[
+                        "synonym1",
+                        "synonym2",
+                    ],
+                ),
+                gcp.diagflow.CxEntityTypeEntityArgs(
+                    value="value2",
+                    synonyms=[
+                        "synonym3",
+                        "synonym4",
+                    ],
+                ),
+            ],
+            enable_fuzzy_extraction=False)
+        ```
 
         ## Import
 
@@ -557,6 +602,51 @@ class CxEntityType(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 
         ## Example Usage
+        ### Dialogflowcx Entity Type Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        agent = gcp.diagflow.CxAgent("agent",
+            display_name="dialogflowcx-agent",
+            location="global",
+            default_language_code="en",
+            supported_language_codes=[
+                "fr",
+                "de",
+                "es",
+            ],
+            time_zone="America/New_York",
+            description="Example description.",
+            avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+            enable_stackdriver_logging=True,
+            enable_spell_correction=True,
+            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
+                enable_speech_adaptation=True,
+            ))
+        basic_entity_type = gcp.diagflow.CxEntityType("basicEntityType",
+            parent=agent.id,
+            display_name="MyEntity",
+            kind="KIND_MAP",
+            entities=[
+                gcp.diagflow.CxEntityTypeEntityArgs(
+                    value="value1",
+                    synonyms=[
+                        "synonym1",
+                        "synonym2",
+                    ],
+                ),
+                gcp.diagflow.CxEntityTypeEntityArgs(
+                    value="value2",
+                    synonyms=[
+                        "synonym3",
+                        "synonym4",
+                    ],
+                ),
+            ],
+            enable_fuzzy_extraction=False)
+        ```
 
         ## Import
 

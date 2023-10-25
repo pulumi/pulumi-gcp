@@ -510,6 +510,34 @@ class Backup(pulumi.CustomResource):
             * [Creating Backups](https://cloud.google.com/filestore/docs/create-backups)
 
         ## Example Usage
+        ### Filestore Backup Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.filestore.Instance("instance",
+            location="us-central1-b",
+            tier="BASIC_HDD",
+            file_shares=gcp.filestore.InstanceFileSharesArgs(
+                capacity_gb=1024,
+                name="share1",
+            ),
+            networks=[gcp.filestore.InstanceNetworkArgs(
+                network="default",
+                modes=["MODE_IPV4"],
+                connect_mode="DIRECT_PEERING",
+            )])
+        backup = gcp.filestore.Backup("backup",
+            location="us-central1",
+            description="This is a filestore backup for the test instance",
+            source_instance=instance.id,
+            source_file_share="share1",
+            labels={
+                "files": "label1",
+                "other-label": "label2",
+            })
+        ```
 
         ## Import
 
@@ -564,6 +592,34 @@ class Backup(pulumi.CustomResource):
             * [Creating Backups](https://cloud.google.com/filestore/docs/create-backups)
 
         ## Example Usage
+        ### Filestore Backup Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.filestore.Instance("instance",
+            location="us-central1-b",
+            tier="BASIC_HDD",
+            file_shares=gcp.filestore.InstanceFileSharesArgs(
+                capacity_gb=1024,
+                name="share1",
+            ),
+            networks=[gcp.filestore.InstanceNetworkArgs(
+                network="default",
+                modes=["MODE_IPV4"],
+                connect_mode="DIRECT_PEERING",
+            )])
+        backup = gcp.filestore.Backup("backup",
+            location="us-central1",
+            description="This is a filestore backup for the test instance",
+            source_instance=instance.id,
+            source_file_share="share1",
+            labels={
+                "files": "label1",
+                "other-label": "label2",
+            })
+        ```
 
         ## Import
 

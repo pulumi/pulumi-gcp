@@ -16,6 +16,66 @@ import (
 // The Eventarc GoogleChannelConfig resource
 //
 // ## Example Usage
+// ### Basic
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/eventarc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			testProject, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
+//				ProjectId: pulumi.StringRef("my-project-name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			testKeyRing, err := kms.GetKMSKeyRing(ctx, &kms.GetKMSKeyRingArgs{
+//				Name:     "keyring",
+//				Location: "us-west1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kms.GetKMSCryptoKey(ctx, &kms.GetKMSCryptoKeyArgs{
+//				Name:    "key",
+//				KeyRing: testKeyRing.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			key1Member, err := kms.NewCryptoKeyIAMMember(ctx, "key1Member", &kms.CryptoKeyIAMMemberArgs{
+//				CryptoKeyId: pulumi.Any(data.Google_kms_crypto_key.Key1.Id),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-eventarc.iam.gserviceaccount.com", testProject.Number)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = eventarc.NewGoogleChannelConfig(ctx, "primary", &eventarc.GoogleChannelConfigArgs{
+//				Location:      pulumi.String("us-west1"),
+//				Project:       *pulumi.String(testProject.ProjectId),
+//				CryptoKeyName: pulumi.Any(data.Google_kms_crypto_key.Key1.Id),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				key1Member,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

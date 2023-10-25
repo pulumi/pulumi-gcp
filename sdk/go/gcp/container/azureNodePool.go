@@ -18,6 +18,120 @@ import (
 // For more information, see:
 // * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
 // ## Example Usage
+// ### Basic_azure_node_pool
+// A basic example of a containerazure azure node pool
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			versions, err := container.GetAzureVersions(ctx, &container.GetAzureVersionsArgs{
+//				Project:  pulumi.StringRef("my-project-name"),
+//				Location: pulumi.StringRef("us-west1"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			basic, err := container.NewAzureClient(ctx, "basic", &container.AzureClientArgs{
+//				ApplicationId: pulumi.String("12345678-1234-1234-1234-123456789111"),
+//				Location:      pulumi.String("us-west1"),
+//				TenantId:      pulumi.String("12345678-1234-1234-1234-123456789111"),
+//				Project:       pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			primaryAzureCluster, err := container.NewAzureCluster(ctx, "primaryAzureCluster", &container.AzureClusterArgs{
+//				Authorization: &container.AzureClusterAuthorizationArgs{
+//					AdminUsers: container.AzureClusterAuthorizationAdminUserArray{
+//						&container.AzureClusterAuthorizationAdminUserArgs{
+//							Username: pulumi.String("mmv2@google.com"),
+//						},
+//					},
+//				},
+//				AzureRegion: pulumi.String("westus2"),
+//				Client: basic.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("projects/my-project-number/locations/us-west1/azureClients/%v", name), nil
+//				}).(pulumi.StringOutput),
+//				ControlPlane: &container.AzureClusterControlPlaneArgs{
+//					SshConfig: &container.AzureClusterControlPlaneSshConfigArgs{
+//						AuthorizedKey: pulumi.String("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers"),
+//					},
+//					SubnetId: pulumi.String("/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default"),
+//					Version:  *pulumi.String(versions.ValidVersions[0]),
+//				},
+//				Fleet: &container.AzureClusterFleetArgs{
+//					Project: pulumi.String("my-project-number"),
+//				},
+//				Location: pulumi.String("us-west1"),
+//				Networking: &container.AzureClusterNetworkingArgs{
+//					PodAddressCidrBlocks: pulumi.StringArray{
+//						pulumi.String("10.200.0.0/16"),
+//					},
+//					ServiceAddressCidrBlocks: pulumi.StringArray{
+//						pulumi.String("10.32.0.0/24"),
+//					},
+//					VirtualNetworkId: pulumi.String("/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet"),
+//				},
+//				ResourceGroupId: pulumi.String("/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster"),
+//				Project:         pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = container.NewAzureNodePool(ctx, "primaryAzureNodePool", &container.AzureNodePoolArgs{
+//				Autoscaling: &container.AzureNodePoolAutoscalingArgs{
+//					MaxNodeCount: pulumi.Int(3),
+//					MinNodeCount: pulumi.Int(2),
+//				},
+//				Cluster: primaryAzureCluster.Name,
+//				Config: &container.AzureNodePoolConfigArgs{
+//					SshConfig: &container.AzureNodePoolConfigSshConfigArgs{
+//						AuthorizedKey: pulumi.String("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers"),
+//					},
+//					ProxyConfig: &container.AzureNodePoolConfigProxyConfigArgs{
+//						ResourceGroupId: pulumi.String("/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster"),
+//						SecretId:        pulumi.String("https://my--dev-keyvault.vault.azure.net/secrets/my--dev-secret/0000000000000000000000000000000000"),
+//					},
+//					RootVolume: &container.AzureNodePoolConfigRootVolumeArgs{
+//						SizeGib: pulumi.Int(32),
+//					},
+//					Tags: pulumi.StringMap{
+//						"owner": pulumi.String("mmv2"),
+//					},
+//					VmSize: pulumi.String("Standard_DS2_v2"),
+//				},
+//				Location: pulumi.String("us-west1"),
+//				MaxPodsConstraint: &container.AzureNodePoolMaxPodsConstraintArgs{
+//					MaxPodsPerNode: pulumi.Int(110),
+//				},
+//				SubnetId: pulumi.String("/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default"),
+//				Version:  *pulumi.String(versions.ValidVersions[0]),
+//				Annotations: pulumi.StringMap{
+//					"annotation-one": pulumi.String("value-one"),
+//				},
+//				Management: &container.AzureNodePoolManagementArgs{
+//					AutoRepair: pulumi.Bool(true),
+//				},
+//				Project: pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

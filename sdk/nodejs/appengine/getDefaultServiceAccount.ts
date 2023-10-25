@@ -6,6 +6,16 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to retrieve the default App Engine service account for the specified project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default = gcp.appengine.getDefaultServiceAccount({});
+ * export const defaultAccount = _default.then(_default => _default.email);
+ * ```
  */
 export function getDefaultServiceAccount(args?: GetDefaultServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetDefaultServiceAccountResult> {
     args = args || {};
@@ -58,6 +68,16 @@ export interface GetDefaultServiceAccountResult {
 }
 /**
  * Use this data source to retrieve the default App Engine service account for the specified project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default = gcp.appengine.getDefaultServiceAccount({});
+ * export const defaultAccount = _default.then(_default => _default.email);
+ * ```
  */
 export function getDefaultServiceAccountOutput(args?: GetDefaultServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDefaultServiceAccountResult> {
     return pulumi.output(args).apply((a: any) => getDefaultServiceAccount(a, opts))

@@ -18,6 +18,144 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.organizations.IAMBinding` resources **can be** used in conjunction with `gcp.organizations.IAMMember` resources **only if** they do not grant privilege to the same role.
  *
+ * ## google\_organization\_iam\_policy
+ *
+ * !> **Warning:** New organizations have several default policies which will,
+ *    without extreme caution, be **overwritten** by use of this resource.
+ *    The safest alternative is to use multiple `gcp.organizations.IAMBinding`
+ *    resources. This resource makes it easy to remove your own access to
+ *    an organization, which will require a call to Google Support to have
+ *    fixed, and can take multiple days to resolve.
+ *
+ *    In general, this resource should only be used with organizations
+ *    fully managed by this provider.I f you do use this resource,
+ *    the best way to be sure that you are not making dangerous changes is to start
+ *    by **importing** your existing policy, and examining the diff very closely.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const organization = new gcp.organizations.IAMPolicy("organization", {
+ *     orgId: "1234567890",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         condition: {
+ *             description: "Expiring at midnight of 2019-12-31",
+ *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *             title: "expires_after_2019_12_31",
+ *         },
+ *         members: ["user:jane@example.com"],
+ *         role: "roles/editor",
+ *     }],
+ * });
+ * const organization = new gcp.organizations.IAMPolicy("organization", {
+ *     orgId: "1234567890",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## google\_organization\_iam\_binding
+ *
+ * > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const organization = new gcp.organizations.IAMBinding("organization", {
+ *     members: ["user:jane@example.com"],
+ *     orgId: "1234567890",
+ *     role: "roles/editor",
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const organization = new gcp.organizations.IAMBinding("organization", {
+ *     condition: {
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         title: "expires_after_2019_12_31",
+ *     },
+ *     members: ["user:jane@example.com"],
+ *     orgId: "1234567890",
+ *     role: "roles/editor",
+ * });
+ * ```
+ *
+ * ## google\_organization\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const organization = new gcp.organizations.IAMMember("organization", {
+ *     member: "user:jane@example.com",
+ *     orgId: "1234567890",
+ *     role: "roles/editor",
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const organization = new gcp.organizations.IAMMember("organization", {
+ *     condition: {
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         title: "expires_after_2019_12_31",
+ *     },
+ *     member: "user:jane@example.com",
+ *     orgId: "1234567890",
+ *     role: "roles/editor",
+ * });
+ * ```
+ *
+ * ## google\_organization\_iam\_audit\_config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const organization = new gcp.organizations.IamAuditConfig("organization", {
+ *     auditLogConfigs: [
+ *         {
+ *             logType: "ADMIN_READ",
+ *         },
+ *         {
+ *             exemptedMembers: ["user:joebloggs@hashicorp.com"],
+ *             logType: "DATA_READ",
+ *         },
+ *     ],
+ *     orgId: "1234567890",
+ *     service: "allServices",
+ * });
+ * ```
+ *
  * ## Import
  *
  * IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
