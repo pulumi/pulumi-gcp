@@ -42,12 +42,24 @@ class EnvReferencesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             env_id: pulumi.Input[str],
-             refers: pulumi.Input[str],
-             resource_type: pulumi.Input[str],
+             env_id: Optional[pulumi.Input[str]] = None,
+             refers: Optional[pulumi.Input[str]] = None,
+             resource_type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if env_id is None and 'envId' in kwargs:
+            env_id = kwargs['envId']
+        if env_id is None:
+            raise TypeError("Missing 'env_id' argument")
+        if refers is None:
+            raise TypeError("Missing 'refers' argument")
+        if resource_type is None and 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if resource_type is None:
+            raise TypeError("Missing 'resource_type' argument")
+
         _setter("env_id", env_id)
         _setter("refers", refers)
         _setter("resource_type", resource_type)
@@ -157,7 +169,13 @@ class _EnvReferencesState:
              name: Optional[pulumi.Input[str]] = None,
              refers: Optional[pulumi.Input[str]] = None,
              resource_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if env_id is None and 'envId' in kwargs:
+            env_id = kwargs['envId']
+        if resource_type is None and 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+
         if description is not None:
             _setter("description", description)
         if env_id is not None:

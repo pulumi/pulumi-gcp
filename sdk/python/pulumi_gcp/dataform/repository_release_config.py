@@ -54,7 +54,7 @@ class RepositoryReleaseConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             git_commitish: pulumi.Input[str],
+             git_commitish: Optional[pulumi.Input[str]] = None,
              code_compilation_config: Optional[pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArgs']] = None,
              cron_schedule: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
@@ -62,7 +62,19 @@ class RepositoryReleaseConfigArgs:
              region: Optional[pulumi.Input[str]] = None,
              repository: Optional[pulumi.Input[str]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if git_commitish is None and 'gitCommitish' in kwargs:
+            git_commitish = kwargs['gitCommitish']
+        if git_commitish is None:
+            raise TypeError("Missing 'git_commitish' argument")
+        if code_compilation_config is None and 'codeCompilationConfig' in kwargs:
+            code_compilation_config = kwargs['codeCompilationConfig']
+        if cron_schedule is None and 'cronSchedule' in kwargs:
+            cron_schedule = kwargs['cronSchedule']
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         _setter("git_commitish", git_commitish)
         if code_compilation_config is not None:
             _setter("code_compilation_config", code_compilation_config)
@@ -235,7 +247,19 @@ class _RepositoryReleaseConfigState:
              region: Optional[pulumi.Input[str]] = None,
              repository: Optional[pulumi.Input[str]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if code_compilation_config is None and 'codeCompilationConfig' in kwargs:
+            code_compilation_config = kwargs['codeCompilationConfig']
+        if cron_schedule is None and 'cronSchedule' in kwargs:
+            cron_schedule = kwargs['cronSchedule']
+        if git_commitish is None and 'gitCommitish' in kwargs:
+            git_commitish = kwargs['gitCommitish']
+        if recent_scheduled_release_records is None and 'recentScheduledReleaseRecords' in kwargs:
+            recent_scheduled_release_records = kwargs['recentScheduledReleaseRecords']
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         if code_compilation_config is not None:
             _setter("code_compilation_config", code_compilation_config)
         if cron_schedule is not None:
@@ -386,57 +410,6 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Dataform Repository Release Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
-        secret = gcp.secretmanager.Secret("secret",
-            secret_id="my_secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        secret_version = gcp.secretmanager.SecretVersion("secretVersion",
-            secret=secret.id,
-            secret_data="secret-data",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        repository = gcp.dataform.Repository("repository",
-            region="us-central1",
-            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
-                url=git_repository.url,
-                default_branch="main",
-                authentication_token_secret_version=secret_version.id,
-            ),
-            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArgs(
-                default_database="database",
-                schema_suffix="_suffix",
-                table_prefix="prefix_",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        release = gcp.dataform.RepositoryReleaseConfig("release",
-            project=repository.project,
-            region=repository.region,
-            repository=repository.name,
-            git_commitish="main",
-            cron_schedule="0 7 * * *",
-            time_zone="America/New_York",
-            code_compilation_config=gcp.dataform.RepositoryReleaseConfigCodeCompilationConfigArgs(
-                default_database="gcp-example-project",
-                default_schema="example-dataset",
-                default_location="us-central1",
-                assertion_schema="example-assertion-dataset",
-                database_suffix="",
-                schema_suffix="",
-                table_prefix="",
-                vars={
-                    "var1": "value",
-                },
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -482,57 +455,6 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Dataform Repository Release Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
-        secret = gcp.secretmanager.Secret("secret",
-            secret_id="my_secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        secret_version = gcp.secretmanager.SecretVersion("secretVersion",
-            secret=secret.id,
-            secret_data="secret-data",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        repository = gcp.dataform.Repository("repository",
-            region="us-central1",
-            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
-                url=git_repository.url,
-                default_branch="main",
-                authentication_token_secret_version=secret_version.id,
-            ),
-            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArgs(
-                default_database="database",
-                schema_suffix="_suffix",
-                table_prefix="prefix_",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        release = gcp.dataform.RepositoryReleaseConfig("release",
-            project=repository.project,
-            region=repository.region,
-            repository=repository.name,
-            git_commitish="main",
-            cron_schedule="0 7 * * *",
-            time_zone="America/New_York",
-            code_compilation_config=gcp.dataform.RepositoryReleaseConfigCodeCompilationConfigArgs(
-                default_database="gcp-example-project",
-                default_schema="example-dataset",
-                default_location="us-central1",
-                assertion_schema="example-assertion-dataset",
-                database_suffix="",
-                schema_suffix="",
-                table_prefix="",
-                vars={
-                    "var1": "value",
-                },
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -590,11 +512,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RepositoryReleaseConfigArgs.__new__(RepositoryReleaseConfigArgs)
 
-            if code_compilation_config is not None and not isinstance(code_compilation_config, RepositoryReleaseConfigCodeCompilationConfigArgs):
-                code_compilation_config = code_compilation_config or {}
-                def _setter(key, value):
-                    code_compilation_config[key] = value
-                RepositoryReleaseConfigCodeCompilationConfigArgs._configure(_setter, **code_compilation_config)
+            code_compilation_config = _utilities.configure(code_compilation_config, RepositoryReleaseConfigCodeCompilationConfigArgs, True)
             __props__.__dict__["code_compilation_config"] = code_compilation_config
             __props__.__dict__["cron_schedule"] = cron_schedule
             if git_commitish is None and not opts.urn:

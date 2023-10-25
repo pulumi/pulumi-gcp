@@ -6,18 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for webtypeappengine
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.iap.getWebTypeAppEngineIamPolicy({
- *     project: google_app_engine_application.app.project,
- *     appId: google_app_engine_application.app.app_id,
- * });
- * ```
  */
 export function getWebTypeAppEngineIamPolicy(args: GetWebTypeAppEngineIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetWebTypeAppEngineIamPolicyResult> {
 
@@ -65,18 +53,6 @@ export interface GetWebTypeAppEngineIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for webtypeappengine
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.iap.getWebTypeAppEngineIamPolicy({
- *     project: google_app_engine_application.app.project,
- *     appId: google_app_engine_application.app.app_id,
- * });
- * ```
  */
 export function getWebTypeAppEngineIamPolicyOutput(args: GetWebTypeAppEngineIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebTypeAppEngineIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getWebTypeAppEngineIamPolicy(a, opts))

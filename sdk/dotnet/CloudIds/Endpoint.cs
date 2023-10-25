@@ -17,51 +17,6 @@ namespace Pulumi.Gcp.CloudIds
     /// * [API documentation](https://cloud.google.com/intrusion-detection-system/docs/configuring-ids)
     /// 
     /// ## Example Usage
-    /// ### Cloudids Endpoint
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.Compute.Network("default");
-    /// 
-    ///     var serviceRange = new Gcp.Compute.GlobalAddress("serviceRange", new()
-    ///     {
-    ///         Purpose = "VPC_PEERING",
-    ///         AddressType = "INTERNAL",
-    ///         PrefixLength = 16,
-    ///         Network = @default.Id,
-    ///     });
-    /// 
-    ///     var privateServiceConnection = new Gcp.ServiceNetworking.Connection("privateServiceConnection", new()
-    ///     {
-    ///         Network = @default.Id,
-    ///         Service = "servicenetworking.googleapis.com",
-    ///         ReservedPeeringRanges = new[]
-    ///         {
-    ///             serviceRange.Name,
-    ///         },
-    ///     });
-    /// 
-    ///     var example_endpoint = new Gcp.CloudIds.Endpoint("example-endpoint", new()
-    ///     {
-    ///         Location = "us-central1-f",
-    ///         Network = @default.Id,
-    ///         Severity = "INFORMATIONAL",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             privateServiceConnection,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

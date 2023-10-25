@@ -19,58 +19,6 @@ namespace Pulumi.Gcp.Diagflow
     ///     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
     /// 
     /// ## Example Usage
-    /// ### Dialogflow Entity Type Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var basicAgent = new Gcp.Diagflow.Agent("basicAgent", new()
-    ///     {
-    ///         DisplayName = "example_agent",
-    ///         DefaultLanguageCode = "en",
-    ///         TimeZone = "America/New_York",
-    ///     });
-    /// 
-    ///     var basicEntityType = new Gcp.Diagflow.EntityType("basicEntityType", new()
-    ///     {
-    ///         DisplayName = "",
-    ///         Kind = "KIND_MAP",
-    ///         Entities = new[]
-    ///         {
-    ///             new Gcp.Diagflow.Inputs.EntityTypeEntityArgs
-    ///             {
-    ///                 Value = "value1",
-    ///                 Synonyms = new[]
-    ///                 {
-    ///                     "synonym1",
-    ///                     "synonym2",
-    ///                 },
-    ///             },
-    ///             new Gcp.Diagflow.Inputs.EntityTypeEntityArgs
-    ///             {
-    ///                 Value = "value2",
-    ///                 Synonyms = new[]
-    ///                 {
-    ///                     "synonym3",
-    ///                     "synonym4",
-    ///                 },
-    ///             },
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             basicAgent,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

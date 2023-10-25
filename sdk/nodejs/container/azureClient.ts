@@ -10,19 +10,6 @@ import * as utilities from "../utilities";
  * For more information, see:
  * * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
  * ## Example Usage
- * ### Basic_azure_client
- * A basic example of a containerazure azure client
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const primary = new gcp.container.AzureClient("primary", {
- *     applicationId: "12345678-1234-1234-1234-123456789111",
- *     location: "us-west1",
- *     project: "my-project-name",
- *     tenantId: "12345678-1234-1234-1234-123456789111",
- * });
- * ```
  *
  * ## Import
  *

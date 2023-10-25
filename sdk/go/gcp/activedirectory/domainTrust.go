@@ -26,38 +26,6 @@ import (
 // Read more about sensitive data in state.
 //
 // ## Example Usage
-// ### Active Directory Domain Trust Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/activedirectory"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := activedirectory.NewDomainTrust(ctx, "ad-domain-trust", &activedirectory.DomainTrustArgs{
-//				Domain: pulumi.String("test-managed-ad.com"),
-//				TargetDnsIpAddresses: pulumi.StringArray{
-//					pulumi.String("10.1.0.100"),
-//				},
-//				TargetDomainName:     pulumi.String("example-gcp.com"),
-//				TrustDirection:       pulumi.String("OUTBOUND"),
-//				TrustHandshakeSecret: pulumi.String("Testing1!"),
-//				TrustType:            pulumi.String("FOREST"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

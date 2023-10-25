@@ -49,11 +49,21 @@ class InstanceIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_name: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
+             instance_name: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("instance_name", instance_name)
         _setter("policy_data", policy_data)
         if location is not None:
@@ -170,7 +180,13 @@ class _InstanceIamPolicyState:
              location: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if etag is not None:
             _setter("etag", etag)
         if instance_name is not None:
@@ -282,51 +298,6 @@ class InstanceIamPolicy(pulumi.CustomResource):
 
         > **Note:** `notebooks.InstanceIamBinding` resources **can be** used in conjunction with `notebooks.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_notebooks\\_instance\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.notebooks.InstanceIamPolicy("policy",
-            project=google_notebooks_instance["instance"]["project"],
-            location=google_notebooks_instance["instance"]["location"],
-            instance_name=google_notebooks_instance["instance"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_notebooks\\_instance\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.notebooks.InstanceIamBinding("binding",
-            project=google_notebooks_instance["instance"]["project"],
-            location=google_notebooks_instance["instance"]["location"],
-            instance_name=google_notebooks_instance["instance"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_notebooks\\_instance\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.notebooks.InstanceIamMember("member",
-            project=google_notebooks_instance["instance"]["project"],
-            location=google_notebooks_instance["instance"]["location"],
-            instance_name=google_notebooks_instance["instance"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/instances/{{instance_name}} * {{project}}/{{location}}/{{instance_name}} * {{location}}/{{instance_name}} * {{instance_name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud AI Notebooks instance IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -392,51 +363,6 @@ class InstanceIamPolicy(pulumi.CustomResource):
         > **Note:** `notebooks.InstanceIamPolicy` **cannot** be used in conjunction with `notebooks.InstanceIamBinding` and `notebooks.InstanceIamMember` or they will fight over what your policy should be.
 
         > **Note:** `notebooks.InstanceIamBinding` resources **can be** used in conjunction with `notebooks.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\\_notebooks\\_instance\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.notebooks.InstanceIamPolicy("policy",
-            project=google_notebooks_instance["instance"]["project"],
-            location=google_notebooks_instance["instance"]["location"],
-            instance_name=google_notebooks_instance["instance"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_notebooks\\_instance\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.notebooks.InstanceIamBinding("binding",
-            project=google_notebooks_instance["instance"]["project"],
-            location=google_notebooks_instance["instance"]["location"],
-            instance_name=google_notebooks_instance["instance"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_notebooks\\_instance\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.notebooks.InstanceIamMember("member",
-            project=google_notebooks_instance["instance"]["project"],
-            location=google_notebooks_instance["instance"]["location"],
-            instance_name=google_notebooks_instance["instance"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
 
         ## Import
 

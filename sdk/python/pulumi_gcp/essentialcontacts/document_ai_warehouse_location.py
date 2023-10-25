@@ -51,13 +51,33 @@ class DocumentAiWarehouseLocationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_control_mode: pulumi.Input[str],
-             database_type: pulumi.Input[str],
-             location: pulumi.Input[str],
-             project_number: pulumi.Input[str],
+             access_control_mode: Optional[pulumi.Input[str]] = None,
+             database_type: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             project_number: Optional[pulumi.Input[str]] = None,
              document_creator_default_role: Optional[pulumi.Input[str]] = None,
              kms_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_control_mode is None and 'accessControlMode' in kwargs:
+            access_control_mode = kwargs['accessControlMode']
+        if access_control_mode is None:
+            raise TypeError("Missing 'access_control_mode' argument")
+        if database_type is None and 'databaseType' in kwargs:
+            database_type = kwargs['databaseType']
+        if database_type is None:
+            raise TypeError("Missing 'database_type' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if project_number is None and 'projectNumber' in kwargs:
+            project_number = kwargs['projectNumber']
+        if project_number is None:
+            raise TypeError("Missing 'project_number' argument")
+        if document_creator_default_role is None and 'documentCreatorDefaultRole' in kwargs:
+            document_creator_default_role = kwargs['documentCreatorDefaultRole']
+        if kms_key is None and 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+
         _setter("access_control_mode", access_control_mode)
         _setter("database_type", database_type)
         _setter("location", location)
@@ -196,7 +216,19 @@ class _DocumentAiWarehouseLocationState:
              kms_key: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project_number: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_control_mode is None and 'accessControlMode' in kwargs:
+            access_control_mode = kwargs['accessControlMode']
+        if database_type is None and 'databaseType' in kwargs:
+            database_type = kwargs['databaseType']
+        if document_creator_default_role is None and 'documentCreatorDefaultRole' in kwargs:
+            document_creator_default_role = kwargs['documentCreatorDefaultRole']
+        if kms_key is None and 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+        if project_number is None and 'projectNumber' in kwargs:
+            project_number = kwargs['projectNumber']
+
         if access_control_mode is not None:
             _setter("access_control_mode", access_control_mode)
         if database_type is not None:
@@ -315,21 +347,6 @@ class DocumentAiWarehouseLocation(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/document-warehouse/docs/overview)
 
         ## Example Usage
-        ### Document Ai Warehouse Location
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        example = gcp.essentialcontacts.DocumentAiWarehouseLocation("example",
-            location="us",
-            project_number=project.number,
-            access_control_mode="ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI",
-            database_type="DB_INFRA_SPANNER",
-            kms_key="dummy_key",
-            document_creator_default_role="DOCUMENT_ADMIN")
-        ```
 
         ## Import
 
@@ -370,21 +387,6 @@ class DocumentAiWarehouseLocation(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/document-warehouse/docs/overview)
 
         ## Example Usage
-        ### Document Ai Warehouse Location
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        example = gcp.essentialcontacts.DocumentAiWarehouseLocation("example",
-            location="us",
-            project_number=project.number,
-            access_control_mode="ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI",
-            database_type="DB_INFRA_SPANNER",
-            kms_key="dummy_key",
-            document_creator_default_role="DOCUMENT_ADMIN")
-        ```
 
         ## Import
 

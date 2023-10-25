@@ -56,13 +56,27 @@ class IamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataset_id: pulumi.Input[str],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
-             table_id: pulumi.Input[str],
+             dataset_id: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             table_id: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['IamMemberConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if dataset_id is None:
+            raise TypeError("Missing 'dataset_id' argument")
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if table_id is None and 'tableId' in kwargs:
+            table_id = kwargs['tableId']
+        if table_id is None:
+            raise TypeError("Missing 'table_id' argument")
+
         _setter("dataset_id", dataset_id)
         _setter("member", member)
         _setter("role", role)
@@ -205,7 +219,13 @@ class _IamMemberState:
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              table_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dataset_id is None and 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if table_id is None and 'tableId' in kwargs:
+            table_id = kwargs['tableId']
+
         if condition is not None:
             _setter("condition", condition)
         if dataset_id is not None:
@@ -342,109 +362,6 @@ class IamMember(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_bigquery\\_table\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/bigquery.dataOwner",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.bigquery.IamPolicy("policy",
-            project=google_bigquery_table["test"]["project"],
-            dataset_id=google_bigquery_table["test"]["dataset_id"],
-            table_id=google_bigquery_table["test"]["table_id"],
-            policy_data=admin.policy_data)
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/bigquery.dataOwner",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
-        policy = gcp.bigquery.IamPolicy("policy",
-            project=google_bigquery_table["test"]["project"],
-            dataset_id=google_bigquery_table["test"]["dataset_id"],
-            table_id=google_bigquery_table["test"]["table_id"],
-            policy_data=admin.policy_data)
-        ```
-        ## google\\_bigquery\\_table\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.bigquery.IamBinding("binding",
-            project=google_bigquery_table["test"]["project"],
-            dataset_id=google_bigquery_table["test"]["dataset_id"],
-            table_id=google_bigquery_table["test"]["table_id"],
-            role="roles/bigquery.dataOwner",
-            members=["user:jane@example.com"])
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.bigquery.IamBinding("binding",
-            project=google_bigquery_table["test"]["project"],
-            dataset_id=google_bigquery_table["test"]["dataset_id"],
-            table_id=google_bigquery_table["test"]["table_id"],
-            role="roles/bigquery.dataOwner",
-            members=["user:jane@example.com"],
-            condition=gcp.bigquery.IamBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-        ## google\\_bigquery\\_table\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.bigquery.IamMember("member",
-            project=google_bigquery_table["test"]["project"],
-            dataset_id=google_bigquery_table["test"]["dataset_id"],
-            table_id=google_bigquery_table["test"]["table_id"],
-            role="roles/bigquery.dataOwner",
-            member="user:jane@example.com")
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.bigquery.IamMember("member",
-            project=google_bigquery_table["test"]["project"],
-            dataset_id=google_bigquery_table["test"]["dataset_id"],
-            table_id=google_bigquery_table["test"]["table_id"],
-            role="roles/bigquery.dataOwner",
-            member="user:jane@example.com",
-            condition=gcp.bigquery.IamMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}} * {{project}}/{{dataset_id}}/{{table_id}} * {{dataset_id}}/{{table_id}} * {{table_id}} Any variables not passed in the import command will be taken from the provider configuration. BigQuery table IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -514,109 +431,6 @@ class IamMember(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_bigquery\\_table\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/bigquery.dataOwner",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.bigquery.IamPolicy("policy",
-            project=google_bigquery_table["test"]["project"],
-            dataset_id=google_bigquery_table["test"]["dataset_id"],
-            table_id=google_bigquery_table["test"]["table_id"],
-            policy_data=admin.policy_data)
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/bigquery.dataOwner",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
-        policy = gcp.bigquery.IamPolicy("policy",
-            project=google_bigquery_table["test"]["project"],
-            dataset_id=google_bigquery_table["test"]["dataset_id"],
-            table_id=google_bigquery_table["test"]["table_id"],
-            policy_data=admin.policy_data)
-        ```
-        ## google\\_bigquery\\_table\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.bigquery.IamBinding("binding",
-            project=google_bigquery_table["test"]["project"],
-            dataset_id=google_bigquery_table["test"]["dataset_id"],
-            table_id=google_bigquery_table["test"]["table_id"],
-            role="roles/bigquery.dataOwner",
-            members=["user:jane@example.com"])
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.bigquery.IamBinding("binding",
-            project=google_bigquery_table["test"]["project"],
-            dataset_id=google_bigquery_table["test"]["dataset_id"],
-            table_id=google_bigquery_table["test"]["table_id"],
-            role="roles/bigquery.dataOwner",
-            members=["user:jane@example.com"],
-            condition=gcp.bigquery.IamBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-        ## google\\_bigquery\\_table\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.bigquery.IamMember("member",
-            project=google_bigquery_table["test"]["project"],
-            dataset_id=google_bigquery_table["test"]["dataset_id"],
-            table_id=google_bigquery_table["test"]["table_id"],
-            role="roles/bigquery.dataOwner",
-            member="user:jane@example.com")
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.bigquery.IamMember("member",
-            project=google_bigquery_table["test"]["project"],
-            dataset_id=google_bigquery_table["test"]["dataset_id"],
-            table_id=google_bigquery_table["test"]["table_id"],
-            role="roles/bigquery.dataOwner",
-            member="user:jane@example.com",
-            condition=gcp.bigquery.IamMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}} * {{project}}/{{dataset_id}}/{{table_id}} * {{dataset_id}}/{{table_id}} * {{table_id}} Any variables not passed in the import command will be taken from the provider configuration. BigQuery table IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -675,11 +489,7 @@ class IamMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = IamMemberArgs.__new__(IamMemberArgs)
 
-            if condition is not None and not isinstance(condition, IamMemberConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                IamMemberConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, IamMemberConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")

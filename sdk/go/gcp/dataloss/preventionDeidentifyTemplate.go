@@ -26,60 +26,6 @@ import (
 // Read more about sensitive data in state.
 //
 // ## Example Usage
-// ### Dlp Deidentify Template Image Transformations
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataloss"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataloss.NewPreventionDeidentifyTemplate(ctx, "basic", &dataloss.PreventionDeidentifyTemplateArgs{
-//				DeidentifyConfig: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigArgs{
-//					ImageTransformations: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs{
-//						Transforms: dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArray{
-//							&dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs{
-//								RedactionColor: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgs{
-//									Blue:  pulumi.Float64(1),
-//									Green: pulumi.Float64(0.2),
-//									Red:   pulumi.Float64(0.5),
-//								},
-//								SelectedInfoTypes: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs{
-//									InfoTypes: dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArray{
-//										&dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArgs{
-//											Name:    pulumi.String("COLOR_INFO"),
-//											Version: pulumi.String("latest"),
-//										},
-//									},
-//								},
-//							},
-//							&dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs{
-//								AllInfoTypes: nil,
-//							},
-//							&dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs{
-//								AllText: nil,
-//							},
-//						},
-//					},
-//				},
-//				Description: pulumi.String("Description"),
-//				DisplayName: pulumi.String("Displayname"),
-//				Parent:      pulumi.String("projects/my-project-name"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

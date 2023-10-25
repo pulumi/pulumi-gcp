@@ -42,9 +42,17 @@ class BucketIAMPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             bucket: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("bucket", bucket)
         _setter("policy_data", policy_data)
 
@@ -123,7 +131,11 @@ class _BucketIAMPolicyState:
              bucket: Optional[pulumi.Input[str]] = None,
              etag: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if bucket is not None:
             _setter("bucket", bucket)
         if etag is not None:
@@ -206,97 +218,6 @@ class BucketIAMPolicy(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_storage\\_bucket\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/storage.admin",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.storage.BucketIAMPolicy("policy",
-            bucket=google_storage_bucket["default"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/storage.admin",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
-        policy = gcp.storage.BucketIAMPolicy("policy",
-            bucket=google_storage_bucket["default"]["name"],
-            policy_data=admin.policy_data)
-        ```
-        ## google\\_storage\\_bucket\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.storage.BucketIAMBinding("binding",
-            bucket=google_storage_bucket["default"]["name"],
-            role="roles/storage.admin",
-            members=["user:jane@example.com"])
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.storage.BucketIAMBinding("binding",
-            bucket=google_storage_bucket["default"]["name"],
-            role="roles/storage.admin",
-            members=["user:jane@example.com"],
-            condition=gcp.storage.BucketIAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-        ## google\\_storage\\_bucket\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.storage.BucketIAMMember("member",
-            bucket=google_storage_bucket["default"]["name"],
-            role="roles/storage.admin",
-            member="user:jane@example.com")
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.storage.BucketIAMMember("member",
-            bucket=google_storage_bucket["default"]["name"],
-            role="roles/storage.admin",
-            member="user:jane@example.com",
-            condition=gcp.storage.BucketIAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* b/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Storage bucket IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -361,97 +282,6 @@ class BucketIAMPolicy(pulumi.CustomResource):
         > **Note:** `storage.BucketIAMBinding` resources **can be** used in conjunction with `storage.BucketIAMMember` resources **only if** they do not grant privilege to the same role.
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
-
-        ## google\\_storage\\_bucket\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/storage.admin",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.storage.BucketIAMPolicy("policy",
-            bucket=google_storage_bucket["default"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/storage.admin",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
-        policy = gcp.storage.BucketIAMPolicy("policy",
-            bucket=google_storage_bucket["default"]["name"],
-            policy_data=admin.policy_data)
-        ```
-        ## google\\_storage\\_bucket\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.storage.BucketIAMBinding("binding",
-            bucket=google_storage_bucket["default"]["name"],
-            role="roles/storage.admin",
-            members=["user:jane@example.com"])
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.storage.BucketIAMBinding("binding",
-            bucket=google_storage_bucket["default"]["name"],
-            role="roles/storage.admin",
-            members=["user:jane@example.com"],
-            condition=gcp.storage.BucketIAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-        ## google\\_storage\\_bucket\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.storage.BucketIAMMember("member",
-            bucket=google_storage_bucket["default"]["name"],
-            role="roles/storage.admin",
-            member="user:jane@example.com")
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.storage.BucketIAMMember("member",
-            bucket=google_storage_bucket["default"]["name"],
-            role="roles/storage.admin",
-            member="user:jane@example.com",
-            condition=gcp.storage.BucketIAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
 
         ## Import
 

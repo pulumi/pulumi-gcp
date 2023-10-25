@@ -17,34 +17,6 @@ import (
 // * [API documentation](https://cloud.google.com/build/docs/api/reference/rest/v1/projects.triggers)
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudbuild.LookupTrigger(ctx, &cloudbuild.LookupTriggerArgs{
-//				Project:   pulumi.StringRef("your-project-id"),
-//				TriggerId: google_cloudbuild_trigger.FilenameTrigger.Trigger_id,
-//				Location:  "location of trigger build",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupTrigger(ctx *pulumi.Context, args *LookupTriggerArgs, opts ...pulumi.InvokeOption) (*LookupTriggerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTriggerResult

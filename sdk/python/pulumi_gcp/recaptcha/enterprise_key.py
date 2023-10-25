@@ -50,14 +50,28 @@ class EnterpriseKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              android_settings: Optional[pulumi.Input['EnterpriseKeyAndroidSettingsArgs']] = None,
              ios_settings: Optional[pulumi.Input['EnterpriseKeyIosSettingsArgs']] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              testing_options: Optional[pulumi.Input['EnterpriseKeyTestingOptionsArgs']] = None,
              web_settings: Optional[pulumi.Input['EnterpriseKeyWebSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if android_settings is None and 'androidSettings' in kwargs:
+            android_settings = kwargs['androidSettings']
+        if ios_settings is None and 'iosSettings' in kwargs:
+            ios_settings = kwargs['iosSettings']
+        if testing_options is None and 'testingOptions' in kwargs:
+            testing_options = kwargs['testingOptions']
+        if web_settings is None and 'webSettings' in kwargs:
+            web_settings = kwargs['webSettings']
+
         _setter("display_name", display_name)
         if android_settings is not None:
             _setter("android_settings", android_settings)
@@ -213,7 +227,21 @@ class _EnterpriseKeyState:
              project: Optional[pulumi.Input[str]] = None,
              testing_options: Optional[pulumi.Input['EnterpriseKeyTestingOptionsArgs']] = None,
              web_settings: Optional[pulumi.Input['EnterpriseKeyWebSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if android_settings is None and 'androidSettings' in kwargs:
+            android_settings = kwargs['androidSettings']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if ios_settings is None and 'iosSettings' in kwargs:
+            ios_settings = kwargs['iosSettings']
+        if testing_options is None and 'testingOptions' in kwargs:
+            testing_options = kwargs['testingOptions']
+        if web_settings is None and 'webSettings' in kwargs:
+            web_settings = kwargs['webSettings']
+
         if android_settings is not None:
             _setter("android_settings", android_settings)
         if create_time is not None:
@@ -363,106 +391,6 @@ class EnterpriseKey(pulumi.CustomResource):
         The RecaptchaEnterprise Key resource
 
         ## Example Usage
-        ### Android_key
-        A basic test of recaptcha enterprise key that can be used by Android apps
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.recaptcha.EnterpriseKey("primary",
-            android_settings=gcp.recaptcha.EnterpriseKeyAndroidSettingsArgs(
-                allow_all_package_names=True,
-                allowed_package_names=[],
-            ),
-            display_name="display-name-one",
-            labels={
-                "label-one": "value-one",
-            },
-            project="my-project-name",
-            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
-                testing_score=0.8,
-            ))
-        ```
-        ### Ios_key
-        A basic test of recaptcha enterprise key that can be used by iOS apps
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.recaptcha.EnterpriseKey("primary",
-            display_name="display-name-one",
-            ios_settings=gcp.recaptcha.EnterpriseKeyIosSettingsArgs(
-                allow_all_bundle_ids=True,
-                allowed_bundle_ids=[],
-            ),
-            labels={
-                "label-one": "value-one",
-            },
-            project="my-project-name",
-            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
-                testing_score=1,
-            ))
-        ```
-        ### Minimal_key
-        A minimal test of recaptcha enterprise key
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.recaptcha.EnterpriseKey("primary",
-            display_name="display-name-one",
-            labels={},
-            project="my-project-name",
-            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
-                allow_all_domains=True,
-                integration_type="SCORE",
-            ))
-        ```
-        ### Web_key
-        A basic test of recaptcha enterprise key that can be used by websites
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.recaptcha.EnterpriseKey("primary",
-            display_name="display-name-one",
-            labels={
-                "label-one": "value-one",
-            },
-            project="my-project-name",
-            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
-                testing_challenge="NOCAPTCHA",
-                testing_score=0.5,
-            ),
-            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
-                allow_all_domains=True,
-                allowed_domains=[],
-                challenge_security_preference="USABILITY",
-                integration_type="CHECKBOX",
-            ))
-        ```
-        ### Web_score_key
-        A basic test of recaptcha enterprise key with score integration type that can be used by websites
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.recaptcha.EnterpriseKey("primary",
-            display_name="display-name-one",
-            labels={
-                "label-one": "value-one",
-            },
-            project="my-project-name",
-            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
-                testing_score=0.5,
-            ),
-            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
-                allow_all_domains=True,
-                allow_amp_traffic=False,
-                allowed_domains=[],
-                integration_type="SCORE",
-            ))
-        ```
 
         ## Import
 
@@ -504,106 +432,6 @@ class EnterpriseKey(pulumi.CustomResource):
         The RecaptchaEnterprise Key resource
 
         ## Example Usage
-        ### Android_key
-        A basic test of recaptcha enterprise key that can be used by Android apps
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.recaptcha.EnterpriseKey("primary",
-            android_settings=gcp.recaptcha.EnterpriseKeyAndroidSettingsArgs(
-                allow_all_package_names=True,
-                allowed_package_names=[],
-            ),
-            display_name="display-name-one",
-            labels={
-                "label-one": "value-one",
-            },
-            project="my-project-name",
-            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
-                testing_score=0.8,
-            ))
-        ```
-        ### Ios_key
-        A basic test of recaptcha enterprise key that can be used by iOS apps
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.recaptcha.EnterpriseKey("primary",
-            display_name="display-name-one",
-            ios_settings=gcp.recaptcha.EnterpriseKeyIosSettingsArgs(
-                allow_all_bundle_ids=True,
-                allowed_bundle_ids=[],
-            ),
-            labels={
-                "label-one": "value-one",
-            },
-            project="my-project-name",
-            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
-                testing_score=1,
-            ))
-        ```
-        ### Minimal_key
-        A minimal test of recaptcha enterprise key
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.recaptcha.EnterpriseKey("primary",
-            display_name="display-name-one",
-            labels={},
-            project="my-project-name",
-            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
-                allow_all_domains=True,
-                integration_type="SCORE",
-            ))
-        ```
-        ### Web_key
-        A basic test of recaptcha enterprise key that can be used by websites
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.recaptcha.EnterpriseKey("primary",
-            display_name="display-name-one",
-            labels={
-                "label-one": "value-one",
-            },
-            project="my-project-name",
-            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
-                testing_challenge="NOCAPTCHA",
-                testing_score=0.5,
-            ),
-            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
-                allow_all_domains=True,
-                allowed_domains=[],
-                challenge_security_preference="USABILITY",
-                integration_type="CHECKBOX",
-            ))
-        ```
-        ### Web_score_key
-        A basic test of recaptcha enterprise key with score integration type that can be used by websites
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.recaptcha.EnterpriseKey("primary",
-            display_name="display-name-one",
-            labels={
-                "label-one": "value-one",
-            },
-            project="my-project-name",
-            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
-                testing_score=0.5,
-            ),
-            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
-                allow_all_domains=True,
-                allow_amp_traffic=False,
-                allowed_domains=[],
-                integration_type="SCORE",
-            ))
-        ```
 
         ## Import
 
@@ -656,34 +484,18 @@ class EnterpriseKey(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EnterpriseKeyArgs.__new__(EnterpriseKeyArgs)
 
-            if android_settings is not None and not isinstance(android_settings, EnterpriseKeyAndroidSettingsArgs):
-                android_settings = android_settings or {}
-                def _setter(key, value):
-                    android_settings[key] = value
-                EnterpriseKeyAndroidSettingsArgs._configure(_setter, **android_settings)
+            android_settings = _utilities.configure(android_settings, EnterpriseKeyAndroidSettingsArgs, True)
             __props__.__dict__["android_settings"] = android_settings
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
-            if ios_settings is not None and not isinstance(ios_settings, EnterpriseKeyIosSettingsArgs):
-                ios_settings = ios_settings or {}
-                def _setter(key, value):
-                    ios_settings[key] = value
-                EnterpriseKeyIosSettingsArgs._configure(_setter, **ios_settings)
+            ios_settings = _utilities.configure(ios_settings, EnterpriseKeyIosSettingsArgs, True)
             __props__.__dict__["ios_settings"] = ios_settings
             __props__.__dict__["labels"] = labels
             __props__.__dict__["project"] = project
-            if testing_options is not None and not isinstance(testing_options, EnterpriseKeyTestingOptionsArgs):
-                testing_options = testing_options or {}
-                def _setter(key, value):
-                    testing_options[key] = value
-                EnterpriseKeyTestingOptionsArgs._configure(_setter, **testing_options)
+            testing_options = _utilities.configure(testing_options, EnterpriseKeyTestingOptionsArgs, True)
             __props__.__dict__["testing_options"] = testing_options
-            if web_settings is not None and not isinstance(web_settings, EnterpriseKeyWebSettingsArgs):
-                web_settings = web_settings or {}
-                def _setter(key, value):
-                    web_settings[key] = value
-                EnterpriseKeyWebSettingsArgs._configure(_setter, **web_settings)
+            web_settings = _utilities.configure(web_settings, EnterpriseKeyWebSettingsArgs, True)
             __props__.__dict__["web_settings"] = web_settings
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None

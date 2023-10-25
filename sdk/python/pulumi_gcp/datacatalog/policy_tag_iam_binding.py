@@ -49,11 +49,21 @@ class PolicyTagIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             policy_tag: pulumi.Input[str],
-             role: pulumi.Input[str],
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             policy_tag: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['PolicyTagIamBindingConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if policy_tag is None and 'policyTag' in kwargs:
+            policy_tag = kwargs['policyTag']
+        if policy_tag is None:
+            raise TypeError("Missing 'policy_tag' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("members", members)
         _setter("policy_tag", policy_tag)
         _setter("role", role)
@@ -161,7 +171,11 @@ class _PolicyTagIamBindingState:
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              policy_tag: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if policy_tag is None and 'policyTag' in kwargs:
+            policy_tag = kwargs['policyTag']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -267,45 +281,6 @@ class PolicyTagIamBinding(pulumi.CustomResource):
 
         > **Note:** `datacatalog.PolicyTagIamBinding` resources **can be** used in conjunction with `datacatalog.PolicyTagIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_data\\_catalog\\_policy\\_tag\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.datacatalog.PolicyTagIamPolicy("policy",
-            policy_tag=google_data_catalog_policy_tag["basic_policy_tag"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_data\\_catalog\\_policy\\_tag\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.datacatalog.PolicyTagIamBinding("binding",
-            policy_tag=google_data_catalog_policy_tag["basic_policy_tag"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_data\\_catalog\\_policy\\_tag\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.datacatalog.PolicyTagIamMember("member",
-            policy_tag=google_data_catalog_policy_tag["basic_policy_tag"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* {{policy_tag}} Any variables not passed in the import command will be taken from the provider configuration. Data catalog policytag IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -370,45 +345,6 @@ class PolicyTagIamBinding(pulumi.CustomResource):
 
         > **Note:** `datacatalog.PolicyTagIamBinding` resources **can be** used in conjunction with `datacatalog.PolicyTagIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_data\\_catalog\\_policy\\_tag\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.datacatalog.PolicyTagIamPolicy("policy",
-            policy_tag=google_data_catalog_policy_tag["basic_policy_tag"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_data\\_catalog\\_policy\\_tag\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.datacatalog.PolicyTagIamBinding("binding",
-            policy_tag=google_data_catalog_policy_tag["basic_policy_tag"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_data\\_catalog\\_policy\\_tag\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.datacatalog.PolicyTagIamMember("member",
-            policy_tag=google_data_catalog_policy_tag["basic_policy_tag"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* {{policy_tag}} Any variables not passed in the import command will be taken from the provider configuration. Data catalog policytag IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -465,11 +401,7 @@ class PolicyTagIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PolicyTagIamBindingArgs.__new__(PolicyTagIamBindingArgs)
 
-            if condition is not None and not isinstance(condition, PolicyTagIamBindingConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                PolicyTagIamBindingConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, PolicyTagIamBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")

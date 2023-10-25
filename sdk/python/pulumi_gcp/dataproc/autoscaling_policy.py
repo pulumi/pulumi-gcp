@@ -53,13 +53,25 @@ class AutoscalingPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy_id: pulumi.Input[str],
+             policy_id: Optional[pulumi.Input[str]] = None,
              basic_algorithm: Optional[pulumi.Input['AutoscalingPolicyBasicAlgorithmArgs']] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              secondary_worker_config: Optional[pulumi.Input['AutoscalingPolicySecondaryWorkerConfigArgs']] = None,
              worker_config: Optional[pulumi.Input['AutoscalingPolicyWorkerConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if policy_id is None:
+            raise TypeError("Missing 'policy_id' argument")
+        if basic_algorithm is None and 'basicAlgorithm' in kwargs:
+            basic_algorithm = kwargs['basicAlgorithm']
+        if secondary_worker_config is None and 'secondaryWorkerConfig' in kwargs:
+            secondary_worker_config = kwargs['secondaryWorkerConfig']
+        if worker_config is None and 'workerConfig' in kwargs:
+            worker_config = kwargs['workerConfig']
+
         _setter("policy_id", policy_id)
         if basic_algorithm is not None:
             _setter("basic_algorithm", basic_algorithm)
@@ -205,7 +217,17 @@ class _AutoscalingPolicyState:
              project: Optional[pulumi.Input[str]] = None,
              secondary_worker_config: Optional[pulumi.Input['AutoscalingPolicySecondaryWorkerConfigArgs']] = None,
              worker_config: Optional[pulumi.Input['AutoscalingPolicyWorkerConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if basic_algorithm is None and 'basicAlgorithm' in kwargs:
+            basic_algorithm = kwargs['basicAlgorithm']
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if secondary_worker_config is None and 'secondaryWorkerConfig' in kwargs:
+            secondary_worker_config = kwargs['secondaryWorkerConfig']
+        if worker_config is None and 'workerConfig' in kwargs:
+            worker_config = kwargs['workerConfig']
+
         if basic_algorithm is not None:
             _setter("basic_algorithm", basic_algorithm)
         if location is not None:
@@ -332,33 +354,6 @@ class AutoscalingPolicy(pulumi.CustomResource):
         Describes an autoscaling policy for Dataproc cluster autoscaler.
 
         ## Example Usage
-        ### Dataproc Autoscaling Policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        asp = gcp.dataproc.AutoscalingPolicy("asp",
-            policy_id="dataproc-policy",
-            location="us-central1",
-            worker_config=gcp.dataproc.AutoscalingPolicyWorkerConfigArgs(
-                max_instances=3,
-            ),
-            basic_algorithm=gcp.dataproc.AutoscalingPolicyBasicAlgorithmArgs(
-                yarn_config=gcp.dataproc.AutoscalingPolicyBasicAlgorithmYarnConfigArgs(
-                    graceful_decommission_timeout="30s",
-                    scale_up_factor=0.5,
-                    scale_down_factor=0.5,
-                ),
-            ))
-        basic = gcp.dataproc.Cluster("basic",
-            region="us-central1",
-            cluster_config=gcp.dataproc.ClusterClusterConfigArgs(
-                autoscaling_config=gcp.dataproc.ClusterClusterConfigAutoscalingConfigArgs(
-                    policy_uri=asp.name,
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -405,33 +400,6 @@ class AutoscalingPolicy(pulumi.CustomResource):
         Describes an autoscaling policy for Dataproc cluster autoscaler.
 
         ## Example Usage
-        ### Dataproc Autoscaling Policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        asp = gcp.dataproc.AutoscalingPolicy("asp",
-            policy_id="dataproc-policy",
-            location="us-central1",
-            worker_config=gcp.dataproc.AutoscalingPolicyWorkerConfigArgs(
-                max_instances=3,
-            ),
-            basic_algorithm=gcp.dataproc.AutoscalingPolicyBasicAlgorithmArgs(
-                yarn_config=gcp.dataproc.AutoscalingPolicyBasicAlgorithmYarnConfigArgs(
-                    graceful_decommission_timeout="30s",
-                    scale_up_factor=0.5,
-                    scale_down_factor=0.5,
-                ),
-            ))
-        basic = gcp.dataproc.Cluster("basic",
-            region="us-central1",
-            cluster_config=gcp.dataproc.ClusterClusterConfigArgs(
-                autoscaling_config=gcp.dataproc.ClusterClusterConfigAutoscalingConfigArgs(
-                    policy_uri=asp.name,
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -483,28 +451,16 @@ class AutoscalingPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AutoscalingPolicyArgs.__new__(AutoscalingPolicyArgs)
 
-            if basic_algorithm is not None and not isinstance(basic_algorithm, AutoscalingPolicyBasicAlgorithmArgs):
-                basic_algorithm = basic_algorithm or {}
-                def _setter(key, value):
-                    basic_algorithm[key] = value
-                AutoscalingPolicyBasicAlgorithmArgs._configure(_setter, **basic_algorithm)
+            basic_algorithm = _utilities.configure(basic_algorithm, AutoscalingPolicyBasicAlgorithmArgs, True)
             __props__.__dict__["basic_algorithm"] = basic_algorithm
             __props__.__dict__["location"] = location
             if policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_id'")
             __props__.__dict__["policy_id"] = policy_id
             __props__.__dict__["project"] = project
-            if secondary_worker_config is not None and not isinstance(secondary_worker_config, AutoscalingPolicySecondaryWorkerConfigArgs):
-                secondary_worker_config = secondary_worker_config or {}
-                def _setter(key, value):
-                    secondary_worker_config[key] = value
-                AutoscalingPolicySecondaryWorkerConfigArgs._configure(_setter, **secondary_worker_config)
+            secondary_worker_config = _utilities.configure(secondary_worker_config, AutoscalingPolicySecondaryWorkerConfigArgs, True)
             __props__.__dict__["secondary_worker_config"] = secondary_worker_config
-            if worker_config is not None and not isinstance(worker_config, AutoscalingPolicyWorkerConfigArgs):
-                worker_config = worker_config or {}
-                def _setter(key, value):
-                    worker_config[key] = value
-                AutoscalingPolicyWorkerConfigArgs._configure(_setter, **worker_config)
+            worker_config = _utilities.configure(worker_config, AutoscalingPolicyWorkerConfigArgs, True)
             __props__.__dict__["worker_config"] = worker_config
             __props__.__dict__["name"] = None
         super(AutoscalingPolicy, __self__).__init__(

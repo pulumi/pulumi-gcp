@@ -8,22 +8,6 @@ import * as utilities from "../utilities";
  * The default version for the processor. Deleting this resource is a no-op, and does not unset the default version.
  *
  * ## Example Usage
- * ### Documentai Default Version
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const processorDocumentAiProcessor = new gcp.essentialcontacts.DocumentAiProcessor("processorDocumentAiProcessor", {
- *     location: "us",
- *     displayName: "test-processor",
- *     type: "OCR_PROCESSOR",
- * });
- * const processorDocumentAiProcessorDefaultVersion = new gcp.essentialcontacts.DocumentAiProcessorDefaultVersion("processorDocumentAiProcessorDefaultVersion", {
- *     processor: processorDocumentAiProcessor.id,
- *     version: pulumi.interpolate`${processorDocumentAiProcessor.id}/processorVersions/stable`,
- * });
- * ```
  *
  * ## Import
  *

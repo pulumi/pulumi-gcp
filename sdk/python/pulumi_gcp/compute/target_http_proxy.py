@@ -58,13 +58,23 @@ class TargetHttpProxyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             url_map: pulumi.Input[str],
+             url_map: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              http_keep_alive_timeout_sec: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              proxy_bind: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if url_map is None and 'urlMap' in kwargs:
+            url_map = kwargs['urlMap']
+        if url_map is None:
+            raise TypeError("Missing 'url_map' argument")
+        if http_keep_alive_timeout_sec is None and 'httpKeepAliveTimeoutSec' in kwargs:
+            http_keep_alive_timeout_sec = kwargs['httpKeepAliveTimeoutSec']
+        if proxy_bind is None and 'proxyBind' in kwargs:
+            proxy_bind = kwargs['proxyBind']
+
         _setter("url_map", url_map)
         if description is not None:
             _setter("description", description)
@@ -232,7 +242,21 @@ class _TargetHttpProxyState:
              proxy_id: Optional[pulumi.Input[int]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              url_map: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if http_keep_alive_timeout_sec is None and 'httpKeepAliveTimeoutSec' in kwargs:
+            http_keep_alive_timeout_sec = kwargs['httpKeepAliveTimeoutSec']
+        if proxy_bind is None and 'proxyBind' in kwargs:
+            proxy_bind = kwargs['proxyBind']
+        if proxy_id is None and 'proxyId' in kwargs:
+            proxy_id = kwargs['proxyId']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if url_map is None and 'urlMap' in kwargs:
+            url_map = kwargs['urlMap']
+
         if creation_timestamp is not None:
             _setter("creation_timestamp", creation_timestamp)
         if description is not None:
@@ -401,18 +425,6 @@ class TargetHttpProxy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
         ## Example Usage
-        ### Target Http Proxy Https Redirect
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_url_map = gcp.compute.URLMap("defaultURLMap", default_url_redirect=gcp.compute.URLMapDefaultUrlRedirectArgs(
-            https_redirect=True,
-            strip_query=False,
-        ))
-        default_target_http_proxy = gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", url_map=default_url_map.id)
-        ```
 
         ## Import
 
@@ -473,18 +485,6 @@ class TargetHttpProxy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
         ## Example Usage
-        ### Target Http Proxy Https Redirect
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_url_map = gcp.compute.URLMap("defaultURLMap", default_url_redirect=gcp.compute.URLMapDefaultUrlRedirectArgs(
-            https_redirect=True,
-            strip_query=False,
-        ))
-        default_target_http_proxy = gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", url_map=default_url_map.id)
-        ```
 
         ## Import
 

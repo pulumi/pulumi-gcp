@@ -6,17 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for service
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.endpoints.getServiceIamPolicy({
- *     serviceName: google_endpoints_service.endpoints_service.service_name,
- * });
- * ```
  */
 export function getServiceIamPolicy(args: GetServiceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceIamPolicyResult> {
 
@@ -54,17 +43,6 @@ export interface GetServiceIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for service
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.endpoints.getServiceIamPolicy({
- *     serviceName: google_endpoints_service.endpoints_service.service_name,
- * });
- * ```
  */
 export function getServiceIamPolicyOutput(args: GetServiceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getServiceIamPolicy(a, opts))

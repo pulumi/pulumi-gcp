@@ -33,9 +33,15 @@ class ProjectDefaultNetworkTierArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network_tier: pulumi.Input[str],
+             network_tier: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if network_tier is None and 'networkTier' in kwargs:
+            network_tier = kwargs['networkTier']
+        if network_tier is None:
+            raise TypeError("Missing 'network_tier' argument")
+
         _setter("network_tier", network_tier)
         if project is not None:
             _setter("project", project)
@@ -93,7 +99,11 @@ class _ProjectDefaultNetworkTierState:
              _setter: Callable[[Any, Any], None],
              network_tier: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if network_tier is None and 'networkTier' in kwargs:
+            network_tier = kwargs['networkTier']
+
         if network_tier is not None:
             _setter("network_tier", network_tier)
         if project is not None:
@@ -144,15 +154,6 @@ class ProjectDefaultNetworkTier(pulumi.CustomResource):
         For more information, see,
         [the Project API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/projects/setDefaultNetworkTier).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.ProjectDefaultNetworkTier("default", network_tier="PREMIUM")
-        ```
-
         ## Import
 
         This resource can be imported using the project ID
@@ -183,15 +184,6 @@ class ProjectDefaultNetworkTier(pulumi.CustomResource):
 
         For more information, see,
         [the Project API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/projects/setDefaultNetworkTier).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.ProjectDefaultNetworkTier("default", network_tier="PREMIUM")
-        ```
 
         ## Import
 

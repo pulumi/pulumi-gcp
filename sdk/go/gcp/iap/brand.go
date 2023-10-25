@@ -14,49 +14,6 @@ import (
 )
 
 // ## Example Usage
-// ### Iap Brand
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("my-project"),
-//				OrgId:     pulumi.String("123456789"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			projectService, err := projects.NewService(ctx, "projectService", &projects.ServiceArgs{
-//				Project: project.ProjectId,
-//				Service: pulumi.String("iap.googleapis.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iap.NewBrand(ctx, "projectBrand", &iap.BrandArgs{
-//				SupportEmail:     pulumi.String("support@example.com"),
-//				ApplicationTitle: pulumi.String("Cloud IAP protected Application"),
-//				Project:          projectService.Project,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

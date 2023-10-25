@@ -38,10 +38,16 @@ class AccountIamBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -78,10 +84,16 @@ class AccountIamMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -164,7 +176,17 @@ class BudgetAllUpdatesRule(dict):
              monitoring_notification_channels: Optional[Sequence[str]] = None,
              pubsub_topic: Optional[str] = None,
              schema_version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if disable_default_iam_recipients is None and 'disableDefaultIamRecipients' in kwargs:
+            disable_default_iam_recipients = kwargs['disableDefaultIamRecipients']
+        if monitoring_notification_channels is None and 'monitoringNotificationChannels' in kwargs:
+            monitoring_notification_channels = kwargs['monitoringNotificationChannels']
+        if pubsub_topic is None and 'pubsubTopic' in kwargs:
+            pubsub_topic = kwargs['pubsubTopic']
+        if schema_version is None and 'schemaVersion' in kwargs:
+            schema_version = kwargs['schemaVersion']
+
         if disable_default_iam_recipients is not None:
             _setter("disable_default_iam_recipients", disable_default_iam_recipients)
         if monitoring_notification_channels is not None:
@@ -262,7 +284,13 @@ class BudgetAmount(dict):
              _setter: Callable[[Any, Any], None],
              last_period_amount: Optional[bool] = None,
              specified_amount: Optional['outputs.BudgetAmountSpecifiedAmount'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if last_period_amount is None and 'lastPeriodAmount' in kwargs:
+            last_period_amount = kwargs['lastPeriodAmount']
+        if specified_amount is None and 'specifiedAmount' in kwargs:
+            specified_amount = kwargs['specifiedAmount']
+
         if last_period_amount is not None:
             _setter("last_period_amount", last_period_amount)
         if specified_amount is not None:
@@ -340,7 +368,11 @@ class BudgetAmountSpecifiedAmount(dict):
              currency_code: Optional[str] = None,
              nanos: Optional[int] = None,
              units: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if currency_code is None and 'currencyCode' in kwargs:
+            currency_code = kwargs['currencyCode']
+
         if currency_code is not None:
             _setter("currency_code", currency_code)
         if nanos is not None:
@@ -486,7 +518,19 @@ class BudgetBudgetFilter(dict):
              resource_ancestors: Optional[Sequence[str]] = None,
              services: Optional[Sequence[str]] = None,
              subaccounts: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if calendar_period is None and 'calendarPeriod' in kwargs:
+            calendar_period = kwargs['calendarPeriod']
+        if credit_types is None and 'creditTypes' in kwargs:
+            credit_types = kwargs['creditTypes']
+        if credit_types_treatment is None and 'creditTypesTreatment' in kwargs:
+            credit_types_treatment = kwargs['creditTypesTreatment']
+        if custom_period is None and 'customPeriod' in kwargs:
+            custom_period = kwargs['customPeriod']
+        if resource_ancestors is None and 'resourceAncestors' in kwargs:
+            resource_ancestors = kwargs['resourceAncestors']
+
         if calendar_period is not None:
             _setter("calendar_period", calendar_period)
         if credit_types is not None:
@@ -650,9 +694,17 @@ class BudgetBudgetFilterCustomPeriod(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             start_date: 'outputs.BudgetBudgetFilterCustomPeriodStartDate',
+             start_date: Optional['outputs.BudgetBudgetFilterCustomPeriodStartDate'] = None,
              end_date: Optional['outputs.BudgetBudgetFilterCustomPeriodEndDate'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if start_date is None and 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+        if start_date is None:
+            raise TypeError("Missing 'start_date' argument")
+        if end_date is None and 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+
         _setter("start_date", start_date)
         if end_date is not None:
             _setter("end_date", end_date)
@@ -697,10 +749,18 @@ class BudgetBudgetFilterCustomPeriodEndDate(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             day: int,
-             month: int,
-             year: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             day: Optional[int] = None,
+             month: Optional[int] = None,
+             year: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if day is None:
+            raise TypeError("Missing 'day' argument")
+        if month is None:
+            raise TypeError("Missing 'month' argument")
+        if year is None:
+            raise TypeError("Missing 'year' argument")
+
         _setter("day", day)
         _setter("month", month)
         _setter("year", year)
@@ -750,10 +810,18 @@ class BudgetBudgetFilterCustomPeriodStartDate(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             day: int,
-             month: int,
-             year: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             day: Optional[int] = None,
+             month: Optional[int] = None,
+             year: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if day is None:
+            raise TypeError("Missing 'day' argument")
+        if month is None:
+            raise TypeError("Missing 'month' argument")
+        if year is None:
+            raise TypeError("Missing 'year' argument")
+
         _setter("day", day)
         _setter("month", month)
         _setter("year", year)
@@ -823,9 +891,17 @@ class BudgetThresholdRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             threshold_percent: float,
+             threshold_percent: Optional[float] = None,
              spend_basis: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if threshold_percent is None and 'thresholdPercent' in kwargs:
+            threshold_percent = kwargs['thresholdPercent']
+        if threshold_percent is None:
+            raise TypeError("Missing 'threshold_percent' argument")
+        if spend_basis is None and 'spendBasis' in kwargs:
+            spend_basis = kwargs['spendBasis']
+
         _setter("threshold_percent", threshold_percent)
         if spend_basis is not None:
             _setter("spend_basis", spend_basis)

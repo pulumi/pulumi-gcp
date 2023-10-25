@@ -6,19 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides access to available platform versions in a location for a given project.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const uswest = gcp.container.getAttachedVersions({
- *     location: "us-west1",
- *     project: "my-project",
- * });
- * export const firstAvailableVersion = data.google_container_attached_versions.versions.valid_versions[0];
- * ```
  */
 export function getAttachedVersions(args: GetAttachedVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetAttachedVersionsResult> {
 
@@ -61,19 +48,6 @@ export interface GetAttachedVersionsResult {
 }
 /**
  * Provides access to available platform versions in a location for a given project.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const uswest = gcp.container.getAttachedVersions({
- *     location: "us-west1",
- *     project: "my-project",
- * });
- * export const firstAvailableVersion = data.google_container_attached_versions.versions.valid_versions[0];
- * ```
  */
 export function getAttachedVersionsOutput(args: GetAttachedVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttachedVersionsResult> {
     return pulumi.output(args).apply((a: any) => getAttachedVersions(a, opts))

@@ -53,12 +53,20 @@ class NoteIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             member: pulumi.Input[str],
-             note: pulumi.Input[str],
-             role: pulumi.Input[str],
+             member: Optional[pulumi.Input[str]] = None,
+             note: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['NoteIamMemberConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if note is None:
+            raise TypeError("Missing 'note' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("member", member)
         _setter("note", note)
         _setter("role", role)
@@ -186,7 +194,9 @@ class _NoteIamMemberState:
              note: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -308,48 +318,6 @@ class NoteIamMember(pulumi.CustomResource):
 
         > **Note:** `containeranalysis.NoteIamBinding` resources **can be** used in conjunction with `containeranalysis.NoteIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_container\\_analysis\\_note\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/containeranalysis.notes.occurrences.viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.containeranalysis.NoteIamPolicy("policy",
-            project=google_container_analysis_note["note"]["project"],
-            note=google_container_analysis_note["note"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_container\\_analysis\\_note\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.containeranalysis.NoteIamBinding("binding",
-            project=google_container_analysis_note["note"]["project"],
-            note=google_container_analysis_note["note"]["name"],
-            role="roles/containeranalysis.notes.occurrences.viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_container\\_analysis\\_note\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.containeranalysis.NoteIamMember("member",
-            project=google_container_analysis_note["note"]["project"],
-            note=google_container_analysis_note["note"]["name"],
-            role="roles/containeranalysis.notes.occurrences.viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/notes/{{name}} * {{project}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Container Registry note IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -416,48 +384,6 @@ class NoteIamMember(pulumi.CustomResource):
 
         > **Note:** `containeranalysis.NoteIamBinding` resources **can be** used in conjunction with `containeranalysis.NoteIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_container\\_analysis\\_note\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/containeranalysis.notes.occurrences.viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.containeranalysis.NoteIamPolicy("policy",
-            project=google_container_analysis_note["note"]["project"],
-            note=google_container_analysis_note["note"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_container\\_analysis\\_note\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.containeranalysis.NoteIamBinding("binding",
-            project=google_container_analysis_note["note"]["project"],
-            note=google_container_analysis_note["note"]["name"],
-            role="roles/containeranalysis.notes.occurrences.viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_container\\_analysis\\_note\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.containeranalysis.NoteIamMember("member",
-            project=google_container_analysis_note["note"]["project"],
-            note=google_container_analysis_note["note"]["name"],
-            role="roles/containeranalysis.notes.occurrences.viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/notes/{{name}} * {{project}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Container Registry note IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -515,11 +441,7 @@ class NoteIamMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NoteIamMemberArgs.__new__(NoteIamMemberArgs)
 
-            if condition is not None and not isinstance(condition, NoteIamMemberConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                NoteIamMemberConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, NoteIamMemberConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")

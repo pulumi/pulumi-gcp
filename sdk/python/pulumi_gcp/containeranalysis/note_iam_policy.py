@@ -46,10 +46,18 @@ class NoteIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             note: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
+             note: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if note is None:
+            raise TypeError("Missing 'note' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("note", note)
         _setter("policy_data", policy_data)
         if project is not None:
@@ -148,7 +156,11 @@ class _NoteIamPolicyState:
              note: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if etag is not None:
             _setter("etag", etag)
         if note is not None:
@@ -245,48 +257,6 @@ class NoteIamPolicy(pulumi.CustomResource):
 
         > **Note:** `containeranalysis.NoteIamBinding` resources **can be** used in conjunction with `containeranalysis.NoteIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_container\\_analysis\\_note\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/containeranalysis.notes.occurrences.viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.containeranalysis.NoteIamPolicy("policy",
-            project=google_container_analysis_note["note"]["project"],
-            note=google_container_analysis_note["note"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_container\\_analysis\\_note\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.containeranalysis.NoteIamBinding("binding",
-            project=google_container_analysis_note["note"]["project"],
-            note=google_container_analysis_note["note"]["name"],
-            role="roles/containeranalysis.notes.occurrences.viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_container\\_analysis\\_note\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.containeranalysis.NoteIamMember("member",
-            project=google_container_analysis_note["note"]["project"],
-            note=google_container_analysis_note["note"]["name"],
-            role="roles/containeranalysis.notes.occurrences.viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/notes/{{name}} * {{project}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Container Registry note IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -351,48 +321,6 @@ class NoteIamPolicy(pulumi.CustomResource):
         > **Note:** `containeranalysis.NoteIamPolicy` **cannot** be used in conjunction with `containeranalysis.NoteIamBinding` and `containeranalysis.NoteIamMember` or they will fight over what your policy should be.
 
         > **Note:** `containeranalysis.NoteIamBinding` resources **can be** used in conjunction with `containeranalysis.NoteIamMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\\_container\\_analysis\\_note\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/containeranalysis.notes.occurrences.viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.containeranalysis.NoteIamPolicy("policy",
-            project=google_container_analysis_note["note"]["project"],
-            note=google_container_analysis_note["note"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_container\\_analysis\\_note\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.containeranalysis.NoteIamBinding("binding",
-            project=google_container_analysis_note["note"]["project"],
-            note=google_container_analysis_note["note"]["name"],
-            role="roles/containeranalysis.notes.occurrences.viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_container\\_analysis\\_note\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.containeranalysis.NoteIamMember("member",
-            project=google_container_analysis_note["note"]["project"],
-            note=google_container_analysis_note["note"]["name"],
-            role="roles/containeranalysis.notes.occurrences.viewer",
-            member="user:jane@example.com")
-        ```
 
         ## Import
 

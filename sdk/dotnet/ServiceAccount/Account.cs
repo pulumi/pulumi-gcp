@@ -22,27 +22,6 @@ namespace Pulumi.Gcp.ServiceAccount
     /// errors when you try to apply ACLs to service accounts immediately after
     /// creation.
     /// 
-    /// ## Example Usage
-    /// 
-    /// This snippet creates a service account in a project.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var serviceAccount = new Gcp.ServiceAccount.Account("serviceAccount", new()
-    ///     {
-    ///         AccountId = "service-account-id",
-    ///         DisplayName = "Service Account",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Service accounts can be imported using their URI, e.g.

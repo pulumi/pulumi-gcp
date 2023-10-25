@@ -17,26 +17,6 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// the marketplace prior to using this resource.
     /// 
     /// ## Example Usage
-    /// ### Identity Platform Default Supported Idp Config Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var idpConfig = new Gcp.IdentityPlatform.DefaultSupportedIdpConfig("idpConfig", new()
-    ///     {
-    ///         ClientId = "client-id",
-    ///         ClientSecret = "secret",
-    ///         Enabled = true,
-    ///         IdpId = "playgames.google.com",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

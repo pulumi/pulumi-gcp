@@ -38,11 +38,25 @@ class ContactArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             email: pulumi.Input[str],
-             language_tag: pulumi.Input[str],
-             notification_category_subscriptions: pulumi.Input[Sequence[pulumi.Input[str]]],
-             parent: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             email: Optional[pulumi.Input[str]] = None,
+             language_tag: Optional[pulumi.Input[str]] = None,
+             notification_category_subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if email is None:
+            raise TypeError("Missing 'email' argument")
+        if language_tag is None and 'languageTag' in kwargs:
+            language_tag = kwargs['languageTag']
+        if language_tag is None:
+            raise TypeError("Missing 'language_tag' argument")
+        if notification_category_subscriptions is None and 'notificationCategorySubscriptions' in kwargs:
+            notification_category_subscriptions = kwargs['notificationCategorySubscriptions']
+        if notification_category_subscriptions is None:
+            raise TypeError("Missing 'notification_category_subscriptions' argument")
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+
         _setter("email", email)
         _setter("language_tag", language_tag)
         _setter("notification_category_subscriptions", notification_category_subscriptions)
@@ -135,7 +149,13 @@ class _ContactState:
              name: Optional[pulumi.Input[str]] = None,
              notification_category_subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              parent: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if language_tag is None and 'languageTag' in kwargs:
+            language_tag = kwargs['languageTag']
+        if notification_category_subscriptions is None and 'notificationCategorySubscriptions' in kwargs:
+            notification_category_subscriptions = kwargs['notificationCategorySubscriptions']
+
         if email is not None:
             _setter("email", email)
         if language_tag is not None:
@@ -237,19 +257,6 @@ class Contact(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
-        ### Essential Contact
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        contact = gcp.essentialcontacts.Contact("contact",
-            parent=project.id,
-            email="foo@bar.com",
-            language_tag="en-GB",
-            notification_category_subscriptions=["ALL"])
-        ```
 
         ## Import
 
@@ -291,19 +298,6 @@ class Contact(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
-        ### Essential Contact
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        contact = gcp.essentialcontacts.Contact("contact",
-            parent=project.id,
-            email="foo@bar.com",
-            language_tag="en-GB",
-            notification_category_subscriptions=["ALL"])
-        ```
 
         ## Import
 

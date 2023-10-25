@@ -13,62 +13,6 @@ import (
 )
 
 // ## Example Usage
-// ### Dataform Repository
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataform"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/secretmanager"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sourcerepo"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			gitRepository, err := sourcerepo.NewRepository(ctx, "gitRepository", nil, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			secret, err := secretmanager.NewSecret(ctx, "secret", &secretmanager.SecretArgs{
-//				SecretId: pulumi.String("secret"),
-//				Replication: &secretmanager.SecretReplicationArgs{
-//					Auto: nil,
-//				},
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			secretVersion, err := secretmanager.NewSecretVersion(ctx, "secretVersion", &secretmanager.SecretVersionArgs{
-//				Secret:     secret.ID(),
-//				SecretData: pulumi.String("secret-data"),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = dataform.NewRepository(ctx, "dataformRespository", &dataform.RepositoryArgs{
-//				GitRemoteSettings: &dataform.RepositoryGitRemoteSettingsArgs{
-//					Url:                              gitRepository.Url,
-//					DefaultBranch:                    pulumi.String("main"),
-//					AuthenticationTokenSecretVersion: secretVersion.ID(),
-//				},
-//				WorkspaceCompilationOverrides: &dataform.RepositoryWorkspaceCompilationOverridesArgs{
-//					DefaultDatabase: pulumi.String("database"),
-//					SchemaSuffix:    pulumi.String("_suffix"),
-//					TablePrefix:     pulumi.String("prefix_"),
-//				},
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

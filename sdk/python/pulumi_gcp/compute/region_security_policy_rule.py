@@ -73,16 +73,30 @@ class RegionSecurityPolicyRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: pulumi.Input[str],
-             priority: pulumi.Input[int],
-             region: pulumi.Input[str],
-             security_policy: pulumi.Input[str],
+             action: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             security_policy: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              match: Optional[pulumi.Input['RegionSecurityPolicyRuleMatchArgs']] = None,
              network_match: Optional[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArgs']] = None,
              preview: Optional[pulumi.Input[bool]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
+        if security_policy is None:
+            raise TypeError("Missing 'security_policy' argument")
+        if network_match is None and 'networkMatch' in kwargs:
+            network_match = kwargs['networkMatch']
+
         _setter("action", action)
         _setter("priority", priority)
         _setter("region", region)
@@ -297,7 +311,13 @@ class _RegionSecurityPolicyRuleState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              security_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if network_match is None and 'networkMatch' in kwargs:
+            network_match = kwargs['networkMatch']
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
+
         if action is not None:
             _setter("action", action)
         if description is not None:
@@ -464,125 +484,6 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Region Security Policy Rule Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.RegionSecurityPolicy("default",
-            region="us-west2",
-            description="basic region security policy",
-            type="CLOUD_ARMOR",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        policy_rule = gcp.compute.RegionSecurityPolicyRule("policyRule",
-            region="us-west2",
-            security_policy=default.name,
-            description="new rule",
-            priority=100,
-            match=gcp.compute.RegionSecurityPolicyRuleMatchArgs(
-                versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.RegionSecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=["10.10.0.0/16"],
-                ),
-            ),
-            action="allow",
-            preview=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Region Security Policy Rule Multiple Rules
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.RegionSecurityPolicy("default",
-            region="us-west2",
-            description="basic region security policy",
-            type="CLOUD_ARMOR",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        policy_rule_one = gcp.compute.RegionSecurityPolicyRule("policyRuleOne",
-            region="us-west2",
-            security_policy=default.name,
-            description="new rule one",
-            priority=100,
-            match=gcp.compute.RegionSecurityPolicyRuleMatchArgs(
-                versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.RegionSecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=["10.10.0.0/16"],
-                ),
-            ),
-            action="allow",
-            preview=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        policy_rule_two = gcp.compute.RegionSecurityPolicyRule("policyRuleTwo",
-            region="us-west2",
-            security_policy=default.name,
-            description="new rule two",
-            priority=101,
-            match=gcp.compute.RegionSecurityPolicyRuleMatchArgs(
-                versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.RegionSecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=[
-                        "192.168.0.0/16",
-                        "10.0.0.0/8",
-                    ],
-                ),
-            ),
-            action="allow",
-            preview=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Region Security Policy Rule With Network Match
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        # First activate advanced network DDoS protection for the desired region
-        policyddosprotection = gcp.compute.RegionSecurityPolicy("policyddosprotection",
-            region="us-west2",
-            description="policy for activating network DDoS protection for the desired region",
-            type="CLOUD_ARMOR_NETWORK",
-            ddos_protection_config=gcp.compute.RegionSecurityPolicyDdosProtectionConfigArgs(
-                ddos_protection="ADVANCED_PREVIEW",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        edge_sec_service = gcp.compute.NetworkEdgeSecurityService("edgeSecService",
-            region="us-west2",
-            description="linking policy to edge security service",
-            security_policy=policyddosprotection.self_link,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        # Add the desired policy and custom rule.
-        policynetworkmatch = gcp.compute.RegionSecurityPolicy("policynetworkmatch",
-            region="us-west2",
-            description="region security policy for network match",
-            type="CLOUD_ARMOR_NETWORK",
-            user_defined_fields=[gcp.compute.RegionSecurityPolicyUserDefinedFieldArgs(
-                name="SIG1_AT_0",
-                base="TCP",
-                offset=8,
-                size=2,
-                mask="0x8F00",
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[edge_sec_service]))
-        policy_rule_network_match = gcp.compute.RegionSecurityPolicyRule("policyRuleNetworkMatch",
-            region="us-west2",
-            security_policy=policynetworkmatch.name,
-            description="custom rule for network match",
-            priority=100,
-            network_match=gcp.compute.RegionSecurityPolicyRuleNetworkMatchArgs(
-                src_ip_ranges=["10.10.0.0/16"],
-                user_defined_fields=[gcp.compute.RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs(
-                    name="SIG1_AT_0",
-                    values=["0x8F00"],
-                )],
-            ),
-            action="allow",
-            preview=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -645,125 +546,6 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Region Security Policy Rule Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.RegionSecurityPolicy("default",
-            region="us-west2",
-            description="basic region security policy",
-            type="CLOUD_ARMOR",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        policy_rule = gcp.compute.RegionSecurityPolicyRule("policyRule",
-            region="us-west2",
-            security_policy=default.name,
-            description="new rule",
-            priority=100,
-            match=gcp.compute.RegionSecurityPolicyRuleMatchArgs(
-                versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.RegionSecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=["10.10.0.0/16"],
-                ),
-            ),
-            action="allow",
-            preview=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Region Security Policy Rule Multiple Rules
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.RegionSecurityPolicy("default",
-            region="us-west2",
-            description="basic region security policy",
-            type="CLOUD_ARMOR",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        policy_rule_one = gcp.compute.RegionSecurityPolicyRule("policyRuleOne",
-            region="us-west2",
-            security_policy=default.name,
-            description="new rule one",
-            priority=100,
-            match=gcp.compute.RegionSecurityPolicyRuleMatchArgs(
-                versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.RegionSecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=["10.10.0.0/16"],
-                ),
-            ),
-            action="allow",
-            preview=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        policy_rule_two = gcp.compute.RegionSecurityPolicyRule("policyRuleTwo",
-            region="us-west2",
-            security_policy=default.name,
-            description="new rule two",
-            priority=101,
-            match=gcp.compute.RegionSecurityPolicyRuleMatchArgs(
-                versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.RegionSecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=[
-                        "192.168.0.0/16",
-                        "10.0.0.0/8",
-                    ],
-                ),
-            ),
-            action="allow",
-            preview=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Region Security Policy Rule With Network Match
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        # First activate advanced network DDoS protection for the desired region
-        policyddosprotection = gcp.compute.RegionSecurityPolicy("policyddosprotection",
-            region="us-west2",
-            description="policy for activating network DDoS protection for the desired region",
-            type="CLOUD_ARMOR_NETWORK",
-            ddos_protection_config=gcp.compute.RegionSecurityPolicyDdosProtectionConfigArgs(
-                ddos_protection="ADVANCED_PREVIEW",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        edge_sec_service = gcp.compute.NetworkEdgeSecurityService("edgeSecService",
-            region="us-west2",
-            description="linking policy to edge security service",
-            security_policy=policyddosprotection.self_link,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        # Add the desired policy and custom rule.
-        policynetworkmatch = gcp.compute.RegionSecurityPolicy("policynetworkmatch",
-            region="us-west2",
-            description="region security policy for network match",
-            type="CLOUD_ARMOR_NETWORK",
-            user_defined_fields=[gcp.compute.RegionSecurityPolicyUserDefinedFieldArgs(
-                name="SIG1_AT_0",
-                base="TCP",
-                offset=8,
-                size=2,
-                mask="0x8F00",
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[edge_sec_service]))
-        policy_rule_network_match = gcp.compute.RegionSecurityPolicyRule("policyRuleNetworkMatch",
-            region="us-west2",
-            security_policy=policynetworkmatch.name,
-            description="custom rule for network match",
-            priority=100,
-            network_match=gcp.compute.RegionSecurityPolicyRuleNetworkMatchArgs(
-                src_ip_ranges=["10.10.0.0/16"],
-                user_defined_fields=[gcp.compute.RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs(
-                    name="SIG1_AT_0",
-                    values=["0x8F00"],
-                )],
-            ),
-            action="allow",
-            preview=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -826,17 +608,9 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'action'")
             __props__.__dict__["action"] = action
             __props__.__dict__["description"] = description
-            if match is not None and not isinstance(match, RegionSecurityPolicyRuleMatchArgs):
-                match = match or {}
-                def _setter(key, value):
-                    match[key] = value
-                RegionSecurityPolicyRuleMatchArgs._configure(_setter, **match)
+            match = _utilities.configure(match, RegionSecurityPolicyRuleMatchArgs, True)
             __props__.__dict__["match"] = match
-            if network_match is not None and not isinstance(network_match, RegionSecurityPolicyRuleNetworkMatchArgs):
-                network_match = network_match or {}
-                def _setter(key, value):
-                    network_match[key] = value
-                RegionSecurityPolicyRuleNetworkMatchArgs._configure(_setter, **network_match)
+            network_match = _utilities.configure(network_match, RegionSecurityPolicyRuleNetworkMatchArgs, True)
             __props__.__dict__["network_match"] = network_match
             __props__.__dict__["preview"] = preview
             if priority is None and not opts.urn:

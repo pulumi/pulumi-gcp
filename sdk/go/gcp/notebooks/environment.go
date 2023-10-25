@@ -22,34 +22,6 @@ import (
 //   - [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
 //
 // ## Example Usage
-// ### Notebook Environment Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/notebooks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := notebooks.NewEnvironment(ctx, "environment", &notebooks.EnvironmentArgs{
-//				ContainerImage: &notebooks.EnvironmentContainerImageArgs{
-//					Repository: pulumi.String("gcr.io/deeplearning-platform-release/base-cpu"),
-//				},
-//				Location: pulumi.String("us-west1-a"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

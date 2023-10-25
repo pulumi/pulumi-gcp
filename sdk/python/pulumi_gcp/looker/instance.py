@@ -113,7 +113,31 @@ class InstanceArgs:
              region: Optional[pulumi.Input[str]] = None,
              reserved_range: Optional[pulumi.Input[str]] = None,
              user_metadata: Optional[pulumi.Input['InstanceUserMetadataArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if admin_settings is None and 'adminSettings' in kwargs:
+            admin_settings = kwargs['adminSettings']
+        if consumer_network is None and 'consumerNetwork' in kwargs:
+            consumer_network = kwargs['consumerNetwork']
+        if deny_maintenance_period is None and 'denyMaintenancePeriod' in kwargs:
+            deny_maintenance_period = kwargs['denyMaintenancePeriod']
+        if encryption_config is None and 'encryptionConfig' in kwargs:
+            encryption_config = kwargs['encryptionConfig']
+        if maintenance_window is None and 'maintenanceWindow' in kwargs:
+            maintenance_window = kwargs['maintenanceWindow']
+        if oauth_config is None and 'oauthConfig' in kwargs:
+            oauth_config = kwargs['oauthConfig']
+        if platform_edition is None and 'platformEdition' in kwargs:
+            platform_edition = kwargs['platformEdition']
+        if private_ip_enabled is None and 'privateIpEnabled' in kwargs:
+            private_ip_enabled = kwargs['privateIpEnabled']
+        if public_ip_enabled is None and 'publicIpEnabled' in kwargs:
+            public_ip_enabled = kwargs['publicIpEnabled']
+        if reserved_range is None and 'reservedRange' in kwargs:
+            reserved_range = kwargs['reservedRange']
+        if user_metadata is None and 'userMetadata' in kwargs:
+            user_metadata = kwargs['userMetadata']
+
         if admin_settings is not None:
             _setter("admin_settings", admin_settings)
         if consumer_network is not None:
@@ -474,7 +498,45 @@ class _InstanceState:
              reserved_range: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              user_metadata: Optional[pulumi.Input['InstanceUserMetadataArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if admin_settings is None and 'adminSettings' in kwargs:
+            admin_settings = kwargs['adminSettings']
+        if consumer_network is None and 'consumerNetwork' in kwargs:
+            consumer_network = kwargs['consumerNetwork']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if deny_maintenance_period is None and 'denyMaintenancePeriod' in kwargs:
+            deny_maintenance_period = kwargs['denyMaintenancePeriod']
+        if egress_public_ip is None and 'egressPublicIp' in kwargs:
+            egress_public_ip = kwargs['egressPublicIp']
+        if encryption_config is None and 'encryptionConfig' in kwargs:
+            encryption_config = kwargs['encryptionConfig']
+        if ingress_private_ip is None and 'ingressPrivateIp' in kwargs:
+            ingress_private_ip = kwargs['ingressPrivateIp']
+        if ingress_public_ip is None and 'ingressPublicIp' in kwargs:
+            ingress_public_ip = kwargs['ingressPublicIp']
+        if looker_uri is None and 'lookerUri' in kwargs:
+            looker_uri = kwargs['lookerUri']
+        if looker_version is None and 'lookerVersion' in kwargs:
+            looker_version = kwargs['lookerVersion']
+        if maintenance_window is None and 'maintenanceWindow' in kwargs:
+            maintenance_window = kwargs['maintenanceWindow']
+        if oauth_config is None and 'oauthConfig' in kwargs:
+            oauth_config = kwargs['oauthConfig']
+        if platform_edition is None and 'platformEdition' in kwargs:
+            platform_edition = kwargs['platformEdition']
+        if private_ip_enabled is None and 'privateIpEnabled' in kwargs:
+            private_ip_enabled = kwargs['privateIpEnabled']
+        if public_ip_enabled is None and 'publicIpEnabled' in kwargs:
+            public_ip_enabled = kwargs['publicIpEnabled']
+        if reserved_range is None and 'reservedRange' in kwargs:
+            reserved_range = kwargs['reservedRange']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if user_metadata is None and 'userMetadata' in kwargs:
+            user_metadata = kwargs['userMetadata']
+
         if admin_settings is not None:
             _setter("admin_settings", admin_settings)
         if consumer_network is not None:
@@ -836,137 +898,6 @@ class Instance(pulumi.CustomResource):
             * [Configure a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-setup)
 
         ## Example Usage
-        ### Looker Instance Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        looker_instance = gcp.looker.Instance("looker-instance",
-            oauth_config=gcp.looker.InstanceOauthConfigArgs(
-                client_id="my-client-id",
-                client_secret="my-client-secret",
-            ),
-            platform_edition="LOOKER_CORE_STANDARD",
-            region="us-central1")
-        ```
-        ### Looker Instance Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        looker_instance = gcp.looker.Instance("looker-instance",
-            admin_settings=gcp.looker.InstanceAdminSettingsArgs(
-                allowed_email_domains=["google.com"],
-            ),
-            deny_maintenance_period=gcp.looker.InstanceDenyMaintenancePeriodArgs(
-                end_date=gcp.looker.InstanceDenyMaintenancePeriodEndDateArgs(
-                    day=1,
-                    month=2,
-                    year=2050,
-                ),
-                start_date=gcp.looker.InstanceDenyMaintenancePeriodStartDateArgs(
-                    day=1,
-                    month=1,
-                    year=2050,
-                ),
-                time=gcp.looker.InstanceDenyMaintenancePeriodTimeArgs(
-                    hours=10,
-                    minutes=0,
-                    nanos=0,
-                    seconds=0,
-                ),
-            ),
-            maintenance_window=gcp.looker.InstanceMaintenanceWindowArgs(
-                day_of_week="THURSDAY",
-                start_time=gcp.looker.InstanceMaintenanceWindowStartTimeArgs(
-                    hours=22,
-                    minutes=0,
-                    nanos=0,
-                    seconds=0,
-                ),
-            ),
-            oauth_config=gcp.looker.InstanceOauthConfigArgs(
-                client_id="my-client-id",
-                client_secret="my-client-secret",
-            ),
-            platform_edition="LOOKER_CORE_STANDARD",
-            public_ip_enabled=True,
-            region="us-central1",
-            user_metadata=gcp.looker.InstanceUserMetadataArgs(
-                additional_developer_user_count=10,
-                additional_standard_user_count=10,
-                additional_viewer_user_count=10,
-            ))
-        ```
-        ### Looker Instance Enterprise Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        looker_network = gcp.compute.get_network(name="looker-network")
-        looker_range = gcp.compute.GlobalAddress("lookerRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=20,
-            network=looker_network.id)
-        looker_vpc_connection = gcp.servicenetworking.Connection("lookerVpcConnection",
-            network=looker_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[looker_range.name])
-        looker_instance = gcp.looker.Instance("looker-instance",
-            platform_edition="LOOKER_CORE_ENTERPRISE_ANNUAL",
-            region="us-central1",
-            private_ip_enabled=True,
-            public_ip_enabled=False,
-            reserved_range=looker_range.name,
-            consumer_network=looker_network.id,
-            admin_settings=gcp.looker.InstanceAdminSettingsArgs(
-                allowed_email_domains=["google.com"],
-            ),
-            encryption_config=gcp.looker.InstanceEncryptionConfigArgs(
-                kms_key_name="looker-kms-key",
-            ),
-            maintenance_window=gcp.looker.InstanceMaintenanceWindowArgs(
-                day_of_week="THURSDAY",
-                start_time=gcp.looker.InstanceMaintenanceWindowStartTimeArgs(
-                    hours=22,
-                    minutes=0,
-                    seconds=0,
-                    nanos=0,
-                ),
-            ),
-            deny_maintenance_period=gcp.looker.InstanceDenyMaintenancePeriodArgs(
-                start_date=gcp.looker.InstanceDenyMaintenancePeriodStartDateArgs(
-                    year=2050,
-                    month=1,
-                    day=1,
-                ),
-                end_date=gcp.looker.InstanceDenyMaintenancePeriodEndDateArgs(
-                    year=2050,
-                    month=2,
-                    day=1,
-                ),
-                time=gcp.looker.InstanceDenyMaintenancePeriodTimeArgs(
-                    hours=10,
-                    minutes=0,
-                    seconds=0,
-                    nanos=0,
-                ),
-            ),
-            oauth_config=gcp.looker.InstanceOauthConfigArgs(
-                client_id="my-client-id",
-                client_secret="my-client-secret",
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[looker_vpc_connection]))
-        project = gcp.organizations.get_project()
-        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
-            crypto_key_id="looker-kms-key",
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-looker.iam.gserviceaccount.com")
-        ```
 
         ## Import
 
@@ -1054,137 +985,6 @@ class Instance(pulumi.CustomResource):
             * [Configure a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-setup)
 
         ## Example Usage
-        ### Looker Instance Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        looker_instance = gcp.looker.Instance("looker-instance",
-            oauth_config=gcp.looker.InstanceOauthConfigArgs(
-                client_id="my-client-id",
-                client_secret="my-client-secret",
-            ),
-            platform_edition="LOOKER_CORE_STANDARD",
-            region="us-central1")
-        ```
-        ### Looker Instance Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        looker_instance = gcp.looker.Instance("looker-instance",
-            admin_settings=gcp.looker.InstanceAdminSettingsArgs(
-                allowed_email_domains=["google.com"],
-            ),
-            deny_maintenance_period=gcp.looker.InstanceDenyMaintenancePeriodArgs(
-                end_date=gcp.looker.InstanceDenyMaintenancePeriodEndDateArgs(
-                    day=1,
-                    month=2,
-                    year=2050,
-                ),
-                start_date=gcp.looker.InstanceDenyMaintenancePeriodStartDateArgs(
-                    day=1,
-                    month=1,
-                    year=2050,
-                ),
-                time=gcp.looker.InstanceDenyMaintenancePeriodTimeArgs(
-                    hours=10,
-                    minutes=0,
-                    nanos=0,
-                    seconds=0,
-                ),
-            ),
-            maintenance_window=gcp.looker.InstanceMaintenanceWindowArgs(
-                day_of_week="THURSDAY",
-                start_time=gcp.looker.InstanceMaintenanceWindowStartTimeArgs(
-                    hours=22,
-                    minutes=0,
-                    nanos=0,
-                    seconds=0,
-                ),
-            ),
-            oauth_config=gcp.looker.InstanceOauthConfigArgs(
-                client_id="my-client-id",
-                client_secret="my-client-secret",
-            ),
-            platform_edition="LOOKER_CORE_STANDARD",
-            public_ip_enabled=True,
-            region="us-central1",
-            user_metadata=gcp.looker.InstanceUserMetadataArgs(
-                additional_developer_user_count=10,
-                additional_standard_user_count=10,
-                additional_viewer_user_count=10,
-            ))
-        ```
-        ### Looker Instance Enterprise Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        looker_network = gcp.compute.get_network(name="looker-network")
-        looker_range = gcp.compute.GlobalAddress("lookerRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=20,
-            network=looker_network.id)
-        looker_vpc_connection = gcp.servicenetworking.Connection("lookerVpcConnection",
-            network=looker_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[looker_range.name])
-        looker_instance = gcp.looker.Instance("looker-instance",
-            platform_edition="LOOKER_CORE_ENTERPRISE_ANNUAL",
-            region="us-central1",
-            private_ip_enabled=True,
-            public_ip_enabled=False,
-            reserved_range=looker_range.name,
-            consumer_network=looker_network.id,
-            admin_settings=gcp.looker.InstanceAdminSettingsArgs(
-                allowed_email_domains=["google.com"],
-            ),
-            encryption_config=gcp.looker.InstanceEncryptionConfigArgs(
-                kms_key_name="looker-kms-key",
-            ),
-            maintenance_window=gcp.looker.InstanceMaintenanceWindowArgs(
-                day_of_week="THURSDAY",
-                start_time=gcp.looker.InstanceMaintenanceWindowStartTimeArgs(
-                    hours=22,
-                    minutes=0,
-                    seconds=0,
-                    nanos=0,
-                ),
-            ),
-            deny_maintenance_period=gcp.looker.InstanceDenyMaintenancePeriodArgs(
-                start_date=gcp.looker.InstanceDenyMaintenancePeriodStartDateArgs(
-                    year=2050,
-                    month=1,
-                    day=1,
-                ),
-                end_date=gcp.looker.InstanceDenyMaintenancePeriodEndDateArgs(
-                    year=2050,
-                    month=2,
-                    day=1,
-                ),
-                time=gcp.looker.InstanceDenyMaintenancePeriodTimeArgs(
-                    hours=10,
-                    minutes=0,
-                    seconds=0,
-                    nanos=0,
-                ),
-            ),
-            oauth_config=gcp.looker.InstanceOauthConfigArgs(
-                client_id="my-client-id",
-                client_secret="my-client-secret",
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[looker_vpc_connection]))
-        project = gcp.organizations.get_project()
-        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
-            crypto_key_id="looker-kms-key",
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-looker.iam.gserviceaccount.com")
-        ```
 
         ## Import
 
@@ -1248,37 +1048,17 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
-            if admin_settings is not None and not isinstance(admin_settings, InstanceAdminSettingsArgs):
-                admin_settings = admin_settings or {}
-                def _setter(key, value):
-                    admin_settings[key] = value
-                InstanceAdminSettingsArgs._configure(_setter, **admin_settings)
+            admin_settings = _utilities.configure(admin_settings, InstanceAdminSettingsArgs, True)
             __props__.__dict__["admin_settings"] = admin_settings
             __props__.__dict__["consumer_network"] = consumer_network
-            if deny_maintenance_period is not None and not isinstance(deny_maintenance_period, InstanceDenyMaintenancePeriodArgs):
-                deny_maintenance_period = deny_maintenance_period or {}
-                def _setter(key, value):
-                    deny_maintenance_period[key] = value
-                InstanceDenyMaintenancePeriodArgs._configure(_setter, **deny_maintenance_period)
+            deny_maintenance_period = _utilities.configure(deny_maintenance_period, InstanceDenyMaintenancePeriodArgs, True)
             __props__.__dict__["deny_maintenance_period"] = deny_maintenance_period
-            if encryption_config is not None and not isinstance(encryption_config, InstanceEncryptionConfigArgs):
-                encryption_config = encryption_config or {}
-                def _setter(key, value):
-                    encryption_config[key] = value
-                InstanceEncryptionConfigArgs._configure(_setter, **encryption_config)
+            encryption_config = _utilities.configure(encryption_config, InstanceEncryptionConfigArgs, True)
             __props__.__dict__["encryption_config"] = encryption_config
-            if maintenance_window is not None and not isinstance(maintenance_window, InstanceMaintenanceWindowArgs):
-                maintenance_window = maintenance_window or {}
-                def _setter(key, value):
-                    maintenance_window[key] = value
-                InstanceMaintenanceWindowArgs._configure(_setter, **maintenance_window)
+            maintenance_window = _utilities.configure(maintenance_window, InstanceMaintenanceWindowArgs, True)
             __props__.__dict__["maintenance_window"] = maintenance_window
             __props__.__dict__["name"] = name
-            if oauth_config is not None and not isinstance(oauth_config, InstanceOauthConfigArgs):
-                oauth_config = oauth_config or {}
-                def _setter(key, value):
-                    oauth_config[key] = value
-                InstanceOauthConfigArgs._configure(_setter, **oauth_config)
+            oauth_config = _utilities.configure(oauth_config, InstanceOauthConfigArgs, True)
             __props__.__dict__["oauth_config"] = oauth_config
             __props__.__dict__["platform_edition"] = platform_edition
             __props__.__dict__["private_ip_enabled"] = private_ip_enabled
@@ -1286,11 +1066,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["public_ip_enabled"] = public_ip_enabled
             __props__.__dict__["region"] = region
             __props__.__dict__["reserved_range"] = reserved_range
-            if user_metadata is not None and not isinstance(user_metadata, InstanceUserMetadataArgs):
-                user_metadata = user_metadata or {}
-                def _setter(key, value):
-                    user_metadata[key] = value
-                InstanceUserMetadataArgs._configure(_setter, **user_metadata)
+            user_metadata = _utilities.configure(user_metadata, InstanceUserMetadataArgs, True)
             __props__.__dict__["user_metadata"] = user_metadata
             __props__.__dict__["create_time"] = None
             __props__.__dict__["egress_public_ip"] = None

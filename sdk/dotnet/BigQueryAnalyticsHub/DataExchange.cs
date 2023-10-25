@@ -19,26 +19,6 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     ///     * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
     /// 
     /// ## Example Usage
-    /// ### Bigquery Analyticshub Data Exchange Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var dataExchange = new Gcp.BigQueryAnalyticsHub.DataExchange("dataExchange", new()
-    ///     {
-    ///         DataExchangeId = "my_data_exchange",
-    ///         Description = "example data exchange",
-    ///         DisplayName = "my_data_exchange",
-    ///         Location = "US",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

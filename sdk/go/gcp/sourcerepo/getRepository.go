@@ -16,32 +16,6 @@ import (
 // For more information see [the official documentation](https://cloud.google.com/source-repositories)
 // and
 // [API](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sourcerepo"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sourcerepo.LookupRepository(ctx, &sourcerepo.LookupRepositoryArgs{
-//				Name: "my-repository",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupRepository(ctx *pulumi.Context, args *LookupRepositoryArgs, opts ...pulumi.InvokeOption) (*LookupRepositoryResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRepositoryResult

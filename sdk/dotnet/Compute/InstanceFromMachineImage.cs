@@ -18,33 +18,6 @@ namespace Pulumi.Gcp.Compute
     /// This resource is specifically to create a compute instance from a given
     /// `source_machine_image`. To create an instance without a machine image, use the
     /// `gcp.compute.Instance` resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var tpl = new Gcp.Compute.InstanceFromMachineImage("tpl", new()
-    ///     {
-    ///         Zone = "us-central1-a",
-    ///         SourceMachineImage = "projects/PROJECT-ID/global/machineImages/NAME",
-    ///         CanIpForward = false,
-    ///         Labels = 
-    ///         {
-    ///             { "my_key", "my_value" },
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/instanceFromMachineImage:InstanceFromMachineImage")]
     public partial class InstanceFromMachineImage : global::Pulumi.CustomResource

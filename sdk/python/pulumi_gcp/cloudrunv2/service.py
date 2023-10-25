@@ -83,7 +83,7 @@ class ServiceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             template: pulumi.Input['ServiceTemplateArgs'],
+             template: Optional[pulumi.Input['ServiceTemplateArgs']] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              binary_authorization: Optional[pulumi.Input['ServiceBinaryAuthorizationArgs']] = None,
              client: Optional[pulumi.Input[str]] = None,
@@ -97,7 +97,19 @@ class ServiceArgs:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              traffics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if template is None:
+            raise TypeError("Missing 'template' argument")
+        if binary_authorization is None and 'binaryAuthorization' in kwargs:
+            binary_authorization = kwargs['binaryAuthorization']
+        if client_version is None and 'clientVersion' in kwargs:
+            client_version = kwargs['clientVersion']
+        if custom_audiences is None and 'customAudiences' in kwargs:
+            custom_audiences = kwargs['customAudiences']
+        if launch_stage is None and 'launchStage' in kwargs:
+            launch_stage = kwargs['launchStage']
+
         _setter("template", template)
         if annotations is not None:
             _setter("annotations", annotations)
@@ -470,7 +482,37 @@ class _ServiceState:
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              uri: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if binary_authorization is None and 'binaryAuthorization' in kwargs:
+            binary_authorization = kwargs['binaryAuthorization']
+        if client_version is None and 'clientVersion' in kwargs:
+            client_version = kwargs['clientVersion']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if custom_audiences is None and 'customAudiences' in kwargs:
+            custom_audiences = kwargs['customAudiences']
+        if delete_time is None and 'deleteTime' in kwargs:
+            delete_time = kwargs['deleteTime']
+        if expire_time is None and 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if last_modifier is None and 'lastModifier' in kwargs:
+            last_modifier = kwargs['lastModifier']
+        if latest_created_revision is None and 'latestCreatedRevision' in kwargs:
+            latest_created_revision = kwargs['latestCreatedRevision']
+        if latest_ready_revision is None and 'latestReadyRevision' in kwargs:
+            latest_ready_revision = kwargs['latestReadyRevision']
+        if launch_stage is None and 'launchStage' in kwargs:
+            launch_stage = kwargs['launchStage']
+        if observed_generation is None and 'observedGeneration' in kwargs:
+            observed_generation = kwargs['observedGeneration']
+        if terminal_conditions is None and 'terminalConditions' in kwargs:
+            terminal_conditions = kwargs['terminalConditions']
+        if traffic_statuses is None and 'trafficStatuses' in kwargs:
+            traffic_statuses = kwargs['trafficStatuses']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if binary_authorization is not None:
@@ -960,260 +1002,6 @@ class Service(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/run/docs/)
 
         ## Example Usage
-        ### Cloudrunv2 Service Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.cloudrunv2.Service("default",
-            ingress="INGRESS_TRAFFIC_ALL",
-            location="us-central1",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
-                    image="us-docker.pkg.dev/cloudrun/container/hello",
-                )],
-            ))
-        ```
-        ### Cloudrunv2 Service Sql
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        secret = gcp.secretmanager.Secret("secret",
-            secret_id="secret-1",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
-        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
-            secret=secret.name,
-            secret_data="secret-data")
-        instance = gcp.sql.DatabaseInstance("instance",
-            region="us-central1",
-            database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ),
-            deletion_protection=True)
-        default = gcp.cloudrunv2.Service("default",
-            location="us-central1",
-            ingress="INGRESS_TRAFFIC_ALL",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                scaling=gcp.cloudrunv2.ServiceTemplateScalingArgs(
-                    max_instance_count=2,
-                ),
-                volumes=[gcp.cloudrunv2.ServiceTemplateVolumeArgs(
-                    name="cloudsql",
-                    cloud_sql_instance=gcp.cloudrunv2.ServiceTemplateVolumeCloudSqlInstanceArgs(
-                        instances=[instance.connection_name],
-                    ),
-                )],
-                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
-                    image="us-docker.pkg.dev/cloudrun/container/hello",
-                    envs=[
-                        gcp.cloudrunv2.ServiceTemplateContainerEnvArgs(
-                            name="FOO",
-                            value="bar",
-                        ),
-                        gcp.cloudrunv2.ServiceTemplateContainerEnvArgs(
-                            name="SECRET_ENV_VAR",
-                            value_source=gcp.cloudrunv2.ServiceTemplateContainerEnvValueSourceArgs(
-                                secret_key_ref=gcp.cloudrunv2.ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs(
-                                    secret=secret.secret_id,
-                                    version="1",
-                                ),
-                            ),
-                        ),
-                    ],
-                    volume_mounts=[gcp.cloudrunv2.ServiceTemplateContainerVolumeMountArgs(
-                        name="cloudsql",
-                        mount_path="/cloudsql",
-                    )],
-                )],
-            ),
-            traffics=[gcp.cloudrunv2.ServiceTrafficArgs(
-                type="TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST",
-                percent=100,
-            )],
-            opts=pulumi.ResourceOptions(depends_on=[secret_version_data]))
-        project = gcp.organizations.get_project()
-        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
-            secret_id=secret.id,
-            role="roles/secretmanager.secretAccessor",
-            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(depends_on=[secret]))
-        ```
-        ### Cloudrunv2 Service Vpcaccess
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        custom_test_network = gcp.compute.Network("customTestNetwork", auto_create_subnetworks=False)
-        custom_test_subnetwork = gcp.compute.Subnetwork("customTestSubnetwork",
-            ip_cidr_range="10.2.0.0/28",
-            region="us-central1",
-            network=custom_test_network.id)
-        connector = gcp.vpcaccess.Connector("connector",
-            subnet=gcp.vpcaccess.ConnectorSubnetArgs(
-                name=custom_test_subnetwork.name,
-            ),
-            machine_type="e2-standard-4",
-            min_instances=2,
-            max_instances=3,
-            region="us-central1")
-        default = gcp.cloudrunv2.Service("default",
-            location="us-central1",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
-                    image="us-docker.pkg.dev/cloudrun/container/hello",
-                )],
-                vpc_access=gcp.cloudrunv2.ServiceTemplateVpcAccessArgs(
-                    connector=connector.id,
-                    egress="ALL_TRAFFIC",
-                ),
-            ))
-        ```
-        ### Cloudrunv2 Service Directvpc
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.cloudrunv2.Service("default",
-            launch_stage="BETA",
-            location="us-central1",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
-                    image="us-docker.pkg.dev/cloudrun/container/hello",
-                )],
-                vpc_access=gcp.cloudrunv2.ServiceTemplateVpcAccessArgs(
-                    egress="ALL_TRAFFIC",
-                    network_interfaces=[gcp.cloudrunv2.ServiceTemplateVpcAccessNetworkInterfaceArgs(
-                        network="default",
-                        subnetwork="default",
-                        tags=[
-                            "tag1",
-                            "tag2",
-                            "tag3",
-                        ],
-                    )],
-                ),
-            ))
-        ```
-        ### Cloudrunv2 Service Probes
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.cloudrunv2.Service("default",
-            location="us-central1",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
-                    image="us-docker.pkg.dev/cloudrun/container/hello",
-                    liveness_probe=gcp.cloudrunv2.ServiceTemplateContainerLivenessProbeArgs(
-                        http_get=gcp.cloudrunv2.ServiceTemplateContainerLivenessProbeHttpGetArgs(
-                            path="/",
-                        ),
-                    ),
-                    startup_probe=gcp.cloudrunv2.ServiceTemplateContainerStartupProbeArgs(
-                        failure_threshold=1,
-                        initial_delay_seconds=0,
-                        period_seconds=3,
-                        tcp_socket=gcp.cloudrunv2.ServiceTemplateContainerStartupProbeTcpSocketArgs(
-                            port=8080,
-                        ),
-                        timeout_seconds=1,
-                    ),
-                )],
-            ))
-        ```
-        ### Cloudrunv2 Service Secret
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        secret = gcp.secretmanager.Secret("secret",
-            secret_id="secret-1",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
-        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
-            secret=secret.name,
-            secret_data="secret-data")
-        default = gcp.cloudrunv2.Service("default",
-            location="us-central1",
-            ingress="INGRESS_TRAFFIC_ALL",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                volumes=[gcp.cloudrunv2.ServiceTemplateVolumeArgs(
-                    name="a-volume",
-                    secret=gcp.cloudrunv2.ServiceTemplateVolumeSecretArgs(
-                        secret=secret.secret_id,
-                        default_mode=292,
-                        items=[gcp.cloudrunv2.ServiceTemplateVolumeSecretItemArgs(
-                            version="1",
-                            path="my-secret",
-                        )],
-                    ),
-                )],
-                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
-                    image="us-docker.pkg.dev/cloudrun/container/hello",
-                    volume_mounts=[gcp.cloudrunv2.ServiceTemplateContainerVolumeMountArgs(
-                        name="a-volume",
-                        mount_path="/secrets",
-                    )],
-                )],
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[secret_version_data]))
-        project = gcp.organizations.get_project()
-        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
-            secret_id=secret.id,
-            role="roles/secretmanager.secretAccessor",
-            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(depends_on=[secret]))
-        ```
-        ### Cloudrunv2 Service Multicontainer
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.cloudrunv2.Service("default",
-            location="us-central1",
-            launch_stage="BETA",
-            ingress="INGRESS_TRAFFIC_ALL",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                containers=[
-                    gcp.cloudrunv2.ServiceTemplateContainerArgs(
-                        name="hello-1",
-                        ports=[gcp.cloudrunv2.ServiceTemplateContainerPortArgs(
-                            container_port=8080,
-                        )],
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
-                        depends_ons=["hello-2"],
-                        volume_mounts=[gcp.cloudrunv2.ServiceTemplateContainerVolumeMountArgs(
-                            name="empty-dir-volume",
-                            mount_path="/mnt",
-                        )],
-                    ),
-                    gcp.cloudrunv2.ServiceTemplateContainerArgs(
-                        name="hello-2",
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
-                    ),
-                ],
-                volumes=[gcp.cloudrunv2.ServiceTemplateVolumeArgs(
-                    name="empty-dir-volume",
-                    empty_dir=gcp.cloudrunv2.ServiceTemplateVolumeEmptyDirArgs(
-                        medium="MEMORY",
-                        size_limit="256Mi",
-                    ),
-                )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -1280,260 +1068,6 @@ class Service(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/run/docs/)
 
         ## Example Usage
-        ### Cloudrunv2 Service Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.cloudrunv2.Service("default",
-            ingress="INGRESS_TRAFFIC_ALL",
-            location="us-central1",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
-                    image="us-docker.pkg.dev/cloudrun/container/hello",
-                )],
-            ))
-        ```
-        ### Cloudrunv2 Service Sql
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        secret = gcp.secretmanager.Secret("secret",
-            secret_id="secret-1",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
-        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
-            secret=secret.name,
-            secret_data="secret-data")
-        instance = gcp.sql.DatabaseInstance("instance",
-            region="us-central1",
-            database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ),
-            deletion_protection=True)
-        default = gcp.cloudrunv2.Service("default",
-            location="us-central1",
-            ingress="INGRESS_TRAFFIC_ALL",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                scaling=gcp.cloudrunv2.ServiceTemplateScalingArgs(
-                    max_instance_count=2,
-                ),
-                volumes=[gcp.cloudrunv2.ServiceTemplateVolumeArgs(
-                    name="cloudsql",
-                    cloud_sql_instance=gcp.cloudrunv2.ServiceTemplateVolumeCloudSqlInstanceArgs(
-                        instances=[instance.connection_name],
-                    ),
-                )],
-                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
-                    image="us-docker.pkg.dev/cloudrun/container/hello",
-                    envs=[
-                        gcp.cloudrunv2.ServiceTemplateContainerEnvArgs(
-                            name="FOO",
-                            value="bar",
-                        ),
-                        gcp.cloudrunv2.ServiceTemplateContainerEnvArgs(
-                            name="SECRET_ENV_VAR",
-                            value_source=gcp.cloudrunv2.ServiceTemplateContainerEnvValueSourceArgs(
-                                secret_key_ref=gcp.cloudrunv2.ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs(
-                                    secret=secret.secret_id,
-                                    version="1",
-                                ),
-                            ),
-                        ),
-                    ],
-                    volume_mounts=[gcp.cloudrunv2.ServiceTemplateContainerVolumeMountArgs(
-                        name="cloudsql",
-                        mount_path="/cloudsql",
-                    )],
-                )],
-            ),
-            traffics=[gcp.cloudrunv2.ServiceTrafficArgs(
-                type="TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST",
-                percent=100,
-            )],
-            opts=pulumi.ResourceOptions(depends_on=[secret_version_data]))
-        project = gcp.organizations.get_project()
-        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
-            secret_id=secret.id,
-            role="roles/secretmanager.secretAccessor",
-            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(depends_on=[secret]))
-        ```
-        ### Cloudrunv2 Service Vpcaccess
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        custom_test_network = gcp.compute.Network("customTestNetwork", auto_create_subnetworks=False)
-        custom_test_subnetwork = gcp.compute.Subnetwork("customTestSubnetwork",
-            ip_cidr_range="10.2.0.0/28",
-            region="us-central1",
-            network=custom_test_network.id)
-        connector = gcp.vpcaccess.Connector("connector",
-            subnet=gcp.vpcaccess.ConnectorSubnetArgs(
-                name=custom_test_subnetwork.name,
-            ),
-            machine_type="e2-standard-4",
-            min_instances=2,
-            max_instances=3,
-            region="us-central1")
-        default = gcp.cloudrunv2.Service("default",
-            location="us-central1",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
-                    image="us-docker.pkg.dev/cloudrun/container/hello",
-                )],
-                vpc_access=gcp.cloudrunv2.ServiceTemplateVpcAccessArgs(
-                    connector=connector.id,
-                    egress="ALL_TRAFFIC",
-                ),
-            ))
-        ```
-        ### Cloudrunv2 Service Directvpc
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.cloudrunv2.Service("default",
-            launch_stage="BETA",
-            location="us-central1",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
-                    image="us-docker.pkg.dev/cloudrun/container/hello",
-                )],
-                vpc_access=gcp.cloudrunv2.ServiceTemplateVpcAccessArgs(
-                    egress="ALL_TRAFFIC",
-                    network_interfaces=[gcp.cloudrunv2.ServiceTemplateVpcAccessNetworkInterfaceArgs(
-                        network="default",
-                        subnetwork="default",
-                        tags=[
-                            "tag1",
-                            "tag2",
-                            "tag3",
-                        ],
-                    )],
-                ),
-            ))
-        ```
-        ### Cloudrunv2 Service Probes
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.cloudrunv2.Service("default",
-            location="us-central1",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
-                    image="us-docker.pkg.dev/cloudrun/container/hello",
-                    liveness_probe=gcp.cloudrunv2.ServiceTemplateContainerLivenessProbeArgs(
-                        http_get=gcp.cloudrunv2.ServiceTemplateContainerLivenessProbeHttpGetArgs(
-                            path="/",
-                        ),
-                    ),
-                    startup_probe=gcp.cloudrunv2.ServiceTemplateContainerStartupProbeArgs(
-                        failure_threshold=1,
-                        initial_delay_seconds=0,
-                        period_seconds=3,
-                        tcp_socket=gcp.cloudrunv2.ServiceTemplateContainerStartupProbeTcpSocketArgs(
-                            port=8080,
-                        ),
-                        timeout_seconds=1,
-                    ),
-                )],
-            ))
-        ```
-        ### Cloudrunv2 Service Secret
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        secret = gcp.secretmanager.Secret("secret",
-            secret_id="secret-1",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
-        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
-            secret=secret.name,
-            secret_data="secret-data")
-        default = gcp.cloudrunv2.Service("default",
-            location="us-central1",
-            ingress="INGRESS_TRAFFIC_ALL",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                volumes=[gcp.cloudrunv2.ServiceTemplateVolumeArgs(
-                    name="a-volume",
-                    secret=gcp.cloudrunv2.ServiceTemplateVolumeSecretArgs(
-                        secret=secret.secret_id,
-                        default_mode=292,
-                        items=[gcp.cloudrunv2.ServiceTemplateVolumeSecretItemArgs(
-                            version="1",
-                            path="my-secret",
-                        )],
-                    ),
-                )],
-                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
-                    image="us-docker.pkg.dev/cloudrun/container/hello",
-                    volume_mounts=[gcp.cloudrunv2.ServiceTemplateContainerVolumeMountArgs(
-                        name="a-volume",
-                        mount_path="/secrets",
-                    )],
-                )],
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[secret_version_data]))
-        project = gcp.organizations.get_project()
-        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
-            secret_id=secret.id,
-            role="roles/secretmanager.secretAccessor",
-            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(depends_on=[secret]))
-        ```
-        ### Cloudrunv2 Service Multicontainer
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.cloudrunv2.Service("default",
-            location="us-central1",
-            launch_stage="BETA",
-            ingress="INGRESS_TRAFFIC_ALL",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                containers=[
-                    gcp.cloudrunv2.ServiceTemplateContainerArgs(
-                        name="hello-1",
-                        ports=[gcp.cloudrunv2.ServiceTemplateContainerPortArgs(
-                            container_port=8080,
-                        )],
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
-                        depends_ons=["hello-2"],
-                        volume_mounts=[gcp.cloudrunv2.ServiceTemplateContainerVolumeMountArgs(
-                            name="empty-dir-volume",
-                            mount_path="/mnt",
-                        )],
-                    ),
-                    gcp.cloudrunv2.ServiceTemplateContainerArgs(
-                        name="hello-2",
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
-                    ),
-                ],
-                volumes=[gcp.cloudrunv2.ServiceTemplateVolumeArgs(
-                    name="empty-dir-volume",
-                    empty_dir=gcp.cloudrunv2.ServiceTemplateVolumeEmptyDirArgs(
-                        medium="MEMORY",
-                        size_limit="256Mi",
-                    ),
-                )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -1594,11 +1128,7 @@ class Service(pulumi.CustomResource):
             __props__ = ServiceArgs.__new__(ServiceArgs)
 
             __props__.__dict__["annotations"] = annotations
-            if binary_authorization is not None and not isinstance(binary_authorization, ServiceBinaryAuthorizationArgs):
-                binary_authorization = binary_authorization or {}
-                def _setter(key, value):
-                    binary_authorization[key] = value
-                ServiceBinaryAuthorizationArgs._configure(_setter, **binary_authorization)
+            binary_authorization = _utilities.configure(binary_authorization, ServiceBinaryAuthorizationArgs, True)
             __props__.__dict__["binary_authorization"] = binary_authorization
             __props__.__dict__["client"] = client
             __props__.__dict__["client_version"] = client_version
@@ -1610,11 +1140,7 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            if template is not None and not isinstance(template, ServiceTemplateArgs):
-                template = template or {}
-                def _setter(key, value):
-                    template[key] = value
-                ServiceTemplateArgs._configure(_setter, **template)
+            template = _utilities.configure(template, ServiceTemplateArgs, True)
             if template is None and not opts.urn:
                 raise TypeError("Missing required property 'template'")
             __props__.__dict__["template"] = template

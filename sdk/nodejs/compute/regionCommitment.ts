@@ -20,50 +20,6 @@ import * as utilities from "../utilities";
  *     * [Committed use discounts for Compute Engine](https://cloud.google.com/compute/docs/instances/committed-use-discounts-overview)
  *
  * ## Example Usage
- * ### Compute Region Commitment Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const foobar = new gcp.compute.RegionCommitment("foobar", {
- *     plan: "THIRTY_SIX_MONTH",
- *     resources: [
- *         {
- *             amount: "4",
- *             type: "VCPU",
- *         },
- *         {
- *             amount: "9",
- *             type: "MEMORY",
- *         },
- *     ],
- * });
- * ```
- * ### Compute Region Commitment Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const foobar = new gcp.compute.RegionCommitment("foobar", {
- *     autoRenew: true,
- *     category: "MACHINE",
- *     description: "some description",
- *     plan: "THIRTY_SIX_MONTH",
- *     resources: [
- *         {
- *             amount: "4",
- *             type: "VCPU",
- *         },
- *         {
- *             amount: "9",
- *             type: "MEMORY",
- *         },
- *     ],
- *     type: "MEMORY_OPTIMIZED",
- * });
- * ```
  *
  * ## Import
  *

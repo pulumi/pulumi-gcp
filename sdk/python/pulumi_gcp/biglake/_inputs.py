@@ -38,7 +38,11 @@ class DatabaseHiveOptionsArgs:
              _setter: Callable[[Any, Any], None],
              location_uri: Optional[pulumi.Input[str]] = None,
              parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location_uri is None and 'locationUri' in kwargs:
+            location_uri = kwargs['locationUri']
+
         if location_uri is not None:
             _setter("location_uri", location_uri)
         if parameters is not None:
@@ -99,7 +103,13 @@ class TableHiveOptionsArgs:
              parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              storage_descriptor: Optional[pulumi.Input['TableHiveOptionsStorageDescriptorArgs']] = None,
              table_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if storage_descriptor is None and 'storageDescriptor' in kwargs:
+            storage_descriptor = kwargs['storageDescriptor']
+        if table_type is None and 'tableType' in kwargs:
+            table_type = kwargs['tableType']
+
         if parameters is not None:
             _setter("parameters", parameters)
         if storage_descriptor is not None:
@@ -170,7 +180,15 @@ class TableHiveOptionsStorageDescriptorArgs:
              input_format: Optional[pulumi.Input[str]] = None,
              location_uri: Optional[pulumi.Input[str]] = None,
              output_format: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if input_format is None and 'inputFormat' in kwargs:
+            input_format = kwargs['inputFormat']
+        if location_uri is None and 'locationUri' in kwargs:
+            location_uri = kwargs['locationUri']
+        if output_format is None and 'outputFormat' in kwargs:
+            output_format = kwargs['outputFormat']
+
         if input_format is not None:
             _setter("input_format", input_format)
         if location_uri is not None:

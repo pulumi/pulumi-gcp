@@ -387,15 +387,6 @@ def get_function(name: Optional[str] = None,
     the [official documentation](https://cloud.google.com/functions/docs/)
     and [API](https://cloud.google.com/functions/docs/apis).
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    my_function = gcp.cloudfunctions.get_function(name="function")
-    ```
-
 
     :param str name: The name of a Cloud Function.
            
@@ -456,15 +447,6 @@ def get_function_output(name: Optional[pulumi.Input[str]] = None,
     Get information about a Google Cloud Function. For more information see
     the [official documentation](https://cloud.google.com/functions/docs/)
     and [API](https://cloud.google.com/functions/docs/apis).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    my_function = gcp.cloudfunctions.get_function(name="function")
-    ```
 
 
     :param str name: The name of a Cloud Function.

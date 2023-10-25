@@ -16,67 +16,6 @@ namespace Pulumi.Gcp.Dns
     /// as identified by the dns_name field with the longest matching suffix.
     /// 
     /// ## Example Usage
-    /// ### Dns Response Policy Rule Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var network_1 = new Gcp.Compute.Network("network-1", new()
-    ///     {
-    ///         AutoCreateSubnetworks = false,
-    ///     });
-    /// 
-    ///     var network_2 = new Gcp.Compute.Network("network-2", new()
-    ///     {
-    ///         AutoCreateSubnetworks = false,
-    ///     });
-    /// 
-    ///     var response_policy = new Gcp.Dns.ResponsePolicy("response-policy", new()
-    ///     {
-    ///         ResponsePolicyName = "example-response-policy",
-    ///         Networks = new[]
-    ///         {
-    ///             new Gcp.Dns.Inputs.ResponsePolicyNetworkArgs
-    ///             {
-    ///                 NetworkUrl = network_1.Id,
-    ///             },
-    ///             new Gcp.Dns.Inputs.ResponsePolicyNetworkArgs
-    ///             {
-    ///                 NetworkUrl = network_2.Id,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var example_response_policy_rule = new Gcp.Dns.ResponsePolicyRule("example-response-policy-rule", new()
-    ///     {
-    ///         ResponsePolicy = response_policy.ResponsePolicyName,
-    ///         RuleName = "example-rule",
-    ///         DnsName = "dns.example.com.",
-    ///         LocalData = new Gcp.Dns.Inputs.ResponsePolicyRuleLocalDataArgs
-    ///         {
-    ///             LocalDatas = new[]
-    ///             {
-    ///                 new Gcp.Dns.Inputs.ResponsePolicyRuleLocalDataLocalDataArgs
-    ///                 {
-    ///                     Name = "dns.example.com.",
-    ///                     Type = "A",
-    ///                     Ttl = 300,
-    ///                     Rrdatas = new[]
-    ///                     {
-    ///                         "192.0.2.91",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

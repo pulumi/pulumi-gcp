@@ -49,11 +49,21 @@ class TagKeyIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
-             tag_key: pulumi.Input[str],
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             tag_key: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['TagKeyIamMemberConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if tag_key is None and 'tagKey' in kwargs:
+            tag_key = kwargs['tagKey']
+        if tag_key is None:
+            raise TypeError("Missing 'tag_key' argument")
+
         _setter("member", member)
         _setter("role", role)
         _setter("tag_key", tag_key)
@@ -161,7 +171,11 @@ class _TagKeyIamMemberState:
              member: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              tag_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if tag_key is None and 'tagKey' in kwargs:
+            tag_key = kwargs['tagKey']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -267,45 +281,6 @@ class TagKeyIamMember(pulumi.CustomResource):
 
         > **Note:** `tags.TagKeyIamBinding` resources **can be** used in conjunction with `tags.TagKeyIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_tags\\_tag\\_key\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.tags.TagKeyIamPolicy("policy",
-            tag_key=google_tags_tag_key["key"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_tags\\_tag\\_key\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.tags.TagKeyIamBinding("binding",
-            tag_key=google_tags_tag_key["key"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_tags\\_tag\\_key\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.tags.TagKeyIamMember("member",
-            tag_key=google_tags_tag_key["key"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* tagKeys/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Tags tagkey IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -370,45 +345,6 @@ class TagKeyIamMember(pulumi.CustomResource):
 
         > **Note:** `tags.TagKeyIamBinding` resources **can be** used in conjunction with `tags.TagKeyIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_tags\\_tag\\_key\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.tags.TagKeyIamPolicy("policy",
-            tag_key=google_tags_tag_key["key"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_tags\\_tag\\_key\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.tags.TagKeyIamBinding("binding",
-            tag_key=google_tags_tag_key["key"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_tags\\_tag\\_key\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.tags.TagKeyIamMember("member",
-            tag_key=google_tags_tag_key["key"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* tagKeys/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Tags tagkey IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -465,11 +401,7 @@ class TagKeyIamMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TagKeyIamMemberArgs.__new__(TagKeyIamMemberArgs)
 
-            if condition is not None and not isinstance(condition, TagKeyIamMemberConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                TagKeyIamMemberConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, TagKeyIamMemberConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")

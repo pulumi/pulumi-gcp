@@ -13,69 +13,6 @@ namespace Pulumi.Gcp.DataPlex
     /// The Dataplex Asset resource
     /// 
     /// ## Example Usage
-    /// ### Basic_asset
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var basicBucket = new Gcp.Storage.Bucket("basicBucket", new()
-    ///     {
-    ///         Location = "us-west1",
-    ///         UniformBucketLevelAccess = true,
-    ///         Project = "my-project-name",
-    ///     });
-    /// 
-    ///     var basicLake = new Gcp.DataPlex.Lake("basicLake", new()
-    ///     {
-    ///         Location = "us-west1",
-    ///         Project = "my-project-name",
-    ///     });
-    /// 
-    ///     var basicZone = new Gcp.DataPlex.Zone("basicZone", new()
-    ///     {
-    ///         Location = "us-west1",
-    ///         Lake = basicLake.Name,
-    ///         Type = "RAW",
-    ///         DiscoverySpec = new Gcp.DataPlex.Inputs.ZoneDiscoverySpecArgs
-    ///         {
-    ///             Enabled = false,
-    ///         },
-    ///         ResourceSpec = new Gcp.DataPlex.Inputs.ZoneResourceSpecArgs
-    ///         {
-    ///             LocationType = "SINGLE_REGION",
-    ///         },
-    ///         Project = "my-project-name",
-    ///     });
-    /// 
-    ///     var primary = new Gcp.DataPlex.Asset("primary", new()
-    ///     {
-    ///         Location = "us-west1",
-    ///         Lake = basicLake.Name,
-    ///         DataplexZone = basicZone.Name,
-    ///         DiscoverySpec = new Gcp.DataPlex.Inputs.AssetDiscoverySpecArgs
-    ///         {
-    ///             Enabled = false,
-    ///         },
-    ///         ResourceSpec = new Gcp.DataPlex.Inputs.AssetResourceSpecArgs
-    ///         {
-    ///             Name = "projects/my-project-name/buckets/bucket",
-    ///             Type = "STORAGE_BUCKET",
-    ///         },
-    ///         Project = "my-project-name",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             basicBucket,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

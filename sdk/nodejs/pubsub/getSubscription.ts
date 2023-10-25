@@ -10,17 +10,6 @@ import * as utilities from "../utilities";
  * Get information about a Google Cloud Pub/Sub Subscription. For more information see
  * the [official documentation](https://cloud.google.com/pubsub/docs/)
  * and [API](https://cloud.google.com/pubsub/docs/apis).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const my-pubsub-subscription = gcp.pubsub.getSubscription({
- *     name: "my-pubsub-subscription",
- * });
- * ```
  */
 export function getSubscription(args: GetSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetSubscriptionResult> {
 
@@ -77,17 +66,6 @@ export interface GetSubscriptionResult {
  * Get information about a Google Cloud Pub/Sub Subscription. For more information see
  * the [official documentation](https://cloud.google.com/pubsub/docs/)
  * and [API](https://cloud.google.com/pubsub/docs/apis).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const my-pubsub-subscription = gcp.pubsub.getSubscription({
- *     name: "my-pubsub-subscription",
- * });
- * ```
  */
 export function getSubscriptionOutput(args: GetSubscriptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubscriptionResult> {
     return pulumi.output(args).apply((a: any) => getSubscription(a, opts))

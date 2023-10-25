@@ -6,18 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for a Dataproc cluster.
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.dataproc.getClusterIamPolicy({
- *     cluster: google_dataproc_cluster.cluster.name,
- *     region: "us-central1",
- * });
- * ```
  */
 export function getClusterIamPolicy(args: GetClusterIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterIamPolicyResult> {
 
@@ -63,18 +51,6 @@ export interface GetClusterIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for a Dataproc cluster.
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.dataproc.getClusterIamPolicy({
- *     cluster: google_dataproc_cluster.cluster.name,
- *     region: "us-central1",
- * });
- * ```
  */
 export function getClusterIamPolicyOutput(args: GetClusterIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getClusterIamPolicy(a, opts))

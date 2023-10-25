@@ -93,7 +93,15 @@ class AlertPolicyAlertStrategyArgs:
              auto_close: Optional[pulumi.Input[str]] = None,
              notification_channel_strategies: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyAlertStrategyNotificationChannelStrategyArgs']]]] = None,
              notification_rate_limit: Optional[pulumi.Input['AlertPolicyAlertStrategyNotificationRateLimitArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if auto_close is None and 'autoClose' in kwargs:
+            auto_close = kwargs['autoClose']
+        if notification_channel_strategies is None and 'notificationChannelStrategies' in kwargs:
+            notification_channel_strategies = kwargs['notificationChannelStrategies']
+        if notification_rate_limit is None and 'notificationRateLimit' in kwargs:
+            notification_rate_limit = kwargs['notificationRateLimit']
+
         if auto_close is not None:
             _setter("auto_close", auto_close)
         if notification_channel_strategies is not None:
@@ -164,7 +172,13 @@ class AlertPolicyAlertStrategyNotificationChannelStrategyArgs:
              _setter: Callable[[Any, Any], None],
              notification_channel_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              renotify_interval: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if notification_channel_names is None and 'notificationChannelNames' in kwargs:
+            notification_channel_names = kwargs['notificationChannelNames']
+        if renotify_interval is None and 'renotifyInterval' in kwargs:
+            renotify_interval = kwargs['renotifyInterval']
+
         if notification_channel_names is not None:
             _setter("notification_channel_names", notification_channel_names)
         if renotify_interval is not None:
@@ -213,7 +227,9 @@ class AlertPolicyAlertStrategyNotificationRateLimitArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              period: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if period is not None:
             _setter("period", period)
 
@@ -284,14 +300,30 @@ class AlertPolicyConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              condition_absent: Optional[pulumi.Input['AlertPolicyConditionConditionAbsentArgs']] = None,
              condition_matched_log: Optional[pulumi.Input['AlertPolicyConditionConditionMatchedLogArgs']] = None,
              condition_monitoring_query_language: Optional[pulumi.Input['AlertPolicyConditionConditionMonitoringQueryLanguageArgs']] = None,
              condition_prometheus_query_language: Optional[pulumi.Input['AlertPolicyConditionConditionPrometheusQueryLanguageArgs']] = None,
              condition_threshold: Optional[pulumi.Input['AlertPolicyConditionConditionThresholdArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if condition_absent is None and 'conditionAbsent' in kwargs:
+            condition_absent = kwargs['conditionAbsent']
+        if condition_matched_log is None and 'conditionMatchedLog' in kwargs:
+            condition_matched_log = kwargs['conditionMatchedLog']
+        if condition_monitoring_query_language is None and 'conditionMonitoringQueryLanguage' in kwargs:
+            condition_monitoring_query_language = kwargs['conditionMonitoringQueryLanguage']
+        if condition_prometheus_query_language is None and 'conditionPrometheusQueryLanguage' in kwargs:
+            condition_prometheus_query_language = kwargs['conditionPrometheusQueryLanguage']
+        if condition_threshold is None and 'conditionThreshold' in kwargs:
+            condition_threshold = kwargs['conditionThreshold']
+
         _setter("display_name", display_name)
         if condition_absent is not None:
             _setter("condition_absent", condition_absent)
@@ -466,11 +498,15 @@ class AlertPolicyConditionConditionAbsentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             duration: pulumi.Input[str],
+             duration: Optional[pulumi.Input[str]] = None,
              aggregations: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionAbsentAggregationArgs']]]] = None,
              filter: Optional[pulumi.Input[str]] = None,
              trigger: Optional[pulumi.Input['AlertPolicyConditionConditionAbsentTriggerArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if duration is None:
+            raise TypeError("Missing 'duration' argument")
+
         _setter("duration", duration)
         if aggregations is not None:
             _setter("aggregations", aggregations)
@@ -656,7 +692,17 @@ class AlertPolicyConditionConditionAbsentAggregationArgs:
              cross_series_reducer: Optional[pulumi.Input[str]] = None,
              group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              per_series_aligner: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if alignment_period is None and 'alignmentPeriod' in kwargs:
+            alignment_period = kwargs['alignmentPeriod']
+        if cross_series_reducer is None and 'crossSeriesReducer' in kwargs:
+            cross_series_reducer = kwargs['crossSeriesReducer']
+        if group_by_fields is None and 'groupByFields' in kwargs:
+            group_by_fields = kwargs['groupByFields']
+        if per_series_aligner is None and 'perSeriesAligner' in kwargs:
+            per_series_aligner = kwargs['perSeriesAligner']
+
         if alignment_period is not None:
             _setter("alignment_period", alignment_period)
         if cross_series_reducer is not None:
@@ -809,7 +855,9 @@ class AlertPolicyConditionConditionAbsentTriggerArgs:
              _setter: Callable[[Any, Any], None],
              count: Optional[pulumi.Input[int]] = None,
              percent: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if count is not None:
             _setter("count", count)
         if percent is not None:
@@ -867,9 +915,15 @@ class AlertPolicyConditionConditionMatchedLogArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter: pulumi.Input[str],
+             filter: Optional[pulumi.Input[str]] = None,
              label_extractors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if filter is None:
+            raise TypeError("Missing 'filter' argument")
+        if label_extractors is None and 'labelExtractors' in kwargs:
+            label_extractors = kwargs['labelExtractors']
+
         _setter("filter", filter)
         if label_extractors is not None:
             _setter("label_extractors", label_extractors)
@@ -953,11 +1007,19 @@ class AlertPolicyConditionConditionMonitoringQueryLanguageArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             duration: pulumi.Input[str],
-             query: pulumi.Input[str],
+             duration: Optional[pulumi.Input[str]] = None,
+             query: Optional[pulumi.Input[str]] = None,
              evaluation_missing_data: Optional[pulumi.Input[str]] = None,
              trigger: Optional[pulumi.Input['AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if duration is None:
+            raise TypeError("Missing 'duration' argument")
+        if query is None:
+            raise TypeError("Missing 'query' argument")
+        if evaluation_missing_data is None and 'evaluationMissingData' in kwargs:
+            evaluation_missing_data = kwargs['evaluationMissingData']
+
         _setter("duration", duration)
         _setter("query", query)
         if evaluation_missing_data is not None:
@@ -1062,7 +1124,9 @@ class AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs:
              _setter: Callable[[Any, Any], None],
              count: Optional[pulumi.Input[int]] = None,
              percent: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if count is not None:
             _setter("count", count)
         if percent is not None:
@@ -1158,13 +1222,23 @@ class AlertPolicyConditionConditionPrometheusQueryLanguageArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             query: pulumi.Input[str],
+             query: Optional[pulumi.Input[str]] = None,
              alert_rule: Optional[pulumi.Input[str]] = None,
              duration: Optional[pulumi.Input[str]] = None,
              evaluation_interval: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              rule_group: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if query is None:
+            raise TypeError("Missing 'query' argument")
+        if alert_rule is None and 'alertRule' in kwargs:
+            alert_rule = kwargs['alertRule']
+        if evaluation_interval is None and 'evaluationInterval' in kwargs:
+            evaluation_interval = kwargs['evaluationInterval']
+        if rule_group is None and 'ruleGroup' in kwargs:
+            rule_group = kwargs['ruleGroup']
+
         _setter("query", query)
         if alert_rule is not None:
             _setter("alert_rule", alert_rule)
@@ -1417,8 +1491,8 @@ class AlertPolicyConditionConditionThresholdArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             comparison: pulumi.Input[str],
-             duration: pulumi.Input[str],
+             comparison: Optional[pulumi.Input[str]] = None,
+             duration: Optional[pulumi.Input[str]] = None,
              aggregations: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdAggregationArgs']]]] = None,
              denominator_aggregations: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdDenominatorAggregationArgs']]]] = None,
              denominator_filter: Optional[pulumi.Input[str]] = None,
@@ -1427,7 +1501,23 @@ class AlertPolicyConditionConditionThresholdArgs:
              forecast_options: Optional[pulumi.Input['AlertPolicyConditionConditionThresholdForecastOptionsArgs']] = None,
              threshold_value: Optional[pulumi.Input[float]] = None,
              trigger: Optional[pulumi.Input['AlertPolicyConditionConditionThresholdTriggerArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if comparison is None:
+            raise TypeError("Missing 'comparison' argument")
+        if duration is None:
+            raise TypeError("Missing 'duration' argument")
+        if denominator_aggregations is None and 'denominatorAggregations' in kwargs:
+            denominator_aggregations = kwargs['denominatorAggregations']
+        if denominator_filter is None and 'denominatorFilter' in kwargs:
+            denominator_filter = kwargs['denominatorFilter']
+        if evaluation_missing_data is None and 'evaluationMissingData' in kwargs:
+            evaluation_missing_data = kwargs['evaluationMissingData']
+        if forecast_options is None and 'forecastOptions' in kwargs:
+            forecast_options = kwargs['forecastOptions']
+        if threshold_value is None and 'thresholdValue' in kwargs:
+            threshold_value = kwargs['thresholdValue']
+
         _setter("comparison", comparison)
         _setter("duration", duration)
         if aggregations is not None:
@@ -1760,7 +1850,17 @@ class AlertPolicyConditionConditionThresholdAggregationArgs:
              cross_series_reducer: Optional[pulumi.Input[str]] = None,
              group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              per_series_aligner: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if alignment_period is None and 'alignmentPeriod' in kwargs:
+            alignment_period = kwargs['alignmentPeriod']
+        if cross_series_reducer is None and 'crossSeriesReducer' in kwargs:
+            cross_series_reducer = kwargs['crossSeriesReducer']
+        if group_by_fields is None and 'groupByFields' in kwargs:
+            group_by_fields = kwargs['groupByFields']
+        if per_series_aligner is None and 'perSeriesAligner' in kwargs:
+            per_series_aligner = kwargs['perSeriesAligner']
+
         if alignment_period is not None:
             _setter("alignment_period", alignment_period)
         if cross_series_reducer is not None:
@@ -1988,7 +2088,17 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregationArgs:
              cross_series_reducer: Optional[pulumi.Input[str]] = None,
              group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              per_series_aligner: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if alignment_period is None and 'alignmentPeriod' in kwargs:
+            alignment_period = kwargs['alignmentPeriod']
+        if cross_series_reducer is None and 'crossSeriesReducer' in kwargs:
+            cross_series_reducer = kwargs['crossSeriesReducer']
+        if group_by_fields is None and 'groupByFields' in kwargs:
+            group_by_fields = kwargs['groupByFields']
+        if per_series_aligner is None and 'perSeriesAligner' in kwargs:
+            per_series_aligner = kwargs['perSeriesAligner']
+
         if alignment_period is not None:
             _setter("alignment_period", alignment_period)
         if cross_series_reducer is not None:
@@ -2137,8 +2247,14 @@ class AlertPolicyConditionConditionThresholdForecastOptionsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             forecast_horizon: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             forecast_horizon: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if forecast_horizon is None and 'forecastHorizon' in kwargs:
+            forecast_horizon = kwargs['forecastHorizon']
+        if forecast_horizon is None:
+            raise TypeError("Missing 'forecast_horizon' argument")
+
         _setter("forecast_horizon", forecast_horizon)
 
     @property
@@ -2182,7 +2298,9 @@ class AlertPolicyConditionConditionThresholdTriggerArgs:
              _setter: Callable[[Any, Any], None],
              count: Optional[pulumi.Input[int]] = None,
              percent: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if count is not None:
             _setter("count", count)
         if percent is not None:
@@ -2238,7 +2356,13 @@ class AlertPolicyCreationRecordArgs:
              _setter: Callable[[Any, Any], None],
              mutate_time: Optional[pulumi.Input[str]] = None,
              mutated_by: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if mutate_time is None and 'mutateTime' in kwargs:
+            mutate_time = kwargs['mutateTime']
+        if mutated_by is None and 'mutatedBy' in kwargs:
+            mutated_by = kwargs['mutatedBy']
+
         if mutate_time is not None:
             _setter("mutate_time", mutate_time)
         if mutated_by is not None:
@@ -2294,7 +2418,11 @@ class AlertPolicyDocumentationArgs:
              _setter: Callable[[Any, Any], None],
              content: Optional[pulumi.Input[str]] = None,
              mime_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if mime_type is None and 'mimeType' in kwargs:
+            mime_type = kwargs['mimeType']
+
         if content is not None:
             _setter("content", content)
         if mime_type is not None:
@@ -2346,7 +2474,11 @@ class CustomServiceTelemetryArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              resource_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if resource_name is None and 'resourceName' in kwargs:
+            resource_name = kwargs['resourceName']
+
         if resource_name is not None:
             _setter("resource_name", resource_name)
 
@@ -2386,7 +2518,13 @@ class GenericServiceBasicServiceArgs:
              _setter: Callable[[Any, Any], None],
              service_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              service_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service_labels is None and 'serviceLabels' in kwargs:
+            service_labels = kwargs['serviceLabels']
+        if service_type is None and 'serviceType' in kwargs:
+            service_type = kwargs['serviceType']
+
         if service_labels is not None:
             _setter("service_labels", service_labels)
         if service_type is not None:
@@ -2436,7 +2574,11 @@ class GenericServiceTelemetryArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              resource_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if resource_name is None and 'resourceName' in kwargs:
+            resource_name = kwargs['resourceName']
+
         if resource_name is not None:
             _setter("resource_name", resource_name)
 
@@ -2477,10 +2619,16 @@ class MetricDescriptorLabelArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
+             key: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              value_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value_type is None and 'valueType' in kwargs:
+            value_type = kwargs['valueType']
+
         _setter("key", key)
         if description is not None:
             _setter("description", description)
@@ -2545,7 +2693,13 @@ class MetricDescriptorMetadataArgs:
              _setter: Callable[[Any, Any], None],
              ingest_delay: Optional[pulumi.Input[str]] = None,
              sample_period: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ingest_delay is None and 'ingestDelay' in kwargs:
+            ingest_delay = kwargs['ingestDelay']
+        if sample_period is None and 'samplePeriod' in kwargs:
+            sample_period = kwargs['samplePeriod']
+
         if ingest_delay is not None:
             _setter("ingest_delay", ingest_delay)
         if sample_period is not None:
@@ -2602,7 +2756,13 @@ class NotificationChannelSensitiveLabelsArgs:
              auth_token: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
              service_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if auth_token is None and 'authToken' in kwargs:
+            auth_token = kwargs['authToken']
+        if service_key is None and 'serviceKey' in kwargs:
+            service_key = kwargs['serviceKey']
+
         if auth_token is not None:
             _setter("auth_token", auth_token)
         if password is not None:
@@ -2698,7 +2858,9 @@ class SloBasicSliArgs:
              locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if availability is not None:
             _setter("availability", availability)
         if latency is not None:
@@ -2803,7 +2965,9 @@ class SloBasicSliAvailabilityArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if enabled is not None:
             _setter("enabled", enabled)
 
@@ -2836,8 +3000,12 @@ class SloBasicSliLatencyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             threshold: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             threshold: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if threshold is None:
+            raise TypeError("Missing 'threshold' argument")
+
         _setter("threshold", threshold)
 
     @property
@@ -2886,7 +3054,13 @@ class SloRequestBasedSliArgs:
              _setter: Callable[[Any, Any], None],
              distribution_cut: Optional[pulumi.Input['SloRequestBasedSliDistributionCutArgs']] = None,
              good_total_ratio: Optional[pulumi.Input['SloRequestBasedSliGoodTotalRatioArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if distribution_cut is None and 'distributionCut' in kwargs:
+            distribution_cut = kwargs['distributionCut']
+        if good_total_ratio is None and 'goodTotalRatio' in kwargs:
+            good_total_ratio = kwargs['goodTotalRatio']
+
         if distribution_cut is not None:
             _setter("distribution_cut", distribution_cut)
         if good_total_ratio is not None:
@@ -2954,9 +3128,17 @@ class SloRequestBasedSliDistributionCutArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             distribution_filter: pulumi.Input[str],
-             range: pulumi.Input['SloRequestBasedSliDistributionCutRangeArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             distribution_filter: Optional[pulumi.Input[str]] = None,
+             range: Optional[pulumi.Input['SloRequestBasedSliDistributionCutRangeArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if distribution_filter is None and 'distributionFilter' in kwargs:
+            distribution_filter = kwargs['distributionFilter']
+        if distribution_filter is None:
+            raise TypeError("Missing 'distribution_filter' argument")
+        if range is None:
+            raise TypeError("Missing 'range' argument")
+
         _setter("distribution_filter", distribution_filter)
         _setter("range", range)
 
@@ -3016,7 +3198,9 @@ class SloRequestBasedSliDistributionCutRangeArgs:
              _setter: Callable[[Any, Any], None],
              max: Optional[pulumi.Input[float]] = None,
              min: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if max is not None:
             _setter("max", max)
         if min is not None:
@@ -3091,7 +3275,15 @@ class SloRequestBasedSliGoodTotalRatioArgs:
              bad_service_filter: Optional[pulumi.Input[str]] = None,
              good_service_filter: Optional[pulumi.Input[str]] = None,
              total_service_filter: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bad_service_filter is None and 'badServiceFilter' in kwargs:
+            bad_service_filter = kwargs['badServiceFilter']
+        if good_service_filter is None and 'goodServiceFilter' in kwargs:
+            good_service_filter = kwargs['goodServiceFilter']
+        if total_service_filter is None and 'totalServiceFilter' in kwargs:
+            total_service_filter = kwargs['totalServiceFilter']
+
         if bad_service_filter is not None:
             _setter("bad_service_filter", bad_service_filter)
         if good_service_filter is not None:
@@ -3208,7 +3400,19 @@ class SloWindowsBasedSliArgs:
              metric_mean_in_range: Optional[pulumi.Input['SloWindowsBasedSliMetricMeanInRangeArgs']] = None,
              metric_sum_in_range: Optional[pulumi.Input['SloWindowsBasedSliMetricSumInRangeArgs']] = None,
              window_period: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if good_bad_metric_filter is None and 'goodBadMetricFilter' in kwargs:
+            good_bad_metric_filter = kwargs['goodBadMetricFilter']
+        if good_total_ratio_threshold is None and 'goodTotalRatioThreshold' in kwargs:
+            good_total_ratio_threshold = kwargs['goodTotalRatioThreshold']
+        if metric_mean_in_range is None and 'metricMeanInRange' in kwargs:
+            metric_mean_in_range = kwargs['metricMeanInRange']
+        if metric_sum_in_range is None and 'metricSumInRange' in kwargs:
+            metric_sum_in_range = kwargs['metricSumInRange']
+        if window_period is None and 'windowPeriod' in kwargs:
+            window_period = kwargs['windowPeriod']
+
         if good_bad_metric_filter is not None:
             _setter("good_bad_metric_filter", good_bad_metric_filter)
         if good_total_ratio_threshold is not None:
@@ -3331,7 +3535,11 @@ class SloWindowsBasedSliGoodTotalRatioThresholdArgs:
              basic_sli_performance: Optional[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs']] = None,
              performance: Optional[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs']] = None,
              threshold: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if basic_sli_performance is None and 'basicSliPerformance' in kwargs:
+            basic_sli_performance = kwargs['basicSliPerformance']
+
         if basic_sli_performance is not None:
             _setter("basic_sli_performance", basic_sli_performance)
         if performance is not None:
@@ -3427,7 +3635,9 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs:
              locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if availability is not None:
             _setter("availability", availability)
         if latency is not None:
@@ -3532,7 +3742,9 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityAr
     def _configure(
              _setter: Callable[[Any, Any], None],
              enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if enabled is not None:
             _setter("enabled", enabled)
 
@@ -3565,8 +3777,12 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             threshold: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             threshold: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if threshold is None:
+            raise TypeError("Missing 'threshold' argument")
+
         _setter("threshold", threshold)
 
     @property
@@ -3613,7 +3829,13 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs:
              _setter: Callable[[Any, Any], None],
              distribution_cut: Optional[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs']] = None,
              good_total_ratio: Optional[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if distribution_cut is None and 'distributionCut' in kwargs:
+            distribution_cut = kwargs['distributionCut']
+        if good_total_ratio is None and 'goodTotalRatio' in kwargs:
+            good_total_ratio = kwargs['goodTotalRatio']
+
         if distribution_cut is not None:
             _setter("distribution_cut", distribution_cut)
         if good_total_ratio is not None:
@@ -3679,9 +3901,17 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             distribution_filter: pulumi.Input[str],
-             range: pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             distribution_filter: Optional[pulumi.Input[str]] = None,
+             range: Optional[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if distribution_filter is None and 'distributionFilter' in kwargs:
+            distribution_filter = kwargs['distributionFilter']
+        if distribution_filter is None:
+            raise TypeError("Missing 'distribution_filter' argument")
+        if range is None:
+            raise TypeError("Missing 'range' argument")
+
         _setter("distribution_filter", distribution_filter)
         _setter("range", range)
 
@@ -3741,7 +3971,9 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeAr
              _setter: Callable[[Any, Any], None],
              max: Optional[pulumi.Input[float]] = None,
              min: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if max is not None:
             _setter("max", max)
         if min is not None:
@@ -3816,7 +4048,15 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs:
              bad_service_filter: Optional[pulumi.Input[str]] = None,
              good_service_filter: Optional[pulumi.Input[str]] = None,
              total_service_filter: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bad_service_filter is None and 'badServiceFilter' in kwargs:
+            bad_service_filter = kwargs['badServiceFilter']
+        if good_service_filter is None and 'goodServiceFilter' in kwargs:
+            good_service_filter = kwargs['goodServiceFilter']
+        if total_service_filter is None and 'totalServiceFilter' in kwargs:
+            total_service_filter = kwargs['totalServiceFilter']
+
         if bad_service_filter is not None:
             _setter("bad_service_filter", bad_service_filter)
         if good_service_filter is not None:
@@ -3907,9 +4147,17 @@ class SloWindowsBasedSliMetricMeanInRangeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             range: pulumi.Input['SloWindowsBasedSliMetricMeanInRangeRangeArgs'],
-             time_series: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             range: Optional[pulumi.Input['SloWindowsBasedSliMetricMeanInRangeRangeArgs']] = None,
+             time_series: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if range is None:
+            raise TypeError("Missing 'range' argument")
+        if time_series is None and 'timeSeries' in kwargs:
+            time_series = kwargs['timeSeries']
+        if time_series is None:
+            raise TypeError("Missing 'time_series' argument")
+
         _setter("range", range)
         _setter("time_series", time_series)
 
@@ -3973,7 +4221,9 @@ class SloWindowsBasedSliMetricMeanInRangeRangeArgs:
              _setter: Callable[[Any, Any], None],
              max: Optional[pulumi.Input[float]] = None,
              min: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if max is not None:
             _setter("max", max)
         if min is not None:
@@ -4037,9 +4287,17 @@ class SloWindowsBasedSliMetricSumInRangeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             range: pulumi.Input['SloWindowsBasedSliMetricSumInRangeRangeArgs'],
-             time_series: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             range: Optional[pulumi.Input['SloWindowsBasedSliMetricSumInRangeRangeArgs']] = None,
+             time_series: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if range is None:
+            raise TypeError("Missing 'range' argument")
+        if time_series is None and 'timeSeries' in kwargs:
+            time_series = kwargs['timeSeries']
+        if time_series is None:
+            raise TypeError("Missing 'time_series' argument")
+
         _setter("range", range)
         _setter("time_series", time_series)
 
@@ -4103,7 +4361,9 @@ class SloWindowsBasedSliMetricSumInRangeRangeArgs:
              _setter: Callable[[Any, Any], None],
              max: Optional[pulumi.Input[float]] = None,
              min: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if max is not None:
             _setter("max", max)
         if min is not None:
@@ -4161,10 +4421,16 @@ class UptimeCheckConfigContentMatcherArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             content: pulumi.Input[str],
+             content: Optional[pulumi.Input[str]] = None,
              json_path_matcher: Optional[pulumi.Input['UptimeCheckConfigContentMatcherJsonPathMatcherArgs']] = None,
              matcher: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if content is None:
+            raise TypeError("Missing 'content' argument")
+        if json_path_matcher is None and 'jsonPathMatcher' in kwargs:
+            json_path_matcher = kwargs['jsonPathMatcher']
+
         _setter("content", content)
         if json_path_matcher is not None:
             _setter("json_path_matcher", json_path_matcher)
@@ -4230,9 +4496,17 @@ class UptimeCheckConfigContentMatcherJsonPathMatcherArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             json_path: pulumi.Input[str],
+             json_path: Optional[pulumi.Input[str]] = None,
              json_matcher: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if json_path is None and 'jsonPath' in kwargs:
+            json_path = kwargs['jsonPath']
+        if json_path is None:
+            raise TypeError("Missing 'json_path' argument")
+        if json_matcher is None and 'jsonMatcher' in kwargs:
+            json_matcher = kwargs['jsonMatcher']
+
         _setter("json_path", json_path)
         if json_matcher is not None:
             _setter("json_matcher", json_matcher)
@@ -4324,7 +4598,23 @@ class UptimeCheckConfigHttpCheckArgs:
              request_method: Optional[pulumi.Input[str]] = None,
              use_ssl: Optional[pulumi.Input[bool]] = None,
              validate_ssl: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if accepted_response_status_codes is None and 'acceptedResponseStatusCodes' in kwargs:
+            accepted_response_status_codes = kwargs['acceptedResponseStatusCodes']
+        if auth_info is None and 'authInfo' in kwargs:
+            auth_info = kwargs['authInfo']
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if mask_headers is None and 'maskHeaders' in kwargs:
+            mask_headers = kwargs['maskHeaders']
+        if request_method is None and 'requestMethod' in kwargs:
+            request_method = kwargs['requestMethod']
+        if use_ssl is None and 'useSsl' in kwargs:
+            use_ssl = kwargs['useSsl']
+        if validate_ssl is None and 'validateSsl' in kwargs:
+            validate_ssl = kwargs['validateSsl']
+
         if accepted_response_status_codes is not None:
             _setter("accepted_response_status_codes", accepted_response_status_codes)
         if auth_info is not None:
@@ -4506,7 +4796,13 @@ class UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs:
              _setter: Callable[[Any, Any], None],
              status_class: Optional[pulumi.Input[str]] = None,
              status_value: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if status_class is None and 'statusClass' in kwargs:
+            status_class = kwargs['statusClass']
+        if status_value is None and 'statusValue' in kwargs:
+            status_value = kwargs['statusValue']
+
         if status_class is not None:
             _setter("status_class", status_class)
         if status_value is not None:
@@ -4556,9 +4852,15 @@ class UptimeCheckConfigHttpCheckAuthInfoArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             password: pulumi.Input[str],
-             username: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             password: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+
         _setter("password", password)
         _setter("username", username)
 
@@ -4605,9 +4907,15 @@ class UptimeCheckConfigMonitoredResourceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             labels: pulumi.Input[Mapping[str, pulumi.Input[str]]],
-             type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if labels is None:
+            raise TypeError("Missing 'labels' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("labels", labels)
         _setter("type", type)
 
@@ -4656,7 +4964,13 @@ class UptimeCheckConfigResourceGroupArgs:
              _setter: Callable[[Any, Any], None],
              group_id: Optional[pulumi.Input[str]] = None,
              resource_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if resource_type is None and 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+
         if group_id is not None:
             _setter("group_id", group_id)
         if resource_type is not None:
@@ -4706,8 +5020,14 @@ class UptimeCheckConfigSyntheticMonitorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cloud_function_v2: pulumi.Input['UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             cloud_function_v2: Optional[pulumi.Input['UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cloud_function_v2 is None and 'cloudFunctionV2' in kwargs:
+            cloud_function_v2 = kwargs['cloudFunctionV2']
+        if cloud_function_v2 is None:
+            raise TypeError("Missing 'cloud_function_v2' argument")
+
         _setter("cloud_function_v2", cloud_function_v2)
 
     @property
@@ -4741,8 +5061,12 @@ class UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -4772,8 +5096,12 @@ class UptimeCheckConfigTcpCheckArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             port: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             port: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+
         _setter("port", port)
 
     @property

@@ -14,24 +14,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/logging/docs/apis)
  *
  * ## Example Usage
- * ### Logging Log View Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const loggingLogViewProjectBucketConfig = new gcp.logging.ProjectBucketConfig("loggingLogViewProjectBucketConfig", {
- *     project: "my-project-name",
- *     location: "global",
- *     retentionDays: 30,
- *     bucketId: "_Default",
- * });
- * const loggingLogViewLogView = new gcp.logging.LogView("loggingLogViewLogView", {
- *     bucket: loggingLogViewProjectBucketConfig.id,
- *     description: "A logging view configured with Terraform",
- *     filter: "SOURCE(\"projects/myproject\") AND resource.type = \"gce_instance\" AND LOG_ID(\"stdout\")",
- * });
- * ```
  *
  * ## Import
  *

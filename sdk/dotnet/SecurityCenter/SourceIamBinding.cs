@@ -22,25 +22,6 @@ namespace Pulumi.Gcp.SecurityCenter
     ///     * [Official Documentation](https://cloud.google.com/security-command-center/docs)
     /// 
     /// ## Example Usage
-    /// ### Scc Source Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var customSource = new Gcp.SecurityCenter.Source("customSource", new()
-    ///     {
-    ///         Description = "My custom Cloud Security Command Center Finding Source",
-    ///         DisplayName = "My Source",
-    ///         Organization = "123456789",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

@@ -84,8 +84,8 @@ class SecretArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             replication: pulumi.Input['SecretReplicationArgs'],
-             secret_id: pulumi.Input[str],
+             replication: Optional[pulumi.Input['SecretReplicationArgs']] = None,
+             secret_id: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              expire_time: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -94,7 +94,19 @@ class SecretArgs:
              topics: Optional[pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]]] = None,
              ttl: Optional[pulumi.Input[str]] = None,
              version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if replication is None:
+            raise TypeError("Missing 'replication' argument")
+        if secret_id is None and 'secretId' in kwargs:
+            secret_id = kwargs['secretId']
+        if secret_id is None:
+            raise TypeError("Missing 'secret_id' argument")
+        if expire_time is None and 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if version_aliases is None and 'versionAliases' in kwargs:
+            version_aliases = kwargs['versionAliases']
+
         _setter("replication", replication)
         _setter("secret_id", secret_id)
         if annotations is not None:
@@ -354,7 +366,17 @@ class _SecretState:
              topics: Optional[pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]]] = None,
              ttl: Optional[pulumi.Input[str]] = None,
              version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if expire_time is None and 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if secret_id is None and 'secretId' in kwargs:
+            secret_id = kwargs['secretId']
+        if version_aliases is None and 'versionAliases' in kwargs:
+            version_aliases = kwargs['versionAliases']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if create_time is not None:
@@ -579,74 +601,6 @@ class Secret(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets)
 
         ## Example Usage
-        ### Secret Config Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        secret_basic = gcp.secretmanager.Secret("secret-basic",
-            labels={
-                "label": "my-label",
-            },
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
-                    replicas=[
-                        gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
-                            location="us-central1",
-                        ),
-                        gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
-                            location="us-east1",
-                        ),
-                    ],
-                ),
-            ),
-            secret_id="secret")
-        ```
-        ### Secret With Annotations
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        secret_with_annotations = gcp.secretmanager.Secret("secret-with-annotations",
-            annotations={
-                "key1": "someval",
-                "key2": "someval2",
-                "key3": "someval3",
-                "key4": "someval4",
-                "key5": "someval5",
-            },
-            labels={
-                "label": "my-label",
-            },
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ),
-            secret_id="secret")
-        ```
-        ### Secret With Automatic Cmek
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        kms_secret_binding = gcp.kms.CryptoKeyIAMMember("kms-secret-binding",
-            crypto_key_id="kms-key",
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-secretmanager.iam.gserviceaccount.com")
-        secret_with_automatic_cmek = gcp.secretmanager.Secret("secret-with-automatic-cmek",
-            secret_id="secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(
-                    customer_managed_encryption=gcp.secretmanager.SecretReplicationAutoCustomerManagedEncryptionArgs(
-                        kms_key_name="kms-key",
-                    ),
-                ),
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[kms_secret_binding]))
-        ```
 
         ## Import
 
@@ -720,74 +674,6 @@ class Secret(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets)
 
         ## Example Usage
-        ### Secret Config Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        secret_basic = gcp.secretmanager.Secret("secret-basic",
-            labels={
-                "label": "my-label",
-            },
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
-                    replicas=[
-                        gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
-                            location="us-central1",
-                        ),
-                        gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
-                            location="us-east1",
-                        ),
-                    ],
-                ),
-            ),
-            secret_id="secret")
-        ```
-        ### Secret With Annotations
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        secret_with_annotations = gcp.secretmanager.Secret("secret-with-annotations",
-            annotations={
-                "key1": "someval",
-                "key2": "someval2",
-                "key3": "someval3",
-                "key4": "someval4",
-                "key5": "someval5",
-            },
-            labels={
-                "label": "my-label",
-            },
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ),
-            secret_id="secret")
-        ```
-        ### Secret With Automatic Cmek
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        kms_secret_binding = gcp.kms.CryptoKeyIAMMember("kms-secret-binding",
-            crypto_key_id="kms-key",
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-secretmanager.iam.gserviceaccount.com")
-        secret_with_automatic_cmek = gcp.secretmanager.Secret("secret-with-automatic-cmek",
-            secret_id="secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(
-                    customer_managed_encryption=gcp.secretmanager.SecretReplicationAutoCustomerManagedEncryptionArgs(
-                        kms_key_name="kms-key",
-                    ),
-                ),
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[kms_secret_binding]))
-        ```
 
         ## Import
 
@@ -847,19 +733,11 @@ class Secret(pulumi.CustomResource):
             __props__.__dict__["expire_time"] = expire_time
             __props__.__dict__["labels"] = labels
             __props__.__dict__["project"] = project
-            if replication is not None and not isinstance(replication, SecretReplicationArgs):
-                replication = replication or {}
-                def _setter(key, value):
-                    replication[key] = value
-                SecretReplicationArgs._configure(_setter, **replication)
+            replication = _utilities.configure(replication, SecretReplicationArgs, True)
             if replication is None and not opts.urn:
                 raise TypeError("Missing required property 'replication'")
             __props__.__dict__["replication"] = replication
-            if rotation is not None and not isinstance(rotation, SecretRotationArgs):
-                rotation = rotation or {}
-                def _setter(key, value):
-                    rotation[key] = value
-                SecretRotationArgs._configure(_setter, **rotation)
+            rotation = _utilities.configure(rotation, SecretRotationArgs, True)
             __props__.__dict__["rotation"] = rotation
             if secret_id is None and not opts.urn:
                 raise TypeError("Missing required property 'secret_id'")

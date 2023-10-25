@@ -98,9 +98,9 @@ class DataTransferConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data_source_id: pulumi.Input[str],
-             display_name: pulumi.Input[str],
-             params: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+             data_source_id: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              data_refresh_window_days: Optional[pulumi.Input[int]] = None,
              destination_dataset_id: Optional[pulumi.Input[str]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
@@ -112,7 +112,33 @@ class DataTransferConfigArgs:
              schedule_options: Optional[pulumi.Input['DataTransferConfigScheduleOptionsArgs']] = None,
              sensitive_params: Optional[pulumi.Input['DataTransferConfigSensitiveParamsArgs']] = None,
              service_account_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if data_source_id is None and 'dataSourceId' in kwargs:
+            data_source_id = kwargs['dataSourceId']
+        if data_source_id is None:
+            raise TypeError("Missing 'data_source_id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if params is None:
+            raise TypeError("Missing 'params' argument")
+        if data_refresh_window_days is None and 'dataRefreshWindowDays' in kwargs:
+            data_refresh_window_days = kwargs['dataRefreshWindowDays']
+        if destination_dataset_id is None and 'destinationDatasetId' in kwargs:
+            destination_dataset_id = kwargs['destinationDatasetId']
+        if email_preferences is None and 'emailPreferences' in kwargs:
+            email_preferences = kwargs['emailPreferences']
+        if notification_pubsub_topic is None and 'notificationPubsubTopic' in kwargs:
+            notification_pubsub_topic = kwargs['notificationPubsubTopic']
+        if schedule_options is None and 'scheduleOptions' in kwargs:
+            schedule_options = kwargs['scheduleOptions']
+        if sensitive_params is None and 'sensitiveParams' in kwargs:
+            sensitive_params = kwargs['sensitiveParams']
+        if service_account_name is None and 'serviceAccountName' in kwargs:
+            service_account_name = kwargs['serviceAccountName']
+
         _setter("data_source_id", data_source_id)
         _setter("display_name", display_name)
         _setter("params", params)
@@ -446,7 +472,27 @@ class _DataTransferConfigState:
              schedule_options: Optional[pulumi.Input['DataTransferConfigScheduleOptionsArgs']] = None,
              sensitive_params: Optional[pulumi.Input['DataTransferConfigSensitiveParamsArgs']] = None,
              service_account_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if data_refresh_window_days is None and 'dataRefreshWindowDays' in kwargs:
+            data_refresh_window_days = kwargs['dataRefreshWindowDays']
+        if data_source_id is None and 'dataSourceId' in kwargs:
+            data_source_id = kwargs['dataSourceId']
+        if destination_dataset_id is None and 'destinationDatasetId' in kwargs:
+            destination_dataset_id = kwargs['destinationDatasetId']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if email_preferences is None and 'emailPreferences' in kwargs:
+            email_preferences = kwargs['emailPreferences']
+        if notification_pubsub_topic is None and 'notificationPubsubTopic' in kwargs:
+            notification_pubsub_topic = kwargs['notificationPubsubTopic']
+        if schedule_options is None and 'scheduleOptions' in kwargs:
+            schedule_options = kwargs['scheduleOptions']
+        if sensitive_params is None and 'sensitiveParams' in kwargs:
+            sensitive_params = kwargs['sensitiveParams']
+        if service_account_name is None and 'serviceAccountName' in kwargs:
+            service_account_name = kwargs['serviceAccountName']
+
         if data_refresh_window_days is not None:
             _setter("data_refresh_window_days", data_refresh_window_days)
         if data_source_id is not None:
@@ -729,36 +775,6 @@ class DataTransferConfig(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
-        ### Bigquerydatatransfer Config Scheduled Query
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        permissions = gcp.projects.IAMMember("permissions",
-            project=project.project_id,
-            role="roles/iam.serviceAccountTokenCreator",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com")
-        my_dataset = gcp.bigquery.Dataset("myDataset",
-            dataset_id="my_dataset",
-            friendly_name="foo",
-            description="bar",
-            location="asia-northeast1",
-            opts=pulumi.ResourceOptions(depends_on=[permissions]))
-        query_config = gcp.bigquery.DataTransferConfig("queryConfig",
-            display_name="my-query",
-            location="asia-northeast1",
-            data_source_id="scheduled_query",
-            schedule="first sunday of quarter 00:00",
-            destination_dataset_id=my_dataset.dataset_id,
-            params={
-                "destination_table_name_template": "my_table",
-                "write_disposition": "WRITE_APPEND",
-                "query": "SELECT name FROM tabl WHERE x = 'y'",
-            },
-            opts=pulumi.ResourceOptions(depends_on=[permissions]))
-        ```
 
         ## Import
 
@@ -837,36 +853,6 @@ class DataTransferConfig(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
-        ### Bigquerydatatransfer Config Scheduled Query
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        permissions = gcp.projects.IAMMember("permissions",
-            project=project.project_id,
-            role="roles/iam.serviceAccountTokenCreator",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com")
-        my_dataset = gcp.bigquery.Dataset("myDataset",
-            dataset_id="my_dataset",
-            friendly_name="foo",
-            description="bar",
-            location="asia-northeast1",
-            opts=pulumi.ResourceOptions(depends_on=[permissions]))
-        query_config = gcp.bigquery.DataTransferConfig("queryConfig",
-            display_name="my-query",
-            location="asia-northeast1",
-            data_source_id="scheduled_query",
-            schedule="first sunday of quarter 00:00",
-            destination_dataset_id=my_dataset.dataset_id,
-            params={
-                "destination_table_name_template": "my_table",
-                "write_disposition": "WRITE_APPEND",
-                "query": "SELECT name FROM tabl WHERE x = 'y'",
-            },
-            opts=pulumi.ResourceOptions(depends_on=[permissions]))
-        ```
 
         ## Import
 
@@ -927,11 +913,7 @@ class DataTransferConfig(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
-            if email_preferences is not None and not isinstance(email_preferences, DataTransferConfigEmailPreferencesArgs):
-                email_preferences = email_preferences or {}
-                def _setter(key, value):
-                    email_preferences[key] = value
-                DataTransferConfigEmailPreferencesArgs._configure(_setter, **email_preferences)
+            email_preferences = _utilities.configure(email_preferences, DataTransferConfigEmailPreferencesArgs, True)
             __props__.__dict__["email_preferences"] = email_preferences
             __props__.__dict__["location"] = location
             __props__.__dict__["notification_pubsub_topic"] = notification_pubsub_topic
@@ -940,17 +922,9 @@ class DataTransferConfig(pulumi.CustomResource):
             __props__.__dict__["params"] = params
             __props__.__dict__["project"] = project
             __props__.__dict__["schedule"] = schedule
-            if schedule_options is not None and not isinstance(schedule_options, DataTransferConfigScheduleOptionsArgs):
-                schedule_options = schedule_options or {}
-                def _setter(key, value):
-                    schedule_options[key] = value
-                DataTransferConfigScheduleOptionsArgs._configure(_setter, **schedule_options)
+            schedule_options = _utilities.configure(schedule_options, DataTransferConfigScheduleOptionsArgs, True)
             __props__.__dict__["schedule_options"] = schedule_options
-            if sensitive_params is not None and not isinstance(sensitive_params, DataTransferConfigSensitiveParamsArgs):
-                sensitive_params = sensitive_params or {}
-                def _setter(key, value):
-                    sensitive_params[key] = value
-                DataTransferConfigSensitiveParamsArgs._configure(_setter, **sensitive_params)
+            sensitive_params = _utilities.configure(sensitive_params, DataTransferConfigSensitiveParamsArgs, True)
             __props__.__dict__["sensitive_params"] = sensitive_params
             __props__.__dict__["service_account_name"] = service_account_name
             __props__.__dict__["name"] = None

@@ -44,12 +44,18 @@ class ManagementServerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
-             networks: pulumi.Input[Sequence[pulumi.Input['ManagementServerNetworkArgs']]],
+             location: Optional[pulumi.Input[str]] = None,
+             networks: Optional[pulumi.Input[Sequence[pulumi.Input['ManagementServerNetworkArgs']]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if networks is None:
+            raise TypeError("Missing 'networks' argument")
+
         _setter("location", location)
         _setter("networks", networks)
         if name is not None:
@@ -169,7 +175,13 @@ class _ManagementServerState:
              oauth2_client_id: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if management_uris is None and 'managementUris' in kwargs:
+            management_uris = kwargs['managementUris']
+        if oauth2_client_id is None and 'oauth2ClientId' in kwargs:
+            oauth2_client_id = kwargs['oauth2ClientId']
+
         if location is not None:
             _setter("location", location)
         if management_uris is not None:
@@ -288,34 +300,6 @@ class ManagementServer(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Backup Dr Management Server
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork", opts=pulumi.ResourceOptions(provider=google_beta))
-        private_ip_address = gcp.compute.GlobalAddress("privateIpAddress",
-            address_type="INTERNAL",
-            purpose="VPC_PEERING",
-            prefix_length=20,
-            network=default_network.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_connection = gcp.servicenetworking.Connection("defaultConnection",
-            network=default_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_address.name],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ms_console = gcp.backupdisasterrecovery.ManagementServer("ms-console",
-            location="us-central1",
-            type="BACKUP_RESTORE",
-            networks=[gcp.backupdisasterrecovery.ManagementServerNetworkArgs(
-                network=default_network.id,
-                peering_mode="PRIVATE_SERVICE_ACCESS",
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[default_connection]))
-        ```
 
         ## Import
 
@@ -353,34 +337,6 @@ class ManagementServer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Backup Dr Management Server
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork", opts=pulumi.ResourceOptions(provider=google_beta))
-        private_ip_address = gcp.compute.GlobalAddress("privateIpAddress",
-            address_type="INTERNAL",
-            purpose="VPC_PEERING",
-            prefix_length=20,
-            network=default_network.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_connection = gcp.servicenetworking.Connection("defaultConnection",
-            network=default_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_address.name],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ms_console = gcp.backupdisasterrecovery.ManagementServer("ms-console",
-            location="us-central1",
-            type="BACKUP_RESTORE",
-            networks=[gcp.backupdisasterrecovery.ManagementServerNetworkArgs(
-                network=default_network.id,
-                peering_mode="PRIVATE_SERVICE_ACCESS",
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[default_connection]))
-        ```
 
         ## Import
 

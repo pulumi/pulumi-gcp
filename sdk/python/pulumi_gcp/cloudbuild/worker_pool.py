@@ -50,14 +50,24 @@ class WorkerPoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              network_config: Optional[pulumi.Input['WorkerPoolNetworkConfigArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
              worker_config: Optional[pulumi.Input['WorkerPoolWorkerConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if worker_config is None and 'workerConfig' in kwargs:
+            worker_config = kwargs['workerConfig']
+
         _setter("location", location)
         if annotations is not None:
             _setter("annotations", annotations)
@@ -225,7 +235,21 @@ class _WorkerPoolState:
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              worker_config: Optional[pulumi.Input['WorkerPoolWorkerConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if delete_time is None and 'deleteTime' in kwargs:
+            delete_time = kwargs['deleteTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if worker_config is None and 'workerConfig' in kwargs:
+            worker_config = kwargs['workerConfig']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if create_time is not None:
@@ -416,55 +440,6 @@ class WorkerPool(pulumi.CustomResource):
         """
         Definition of custom Cloud Build WorkerPools for running jobs with custom configuration and custom networking.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        pool = gcp.cloudbuild.WorkerPool("pool",
-            location="europe-west1",
-            worker_config=gcp.cloudbuild.WorkerPoolWorkerConfigArgs(
-                disk_size_gb=100,
-                machine_type="e2-standard-4",
-                no_external_ip=False,
-            ))
-        ```
-        ### Network Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        servicenetworking = gcp.projects.Service("servicenetworking",
-            service="servicenetworking.googleapis.com",
-            disable_on_destroy=False)
-        network = gcp.compute.Network("network", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
-        worker_range = gcp.compute.GlobalAddress("workerRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=network.id)
-        worker_pool_conn = gcp.servicenetworking.Connection("workerPoolConn",
-            network=network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[worker_range.name],
-            opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
-        pool = gcp.cloudbuild.WorkerPool("pool",
-            location="europe-west1",
-            worker_config=gcp.cloudbuild.WorkerPoolWorkerConfigArgs(
-                disk_size_gb=100,
-                machine_type="e2-standard-4",
-                no_external_ip=False,
-            ),
-            network_config=gcp.cloudbuild.WorkerPoolNetworkConfigArgs(
-                peered_network=network.id,
-                peered_network_ip_range="/29",
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[worker_pool_conn]))
-        ```
-
         ## Import
 
         WorkerPool can be imported using any of these accepted formats
@@ -503,55 +478,6 @@ class WorkerPool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Definition of custom Cloud Build WorkerPools for running jobs with custom configuration and custom networking.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        pool = gcp.cloudbuild.WorkerPool("pool",
-            location="europe-west1",
-            worker_config=gcp.cloudbuild.WorkerPoolWorkerConfigArgs(
-                disk_size_gb=100,
-                machine_type="e2-standard-4",
-                no_external_ip=False,
-            ))
-        ```
-        ### Network Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        servicenetworking = gcp.projects.Service("servicenetworking",
-            service="servicenetworking.googleapis.com",
-            disable_on_destroy=False)
-        network = gcp.compute.Network("network", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
-        worker_range = gcp.compute.GlobalAddress("workerRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=network.id)
-        worker_pool_conn = gcp.servicenetworking.Connection("workerPoolConn",
-            network=network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[worker_range.name],
-            opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
-        pool = gcp.cloudbuild.WorkerPool("pool",
-            location="europe-west1",
-            worker_config=gcp.cloudbuild.WorkerPoolWorkerConfigArgs(
-                disk_size_gb=100,
-                machine_type="e2-standard-4",
-                no_external_ip=False,
-            ),
-            network_config=gcp.cloudbuild.WorkerPoolNetworkConfigArgs(
-                peered_network=network.id,
-                peered_network_ip_range="/29",
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[worker_pool_conn]))
-        ```
 
         ## Import
 
@@ -610,18 +536,10 @@ class WorkerPool(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if network_config is not None and not isinstance(network_config, WorkerPoolNetworkConfigArgs):
-                network_config = network_config or {}
-                def _setter(key, value):
-                    network_config[key] = value
-                WorkerPoolNetworkConfigArgs._configure(_setter, **network_config)
+            network_config = _utilities.configure(network_config, WorkerPoolNetworkConfigArgs, True)
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["project"] = project
-            if worker_config is not None and not isinstance(worker_config, WorkerPoolWorkerConfigArgs):
-                worker_config = worker_config or {}
-                def _setter(key, value):
-                    worker_config[key] = value
-                WorkerPoolWorkerConfigArgs._configure(_setter, **worker_config)
+            worker_config = _utilities.configure(worker_config, WorkerPoolWorkerConfigArgs, True)
             __props__.__dict__["worker_config"] = worker_config
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None

@@ -54,13 +54,19 @@ class MembershipArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             membership_id: pulumi.Input[str],
+             membership_id: Optional[pulumi.Input[str]] = None,
              authority: Optional[pulumi.Input['MembershipAuthorityArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              endpoint: Optional[pulumi.Input['MembershipEndpointArgs']] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if membership_id is None and 'membershipId' in kwargs:
+            membership_id = kwargs['membershipId']
+        if membership_id is None:
+            raise TypeError("Missing 'membership_id' argument")
+
         _setter("membership_id", membership_id)
         if authority is not None:
             _setter("authority", authority)
@@ -214,7 +220,11 @@ class _MembershipState:
              membership_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if membership_id is None and 'membershipId' in kwargs:
+            membership_id = kwargs['membershipId']
+
         if authority is not None:
             _setter("authority", authority)
         if description is not None:
@@ -354,46 +364,6 @@ class Membership(pulumi.CustomResource):
             * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 
         ## Example Usage
-        ### Gkehub Membership Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.container.Cluster("primary",
-            initial_node_count=1,
-            location="us-central1-a")
-        membership = gcp.gkehub.Membership("membership",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                ),
-            ),
-            membership_id="basic")
-        ```
-        ### Gkehub Membership Issuer
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.container.Cluster("primary",
-            location="us-central1-a",
-            initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ))
-        membership = gcp.gkehub.Membership("membership",
-            membership_id="basic",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=primary.id,
-                ),
-            ),
-            authority=gcp.gkehub.MembershipAuthorityArgs(
-                issuer=primary.id.apply(lambda id: f"https://container.googleapis.com/v1/{id}"),
-            ))
-        ```
 
         ## Import
 
@@ -447,46 +417,6 @@ class Membership(pulumi.CustomResource):
             * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 
         ## Example Usage
-        ### Gkehub Membership Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.container.Cluster("primary",
-            initial_node_count=1,
-            location="us-central1-a")
-        membership = gcp.gkehub.Membership("membership",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                ),
-            ),
-            membership_id="basic")
-        ```
-        ### Gkehub Membership Issuer
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.container.Cluster("primary",
-            location="us-central1-a",
-            initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ))
-        membership = gcp.gkehub.Membership("membership",
-            membership_id="basic",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=primary.id,
-                ),
-            ),
-            authority=gcp.gkehub.MembershipAuthorityArgs(
-                issuer=primary.id.apply(lambda id: f"https://container.googleapis.com/v1/{id}"),
-            ))
-        ```
 
         ## Import
 
@@ -538,18 +468,10 @@ class Membership(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MembershipArgs.__new__(MembershipArgs)
 
-            if authority is not None and not isinstance(authority, MembershipAuthorityArgs):
-                authority = authority or {}
-                def _setter(key, value):
-                    authority[key] = value
-                MembershipAuthorityArgs._configure(_setter, **authority)
+            authority = _utilities.configure(authority, MembershipAuthorityArgs, True)
             __props__.__dict__["authority"] = authority
             __props__.__dict__["description"] = description
-            if endpoint is not None and not isinstance(endpoint, MembershipEndpointArgs):
-                endpoint = endpoint or {}
-                def _setter(key, value):
-                    endpoint[key] = value
-                MembershipEndpointArgs._configure(_setter, **endpoint)
+            endpoint = _utilities.configure(endpoint, MembershipEndpointArgs, True)
             __props__.__dict__["endpoint"] = endpoint
             __props__.__dict__["labels"] = labels
             if membership_id is None and not opts.urn:

@@ -51,14 +51,22 @@ class AiIndexEndpointArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              network: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              public_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if public_endpoint_enabled is None and 'publicEndpointEnabled' in kwargs:
+            public_endpoint_enabled = kwargs['publicEndpointEnabled']
+
         _setter("display_name", display_name)
         if description is not None:
             _setter("description", description)
@@ -232,7 +240,19 @@ class _AiIndexEndpointState:
              public_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
              region: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if public_endpoint_domain_name is None and 'publicEndpointDomainName' in kwargs:
+            public_endpoint_domain_name = kwargs['publicEndpointDomainName']
+        if public_endpoint_enabled is None and 'publicEndpointEnabled' in kwargs:
+            public_endpoint_enabled = kwargs['publicEndpointEnabled']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:
@@ -431,48 +451,6 @@ class AiIndexEndpoint(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints/)
 
         ## Example Usage
-        ### Vertex Ai Index Endpoint
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        vertex_network = gcp.compute.get_network(name="network-name")
-        vertex_range = gcp.compute.GlobalAddress("vertexRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=24,
-            network=vertex_network.id)
-        vertex_vpc_connection = gcp.servicenetworking.Connection("vertexVpcConnection",
-            network=vertex_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[vertex_range.name])
-        project = gcp.organizations.get_project()
-        index_endpoint = gcp.vertex.AiIndexEndpoint("indexEndpoint",
-            display_name="sample-endpoint",
-            description="A sample vertex endpoint",
-            region="us-central1",
-            labels={
-                "label-one": "value-one",
-            },
-            network=f"projects/{project.number}/global/networks/{vertex_network.name}",
-            opts=pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
-        ```
-        ### Vertex Ai Index Endpoint With Public Endpoint
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        index_endpoint = gcp.vertex.AiIndexEndpoint("indexEndpoint",
-            description="A sample vertex endpoint with an public endpoint",
-            display_name="sample-endpoint",
-            labels={
-                "label-one": "value-one",
-            },
-            public_endpoint_enabled=True,
-            region="us-central1")
-        ```
 
         ## Import
 
@@ -525,48 +503,6 @@ class AiIndexEndpoint(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints/)
 
         ## Example Usage
-        ### Vertex Ai Index Endpoint
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        vertex_network = gcp.compute.get_network(name="network-name")
-        vertex_range = gcp.compute.GlobalAddress("vertexRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=24,
-            network=vertex_network.id)
-        vertex_vpc_connection = gcp.servicenetworking.Connection("vertexVpcConnection",
-            network=vertex_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[vertex_range.name])
-        project = gcp.organizations.get_project()
-        index_endpoint = gcp.vertex.AiIndexEndpoint("indexEndpoint",
-            display_name="sample-endpoint",
-            description="A sample vertex endpoint",
-            region="us-central1",
-            labels={
-                "label-one": "value-one",
-            },
-            network=f"projects/{project.number}/global/networks/{vertex_network.name}",
-            opts=pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
-        ```
-        ### Vertex Ai Index Endpoint With Public Endpoint
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        index_endpoint = gcp.vertex.AiIndexEndpoint("indexEndpoint",
-            description="A sample vertex endpoint with an public endpoint",
-            display_name="sample-endpoint",
-            labels={
-                "label-one": "value-one",
-            },
-            public_endpoint_enabled=True,
-            region="us-central1")
-        ```
 
         ## Import
 

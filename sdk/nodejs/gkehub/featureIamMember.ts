@@ -21,53 +21,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.gkehub.FeatureIamBinding` resources **can be** used in conjunction with `gcp.gkehub.FeatureIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_gke\_hub\_feature\_iam\_policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/viewer",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const policy = new gcp.gkehub.FeatureIamPolicy("policy", {
- *     project: google_gke_hub_feature.feature.project,
- *     location: google_gke_hub_feature.feature.location,
- *     policyData: admin.then(admin => admin.policyData),
- * });
- * ```
- *
- * ## google\_gke\_hub\_feature\_iam\_binding
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const binding = new gcp.gkehub.FeatureIamBinding("binding", {
- *     project: google_gke_hub_feature.feature.project,
- *     location: google_gke_hub_feature.feature.location,
- *     role: "roles/viewer",
- *     members: ["user:jane@example.com"],
- * });
- * ```
- *
- * ## google\_gke\_hub\_feature\_iam\_member
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const member = new gcp.gkehub.FeatureIamMember("member", {
- *     project: google_gke_hub_feature.feature.project,
- *     location: google_gke_hub_feature.feature.location,
- *     role: "roles/viewer",
- *     member: "user:jane@example.com",
- * });
- * ```
- *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/features/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. GKEHub feature IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

@@ -59,15 +59,25 @@ class BillingAccountSinkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             billing_account: pulumi.Input[str],
-             destination: pulumi.Input[str],
+             billing_account: Optional[pulumi.Input[str]] = None,
+             destination: Optional[pulumi.Input[str]] = None,
              bigquery_options: Optional[pulumi.Input['BillingAccountSinkBigqueryOptionsArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
              exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['BillingAccountSinkExclusionArgs']]]] = None,
              filter: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if billing_account is None and 'billingAccount' in kwargs:
+            billing_account = kwargs['billingAccount']
+        if billing_account is None:
+            raise TypeError("Missing 'billing_account' argument")
+        if destination is None:
+            raise TypeError("Missing 'destination' argument")
+        if bigquery_options is None and 'bigqueryOptions' in kwargs:
+            bigquery_options = kwargs['bigqueryOptions']
+
         _setter("billing_account", billing_account)
         _setter("destination", destination)
         if bigquery_options is not None:
@@ -249,7 +259,15 @@ class _BillingAccountSinkState:
              filter: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              writer_identity: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bigquery_options is None and 'bigqueryOptions' in kwargs:
+            bigquery_options = kwargs['bigqueryOptions']
+        if billing_account is None and 'billingAccount' in kwargs:
+            billing_account = kwargs['billingAccount']
+        if writer_identity is None and 'writerIdentity' in kwargs:
+            writer_identity = kwargs['writerIdentity']
+
         if bigquery_options is not None:
             _setter("bigquery_options", bigquery_options)
         if billing_account is not None:
@@ -413,23 +431,6 @@ class BillingAccountSink(pulumi.CustomResource):
         the credentials used with this provider. [IAM roles granted on a billing account](https://cloud.google.com/billing/docs/how-to/billing-access) are separate from the
         typical IAM roles granted on a project.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        log_bucket = gcp.storage.Bucket("log-bucket", location="US")
-        my_sink = gcp.logging.BillingAccountSink("my-sink",
-            description="some explanation on what this is",
-            billing_account="ABCDEF-012345-GHIJKL",
-            destination=log_bucket.name.apply(lambda name: f"storage.googleapis.com/{name}"))
-        log_writer = gcp.projects.IAMBinding("log-writer",
-            project="your-project-id",
-            role="roles/storage.objectCreator",
-            members=[my_sink.writer_identity])
-        ```
-
         ## Import
 
         Billing account logging sinks can be imported using this format:
@@ -475,23 +476,6 @@ class BillingAccountSink(pulumi.CustomResource):
         the credentials used with this provider. [IAM roles granted on a billing account](https://cloud.google.com/billing/docs/how-to/billing-access) are separate from the
         typical IAM roles granted on a project.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        log_bucket = gcp.storage.Bucket("log-bucket", location="US")
-        my_sink = gcp.logging.BillingAccountSink("my-sink",
-            description="some explanation on what this is",
-            billing_account="ABCDEF-012345-GHIJKL",
-            destination=log_bucket.name.apply(lambda name: f"storage.googleapis.com/{name}"))
-        log_writer = gcp.projects.IAMBinding("log-writer",
-            project="your-project-id",
-            role="roles/storage.objectCreator",
-            members=[my_sink.writer_identity])
-        ```
-
         ## Import
 
         Billing account logging sinks can be imported using this format:
@@ -536,11 +520,7 @@ class BillingAccountSink(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BillingAccountSinkArgs.__new__(BillingAccountSinkArgs)
 
-            if bigquery_options is not None and not isinstance(bigquery_options, BillingAccountSinkBigqueryOptionsArgs):
-                bigquery_options = bigquery_options or {}
-                def _setter(key, value):
-                    bigquery_options[key] = value
-                BillingAccountSinkBigqueryOptionsArgs._configure(_setter, **bigquery_options)
+            bigquery_options = _utilities.configure(bigquery_options, BillingAccountSinkBigqueryOptionsArgs, True)
             __props__.__dict__["bigquery_options"] = bigquery_options
             if billing_account is None and not opts.urn:
                 raise TypeError("Missing required property 'billing_account'")

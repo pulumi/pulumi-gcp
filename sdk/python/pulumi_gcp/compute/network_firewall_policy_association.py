@@ -39,11 +39,21 @@ class NetworkFirewallPolicyAssociationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attachment_target: pulumi.Input[str],
-             firewall_policy: pulumi.Input[str],
+             attachment_target: Optional[pulumi.Input[str]] = None,
+             firewall_policy: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if attachment_target is None and 'attachmentTarget' in kwargs:
+            attachment_target = kwargs['attachmentTarget']
+        if attachment_target is None:
+            raise TypeError("Missing 'attachment_target' argument")
+        if firewall_policy is None and 'firewallPolicy' in kwargs:
+            firewall_policy = kwargs['firewallPolicy']
+        if firewall_policy is None:
+            raise TypeError("Missing 'firewall_policy' argument")
+
         _setter("attachment_target", attachment_target)
         _setter("firewall_policy", firewall_policy)
         if name is not None:
@@ -140,7 +150,15 @@ class _NetworkFirewallPolicyAssociationState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              short_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if attachment_target is None and 'attachmentTarget' in kwargs:
+            attachment_target = kwargs['attachmentTarget']
+        if firewall_policy is None and 'firewallPolicy' in kwargs:
+            firewall_policy = kwargs['firewallPolicy']
+        if short_name is None and 'shortName' in kwargs:
+            short_name = kwargs['shortName']
+
         if attachment_target is not None:
             _setter("attachment_target", attachment_target)
         if firewall_policy is not None:
@@ -231,20 +249,6 @@ class NetworkFirewallPolicyAssociation(pulumi.CustomResource):
         The Compute NetworkFirewallPolicyAssociation resource
 
         ## Example Usage
-        ### Global
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network_firewall_policy = gcp.compute.NetworkFirewallPolicy("networkFirewallPolicy",
-            project="my-project-name",
-            description="Sample global network firewall policy")
-        network = gcp.compute.Network("network")
-        primary = gcp.compute.NetworkFirewallPolicyAssociation("primary",
-            attachment_target=network.id,
-            firewall_policy=network_firewall_policy.name,
-            project="my-project-name")
-        ```
 
         ## Import
 
@@ -279,20 +283,6 @@ class NetworkFirewallPolicyAssociation(pulumi.CustomResource):
         The Compute NetworkFirewallPolicyAssociation resource
 
         ## Example Usage
-        ### Global
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network_firewall_policy = gcp.compute.NetworkFirewallPolicy("networkFirewallPolicy",
-            project="my-project-name",
-            description="Sample global network firewall policy")
-        network = gcp.compute.Network("network")
-        primary = gcp.compute.NetworkFirewallPolicyAssociation("primary",
-            attachment_target=network.id,
-            firewall_policy=network_firewall_policy.name,
-            project="my-project-name")
-        ```
 
         ## Import
 

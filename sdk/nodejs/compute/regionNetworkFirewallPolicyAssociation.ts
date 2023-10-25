@@ -8,24 +8,6 @@ import * as utilities from "../utilities";
  * The Compute NetworkFirewallPolicyAssociation resource
  *
  * ## Example Usage
- * ### Regional
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const basicRegionalNetworkFirewallPolicy = new gcp.compute.RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy", {
- *     project: "my-project-name",
- *     description: "Sample global network firewall policy",
- *     region: "us-west1",
- * });
- * const basicNetwork = new gcp.compute.Network("basicNetwork", {});
- * const primary = new gcp.compute.RegionNetworkFirewallPolicyAssociation("primary", {
- *     attachmentTarget: basicNetwork.id,
- *     firewallPolicy: basicRegionalNetworkFirewallPolicy.name,
- *     project: "my-project-name",
- *     region: "us-west1",
- * });
- * ```
  *
  * ## Import
  *

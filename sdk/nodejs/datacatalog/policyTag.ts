@@ -14,54 +14,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
  *
  * ## Example Usage
- * ### Data Catalog Taxonomies Policy Tag Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const myTaxonomy = new gcp.datacatalog.Taxonomy("myTaxonomy", {
- *     displayName: "taxonomy_display_name",
- *     description: "A collection of policy tags",
- *     activatedPolicyTypes: ["FINE_GRAINED_ACCESS_CONTROL"],
- * });
- * const basicPolicyTag = new gcp.datacatalog.PolicyTag("basicPolicyTag", {
- *     taxonomy: myTaxonomy.id,
- *     displayName: "Low security",
- *     description: "A policy tag normally associated with low security items",
- * });
- * ```
- * ### Data Catalog Taxonomies Policy Tag Child Policies
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const myTaxonomy = new gcp.datacatalog.Taxonomy("myTaxonomy", {
- *     displayName: "taxonomy_display_name",
- *     description: "A collection of policy tags",
- *     activatedPolicyTypes: ["FINE_GRAINED_ACCESS_CONTROL"],
- * });
- * const parentPolicy = new gcp.datacatalog.PolicyTag("parentPolicy", {
- *     taxonomy: myTaxonomy.id,
- *     displayName: "High",
- *     description: "A policy tag category used for high security access",
- * });
- * const childPolicy = new gcp.datacatalog.PolicyTag("childPolicy", {
- *     taxonomy: myTaxonomy.id,
- *     displayName: "ssn",
- *     description: "A hash of the users ssn",
- *     parentPolicyTag: parentPolicy.id,
- * });
- * const childPolicy2 = new gcp.datacatalog.PolicyTag("childPolicy2", {
- *     taxonomy: myTaxonomy.id,
- *     displayName: "dob",
- *     description: "The users date of birth",
- *     parentPolicyTag: parentPolicy.id,
- * }, {
- *     dependsOn: [childPolicy],
- * });
- * ```
  *
  * ## Import
  *

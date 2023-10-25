@@ -22,18 +22,6 @@ import * as utilities from "../utilities";
  *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
  *
  * ## Example Usage
- * ### Monitoring Istio Canonical Service
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const default = gcp.monitoring.getIstioCanonicalService({
- *     canonicalService: "prometheus",
- *     canonicalServiceNamespace: "istio-system",
- *     meshUid: "proj-573164786102",
- * });
- * ```
  */
 export function getIstioCanonicalService(args: GetIstioCanonicalServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetIstioCanonicalServiceResult> {
 
@@ -120,18 +108,6 @@ export interface GetIstioCanonicalServiceResult {
  *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
  *
  * ## Example Usage
- * ### Monitoring Istio Canonical Service
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const default = gcp.monitoring.getIstioCanonicalService({
- *     canonicalService: "prometheus",
- *     canonicalServiceNamespace: "istio-system",
- *     meshUid: "proj-573164786102",
- * });
- * ```
  */
 export function getIstioCanonicalServiceOutput(args: GetIstioCanonicalServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIstioCanonicalServiceResult> {
     return pulumi.output(args).apply((a: any) => getIstioCanonicalService(a, opts))

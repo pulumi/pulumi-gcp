@@ -121,15 +121,6 @@ def get_router_status(name: Optional[str] = None,
     and
     [API](https://cloud.google.com/compute/docs/reference/rest/v1/routers/getRouterStatus).
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    my_router = gcp.compute.get_router_status(name="myrouter")
-    ```
-
 
     :param str name: The name of the router.
     :param str project: The ID of the project in which the resource
@@ -166,15 +157,6 @@ def get_router_status_output(name: Optional[pulumi.Input[str]] = None,
     For more information see [the official documentation](https://cloud.google.com/network-connectivity/docs/router/how-to/viewing-router-details)
     and
     [API](https://cloud.google.com/compute/docs/reference/rest/v1/routers/getRouterStatus).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    my_router = gcp.compute.get_router_status(name="myrouter")
-    ```
 
 
     :param str name: The name of the router.

@@ -37,10 +37,16 @@ class SecretIamBindingConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -89,10 +95,16 @@ class SecretIamMemberConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             title: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -154,7 +166,11 @@ class SecretReplicationArgs:
              auto: Optional[pulumi.Input['SecretReplicationAutoArgs']] = None,
              automatic: Optional[pulumi.Input[bool]] = None,
              user_managed: Optional[pulumi.Input['SecretReplicationUserManagedArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if user_managed is None and 'userManaged' in kwargs:
+            user_managed = kwargs['userManaged']
+
         if auto is not None:
             _setter("auto", auto)
         if automatic is not None:
@@ -228,7 +244,11 @@ class SecretReplicationAutoArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              customer_managed_encryption: Optional[pulumi.Input['SecretReplicationAutoCustomerManagedEncryptionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if customer_managed_encryption is None and 'customerManagedEncryption' in kwargs:
+            customer_managed_encryption = kwargs['customerManagedEncryption']
+
         if customer_managed_encryption is not None:
             _setter("customer_managed_encryption", customer_managed_encryption)
 
@@ -264,8 +284,14 @@ class SecretReplicationAutoCustomerManagedEncryptionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             kms_key_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             kms_key_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if kms_key_name is None:
+            raise TypeError("Missing 'kms_key_name' argument")
+
         _setter("kms_key_name", kms_key_name)
 
     @property
@@ -298,8 +324,12 @@ class SecretReplicationUserManagedArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             replicas: pulumi.Input[Sequence[pulumi.Input['SecretReplicationUserManagedReplicaArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             replicas: Optional[pulumi.Input[Sequence[pulumi.Input['SecretReplicationUserManagedReplicaArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if replicas is None:
+            raise TypeError("Missing 'replicas' argument")
+
         _setter("replicas", replicas)
 
     @property
@@ -334,9 +364,15 @@ class SecretReplicationUserManagedReplicaArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
              customer_managed_encryption: Optional[pulumi.Input['SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if customer_managed_encryption is None and 'customerManagedEncryption' in kwargs:
+            customer_managed_encryption = kwargs['customerManagedEncryption']
+
         _setter("location", location)
         if customer_managed_encryption is not None:
             _setter("customer_managed_encryption", customer_managed_encryption)
@@ -383,8 +419,14 @@ class SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             kms_key_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             kms_key_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if kms_key_name is None:
+            raise TypeError("Missing 'kms_key_name' argument")
+
         _setter("kms_key_name", kms_key_name)
 
     @property
@@ -423,7 +465,13 @@ class SecretRotationArgs:
              _setter: Callable[[Any, Any], None],
              next_rotation_time: Optional[pulumi.Input[str]] = None,
              rotation_period: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if next_rotation_time is None and 'nextRotationTime' in kwargs:
+            next_rotation_time = kwargs['nextRotationTime']
+        if rotation_period is None and 'rotationPeriod' in kwargs:
+            rotation_period = kwargs['rotationPeriod']
+
         if next_rotation_time is not None:
             _setter("next_rotation_time", next_rotation_time)
         if rotation_period is not None:
@@ -471,8 +519,12 @@ class SecretTopicArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property

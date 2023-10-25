@@ -11,21 +11,6 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
  * and
  * [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const generic = gcp.compute.getRegionInstanceTemplate({
- *     name: "generic-tpl-20200107",
- * });
- * const generic-regex = gcp.compute.getRegionInstanceTemplate({
- *     filter: "name != generic-tpl-20200107",
- *     mostRecent: true,
- * });
- * ```
  */
 export function getRegionInstanceTemplate(args?: GetRegionInstanceTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionInstanceTemplateResult> {
     args = args || {};
@@ -204,21 +189,6 @@ export interface GetRegionInstanceTemplateResult {
  * [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
  * and
  * [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const generic = gcp.compute.getRegionInstanceTemplate({
- *     name: "generic-tpl-20200107",
- * });
- * const generic-regex = gcp.compute.getRegionInstanceTemplate({
- *     filter: "name != generic-tpl-20200107",
- *     mostRecent: true,
- * });
- * ```
  */
 export function getRegionInstanceTemplateOutput(args?: GetRegionInstanceTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionInstanceTemplateResult> {
     return pulumi.output(args).apply((a: any) => getRegionInstanceTemplate(a, opts))

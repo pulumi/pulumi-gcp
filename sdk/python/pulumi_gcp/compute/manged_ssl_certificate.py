@@ -63,7 +63,11 @@ class MangedSslCertificateArgs:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if certificate_id is None and 'certificateId' in kwargs:
+            certificate_id = kwargs['certificateId']
+
         if certificate_id is not None:
             _setter("certificate_id", certificate_id)
         if description is not None:
@@ -230,7 +234,19 @@ class _MangedSslCertificateState:
              self_link: Optional[pulumi.Input[str]] = None,
              subject_alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if certificate_id is None and 'certificateId' in kwargs:
+            certificate_id = kwargs['certificateId']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if expire_time is None and 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if subject_alternative_names is None and 'subjectAlternativeNames' in kwargs:
+            subject_alternative_names = kwargs['subjectAlternativeNames']
+
         if certificate_id is not None:
             _setter("certificate_id", certificate_id)
         if creation_timestamp is not None:
@@ -560,11 +576,7 @@ class MangedSslCertificate(pulumi.CustomResource):
 
             __props__.__dict__["certificate_id"] = certificate_id
             __props__.__dict__["description"] = description
-            if managed is not None and not isinstance(managed, MangedSslCertificateManagedArgs):
-                managed = managed or {}
-                def _setter(key, value):
-                    managed[key] = value
-                MangedSslCertificateManagedArgs._configure(_setter, **managed)
+            managed = _utilities.configure(managed, MangedSslCertificateManagedArgs, True)
             __props__.__dict__["managed"] = managed
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

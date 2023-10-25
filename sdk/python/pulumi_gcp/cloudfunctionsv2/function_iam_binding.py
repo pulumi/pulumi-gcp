@@ -56,13 +56,23 @@ class FunctionIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cloud_function: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
+             cloud_function: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['FunctionIamBindingConditionArgs']] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cloud_function is None and 'cloudFunction' in kwargs:
+            cloud_function = kwargs['cloudFunction']
+        if cloud_function is None:
+            raise TypeError("Missing 'cloud_function' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("cloud_function", cloud_function)
         _setter("members", members)
         _setter("role", role)
@@ -208,7 +218,11 @@ class _FunctionIamBindingState:
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cloud_function is None and 'cloudFunction' in kwargs:
+            cloud_function = kwargs['cloudFunction']
+
         if cloud_function is not None:
             _setter("cloud_function", cloud_function)
         if condition is not None:
@@ -345,51 +359,6 @@ class FunctionIamBinding(pulumi.CustomResource):
 
         > **Note:** `cloudfunctionsv2.FunctionIamBinding` resources **can be** used in conjunction with `cloudfunctionsv2.FunctionIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_cloudfunctions2\\_function\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.cloudfunctionsv2.FunctionIamPolicy("policy",
-            project=google_cloudfunctions2_function["function"]["project"],
-            location=google_cloudfunctions2_function["function"]["location"],
-            cloud_function=google_cloudfunctions2_function["function"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_cloudfunctions2\\_function\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.cloudfunctionsv2.FunctionIamBinding("binding",
-            project=google_cloudfunctions2_function["function"]["project"],
-            location=google_cloudfunctions2_function["function"]["location"],
-            cloud_function=google_cloudfunctions2_function["function"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_cloudfunctions2\\_function\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.cloudfunctionsv2.FunctionIamMember("member",
-            project=google_cloudfunctions2_function["function"]["project"],
-            location=google_cloudfunctions2_function["function"]["location"],
-            cloud_function=google_cloudfunctions2_function["function"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/functions/{{cloud_function}} * {{project}}/{{location}}/{{cloud_function}} * {{location}}/{{cloud_function}} * {{cloud_function}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Functions (2nd gen) function IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -457,51 +426,6 @@ class FunctionIamBinding(pulumi.CustomResource):
 
         > **Note:** `cloudfunctionsv2.FunctionIamBinding` resources **can be** used in conjunction with `cloudfunctionsv2.FunctionIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_cloudfunctions2\\_function\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.cloudfunctionsv2.FunctionIamPolicy("policy",
-            project=google_cloudfunctions2_function["function"]["project"],
-            location=google_cloudfunctions2_function["function"]["location"],
-            cloud_function=google_cloudfunctions2_function["function"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_cloudfunctions2\\_function\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.cloudfunctionsv2.FunctionIamBinding("binding",
-            project=google_cloudfunctions2_function["function"]["project"],
-            location=google_cloudfunctions2_function["function"]["location"],
-            cloud_function=google_cloudfunctions2_function["function"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_cloudfunctions2\\_function\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.cloudfunctionsv2.FunctionIamMember("member",
-            project=google_cloudfunctions2_function["function"]["project"],
-            location=google_cloudfunctions2_function["function"]["location"],
-            cloud_function=google_cloudfunctions2_function["function"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/functions/{{cloud_function}} * {{project}}/{{location}}/{{cloud_function}} * {{location}}/{{cloud_function}} * {{cloud_function}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Functions (2nd gen) function IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -563,11 +487,7 @@ class FunctionIamBinding(pulumi.CustomResource):
             if cloud_function is None and not opts.urn:
                 raise TypeError("Missing required property 'cloud_function'")
             __props__.__dict__["cloud_function"] = cloud_function
-            if condition is not None and not isinstance(condition, FunctionIamBindingConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                FunctionIamBindingConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, FunctionIamBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             __props__.__dict__["location"] = location
             if members is None and not opts.urn:

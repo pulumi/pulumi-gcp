@@ -22,45 +22,6 @@ import (
 //   - [Official Documentation](https://cloud.google.com/datastream/docs/create-a-private-connectivity-configuration)
 //
 // ## Example Usage
-// ### Datastream Private Connection Full
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datastream"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = datastream.NewPrivateConnection(ctx, "defaultPrivateConnection", &datastream.PrivateConnectionArgs{
-//				DisplayName:         pulumi.String("Connection profile"),
-//				Location:            pulumi.String("us-central1"),
-//				PrivateConnectionId: pulumi.String("my-connection"),
-//				Labels: pulumi.StringMap{
-//					"key": pulumi.String("value"),
-//				},
-//				VpcPeeringConfig: &datastream.PrivateConnectionVpcPeeringConfigArgs{
-//					Vpc:    defaultNetwork.ID(),
-//					Subnet: pulumi.String("10.0.0.0/29"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

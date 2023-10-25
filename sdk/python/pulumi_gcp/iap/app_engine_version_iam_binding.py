@@ -61,14 +61,30 @@ class AppEngineVersionIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_id: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
-             service: pulumi.Input[str],
-             version_id: pulumi.Input[str],
+             app_id: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             version_id: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['AppEngineVersionIamBindingConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if app_id is None:
+            raise TypeError("Missing 'app_id' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+        if version_id is None and 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+        if version_id is None:
+            raise TypeError("Missing 'version_id' argument")
+
         _setter("app_id", app_id)
         _setter("members", members)
         _setter("role", role)
@@ -236,7 +252,13 @@ class _AppEngineVersionIamBindingState:
              role: Optional[pulumi.Input[str]] = None,
              service: Optional[pulumi.Input[str]] = None,
              version_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if version_id is None and 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+
         if app_id is not None:
             _setter("app_id", app_id)
         if condition is not None:
@@ -394,115 +416,6 @@ class AppEngineVersionIamBinding(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_iap\\_app\\_engine\\_version\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/iap.httpsResourceAccessor",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.iap.AppEngineVersionIamPolicy("policy",
-            project=google_app_engine_standard_app_version["version"]["project"],
-            app_id=google_app_engine_standard_app_version["version"]["project"],
-            service=google_app_engine_standard_app_version["version"]["service"],
-            version_id=google_app_engine_standard_app_version["version"]["version_id"],
-            policy_data=admin.policy_data)
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/iap.httpsResourceAccessor",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
-        policy = gcp.iap.AppEngineVersionIamPolicy("policy",
-            project=google_app_engine_standard_app_version["version"]["project"],
-            app_id=google_app_engine_standard_app_version["version"]["project"],
-            service=google_app_engine_standard_app_version["version"]["service"],
-            version_id=google_app_engine_standard_app_version["version"]["version_id"],
-            policy_data=admin.policy_data)
-        ```
-        ## google\\_iap\\_app\\_engine\\_version\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.iap.AppEngineVersionIamBinding("binding",
-            app_id=google_app_engine_standard_app_version["version"]["project"],
-            members=["user:jane@example.com"],
-            project=google_app_engine_standard_app_version["version"]["project"],
-            role="roles/iap.httpsResourceAccessor",
-            service=google_app_engine_standard_app_version["version"]["service"],
-            version_id=google_app_engine_standard_app_version["version"]["version_id"])
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.iap.AppEngineVersionIamBinding("binding",
-            app_id=google_app_engine_standard_app_version["version"]["project"],
-            condition=gcp.iap.AppEngineVersionIamBindingConditionArgs(
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
-            ),
-            members=["user:jane@example.com"],
-            project=google_app_engine_standard_app_version["version"]["project"],
-            role="roles/iap.httpsResourceAccessor",
-            service=google_app_engine_standard_app_version["version"]["service"],
-            version_id=google_app_engine_standard_app_version["version"]["version_id"])
-        ```
-        ## google\\_iap\\_app\\_engine\\_version\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.iap.AppEngineVersionIamMember("member",
-            app_id=google_app_engine_standard_app_version["version"]["project"],
-            member="user:jane@example.com",
-            project=google_app_engine_standard_app_version["version"]["project"],
-            role="roles/iap.httpsResourceAccessor",
-            service=google_app_engine_standard_app_version["version"]["service"],
-            version_id=google_app_engine_standard_app_version["version"]["version_id"])
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.iap.AppEngineVersionIamMember("member",
-            app_id=google_app_engine_standard_app_version["version"]["project"],
-            condition=gcp.iap.AppEngineVersionIamMemberConditionArgs(
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
-            ),
-            member="user:jane@example.com",
-            project=google_app_engine_standard_app_version["version"]["project"],
-            role="roles/iap.httpsResourceAccessor",
-            service=google_app_engine_standard_app_version["version"]["service"],
-            version_id=google_app_engine_standard_app_version["version"]["version_id"])
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/iap_web/appengine-{{appId}}/services/{{service}}/versions/{{versionId}} * {{project}}/{{appId}}/{{service}}/{{versionId}} * {{appId}}/{{service}}/{{versionId}} * {{version}} Any variables not passed in the import command will be taken from the provider configuration. Identity-Aware Proxy appengineversion IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -575,115 +488,6 @@ class AppEngineVersionIamBinding(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_iap\\_app\\_engine\\_version\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/iap.httpsResourceAccessor",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.iap.AppEngineVersionIamPolicy("policy",
-            project=google_app_engine_standard_app_version["version"]["project"],
-            app_id=google_app_engine_standard_app_version["version"]["project"],
-            service=google_app_engine_standard_app_version["version"]["service"],
-            version_id=google_app_engine_standard_app_version["version"]["version_id"],
-            policy_data=admin.policy_data)
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/iap.httpsResourceAccessor",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
-        policy = gcp.iap.AppEngineVersionIamPolicy("policy",
-            project=google_app_engine_standard_app_version["version"]["project"],
-            app_id=google_app_engine_standard_app_version["version"]["project"],
-            service=google_app_engine_standard_app_version["version"]["service"],
-            version_id=google_app_engine_standard_app_version["version"]["version_id"],
-            policy_data=admin.policy_data)
-        ```
-        ## google\\_iap\\_app\\_engine\\_version\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.iap.AppEngineVersionIamBinding("binding",
-            app_id=google_app_engine_standard_app_version["version"]["project"],
-            members=["user:jane@example.com"],
-            project=google_app_engine_standard_app_version["version"]["project"],
-            role="roles/iap.httpsResourceAccessor",
-            service=google_app_engine_standard_app_version["version"]["service"],
-            version_id=google_app_engine_standard_app_version["version"]["version_id"])
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.iap.AppEngineVersionIamBinding("binding",
-            app_id=google_app_engine_standard_app_version["version"]["project"],
-            condition=gcp.iap.AppEngineVersionIamBindingConditionArgs(
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
-            ),
-            members=["user:jane@example.com"],
-            project=google_app_engine_standard_app_version["version"]["project"],
-            role="roles/iap.httpsResourceAccessor",
-            service=google_app_engine_standard_app_version["version"]["service"],
-            version_id=google_app_engine_standard_app_version["version"]["version_id"])
-        ```
-        ## google\\_iap\\_app\\_engine\\_version\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.iap.AppEngineVersionIamMember("member",
-            app_id=google_app_engine_standard_app_version["version"]["project"],
-            member="user:jane@example.com",
-            project=google_app_engine_standard_app_version["version"]["project"],
-            role="roles/iap.httpsResourceAccessor",
-            service=google_app_engine_standard_app_version["version"]["service"],
-            version_id=google_app_engine_standard_app_version["version"]["version_id"])
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.iap.AppEngineVersionIamMember("member",
-            app_id=google_app_engine_standard_app_version["version"]["project"],
-            condition=gcp.iap.AppEngineVersionIamMemberConditionArgs(
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
-            ),
-            member="user:jane@example.com",
-            project=google_app_engine_standard_app_version["version"]["project"],
-            role="roles/iap.httpsResourceAccessor",
-            service=google_app_engine_standard_app_version["version"]["service"],
-            version_id=google_app_engine_standard_app_version["version"]["version_id"])
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/iap_web/appengine-{{appId}}/services/{{service}}/versions/{{versionId}} * {{project}}/{{appId}}/{{service}}/{{versionId}} * {{appId}}/{{service}}/{{versionId}} * {{version}} Any variables not passed in the import command will be taken from the provider configuration. Identity-Aware Proxy appengineversion IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -746,11 +550,7 @@ class AppEngineVersionIamBinding(pulumi.CustomResource):
             if app_id is None and not opts.urn:
                 raise TypeError("Missing required property 'app_id'")
             __props__.__dict__["app_id"] = app_id
-            if condition is not None and not isinstance(condition, AppEngineVersionIamBindingConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                AppEngineVersionIamBindingConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, AppEngineVersionIamBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")

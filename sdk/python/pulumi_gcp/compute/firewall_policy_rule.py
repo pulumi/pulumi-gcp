@@ -55,17 +55,37 @@ class FirewallPolicyRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: pulumi.Input[str],
-             direction: pulumi.Input[str],
-             firewall_policy: pulumi.Input[str],
-             match: pulumi.Input['FirewallPolicyRuleMatchArgs'],
-             priority: pulumi.Input[int],
+             action: Optional[pulumi.Input[str]] = None,
+             direction: Optional[pulumi.Input[str]] = None,
+             firewall_policy: Optional[pulumi.Input[str]] = None,
+             match: Optional[pulumi.Input['FirewallPolicyRuleMatchArgs']] = None,
+             priority: Optional[pulumi.Input[int]] = None,
              description: Optional[pulumi.Input[str]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
              enable_logging: Optional[pulumi.Input[bool]] = None,
              target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if direction is None:
+            raise TypeError("Missing 'direction' argument")
+        if firewall_policy is None and 'firewallPolicy' in kwargs:
+            firewall_policy = kwargs['firewallPolicy']
+        if firewall_policy is None:
+            raise TypeError("Missing 'firewall_policy' argument")
+        if match is None:
+            raise TypeError("Missing 'match' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+        if target_resources is None and 'targetResources' in kwargs:
+            target_resources = kwargs['targetResources']
+        if target_service_accounts is None and 'targetServiceAccounts' in kwargs:
+            target_service_accounts = kwargs['targetServiceAccounts']
+
         _setter("action", action)
         _setter("direction", direction)
         _setter("firewall_policy", firewall_policy)
@@ -263,7 +283,19 @@ class _FirewallPolicyRuleState:
              rule_tuple_count: Optional[pulumi.Input[int]] = None,
              target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+        if firewall_policy is None and 'firewallPolicy' in kwargs:
+            firewall_policy = kwargs['firewallPolicy']
+        if rule_tuple_count is None and 'ruleTupleCount' in kwargs:
+            rule_tuple_count = kwargs['ruleTupleCount']
+        if target_resources is None and 'targetResources' in kwargs:
+            target_resources = kwargs['targetResources']
+        if target_service_accounts is None and 'targetServiceAccounts' in kwargs:
+            target_service_accounts = kwargs['targetServiceAccounts']
+
         if action is not None:
             _setter("action", action)
         if description is not None:
@@ -454,53 +486,6 @@ class FirewallPolicyRule(pulumi.CustomResource):
         The Compute FirewallPolicyRule resource
 
         ## Example Usage
-        ### Basic_fir_sec_rule
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic_global_networksecurity_address_group = gcp.networksecurity.AddressGroup("basicGlobalNetworksecurityAddressGroup",
-            parent="organizations/123456789",
-            description="Sample global networksecurity_address_group",
-            location="global",
-            items=["208.80.154.224/32"],
-            type="IPV4",
-            capacity=100)
-        folder = gcp.organizations.Folder("folder",
-            display_name="policy",
-            parent="organizations/123456789")
-        default = gcp.compute.FirewallPolicy("default",
-            parent=folder.id,
-            short_name="policy",
-            description="Resource created for Terraform acceptance testing")
-        primary = gcp.compute.FirewallPolicyRule("primary",
-            firewall_policy=default.name,
-            description="Resource created for Terraform acceptance testing",
-            priority=9000,
-            enable_logging=True,
-            action="allow",
-            direction="EGRESS",
-            disabled=False,
-            match=gcp.compute.FirewallPolicyRuleMatchArgs(
-                layer4_configs=[
-                    gcp.compute.FirewallPolicyRuleMatchLayer4ConfigArgs(
-                        ip_protocol="tcp",
-                        ports=["8080"],
-                    ),
-                    gcp.compute.FirewallPolicyRuleMatchLayer4ConfigArgs(
-                        ip_protocol="udp",
-                        ports=["22"],
-                    ),
-                ],
-                dest_ip_ranges=["11.100.0.1/32"],
-                dest_fqdns=[],
-                dest_region_codes=["US"],
-                dest_threat_intelligences=["iplist-known-malicious-ips"],
-                src_address_groups=[],
-                dest_address_groups=[basic_global_networksecurity_address_group.id],
-            ),
-            target_service_accounts=["my@service-account.com"])
-        ```
 
         ## Import
 
@@ -537,53 +522,6 @@ class FirewallPolicyRule(pulumi.CustomResource):
         The Compute FirewallPolicyRule resource
 
         ## Example Usage
-        ### Basic_fir_sec_rule
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic_global_networksecurity_address_group = gcp.networksecurity.AddressGroup("basicGlobalNetworksecurityAddressGroup",
-            parent="organizations/123456789",
-            description="Sample global networksecurity_address_group",
-            location="global",
-            items=["208.80.154.224/32"],
-            type="IPV4",
-            capacity=100)
-        folder = gcp.organizations.Folder("folder",
-            display_name="policy",
-            parent="organizations/123456789")
-        default = gcp.compute.FirewallPolicy("default",
-            parent=folder.id,
-            short_name="policy",
-            description="Resource created for Terraform acceptance testing")
-        primary = gcp.compute.FirewallPolicyRule("primary",
-            firewall_policy=default.name,
-            description="Resource created for Terraform acceptance testing",
-            priority=9000,
-            enable_logging=True,
-            action="allow",
-            direction="EGRESS",
-            disabled=False,
-            match=gcp.compute.FirewallPolicyRuleMatchArgs(
-                layer4_configs=[
-                    gcp.compute.FirewallPolicyRuleMatchLayer4ConfigArgs(
-                        ip_protocol="tcp",
-                        ports=["8080"],
-                    ),
-                    gcp.compute.FirewallPolicyRuleMatchLayer4ConfigArgs(
-                        ip_protocol="udp",
-                        ports=["22"],
-                    ),
-                ],
-                dest_ip_ranges=["11.100.0.1/32"],
-                dest_fqdns=[],
-                dest_region_codes=["US"],
-                dest_threat_intelligences=["iplist-known-malicious-ips"],
-                src_address_groups=[],
-                dest_address_groups=[basic_global_networksecurity_address_group.id],
-            ),
-            target_service_accounts=["my@service-account.com"])
-        ```
 
         ## Import
 
@@ -647,11 +585,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
             if firewall_policy is None and not opts.urn:
                 raise TypeError("Missing required property 'firewall_policy'")
             __props__.__dict__["firewall_policy"] = firewall_policy
-            if match is not None and not isinstance(match, FirewallPolicyRuleMatchArgs):
-                match = match or {}
-                def _setter(key, value):
-                    match[key] = value
-                FirewallPolicyRuleMatchArgs._configure(_setter, **match)
+            match = _utilities.configure(match, FirewallPolicyRuleMatchArgs, True)
             if match is None and not opts.urn:
                 raise TypeError("Missing required property 'match'")
             __props__.__dict__["match"] = match

@@ -12,15 +12,6 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1/projects.locations)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/run/docs/)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const available = gcp.cloudrun.getLocations({});
- * ```
  */
 export function getLocations(args?: GetLocationsArgs, opts?: pulumi.InvokeOptions): Promise<GetLocationsResult> {
     args = args || {};
@@ -64,15 +55,6 @@ export interface GetLocationsResult {
  * * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1/projects.locations)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/run/docs/)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const available = gcp.cloudrun.getLocations({});
- * ```
  */
 export function getLocationsOutput(args?: GetLocationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLocationsResult> {
     return pulumi.output(args).apply((a: any) => getLocations(a, opts))

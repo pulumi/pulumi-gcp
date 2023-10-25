@@ -14,41 +14,6 @@ import * as utilities from "../utilities";
  *     * [Enable Synchronizer access](https://cloud.google.com/apigee/docs/hybrid/v1.8/synchronizer-access#enable-synchronizer-access)
  *
  * ## Example Usage
- * ### Apigee Sync Authorization Basic Test
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const project = new gcp.organizations.Project("project", {
- *     projectId: "my-project",
- *     orgId: "123456789",
- *     billingAccount: "000000-0000000-0000000-000000",
- * });
- * const apigee = new gcp.projects.Service("apigee", {
- *     project: project.projectId,
- *     service: "apigee.googleapis.com",
- * });
- * const apigeeOrg = new gcp.apigee.Organization("apigeeOrg", {
- *     analyticsRegion: "us-central1",
- *     projectId: project.projectId,
- *     runtimeType: "HYBRID",
- * }, {
- *     dependsOn: [apigee],
- * });
- * const serviceAccount = new gcp.serviceaccount.Account("serviceAccount", {
- *     accountId: "my-account",
- *     displayName: "Service Account",
- * });
- * const synchronizer_iam = new gcp.projects.IAMBinding("synchronizer-iam", {
- *     project: project.projectId,
- *     role: "roles/apigee.synchronizerManager",
- *     members: [pulumi.interpolate`serviceAccount:${serviceAccount.email}`],
- * });
- * const apigeeSyncAuthorization = new gcp.apigee.SyncAuthorization("apigeeSyncAuthorization", {identities: [pulumi.interpolate`serviceAccount:${serviceAccount.email}`]}, {
- *     dependsOn: [synchronizer_iam],
- * });
- * ```
  *
  * ## Import
  *

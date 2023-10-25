@@ -43,12 +43,20 @@ class DomainMappingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
-             metadata: pulumi.Input['DomainMappingMetadataArgs'],
-             spec: pulumi.Input['DomainMappingSpecArgs'],
+             location: Optional[pulumi.Input[str]] = None,
+             metadata: Optional[pulumi.Input['DomainMappingMetadataArgs']] = None,
+             spec: Optional[pulumi.Input['DomainMappingSpecArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if metadata is None:
+            raise TypeError("Missing 'metadata' argument")
+        if spec is None:
+            raise TypeError("Missing 'spec' argument")
+
         _setter("location", location)
         _setter("metadata", metadata)
         _setter("spec", spec)
@@ -161,7 +169,9 @@ class _DomainMappingState:
              project: Optional[pulumi.Input[str]] = None,
              spec: Optional[pulumi.Input['DomainMappingSpecArgs']] = None,
              statuses: Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if location is not None:
             _setter("location", location)
         if metadata is not None:
@@ -273,33 +283,6 @@ class DomainMapping(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/run/docs/mapping-custom-domains)
 
         ## Example Usage
-        ### Cloud Run Domain Mapping Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_service = gcp.cloudrun.Service("defaultService",
-            location="us-central1",
-            metadata=gcp.cloudrun.ServiceMetadataArgs(
-                namespace="my-project-name",
-            ),
-            template=gcp.cloudrun.ServiceTemplateArgs(
-                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
-                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
-                    )],
-                ),
-            ))
-        default_domain_mapping = gcp.cloudrun.DomainMapping("defaultDomainMapping",
-            location="us-central1",
-            metadata=gcp.cloudrun.DomainMappingMetadataArgs(
-                namespace="my-project-name",
-            ),
-            spec=gcp.cloudrun.DomainMappingSpecArgs(
-                route_name=default_service.name,
-            ))
-        ```
 
         ## Import
 
@@ -344,33 +327,6 @@ class DomainMapping(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/run/docs/mapping-custom-domains)
 
         ## Example Usage
-        ### Cloud Run Domain Mapping Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_service = gcp.cloudrun.Service("defaultService",
-            location="us-central1",
-            metadata=gcp.cloudrun.ServiceMetadataArgs(
-                namespace="my-project-name",
-            ),
-            template=gcp.cloudrun.ServiceTemplateArgs(
-                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
-                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
-                    )],
-                ),
-            ))
-        default_domain_mapping = gcp.cloudrun.DomainMapping("defaultDomainMapping",
-            location="us-central1",
-            metadata=gcp.cloudrun.DomainMappingMetadataArgs(
-                namespace="my-project-name",
-            ),
-            spec=gcp.cloudrun.DomainMappingSpecArgs(
-                route_name=default_service.name,
-            ))
-        ```
 
         ## Import
 
@@ -424,21 +380,13 @@ class DomainMapping(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if metadata is not None and not isinstance(metadata, DomainMappingMetadataArgs):
-                metadata = metadata or {}
-                def _setter(key, value):
-                    metadata[key] = value
-                DomainMappingMetadataArgs._configure(_setter, **metadata)
+            metadata = _utilities.configure(metadata, DomainMappingMetadataArgs, True)
             if metadata is None and not opts.urn:
                 raise TypeError("Missing required property 'metadata'")
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            if spec is not None and not isinstance(spec, DomainMappingSpecArgs):
-                spec = spec or {}
-                def _setter(key, value):
-                    spec[key] = value
-                DomainMappingSpecArgs._configure(_setter, **spec)
+            spec = _utilities.configure(spec, DomainMappingSpecArgs, True)
             if spec is None and not opts.urn:
                 raise TypeError("Missing required property 'spec'")
             __props__.__dict__["spec"] = spec

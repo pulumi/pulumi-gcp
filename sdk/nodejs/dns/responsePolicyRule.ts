@@ -13,39 +13,6 @@ import * as utilities from "../utilities";
  * as identified by the dnsName field with the longest matching suffix.
  *
  * ## Example Usage
- * ### Dns Response Policy Rule Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const network_1 = new gcp.compute.Network("network-1", {autoCreateSubnetworks: false});
- * const network_2 = new gcp.compute.Network("network-2", {autoCreateSubnetworks: false});
- * const response_policy = new gcp.dns.ResponsePolicy("response-policy", {
- *     responsePolicyName: "example-response-policy",
- *     networks: [
- *         {
- *             networkUrl: network_1.id,
- *         },
- *         {
- *             networkUrl: network_2.id,
- *         },
- *     ],
- * });
- * const example_response_policy_rule = new gcp.dns.ResponsePolicyRule("example-response-policy-rule", {
- *     responsePolicy: response_policy.responsePolicyName,
- *     ruleName: "example-rule",
- *     dnsName: "dns.example.com.",
- *     localData: {
- *         localDatas: [{
- *             name: "dns.example.com.",
- *             type: "A",
- *             ttl: 300,
- *             rrdatas: ["192.0.2.91"],
- *         }],
- *     },
- * });
- * ```
  *
  * ## Import
  *

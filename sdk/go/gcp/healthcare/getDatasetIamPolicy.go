@@ -13,32 +13,6 @@ import (
 )
 
 // Retrieves the current IAM policy data for a Google Cloud Healthcare dataset.
-//
-// ## example
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := healthcare.LookupDatasetIamPolicy(ctx, &healthcare.LookupDatasetIamPolicyArgs{
-//				DatasetId: google_healthcare_dataset.Dataset.Id,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupDatasetIamPolicy(ctx *pulumi.Context, args *LookupDatasetIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupDatasetIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatasetIamPolicyResult

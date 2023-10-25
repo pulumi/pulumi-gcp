@@ -20,54 +20,6 @@ namespace Pulumi.Gcp.Filestore
     ///     * [Creating Backups](https://cloud.google.com/filestore/docs/create-backups)
     /// 
     /// ## Example Usage
-    /// ### Filestore Backup Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var instance = new Gcp.Filestore.Instance("instance", new()
-    ///     {
-    ///         Location = "us-central1-b",
-    ///         Tier = "BASIC_HDD",
-    ///         FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
-    ///         {
-    ///             CapacityGb = 1024,
-    ///             Name = "share1",
-    ///         },
-    ///         Networks = new[]
-    ///         {
-    ///             new Gcp.Filestore.Inputs.InstanceNetworkArgs
-    ///             {
-    ///                 Network = "default",
-    ///                 Modes = new[]
-    ///                 {
-    ///                     "MODE_IPV4",
-    ///                 },
-    ///                 ConnectMode = "DIRECT_PEERING",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var backup = new Gcp.Filestore.Backup("backup", new()
-    ///     {
-    ///         Location = "us-central1",
-    ///         Description = "This is a filestore backup for the test instance",
-    ///         SourceInstance = instance.Id,
-    ///         SourceFileShare = "share1",
-    ///         Labels = 
-    ///         {
-    ///             { "files", "label1" },
-    ///             { "other-label", "label2" },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

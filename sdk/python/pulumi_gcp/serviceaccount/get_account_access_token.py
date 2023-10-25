@@ -103,44 +103,6 @@ def get_account_access_token(delegates: Optional[Sequence[str]] = None,
     For more information see
     [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
 
-    ## Example Usage
-
-    To allow `service_A` to impersonate `service_B`, grant the [Service Account Token Creator](https://cloud.google.com/iam/docs/service-accounts#the_service_account_token_creator_role) on B to A.
-
-    In the IAM policy below, `service_A` is given the Token Creator role impersonate `service_B`
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    token_creator_iam = gcp.service_account.IAMBinding("token-creator-iam",
-        members=["serviceAccount:service_A@projectA.iam.gserviceaccount.com"],
-        role="roles/iam.serviceAccountTokenCreator",
-        service_account_id="projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com")
-    ```
-
-    Once the IAM permissions are set, you can apply the new token to a provider bootstrapped with it.  Any resources that references the aliased provider will run as the new identity.
-
-    In the example below, `organizations.Project` will run as `service_B`.
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    default_client_config = gcp.organizations.get_client_config()
-    default_account_access_token = gcp.serviceAccount.get_account_access_token(target_service_account="service_B@projectB.iam.gserviceaccount.com",
-        scopes=[
-            "userinfo-email",
-            "cloud-platform",
-        ],
-        lifetime="300s")
-    impersonated = pulumi.providers.Google("impersonated", access_token=default_account_access_token.access_token)
-    me = gcp.organizations.get_client_open_id_user_info()
-    pulumi.export("target-email", me.email)
-    ```
-
-    > *Note*: the generated token is non-refreshable and can have a maximum `lifetime` of `3600` seconds.
-
 
     :param Sequence[str] delegates: Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.  (e.g. `["projects/-/serviceAccounts/delegate-svc-account@project-id.iam.gserviceaccount.com"]`)
     :param str lifetime: Lifetime of the impersonated token (defaults to its max: `3600s`).
@@ -175,44 +137,6 @@ def get_account_access_token_output(delegates: Optional[pulumi.Input[Optional[Se
 
     For more information see
     [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
-
-    ## Example Usage
-
-    To allow `service_A` to impersonate `service_B`, grant the [Service Account Token Creator](https://cloud.google.com/iam/docs/service-accounts#the_service_account_token_creator_role) on B to A.
-
-    In the IAM policy below, `service_A` is given the Token Creator role impersonate `service_B`
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    token_creator_iam = gcp.service_account.IAMBinding("token-creator-iam",
-        members=["serviceAccount:service_A@projectA.iam.gserviceaccount.com"],
-        role="roles/iam.serviceAccountTokenCreator",
-        service_account_id="projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com")
-    ```
-
-    Once the IAM permissions are set, you can apply the new token to a provider bootstrapped with it.  Any resources that references the aliased provider will run as the new identity.
-
-    In the example below, `organizations.Project` will run as `service_B`.
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    default_client_config = gcp.organizations.get_client_config()
-    default_account_access_token = gcp.serviceAccount.get_account_access_token(target_service_account="service_B@projectB.iam.gserviceaccount.com",
-        scopes=[
-            "userinfo-email",
-            "cloud-platform",
-        ],
-        lifetime="300s")
-    impersonated = pulumi.providers.Google("impersonated", access_token=default_account_access_token.access_token)
-    me = gcp.organizations.get_client_open_id_user_info()
-    pulumi.export("target-email", me.email)
-    ```
-
-    > *Note*: the generated token is non-refreshable and can have a maximum `lifetime` of `3600` seconds.
 
 
     :param Sequence[str] delegates: Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.  (e.g. `["projects/-/serviceAccounts/delegate-svc-account@project-id.iam.gserviceaccount.com"]`)

@@ -53,7 +53,15 @@ class CustomServiceArgs:
              service_id: Optional[pulumi.Input[str]] = None,
              telemetry: Optional[pulumi.Input['CustomServiceTelemetryArgs']] = None,
              user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if user_labels is None and 'userLabels' in kwargs:
+            user_labels = kwargs['userLabels']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if project is not None:
@@ -179,7 +187,15 @@ class _CustomServiceState:
              service_id: Optional[pulumi.Input[str]] = None,
              telemetry: Optional[pulumi.Input['CustomServiceTelemetryArgs']] = None,
              user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if user_labels is None and 'userLabels' in kwargs:
+            user_labels = kwargs['userLabels']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if name is not None:
@@ -300,23 +316,6 @@ class CustomService(pulumi.CustomResource):
             * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
         ## Example Usage
-        ### Monitoring Service Custom
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        custom = gcp.monitoring.CustomService("custom",
-            display_name="My Custom Service custom-srv",
-            service_id="custom-srv",
-            telemetry=gcp.monitoring.CustomServiceTelemetryArgs(
-                resource_name="//product.googleapis.com/foo/foo/services/test",
-            ),
-            user_labels={
-                "my_key": "my_value",
-                "my_other_key": "my_other_value",
-            })
-        ```
 
         ## Import
 
@@ -362,23 +361,6 @@ class CustomService(pulumi.CustomResource):
             * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
         ## Example Usage
-        ### Monitoring Service Custom
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        custom = gcp.monitoring.CustomService("custom",
-            display_name="My Custom Service custom-srv",
-            service_id="custom-srv",
-            telemetry=gcp.monitoring.CustomServiceTelemetryArgs(
-                resource_name="//product.googleapis.com/foo/foo/services/test",
-            ),
-            user_labels={
-                "my_key": "my_value",
-                "my_other_key": "my_other_value",
-            })
-        ```
 
         ## Import
 
@@ -424,11 +406,7 @@ class CustomService(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["project"] = project
             __props__.__dict__["service_id"] = service_id
-            if telemetry is not None and not isinstance(telemetry, CustomServiceTelemetryArgs):
-                telemetry = telemetry or {}
-                def _setter(key, value):
-                    telemetry[key] = value
-                CustomServiceTelemetryArgs._configure(_setter, **telemetry)
+            telemetry = _utilities.configure(telemetry, CustomServiceTelemetryArgs, True)
             __props__.__dict__["telemetry"] = telemetry
             __props__.__dict__["user_labels"] = user_labels
             __props__.__dict__["name"] = None

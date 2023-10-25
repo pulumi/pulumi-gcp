@@ -94,7 +94,19 @@ class RegionUrlMapArgs:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              tests: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapTestArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if default_route_action is None and 'defaultRouteAction' in kwargs:
+            default_route_action = kwargs['defaultRouteAction']
+        if default_service is None and 'defaultService' in kwargs:
+            default_service = kwargs['defaultService']
+        if default_url_redirect is None and 'defaultUrlRedirect' in kwargs:
+            default_url_redirect = kwargs['defaultUrlRedirect']
+        if host_rules is None and 'hostRules' in kwargs:
+            host_rules = kwargs['hostRules']
+        if path_matchers is None and 'pathMatchers' in kwargs:
+            path_matchers = kwargs['pathMatchers']
+
         if default_route_action is not None:
             _setter("default_route_action", default_route_action)
         if default_service is not None:
@@ -364,7 +376,25 @@ class _RegionUrlMapState:
              region: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              tests: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapTestArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if default_route_action is None and 'defaultRouteAction' in kwargs:
+            default_route_action = kwargs['defaultRouteAction']
+        if default_service is None and 'defaultService' in kwargs:
+            default_service = kwargs['defaultService']
+        if default_url_redirect is None and 'defaultUrlRedirect' in kwargs:
+            default_url_redirect = kwargs['defaultUrlRedirect']
+        if host_rules is None and 'hostRules' in kwargs:
+            host_rules = kwargs['hostRules']
+        if map_id is None and 'mapId' in kwargs:
+            map_id = kwargs['mapId']
+        if path_matchers is None and 'pathMatchers' in kwargs:
+            path_matchers = kwargs['pathMatchers']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if creation_timestamp is not None:
             _setter("creation_timestamp", creation_timestamp)
         if default_route_action is not None:
@@ -747,18 +777,10 @@ class RegionUrlMap(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RegionUrlMapArgs.__new__(RegionUrlMapArgs)
 
-            if default_route_action is not None and not isinstance(default_route_action, RegionUrlMapDefaultRouteActionArgs):
-                default_route_action = default_route_action or {}
-                def _setter(key, value):
-                    default_route_action[key] = value
-                RegionUrlMapDefaultRouteActionArgs._configure(_setter, **default_route_action)
+            default_route_action = _utilities.configure(default_route_action, RegionUrlMapDefaultRouteActionArgs, True)
             __props__.__dict__["default_route_action"] = default_route_action
             __props__.__dict__["default_service"] = default_service
-            if default_url_redirect is not None and not isinstance(default_url_redirect, RegionUrlMapDefaultUrlRedirectArgs):
-                default_url_redirect = default_url_redirect or {}
-                def _setter(key, value):
-                    default_url_redirect[key] = value
-                RegionUrlMapDefaultUrlRedirectArgs._configure(_setter, **default_url_redirect)
+            default_url_redirect = _utilities.configure(default_url_redirect, RegionUrlMapDefaultUrlRedirectArgs, True)
             __props__.__dict__["default_url_redirect"] = default_url_redirect
             __props__.__dict__["description"] = description
             __props__.__dict__["host_rules"] = host_rules

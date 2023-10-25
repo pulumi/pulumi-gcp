@@ -57,13 +57,23 @@ class WebRegionBackendServiceIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
-             web_region_backend_service: pulumi.Input[str],
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             web_region_backend_service: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['WebRegionBackendServiceIamBindingConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if web_region_backend_service is None and 'webRegionBackendService' in kwargs:
+            web_region_backend_service = kwargs['webRegionBackendService']
+        if web_region_backend_service is None:
+            raise TypeError("Missing 'web_region_backend_service' argument")
+
         _setter("members", members)
         _setter("role", role)
         _setter("web_region_backend_service", web_region_backend_service)
@@ -211,7 +221,11 @@ class _WebRegionBackendServiceIamBindingState:
              region: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              web_region_backend_service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if web_region_backend_service is None and 'webRegionBackendService' in kwargs:
+            web_region_backend_service = kwargs['webRegionBackendService']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -351,109 +365,6 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_iap\\_web\\_region\\_backend\\_service\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/iap.httpsResourceAccessor",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.iap.WebRegionBackendServiceIamPolicy("policy",
-            project=google_compute_region_backend_service["default"]["project"],
-            region=google_compute_region_backend_service["default"]["region"],
-            web_region_backend_service=google_compute_region_backend_service["default"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/iap.httpsResourceAccessor",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
-        policy = gcp.iap.WebRegionBackendServiceIamPolicy("policy",
-            project=google_compute_region_backend_service["default"]["project"],
-            region=google_compute_region_backend_service["default"]["region"],
-            web_region_backend_service=google_compute_region_backend_service["default"]["name"],
-            policy_data=admin.policy_data)
-        ```
-        ## google\\_iap\\_web\\_region\\_backend\\_service\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.iap.WebRegionBackendServiceIamBinding("binding",
-            project=google_compute_region_backend_service["default"]["project"],
-            region=google_compute_region_backend_service["default"]["region"],
-            web_region_backend_service=google_compute_region_backend_service["default"]["name"],
-            role="roles/iap.httpsResourceAccessor",
-            members=["user:jane@example.com"])
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.iap.WebRegionBackendServiceIamBinding("binding",
-            project=google_compute_region_backend_service["default"]["project"],
-            region=google_compute_region_backend_service["default"]["region"],
-            web_region_backend_service=google_compute_region_backend_service["default"]["name"],
-            role="roles/iap.httpsResourceAccessor",
-            members=["user:jane@example.com"],
-            condition=gcp.iap.WebRegionBackendServiceIamBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-        ## google\\_iap\\_web\\_region\\_backend\\_service\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.iap.WebRegionBackendServiceIamMember("member",
-            project=google_compute_region_backend_service["default"]["project"],
-            region=google_compute_region_backend_service["default"]["region"],
-            web_region_backend_service=google_compute_region_backend_service["default"]["name"],
-            role="roles/iap.httpsResourceAccessor",
-            member="user:jane@example.com")
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.iap.WebRegionBackendServiceIamMember("member",
-            project=google_compute_region_backend_service["default"]["project"],
-            region=google_compute_region_backend_service["default"]["region"],
-            web_region_backend_service=google_compute_region_backend_service["default"]["name"],
-            role="roles/iap.httpsResourceAccessor",
-            member="user:jane@example.com",
-            condition=gcp.iap.WebRegionBackendServiceIamMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/iap_web/compute-{{region}}/services/{{name}} * {{project}}/{{region}}/{{name}} * {{region}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Identity-Aware Proxy webregionbackendservice IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -524,109 +435,6 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_iap\\_web\\_region\\_backend\\_service\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/iap.httpsResourceAccessor",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.iap.WebRegionBackendServiceIamPolicy("policy",
-            project=google_compute_region_backend_service["default"]["project"],
-            region=google_compute_region_backend_service["default"]["region"],
-            web_region_backend_service=google_compute_region_backend_service["default"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/iap.httpsResourceAccessor",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
-        policy = gcp.iap.WebRegionBackendServiceIamPolicy("policy",
-            project=google_compute_region_backend_service["default"]["project"],
-            region=google_compute_region_backend_service["default"]["region"],
-            web_region_backend_service=google_compute_region_backend_service["default"]["name"],
-            policy_data=admin.policy_data)
-        ```
-        ## google\\_iap\\_web\\_region\\_backend\\_service\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.iap.WebRegionBackendServiceIamBinding("binding",
-            project=google_compute_region_backend_service["default"]["project"],
-            region=google_compute_region_backend_service["default"]["region"],
-            web_region_backend_service=google_compute_region_backend_service["default"]["name"],
-            role="roles/iap.httpsResourceAccessor",
-            members=["user:jane@example.com"])
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.iap.WebRegionBackendServiceIamBinding("binding",
-            project=google_compute_region_backend_service["default"]["project"],
-            region=google_compute_region_backend_service["default"]["region"],
-            web_region_backend_service=google_compute_region_backend_service["default"]["name"],
-            role="roles/iap.httpsResourceAccessor",
-            members=["user:jane@example.com"],
-            condition=gcp.iap.WebRegionBackendServiceIamBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-        ## google\\_iap\\_web\\_region\\_backend\\_service\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.iap.WebRegionBackendServiceIamMember("member",
-            project=google_compute_region_backend_service["default"]["project"],
-            region=google_compute_region_backend_service["default"]["region"],
-            web_region_backend_service=google_compute_region_backend_service["default"]["name"],
-            role="roles/iap.httpsResourceAccessor",
-            member="user:jane@example.com")
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.iap.WebRegionBackendServiceIamMember("member",
-            project=google_compute_region_backend_service["default"]["project"],
-            region=google_compute_region_backend_service["default"]["region"],
-            web_region_backend_service=google_compute_region_backend_service["default"]["name"],
-            role="roles/iap.httpsResourceAccessor",
-            member="user:jane@example.com",
-            condition=gcp.iap.WebRegionBackendServiceIamMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/iap_web/compute-{{region}}/services/{{name}} * {{project}}/{{region}}/{{name}} * {{region}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Identity-Aware Proxy webregionbackendservice IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -685,11 +493,7 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WebRegionBackendServiceIamBindingArgs.__new__(WebRegionBackendServiceIamBindingArgs)
 
-            if condition is not None and not isinstance(condition, WebRegionBackendServiceIamBindingConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                WebRegionBackendServiceIamBindingConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, WebRegionBackendServiceIamBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")

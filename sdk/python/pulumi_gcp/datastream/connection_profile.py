@@ -71,9 +71,9 @@ class ConnectionProfileArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection_profile_id: pulumi.Input[str],
-             display_name: pulumi.Input[str],
-             location: pulumi.Input[str],
+             connection_profile_id: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
              bigquery_profile: Optional[pulumi.Input['ConnectionProfileBigqueryProfileArgs']] = None,
              forward_ssh_connectivity: Optional[pulumi.Input['ConnectionProfileForwardSshConnectivityArgs']] = None,
              gcs_profile: Optional[pulumi.Input['ConnectionProfileGcsProfileArgs']] = None,
@@ -83,7 +83,33 @@ class ConnectionProfileArgs:
              postgresql_profile: Optional[pulumi.Input['ConnectionProfilePostgresqlProfileArgs']] = None,
              private_connectivity: Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if connection_profile_id is None and 'connectionProfileId' in kwargs:
+            connection_profile_id = kwargs['connectionProfileId']
+        if connection_profile_id is None:
+            raise TypeError("Missing 'connection_profile_id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if bigquery_profile is None and 'bigqueryProfile' in kwargs:
+            bigquery_profile = kwargs['bigqueryProfile']
+        if forward_ssh_connectivity is None and 'forwardSshConnectivity' in kwargs:
+            forward_ssh_connectivity = kwargs['forwardSshConnectivity']
+        if gcs_profile is None and 'gcsProfile' in kwargs:
+            gcs_profile = kwargs['gcsProfile']
+        if mysql_profile is None and 'mysqlProfile' in kwargs:
+            mysql_profile = kwargs['mysqlProfile']
+        if oracle_profile is None and 'oracleProfile' in kwargs:
+            oracle_profile = kwargs['oracleProfile']
+        if postgresql_profile is None and 'postgresqlProfile' in kwargs:
+            postgresql_profile = kwargs['postgresqlProfile']
+        if private_connectivity is None and 'privateConnectivity' in kwargs:
+            private_connectivity = kwargs['privateConnectivity']
+
         _setter("connection_profile_id", connection_profile_id)
         _setter("display_name", display_name)
         _setter("location", location)
@@ -335,7 +361,27 @@ class _ConnectionProfileState:
              postgresql_profile: Optional[pulumi.Input['ConnectionProfilePostgresqlProfileArgs']] = None,
              private_connectivity: Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bigquery_profile is None and 'bigqueryProfile' in kwargs:
+            bigquery_profile = kwargs['bigqueryProfile']
+        if connection_profile_id is None and 'connectionProfileId' in kwargs:
+            connection_profile_id = kwargs['connectionProfileId']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if forward_ssh_connectivity is None and 'forwardSshConnectivity' in kwargs:
+            forward_ssh_connectivity = kwargs['forwardSshConnectivity']
+        if gcs_profile is None and 'gcsProfile' in kwargs:
+            gcs_profile = kwargs['gcsProfile']
+        if mysql_profile is None and 'mysqlProfile' in kwargs:
+            mysql_profile = kwargs['mysqlProfile']
+        if oracle_profile is None and 'oracleProfile' in kwargs:
+            oracle_profile = kwargs['oracleProfile']
+        if postgresql_profile is None and 'postgresqlProfile' in kwargs:
+            postgresql_profile = kwargs['postgresqlProfile']
+        if private_connectivity is None and 'privateConnectivity' in kwargs:
+            private_connectivity = kwargs['privateConnectivity']
+
         if bigquery_profile is not None:
             _setter("bigquery_profile", bigquery_profile)
         if connection_profile_id is not None:
@@ -562,123 +608,6 @@ class ConnectionProfile(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
-        ### Datastream Connection Profile Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.datastream.ConnectionProfile("default",
-            connection_profile_id="my-profile",
-            display_name="Connection profile",
-            gcs_profile=gcp.datastream.ConnectionProfileGcsProfileArgs(
-                bucket="my-bucket",
-                root_path="/path",
-            ),
-            location="us-central1")
-        ```
-        ### Datastream Connection Profile Bigquery Private Connection
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork")
-        private_connection = gcp.datastream.PrivateConnection("privateConnection",
-            display_name="Connection profile",
-            location="us-central1",
-            private_connection_id="my-connection",
-            labels={
-                "key": "value",
-            },
-            vpc_peering_config=gcp.datastream.PrivateConnectionVpcPeeringConfigArgs(
-                vpc=default_network.id,
-                subnet="10.0.0.0/29",
-            ))
-        default_connection_profile = gcp.datastream.ConnectionProfile("defaultConnectionProfile",
-            display_name="Connection profile",
-            location="us-central1",
-            connection_profile_id="my-profile",
-            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs(),
-            private_connectivity=gcp.datastream.ConnectionProfilePrivateConnectivityArgs(
-                private_connection=private_connection.id,
-            ))
-        ```
-        ### Datastream Connection Profile Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.datastream.ConnectionProfile("default",
-            connection_profile_id="my-profile",
-            display_name="Connection profile",
-            forward_ssh_connectivity=gcp.datastream.ConnectionProfileForwardSshConnectivityArgs(
-                hostname="google.com",
-                password="swordfish",
-                port=8022,
-                username="my-user",
-            ),
-            gcs_profile=gcp.datastream.ConnectionProfileGcsProfileArgs(
-                bucket="my-bucket",
-                root_path="/path",
-            ),
-            labels={
-                "key": "value",
-            },
-            location="us-central1")
-        ```
-        ### Datastream Connection Profile Postgres
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-
-        instance = gcp.sql.DatabaseInstance("instance",
-            database_version="POSTGRES_14",
-            region="us-central1",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
-                    authorized_networks=[
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.71.242.81",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.72.28.29",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.67.6.157",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.67.234.134",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.72.239.218",
-                        ),
-                    ],
-                ),
-            ),
-            deletion_protection=True)
-        db = gcp.sql.Database("db", instance=instance.name)
-        pwd = random.RandomPassword("pwd",
-            length=16,
-            special=False)
-        user = gcp.sql.User("user",
-            instance=instance.name,
-            password=pwd.result)
-        default = gcp.datastream.ConnectionProfile("default",
-            display_name="Connection profile",
-            location="us-central1",
-            connection_profile_id="my-profile",
-            postgresql_profile=gcp.datastream.ConnectionProfilePostgresqlProfileArgs(
-                hostname=instance.public_ip_address,
-                username=user.name,
-                password=user.password,
-                database=db.name,
-            ))
-        ```
 
         ## Import
 
@@ -741,123 +670,6 @@ class ConnectionProfile(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
-        ### Datastream Connection Profile Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.datastream.ConnectionProfile("default",
-            connection_profile_id="my-profile",
-            display_name="Connection profile",
-            gcs_profile=gcp.datastream.ConnectionProfileGcsProfileArgs(
-                bucket="my-bucket",
-                root_path="/path",
-            ),
-            location="us-central1")
-        ```
-        ### Datastream Connection Profile Bigquery Private Connection
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork")
-        private_connection = gcp.datastream.PrivateConnection("privateConnection",
-            display_name="Connection profile",
-            location="us-central1",
-            private_connection_id="my-connection",
-            labels={
-                "key": "value",
-            },
-            vpc_peering_config=gcp.datastream.PrivateConnectionVpcPeeringConfigArgs(
-                vpc=default_network.id,
-                subnet="10.0.0.0/29",
-            ))
-        default_connection_profile = gcp.datastream.ConnectionProfile("defaultConnectionProfile",
-            display_name="Connection profile",
-            location="us-central1",
-            connection_profile_id="my-profile",
-            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs(),
-            private_connectivity=gcp.datastream.ConnectionProfilePrivateConnectivityArgs(
-                private_connection=private_connection.id,
-            ))
-        ```
-        ### Datastream Connection Profile Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.datastream.ConnectionProfile("default",
-            connection_profile_id="my-profile",
-            display_name="Connection profile",
-            forward_ssh_connectivity=gcp.datastream.ConnectionProfileForwardSshConnectivityArgs(
-                hostname="google.com",
-                password="swordfish",
-                port=8022,
-                username="my-user",
-            ),
-            gcs_profile=gcp.datastream.ConnectionProfileGcsProfileArgs(
-                bucket="my-bucket",
-                root_path="/path",
-            ),
-            labels={
-                "key": "value",
-            },
-            location="us-central1")
-        ```
-        ### Datastream Connection Profile Postgres
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-
-        instance = gcp.sql.DatabaseInstance("instance",
-            database_version="POSTGRES_14",
-            region="us-central1",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
-                    authorized_networks=[
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.71.242.81",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.72.28.29",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.67.6.157",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.67.234.134",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.72.239.218",
-                        ),
-                    ],
-                ),
-            ),
-            deletion_protection=True)
-        db = gcp.sql.Database("db", instance=instance.name)
-        pwd = random.RandomPassword("pwd",
-            length=16,
-            special=False)
-        user = gcp.sql.User("user",
-            instance=instance.name,
-            password=pwd.result)
-        default = gcp.datastream.ConnectionProfile("default",
-            display_name="Connection profile",
-            location="us-central1",
-            connection_profile_id="my-profile",
-            postgresql_profile=gcp.datastream.ConnectionProfilePostgresqlProfileArgs(
-                hostname=instance.public_ip_address,
-                username=user.name,
-                password=user.password,
-                database=db.name,
-            ))
-        ```
 
         ## Import
 
@@ -915,11 +727,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectionProfileArgs.__new__(ConnectionProfileArgs)
 
-            if bigquery_profile is not None and not isinstance(bigquery_profile, ConnectionProfileBigqueryProfileArgs):
-                bigquery_profile = bigquery_profile or {}
-                def _setter(key, value):
-                    bigquery_profile[key] = value
-                ConnectionProfileBigqueryProfileArgs._configure(_setter, **bigquery_profile)
+            bigquery_profile = _utilities.configure(bigquery_profile, ConnectionProfileBigqueryProfileArgs, True)
             __props__.__dict__["bigquery_profile"] = bigquery_profile
             if connection_profile_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_profile_id'")
@@ -927,45 +735,21 @@ class ConnectionProfile(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
-            if forward_ssh_connectivity is not None and not isinstance(forward_ssh_connectivity, ConnectionProfileForwardSshConnectivityArgs):
-                forward_ssh_connectivity = forward_ssh_connectivity or {}
-                def _setter(key, value):
-                    forward_ssh_connectivity[key] = value
-                ConnectionProfileForwardSshConnectivityArgs._configure(_setter, **forward_ssh_connectivity)
+            forward_ssh_connectivity = _utilities.configure(forward_ssh_connectivity, ConnectionProfileForwardSshConnectivityArgs, True)
             __props__.__dict__["forward_ssh_connectivity"] = forward_ssh_connectivity
-            if gcs_profile is not None and not isinstance(gcs_profile, ConnectionProfileGcsProfileArgs):
-                gcs_profile = gcs_profile or {}
-                def _setter(key, value):
-                    gcs_profile[key] = value
-                ConnectionProfileGcsProfileArgs._configure(_setter, **gcs_profile)
+            gcs_profile = _utilities.configure(gcs_profile, ConnectionProfileGcsProfileArgs, True)
             __props__.__dict__["gcs_profile"] = gcs_profile
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if mysql_profile is not None and not isinstance(mysql_profile, ConnectionProfileMysqlProfileArgs):
-                mysql_profile = mysql_profile or {}
-                def _setter(key, value):
-                    mysql_profile[key] = value
-                ConnectionProfileMysqlProfileArgs._configure(_setter, **mysql_profile)
+            mysql_profile = _utilities.configure(mysql_profile, ConnectionProfileMysqlProfileArgs, True)
             __props__.__dict__["mysql_profile"] = mysql_profile
-            if oracle_profile is not None and not isinstance(oracle_profile, ConnectionProfileOracleProfileArgs):
-                oracle_profile = oracle_profile or {}
-                def _setter(key, value):
-                    oracle_profile[key] = value
-                ConnectionProfileOracleProfileArgs._configure(_setter, **oracle_profile)
+            oracle_profile = _utilities.configure(oracle_profile, ConnectionProfileOracleProfileArgs, True)
             __props__.__dict__["oracle_profile"] = oracle_profile
-            if postgresql_profile is not None and not isinstance(postgresql_profile, ConnectionProfilePostgresqlProfileArgs):
-                postgresql_profile = postgresql_profile or {}
-                def _setter(key, value):
-                    postgresql_profile[key] = value
-                ConnectionProfilePostgresqlProfileArgs._configure(_setter, **postgresql_profile)
+            postgresql_profile = _utilities.configure(postgresql_profile, ConnectionProfilePostgresqlProfileArgs, True)
             __props__.__dict__["postgresql_profile"] = postgresql_profile
-            if private_connectivity is not None and not isinstance(private_connectivity, ConnectionProfilePrivateConnectivityArgs):
-                private_connectivity = private_connectivity or {}
-                def _setter(key, value):
-                    private_connectivity[key] = value
-                ConnectionProfilePrivateConnectivityArgs._configure(_setter, **private_connectivity)
+            private_connectivity = _utilities.configure(private_connectivity, ConnectionProfilePrivateConnectivityArgs, True)
             __props__.__dict__["private_connectivity"] = private_connectivity
             __props__.__dict__["project"] = project
             __props__.__dict__["name"] = None

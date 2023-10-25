@@ -36,10 +36,20 @@ class FirewallPolicyAssociationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attachment_target: pulumi.Input[str],
-             firewall_policy: pulumi.Input[str],
+             attachment_target: Optional[pulumi.Input[str]] = None,
+             firewall_policy: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if attachment_target is None and 'attachmentTarget' in kwargs:
+            attachment_target = kwargs['attachmentTarget']
+        if attachment_target is None:
+            raise TypeError("Missing 'attachment_target' argument")
+        if firewall_policy is None and 'firewallPolicy' in kwargs:
+            firewall_policy = kwargs['firewallPolicy']
+        if firewall_policy is None:
+            raise TypeError("Missing 'firewall_policy' argument")
+
         _setter("attachment_target", attachment_target)
         _setter("firewall_policy", firewall_policy)
         if name is not None:
@@ -118,7 +128,15 @@ class _FirewallPolicyAssociationState:
              firewall_policy: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              short_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if attachment_target is None and 'attachmentTarget' in kwargs:
+            attachment_target = kwargs['attachmentTarget']
+        if firewall_policy is None and 'firewallPolicy' in kwargs:
+            firewall_policy = kwargs['firewallPolicy']
+        if short_name is None and 'shortName' in kwargs:
+            short_name = kwargs['shortName']
+
         if attachment_target is not None:
             _setter("attachment_target", attachment_target)
         if firewall_policy is not None:
@@ -195,21 +213,6 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
 
         For more information on applying hierarchical firewall policies see the [official documentation](https://cloud.google.com/vpc/docs/firewall-policies#managing_hierarchical_firewall_policy_resources)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_firewall_policy = gcp.compute.FirewallPolicy("defaultFirewallPolicy",
-            parent="organizations/12345",
-            short_name="my-policy",
-            description="Example Resource")
-        default_firewall_policy_association = gcp.compute.FirewallPolicyAssociation("defaultFirewallPolicyAssociation",
-            firewall_policy=default_firewall_policy.id,
-            attachment_target=google_folder["folder"]["name"])
-        ```
-
         ## Import
 
         FirewallPolicyAssociation can be imported using any of these accepted formats
@@ -242,21 +245,6 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
         Allows associating hierarchical firewall policies with the target where they are applied. This allows creating policies and rules in a different location than they are applied.
 
         For more information on applying hierarchical firewall policies see the [official documentation](https://cloud.google.com/vpc/docs/firewall-policies#managing_hierarchical_firewall_policy_resources)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_firewall_policy = gcp.compute.FirewallPolicy("defaultFirewallPolicy",
-            parent="organizations/12345",
-            short_name="my-policy",
-            description="Example Resource")
-        default_firewall_policy_association = gcp.compute.FirewallPolicyAssociation("defaultFirewallPolicyAssociation",
-            firewall_policy=default_firewall_policy.id,
-            attachment_target=google_folder["folder"]["name"])
-        ```
 
         ## Import
 

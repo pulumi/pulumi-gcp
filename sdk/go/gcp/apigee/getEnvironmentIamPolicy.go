@@ -13,33 +13,6 @@ import (
 )
 
 // Retrieves the current IAM policy data for environment
-//
-// ## example
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigee"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := apigee.LookupEnvironmentIamPolicy(ctx, &apigee.LookupEnvironmentIamPolicyArgs{
-//				OrgId: google_apigee_environment.Apigee_environment.Org_id,
-//				EnvId: google_apigee_environment.Apigee_environment.Name,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupEnvironmentIamPolicy(ctx *pulumi.Context, args *LookupEnvironmentIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupEnvironmentIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEnvironmentIamPolicyResult

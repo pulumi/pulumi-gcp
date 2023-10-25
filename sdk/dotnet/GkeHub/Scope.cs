@@ -19,29 +19,6 @@ namespace Pulumi.Gcp.GkeHub
     ///     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
     /// 
     /// ## Example Usage
-    /// ### Gkehub Scope Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var scope = new Gcp.GkeHub.Scope("scope", new()
-    ///     {
-    ///         Labels = 
-    ///         {
-    ///             { "keya", "valuea" },
-    ///             { "keyb", "valueb" },
-    ///             { "keyc", "valuec" },
-    ///         },
-    ///         ScopeId = "tf-test-scope%{random_suffix}",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

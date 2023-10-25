@@ -13,18 +13,6 @@ import * as utilities from "../utilities";
  *
  * > You can specify exclusions for log sinks created by the provider by using the exclusions field of `gcp.logging.ProjectSink`
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const my_exclusion = new gcp.logging.ProjectExclusion("my-exclusion", {
- *     description: "Exclude GCE instance debug logs",
- *     filter: "resource.type = gce_instance AND severity <= DEBUG",
- * });
- * ```
- *
  * ## Import
  *
  * Project-level logging exclusions can be imported using their URI, e.g.

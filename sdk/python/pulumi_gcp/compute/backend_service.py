@@ -200,7 +200,51 @@ class BackendServiceArgs:
              security_settings: Optional[pulumi.Input['BackendServiceSecuritySettingsArgs']] = None,
              session_affinity: Optional[pulumi.Input[str]] = None,
              timeout_sec: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if affinity_cookie_ttl_sec is None and 'affinityCookieTtlSec' in kwargs:
+            affinity_cookie_ttl_sec = kwargs['affinityCookieTtlSec']
+        if cdn_policy is None and 'cdnPolicy' in kwargs:
+            cdn_policy = kwargs['cdnPolicy']
+        if circuit_breakers is None and 'circuitBreakers' in kwargs:
+            circuit_breakers = kwargs['circuitBreakers']
+        if compression_mode is None and 'compressionMode' in kwargs:
+            compression_mode = kwargs['compressionMode']
+        if connection_draining_timeout_sec is None and 'connectionDrainingTimeoutSec' in kwargs:
+            connection_draining_timeout_sec = kwargs['connectionDrainingTimeoutSec']
+        if consistent_hash is None and 'consistentHash' in kwargs:
+            consistent_hash = kwargs['consistentHash']
+        if custom_request_headers is None and 'customRequestHeaders' in kwargs:
+            custom_request_headers = kwargs['customRequestHeaders']
+        if custom_response_headers is None and 'customResponseHeaders' in kwargs:
+            custom_response_headers = kwargs['customResponseHeaders']
+        if edge_security_policy is None and 'edgeSecurityPolicy' in kwargs:
+            edge_security_policy = kwargs['edgeSecurityPolicy']
+        if enable_cdn is None and 'enableCdn' in kwargs:
+            enable_cdn = kwargs['enableCdn']
+        if health_checks is None and 'healthChecks' in kwargs:
+            health_checks = kwargs['healthChecks']
+        if load_balancing_scheme is None and 'loadBalancingScheme' in kwargs:
+            load_balancing_scheme = kwargs['loadBalancingScheme']
+        if locality_lb_policies is None and 'localityLbPolicies' in kwargs:
+            locality_lb_policies = kwargs['localityLbPolicies']
+        if locality_lb_policy is None and 'localityLbPolicy' in kwargs:
+            locality_lb_policy = kwargs['localityLbPolicy']
+        if log_config is None and 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if outlier_detection is None and 'outlierDetection' in kwargs:
+            outlier_detection = kwargs['outlierDetection']
+        if port_name is None and 'portName' in kwargs:
+            port_name = kwargs['portName']
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
+        if security_settings is None and 'securitySettings' in kwargs:
+            security_settings = kwargs['securitySettings']
+        if session_affinity is None and 'sessionAffinity' in kwargs:
+            session_affinity = kwargs['sessionAffinity']
+        if timeout_sec is None and 'timeoutSec' in kwargs:
+            timeout_sec = kwargs['timeoutSec']
+
         if affinity_cookie_ttl_sec is not None:
             _setter("affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
         if backends is not None:
@@ -852,7 +896,57 @@ class _BackendServiceState:
              self_link: Optional[pulumi.Input[str]] = None,
              session_affinity: Optional[pulumi.Input[str]] = None,
              timeout_sec: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if affinity_cookie_ttl_sec is None and 'affinityCookieTtlSec' in kwargs:
+            affinity_cookie_ttl_sec = kwargs['affinityCookieTtlSec']
+        if cdn_policy is None and 'cdnPolicy' in kwargs:
+            cdn_policy = kwargs['cdnPolicy']
+        if circuit_breakers is None and 'circuitBreakers' in kwargs:
+            circuit_breakers = kwargs['circuitBreakers']
+        if compression_mode is None and 'compressionMode' in kwargs:
+            compression_mode = kwargs['compressionMode']
+        if connection_draining_timeout_sec is None and 'connectionDrainingTimeoutSec' in kwargs:
+            connection_draining_timeout_sec = kwargs['connectionDrainingTimeoutSec']
+        if consistent_hash is None and 'consistentHash' in kwargs:
+            consistent_hash = kwargs['consistentHash']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if custom_request_headers is None and 'customRequestHeaders' in kwargs:
+            custom_request_headers = kwargs['customRequestHeaders']
+        if custom_response_headers is None and 'customResponseHeaders' in kwargs:
+            custom_response_headers = kwargs['customResponseHeaders']
+        if edge_security_policy is None and 'edgeSecurityPolicy' in kwargs:
+            edge_security_policy = kwargs['edgeSecurityPolicy']
+        if enable_cdn is None and 'enableCdn' in kwargs:
+            enable_cdn = kwargs['enableCdn']
+        if generated_id is None and 'generatedId' in kwargs:
+            generated_id = kwargs['generatedId']
+        if health_checks is None and 'healthChecks' in kwargs:
+            health_checks = kwargs['healthChecks']
+        if load_balancing_scheme is None and 'loadBalancingScheme' in kwargs:
+            load_balancing_scheme = kwargs['loadBalancingScheme']
+        if locality_lb_policies is None and 'localityLbPolicies' in kwargs:
+            locality_lb_policies = kwargs['localityLbPolicies']
+        if locality_lb_policy is None and 'localityLbPolicy' in kwargs:
+            locality_lb_policy = kwargs['localityLbPolicy']
+        if log_config is None and 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if outlier_detection is None and 'outlierDetection' in kwargs:
+            outlier_detection = kwargs['outlierDetection']
+        if port_name is None and 'portName' in kwargs:
+            port_name = kwargs['portName']
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
+        if security_settings is None and 'securitySettings' in kwargs:
+            security_settings = kwargs['securitySettings']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if session_affinity is None and 'sessionAffinity' in kwargs:
+            session_affinity = kwargs['sessionAffinity']
+        if timeout_sec is None and 'timeoutSec' in kwargs:
+            timeout_sec = kwargs['timeoutSec']
+
         if affinity_cookie_ttl_sec is not None:
             _setter("affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
         if backends is not None:
@@ -1408,74 +1502,6 @@ class BackendService(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
-        ### Backend Service Cache Include Http Headers
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.BackendService("default",
-            cdn_policy=gcp.compute.BackendServiceCdnPolicyArgs(
-                cache_key_policy=gcp.compute.BackendServiceCdnPolicyCacheKeyPolicyArgs(
-                    include_host=True,
-                    include_http_headers=["X-My-Header-Field"],
-                    include_protocol=True,
-                    include_query_string=True,
-                ),
-                cache_mode="USE_ORIGIN_HEADERS",
-            ),
-            enable_cdn=True)
-        ```
-        ### Backend Service Cache Include Named Cookies
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.BackendService("default",
-            cdn_policy=gcp.compute.BackendServiceCdnPolicyArgs(
-                cache_key_policy=gcp.compute.BackendServiceCdnPolicyCacheKeyPolicyArgs(
-                    include_host=True,
-                    include_named_cookies=[
-                        "__next_preview_data",
-                        "__prerender_bypass",
-                    ],
-                    include_protocol=True,
-                    include_query_string=True,
-                ),
-                cache_mode="CACHE_ALL_STATIC",
-                client_ttl=7200,
-                default_ttl=3600,
-                max_ttl=10800,
-            ),
-            enable_cdn=True)
-        ```
-        ### Backend Service Network Endpoint
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        external_proxy = gcp.compute.GlobalNetworkEndpointGroup("externalProxy",
-            network_endpoint_type="INTERNET_FQDN_PORT",
-            default_port=443,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        proxy = gcp.compute.GlobalNetworkEndpoint("proxy",
-            global_network_endpoint_group=external_proxy.id,
-            fqdn="test.example.com",
-            port=external_proxy.default_port,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default = gcp.compute.BackendService("default",
-            enable_cdn=True,
-            timeout_sec=10,
-            connection_draining_timeout_sec=10,
-            custom_request_headers=[proxy.fqdn.apply(lambda fqdn: f"host: {fqdn}")],
-            custom_response_headers=["X-Cache-Hit: {cdn_cache_status}"],
-            backends=[gcp.compute.BackendServiceBackendArgs(
-                group=external_proxy.id,
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -1614,74 +1640,6 @@ class BackendService(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
-        ### Backend Service Cache Include Http Headers
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.BackendService("default",
-            cdn_policy=gcp.compute.BackendServiceCdnPolicyArgs(
-                cache_key_policy=gcp.compute.BackendServiceCdnPolicyCacheKeyPolicyArgs(
-                    include_host=True,
-                    include_http_headers=["X-My-Header-Field"],
-                    include_protocol=True,
-                    include_query_string=True,
-                ),
-                cache_mode="USE_ORIGIN_HEADERS",
-            ),
-            enable_cdn=True)
-        ```
-        ### Backend Service Cache Include Named Cookies
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.BackendService("default",
-            cdn_policy=gcp.compute.BackendServiceCdnPolicyArgs(
-                cache_key_policy=gcp.compute.BackendServiceCdnPolicyCacheKeyPolicyArgs(
-                    include_host=True,
-                    include_named_cookies=[
-                        "__next_preview_data",
-                        "__prerender_bypass",
-                    ],
-                    include_protocol=True,
-                    include_query_string=True,
-                ),
-                cache_mode="CACHE_ALL_STATIC",
-                client_ttl=7200,
-                default_ttl=3600,
-                max_ttl=10800,
-            ),
-            enable_cdn=True)
-        ```
-        ### Backend Service Network Endpoint
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        external_proxy = gcp.compute.GlobalNetworkEndpointGroup("externalProxy",
-            network_endpoint_type="INTERNET_FQDN_PORT",
-            default_port=443,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        proxy = gcp.compute.GlobalNetworkEndpoint("proxy",
-            global_network_endpoint_group=external_proxy.id,
-            fqdn="test.example.com",
-            port=external_proxy.default_port,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default = gcp.compute.BackendService("default",
-            enable_cdn=True,
-            timeout_sec=10,
-            connection_draining_timeout_sec=10,
-            custom_request_headers=[proxy.fqdn.apply(lambda fqdn: f"host: {fqdn}")],
-            custom_response_headers=["X-Cache-Hit: {cdn_cache_status}"],
-            backends=[gcp.compute.BackendServiceBackendArgs(
-                group=external_proxy.id,
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -1756,25 +1714,13 @@ class BackendService(pulumi.CustomResource):
 
             __props__.__dict__["affinity_cookie_ttl_sec"] = affinity_cookie_ttl_sec
             __props__.__dict__["backends"] = backends
-            if cdn_policy is not None and not isinstance(cdn_policy, BackendServiceCdnPolicyArgs):
-                cdn_policy = cdn_policy or {}
-                def _setter(key, value):
-                    cdn_policy[key] = value
-                BackendServiceCdnPolicyArgs._configure(_setter, **cdn_policy)
+            cdn_policy = _utilities.configure(cdn_policy, BackendServiceCdnPolicyArgs, True)
             __props__.__dict__["cdn_policy"] = cdn_policy
-            if circuit_breakers is not None and not isinstance(circuit_breakers, BackendServiceCircuitBreakersArgs):
-                circuit_breakers = circuit_breakers or {}
-                def _setter(key, value):
-                    circuit_breakers[key] = value
-                BackendServiceCircuitBreakersArgs._configure(_setter, **circuit_breakers)
+            circuit_breakers = _utilities.configure(circuit_breakers, BackendServiceCircuitBreakersArgs, True)
             __props__.__dict__["circuit_breakers"] = circuit_breakers
             __props__.__dict__["compression_mode"] = compression_mode
             __props__.__dict__["connection_draining_timeout_sec"] = connection_draining_timeout_sec
-            if consistent_hash is not None and not isinstance(consistent_hash, BackendServiceConsistentHashArgs):
-                consistent_hash = consistent_hash or {}
-                def _setter(key, value):
-                    consistent_hash[key] = value
-                BackendServiceConsistentHashArgs._configure(_setter, **consistent_hash)
+            consistent_hash = _utilities.configure(consistent_hash, BackendServiceConsistentHashArgs, True)
             __props__.__dict__["consistent_hash"] = consistent_hash
             __props__.__dict__["custom_request_headers"] = custom_request_headers
             __props__.__dict__["custom_response_headers"] = custom_response_headers
@@ -1782,37 +1728,21 @@ class BackendService(pulumi.CustomResource):
             __props__.__dict__["edge_security_policy"] = edge_security_policy
             __props__.__dict__["enable_cdn"] = enable_cdn
             __props__.__dict__["health_checks"] = health_checks
-            if iap is not None and not isinstance(iap, BackendServiceIapArgs):
-                iap = iap or {}
-                def _setter(key, value):
-                    iap[key] = value
-                BackendServiceIapArgs._configure(_setter, **iap)
+            iap = _utilities.configure(iap, BackendServiceIapArgs, True)
             __props__.__dict__["iap"] = iap
             __props__.__dict__["load_balancing_scheme"] = load_balancing_scheme
             __props__.__dict__["locality_lb_policies"] = locality_lb_policies
             __props__.__dict__["locality_lb_policy"] = locality_lb_policy
-            if log_config is not None and not isinstance(log_config, BackendServiceLogConfigArgs):
-                log_config = log_config or {}
-                def _setter(key, value):
-                    log_config[key] = value
-                BackendServiceLogConfigArgs._configure(_setter, **log_config)
+            log_config = _utilities.configure(log_config, BackendServiceLogConfigArgs, True)
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["name"] = name
-            if outlier_detection is not None and not isinstance(outlier_detection, BackendServiceOutlierDetectionArgs):
-                outlier_detection = outlier_detection or {}
-                def _setter(key, value):
-                    outlier_detection[key] = value
-                BackendServiceOutlierDetectionArgs._configure(_setter, **outlier_detection)
+            outlier_detection = _utilities.configure(outlier_detection, BackendServiceOutlierDetectionArgs, True)
             __props__.__dict__["outlier_detection"] = outlier_detection
             __props__.__dict__["port_name"] = port_name
             __props__.__dict__["project"] = project
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["security_policy"] = security_policy
-            if security_settings is not None and not isinstance(security_settings, BackendServiceSecuritySettingsArgs):
-                security_settings = security_settings or {}
-                def _setter(key, value):
-                    security_settings[key] = value
-                BackendServiceSecuritySettingsArgs._configure(_setter, **security_settings)
+            security_settings = _utilities.configure(security_settings, BackendServiceSecuritySettingsArgs, True)
             __props__.__dict__["security_settings"] = security_settings
             __props__.__dict__["session_affinity"] = session_affinity
             __props__.__dict__["timeout_sec"] = timeout_sec

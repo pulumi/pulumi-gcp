@@ -51,11 +51,17 @@ class DiskIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy_data: pulumi.Input[str],
+             policy_data: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("policy_data", policy_data)
         if name is not None:
             _setter("name", name)
@@ -177,7 +183,11 @@ class _DiskIamPolicyState:
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if etag is not None:
             _setter("etag", etag)
         if name is not None:
@@ -291,48 +301,6 @@ class DiskIamPolicy(pulumi.CustomResource):
 
         > **Note:** `compute.DiskIamBinding` resources **can be** used in conjunction with `compute.DiskIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_compute\\_disk\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.compute.DiskIamPolicy("policy",
-            project=google_compute_disk["default"]["project"],
-            zone=google_compute_disk["default"]["zone"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_compute\\_disk\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.compute.DiskIamBinding("binding",
-            project=google_compute_disk["default"]["project"],
-            zone=google_compute_disk["default"]["zone"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_compute\\_disk\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.compute.DiskIamMember("member",
-            project=google_compute_disk["default"]["project"],
-            zone=google_compute_disk["default"]["zone"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/zones/{{zone}}/disks/{{name}} * {{project}}/{{zone}}/{{name}} * {{zone}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Compute Engine disk IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -400,48 +368,6 @@ class DiskIamPolicy(pulumi.CustomResource):
         > **Note:** `compute.DiskIamPolicy` **cannot** be used in conjunction with `compute.DiskIamBinding` and `compute.DiskIamMember` or they will fight over what your policy should be.
 
         > **Note:** `compute.DiskIamBinding` resources **can be** used in conjunction with `compute.DiskIamMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\\_compute\\_disk\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.compute.DiskIamPolicy("policy",
-            project=google_compute_disk["default"]["project"],
-            zone=google_compute_disk["default"]["zone"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_compute\\_disk\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.compute.DiskIamBinding("binding",
-            project=google_compute_disk["default"]["project"],
-            zone=google_compute_disk["default"]["zone"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_compute\\_disk\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.compute.DiskIamMember("member",
-            project=google_compute_disk["default"]["project"],
-            zone=google_compute_disk["default"]["zone"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
 
         ## Import
 

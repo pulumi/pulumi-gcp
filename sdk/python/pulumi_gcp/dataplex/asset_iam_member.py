@@ -59,15 +59,29 @@ class AssetIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             asset: pulumi.Input[str],
-             dataplex_zone: pulumi.Input[str],
-             lake: pulumi.Input[str],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
+             asset: Optional[pulumi.Input[str]] = None,
+             dataplex_zone: Optional[pulumi.Input[str]] = None,
+             lake: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['AssetIamMemberConditionArgs']] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if asset is None:
+            raise TypeError("Missing 'asset' argument")
+        if dataplex_zone is None and 'dataplexZone' in kwargs:
+            dataplex_zone = kwargs['dataplexZone']
+        if dataplex_zone is None:
+            raise TypeError("Missing 'dataplex_zone' argument")
+        if lake is None:
+            raise TypeError("Missing 'lake' argument")
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("asset", asset)
         _setter("dataplex_zone", dataplex_zone)
         _setter("lake", lake)
@@ -235,7 +249,11 @@ class _AssetIamMemberState:
              member: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dataplex_zone is None and 'dataplexZone' in kwargs:
+            dataplex_zone = kwargs['dataplexZone']
+
         if asset is not None:
             _setter("asset", asset)
         if condition is not None:
@@ -393,57 +411,6 @@ class AssetIamMember(pulumi.CustomResource):
 
         > **Note:** `dataplex.AssetIamBinding` resources **can be** used in conjunction with `dataplex.AssetIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataplex\\_asset\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.dataplex.AssetIamPolicy("policy",
-            project=google_dataplex_asset["example"]["project"],
-            location=google_dataplex_asset["example"]["location"],
-            lake=google_dataplex_asset["example"]["lake"],
-            dataplex_zone=google_dataplex_asset["example"]["dataplex_zone"],
-            asset=google_dataplex_asset["example"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_dataplex\\_asset\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.dataplex.AssetIamBinding("binding",
-            project=google_dataplex_asset["example"]["project"],
-            location=google_dataplex_asset["example"]["location"],
-            lake=google_dataplex_asset["example"]["lake"],
-            dataplex_zone=google_dataplex_asset["example"]["dataplex_zone"],
-            asset=google_dataplex_asset["example"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_dataplex\\_asset\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.dataplex.AssetIamMember("member",
-            project=google_dataplex_asset["example"]["project"],
-            location=google_dataplex_asset["example"]["location"],
-            lake=google_dataplex_asset["example"]["lake"],
-            dataplex_zone=google_dataplex_asset["example"]["dataplex_zone"],
-            asset=google_dataplex_asset["example"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{dataplex_zone}}/assets/{{name}} * {{project}}/{{location}}/{{lake}}/{{dataplex_zone}}/{{name}} * {{location}}/{{lake}}/{{dataplex_zone}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Dataplex asset IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -510,57 +477,6 @@ class AssetIamMember(pulumi.CustomResource):
 
         > **Note:** `dataplex.AssetIamBinding` resources **can be** used in conjunction with `dataplex.AssetIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataplex\\_asset\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.dataplex.AssetIamPolicy("policy",
-            project=google_dataplex_asset["example"]["project"],
-            location=google_dataplex_asset["example"]["location"],
-            lake=google_dataplex_asset["example"]["lake"],
-            dataplex_zone=google_dataplex_asset["example"]["dataplex_zone"],
-            asset=google_dataplex_asset["example"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_dataplex\\_asset\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.dataplex.AssetIamBinding("binding",
-            project=google_dataplex_asset["example"]["project"],
-            location=google_dataplex_asset["example"]["location"],
-            lake=google_dataplex_asset["example"]["lake"],
-            dataplex_zone=google_dataplex_asset["example"]["dataplex_zone"],
-            asset=google_dataplex_asset["example"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_dataplex\\_asset\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.dataplex.AssetIamMember("member",
-            project=google_dataplex_asset["example"]["project"],
-            location=google_dataplex_asset["example"]["location"],
-            lake=google_dataplex_asset["example"]["lake"],
-            dataplex_zone=google_dataplex_asset["example"]["dataplex_zone"],
-            asset=google_dataplex_asset["example"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{dataplex_zone}}/assets/{{name}} * {{project}}/{{location}}/{{lake}}/{{dataplex_zone}}/{{name}} * {{location}}/{{lake}}/{{dataplex_zone}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Dataplex asset IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -624,11 +540,7 @@ class AssetIamMember(pulumi.CustomResource):
             if asset is None and not opts.urn:
                 raise TypeError("Missing required property 'asset'")
             __props__.__dict__["asset"] = asset
-            if condition is not None and not isinstance(condition, AssetIamMemberConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                AssetIamMemberConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, AssetIamMemberConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if dataplex_zone is None and not opts.urn:
                 raise TypeError("Missing required property 'dataplex_zone'")

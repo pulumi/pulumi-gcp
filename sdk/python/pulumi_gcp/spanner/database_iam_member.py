@@ -53,13 +53,23 @@ class DatabaseIAMMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             database: pulumi.Input[str],
-             instance: pulumi.Input[str],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
+             database: Optional[pulumi.Input[str]] = None,
+             instance: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['DatabaseIAMMemberConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if database is None:
+            raise TypeError("Missing 'database' argument")
+        if instance is None:
+            raise TypeError("Missing 'instance' argument")
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("database", database)
         _setter("instance", instance)
         _setter("member", member)
@@ -198,7 +208,9 @@ class _DatabaseIAMMemberState:
              member: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if condition is not None:
             _setter("condition", condition)
         if database is not None:
@@ -331,48 +343,6 @@ class DatabaseIAMMember(pulumi.CustomResource):
 
         > **Note:** `spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_spanner\\_database\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
-        database = gcp.spanner.DatabaseIAMPolicy("database",
-            instance="your-instance-name",
-            database="your-database-name",
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_spanner\\_database\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        database = gcp.spanner.DatabaseIAMBinding("database",
-            database="your-database-name",
-            instance="your-instance-name",
-            members=["user:jane@example.com"],
-            role="roles/compute.networkUser")
-        ```
-
-        ## google\\_spanner\\_database\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        database = gcp.spanner.DatabaseIAMMember("database",
-            database="your-database-name",
-            instance="your-instance-name",
-            member="user:jane@example.com",
-            role="roles/compute.networkUser")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* {{project}}/{{instance}}/{{database}} * {{instance}}/{{database}} (project is taken from provider project) IAM member imports use space-delimited identifiers; the resource in question, the role, and the member identity, e.g.
@@ -436,48 +406,6 @@ class DatabaseIAMMember(pulumi.CustomResource):
 
         > **Note:** `spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_spanner\\_database\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
-        database = gcp.spanner.DatabaseIAMPolicy("database",
-            instance="your-instance-name",
-            database="your-database-name",
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_spanner\\_database\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        database = gcp.spanner.DatabaseIAMBinding("database",
-            database="your-database-name",
-            instance="your-instance-name",
-            members=["user:jane@example.com"],
-            role="roles/compute.networkUser")
-        ```
-
-        ## google\\_spanner\\_database\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        database = gcp.spanner.DatabaseIAMMember("database",
-            database="your-database-name",
-            instance="your-instance-name",
-            member="user:jane@example.com",
-            role="roles/compute.networkUser")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* {{project}}/{{instance}}/{{database}} * {{instance}}/{{database}} (project is taken from provider project) IAM member imports use space-delimited identifiers; the resource in question, the role, and the member identity, e.g.
@@ -536,11 +464,7 @@ class DatabaseIAMMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatabaseIAMMemberArgs.__new__(DatabaseIAMMemberArgs)
 
-            if condition is not None and not isinstance(condition, DatabaseIAMMemberConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                DatabaseIAMMemberConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, DatabaseIAMMemberConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if database is None and not opts.urn:
                 raise TypeError("Missing required property 'database'")

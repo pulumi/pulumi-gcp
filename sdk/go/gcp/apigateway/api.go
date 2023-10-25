@@ -22,31 +22,6 @@ import (
 //   - [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
 //
 // ## Example Usage
-// ### Apigateway Api Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigateway"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := apigateway.NewApi(ctx, "api", &apigateway.ApiArgs{
-//				ApiId: pulumi.String("my-api"),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

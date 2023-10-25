@@ -47,10 +47,22 @@ class ConsentStoreIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             consent_store_id: pulumi.Input[str],
-             dataset: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             consent_store_id: Optional[pulumi.Input[str]] = None,
+             dataset: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if consent_store_id is None and 'consentStoreId' in kwargs:
+            consent_store_id = kwargs['consentStoreId']
+        if consent_store_id is None:
+            raise TypeError("Missing 'consent_store_id' argument")
+        if dataset is None:
+            raise TypeError("Missing 'dataset' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("consent_store_id", consent_store_id)
         _setter("dataset", dataset)
         _setter("policy_data", policy_data)
@@ -150,7 +162,13 @@ class _ConsentStoreIamPolicyState:
              dataset: Optional[pulumi.Input[str]] = None,
              etag: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if consent_store_id is None and 'consentStoreId' in kwargs:
+            consent_store_id = kwargs['consentStoreId']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if consent_store_id is not None:
             _setter("consent_store_id", consent_store_id)
         if dataset is not None:
@@ -248,48 +266,6 @@ class ConsentStoreIamPolicy(pulumi.CustomResource):
 
         > **Note:** `healthcare.ConsentStoreIamBinding` resources **can be** used in conjunction with `healthcare.ConsentStoreIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_healthcare\\_consent\\_store\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.healthcare.ConsentStoreIamPolicy("policy",
-            dataset=google_healthcare_consent_store["my-consent"]["dataset"],
-            consent_store_id=google_healthcare_consent_store["my-consent"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_healthcare\\_consent\\_store\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.healthcare.ConsentStoreIamBinding("binding",
-            dataset=google_healthcare_consent_store["my-consent"]["dataset"],
-            consent_store_id=google_healthcare_consent_store["my-consent"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_healthcare\\_consent\\_store\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.healthcare.ConsentStoreIamMember("member",
-            dataset=google_healthcare_consent_store["my-consent"]["dataset"],
-            consent_store_id=google_healthcare_consent_store["my-consent"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* {{dataset}}/consentStores/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Healthcare consentstore IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -355,48 +331,6 @@ class ConsentStoreIamPolicy(pulumi.CustomResource):
         > **Note:** `healthcare.ConsentStoreIamPolicy` **cannot** be used in conjunction with `healthcare.ConsentStoreIamBinding` and `healthcare.ConsentStoreIamMember` or they will fight over what your policy should be.
 
         > **Note:** `healthcare.ConsentStoreIamBinding` resources **can be** used in conjunction with `healthcare.ConsentStoreIamMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\\_healthcare\\_consent\\_store\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.healthcare.ConsentStoreIamPolicy("policy",
-            dataset=google_healthcare_consent_store["my-consent"]["dataset"],
-            consent_store_id=google_healthcare_consent_store["my-consent"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_healthcare\\_consent\\_store\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.healthcare.ConsentStoreIamBinding("binding",
-            dataset=google_healthcare_consent_store["my-consent"]["dataset"],
-            consent_store_id=google_healthcare_consent_store["my-consent"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_healthcare\\_consent\\_store\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.healthcare.ConsentStoreIamMember("member",
-            dataset=google_healthcare_consent_store["my-consent"]["dataset"],
-            consent_store_id=google_healthcare_consent_store["my-consent"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
 
         ## Import
 

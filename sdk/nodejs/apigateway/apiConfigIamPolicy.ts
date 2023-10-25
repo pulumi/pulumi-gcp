@@ -19,59 +19,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.apigateway.ApiConfigIamBinding` resources **can be** used in conjunction with `gcp.apigateway.ApiConfigIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_api\_gateway\_api\_config\_iam\_policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/apigateway.viewer",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const policy = new gcp.apigateway.ApiConfigIamPolicy("policy", {
- *     api: google_api_gateway_api_config.api_cfg.api,
- *     apiConfig: google_api_gateway_api_config.api_cfg.api_config_id,
- *     policyData: admin.then(admin => admin.policyData),
- * }, {
- *     provider: google_beta,
- * });
- * ```
- *
- * ## google\_api\_gateway\_api\_config\_iam\_binding
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const binding = new gcp.apigateway.ApiConfigIamBinding("binding", {
- *     api: google_api_gateway_api_config.api_cfg.api,
- *     apiConfig: google_api_gateway_api_config.api_cfg.api_config_id,
- *     role: "roles/apigateway.viewer",
- *     members: ["user:jane@example.com"],
- * }, {
- *     provider: google_beta,
- * });
- * ```
- *
- * ## google\_api\_gateway\_api\_config\_iam\_member
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const member = new gcp.apigateway.ApiConfigIamMember("member", {
- *     api: google_api_gateway_api_config.api_cfg.api,
- *     apiConfig: google_api_gateway_api_config.api_cfg.api_config_id,
- *     role: "roles/apigateway.viewer",
- *     member: "user:jane@example.com",
- * }, {
- *     provider: google_beta,
- * });
- * ```
- *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config}} * {{project}}/{{api}}/{{api_config}} * {{api}}/{{api_config}} * {{api_config}} Any variables not passed in the import command will be taken from the provider configuration. API Gateway apiconfig IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

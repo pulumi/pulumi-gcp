@@ -49,7 +49,9 @@ class QueueAppEngineRoutingOverride(dict):
              instance: Optional[str] = None,
              service: Optional[str] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if host is not None:
             _setter("host", host)
         if instance is not None:
@@ -111,10 +113,16 @@ class QueueIamBindingCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -151,10 +159,16 @@ class QueueIamMemberCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             title: str,
+             expression: Optional[str] = None,
+             title: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("expression", expression)
         _setter("title", title)
         if description is not None:
@@ -229,7 +243,15 @@ class QueueRateLimits(dict):
              max_burst_size: Optional[int] = None,
              max_concurrent_dispatches: Optional[int] = None,
              max_dispatches_per_second: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if max_burst_size is None and 'maxBurstSize' in kwargs:
+            max_burst_size = kwargs['maxBurstSize']
+        if max_concurrent_dispatches is None and 'maxConcurrentDispatches' in kwargs:
+            max_concurrent_dispatches = kwargs['maxConcurrentDispatches']
+        if max_dispatches_per_second is None and 'maxDispatchesPerSecond' in kwargs:
+            max_dispatches_per_second = kwargs['maxDispatchesPerSecond']
+
         if max_burst_size is not None:
             _setter("max_burst_size", max_burst_size)
         if max_concurrent_dispatches is not None:
@@ -345,7 +367,19 @@ class QueueRetryConfig(dict):
              max_doublings: Optional[int] = None,
              max_retry_duration: Optional[str] = None,
              min_backoff: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if max_attempts is None and 'maxAttempts' in kwargs:
+            max_attempts = kwargs['maxAttempts']
+        if max_backoff is None and 'maxBackoff' in kwargs:
+            max_backoff = kwargs['maxBackoff']
+        if max_doublings is None and 'maxDoublings' in kwargs:
+            max_doublings = kwargs['maxDoublings']
+        if max_retry_duration is None and 'maxRetryDuration' in kwargs:
+            max_retry_duration = kwargs['maxRetryDuration']
+        if min_backoff is None and 'minBackoff' in kwargs:
+            min_backoff = kwargs['minBackoff']
+
         if max_attempts is not None:
             _setter("max_attempts", max_attempts)
         if max_backoff is not None:
@@ -449,8 +483,14 @@ class QueueStackdriverLoggingConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             sampling_ratio: float,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             sampling_ratio: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if sampling_ratio is None and 'samplingRatio' in kwargs:
+            sampling_ratio = kwargs['samplingRatio']
+        if sampling_ratio is None:
+            raise TypeError("Missing 'sampling_ratio' argument")
+
         _setter("sampling_ratio", sampling_ratio)
 
     @property

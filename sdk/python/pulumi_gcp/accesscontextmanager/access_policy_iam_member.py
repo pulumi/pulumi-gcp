@@ -49,11 +49,17 @@ class AccessPolicyIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['AccessPolicyIamMemberConditionArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("member", member)
         _setter("role", role)
         if condition is not None:
@@ -162,7 +168,9 @@ class _AccessPolicyIamMemberState:
              member: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -268,41 +276,6 @@ class AccessPolicyIamMember(pulumi.CustomResource):
 
         > **Note:** `accesscontextmanager.AccessPolicyIamBinding` resources **can be** used in conjunction with `accesscontextmanager.AccessPolicyIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/accesscontextmanager.policyAdmin",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.accesscontextmanager.AccessPolicyIamPolicy("policy", policy_data=admin.policy_data)
-        ```
-
-        ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.accesscontextmanager.AccessPolicyIamBinding("binding",
-            role="roles/accesscontextmanager.policyAdmin",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.accesscontextmanager.AccessPolicyIamMember("member",
-            role="roles/accesscontextmanager.policyAdmin",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* accessPolicies/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Access Context Manager (VPC Service Controls) accesspolicy IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -367,41 +340,6 @@ class AccessPolicyIamMember(pulumi.CustomResource):
 
         > **Note:** `accesscontextmanager.AccessPolicyIamBinding` resources **can be** used in conjunction with `accesscontextmanager.AccessPolicyIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/accesscontextmanager.policyAdmin",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.accesscontextmanager.AccessPolicyIamPolicy("policy", policy_data=admin.policy_data)
-        ```
-
-        ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.accesscontextmanager.AccessPolicyIamBinding("binding",
-            role="roles/accesscontextmanager.policyAdmin",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_access\\_context\\_manager\\_access\\_policy\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.accesscontextmanager.AccessPolicyIamMember("member",
-            role="roles/accesscontextmanager.policyAdmin",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* accessPolicies/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Access Context Manager (VPC Service Controls) accesspolicy IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -458,11 +396,7 @@ class AccessPolicyIamMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AccessPolicyIamMemberArgs.__new__(AccessPolicyIamMemberArgs)
 
-            if condition is not None and not isinstance(condition, AccessPolicyIamMemberConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                AccessPolicyIamMemberConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, AccessPolicyIamMemberConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")

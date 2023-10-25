@@ -20,43 +20,6 @@ namespace Pulumi.Gcp.Iam
     ///     * [Managing workload identity pools](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#pools)
     /// 
     /// ## Example Usage
-    /// ### Iam Workload Identity Pool Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Gcp.Iam.WorkloadIdentityPool("example", new()
-    ///     {
-    ///         WorkloadIdentityPoolId = "example-pool",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Iam Workload Identity Pool Full
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Gcp.Iam.WorkloadIdentityPool("example", new()
-    ///     {
-    ///         Description = "Identity pool for automated test",
-    ///         Disabled = true,
-    ///         DisplayName = "Name of pool",
-    ///         WorkloadIdentityPoolId = "example-pool",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

@@ -56,16 +56,40 @@ class KeystoresAliasesSelfSignedCertArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             alias: pulumi.Input[str],
-             environment: pulumi.Input[str],
-             keystore: pulumi.Input[str],
-             org_id: pulumi.Input[str],
-             sig_alg: pulumi.Input[str],
-             subject: pulumi.Input['KeystoresAliasesSelfSignedCertSubjectArgs'],
+             alias: Optional[pulumi.Input[str]] = None,
+             environment: Optional[pulumi.Input[str]] = None,
+             keystore: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             sig_alg: Optional[pulumi.Input[str]] = None,
+             subject: Optional[pulumi.Input['KeystoresAliasesSelfSignedCertSubjectArgs']] = None,
              cert_validity_in_days: Optional[pulumi.Input[int]] = None,
              key_size: Optional[pulumi.Input[str]] = None,
              subject_alternative_dns_names: Optional[pulumi.Input['KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if alias is None:
+            raise TypeError("Missing 'alias' argument")
+        if environment is None:
+            raise TypeError("Missing 'environment' argument")
+        if keystore is None:
+            raise TypeError("Missing 'keystore' argument")
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+        if sig_alg is None and 'sigAlg' in kwargs:
+            sig_alg = kwargs['sigAlg']
+        if sig_alg is None:
+            raise TypeError("Missing 'sig_alg' argument")
+        if subject is None:
+            raise TypeError("Missing 'subject' argument")
+        if cert_validity_in_days is None and 'certValidityInDays' in kwargs:
+            cert_validity_in_days = kwargs['certValidityInDays']
+        if key_size is None and 'keySize' in kwargs:
+            key_size = kwargs['keySize']
+        if subject_alternative_dns_names is None and 'subjectAlternativeDnsNames' in kwargs:
+            subject_alternative_dns_names = kwargs['subjectAlternativeDnsNames']
+
         _setter("alias", alias)
         _setter("environment", environment)
         _setter("keystore", keystore)
@@ -253,7 +277,21 @@ class _KeystoresAliasesSelfSignedCertState:
              subject: Optional[pulumi.Input['KeystoresAliasesSelfSignedCertSubjectArgs']] = None,
              subject_alternative_dns_names: Optional[pulumi.Input['KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs']] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cert_validity_in_days is None and 'certValidityInDays' in kwargs:
+            cert_validity_in_days = kwargs['certValidityInDays']
+        if certs_infos is None and 'certsInfos' in kwargs:
+            certs_infos = kwargs['certsInfos']
+        if key_size is None and 'keySize' in kwargs:
+            key_size = kwargs['keySize']
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if sig_alg is None and 'sigAlg' in kwargs:
+            sig_alg = kwargs['sigAlg']
+        if subject_alternative_dns_names is None and 'subjectAlternativeDnsNames' in kwargs:
+            subject_alternative_dns_names = kwargs['subjectAlternativeDnsNames']
+
         if alias is not None:
             _setter("alias", alias)
         if cert_validity_in_days is not None:
@@ -440,69 +478,6 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
             * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
 
         ## Example Usage
-        ### Apigee Env Keystore Alias Self Signed Cert
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.Project("project",
-            project_id="my-project",
-            org_id="123456789",
-            billing_account="000000-0000000-0000000-000000")
-        apigee = gcp.projects.Service("apigee",
-            project=project.project_id,
-            service="apigee.googleapis.com")
-        servicenetworking = gcp.projects.Service("servicenetworking",
-            project=project.project_id,
-            service="servicenetworking.googleapis.com",
-            opts=pulumi.ResourceOptions(depends_on=[apigee]))
-        compute = gcp.projects.Service("compute",
-            project=project.project_id,
-            service="compute.googleapis.com",
-            opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
-        apigee_network = gcp.compute.Network("apigeeNetwork", project=project.project_id,
-        opts=pulumi.ResourceOptions(depends_on=[compute]))
-        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=apigee_network.id,
-            project=project.project_id)
-        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
-            network=apigee_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[apigee_range.name],
-            opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
-        apigee_org = gcp.apigee.Organization("apigeeOrg",
-            analytics_region="us-central1",
-            project_id=project.project_id,
-            authorized_network=apigee_network.id,
-            opts=pulumi.ResourceOptions(depends_on=[
-                    apigee_vpc_connection,
-                    apigee,
-                ]))
-        apigee_environment_keystore_ss_alias_environment = gcp.apigee.Environment("apigeeEnvironmentKeystoreSsAliasEnvironment",
-            org_id=apigee_org.id,
-            description="Apigee Environment",
-            display_name="environment-1")
-        apigee_environment_keystore_alias = gcp.apigee.EnvKeystore("apigeeEnvironmentKeystoreAlias", env_id=apigee_environment_keystore_ss_alias_environment.id)
-        apigee_environment_keystore_ss_alias_keystores_aliases_self_signed_cert = gcp.apigee.KeystoresAliasesSelfSignedCert("apigeeEnvironmentKeystoreSsAliasKeystoresAliasesSelfSignedCert",
-            environment=apigee_environment_keystore_ss_alias_environment.name,
-            org_id=apigee_org.name,
-            keystore=apigee_environment_keystore_alias.name,
-            alias="alias",
-            key_size="1024",
-            sig_alg="SHA512withRSA",
-            cert_validity_in_days=4,
-            subject=gcp.apigee.KeystoresAliasesSelfSignedCertSubjectArgs(
-                common_name="selfsigned_example",
-                country_code="US",
-                locality="TX",
-                org="CCE",
-                org_unit="PSO",
-            ))
-        ```
 
         ## Import
 
@@ -548,69 +523,6 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
             * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
 
         ## Example Usage
-        ### Apigee Env Keystore Alias Self Signed Cert
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.Project("project",
-            project_id="my-project",
-            org_id="123456789",
-            billing_account="000000-0000000-0000000-000000")
-        apigee = gcp.projects.Service("apigee",
-            project=project.project_id,
-            service="apigee.googleapis.com")
-        servicenetworking = gcp.projects.Service("servicenetworking",
-            project=project.project_id,
-            service="servicenetworking.googleapis.com",
-            opts=pulumi.ResourceOptions(depends_on=[apigee]))
-        compute = gcp.projects.Service("compute",
-            project=project.project_id,
-            service="compute.googleapis.com",
-            opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
-        apigee_network = gcp.compute.Network("apigeeNetwork", project=project.project_id,
-        opts=pulumi.ResourceOptions(depends_on=[compute]))
-        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=apigee_network.id,
-            project=project.project_id)
-        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
-            network=apigee_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[apigee_range.name],
-            opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
-        apigee_org = gcp.apigee.Organization("apigeeOrg",
-            analytics_region="us-central1",
-            project_id=project.project_id,
-            authorized_network=apigee_network.id,
-            opts=pulumi.ResourceOptions(depends_on=[
-                    apigee_vpc_connection,
-                    apigee,
-                ]))
-        apigee_environment_keystore_ss_alias_environment = gcp.apigee.Environment("apigeeEnvironmentKeystoreSsAliasEnvironment",
-            org_id=apigee_org.id,
-            description="Apigee Environment",
-            display_name="environment-1")
-        apigee_environment_keystore_alias = gcp.apigee.EnvKeystore("apigeeEnvironmentKeystoreAlias", env_id=apigee_environment_keystore_ss_alias_environment.id)
-        apigee_environment_keystore_ss_alias_keystores_aliases_self_signed_cert = gcp.apigee.KeystoresAliasesSelfSignedCert("apigeeEnvironmentKeystoreSsAliasKeystoresAliasesSelfSignedCert",
-            environment=apigee_environment_keystore_ss_alias_environment.name,
-            org_id=apigee_org.name,
-            keystore=apigee_environment_keystore_alias.name,
-            alias="alias",
-            key_size="1024",
-            sig_alg="SHA512withRSA",
-            cert_validity_in_days=4,
-            subject=gcp.apigee.KeystoresAliasesSelfSignedCertSubjectArgs(
-                common_name="selfsigned_example",
-                country_code="US",
-                locality="TX",
-                org="CCE",
-                org_unit="PSO",
-            ))
-        ```
 
         ## Import
 
@@ -678,19 +590,11 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
             if sig_alg is None and not opts.urn:
                 raise TypeError("Missing required property 'sig_alg'")
             __props__.__dict__["sig_alg"] = sig_alg
-            if subject is not None and not isinstance(subject, KeystoresAliasesSelfSignedCertSubjectArgs):
-                subject = subject or {}
-                def _setter(key, value):
-                    subject[key] = value
-                KeystoresAliasesSelfSignedCertSubjectArgs._configure(_setter, **subject)
+            subject = _utilities.configure(subject, KeystoresAliasesSelfSignedCertSubjectArgs, True)
             if subject is None and not opts.urn:
                 raise TypeError("Missing required property 'subject'")
             __props__.__dict__["subject"] = subject
-            if subject_alternative_dns_names is not None and not isinstance(subject_alternative_dns_names, KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs):
-                subject_alternative_dns_names = subject_alternative_dns_names or {}
-                def _setter(key, value):
-                    subject_alternative_dns_names[key] = value
-                KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs._configure(_setter, **subject_alternative_dns_names)
+            subject_alternative_dns_names = _utilities.configure(subject_alternative_dns_names, KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs, True)
             __props__.__dict__["subject_alternative_dns_names"] = subject_alternative_dns_names
             __props__.__dict__["certs_infos"] = None
             __props__.__dict__["type"] = None

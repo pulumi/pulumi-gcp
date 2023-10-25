@@ -19,68 +19,6 @@ namespace Pulumi.Gcp.Logging
     ///     * [Official Documentation](https://cloud.google.com/logging/docs/apis)
     /// 
     /// ## Example Usage
-    /// ### Logging Linked Dataset Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var loggingLinkedDatasetProjectBucketConfig = new Gcp.Logging.ProjectBucketConfig("loggingLinkedDatasetProjectBucketConfig", new()
-    ///     {
-    ///         Location = "global",
-    ///         Project = "my-project-name",
-    ///         EnableAnalytics = true,
-    ///         BucketId = "my-bucket",
-    ///     });
-    /// 
-    ///     var loggingLinkedDatasetLinkedDataset = new Gcp.Logging.LinkedDataset("loggingLinkedDatasetLinkedDataset", new()
-    ///     {
-    ///         LinkId = "mylink",
-    ///         Bucket = loggingLinkedDatasetProjectBucketConfig.Id,
-    ///         Description = "Linked dataset test",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Logging Linked Dataset All Params
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var loggingLinkedDatasetProjectBucketConfig = new Gcp.Logging.ProjectBucketConfig("loggingLinkedDatasetProjectBucketConfig", new()
-    ///     {
-    ///         BucketId = "my-bucket",
-    ///         EnableAnalytics = true,
-    ///         Location = "global",
-    ///         Project = "my-project-name",
-    ///     });
-    /// 
-    ///     var loggingLinkedDatasetLinkedDataset = new Gcp.Logging.LinkedDataset("loggingLinkedDatasetLinkedDataset", new()
-    ///     {
-    ///         Bucket = "my-bucket",
-    ///         Description = "Linked dataset test",
-    ///         LinkId = "mylink",
-    ///         Location = "global",
-    ///         Parent = "projects/my-project-name",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             "google_logging_project_bucket_config.logging_linked_dataset",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

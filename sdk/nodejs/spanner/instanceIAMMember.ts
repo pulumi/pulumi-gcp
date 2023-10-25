@@ -20,50 +20,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.spanner.InstanceIAMBinding` resources **can be** used in conjunction with `gcp.spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_spanner\_instance\_iam\_policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/editor",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const instance = new gcp.spanner.InstanceIAMPolicy("instance", {
- *     instance: "your-instance-name",
- *     policyData: admin.then(admin => admin.policyData),
- * });
- * ```
- *
- * ## google\_spanner\_instance\_iam\_binding
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const instance = new gcp.spanner.InstanceIAMBinding("instance", {
- *     instance: "your-instance-name",
- *     members: ["user:jane@example.com"],
- *     role: "roles/spanner.databaseAdmin",
- * });
- * ```
- *
- * ## google\_spanner\_instance\_iam\_member
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const instance = new gcp.spanner.InstanceIAMMember("instance", {
- *     instance: "your-instance-name",
- *     member: "user:jane@example.com",
- *     role: "roles/spanner.databaseAdmin",
- * });
- * ```
- *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms* {{project}}/{{name}} * {{name}} (project is taken from provider project) IAM member imports use space-delimited identifiers; the resource in question, the role, and the account, e.g.

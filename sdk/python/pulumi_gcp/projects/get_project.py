@@ -74,15 +74,6 @@ def get_project(filter: Optional[str] = None,
     for more details.
 
     ## Example Usage
-    ### Searching For Projects About To Be Deleted In An Org
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    my_org_projects = gcp.projects.get_project(filter="parent.id:012345678910 lifecycleState:DELETE_REQUESTED")
-    deletion_candidate = gcp.organizations.get_project(project_id=my_org_projects.projects[0].project_id)
-    ```
 
 
     :param str filter: A string filter as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list#query-parameters).
@@ -107,15 +98,6 @@ def get_project_output(filter: Optional[pulumi.Input[str]] = None,
     for more details.
 
     ## Example Usage
-    ### Searching For Projects About To Be Deleted In An Org
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    my_org_projects = gcp.projects.get_project(filter="parent.id:012345678910 lifecycleState:DELETE_REQUESTED")
-    deletion_candidate = gcp.organizations.get_project(project_id=my_org_projects.projects[0].project_id)
-    ```
 
 
     :param str filter: A string filter as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list#query-parameters).

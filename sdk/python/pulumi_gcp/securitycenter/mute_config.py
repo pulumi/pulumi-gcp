@@ -44,11 +44,21 @@ class MuteConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter: pulumi.Input[str],
-             mute_config_id: pulumi.Input[str],
-             parent: pulumi.Input[str],
+             filter: Optional[pulumi.Input[str]] = None,
+             mute_config_id: Optional[pulumi.Input[str]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if filter is None:
+            raise TypeError("Missing 'filter' argument")
+        if mute_config_id is None and 'muteConfigId' in kwargs:
+            mute_config_id = kwargs['muteConfigId']
+        if mute_config_id is None:
+            raise TypeError("Missing 'mute_config_id' argument")
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+
         _setter("filter", filter)
         _setter("mute_config_id", mute_config_id)
         _setter("parent", parent)
@@ -174,7 +184,17 @@ class _MuteConfigState:
              name: Optional[pulumi.Input[str]] = None,
              parent: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if most_recent_editor is None and 'mostRecentEditor' in kwargs:
+            most_recent_editor = kwargs['mostRecentEditor']
+        if mute_config_id is None and 'muteConfigId' in kwargs:
+            mute_config_id = kwargs['muteConfigId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:
@@ -327,18 +347,6 @@ class MuteConfig(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1/organizations.muteConfigs)
 
         ## Example Usage
-        ### Scc Mute Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.securitycenter.MuteConfig("default",
-            description="My Mute Config",
-            filter="category: \\"OS_VULNERABILITY\\"",
-            mute_config_id="my-config",
-            parent="organizations/123456789")
-        ```
 
         ## Import
 
@@ -381,18 +389,6 @@ class MuteConfig(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1/organizations.muteConfigs)
 
         ## Example Usage
-        ### Scc Mute Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.securitycenter.MuteConfig("default",
-            description="My Mute Config",
-            filter="category: \\"OS_VULNERABILITY\\"",
-            mute_config_id="my-config",
-            parent="organizations/123456789")
-        ```
 
         ## Import
 

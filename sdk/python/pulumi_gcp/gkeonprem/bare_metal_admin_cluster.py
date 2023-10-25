@@ -94,7 +94,7 @@ class BareMetalAdminClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              bare_metal_version: Optional[pulumi.Input[str]] = None,
              cluster_operations: Optional[pulumi.Input['BareMetalAdminClusterClusterOperationsArgs']] = None,
@@ -110,7 +110,29 @@ class BareMetalAdminClusterArgs:
              proxy: Optional[pulumi.Input['BareMetalAdminClusterProxyArgs']] = None,
              security_config: Optional[pulumi.Input['BareMetalAdminClusterSecurityConfigArgs']] = None,
              storage: Optional[pulumi.Input['BareMetalAdminClusterStorageArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if bare_metal_version is None and 'bareMetalVersion' in kwargs:
+            bare_metal_version = kwargs['bareMetalVersion']
+        if cluster_operations is None and 'clusterOperations' in kwargs:
+            cluster_operations = kwargs['clusterOperations']
+        if control_plane is None and 'controlPlane' in kwargs:
+            control_plane = kwargs['controlPlane']
+        if load_balancer is None and 'loadBalancer' in kwargs:
+            load_balancer = kwargs['loadBalancer']
+        if maintenance_config is None and 'maintenanceConfig' in kwargs:
+            maintenance_config = kwargs['maintenanceConfig']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if node_access_config is None and 'nodeAccessConfig' in kwargs:
+            node_access_config = kwargs['nodeAccessConfig']
+        if node_config is None and 'nodeConfig' in kwargs:
+            node_config = kwargs['nodeConfig']
+        if security_config is None and 'securityConfig' in kwargs:
+            security_config = kwargs['securityConfig']
+
         _setter("location", location)
         if annotations is not None:
             _setter("annotations", annotations)
@@ -525,7 +547,37 @@ class _BareMetalAdminClusterState:
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              validation_checks: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bare_metal_version is None and 'bareMetalVersion' in kwargs:
+            bare_metal_version = kwargs['bareMetalVersion']
+        if cluster_operations is None and 'clusterOperations' in kwargs:
+            cluster_operations = kwargs['clusterOperations']
+        if control_plane is None and 'controlPlane' in kwargs:
+            control_plane = kwargs['controlPlane']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if delete_time is None and 'deleteTime' in kwargs:
+            delete_time = kwargs['deleteTime']
+        if load_balancer is None and 'loadBalancer' in kwargs:
+            load_balancer = kwargs['loadBalancer']
+        if local_name is None and 'localName' in kwargs:
+            local_name = kwargs['localName']
+        if maintenance_config is None and 'maintenanceConfig' in kwargs:
+            maintenance_config = kwargs['maintenanceConfig']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if node_access_config is None and 'nodeAccessConfig' in kwargs:
+            node_access_config = kwargs['nodeAccessConfig']
+        if node_config is None and 'nodeConfig' in kwargs:
+            node_config = kwargs['nodeConfig']
+        if security_config is None and 'securityConfig' in kwargs:
+            security_config = kwargs['securityConfig']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if validation_checks is None and 'validationChecks' in kwargs:
+            validation_checks = kwargs['validationChecks']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if bare_metal_version is not None:
@@ -988,172 +1040,6 @@ class BareMetalAdminCluster(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Gkeonprem Bare Metal Admin Cluster Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin_cluster_basic = gcp.gkeonprem.BareMetalAdminCluster("admin-cluster-basic",
-            location="us-west1",
-            bare_metal_version="1.13.4",
-            network_config=gcp.gkeonprem.BareMetalAdminClusterNetworkConfigArgs(
-                island_mode_cidr=gcp.gkeonprem.BareMetalAdminClusterNetworkConfigIslandModeCidrArgs(
-                    service_address_cidr_blocks=["172.26.0.0/16"],
-                    pod_address_cidr_blocks=["10.240.0.0/13"],
-                ),
-            ),
-            node_config=gcp.gkeonprem.BareMetalAdminClusterNodeConfigArgs(
-                max_pods_per_node=250,
-            ),
-            control_plane=gcp.gkeonprem.BareMetalAdminClusterControlPlaneArgs(
-                control_plane_node_pool_config=gcp.gkeonprem.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs(
-                    node_pool_config=gcp.gkeonprem.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs(
-                        labels={},
-                        operating_system="LINUX",
-                        node_configs=[
-                            gcp.gkeonprem.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs(
-                                labels={},
-                                node_ip="10.200.0.2",
-                            ),
-                            gcp.gkeonprem.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs(
-                                labels={},
-                                node_ip="10.200.0.3",
-                            ),
-                            gcp.gkeonprem.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs(
-                                labels={},
-                                node_ip="10.200.0.4",
-                            ),
-                        ],
-                    ),
-                ),
-            ),
-            load_balancer=gcp.gkeonprem.BareMetalAdminClusterLoadBalancerArgs(
-                port_config=gcp.gkeonprem.BareMetalAdminClusterLoadBalancerPortConfigArgs(
-                    control_plane_load_balancer_port=443,
-                ),
-                vip_config=gcp.gkeonprem.BareMetalAdminClusterLoadBalancerVipConfigArgs(
-                    control_plane_vip="10.200.0.5",
-                ),
-            ),
-            storage=gcp.gkeonprem.BareMetalAdminClusterStorageArgs(
-                lvp_share_config=gcp.gkeonprem.BareMetalAdminClusterStorageLvpShareConfigArgs(
-                    lvp_config=gcp.gkeonprem.BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs(
-                        path="/mnt/localpv-share",
-                        storage_class="local-shared",
-                    ),
-                    shared_path_pv_count=5,
-                ),
-                lvp_node_mounts_config=gcp.gkeonprem.BareMetalAdminClusterStorageLvpNodeMountsConfigArgs(
-                    path="/mnt/localpv-disk",
-                    storage_class="local-disks",
-                ),
-            ),
-            node_access_config=gcp.gkeonprem.BareMetalAdminClusterNodeAccessConfigArgs(
-                login_user="root",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Gkeonprem Bare Metal Admin Cluster Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin_cluster_basic = gcp.gkeonprem.BareMetalAdminCluster("admin-cluster-basic",
-            location="us-west1",
-            description="test description",
-            bare_metal_version="1.13.4",
-            annotations={},
-            network_config=gcp.gkeonprem.BareMetalAdminClusterNetworkConfigArgs(
-                island_mode_cidr=gcp.gkeonprem.BareMetalAdminClusterNetworkConfigIslandModeCidrArgs(
-                    service_address_cidr_blocks=["172.26.0.0/16"],
-                    pod_address_cidr_blocks=["10.240.0.0/13"],
-                ),
-            ),
-            node_config=gcp.gkeonprem.BareMetalAdminClusterNodeConfigArgs(
-                max_pods_per_node=250,
-            ),
-            control_plane=gcp.gkeonprem.BareMetalAdminClusterControlPlaneArgs(
-                control_plane_node_pool_config=gcp.gkeonprem.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs(
-                    node_pool_config=gcp.gkeonprem.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs(
-                        labels={},
-                        operating_system="LINUX",
-                        node_configs=[
-                            gcp.gkeonprem.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs(
-                                labels={},
-                                node_ip="10.200.0.2",
-                            ),
-                            gcp.gkeonprem.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs(
-                                labels={},
-                                node_ip="10.200.0.3",
-                            ),
-                            gcp.gkeonprem.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs(
-                                labels={},
-                                node_ip="10.200.0.4",
-                            ),
-                        ],
-                        taints=[gcp.gkeonprem.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs(
-                            key="test-key",
-                            value="test-value",
-                            effect="NO_EXECUTE",
-                        )],
-                    ),
-                ),
-                api_server_args=[gcp.gkeonprem.BareMetalAdminClusterControlPlaneApiServerArgArgs(
-                    argument="test argument",
-                    value="test value",
-                )],
-            ),
-            load_balancer=gcp.gkeonprem.BareMetalAdminClusterLoadBalancerArgs(
-                port_config=gcp.gkeonprem.BareMetalAdminClusterLoadBalancerPortConfigArgs(
-                    control_plane_load_balancer_port=443,
-                ),
-                vip_config=gcp.gkeonprem.BareMetalAdminClusterLoadBalancerVipConfigArgs(
-                    control_plane_vip="10.200.0.5",
-                ),
-                manual_lb_config=gcp.gkeonprem.BareMetalAdminClusterLoadBalancerManualLbConfigArgs(
-                    enabled=True,
-                ),
-            ),
-            storage=gcp.gkeonprem.BareMetalAdminClusterStorageArgs(
-                lvp_share_config=gcp.gkeonprem.BareMetalAdminClusterStorageLvpShareConfigArgs(
-                    lvp_config=gcp.gkeonprem.BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs(
-                        path="/mnt/localpv-share",
-                        storage_class="local-shared",
-                    ),
-                    shared_path_pv_count=5,
-                ),
-                lvp_node_mounts_config=gcp.gkeonprem.BareMetalAdminClusterStorageLvpNodeMountsConfigArgs(
-                    path="/mnt/localpv-disk",
-                    storage_class="local-disks",
-                ),
-            ),
-            node_access_config=gcp.gkeonprem.BareMetalAdminClusterNodeAccessConfigArgs(
-                login_user="root",
-            ),
-            security_config=gcp.gkeonprem.BareMetalAdminClusterSecurityConfigArgs(
-                authorization=gcp.gkeonprem.BareMetalAdminClusterSecurityConfigAuthorizationArgs(
-                    admin_users=[gcp.gkeonprem.BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs(
-                        username="admin@hashicorptest.com",
-                    )],
-                ),
-            ),
-            maintenance_config=gcp.gkeonprem.BareMetalAdminClusterMaintenanceConfigArgs(
-                maintenance_address_cidr_blocks=[
-                    "10.0.0.1/32",
-                    "10.0.0.2/32",
-                ],
-            ),
-            cluster_operations=gcp.gkeonprem.BareMetalAdminClusterClusterOperationsArgs(
-                enable_application_logs=True,
-            ),
-            proxy=gcp.gkeonprem.BareMetalAdminClusterProxyArgs(
-                uri="test proxy uri",
-                no_proxies=["127.0.0.1"],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -1219,172 +1105,6 @@ class BareMetalAdminCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Gkeonprem Bare Metal Admin Cluster Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin_cluster_basic = gcp.gkeonprem.BareMetalAdminCluster("admin-cluster-basic",
-            location="us-west1",
-            bare_metal_version="1.13.4",
-            network_config=gcp.gkeonprem.BareMetalAdminClusterNetworkConfigArgs(
-                island_mode_cidr=gcp.gkeonprem.BareMetalAdminClusterNetworkConfigIslandModeCidrArgs(
-                    service_address_cidr_blocks=["172.26.0.0/16"],
-                    pod_address_cidr_blocks=["10.240.0.0/13"],
-                ),
-            ),
-            node_config=gcp.gkeonprem.BareMetalAdminClusterNodeConfigArgs(
-                max_pods_per_node=250,
-            ),
-            control_plane=gcp.gkeonprem.BareMetalAdminClusterControlPlaneArgs(
-                control_plane_node_pool_config=gcp.gkeonprem.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs(
-                    node_pool_config=gcp.gkeonprem.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs(
-                        labels={},
-                        operating_system="LINUX",
-                        node_configs=[
-                            gcp.gkeonprem.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs(
-                                labels={},
-                                node_ip="10.200.0.2",
-                            ),
-                            gcp.gkeonprem.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs(
-                                labels={},
-                                node_ip="10.200.0.3",
-                            ),
-                            gcp.gkeonprem.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs(
-                                labels={},
-                                node_ip="10.200.0.4",
-                            ),
-                        ],
-                    ),
-                ),
-            ),
-            load_balancer=gcp.gkeonprem.BareMetalAdminClusterLoadBalancerArgs(
-                port_config=gcp.gkeonprem.BareMetalAdminClusterLoadBalancerPortConfigArgs(
-                    control_plane_load_balancer_port=443,
-                ),
-                vip_config=gcp.gkeonprem.BareMetalAdminClusterLoadBalancerVipConfigArgs(
-                    control_plane_vip="10.200.0.5",
-                ),
-            ),
-            storage=gcp.gkeonprem.BareMetalAdminClusterStorageArgs(
-                lvp_share_config=gcp.gkeonprem.BareMetalAdminClusterStorageLvpShareConfigArgs(
-                    lvp_config=gcp.gkeonprem.BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs(
-                        path="/mnt/localpv-share",
-                        storage_class="local-shared",
-                    ),
-                    shared_path_pv_count=5,
-                ),
-                lvp_node_mounts_config=gcp.gkeonprem.BareMetalAdminClusterStorageLvpNodeMountsConfigArgs(
-                    path="/mnt/localpv-disk",
-                    storage_class="local-disks",
-                ),
-            ),
-            node_access_config=gcp.gkeonprem.BareMetalAdminClusterNodeAccessConfigArgs(
-                login_user="root",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Gkeonprem Bare Metal Admin Cluster Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin_cluster_basic = gcp.gkeonprem.BareMetalAdminCluster("admin-cluster-basic",
-            location="us-west1",
-            description="test description",
-            bare_metal_version="1.13.4",
-            annotations={},
-            network_config=gcp.gkeonprem.BareMetalAdminClusterNetworkConfigArgs(
-                island_mode_cidr=gcp.gkeonprem.BareMetalAdminClusterNetworkConfigIslandModeCidrArgs(
-                    service_address_cidr_blocks=["172.26.0.0/16"],
-                    pod_address_cidr_blocks=["10.240.0.0/13"],
-                ),
-            ),
-            node_config=gcp.gkeonprem.BareMetalAdminClusterNodeConfigArgs(
-                max_pods_per_node=250,
-            ),
-            control_plane=gcp.gkeonprem.BareMetalAdminClusterControlPlaneArgs(
-                control_plane_node_pool_config=gcp.gkeonprem.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs(
-                    node_pool_config=gcp.gkeonprem.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs(
-                        labels={},
-                        operating_system="LINUX",
-                        node_configs=[
-                            gcp.gkeonprem.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs(
-                                labels={},
-                                node_ip="10.200.0.2",
-                            ),
-                            gcp.gkeonprem.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs(
-                                labels={},
-                                node_ip="10.200.0.3",
-                            ),
-                            gcp.gkeonprem.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs(
-                                labels={},
-                                node_ip="10.200.0.4",
-                            ),
-                        ],
-                        taints=[gcp.gkeonprem.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs(
-                            key="test-key",
-                            value="test-value",
-                            effect="NO_EXECUTE",
-                        )],
-                    ),
-                ),
-                api_server_args=[gcp.gkeonprem.BareMetalAdminClusterControlPlaneApiServerArgArgs(
-                    argument="test argument",
-                    value="test value",
-                )],
-            ),
-            load_balancer=gcp.gkeonprem.BareMetalAdminClusterLoadBalancerArgs(
-                port_config=gcp.gkeonprem.BareMetalAdminClusterLoadBalancerPortConfigArgs(
-                    control_plane_load_balancer_port=443,
-                ),
-                vip_config=gcp.gkeonprem.BareMetalAdminClusterLoadBalancerVipConfigArgs(
-                    control_plane_vip="10.200.0.5",
-                ),
-                manual_lb_config=gcp.gkeonprem.BareMetalAdminClusterLoadBalancerManualLbConfigArgs(
-                    enabled=True,
-                ),
-            ),
-            storage=gcp.gkeonprem.BareMetalAdminClusterStorageArgs(
-                lvp_share_config=gcp.gkeonprem.BareMetalAdminClusterStorageLvpShareConfigArgs(
-                    lvp_config=gcp.gkeonprem.BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs(
-                        path="/mnt/localpv-share",
-                        storage_class="local-shared",
-                    ),
-                    shared_path_pv_count=5,
-                ),
-                lvp_node_mounts_config=gcp.gkeonprem.BareMetalAdminClusterStorageLvpNodeMountsConfigArgs(
-                    path="/mnt/localpv-disk",
-                    storage_class="local-disks",
-                ),
-            ),
-            node_access_config=gcp.gkeonprem.BareMetalAdminClusterNodeAccessConfigArgs(
-                login_user="root",
-            ),
-            security_config=gcp.gkeonprem.BareMetalAdminClusterSecurityConfigArgs(
-                authorization=gcp.gkeonprem.BareMetalAdminClusterSecurityConfigAuthorizationArgs(
-                    admin_users=[gcp.gkeonprem.BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs(
-                        username="admin@hashicorptest.com",
-                    )],
-                ),
-            ),
-            maintenance_config=gcp.gkeonprem.BareMetalAdminClusterMaintenanceConfigArgs(
-                maintenance_address_cidr_blocks=[
-                    "10.0.0.1/32",
-                    "10.0.0.2/32",
-                ],
-            ),
-            cluster_operations=gcp.gkeonprem.BareMetalAdminClusterClusterOperationsArgs(
-                enable_application_logs=True,
-            ),
-            proxy=gcp.gkeonprem.BareMetalAdminClusterProxyArgs(
-                uri="test proxy uri",
-                no_proxies=["127.0.0.1"],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -1448,71 +1168,31 @@ class BareMetalAdminCluster(pulumi.CustomResource):
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["bare_metal_version"] = bare_metal_version
-            if cluster_operations is not None and not isinstance(cluster_operations, BareMetalAdminClusterClusterOperationsArgs):
-                cluster_operations = cluster_operations or {}
-                def _setter(key, value):
-                    cluster_operations[key] = value
-                BareMetalAdminClusterClusterOperationsArgs._configure(_setter, **cluster_operations)
+            cluster_operations = _utilities.configure(cluster_operations, BareMetalAdminClusterClusterOperationsArgs, True)
             __props__.__dict__["cluster_operations"] = cluster_operations
-            if control_plane is not None and not isinstance(control_plane, BareMetalAdminClusterControlPlaneArgs):
-                control_plane = control_plane or {}
-                def _setter(key, value):
-                    control_plane[key] = value
-                BareMetalAdminClusterControlPlaneArgs._configure(_setter, **control_plane)
+            control_plane = _utilities.configure(control_plane, BareMetalAdminClusterControlPlaneArgs, True)
             __props__.__dict__["control_plane"] = control_plane
             __props__.__dict__["description"] = description
-            if load_balancer is not None and not isinstance(load_balancer, BareMetalAdminClusterLoadBalancerArgs):
-                load_balancer = load_balancer or {}
-                def _setter(key, value):
-                    load_balancer[key] = value
-                BareMetalAdminClusterLoadBalancerArgs._configure(_setter, **load_balancer)
+            load_balancer = _utilities.configure(load_balancer, BareMetalAdminClusterLoadBalancerArgs, True)
             __props__.__dict__["load_balancer"] = load_balancer
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if maintenance_config is not None and not isinstance(maintenance_config, BareMetalAdminClusterMaintenanceConfigArgs):
-                maintenance_config = maintenance_config or {}
-                def _setter(key, value):
-                    maintenance_config[key] = value
-                BareMetalAdminClusterMaintenanceConfigArgs._configure(_setter, **maintenance_config)
+            maintenance_config = _utilities.configure(maintenance_config, BareMetalAdminClusterMaintenanceConfigArgs, True)
             __props__.__dict__["maintenance_config"] = maintenance_config
             __props__.__dict__["name"] = name
-            if network_config is not None and not isinstance(network_config, BareMetalAdminClusterNetworkConfigArgs):
-                network_config = network_config or {}
-                def _setter(key, value):
-                    network_config[key] = value
-                BareMetalAdminClusterNetworkConfigArgs._configure(_setter, **network_config)
+            network_config = _utilities.configure(network_config, BareMetalAdminClusterNetworkConfigArgs, True)
             __props__.__dict__["network_config"] = network_config
-            if node_access_config is not None and not isinstance(node_access_config, BareMetalAdminClusterNodeAccessConfigArgs):
-                node_access_config = node_access_config or {}
-                def _setter(key, value):
-                    node_access_config[key] = value
-                BareMetalAdminClusterNodeAccessConfigArgs._configure(_setter, **node_access_config)
+            node_access_config = _utilities.configure(node_access_config, BareMetalAdminClusterNodeAccessConfigArgs, True)
             __props__.__dict__["node_access_config"] = node_access_config
-            if node_config is not None and not isinstance(node_config, BareMetalAdminClusterNodeConfigArgs):
-                node_config = node_config or {}
-                def _setter(key, value):
-                    node_config[key] = value
-                BareMetalAdminClusterNodeConfigArgs._configure(_setter, **node_config)
+            node_config = _utilities.configure(node_config, BareMetalAdminClusterNodeConfigArgs, True)
             __props__.__dict__["node_config"] = node_config
             __props__.__dict__["project"] = project
-            if proxy is not None and not isinstance(proxy, BareMetalAdminClusterProxyArgs):
-                proxy = proxy or {}
-                def _setter(key, value):
-                    proxy[key] = value
-                BareMetalAdminClusterProxyArgs._configure(_setter, **proxy)
+            proxy = _utilities.configure(proxy, BareMetalAdminClusterProxyArgs, True)
             __props__.__dict__["proxy"] = proxy
-            if security_config is not None and not isinstance(security_config, BareMetalAdminClusterSecurityConfigArgs):
-                security_config = security_config or {}
-                def _setter(key, value):
-                    security_config[key] = value
-                BareMetalAdminClusterSecurityConfigArgs._configure(_setter, **security_config)
+            security_config = _utilities.configure(security_config, BareMetalAdminClusterSecurityConfigArgs, True)
             __props__.__dict__["security_config"] = security_config
-            if storage is not None and not isinstance(storage, BareMetalAdminClusterStorageArgs):
-                storage = storage or {}
-                def _setter(key, value):
-                    storage[key] = value
-                BareMetalAdminClusterStorageArgs._configure(_setter, **storage)
+            storage = _utilities.configure(storage, BareMetalAdminClusterStorageArgs, True)
             __props__.__dict__["storage"] = storage
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None

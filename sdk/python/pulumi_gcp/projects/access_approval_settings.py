@@ -51,12 +51,26 @@ class AccessApprovalSettingsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enrolled_services: pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]],
-             project_id: pulumi.Input[str],
+             enrolled_services: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
              active_key_version: Optional[pulumi.Input[str]] = None,
              notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enrolled_services is None and 'enrolledServices' in kwargs:
+            enrolled_services = kwargs['enrolledServices']
+        if enrolled_services is None:
+            raise TypeError("Missing 'enrolled_services' argument")
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if active_key_version is None and 'activeKeyVersion' in kwargs:
+            active_key_version = kwargs['activeKeyVersion']
+        if notification_emails is None and 'notificationEmails' in kwargs:
+            notification_emails = kwargs['notificationEmails']
+
         _setter("enrolled_services", enrolled_services)
         _setter("project_id", project_id)
         if active_key_version is not None:
@@ -206,7 +220,23 @@ class _AccessApprovalSettingsState:
              notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              project_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if active_key_version is None and 'activeKeyVersion' in kwargs:
+            active_key_version = kwargs['activeKeyVersion']
+        if ancestor_has_active_key_version is None and 'ancestorHasActiveKeyVersion' in kwargs:
+            ancestor_has_active_key_version = kwargs['ancestorHasActiveKeyVersion']
+        if enrolled_ancestor is None and 'enrolledAncestor' in kwargs:
+            enrolled_ancestor = kwargs['enrolledAncestor']
+        if enrolled_services is None and 'enrolledServices' in kwargs:
+            enrolled_services = kwargs['enrolledServices']
+        if invalid_key_version is None and 'invalidKeyVersion' in kwargs:
+            invalid_key_version = kwargs['invalidKeyVersion']
+        if notification_emails is None and 'notificationEmails' in kwargs:
+            notification_emails = kwargs['notificationEmails']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+
         if active_key_version is not None:
             _setter("active_key_version", active_key_version)
         if ancestor_has_active_key_version is not None:
@@ -374,52 +404,6 @@ class AccessApprovalSettings(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/access-approval/docs/reference/rest/v1/projects)
 
         ## Example Usage
-        ### Project Access Approval Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project_access_approval = gcp.projects.AccessApprovalSettings("projectAccessApproval",
-            enrolled_services=[gcp.projects.AccessApprovalSettingsEnrolledServiceArgs(
-                cloud_product="all",
-                enrollment_level="BLOCK_ALL",
-            )],
-            notification_emails=[
-                "testuser@example.com",
-                "example.user@example.com",
-            ],
-            project_id="my-project-name")
-        ```
-        ### Project Access Approval Active Key Version
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        key_ring = gcp.kms.KeyRing("keyRing",
-            location="global",
-            project="my-project-name")
-        crypto_key = gcp.kms.CryptoKey("cryptoKey",
-            key_ring=key_ring.id,
-            purpose="ASYMMETRIC_SIGN",
-            version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
-                algorithm="EC_SIGN_P384_SHA384",
-            ))
-        service_account = gcp.accessapproval.get_project_service_account(project_id="my-project-name")
-        iam = gcp.kms.CryptoKeyIAMMember("iam",
-            crypto_key_id=crypto_key.id,
-            role="roles/cloudkms.signerVerifier",
-            member=f"serviceAccount:{service_account.account_email}")
-        crypto_key_version = gcp.kms.get_kms_crypto_key_version_output(crypto_key=crypto_key.id)
-        project_access_approval = gcp.projects.AccessApprovalSettings("projectAccessApproval",
-            project_id="my-project-name",
-            active_key_version=crypto_key_version.name,
-            enrolled_services=[gcp.projects.AccessApprovalSettingsEnrolledServiceArgs(
-                cloud_product="all",
-            )],
-            opts=pulumi.ResourceOptions(depends_on=[iam]))
-        ```
 
         ## Import
 
@@ -466,52 +450,6 @@ class AccessApprovalSettings(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/access-approval/docs/reference/rest/v1/projects)
 
         ## Example Usage
-        ### Project Access Approval Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project_access_approval = gcp.projects.AccessApprovalSettings("projectAccessApproval",
-            enrolled_services=[gcp.projects.AccessApprovalSettingsEnrolledServiceArgs(
-                cloud_product="all",
-                enrollment_level="BLOCK_ALL",
-            )],
-            notification_emails=[
-                "testuser@example.com",
-                "example.user@example.com",
-            ],
-            project_id="my-project-name")
-        ```
-        ### Project Access Approval Active Key Version
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        key_ring = gcp.kms.KeyRing("keyRing",
-            location="global",
-            project="my-project-name")
-        crypto_key = gcp.kms.CryptoKey("cryptoKey",
-            key_ring=key_ring.id,
-            purpose="ASYMMETRIC_SIGN",
-            version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
-                algorithm="EC_SIGN_P384_SHA384",
-            ))
-        service_account = gcp.accessapproval.get_project_service_account(project_id="my-project-name")
-        iam = gcp.kms.CryptoKeyIAMMember("iam",
-            crypto_key_id=crypto_key.id,
-            role="roles/cloudkms.signerVerifier",
-            member=f"serviceAccount:{service_account.account_email}")
-        crypto_key_version = gcp.kms.get_kms_crypto_key_version_output(crypto_key=crypto_key.id)
-        project_access_approval = gcp.projects.AccessApprovalSettings("projectAccessApproval",
-            project_id="my-project-name",
-            active_key_version=crypto_key_version.name,
-            enrolled_services=[gcp.projects.AccessApprovalSettingsEnrolledServiceArgs(
-                cloud_product="all",
-            )],
-            opts=pulumi.ResourceOptions(depends_on=[iam]))
-        ```
 
         ## Import
 

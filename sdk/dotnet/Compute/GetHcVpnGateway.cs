@@ -13,56 +13,12 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// Get a HA VPN Gateway within GCE from its name.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var gateway = Gcp.Compute.GetHcVpnGateway.Invoke(new()
-        ///     {
-        ///         Name = "foobar",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetHcVpnGatewayResult> InvokeAsync(GetHcVpnGatewayArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHcVpnGatewayResult>("gcp:compute/getHcVpnGateway:getHcVpnGateway", args ?? new GetHcVpnGatewayArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get a HA VPN Gateway within GCE from its name.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var gateway = Gcp.Compute.GetHcVpnGateway.Invoke(new()
-        ///     {
-        ///         Name = "foobar",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetHcVpnGatewayResult> Invoke(GetHcVpnGatewayInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHcVpnGatewayResult>("gcp:compute/getHcVpnGateway:getHcVpnGateway", args ?? new GetHcVpnGatewayInvokeArgs(), options.WithDefaults());

@@ -13,32 +13,6 @@ import (
 )
 
 // Get info about a Google Certificate Manager Certificate Map resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := certificatemanager.GetCertificateMap(ctx, &certificatemanager.GetCertificateMapArgs{
-//				Name: "cert-map",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetCertificateMap(ctx *pulumi.Context, args *GetCertificateMapArgs, opts ...pulumi.InvokeOption) (*GetCertificateMapResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCertificateMapResult

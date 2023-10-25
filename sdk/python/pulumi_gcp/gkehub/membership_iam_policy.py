@@ -45,10 +45,20 @@ class MembershipIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             membership_id: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
+             membership_id: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if membership_id is None and 'membershipId' in kwargs:
+            membership_id = kwargs['membershipId']
+        if membership_id is None:
+            raise TypeError("Missing 'membership_id' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("membership_id", membership_id)
         _setter("policy_data", policy_data)
         if project is not None:
@@ -143,7 +153,13 @@ class _MembershipIamPolicyState:
              membership_id: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if membership_id is None and 'membershipId' in kwargs:
+            membership_id = kwargs['membershipId']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if etag is not None:
             _setter("etag", etag)
         if membership_id is not None:
@@ -237,48 +253,6 @@ class MembershipIamPolicy(pulumi.CustomResource):
 
         > **Note:** `gkehub.MembershipIamBinding` resources **can be** used in conjunction with `gkehub.MembershipIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_gke\\_hub\\_membership\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.gkehub.MembershipIamPolicy("policy",
-            project=google_gke_hub_membership["membership"]["project"],
-            membership_id=google_gke_hub_membership["membership"]["membership_id"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_gke\\_hub\\_membership\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.gkehub.MembershipIamBinding("binding",
-            project=google_gke_hub_membership["membership"]["project"],
-            membership_id=google_gke_hub_membership["membership"]["membership_id"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_gke\\_hub\\_membership\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.gkehub.MembershipIamMember("member",
-            project=google_gke_hub_membership["membership"]["project"],
-            membership_id=google_gke_hub_membership["membership"]["membership_id"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/memberships/{{membership_id}} * {{project}}/{{location}}/{{membership_id}} * {{location}}/{{membership_id}} * {{membership_id}} Any variables not passed in the import command will be taken from the provider configuration. GKEHub membership IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -342,48 +316,6 @@ class MembershipIamPolicy(pulumi.CustomResource):
         > **Note:** `gkehub.MembershipIamPolicy` **cannot** be used in conjunction with `gkehub.MembershipIamBinding` and `gkehub.MembershipIamMember` or they will fight over what your policy should be.
 
         > **Note:** `gkehub.MembershipIamBinding` resources **can be** used in conjunction with `gkehub.MembershipIamMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\\_gke\\_hub\\_membership\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.gkehub.MembershipIamPolicy("policy",
-            project=google_gke_hub_membership["membership"]["project"],
-            membership_id=google_gke_hub_membership["membership"]["membership_id"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_gke\\_hub\\_membership\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.gkehub.MembershipIamBinding("binding",
-            project=google_gke_hub_membership["membership"]["project"],
-            membership_id=google_gke_hub_membership["membership"]["membership_id"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_gke\\_hub\\_membership\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.gkehub.MembershipIamMember("member",
-            project=google_gke_hub_membership["membership"]["project"],
-            membership_id=google_gke_hub_membership["membership"]["membership_id"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
 
         ## Import
 

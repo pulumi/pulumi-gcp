@@ -13,33 +13,6 @@ import (
 )
 
 // Get a tag value by `parent` key and `shortName`.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/tags"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := tags.LookupTagValue(ctx, &tags.LookupTagValueArgs{
-//				Parent:    "tagKeys/56789",
-//				ShortName: "production",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupTagValue(ctx *pulumi.Context, args *LookupTagValueArgs, opts ...pulumi.InvokeOption) (*LookupTagValueResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTagValueResult

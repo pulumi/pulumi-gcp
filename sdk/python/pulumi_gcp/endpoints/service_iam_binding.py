@@ -36,11 +36,21 @@ class ServiceIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
-             service_name: pulumi.Input[str],
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['ServiceIamBindingConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+
         _setter("members", members)
         _setter("role", role)
         _setter("service_name", service_name)
@@ -120,7 +130,11 @@ class _ServiceIamBindingState:
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              role: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -211,45 +225,6 @@ class ServiceIamBinding(pulumi.CustomResource):
 
         > **Note:** `endpoints.ServiceIamBinding` resources **can be** used in conjunction with `endpoints.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_endpoints\\_service\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.endpoints.ServiceIamPolicy("policy",
-            service_name=google_endpoints_service["endpoints_service"]["service_name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_endpoints\\_service\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.endpoints.ServiceIamBinding("binding",
-            service_name=google_endpoints_service["endpoints_service"]["service_name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_endpoints\\_service\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.endpoints.ServiceIamMember("member",
-            service_name=google_endpoints_service["endpoints_service"]["service_name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* services/{{service_name}} * {{service_name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Endpoints service IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -300,45 +275,6 @@ class ServiceIamBinding(pulumi.CustomResource):
         > **Note:** `endpoints.ServiceIamPolicy` **cannot** be used in conjunction with `endpoints.ServiceIamBinding` and `endpoints.ServiceIamMember` or they will fight over what your policy should be.
 
         > **Note:** `endpoints.ServiceIamBinding` resources **can be** used in conjunction with `endpoints.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\\_endpoints\\_service\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.endpoints.ServiceIamPolicy("policy",
-            service_name=google_endpoints_service["endpoints_service"]["service_name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_endpoints\\_service\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.endpoints.ServiceIamBinding("binding",
-            service_name=google_endpoints_service["endpoints_service"]["service_name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_endpoints\\_service\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.endpoints.ServiceIamMember("member",
-            service_name=google_endpoints_service["endpoints_service"]["service_name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
 
         ## Import
 
@@ -396,11 +332,7 @@ class ServiceIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ServiceIamBindingArgs.__new__(ServiceIamBindingArgs)
 
-            if condition is not None and not isinstance(condition, ServiceIamBindingConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                ServiceIamBindingConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, ServiceIamBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")

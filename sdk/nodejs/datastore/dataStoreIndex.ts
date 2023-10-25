@@ -22,26 +22,6 @@ import * as utilities from "../utilities";
  * Datastore location will be the same as the App Engine location specified.
  *
  * ## Example Usage
- * ### Datastore Index
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.datastore.DataStoreIndex("default", {
- *     kind: "foo",
- *     properties: [
- *         {
- *             direction: "ASCENDING",
- *             name: "property_a",
- *         },
- *         {
- *             direction: "ASCENDING",
- *             name: "property_b",
- *         },
- *     ],
- * });
- * ```
  *
  * ## Import
  *

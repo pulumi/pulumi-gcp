@@ -52,13 +52,19 @@ class AccessLevelArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parent: pulumi.Input[str],
-             title: pulumi.Input[str],
+             parent: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
              basic: Optional[pulumi.Input['AccessLevelBasicArgs']] = None,
              custom: Optional[pulumi.Input['AccessLevelCustomArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+
         _setter("parent", parent)
         _setter("title", title)
         if basic is not None:
@@ -197,7 +203,9 @@ class _AccessLevelState:
              name: Optional[pulumi.Input[str]] = None,
              parent: Optional[pulumi.Input[str]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if basic is not None:
             _setter("basic", basic)
         if custom is not None:
@@ -322,34 +330,6 @@ class AccessLevel(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
-        ### Access Context Manager Access Level Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
-            parent="organizations/123456789",
-            title="my policy")
-        access_level = gcp.accesscontextmanager.AccessLevel("access-level",
-            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
-                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
-                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
-                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
-                            os_type="DESKTOP_CHROME_OS",
-                        )],
-                        require_screen_lock=True,
-                    ),
-                    regions=[
-                        "CH",
-                        "IT",
-                        "US",
-                    ],
-                )],
-            ),
-            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
-            title="chromeos_no_lock")
-        ```
 
         ## Import
 
@@ -400,34 +380,6 @@ class AccessLevel(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
-        ### Access Context Manager Access Level Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
-            parent="organizations/123456789",
-            title="my policy")
-        access_level = gcp.accesscontextmanager.AccessLevel("access-level",
-            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
-                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
-                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
-                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
-                            os_type="DESKTOP_CHROME_OS",
-                        )],
-                        require_screen_lock=True,
-                    ),
-                    regions=[
-                        "CH",
-                        "IT",
-                        "US",
-                    ],
-                )],
-            ),
-            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
-            title="chromeos_no_lock")
-        ```
 
         ## Import
 
@@ -471,17 +423,9 @@ class AccessLevel(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AccessLevelArgs.__new__(AccessLevelArgs)
 
-            if basic is not None and not isinstance(basic, AccessLevelBasicArgs):
-                basic = basic or {}
-                def _setter(key, value):
-                    basic[key] = value
-                AccessLevelBasicArgs._configure(_setter, **basic)
+            basic = _utilities.configure(basic, AccessLevelBasicArgs, True)
             __props__.__dict__["basic"] = basic
-            if custom is not None and not isinstance(custom, AccessLevelCustomArgs):
-                custom = custom or {}
-                def _setter(key, value):
-                    custom[key] = value
-                AccessLevelCustomArgs._configure(_setter, **custom)
+            custom = _utilities.configure(custom, AccessLevelCustomArgs, True)
             __props__.__dict__["custom"] = custom
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name

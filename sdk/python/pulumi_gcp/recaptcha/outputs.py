@@ -54,7 +54,13 @@ class EnterpriseKeyAndroidSettings(dict):
              _setter: Callable[[Any, Any], None],
              allow_all_package_names: Optional[bool] = None,
              allowed_package_names: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_all_package_names is None and 'allowAllPackageNames' in kwargs:
+            allow_all_package_names = kwargs['allowAllPackageNames']
+        if allowed_package_names is None and 'allowedPackageNames' in kwargs:
+            allowed_package_names = kwargs['allowedPackageNames']
+
         if allow_all_package_names is not None:
             _setter("allow_all_package_names", allow_all_package_names)
         if allowed_package_names is not None:
@@ -115,7 +121,13 @@ class EnterpriseKeyIosSettings(dict):
              _setter: Callable[[Any, Any], None],
              allow_all_bundle_ids: Optional[bool] = None,
              allowed_bundle_ids: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_all_bundle_ids is None and 'allowAllBundleIds' in kwargs:
+            allow_all_bundle_ids = kwargs['allowAllBundleIds']
+        if allowed_bundle_ids is None and 'allowedBundleIds' in kwargs:
+            allowed_bundle_ids = kwargs['allowedBundleIds']
+
         if allow_all_bundle_ids is not None:
             _setter("allow_all_bundle_ids", allow_all_bundle_ids)
         if allowed_bundle_ids is not None:
@@ -176,7 +188,13 @@ class EnterpriseKeyTestingOptions(dict):
              _setter: Callable[[Any, Any], None],
              testing_challenge: Optional[str] = None,
              testing_score: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if testing_challenge is None and 'testingChallenge' in kwargs:
+            testing_challenge = kwargs['testingChallenge']
+        if testing_score is None and 'testingScore' in kwargs:
+            testing_score = kwargs['testingScore']
+
         if testing_challenge is not None:
             _setter("testing_challenge", testing_challenge)
         if testing_score is not None:
@@ -250,12 +268,26 @@ class EnterpriseKeyWebSettings(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             integration_type: str,
+             integration_type: Optional[str] = None,
              allow_all_domains: Optional[bool] = None,
              allow_amp_traffic: Optional[bool] = None,
              allowed_domains: Optional[Sequence[str]] = None,
              challenge_security_preference: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if integration_type is None and 'integrationType' in kwargs:
+            integration_type = kwargs['integrationType']
+        if integration_type is None:
+            raise TypeError("Missing 'integration_type' argument")
+        if allow_all_domains is None and 'allowAllDomains' in kwargs:
+            allow_all_domains = kwargs['allowAllDomains']
+        if allow_amp_traffic is None and 'allowAmpTraffic' in kwargs:
+            allow_amp_traffic = kwargs['allowAmpTraffic']
+        if allowed_domains is None and 'allowedDomains' in kwargs:
+            allowed_domains = kwargs['allowedDomains']
+        if challenge_security_preference is None and 'challengeSecurityPreference' in kwargs:
+            challenge_security_preference = kwargs['challengeSecurityPreference']
+
         _setter("integration_type", integration_type)
         if allow_all_domains is not None:
             _setter("allow_all_domains", allow_all_domains)

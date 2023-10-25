@@ -56,13 +56,19 @@ class JobIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['JobIamBindingConditionArgs']] = None,
              location: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("members", members)
         _setter("role", role)
         if condition is not None:
@@ -209,7 +215,9 @@ class _JobIamBindingState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -346,48 +354,6 @@ class JobIamBinding(pulumi.CustomResource):
 
         > **Note:** `cloudrunv2.JobIamBinding` resources **can be** used in conjunction with `cloudrunv2.JobIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_cloud\\_run\\_v2\\_job\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.cloudrunv2.JobIamPolicy("policy",
-            project=google_cloud_run_v2_job["default"]["project"],
-            location=google_cloud_run_v2_job["default"]["location"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_cloud\\_run\\_v2\\_job\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.cloudrunv2.JobIamBinding("binding",
-            project=google_cloud_run_v2_job["default"]["project"],
-            location=google_cloud_run_v2_job["default"]["location"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_cloud\\_run\\_v2\\_job\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.cloudrunv2.JobIamMember("member",
-            project=google_cloud_run_v2_job["default"]["project"],
-            location=google_cloud_run_v2_job["default"]["location"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/jobs/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Run (v2 API) job IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -455,48 +421,6 @@ class JobIamBinding(pulumi.CustomResource):
 
         > **Note:** `cloudrunv2.JobIamBinding` resources **can be** used in conjunction with `cloudrunv2.JobIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_cloud\\_run\\_v2\\_job\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.cloudrunv2.JobIamPolicy("policy",
-            project=google_cloud_run_v2_job["default"]["project"],
-            location=google_cloud_run_v2_job["default"]["location"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_cloud\\_run\\_v2\\_job\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.cloudrunv2.JobIamBinding("binding",
-            project=google_cloud_run_v2_job["default"]["project"],
-            location=google_cloud_run_v2_job["default"]["location"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_cloud\\_run\\_v2\\_job\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.cloudrunv2.JobIamMember("member",
-            project=google_cloud_run_v2_job["default"]["project"],
-            location=google_cloud_run_v2_job["default"]["location"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/jobs/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Run (v2 API) job IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -555,11 +479,7 @@ class JobIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = JobIamBindingArgs.__new__(JobIamBindingArgs)
 
-            if condition is not None and not isinstance(condition, JobIamBindingConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                JobIamBindingConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, JobIamBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             __props__.__dict__["location"] = location
             if members is None and not opts.urn:

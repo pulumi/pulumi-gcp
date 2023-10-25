@@ -8,16 +8,6 @@ import * as utilities from "../utilities";
  * The Compute NetworkFirewallPolicy resource
  *
  * ## Example Usage
- * ### Global
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const primary = new gcp.compute.NetworkFirewallPolicy("primary", {
- *     description: "Sample global network firewall policy",
- *     project: "my-project-name",
- * });
- * ```
  *
  * ## Import
  *

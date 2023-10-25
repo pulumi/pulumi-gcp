@@ -34,10 +34,22 @@ class IamAuditConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             audit_log_configs: pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]],
-             org_id: pulumi.Input[str],
-             service: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if audit_log_configs is None and 'auditLogConfigs' in kwargs:
+            audit_log_configs = kwargs['auditLogConfigs']
+        if audit_log_configs is None:
+            raise TypeError("Missing 'audit_log_configs' argument")
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
         _setter("audit_log_configs", audit_log_configs)
         _setter("org_id", org_id)
         _setter("service", service)
@@ -107,7 +119,13 @@ class _IamAuditConfigState:
              etag: Optional[pulumi.Input[str]] = None,
              org_id: Optional[pulumi.Input[str]] = None,
              service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if audit_log_configs is None and 'auditLogConfigs' in kwargs:
+            audit_log_configs = kwargs['auditLogConfigs']
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+
         if audit_log_configs is not None:
             _setter("audit_log_configs", audit_log_configs)
         if etag is not None:
@@ -178,21 +196,6 @@ class IamAuditConfig(pulumi.CustomResource):
         """
         Allows management of audit logging config for a given service for a Google Cloud Platform Organization.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        config = gcp.organizations.IamAuditConfig("config",
-            audit_log_configs=[gcp.organizations.IamAuditConfigAuditLogConfigArgs(
-                exempted_members=["user:joebloggs@hashicorp.com"],
-                log_type="DATA_READ",
-            )],
-            org_id="your-organization-id",
-            service="allServices")
-        ```
-
         ## Import
 
         IAM audit config imports use the identifier of the resource in question and the service, e.g.
@@ -215,21 +218,6 @@ class IamAuditConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Allows management of audit logging config for a given service for a Google Cloud Platform Organization.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        config = gcp.organizations.IamAuditConfig("config",
-            audit_log_configs=[gcp.organizations.IamAuditConfigAuditLogConfigArgs(
-                exempted_members=["user:joebloggs@hashicorp.com"],
-                log_type="DATA_READ",
-            )],
-            org_id="your-organization-id",
-            service="allServices")
-        ```
 
         ## Import
 

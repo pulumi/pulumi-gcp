@@ -105,7 +105,7 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
              accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAcceleratorArgs']]]] = None,
              crypto_key_config: Optional[pulumi.Input['InstanceCryptoKeyConfigArgs']] = None,
              dataproc_service_account: Optional[pulumi.Input[str]] = None,
@@ -124,7 +124,29 @@ class InstanceArgs:
              region: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if crypto_key_config is None and 'cryptoKeyConfig' in kwargs:
+            crypto_key_config = kwargs['cryptoKeyConfig']
+        if dataproc_service_account is None and 'dataprocServiceAccount' in kwargs:
+            dataproc_service_account = kwargs['dataprocServiceAccount']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if enable_rbac is None and 'enableRbac' in kwargs:
+            enable_rbac = kwargs['enableRbac']
+        if enable_stackdriver_logging is None and 'enableStackdriverLogging' in kwargs:
+            enable_stackdriver_logging = kwargs['enableStackdriverLogging']
+        if enable_stackdriver_monitoring is None and 'enableStackdriverMonitoring' in kwargs:
+            enable_stackdriver_monitoring = kwargs['enableStackdriverMonitoring']
+        if event_publish_config is None and 'eventPublishConfig' in kwargs:
+            event_publish_config = kwargs['eventPublishConfig']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if private_instance is None and 'privateInstance' in kwargs:
+            private_instance = kwargs['privateInstance']
+
         _setter("type", type)
         if accelerators is not None:
             _setter("accelerators", accelerators)
@@ -567,7 +589,45 @@ class _InstanceState:
              update_time: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api_endpoint is None and 'apiEndpoint' in kwargs:
+            api_endpoint = kwargs['apiEndpoint']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if crypto_key_config is None and 'cryptoKeyConfig' in kwargs:
+            crypto_key_config = kwargs['cryptoKeyConfig']
+        if dataproc_service_account is None and 'dataprocServiceAccount' in kwargs:
+            dataproc_service_account = kwargs['dataprocServiceAccount']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if enable_rbac is None and 'enableRbac' in kwargs:
+            enable_rbac = kwargs['enableRbac']
+        if enable_stackdriver_logging is None and 'enableStackdriverLogging' in kwargs:
+            enable_stackdriver_logging = kwargs['enableStackdriverLogging']
+        if enable_stackdriver_monitoring is None and 'enableStackdriverMonitoring' in kwargs:
+            enable_stackdriver_monitoring = kwargs['enableStackdriverMonitoring']
+        if event_publish_config is None and 'eventPublishConfig' in kwargs:
+            event_publish_config = kwargs['eventPublishConfig']
+        if gcs_bucket is None and 'gcsBucket' in kwargs:
+            gcs_bucket = kwargs['gcsBucket']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if p4_service_account is None and 'p4ServiceAccount' in kwargs:
+            p4_service_account = kwargs['p4ServiceAccount']
+        if private_instance is None and 'privateInstance' in kwargs:
+            private_instance = kwargs['privateInstance']
+        if service_account is None and 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if service_endpoint is None and 'serviceEndpoint' in kwargs:
+            service_endpoint = kwargs['serviceEndpoint']
+        if state_message is None and 'stateMessage' in kwargs:
+            state_message = kwargs['stateMessage']
+        if tenant_project_id is None and 'tenantProjectId' in kwargs:
+            tenant_project_id = kwargs['tenantProjectId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if accelerators is not None:
             _setter("accelerators", accelerators)
         if api_endpoint is not None:
@@ -1041,108 +1101,6 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
 
         ## Example Usage
-        ### Data Fusion Instance Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic_instance = gcp.datafusion.Instance("basicInstance",
-            region="us-central1",
-            type="BASIC")
-        ```
-        ### Data Fusion Instance Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.appengine.get_default_service_account()
-        network = gcp.compute.Network("network")
-        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
-            address_type="INTERNAL",
-            purpose="VPC_PEERING",
-            prefix_length=22,
-            network=network.id)
-        extended_instance = gcp.datafusion.Instance("extendedInstance",
-            description="My Data Fusion instance",
-            display_name="My Data Fusion instance",
-            region="us-central1",
-            type="BASIC",
-            enable_stackdriver_logging=True,
-            enable_stackdriver_monitoring=True,
-            private_instance=True,
-            dataproc_service_account=default.email,
-            labels={
-                "example_key": "example_value",
-            },
-            network_config=gcp.datafusion.InstanceNetworkConfigArgs(
-                network="default",
-                ip_allocation=pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
-            ),
-            accelerators=[gcp.datafusion.InstanceAcceleratorArgs(
-                accelerator_type="CDC",
-                state="ENABLED",
-            )])
-        ```
-        ### Data Fusion Instance Cmek
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        key_ring = gcp.kms.KeyRing("keyRing", location="us-central1")
-        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
-        project = gcp.organizations.get_project()
-        crypto_key_binding = gcp.kms.CryptoKeyIAMBinding("cryptoKeyBinding",
-            crypto_key_id=crypto_key.id,
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            members=[f"serviceAccount:service-{project.number}@gcp-sa-datafusion.iam.gserviceaccount.com"])
-        cmek = gcp.datafusion.Instance("cmek",
-            region="us-central1",
-            type="BASIC",
-            crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArgs(
-                key_reference=crypto_key.id,
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
-        ```
-        ### Data Fusion Instance Enterprise
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        enterprise_instance = gcp.datafusion.Instance("enterpriseInstance",
-            enable_rbac=True,
-            region="us-central1",
-            type="ENTERPRISE")
-        ```
-        ### Data Fusion Instance Event
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        event_topic = gcp.pubsub.Topic("eventTopic")
-        event_instance = gcp.datafusion.Instance("eventInstance",
-            region="us-central1",
-            type="BASIC",
-            event_publish_config=gcp.datafusion.InstanceEventPublishConfigArgs(
-                enabled=True,
-                topic=event_topic.id,
-            ))
-        ```
-        ### Data Fusion Instance Zone
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        zone = gcp.datafusion.Instance("zone",
-            region="us-central1",
-            type="DEVELOPER",
-            zone="us-central1-a")
-        ```
 
         ## Import
 
@@ -1225,108 +1183,6 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
 
         ## Example Usage
-        ### Data Fusion Instance Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic_instance = gcp.datafusion.Instance("basicInstance",
-            region="us-central1",
-            type="BASIC")
-        ```
-        ### Data Fusion Instance Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.appengine.get_default_service_account()
-        network = gcp.compute.Network("network")
-        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
-            address_type="INTERNAL",
-            purpose="VPC_PEERING",
-            prefix_length=22,
-            network=network.id)
-        extended_instance = gcp.datafusion.Instance("extendedInstance",
-            description="My Data Fusion instance",
-            display_name="My Data Fusion instance",
-            region="us-central1",
-            type="BASIC",
-            enable_stackdriver_logging=True,
-            enable_stackdriver_monitoring=True,
-            private_instance=True,
-            dataproc_service_account=default.email,
-            labels={
-                "example_key": "example_value",
-            },
-            network_config=gcp.datafusion.InstanceNetworkConfigArgs(
-                network="default",
-                ip_allocation=pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
-            ),
-            accelerators=[gcp.datafusion.InstanceAcceleratorArgs(
-                accelerator_type="CDC",
-                state="ENABLED",
-            )])
-        ```
-        ### Data Fusion Instance Cmek
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        key_ring = gcp.kms.KeyRing("keyRing", location="us-central1")
-        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
-        project = gcp.organizations.get_project()
-        crypto_key_binding = gcp.kms.CryptoKeyIAMBinding("cryptoKeyBinding",
-            crypto_key_id=crypto_key.id,
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            members=[f"serviceAccount:service-{project.number}@gcp-sa-datafusion.iam.gserviceaccount.com"])
-        cmek = gcp.datafusion.Instance("cmek",
-            region="us-central1",
-            type="BASIC",
-            crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArgs(
-                key_reference=crypto_key.id,
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
-        ```
-        ### Data Fusion Instance Enterprise
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        enterprise_instance = gcp.datafusion.Instance("enterpriseInstance",
-            enable_rbac=True,
-            region="us-central1",
-            type="ENTERPRISE")
-        ```
-        ### Data Fusion Instance Event
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        event_topic = gcp.pubsub.Topic("eventTopic")
-        event_instance = gcp.datafusion.Instance("eventInstance",
-            region="us-central1",
-            type="BASIC",
-            event_publish_config=gcp.datafusion.InstanceEventPublishConfigArgs(
-                enabled=True,
-                topic=event_topic.id,
-            ))
-        ```
-        ### Data Fusion Instance Zone
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        zone = gcp.datafusion.Instance("zone",
-            region="us-central1",
-            type="DEVELOPER",
-            zone="us-central1-a")
-        ```
 
         ## Import
 
@@ -1396,11 +1252,7 @@ class Instance(pulumi.CustomResource):
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
             __props__.__dict__["accelerators"] = accelerators
-            if crypto_key_config is not None and not isinstance(crypto_key_config, InstanceCryptoKeyConfigArgs):
-                crypto_key_config = crypto_key_config or {}
-                def _setter(key, value):
-                    crypto_key_config[key] = value
-                InstanceCryptoKeyConfigArgs._configure(_setter, **crypto_key_config)
+            crypto_key_config = _utilities.configure(crypto_key_config, InstanceCryptoKeyConfigArgs, True)
             __props__.__dict__["crypto_key_config"] = crypto_key_config
             __props__.__dict__["dataproc_service_account"] = dataproc_service_account
             __props__.__dict__["description"] = description
@@ -1408,19 +1260,11 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["enable_rbac"] = enable_rbac
             __props__.__dict__["enable_stackdriver_logging"] = enable_stackdriver_logging
             __props__.__dict__["enable_stackdriver_monitoring"] = enable_stackdriver_monitoring
-            if event_publish_config is not None and not isinstance(event_publish_config, InstanceEventPublishConfigArgs):
-                event_publish_config = event_publish_config or {}
-                def _setter(key, value):
-                    event_publish_config[key] = value
-                InstanceEventPublishConfigArgs._configure(_setter, **event_publish_config)
+            event_publish_config = _utilities.configure(event_publish_config, InstanceEventPublishConfigArgs, True)
             __props__.__dict__["event_publish_config"] = event_publish_config
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
-            if network_config is not None and not isinstance(network_config, InstanceNetworkConfigArgs):
-                network_config = network_config or {}
-                def _setter(key, value):
-                    network_config[key] = value
-                InstanceNetworkConfigArgs._configure(_setter, **network_config)
+            network_config = _utilities.configure(network_config, InstanceNetworkConfigArgs, True)
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["options"] = options
             __props__.__dict__["private_instance"] = private_instance

@@ -55,12 +55,20 @@ class ImageIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             image: pulumi.Input[str],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
+             image: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['ImageIamMemberConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if image is None:
+            raise TypeError("Missing 'image' argument")
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("image", image)
         _setter("member", member)
         _setter("role", role)
@@ -194,7 +202,9 @@ class _ImageIamMemberState:
              member: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -322,103 +332,6 @@ class ImageIamMember(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_compute\\_image\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.imageUser",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.compute.ImageIamPolicy("policy",
-            project=google_compute_image["example"]["project"],
-            image=google_compute_image["example"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.imageUser",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
-        policy = gcp.compute.ImageIamPolicy("policy",
-            project=google_compute_image["example"]["project"],
-            image=google_compute_image["example"]["name"],
-            policy_data=admin.policy_data)
-        ```
-        ## google\\_compute\\_image\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.compute.ImageIamBinding("binding",
-            project=google_compute_image["example"]["project"],
-            image=google_compute_image["example"]["name"],
-            role="roles/compute.imageUser",
-            members=["user:jane@example.com"])
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.compute.ImageIamBinding("binding",
-            project=google_compute_image["example"]["project"],
-            image=google_compute_image["example"]["name"],
-            role="roles/compute.imageUser",
-            members=["user:jane@example.com"],
-            condition=gcp.compute.ImageIamBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-        ## google\\_compute\\_image\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.compute.ImageIamMember("member",
-            project=google_compute_image["example"]["project"],
-            image=google_compute_image["example"]["name"],
-            role="roles/compute.imageUser",
-            member="user:jane@example.com")
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.compute.ImageIamMember("member",
-            project=google_compute_image["example"]["project"],
-            image=google_compute_image["example"]["name"],
-            role="roles/compute.imageUser",
-            member="user:jane@example.com",
-            condition=gcp.compute.ImageIamMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/global/images/{{name}} * {{project}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Compute Engine image IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -489,103 +402,6 @@ class ImageIamMember(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_compute\\_image\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.imageUser",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.compute.ImageIamPolicy("policy",
-            project=google_compute_image["example"]["project"],
-            image=google_compute_image["example"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.imageUser",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
-        policy = gcp.compute.ImageIamPolicy("policy",
-            project=google_compute_image["example"]["project"],
-            image=google_compute_image["example"]["name"],
-            policy_data=admin.policy_data)
-        ```
-        ## google\\_compute\\_image\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.compute.ImageIamBinding("binding",
-            project=google_compute_image["example"]["project"],
-            image=google_compute_image["example"]["name"],
-            role="roles/compute.imageUser",
-            members=["user:jane@example.com"])
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.compute.ImageIamBinding("binding",
-            project=google_compute_image["example"]["project"],
-            image=google_compute_image["example"]["name"],
-            role="roles/compute.imageUser",
-            members=["user:jane@example.com"],
-            condition=gcp.compute.ImageIamBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-        ## google\\_compute\\_image\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.compute.ImageIamMember("member",
-            project=google_compute_image["example"]["project"],
-            image=google_compute_image["example"]["name"],
-            role="roles/compute.imageUser",
-            member="user:jane@example.com")
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.compute.ImageIamMember("member",
-            project=google_compute_image["example"]["project"],
-            image=google_compute_image["example"]["name"],
-            role="roles/compute.imageUser",
-            member="user:jane@example.com",
-            condition=gcp.compute.ImageIamMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/global/images/{{name}} * {{project}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Compute Engine image IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -643,11 +459,7 @@ class ImageIamMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ImageIamMemberArgs.__new__(ImageIamMemberArgs)
 
-            if condition is not None and not isinstance(condition, ImageIamMemberConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                ImageIamMemberConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, ImageIamMemberConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if image is None and not opts.urn:
                 raise TypeError("Missing required property 'image'")

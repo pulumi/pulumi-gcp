@@ -73,7 +73,19 @@ class NodeTemplateArgs:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              server_binding: Optional[pulumi.Input['NodeTemplateServerBindingArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cpu_overcommit_type is None and 'cpuOvercommitType' in kwargs:
+            cpu_overcommit_type = kwargs['cpuOvercommitType']
+        if node_affinity_labels is None and 'nodeAffinityLabels' in kwargs:
+            node_affinity_labels = kwargs['nodeAffinityLabels']
+        if node_type is None and 'nodeType' in kwargs:
+            node_type = kwargs['nodeType']
+        if node_type_flexibility is None and 'nodeTypeFlexibility' in kwargs:
+            node_type_flexibility = kwargs['nodeTypeFlexibility']
+        if server_binding is None and 'serverBinding' in kwargs:
+            server_binding = kwargs['serverBinding']
+
         if cpu_overcommit_type is not None:
             _setter("cpu_overcommit_type", cpu_overcommit_type)
         if description is not None:
@@ -282,7 +294,23 @@ class _NodeTemplateState:
              region: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              server_binding: Optional[pulumi.Input['NodeTemplateServerBindingArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cpu_overcommit_type is None and 'cpuOvercommitType' in kwargs:
+            cpu_overcommit_type = kwargs['cpuOvercommitType']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if node_affinity_labels is None and 'nodeAffinityLabels' in kwargs:
+            node_affinity_labels = kwargs['nodeAffinityLabels']
+        if node_type is None and 'nodeType' in kwargs:
+            node_type = kwargs['nodeType']
+        if node_type_flexibility is None and 'nodeTypeFlexibility' in kwargs:
+            node_type_flexibility = kwargs['nodeTypeFlexibility']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if server_binding is None and 'serverBinding' in kwargs:
+            server_binding = kwargs['serverBinding']
+
         if cpu_overcommit_type is not None:
             _setter("cpu_overcommit_type", cpu_overcommit_type)
         if creation_timestamp is not None:
@@ -478,33 +506,6 @@ class NodeTemplate(pulumi.CustomResource):
             * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
 
         ## Example Usage
-        ### Node Template Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        template = gcp.compute.NodeTemplate("template",
-            node_type="n1-node-96-624",
-            region="us-central1")
-        ```
-        ### Node Template Server Binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        central1a = gcp.compute.get_node_types(zone="us-central1-a")
-        template = gcp.compute.NodeTemplate("template",
-            node_affinity_labels={
-                "foo": "baz",
-            },
-            node_type="n1-node-96-624",
-            region="us-central1",
-            server_binding=gcp.compute.NodeTemplateServerBindingArgs(
-                type="RESTART_NODE_ON_MINIMAL_SERVERS",
-            ))
-        ```
 
         ## Import
 
@@ -568,33 +569,6 @@ class NodeTemplate(pulumi.CustomResource):
             * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
 
         ## Example Usage
-        ### Node Template Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        template = gcp.compute.NodeTemplate("template",
-            node_type="n1-node-96-624",
-            region="us-central1")
-        ```
-        ### Node Template Server Binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        central1a = gcp.compute.get_node_types(zone="us-central1-a")
-        template = gcp.compute.NodeTemplate("template",
-            node_affinity_labels={
-                "foo": "baz",
-            },
-            node_type="n1-node-96-624",
-            region="us-central1",
-            server_binding=gcp.compute.NodeTemplateServerBindingArgs(
-                type="RESTART_NODE_ON_MINIMAL_SERVERS",
-            ))
-        ```
 
         ## Import
 
@@ -658,19 +632,11 @@ class NodeTemplate(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["node_affinity_labels"] = node_affinity_labels
             __props__.__dict__["node_type"] = node_type
-            if node_type_flexibility is not None and not isinstance(node_type_flexibility, NodeTemplateNodeTypeFlexibilityArgs):
-                node_type_flexibility = node_type_flexibility or {}
-                def _setter(key, value):
-                    node_type_flexibility[key] = value
-                NodeTemplateNodeTypeFlexibilityArgs._configure(_setter, **node_type_flexibility)
+            node_type_flexibility = _utilities.configure(node_type_flexibility, NodeTemplateNodeTypeFlexibilityArgs, True)
             __props__.__dict__["node_type_flexibility"] = node_type_flexibility
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
-            if server_binding is not None and not isinstance(server_binding, NodeTemplateServerBindingArgs):
-                server_binding = server_binding or {}
-                def _setter(key, value):
-                    server_binding[key] = value
-                NodeTemplateServerBindingArgs._configure(_setter, **server_binding)
+            server_binding = _utilities.configure(server_binding, NodeTemplateServerBindingArgs, True)
             __props__.__dict__["server_binding"] = server_binding
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["self_link"] = None

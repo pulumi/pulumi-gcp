@@ -6,56 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
- * ### Org Policy Custom Constraint Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const constraint = new gcp.orgpolicy.CustomConstraint("constraint", {
- *     parent: "organizations/123456789",
- *     actionType: "ALLOW",
- *     condition: "resource.management.autoUpgrade == false",
- *     methodTypes: [
- *         "CREATE",
- *         "UPDATE",
- *     ],
- *     resourceTypes: ["container.googleapis.com/NodePool"],
- * }, {
- *     provider: google_beta,
- * });
- * ```
- * ### Org Policy Custom Constraint Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const constraint = new gcp.orgpolicy.CustomConstraint("constraint", {
- *     parent: "organizations/123456789",
- *     displayName: "Disable GKE auto upgrade",
- *     description: "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
- *     actionType: "ALLOW",
- *     condition: "resource.management.autoUpgrade == false",
- *     methodTypes: [
- *         "CREATE",
- *         "UPDATE",
- *     ],
- *     resourceTypes: ["container.googleapis.com/NodePool"],
- * }, {
- *     provider: google_beta,
- * });
- * const bool = new gcp.orgpolicy.Policy("bool", {
- *     parent: "organizations/123456789",
- *     spec: {
- *         rules: [{
- *             enforce: "TRUE",
- *         }],
- *     },
- * }, {
- *     provider: google_beta,
- * });
- * ```
  *
  * ## Import
  *

@@ -49,11 +49,21 @@ class FhirStoreIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             fhir_store_id: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
+             fhir_store_id: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['FhirStoreIamBindingConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if fhir_store_id is None and 'fhirStoreId' in kwargs:
+            fhir_store_id = kwargs['fhirStoreId']
+        if fhir_store_id is None:
+            raise TypeError("Missing 'fhir_store_id' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("fhir_store_id", fhir_store_id)
         _setter("members", members)
         _setter("role", role)
@@ -161,7 +171,11 @@ class _FhirStoreIamBindingState:
              fhir_store_id: Optional[pulumi.Input[str]] = None,
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if fhir_store_id is None and 'fhirStoreId' in kwargs:
+            fhir_store_id = kwargs['fhirStoreId']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -263,45 +277,6 @@ class FhirStoreIamBinding(pulumi.CustomResource):
 
         > **Note:** `healthcare.FhirStoreIamBinding` resources **can be** used in conjunction with `healthcare.FhirStoreIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_healthcare\\_fhir\\_store\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
-        fhir_store = gcp.healthcare.FhirStoreIamPolicy("fhirStore",
-            fhir_store_id="your-fhir-store-id",
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_healthcare\\_fhir\\_store\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        fhir_store = gcp.healthcare.FhirStoreIamBinding("fhirStore",
-            fhir_store_id="your-fhir-store-id",
-            members=["user:jane@example.com"],
-            role="roles/editor")
-        ```
-
-        ## google\\_healthcare\\_fhir\\_store\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        fhir_store = gcp.healthcare.FhirStoreIamMember("fhirStore",
-            fhir_store_id="your-fhir-store-id",
-            member="user:jane@example.com",
-            role="roles/editor")
-        ```
-
         ## Import
 
         IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
@@ -364,45 +339,6 @@ class FhirStoreIamBinding(pulumi.CustomResource):
 
         > **Note:** `healthcare.FhirStoreIamBinding` resources **can be** used in conjunction with `healthcare.FhirStoreIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_healthcare\\_fhir\\_store\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
-        fhir_store = gcp.healthcare.FhirStoreIamPolicy("fhirStore",
-            fhir_store_id="your-fhir-store-id",
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_healthcare\\_fhir\\_store\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        fhir_store = gcp.healthcare.FhirStoreIamBinding("fhirStore",
-            fhir_store_id="your-fhir-store-id",
-            members=["user:jane@example.com"],
-            role="roles/editor")
-        ```
-
-        ## google\\_healthcare\\_fhir\\_store\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        fhir_store = gcp.healthcare.FhirStoreIamMember("fhirStore",
-            fhir_store_id="your-fhir-store-id",
-            member="user:jane@example.com",
-            role="roles/editor")
-        ```
-
         ## Import
 
         IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
@@ -461,11 +397,7 @@ class FhirStoreIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FhirStoreIamBindingArgs.__new__(FhirStoreIamBindingArgs)
 
-            if condition is not None and not isinstance(condition, FhirStoreIamBindingConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                FhirStoreIamBindingConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, FhirStoreIamBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if fhir_store_id is None and not opts.urn:
                 raise TypeError("Missing required property 'fhir_store_id'")

@@ -21,16 +21,6 @@ namespace Pulumi.Gcp.Container.Inputs
         /// Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
         /// 
         /// Examples:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// </summary>
         [Input("scope", required: true)]
         public Input<string> Scope { get; set; } = null!;

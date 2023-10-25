@@ -42,9 +42,19 @@ class DicomStoreIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dicom_store_id: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             dicom_store_id: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dicom_store_id is None and 'dicomStoreId' in kwargs:
+            dicom_store_id = kwargs['dicomStoreId']
+        if dicom_store_id is None:
+            raise TypeError("Missing 'dicom_store_id' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("dicom_store_id", dicom_store_id)
         _setter("policy_data", policy_data)
 
@@ -123,7 +133,13 @@ class _DicomStoreIamPolicyState:
              dicom_store_id: Optional[pulumi.Input[str]] = None,
              etag: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dicom_store_id is None and 'dicomStoreId' in kwargs:
+            dicom_store_id = kwargs['dicomStoreId']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if dicom_store_id is not None:
             _setter("dicom_store_id", dicom_store_id)
         if etag is not None:
@@ -200,45 +216,6 @@ class DicomStoreIamPolicy(pulumi.CustomResource):
 
         > **Note:** `healthcare.DicomStoreIamBinding` resources **can be** used in conjunction with `healthcare.DicomStoreIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_healthcare\\_dicom\\_store\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
-        dicom_store = gcp.healthcare.DicomStoreIamPolicy("dicomStore",
-            dicom_store_id="your-dicom-store-id",
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_healthcare\\_dicom\\_store\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dicom_store = gcp.healthcare.DicomStoreIamBinding("dicomStore",
-            dicom_store_id="your-dicom-store-id",
-            members=["user:jane@example.com"],
-            role="roles/editor")
-        ```
-
-        ## google\\_healthcare\\_dicom\\_store\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dicom_store = gcp.healthcare.DicomStoreIamMember("dicomStore",
-            dicom_store_id="your-dicom-store-id",
-            member="user:jane@example.com",
-            role="roles/editor")
-        ```
-
         ## Import
 
         IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
@@ -299,45 +276,6 @@ class DicomStoreIamPolicy(pulumi.CustomResource):
         > **Note:** `healthcare.DicomStoreIamPolicy` **cannot** be used in conjunction with `healthcare.DicomStoreIamBinding` and `healthcare.DicomStoreIamMember` or they will fight over what your policy should be.
 
         > **Note:** `healthcare.DicomStoreIamBinding` resources **can be** used in conjunction with `healthcare.DicomStoreIamMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\\_healthcare\\_dicom\\_store\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
-        dicom_store = gcp.healthcare.DicomStoreIamPolicy("dicomStore",
-            dicom_store_id="your-dicom-store-id",
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_healthcare\\_dicom\\_store\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dicom_store = gcp.healthcare.DicomStoreIamBinding("dicomStore",
-            dicom_store_id="your-dicom-store-id",
-            members=["user:jane@example.com"],
-            role="roles/editor")
-        ```
-
-        ## google\\_healthcare\\_dicom\\_store\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dicom_store = gcp.healthcare.DicomStoreIamMember("dicomStore",
-            dicom_store_id="your-dicom-store-id",
-            member="user:jane@example.com",
-            role="roles/editor")
-        ```
 
         ## Import
 

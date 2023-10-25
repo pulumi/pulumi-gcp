@@ -103,15 +103,6 @@ def get_entry_group_iam_policy(entry_group: Optional[str] = None,
     """
     Retrieves the current IAM policy data for entrygroup
 
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.datacatalog.get_entry_group_iam_policy(entry_group=google_data_catalog_entry_group["basic_entry_group"]["name"])
-    ```
-
 
     :param str entry_group: Used to find the parent resource to bind the IAM policy to
     :param str project: The ID of the project in which the resource belongs.
@@ -140,15 +131,6 @@ def get_entry_group_iam_policy_output(entry_group: Optional[pulumi.Input[str]] =
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEntryGroupIamPolicyResult]:
     """
     Retrieves the current IAM policy data for entrygroup
-
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.datacatalog.get_entry_group_iam_policy(entry_group=google_data_catalog_entry_group["basic_entry_group"]["name"])
-    ```
 
 
     :param str entry_group: Used to find the parent resource to bind the IAM policy to

@@ -37,11 +37,21 @@ class BucketACLArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: pulumi.Input[str],
+             bucket: Optional[pulumi.Input[str]] = None,
              default_acl: Optional[pulumi.Input[str]] = None,
              predefined_acl: Optional[pulumi.Input[str]] = None,
              role_entities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if default_acl is None and 'defaultAcl' in kwargs:
+            default_acl = kwargs['defaultAcl']
+        if predefined_acl is None and 'predefinedAcl' in kwargs:
+            predefined_acl = kwargs['predefinedAcl']
+        if role_entities is None and 'roleEntities' in kwargs:
+            role_entities = kwargs['roleEntities']
+
         _setter("bucket", bucket)
         if default_acl is not None:
             _setter("default_acl", default_acl)
@@ -131,7 +141,15 @@ class _BucketACLState:
              default_acl: Optional[pulumi.Input[str]] = None,
              predefined_acl: Optional[pulumi.Input[str]] = None,
              role_entities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if default_acl is None and 'defaultAcl' in kwargs:
+            default_acl = kwargs['defaultAcl']
+        if predefined_acl is None and 'predefinedAcl' in kwargs:
+            predefined_acl = kwargs['predefinedAcl']
+        if role_entities is None and 'roleEntities' in kwargs:
+            role_entities = kwargs['roleEntities']
+
         if bucket is not None:
             _setter("bucket", bucket)
         if default_acl is not None:
@@ -214,23 +232,6 @@ class BucketACL(pulumi.CustomResource):
 
         **NOTE** This resource will not remove the `project-owners-<project_id>` entity from the `OWNER` role.
 
-        ## Example Usage
-
-        Example creating an ACL on a bucket with one owner, and one reader.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        image_store = gcp.storage.Bucket("image-store", location="EU")
-        image_store_acl = gcp.storage.BucketACL("image-store-acl",
-            bucket=image_store.name,
-            role_entities=[
-                "OWNER:user-my.email@gmail.com",
-                "READER:group-mygroup",
-            ])
-        ```
-
         ## Import
 
         This resource does not support import.
@@ -261,23 +262,6 @@ class BucketACL(pulumi.CustomResource):
         Permissions can be granted either by ACLs or Cloud IAM policies. In general, permissions granted by Cloud IAM policies do not appear in ACLs, and permissions granted by ACLs do not appear in Cloud IAM policies. The only exception is for ACLs applied directly on a bucket and certain bucket-level Cloud IAM policies, as described in [Cloud IAM relation to ACLs](https://cloud.google.com/storage/docs/access-control/iam#acls).
 
         **NOTE** This resource will not remove the `project-owners-<project_id>` entity from the `OWNER` role.
-
-        ## Example Usage
-
-        Example creating an ACL on a bucket with one owner, and one reader.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        image_store = gcp.storage.Bucket("image-store", location="EU")
-        image_store_acl = gcp.storage.BucketACL("image-store-acl",
-            bucket=image_store.name,
-            role_entities=[
-                "OWNER:user-my.email@gmail.com",
-                "READER:group-mygroup",
-            ])
-        ```
 
         ## Import
 

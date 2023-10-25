@@ -131,11 +131,23 @@ class DatabaseInstanceClone(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             source_instance_name: str,
+             source_instance_name: Optional[str] = None,
              allocated_ip_range: Optional[str] = None,
              database_names: Optional[Sequence[str]] = None,
              point_in_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if source_instance_name is None and 'sourceInstanceName' in kwargs:
+            source_instance_name = kwargs['sourceInstanceName']
+        if source_instance_name is None:
+            raise TypeError("Missing 'source_instance_name' argument")
+        if allocated_ip_range is None and 'allocatedIpRange' in kwargs:
+            allocated_ip_range = kwargs['allocatedIpRange']
+        if database_names is None and 'databaseNames' in kwargs:
+            database_names = kwargs['databaseNames']
+        if point_in_time is None and 'pointInTime' in kwargs:
+            point_in_time = kwargs['pointInTime']
+
         _setter("source_instance_name", source_instance_name)
         if allocated_ip_range is not None:
             _setter("allocated_ip_range", allocated_ip_range)
@@ -216,7 +228,13 @@ class DatabaseInstanceIpAddress(dict):
              ip_address: Optional[str] = None,
              time_to_retire: Optional[str] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if time_to_retire is None and 'timeToRetire' in kwargs:
+            time_to_retire = kwargs['timeToRetire']
+
         if ip_address is not None:
             _setter("ip_address", ip_address)
         if time_to_retire is not None:
@@ -338,7 +356,27 @@ class DatabaseInstanceReplicaConfiguration(dict):
              ssl_cipher: Optional[str] = None,
              username: Optional[str] = None,
              verify_server_certificate: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ca_certificate is None and 'caCertificate' in kwargs:
+            ca_certificate = kwargs['caCertificate']
+        if client_certificate is None and 'clientCertificate' in kwargs:
+            client_certificate = kwargs['clientCertificate']
+        if client_key is None and 'clientKey' in kwargs:
+            client_key = kwargs['clientKey']
+        if connect_retry_interval is None and 'connectRetryInterval' in kwargs:
+            connect_retry_interval = kwargs['connectRetryInterval']
+        if dump_file_path is None and 'dumpFilePath' in kwargs:
+            dump_file_path = kwargs['dumpFilePath']
+        if failover_target is None and 'failoverTarget' in kwargs:
+            failover_target = kwargs['failoverTarget']
+        if master_heartbeat_period is None and 'masterHeartbeatPeriod' in kwargs:
+            master_heartbeat_period = kwargs['masterHeartbeatPeriod']
+        if ssl_cipher is None and 'sslCipher' in kwargs:
+            ssl_cipher = kwargs['sslCipher']
+        if verify_server_certificate is None and 'verifyServerCertificate' in kwargs:
+            verify_server_certificate = kwargs['verifyServerCertificate']
+
         if ca_certificate is not None:
             _setter("ca_certificate", ca_certificate)
         if client_certificate is not None:
@@ -499,10 +537,18 @@ class DatabaseInstanceRestoreBackupContext(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backup_run_id: int,
+             backup_run_id: Optional[int] = None,
              instance_id: Optional[str] = None,
              project: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if backup_run_id is None and 'backupRunId' in kwargs:
+            backup_run_id = kwargs['backupRunId']
+        if backup_run_id is None:
+            raise TypeError("Missing 'backup_run_id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("backup_run_id", backup_run_id)
         if instance_id is not None:
             _setter("instance_id", instance_id)
@@ -586,7 +632,17 @@ class DatabaseInstanceServerCaCert(dict):
              create_time: Optional[str] = None,
              expiration_time: Optional[str] = None,
              sha1_fingerprint: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if common_name is None and 'commonName' in kwargs:
+            common_name = kwargs['commonName']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if expiration_time is None and 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+        if sha1_fingerprint is None and 'sha1Fingerprint' in kwargs:
+            sha1_fingerprint = kwargs['sha1Fingerprint']
+
         if cert is not None:
             _setter("cert", cert)
         if common_name is not None:
@@ -775,7 +831,7 @@ class DatabaseInstanceSettings(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             tier: str,
+             tier: Optional[str] = None,
              activation_policy: Optional[str] = None,
              active_directory_config: Optional['outputs.DatabaseInstanceSettingsActiveDirectoryConfig'] = None,
              advanced_machine_features: Optional['outputs.DatabaseInstanceSettingsAdvancedMachineFeatures'] = None,
@@ -802,7 +858,57 @@ class DatabaseInstanceSettings(dict):
              time_zone: Optional[str] = None,
              user_labels: Optional[Mapping[str, str]] = None,
              version: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if tier is None:
+            raise TypeError("Missing 'tier' argument")
+        if activation_policy is None and 'activationPolicy' in kwargs:
+            activation_policy = kwargs['activationPolicy']
+        if active_directory_config is None and 'activeDirectoryConfig' in kwargs:
+            active_directory_config = kwargs['activeDirectoryConfig']
+        if advanced_machine_features is None and 'advancedMachineFeatures' in kwargs:
+            advanced_machine_features = kwargs['advancedMachineFeatures']
+        if availability_type is None and 'availabilityType' in kwargs:
+            availability_type = kwargs['availabilityType']
+        if backup_configuration is None and 'backupConfiguration' in kwargs:
+            backup_configuration = kwargs['backupConfiguration']
+        if connector_enforcement is None and 'connectorEnforcement' in kwargs:
+            connector_enforcement = kwargs['connectorEnforcement']
+        if data_cache_config is None and 'dataCacheConfig' in kwargs:
+            data_cache_config = kwargs['dataCacheConfig']
+        if database_flags is None and 'databaseFlags' in kwargs:
+            database_flags = kwargs['databaseFlags']
+        if deletion_protection_enabled is None and 'deletionProtectionEnabled' in kwargs:
+            deletion_protection_enabled = kwargs['deletionProtectionEnabled']
+        if deny_maintenance_period is None and 'denyMaintenancePeriod' in kwargs:
+            deny_maintenance_period = kwargs['denyMaintenancePeriod']
+        if disk_autoresize is None and 'diskAutoresize' in kwargs:
+            disk_autoresize = kwargs['diskAutoresize']
+        if disk_autoresize_limit is None and 'diskAutoresizeLimit' in kwargs:
+            disk_autoresize_limit = kwargs['diskAutoresizeLimit']
+        if disk_size is None and 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if disk_type is None and 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if insights_config is None and 'insightsConfig' in kwargs:
+            insights_config = kwargs['insightsConfig']
+        if ip_configuration is None and 'ipConfiguration' in kwargs:
+            ip_configuration = kwargs['ipConfiguration']
+        if location_preference is None and 'locationPreference' in kwargs:
+            location_preference = kwargs['locationPreference']
+        if maintenance_window is None and 'maintenanceWindow' in kwargs:
+            maintenance_window = kwargs['maintenanceWindow']
+        if password_validation_policy is None and 'passwordValidationPolicy' in kwargs:
+            password_validation_policy = kwargs['passwordValidationPolicy']
+        if pricing_plan is None and 'pricingPlan' in kwargs:
+            pricing_plan = kwargs['pricingPlan']
+        if sql_server_audit_config is None and 'sqlServerAuditConfig' in kwargs:
+            sql_server_audit_config = kwargs['sqlServerAuditConfig']
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+        if user_labels is None and 'userLabels' in kwargs:
+            user_labels = kwargs['userLabels']
+
         _setter("tier", tier)
         if activation_policy is not None:
             _setter("activation_policy", activation_policy)
@@ -1055,8 +1161,12 @@ class DatabaseInstanceSettingsActiveDirectoryConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             domain: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+
         _setter("domain", domain)
 
     @property
@@ -1101,7 +1211,11 @@ class DatabaseInstanceSettingsAdvancedMachineFeatures(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              threads_per_core: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if threads_per_core is None and 'threadsPerCore' in kwargs:
+            threads_per_core = kwargs['threadsPerCore']
+
         if threads_per_core is not None:
             _setter("threads_per_core", threads_per_core)
 
@@ -1180,7 +1294,19 @@ class DatabaseInstanceSettingsBackupConfiguration(dict):
              point_in_time_recovery_enabled: Optional[bool] = None,
              start_time: Optional[str] = None,
              transaction_log_retention_days: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if backup_retention_settings is None and 'backupRetentionSettings' in kwargs:
+            backup_retention_settings = kwargs['backupRetentionSettings']
+        if binary_log_enabled is None and 'binaryLogEnabled' in kwargs:
+            binary_log_enabled = kwargs['binaryLogEnabled']
+        if point_in_time_recovery_enabled is None and 'pointInTimeRecoveryEnabled' in kwargs:
+            point_in_time_recovery_enabled = kwargs['pointInTimeRecoveryEnabled']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if transaction_log_retention_days is None and 'transactionLogRetentionDays' in kwargs:
+            transaction_log_retention_days = kwargs['transactionLogRetentionDays']
+
         if backup_retention_settings is not None:
             _setter("backup_retention_settings", backup_retention_settings)
         if binary_log_enabled is not None:
@@ -1292,9 +1418,17 @@ class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             retained_backups: int,
+             retained_backups: Optional[int] = None,
              retention_unit: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if retained_backups is None and 'retainedBackups' in kwargs:
+            retained_backups = kwargs['retainedBackups']
+        if retained_backups is None:
+            raise TypeError("Missing 'retained_backups' argument")
+        if retention_unit is None and 'retentionUnit' in kwargs:
+            retention_unit = kwargs['retentionUnit']
+
         _setter("retained_backups", retained_backups)
         if retention_unit is not None:
             _setter("retention_unit", retention_unit)
@@ -1350,7 +1484,11 @@ class DatabaseInstanceSettingsDataCacheConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              data_cache_enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if data_cache_enabled is None and 'dataCacheEnabled' in kwargs:
+            data_cache_enabled = kwargs['dataCacheEnabled']
+
         if data_cache_enabled is not None:
             _setter("data_cache_enabled", data_cache_enabled)
 
@@ -1381,9 +1519,15 @@ class DatabaseInstanceSettingsDatabaseFlag(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("name", name)
         _setter("value", value)
 
@@ -1443,10 +1587,22 @@ class DatabaseInstanceSettingsDenyMaintenancePeriod(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             end_date: str,
-             start_date: str,
-             time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             end_date: Optional[str] = None,
+             start_date: Optional[str] = None,
+             time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if end_date is None and 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+        if end_date is None:
+            raise TypeError("Missing 'end_date' argument")
+        if start_date is None and 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+        if start_date is None:
+            raise TypeError("Missing 'start_date' argument")
+        if time is None:
+            raise TypeError("Missing 'time' argument")
+
         _setter("end_date", end_date)
         _setter("start_date", start_date)
         _setter("time", time)
@@ -1534,7 +1690,19 @@ class DatabaseInstanceSettingsInsightsConfig(dict):
              query_string_length: Optional[int] = None,
              record_application_tags: Optional[bool] = None,
              record_client_address: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if query_insights_enabled is None and 'queryInsightsEnabled' in kwargs:
+            query_insights_enabled = kwargs['queryInsightsEnabled']
+        if query_plans_per_minute is None and 'queryPlansPerMinute' in kwargs:
+            query_plans_per_minute = kwargs['queryPlansPerMinute']
+        if query_string_length is None and 'queryStringLength' in kwargs:
+            query_string_length = kwargs['queryStringLength']
+        if record_application_tags is None and 'recordApplicationTags' in kwargs:
+            record_application_tags = kwargs['recordApplicationTags']
+        if record_client_address is None and 'recordClientAddress' in kwargs:
+            record_client_address = kwargs['recordClientAddress']
+
         if query_insights_enabled is not None:
             _setter("query_insights_enabled", query_insights_enabled)
         if query_plans_per_minute is not None:
@@ -1661,7 +1829,23 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
              private_network: Optional[str] = None,
              psc_configs: Optional[Sequence['outputs.DatabaseInstanceSettingsIpConfigurationPscConfig']] = None,
              require_ssl: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allocated_ip_range is None and 'allocatedIpRange' in kwargs:
+            allocated_ip_range = kwargs['allocatedIpRange']
+        if authorized_networks is None and 'authorizedNetworks' in kwargs:
+            authorized_networks = kwargs['authorizedNetworks']
+        if enable_private_path_for_google_cloud_services is None and 'enablePrivatePathForGoogleCloudServices' in kwargs:
+            enable_private_path_for_google_cloud_services = kwargs['enablePrivatePathForGoogleCloudServices']
+        if ipv4_enabled is None and 'ipv4Enabled' in kwargs:
+            ipv4_enabled = kwargs['ipv4Enabled']
+        if private_network is None and 'privateNetwork' in kwargs:
+            private_network = kwargs['privateNetwork']
+        if psc_configs is None and 'pscConfigs' in kwargs:
+            psc_configs = kwargs['pscConfigs']
+        if require_ssl is None and 'requireSsl' in kwargs:
+            require_ssl = kwargs['requireSsl']
+
         if allocated_ip_range is not None:
             _setter("allocated_ip_range", allocated_ip_range)
         if authorized_networks is not None:
@@ -1774,10 +1958,16 @@ class DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             value: str,
+             value: Optional[str] = None,
              expiration_time: Optional[str] = None,
              name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if expiration_time is None and 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+
         _setter("value", value)
         if expiration_time is not None:
             _setter("expiration_time", expiration_time)
@@ -1850,7 +2040,13 @@ class DatabaseInstanceSettingsIpConfigurationPscConfig(dict):
              _setter: Callable[[Any, Any], None],
              allowed_consumer_projects: Optional[Sequence[str]] = None,
              psc_enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allowed_consumer_projects is None and 'allowedConsumerProjects' in kwargs:
+            allowed_consumer_projects = kwargs['allowedConsumerProjects']
+        if psc_enabled is None and 'pscEnabled' in kwargs:
+            psc_enabled = kwargs['pscEnabled']
+
         if allowed_consumer_projects is not None:
             _setter("allowed_consumer_projects", allowed_consumer_projects)
         if psc_enabled is not None:
@@ -1921,7 +2117,13 @@ class DatabaseInstanceSettingsLocationPreference(dict):
              follow_gae_application: Optional[str] = None,
              secondary_zone: Optional[str] = None,
              zone: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if follow_gae_application is None and 'followGaeApplication' in kwargs:
+            follow_gae_application = kwargs['followGaeApplication']
+        if secondary_zone is None and 'secondaryZone' in kwargs:
+            secondary_zone = kwargs['secondaryZone']
+
         if follow_gae_application is not None:
             _setter("follow_gae_application", follow_gae_application)
         if secondary_zone is not None:
@@ -2003,7 +2205,11 @@ class DatabaseInstanceSettingsMaintenanceWindow(dict):
              day: Optional[int] = None,
              hour: Optional[int] = None,
              update_track: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if update_track is None and 'updateTrack' in kwargs:
+            update_track = kwargs['updateTrack']
+
         if day is not None:
             _setter("day", day)
         if hour is not None:
@@ -2096,13 +2302,27 @@ class DatabaseInstanceSettingsPasswordValidationPolicy(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enable_password_policy: bool,
+             enable_password_policy: Optional[bool] = None,
              complexity: Optional[str] = None,
              disallow_username_substring: Optional[bool] = None,
              min_length: Optional[int] = None,
              password_change_interval: Optional[str] = None,
              reuse_interval: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enable_password_policy is None and 'enablePasswordPolicy' in kwargs:
+            enable_password_policy = kwargs['enablePasswordPolicy']
+        if enable_password_policy is None:
+            raise TypeError("Missing 'enable_password_policy' argument")
+        if disallow_username_substring is None and 'disallowUsernameSubstring' in kwargs:
+            disallow_username_substring = kwargs['disallowUsernameSubstring']
+        if min_length is None and 'minLength' in kwargs:
+            min_length = kwargs['minLength']
+        if password_change_interval is None and 'passwordChangeInterval' in kwargs:
+            password_change_interval = kwargs['passwordChangeInterval']
+        if reuse_interval is None and 'reuseInterval' in kwargs:
+            reuse_interval = kwargs['reuseInterval']
+
         _setter("enable_password_policy", enable_password_policy)
         if complexity is not None:
             _setter("complexity", complexity)
@@ -2209,7 +2429,13 @@ class DatabaseInstanceSettingsSqlServerAuditConfig(dict):
              bucket: Optional[str] = None,
              retention_interval: Optional[str] = None,
              upload_interval: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if retention_interval is None and 'retentionInterval' in kwargs:
+            retention_interval = kwargs['retentionInterval']
+        if upload_interval is None and 'uploadInterval' in kwargs:
+            upload_interval = kwargs['uploadInterval']
+
         if bucket is not None:
             _setter("bucket", bucket)
         if retention_interval is not None:
@@ -2295,7 +2521,17 @@ class UserPasswordPolicy(dict):
              enable_password_verification: Optional[bool] = None,
              password_expiration_duration: Optional[str] = None,
              statuses: Optional[Sequence['outputs.UserPasswordPolicyStatus']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allowed_failed_attempts is None and 'allowedFailedAttempts' in kwargs:
+            allowed_failed_attempts = kwargs['allowedFailedAttempts']
+        if enable_failed_attempts_check is None and 'enableFailedAttemptsCheck' in kwargs:
+            enable_failed_attempts_check = kwargs['enableFailedAttemptsCheck']
+        if enable_password_verification is None and 'enablePasswordVerification' in kwargs:
+            enable_password_verification = kwargs['enablePasswordVerification']
+        if password_expiration_duration is None and 'passwordExpirationDuration' in kwargs:
+            password_expiration_duration = kwargs['passwordExpirationDuration']
+
         if allowed_failed_attempts is not None:
             _setter("allowed_failed_attempts", allowed_failed_attempts)
         if enable_failed_attempts_check is not None:
@@ -2381,7 +2617,11 @@ class UserPasswordPolicyStatus(dict):
              _setter: Callable[[Any, Any], None],
              locked: Optional[bool] = None,
              password_expiration_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if password_expiration_time is None and 'passwordExpirationTime' in kwargs:
+            password_expiration_time = kwargs['passwordExpirationTime']
+
         if locked is not None:
             _setter("locked", locked)
         if password_expiration_time is not None:
@@ -2436,7 +2676,11 @@ class UserSqlServerUserDetail(dict):
              _setter: Callable[[Any, Any], None],
              disabled: Optional[bool] = None,
              server_roles: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if server_roles is None and 'serverRoles' in kwargs:
+            server_roles = kwargs['serverRoles']
+
         if disabled is not None:
             _setter("disabled", disabled)
         if server_roles is not None:
@@ -2479,12 +2723,32 @@ class GetCaCertsCertResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cert: str,
-             common_name: str,
-             create_time: str,
-             expiration_time: str,
-             sha1_fingerprint: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             cert: Optional[str] = None,
+             common_name: Optional[str] = None,
+             create_time: Optional[str] = None,
+             expiration_time: Optional[str] = None,
+             sha1_fingerprint: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cert is None:
+            raise TypeError("Missing 'cert' argument")
+        if common_name is None and 'commonName' in kwargs:
+            common_name = kwargs['commonName']
+        if common_name is None:
+            raise TypeError("Missing 'common_name' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if expiration_time is None and 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+        if expiration_time is None:
+            raise TypeError("Missing 'expiration_time' argument")
+        if sha1_fingerprint is None and 'sha1Fingerprint' in kwargs:
+            sha1_fingerprint = kwargs['sha1Fingerprint']
+        if sha1_fingerprint is None:
+            raise TypeError("Missing 'sha1_fingerprint' argument")
+
         _setter("cert", cert)
         _setter("common_name", common_name)
         _setter("create_time", create_time)
@@ -2549,11 +2813,29 @@ class GetDatabaseInstanceCloneResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allocated_ip_range: str,
-             database_names: Sequence[str],
-             point_in_time: str,
-             source_instance_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             allocated_ip_range: Optional[str] = None,
+             database_names: Optional[Sequence[str]] = None,
+             point_in_time: Optional[str] = None,
+             source_instance_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allocated_ip_range is None and 'allocatedIpRange' in kwargs:
+            allocated_ip_range = kwargs['allocatedIpRange']
+        if allocated_ip_range is None:
+            raise TypeError("Missing 'allocated_ip_range' argument")
+        if database_names is None and 'databaseNames' in kwargs:
+            database_names = kwargs['databaseNames']
+        if database_names is None:
+            raise TypeError("Missing 'database_names' argument")
+        if point_in_time is None and 'pointInTime' in kwargs:
+            point_in_time = kwargs['pointInTime']
+        if point_in_time is None:
+            raise TypeError("Missing 'point_in_time' argument")
+        if source_instance_name is None and 'sourceInstanceName' in kwargs:
+            source_instance_name = kwargs['sourceInstanceName']
+        if source_instance_name is None:
+            raise TypeError("Missing 'source_instance_name' argument")
+
         _setter("allocated_ip_range", allocated_ip_range)
         _setter("database_names", database_names)
         _setter("point_in_time", point_in_time)
@@ -2595,10 +2877,22 @@ class GetDatabaseInstanceIpAddressResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_address: str,
-             time_to_retire: str,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             ip_address: Optional[str] = None,
+             time_to_retire: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if time_to_retire is None and 'timeToRetire' in kwargs:
+            time_to_retire = kwargs['timeToRetire']
+        if time_to_retire is None:
+            raise TypeError("Missing 'time_to_retire' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("ip_address", ip_address)
         _setter("time_to_retire", time_to_retire)
         _setter("type", type)
@@ -2650,18 +2944,60 @@ class GetDatabaseInstanceReplicaConfigurationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ca_certificate: str,
-             client_certificate: str,
-             client_key: str,
-             connect_retry_interval: int,
-             dump_file_path: str,
-             failover_target: bool,
-             master_heartbeat_period: int,
-             password: str,
-             ssl_cipher: str,
-             username: str,
-             verify_server_certificate: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             ca_certificate: Optional[str] = None,
+             client_certificate: Optional[str] = None,
+             client_key: Optional[str] = None,
+             connect_retry_interval: Optional[int] = None,
+             dump_file_path: Optional[str] = None,
+             failover_target: Optional[bool] = None,
+             master_heartbeat_period: Optional[int] = None,
+             password: Optional[str] = None,
+             ssl_cipher: Optional[str] = None,
+             username: Optional[str] = None,
+             verify_server_certificate: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ca_certificate is None and 'caCertificate' in kwargs:
+            ca_certificate = kwargs['caCertificate']
+        if ca_certificate is None:
+            raise TypeError("Missing 'ca_certificate' argument")
+        if client_certificate is None and 'clientCertificate' in kwargs:
+            client_certificate = kwargs['clientCertificate']
+        if client_certificate is None:
+            raise TypeError("Missing 'client_certificate' argument")
+        if client_key is None and 'clientKey' in kwargs:
+            client_key = kwargs['clientKey']
+        if client_key is None:
+            raise TypeError("Missing 'client_key' argument")
+        if connect_retry_interval is None and 'connectRetryInterval' in kwargs:
+            connect_retry_interval = kwargs['connectRetryInterval']
+        if connect_retry_interval is None:
+            raise TypeError("Missing 'connect_retry_interval' argument")
+        if dump_file_path is None and 'dumpFilePath' in kwargs:
+            dump_file_path = kwargs['dumpFilePath']
+        if dump_file_path is None:
+            raise TypeError("Missing 'dump_file_path' argument")
+        if failover_target is None and 'failoverTarget' in kwargs:
+            failover_target = kwargs['failoverTarget']
+        if failover_target is None:
+            raise TypeError("Missing 'failover_target' argument")
+        if master_heartbeat_period is None and 'masterHeartbeatPeriod' in kwargs:
+            master_heartbeat_period = kwargs['masterHeartbeatPeriod']
+        if master_heartbeat_period is None:
+            raise TypeError("Missing 'master_heartbeat_period' argument")
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if ssl_cipher is None and 'sslCipher' in kwargs:
+            ssl_cipher = kwargs['sslCipher']
+        if ssl_cipher is None:
+            raise TypeError("Missing 'ssl_cipher' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+        if verify_server_certificate is None and 'verifyServerCertificate' in kwargs:
+            verify_server_certificate = kwargs['verifyServerCertificate']
+        if verify_server_certificate is None:
+            raise TypeError("Missing 'verify_server_certificate' argument")
+
         _setter("ca_certificate", ca_certificate)
         _setter("client_certificate", client_certificate)
         _setter("client_key", client_key)
@@ -2748,10 +3084,22 @@ class GetDatabaseInstanceRestoreBackupContextResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backup_run_id: int,
-             instance_id: str,
-             project: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             backup_run_id: Optional[int] = None,
+             instance_id: Optional[str] = None,
+             project: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if backup_run_id is None and 'backupRunId' in kwargs:
+            backup_run_id = kwargs['backupRunId']
+        if backup_run_id is None:
+            raise TypeError("Missing 'backup_run_id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+
         _setter("backup_run_id", backup_run_id)
         _setter("instance_id", instance_id)
         _setter("project", project)
@@ -2794,12 +3142,32 @@ class GetDatabaseInstanceServerCaCertResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cert: str,
-             common_name: str,
-             create_time: str,
-             expiration_time: str,
-             sha1_fingerprint: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             cert: Optional[str] = None,
+             common_name: Optional[str] = None,
+             create_time: Optional[str] = None,
+             expiration_time: Optional[str] = None,
+             sha1_fingerprint: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cert is None:
+            raise TypeError("Missing 'cert' argument")
+        if common_name is None and 'commonName' in kwargs:
+            common_name = kwargs['commonName']
+        if common_name is None:
+            raise TypeError("Missing 'common_name' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if expiration_time is None and 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+        if expiration_time is None:
+            raise TypeError("Missing 'expiration_time' argument")
+        if sha1_fingerprint is None and 'sha1Fingerprint' in kwargs:
+            sha1_fingerprint = kwargs['sha1Fingerprint']
+        if sha1_fingerprint is None:
+            raise TypeError("Missing 'sha1_fingerprint' argument")
+
         _setter("cert", cert)
         _setter("common_name", common_name)
         _setter("create_time", create_time)
@@ -2895,34 +3263,136 @@ class GetDatabaseInstanceSettingResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             activation_policy: str,
-             active_directory_configs: Sequence['outputs.GetDatabaseInstanceSettingActiveDirectoryConfigResult'],
-             advanced_machine_features: Sequence['outputs.GetDatabaseInstanceSettingAdvancedMachineFeatureResult'],
-             availability_type: str,
-             backup_configurations: Sequence['outputs.GetDatabaseInstanceSettingBackupConfigurationResult'],
-             collation: str,
-             connector_enforcement: str,
-             data_cache_configs: Sequence['outputs.GetDatabaseInstanceSettingDataCacheConfigResult'],
-             database_flags: Sequence['outputs.GetDatabaseInstanceSettingDatabaseFlagResult'],
-             deletion_protection_enabled: bool,
-             deny_maintenance_periods: Sequence['outputs.GetDatabaseInstanceSettingDenyMaintenancePeriodResult'],
-             disk_autoresize: bool,
-             disk_autoresize_limit: int,
-             disk_size: int,
-             disk_type: str,
-             edition: str,
-             insights_configs: Sequence['outputs.GetDatabaseInstanceSettingInsightsConfigResult'],
-             ip_configurations: Sequence['outputs.GetDatabaseInstanceSettingIpConfigurationResult'],
-             location_preferences: Sequence['outputs.GetDatabaseInstanceSettingLocationPreferenceResult'],
-             maintenance_windows: Sequence['outputs.GetDatabaseInstanceSettingMaintenanceWindowResult'],
-             password_validation_policies: Sequence['outputs.GetDatabaseInstanceSettingPasswordValidationPolicyResult'],
-             pricing_plan: str,
-             sql_server_audit_configs: Sequence['outputs.GetDatabaseInstanceSettingSqlServerAuditConfigResult'],
-             tier: str,
-             time_zone: str,
-             user_labels: Mapping[str, str],
-             version: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             activation_policy: Optional[str] = None,
+             active_directory_configs: Optional[Sequence['outputs.GetDatabaseInstanceSettingActiveDirectoryConfigResult']] = None,
+             advanced_machine_features: Optional[Sequence['outputs.GetDatabaseInstanceSettingAdvancedMachineFeatureResult']] = None,
+             availability_type: Optional[str] = None,
+             backup_configurations: Optional[Sequence['outputs.GetDatabaseInstanceSettingBackupConfigurationResult']] = None,
+             collation: Optional[str] = None,
+             connector_enforcement: Optional[str] = None,
+             data_cache_configs: Optional[Sequence['outputs.GetDatabaseInstanceSettingDataCacheConfigResult']] = None,
+             database_flags: Optional[Sequence['outputs.GetDatabaseInstanceSettingDatabaseFlagResult']] = None,
+             deletion_protection_enabled: Optional[bool] = None,
+             deny_maintenance_periods: Optional[Sequence['outputs.GetDatabaseInstanceSettingDenyMaintenancePeriodResult']] = None,
+             disk_autoresize: Optional[bool] = None,
+             disk_autoresize_limit: Optional[int] = None,
+             disk_size: Optional[int] = None,
+             disk_type: Optional[str] = None,
+             edition: Optional[str] = None,
+             insights_configs: Optional[Sequence['outputs.GetDatabaseInstanceSettingInsightsConfigResult']] = None,
+             ip_configurations: Optional[Sequence['outputs.GetDatabaseInstanceSettingIpConfigurationResult']] = None,
+             location_preferences: Optional[Sequence['outputs.GetDatabaseInstanceSettingLocationPreferenceResult']] = None,
+             maintenance_windows: Optional[Sequence['outputs.GetDatabaseInstanceSettingMaintenanceWindowResult']] = None,
+             password_validation_policies: Optional[Sequence['outputs.GetDatabaseInstanceSettingPasswordValidationPolicyResult']] = None,
+             pricing_plan: Optional[str] = None,
+             sql_server_audit_configs: Optional[Sequence['outputs.GetDatabaseInstanceSettingSqlServerAuditConfigResult']] = None,
+             tier: Optional[str] = None,
+             time_zone: Optional[str] = None,
+             user_labels: Optional[Mapping[str, str]] = None,
+             version: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if activation_policy is None and 'activationPolicy' in kwargs:
+            activation_policy = kwargs['activationPolicy']
+        if activation_policy is None:
+            raise TypeError("Missing 'activation_policy' argument")
+        if active_directory_configs is None and 'activeDirectoryConfigs' in kwargs:
+            active_directory_configs = kwargs['activeDirectoryConfigs']
+        if active_directory_configs is None:
+            raise TypeError("Missing 'active_directory_configs' argument")
+        if advanced_machine_features is None and 'advancedMachineFeatures' in kwargs:
+            advanced_machine_features = kwargs['advancedMachineFeatures']
+        if advanced_machine_features is None:
+            raise TypeError("Missing 'advanced_machine_features' argument")
+        if availability_type is None and 'availabilityType' in kwargs:
+            availability_type = kwargs['availabilityType']
+        if availability_type is None:
+            raise TypeError("Missing 'availability_type' argument")
+        if backup_configurations is None and 'backupConfigurations' in kwargs:
+            backup_configurations = kwargs['backupConfigurations']
+        if backup_configurations is None:
+            raise TypeError("Missing 'backup_configurations' argument")
+        if collation is None:
+            raise TypeError("Missing 'collation' argument")
+        if connector_enforcement is None and 'connectorEnforcement' in kwargs:
+            connector_enforcement = kwargs['connectorEnforcement']
+        if connector_enforcement is None:
+            raise TypeError("Missing 'connector_enforcement' argument")
+        if data_cache_configs is None and 'dataCacheConfigs' in kwargs:
+            data_cache_configs = kwargs['dataCacheConfigs']
+        if data_cache_configs is None:
+            raise TypeError("Missing 'data_cache_configs' argument")
+        if database_flags is None and 'databaseFlags' in kwargs:
+            database_flags = kwargs['databaseFlags']
+        if database_flags is None:
+            raise TypeError("Missing 'database_flags' argument")
+        if deletion_protection_enabled is None and 'deletionProtectionEnabled' in kwargs:
+            deletion_protection_enabled = kwargs['deletionProtectionEnabled']
+        if deletion_protection_enabled is None:
+            raise TypeError("Missing 'deletion_protection_enabled' argument")
+        if deny_maintenance_periods is None and 'denyMaintenancePeriods' in kwargs:
+            deny_maintenance_periods = kwargs['denyMaintenancePeriods']
+        if deny_maintenance_periods is None:
+            raise TypeError("Missing 'deny_maintenance_periods' argument")
+        if disk_autoresize is None and 'diskAutoresize' in kwargs:
+            disk_autoresize = kwargs['diskAutoresize']
+        if disk_autoresize is None:
+            raise TypeError("Missing 'disk_autoresize' argument")
+        if disk_autoresize_limit is None and 'diskAutoresizeLimit' in kwargs:
+            disk_autoresize_limit = kwargs['diskAutoresizeLimit']
+        if disk_autoresize_limit is None:
+            raise TypeError("Missing 'disk_autoresize_limit' argument")
+        if disk_size is None and 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if disk_size is None:
+            raise TypeError("Missing 'disk_size' argument")
+        if disk_type is None and 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if disk_type is None:
+            raise TypeError("Missing 'disk_type' argument")
+        if edition is None:
+            raise TypeError("Missing 'edition' argument")
+        if insights_configs is None and 'insightsConfigs' in kwargs:
+            insights_configs = kwargs['insightsConfigs']
+        if insights_configs is None:
+            raise TypeError("Missing 'insights_configs' argument")
+        if ip_configurations is None and 'ipConfigurations' in kwargs:
+            ip_configurations = kwargs['ipConfigurations']
+        if ip_configurations is None:
+            raise TypeError("Missing 'ip_configurations' argument")
+        if location_preferences is None and 'locationPreferences' in kwargs:
+            location_preferences = kwargs['locationPreferences']
+        if location_preferences is None:
+            raise TypeError("Missing 'location_preferences' argument")
+        if maintenance_windows is None and 'maintenanceWindows' in kwargs:
+            maintenance_windows = kwargs['maintenanceWindows']
+        if maintenance_windows is None:
+            raise TypeError("Missing 'maintenance_windows' argument")
+        if password_validation_policies is None and 'passwordValidationPolicies' in kwargs:
+            password_validation_policies = kwargs['passwordValidationPolicies']
+        if password_validation_policies is None:
+            raise TypeError("Missing 'password_validation_policies' argument")
+        if pricing_plan is None and 'pricingPlan' in kwargs:
+            pricing_plan = kwargs['pricingPlan']
+        if pricing_plan is None:
+            raise TypeError("Missing 'pricing_plan' argument")
+        if sql_server_audit_configs is None and 'sqlServerAuditConfigs' in kwargs:
+            sql_server_audit_configs = kwargs['sqlServerAuditConfigs']
+        if sql_server_audit_configs is None:
+            raise TypeError("Missing 'sql_server_audit_configs' argument")
+        if tier is None:
+            raise TypeError("Missing 'tier' argument")
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+        if time_zone is None:
+            raise TypeError("Missing 'time_zone' argument")
+        if user_labels is None and 'userLabels' in kwargs:
+            user_labels = kwargs['userLabels']
+        if user_labels is None:
+            raise TypeError("Missing 'user_labels' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+
         _setter("activation_policy", activation_policy)
         _setter("active_directory_configs", active_directory_configs)
         _setter("advanced_machine_features", advanced_machine_features)
@@ -3098,8 +3568,12 @@ class GetDatabaseInstanceSettingActiveDirectoryConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             domain: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+
         _setter("domain", domain)
 
     @property
@@ -3119,8 +3593,14 @@ class GetDatabaseInstanceSettingAdvancedMachineFeatureResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             threads_per_core: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             threads_per_core: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if threads_per_core is None and 'threadsPerCore' in kwargs:
+            threads_per_core = kwargs['threadsPerCore']
+        if threads_per_core is None:
+            raise TypeError("Missing 'threads_per_core' argument")
+
         _setter("threads_per_core", threads_per_core)
 
     @property
@@ -3152,14 +3632,40 @@ class GetDatabaseInstanceSettingBackupConfigurationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backup_retention_settings: Sequence['outputs.GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingResult'],
-             binary_log_enabled: bool,
-             enabled: bool,
-             location: str,
-             point_in_time_recovery_enabled: bool,
-             start_time: str,
-             transaction_log_retention_days: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             backup_retention_settings: Optional[Sequence['outputs.GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingResult']] = None,
+             binary_log_enabled: Optional[bool] = None,
+             enabled: Optional[bool] = None,
+             location: Optional[str] = None,
+             point_in_time_recovery_enabled: Optional[bool] = None,
+             start_time: Optional[str] = None,
+             transaction_log_retention_days: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if backup_retention_settings is None and 'backupRetentionSettings' in kwargs:
+            backup_retention_settings = kwargs['backupRetentionSettings']
+        if backup_retention_settings is None:
+            raise TypeError("Missing 'backup_retention_settings' argument")
+        if binary_log_enabled is None and 'binaryLogEnabled' in kwargs:
+            binary_log_enabled = kwargs['binaryLogEnabled']
+        if binary_log_enabled is None:
+            raise TypeError("Missing 'binary_log_enabled' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if point_in_time_recovery_enabled is None and 'pointInTimeRecoveryEnabled' in kwargs:
+            point_in_time_recovery_enabled = kwargs['pointInTimeRecoveryEnabled']
+        if point_in_time_recovery_enabled is None:
+            raise TypeError("Missing 'point_in_time_recovery_enabled' argument")
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if start_time is None:
+            raise TypeError("Missing 'start_time' argument")
+        if transaction_log_retention_days is None and 'transactionLogRetentionDays' in kwargs:
+            transaction_log_retention_days = kwargs['transactionLogRetentionDays']
+        if transaction_log_retention_days is None:
+            raise TypeError("Missing 'transaction_log_retention_days' argument")
+
         _setter("backup_retention_settings", backup_retention_settings)
         _setter("binary_log_enabled", binary_log_enabled)
         _setter("enabled", enabled)
@@ -3217,9 +3723,19 @@ class GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingResult(
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             retained_backups: int,
-             retention_unit: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             retained_backups: Optional[int] = None,
+             retention_unit: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if retained_backups is None and 'retainedBackups' in kwargs:
+            retained_backups = kwargs['retainedBackups']
+        if retained_backups is None:
+            raise TypeError("Missing 'retained_backups' argument")
+        if retention_unit is None and 'retentionUnit' in kwargs:
+            retention_unit = kwargs['retentionUnit']
+        if retention_unit is None:
+            raise TypeError("Missing 'retention_unit' argument")
+
         _setter("retained_backups", retained_backups)
         _setter("retention_unit", retention_unit)
 
@@ -3245,8 +3761,14 @@ class GetDatabaseInstanceSettingDataCacheConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data_cache_enabled: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             data_cache_enabled: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if data_cache_enabled is None and 'dataCacheEnabled' in kwargs:
+            data_cache_enabled = kwargs['dataCacheEnabled']
+        if data_cache_enabled is None:
+            raise TypeError("Missing 'data_cache_enabled' argument")
+
         _setter("data_cache_enabled", data_cache_enabled)
 
     @property
@@ -3271,9 +3793,15 @@ class GetDatabaseInstanceSettingDatabaseFlagResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("name", name)
         _setter("value", value)
 
@@ -3306,10 +3834,22 @@ class GetDatabaseInstanceSettingDenyMaintenancePeriodResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             end_date: str,
-             start_date: str,
-             time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             end_date: Optional[str] = None,
+             start_date: Optional[str] = None,
+             time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if end_date is None and 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+        if end_date is None:
+            raise TypeError("Missing 'end_date' argument")
+        if start_date is None and 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+        if start_date is None:
+            raise TypeError("Missing 'start_date' argument")
+        if time is None:
+            raise TypeError("Missing 'time' argument")
+
         _setter("end_date", end_date)
         _setter("start_date", start_date)
         _setter("time", time)
@@ -3349,12 +3889,34 @@ class GetDatabaseInstanceSettingInsightsConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             query_insights_enabled: bool,
-             query_plans_per_minute: int,
-             query_string_length: int,
-             record_application_tags: bool,
-             record_client_address: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             query_insights_enabled: Optional[bool] = None,
+             query_plans_per_minute: Optional[int] = None,
+             query_string_length: Optional[int] = None,
+             record_application_tags: Optional[bool] = None,
+             record_client_address: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if query_insights_enabled is None and 'queryInsightsEnabled' in kwargs:
+            query_insights_enabled = kwargs['queryInsightsEnabled']
+        if query_insights_enabled is None:
+            raise TypeError("Missing 'query_insights_enabled' argument")
+        if query_plans_per_minute is None and 'queryPlansPerMinute' in kwargs:
+            query_plans_per_minute = kwargs['queryPlansPerMinute']
+        if query_plans_per_minute is None:
+            raise TypeError("Missing 'query_plans_per_minute' argument")
+        if query_string_length is None and 'queryStringLength' in kwargs:
+            query_string_length = kwargs['queryStringLength']
+        if query_string_length is None:
+            raise TypeError("Missing 'query_string_length' argument")
+        if record_application_tags is None and 'recordApplicationTags' in kwargs:
+            record_application_tags = kwargs['recordApplicationTags']
+        if record_application_tags is None:
+            raise TypeError("Missing 'record_application_tags' argument")
+        if record_client_address is None and 'recordClientAddress' in kwargs:
+            record_client_address = kwargs['recordClientAddress']
+        if record_client_address is None:
+            raise TypeError("Missing 'record_client_address' argument")
+
         _setter("query_insights_enabled", query_insights_enabled)
         _setter("query_plans_per_minute", query_plans_per_minute)
         _setter("query_string_length", query_string_length)
@@ -3410,14 +3972,44 @@ class GetDatabaseInstanceSettingIpConfigurationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allocated_ip_range: str,
-             authorized_networks: Sequence['outputs.GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult'],
-             enable_private_path_for_google_cloud_services: bool,
-             ipv4_enabled: bool,
-             private_network: str,
-             psc_configs: Sequence['outputs.GetDatabaseInstanceSettingIpConfigurationPscConfigResult'],
-             require_ssl: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             allocated_ip_range: Optional[str] = None,
+             authorized_networks: Optional[Sequence['outputs.GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult']] = None,
+             enable_private_path_for_google_cloud_services: Optional[bool] = None,
+             ipv4_enabled: Optional[bool] = None,
+             private_network: Optional[str] = None,
+             psc_configs: Optional[Sequence['outputs.GetDatabaseInstanceSettingIpConfigurationPscConfigResult']] = None,
+             require_ssl: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allocated_ip_range is None and 'allocatedIpRange' in kwargs:
+            allocated_ip_range = kwargs['allocatedIpRange']
+        if allocated_ip_range is None:
+            raise TypeError("Missing 'allocated_ip_range' argument")
+        if authorized_networks is None and 'authorizedNetworks' in kwargs:
+            authorized_networks = kwargs['authorizedNetworks']
+        if authorized_networks is None:
+            raise TypeError("Missing 'authorized_networks' argument")
+        if enable_private_path_for_google_cloud_services is None and 'enablePrivatePathForGoogleCloudServices' in kwargs:
+            enable_private_path_for_google_cloud_services = kwargs['enablePrivatePathForGoogleCloudServices']
+        if enable_private_path_for_google_cloud_services is None:
+            raise TypeError("Missing 'enable_private_path_for_google_cloud_services' argument")
+        if ipv4_enabled is None and 'ipv4Enabled' in kwargs:
+            ipv4_enabled = kwargs['ipv4Enabled']
+        if ipv4_enabled is None:
+            raise TypeError("Missing 'ipv4_enabled' argument")
+        if private_network is None and 'privateNetwork' in kwargs:
+            private_network = kwargs['privateNetwork']
+        if private_network is None:
+            raise TypeError("Missing 'private_network' argument")
+        if psc_configs is None and 'pscConfigs' in kwargs:
+            psc_configs = kwargs['pscConfigs']
+        if psc_configs is None:
+            raise TypeError("Missing 'psc_configs' argument")
+        if require_ssl is None and 'requireSsl' in kwargs:
+            require_ssl = kwargs['requireSsl']
+        if require_ssl is None:
+            raise TypeError("Missing 'require_ssl' argument")
+
         _setter("allocated_ip_range", allocated_ip_range)
         _setter("authorized_networks", authorized_networks)
         _setter("enable_private_path_for_google_cloud_services", enable_private_path_for_google_cloud_services)
@@ -3480,10 +4072,20 @@ class GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expiration_time: str,
-             name: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             expiration_time: Optional[str] = None,
+             name: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expiration_time is None and 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+        if expiration_time is None:
+            raise TypeError("Missing 'expiration_time' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("expiration_time", expiration_time)
         _setter("name", name)
         _setter("value", value)
@@ -3520,9 +4122,19 @@ class GetDatabaseInstanceSettingIpConfigurationPscConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allowed_consumer_projects: Sequence[str],
-             psc_enabled: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             allowed_consumer_projects: Optional[Sequence[str]] = None,
+             psc_enabled: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allowed_consumer_projects is None and 'allowedConsumerProjects' in kwargs:
+            allowed_consumer_projects = kwargs['allowedConsumerProjects']
+        if allowed_consumer_projects is None:
+            raise TypeError("Missing 'allowed_consumer_projects' argument")
+        if psc_enabled is None and 'pscEnabled' in kwargs:
+            psc_enabled = kwargs['pscEnabled']
+        if psc_enabled is None:
+            raise TypeError("Missing 'psc_enabled' argument")
+
         _setter("allowed_consumer_projects", allowed_consumer_projects)
         _setter("psc_enabled", psc_enabled)
 
@@ -3552,10 +4164,22 @@ class GetDatabaseInstanceSettingLocationPreferenceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             follow_gae_application: str,
-             secondary_zone: str,
-             zone: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             follow_gae_application: Optional[str] = None,
+             secondary_zone: Optional[str] = None,
+             zone: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if follow_gae_application is None and 'followGaeApplication' in kwargs:
+            follow_gae_application = kwargs['followGaeApplication']
+        if follow_gae_application is None:
+            raise TypeError("Missing 'follow_gae_application' argument")
+        if secondary_zone is None and 'secondaryZone' in kwargs:
+            secondary_zone = kwargs['secondaryZone']
+        if secondary_zone is None:
+            raise TypeError("Missing 'secondary_zone' argument")
+        if zone is None:
+            raise TypeError("Missing 'zone' argument")
+
         _setter("follow_gae_application", follow_gae_application)
         _setter("secondary_zone", secondary_zone)
         _setter("zone", zone)
@@ -3591,10 +4215,20 @@ class GetDatabaseInstanceSettingMaintenanceWindowResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             day: int,
-             hour: int,
-             update_track: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             day: Optional[int] = None,
+             hour: Optional[int] = None,
+             update_track: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if day is None:
+            raise TypeError("Missing 'day' argument")
+        if hour is None:
+            raise TypeError("Missing 'hour' argument")
+        if update_track is None and 'updateTrack' in kwargs:
+            update_track = kwargs['updateTrack']
+        if update_track is None:
+            raise TypeError("Missing 'update_track' argument")
+
         _setter("day", day)
         _setter("hour", hour)
         _setter("update_track", update_track)
@@ -3636,13 +4270,37 @@ class GetDatabaseInstanceSettingPasswordValidationPolicyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             complexity: str,
-             disallow_username_substring: bool,
-             enable_password_policy: bool,
-             min_length: int,
-             password_change_interval: str,
-             reuse_interval: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             complexity: Optional[str] = None,
+             disallow_username_substring: Optional[bool] = None,
+             enable_password_policy: Optional[bool] = None,
+             min_length: Optional[int] = None,
+             password_change_interval: Optional[str] = None,
+             reuse_interval: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if complexity is None:
+            raise TypeError("Missing 'complexity' argument")
+        if disallow_username_substring is None and 'disallowUsernameSubstring' in kwargs:
+            disallow_username_substring = kwargs['disallowUsernameSubstring']
+        if disallow_username_substring is None:
+            raise TypeError("Missing 'disallow_username_substring' argument")
+        if enable_password_policy is None and 'enablePasswordPolicy' in kwargs:
+            enable_password_policy = kwargs['enablePasswordPolicy']
+        if enable_password_policy is None:
+            raise TypeError("Missing 'enable_password_policy' argument")
+        if min_length is None and 'minLength' in kwargs:
+            min_length = kwargs['minLength']
+        if min_length is None:
+            raise TypeError("Missing 'min_length' argument")
+        if password_change_interval is None and 'passwordChangeInterval' in kwargs:
+            password_change_interval = kwargs['passwordChangeInterval']
+        if password_change_interval is None:
+            raise TypeError("Missing 'password_change_interval' argument")
+        if reuse_interval is None and 'reuseInterval' in kwargs:
+            reuse_interval = kwargs['reuseInterval']
+        if reuse_interval is None:
+            raise TypeError("Missing 'reuse_interval' argument")
+
         _setter("complexity", complexity)
         _setter("disallow_username_substring", disallow_username_substring)
         _setter("enable_password_policy", enable_password_policy)
@@ -3696,10 +4354,22 @@ class GetDatabaseInstanceSettingSqlServerAuditConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: str,
-             retention_interval: str,
-             upload_interval: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             bucket: Optional[str] = None,
+             retention_interval: Optional[str] = None,
+             upload_interval: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if retention_interval is None and 'retentionInterval' in kwargs:
+            retention_interval = kwargs['retentionInterval']
+        if retention_interval is None:
+            raise TypeError("Missing 'retention_interval' argument")
+        if upload_interval is None and 'uploadInterval' in kwargs:
+            upload_interval = kwargs['uploadInterval']
+        if upload_interval is None:
+            raise TypeError("Missing 'upload_interval' argument")
+
         _setter("bucket", bucket)
         _setter("retention_interval", retention_interval)
         _setter("upload_interval", upload_interval)
@@ -3784,32 +4454,124 @@ class GetDatabaseInstancesInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             available_maintenance_versions: Sequence[str],
-             clones: Sequence['outputs.GetDatabaseInstancesInstanceCloneResult'],
-             connection_name: str,
-             database_version: str,
-             deletion_protection: bool,
-             dns_name: str,
-             encryption_key_name: str,
-             first_ip_address: str,
-             instance_type: str,
-             ip_addresses: Sequence['outputs.GetDatabaseInstancesInstanceIpAddressResult'],
-             maintenance_version: str,
-             master_instance_name: str,
-             name: str,
-             private_ip_address: str,
-             project: str,
-             psc_service_attachment_link: str,
-             public_ip_address: str,
-             region: str,
-             replica_configurations: Sequence['outputs.GetDatabaseInstancesInstanceReplicaConfigurationResult'],
-             restore_backup_contexts: Sequence['outputs.GetDatabaseInstancesInstanceRestoreBackupContextResult'],
-             root_password: str,
-             self_link: str,
-             server_ca_certs: Sequence['outputs.GetDatabaseInstancesInstanceServerCaCertResult'],
-             service_account_email_address: str,
-             settings: Sequence['outputs.GetDatabaseInstancesInstanceSettingResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             available_maintenance_versions: Optional[Sequence[str]] = None,
+             clones: Optional[Sequence['outputs.GetDatabaseInstancesInstanceCloneResult']] = None,
+             connection_name: Optional[str] = None,
+             database_version: Optional[str] = None,
+             deletion_protection: Optional[bool] = None,
+             dns_name: Optional[str] = None,
+             encryption_key_name: Optional[str] = None,
+             first_ip_address: Optional[str] = None,
+             instance_type: Optional[str] = None,
+             ip_addresses: Optional[Sequence['outputs.GetDatabaseInstancesInstanceIpAddressResult']] = None,
+             maintenance_version: Optional[str] = None,
+             master_instance_name: Optional[str] = None,
+             name: Optional[str] = None,
+             private_ip_address: Optional[str] = None,
+             project: Optional[str] = None,
+             psc_service_attachment_link: Optional[str] = None,
+             public_ip_address: Optional[str] = None,
+             region: Optional[str] = None,
+             replica_configurations: Optional[Sequence['outputs.GetDatabaseInstancesInstanceReplicaConfigurationResult']] = None,
+             restore_backup_contexts: Optional[Sequence['outputs.GetDatabaseInstancesInstanceRestoreBackupContextResult']] = None,
+             root_password: Optional[str] = None,
+             self_link: Optional[str] = None,
+             server_ca_certs: Optional[Sequence['outputs.GetDatabaseInstancesInstanceServerCaCertResult']] = None,
+             service_account_email_address: Optional[str] = None,
+             settings: Optional[Sequence['outputs.GetDatabaseInstancesInstanceSettingResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if available_maintenance_versions is None and 'availableMaintenanceVersions' in kwargs:
+            available_maintenance_versions = kwargs['availableMaintenanceVersions']
+        if available_maintenance_versions is None:
+            raise TypeError("Missing 'available_maintenance_versions' argument")
+        if clones is None:
+            raise TypeError("Missing 'clones' argument")
+        if connection_name is None and 'connectionName' in kwargs:
+            connection_name = kwargs['connectionName']
+        if connection_name is None:
+            raise TypeError("Missing 'connection_name' argument")
+        if database_version is None and 'databaseVersion' in kwargs:
+            database_version = kwargs['databaseVersion']
+        if database_version is None:
+            raise TypeError("Missing 'database_version' argument")
+        if deletion_protection is None and 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if deletion_protection is None:
+            raise TypeError("Missing 'deletion_protection' argument")
+        if dns_name is None and 'dnsName' in kwargs:
+            dns_name = kwargs['dnsName']
+        if dns_name is None:
+            raise TypeError("Missing 'dns_name' argument")
+        if encryption_key_name is None and 'encryptionKeyName' in kwargs:
+            encryption_key_name = kwargs['encryptionKeyName']
+        if encryption_key_name is None:
+            raise TypeError("Missing 'encryption_key_name' argument")
+        if first_ip_address is None and 'firstIpAddress' in kwargs:
+            first_ip_address = kwargs['firstIpAddress']
+        if first_ip_address is None:
+            raise TypeError("Missing 'first_ip_address' argument")
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if ip_addresses is None and 'ipAddresses' in kwargs:
+            ip_addresses = kwargs['ipAddresses']
+        if ip_addresses is None:
+            raise TypeError("Missing 'ip_addresses' argument")
+        if maintenance_version is None and 'maintenanceVersion' in kwargs:
+            maintenance_version = kwargs['maintenanceVersion']
+        if maintenance_version is None:
+            raise TypeError("Missing 'maintenance_version' argument")
+        if master_instance_name is None and 'masterInstanceName' in kwargs:
+            master_instance_name = kwargs['masterInstanceName']
+        if master_instance_name is None:
+            raise TypeError("Missing 'master_instance_name' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if private_ip_address is None and 'privateIpAddress' in kwargs:
+            private_ip_address = kwargs['privateIpAddress']
+        if private_ip_address is None:
+            raise TypeError("Missing 'private_ip_address' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if psc_service_attachment_link is None and 'pscServiceAttachmentLink' in kwargs:
+            psc_service_attachment_link = kwargs['pscServiceAttachmentLink']
+        if psc_service_attachment_link is None:
+            raise TypeError("Missing 'psc_service_attachment_link' argument")
+        if public_ip_address is None and 'publicIpAddress' in kwargs:
+            public_ip_address = kwargs['publicIpAddress']
+        if public_ip_address is None:
+            raise TypeError("Missing 'public_ip_address' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if replica_configurations is None and 'replicaConfigurations' in kwargs:
+            replica_configurations = kwargs['replicaConfigurations']
+        if replica_configurations is None:
+            raise TypeError("Missing 'replica_configurations' argument")
+        if restore_backup_contexts is None and 'restoreBackupContexts' in kwargs:
+            restore_backup_contexts = kwargs['restoreBackupContexts']
+        if restore_backup_contexts is None:
+            raise TypeError("Missing 'restore_backup_contexts' argument")
+        if root_password is None and 'rootPassword' in kwargs:
+            root_password = kwargs['rootPassword']
+        if root_password is None:
+            raise TypeError("Missing 'root_password' argument")
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if self_link is None:
+            raise TypeError("Missing 'self_link' argument")
+        if server_ca_certs is None and 'serverCaCerts' in kwargs:
+            server_ca_certs = kwargs['serverCaCerts']
+        if server_ca_certs is None:
+            raise TypeError("Missing 'server_ca_certs' argument")
+        if service_account_email_address is None and 'serviceAccountEmailAddress' in kwargs:
+            service_account_email_address = kwargs['serviceAccountEmailAddress']
+        if service_account_email_address is None:
+            raise TypeError("Missing 'service_account_email_address' argument")
+        if settings is None:
+            raise TypeError("Missing 'settings' argument")
+
         _setter("available_maintenance_versions", available_maintenance_versions)
         _setter("clones", clones)
         _setter("connection_name", connection_name)
@@ -3988,11 +4750,29 @@ class GetDatabaseInstancesInstanceCloneResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allocated_ip_range: str,
-             database_names: Sequence[str],
-             point_in_time: str,
-             source_instance_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             allocated_ip_range: Optional[str] = None,
+             database_names: Optional[Sequence[str]] = None,
+             point_in_time: Optional[str] = None,
+             source_instance_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allocated_ip_range is None and 'allocatedIpRange' in kwargs:
+            allocated_ip_range = kwargs['allocatedIpRange']
+        if allocated_ip_range is None:
+            raise TypeError("Missing 'allocated_ip_range' argument")
+        if database_names is None and 'databaseNames' in kwargs:
+            database_names = kwargs['databaseNames']
+        if database_names is None:
+            raise TypeError("Missing 'database_names' argument")
+        if point_in_time is None and 'pointInTime' in kwargs:
+            point_in_time = kwargs['pointInTime']
+        if point_in_time is None:
+            raise TypeError("Missing 'point_in_time' argument")
+        if source_instance_name is None and 'sourceInstanceName' in kwargs:
+            source_instance_name = kwargs['sourceInstanceName']
+        if source_instance_name is None:
+            raise TypeError("Missing 'source_instance_name' argument")
+
         _setter("allocated_ip_range", allocated_ip_range)
         _setter("database_names", database_names)
         _setter("point_in_time", point_in_time)
@@ -4034,10 +4814,22 @@ class GetDatabaseInstancesInstanceIpAddressResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_address: str,
-             time_to_retire: str,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             ip_address: Optional[str] = None,
+             time_to_retire: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if time_to_retire is None and 'timeToRetire' in kwargs:
+            time_to_retire = kwargs['timeToRetire']
+        if time_to_retire is None:
+            raise TypeError("Missing 'time_to_retire' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("ip_address", ip_address)
         _setter("time_to_retire", time_to_retire)
         _setter("type", type)
@@ -4089,18 +4881,60 @@ class GetDatabaseInstancesInstanceReplicaConfigurationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ca_certificate: str,
-             client_certificate: str,
-             client_key: str,
-             connect_retry_interval: int,
-             dump_file_path: str,
-             failover_target: bool,
-             master_heartbeat_period: int,
-             password: str,
-             ssl_cipher: str,
-             username: str,
-             verify_server_certificate: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             ca_certificate: Optional[str] = None,
+             client_certificate: Optional[str] = None,
+             client_key: Optional[str] = None,
+             connect_retry_interval: Optional[int] = None,
+             dump_file_path: Optional[str] = None,
+             failover_target: Optional[bool] = None,
+             master_heartbeat_period: Optional[int] = None,
+             password: Optional[str] = None,
+             ssl_cipher: Optional[str] = None,
+             username: Optional[str] = None,
+             verify_server_certificate: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ca_certificate is None and 'caCertificate' in kwargs:
+            ca_certificate = kwargs['caCertificate']
+        if ca_certificate is None:
+            raise TypeError("Missing 'ca_certificate' argument")
+        if client_certificate is None and 'clientCertificate' in kwargs:
+            client_certificate = kwargs['clientCertificate']
+        if client_certificate is None:
+            raise TypeError("Missing 'client_certificate' argument")
+        if client_key is None and 'clientKey' in kwargs:
+            client_key = kwargs['clientKey']
+        if client_key is None:
+            raise TypeError("Missing 'client_key' argument")
+        if connect_retry_interval is None and 'connectRetryInterval' in kwargs:
+            connect_retry_interval = kwargs['connectRetryInterval']
+        if connect_retry_interval is None:
+            raise TypeError("Missing 'connect_retry_interval' argument")
+        if dump_file_path is None and 'dumpFilePath' in kwargs:
+            dump_file_path = kwargs['dumpFilePath']
+        if dump_file_path is None:
+            raise TypeError("Missing 'dump_file_path' argument")
+        if failover_target is None and 'failoverTarget' in kwargs:
+            failover_target = kwargs['failoverTarget']
+        if failover_target is None:
+            raise TypeError("Missing 'failover_target' argument")
+        if master_heartbeat_period is None and 'masterHeartbeatPeriod' in kwargs:
+            master_heartbeat_period = kwargs['masterHeartbeatPeriod']
+        if master_heartbeat_period is None:
+            raise TypeError("Missing 'master_heartbeat_period' argument")
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if ssl_cipher is None and 'sslCipher' in kwargs:
+            ssl_cipher = kwargs['sslCipher']
+        if ssl_cipher is None:
+            raise TypeError("Missing 'ssl_cipher' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+        if verify_server_certificate is None and 'verifyServerCertificate' in kwargs:
+            verify_server_certificate = kwargs['verifyServerCertificate']
+        if verify_server_certificate is None:
+            raise TypeError("Missing 'verify_server_certificate' argument")
+
         _setter("ca_certificate", ca_certificate)
         _setter("client_certificate", client_certificate)
         _setter("client_key", client_key)
@@ -4187,10 +5021,22 @@ class GetDatabaseInstancesInstanceRestoreBackupContextResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backup_run_id: int,
-             instance_id: str,
-             project: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             backup_run_id: Optional[int] = None,
+             instance_id: Optional[str] = None,
+             project: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if backup_run_id is None and 'backupRunId' in kwargs:
+            backup_run_id = kwargs['backupRunId']
+        if backup_run_id is None:
+            raise TypeError("Missing 'backup_run_id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+
         _setter("backup_run_id", backup_run_id)
         _setter("instance_id", instance_id)
         _setter("project", project)
@@ -4233,12 +5079,32 @@ class GetDatabaseInstancesInstanceServerCaCertResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cert: str,
-             common_name: str,
-             create_time: str,
-             expiration_time: str,
-             sha1_fingerprint: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             cert: Optional[str] = None,
+             common_name: Optional[str] = None,
+             create_time: Optional[str] = None,
+             expiration_time: Optional[str] = None,
+             sha1_fingerprint: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cert is None:
+            raise TypeError("Missing 'cert' argument")
+        if common_name is None and 'commonName' in kwargs:
+            common_name = kwargs['commonName']
+        if common_name is None:
+            raise TypeError("Missing 'common_name' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if expiration_time is None and 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+        if expiration_time is None:
+            raise TypeError("Missing 'expiration_time' argument")
+        if sha1_fingerprint is None and 'sha1Fingerprint' in kwargs:
+            sha1_fingerprint = kwargs['sha1Fingerprint']
+        if sha1_fingerprint is None:
+            raise TypeError("Missing 'sha1_fingerprint' argument")
+
         _setter("cert", cert)
         _setter("common_name", common_name)
         _setter("create_time", create_time)
@@ -4337,34 +5203,136 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             activation_policy: str,
-             active_directory_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingActiveDirectoryConfigResult'],
-             advanced_machine_features: Sequence['outputs.GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureResult'],
-             availability_type: str,
-             backup_configurations: Sequence['outputs.GetDatabaseInstancesInstanceSettingBackupConfigurationResult'],
-             collation: str,
-             connector_enforcement: str,
-             data_cache_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingDataCacheConfigResult'],
-             database_flags: Sequence['outputs.GetDatabaseInstancesInstanceSettingDatabaseFlagResult'],
-             deletion_protection_enabled: bool,
-             deny_maintenance_periods: Sequence['outputs.GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodResult'],
-             disk_autoresize: bool,
-             disk_autoresize_limit: int,
-             disk_size: int,
-             disk_type: str,
-             edition: str,
-             insights_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingInsightsConfigResult'],
-             ip_configurations: Sequence['outputs.GetDatabaseInstancesInstanceSettingIpConfigurationResult'],
-             location_preferences: Sequence['outputs.GetDatabaseInstancesInstanceSettingLocationPreferenceResult'],
-             maintenance_windows: Sequence['outputs.GetDatabaseInstancesInstanceSettingMaintenanceWindowResult'],
-             password_validation_policies: Sequence['outputs.GetDatabaseInstancesInstanceSettingPasswordValidationPolicyResult'],
-             pricing_plan: str,
-             sql_server_audit_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingSqlServerAuditConfigResult'],
-             tier: str,
-             time_zone: str,
-             user_labels: Mapping[str, str],
-             version: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             activation_policy: Optional[str] = None,
+             active_directory_configs: Optional[Sequence['outputs.GetDatabaseInstancesInstanceSettingActiveDirectoryConfigResult']] = None,
+             advanced_machine_features: Optional[Sequence['outputs.GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureResult']] = None,
+             availability_type: Optional[str] = None,
+             backup_configurations: Optional[Sequence['outputs.GetDatabaseInstancesInstanceSettingBackupConfigurationResult']] = None,
+             collation: Optional[str] = None,
+             connector_enforcement: Optional[str] = None,
+             data_cache_configs: Optional[Sequence['outputs.GetDatabaseInstancesInstanceSettingDataCacheConfigResult']] = None,
+             database_flags: Optional[Sequence['outputs.GetDatabaseInstancesInstanceSettingDatabaseFlagResult']] = None,
+             deletion_protection_enabled: Optional[bool] = None,
+             deny_maintenance_periods: Optional[Sequence['outputs.GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodResult']] = None,
+             disk_autoresize: Optional[bool] = None,
+             disk_autoresize_limit: Optional[int] = None,
+             disk_size: Optional[int] = None,
+             disk_type: Optional[str] = None,
+             edition: Optional[str] = None,
+             insights_configs: Optional[Sequence['outputs.GetDatabaseInstancesInstanceSettingInsightsConfigResult']] = None,
+             ip_configurations: Optional[Sequence['outputs.GetDatabaseInstancesInstanceSettingIpConfigurationResult']] = None,
+             location_preferences: Optional[Sequence['outputs.GetDatabaseInstancesInstanceSettingLocationPreferenceResult']] = None,
+             maintenance_windows: Optional[Sequence['outputs.GetDatabaseInstancesInstanceSettingMaintenanceWindowResult']] = None,
+             password_validation_policies: Optional[Sequence['outputs.GetDatabaseInstancesInstanceSettingPasswordValidationPolicyResult']] = None,
+             pricing_plan: Optional[str] = None,
+             sql_server_audit_configs: Optional[Sequence['outputs.GetDatabaseInstancesInstanceSettingSqlServerAuditConfigResult']] = None,
+             tier: Optional[str] = None,
+             time_zone: Optional[str] = None,
+             user_labels: Optional[Mapping[str, str]] = None,
+             version: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if activation_policy is None and 'activationPolicy' in kwargs:
+            activation_policy = kwargs['activationPolicy']
+        if activation_policy is None:
+            raise TypeError("Missing 'activation_policy' argument")
+        if active_directory_configs is None and 'activeDirectoryConfigs' in kwargs:
+            active_directory_configs = kwargs['activeDirectoryConfigs']
+        if active_directory_configs is None:
+            raise TypeError("Missing 'active_directory_configs' argument")
+        if advanced_machine_features is None and 'advancedMachineFeatures' in kwargs:
+            advanced_machine_features = kwargs['advancedMachineFeatures']
+        if advanced_machine_features is None:
+            raise TypeError("Missing 'advanced_machine_features' argument")
+        if availability_type is None and 'availabilityType' in kwargs:
+            availability_type = kwargs['availabilityType']
+        if availability_type is None:
+            raise TypeError("Missing 'availability_type' argument")
+        if backup_configurations is None and 'backupConfigurations' in kwargs:
+            backup_configurations = kwargs['backupConfigurations']
+        if backup_configurations is None:
+            raise TypeError("Missing 'backup_configurations' argument")
+        if collation is None:
+            raise TypeError("Missing 'collation' argument")
+        if connector_enforcement is None and 'connectorEnforcement' in kwargs:
+            connector_enforcement = kwargs['connectorEnforcement']
+        if connector_enforcement is None:
+            raise TypeError("Missing 'connector_enforcement' argument")
+        if data_cache_configs is None and 'dataCacheConfigs' in kwargs:
+            data_cache_configs = kwargs['dataCacheConfigs']
+        if data_cache_configs is None:
+            raise TypeError("Missing 'data_cache_configs' argument")
+        if database_flags is None and 'databaseFlags' in kwargs:
+            database_flags = kwargs['databaseFlags']
+        if database_flags is None:
+            raise TypeError("Missing 'database_flags' argument")
+        if deletion_protection_enabled is None and 'deletionProtectionEnabled' in kwargs:
+            deletion_protection_enabled = kwargs['deletionProtectionEnabled']
+        if deletion_protection_enabled is None:
+            raise TypeError("Missing 'deletion_protection_enabled' argument")
+        if deny_maintenance_periods is None and 'denyMaintenancePeriods' in kwargs:
+            deny_maintenance_periods = kwargs['denyMaintenancePeriods']
+        if deny_maintenance_periods is None:
+            raise TypeError("Missing 'deny_maintenance_periods' argument")
+        if disk_autoresize is None and 'diskAutoresize' in kwargs:
+            disk_autoresize = kwargs['diskAutoresize']
+        if disk_autoresize is None:
+            raise TypeError("Missing 'disk_autoresize' argument")
+        if disk_autoresize_limit is None and 'diskAutoresizeLimit' in kwargs:
+            disk_autoresize_limit = kwargs['diskAutoresizeLimit']
+        if disk_autoresize_limit is None:
+            raise TypeError("Missing 'disk_autoresize_limit' argument")
+        if disk_size is None and 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if disk_size is None:
+            raise TypeError("Missing 'disk_size' argument")
+        if disk_type is None and 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if disk_type is None:
+            raise TypeError("Missing 'disk_type' argument")
+        if edition is None:
+            raise TypeError("Missing 'edition' argument")
+        if insights_configs is None and 'insightsConfigs' in kwargs:
+            insights_configs = kwargs['insightsConfigs']
+        if insights_configs is None:
+            raise TypeError("Missing 'insights_configs' argument")
+        if ip_configurations is None and 'ipConfigurations' in kwargs:
+            ip_configurations = kwargs['ipConfigurations']
+        if ip_configurations is None:
+            raise TypeError("Missing 'ip_configurations' argument")
+        if location_preferences is None and 'locationPreferences' in kwargs:
+            location_preferences = kwargs['locationPreferences']
+        if location_preferences is None:
+            raise TypeError("Missing 'location_preferences' argument")
+        if maintenance_windows is None and 'maintenanceWindows' in kwargs:
+            maintenance_windows = kwargs['maintenanceWindows']
+        if maintenance_windows is None:
+            raise TypeError("Missing 'maintenance_windows' argument")
+        if password_validation_policies is None and 'passwordValidationPolicies' in kwargs:
+            password_validation_policies = kwargs['passwordValidationPolicies']
+        if password_validation_policies is None:
+            raise TypeError("Missing 'password_validation_policies' argument")
+        if pricing_plan is None and 'pricingPlan' in kwargs:
+            pricing_plan = kwargs['pricingPlan']
+        if pricing_plan is None:
+            raise TypeError("Missing 'pricing_plan' argument")
+        if sql_server_audit_configs is None and 'sqlServerAuditConfigs' in kwargs:
+            sql_server_audit_configs = kwargs['sqlServerAuditConfigs']
+        if sql_server_audit_configs is None:
+            raise TypeError("Missing 'sql_server_audit_configs' argument")
+        if tier is None:
+            raise TypeError("Missing 'tier' argument")
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+        if time_zone is None:
+            raise TypeError("Missing 'time_zone' argument")
+        if user_labels is None and 'userLabels' in kwargs:
+            user_labels = kwargs['userLabels']
+        if user_labels is None:
+            raise TypeError("Missing 'user_labels' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+
         _setter("activation_policy", activation_policy)
         _setter("active_directory_configs", active_directory_configs)
         _setter("advanced_machine_features", advanced_machine_features)
@@ -4543,8 +5511,12 @@ class GetDatabaseInstancesInstanceSettingActiveDirectoryConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             domain: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+
         _setter("domain", domain)
 
     @property
@@ -4564,8 +5536,14 @@ class GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             threads_per_core: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             threads_per_core: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if threads_per_core is None and 'threadsPerCore' in kwargs:
+            threads_per_core = kwargs['threadsPerCore']
+        if threads_per_core is None:
+            raise TypeError("Missing 'threads_per_core' argument")
+
         _setter("threads_per_core", threads_per_core)
 
     @property
@@ -4597,14 +5575,40 @@ class GetDatabaseInstancesInstanceSettingBackupConfigurationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backup_retention_settings: Sequence['outputs.GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingResult'],
-             binary_log_enabled: bool,
-             enabled: bool,
-             location: str,
-             point_in_time_recovery_enabled: bool,
-             start_time: str,
-             transaction_log_retention_days: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             backup_retention_settings: Optional[Sequence['outputs.GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingResult']] = None,
+             binary_log_enabled: Optional[bool] = None,
+             enabled: Optional[bool] = None,
+             location: Optional[str] = None,
+             point_in_time_recovery_enabled: Optional[bool] = None,
+             start_time: Optional[str] = None,
+             transaction_log_retention_days: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if backup_retention_settings is None and 'backupRetentionSettings' in kwargs:
+            backup_retention_settings = kwargs['backupRetentionSettings']
+        if backup_retention_settings is None:
+            raise TypeError("Missing 'backup_retention_settings' argument")
+        if binary_log_enabled is None and 'binaryLogEnabled' in kwargs:
+            binary_log_enabled = kwargs['binaryLogEnabled']
+        if binary_log_enabled is None:
+            raise TypeError("Missing 'binary_log_enabled' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if point_in_time_recovery_enabled is None and 'pointInTimeRecoveryEnabled' in kwargs:
+            point_in_time_recovery_enabled = kwargs['pointInTimeRecoveryEnabled']
+        if point_in_time_recovery_enabled is None:
+            raise TypeError("Missing 'point_in_time_recovery_enabled' argument")
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if start_time is None:
+            raise TypeError("Missing 'start_time' argument")
+        if transaction_log_retention_days is None and 'transactionLogRetentionDays' in kwargs:
+            transaction_log_retention_days = kwargs['transactionLogRetentionDays']
+        if transaction_log_retention_days is None:
+            raise TypeError("Missing 'transaction_log_retention_days' argument")
+
         _setter("backup_retention_settings", backup_retention_settings)
         _setter("binary_log_enabled", binary_log_enabled)
         _setter("enabled", enabled)
@@ -4662,9 +5666,19 @@ class GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetti
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             retained_backups: int,
-             retention_unit: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             retained_backups: Optional[int] = None,
+             retention_unit: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if retained_backups is None and 'retainedBackups' in kwargs:
+            retained_backups = kwargs['retainedBackups']
+        if retained_backups is None:
+            raise TypeError("Missing 'retained_backups' argument")
+        if retention_unit is None and 'retentionUnit' in kwargs:
+            retention_unit = kwargs['retentionUnit']
+        if retention_unit is None:
+            raise TypeError("Missing 'retention_unit' argument")
+
         _setter("retained_backups", retained_backups)
         _setter("retention_unit", retention_unit)
 
@@ -4690,8 +5704,14 @@ class GetDatabaseInstancesInstanceSettingDataCacheConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data_cache_enabled: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             data_cache_enabled: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if data_cache_enabled is None and 'dataCacheEnabled' in kwargs:
+            data_cache_enabled = kwargs['dataCacheEnabled']
+        if data_cache_enabled is None:
+            raise TypeError("Missing 'data_cache_enabled' argument")
+
         _setter("data_cache_enabled", data_cache_enabled)
 
     @property
@@ -4713,9 +5733,15 @@ class GetDatabaseInstancesInstanceSettingDatabaseFlagResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("name", name)
         _setter("value", value)
 
@@ -4745,10 +5771,22 @@ class GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             end_date: str,
-             start_date: str,
-             time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             end_date: Optional[str] = None,
+             start_date: Optional[str] = None,
+             time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if end_date is None and 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+        if end_date is None:
+            raise TypeError("Missing 'end_date' argument")
+        if start_date is None and 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+        if start_date is None:
+            raise TypeError("Missing 'start_date' argument")
+        if time is None:
+            raise TypeError("Missing 'time' argument")
+
         _setter("end_date", end_date)
         _setter("start_date", start_date)
         _setter("time", time)
@@ -4788,12 +5826,34 @@ class GetDatabaseInstancesInstanceSettingInsightsConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             query_insights_enabled: bool,
-             query_plans_per_minute: int,
-             query_string_length: int,
-             record_application_tags: bool,
-             record_client_address: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             query_insights_enabled: Optional[bool] = None,
+             query_plans_per_minute: Optional[int] = None,
+             query_string_length: Optional[int] = None,
+             record_application_tags: Optional[bool] = None,
+             record_client_address: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if query_insights_enabled is None and 'queryInsightsEnabled' in kwargs:
+            query_insights_enabled = kwargs['queryInsightsEnabled']
+        if query_insights_enabled is None:
+            raise TypeError("Missing 'query_insights_enabled' argument")
+        if query_plans_per_minute is None and 'queryPlansPerMinute' in kwargs:
+            query_plans_per_minute = kwargs['queryPlansPerMinute']
+        if query_plans_per_minute is None:
+            raise TypeError("Missing 'query_plans_per_minute' argument")
+        if query_string_length is None and 'queryStringLength' in kwargs:
+            query_string_length = kwargs['queryStringLength']
+        if query_string_length is None:
+            raise TypeError("Missing 'query_string_length' argument")
+        if record_application_tags is None and 'recordApplicationTags' in kwargs:
+            record_application_tags = kwargs['recordApplicationTags']
+        if record_application_tags is None:
+            raise TypeError("Missing 'record_application_tags' argument")
+        if record_client_address is None and 'recordClientAddress' in kwargs:
+            record_client_address = kwargs['recordClientAddress']
+        if record_client_address is None:
+            raise TypeError("Missing 'record_client_address' argument")
+
         _setter("query_insights_enabled", query_insights_enabled)
         _setter("query_plans_per_minute", query_plans_per_minute)
         _setter("query_string_length", query_string_length)
@@ -4849,14 +5909,44 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allocated_ip_range: str,
-             authorized_networks: Sequence['outputs.GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkResult'],
-             enable_private_path_for_google_cloud_services: bool,
-             ipv4_enabled: bool,
-             private_network: str,
-             psc_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigResult'],
-             require_ssl: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             allocated_ip_range: Optional[str] = None,
+             authorized_networks: Optional[Sequence['outputs.GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkResult']] = None,
+             enable_private_path_for_google_cloud_services: Optional[bool] = None,
+             ipv4_enabled: Optional[bool] = None,
+             private_network: Optional[str] = None,
+             psc_configs: Optional[Sequence['outputs.GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigResult']] = None,
+             require_ssl: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allocated_ip_range is None and 'allocatedIpRange' in kwargs:
+            allocated_ip_range = kwargs['allocatedIpRange']
+        if allocated_ip_range is None:
+            raise TypeError("Missing 'allocated_ip_range' argument")
+        if authorized_networks is None and 'authorizedNetworks' in kwargs:
+            authorized_networks = kwargs['authorizedNetworks']
+        if authorized_networks is None:
+            raise TypeError("Missing 'authorized_networks' argument")
+        if enable_private_path_for_google_cloud_services is None and 'enablePrivatePathForGoogleCloudServices' in kwargs:
+            enable_private_path_for_google_cloud_services = kwargs['enablePrivatePathForGoogleCloudServices']
+        if enable_private_path_for_google_cloud_services is None:
+            raise TypeError("Missing 'enable_private_path_for_google_cloud_services' argument")
+        if ipv4_enabled is None and 'ipv4Enabled' in kwargs:
+            ipv4_enabled = kwargs['ipv4Enabled']
+        if ipv4_enabled is None:
+            raise TypeError("Missing 'ipv4_enabled' argument")
+        if private_network is None and 'privateNetwork' in kwargs:
+            private_network = kwargs['privateNetwork']
+        if private_network is None:
+            raise TypeError("Missing 'private_network' argument")
+        if psc_configs is None and 'pscConfigs' in kwargs:
+            psc_configs = kwargs['pscConfigs']
+        if psc_configs is None:
+            raise TypeError("Missing 'psc_configs' argument")
+        if require_ssl is None and 'requireSsl' in kwargs:
+            require_ssl = kwargs['requireSsl']
+        if require_ssl is None:
+            raise TypeError("Missing 'require_ssl' argument")
+
         _setter("allocated_ip_range", allocated_ip_range)
         _setter("authorized_networks", authorized_networks)
         _setter("enable_private_path_for_google_cloud_services", enable_private_path_for_google_cloud_services)
@@ -4916,10 +6006,20 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkResult(
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expiration_time: str,
-             name: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             expiration_time: Optional[str] = None,
+             name: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expiration_time is None and 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+        if expiration_time is None:
+            raise TypeError("Missing 'expiration_time' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("expiration_time", expiration_time)
         _setter("name", name)
         _setter("value", value)
@@ -4953,9 +6053,19 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allowed_consumer_projects: Sequence[str],
-             psc_enabled: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             allowed_consumer_projects: Optional[Sequence[str]] = None,
+             psc_enabled: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allowed_consumer_projects is None and 'allowedConsumerProjects' in kwargs:
+            allowed_consumer_projects = kwargs['allowedConsumerProjects']
+        if allowed_consumer_projects is None:
+            raise TypeError("Missing 'allowed_consumer_projects' argument")
+        if psc_enabled is None and 'pscEnabled' in kwargs:
+            psc_enabled = kwargs['pscEnabled']
+        if psc_enabled is None:
+            raise TypeError("Missing 'psc_enabled' argument")
+
         _setter("allowed_consumer_projects", allowed_consumer_projects)
         _setter("psc_enabled", psc_enabled)
 
@@ -4988,10 +6098,22 @@ class GetDatabaseInstancesInstanceSettingLocationPreferenceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             follow_gae_application: str,
-             secondary_zone: str,
-             zone: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             follow_gae_application: Optional[str] = None,
+             secondary_zone: Optional[str] = None,
+             zone: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if follow_gae_application is None and 'followGaeApplication' in kwargs:
+            follow_gae_application = kwargs['followGaeApplication']
+        if follow_gae_application is None:
+            raise TypeError("Missing 'follow_gae_application' argument")
+        if secondary_zone is None and 'secondaryZone' in kwargs:
+            secondary_zone = kwargs['secondaryZone']
+        if secondary_zone is None:
+            raise TypeError("Missing 'secondary_zone' argument")
+        if zone is None:
+            raise TypeError("Missing 'zone' argument")
+
         _setter("follow_gae_application", follow_gae_application)
         _setter("secondary_zone", secondary_zone)
         _setter("zone", zone)
@@ -5030,10 +6152,20 @@ class GetDatabaseInstancesInstanceSettingMaintenanceWindowResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             day: int,
-             hour: int,
-             update_track: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             day: Optional[int] = None,
+             hour: Optional[int] = None,
+             update_track: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if day is None:
+            raise TypeError("Missing 'day' argument")
+        if hour is None:
+            raise TypeError("Missing 'hour' argument")
+        if update_track is None and 'updateTrack' in kwargs:
+            update_track = kwargs['updateTrack']
+        if update_track is None:
+            raise TypeError("Missing 'update_track' argument")
+
         _setter("day", day)
         _setter("hour", hour)
         _setter("update_track", update_track)
@@ -5075,13 +6207,37 @@ class GetDatabaseInstancesInstanceSettingPasswordValidationPolicyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             complexity: str,
-             disallow_username_substring: bool,
-             enable_password_policy: bool,
-             min_length: int,
-             password_change_interval: str,
-             reuse_interval: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             complexity: Optional[str] = None,
+             disallow_username_substring: Optional[bool] = None,
+             enable_password_policy: Optional[bool] = None,
+             min_length: Optional[int] = None,
+             password_change_interval: Optional[str] = None,
+             reuse_interval: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if complexity is None:
+            raise TypeError("Missing 'complexity' argument")
+        if disallow_username_substring is None and 'disallowUsernameSubstring' in kwargs:
+            disallow_username_substring = kwargs['disallowUsernameSubstring']
+        if disallow_username_substring is None:
+            raise TypeError("Missing 'disallow_username_substring' argument")
+        if enable_password_policy is None and 'enablePasswordPolicy' in kwargs:
+            enable_password_policy = kwargs['enablePasswordPolicy']
+        if enable_password_policy is None:
+            raise TypeError("Missing 'enable_password_policy' argument")
+        if min_length is None and 'minLength' in kwargs:
+            min_length = kwargs['minLength']
+        if min_length is None:
+            raise TypeError("Missing 'min_length' argument")
+        if password_change_interval is None and 'passwordChangeInterval' in kwargs:
+            password_change_interval = kwargs['passwordChangeInterval']
+        if password_change_interval is None:
+            raise TypeError("Missing 'password_change_interval' argument")
+        if reuse_interval is None and 'reuseInterval' in kwargs:
+            reuse_interval = kwargs['reuseInterval']
+        if reuse_interval is None:
+            raise TypeError("Missing 'reuse_interval' argument")
+
         _setter("complexity", complexity)
         _setter("disallow_username_substring", disallow_username_substring)
         _setter("enable_password_policy", enable_password_policy)
@@ -5135,10 +6291,22 @@ class GetDatabaseInstancesInstanceSettingSqlServerAuditConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: str,
-             retention_interval: str,
-             upload_interval: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             bucket: Optional[str] = None,
+             retention_interval: Optional[str] = None,
+             upload_interval: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if retention_interval is None and 'retentionInterval' in kwargs:
+            retention_interval = kwargs['retentionInterval']
+        if retention_interval is None:
+            raise TypeError("Missing 'retention_interval' argument")
+        if upload_interval is None and 'uploadInterval' in kwargs:
+            upload_interval = kwargs['uploadInterval']
+        if upload_interval is None:
+            raise TypeError("Missing 'upload_interval' argument")
+
         _setter("bucket", bucket)
         _setter("retention_interval", retention_interval)
         _setter("upload_interval", upload_interval)
@@ -5188,14 +6356,34 @@ class GetDatabasesDatabaseResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             charset: str,
-             collation: str,
-             deletion_policy: str,
-             instance: str,
-             name: str,
-             project: str,
-             self_link: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             charset: Optional[str] = None,
+             collation: Optional[str] = None,
+             deletion_policy: Optional[str] = None,
+             instance: Optional[str] = None,
+             name: Optional[str] = None,
+             project: Optional[str] = None,
+             self_link: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if charset is None:
+            raise TypeError("Missing 'charset' argument")
+        if collation is None:
+            raise TypeError("Missing 'collation' argument")
+        if deletion_policy is None and 'deletionPolicy' in kwargs:
+            deletion_policy = kwargs['deletionPolicy']
+        if deletion_policy is None:
+            raise TypeError("Missing 'deletion_policy' argument")
+        if instance is None:
+            raise TypeError("Missing 'instance' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if self_link is None:
+            raise TypeError("Missing 'self_link' argument")
+
         _setter("charset", charset)
         _setter("collation", collation)
         _setter("deletion_policy", deletion_policy)
@@ -5271,11 +6459,23 @@ class GetTiersTierResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disk_quota: int,
-             ram: int,
-             regions: Sequence[str],
-             tier: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             disk_quota: Optional[int] = None,
+             ram: Optional[int] = None,
+             regions: Optional[Sequence[str]] = None,
+             tier: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if disk_quota is None and 'diskQuota' in kwargs:
+            disk_quota = kwargs['diskQuota']
+        if disk_quota is None:
+            raise TypeError("Missing 'disk_quota' argument")
+        if ram is None:
+            raise TypeError("Missing 'ram' argument")
+        if regions is None:
+            raise TypeError("Missing 'regions' argument")
+        if tier is None:
+            raise TypeError("Missing 'tier' argument")
+
         _setter("disk_quota", disk_quota)
         _setter("ram", ram)
         _setter("regions", regions)

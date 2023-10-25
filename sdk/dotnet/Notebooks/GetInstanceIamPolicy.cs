@@ -13,56 +13,12 @@ namespace Pulumi.Gcp.Notebooks
     {
         /// <summary>
         /// Retrieves the current IAM policy data for instance
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.Notebooks.GetInstanceIamPolicy.Invoke(new()
-        ///     {
-        ///         Project = google_notebooks_instance.Instance.Project,
-        ///         Location = google_notebooks_instance.Instance.Location,
-        ///         InstanceName = google_notebooks_instance.Instance.Name,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetInstanceIamPolicyResult> InvokeAsync(GetInstanceIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceIamPolicyResult>("gcp:notebooks/getInstanceIamPolicy:getInstanceIamPolicy", args ?? new GetInstanceIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for instance
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.Notebooks.GetInstanceIamPolicy.Invoke(new()
-        ///     {
-        ///         Project = google_notebooks_instance.Instance.Project,
-        ///         Location = google_notebooks_instance.Instance.Location,
-        ///         InstanceName = google_notebooks_instance.Instance.Name,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetInstanceIamPolicyResult> Invoke(GetInstanceIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceIamPolicyResult>("gcp:notebooks/getInstanceIamPolicy:getInstanceIamPolicy", args ?? new GetInstanceIamPolicyInvokeArgs(), options.WithDefaults());

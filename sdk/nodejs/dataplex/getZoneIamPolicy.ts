@@ -6,20 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for zone
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.dataplex.getZoneIamPolicy({
- *     project: google_dataplex_zone.example.project,
- *     location: google_dataplex_zone.example.location,
- *     lake: google_dataplex_zone.example.lake,
- *     dataplexZone: google_dataplex_zone.example.name,
- * });
- * ```
  */
 export function getZoneIamPolicy(args: GetZoneIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneIamPolicyResult> {
 
@@ -73,20 +59,6 @@ export interface GetZoneIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for zone
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.dataplex.getZoneIamPolicy({
- *     project: google_dataplex_zone.example.project,
- *     location: google_dataplex_zone.example.location,
- *     lake: google_dataplex_zone.example.lake,
- *     dataplexZone: google_dataplex_zone.example.name,
- * });
- * ```
  */
 export function getZoneIamPolicyOutput(args: GetZoneIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getZoneIamPolicy(a, opts))

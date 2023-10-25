@@ -46,13 +46,29 @@ class PrivateConnectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             location: pulumi.Input[str],
-             private_connection_id: pulumi.Input[str],
-             vpc_peering_config: pulumi.Input['PrivateConnectionVpcPeeringConfigArgs'],
+             display_name: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             private_connection_id: Optional[pulumi.Input[str]] = None,
+             vpc_peering_config: Optional[pulumi.Input['PrivateConnectionVpcPeeringConfigArgs']] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if private_connection_id is None and 'privateConnectionId' in kwargs:
+            private_connection_id = kwargs['privateConnectionId']
+        if private_connection_id is None:
+            raise TypeError("Missing 'private_connection_id' argument")
+        if vpc_peering_config is None and 'vpcPeeringConfig' in kwargs:
+            vpc_peering_config = kwargs['vpcPeeringConfig']
+        if vpc_peering_config is None:
+            raise TypeError("Missing 'vpc_peering_config' argument")
+
         _setter("display_name", display_name)
         _setter("location", location)
         _setter("private_connection_id", private_connection_id)
@@ -190,7 +206,15 @@ class _PrivateConnectionState:
              project: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              vpc_peering_config: Optional[pulumi.Input['PrivateConnectionVpcPeeringConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if private_connection_id is None and 'privateConnectionId' in kwargs:
+            private_connection_id = kwargs['privateConnectionId']
+        if vpc_peering_config is None and 'vpcPeeringConfig' in kwargs:
+            vpc_peering_config = kwargs['vpcPeeringConfig']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if errors is not None:
@@ -345,25 +369,6 @@ class PrivateConnection(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/datastream/docs/create-a-private-connectivity-configuration)
 
         ## Example Usage
-        ### Datastream Private Connection Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork")
-        default_private_connection = gcp.datastream.PrivateConnection("defaultPrivateConnection",
-            display_name="Connection profile",
-            location="us-central1",
-            private_connection_id="my-connection",
-            labels={
-                "key": "value",
-            },
-            vpc_peering_config=gcp.datastream.PrivateConnectionVpcPeeringConfigArgs(
-                vpc=default_network.id,
-                subnet="10.0.0.0/29",
-            ))
-        ```
 
         ## Import
 
@@ -409,25 +414,6 @@ class PrivateConnection(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/datastream/docs/create-a-private-connectivity-configuration)
 
         ## Example Usage
-        ### Datastream Private Connection Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork")
-        default_private_connection = gcp.datastream.PrivateConnection("defaultPrivateConnection",
-            display_name="Connection profile",
-            location="us-central1",
-            private_connection_id="my-connection",
-            labels={
-                "key": "value",
-            },
-            vpc_peering_config=gcp.datastream.PrivateConnectionVpcPeeringConfigArgs(
-                vpc=default_network.id,
-                subnet="10.0.0.0/29",
-            ))
-        ```
 
         ## Import
 
@@ -490,11 +476,7 @@ class PrivateConnection(pulumi.CustomResource):
                 raise TypeError("Missing required property 'private_connection_id'")
             __props__.__dict__["private_connection_id"] = private_connection_id
             __props__.__dict__["project"] = project
-            if vpc_peering_config is not None and not isinstance(vpc_peering_config, PrivateConnectionVpcPeeringConfigArgs):
-                vpc_peering_config = vpc_peering_config or {}
-                def _setter(key, value):
-                    vpc_peering_config[key] = value
-                PrivateConnectionVpcPeeringConfigArgs._configure(_setter, **vpc_peering_config)
+            vpc_peering_config = _utilities.configure(vpc_peering_config, PrivateConnectionVpcPeeringConfigArgs, True)
             if vpc_peering_config is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_peering_config'")
             __props__.__dict__["vpc_peering_config"] = vpc_peering_config

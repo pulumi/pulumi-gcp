@@ -64,9 +64,9 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             file_shares: pulumi.Input['InstanceFileSharesArgs'],
-             networks: pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]],
-             tier: pulumi.Input[str],
+             file_shares: Optional[pulumi.Input['InstanceFileSharesArgs']] = None,
+             networks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]] = None,
+             tier: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              kms_key_name: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -74,7 +74,19 @@ class InstanceArgs:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if file_shares is None and 'fileShares' in kwargs:
+            file_shares = kwargs['fileShares']
+        if file_shares is None:
+            raise TypeError("Missing 'file_shares' argument")
+        if networks is None:
+            raise TypeError("Missing 'networks' argument")
+        if tier is None:
+            raise TypeError("Missing 'tier' argument")
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+
         _setter("file_shares", file_shares)
         _setter("networks", networks)
         _setter("tier", tier)
@@ -299,7 +311,15 @@ class _InstanceState:
              project: Optional[pulumi.Input[str]] = None,
              tier: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if file_shares is None and 'fileShares' in kwargs:
+            file_shares = kwargs['fileShares']
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:
@@ -514,78 +534,6 @@ class Instance(pulumi.CustomResource):
             * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
 
         ## Example Usage
-        ### Filestore Instance Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.filestore.Instance("instance",
-            file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=1024,
-                name="share1",
-            ),
-            location="us-central1-b",
-            networks=[gcp.filestore.InstanceNetworkArgs(
-                modes=["MODE_IPV4"],
-                network="default",
-            )],
-            tier="BASIC_HDD")
-        ```
-        ### Filestore Instance Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.filestore.Instance("instance",
-            file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=2560,
-                name="share1",
-                nfs_export_options=[
-                    gcp.filestore.InstanceFileSharesNfsExportOptionArgs(
-                        access_mode="READ_WRITE",
-                        ip_ranges=["10.0.0.0/24"],
-                        squash_mode="NO_ROOT_SQUASH",
-                    ),
-                    gcp.filestore.InstanceFileSharesNfsExportOptionArgs(
-                        access_mode="READ_ONLY",
-                        anon_gid=456,
-                        anon_uid=123,
-                        ip_ranges=["10.10.0.0/24"],
-                        squash_mode="ROOT_SQUASH",
-                    ),
-                ],
-            ),
-            location="us-central1-b",
-            networks=[gcp.filestore.InstanceNetworkArgs(
-                connect_mode="DIRECT_PEERING",
-                modes=["MODE_IPV4"],
-                network="default",
-            )],
-            tier="BASIC_SSD")
-        ```
-        ### Filestore Instance Enterprise
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        filestore_keyring = gcp.kms.KeyRing("filestoreKeyring", location="us-central1")
-        filestore_key = gcp.kms.CryptoKey("filestoreKey", key_ring=filestore_keyring.id)
-        instance = gcp.filestore.Instance("instance",
-            location="us-central1",
-            tier="ENTERPRISE",
-            file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=1024,
-                name="share1",
-            ),
-            networks=[gcp.filestore.InstanceNetworkArgs(
-                network="default",
-                modes=["MODE_IPV4"],
-            )],
-            kms_key_name=filestore_key.id)
-        ```
 
         ## Import
 
@@ -643,78 +591,6 @@ class Instance(pulumi.CustomResource):
             * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
 
         ## Example Usage
-        ### Filestore Instance Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.filestore.Instance("instance",
-            file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=1024,
-                name="share1",
-            ),
-            location="us-central1-b",
-            networks=[gcp.filestore.InstanceNetworkArgs(
-                modes=["MODE_IPV4"],
-                network="default",
-            )],
-            tier="BASIC_HDD")
-        ```
-        ### Filestore Instance Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.filestore.Instance("instance",
-            file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=2560,
-                name="share1",
-                nfs_export_options=[
-                    gcp.filestore.InstanceFileSharesNfsExportOptionArgs(
-                        access_mode="READ_WRITE",
-                        ip_ranges=["10.0.0.0/24"],
-                        squash_mode="NO_ROOT_SQUASH",
-                    ),
-                    gcp.filestore.InstanceFileSharesNfsExportOptionArgs(
-                        access_mode="READ_ONLY",
-                        anon_gid=456,
-                        anon_uid=123,
-                        ip_ranges=["10.10.0.0/24"],
-                        squash_mode="ROOT_SQUASH",
-                    ),
-                ],
-            ),
-            location="us-central1-b",
-            networks=[gcp.filestore.InstanceNetworkArgs(
-                connect_mode="DIRECT_PEERING",
-                modes=["MODE_IPV4"],
-                network="default",
-            )],
-            tier="BASIC_SSD")
-        ```
-        ### Filestore Instance Enterprise
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        filestore_keyring = gcp.kms.KeyRing("filestoreKeyring", location="us-central1")
-        filestore_key = gcp.kms.CryptoKey("filestoreKey", key_ring=filestore_keyring.id)
-        instance = gcp.filestore.Instance("instance",
-            location="us-central1",
-            tier="ENTERPRISE",
-            file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=1024,
-                name="share1",
-            ),
-            networks=[gcp.filestore.InstanceNetworkArgs(
-                network="default",
-                modes=["MODE_IPV4"],
-            )],
-            kms_key_name=filestore_key.id)
-        ```
 
         ## Import
 
@@ -771,11 +647,7 @@ class Instance(pulumi.CustomResource):
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
             __props__.__dict__["description"] = description
-            if file_shares is not None and not isinstance(file_shares, InstanceFileSharesArgs):
-                file_shares = file_shares or {}
-                def _setter(key, value):
-                    file_shares[key] = value
-                InstanceFileSharesArgs._configure(_setter, **file_shares)
+            file_shares = _utilities.configure(file_shares, InstanceFileSharesArgs, True)
             if file_shares is None and not opts.urn:
                 raise TypeError("Missing required property 'file_shares'")
             __props__.__dict__["file_shares"] = file_shares

@@ -13,56 +13,12 @@ namespace Pulumi.Gcp.Iap
     {
         /// <summary>
         /// Retrieves the current IAM policy data for appengineservice
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.Iap.GetAppEngineServiceIamPolicy.Invoke(new()
-        ///     {
-        ///         AppId = google_app_engine_standard_app_version.Version.Project,
-        ///         Project = google_app_engine_standard_app_version.Version.Project,
-        ///         Service = google_app_engine_standard_app_version.Version.Service,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetAppEngineServiceIamPolicyResult> InvokeAsync(GetAppEngineServiceIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppEngineServiceIamPolicyResult>("gcp:iap/getAppEngineServiceIamPolicy:getAppEngineServiceIamPolicy", args ?? new GetAppEngineServiceIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for appengineservice
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.Iap.GetAppEngineServiceIamPolicy.Invoke(new()
-        ///     {
-        ///         AppId = google_app_engine_standard_app_version.Version.Project,
-        ///         Project = google_app_engine_standard_app_version.Version.Project,
-        ///         Service = google_app_engine_standard_app_version.Version.Service,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetAppEngineServiceIamPolicyResult> Invoke(GetAppEngineServiceIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppEngineServiceIamPolicyResult>("gcp:iap/getAppEngineServiceIamPolicy:getAppEngineServiceIamPolicy", args ?? new GetAppEngineServiceIamPolicyInvokeArgs(), options.WithDefaults());

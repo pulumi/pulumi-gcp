@@ -13,48 +13,12 @@ namespace Pulumi.Gcp.Healthcare
     {
         /// <summary>
         /// Retrieves the current IAM policy data for a Google Cloud Healthcare FHIR store.
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = Gcp.Healthcare.GetFhirStoreIamPolicy.Invoke(new()
-        ///     {
-        ///         FhirStoreId = google_healthcare_fhir_store.Fhir_store.Id,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetFhirStoreIamPolicyResult> InvokeAsync(GetFhirStoreIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFhirStoreIamPolicyResult>("gcp:healthcare/getFhirStoreIamPolicy:getFhirStoreIamPolicy", args ?? new GetFhirStoreIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for a Google Cloud Healthcare FHIR store.
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = Gcp.Healthcare.GetFhirStoreIamPolicy.Invoke(new()
-        ///     {
-        ///         FhirStoreId = google_healthcare_fhir_store.Fhir_store.Id,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetFhirStoreIamPolicyResult> Invoke(GetFhirStoreIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFhirStoreIamPolicyResult>("gcp:healthcare/getFhirStoreIamPolicy:getFhirStoreIamPolicy", args ?? new GetFhirStoreIamPolicyInvokeArgs(), options.WithDefaults());

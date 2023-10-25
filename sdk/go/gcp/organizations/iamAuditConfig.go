@@ -15,41 +15,6 @@ import (
 
 // Allows management of audit logging config for a given service for a Google Cloud Platform Organization.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.NewIamAuditConfig(ctx, "config", &organizations.IamAuditConfigArgs{
-//				AuditLogConfigs: organizations.IamAuditConfigAuditLogConfigArray{
-//					&organizations.IamAuditConfigAuditLogConfigArgs{
-//						ExemptedMembers: pulumi.StringArray{
-//							pulumi.String("user:joebloggs@hashicorp.com"),
-//						},
-//						LogType: pulumi.String("DATA_READ"),
-//					},
-//				},
-//				OrgId:   pulumi.String("your-organization-id"),
-//				Service: pulumi.String("allServices"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // IAM audit config imports use the identifier of the resource in question and the service, e.g.

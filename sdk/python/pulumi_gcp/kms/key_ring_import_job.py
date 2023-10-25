@@ -44,11 +44,29 @@ class KeyRingImportJobArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             import_job_id: pulumi.Input[str],
-             import_method: pulumi.Input[str],
-             key_ring: pulumi.Input[str],
-             protection_level: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             import_job_id: Optional[pulumi.Input[str]] = None,
+             import_method: Optional[pulumi.Input[str]] = None,
+             key_ring: Optional[pulumi.Input[str]] = None,
+             protection_level: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if import_job_id is None and 'importJobId' in kwargs:
+            import_job_id = kwargs['importJobId']
+        if import_job_id is None:
+            raise TypeError("Missing 'import_job_id' argument")
+        if import_method is None and 'importMethod' in kwargs:
+            import_method = kwargs['importMethod']
+        if import_method is None:
+            raise TypeError("Missing 'import_method' argument")
+        if key_ring is None and 'keyRing' in kwargs:
+            key_ring = kwargs['keyRing']
+        if key_ring is None:
+            raise TypeError("Missing 'key_ring' argument")
+        if protection_level is None and 'protectionLevel' in kwargs:
+            protection_level = kwargs['protectionLevel']
+        if protection_level is None:
+            raise TypeError("Missing 'protection_level' argument")
+
         _setter("import_job_id", import_job_id)
         _setter("import_method", import_method)
         _setter("key_ring", key_ring)
@@ -170,7 +188,21 @@ class _KeyRingImportJobState:
              protection_level: Optional[pulumi.Input[str]] = None,
              public_keys: Optional[pulumi.Input[Sequence[pulumi.Input['KeyRingImportJobPublicKeyArgs']]]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expire_time is None and 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if import_job_id is None and 'importJobId' in kwargs:
+            import_job_id = kwargs['importJobId']
+        if import_method is None and 'importMethod' in kwargs:
+            import_method = kwargs['importMethod']
+        if key_ring is None and 'keyRing' in kwargs:
+            key_ring = kwargs['keyRing']
+        if protection_level is None and 'protectionLevel' in kwargs:
+            protection_level = kwargs['protectionLevel']
+        if public_keys is None and 'publicKeys' in kwargs:
+            public_keys = kwargs['publicKeys']
+
         if attestations is not None:
             _setter("attestations", attestations)
         if expire_time is not None:

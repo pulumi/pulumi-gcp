@@ -66,7 +66,15 @@ class InstanceArgs:
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deletion_protection is None and 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+
         if clusters is not None:
             _setter("clusters", clusters)
         if deletion_protection is not None:
@@ -239,7 +247,15 @@ class _InstanceState:
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deletion_protection is None and 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+
         if clusters is not None:
             _setter("clusters", clusters)
         if deletion_protection is not None:
@@ -389,51 +405,6 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/bigtable/docs)
 
         ## Example Usage
-        ### Simple Instance
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        production_instance = gcp.bigtable.Instance("production-instance",
-            clusters=[gcp.bigtable.InstanceClusterArgs(
-                cluster_id="tf-instance-cluster",
-                num_nodes=1,
-                storage_type="HDD",
-            )],
-            labels={
-                "my-label": "prod-label",
-            })
-        ```
-        ### Replicated Instance
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        production_instance = gcp.bigtable.Instance("production-instance",
-            clusters=[
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="tf-instance-cluster1",
-                    num_nodes=1,
-                    storage_type="HDD",
-                    zone="us-central1-c",
-                ),
-                gcp.bigtable.InstanceClusterArgs(
-                    autoscaling_config=gcp.bigtable.InstanceClusterAutoscalingConfigArgs(
-                        cpu_target=50,
-                        max_nodes=3,
-                        min_nodes=1,
-                    ),
-                    cluster_id="tf-instance-cluster2",
-                    storage_type="HDD",
-                    zone="us-central1-b",
-                ),
-            ],
-            labels={
-                "my-label": "prod-label",
-            })
-        ```
 
         ## Import
 
@@ -497,51 +468,6 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/bigtable/docs)
 
         ## Example Usage
-        ### Simple Instance
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        production_instance = gcp.bigtable.Instance("production-instance",
-            clusters=[gcp.bigtable.InstanceClusterArgs(
-                cluster_id="tf-instance-cluster",
-                num_nodes=1,
-                storage_type="HDD",
-            )],
-            labels={
-                "my-label": "prod-label",
-            })
-        ```
-        ### Replicated Instance
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        production_instance = gcp.bigtable.Instance("production-instance",
-            clusters=[
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="tf-instance-cluster1",
-                    num_nodes=1,
-                    storage_type="HDD",
-                    zone="us-central1-c",
-                ),
-                gcp.bigtable.InstanceClusterArgs(
-                    autoscaling_config=gcp.bigtable.InstanceClusterAutoscalingConfigArgs(
-                        cpu_target=50,
-                        max_nodes=3,
-                        min_nodes=1,
-                    ),
-                    cluster_id="tf-instance-cluster2",
-                    storage_type="HDD",
-                    zone="us-central1-b",
-                ),
-            ],
-            labels={
-                "my-label": "prod-label",
-            })
-        ```
 
         ## Import
 

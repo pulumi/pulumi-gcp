@@ -57,8 +57,8 @@ class AiEndpointArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             location: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              encryption_spec: Optional[pulumi.Input['AiEndpointEncryptionSpecArgs']] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -66,7 +66,17 @@ class AiEndpointArgs:
              network: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if encryption_spec is None and 'encryptionSpec' in kwargs:
+            encryption_spec = kwargs['encryptionSpec']
+
         _setter("display_name", display_name)
         _setter("location", location)
         if description is not None:
@@ -273,7 +283,21 @@ class _AiEndpointState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if deployed_models is None and 'deployedModels' in kwargs:
+            deployed_models = kwargs['deployedModels']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if encryption_spec is None and 'encryptionSpec' in kwargs:
+            encryption_spec = kwargs['encryptionSpec']
+        if model_deployment_monitoring_job is None and 'modelDeploymentMonitoringJob' in kwargs:
+            model_deployment_monitoring_job = kwargs['modelDeploymentMonitoringJob']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if deployed_models is not None:
@@ -504,41 +528,6 @@ class AiEndpoint(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
         ## Example Usage
-        ### Vertex Ai Endpoint Network
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        vertex_network = gcp.compute.get_network(name="network-name")
-        vertex_range = gcp.compute.GlobalAddress("vertexRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=24,
-            network=vertex_network.id)
-        vertex_vpc_connection = gcp.servicenetworking.Connection("vertexVpcConnection",
-            network=vertex_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[vertex_range.name])
-        project = gcp.organizations.get_project()
-        endpoint = gcp.vertex.AiEndpoint("endpoint",
-            display_name="sample-endpoint",
-            description="A sample vertex endpoint",
-            location="us-central1",
-            region="us-central1",
-            labels={
-                "label-one": "value-one",
-            },
-            network=f"projects/{project.number}/global/networks/{vertex_network.name}",
-            encryption_spec=gcp.vertex.AiEndpointEncryptionSpecArgs(
-                kms_key_name="kms-name",
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
-        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
-            crypto_key_id="kms-name",
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com")
-        ```
 
         ## Import
 
@@ -589,41 +578,6 @@ class AiEndpoint(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
         ## Example Usage
-        ### Vertex Ai Endpoint Network
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        vertex_network = gcp.compute.get_network(name="network-name")
-        vertex_range = gcp.compute.GlobalAddress("vertexRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=24,
-            network=vertex_network.id)
-        vertex_vpc_connection = gcp.servicenetworking.Connection("vertexVpcConnection",
-            network=vertex_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[vertex_range.name])
-        project = gcp.organizations.get_project()
-        endpoint = gcp.vertex.AiEndpoint("endpoint",
-            display_name="sample-endpoint",
-            description="A sample vertex endpoint",
-            location="us-central1",
-            region="us-central1",
-            labels={
-                "label-one": "value-one",
-            },
-            network=f"projects/{project.number}/global/networks/{vertex_network.name}",
-            encryption_spec=gcp.vertex.AiEndpointEncryptionSpecArgs(
-                kms_key_name="kms-name",
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
-        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
-            crypto_key_id="kms-name",
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com")
-        ```
 
         ## Import
 
@@ -682,11 +636,7 @@ class AiEndpoint(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
-            if encryption_spec is not None and not isinstance(encryption_spec, AiEndpointEncryptionSpecArgs):
-                encryption_spec = encryption_spec or {}
-                def _setter(key, value):
-                    encryption_spec[key] = value
-                AiEndpointEncryptionSpecArgs._configure(_setter, **encryption_spec)
+            encryption_spec = _utilities.configure(encryption_spec, AiEndpointEncryptionSpecArgs, True)
             __props__.__dict__["encryption_spec"] = encryption_spec
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:

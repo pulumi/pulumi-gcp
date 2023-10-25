@@ -49,13 +49,21 @@ class EndpointArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint_id: pulumi.Input[str],
-             service: pulumi.Input[str],
+             endpoint_id: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
              address: Optional[pulumi.Input[str]] = None,
              metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              network: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if endpoint_id is None and 'endpointId' in kwargs:
+            endpoint_id = kwargs['endpointId']
+        if endpoint_id is None:
+            raise TypeError("Missing 'endpoint_id' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
         _setter("endpoint_id", endpoint_id)
         _setter("service", service)
         if address is not None:
@@ -197,7 +205,11 @@ class _EndpointState:
              network: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
              service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if endpoint_id is None and 'endpointId' in kwargs:
+            endpoint_id = kwargs['endpointId']
+
         if address is not None:
             _setter("address", address)
         if endpoint_id is not None:
@@ -329,59 +341,6 @@ class Endpoint(pulumi.CustomResource):
             * [Configuring an endpoint](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_an_endpoint)
 
         ## Example Usage
-        ### Service Directory Endpoint Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example_namespace = gcp.servicedirectory.Namespace("exampleNamespace",
-            namespace_id="example-namespace",
-            location="us-central1",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        example_service = gcp.servicedirectory.Service("exampleService",
-            service_id="example-service",
-            namespace=example_namespace.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        example_endpoint = gcp.servicedirectory.Endpoint("exampleEndpoint",
-            endpoint_id="example-endpoint",
-            service=example_service.id,
-            metadata={
-                "stage": "prod",
-                "region": "us-central1",
-            },
-            address="1.2.3.4",
-            port=5353,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Service Directory Endpoint With Network
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        example_network = gcp.compute.Network("exampleNetwork", opts=pulumi.ResourceOptions(provider=google_beta))
-        example_namespace = gcp.servicedirectory.Namespace("exampleNamespace",
-            namespace_id="example-namespace",
-            location="us-central1",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        example_service = gcp.servicedirectory.Service("exampleService",
-            service_id="example-service",
-            namespace=example_namespace.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        example_endpoint = gcp.servicedirectory.Endpoint("exampleEndpoint",
-            endpoint_id="example-endpoint",
-            service=example_service.id,
-            metadata={
-                "stage": "prod",
-                "region": "us-central1",
-            },
-            network=example_network.name.apply(lambda name: f"projects/{project.number}/locations/global/networks/{name}"),
-            address="1.2.3.4",
-            port=5353,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -432,59 +391,6 @@ class Endpoint(pulumi.CustomResource):
             * [Configuring an endpoint](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_an_endpoint)
 
         ## Example Usage
-        ### Service Directory Endpoint Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example_namespace = gcp.servicedirectory.Namespace("exampleNamespace",
-            namespace_id="example-namespace",
-            location="us-central1",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        example_service = gcp.servicedirectory.Service("exampleService",
-            service_id="example-service",
-            namespace=example_namespace.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        example_endpoint = gcp.servicedirectory.Endpoint("exampleEndpoint",
-            endpoint_id="example-endpoint",
-            service=example_service.id,
-            metadata={
-                "stage": "prod",
-                "region": "us-central1",
-            },
-            address="1.2.3.4",
-            port=5353,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Service Directory Endpoint With Network
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        example_network = gcp.compute.Network("exampleNetwork", opts=pulumi.ResourceOptions(provider=google_beta))
-        example_namespace = gcp.servicedirectory.Namespace("exampleNamespace",
-            namespace_id="example-namespace",
-            location="us-central1",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        example_service = gcp.servicedirectory.Service("exampleService",
-            service_id="example-service",
-            namespace=example_namespace.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        example_endpoint = gcp.servicedirectory.Endpoint("exampleEndpoint",
-            endpoint_id="example-endpoint",
-            service=example_service.id,
-            metadata={
-                "stage": "prod",
-                "region": "us-central1",
-            },
-            network=example_network.name.apply(lambda name: f"projects/{project.number}/locations/global/networks/{name}"),
-            address="1.2.3.4",
-            port=5353,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 

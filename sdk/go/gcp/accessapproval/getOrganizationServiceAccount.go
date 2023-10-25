@@ -19,43 +19,6 @@ import (
 // [custom signing key](https://cloud.google.com/cloud-provider-access-management/access-approval/docs/review-approve-access-requests-custom-keys),
 // this account needs to be granted the `cloudkms.signerVerifier` IAM role on the
 // Cloud KMS key used to sign approvals.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/accessapproval"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			serviceAccount, err := accessapproval.GetOrganizationServiceAccount(ctx, &accessapproval.GetOrganizationServiceAccountArgs{
-//				OrganizationId: "my-organization",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: pulumi.Any(google_kms_crypto_key.Crypto_key.Id),
-//				Role:        pulumi.String("roles/cloudkms.signerVerifier"),
-//				Member:      pulumi.String(fmt.Sprintf("serviceAccount:%v", serviceAccount.AccountEmail)),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetOrganizationServiceAccount(ctx *pulumi.Context, args *GetOrganizationServiceAccountArgs, opts ...pulumi.InvokeOption) (*GetOrganizationServiceAccountResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOrganizationServiceAccountResult

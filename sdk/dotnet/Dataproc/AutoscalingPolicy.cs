@@ -13,49 +13,6 @@ namespace Pulumi.Gcp.Dataproc
     /// Describes an autoscaling policy for Dataproc cluster autoscaler.
     /// 
     /// ## Example Usage
-    /// ### Dataproc Autoscaling Policy
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var asp = new Gcp.Dataproc.AutoscalingPolicy("asp", new()
-    ///     {
-    ///         PolicyId = "dataproc-policy",
-    ///         Location = "us-central1",
-    ///         WorkerConfig = new Gcp.Dataproc.Inputs.AutoscalingPolicyWorkerConfigArgs
-    ///         {
-    ///             MaxInstances = 3,
-    ///         },
-    ///         BasicAlgorithm = new Gcp.Dataproc.Inputs.AutoscalingPolicyBasicAlgorithmArgs
-    ///         {
-    ///             YarnConfig = new Gcp.Dataproc.Inputs.AutoscalingPolicyBasicAlgorithmYarnConfigArgs
-    ///             {
-    ///                 GracefulDecommissionTimeout = "30s",
-    ///                 ScaleUpFactor = 0.5,
-    ///                 ScaleDownFactor = 0.5,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var basic = new Gcp.Dataproc.Cluster("basic", new()
-    ///     {
-    ///         Region = "us-central1",
-    ///         ClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigArgs
-    ///         {
-    ///             AutoscalingConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigAutoscalingConfigArgs
-    ///             {
-    ///                 PolicyUri = asp.Name,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

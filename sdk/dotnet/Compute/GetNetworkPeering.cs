@@ -16,51 +16,6 @@ namespace Pulumi.Gcp.Compute
         /// [the official documentation](https://cloud.google.com/compute/docs/vpc/vpc-peering)
         /// and
         /// [API](https://cloud.google.com/compute/docs/reference/latest/networks).
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = new Gcp.Compute.Network("default", new()
-        ///     {
-        ///         AutoCreateSubnetworks = false,
-        ///     });
-        /// 
-        ///     var other = new Gcp.Compute.Network("other", new()
-        ///     {
-        ///         AutoCreateSubnetworks = false,
-        ///     });
-        /// 
-        ///     var peering1 = new Gcp.Compute.NetworkPeering("peering1", new()
-        ///     {
-        ///         Network = @default.SelfLink,
-        ///         PeerNetwork = other.SelfLink,
-        ///     });
-        /// 
-        ///     var peering2 = new Gcp.Compute.NetworkPeering("peering2", new()
-        ///     {
-        ///         Network = other.SelfLink,
-        ///         PeerNetwork = @default.SelfLink,
-        ///     });
-        /// 
-        ///     var peering1Ds = Gcp.Compute.GetNetworkPeering.Invoke(new()
-        ///     {
-        ///         Name = peering1.Name,
-        ///         Network = peering1.Network,
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetworkPeeringResult> InvokeAsync(GetNetworkPeeringArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkPeeringResult>("gcp:compute/getNetworkPeering:getNetworkPeering", args ?? new GetNetworkPeeringArgs(), options.WithDefaults());
@@ -70,51 +25,6 @@ namespace Pulumi.Gcp.Compute
         /// [the official documentation](https://cloud.google.com/compute/docs/vpc/vpc-peering)
         /// and
         /// [API](https://cloud.google.com/compute/docs/reference/latest/networks).
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = new Gcp.Compute.Network("default", new()
-        ///     {
-        ///         AutoCreateSubnetworks = false,
-        ///     });
-        /// 
-        ///     var other = new Gcp.Compute.Network("other", new()
-        ///     {
-        ///         AutoCreateSubnetworks = false,
-        ///     });
-        /// 
-        ///     var peering1 = new Gcp.Compute.NetworkPeering("peering1", new()
-        ///     {
-        ///         Network = @default.SelfLink,
-        ///         PeerNetwork = other.SelfLink,
-        ///     });
-        /// 
-        ///     var peering2 = new Gcp.Compute.NetworkPeering("peering2", new()
-        ///     {
-        ///         Network = other.SelfLink,
-        ///         PeerNetwork = @default.SelfLink,
-        ///     });
-        /// 
-        ///     var peering1Ds = Gcp.Compute.GetNetworkPeering.Invoke(new()
-        ///     {
-        ///         Name = peering1.Name,
-        ///         Network = peering1.Network,
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetNetworkPeeringResult> Invoke(GetNetworkPeeringInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkPeeringResult>("gcp:compute/getNetworkPeering:getNetworkPeering", args ?? new GetNetworkPeeringInvokeArgs(), options.WithDefaults());

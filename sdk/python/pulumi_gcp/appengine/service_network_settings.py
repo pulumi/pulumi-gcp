@@ -36,10 +36,18 @@ class ServiceNetworkSettingsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network_settings: pulumi.Input['ServiceNetworkSettingsNetworkSettingsArgs'],
-             service: pulumi.Input[str],
+             network_settings: Optional[pulumi.Input['ServiceNetworkSettingsNetworkSettingsArgs']] = None,
+             service: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if network_settings is None and 'networkSettings' in kwargs:
+            network_settings = kwargs['networkSettings']
+        if network_settings is None:
+            raise TypeError("Missing 'network_settings' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
         _setter("network_settings", network_settings)
         _setter("service", service)
         if project is not None:
@@ -110,7 +118,11 @@ class _ServiceNetworkSettingsState:
              network_settings: Optional[pulumi.Input['ServiceNetworkSettingsNetworkSettingsArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
              service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if network_settings is None and 'networkSettings' in kwargs:
+            network_settings = kwargs['networkSettings']
+
         if network_settings is not None:
             _setter("network_settings", network_settings)
         if project is not None:
@@ -174,38 +186,6 @@ class ServiceNetworkSettings(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services)
 
         ## Example Usage
-        ### App Engine Service Network Settings
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        bucket = gcp.storage.Bucket("bucket", location="US")
-        object = gcp.storage.BucketObject("object",
-            bucket=bucket.name,
-            source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
-        internalapp_standard_app_version = gcp.appengine.StandardAppVersion("internalappStandardAppVersion",
-            version_id="v1",
-            service="internalapp",
-            delete_service_on_destroy=True,
-            runtime="nodejs10",
-            entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
-                shell="node ./app.js",
-            ),
-            deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
-                zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
-                    source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
-                ),
-            ),
-            env_variables={
-                "port": "8080",
-            })
-        internalapp_service_network_settings = gcp.appengine.ServiceNetworkSettings("internalappServiceNetworkSettings",
-            service=internalapp_standard_app_version.service,
-            network_settings=gcp.appengine.ServiceNetworkSettingsNetworkSettingsArgs(
-                ingress_traffic_allowed="INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY",
-            ))
-        ```
 
         ## Import
 
@@ -245,38 +225,6 @@ class ServiceNetworkSettings(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services)
 
         ## Example Usage
-        ### App Engine Service Network Settings
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        bucket = gcp.storage.Bucket("bucket", location="US")
-        object = gcp.storage.BucketObject("object",
-            bucket=bucket.name,
-            source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
-        internalapp_standard_app_version = gcp.appengine.StandardAppVersion("internalappStandardAppVersion",
-            version_id="v1",
-            service="internalapp",
-            delete_service_on_destroy=True,
-            runtime="nodejs10",
-            entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
-                shell="node ./app.js",
-            ),
-            deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
-                zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
-                    source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
-                ),
-            ),
-            env_variables={
-                "port": "8080",
-            })
-        internalapp_service_network_settings = gcp.appengine.ServiceNetworkSettings("internalappServiceNetworkSettings",
-            service=internalapp_standard_app_version.service,
-            network_settings=gcp.appengine.ServiceNetworkSettingsNetworkSettingsArgs(
-                ingress_traffic_allowed="INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY",
-            ))
-        ```
 
         ## Import
 
@@ -325,11 +273,7 @@ class ServiceNetworkSettings(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ServiceNetworkSettingsArgs.__new__(ServiceNetworkSettingsArgs)
 
-            if network_settings is not None and not isinstance(network_settings, ServiceNetworkSettingsNetworkSettingsArgs):
-                network_settings = network_settings or {}
-                def _setter(key, value):
-                    network_settings[key] = value
-                ServiceNetworkSettingsNetworkSettingsArgs._configure(_setter, **network_settings)
+            network_settings = _utilities.configure(network_settings, ServiceNetworkSettingsNetworkSettingsArgs, True)
             if network_settings is None and not opts.urn:
                 raise TypeError("Missing required property 'network_settings'")
             __props__.__dict__["network_settings"] = network_settings

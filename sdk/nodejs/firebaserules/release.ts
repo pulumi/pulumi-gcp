@@ -8,66 +8,6 @@ import * as utilities from "../utilities";
  * For more information, see:
  * * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
  * ## Example Usage
- * ### Firestore_release
- * Creates a Firebase Rules Release to Cloud Firestore
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const firestore = new gcp.firebaserules.Ruleset("firestore", {
- *     source: {
- *         files: [{
- *             content: "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
- *             name: "firestore.rules",
- *         }],
- *     },
- *     project: "my-project-name",
- * });
- * const primary = new gcp.firebaserules.Release("primary", {
- *     rulesetName: pulumi.interpolate`projects/my-project-name/rulesets/${firestore.name}`,
- *     project: "my-project-name",
- * });
- * ```
- * ### Storage_release
- * Creates a Firebase Rules Release for a Storage bucket
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * // Provision a non-default Cloud Storage bucket.
- * const bucketBucket = new gcp.storage.Bucket("bucketBucket", {
- *     project: "my-project-name",
- *     location: "us-west1",
- * }, {
- *     provider: google_beta,
- * });
- * // Make the Storage bucket accessible for Firebase SDKs, authentication, and Firebase Security Rules.
- * const bucketStorageBucket = new gcp.firebase.StorageBucket("bucketStorageBucket", {
- *     project: "my-project-name",
- *     bucketId: bucketBucket.name,
- * }, {
- *     provider: google_beta,
- * });
- * // Create a ruleset of Firebase Security Rules from a local file.
- * const storage = new gcp.firebaserules.Ruleset("storage", {
- *     project: "my-project-name",
- *     source: {
- *         files: [{
- *             name: "storage.rules",
- *             content: "service firebase.storage {match /b/{bucket}/o {match /{allPaths=**} {allow read, write: if request.auth != null;}}}",
- *         }],
- *     },
- * }, {
- *     provider: google_beta,
- *     dependsOn: [bucketStorageBucket],
- * });
- * const primary = new gcp.firebaserules.Release("primary", {
- *     rulesetName: pulumi.interpolate`projects/my-project-name/rulesets/${storage.name}`,
- *     project: "my-project-name",
- * }, {
- *     provider: google_beta,
- * });
- * ```
  *
  * ## Import
  *

@@ -12,25 +12,6 @@ import * as utilities from "../utilities";
  * the datasource. A region can have a different set of supported versions than
  * its component zones, and not all zones in a region are guaranteed to
  * support the same version.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const central1b = gcp.container.getEngineVersions({
- *     location: "us-central1-b",
- *     versionPrefix: "1.12.",
- * });
- * const foo = new gcp.container.Cluster("foo", {
- *     location: "us-central1-b",
- *     nodeVersion: central1b.then(central1b => central1b.latestNodeVersion),
- *     initialNodeCount: 1,
- * });
- * export const stableChannelDefaultVersion = central1b.then(central1b => central1b.releaseChannelDefaultVersion?.STABLE);
- * export const stableChannelLatestVersion = central1b.then(central1b => central1b.releaseChannelLatestVersion?.STABLE);
- * ```
  */
 export function getEngineVersions(args?: GetEngineVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetEngineVersionsResult> {
     args = args || {};
@@ -118,25 +99,6 @@ export interface GetEngineVersionsResult {
  * the datasource. A region can have a different set of supported versions than
  * its component zones, and not all zones in a region are guaranteed to
  * support the same version.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const central1b = gcp.container.getEngineVersions({
- *     location: "us-central1-b",
- *     versionPrefix: "1.12.",
- * });
- * const foo = new gcp.container.Cluster("foo", {
- *     location: "us-central1-b",
- *     nodeVersion: central1b.then(central1b => central1b.latestNodeVersion),
- *     initialNodeCount: 1,
- * });
- * export const stableChannelDefaultVersion = central1b.then(central1b => central1b.releaseChannelDefaultVersion?.STABLE);
- * export const stableChannelLatestVersion = central1b.then(central1b => central1b.releaseChannelLatestVersion?.STABLE);
- * ```
  */
 export function getEngineVersionsOutput(args?: GetEngineVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEngineVersionsResult> {
     return pulumi.output(args).apply((a: any) => getEngineVersions(a, opts))

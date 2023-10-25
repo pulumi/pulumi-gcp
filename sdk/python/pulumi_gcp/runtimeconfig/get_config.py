@@ -75,15 +75,7 @@ def get_config(name: Optional[str] = None,
                project: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConfigResult:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    run_service = gcp.runtimeconfig.get_config(name="my-service")
-    ```
-
+    Use this data source to access information about an existing resource.
 
     :param str name: The name of the Runtime Configurator configuration.
            
@@ -109,15 +101,7 @@ def get_config_output(name: Optional[pulumi.Input[str]] = None,
                       project: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConfigResult]:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    run_service = gcp.runtimeconfig.get_config(name="my-service")
-    ```
-
+    Use this data source to access information about an existing resource.
 
     :param str name: The name of the Runtime Configurator configuration.
            

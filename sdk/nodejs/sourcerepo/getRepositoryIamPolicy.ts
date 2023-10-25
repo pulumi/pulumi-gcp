@@ -6,18 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for repository
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.sourcerepo.getRepositoryIamPolicy({
- *     project: google_sourcerepo_repository["my-repo"].project,
- *     repository: google_sourcerepo_repository["my-repo"].name,
- * });
- * ```
  */
 export function getRepositoryIamPolicy(args: GetRepositoryIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetRepositoryIamPolicyResult> {
 
@@ -65,18 +53,6 @@ export interface GetRepositoryIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for repository
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.sourcerepo.getRepositoryIamPolicy({
- *     project: google_sourcerepo_repository["my-repo"].project,
- *     repository: google_sourcerepo_repository["my-repo"].name,
- * });
- * ```
  */
 export function getRepositoryIamPolicyOutput(args: GetRepositoryIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepositoryIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getRepositoryIamPolicy(a, opts))

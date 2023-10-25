@@ -77,9 +77,9 @@ class WorkstationConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
-             workstation_cluster_id: pulumi.Input[str],
-             workstation_config_id: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
+             workstation_cluster_id: Optional[pulumi.Input[str]] = None,
+             workstation_config_id: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              container: Optional[pulumi.Input['WorkstationConfigContainerArgs']] = None,
              display_name: Optional[pulumi.Input[str]] = None,
@@ -90,7 +90,29 @@ class WorkstationConfigArgs:
              persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArgs']]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              running_timeout: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if workstation_cluster_id is None and 'workstationClusterId' in kwargs:
+            workstation_cluster_id = kwargs['workstationClusterId']
+        if workstation_cluster_id is None:
+            raise TypeError("Missing 'workstation_cluster_id' argument")
+        if workstation_config_id is None and 'workstationConfigId' in kwargs:
+            workstation_config_id = kwargs['workstationConfigId']
+        if workstation_config_id is None:
+            raise TypeError("Missing 'workstation_config_id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if encryption_key is None and 'encryptionKey' in kwargs:
+            encryption_key = kwargs['encryptionKey']
+        if idle_timeout is None and 'idleTimeout' in kwargs:
+            idle_timeout = kwargs['idleTimeout']
+        if persistent_directories is None and 'persistentDirectories' in kwargs:
+            persistent_directories = kwargs['persistentDirectories']
+        if running_timeout is None and 'runningTimeout' in kwargs:
+            running_timeout = kwargs['runningTimeout']
+
         _setter("location", location)
         _setter("workstation_cluster_id", workstation_cluster_id)
         _setter("workstation_config_id", workstation_config_id)
@@ -388,7 +410,25 @@ class _WorkstationConfigState:
              uid: Optional[pulumi.Input[str]] = None,
              workstation_cluster_id: Optional[pulumi.Input[str]] = None,
              workstation_config_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if encryption_key is None and 'encryptionKey' in kwargs:
+            encryption_key = kwargs['encryptionKey']
+        if idle_timeout is None and 'idleTimeout' in kwargs:
+            idle_timeout = kwargs['idleTimeout']
+        if persistent_directories is None and 'persistentDirectories' in kwargs:
+            persistent_directories = kwargs['persistentDirectories']
+        if running_timeout is None and 'runningTimeout' in kwargs:
+            running_timeout = kwargs['runningTimeout']
+        if workstation_cluster_id is None and 'workstationClusterId' in kwargs:
+            workstation_cluster_id = kwargs['workstationClusterId']
+        if workstation_config_id is None and 'workstationConfigId' in kwargs:
+            workstation_config_id = kwargs['workstationConfigId']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if conditions is not None:
@@ -693,322 +733,6 @@ class WorkstationConfig(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Workstation Config Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
-            workstation_cluster_id="workstation-cluster",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            labels={
-                "label": "key",
-            },
-            annotations={
-                "label-one": "value-one",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_config = gcp.workstations.WorkstationConfig("defaultWorkstationConfig",
-            workstation_config_id="workstation-config",
-            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
-            location="us-central1",
-            idle_timeout="600s",
-            running_timeout="21600s",
-            host=gcp.workstations.WorkstationConfigHostArgs(
-                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
-                    machine_type="e2-standard-4",
-                    boot_disk_size_gb=35,
-                    disable_public_ip_addresses=True,
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Workstation Config Container
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
-            workstation_cluster_id="workstation-cluster",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            labels={
-                "label": "key",
-            },
-            annotations={
-                "label-one": "value-one",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_config = gcp.workstations.WorkstationConfig("defaultWorkstationConfig",
-            workstation_config_id="workstation-config",
-            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
-            location="us-central1",
-            host=gcp.workstations.WorkstationConfigHostArgs(
-                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
-                    machine_type="n1-standard-4",
-                    boot_disk_size_gb=35,
-                    disable_public_ip_addresses=True,
-                    enable_nested_virtualization=True,
-                ),
-            ),
-            container=gcp.workstations.WorkstationConfigContainerArgs(
-                image="intellij",
-                env={
-                    "NAME": "FOO",
-                    "BABE": "bar",
-                },
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Workstation Config Persistent Directories
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
-            workstation_cluster_id="workstation-cluster",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            labels={
-                "label": "key",
-            },
-            annotations={
-                "label-one": "value-one",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_config = gcp.workstations.WorkstationConfig("defaultWorkstationConfig",
-            workstation_config_id="workstation-config",
-            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
-            location="us-central1",
-            host=gcp.workstations.WorkstationConfigHostArgs(
-                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
-                    machine_type="e2-standard-4",
-                    boot_disk_size_gb=35,
-                    disable_public_ip_addresses=True,
-                    shielded_instance_config=gcp.workstations.WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs(
-                        enable_secure_boot=True,
-                        enable_vtpm=True,
-                    ),
-                ),
-            ),
-            persistent_directories=[gcp.workstations.WorkstationConfigPersistentDirectoryArgs(
-                mount_path="/home",
-                gce_pd=gcp.workstations.WorkstationConfigPersistentDirectoryGcePdArgs(
-                    size_gb=200,
-                    fs_type="ext4",
-                    disk_type="pd-standard",
-                    reclaim_policy="DELETE",
-                ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Workstation Config Source Snapshot
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        my_source_disk = gcp.compute.Disk("mySourceDisk",
-            size=10,
-            type="pd-ssd",
-            zone="us-central1-a",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        my_source_snapshot = gcp.compute.Snapshot("mySourceSnapshot",
-            source_disk=my_source_disk.name,
-            zone="us-central1-a",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
-            workstation_cluster_id="workstation-cluster",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_config = gcp.workstations.WorkstationConfig("defaultWorkstationConfig",
-            workstation_config_id="workstation-config",
-            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
-            location=default_workstation_cluster.location,
-            persistent_directories=[gcp.workstations.WorkstationConfigPersistentDirectoryArgs(
-                mount_path="/home",
-                gce_pd=gcp.workstations.WorkstationConfigPersistentDirectoryGcePdArgs(
-                    source_snapshot=my_source_snapshot.id,
-                    reclaim_policy="DELETE",
-                ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Workstation Config Shielded Instance Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
-            workstation_cluster_id="workstation-cluster",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            labels={
-                "label": "key",
-            },
-            annotations={
-                "label-one": "value-one",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_config = gcp.workstations.WorkstationConfig("defaultWorkstationConfig",
-            workstation_config_id="workstation-config",
-            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
-            location="us-central1",
-            host=gcp.workstations.WorkstationConfigHostArgs(
-                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
-                    machine_type="e2-standard-4",
-                    boot_disk_size_gb=35,
-                    disable_public_ip_addresses=True,
-                    shielded_instance_config=gcp.workstations.WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs(
-                        enable_secure_boot=True,
-                        enable_vtpm=True,
-                    ),
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Workstation Config Accelerators
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
-            workstation_cluster_id="workstation-cluster",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            labels={
-                "label": "key",
-            },
-            annotations={
-                "label-one": "value-one",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_config = gcp.workstations.WorkstationConfig("defaultWorkstationConfig",
-            workstation_config_id="workstation-config",
-            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
-            location="us-central1",
-            host=gcp.workstations.WorkstationConfigHostArgs(
-                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
-                    machine_type="n1-standard-2",
-                    boot_disk_size_gb=35,
-                    disable_public_ip_addresses=True,
-                    accelerators=[gcp.workstations.WorkstationConfigHostGceInstanceAcceleratorArgs(
-                        type="nvidia-tesla-p100",
-                        count=1,
-                    )],
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Workstation Config Encryption Key
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
-            workstation_cluster_id="workstation-cluster",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            labels={
-                "label": "key",
-            },
-            annotations={
-                "label-one": "value-one",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_key_ring = gcp.kms.KeyRing("defaultKeyRing", location="us-central1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_crypto_key = gcp.kms.CryptoKey("defaultCryptoKey", key_ring=default_key_ring.id,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_account = gcp.service_account.Account("defaultAccount",
-            account_id="my-account",
-            display_name="Service Account",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_config = gcp.workstations.WorkstationConfig("defaultWorkstationConfig",
-            workstation_config_id="workstation-config",
-            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
-            location="us-central1",
-            host=gcp.workstations.WorkstationConfigHostArgs(
-                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
-                    machine_type="e2-standard-4",
-                    boot_disk_size_gb=35,
-                    disable_public_ip_addresses=True,
-                    shielded_instance_config=gcp.workstations.WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs(
-                        enable_secure_boot=True,
-                        enable_vtpm=True,
-                    ),
-                ),
-            ),
-            encryption_key=gcp.workstations.WorkstationConfigEncryptionKeyArgs(
-                kms_key=default_crypto_key.id,
-                kms_key_service_account=default_account.email,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -1063,322 +787,6 @@ class WorkstationConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Workstation Config Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
-            workstation_cluster_id="workstation-cluster",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            labels={
-                "label": "key",
-            },
-            annotations={
-                "label-one": "value-one",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_config = gcp.workstations.WorkstationConfig("defaultWorkstationConfig",
-            workstation_config_id="workstation-config",
-            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
-            location="us-central1",
-            idle_timeout="600s",
-            running_timeout="21600s",
-            host=gcp.workstations.WorkstationConfigHostArgs(
-                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
-                    machine_type="e2-standard-4",
-                    boot_disk_size_gb=35,
-                    disable_public_ip_addresses=True,
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Workstation Config Container
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
-            workstation_cluster_id="workstation-cluster",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            labels={
-                "label": "key",
-            },
-            annotations={
-                "label-one": "value-one",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_config = gcp.workstations.WorkstationConfig("defaultWorkstationConfig",
-            workstation_config_id="workstation-config",
-            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
-            location="us-central1",
-            host=gcp.workstations.WorkstationConfigHostArgs(
-                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
-                    machine_type="n1-standard-4",
-                    boot_disk_size_gb=35,
-                    disable_public_ip_addresses=True,
-                    enable_nested_virtualization=True,
-                ),
-            ),
-            container=gcp.workstations.WorkstationConfigContainerArgs(
-                image="intellij",
-                env={
-                    "NAME": "FOO",
-                    "BABE": "bar",
-                },
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Workstation Config Persistent Directories
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
-            workstation_cluster_id="workstation-cluster",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            labels={
-                "label": "key",
-            },
-            annotations={
-                "label-one": "value-one",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_config = gcp.workstations.WorkstationConfig("defaultWorkstationConfig",
-            workstation_config_id="workstation-config",
-            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
-            location="us-central1",
-            host=gcp.workstations.WorkstationConfigHostArgs(
-                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
-                    machine_type="e2-standard-4",
-                    boot_disk_size_gb=35,
-                    disable_public_ip_addresses=True,
-                    shielded_instance_config=gcp.workstations.WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs(
-                        enable_secure_boot=True,
-                        enable_vtpm=True,
-                    ),
-                ),
-            ),
-            persistent_directories=[gcp.workstations.WorkstationConfigPersistentDirectoryArgs(
-                mount_path="/home",
-                gce_pd=gcp.workstations.WorkstationConfigPersistentDirectoryGcePdArgs(
-                    size_gb=200,
-                    fs_type="ext4",
-                    disk_type="pd-standard",
-                    reclaim_policy="DELETE",
-                ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Workstation Config Source Snapshot
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        my_source_disk = gcp.compute.Disk("mySourceDisk",
-            size=10,
-            type="pd-ssd",
-            zone="us-central1-a",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        my_source_snapshot = gcp.compute.Snapshot("mySourceSnapshot",
-            source_disk=my_source_disk.name,
-            zone="us-central1-a",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
-            workstation_cluster_id="workstation-cluster",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_config = gcp.workstations.WorkstationConfig("defaultWorkstationConfig",
-            workstation_config_id="workstation-config",
-            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
-            location=default_workstation_cluster.location,
-            persistent_directories=[gcp.workstations.WorkstationConfigPersistentDirectoryArgs(
-                mount_path="/home",
-                gce_pd=gcp.workstations.WorkstationConfigPersistentDirectoryGcePdArgs(
-                    source_snapshot=my_source_snapshot.id,
-                    reclaim_policy="DELETE",
-                ),
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Workstation Config Shielded Instance Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
-            workstation_cluster_id="workstation-cluster",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            labels={
-                "label": "key",
-            },
-            annotations={
-                "label-one": "value-one",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_config = gcp.workstations.WorkstationConfig("defaultWorkstationConfig",
-            workstation_config_id="workstation-config",
-            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
-            location="us-central1",
-            host=gcp.workstations.WorkstationConfigHostArgs(
-                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
-                    machine_type="e2-standard-4",
-                    boot_disk_size_gb=35,
-                    disable_public_ip_addresses=True,
-                    shielded_instance_config=gcp.workstations.WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs(
-                        enable_secure_boot=True,
-                        enable_vtpm=True,
-                    ),
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Workstation Config Accelerators
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
-            workstation_cluster_id="workstation-cluster",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            labels={
-                "label": "key",
-            },
-            annotations={
-                "label-one": "value-one",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_config = gcp.workstations.WorkstationConfig("defaultWorkstationConfig",
-            workstation_config_id="workstation-config",
-            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
-            location="us-central1",
-            host=gcp.workstations.WorkstationConfigHostArgs(
-                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
-                    machine_type="n1-standard-2",
-                    boot_disk_size_gb=35,
-                    disable_public_ip_addresses=True,
-                    accelerators=[gcp.workstations.WorkstationConfigHostGceInstanceAcceleratorArgs(
-                        type="nvidia-tesla-p100",
-                        count=1,
-                    )],
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Workstation Config Encryption Key
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
-            workstation_cluster_id="workstation-cluster",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            labels={
-                "label": "key",
-            },
-            annotations={
-                "label-one": "value-one",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_key_ring = gcp.kms.KeyRing("defaultKeyRing", location="us-central1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_crypto_key = gcp.kms.CryptoKey("defaultCryptoKey", key_ring=default_key_ring.id,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        default_account = gcp.service_account.Account("defaultAccount",
-            account_id="my-account",
-            display_name="Service Account",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_workstation_config = gcp.workstations.WorkstationConfig("defaultWorkstationConfig",
-            workstation_config_id="workstation-config",
-            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
-            location="us-central1",
-            host=gcp.workstations.WorkstationConfigHostArgs(
-                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
-                    machine_type="e2-standard-4",
-                    boot_disk_size_gb=35,
-                    disable_public_ip_addresses=True,
-                    shielded_instance_config=gcp.workstations.WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs(
-                        enable_secure_boot=True,
-                        enable_vtpm=True,
-                    ),
-                ),
-            ),
-            encryption_key=gcp.workstations.WorkstationConfigEncryptionKeyArgs(
-                kms_key=default_crypto_key.id,
-                kms_key_service_account=default_account.email,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -1438,24 +846,12 @@ class WorkstationConfig(pulumi.CustomResource):
             __props__ = WorkstationConfigArgs.__new__(WorkstationConfigArgs)
 
             __props__.__dict__["annotations"] = annotations
-            if container is not None and not isinstance(container, WorkstationConfigContainerArgs):
-                container = container or {}
-                def _setter(key, value):
-                    container[key] = value
-                WorkstationConfigContainerArgs._configure(_setter, **container)
+            container = _utilities.configure(container, WorkstationConfigContainerArgs, True)
             __props__.__dict__["container"] = container
             __props__.__dict__["display_name"] = display_name
-            if encryption_key is not None and not isinstance(encryption_key, WorkstationConfigEncryptionKeyArgs):
-                encryption_key = encryption_key or {}
-                def _setter(key, value):
-                    encryption_key[key] = value
-                WorkstationConfigEncryptionKeyArgs._configure(_setter, **encryption_key)
+            encryption_key = _utilities.configure(encryption_key, WorkstationConfigEncryptionKeyArgs, True)
             __props__.__dict__["encryption_key"] = encryption_key
-            if host is not None and not isinstance(host, WorkstationConfigHostArgs):
-                host = host or {}
-                def _setter(key, value):
-                    host[key] = value
-                WorkstationConfigHostArgs._configure(_setter, **host)
+            host = _utilities.configure(host, WorkstationConfigHostArgs, True)
             __props__.__dict__["host"] = host
             __props__.__dict__["idle_timeout"] = idle_timeout
             __props__.__dict__["labels"] = labels

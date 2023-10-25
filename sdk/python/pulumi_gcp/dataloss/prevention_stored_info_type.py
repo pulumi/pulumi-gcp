@@ -58,14 +58,24 @@ class PreventionStoredInfoTypeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parent: pulumi.Input[str],
+             parent: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              dictionary: Optional[pulumi.Input['PreventionStoredInfoTypeDictionaryArgs']] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              large_custom_dictionary: Optional[pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryArgs']] = None,
              regex: Optional[pulumi.Input['PreventionStoredInfoTypeRegexArgs']] = None,
              stored_info_type_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if large_custom_dictionary is None and 'largeCustomDictionary' in kwargs:
+            large_custom_dictionary = kwargs['largeCustomDictionary']
+        if stored_info_type_id is None and 'storedInfoTypeId' in kwargs:
+            stored_info_type_id = kwargs['storedInfoTypeId']
+
         _setter("parent", parent)
         if description is not None:
             _setter("description", description)
@@ -233,7 +243,15 @@ class _PreventionStoredInfoTypeState:
              parent: Optional[pulumi.Input[str]] = None,
              regex: Optional[pulumi.Input['PreventionStoredInfoTypeRegexArgs']] = None,
              stored_info_type_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if large_custom_dictionary is None and 'largeCustomDictionary' in kwargs:
+            large_custom_dictionary = kwargs['largeCustomDictionary']
+        if stored_info_type_id is None and 'storedInfoTypeId' in kwargs:
+            stored_info_type_id = kwargs['storedInfoTypeId']
+
         if description is not None:
             _setter("description", description)
         if dictionary is not None:
@@ -383,81 +401,6 @@ class PreventionStoredInfoType(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dlp/docs/creating-stored-infotypes)
 
         ## Example Usage
-        ### Dlp Stored Info Type Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.dataloss.PreventionStoredInfoType("basic",
-            description="Description",
-            display_name="Displayname",
-            parent="projects/my-project-name",
-            regex=gcp.dataloss.PreventionStoredInfoTypeRegexArgs(
-                group_indexes=[2],
-                pattern="patient",
-            ))
-        ```
-        ### Dlp Stored Info Type Dictionary
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dictionary = gcp.dataloss.PreventionStoredInfoType("dictionary",
-            description="Description",
-            dictionary=gcp.dataloss.PreventionStoredInfoTypeDictionaryArgs(
-                word_list=gcp.dataloss.PreventionStoredInfoTypeDictionaryWordListArgs(
-                    words=[
-                        "word",
-                        "word2",
-                    ],
-                ),
-            ),
-            display_name="Displayname",
-            parent="projects/my-project-name")
-        ```
-        ### Dlp Stored Info Type Large Custom Dictionary
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        bucket = gcp.storage.Bucket("bucket",
-            location="US",
-            force_destroy=True)
-        object = gcp.storage.BucketObject("object",
-            bucket=bucket.name,
-            source=pulumi.FileAsset("./test-fixtures/words.txt"))
-        large = gcp.dataloss.PreventionStoredInfoType("large",
-            parent="projects/my-project-name",
-            description="Description",
-            display_name="Displayname",
-            large_custom_dictionary=gcp.dataloss.PreventionStoredInfoTypeLargeCustomDictionaryArgs(
-                cloud_storage_file_set=gcp.dataloss.PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs(
-                    url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"gs://{bucket_name}/{object_name}"),
-                ),
-                output_path=gcp.dataloss.PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs(
-                    path=bucket.name.apply(lambda name: f"gs://{name}/output/dictionary.txt"),
-                ),
-            ))
-        ```
-        ### Dlp Stored Info Type With Id
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        with_stored_info_type_id = gcp.dataloss.PreventionStoredInfoType("withStoredInfoTypeId",
-            description="Description",
-            display_name="Displayname",
-            parent="projects/my-project-name",
-            regex=gcp.dataloss.PreventionStoredInfoTypeRegexArgs(
-                group_indexes=[2],
-                pattern="patient",
-            ),
-            stored_info_type_id="id-")
-        ```
 
         ## Import
 
@@ -509,81 +452,6 @@ class PreventionStoredInfoType(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dlp/docs/creating-stored-infotypes)
 
         ## Example Usage
-        ### Dlp Stored Info Type Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.dataloss.PreventionStoredInfoType("basic",
-            description="Description",
-            display_name="Displayname",
-            parent="projects/my-project-name",
-            regex=gcp.dataloss.PreventionStoredInfoTypeRegexArgs(
-                group_indexes=[2],
-                pattern="patient",
-            ))
-        ```
-        ### Dlp Stored Info Type Dictionary
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dictionary = gcp.dataloss.PreventionStoredInfoType("dictionary",
-            description="Description",
-            dictionary=gcp.dataloss.PreventionStoredInfoTypeDictionaryArgs(
-                word_list=gcp.dataloss.PreventionStoredInfoTypeDictionaryWordListArgs(
-                    words=[
-                        "word",
-                        "word2",
-                    ],
-                ),
-            ),
-            display_name="Displayname",
-            parent="projects/my-project-name")
-        ```
-        ### Dlp Stored Info Type Large Custom Dictionary
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        bucket = gcp.storage.Bucket("bucket",
-            location="US",
-            force_destroy=True)
-        object = gcp.storage.BucketObject("object",
-            bucket=bucket.name,
-            source=pulumi.FileAsset("./test-fixtures/words.txt"))
-        large = gcp.dataloss.PreventionStoredInfoType("large",
-            parent="projects/my-project-name",
-            description="Description",
-            display_name="Displayname",
-            large_custom_dictionary=gcp.dataloss.PreventionStoredInfoTypeLargeCustomDictionaryArgs(
-                cloud_storage_file_set=gcp.dataloss.PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs(
-                    url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"gs://{bucket_name}/{object_name}"),
-                ),
-                output_path=gcp.dataloss.PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs(
-                    path=bucket.name.apply(lambda name: f"gs://{name}/output/dictionary.txt"),
-                ),
-            ))
-        ```
-        ### Dlp Stored Info Type With Id
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        with_stored_info_type_id = gcp.dataloss.PreventionStoredInfoType("withStoredInfoTypeId",
-            description="Description",
-            display_name="Displayname",
-            parent="projects/my-project-name",
-            regex=gcp.dataloss.PreventionStoredInfoTypeRegexArgs(
-                group_indexes=[2],
-                pattern="patient",
-            ),
-            stored_info_type_id="id-")
-        ```
 
         ## Import
 
@@ -633,27 +501,15 @@ class PreventionStoredInfoType(pulumi.CustomResource):
             __props__ = PreventionStoredInfoTypeArgs.__new__(PreventionStoredInfoTypeArgs)
 
             __props__.__dict__["description"] = description
-            if dictionary is not None and not isinstance(dictionary, PreventionStoredInfoTypeDictionaryArgs):
-                dictionary = dictionary or {}
-                def _setter(key, value):
-                    dictionary[key] = value
-                PreventionStoredInfoTypeDictionaryArgs._configure(_setter, **dictionary)
+            dictionary = _utilities.configure(dictionary, PreventionStoredInfoTypeDictionaryArgs, True)
             __props__.__dict__["dictionary"] = dictionary
             __props__.__dict__["display_name"] = display_name
-            if large_custom_dictionary is not None and not isinstance(large_custom_dictionary, PreventionStoredInfoTypeLargeCustomDictionaryArgs):
-                large_custom_dictionary = large_custom_dictionary or {}
-                def _setter(key, value):
-                    large_custom_dictionary[key] = value
-                PreventionStoredInfoTypeLargeCustomDictionaryArgs._configure(_setter, **large_custom_dictionary)
+            large_custom_dictionary = _utilities.configure(large_custom_dictionary, PreventionStoredInfoTypeLargeCustomDictionaryArgs, True)
             __props__.__dict__["large_custom_dictionary"] = large_custom_dictionary
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
-            if regex is not None and not isinstance(regex, PreventionStoredInfoTypeRegexArgs):
-                regex = regex or {}
-                def _setter(key, value):
-                    regex[key] = value
-                PreventionStoredInfoTypeRegexArgs._configure(_setter, **regex)
+            regex = _utilities.configure(regex, PreventionStoredInfoTypeRegexArgs, True)
             __props__.__dict__["regex"] = regex
             __props__.__dict__["stored_info_type_id"] = stored_info_type_id
             __props__.__dict__["name"] = None

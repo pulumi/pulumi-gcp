@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * Get information about a Google Cloud Function (2nd gen). For more information see:
  *
  * * [API documentation](https://cloud.google.com/functions/docs/reference/rest/v2beta/projects.locations.functions).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const my-function = gcp.cloudfunctionsv2.getFunction({
- *     location: "us-central1",
- *     name: "function",
- * });
- * ```
  */
 export function getFunction(args: GetFunctionArgs, opts?: pulumi.InvokeOptions): Promise<GetFunctionResult> {
 
@@ -80,18 +68,6 @@ export interface GetFunctionResult {
  * Get information about a Google Cloud Function (2nd gen). For more information see:
  *
  * * [API documentation](https://cloud.google.com/functions/docs/reference/rest/v2beta/projects.locations.functions).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const my-function = gcp.cloudfunctionsv2.getFunction({
- *     location: "us-central1",
- *     name: "function",
- * });
- * ```
  */
 export function getFunctionOutput(args: GetFunctionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFunctionResult> {
     return pulumi.output(args).apply((a: any) => getFunction(a, opts))

@@ -89,16 +89,6 @@ def get_database_instance_latest_recovery_time(instance: Optional[str] = None,
     and
     [API](https://cloud.google.com/sql/docs/postgres/backup-recovery/pitr#get-the-latest-recovery-time).
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    default = gcp.sql.get_database_instance_latest_recovery_time(instance="sample-instance")
-    pulumi.export("latestRecoveryTime", default)
-    ```
-
 
     :param str instance: The name of the instance.
     :param str project: The ID of the project in which the resource belongs.
@@ -125,16 +115,6 @@ def get_database_instance_latest_recovery_time_output(instance: Optional[pulumi.
     [official documentation](https://cloud.google.com/sql/)
     and
     [API](https://cloud.google.com/sql/docs/postgres/backup-recovery/pitr#get-the-latest-recovery-time).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    default = gcp.sql.get_database_instance_latest_recovery_time(instance="sample-instance")
-    pulumi.export("latestRecoveryTime", default)
-    ```
 
 
     :param str instance: The name of the instance.

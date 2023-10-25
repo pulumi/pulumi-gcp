@@ -67,8 +67,8 @@ class SourceRepresentationInstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             database_version: pulumi.Input[str],
-             host: pulumi.Input[str],
+             database_version: Optional[pulumi.Input[str]] = None,
+             host: Optional[pulumi.Input[str]] = None,
              ca_certificate: Optional[pulumi.Input[str]] = None,
              client_certificate: Optional[pulumi.Input[str]] = None,
              client_key: Optional[pulumi.Input[str]] = None,
@@ -79,7 +79,23 @@ class SourceRepresentationInstanceArgs:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if database_version is None and 'databaseVersion' in kwargs:
+            database_version = kwargs['databaseVersion']
+        if database_version is None:
+            raise TypeError("Missing 'database_version' argument")
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if ca_certificate is None and 'caCertificate' in kwargs:
+            ca_certificate = kwargs['caCertificate']
+        if client_certificate is None and 'clientCertificate' in kwargs:
+            client_certificate = kwargs['clientCertificate']
+        if client_key is None and 'clientKey' in kwargs:
+            client_key = kwargs['clientKey']
+        if dump_file_path is None and 'dumpFilePath' in kwargs:
+            dump_file_path = kwargs['dumpFilePath']
+
         _setter("database_version", database_version)
         _setter("host", host)
         if ca_certificate is not None:
@@ -324,7 +340,19 @@ class _SourceRepresentationInstanceState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ca_certificate is None and 'caCertificate' in kwargs:
+            ca_certificate = kwargs['caCertificate']
+        if client_certificate is None and 'clientCertificate' in kwargs:
+            client_certificate = kwargs['clientCertificate']
+        if client_key is None and 'clientKey' in kwargs:
+            client_key = kwargs['clientKey']
+        if database_version is None and 'databaseVersion' in kwargs:
+            database_version = kwargs['databaseVersion']
+        if dump_file_path is None and 'dumpFilePath' in kwargs:
+            dump_file_path = kwargs['dumpFilePath']
+
         if ca_certificate is not None:
             _setter("ca_certificate", ca_certificate)
         if client_certificate is not None:
@@ -533,36 +561,6 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
-        ### Sql Source Representation Instance Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.sql.SourceRepresentationInstance("instance",
-            database_version="MYSQL_8_0",
-            dump_file_path="gs://replica-bucket/source-database.sql.gz",
-            host="10.20.30.40",
-            password="password-for-the-user",
-            port=3306,
-            region="us-central1",
-            username="some-user")
-        ```
-        ### Sql Source Representation Instance Postgres
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.sql.SourceRepresentationInstance("instance",
-            database_version="POSTGRES_9_6",
-            dump_file_path="gs://replica-bucket/source-database.sql.gz",
-            host="10.20.30.40",
-            password="password-for-the-user",
-            port=3306,
-            region="us-central1",
-            username="some-user")
-        ```
 
         ## Import
 
@@ -621,36 +619,6 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
-        ### Sql Source Representation Instance Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.sql.SourceRepresentationInstance("instance",
-            database_version="MYSQL_8_0",
-            dump_file_path="gs://replica-bucket/source-database.sql.gz",
-            host="10.20.30.40",
-            password="password-for-the-user",
-            port=3306,
-            region="us-central1",
-            username="some-user")
-        ```
-        ### Sql Source Representation Instance Postgres
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance = gcp.sql.SourceRepresentationInstance("instance",
-            database_version="POSTGRES_9_6",
-            dump_file_path="gs://replica-bucket/source-database.sql.gz",
-            host="10.20.30.40",
-            password="password-for-the-user",
-            port=3306,
-            region="us-central1",
-            username="some-user")
-        ```
 
         ## Import
 

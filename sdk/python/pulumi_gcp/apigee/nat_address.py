@@ -33,9 +33,15 @@ class NatAddressArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_id: pulumi.Input[str],
+             instance_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+
         _setter("instance_id", instance_id)
         if name is not None:
             _setter("name", name)
@@ -101,7 +107,13 @@ class _NatAddressState:
              ip_address: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         if instance_id is not None:
             _setter("instance_id", instance_id)
         if ip_address is not None:
@@ -183,52 +195,6 @@ class NatAddress(pulumi.CustomResource):
             * [Provisioning NAT IPs](https://cloud.google.com/apigee/docs/api-platform/security/nat-provisioning)
 
         ## Example Usage
-        ### Apigee Nat Address Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        current = gcp.organizations.get_client_config()
-        apigee_network = gcp.compute.Network("apigeeNetwork")
-        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=21,
-            network=apigee_network.id)
-        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
-            network=apigee_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[apigee_range.name])
-        apigee_keyring = gcp.kms.KeyRing("apigeeKeyring", location="us-central1")
-        apigee_key = gcp.kms.CryptoKey("apigeeKey", key_ring=apigee_keyring.id)
-        apigee_sa = gcp.projects.ServiceIdentity("apigeeSa",
-            project=google_project["project"]["project_id"],
-            service=google_project_service["apigee"]["service"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        apigee_sa_keyuser = gcp.kms.CryptoKeyIAMBinding("apigeeSaKeyuser",
-            crypto_key_id=apigee_key.id,
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            members=[apigee_sa.email.apply(lambda email: f"serviceAccount:{email}")])
-        apigee_org = gcp.apigee.Organization("apigeeOrg",
-            analytics_region="us-central1",
-            display_name="apigee-org",
-            description="Terraform-provisioned Apigee Org.",
-            project_id=current.project,
-            authorized_network=apigee_network.id,
-            runtime_database_encryption_key_name=apigee_key.id,
-            opts=pulumi.ResourceOptions(depends_on=[
-                    apigee_vpc_connection,
-                    apigee_sa_keyuser,
-                ]))
-        apigee_instance = gcp.apigee.Instance("apigeeInstance",
-            location="us-central1",
-            description="Terraform-managed Apigee Runtime Instance",
-            display_name="apigee-instance",
-            org_id=apigee_org.id,
-            disk_encryption_key_name=apigee_key.id)
-        apigee_nat = gcp.apigee.NatAddress("apigee-nat", instance_id=apigee_instance.id)
-        ```
 
         ## Import
 
@@ -268,52 +234,6 @@ class NatAddress(pulumi.CustomResource):
             * [Provisioning NAT IPs](https://cloud.google.com/apigee/docs/api-platform/security/nat-provisioning)
 
         ## Example Usage
-        ### Apigee Nat Address Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        current = gcp.organizations.get_client_config()
-        apigee_network = gcp.compute.Network("apigeeNetwork")
-        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=21,
-            network=apigee_network.id)
-        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
-            network=apigee_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[apigee_range.name])
-        apigee_keyring = gcp.kms.KeyRing("apigeeKeyring", location="us-central1")
-        apigee_key = gcp.kms.CryptoKey("apigeeKey", key_ring=apigee_keyring.id)
-        apigee_sa = gcp.projects.ServiceIdentity("apigeeSa",
-            project=google_project["project"]["project_id"],
-            service=google_project_service["apigee"]["service"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        apigee_sa_keyuser = gcp.kms.CryptoKeyIAMBinding("apigeeSaKeyuser",
-            crypto_key_id=apigee_key.id,
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            members=[apigee_sa.email.apply(lambda email: f"serviceAccount:{email}")])
-        apigee_org = gcp.apigee.Organization("apigeeOrg",
-            analytics_region="us-central1",
-            display_name="apigee-org",
-            description="Terraform-provisioned Apigee Org.",
-            project_id=current.project,
-            authorized_network=apigee_network.id,
-            runtime_database_encryption_key_name=apigee_key.id,
-            opts=pulumi.ResourceOptions(depends_on=[
-                    apigee_vpc_connection,
-                    apigee_sa_keyuser,
-                ]))
-        apigee_instance = gcp.apigee.Instance("apigeeInstance",
-            location="us-central1",
-            description="Terraform-managed Apigee Runtime Instance",
-            display_name="apigee-instance",
-            org_id=apigee_org.id,
-            disk_encryption_key_name=apigee_key.id)
-        apigee_nat = gcp.apigee.NatAddress("apigee-nat", instance_id=apigee_instance.id)
-        ```
 
         ## Import
 

@@ -49,11 +49,21 @@ class DatascanIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data_scan_id: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
+             data_scan_id: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if data_scan_id is None and 'dataScanId' in kwargs:
+            data_scan_id = kwargs['dataScanId']
+        if data_scan_id is None:
+            raise TypeError("Missing 'data_scan_id' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("data_scan_id", data_scan_id)
         _setter("policy_data", policy_data)
         if location is not None:
@@ -168,7 +178,13 @@ class _DatascanIamPolicyState:
              location: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if data_scan_id is None and 'dataScanId' in kwargs:
+            data_scan_id = kwargs['dataScanId']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if data_scan_id is not None:
             _setter("data_scan_id", data_scan_id)
         if etag is not None:
@@ -278,51 +294,6 @@ class DatascanIamPolicy(pulumi.CustomResource):
 
         > **Note:** `dataplex.DatascanIamBinding` resources **can be** used in conjunction with `dataplex.DatascanIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataplex\\_datascan\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.dataplex.DatascanIamPolicy("policy",
-            project=google_dataplex_datascan["basic_profile"]["project"],
-            location=google_dataplex_datascan["basic_profile"]["location"],
-            data_scan_id=google_dataplex_datascan["basic_profile"]["data_scan_id"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_dataplex\\_datascan\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.dataplex.DatascanIamBinding("binding",
-            project=google_dataplex_datascan["basic_profile"]["project"],
-            location=google_dataplex_datascan["basic_profile"]["location"],
-            data_scan_id=google_dataplex_datascan["basic_profile"]["data_scan_id"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_dataplex\\_datascan\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.dataplex.DatascanIamMember("member",
-            project=google_dataplex_datascan["basic_profile"]["project"],
-            location=google_dataplex_datascan["basic_profile"]["location"],
-            data_scan_id=google_dataplex_datascan["basic_profile"]["data_scan_id"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}} * {{project}}/{{location}}/{{data_scan_id}} * {{location}}/{{data_scan_id}} * {{data_scan_id}} Any variables not passed in the import command will be taken from the provider configuration. Dataplex datascan IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -388,51 +359,6 @@ class DatascanIamPolicy(pulumi.CustomResource):
         > **Note:** `dataplex.DatascanIamPolicy` **cannot** be used in conjunction with `dataplex.DatascanIamBinding` and `dataplex.DatascanIamMember` or they will fight over what your policy should be.
 
         > **Note:** `dataplex.DatascanIamBinding` resources **can be** used in conjunction with `dataplex.DatascanIamMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\\_dataplex\\_datascan\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.dataplex.DatascanIamPolicy("policy",
-            project=google_dataplex_datascan["basic_profile"]["project"],
-            location=google_dataplex_datascan["basic_profile"]["location"],
-            data_scan_id=google_dataplex_datascan["basic_profile"]["data_scan_id"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_dataplex\\_datascan\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.dataplex.DatascanIamBinding("binding",
-            project=google_dataplex_datascan["basic_profile"]["project"],
-            location=google_dataplex_datascan["basic_profile"]["location"],
-            data_scan_id=google_dataplex_datascan["basic_profile"]["data_scan_id"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_dataplex\\_datascan\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.dataplex.DatascanIamMember("member",
-            project=google_dataplex_datascan["basic_profile"]["project"],
-            location=google_dataplex_datascan["basic_profile"]["location"],
-            data_scan_id=google_dataplex_datascan["basic_profile"]["data_scan_id"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
 
         ## Import
 

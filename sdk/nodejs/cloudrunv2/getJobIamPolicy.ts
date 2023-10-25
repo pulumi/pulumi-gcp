@@ -6,19 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for job
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.cloudrunv2.getJobIamPolicy({
- *     project: google_cloud_run_v2_job["default"].project,
- *     location: google_cloud_run_v2_job["default"].location,
- *     name: google_cloud_run_v2_job["default"].name,
- * });
- * ```
  */
 export function getJobIamPolicy(args: GetJobIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetJobIamPolicyResult> {
 
@@ -72,19 +59,6 @@ export interface GetJobIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for job
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.cloudrunv2.getJobIamPolicy({
- *     project: google_cloud_run_v2_job["default"].project,
- *     location: google_cloud_run_v2_job["default"].location,
- *     name: google_cloud_run_v2_job["default"].name,
- * });
- * ```
  */
 export function getJobIamPolicyOutput(args: GetJobIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getJobIamPolicy(a, opts))

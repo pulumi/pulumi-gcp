@@ -16,38 +16,6 @@ namespace Pulumi.Gcp.Sql
         /// [official documentation](https://cloud.google.com/sql/)
         /// and
         /// [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/tiers/list).
-        /// 
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var tiers = Gcp.Sql.GetTiers.Invoke(new()
-        ///     {
-        ///         Project = "sample-project",
-        ///     });
-        /// 
-        ///     var allAvailableTiers = .Select(v =&gt; 
-        ///     {
-        ///         return v.Tier;
-        ///     }).ToList();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["avaialbleTiers"] = allAvailableTiers,
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTiersResult> InvokeAsync(GetTiersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTiersResult>("gcp:sql/getTiers:getTiers", args ?? new GetTiersArgs(), options.WithDefaults());
@@ -57,38 +25,6 @@ namespace Pulumi.Gcp.Sql
         /// [official documentation](https://cloud.google.com/sql/)
         /// and
         /// [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/tiers/list).
-        /// 
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var tiers = Gcp.Sql.GetTiers.Invoke(new()
-        ///     {
-        ///         Project = "sample-project",
-        ///     });
-        /// 
-        ///     var allAvailableTiers = .Select(v =&gt; 
-        ///     {
-        ///         return v.Tier;
-        ///     }).ToList();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["avaialbleTiers"] = allAvailableTiers,
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetTiersResult> Invoke(GetTiersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTiersResult>("gcp:sql/getTiers:getTiers", args ?? new GetTiersInvokeArgs(), options.WithDefaults());

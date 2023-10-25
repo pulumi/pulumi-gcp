@@ -24,35 +24,6 @@ import (
 //   - [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
 //
 // ## Example Usage
-// ### Bigquery Reservation Capacity Commitment Docs
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := bigquery.NewCapacityCommitment(ctx, "example", &bigquery.CapacityCommitmentArgs{
-//				CapacityCommitmentId: pulumi.String("example-commitment"),
-//				Edition:              pulumi.String("ENTERPRISE"),
-//				Location:             pulumi.String("us-west2"),
-//				Plan:                 pulumi.String("FLEX_FLAT_RATE"),
-//				SlotCount:            pulumi.Int(100),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

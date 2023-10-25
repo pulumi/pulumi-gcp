@@ -71,11 +71,11 @@ class ListingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bigquery_dataset: pulumi.Input['ListingBigqueryDatasetArgs'],
-             data_exchange_id: pulumi.Input[str],
-             display_name: pulumi.Input[str],
-             listing_id: pulumi.Input[str],
-             location: pulumi.Input[str],
+             bigquery_dataset: Optional[pulumi.Input['ListingBigqueryDatasetArgs']] = None,
+             data_exchange_id: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             listing_id: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
              categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              data_provider: Optional[pulumi.Input['ListingDataProviderArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -85,7 +85,33 @@ class ListingArgs:
              project: Optional[pulumi.Input[str]] = None,
              publisher: Optional[pulumi.Input['ListingPublisherArgs']] = None,
              request_access: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bigquery_dataset is None and 'bigqueryDataset' in kwargs:
+            bigquery_dataset = kwargs['bigqueryDataset']
+        if bigquery_dataset is None:
+            raise TypeError("Missing 'bigquery_dataset' argument")
+        if data_exchange_id is None and 'dataExchangeId' in kwargs:
+            data_exchange_id = kwargs['dataExchangeId']
+        if data_exchange_id is None:
+            raise TypeError("Missing 'data_exchange_id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if listing_id is None and 'listingId' in kwargs:
+            listing_id = kwargs['listingId']
+        if listing_id is None:
+            raise TypeError("Missing 'listing_id' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if data_provider is None and 'dataProvider' in kwargs:
+            data_provider = kwargs['dataProvider']
+        if primary_contact is None and 'primaryContact' in kwargs:
+            primary_contact = kwargs['primaryContact']
+        if request_access is None and 'requestAccess' in kwargs:
+            request_access = kwargs['requestAccess']
+
         _setter("bigquery_dataset", bigquery_dataset)
         _setter("data_exchange_id", data_exchange_id)
         _setter("display_name", display_name)
@@ -359,7 +385,23 @@ class _ListingState:
              project: Optional[pulumi.Input[str]] = None,
              publisher: Optional[pulumi.Input['ListingPublisherArgs']] = None,
              request_access: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bigquery_dataset is None and 'bigqueryDataset' in kwargs:
+            bigquery_dataset = kwargs['bigqueryDataset']
+        if data_exchange_id is None and 'dataExchangeId' in kwargs:
+            data_exchange_id = kwargs['dataExchangeId']
+        if data_provider is None and 'dataProvider' in kwargs:
+            data_provider = kwargs['dataProvider']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if listing_id is None and 'listingId' in kwargs:
+            listing_id = kwargs['listingId']
+        if primary_contact is None and 'primaryContact' in kwargs:
+            primary_contact = kwargs['primaryContact']
+        if request_access is None and 'requestAccess' in kwargs:
+            request_access = kwargs['requestAccess']
+
         if bigquery_dataset is not None:
             _setter("bigquery_dataset", bigquery_dataset)
         if categories is not None:
@@ -606,32 +648,6 @@ class Listing(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
 
         ## Example Usage
-        ### Bigquery Analyticshub Listing Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        listing_data_exchange = gcp.bigqueryanalyticshub.DataExchange("listingDataExchange",
-            location="US",
-            data_exchange_id="my_data_exchange",
-            display_name="my_data_exchange",
-            description="example data exchange")
-        listing_dataset = gcp.bigquery.Dataset("listingDataset",
-            dataset_id="my_listing",
-            friendly_name="my_listing",
-            description="example data exchange",
-            location="US")
-        listing_listing = gcp.bigqueryanalyticshub.Listing("listingListing",
-            location="US",
-            data_exchange_id=listing_data_exchange.data_exchange_id,
-            listing_id="my_listing",
-            display_name="my_listing",
-            description="example data exchange",
-            bigquery_dataset=gcp.bigqueryanalyticshub.ListingBigqueryDatasetArgs(
-                dataset=listing_dataset.id,
-            ))
-        ```
 
         ## Import
 
@@ -686,32 +702,6 @@ class Listing(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
 
         ## Example Usage
-        ### Bigquery Analyticshub Listing Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        listing_data_exchange = gcp.bigqueryanalyticshub.DataExchange("listingDataExchange",
-            location="US",
-            data_exchange_id="my_data_exchange",
-            display_name="my_data_exchange",
-            description="example data exchange")
-        listing_dataset = gcp.bigquery.Dataset("listingDataset",
-            dataset_id="my_listing",
-            friendly_name="my_listing",
-            description="example data exchange",
-            location="US")
-        listing_listing = gcp.bigqueryanalyticshub.Listing("listingListing",
-            location="US",
-            data_exchange_id=listing_data_exchange.data_exchange_id,
-            listing_id="my_listing",
-            display_name="my_listing",
-            description="example data exchange",
-            bigquery_dataset=gcp.bigqueryanalyticshub.ListingBigqueryDatasetArgs(
-                dataset=listing_dataset.id,
-            ))
-        ```
 
         ## Import
 
@@ -771,11 +761,7 @@ class Listing(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ListingArgs.__new__(ListingArgs)
 
-            if bigquery_dataset is not None and not isinstance(bigquery_dataset, ListingBigqueryDatasetArgs):
-                bigquery_dataset = bigquery_dataset or {}
-                def _setter(key, value):
-                    bigquery_dataset[key] = value
-                ListingBigqueryDatasetArgs._configure(_setter, **bigquery_dataset)
+            bigquery_dataset = _utilities.configure(bigquery_dataset, ListingBigqueryDatasetArgs, True)
             if bigquery_dataset is None and not opts.urn:
                 raise TypeError("Missing required property 'bigquery_dataset'")
             __props__.__dict__["bigquery_dataset"] = bigquery_dataset
@@ -783,11 +769,7 @@ class Listing(pulumi.CustomResource):
             if data_exchange_id is None and not opts.urn:
                 raise TypeError("Missing required property 'data_exchange_id'")
             __props__.__dict__["data_exchange_id"] = data_exchange_id
-            if data_provider is not None and not isinstance(data_provider, ListingDataProviderArgs):
-                data_provider = data_provider or {}
-                def _setter(key, value):
-                    data_provider[key] = value
-                ListingDataProviderArgs._configure(_setter, **data_provider)
+            data_provider = _utilities.configure(data_provider, ListingDataProviderArgs, True)
             __props__.__dict__["data_provider"] = data_provider
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
@@ -803,11 +785,7 @@ class Listing(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["primary_contact"] = primary_contact
             __props__.__dict__["project"] = project
-            if publisher is not None and not isinstance(publisher, ListingPublisherArgs):
-                publisher = publisher or {}
-                def _setter(key, value):
-                    publisher[key] = value
-                ListingPublisherArgs._configure(_setter, **publisher)
+            publisher = _utilities.configure(publisher, ListingPublisherArgs, True)
             __props__.__dict__["publisher"] = publisher
             __props__.__dict__["request_access"] = request_access
             __props__.__dict__["name"] = None

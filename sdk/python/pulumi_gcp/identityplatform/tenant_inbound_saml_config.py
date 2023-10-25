@@ -52,14 +52,30 @@ class TenantInboundSamlConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             idp_config: pulumi.Input['TenantInboundSamlConfigIdpConfigArgs'],
-             sp_config: pulumi.Input['TenantInboundSamlConfigSpConfigArgs'],
-             tenant: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
+             idp_config: Optional[pulumi.Input['TenantInboundSamlConfigIdpConfigArgs']] = None,
+             sp_config: Optional[pulumi.Input['TenantInboundSamlConfigSpConfigArgs']] = None,
+             tenant: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if idp_config is None and 'idpConfig' in kwargs:
+            idp_config = kwargs['idpConfig']
+        if idp_config is None:
+            raise TypeError("Missing 'idp_config' argument")
+        if sp_config is None and 'spConfig' in kwargs:
+            sp_config = kwargs['spConfig']
+        if sp_config is None:
+            raise TypeError("Missing 'sp_config' argument")
+        if tenant is None:
+            raise TypeError("Missing 'tenant' argument")
+
         _setter("display_name", display_name)
         _setter("idp_config", idp_config)
         _setter("sp_config", sp_config)
@@ -208,7 +224,15 @@ class _TenantInboundSamlConfigState:
              project: Optional[pulumi.Input[str]] = None,
              sp_config: Optional[pulumi.Input['TenantInboundSamlConfigSpConfigArgs']] = None,
              tenant: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if idp_config is None and 'idpConfig' in kwargs:
+            idp_config = kwargs['idpConfig']
+        if sp_config is None and 'spConfig' in kwargs:
+            sp_config = kwargs['spConfig']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if enabled is not None:
@@ -336,29 +360,6 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
         the marketplace prior to using this resource.
 
         ## Example Usage
-        ### Identity Platform Tenant Inbound Saml Config Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        tenant = gcp.identityplatform.Tenant("tenant", display_name="tenant")
-        tenant_saml_config = gcp.identityplatform.TenantInboundSamlConfig("tenantSamlConfig",
-            display_name="Display Name",
-            tenant=tenant.name,
-            idp_config=gcp.identityplatform.TenantInboundSamlConfigIdpConfigArgs(
-                idp_entity_id="tf-idp",
-                sign_request=True,
-                sso_url="https://example.com",
-                idp_certificates=[gcp.identityplatform.TenantInboundSamlConfigIdpConfigIdpCertificateArgs(
-                    x509_certificate=(lambda path: open(path).read())("test-fixtures/rsa_cert.pem"),
-                )],
-            ),
-            sp_config=gcp.identityplatform.TenantInboundSamlConfigSpConfigArgs(
-                sp_entity_id="tf-sp",
-                callback_uri="https://example.com",
-            ))
-        ```
 
         ## Import
 
@@ -406,29 +407,6 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
         the marketplace prior to using this resource.
 
         ## Example Usage
-        ### Identity Platform Tenant Inbound Saml Config Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        tenant = gcp.identityplatform.Tenant("tenant", display_name="tenant")
-        tenant_saml_config = gcp.identityplatform.TenantInboundSamlConfig("tenantSamlConfig",
-            display_name="Display Name",
-            tenant=tenant.name,
-            idp_config=gcp.identityplatform.TenantInboundSamlConfigIdpConfigArgs(
-                idp_entity_id="tf-idp",
-                sign_request=True,
-                sso_url="https://example.com",
-                idp_certificates=[gcp.identityplatform.TenantInboundSamlConfigIdpConfigIdpCertificateArgs(
-                    x509_certificate=(lambda path: open(path).read())("test-fixtures/rsa_cert.pem"),
-                )],
-            ),
-            sp_config=gcp.identityplatform.TenantInboundSamlConfigSpConfigArgs(
-                sp_entity_id="tf-sp",
-                callback_uri="https://example.com",
-            ))
-        ```
 
         ## Import
 
@@ -485,21 +463,13 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["enabled"] = enabled
-            if idp_config is not None and not isinstance(idp_config, TenantInboundSamlConfigIdpConfigArgs):
-                idp_config = idp_config or {}
-                def _setter(key, value):
-                    idp_config[key] = value
-                TenantInboundSamlConfigIdpConfigArgs._configure(_setter, **idp_config)
+            idp_config = _utilities.configure(idp_config, TenantInboundSamlConfigIdpConfigArgs, True)
             if idp_config is None and not opts.urn:
                 raise TypeError("Missing required property 'idp_config'")
             __props__.__dict__["idp_config"] = idp_config
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            if sp_config is not None and not isinstance(sp_config, TenantInboundSamlConfigSpConfigArgs):
-                sp_config = sp_config or {}
-                def _setter(key, value):
-                    sp_config[key] = value
-                TenantInboundSamlConfigSpConfigArgs._configure(_setter, **sp_config)
+            sp_config = _utilities.configure(sp_config, TenantInboundSamlConfigSpConfigArgs, True)
             if sp_config is None and not opts.urn:
                 raise TypeError("Missing required property 'sp_config'")
             __props__.__dict__["sp_config"] = sp_config

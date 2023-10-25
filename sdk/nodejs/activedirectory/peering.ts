@@ -6,50 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
- * ### Active Directory Peering Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const source_network = new gcp.compute.Network("source-network", {}, {
- *     provider: google_beta,
- * });
- * const ad_domain = new gcp.activedirectory.Domain("ad-domain", {
- *     domainName: "ad.test.hashicorptest.com",
- *     locations: ["us-central1"],
- *     reservedIpRange: "192.168.255.0/24",
- *     authorizedNetworks: [source_network.id],
- * }, {
- *     provider: google_beta,
- * });
- * const peered_project = new gcp.organizations.Project("peered-project", {
- *     projectId: "my-peered-project",
- *     orgId: "123456789",
- *     billingAccount: "000000-0000000-0000000-000000",
- * }, {
- *     provider: google_beta,
- * });
- * const compute = new gcp.projects.Service("compute", {
- *     project: peered_project.projectId,
- *     service: "compute.googleapis.com",
- * }, {
- *     provider: google_beta,
- * });
- * const peered_network = new gcp.compute.Network("peered-network", {project: compute.project}, {
- *     provider: google_beta,
- * });
- * const ad_domain_peering = new gcp.activedirectory.Peering("ad-domain-peering", {
- *     domainResource: ad_domain.name,
- *     peeringId: "ad-domain-peering",
- *     authorizedNetwork: peered_network.id,
- *     labels: {
- *         foo: "bar",
- *     },
- * }, {
- *     provider: google_beta,
- * });
- * ```
  *
  * ## Import
  *

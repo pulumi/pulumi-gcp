@@ -19,33 +19,6 @@ namespace Pulumi.Gcp.Logging
     ///     * [Official Documentation](https://cloud.google.com/logging/docs/apis)
     /// 
     /// ## Example Usage
-    /// ### Logging Log View Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var loggingLogViewProjectBucketConfig = new Gcp.Logging.ProjectBucketConfig("loggingLogViewProjectBucketConfig", new()
-    ///     {
-    ///         Project = "my-project-name",
-    ///         Location = "global",
-    ///         RetentionDays = 30,
-    ///         BucketId = "_Default",
-    ///     });
-    /// 
-    ///     var loggingLogViewLogView = new Gcp.Logging.LogView("loggingLogViewLogView", new()
-    ///     {
-    ///         Bucket = loggingLogViewProjectBucketConfig.Id,
-    ///         Description = "A logging view configured with Terraform",
-    ///         Filter = "SOURCE(\"projects/myproject\") AND resource.type = \"gce_instance\" AND LOG_ID(\"stdout\")",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

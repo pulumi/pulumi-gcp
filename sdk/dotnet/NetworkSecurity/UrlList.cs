@@ -19,51 +19,6 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///     * Use UrlLists
     /// 
     /// ## Example Usage
-    /// ### Network Security Url Lists Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.NetworkSecurity.UrlList("default", new()
-    ///     {
-    ///         Location = "us-central1",
-    ///         Values = new[]
-    ///         {
-    ///             "www.example.com",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Network Security Url Lists Advanced
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.NetworkSecurity.UrlList("default", new()
-    ///     {
-    ///         Description = "my description",
-    ///         Location = "us-central1",
-    ///         Values = new[]
-    ///         {
-    ///             "www.example.com",
-    ///             "about.example.com",
-    ///             "github.com/example-org/*",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

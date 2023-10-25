@@ -29,202 +29,6 @@ import (
 // Read more about sensitive data in state.
 //
 // ## Example Usage
-// ### Iam Workforce Pool Provider Saml Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iam"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			pool, err := iam.NewWorkforcePool(ctx, "pool", &iam.WorkforcePoolArgs{
-//				WorkforcePoolId: pulumi.String("example-pool"),
-//				Parent:          pulumi.String("organizations/123456789"),
-//				Location:        pulumi.String("global"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iam.NewWorkforcePoolProvider(ctx, "example", &iam.WorkforcePoolProviderArgs{
-//				WorkforcePoolId: pool.WorkforcePoolId,
-//				Location:        pool.Location,
-//				ProviderId:      pulumi.String("example-prvdr"),
-//				AttributeMapping: pulumi.StringMap{
-//					"google.subject": pulumi.String("assertion.sub"),
-//				},
-//				Saml: &iam.WorkforcePoolProviderSamlArgs{
-//					IdpMetadataXml: pulumi.String("<?xml version=\"1.0\"?><md:EntityDescriptor xmlns:md=\"urn:oasis:names:tc:SAML:2.0:metadata\" entityID=\"https://test.com\"><md:IDPSSODescriptor protocolSupportEnumeration=\"urn:oasis:names:tc:SAML:2.0:protocol\"> <md:KeyDescriptor use=\"signing\"><ds:KeyInfo xmlns:ds=\"http://www.w3.org/2000/09/xmldsig#\"><ds:X509Data><ds:X509Certificate>MIIDpDCCAoygAwIBAgIGAX7/5qPhMA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEUMBIGA1UECwwLU1NPUHJvdmlkZXIxEzARBgNVBAMMCmRldi00NTg0MjExHDAaBgkqhkiG9w0BCQEWDWluZm9Ab2t0YS5jb20wHhcNMjIwMjE2MDAxOTEyWhcNMzIwMjE2MDAyMDEyWjCBkjELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xDTALBgNVBAoMBE9rdGExFDASBgNVBAsMC1NTT1Byb3ZpZGVyMRMwEQYDVQQDDApkZXYtNDU4NDIxMRwwGgYJKoZIhvcNAQkBFg1pbmZvQG9rdGEuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxrBl7GKz52cRpxF9xCsirnRuMxnhFBaUrsHqAQrLqWmdlpNYZTVg+T9iQ+aq/iE68L+BRZcZniKIvW58wqqS0ltXVvIkXuDSvnvnkkI5yMIVErR20K8jSOKQm1FmK+fgAJ4koshFiu9oLiqu0Ejc0DuL3/XRsb4RuxjktKTb1khgBBtb+7idEk0sFR0RPefAweXImJkDHDm7SxjDwGJUubbqpdTxasPr0W+AHI1VUzsUsTiHAoyb0XDkYqHfDzhj/ZdIEl4zHQ3bEZvlD984ztAnmX2SuFLLKfXeAAGHei8MMixJvwxYkkPeYZ/5h8WgBZPP4heS2CPjwYExt29L8QIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQARjJFz++a9Z5IQGFzsZMrX2EDR5ML4xxUiQkbhld1S1PljOLcYFARDmUC2YYHOueU4ee8Jid9nPGEUebV/4Jok+b+oQh+dWMgiWjSLI7h5q4OYZ3VJtdlVwgMFt2iz+/4yBKMUZ50g3Qgg36vE34us+eKitg759JgCNsibxn0qtJgSPm0sgP2L6yTaLnoEUbXBRxCwynTSkp9ZijZqEzbhN0e2dWv7Rx/nfpohpDP6vEiFImKFHpDSv3M/5de1ytQzPFrZBYt9WlzlYwE1aD9FHCxdd+rWgYMVVoRaRmndpV/Rq3QUuDuFJtaoX11bC7ExkOpg9KstZzA63i3VcfYv</ds:X509Certificate></ds:X509Data></ds:KeyInfo></md:KeyDescriptor><md:SingleSignOnService Binding=\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect\" Location=\"https://test.com/sso\"/></md:IDPSSODescriptor></md:EntityDescriptor>"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Iam Workforce Pool Provider Saml Full
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iam"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			pool, err := iam.NewWorkforcePool(ctx, "pool", &iam.WorkforcePoolArgs{
-//				WorkforcePoolId: pulumi.String("example-pool"),
-//				Parent:          pulumi.String("organizations/123456789"),
-//				Location:        pulumi.String("global"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iam.NewWorkforcePoolProvider(ctx, "example", &iam.WorkforcePoolProviderArgs{
-//				WorkforcePoolId: pool.WorkforcePoolId,
-//				Location:        pool.Location,
-//				ProviderId:      pulumi.String("example-prvdr"),
-//				AttributeMapping: pulumi.StringMap{
-//					"google.subject": pulumi.String("assertion.sub"),
-//				},
-//				Saml: &iam.WorkforcePoolProviderSamlArgs{
-//					IdpMetadataXml: pulumi.String("<?xml version=\"1.0\"?><md:EntityDescriptor xmlns:md=\"urn:oasis:names:tc:SAML:2.0:metadata\" entityID=\"https://test.com\"><md:IDPSSODescriptor protocolSupportEnumeration=\"urn:oasis:names:tc:SAML:2.0:protocol\"> <md:KeyDescriptor use=\"signing\"><ds:KeyInfo xmlns:ds=\"http://www.w3.org/2000/09/xmldsig#\"><ds:X509Data><ds:X509Certificate>MIIDpDCCAoygAwIBAgIGAX7/5qPhMA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEUMBIGA1UECwwLU1NPUHJvdmlkZXIxEzARBgNVBAMMCmRldi00NTg0MjExHDAaBgkqhkiG9w0BCQEWDWluZm9Ab2t0YS5jb20wHhcNMjIwMjE2MDAxOTEyWhcNMzIwMjE2MDAyMDEyWjCBkjELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xDTALBgNVBAoMBE9rdGExFDASBgNVBAsMC1NTT1Byb3ZpZGVyMRMwEQYDVQQDDApkZXYtNDU4NDIxMRwwGgYJKoZIhvcNAQkBFg1pbmZvQG9rdGEuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxrBl7GKz52cRpxF9xCsirnRuMxnhFBaUrsHqAQrLqWmdlpNYZTVg+T9iQ+aq/iE68L+BRZcZniKIvW58wqqS0ltXVvIkXuDSvnvnkkI5yMIVErR20K8jSOKQm1FmK+fgAJ4koshFiu9oLiqu0Ejc0DuL3/XRsb4RuxjktKTb1khgBBtb+7idEk0sFR0RPefAweXImJkDHDm7SxjDwGJUubbqpdTxasPr0W+AHI1VUzsUsTiHAoyb0XDkYqHfDzhj/ZdIEl4zHQ3bEZvlD984ztAnmX2SuFLLKfXeAAGHei8MMixJvwxYkkPeYZ/5h8WgBZPP4heS2CPjwYExt29L8QIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQARjJFz++a9Z5IQGFzsZMrX2EDR5ML4xxUiQkbhld1S1PljOLcYFARDmUC2YYHOueU4ee8Jid9nPGEUebV/4Jok+b+oQh+dWMgiWjSLI7h5q4OYZ3VJtdlVwgMFt2iz+/4yBKMUZ50g3Qgg36vE34us+eKitg759JgCNsibxn0qtJgSPm0sgP2L6yTaLnoEUbXBRxCwynTSkp9ZijZqEzbhN0e2dWv7Rx/nfpohpDP6vEiFImKFHpDSv3M/5de1ytQzPFrZBYt9WlzlYwE1aD9FHCxdd+rWgYMVVoRaRmndpV/Rq3QUuDuFJtaoX11bC7ExkOpg9KstZzA63i3VcfYv</ds:X509Certificate></ds:X509Data></ds:KeyInfo></md:KeyDescriptor><md:SingleSignOnService Binding=\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect\" Location=\"https://test.com/sso\"/></md:IDPSSODescriptor></md:EntityDescriptor>"),
-//				},
-//				DisplayName:        pulumi.String("Display name"),
-//				Description:        pulumi.String("A sample SAML workforce pool provider."),
-//				Disabled:           pulumi.Bool(false),
-//				AttributeCondition: pulumi.String("true"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Iam Workforce Pool Provider Oidc Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iam"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			pool, err := iam.NewWorkforcePool(ctx, "pool", &iam.WorkforcePoolArgs{
-//				WorkforcePoolId: pulumi.String("example-pool"),
-//				Parent:          pulumi.String("organizations/123456789"),
-//				Location:        pulumi.String("global"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iam.NewWorkforcePoolProvider(ctx, "example", &iam.WorkforcePoolProviderArgs{
-//				WorkforcePoolId: pool.WorkforcePoolId,
-//				Location:        pool.Location,
-//				ProviderId:      pulumi.String("example-prvdr"),
-//				AttributeMapping: pulumi.StringMap{
-//					"google.subject": pulumi.String("assertion.sub"),
-//				},
-//				Oidc: &iam.WorkforcePoolProviderOidcArgs{
-//					IssuerUri: pulumi.String("https://accounts.thirdparty.com"),
-//					ClientId:  pulumi.String("client-id"),
-//					ClientSecret: &iam.WorkforcePoolProviderOidcClientSecretArgs{
-//						Value: &iam.WorkforcePoolProviderOidcClientSecretValueArgs{
-//							PlainText: pulumi.String("client-secret"),
-//						},
-//					},
-//					WebSsoConfig: &iam.WorkforcePoolProviderOidcWebSsoConfigArgs{
-//						ResponseType:            pulumi.String("CODE"),
-//						AssertionClaimsBehavior: pulumi.String("MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Iam Workforce Pool Provider Oidc Full
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iam"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			pool, err := iam.NewWorkforcePool(ctx, "pool", &iam.WorkforcePoolArgs{
-//				WorkforcePoolId: pulumi.String("example-pool"),
-//				Parent:          pulumi.String("organizations/123456789"),
-//				Location:        pulumi.String("global"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iam.NewWorkforcePoolProvider(ctx, "example", &iam.WorkforcePoolProviderArgs{
-//				WorkforcePoolId: pool.WorkforcePoolId,
-//				Location:        pool.Location,
-//				ProviderId:      pulumi.String("example-prvdr"),
-//				AttributeMapping: pulumi.StringMap{
-//					"google.subject": pulumi.String("assertion.sub"),
-//				},
-//				Oidc: &iam.WorkforcePoolProviderOidcArgs{
-//					IssuerUri: pulumi.String("https://accounts.thirdparty.com"),
-//					ClientId:  pulumi.String("client-id"),
-//					ClientSecret: &iam.WorkforcePoolProviderOidcClientSecretArgs{
-//						Value: &iam.WorkforcePoolProviderOidcClientSecretValueArgs{
-//							PlainText: pulumi.String("client-secret"),
-//						},
-//					},
-//					WebSsoConfig: &iam.WorkforcePoolProviderOidcWebSsoConfigArgs{
-//						ResponseType:            pulumi.String("CODE"),
-//						AssertionClaimsBehavior: pulumi.String("MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS"),
-//						AdditionalScopes: pulumi.StringArray{
-//							pulumi.String("groups"),
-//							pulumi.String("roles"),
-//						},
-//					},
-//				},
-//				DisplayName:        pulumi.String("Display name"),
-//				Description:        pulumi.String("A sample OIDC workforce pool provider."),
-//				Disabled:           pulumi.Bool(false),
-//				AttributeCondition: pulumi.String("true"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
@@ -287,21 +91,8 @@ type WorkforcePoolProvider struct {
 	//   For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
 	//   For example, the following maps the sub claim of the incoming credential to the `subject` attribute
 	//   on a Google token:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// An object containing a list of `"key": value` pairs.
-	// Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+	//   An object containing a list of `"key": value` pairs.
+	//   Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	AttributeMapping pulumi.StringMapOutput `pulumi:"attributeMapping"`
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -423,21 +214,8 @@ type workforcePoolProviderState struct {
 	//   For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
 	//   For example, the following maps the sub claim of the incoming credential to the `subject` attribute
 	//   on a Google token:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// An object containing a list of `"key": value` pairs.
-	// Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+	//   An object containing a list of `"key": value` pairs.
+	//   Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	AttributeMapping map[string]string `pulumi:"attributeMapping"`
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
@@ -521,21 +299,8 @@ type WorkforcePoolProviderState struct {
 	//   For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
 	//   For example, the following maps the sub claim of the incoming credential to the `subject` attribute
 	//   on a Google token:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// An object containing a list of `"key": value` pairs.
-	// Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+	//   An object containing a list of `"key": value` pairs.
+	//   Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	AttributeMapping pulumi.StringMapInput
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
@@ -623,21 +388,8 @@ type workforcePoolProviderArgs struct {
 	//   For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
 	//   For example, the following maps the sub claim of the incoming credential to the `subject` attribute
 	//   on a Google token:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// An object containing a list of `"key": value` pairs.
-	// Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+	//   An object containing a list of `"key": value` pairs.
+	//   Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	AttributeMapping map[string]string `pulumi:"attributeMapping"`
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
@@ -712,21 +464,8 @@ type WorkforcePoolProviderArgs struct {
 	//   For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
 	//   For example, the following maps the sub claim of the incoming credential to the `subject` attribute
 	//   on a Google token:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// An object containing a list of `"key": value` pairs.
-	// Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+	//   An object containing a list of `"key": value` pairs.
+	//   Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	AttributeMapping pulumi.StringMapInput
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
@@ -913,25 +652,8 @@ func (o WorkforcePoolProviderOutput) AttributeCondition() pulumi.StringPtrOutput
 //     For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
 //     For example, the following maps the sub claim of the incoming credential to the `subject` attribute
 //     on a Google token:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// An object containing a list of `"key": value` pairs.
-// Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+//     An object containing a list of `"key": value` pairs.
+//     Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 func (o WorkforcePoolProviderOutput) AttributeMapping() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkforcePoolProvider) pulumi.StringMapOutput { return v.AttributeMapping }).(pulumi.StringMapOutput)
 }

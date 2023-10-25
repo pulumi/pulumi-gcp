@@ -19,27 +19,6 @@ namespace Pulumi.Gcp.Notebooks
     ///     * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
     /// 
     /// ## Example Usage
-    /// ### Notebook Environment Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var environment = new Gcp.Notebooks.Environment("environment", new()
-    ///     {
-    ///         ContainerImage = new Gcp.Notebooks.Inputs.EnvironmentContainerImageArgs
-    ///         {
-    ///             Repository = "gcr.io/deeplearning-platform-release/base-cpu",
-    ///         },
-    ///         Location = "us-west1-a",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

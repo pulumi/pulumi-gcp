@@ -14,42 +14,6 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// &gt; **Note:** All arguments including the private key will be stored in the raw state as plain-text
     /// 
-    /// ## Example Usage
-    /// 
-    /// Example creating a SQL Client Certificate.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// using Random = Pulumi.Random;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var dbNameSuffix = new Random.RandomId("dbNameSuffix", new()
-    ///     {
-    ///         ByteLength = 4,
-    ///     });
-    /// 
-    ///     var main = new Gcp.Sql.DatabaseInstance("main", new()
-    ///     {
-    ///         DatabaseVersion = "MYSQL_5_7",
-    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
-    ///         {
-    ///             Tier = "db-f1-micro",
-    ///         },
-    ///     });
-    /// 
-    ///     var clientCert = new Gcp.Sql.SslCert("clientCert", new()
-    ///     {
-    ///         CommonName = "client-name",
-    ///         Instance = main.Name,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Since the contents of the certificate cannot be accessed after its creation, this resource cannot be imported.

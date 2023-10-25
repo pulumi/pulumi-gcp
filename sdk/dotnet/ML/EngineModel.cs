@@ -22,48 +22,6 @@ namespace Pulumi.Gcp.ML
     ///     * [Official Documentation](https://cloud.google.com/ai-platform/prediction/docs/deploying-models)
     /// 
     /// ## Example Usage
-    /// ### Ml Model Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.ML.EngineModel("default", new()
-    ///     {
-    ///         Description = "My model",
-    ///         Regions = "us-central1",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Ml Model Full
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.ML.EngineModel("default", new()
-    ///     {
-    ///         Description = "My model",
-    ///         Labels = 
-    ///         {
-    ///             { "my_model", "foo" },
-    ///         },
-    ///         OnlinePredictionConsoleLogging = true,
-    ///         OnlinePredictionLogging = true,
-    ///         Regions = "us-central1",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

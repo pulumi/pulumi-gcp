@@ -34,10 +34,18 @@ class LocationTagBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parent: pulumi.Input[str],
-             tag_value: pulumi.Input[str],
+             parent: Optional[pulumi.Input[str]] = None,
+             tag_value: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+        if tag_value is None and 'tagValue' in kwargs:
+            tag_value = kwargs['tagValue']
+        if tag_value is None:
+            raise TypeError("Missing 'tag_value' argument")
+
         _setter("parent", parent)
         _setter("tag_value", tag_value)
         if location is not None:
@@ -112,7 +120,11 @@ class _LocationTagBindingState:
              name: Optional[pulumi.Input[str]] = None,
              parent: Optional[pulumi.Input[str]] = None,
              tag_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if tag_value is None and 'tagValue' in kwargs:
+            tag_value = kwargs['tagValue']
+
         if location is not None:
             _setter("location", location)
         if name is not None:
@@ -191,54 +203,6 @@ class LocationTagBinding(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 
-        ## Example Usage
-
-        To bind a tag to a Cloud Run instance:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.Project("project",
-            org_id="123456789",
-            project_id="project_id")
-        key = gcp.tags.TagKey("key",
-            description="For keyname resources.",
-            parent="organizations/123456789",
-            short_name="keyname")
-        value = gcp.tags.TagValue("value",
-            description="For valuename resources.",
-            parent=key.name.apply(lambda name: f"tagKeys/{name}"),
-            short_name="valuename")
-        binding = gcp.tags.LocationTagBinding("binding",
-            location="us-central1",
-            parent=project.number.apply(lambda number: f"//run.googleapis.com/projects/{number}/locations/{google_cloud_run_service['default']['location']}/services/{google_cloud_run_service['default']['name']}"),
-            tag_value=value.name.apply(lambda name: f"tagValues/{name}"))
-        ```
-
-        To bind a (firewall) tag to compute instance:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.Project("project",
-            org_id="123456789",
-            project_id="project_id")
-        key = gcp.tags.TagKey("key",
-            description="For keyname resources.",
-            parent="organizations/123456789",
-            short_name="keyname")
-        value = gcp.tags.TagValue("value",
-            description="For valuename resources.",
-            parent=key.name.apply(lambda name: f"tagKeys/{name}"),
-            short_name="valuename")
-        binding = gcp.tags.LocationTagBinding("binding",
-            location="us-central1-a",
-            parent=project.number.apply(lambda number: f"//compute.googleapis.com/projects/{number}/zones/us-central1-a/instances/{google_compute_instance['instance']['instance_id']}"),
-            tag_value=value.name.apply(lambda name: f"tagValues/{name}"))
-        ```
-
         ## Import
 
         TagBinding can be imported using any of these accepted formats:
@@ -269,54 +233,6 @@ class LocationTagBinding(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagBindings)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
-
-        ## Example Usage
-
-        To bind a tag to a Cloud Run instance:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.Project("project",
-            org_id="123456789",
-            project_id="project_id")
-        key = gcp.tags.TagKey("key",
-            description="For keyname resources.",
-            parent="organizations/123456789",
-            short_name="keyname")
-        value = gcp.tags.TagValue("value",
-            description="For valuename resources.",
-            parent=key.name.apply(lambda name: f"tagKeys/{name}"),
-            short_name="valuename")
-        binding = gcp.tags.LocationTagBinding("binding",
-            location="us-central1",
-            parent=project.number.apply(lambda number: f"//run.googleapis.com/projects/{number}/locations/{google_cloud_run_service['default']['location']}/services/{google_cloud_run_service['default']['name']}"),
-            tag_value=value.name.apply(lambda name: f"tagValues/{name}"))
-        ```
-
-        To bind a (firewall) tag to compute instance:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.Project("project",
-            org_id="123456789",
-            project_id="project_id")
-        key = gcp.tags.TagKey("key",
-            description="For keyname resources.",
-            parent="organizations/123456789",
-            short_name="keyname")
-        value = gcp.tags.TagValue("value",
-            description="For valuename resources.",
-            parent=key.name.apply(lambda name: f"tagKeys/{name}"),
-            short_name="valuename")
-        binding = gcp.tags.LocationTagBinding("binding",
-            location="us-central1-a",
-            parent=project.number.apply(lambda number: f"//compute.googleapis.com/projects/{number}/zones/us-central1-a/instances/{google_compute_instance['instance']['instance_id']}"),
-            tag_value=value.name.apply(lambda name: f"tagValues/{name}"))
-        ```
 
         ## Import
 

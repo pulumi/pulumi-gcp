@@ -38,10 +38,16 @@ class ScopeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             scope_id: pulumi.Input[str],
+             scope_id: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if scope_id is None and 'scopeId' in kwargs:
+            scope_id = kwargs['scopeId']
+        if scope_id is None:
+            raise TypeError("Missing 'scope_id' argument")
+
         _setter("scope_id", scope_id)
         if labels is not None:
             _setter("labels", labels)
@@ -142,7 +148,17 @@ class _ScopeState:
              states: Optional[pulumi.Input[Sequence[pulumi.Input['ScopeStateArgs']]]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if delete_time is None and 'deleteTime' in kwargs:
+            delete_time = kwargs['deleteTime']
+        if scope_id is None and 'scopeId' in kwargs:
+            scope_id = kwargs['scopeId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if delete_time is not None:
@@ -295,20 +311,6 @@ class Scope(pulumi.CustomResource):
             * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 
         ## Example Usage
-        ### Gkehub Scope Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        scope = gcp.gkehub.Scope("scope",
-            labels={
-                "keya": "valuea",
-                "keyb": "valueb",
-                "keyc": "valuec",
-            },
-            scope_id="tf-test-scope%{random_suffix}")
-        ```
 
         ## Import
 
@@ -352,20 +354,6 @@ class Scope(pulumi.CustomResource):
             * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 
         ## Example Usage
-        ### Gkehub Scope Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        scope = gcp.gkehub.Scope("scope",
-            labels={
-                "keya": "valuea",
-                "keyb": "valueb",
-                "keyc": "valuec",
-            },
-            scope_id="tf-test-scope%{random_suffix}")
-        ```
 
         ## Import
 

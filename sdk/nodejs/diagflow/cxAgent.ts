@@ -16,31 +16,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
  *
  * ## Example Usage
- * ### Dialogflowcx Agent Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const fullAgent = new gcp.diagflow.CxAgent("fullAgent", {
- *     avatarUri: "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
- *     defaultLanguageCode: "en",
- *     description: "Example description.",
- *     displayName: "dialogflowcx-agent",
- *     enableSpellCorrection: true,
- *     enableStackdriverLogging: true,
- *     location: "global",
- *     speechToTextSettings: {
- *         enableSpeechAdaptation: true,
- *     },
- *     supportedLanguageCodes: [
- *         "fr",
- *         "de",
- *         "es",
- *     ],
- *     timeZone: "America/New_York",
- * });
- * ```
  *
  * ## Import
  *

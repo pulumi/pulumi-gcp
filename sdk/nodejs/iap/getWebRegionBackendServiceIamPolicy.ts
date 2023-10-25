@@ -6,19 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for webregionbackendservice
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.iap.getWebRegionBackendServiceIamPolicy({
- *     project: google_compute_region_backend_service["default"].project,
- *     region: google_compute_region_backend_service["default"].region,
- *     webRegionBackendService: google_compute_region_backend_service["default"].name,
- * });
- * ```
  */
 export function getWebRegionBackendServiceIamPolicy(args: GetWebRegionBackendServiceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetWebRegionBackendServiceIamPolicyResult> {
 
@@ -69,19 +56,6 @@ export interface GetWebRegionBackendServiceIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for webregionbackendservice
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.iap.getWebRegionBackendServiceIamPolicy({
- *     project: google_compute_region_backend_service["default"].project,
- *     region: google_compute_region_backend_service["default"].region,
- *     webRegionBackendService: google_compute_region_backend_service["default"].name,
- * });
- * ```
  */
 export function getWebRegionBackendServiceIamPolicyOutput(args: GetWebRegionBackendServiceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebRegionBackendServiceIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getWebRegionBackendServiceIamPolicy(a, opts))

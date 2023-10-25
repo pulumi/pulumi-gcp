@@ -408,21 +408,6 @@ def get_disk(name: Optional[str] = None,
 
     [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/latest/disks).
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    persistent_boot_disk = gcp.compute.get_disk(name="persistent-boot-disk",
-        project="example")
-    # ...
-    default = gcp.compute.Instance("default", boot_disk=gcp.compute.InstanceBootDiskArgs(
-        source=persistent_boot_disk.self_link,
-        auto_delete=False,
-    ))
-    ```
-
 
     :param str name: The name of a specific disk.
            
@@ -483,21 +468,6 @@ def get_disk_output(name: Optional[pulumi.Input[str]] = None,
     Get information about a Google Compute Persistent disks.
 
     [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/latest/disks).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    persistent_boot_disk = gcp.compute.get_disk(name="persistent-boot-disk",
-        project="example")
-    # ...
-    default = gcp.compute.Instance("default", boot_disk=gcp.compute.InstanceBootDiskArgs(
-        source=persistent_boot_disk.self_link,
-        auto_delete=False,
-    ))
-    ```
 
 
     :param str name: The name of a specific disk.

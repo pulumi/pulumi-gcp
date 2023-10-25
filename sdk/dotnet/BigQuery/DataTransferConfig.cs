@@ -24,62 +24,6 @@ namespace Pulumi.Gcp.BigQuery
     /// Read more about sensitive data in state.
     /// 
     /// ## Example Usage
-    /// ### Bigquerydatatransfer Config Scheduled Query
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    ///     var permissions = new Gcp.Projects.IAMMember("permissions", new()
-    ///     {
-    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
-    ///         Role = "roles/iam.serviceAccountTokenCreator",
-    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com",
-    ///     });
-    /// 
-    ///     var myDataset = new Gcp.BigQuery.Dataset("myDataset", new()
-    ///     {
-    ///         DatasetId = "my_dataset",
-    ///         FriendlyName = "foo",
-    ///         Description = "bar",
-    ///         Location = "asia-northeast1",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             permissions,
-    ///         },
-    ///     });
-    /// 
-    ///     var queryConfig = new Gcp.BigQuery.DataTransferConfig("queryConfig", new()
-    ///     {
-    ///         DisplayName = "my-query",
-    ///         Location = "asia-northeast1",
-    ///         DataSourceId = "scheduled_query",
-    ///         Schedule = "first sunday of quarter 00:00",
-    ///         DestinationDatasetId = myDataset.DatasetId,
-    ///         Params = 
-    ///         {
-    ///             { "destination_table_name_template", "my_table" },
-    ///             { "write_disposition", "WRITE_APPEND" },
-    ///             { "query", "SELECT name FROM tabl WHERE x = 'y'" },
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             permissions,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

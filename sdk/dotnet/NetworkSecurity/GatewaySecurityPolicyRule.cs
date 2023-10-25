@@ -18,66 +18,6 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.gatewaySecurityPolicies.rules)
     /// 
     /// ## Example Usage
-    /// ### Network Security Gateway Security Policy Rules Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultGatewaySecurityPolicy = new Gcp.NetworkSecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", new()
-    ///     {
-    ///         Location = "us-central1",
-    ///         Description = "gateway security policy created to be used as reference by the rule.",
-    ///     });
-    /// 
-    ///     var defaultGatewaySecurityPolicyRule = new Gcp.NetworkSecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", new()
-    ///     {
-    ///         Location = "us-central1",
-    ///         GatewaySecurityPolicy = defaultGatewaySecurityPolicy.Name,
-    ///         Enabled = true,
-    ///         Description = "my description",
-    ///         Priority = 0,
-    ///         SessionMatcher = "host() == 'example.com'",
-    ///         BasicProfile = "ALLOW",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Network Security Gateway Security Policy Rules Advanced
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultGatewaySecurityPolicy = new Gcp.NetworkSecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", new()
-    ///     {
-    ///         Location = "us-central1",
-    ///         Description = "gateway security policy created to be used as reference by the rule.",
-    ///     });
-    /// 
-    ///     var defaultGatewaySecurityPolicyRule = new Gcp.NetworkSecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", new()
-    ///     {
-    ///         Location = "us-central1",
-    ///         GatewaySecurityPolicy = defaultGatewaySecurityPolicy.Name,
-    ///         Enabled = true,
-    ///         Description = "my description",
-    ///         Priority = 0,
-    ///         SessionMatcher = "host() == 'example.com'",
-    ///         ApplicationMatcher = "request.method == 'POST'",
-    ///         TlsInspectionEnabled = false,
-    ///         BasicProfile = "ALLOW",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

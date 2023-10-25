@@ -55,15 +55,29 @@ class CapacityCommitmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             plan: pulumi.Input[str],
-             slot_count: pulumi.Input[int],
+             plan: Optional[pulumi.Input[str]] = None,
+             slot_count: Optional[pulumi.Input[int]] = None,
              capacity_commitment_id: Optional[pulumi.Input[str]] = None,
              edition: Optional[pulumi.Input[str]] = None,
              enforce_single_admin_project_per_org: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              renewal_plan: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if plan is None:
+            raise TypeError("Missing 'plan' argument")
+        if slot_count is None and 'slotCount' in kwargs:
+            slot_count = kwargs['slotCount']
+        if slot_count is None:
+            raise TypeError("Missing 'slot_count' argument")
+        if capacity_commitment_id is None and 'capacityCommitmentId' in kwargs:
+            capacity_commitment_id = kwargs['capacityCommitmentId']
+        if enforce_single_admin_project_per_org is None and 'enforceSingleAdminProjectPerOrg' in kwargs:
+            enforce_single_admin_project_per_org = kwargs['enforceSingleAdminProjectPerOrg']
+        if renewal_plan is None and 'renewalPlan' in kwargs:
+            renewal_plan = kwargs['renewalPlan']
+
         _setter("plan", plan)
         _setter("slot_count", slot_count)
         if capacity_commitment_id is not None:
@@ -252,7 +266,21 @@ class _CapacityCommitmentState:
              renewal_plan: Optional[pulumi.Input[str]] = None,
              slot_count: Optional[pulumi.Input[int]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if capacity_commitment_id is None and 'capacityCommitmentId' in kwargs:
+            capacity_commitment_id = kwargs['capacityCommitmentId']
+        if commitment_end_time is None and 'commitmentEndTime' in kwargs:
+            commitment_end_time = kwargs['commitmentEndTime']
+        if commitment_start_time is None and 'commitmentStartTime' in kwargs:
+            commitment_start_time = kwargs['commitmentStartTime']
+        if enforce_single_admin_project_per_org is None and 'enforceSingleAdminProjectPerOrg' in kwargs:
+            enforce_single_admin_project_per_org = kwargs['enforceSingleAdminProjectPerOrg']
+        if renewal_plan is None and 'renewalPlan' in kwargs:
+            renewal_plan = kwargs['renewalPlan']
+        if slot_count is None and 'slotCount' in kwargs:
+            slot_count = kwargs['slotCount']
+
         if capacity_commitment_id is not None:
             _setter("capacity_commitment_id", capacity_commitment_id)
         if commitment_end_time is not None:
@@ -457,19 +485,6 @@ class CapacityCommitment(pulumi.CustomResource):
             * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
 
         ## Example Usage
-        ### Bigquery Reservation Capacity Commitment Docs
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example = gcp.bigquery.CapacityCommitment("example",
-            capacity_commitment_id="example-commitment",
-            edition="ENTERPRISE",
-            location="us-west2",
-            plan="FLEX_FLAT_RATE",
-            slot_count=100)
-        ```
 
         ## Import
 
@@ -524,19 +539,6 @@ class CapacityCommitment(pulumi.CustomResource):
             * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
 
         ## Example Usage
-        ### Bigquery Reservation Capacity Commitment Docs
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example = gcp.bigquery.CapacityCommitment("example",
-            capacity_commitment_id="example-commitment",
-            edition="ENTERPRISE",
-            location="us-west2",
-            plan="FLEX_FLAT_RATE",
-            slot_count=100)
-        ```
 
         ## Import
 

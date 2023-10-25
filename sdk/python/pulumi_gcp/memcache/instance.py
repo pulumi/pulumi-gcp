@@ -71,8 +71,8 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             node_config: pulumi.Input['InstanceNodeConfigArgs'],
-             node_count: pulumi.Input[int],
+             node_config: Optional[pulumi.Input['InstanceNodeConfigArgs']] = None,
+             node_count: Optional[pulumi.Input[int]] = None,
              authorized_network: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -83,7 +83,27 @@ class InstanceArgs:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if node_config is None and 'nodeConfig' in kwargs:
+            node_config = kwargs['nodeConfig']
+        if node_config is None:
+            raise TypeError("Missing 'node_config' argument")
+        if node_count is None and 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+        if node_count is None:
+            raise TypeError("Missing 'node_count' argument")
+        if authorized_network is None and 'authorizedNetwork' in kwargs:
+            authorized_network = kwargs['authorizedNetwork']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if maintenance_policy is None and 'maintenancePolicy' in kwargs:
+            maintenance_policy = kwargs['maintenancePolicy']
+        if memcache_parameters is None and 'memcacheParameters' in kwargs:
+            memcache_parameters = kwargs['memcacheParameters']
+        if memcache_version is None and 'memcacheVersion' in kwargs:
+            memcache_version = kwargs['memcacheVersion']
+
         _setter("node_config", node_config)
         _setter("node_count", node_count)
         if authorized_network is not None:
@@ -357,7 +377,33 @@ class _InstanceState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if authorized_network is None and 'authorizedNetwork' in kwargs:
+            authorized_network = kwargs['authorizedNetwork']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if discovery_endpoint is None and 'discoveryEndpoint' in kwargs:
+            discovery_endpoint = kwargs['discoveryEndpoint']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if maintenance_policy is None and 'maintenancePolicy' in kwargs:
+            maintenance_policy = kwargs['maintenancePolicy']
+        if maintenance_schedules is None and 'maintenanceSchedules' in kwargs:
+            maintenance_schedules = kwargs['maintenanceSchedules']
+        if memcache_full_version is None and 'memcacheFullVersion' in kwargs:
+            memcache_full_version = kwargs['memcacheFullVersion']
+        if memcache_nodes is None and 'memcacheNodes' in kwargs:
+            memcache_nodes = kwargs['memcacheNodes']
+        if memcache_parameters is None and 'memcacheParameters' in kwargs:
+            memcache_parameters = kwargs['memcacheParameters']
+        if memcache_version is None and 'memcacheVersion' in kwargs:
+            memcache_version = kwargs['memcacheVersion']
+        if node_config is None and 'nodeConfig' in kwargs:
+            node_config = kwargs['nodeConfig']
+        if node_count is None and 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+
         if authorized_network is not None:
             _setter("authorized_network", authorized_network)
         if create_time is not None:
@@ -641,43 +687,6 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/memcache/docs/creating-instances)
 
         ## Example Usage
-        ### Memcache Instance Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        memcache_network = gcp.compute.get_network(name="test-network")
-        service_range = gcp.compute.GlobalAddress("serviceRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=memcache_network.id)
-        private_service_connection = gcp.servicenetworking.Connection("privateServiceConnection",
-            network=memcache_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[service_range.name])
-        instance = gcp.memcache.Instance("instance",
-            authorized_network=private_service_connection.network,
-            node_config=gcp.memcache.InstanceNodeConfigArgs(
-                cpu_count=1,
-                memory_size_mb=1024,
-            ),
-            node_count=1,
-            memcache_version="MEMCACHE_1_5",
-            maintenance_policy=gcp.memcache.InstanceMaintenancePolicyArgs(
-                weekly_maintenance_windows=[gcp.memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs(
-                    day="SATURDAY",
-                    duration="14400s",
-                    start_time=gcp.memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs(
-                        hours=0,
-                        minutes=30,
-                        seconds=0,
-                        nanos=0,
-                    ),
-                )],
-            ))
-        ```
 
         ## Import
 
@@ -740,43 +749,6 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/memcache/docs/creating-instances)
 
         ## Example Usage
-        ### Memcache Instance Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        memcache_network = gcp.compute.get_network(name="test-network")
-        service_range = gcp.compute.GlobalAddress("serviceRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=memcache_network.id)
-        private_service_connection = gcp.servicenetworking.Connection("privateServiceConnection",
-            network=memcache_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[service_range.name])
-        instance = gcp.memcache.Instance("instance",
-            authorized_network=private_service_connection.network,
-            node_config=gcp.memcache.InstanceNodeConfigArgs(
-                cpu_count=1,
-                memory_size_mb=1024,
-            ),
-            node_count=1,
-            memcache_version="MEMCACHE_1_5",
-            maintenance_policy=gcp.memcache.InstanceMaintenancePolicyArgs(
-                weekly_maintenance_windows=[gcp.memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs(
-                    day="SATURDAY",
-                    duration="14400s",
-                    start_time=gcp.memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs(
-                        hours=0,
-                        minutes=30,
-                        seconds=0,
-                        nanos=0,
-                    ),
-                )],
-            ))
-        ```
 
         ## Import
 
@@ -841,25 +813,13 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["authorized_network"] = authorized_network
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
-            if maintenance_policy is not None and not isinstance(maintenance_policy, InstanceMaintenancePolicyArgs):
-                maintenance_policy = maintenance_policy or {}
-                def _setter(key, value):
-                    maintenance_policy[key] = value
-                InstanceMaintenancePolicyArgs._configure(_setter, **maintenance_policy)
+            maintenance_policy = _utilities.configure(maintenance_policy, InstanceMaintenancePolicyArgs, True)
             __props__.__dict__["maintenance_policy"] = maintenance_policy
-            if memcache_parameters is not None and not isinstance(memcache_parameters, InstanceMemcacheParametersArgs):
-                memcache_parameters = memcache_parameters or {}
-                def _setter(key, value):
-                    memcache_parameters[key] = value
-                InstanceMemcacheParametersArgs._configure(_setter, **memcache_parameters)
+            memcache_parameters = _utilities.configure(memcache_parameters, InstanceMemcacheParametersArgs, True)
             __props__.__dict__["memcache_parameters"] = memcache_parameters
             __props__.__dict__["memcache_version"] = memcache_version
             __props__.__dict__["name"] = name
-            if node_config is not None and not isinstance(node_config, InstanceNodeConfigArgs):
-                node_config = node_config or {}
-                def _setter(key, value):
-                    node_config[key] = value
-                InstanceNodeConfigArgs._configure(_setter, **node_config)
+            node_config = _utilities.configure(node_config, InstanceNodeConfigArgs, True)
             if node_config is None and not opts.urn:
                 raise TypeError("Missing required property 'node_config'")
             __props__.__dict__["node_config"] = node_config

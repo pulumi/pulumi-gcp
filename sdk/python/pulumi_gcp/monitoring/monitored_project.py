@@ -32,9 +32,15 @@ class MonitoredProjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             metrics_scope: pulumi.Input[str],
+             metrics_scope: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if metrics_scope is None and 'metricsScope' in kwargs:
+            metrics_scope = kwargs['metricsScope']
+        if metrics_scope is None:
+            raise TypeError("Missing 'metrics_scope' argument")
+
         _setter("metrics_scope", metrics_scope)
         if name is not None:
             _setter("name", name)
@@ -94,7 +100,13 @@ class _MonitoredProjectState:
              create_time: Optional[pulumi.Input[str]] = None,
              metrics_scope: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if metrics_scope is None and 'metricsScope' in kwargs:
+            metrics_scope = kwargs['metricsScope']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if metrics_scope is not None:
@@ -160,17 +172,6 @@ class MonitoredProject(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/monitoring/settings/manage-api)
 
         ## Example Usage
-        ### Monitoring Monitored Project Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.monitoring.MonitoredProject("primary", metrics_scope="my-project-name")
-        basic = gcp.organizations.Project("basic",
-            project_id="m-id",
-            org_id="123456789")
-        ```
 
         ## Import
 
@@ -208,17 +209,6 @@ class MonitoredProject(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/monitoring/settings/manage-api)
 
         ## Example Usage
-        ### Monitoring Monitored Project Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.monitoring.MonitoredProject("primary", metrics_scope="my-project-name")
-        basic = gcp.organizations.Project("basic",
-            project_id="m-id",
-            org_id="123456789")
-        ```
 
         ## Import
 

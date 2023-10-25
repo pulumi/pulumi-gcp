@@ -32,49 +32,6 @@ import (
 // `billingProject` you defined.
 //
 // ## Example Usage
-// ### Access Context Manager Authorized Orgs Desc Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/accesscontextmanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := accesscontextmanager.NewAccessPolicy(ctx, "test-access", &accesscontextmanager.AccessPolicyArgs{
-//				Parent: pulumi.String("organizations/"),
-//				Title:  pulumi.String("my policy"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = accesscontextmanager.NewAuthorizedOrgsDesc(ctx, "authorized-orgs-desc", &accesscontextmanager.AuthorizedOrgsDescArgs{
-//				AssetType:              pulumi.String("ASSET_TYPE_CREDENTIAL_STRENGTH"),
-//				AuthorizationDirection: pulumi.String("AUTHORIZATION_DIRECTION_TO"),
-//				AuthorizationType:      pulumi.String("AUTHORIZATION_TYPE_TRUST"),
-//				Orgs: pulumi.StringArray{
-//					pulumi.String("organizations/12345"),
-//					pulumi.String("organizations/98765"),
-//				},
-//				Parent: test_access.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("accessPolicies/%v", name), nil
-//				}).(pulumi.StringOutput),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

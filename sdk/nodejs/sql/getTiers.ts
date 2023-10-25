@@ -11,19 +11,6 @@ import * as utilities from "../utilities";
  * [official documentation](https://cloud.google.com/sql/)
  * and
  * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/tiers/list).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const tiers = gcp.sql.getTiers({
- *     project: "sample-project",
- * });
- * const allAvailableTiers = tiers.then(tiers => .map(v => (v.tier)));
- * export const avaialbleTiers = allAvailableTiers;
- * ```
  */
 export function getTiers(args?: GetTiersArgs, opts?: pulumi.InvokeOptions): Promise<GetTiersResult> {
     args = args || {};
@@ -63,19 +50,6 @@ export interface GetTiersResult {
  * [official documentation](https://cloud.google.com/sql/)
  * and
  * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/tiers/list).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const tiers = gcp.sql.getTiers({
- *     project: "sample-project",
- * });
- * const allAvailableTiers = tiers.then(tiers => .map(v => (v.tier)));
- * export const avaialbleTiers = allAvailableTiers;
- * ```
  */
 export function getTiersOutput(args?: GetTiersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTiersResult> {
     return pulumi.output(args).apply((a: any) => getTiers(a, opts))

@@ -93,16 +93,6 @@ def get_web_backend_service_iam_policy(project: Optional[str] = None,
     """
     Retrieves the current IAM policy data for webbackendservice
 
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.iap.get_web_backend_service_iam_policy(project=google_compute_backend_service["default"]["project"],
-        web_backend_service=google_compute_backend_service["default"]["name"])
-    ```
-
 
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -128,16 +118,6 @@ def get_web_backend_service_iam_policy_output(project: Optional[pulumi.Input[Opt
                                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWebBackendServiceIamPolicyResult]:
     """
     Retrieves the current IAM policy data for webbackendservice
-
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.iap.get_web_backend_service_iam_policy(project=google_compute_backend_service["default"]["project"],
-        web_backend_service=google_compute_backend_service["default"]["name"])
-    ```
 
 
     :param str project: The ID of the project in which the resource belongs.

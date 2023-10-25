@@ -55,13 +55,23 @@ class TagTemplateIamBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
-             tag_template: pulumi.Input[str],
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             tag_template: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['TagTemplateIamBindingConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if tag_template is None and 'tagTemplate' in kwargs:
+            tag_template = kwargs['tagTemplate']
+        if tag_template is None:
+            raise TypeError("Missing 'tag_template' argument")
+
         _setter("members", members)
         _setter("role", role)
         _setter("tag_template", tag_template)
@@ -203,7 +213,11 @@ class _TagTemplateIamBindingState:
              region: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              tag_template: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if tag_template is None and 'tagTemplate' in kwargs:
+            tag_template = kwargs['tagTemplate']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -337,45 +351,6 @@ class TagTemplateIamBinding(pulumi.CustomResource):
 
         > **Note:** `datacatalog.TagTemplateIamBinding` resources **can be** used in conjunction with `datacatalog.TagTemplateIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_data\\_catalog\\_tag\\_template\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.datacatalog.TagTemplateIamPolicy("policy",
-            tag_template=google_data_catalog_tag_template["basic_tag_template"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_data\\_catalog\\_tag\\_template\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.datacatalog.TagTemplateIamBinding("binding",
-            tag_template=google_data_catalog_tag_template["basic_tag_template"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_data\\_catalog\\_tag\\_template\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.datacatalog.TagTemplateIamMember("member",
-            tag_template=google_data_catalog_tag_template["basic_tag_template"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{region}}/tagTemplates/{{tag_template}} * {{project}}/{{region}}/{{tag_template}} * {{region}}/{{tag_template}} * {{tag_template}} Any variables not passed in the import command will be taken from the provider configuration. Data catalog tagtemplate IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -442,45 +417,6 @@ class TagTemplateIamBinding(pulumi.CustomResource):
 
         > **Note:** `datacatalog.TagTemplateIamBinding` resources **can be** used in conjunction with `datacatalog.TagTemplateIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_data\\_catalog\\_tag\\_template\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.datacatalog.TagTemplateIamPolicy("policy",
-            tag_template=google_data_catalog_tag_template["basic_tag_template"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_data\\_catalog\\_tag\\_template\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.datacatalog.TagTemplateIamBinding("binding",
-            tag_template=google_data_catalog_tag_template["basic_tag_template"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_data\\_catalog\\_tag\\_template\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.datacatalog.TagTemplateIamMember("member",
-            tag_template=google_data_catalog_tag_template["basic_tag_template"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{region}}/tagTemplates/{{tag_template}} * {{project}}/{{region}}/{{tag_template}} * {{region}}/{{tag_template}} * {{tag_template}} Any variables not passed in the import command will be taken from the provider configuration. Data catalog tagtemplate IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -539,11 +475,7 @@ class TagTemplateIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TagTemplateIamBindingArgs.__new__(TagTemplateIamBindingArgs)
 
-            if condition is not None and not isinstance(condition, TagTemplateIamBindingConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                TagTemplateIamBindingConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, TagTemplateIamBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")

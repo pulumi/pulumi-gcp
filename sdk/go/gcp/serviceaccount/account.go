@@ -25,35 +25,6 @@ import (
 // errors when you try to apply ACLs to service accounts immediately after
 // creation.
 //
-// ## Example Usage
-//
-// This snippet creates a service account in a project.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := serviceAccount.NewAccount(ctx, "serviceAccount", &serviceAccount.AccountArgs{
-//				AccountId:   pulumi.String("service-account-id"),
-//				DisplayName: pulumi.String("Service Account"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Service accounts can be imported using their URI, e.g.

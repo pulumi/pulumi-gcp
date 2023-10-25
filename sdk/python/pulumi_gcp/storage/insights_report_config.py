@@ -48,13 +48,27 @@ class InsightsReportConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             csv_options: pulumi.Input['InsightsReportConfigCsvOptionsArgs'],
-             location: pulumi.Input[str],
+             csv_options: Optional[pulumi.Input['InsightsReportConfigCsvOptionsArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              frequency_options: Optional[pulumi.Input['InsightsReportConfigFrequencyOptionsArgs']] = None,
              object_metadata_report_options: Optional[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if csv_options is None and 'csvOptions' in kwargs:
+            csv_options = kwargs['csvOptions']
+        if csv_options is None:
+            raise TypeError("Missing 'csv_options' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if frequency_options is None and 'frequencyOptions' in kwargs:
+            frequency_options = kwargs['frequencyOptions']
+        if object_metadata_report_options is None and 'objectMetadataReportOptions' in kwargs:
+            object_metadata_report_options = kwargs['objectMetadataReportOptions']
+
         _setter("csv_options", csv_options)
         _setter("location", location)
         if display_name is not None:
@@ -189,7 +203,17 @@ class _InsightsReportConfigState:
              name: Optional[pulumi.Input[str]] = None,
              object_metadata_report_options: Optional[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if csv_options is None and 'csvOptions' in kwargs:
+            csv_options = kwargs['csvOptions']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if frequency_options is None and 'frequencyOptions' in kwargs:
+            frequency_options = kwargs['frequencyOptions']
+        if object_metadata_report_options is None and 'objectMetadataReportOptions' in kwargs:
+            object_metadata_report_options = kwargs['objectMetadataReportOptions']
+
         if csv_options is not None:
             _setter("csv_options", csv_options)
         if display_name is not None:
@@ -317,57 +341,6 @@ class InsightsReportConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/storage/docs/insights/using-storage-insights)
 
         ## Example Usage
-        ### Storage Insights Report Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        report_bucket = gcp.storage.Bucket("reportBucket",
-            location="us-central1",
-            force_destroy=True,
-            uniform_bucket_level_access=True)
-        config = gcp.storage.InsightsReportConfig("config",
-            display_name="Test Report Config",
-            location="us-central1",
-            frequency_options=gcp.storage.InsightsReportConfigFrequencyOptionsArgs(
-                frequency="WEEKLY",
-                start_date=gcp.storage.InsightsReportConfigFrequencyOptionsStartDateArgs(
-                    day=15,
-                    month=3,
-                    year=2050,
-                ),
-                end_date=gcp.storage.InsightsReportConfigFrequencyOptionsEndDateArgs(
-                    day=15,
-                    month=4,
-                    year=2050,
-                ),
-            ),
-            csv_options=gcp.storage.InsightsReportConfigCsvOptionsArgs(
-                record_separator="\\n",
-                delimiter=",",
-                header_required=False,
-            ),
-            object_metadata_report_options=gcp.storage.InsightsReportConfigObjectMetadataReportOptionsArgs(
-                metadata_fields=[
-                    "bucket",
-                    "name",
-                    "project",
-                ],
-                storage_filters=gcp.storage.InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs(
-                    bucket=report_bucket.name,
-                ),
-                storage_destination_options=gcp.storage.InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs(
-                    bucket=report_bucket.name,
-                    destination_path="test-insights-reports",
-                ),
-            ))
-        admin = gcp.storage.BucketIAMMember("admin",
-            bucket=report_bucket.name,
-            role="roles/storage.admin",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-storageinsights.iam.gserviceaccount.com")
-        ```
 
         ## Import
 
@@ -415,57 +388,6 @@ class InsightsReportConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/storage/docs/insights/using-storage-insights)
 
         ## Example Usage
-        ### Storage Insights Report Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        report_bucket = gcp.storage.Bucket("reportBucket",
-            location="us-central1",
-            force_destroy=True,
-            uniform_bucket_level_access=True)
-        config = gcp.storage.InsightsReportConfig("config",
-            display_name="Test Report Config",
-            location="us-central1",
-            frequency_options=gcp.storage.InsightsReportConfigFrequencyOptionsArgs(
-                frequency="WEEKLY",
-                start_date=gcp.storage.InsightsReportConfigFrequencyOptionsStartDateArgs(
-                    day=15,
-                    month=3,
-                    year=2050,
-                ),
-                end_date=gcp.storage.InsightsReportConfigFrequencyOptionsEndDateArgs(
-                    day=15,
-                    month=4,
-                    year=2050,
-                ),
-            ),
-            csv_options=gcp.storage.InsightsReportConfigCsvOptionsArgs(
-                record_separator="\\n",
-                delimiter=",",
-                header_required=False,
-            ),
-            object_metadata_report_options=gcp.storage.InsightsReportConfigObjectMetadataReportOptionsArgs(
-                metadata_fields=[
-                    "bucket",
-                    "name",
-                    "project",
-                ],
-                storage_filters=gcp.storage.InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs(
-                    bucket=report_bucket.name,
-                ),
-                storage_destination_options=gcp.storage.InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs(
-                    bucket=report_bucket.name,
-                    destination_path="test-insights-reports",
-                ),
-            ))
-        admin = gcp.storage.BucketIAMMember("admin",
-            bucket=report_bucket.name,
-            role="roles/storage.admin",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-storageinsights.iam.gserviceaccount.com")
-        ```
 
         ## Import
 
@@ -517,29 +439,17 @@ class InsightsReportConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InsightsReportConfigArgs.__new__(InsightsReportConfigArgs)
 
-            if csv_options is not None and not isinstance(csv_options, InsightsReportConfigCsvOptionsArgs):
-                csv_options = csv_options or {}
-                def _setter(key, value):
-                    csv_options[key] = value
-                InsightsReportConfigCsvOptionsArgs._configure(_setter, **csv_options)
+            csv_options = _utilities.configure(csv_options, InsightsReportConfigCsvOptionsArgs, True)
             if csv_options is None and not opts.urn:
                 raise TypeError("Missing required property 'csv_options'")
             __props__.__dict__["csv_options"] = csv_options
             __props__.__dict__["display_name"] = display_name
-            if frequency_options is not None and not isinstance(frequency_options, InsightsReportConfigFrequencyOptionsArgs):
-                frequency_options = frequency_options or {}
-                def _setter(key, value):
-                    frequency_options[key] = value
-                InsightsReportConfigFrequencyOptionsArgs._configure(_setter, **frequency_options)
+            frequency_options = _utilities.configure(frequency_options, InsightsReportConfigFrequencyOptionsArgs, True)
             __props__.__dict__["frequency_options"] = frequency_options
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if object_metadata_report_options is not None and not isinstance(object_metadata_report_options, InsightsReportConfigObjectMetadataReportOptionsArgs):
-                object_metadata_report_options = object_metadata_report_options or {}
-                def _setter(key, value):
-                    object_metadata_report_options[key] = value
-                InsightsReportConfigObjectMetadataReportOptionsArgs._configure(_setter, **object_metadata_report_options)
+            object_metadata_report_options = _utilities.configure(object_metadata_report_options, InsightsReportConfigObjectMetadataReportOptionsArgs, True)
             __props__.__dict__["object_metadata_report_options"] = object_metadata_report_options
             __props__.__dict__["project"] = project
             __props__.__dict__["name"] = None

@@ -33,9 +33,15 @@ class DashboardArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dashboard_json: pulumi.Input[str],
+             dashboard_json: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dashboard_json is None and 'dashboardJson' in kwargs:
+            dashboard_json = kwargs['dashboardJson']
+        if dashboard_json is None:
+            raise TypeError("Missing 'dashboard_json' argument")
+
         _setter("dashboard_json", dashboard_json)
         if project is not None:
             _setter("project", project)
@@ -93,7 +99,11 @@ class _DashboardState:
              _setter: Callable[[Any, Any], None],
              dashboard_json: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dashboard_json is None and 'dashboardJson' in kwargs:
+            dashboard_json = kwargs['dashboardJson']
+
         if dashboard_json is not None:
             _setter("dashboard_json", dashboard_json)
         if project is not None:
@@ -146,94 +156,6 @@ class Dashboard(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/monitoring/dashboards)
 
         ## Example Usage
-        ### Monitoring Dashboard Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dashboard = gcp.monitoring.Dashboard("dashboard", dashboard_json=\"\"\"{
-          "displayName": "Demo Dashboard",
-          "gridLayout": {
-            "widgets": [
-              {
-                "blank": {}
-              }
-            ]
-          }
-        }
-
-
-        \"\"\")
-        ```
-        ### Monitoring Dashboard GridLayout
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dashboard = gcp.monitoring.Dashboard("dashboard", dashboard_json=\"\"\"{
-          "displayName": "Grid Layout Example",
-          "gridLayout": {
-            "columns": "2",
-            "widgets": [
-              {
-                "title": "Widget 1",
-                "xyChart": {
-                  "dataSets": [{
-                    "timeSeriesQuery": {
-                      "timeSeriesFilter": {
-                        "filter": "metric.type=\\"agent.googleapis.com/nginx/connections/accepted_count\\"",
-                        "aggregation": {
-                          "perSeriesAligner": "ALIGN_RATE"
-                        }
-                      },
-                      "unitOverride": "1"
-                    },
-                    "plotType": "LINE"
-                  }],
-                  "timeshiftDuration": "0s",
-                  "yAxis": {
-                    "label": "y1Axis",
-                    "scale": "LINEAR"
-                  }
-                }
-              },
-              {
-                "text": {
-                  "content": "Widget 2",
-                  "format": "MARKDOWN"
-                }
-              },
-              {
-                "title": "Widget 3",
-                "xyChart": {
-                  "dataSets": [{
-                    "timeSeriesQuery": {
-                      "timeSeriesFilter": {
-                        "filter": "metric.type=\\"agent.googleapis.com/nginx/connections/accepted_count\\"",
-                        "aggregation": {
-                          "perSeriesAligner": "ALIGN_RATE"
-                        }
-                      },
-                      "unitOverride": "1"
-                    },
-                    "plotType": "STACKED_BAR"
-                  }],
-                  "timeshiftDuration": "0s",
-                  "yAxis": {
-                    "label": "y1Axis",
-                    "scale": "LINEAR"
-                  }
-                }
-              }
-            ]
-          }
-        }
-
-
-        \"\"\")
-        ```
 
         ## Import
 
@@ -272,94 +194,6 @@ class Dashboard(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/monitoring/dashboards)
 
         ## Example Usage
-        ### Monitoring Dashboard Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dashboard = gcp.monitoring.Dashboard("dashboard", dashboard_json=\"\"\"{
-          "displayName": "Demo Dashboard",
-          "gridLayout": {
-            "widgets": [
-              {
-                "blank": {}
-              }
-            ]
-          }
-        }
-
-
-        \"\"\")
-        ```
-        ### Monitoring Dashboard GridLayout
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dashboard = gcp.monitoring.Dashboard("dashboard", dashboard_json=\"\"\"{
-          "displayName": "Grid Layout Example",
-          "gridLayout": {
-            "columns": "2",
-            "widgets": [
-              {
-                "title": "Widget 1",
-                "xyChart": {
-                  "dataSets": [{
-                    "timeSeriesQuery": {
-                      "timeSeriesFilter": {
-                        "filter": "metric.type=\\"agent.googleapis.com/nginx/connections/accepted_count\\"",
-                        "aggregation": {
-                          "perSeriesAligner": "ALIGN_RATE"
-                        }
-                      },
-                      "unitOverride": "1"
-                    },
-                    "plotType": "LINE"
-                  }],
-                  "timeshiftDuration": "0s",
-                  "yAxis": {
-                    "label": "y1Axis",
-                    "scale": "LINEAR"
-                  }
-                }
-              },
-              {
-                "text": {
-                  "content": "Widget 2",
-                  "format": "MARKDOWN"
-                }
-              },
-              {
-                "title": "Widget 3",
-                "xyChart": {
-                  "dataSets": [{
-                    "timeSeriesQuery": {
-                      "timeSeriesFilter": {
-                        "filter": "metric.type=\\"agent.googleapis.com/nginx/connections/accepted_count\\"",
-                        "aggregation": {
-                          "perSeriesAligner": "ALIGN_RATE"
-                        }
-                      },
-                      "unitOverride": "1"
-                    },
-                    "plotType": "STACKED_BAR"
-                  }],
-                  "timeshiftDuration": "0s",
-                  "yAxis": {
-                    "label": "y1Axis",
-                    "scale": "LINEAR"
-                  }
-                }
-              }
-            ]
-          }
-        }
-
-
-        \"\"\")
-        ```
 
         ## Import
 

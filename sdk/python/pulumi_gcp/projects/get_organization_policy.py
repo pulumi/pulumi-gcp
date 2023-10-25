@@ -125,17 +125,6 @@ def get_organization_policy(constraint: Optional[str] = None,
     [the official
     documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.projects.get_organization_policy(project="project-id",
-        constraint="constraints/serviceuser.services")
-    pulumi.export("version", policy.version)
-    ```
-
 
     :param str constraint: (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
     :param str project: The project ID.
@@ -166,17 +155,6 @@ def get_organization_policy_output(constraint: Optional[pulumi.Input[str]] = Non
     Allows management of Organization policies for a Google Project. For more information see
     [the official
     documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.projects.get_organization_policy(project="project-id",
-        constraint="constraints/serviceuser.services")
-    pulumi.export("version", policy.version)
-    ```
 
 
     :param str constraint: (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).

@@ -6,19 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for regiondisk
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.compute.getRegionDiskIamPolicy({
- *     project: google_compute_region_disk.regiondisk.project,
- *     region: google_compute_region_disk.regiondisk.region,
- *     name: google_compute_region_disk.regiondisk.name,
- * });
- * ```
  */
 export function getRegionDiskIamPolicy(args: GetRegionDiskIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionDiskIamPolicyResult> {
 
@@ -74,19 +61,6 @@ export interface GetRegionDiskIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for regiondisk
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.compute.getRegionDiskIamPolicy({
- *     project: google_compute_region_disk.regiondisk.project,
- *     region: google_compute_region_disk.regiondisk.region,
- *     name: google_compute_region_disk.regiondisk.name,
- * });
- * ```
  */
 export function getRegionDiskIamPolicyOutput(args: GetRegionDiskIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionDiskIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getRegionDiskIamPolicy(a, opts))

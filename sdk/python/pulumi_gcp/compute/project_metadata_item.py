@@ -35,10 +35,16 @@ class ProjectMetadataItemArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("key", key)
         _setter("value", value)
         if project is not None:
@@ -111,7 +117,9 @@ class _ProjectMetadataItemState:
              key: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if project is not None:
@@ -174,17 +182,6 @@ class ProjectMetadataItem(pulumi.CustomResource):
         manage a single key/value setting in the provider rather than the entire
         project metadata map.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.ProjectMetadataItem("default",
-            key="my_metadata",
-            value="my_value")
-        ```
-
         ## Import
 
         Project metadata items can be imported using the `key`, e.g.
@@ -213,17 +210,6 @@ class ProjectMetadataItem(pulumi.CustomResource):
         a project in GCE. Using `compute.ProjectMetadataItem` lets you
         manage a single key/value setting in the provider rather than the entire
         project metadata map.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.ProjectMetadataItem("default",
-            key="my_metadata",
-            value="my_value")
-        ```
 
         ## Import
 

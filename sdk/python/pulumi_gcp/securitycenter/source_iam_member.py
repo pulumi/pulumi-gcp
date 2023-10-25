@@ -40,12 +40,22 @@ class SourceIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             member: pulumi.Input[str],
-             organization: pulumi.Input[str],
-             role: pulumi.Input[str],
-             source: pulumi.Input[str],
+             member: Optional[pulumi.Input[str]] = None,
+             organization: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['SourceIamMemberConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if organization is None:
+            raise TypeError("Missing 'organization' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+
         _setter("member", member)
         _setter("organization", organization)
         _setter("role", role)
@@ -141,7 +151,9 @@ class _SourceIamMemberState:
              organization: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -241,17 +253,6 @@ class SourceIamMember(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/security-command-center/docs)
 
         ## Example Usage
-        ### Scc Source Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        custom_source = gcp.securitycenter.Source("customSource",
-            description="My custom Cloud Security Command Center Finding Source",
-            display_name="My Source",
-            organization="123456789")
-        ```
 
         ## Import
 
@@ -292,17 +293,6 @@ class SourceIamMember(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/security-command-center/docs)
 
         ## Example Usage
-        ### Scc Source Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        custom_source = gcp.securitycenter.Source("customSource",
-            description="My custom Cloud Security Command Center Finding Source",
-            display_name="My Source",
-            organization="123456789")
-        ```
 
         ## Import
 
@@ -349,11 +339,7 @@ class SourceIamMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SourceIamMemberArgs.__new__(SourceIamMemberArgs)
 
-            if condition is not None and not isinstance(condition, SourceIamMemberConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                SourceIamMemberConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, SourceIamMemberConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")

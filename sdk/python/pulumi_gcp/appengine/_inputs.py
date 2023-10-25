@@ -71,8 +71,14 @@ class ApplicationFeatureSettingsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             split_health_checks: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             split_health_checks: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if split_health_checks is None and 'splitHealthChecks' in kwargs:
+            split_health_checks = kwargs['splitHealthChecks']
+        if split_health_checks is None:
+            raise TypeError("Missing 'split_health_checks' argument")
+
         _setter("split_health_checks", split_health_checks)
 
     @property
@@ -114,11 +120,23 @@ class ApplicationIapArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             oauth2_client_id: pulumi.Input[str],
-             oauth2_client_secret: pulumi.Input[str],
+             oauth2_client_id: Optional[pulumi.Input[str]] = None,
+             oauth2_client_secret: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              oauth2_client_secret_sha256: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if oauth2_client_id is None and 'oauth2ClientId' in kwargs:
+            oauth2_client_id = kwargs['oauth2ClientId']
+        if oauth2_client_id is None:
+            raise TypeError("Missing 'oauth2_client_id' argument")
+        if oauth2_client_secret is None and 'oauth2ClientSecret' in kwargs:
+            oauth2_client_secret = kwargs['oauth2ClientSecret']
+        if oauth2_client_secret is None:
+            raise TypeError("Missing 'oauth2_client_secret' argument")
+        if oauth2_client_secret_sha256 is None and 'oauth2ClientSecretSha256' in kwargs:
+            oauth2_client_secret_sha256 = kwargs['oauth2ClientSecretSha256']
+
         _setter("oauth2_client_id", oauth2_client_id)
         _setter("oauth2_client_secret", oauth2_client_secret)
         if enabled is not None:
@@ -195,7 +213,9 @@ class ApplicationUrlDispatchRuleArgs:
              domain: Optional[pulumi.Input[str]] = None,
              path: Optional[pulumi.Input[str]] = None,
              service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if domain is not None:
             _setter("domain", domain)
         if path is not None:
@@ -256,10 +276,16 @@ class ApplicationUrlDispatchRulesDispatchRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: pulumi.Input[str],
-             service: pulumi.Input[str],
+             path: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
              domain: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
         _setter("path", path)
         _setter("service", service)
         if domain is not None:
@@ -331,7 +357,9 @@ class DomainMappingResourceRecordArgs:
              name: Optional[pulumi.Input[str]] = None,
              rrdata: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if rrdata is not None:
@@ -409,10 +437,20 @@ class DomainMappingSslSettingsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ssl_management_type: pulumi.Input[str],
+             ssl_management_type: Optional[pulumi.Input[str]] = None,
              certificate_id: Optional[pulumi.Input[str]] = None,
              pending_managed_certificate_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ssl_management_type is None and 'sslManagementType' in kwargs:
+            ssl_management_type = kwargs['sslManagementType']
+        if ssl_management_type is None:
+            raise TypeError("Missing 'ssl_management_type' argument")
+        if certificate_id is None and 'certificateId' in kwargs:
+            certificate_id = kwargs['certificateId']
+        if pending_managed_certificate_id is None and 'pendingManagedCertificateId' in kwargs:
+            pending_managed_certificate_id = kwargs['pendingManagedCertificateId']
+
         _setter("ssl_management_type", ssl_management_type)
         if certificate_id is not None:
             _setter("certificate_id", certificate_id)
@@ -488,9 +526,15 @@ class EngineSplitTrafficSplitArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allocations: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+             allocations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              shard_by: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allocations is None:
+            raise TypeError("Missing 'allocations' argument")
+        if shard_by is None and 'shardBy' in kwargs:
+            shard_by = kwargs['shardBy']
+
         _setter("allocations", allocations)
         if shard_by is not None:
             _setter("shard_by", shard_by)
@@ -554,12 +598,20 @@ class FlexibleAppVersionApiConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             script: pulumi.Input[str],
+             script: Optional[pulumi.Input[str]] = None,
              auth_fail_action: Optional[pulumi.Input[str]] = None,
              login: Optional[pulumi.Input[str]] = None,
              security_level: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if script is None:
+            raise TypeError("Missing 'script' argument")
+        if auth_fail_action is None and 'authFailAction' in kwargs:
+            auth_fail_action = kwargs['authFailAction']
+        if security_level is None and 'securityLevel' in kwargs:
+            security_level = kwargs['securityLevel']
+
         _setter("script", script)
         if auth_fail_action is not None:
             _setter("auth_fail_action", auth_fail_action)
@@ -690,7 +742,7 @@ class FlexibleAppVersionAutomaticScalingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cpu_utilization: pulumi.Input['FlexibleAppVersionAutomaticScalingCpuUtilizationArgs'],
+             cpu_utilization: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingCpuUtilizationArgs']] = None,
              cool_down_period: Optional[pulumi.Input[str]] = None,
              disk_utilization: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingDiskUtilizationArgs']] = None,
              max_concurrent_requests: Optional[pulumi.Input[int]] = None,
@@ -702,7 +754,35 @@ class FlexibleAppVersionAutomaticScalingArgs:
              min_total_instances: Optional[pulumi.Input[int]] = None,
              network_utilization: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs']] = None,
              request_utilization: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingRequestUtilizationArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cpu_utilization is None and 'cpuUtilization' in kwargs:
+            cpu_utilization = kwargs['cpuUtilization']
+        if cpu_utilization is None:
+            raise TypeError("Missing 'cpu_utilization' argument")
+        if cool_down_period is None and 'coolDownPeriod' in kwargs:
+            cool_down_period = kwargs['coolDownPeriod']
+        if disk_utilization is None and 'diskUtilization' in kwargs:
+            disk_utilization = kwargs['diskUtilization']
+        if max_concurrent_requests is None and 'maxConcurrentRequests' in kwargs:
+            max_concurrent_requests = kwargs['maxConcurrentRequests']
+        if max_idle_instances is None and 'maxIdleInstances' in kwargs:
+            max_idle_instances = kwargs['maxIdleInstances']
+        if max_pending_latency is None and 'maxPendingLatency' in kwargs:
+            max_pending_latency = kwargs['maxPendingLatency']
+        if max_total_instances is None and 'maxTotalInstances' in kwargs:
+            max_total_instances = kwargs['maxTotalInstances']
+        if min_idle_instances is None and 'minIdleInstances' in kwargs:
+            min_idle_instances = kwargs['minIdleInstances']
+        if min_pending_latency is None and 'minPendingLatency' in kwargs:
+            min_pending_latency = kwargs['minPendingLatency']
+        if min_total_instances is None and 'minTotalInstances' in kwargs:
+            min_total_instances = kwargs['minTotalInstances']
+        if network_utilization is None and 'networkUtilization' in kwargs:
+            network_utilization = kwargs['networkUtilization']
+        if request_utilization is None and 'requestUtilization' in kwargs:
+            request_utilization = kwargs['requestUtilization']
+
         _setter("cpu_utilization", cpu_utilization)
         if cool_down_period is not None:
             _setter("cool_down_period", cool_down_period)
@@ -896,9 +976,17 @@ class FlexibleAppVersionAutomaticScalingCpuUtilizationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             target_utilization: pulumi.Input[float],
+             target_utilization: Optional[pulumi.Input[float]] = None,
              aggregation_window_length: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if target_utilization is None and 'targetUtilization' in kwargs:
+            target_utilization = kwargs['targetUtilization']
+        if target_utilization is None:
+            raise TypeError("Missing 'target_utilization' argument")
+        if aggregation_window_length is None and 'aggregationWindowLength' in kwargs:
+            aggregation_window_length = kwargs['aggregationWindowLength']
+
         _setter("target_utilization", target_utilization)
         if aggregation_window_length is not None:
             _setter("aggregation_window_length", aggregation_window_length)
@@ -955,7 +1043,17 @@ class FlexibleAppVersionAutomaticScalingDiskUtilizationArgs:
              target_read_ops_per_second: Optional[pulumi.Input[int]] = None,
              target_write_bytes_per_second: Optional[pulumi.Input[int]] = None,
              target_write_ops_per_second: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if target_read_bytes_per_second is None and 'targetReadBytesPerSecond' in kwargs:
+            target_read_bytes_per_second = kwargs['targetReadBytesPerSecond']
+        if target_read_ops_per_second is None and 'targetReadOpsPerSecond' in kwargs:
+            target_read_ops_per_second = kwargs['targetReadOpsPerSecond']
+        if target_write_bytes_per_second is None and 'targetWriteBytesPerSecond' in kwargs:
+            target_write_bytes_per_second = kwargs['targetWriteBytesPerSecond']
+        if target_write_ops_per_second is None and 'targetWriteOpsPerSecond' in kwargs:
+            target_write_ops_per_second = kwargs['targetWriteOpsPerSecond']
+
         if target_read_bytes_per_second is not None:
             _setter("target_read_bytes_per_second", target_read_bytes_per_second)
         if target_read_ops_per_second is not None:
@@ -1041,7 +1139,17 @@ class FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs:
              target_received_packets_per_second: Optional[pulumi.Input[int]] = None,
              target_sent_bytes_per_second: Optional[pulumi.Input[int]] = None,
              target_sent_packets_per_second: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if target_received_bytes_per_second is None and 'targetReceivedBytesPerSecond' in kwargs:
+            target_received_bytes_per_second = kwargs['targetReceivedBytesPerSecond']
+        if target_received_packets_per_second is None and 'targetReceivedPacketsPerSecond' in kwargs:
+            target_received_packets_per_second = kwargs['targetReceivedPacketsPerSecond']
+        if target_sent_bytes_per_second is None and 'targetSentBytesPerSecond' in kwargs:
+            target_sent_bytes_per_second = kwargs['targetSentBytesPerSecond']
+        if target_sent_packets_per_second is None and 'targetSentPacketsPerSecond' in kwargs:
+            target_sent_packets_per_second = kwargs['targetSentPacketsPerSecond']
+
         if target_received_bytes_per_second is not None:
             _setter("target_received_bytes_per_second", target_received_bytes_per_second)
         if target_received_packets_per_second is not None:
@@ -1119,7 +1227,13 @@ class FlexibleAppVersionAutomaticScalingRequestUtilizationArgs:
              _setter: Callable[[Any, Any], None],
              target_concurrent_requests: Optional[pulumi.Input[float]] = None,
              target_request_count_per_second: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if target_concurrent_requests is None and 'targetConcurrentRequests' in kwargs:
+            target_concurrent_requests = kwargs['targetConcurrentRequests']
+        if target_request_count_per_second is None and 'targetRequestCountPerSecond' in kwargs:
+            target_request_count_per_second = kwargs['targetRequestCountPerSecond']
+
         if target_concurrent_requests is not None:
             _setter("target_concurrent_requests", target_concurrent_requests)
         if target_request_count_per_second is not None:
@@ -1182,7 +1296,11 @@ class FlexibleAppVersionDeploymentArgs:
              container: Optional[pulumi.Input['FlexibleAppVersionDeploymentContainerArgs']] = None,
              files: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionDeploymentFileArgs']]]] = None,
              zip: Optional[pulumi.Input['FlexibleAppVersionDeploymentZipArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cloud_build_options is None and 'cloudBuildOptions' in kwargs:
+            cloud_build_options = kwargs['cloudBuildOptions']
+
         if cloud_build_options is not None:
             _setter("cloud_build_options", cloud_build_options)
         if container is not None:
@@ -1264,9 +1382,17 @@ class FlexibleAppVersionDeploymentCloudBuildOptionsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_yaml_path: pulumi.Input[str],
+             app_yaml_path: Optional[pulumi.Input[str]] = None,
              cloud_build_timeout: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if app_yaml_path is None and 'appYamlPath' in kwargs:
+            app_yaml_path = kwargs['appYamlPath']
+        if app_yaml_path is None:
+            raise TypeError("Missing 'app_yaml_path' argument")
+        if cloud_build_timeout is None and 'cloudBuildTimeout' in kwargs:
+            cloud_build_timeout = kwargs['cloudBuildTimeout']
+
         _setter("app_yaml_path", app_yaml_path)
         if cloud_build_timeout is not None:
             _setter("cloud_build_timeout", cloud_build_timeout)
@@ -1312,8 +1438,12 @@ class FlexibleAppVersionDeploymentContainerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             image: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             image: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if image is None:
+            raise TypeError("Missing 'image' argument")
+
         _setter("image", image)
 
     @property
@@ -1350,10 +1480,20 @@ class FlexibleAppVersionDeploymentFileArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             source_url: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             source_url: Optional[pulumi.Input[str]] = None,
              sha1_sum: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if source_url is None and 'sourceUrl' in kwargs:
+            source_url = kwargs['sourceUrl']
+        if source_url is None:
+            raise TypeError("Missing 'source_url' argument")
+        if sha1_sum is None and 'sha1Sum' in kwargs:
+            sha1_sum = kwargs['sha1Sum']
+
         _setter("name", name)
         _setter("source_url", source_url)
         if sha1_sum is not None:
@@ -1413,9 +1553,17 @@ class FlexibleAppVersionDeploymentZipArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             source_url: pulumi.Input[str],
+             source_url: Optional[pulumi.Input[str]] = None,
              files_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if source_url is None and 'sourceUrl' in kwargs:
+            source_url = kwargs['sourceUrl']
+        if source_url is None:
+            raise TypeError("Missing 'source_url' argument")
+        if files_count is None and 'filesCount' in kwargs:
+            files_count = kwargs['filesCount']
+
         _setter("source_url", source_url)
         if files_count is not None:
             _setter("files_count", files_count)
@@ -1476,11 +1624,21 @@ class FlexibleAppVersionEndpointsApiServiceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              config_id: Optional[pulumi.Input[str]] = None,
              disable_trace_sampling: Optional[pulumi.Input[bool]] = None,
              rollout_strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if config_id is None and 'configId' in kwargs:
+            config_id = kwargs['configId']
+        if disable_trace_sampling is None and 'disableTraceSampling' in kwargs:
+            disable_trace_sampling = kwargs['disableTraceSampling']
+        if rollout_strategy is None and 'rolloutStrategy' in kwargs:
+            rollout_strategy = kwargs['rolloutStrategy']
+
         _setter("name", name)
         if config_id is not None:
             _setter("config_id", config_id)
@@ -1560,8 +1718,12 @@ class FlexibleAppVersionEntrypointArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             shell: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             shell: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if shell is None:
+            raise TypeError("Missing 'shell' argument")
+
         _setter("shell", shell)
 
     @property
@@ -1625,7 +1787,19 @@ class FlexibleAppVersionHandlerArgs:
              security_level: Optional[pulumi.Input[str]] = None,
              static_files: Optional[pulumi.Input['FlexibleAppVersionHandlerStaticFilesArgs']] = None,
              url_regex: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if auth_fail_action is None and 'authFailAction' in kwargs:
+            auth_fail_action = kwargs['authFailAction']
+        if redirect_http_response_code is None and 'redirectHttpResponseCode' in kwargs:
+            redirect_http_response_code = kwargs['redirectHttpResponseCode']
+        if security_level is None and 'securityLevel' in kwargs:
+            security_level = kwargs['securityLevel']
+        if static_files is None and 'staticFiles' in kwargs:
+            static_files = kwargs['staticFiles']
+        if url_regex is None and 'urlRegex' in kwargs:
+            url_regex = kwargs['urlRegex']
+
         if auth_fail_action is not None:
             _setter("auth_fail_action", auth_fail_action)
         if login is not None:
@@ -1749,8 +1923,14 @@ class FlexibleAppVersionHandlerScriptArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             script_path: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             script_path: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if script_path is None and 'scriptPath' in kwargs:
+            script_path = kwargs['scriptPath']
+        if script_path is None:
+            raise TypeError("Missing 'script_path' argument")
+
         _setter("script_path", script_path)
 
     @property
@@ -1812,7 +1992,19 @@ class FlexibleAppVersionHandlerStaticFilesArgs:
              path: Optional[pulumi.Input[str]] = None,
              require_matching_file: Optional[pulumi.Input[bool]] = None,
              upload_path_regex: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if application_readable is None and 'applicationReadable' in kwargs:
+            application_readable = kwargs['applicationReadable']
+        if http_headers is None and 'httpHeaders' in kwargs:
+            http_headers = kwargs['httpHeaders']
+        if mime_type is None and 'mimeType' in kwargs:
+            mime_type = kwargs['mimeType']
+        if require_matching_file is None and 'requireMatchingFile' in kwargs:
+            require_matching_file = kwargs['requireMatchingFile']
+        if upload_path_regex is None and 'uploadPathRegex' in kwargs:
+            upload_path_regex = kwargs['uploadPathRegex']
+
         if application_readable is not None:
             _setter("application_readable", application_readable)
         if expiration is not None:
@@ -1954,14 +2146,26 @@ class FlexibleAppVersionLivenessCheckArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: pulumi.Input[str],
+             path: Optional[pulumi.Input[str]] = None,
              check_interval: Optional[pulumi.Input[str]] = None,
              failure_threshold: Optional[pulumi.Input[float]] = None,
              host: Optional[pulumi.Input[str]] = None,
              initial_delay: Optional[pulumi.Input[str]] = None,
              success_threshold: Optional[pulumi.Input[float]] = None,
              timeout: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if check_interval is None and 'checkInterval' in kwargs:
+            check_interval = kwargs['checkInterval']
+        if failure_threshold is None and 'failureThreshold' in kwargs:
+            failure_threshold = kwargs['failureThreshold']
+        if initial_delay is None and 'initialDelay' in kwargs:
+            initial_delay = kwargs['initialDelay']
+        if success_threshold is None and 'successThreshold' in kwargs:
+            success_threshold = kwargs['successThreshold']
+
         _setter("path", path)
         if check_interval is not None:
             _setter("check_interval", check_interval)
@@ -2079,8 +2283,12 @@ class FlexibleAppVersionManualScalingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instances: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             instances: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if instances is None:
+            raise TypeError("Missing 'instances' argument")
+
         _setter("instances", instances)
 
     @property
@@ -2128,12 +2336,22 @@ class FlexibleAppVersionNetworkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              forwarded_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              instance_tag: Optional[pulumi.Input[str]] = None,
              session_affinity: Optional[pulumi.Input[bool]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if forwarded_ports is None and 'forwardedPorts' in kwargs:
+            forwarded_ports = kwargs['forwardedPorts']
+        if instance_tag is None and 'instanceTag' in kwargs:
+            instance_tag = kwargs['instanceTag']
+        if session_affinity is None and 'sessionAffinity' in kwargs:
+            session_affinity = kwargs['sessionAffinity']
+
         _setter("name", name)
         if forwarded_ports is not None:
             _setter("forwarded_ports", forwarded_ports)
@@ -2242,14 +2460,26 @@ class FlexibleAppVersionReadinessCheckArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: pulumi.Input[str],
+             path: Optional[pulumi.Input[str]] = None,
              app_start_timeout: Optional[pulumi.Input[str]] = None,
              check_interval: Optional[pulumi.Input[str]] = None,
              failure_threshold: Optional[pulumi.Input[float]] = None,
              host: Optional[pulumi.Input[str]] = None,
              success_threshold: Optional[pulumi.Input[float]] = None,
              timeout: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if app_start_timeout is None and 'appStartTimeout' in kwargs:
+            app_start_timeout = kwargs['appStartTimeout']
+        if check_interval is None and 'checkInterval' in kwargs:
+            check_interval = kwargs['checkInterval']
+        if failure_threshold is None and 'failureThreshold' in kwargs:
+            failure_threshold = kwargs['failureThreshold']
+        if success_threshold is None and 'successThreshold' in kwargs:
+            success_threshold = kwargs['successThreshold']
+
         _setter("path", path)
         if app_start_timeout is not None:
             _setter("app_start_timeout", app_start_timeout)
@@ -2378,7 +2608,13 @@ class FlexibleAppVersionResourcesArgs:
              disk_gb: Optional[pulumi.Input[int]] = None,
              memory_gb: Optional[pulumi.Input[float]] = None,
              volumes: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionResourcesVolumeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if disk_gb is None and 'diskGb' in kwargs:
+            disk_gb = kwargs['diskGb']
+        if memory_gb is None and 'memoryGb' in kwargs:
+            memory_gb = kwargs['memoryGb']
+
         if cpu is not None:
             _setter("cpu", cpu)
         if disk_gb is not None:
@@ -2458,10 +2694,22 @@ class FlexibleAppVersionResourcesVolumeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             size_gb: pulumi.Input[int],
-             volume_type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[pulumi.Input[str]] = None,
+             size_gb: Optional[pulumi.Input[int]] = None,
+             volume_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if size_gb is None and 'sizeGb' in kwargs:
+            size_gb = kwargs['sizeGb']
+        if size_gb is None:
+            raise TypeError("Missing 'size_gb' argument")
+        if volume_type is None and 'volumeType' in kwargs:
+            volume_type = kwargs['volumeType']
+        if volume_type is None:
+            raise TypeError("Missing 'volume_type' argument")
+
         _setter("name", name)
         _setter("size_gb", size_gb)
         _setter("volume_type", volume_type)
@@ -2517,8 +2765,12 @@ class FlexibleAppVersionVpcAccessConnectorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -2553,7 +2805,11 @@ class ServiceNetworkSettingsNetworkSettingsArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              ingress_traffic_allowed: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ingress_traffic_allowed is None and 'ingressTrafficAllowed' in kwargs:
+            ingress_traffic_allowed = kwargs['ingressTrafficAllowed']
+
         if ingress_traffic_allowed is not None:
             _setter("ingress_traffic_allowed", ingress_traffic_allowed)
 
@@ -2613,7 +2869,21 @@ class StandardAppVersionAutomaticScalingArgs:
              min_idle_instances: Optional[pulumi.Input[int]] = None,
              min_pending_latency: Optional[pulumi.Input[str]] = None,
              standard_scheduler_settings: Optional[pulumi.Input['StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if max_concurrent_requests is None and 'maxConcurrentRequests' in kwargs:
+            max_concurrent_requests = kwargs['maxConcurrentRequests']
+        if max_idle_instances is None and 'maxIdleInstances' in kwargs:
+            max_idle_instances = kwargs['maxIdleInstances']
+        if max_pending_latency is None and 'maxPendingLatency' in kwargs:
+            max_pending_latency = kwargs['maxPendingLatency']
+        if min_idle_instances is None and 'minIdleInstances' in kwargs:
+            min_idle_instances = kwargs['minIdleInstances']
+        if min_pending_latency is None and 'minPendingLatency' in kwargs:
+            min_pending_latency = kwargs['minPendingLatency']
+        if standard_scheduler_settings is None and 'standardSchedulerSettings' in kwargs:
+            standard_scheduler_settings = kwargs['standardSchedulerSettings']
+
         if max_concurrent_requests is not None:
             _setter("max_concurrent_requests", max_concurrent_requests)
         if max_idle_instances is not None:
@@ -2731,7 +3001,17 @@ class StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs:
              min_instances: Optional[pulumi.Input[int]] = None,
              target_cpu_utilization: Optional[pulumi.Input[float]] = None,
              target_throughput_utilization: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if max_instances is None and 'maxInstances' in kwargs:
+            max_instances = kwargs['maxInstances']
+        if min_instances is None and 'minInstances' in kwargs:
+            min_instances = kwargs['minInstances']
+        if target_cpu_utilization is None and 'targetCpuUtilization' in kwargs:
+            target_cpu_utilization = kwargs['targetCpuUtilization']
+        if target_throughput_utilization is None and 'targetThroughputUtilization' in kwargs:
+            target_throughput_utilization = kwargs['targetThroughputUtilization']
+
         if max_instances is not None:
             _setter("max_instances", max_instances)
         if min_instances is not None:
@@ -2808,9 +3088,17 @@ class StandardAppVersionBasicScalingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max_instances: pulumi.Input[int],
+             max_instances: Optional[pulumi.Input[int]] = None,
              idle_timeout: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if max_instances is None and 'maxInstances' in kwargs:
+            max_instances = kwargs['maxInstances']
+        if max_instances is None:
+            raise TypeError("Missing 'max_instances' argument")
+        if idle_timeout is None and 'idleTimeout' in kwargs:
+            idle_timeout = kwargs['idleTimeout']
+
         _setter("max_instances", max_instances)
         if idle_timeout is not None:
             _setter("idle_timeout", idle_timeout)
@@ -2863,7 +3151,9 @@ class StandardAppVersionDeploymentArgs:
              _setter: Callable[[Any, Any], None],
              files: Optional[pulumi.Input[Sequence[pulumi.Input['StandardAppVersionDeploymentFileArgs']]]] = None,
              zip: Optional[pulumi.Input['StandardAppVersionDeploymentZipArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if files is not None:
             _setter("files", files)
         if zip is not None:
@@ -2917,10 +3207,20 @@ class StandardAppVersionDeploymentFileArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             source_url: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             source_url: Optional[pulumi.Input[str]] = None,
              sha1_sum: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if source_url is None and 'sourceUrl' in kwargs:
+            source_url = kwargs['sourceUrl']
+        if source_url is None:
+            raise TypeError("Missing 'source_url' argument")
+        if sha1_sum is None and 'sha1Sum' in kwargs:
+            sha1_sum = kwargs['sha1Sum']
+
         _setter("name", name)
         _setter("source_url", source_url)
         if sha1_sum is not None:
@@ -2980,9 +3280,17 @@ class StandardAppVersionDeploymentZipArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             source_url: pulumi.Input[str],
+             source_url: Optional[pulumi.Input[str]] = None,
              files_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if source_url is None and 'sourceUrl' in kwargs:
+            source_url = kwargs['sourceUrl']
+        if source_url is None:
+            raise TypeError("Missing 'source_url' argument")
+        if files_count is None and 'filesCount' in kwargs:
+            files_count = kwargs['filesCount']
+
         _setter("source_url", source_url)
         if files_count is not None:
             _setter("files_count", files_count)
@@ -3028,8 +3336,12 @@ class StandardAppVersionEntrypointArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             shell: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             shell: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if shell is None:
+            raise TypeError("Missing 'shell' argument")
+
         _setter("shell", shell)
 
     @property
@@ -3094,7 +3406,19 @@ class StandardAppVersionHandlerArgs:
              security_level: Optional[pulumi.Input[str]] = None,
              static_files: Optional[pulumi.Input['StandardAppVersionHandlerStaticFilesArgs']] = None,
              url_regex: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if auth_fail_action is None and 'authFailAction' in kwargs:
+            auth_fail_action = kwargs['authFailAction']
+        if redirect_http_response_code is None and 'redirectHttpResponseCode' in kwargs:
+            redirect_http_response_code = kwargs['redirectHttpResponseCode']
+        if security_level is None and 'securityLevel' in kwargs:
+            security_level = kwargs['securityLevel']
+        if static_files is None and 'staticFiles' in kwargs:
+            static_files = kwargs['staticFiles']
+        if url_regex is None and 'urlRegex' in kwargs:
+            url_regex = kwargs['urlRegex']
+
         if auth_fail_action is not None:
             _setter("auth_fail_action", auth_fail_action)
         if login is not None:
@@ -3217,8 +3541,14 @@ class StandardAppVersionHandlerScriptArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             script_path: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             script_path: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if script_path is None and 'scriptPath' in kwargs:
+            script_path = kwargs['scriptPath']
+        if script_path is None:
+            raise TypeError("Missing 'script_path' argument")
+
         _setter("script_path", script_path)
 
     @property
@@ -3278,7 +3608,19 @@ class StandardAppVersionHandlerStaticFilesArgs:
              path: Optional[pulumi.Input[str]] = None,
              require_matching_file: Optional[pulumi.Input[bool]] = None,
              upload_path_regex: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if application_readable is None and 'applicationReadable' in kwargs:
+            application_readable = kwargs['applicationReadable']
+        if http_headers is None and 'httpHeaders' in kwargs:
+            http_headers = kwargs['httpHeaders']
+        if mime_type is None and 'mimeType' in kwargs:
+            mime_type = kwargs['mimeType']
+        if require_matching_file is None and 'requireMatchingFile' in kwargs:
+            require_matching_file = kwargs['requireMatchingFile']
+        if upload_path_regex is None and 'uploadPathRegex' in kwargs:
+            upload_path_regex = kwargs['uploadPathRegex']
+
         if application_readable is not None:
             _setter("application_readable", application_readable)
         if expiration is not None:
@@ -3403,7 +3745,9 @@ class StandardAppVersionLibraryArgs:
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if version is not None:
@@ -3450,8 +3794,12 @@ class StandardAppVersionManualScalingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instances: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             instances: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if instances is None:
+            raise TypeError("Missing 'instances' argument")
+
         _setter("instances", instances)
 
     @property
@@ -3486,9 +3834,15 @@ class StandardAppVersionVpcAccessConnectorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              egress_setting: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if egress_setting is None and 'egressSetting' in kwargs:
+            egress_setting = kwargs['egressSetting']
+
         _setter("name", name)
         if egress_setting is not None:
             _setter("egress_setting", egress_setting)

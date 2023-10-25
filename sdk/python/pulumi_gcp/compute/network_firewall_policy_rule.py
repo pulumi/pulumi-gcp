@@ -61,11 +61,11 @@ class NetworkFirewallPolicyRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: pulumi.Input[str],
-             direction: pulumi.Input[str],
-             firewall_policy: pulumi.Input[str],
-             match: pulumi.Input['NetworkFirewallPolicyRuleMatchArgs'],
-             priority: pulumi.Input[int],
+             action: Optional[pulumi.Input[str]] = None,
+             direction: Optional[pulumi.Input[str]] = None,
+             firewall_policy: Optional[pulumi.Input[str]] = None,
+             match: Optional[pulumi.Input['NetworkFirewallPolicyRuleMatchArgs']] = None,
+             priority: Optional[pulumi.Input[int]] = None,
              description: Optional[pulumi.Input[str]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
              enable_logging: Optional[pulumi.Input[bool]] = None,
@@ -73,7 +73,29 @@ class NetworkFirewallPolicyRuleArgs:
              rule_name: Optional[pulumi.Input[str]] = None,
              target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleTargetSecureTagArgs']]]] = None,
              target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if direction is None:
+            raise TypeError("Missing 'direction' argument")
+        if firewall_policy is None and 'firewallPolicy' in kwargs:
+            firewall_policy = kwargs['firewallPolicy']
+        if firewall_policy is None:
+            raise TypeError("Missing 'firewall_policy' argument")
+        if match is None:
+            raise TypeError("Missing 'match' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+        if rule_name is None and 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+        if target_secure_tags is None and 'targetSecureTags' in kwargs:
+            target_secure_tags = kwargs['targetSecureTags']
+        if target_service_accounts is None and 'targetServiceAccounts' in kwargs:
+            target_service_accounts = kwargs['targetServiceAccounts']
+
         _setter("action", action)
         _setter("direction", direction)
         _setter("firewall_policy", firewall_policy)
@@ -307,7 +329,21 @@ class _NetworkFirewallPolicyRuleState:
              rule_tuple_count: Optional[pulumi.Input[int]] = None,
              target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleTargetSecureTagArgs']]]] = None,
              target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+        if firewall_policy is None and 'firewallPolicy' in kwargs:
+            firewall_policy = kwargs['firewallPolicy']
+        if rule_name is None and 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+        if rule_tuple_count is None and 'ruleTupleCount' in kwargs:
+            rule_tuple_count = kwargs['ruleTupleCount']
+        if target_secure_tags is None and 'targetSecureTags' in kwargs:
+            target_secure_tags = kwargs['targetSecureTags']
+        if target_service_accounts is None and 'targetServiceAccounts' in kwargs:
+            target_service_accounts = kwargs['targetServiceAccounts']
+
         if action is not None:
             _setter("action", action)
         if description is not None:
@@ -528,58 +564,6 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
         The Compute NetworkFirewallPolicyRule resource
 
         ## Example Usage
-        ### Global
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic_global_networksecurity_address_group = gcp.networksecurity.AddressGroup("basicGlobalNetworksecurityAddressGroup",
-            parent="projects/my-project-name",
-            description="Sample global networksecurity_address_group",
-            location="global",
-            items=["208.80.154.224/32"],
-            type="IPV4",
-            capacity=100)
-        basic_network_firewall_policy = gcp.compute.NetworkFirewallPolicy("basicNetworkFirewallPolicy",
-            description="Sample global network firewall policy",
-            project="my-project-name")
-        basic_network = gcp.compute.Network("basicNetwork")
-        basic_key = gcp.tags.TagKey("basicKey",
-            description="For keyname resources.",
-            parent="organizations/123456789",
-            purpose="GCE_FIREWALL",
-            short_name="tagkey",
-            purpose_data={
-                "network": basic_network.name.apply(lambda name: f"my-project-name/{name}"),
-            })
-        basic_value = gcp.tags.TagValue("basicValue",
-            description="For valuename resources.",
-            parent=basic_key.name.apply(lambda name: f"tagKeys/{name}"),
-            short_name="tagvalue")
-        primary = gcp.compute.NetworkFirewallPolicyRule("primary",
-            action="allow",
-            description="This is a simple rule description",
-            direction="INGRESS",
-            disabled=False,
-            enable_logging=True,
-            firewall_policy=basic_network_firewall_policy.name,
-            priority=1000,
-            rule_name="test-rule",
-            target_service_accounts=["my@service-account.com"],
-            match=gcp.compute.NetworkFirewallPolicyRuleMatchArgs(
-                src_ip_ranges=["10.100.0.1/32"],
-                src_fqdns=["google.com"],
-                src_region_codes=["US"],
-                src_threat_intelligences=["iplist-known-malicious-ips"],
-                src_secure_tags=[gcp.compute.NetworkFirewallPolicyRuleMatchSrcSecureTagArgs(
-                    name=basic_value.name.apply(lambda name: f"tagValues/{name}"),
-                )],
-                layer4_configs=[gcp.compute.NetworkFirewallPolicyRuleMatchLayer4ConfigArgs(
-                    ip_protocol="all",
-                )],
-                src_address_groups=[basic_global_networksecurity_address_group.id],
-            ))
-        ```
 
         ## Import
 
@@ -622,58 +606,6 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
         The Compute NetworkFirewallPolicyRule resource
 
         ## Example Usage
-        ### Global
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic_global_networksecurity_address_group = gcp.networksecurity.AddressGroup("basicGlobalNetworksecurityAddressGroup",
-            parent="projects/my-project-name",
-            description="Sample global networksecurity_address_group",
-            location="global",
-            items=["208.80.154.224/32"],
-            type="IPV4",
-            capacity=100)
-        basic_network_firewall_policy = gcp.compute.NetworkFirewallPolicy("basicNetworkFirewallPolicy",
-            description="Sample global network firewall policy",
-            project="my-project-name")
-        basic_network = gcp.compute.Network("basicNetwork")
-        basic_key = gcp.tags.TagKey("basicKey",
-            description="For keyname resources.",
-            parent="organizations/123456789",
-            purpose="GCE_FIREWALL",
-            short_name="tagkey",
-            purpose_data={
-                "network": basic_network.name.apply(lambda name: f"my-project-name/{name}"),
-            })
-        basic_value = gcp.tags.TagValue("basicValue",
-            description="For valuename resources.",
-            parent=basic_key.name.apply(lambda name: f"tagKeys/{name}"),
-            short_name="tagvalue")
-        primary = gcp.compute.NetworkFirewallPolicyRule("primary",
-            action="allow",
-            description="This is a simple rule description",
-            direction="INGRESS",
-            disabled=False,
-            enable_logging=True,
-            firewall_policy=basic_network_firewall_policy.name,
-            priority=1000,
-            rule_name="test-rule",
-            target_service_accounts=["my@service-account.com"],
-            match=gcp.compute.NetworkFirewallPolicyRuleMatchArgs(
-                src_ip_ranges=["10.100.0.1/32"],
-                src_fqdns=["google.com"],
-                src_region_codes=["US"],
-                src_threat_intelligences=["iplist-known-malicious-ips"],
-                src_secure_tags=[gcp.compute.NetworkFirewallPolicyRuleMatchSrcSecureTagArgs(
-                    name=basic_value.name.apply(lambda name: f"tagValues/{name}"),
-                )],
-                layer4_configs=[gcp.compute.NetworkFirewallPolicyRuleMatchLayer4ConfigArgs(
-                    ip_protocol="all",
-                )],
-                src_address_groups=[basic_global_networksecurity_address_group.id],
-            ))
-        ```
 
         ## Import
 
@@ -743,11 +675,7 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
             if firewall_policy is None and not opts.urn:
                 raise TypeError("Missing required property 'firewall_policy'")
             __props__.__dict__["firewall_policy"] = firewall_policy
-            if match is not None and not isinstance(match, NetworkFirewallPolicyRuleMatchArgs):
-                match = match or {}
-                def _setter(key, value):
-                    match[key] = value
-                NetworkFirewallPolicyRuleMatchArgs._configure(_setter, **match)
+            match = _utilities.configure(match, NetworkFirewallPolicyRuleMatchArgs, True)
             if match is None and not opts.urn:
                 raise TypeError("Missing required property 'match'")
             __props__.__dict__["match"] = match

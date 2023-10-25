@@ -41,11 +41,21 @@ class GroupMembershipArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group: pulumi.Input[str],
-             roles: pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArgs']]],
+             group: Optional[pulumi.Input[str]] = None,
+             roles: Optional[pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArgs']]]] = None,
              member_key: Optional[pulumi.Input['GroupMembershipMemberKeyArgs']] = None,
              preferred_member_key: Optional[pulumi.Input['GroupMembershipPreferredMemberKeyArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if roles is None:
+            raise TypeError("Missing 'roles' argument")
+        if member_key is None and 'memberKey' in kwargs:
+            member_key = kwargs['memberKey']
+        if preferred_member_key is None and 'preferredMemberKey' in kwargs:
+            preferred_member_key = kwargs['preferredMemberKey']
+
         _setter("group", group)
         _setter("roles", roles)
         if member_key is not None:
@@ -157,7 +167,17 @@ class _GroupMembershipState:
              roles: Optional[pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArgs']]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if member_key is None and 'memberKey' in kwargs:
+            member_key = kwargs['memberKey']
+        if preferred_member_key is None and 'preferredMemberKey' in kwargs:
+            preferred_member_key = kwargs['preferredMemberKey']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if group is not None:
@@ -305,68 +325,6 @@ class GroupMembership(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
-        ### Cloud Identity Group Membership
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        group = gcp.cloudidentity.Group("group",
-            display_name="my-identity-group",
-            parent="customers/A01b123xz",
-            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
-                id="my-identity-group@example.com",
-            ),
-            labels={
-                "cloudidentity.googleapis.com/groups.discussion_forum": "",
-            })
-        child_group = gcp.cloudidentity.Group("child-group",
-            display_name="my-identity-group-child",
-            parent="customers/A01b123xz",
-            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
-                id="my-identity-group-child@example.com",
-            ),
-            labels={
-                "cloudidentity.googleapis.com/groups.discussion_forum": "",
-            })
-        cloud_identity_group_membership_basic = gcp.cloudidentity.GroupMembership("cloudIdentityGroupMembershipBasic",
-            group=group.id,
-            preferred_member_key=gcp.cloudidentity.GroupMembershipPreferredMemberKeyArgs(
-                id=child_group.group_key.id,
-            ),
-            roles=[gcp.cloudidentity.GroupMembershipRoleArgs(
-                name="MEMBER",
-            )])
-        ```
-        ### Cloud Identity Group Membership User
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        group = gcp.cloudidentity.Group("group",
-            display_name="my-identity-group",
-            parent="customers/A01b123xz",
-            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
-                id="my-identity-group@example.com",
-            ),
-            labels={
-                "cloudidentity.googleapis.com/groups.discussion_forum": "",
-            })
-        cloud_identity_group_membership_basic = gcp.cloudidentity.GroupMembership("cloudIdentityGroupMembershipBasic",
-            group=group.id,
-            preferred_member_key=gcp.cloudidentity.GroupMembershipPreferredMemberKeyArgs(
-                id="cloud_identity_user@example.com",
-            ),
-            roles=[
-                gcp.cloudidentity.GroupMembershipRoleArgs(
-                    name="MEMBER",
-                ),
-                gcp.cloudidentity.GroupMembershipRoleArgs(
-                    name="MANAGER",
-                ),
-            ])
-        ```
 
         ## Import
 
@@ -409,68 +367,6 @@ class GroupMembership(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
-        ### Cloud Identity Group Membership
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        group = gcp.cloudidentity.Group("group",
-            display_name="my-identity-group",
-            parent="customers/A01b123xz",
-            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
-                id="my-identity-group@example.com",
-            ),
-            labels={
-                "cloudidentity.googleapis.com/groups.discussion_forum": "",
-            })
-        child_group = gcp.cloudidentity.Group("child-group",
-            display_name="my-identity-group-child",
-            parent="customers/A01b123xz",
-            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
-                id="my-identity-group-child@example.com",
-            ),
-            labels={
-                "cloudidentity.googleapis.com/groups.discussion_forum": "",
-            })
-        cloud_identity_group_membership_basic = gcp.cloudidentity.GroupMembership("cloudIdentityGroupMembershipBasic",
-            group=group.id,
-            preferred_member_key=gcp.cloudidentity.GroupMembershipPreferredMemberKeyArgs(
-                id=child_group.group_key.id,
-            ),
-            roles=[gcp.cloudidentity.GroupMembershipRoleArgs(
-                name="MEMBER",
-            )])
-        ```
-        ### Cloud Identity Group Membership User
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        group = gcp.cloudidentity.Group("group",
-            display_name="my-identity-group",
-            parent="customers/A01b123xz",
-            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
-                id="my-identity-group@example.com",
-            ),
-            labels={
-                "cloudidentity.googleapis.com/groups.discussion_forum": "",
-            })
-        cloud_identity_group_membership_basic = gcp.cloudidentity.GroupMembership("cloudIdentityGroupMembershipBasic",
-            group=group.id,
-            preferred_member_key=gcp.cloudidentity.GroupMembershipPreferredMemberKeyArgs(
-                id="cloud_identity_user@example.com",
-            ),
-            roles=[
-                gcp.cloudidentity.GroupMembershipRoleArgs(
-                    name="MEMBER",
-                ),
-                gcp.cloudidentity.GroupMembershipRoleArgs(
-                    name="MANAGER",
-                ),
-            ])
-        ```
 
         ## Import
 
@@ -515,17 +411,9 @@ class GroupMembership(pulumi.CustomResource):
             if group is None and not opts.urn:
                 raise TypeError("Missing required property 'group'")
             __props__.__dict__["group"] = group
-            if member_key is not None and not isinstance(member_key, GroupMembershipMemberKeyArgs):
-                member_key = member_key or {}
-                def _setter(key, value):
-                    member_key[key] = value
-                GroupMembershipMemberKeyArgs._configure(_setter, **member_key)
+            member_key = _utilities.configure(member_key, GroupMembershipMemberKeyArgs, True)
             __props__.__dict__["member_key"] = member_key
-            if preferred_member_key is not None and not isinstance(preferred_member_key, GroupMembershipPreferredMemberKeyArgs):
-                preferred_member_key = preferred_member_key or {}
-                def _setter(key, value):
-                    preferred_member_key[key] = value
-                GroupMembershipPreferredMemberKeyArgs._configure(_setter, **preferred_member_key)
+            preferred_member_key = _utilities.configure(preferred_member_key, GroupMembershipPreferredMemberKeyArgs, True)
             __props__.__dict__["preferred_member_key"] = preferred_member_key
             if roles is None and not opts.urn:
                 raise TypeError("Missing required property 'roles'")

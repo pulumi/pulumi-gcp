@@ -6,21 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Get info about a Google Cloud IAP Client.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const project = gcp.organizations.getProject({
- *     projectId: "foobar",
- * });
- * const projectClient = project.then(project => gcp.iap.getClient({
- *     brand: `projects/${project.number}/brands/[BRAND_NUMBER]`,
- *     clientId: FOO.apps.googleusercontent.com,
- * }));
- * ```
  */
 export function getClient(args: GetClientArgs, opts?: pulumi.InvokeOptions): Promise<GetClientResult> {
 
@@ -60,21 +45,6 @@ export interface GetClientResult {
 }
 /**
  * Get info about a Google Cloud IAP Client.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const project = gcp.organizations.getProject({
- *     projectId: "foobar",
- * });
- * const projectClient = project.then(project => gcp.iap.getClient({
- *     brand: `projects/${project.number}/brands/[BRAND_NUMBER]`,
- *     clientId: FOO.apps.googleusercontent.com,
- * }));
- * ```
  */
 export function getClientOutput(args: GetClientOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClientResult> {
     return pulumi.output(args).apply((a: any) => getClient(a, opts))

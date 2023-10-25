@@ -14,23 +14,6 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// !&gt; **WARNING:** Deleting this resource will not delete or close the billing subaccount.
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var subaccount = new Gcp.Billing.SubAccount("subaccount", new()
-    ///     {
-    ///         DisplayName = "My Billing Account",
-    ///         MasterBillingAccount = "012345-567890-ABCDEF",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Billing Subaccounts can be imported using any of these accepted formats:

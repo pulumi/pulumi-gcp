@@ -74,7 +74,21 @@ class ConnectorArgs:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              subnet: Optional[pulumi.Input['ConnectorSubnetArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ip_cidr_range is None and 'ipCidrRange' in kwargs:
+            ip_cidr_range = kwargs['ipCidrRange']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if max_instances is None and 'maxInstances' in kwargs:
+            max_instances = kwargs['maxInstances']
+        if max_throughput is None and 'maxThroughput' in kwargs:
+            max_throughput = kwargs['maxThroughput']
+        if min_instances is None and 'minInstances' in kwargs:
+            min_instances = kwargs['minInstances']
+        if min_throughput is None and 'minThroughput' in kwargs:
+            min_throughput = kwargs['minThroughput']
+
         if ip_cidr_range is not None:
             _setter("ip_cidr_range", ip_cidr_range)
         if machine_type is not None:
@@ -309,7 +323,25 @@ class _ConnectorState:
              self_link: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              subnet: Optional[pulumi.Input['ConnectorSubnetArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if connected_projects is None and 'connectedProjects' in kwargs:
+            connected_projects = kwargs['connectedProjects']
+        if ip_cidr_range is None and 'ipCidrRange' in kwargs:
+            ip_cidr_range = kwargs['ipCidrRange']
+        if machine_type is None and 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if max_instances is None and 'maxInstances' in kwargs:
+            max_instances = kwargs['maxInstances']
+        if max_throughput is None and 'maxThroughput' in kwargs:
+            max_throughput = kwargs['maxThroughput']
+        if min_instances is None and 'minInstances' in kwargs:
+            min_instances = kwargs['minInstances']
+        if min_throughput is None and 'minThroughput' in kwargs:
+            min_throughput = kwargs['minThroughput']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if connected_projects is not None:
             _setter("connected_projects", connected_projects)
         if ip_cidr_range is not None:
@@ -540,33 +572,6 @@ class Connector(pulumi.CustomResource):
             * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
 
         ## Example Usage
-        ### Vpc Access Connector
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        connector = gcp.vpcaccess.Connector("connector",
-            ip_cidr_range="10.8.0.0/28",
-            network="default")
-        ```
-        ### Vpc Access Connector Shared Vpc
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        custom_test_network = gcp.compute.Network("customTestNetwork", auto_create_subnetworks=False)
-        custom_test_subnetwork = gcp.compute.Subnetwork("customTestSubnetwork",
-            ip_cidr_range="10.2.0.0/28",
-            region="us-central1",
-            network=custom_test_network.id)
-        connector = gcp.vpcaccess.Connector("connector",
-            subnet=gcp.vpcaccess.ConnectorSubnetArgs(
-                name=custom_test_subnetwork.name,
-            ),
-            machine_type="e2-standard-4")
-        ```
 
         ## Import
 
@@ -623,33 +628,6 @@ class Connector(pulumi.CustomResource):
             * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
 
         ## Example Usage
-        ### Vpc Access Connector
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        connector = gcp.vpcaccess.Connector("connector",
-            ip_cidr_range="10.8.0.0/28",
-            network="default")
-        ```
-        ### Vpc Access Connector Shared Vpc
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        custom_test_network = gcp.compute.Network("customTestNetwork", auto_create_subnetworks=False)
-        custom_test_subnetwork = gcp.compute.Subnetwork("customTestSubnetwork",
-            ip_cidr_range="10.2.0.0/28",
-            region="us-central1",
-            network=custom_test_network.id)
-        connector = gcp.vpcaccess.Connector("connector",
-            subnet=gcp.vpcaccess.ConnectorSubnetArgs(
-                name=custom_test_subnetwork.name,
-            ),
-            machine_type="e2-standard-4")
-        ```
 
         ## Import
 
@@ -720,11 +698,7 @@ class Connector(pulumi.CustomResource):
             __props__.__dict__["network"] = network
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
-            if subnet is not None and not isinstance(subnet, ConnectorSubnetArgs):
-                subnet = subnet or {}
-                def _setter(key, value):
-                    subnet[key] = value
-                ConnectorSubnetArgs._configure(_setter, **subnet)
+            subnet = _utilities.configure(subnet, ConnectorSubnetArgs, True)
             __props__.__dict__["subnet"] = subnet
             __props__.__dict__["connected_projects"] = None
             __props__.__dict__["self_link"] = None

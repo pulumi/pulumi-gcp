@@ -115,15 +115,6 @@ def get_app_connector(name: Optional[str] = None,
     """
     Get information about a Google BeyondCorp App Connector.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    my_beyondcorp_app_connector = gcp.beyondcorp.get_app_connector(name="my-beyondcorp-app-connector")
-    ```
-
 
     :param str name: The name of the App Connector.
            
@@ -158,15 +149,6 @@ def get_app_connector_output(name: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppConnectorResult]:
     """
     Get information about a Google BeyondCorp App Connector.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    my_beyondcorp_app_connector = gcp.beyondcorp.get_app_connector(name="my-beyondcorp-app-connector")
-    ```
 
 
     :param str name: The name of the App Connector.

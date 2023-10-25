@@ -22,42 +22,6 @@ namespace Pulumi.Gcp.Compute
     /// state as plain-text.
     /// 
     /// ## Example Usage
-    /// ### Backend Bucket Signed Url Key
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// using Random = Pulumi.Random;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var urlSignature = new Random.RandomId("urlSignature", new()
-    ///     {
-    ///         ByteLength = 16,
-    ///     });
-    /// 
-    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
-    ///     {
-    ///         Location = "EU",
-    ///     });
-    /// 
-    ///     var testBackend = new Gcp.Compute.BackendBucket("testBackend", new()
-    ///     {
-    ///         Description = "Contains beautiful images",
-    ///         BucketName = bucket.Name,
-    ///         EnableCdn = true,
-    ///     });
-    /// 
-    ///     var backendKey = new Gcp.Compute.BackendBucketSignedUrlKey("backendKey", new()
-    ///     {
-    ///         KeyValue = urlSignature.B64Url,
-    ///         BackendBucket = testBackend.Name,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

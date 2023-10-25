@@ -8,67 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
- * ### Dataform Repository Release Config
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const gitRepository = new gcp.sourcerepo.Repository("gitRepository", {}, {
- *     provider: google_beta,
- * });
- * const secret = new gcp.secretmanager.Secret("secret", {
- *     secretId: "my_secret",
- *     replication: {
- *         auto: {},
- *     },
- * }, {
- *     provider: google_beta,
- * });
- * const secretVersion = new gcp.secretmanager.SecretVersion("secretVersion", {
- *     secret: secret.id,
- *     secretData: "secret-data",
- * }, {
- *     provider: google_beta,
- * });
- * const repository = new gcp.dataform.Repository("repository", {
- *     region: "us-central1",
- *     gitRemoteSettings: {
- *         url: gitRepository.url,
- *         defaultBranch: "main",
- *         authenticationTokenSecretVersion: secretVersion.id,
- *     },
- *     workspaceCompilationOverrides: {
- *         defaultDatabase: "database",
- *         schemaSuffix: "_suffix",
- *         tablePrefix: "prefix_",
- *     },
- * }, {
- *     provider: google_beta,
- * });
- * const release = new gcp.dataform.RepositoryReleaseConfig("release", {
- *     project: repository.project,
- *     region: repository.region,
- *     repository: repository.name,
- *     gitCommitish: "main",
- *     cronSchedule: "0 7 * * *",
- *     timeZone: "America/New_York",
- *     codeCompilationConfig: {
- *         defaultDatabase: "gcp-example-project",
- *         defaultSchema: "example-dataset",
- *         defaultLocation: "us-central1",
- *         assertionSchema: "example-assertion-dataset",
- *         databaseSuffix: "",
- *         schemaSuffix: "",
- *         tablePrefix: "",
- *         vars: {
- *             var1: "value",
- *         },
- *     },
- * }, {
- *     provider: google_beta,
- * });
- * ```
  *
  * ## Import
  *

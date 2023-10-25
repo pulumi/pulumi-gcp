@@ -10,40 +10,6 @@ import * as utilities from "../utilities";
  * The AssuredWorkloads Workload resource
  *
  * ## Example Usage
- * ### Basic_workload
- * A basic test of a assuredworkloads api
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const primary = new gcp.assuredworkloads.Workload("primary", {
- *     billingAccount: "billingAccounts/000000-0000000-0000000-000000",
- *     complianceRegime: "FEDRAMP_MODERATE",
- *     displayName: "Workload Example",
- *     kmsSettings: {
- *         nextRotationTime: "9999-10-02T15:01:23Z",
- *         rotationPeriod: "10368000s",
- *     },
- *     labels: {
- *         "label-one": "value-one",
- *     },
- *     location: "us-west1",
- *     organization: "123456789",
- *     provisionedResourcesParent: "folders/519620126891",
- *     resourceSettings: [
- *         {
- *             resourceType: "CONSUMER_PROJECT",
- *         },
- *         {
- *             resourceType: "ENCRYPTION_KEYS_PROJECT",
- *         },
- *         {
- *             resourceId: "ring",
- *             resourceType: "KEYRING",
- *         },
- *     ],
- * });
- * ```
  *
  * ## Import
  *

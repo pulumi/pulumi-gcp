@@ -20,27 +20,6 @@ import * as utilities from "../utilities";
  *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
  *
  * ## Example Usage
- * ### Monitoring Service Example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const myService = new gcp.monitoring.GenericService("myService", {
- *     basicService: {
- *         serviceLabels: {
- *             moduleId: "another-module-id",
- *         },
- *         serviceType: "APP_ENGINE",
- *     },
- *     displayName: "My Service my-service",
- *     serviceId: "my-service",
- *     userLabels: {
- *         my_key: "my_value",
- *         my_other_key: "my_other_value",
- *     },
- * });
- * ```
  *
  * ## Import
  *

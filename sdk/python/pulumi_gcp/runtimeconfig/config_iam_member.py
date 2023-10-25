@@ -53,12 +53,20 @@ class ConfigIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config: pulumi.Input[str],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
+             config: Optional[pulumi.Input[str]] = None,
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['ConfigIamMemberConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if config is None:
+            raise TypeError("Missing 'config' argument")
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("config", config)
         _setter("member", member)
         _setter("role", role)
@@ -186,7 +194,9 @@ class _ConfigIamMemberState:
              member: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if condition is not None:
             _setter("condition", condition)
         if config is not None:
@@ -403,11 +413,7 @@ class ConfigIamMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConfigIamMemberArgs.__new__(ConfigIamMemberArgs)
 
-            if condition is not None and not isinstance(condition, ConfigIamMemberConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                ConfigIamMemberConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, ConfigIamMemberConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")

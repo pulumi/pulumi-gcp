@@ -65,7 +65,7 @@ class BackendBucketArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket_name: pulumi.Input[str],
+             bucket_name: Optional[pulumi.Input[str]] = None,
              cdn_policy: Optional[pulumi.Input['BackendBucketCdnPolicyArgs']] = None,
              compression_mode: Optional[pulumi.Input[str]] = None,
              custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -74,7 +74,23 @@ class BackendBucketArgs:
              enable_cdn: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if bucket_name is None:
+            raise TypeError("Missing 'bucket_name' argument")
+        if cdn_policy is None and 'cdnPolicy' in kwargs:
+            cdn_policy = kwargs['cdnPolicy']
+        if compression_mode is None and 'compressionMode' in kwargs:
+            compression_mode = kwargs['compressionMode']
+        if custom_response_headers is None and 'customResponseHeaders' in kwargs:
+            custom_response_headers = kwargs['customResponseHeaders']
+        if edge_security_policy is None and 'edgeSecurityPolicy' in kwargs:
+            edge_security_policy = kwargs['edgeSecurityPolicy']
+        if enable_cdn is None and 'enableCdn' in kwargs:
+            enable_cdn = kwargs['enableCdn']
+
         _setter("bucket_name", bucket_name)
         if cdn_policy is not None:
             _setter("cdn_policy", cdn_policy)
@@ -284,7 +300,25 @@ class _BackendBucketState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if cdn_policy is None and 'cdnPolicy' in kwargs:
+            cdn_policy = kwargs['cdnPolicy']
+        if compression_mode is None and 'compressionMode' in kwargs:
+            compression_mode = kwargs['compressionMode']
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if custom_response_headers is None and 'customResponseHeaders' in kwargs:
+            custom_response_headers = kwargs['customResponseHeaders']
+        if edge_security_policy is None and 'edgeSecurityPolicy' in kwargs:
+            edge_security_policy = kwargs['edgeSecurityPolicy']
+        if enable_cdn is None and 'enableCdn' in kwargs:
+            enable_cdn = kwargs['enableCdn']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if bucket_name is not None:
             _setter("bucket_name", bucket_name)
         if cdn_policy is not None:
@@ -485,68 +519,6 @@ class BackendBucket(pulumi.CustomResource):
             * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
 
         ## Example Usage
-        ### Backend Bucket Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        image_bucket = gcp.storage.Bucket("imageBucket", location="EU")
-        image_backend = gcp.compute.BackendBucket("imageBackend",
-            description="Contains beautiful images",
-            bucket_name=image_bucket.name,
-            enable_cdn=True)
-        ```
-        ### Backend Bucket Security Policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        image_backend_bucket = gcp.storage.Bucket("imageBackendBucket", location="EU")
-        policy = gcp.compute.SecurityPolicy("policy",
-            description="basic security policy",
-            type="CLOUD_ARMOR_EDGE")
-        image_backend_backend_bucket = gcp.compute.BackendBucket("imageBackendBackendBucket",
-            description="Contains beautiful images",
-            bucket_name=image_backend_bucket.name,
-            enable_cdn=True,
-            edge_security_policy=policy.id)
-        ```
-        ### Backend Bucket Query String Whitelist
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        image_bucket = gcp.storage.Bucket("imageBucket", location="EU")
-        image_backend = gcp.compute.BackendBucket("imageBackend",
-            description="Contains beautiful images",
-            bucket_name=image_bucket.name,
-            enable_cdn=True,
-            cdn_policy=gcp.compute.BackendBucketCdnPolicyArgs(
-                cache_key_policy=gcp.compute.BackendBucketCdnPolicyCacheKeyPolicyArgs(
-                    query_string_whitelists=["image-version"],
-                ),
-            ))
-        ```
-        ### Backend Bucket Include Http Headers
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        image_bucket = gcp.storage.Bucket("imageBucket", location="EU")
-        image_backend = gcp.compute.BackendBucket("imageBackend",
-            description="Contains beautiful images",
-            bucket_name=image_bucket.name,
-            enable_cdn=True,
-            cdn_policy=gcp.compute.BackendBucketCdnPolicyArgs(
-                cache_key_policy=gcp.compute.BackendBucketCdnPolicyCacheKeyPolicyArgs(
-                    include_http_headers=["X-My-Header-Field"],
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -611,68 +583,6 @@ class BackendBucket(pulumi.CustomResource):
             * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
 
         ## Example Usage
-        ### Backend Bucket Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        image_bucket = gcp.storage.Bucket("imageBucket", location="EU")
-        image_backend = gcp.compute.BackendBucket("imageBackend",
-            description="Contains beautiful images",
-            bucket_name=image_bucket.name,
-            enable_cdn=True)
-        ```
-        ### Backend Bucket Security Policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        image_backend_bucket = gcp.storage.Bucket("imageBackendBucket", location="EU")
-        policy = gcp.compute.SecurityPolicy("policy",
-            description="basic security policy",
-            type="CLOUD_ARMOR_EDGE")
-        image_backend_backend_bucket = gcp.compute.BackendBucket("imageBackendBackendBucket",
-            description="Contains beautiful images",
-            bucket_name=image_backend_bucket.name,
-            enable_cdn=True,
-            edge_security_policy=policy.id)
-        ```
-        ### Backend Bucket Query String Whitelist
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        image_bucket = gcp.storage.Bucket("imageBucket", location="EU")
-        image_backend = gcp.compute.BackendBucket("imageBackend",
-            description="Contains beautiful images",
-            bucket_name=image_bucket.name,
-            enable_cdn=True,
-            cdn_policy=gcp.compute.BackendBucketCdnPolicyArgs(
-                cache_key_policy=gcp.compute.BackendBucketCdnPolicyCacheKeyPolicyArgs(
-                    query_string_whitelists=["image-version"],
-                ),
-            ))
-        ```
-        ### Backend Bucket Include Http Headers
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        image_bucket = gcp.storage.Bucket("imageBucket", location="EU")
-        image_backend = gcp.compute.BackendBucket("imageBackend",
-            description="Contains beautiful images",
-            bucket_name=image_bucket.name,
-            enable_cdn=True,
-            cdn_policy=gcp.compute.BackendBucketCdnPolicyArgs(
-                cache_key_policy=gcp.compute.BackendBucketCdnPolicyCacheKeyPolicyArgs(
-                    include_http_headers=["X-My-Header-Field"],
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -730,11 +640,7 @@ class BackendBucket(pulumi.CustomResource):
             if bucket_name is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket_name'")
             __props__.__dict__["bucket_name"] = bucket_name
-            if cdn_policy is not None and not isinstance(cdn_policy, BackendBucketCdnPolicyArgs):
-                cdn_policy = cdn_policy or {}
-                def _setter(key, value):
-                    cdn_policy[key] = value
-                BackendBucketCdnPolicyArgs._configure(_setter, **cdn_policy)
+            cdn_policy = _utilities.configure(cdn_policy, BackendBucketCdnPolicyArgs, True)
             __props__.__dict__["cdn_policy"] = cdn_policy
             __props__.__dict__["compression_mode"] = compression_mode
             __props__.__dict__["custom_response_headers"] = custom_response_headers

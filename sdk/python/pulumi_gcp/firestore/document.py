@@ -42,12 +42,22 @@ class DocumentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             collection: pulumi.Input[str],
-             document_id: pulumi.Input[str],
-             fields: pulumi.Input[str],
+             collection: Optional[pulumi.Input[str]] = None,
+             document_id: Optional[pulumi.Input[str]] = None,
+             fields: Optional[pulumi.Input[str]] = None,
              database: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if collection is None:
+            raise TypeError("Missing 'collection' argument")
+        if document_id is None and 'documentId' in kwargs:
+            document_id = kwargs['documentId']
+        if document_id is None:
+            raise TypeError("Missing 'document_id' argument")
+        if fields is None:
+            raise TypeError("Missing 'fields' argument")
+
         _setter("collection", collection)
         _setter("document_id", document_id)
         _setter("fields", fields)
@@ -174,7 +184,15 @@ class _DocumentState:
              path: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if document_id is None and 'documentId' in kwargs:
+            document_id = kwargs['documentId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if collection is not None:
             _setter("collection", collection)
         if create_time is not None:
@@ -339,40 +357,6 @@ class Document(pulumi.CustomResource):
         the App Engine location specified.
 
         ## Example Usage
-        ### Firestore Document Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        mydoc = gcp.firestore.Document("mydoc",
-            collection="somenewcollection",
-            document_id="my-doc-id",
-            fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"akey\\":{\\"stringValue\\":\\"avalue\\"}}}}}",
-            project="my-project-name")
-        ```
-        ### Firestore Document Nested Document
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        mydoc = gcp.firestore.Document("mydoc",
-            collection="somenewcollection",
-            document_id="my-doc-id",
-            fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"akey\\":{\\"stringValue\\":\\"avalue\\"}}}}}",
-            project="my-project-name")
-        sub_document = gcp.firestore.Document("subDocument",
-            collection=mydoc.path.apply(lambda path: f"{path}/subdocs"),
-            document_id="bitcoinkey",
-            fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"ayo\\":{\\"stringValue\\":\\"val2\\"}}}}}",
-            project="my-project-name")
-        sub_sub_document = gcp.firestore.Document("subSubDocument",
-            collection=sub_document.path.apply(lambda path: f"{path}/subsubdocs"),
-            document_id="asecret",
-            fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"secret\\":{\\"stringValue\\":\\"hithere\\"}}}}}",
-            project="my-project-name")
-        ```
 
         ## Import
 
@@ -420,40 +404,6 @@ class Document(pulumi.CustomResource):
         the App Engine location specified.
 
         ## Example Usage
-        ### Firestore Document Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        mydoc = gcp.firestore.Document("mydoc",
-            collection="somenewcollection",
-            document_id="my-doc-id",
-            fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"akey\\":{\\"stringValue\\":\\"avalue\\"}}}}}",
-            project="my-project-name")
-        ```
-        ### Firestore Document Nested Document
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        mydoc = gcp.firestore.Document("mydoc",
-            collection="somenewcollection",
-            document_id="my-doc-id",
-            fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"akey\\":{\\"stringValue\\":\\"avalue\\"}}}}}",
-            project="my-project-name")
-        sub_document = gcp.firestore.Document("subDocument",
-            collection=mydoc.path.apply(lambda path: f"{path}/subdocs"),
-            document_id="bitcoinkey",
-            fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"ayo\\":{\\"stringValue\\":\\"val2\\"}}}}}",
-            project="my-project-name")
-        sub_sub_document = gcp.firestore.Document("subSubDocument",
-            collection=sub_document.path.apply(lambda path: f"{path}/subsubdocs"),
-            document_id="asecret",
-            fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"secret\\":{\\"stringValue\\":\\"hithere\\"}}}}}",
-            project="my-project-name")
-        ```
 
         ## Import
 

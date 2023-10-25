@@ -12,43 +12,6 @@ import * as utilities from "../utilities";
  * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
  *
  * ## Example Usage
- * ### Empty Instance Group
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const test = new gcp.compute.InstanceGroup("test", {
- *     description: "Test instance group",
- *     zone: "us-central1-a",
- *     network: google_compute_network["default"].id,
- * });
- * ```
- * ### Example Usage - With instances and named ports
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const webservers = new gcp.compute.InstanceGroup("webservers", {
- *     description: "Test instance group",
- *     instances: [
- *         google_compute_instance.test.id,
- *         google_compute_instance.test2.id,
- *     ],
- *     namedPorts: [
- *         {
- *             name: "http",
- *             port: 8080,
- *         },
- *         {
- *             name: "https",
- *             port: 8443,
- *         },
- *     ],
- *     zone: "us-central1-a",
- * });
- * ```
  *
  * ## Import
  *

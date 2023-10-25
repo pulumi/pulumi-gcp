@@ -47,7 +47,11 @@ class TableArgs:
              hive_options: Optional[pulumi.Input['TableHiveOptionsArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if hive_options is None and 'hiveOptions' in kwargs:
+            hive_options = kwargs['hiveOptions']
+
         if database is not None:
             _setter("database", database)
         if hive_options is not None:
@@ -181,7 +185,19 @@ class _TableState:
              name: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if delete_time is None and 'deleteTime' in kwargs:
+            delete_time = kwargs['deleteTime']
+        if expire_time is None and 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if hive_options is None and 'hiveOptions' in kwargs:
+            hive_options = kwargs['hiveOptions']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if database is not None:
@@ -351,54 +367,6 @@ class Table(pulumi.CustomResource):
             * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_tables)
 
         ## Example Usage
-        ### Biglake Table
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        catalog = gcp.biglake.Catalog("catalog", location="US")
-        bucket = gcp.storage.Bucket("bucket",
-            location="US",
-            force_destroy=True,
-            uniform_bucket_level_access=True)
-        metadata_folder = gcp.storage.BucketObject("metadataFolder",
-            content=" ",
-            bucket=bucket.name)
-        data_folder = gcp.storage.BucketObject("dataFolder",
-            content=" ",
-            bucket=bucket.name)
-        database = gcp.biglake.Database("database",
-            catalog=catalog.id,
-            type="HIVE",
-            hive_options=gcp.biglake.DatabaseHiveOptionsArgs(
-                location_uri=pulumi.Output.all(bucket.name, metadata_folder.name).apply(lambda bucketName, metadataFolderName: f"gs://{bucket_name}/{metadata_folder_name}"),
-                parameters={
-                    "owner": "Alex",
-                },
-            ))
-        table = gcp.biglake.Table("table",
-            database=database.id,
-            type="HIVE",
-            hive_options=gcp.biglake.TableHiveOptionsArgs(
-                table_type="MANAGED_TABLE",
-                storage_descriptor=gcp.biglake.TableHiveOptionsStorageDescriptorArgs(
-                    location_uri=pulumi.Output.all(bucket.name, data_folder.name).apply(lambda bucketName, dataFolderName: f"gs://{bucket_name}/{data_folder_name}"),
-                    input_format="org.apache.hadoop.mapred.SequenceFileInputFormat",
-                    output_format="org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
-                ),
-                parameters={
-                    "spark.sql.create.version": "3.1.3",
-                    "spark.sql.sources.schema.numParts": "1",
-                    "transient_lastDdlTime": "1680894197",
-                    "spark.sql.partitionProvider": "catalog",
-                    "owner": "John Doe",
-                    "spark.sql.sources.schema.part.0": "{\\"type\\":\\"struct\\",\\"fields\\":[{\\"name\\":\\"id\\",\\"type\\":\\"integer\\",\\"nullable\\":true,\\"metadata\\":{}},{\\"name\\":\\"name\\",\\"type\\":\\"string\\",\\"nullable\\":true,\\"metadata\\":{}},{\\"name\\":\\"age\\",\\"type\\":\\"integer\\",\\"nullable\\":true,\\"metadata\\":{}}]}",
-                    "spark.sql.sources.provider": "iceberg",
-                    "provider": "iceberg",
-                },
-            ))
-        ```
 
         ## Import
 
@@ -437,54 +405,6 @@ class Table(pulumi.CustomResource):
             * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_tables)
 
         ## Example Usage
-        ### Biglake Table
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        catalog = gcp.biglake.Catalog("catalog", location="US")
-        bucket = gcp.storage.Bucket("bucket",
-            location="US",
-            force_destroy=True,
-            uniform_bucket_level_access=True)
-        metadata_folder = gcp.storage.BucketObject("metadataFolder",
-            content=" ",
-            bucket=bucket.name)
-        data_folder = gcp.storage.BucketObject("dataFolder",
-            content=" ",
-            bucket=bucket.name)
-        database = gcp.biglake.Database("database",
-            catalog=catalog.id,
-            type="HIVE",
-            hive_options=gcp.biglake.DatabaseHiveOptionsArgs(
-                location_uri=pulumi.Output.all(bucket.name, metadata_folder.name).apply(lambda bucketName, metadataFolderName: f"gs://{bucket_name}/{metadata_folder_name}"),
-                parameters={
-                    "owner": "Alex",
-                },
-            ))
-        table = gcp.biglake.Table("table",
-            database=database.id,
-            type="HIVE",
-            hive_options=gcp.biglake.TableHiveOptionsArgs(
-                table_type="MANAGED_TABLE",
-                storage_descriptor=gcp.biglake.TableHiveOptionsStorageDescriptorArgs(
-                    location_uri=pulumi.Output.all(bucket.name, data_folder.name).apply(lambda bucketName, dataFolderName: f"gs://{bucket_name}/{data_folder_name}"),
-                    input_format="org.apache.hadoop.mapred.SequenceFileInputFormat",
-                    output_format="org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
-                ),
-                parameters={
-                    "spark.sql.create.version": "3.1.3",
-                    "spark.sql.sources.schema.numParts": "1",
-                    "transient_lastDdlTime": "1680894197",
-                    "spark.sql.partitionProvider": "catalog",
-                    "owner": "John Doe",
-                    "spark.sql.sources.schema.part.0": "{\\"type\\":\\"struct\\",\\"fields\\":[{\\"name\\":\\"id\\",\\"type\\":\\"integer\\",\\"nullable\\":true,\\"metadata\\":{}},{\\"name\\":\\"name\\",\\"type\\":\\"string\\",\\"nullable\\":true,\\"metadata\\":{}},{\\"name\\":\\"age\\",\\"type\\":\\"integer\\",\\"nullable\\":true,\\"metadata\\":{}}]}",
-                    "spark.sql.sources.provider": "iceberg",
-                    "provider": "iceberg",
-                },
-            ))
-        ```
 
         ## Import
 
@@ -527,11 +447,7 @@ class Table(pulumi.CustomResource):
             __props__ = TableArgs.__new__(TableArgs)
 
             __props__.__dict__["database"] = database
-            if hive_options is not None and not isinstance(hive_options, TableHiveOptionsArgs):
-                hive_options = hive_options or {}
-                def _setter(key, value):
-                    hive_options[key] = value
-                TableHiveOptionsArgs._configure(_setter, **hive_options)
+            hive_options = _utilities.configure(hive_options, TableHiveOptionsArgs, True)
             __props__.__dict__["hive_options"] = hive_options
             __props__.__dict__["name"] = name
             __props__.__dict__["type"] = type

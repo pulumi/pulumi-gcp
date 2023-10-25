@@ -80,8 +80,8 @@ class ClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
-             location: pulumi.Input[str],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
              automated_backup_policy: Optional[pulumi.Input['ClusterAutomatedBackupPolicyArgs']] = None,
              continuous_backup_config: Optional[pulumi.Input['ClusterContinuousBackupConfigArgs']] = None,
              display_name: Optional[pulumi.Input[str]] = None,
@@ -93,7 +93,31 @@ class ClusterArgs:
              project: Optional[pulumi.Input[str]] = None,
              restore_backup_source: Optional[pulumi.Input['ClusterRestoreBackupSourceArgs']] = None,
              restore_continuous_backup_source: Optional[pulumi.Input['ClusterRestoreContinuousBackupSourceArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if automated_backup_policy is None and 'automatedBackupPolicy' in kwargs:
+            automated_backup_policy = kwargs['automatedBackupPolicy']
+        if continuous_backup_config is None and 'continuousBackupConfig' in kwargs:
+            continuous_backup_config = kwargs['continuousBackupConfig']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if encryption_config is None and 'encryptionConfig' in kwargs:
+            encryption_config = kwargs['encryptionConfig']
+        if initial_user is None and 'initialUser' in kwargs:
+            initial_user = kwargs['initialUser']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if restore_backup_source is None and 'restoreBackupSource' in kwargs:
+            restore_backup_source = kwargs['restoreBackupSource']
+        if restore_continuous_backup_source is None and 'restoreContinuousBackupSource' in kwargs:
+            restore_continuous_backup_source = kwargs['restoreContinuousBackupSource']
+
         _setter("cluster_id", cluster_id)
         _setter("location", location)
         if automated_backup_policy is not None:
@@ -411,7 +435,37 @@ class _ClusterState:
              restore_backup_source: Optional[pulumi.Input['ClusterRestoreBackupSourceArgs']] = None,
              restore_continuous_backup_source: Optional[pulumi.Input['ClusterRestoreContinuousBackupSourceArgs']] = None,
              uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if automated_backup_policy is None and 'automatedBackupPolicy' in kwargs:
+            automated_backup_policy = kwargs['automatedBackupPolicy']
+        if backup_sources is None and 'backupSources' in kwargs:
+            backup_sources = kwargs['backupSources']
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if continuous_backup_config is None and 'continuousBackupConfig' in kwargs:
+            continuous_backup_config = kwargs['continuousBackupConfig']
+        if continuous_backup_infos is None and 'continuousBackupInfos' in kwargs:
+            continuous_backup_infos = kwargs['continuousBackupInfos']
+        if database_version is None and 'databaseVersion' in kwargs:
+            database_version = kwargs['databaseVersion']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if encryption_config is None and 'encryptionConfig' in kwargs:
+            encryption_config = kwargs['encryptionConfig']
+        if encryption_infos is None and 'encryptionInfos' in kwargs:
+            encryption_infos = kwargs['encryptionInfos']
+        if initial_user is None and 'initialUser' in kwargs:
+            initial_user = kwargs['initialUser']
+        if migration_sources is None and 'migrationSources' in kwargs:
+            migration_sources = kwargs['migrationSources']
+        if network_config is None and 'networkConfig' in kwargs:
+            network_config = kwargs['networkConfig']
+        if restore_backup_source is None and 'restoreBackupSource' in kwargs:
+            restore_backup_source = kwargs['restoreBackupSource']
+        if restore_continuous_backup_source is None and 'restoreContinuousBackupSource' in kwargs:
+            restore_continuous_backup_source = kwargs['restoreContinuousBackupSource']
+
         if automated_backup_policy is not None:
             _setter("automated_backup_policy", automated_backup_policy)
         if backup_sources is not None:
@@ -754,116 +808,6 @@ class Cluster(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
-        ### Alloydb Cluster Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork")
-        default_cluster = gcp.alloydb.Cluster("defaultCluster",
-            cluster_id="alloydb-cluster",
-            location="us-central1",
-            network=default_network.id)
-        project = gcp.organizations.get_project()
-        ```
-        ### Alloydb Cluster Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.Network("default")
-        full = gcp.alloydb.Cluster("full",
-            cluster_id="alloydb-cluster-full",
-            location="us-central1",
-            network=default.id,
-            initial_user=gcp.alloydb.ClusterInitialUserArgs(
-                user="alloydb-cluster-full",
-                password="alloydb-cluster-full",
-            ),
-            continuous_backup_config=gcp.alloydb.ClusterContinuousBackupConfigArgs(
-                enabled=True,
-                recovery_window_days=14,
-            ),
-            automated_backup_policy=gcp.alloydb.ClusterAutomatedBackupPolicyArgs(
-                location="us-central1",
-                backup_window="1800s",
-                enabled=True,
-                weekly_schedule=gcp.alloydb.ClusterAutomatedBackupPolicyWeeklyScheduleArgs(
-                    days_of_weeks=["MONDAY"],
-                    start_times=[gcp.alloydb.ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs(
-                        hours=23,
-                        minutes=0,
-                        seconds=0,
-                        nanos=0,
-                    )],
-                ),
-                quantity_based_retention=gcp.alloydb.ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs(
-                    count=1,
-                ),
-                labels={
-                    "test": "alloydb-cluster-full",
-                },
-            ),
-            labels={
-                "test": "alloydb-cluster-full",
-            })
-        project = gcp.organizations.get_project()
-        ```
-        ### Alloydb Cluster Restore
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.get_network(name="alloydb-network")
-        source_cluster = gcp.alloydb.Cluster("sourceCluster",
-            cluster_id="alloydb-source-cluster",
-            location="us-central1",
-            network=default.id,
-            initial_user=gcp.alloydb.ClusterInitialUserArgs(
-                password="alloydb-source-cluster",
-            ))
-        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
-            address_type="INTERNAL",
-            purpose="VPC_PEERING",
-            prefix_length=16,
-            network=default.id)
-        vpc_connection = gcp.servicenetworking.Connection("vpcConnection",
-            network=default.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_alloc.name])
-        source_instance = gcp.alloydb.Instance("sourceInstance",
-            cluster=source_cluster.name,
-            instance_id="alloydb-instance",
-            instance_type="PRIMARY",
-            machine_config=gcp.alloydb.InstanceMachineConfigArgs(
-                cpu_count=2,
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
-        source_backup = gcp.alloydb.Backup("sourceBackup",
-            backup_id="alloydb-backup",
-            location="us-central1",
-            cluster_name=source_cluster.name,
-            opts=pulumi.ResourceOptions(depends_on=[source_instance]))
-        restored_from_backup = gcp.alloydb.Cluster("restoredFromBackup",
-            cluster_id="alloydb-backup-restored",
-            location="us-central1",
-            network=default.id,
-            restore_backup_source=gcp.alloydb.ClusterRestoreBackupSourceArgs(
-                backup_name=source_backup.name,
-            ))
-        restored_via_pitr = gcp.alloydb.Cluster("restoredViaPitr",
-            cluster_id="alloydb-pitr-restored",
-            location="us-central1",
-            network=default.id,
-            restore_continuous_backup_source=gcp.alloydb.ClusterRestoreContinuousBackupSourceArgs(
-                cluster=source_cluster.name,
-                point_in_time="2023-08-03T19:19:00.094Z",
-            ))
-        project = gcp.organizations.get_project()
-        ```
 
         ## Import
 
@@ -937,116 +881,6 @@ class Cluster(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
-        ### Alloydb Cluster Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork")
-        default_cluster = gcp.alloydb.Cluster("defaultCluster",
-            cluster_id="alloydb-cluster",
-            location="us-central1",
-            network=default_network.id)
-        project = gcp.organizations.get_project()
-        ```
-        ### Alloydb Cluster Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.Network("default")
-        full = gcp.alloydb.Cluster("full",
-            cluster_id="alloydb-cluster-full",
-            location="us-central1",
-            network=default.id,
-            initial_user=gcp.alloydb.ClusterInitialUserArgs(
-                user="alloydb-cluster-full",
-                password="alloydb-cluster-full",
-            ),
-            continuous_backup_config=gcp.alloydb.ClusterContinuousBackupConfigArgs(
-                enabled=True,
-                recovery_window_days=14,
-            ),
-            automated_backup_policy=gcp.alloydb.ClusterAutomatedBackupPolicyArgs(
-                location="us-central1",
-                backup_window="1800s",
-                enabled=True,
-                weekly_schedule=gcp.alloydb.ClusterAutomatedBackupPolicyWeeklyScheduleArgs(
-                    days_of_weeks=["MONDAY"],
-                    start_times=[gcp.alloydb.ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs(
-                        hours=23,
-                        minutes=0,
-                        seconds=0,
-                        nanos=0,
-                    )],
-                ),
-                quantity_based_retention=gcp.alloydb.ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs(
-                    count=1,
-                ),
-                labels={
-                    "test": "alloydb-cluster-full",
-                },
-            ),
-            labels={
-                "test": "alloydb-cluster-full",
-            })
-        project = gcp.organizations.get_project()
-        ```
-        ### Alloydb Cluster Restore
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.get_network(name="alloydb-network")
-        source_cluster = gcp.alloydb.Cluster("sourceCluster",
-            cluster_id="alloydb-source-cluster",
-            location="us-central1",
-            network=default.id,
-            initial_user=gcp.alloydb.ClusterInitialUserArgs(
-                password="alloydb-source-cluster",
-            ))
-        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
-            address_type="INTERNAL",
-            purpose="VPC_PEERING",
-            prefix_length=16,
-            network=default.id)
-        vpc_connection = gcp.servicenetworking.Connection("vpcConnection",
-            network=default.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_alloc.name])
-        source_instance = gcp.alloydb.Instance("sourceInstance",
-            cluster=source_cluster.name,
-            instance_id="alloydb-instance",
-            instance_type="PRIMARY",
-            machine_config=gcp.alloydb.InstanceMachineConfigArgs(
-                cpu_count=2,
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
-        source_backup = gcp.alloydb.Backup("sourceBackup",
-            backup_id="alloydb-backup",
-            location="us-central1",
-            cluster_name=source_cluster.name,
-            opts=pulumi.ResourceOptions(depends_on=[source_instance]))
-        restored_from_backup = gcp.alloydb.Cluster("restoredFromBackup",
-            cluster_id="alloydb-backup-restored",
-            location="us-central1",
-            network=default.id,
-            restore_backup_source=gcp.alloydb.ClusterRestoreBackupSourceArgs(
-                backup_name=source_backup.name,
-            ))
-        restored_via_pitr = gcp.alloydb.Cluster("restoredViaPitr",
-            cluster_id="alloydb-pitr-restored",
-            location="us-central1",
-            network=default.id,
-            restore_continuous_backup_source=gcp.alloydb.ClusterRestoreContinuousBackupSourceArgs(
-                cluster=source_cluster.name,
-                point_in_time="2023-08-03T19:19:00.094Z",
-            ))
-        project = gcp.organizations.get_project()
-        ```
 
         ## Import
 
@@ -1109,57 +943,29 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ClusterArgs.__new__(ClusterArgs)
 
-            if automated_backup_policy is not None and not isinstance(automated_backup_policy, ClusterAutomatedBackupPolicyArgs):
-                automated_backup_policy = automated_backup_policy or {}
-                def _setter(key, value):
-                    automated_backup_policy[key] = value
-                ClusterAutomatedBackupPolicyArgs._configure(_setter, **automated_backup_policy)
+            automated_backup_policy = _utilities.configure(automated_backup_policy, ClusterAutomatedBackupPolicyArgs, True)
             __props__.__dict__["automated_backup_policy"] = automated_backup_policy
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
-            if continuous_backup_config is not None and not isinstance(continuous_backup_config, ClusterContinuousBackupConfigArgs):
-                continuous_backup_config = continuous_backup_config or {}
-                def _setter(key, value):
-                    continuous_backup_config[key] = value
-                ClusterContinuousBackupConfigArgs._configure(_setter, **continuous_backup_config)
+            continuous_backup_config = _utilities.configure(continuous_backup_config, ClusterContinuousBackupConfigArgs, True)
             __props__.__dict__["continuous_backup_config"] = continuous_backup_config
             __props__.__dict__["display_name"] = display_name
-            if encryption_config is not None and not isinstance(encryption_config, ClusterEncryptionConfigArgs):
-                encryption_config = encryption_config or {}
-                def _setter(key, value):
-                    encryption_config[key] = value
-                ClusterEncryptionConfigArgs._configure(_setter, **encryption_config)
+            encryption_config = _utilities.configure(encryption_config, ClusterEncryptionConfigArgs, True)
             __props__.__dict__["encryption_config"] = encryption_config
-            if initial_user is not None and not isinstance(initial_user, ClusterInitialUserArgs):
-                initial_user = initial_user or {}
-                def _setter(key, value):
-                    initial_user[key] = value
-                ClusterInitialUserArgs._configure(_setter, **initial_user)
+            initial_user = _utilities.configure(initial_user, ClusterInitialUserArgs, True)
             __props__.__dict__["initial_user"] = initial_user
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["network"] = network
-            if network_config is not None and not isinstance(network_config, ClusterNetworkConfigArgs):
-                network_config = network_config or {}
-                def _setter(key, value):
-                    network_config[key] = value
-                ClusterNetworkConfigArgs._configure(_setter, **network_config)
+            network_config = _utilities.configure(network_config, ClusterNetworkConfigArgs, True)
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["project"] = project
-            if restore_backup_source is not None and not isinstance(restore_backup_source, ClusterRestoreBackupSourceArgs):
-                restore_backup_source = restore_backup_source or {}
-                def _setter(key, value):
-                    restore_backup_source[key] = value
-                ClusterRestoreBackupSourceArgs._configure(_setter, **restore_backup_source)
+            restore_backup_source = _utilities.configure(restore_backup_source, ClusterRestoreBackupSourceArgs, True)
             __props__.__dict__["restore_backup_source"] = restore_backup_source
-            if restore_continuous_backup_source is not None and not isinstance(restore_continuous_backup_source, ClusterRestoreContinuousBackupSourceArgs):
-                restore_continuous_backup_source = restore_continuous_backup_source or {}
-                def _setter(key, value):
-                    restore_continuous_backup_source[key] = value
-                ClusterRestoreContinuousBackupSourceArgs._configure(_setter, **restore_continuous_backup_source)
+            restore_continuous_backup_source = _utilities.configure(restore_continuous_backup_source, ClusterRestoreContinuousBackupSourceArgs, True)
             __props__.__dict__["restore_continuous_backup_source"] = restore_continuous_backup_source
             __props__.__dict__["backup_sources"] = None
             __props__.__dict__["continuous_backup_infos"] = None

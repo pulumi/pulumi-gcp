@@ -15,26 +15,6 @@ namespace Pulumi.Gcp.Container
     /// For more information, see:
     /// * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
     /// ## Example Usage
-    /// ### Basic_azure_client
-    /// A basic example of a containerazure azure client
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var primary = new Gcp.Container.AzureClient("primary", new()
-    ///     {
-    ///         ApplicationId = "12345678-1234-1234-1234-123456789111",
-    ///         Location = "us-west1",
-    ///         Project = "my-project-name",
-    ///         TenantId = "12345678-1234-1234-1234-123456789111",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

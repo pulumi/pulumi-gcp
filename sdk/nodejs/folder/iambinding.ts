@@ -18,23 +18,6 @@ import * as utilities from "../utilities";
  *     Use `pulumi import` and inspect the output to ensure
  *     your existing members are preserved.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const department1 = new gcp.organizations.Folder("department1", {
- *     displayName: "Department 1",
- *     parent: "organizations/1234567",
- * });
- * const admin = new gcp.folder.IAMBinding("admin", {
- *     folder: department1.name,
- *     role: "roles/editor",
- *     members: ["user:alice@gmail.com"],
- * });
- * ```
- *
  * ## Import
  *
  * IAM binding imports use space-delimited identifiers; first the resource in question and then the role.

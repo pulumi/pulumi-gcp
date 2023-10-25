@@ -103,15 +103,6 @@ def get_ca_pool_iam_policy(ca_pool: Optional[str] = None,
     """
     Retrieves the current IAM policy data for capool
 
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.certificateauthority.get_ca_pool_iam_policy(ca_pool=google_privateca_ca_pool["default"]["id"])
-    ```
-
 
     :param str ca_pool: Used to find the parent resource to bind the IAM policy to
     :param str location: Location of the CaPool. A full list of valid locations can be found by
@@ -143,15 +134,6 @@ def get_ca_pool_iam_policy_output(ca_pool: Optional[pulumi.Input[str]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCaPoolIamPolicyResult]:
     """
     Retrieves the current IAM policy data for capool
-
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.certificateauthority.get_ca_pool_iam_policy(ca_pool=google_privateca_ca_pool["default"]["id"])
-    ```
 
 
     :param str ca_pool: Used to find the parent resource to bind the IAM policy to

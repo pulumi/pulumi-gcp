@@ -11,27 +11,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
 {
     /// <summary>
     /// ## Example Usage
-    /// ### Artifact Registry Vpcsc Config
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var my_config = new Gcp.ArtifactRegistry.VpcscConfig("my-config", new()
-    ///     {
-    ///         Location = "us-central1",
-    ///         VpcscPolicy = "ALLOW",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

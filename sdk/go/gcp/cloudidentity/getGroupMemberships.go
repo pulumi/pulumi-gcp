@@ -15,32 +15,6 @@ import (
 // Use this data source to get list of the Cloud Identity Group Memberships within a given Group.
 //
 // https://cloud.google.com/identity/docs/concepts/overview#memberships
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudidentity"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudidentity.GetGroupMemberships(ctx, &cloudidentity.GetGroupMembershipsArgs{
-//				Group: "groups/123eab45c6defghi",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetGroupMemberships(ctx *pulumi.Context, args *GetGroupMembershipsArgs, opts ...pulumi.InvokeOption) (*GetGroupMembershipsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGroupMembershipsResult

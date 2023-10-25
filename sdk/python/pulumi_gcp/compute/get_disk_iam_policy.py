@@ -103,17 +103,6 @@ def get_disk_iam_policy(name: Optional[str] = None,
     """
     Retrieves the current IAM policy data for disk
 
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.compute.get_disk_iam_policy(project=google_compute_disk["default"]["project"],
-        zone=google_compute_disk["default"]["zone"],
-        name=google_compute_disk["default"]["name"])
-    ```
-
 
     :param str name: Used to find the parent resource to bind the IAM policy to
     :param str project: The ID of the project in which the resource belongs.
@@ -145,17 +134,6 @@ def get_disk_iam_policy_output(name: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDiskIamPolicyResult]:
     """
     Retrieves the current IAM policy data for disk
-
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.compute.get_disk_iam_policy(project=google_compute_disk["default"]["project"],
-        zone=google_compute_disk["default"]["zone"],
-        name=google_compute_disk["default"]["name"])
-    ```
 
 
     :param str name: Used to find the parent resource to bind the IAM policy to

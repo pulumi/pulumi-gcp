@@ -14,45 +14,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Get the IP address from a static address. For more information see
         /// the official [API](https://cloud.google.com/compute/docs/reference/latest/addresses/get) documentation.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myAddress = Gcp.Compute.GetAddress.Invoke(new()
-        ///     {
-        ///         Name = "foobar",
-        ///     });
-        /// 
-        ///     var prod = new Gcp.Dns.ManagedZone("prod", new()
-        ///     {
-        ///         DnsName = "prod.mydomain.com.",
-        ///     });
-        /// 
-        ///     var frontend = new Gcp.Dns.RecordSet("frontend", new()
-        ///     {
-        ///         Name = prod.DnsName.Apply(dnsName =&gt; $"frontend.{dnsName}"),
-        ///         Type = "A",
-        ///         Ttl = 300,
-        ///         ManagedZone = prod.Name,
-        ///         Rrdatas = new[]
-        ///         {
-        ///             myAddress.Apply(getAddressResult =&gt; getAddressResult.Address),
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAddressResult> InvokeAsync(GetAddressArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAddressResult>("gcp:compute/getAddress:getAddress", args ?? new GetAddressArgs(), options.WithDefaults());
@@ -60,45 +21,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Get the IP address from a static address. For more information see
         /// the official [API](https://cloud.google.com/compute/docs/reference/latest/addresses/get) documentation.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myAddress = Gcp.Compute.GetAddress.Invoke(new()
-        ///     {
-        ///         Name = "foobar",
-        ///     });
-        /// 
-        ///     var prod = new Gcp.Dns.ManagedZone("prod", new()
-        ///     {
-        ///         DnsName = "prod.mydomain.com.",
-        ///     });
-        /// 
-        ///     var frontend = new Gcp.Dns.RecordSet("frontend", new()
-        ///     {
-        ///         Name = prod.DnsName.Apply(dnsName =&gt; $"frontend.{dnsName}"),
-        ///         Type = "A",
-        ///         Ttl = 300,
-        ///         ManagedZone = prod.Name,
-        ///         Rrdatas = new[]
-        ///         {
-        ///             myAddress.Apply(getAddressResult =&gt; getAddressResult.Address),
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAddressResult> Invoke(GetAddressInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAddressResult>("gcp:compute/getAddress:getAddress", args ?? new GetAddressInvokeArgs(), options.WithDefaults());

@@ -43,11 +43,19 @@ class OrganizationSecurityPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             parent: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if parent is None:
+            raise TypeError("Missing 'parent' argument")
+
         _setter("display_name", display_name)
         _setter("parent", parent)
         if description is not None:
@@ -157,7 +165,13 @@ class _OrganizationSecurityPolicyState:
              parent: Optional[pulumi.Input[str]] = None,
              policy_id: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+
         if description is not None:
             _setter("description", description)
         if display_name is not None:
@@ -273,17 +287,6 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
             * [Creating a firewall policy](https://cloud.google.com/vpc/docs/using-firewall-policies#create-policy)
 
         ## Example Usage
-        ### Organization Security Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            display_name="tf-test",
-            parent="organizations/123456789",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -328,17 +331,6 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
             * [Creating a firewall policy](https://cloud.google.com/vpc/docs/using-firewall-policies#create-policy)
 
         ## Example Usage
-        ### Organization Security Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            display_name="tf-test",
-            parent="organizations/123456789",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 

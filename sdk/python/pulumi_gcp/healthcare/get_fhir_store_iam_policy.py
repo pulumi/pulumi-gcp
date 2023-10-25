@@ -82,15 +82,6 @@ def get_fhir_store_iam_policy(fhir_store_id: Optional[str] = None,
     """
     Retrieves the current IAM policy data for a Google Cloud Healthcare FHIR store.
 
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    foo = gcp.healthcare.get_fhir_store_iam_policy(fhir_store_id=google_healthcare_fhir_store["fhir_store"]["id"])
-    ```
-
 
     :param str fhir_store_id: The FHIR store ID, in the form
            `{project_id}/{location_name}/{dataset_name}/{fhir_store_name}` or
@@ -114,15 +105,6 @@ def get_fhir_store_iam_policy_output(fhir_store_id: Optional[pulumi.Input[str]] 
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFhirStoreIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a Google Cloud Healthcare FHIR store.
-
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    foo = gcp.healthcare.get_fhir_store_iam_policy(fhir_store_id=google_healthcare_fhir_store["fhir_store"]["id"])
-    ```
 
 
     :param str fhir_store_id: The FHIR store ID, in the form

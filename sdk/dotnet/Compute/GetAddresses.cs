@@ -15,42 +15,6 @@ namespace Pulumi.Gcp.Compute
         /// List IP addresses in a project. For more information see
         /// the official API [list](https://cloud.google.com/compute/docs/reference/latest/addresses/list) and 
         /// [aggregated list](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var test = Gcp.Compute.GetAddresses.Invoke(new()
-        ///     {
-        ///         Filter = "name:test-*",
-        ///     });
-        /// 
-        ///     var prod = new Gcp.Dns.ManagedZone("prod", new()
-        ///     {
-        ///         DnsName = "prod.mydomain.com.",
-        ///     });
-        /// 
-        ///     var frontend = new Gcp.Dns.RecordSet("frontend", new()
-        ///     {
-        ///         Name = prod.DnsName.Apply(dnsName =&gt; $"frontend.{dnsName}"),
-        ///         Type = "A",
-        ///         Ttl = 300,
-        ///         ManagedZone = prod.Name,
-        ///         Rrdatas = test.Apply(getAddressesResult =&gt; getAddressesResult.Addresses).Select(__item =&gt; __item.Address).ToList(),
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAddressesResult> InvokeAsync(GetAddressesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAddressesResult>("gcp:compute/getAddresses:getAddresses", args ?? new GetAddressesArgs(), options.WithDefaults());
@@ -59,42 +23,6 @@ namespace Pulumi.Gcp.Compute
         /// List IP addresses in a project. For more information see
         /// the official API [list](https://cloud.google.com/compute/docs/reference/latest/addresses/list) and 
         /// [aggregated list](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var test = Gcp.Compute.GetAddresses.Invoke(new()
-        ///     {
-        ///         Filter = "name:test-*",
-        ///     });
-        /// 
-        ///     var prod = new Gcp.Dns.ManagedZone("prod", new()
-        ///     {
-        ///         DnsName = "prod.mydomain.com.",
-        ///     });
-        /// 
-        ///     var frontend = new Gcp.Dns.RecordSet("frontend", new()
-        ///     {
-        ///         Name = prod.DnsName.Apply(dnsName =&gt; $"frontend.{dnsName}"),
-        ///         Type = "A",
-        ///         Ttl = 300,
-        ///         ManagedZone = prod.Name,
-        ///         Rrdatas = test.Apply(getAddressesResult =&gt; getAddressesResult.Addresses).Select(__item =&gt; __item.Address).ToList(),
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAddressesResult> Invoke(GetAddressesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAddressesResult>("gcp:compute/getAddresses:getAddresses", args ?? new GetAddressesInvokeArgs(), options.WithDefaults());

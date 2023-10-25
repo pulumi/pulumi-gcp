@@ -89,19 +89,6 @@ def get_organization_service_account(organization_id: Optional[str] = None,
     this account needs to be granted the `cloudkms.signerVerifier` IAM role on the
     Cloud KMS key used to sign approvals.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    service_account = gcp.accessapproval.get_organization_service_account(organization_id="my-organization")
-    iam = gcp.kms.CryptoKeyIAMMember("iam",
-        crypto_key_id=google_kms_crypto_key["crypto_key"]["id"],
-        role="roles/cloudkms.signerVerifier",
-        member=f"serviceAccount:{service_account.account_email}")
-    ```
-
 
     :param str organization_id: The organization ID the service account was created for.
     """
@@ -128,19 +115,6 @@ def get_organization_service_account_output(organization_id: Optional[pulumi.Inp
     [custom signing key](https://cloud.google.com/cloud-provider-access-management/access-approval/docs/review-approve-access-requests-custom-keys),
     this account needs to be granted the `cloudkms.signerVerifier` IAM role on the
     Cloud KMS key used to sign approvals.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    service_account = gcp.accessapproval.get_organization_service_account(organization_id="my-organization")
-    iam = gcp.kms.CryptoKeyIAMMember("iam",
-        crypto_key_id=google_kms_crypto_key["crypto_key"]["id"],
-        role="roles/cloudkms.signerVerifier",
-        member=f"serviceAccount:{service_account.account_email}")
-    ```
 
 
     :param str organization_id: The organization ID the service account was created for.

@@ -20,41 +20,6 @@ import (
 // the marketplace prior to using this resource.
 //
 // ## Example Usage
-// ### Identity Platform Tenant Default Supported Idp Config Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/identityplatform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tenant, err := identityplatform.NewTenant(ctx, "tenant", &identityplatform.TenantArgs{
-//				DisplayName: pulumi.String("tenant"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = identityplatform.NewTenantDefaultSupportedIdpConfig(ctx, "idpConfig", &identityplatform.TenantDefaultSupportedIdpConfigArgs{
-//				Enabled:      pulumi.Bool(true),
-//				Tenant:       tenant.Name,
-//				IdpId:        pulumi.String("playgames.google.com"),
-//				ClientId:     pulumi.String("my-client-id"),
-//				ClientSecret: pulumi.String("secret"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

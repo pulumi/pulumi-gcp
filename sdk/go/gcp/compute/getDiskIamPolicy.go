@@ -13,34 +13,6 @@ import (
 )
 
 // Retrieves the current IAM policy data for disk
-//
-// ## example
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.LookupDiskIamPolicy(ctx, &compute.LookupDiskIamPolicyArgs{
-//				Project: pulumi.StringRef(google_compute_disk.Default.Project),
-//				Zone:    pulumi.StringRef(google_compute_disk.Default.Zone),
-//				Name:    google_compute_disk.Default.Name,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupDiskIamPolicy(ctx *pulumi.Context, args *LookupDiskIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupDiskIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDiskIamPolicyResult

@@ -45,11 +45,21 @@ class DomainMappingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain_name: pulumi.Input[str],
+             domain_name: Optional[pulumi.Input[str]] = None,
              override_strategy: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              ssl_settings: Optional[pulumi.Input['DomainMappingSslSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if domain_name is None and 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if override_strategy is None and 'overrideStrategy' in kwargs:
+            override_strategy = kwargs['overrideStrategy']
+        if ssl_settings is None and 'sslSettings' in kwargs:
+            ssl_settings = kwargs['sslSettings']
+
         _setter("domain_name", domain_name)
         if override_strategy is not None:
             _setter("override_strategy", override_strategy)
@@ -161,7 +171,17 @@ class _DomainMappingState:
              project: Optional[pulumi.Input[str]] = None,
              resource_records: Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingResourceRecordArgs']]]] = None,
              ssl_settings: Optional[pulumi.Input['DomainMappingSslSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if domain_name is None and 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if override_strategy is None and 'overrideStrategy' in kwargs:
+            override_strategy = kwargs['overrideStrategy']
+        if resource_records is None and 'resourceRecords' in kwargs:
+            resource_records = kwargs['resourceRecords']
+        if ssl_settings is None and 'sslSettings' in kwargs:
+            ssl_settings = kwargs['sslSettings']
+
         if domain_name is not None:
             _setter("domain_name", domain_name)
         if name is not None:
@@ -278,18 +298,6 @@ class DomainMapping(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/mapping-custom-domains)
 
         ## Example Usage
-        ### App Engine Domain Mapping Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        domain_mapping = gcp.appengine.DomainMapping("domainMapping",
-            domain_name="verified-domain.com",
-            ssl_settings=gcp.appengine.DomainMappingSslSettingsArgs(
-                ssl_management_type="AUTOMATIC",
-            ))
-        ```
 
         ## Import
 
@@ -338,18 +346,6 @@ class DomainMapping(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/mapping-custom-domains)
 
         ## Example Usage
-        ### App Engine Domain Mapping Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        domain_mapping = gcp.appengine.DomainMapping("domainMapping",
-            domain_name="verified-domain.com",
-            ssl_settings=gcp.appengine.DomainMappingSslSettingsArgs(
-                ssl_management_type="AUTOMATIC",
-            ))
-        ```
 
         ## Import
 
@@ -404,11 +400,7 @@ class DomainMapping(pulumi.CustomResource):
             __props__.__dict__["domain_name"] = domain_name
             __props__.__dict__["override_strategy"] = override_strategy
             __props__.__dict__["project"] = project
-            if ssl_settings is not None and not isinstance(ssl_settings, DomainMappingSslSettingsArgs):
-                ssl_settings = ssl_settings or {}
-                def _setter(key, value):
-                    ssl_settings[key] = value
-                DomainMappingSslSettingsArgs._configure(_setter, **ssl_settings)
+            ssl_settings = _utilities.configure(ssl_settings, DomainMappingSslSettingsArgs, True)
             __props__.__dict__["ssl_settings"] = ssl_settings
             __props__.__dict__["name"] = None
             __props__.__dict__["resource_records"] = None

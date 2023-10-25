@@ -16,34 +16,6 @@ import * as utilities from "../utilities";
  *     * [Managing Topics](https://cloud.google.com/pubsub/lite/docs/topics)
  *
  * ## Example Usage
- * ### Pubsub Lite Topic Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const project = gcp.organizations.getProject({});
- * const exampleLiteReservation = new gcp.pubsub.LiteReservation("exampleLiteReservation", {
- *     project: project.then(project => project.number),
- *     throughputCapacity: 2,
- * });
- * const exampleLiteTopic = new gcp.pubsub.LiteTopic("exampleLiteTopic", {
- *     project: project.then(project => project.number),
- *     partitionConfig: {
- *         count: 1,
- *         capacity: {
- *             publishMibPerSec: 4,
- *             subscribeMibPerSec: 8,
- *         },
- *     },
- *     retentionConfig: {
- *         perPartitionBytes: "32212254720",
- *     },
- *     reservationConfig: {
- *         throughputReservation: exampleLiteReservation.name,
- *     },
- * });
- * ```
  *
  * ## Import
  *

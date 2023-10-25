@@ -83,15 +83,6 @@ def get_web_type_compute_iam_policy(project: Optional[str] = None,
     """
     Retrieves the current IAM policy data for webtypecompute
 
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.iap.get_web_type_compute_iam_policy(project=google_project_service["project_service"]["project"])
-    ```
-
 
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -113,15 +104,6 @@ def get_web_type_compute_iam_policy_output(project: Optional[pulumi.Input[Option
                                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWebTypeComputeIamPolicyResult]:
     """
     Retrieves the current IAM policy data for webtypecompute
-
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.iap.get_web_type_compute_iam_policy(project=google_project_service["project_service"]["project"])
-    ```
 
 
     :param str project: The ID of the project in which the resource belongs.

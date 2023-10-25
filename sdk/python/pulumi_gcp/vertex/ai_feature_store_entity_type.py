@@ -50,13 +50,21 @@ class AiFeatureStoreEntityTypeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             featurestore: pulumi.Input[str],
+             featurestore: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              monitoring_config: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              offline_storage_ttl_days: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if featurestore is None:
+            raise TypeError("Missing 'featurestore' argument")
+        if monitoring_config is None and 'monitoringConfig' in kwargs:
+            monitoring_config = kwargs['monitoringConfig']
+        if offline_storage_ttl_days is None and 'offlineStorageTtlDays' in kwargs:
+            offline_storage_ttl_days = kwargs['offlineStorageTtlDays']
+
         _setter("featurestore", featurestore)
         if description is not None:
             _setter("description", description)
@@ -208,7 +216,17 @@ class _AiFeatureStoreEntityTypeState:
              offline_storage_ttl_days: Optional[pulumi.Input[int]] = None,
              region: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if monitoring_config is None and 'monitoringConfig' in kwargs:
+            monitoring_config = kwargs['monitoringConfig']
+        if offline_storage_ttl_days is None and 'offlineStorageTtlDays' in kwargs:
+            offline_storage_ttl_days = kwargs['offlineStorageTtlDays']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:
@@ -380,85 +398,6 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
         ## Example Usage
-        ### Vertex Ai Featurestore Entitytype
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        featurestore = gcp.vertex.AiFeatureStore("featurestore",
-            labels={
-                "foo": "bar",
-            },
-            region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
-                fixed_node_count=2,
-            ),
-            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
-                kms_key_name="kms-name",
-            ))
-        entity = gcp.vertex.AiFeatureStoreEntityType("entity",
-            labels={
-                "foo": "bar",
-            },
-            description="test description",
-            featurestore=featurestore.id,
-            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs(
-                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(
-                    disabled=False,
-                    monitoring_interval_days=1,
-                    staleness_days=21,
-                ),
-                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs(
-                    value=0.8,
-                ),
-                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs(
-                    value=10,
-                ),
-                import_features_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs(
-                    state="ENABLED",
-                    anomaly_detection_baseline="PREVIOUS_IMPORT_FEATURES_STATS",
-                ),
-            ))
-        ```
-        ### Vertex Ai Featurestore Entitytype With Beta Fields
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        featurestore = gcp.vertex.AiFeatureStore("featurestore",
-            labels={
-                "foo": "bar",
-            },
-            region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
-                fixed_node_count=2,
-            ),
-            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
-                kms_key_name="kms-name",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        entity = gcp.vertex.AiFeatureStoreEntityType("entity",
-            labels={
-                "foo": "bar",
-            },
-            featurestore=featurestore.id,
-            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs(
-                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(
-                    disabled=False,
-                    monitoring_interval="86400s",
-                ),
-                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs(
-                    value=0.3,
-                ),
-                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs(
-                    value=0.3,
-                ),
-            ),
-            offline_storage_ttl_days=30,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -500,85 +439,6 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
         ## Example Usage
-        ### Vertex Ai Featurestore Entitytype
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        featurestore = gcp.vertex.AiFeatureStore("featurestore",
-            labels={
-                "foo": "bar",
-            },
-            region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
-                fixed_node_count=2,
-            ),
-            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
-                kms_key_name="kms-name",
-            ))
-        entity = gcp.vertex.AiFeatureStoreEntityType("entity",
-            labels={
-                "foo": "bar",
-            },
-            description="test description",
-            featurestore=featurestore.id,
-            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs(
-                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(
-                    disabled=False,
-                    monitoring_interval_days=1,
-                    staleness_days=21,
-                ),
-                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs(
-                    value=0.8,
-                ),
-                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs(
-                    value=10,
-                ),
-                import_features_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs(
-                    state="ENABLED",
-                    anomaly_detection_baseline="PREVIOUS_IMPORT_FEATURES_STATS",
-                ),
-            ))
-        ```
-        ### Vertex Ai Featurestore Entitytype With Beta Fields
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        featurestore = gcp.vertex.AiFeatureStore("featurestore",
-            labels={
-                "foo": "bar",
-            },
-            region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
-                fixed_node_count=2,
-            ),
-            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
-                kms_key_name="kms-name",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        entity = gcp.vertex.AiFeatureStoreEntityType("entity",
-            labels={
-                "foo": "bar",
-            },
-            featurestore=featurestore.id,
-            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs(
-                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(
-                    disabled=False,
-                    monitoring_interval="86400s",
-                ),
-                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs(
-                    value=0.3,
-                ),
-                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs(
-                    value=0.3,
-                ),
-            ),
-            offline_storage_ttl_days=30,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -627,11 +487,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                 raise TypeError("Missing required property 'featurestore'")
             __props__.__dict__["featurestore"] = featurestore
             __props__.__dict__["labels"] = labels
-            if monitoring_config is not None and not isinstance(monitoring_config, AiFeatureStoreEntityTypeMonitoringConfigArgs):
-                monitoring_config = monitoring_config or {}
-                def _setter(key, value):
-                    monitoring_config[key] = value
-                AiFeatureStoreEntityTypeMonitoringConfigArgs._configure(_setter, **monitoring_config)
+            monitoring_config = _utilities.configure(monitoring_config, AiFeatureStoreEntityTypeMonitoringConfigArgs, True)
             __props__.__dict__["monitoring_config"] = monitoring_config
             __props__.__dict__["name"] = name
             __props__.__dict__["offline_storage_ttl_days"] = offline_storage_ttl_days

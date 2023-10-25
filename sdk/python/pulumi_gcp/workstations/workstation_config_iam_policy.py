@@ -51,12 +51,26 @@ class WorkstationConfigIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy_data: pulumi.Input[str],
-             workstation_cluster_id: pulumi.Input[str],
-             workstation_config_id: pulumi.Input[str],
+             policy_data: Optional[pulumi.Input[str]] = None,
+             workstation_cluster_id: Optional[pulumi.Input[str]] = None,
+             workstation_config_id: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+        if workstation_cluster_id is None and 'workstationClusterId' in kwargs:
+            workstation_cluster_id = kwargs['workstationClusterId']
+        if workstation_cluster_id is None:
+            raise TypeError("Missing 'workstation_cluster_id' argument")
+        if workstation_config_id is None and 'workstationConfigId' in kwargs:
+            workstation_config_id = kwargs['workstationConfigId']
+        if workstation_config_id is None:
+            raise TypeError("Missing 'workstation_config_id' argument")
+
         _setter("policy_data", policy_data)
         _setter("workstation_cluster_id", workstation_cluster_id)
         _setter("workstation_config_id", workstation_config_id)
@@ -184,7 +198,15 @@ class _WorkstationConfigIamPolicyState:
              project: Optional[pulumi.Input[str]] = None,
              workstation_cluster_id: Optional[pulumi.Input[str]] = None,
              workstation_config_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if workstation_cluster_id is None and 'workstationClusterId' in kwargs:
+            workstation_cluster_id = kwargs['workstationClusterId']
+        if workstation_config_id is None and 'workstationConfigId' in kwargs:
+            workstation_config_id = kwargs['workstationConfigId']
+
         if etag is not None:
             _setter("etag", etag)
         if location is not None:

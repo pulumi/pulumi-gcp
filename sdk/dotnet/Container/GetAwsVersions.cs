@@ -13,66 +13,12 @@ namespace Pulumi.Gcp.Container
     {
         /// <summary>
         /// Provides access to available Kubernetes versions in a location for a given project.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var central1b = Gcp.Container.GetAwsVersions.Invoke(new()
-        ///     {
-        ///         Location = "us-west1",
-        ///         Project = "my-project",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstAvailableVersion"] = data.Google_container_aws_versions.Versions.Valid_versions[0],
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAwsVersionsResult> InvokeAsync(GetAwsVersionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsVersionsResult>("gcp:container/getAwsVersions:getAwsVersions", args ?? new GetAwsVersionsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides access to available Kubernetes versions in a location for a given project.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var central1b = Gcp.Container.GetAwsVersions.Invoke(new()
-        ///     {
-        ///         Location = "us-west1",
-        ///         Project = "my-project",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstAvailableVersion"] = data.Google_container_aws_versions.Versions.Valid_versions[0],
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAwsVersionsResult> Invoke(GetAwsVersionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsVersionsResult>("gcp:container/getAwsVersions:getAwsVersions", args ?? new GetAwsVersionsInvokeArgs(), options.WithDefaults());

@@ -9,52 +9,6 @@ import * as utilities from "../utilities";
  * that have been issued for a particular hostname
  *
  * ## Example Usage
- * ### Certificate Manager Certificate Map Entry Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const certificateMap = new gcp.certificatemanager.CertificateMap("certificateMap", {
- *     description: "My acceptance test certificate map",
- *     labels: {
- *         terraform: "true",
- *         "acc-test": "true",
- *     },
- * });
- * const instance = new gcp.certificatemanager.DnsAuthorization("instance", {
- *     description: "The default dnss",
- *     domain: "subdomain.hashicorptest.com",
- * });
- * const instance2 = new gcp.certificatemanager.DnsAuthorization("instance2", {
- *     description: "The default dnss",
- *     domain: "subdomain2.hashicorptest.com",
- * });
- * const certificate = new gcp.certificatemanager.Certificate("certificate", {
- *     description: "The default cert",
- *     scope: "DEFAULT",
- *     managed: {
- *         domains: [
- *             instance.domain,
- *             instance2.domain,
- *         ],
- *         dnsAuthorizations: [
- *             instance.id,
- *             instance2.id,
- *         ],
- *     },
- * });
- * const _default = new gcp.certificatemanager.CertificateMapEntry("default", {
- *     description: "My acceptance test certificate map entry",
- *     map: certificateMap.name,
- *     labels: {
- *         terraform: "true",
- *         "acc-test": "true",
- *     },
- *     certificates: [certificate.id],
- *     matcher: "PRIMARY",
- * });
- * ```
  *
  * ## Import
  *

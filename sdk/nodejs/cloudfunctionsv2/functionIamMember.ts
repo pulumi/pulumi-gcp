@@ -21,56 +21,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.cloudfunctionsv2.FunctionIamBinding` resources **can be** used in conjunction with `gcp.cloudfunctionsv2.FunctionIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_cloudfunctions2\_function\_iam\_policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/viewer",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const policy = new gcp.cloudfunctionsv2.FunctionIamPolicy("policy", {
- *     project: google_cloudfunctions2_function["function"].project,
- *     location: google_cloudfunctions2_function["function"].location,
- *     cloudFunction: google_cloudfunctions2_function["function"].name,
- *     policyData: admin.then(admin => admin.policyData),
- * });
- * ```
- *
- * ## google\_cloudfunctions2\_function\_iam\_binding
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const binding = new gcp.cloudfunctionsv2.FunctionIamBinding("binding", {
- *     project: google_cloudfunctions2_function["function"].project,
- *     location: google_cloudfunctions2_function["function"].location,
- *     cloudFunction: google_cloudfunctions2_function["function"].name,
- *     role: "roles/viewer",
- *     members: ["user:jane@example.com"],
- * });
- * ```
- *
- * ## google\_cloudfunctions2\_function\_iam\_member
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const member = new gcp.cloudfunctionsv2.FunctionIamMember("member", {
- *     project: google_cloudfunctions2_function["function"].project,
- *     location: google_cloudfunctions2_function["function"].location,
- *     cloudFunction: google_cloudfunctions2_function["function"].name,
- *     role: "roles/viewer",
- *     member: "user:jane@example.com",
- * });
- * ```
- *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/functions/{{cloud_function}} * {{project}}/{{location}}/{{cloud_function}} * {{location}}/{{cloud_function}} * {{cloud_function}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Functions (2nd gen) function IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

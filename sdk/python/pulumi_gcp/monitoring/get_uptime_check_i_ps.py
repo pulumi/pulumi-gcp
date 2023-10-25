@@ -61,16 +61,6 @@ def get_uptime_check_i_ps(opts: Optional[pulumi.InvokeOptions] = None) -> Awaita
     """
     Returns the list of IP addresses that checkers run from. For more information see
     the [official documentation](https://cloud.google.com/monitoring/uptime-checks#get-ips).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    ips = gcp.monitoring.get_uptime_check_i_ps()
-    pulumi.export("ipList", ips.uptime_check_ips)
-    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -86,15 +76,5 @@ def get_uptime_check_i_ps_output(opts: Optional[pulumi.InvokeOptions] = None) ->
     """
     Returns the list of IP addresses that checkers run from. For more information see
     the [official documentation](https://cloud.google.com/monitoring/uptime-checks#get-ips).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    ips = gcp.monitoring.get_uptime_check_i_ps()
-    pulumi.export("ipList", ips.uptime_check_ips)
-    ```
     """
     ...

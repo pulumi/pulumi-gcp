@@ -33,9 +33,15 @@ class EnvKeystoreArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             env_id: pulumi.Input[str],
+             env_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if env_id is None and 'envId' in kwargs:
+            env_id = kwargs['envId']
+        if env_id is None:
+            raise TypeError("Missing 'env_id' argument")
+
         _setter("env_id", env_id)
         if name is not None:
             _setter("name", name)
@@ -97,7 +103,11 @@ class _EnvKeystoreState:
              aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              env_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if env_id is None and 'envId' in kwargs:
+            env_id = kwargs['envId']
+
         if aliases is not None:
             _setter("aliases", aliases)
         if env_id is not None:

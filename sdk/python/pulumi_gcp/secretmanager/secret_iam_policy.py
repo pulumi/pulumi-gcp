@@ -45,10 +45,20 @@ class SecretIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy_data: pulumi.Input[str],
-             secret_id: pulumi.Input[str],
+             policy_data: Optional[pulumi.Input[str]] = None,
+             secret_id: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+        if secret_id is None and 'secretId' in kwargs:
+            secret_id = kwargs['secretId']
+        if secret_id is None:
+            raise TypeError("Missing 'secret_id' argument")
+
         _setter("policy_data", policy_data)
         _setter("secret_id", secret_id)
         if project is not None:
@@ -143,7 +153,13 @@ class _SecretIamPolicyState:
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              secret_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if secret_id is None and 'secretId' in kwargs:
+            secret_id = kwargs['secretId']
+
         if etag is not None:
             _setter("etag", etag)
         if policy_data is not None:
@@ -237,48 +253,6 @@ class SecretIamPolicy(pulumi.CustomResource):
 
         > **Note:** `secretmanager.SecretIamBinding` resources **can be** used in conjunction with `secretmanager.SecretIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_secret\\_manager\\_secret\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/secretmanager.secretAccessor",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.secretmanager.SecretIamPolicy("policy",
-            project=google_secret_manager_secret["secret-basic"]["project"],
-            secret_id=google_secret_manager_secret["secret-basic"]["secret_id"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_secret\\_manager\\_secret\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.secretmanager.SecretIamBinding("binding",
-            project=google_secret_manager_secret["secret-basic"]["project"],
-            secret_id=google_secret_manager_secret["secret-basic"]["secret_id"],
-            role="roles/secretmanager.secretAccessor",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_secret\\_manager\\_secret\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.secretmanager.SecretIamMember("member",
-            project=google_secret_manager_secret["secret-basic"]["project"],
-            secret_id=google_secret_manager_secret["secret-basic"]["secret_id"],
-            role="roles/secretmanager.secretAccessor",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/secrets/{{secret_id}} * {{project}}/{{secret_id}} * {{secret_id}} Any variables not passed in the import command will be taken from the provider configuration. Secret Manager secret IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -342,48 +316,6 @@ class SecretIamPolicy(pulumi.CustomResource):
         > **Note:** `secretmanager.SecretIamPolicy` **cannot** be used in conjunction with `secretmanager.SecretIamBinding` and `secretmanager.SecretIamMember` or they will fight over what your policy should be.
 
         > **Note:** `secretmanager.SecretIamBinding` resources **can be** used in conjunction with `secretmanager.SecretIamMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\\_secret\\_manager\\_secret\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/secretmanager.secretAccessor",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.secretmanager.SecretIamPolicy("policy",
-            project=google_secret_manager_secret["secret-basic"]["project"],
-            secret_id=google_secret_manager_secret["secret-basic"]["secret_id"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_secret\\_manager\\_secret\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.secretmanager.SecretIamBinding("binding",
-            project=google_secret_manager_secret["secret-basic"]["project"],
-            secret_id=google_secret_manager_secret["secret-basic"]["secret_id"],
-            role="roles/secretmanager.secretAccessor",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_secret\\_manager\\_secret\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.secretmanager.SecretIamMember("member",
-            project=google_secret_manager_secret["secret-basic"]["project"],
-            secret_id=google_secret_manager_secret["secret-basic"]["secret_id"],
-            role="roles/secretmanager.secretAccessor",
-            member="user:jane@example.com")
-        ```
 
         ## Import
 

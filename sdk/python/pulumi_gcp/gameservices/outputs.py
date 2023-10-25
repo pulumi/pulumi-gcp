@@ -60,9 +60,17 @@ class GameServerClusterConnectionInfo(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             gke_cluster_reference: 'outputs.GameServerClusterConnectionInfoGkeClusterReference',
-             namespace: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             gke_cluster_reference: Optional['outputs.GameServerClusterConnectionInfoGkeClusterReference'] = None,
+             namespace: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if gke_cluster_reference is None and 'gkeClusterReference' in kwargs:
+            gke_cluster_reference = kwargs['gkeClusterReference']
+        if gke_cluster_reference is None:
+            raise TypeError("Missing 'gke_cluster_reference' argument")
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+
         _setter("gke_cluster_reference", gke_cluster_reference)
         _setter("namespace", namespace)
 
@@ -109,8 +117,12 @@ class GameServerClusterConnectionInfoGkeClusterReference(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             cluster: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cluster is None:
+            raise TypeError("Missing 'cluster' argument")
+
         _setter("cluster", cluster)
 
     @property
@@ -173,9 +185,15 @@ class GameServerConfigFleetConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             fleet_spec: str,
+             fleet_spec: Optional[str] = None,
              name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if fleet_spec is None and 'fleetSpec' in kwargs:
+            fleet_spec = kwargs['fleetSpec']
+        if fleet_spec is None:
+            raise TypeError("Missing 'fleet_spec' argument")
+
         _setter("fleet_spec", fleet_spec)
         if name is not None:
             _setter("name", name)
@@ -251,11 +269,19 @@ class GameServerConfigScalingConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             fleet_autoscaler_spec: str,
-             name: str,
+             fleet_autoscaler_spec: Optional[str] = None,
+             name: Optional[str] = None,
              schedules: Optional[Sequence['outputs.GameServerConfigScalingConfigSchedule']] = None,
              selectors: Optional[Sequence['outputs.GameServerConfigScalingConfigSelector']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if fleet_autoscaler_spec is None and 'fleetAutoscalerSpec' in kwargs:
+            fleet_autoscaler_spec = kwargs['fleetAutoscalerSpec']
+        if fleet_autoscaler_spec is None:
+            raise TypeError("Missing 'fleet_autoscaler_spec' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("fleet_autoscaler_spec", fleet_autoscaler_spec)
         _setter("name", name)
         if schedules is not None:
@@ -358,7 +384,17 @@ class GameServerConfigScalingConfigSchedule(dict):
              cron_spec: Optional[str] = None,
              end_time: Optional[str] = None,
              start_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cron_job_duration is None and 'cronJobDuration' in kwargs:
+            cron_job_duration = kwargs['cronJobDuration']
+        if cron_spec is None and 'cronSpec' in kwargs:
+            cron_spec = kwargs['cronSpec']
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+
         if cron_job_duration is not None:
             _setter("cron_job_duration", cron_job_duration)
         if cron_spec is not None:
@@ -422,7 +458,9 @@ class GameServerConfigScalingConfigSelector(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              labels: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if labels is not None:
             _setter("labels", labels)
 
@@ -474,7 +512,13 @@ class GameServerDeploymentRolloutGameServerConfigOverride(dict):
              _setter: Callable[[Any, Any], None],
              config_version: Optional[str] = None,
              realms_selector: Optional['outputs.GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if config_version is None and 'configVersion' in kwargs:
+            config_version = kwargs['configVersion']
+        if realms_selector is None and 'realmsSelector' in kwargs:
+            realms_selector = kwargs['realmsSelector']
+
         if config_version is not None:
             _setter("config_version", config_version)
         if realms_selector is not None:
@@ -513,7 +557,9 @@ class GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              realms: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if realms is not None:
             _setter("realms", realms)
 
@@ -543,9 +589,19 @@ class GetGameServerDeploymentRolloutGameServerConfigOverrideResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config_version: str,
-             realms_selectors: Sequence['outputs.GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             config_version: Optional[str] = None,
+             realms_selectors: Optional[Sequence['outputs.GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if config_version is None and 'configVersion' in kwargs:
+            config_version = kwargs['configVersion']
+        if config_version is None:
+            raise TypeError("Missing 'config_version' argument")
+        if realms_selectors is None and 'realmsSelectors' in kwargs:
+            realms_selectors = kwargs['realmsSelectors']
+        if realms_selectors is None:
+            raise TypeError("Missing 'realms_selectors' argument")
+
         _setter("config_version", config_version)
         _setter("realms_selectors", realms_selectors)
 
@@ -580,8 +636,12 @@ class GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorResult
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             realms: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             realms: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if realms is None:
+            raise TypeError("Missing 'realms' argument")
+
         _setter("realms", realms)
 
     @property

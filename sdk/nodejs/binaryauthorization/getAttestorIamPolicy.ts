@@ -6,18 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for attestor
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.binaryauthorization.getAttestorIamPolicy({
- *     project: google_binary_authorization_attestor.attestor.project,
- *     attestor: google_binary_authorization_attestor.attestor.name,
- * });
- * ```
  */
 export function getAttestorIamPolicy(args: GetAttestorIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAttestorIamPolicyResult> {
 
@@ -65,18 +53,6 @@ export interface GetAttestorIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for attestor
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.binaryauthorization.getAttestorIamPolicy({
- *     project: google_binary_authorization_attestor.attestor.project,
- *     attestor: google_binary_authorization_attestor.attestor.name,
- * });
- * ```
  */
 export function getAttestorIamPolicyOutput(args: GetAttestorIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttestorIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getAttestorIamPolicy(a, opts))

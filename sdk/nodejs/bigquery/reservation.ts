@@ -16,23 +16,6 @@ import * as utilities from "../utilities";
  *     * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
  *
  * ## Example Usage
- * ### Bigquery Reservation Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const reservation = new gcp.bigquery.Reservation("reservation", {
- *     autoscale: {
- *         maxSlots: 100,
- *     },
- *     concurrency: 0,
- *     edition: "STANDARD",
- *     ignoreIdleSlots: true,
- *     location: "us-west2",
- *     slotCapacity: 0,
- * });
- * ```
  *
  * ## Import
  *

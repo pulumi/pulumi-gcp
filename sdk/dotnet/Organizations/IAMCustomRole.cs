@@ -22,35 +22,6 @@ namespace Pulumi.Gcp.Organizations
     ///  made available again. This means a deleted role that has been deleted for more than 7 days cannot be changed at all
     ///  by the provider, and new roles cannot share that name.
     /// 
-    /// ## Example Usage
-    /// 
-    /// This snippet creates a customized IAM organization role.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var my_custom_role = new Gcp.Organizations.IAMCustomRole("my-custom-role", new()
-    ///     {
-    ///         Description = "A description",
-    ///         OrgId = "123456789",
-    ///         Permissions = new[]
-    ///         {
-    ///             "iam.roles.list",
-    ///             "iam.roles.create",
-    ///             "iam.roles.delete",
-    ///         },
-    ///         RoleId = "myCustomRole",
-    ///         Title = "My Custom Role",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Customized IAM organization role can be imported using their URI, e.g.

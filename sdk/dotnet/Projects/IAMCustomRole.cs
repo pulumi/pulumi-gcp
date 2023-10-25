@@ -22,34 +22,6 @@ namespace Pulumi.Gcp.Projects
     ///  made available again. This means a deleted role that has been deleted for more than 7 days cannot be changed at all
     ///  by the provider, and new roles cannot share that name.
     /// 
-    /// ## Example Usage
-    /// 
-    /// This snippet creates a customized IAM role.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var my_custom_role = new Gcp.Projects.IAMCustomRole("my-custom-role", new()
-    ///     {
-    ///         Description = "A description",
-    ///         Permissions = new[]
-    ///         {
-    ///             "iam.roles.list",
-    ///             "iam.roles.create",
-    ///             "iam.roles.delete",
-    ///         },
-    ///         RoleId = "myCustomRole",
-    ///         Title = "My Custom Role",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Custom Roles can be imported using any of these accepted formats

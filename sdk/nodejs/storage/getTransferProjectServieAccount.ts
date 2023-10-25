@@ -6,16 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to retrieve Storage Transfer service account for this project
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const default = gcp.storage.getTransferProjectServiceAccount({});
- * export const defaultAccount = _default.then(_default => _default.email);
- * ```
  */
 /** @deprecated gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount */
 export function getTransferProjectServieAccount(args?: GetTransferProjectServieAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetTransferProjectServieAccountResult> {
@@ -62,16 +52,6 @@ export interface GetTransferProjectServieAccountResult {
 }
 /**
  * Use this data source to retrieve Storage Transfer service account for this project
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const default = gcp.storage.getTransferProjectServiceAccount({});
- * export const defaultAccount = _default.then(_default => _default.email);
- * ```
  */
 /** @deprecated gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount */
 export function getTransferProjectServieAccountOutput(args?: GetTransferProjectServieAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransferProjectServieAccountResult> {

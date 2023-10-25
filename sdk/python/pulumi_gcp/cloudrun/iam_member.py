@@ -56,13 +56,21 @@ class IamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
-             service: pulumi.Input[str],
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['IamMemberConditionArgs']] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
         _setter("member", member)
         _setter("role", role)
         _setter("service", service)
@@ -208,7 +216,9 @@ class _IamMemberState:
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -345,51 +355,6 @@ class IamMember(pulumi.CustomResource):
 
         > **Note:** `cloudrun.IamBinding` resources **can be** used in conjunction with `cloudrun.IamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_cloud\\_run\\_service\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.cloudrun.IamPolicy("policy",
-            location=google_cloud_run_service["default"]["location"],
-            project=google_cloud_run_service["default"]["project"],
-            service=google_cloud_run_service["default"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_cloud\\_run\\_service\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.cloudrun.IamBinding("binding",
-            location=google_cloud_run_service["default"]["location"],
-            project=google_cloud_run_service["default"]["project"],
-            service=google_cloud_run_service["default"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_cloud\\_run\\_service\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.cloudrun.IamMember("member",
-            location=google_cloud_run_service["default"]["location"],
-            project=google_cloud_run_service["default"]["project"],
-            service=google_cloud_run_service["default"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/services/{{service}} * {{project}}/{{location}}/{{service}} * {{location}}/{{service}} * {{service}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Run service IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -457,51 +422,6 @@ class IamMember(pulumi.CustomResource):
 
         > **Note:** `cloudrun.IamBinding` resources **can be** used in conjunction with `cloudrun.IamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_cloud\\_run\\_service\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.cloudrun.IamPolicy("policy",
-            location=google_cloud_run_service["default"]["location"],
-            project=google_cloud_run_service["default"]["project"],
-            service=google_cloud_run_service["default"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_cloud\\_run\\_service\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.cloudrun.IamBinding("binding",
-            location=google_cloud_run_service["default"]["location"],
-            project=google_cloud_run_service["default"]["project"],
-            service=google_cloud_run_service["default"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_cloud\\_run\\_service\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.cloudrun.IamMember("member",
-            location=google_cloud_run_service["default"]["location"],
-            project=google_cloud_run_service["default"]["project"],
-            service=google_cloud_run_service["default"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/services/{{service}} * {{project}}/{{location}}/{{service}} * {{location}}/{{service}} * {{service}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Run service IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -560,11 +480,7 @@ class IamMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = IamMemberArgs.__new__(IamMemberArgs)
 
-            if condition is not None and not isinstance(condition, IamMemberConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                IamMemberConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, IamMemberConditionArgs, True)
             __props__.__dict__["condition"] = condition
             __props__.__dict__["location"] = location
             if member is None and not opts.urn:

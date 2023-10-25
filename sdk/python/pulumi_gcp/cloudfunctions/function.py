@@ -120,7 +120,7 @@ class FunctionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             runtime: pulumi.Input[str],
+             runtime: Optional[pulumi.Input[str]] = None,
              available_memory_mb: Optional[pulumi.Input[int]] = None,
              build_environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              build_worker_pool: Optional[pulumi.Input[str]] = None,
@@ -150,7 +150,57 @@ class FunctionArgs:
              trigger_http: Optional[pulumi.Input[bool]] = None,
              vpc_connector: Optional[pulumi.Input[str]] = None,
              vpc_connector_egress_settings: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if runtime is None:
+            raise TypeError("Missing 'runtime' argument")
+        if available_memory_mb is None and 'availableMemoryMb' in kwargs:
+            available_memory_mb = kwargs['availableMemoryMb']
+        if build_environment_variables is None and 'buildEnvironmentVariables' in kwargs:
+            build_environment_variables = kwargs['buildEnvironmentVariables']
+        if build_worker_pool is None and 'buildWorkerPool' in kwargs:
+            build_worker_pool = kwargs['buildWorkerPool']
+        if docker_registry is None and 'dockerRegistry' in kwargs:
+            docker_registry = kwargs['dockerRegistry']
+        if docker_repository is None and 'dockerRepository' in kwargs:
+            docker_repository = kwargs['dockerRepository']
+        if entry_point is None and 'entryPoint' in kwargs:
+            entry_point = kwargs['entryPoint']
+        if environment_variables is None and 'environmentVariables' in kwargs:
+            environment_variables = kwargs['environmentVariables']
+        if event_trigger is None and 'eventTrigger' in kwargs:
+            event_trigger = kwargs['eventTrigger']
+        if https_trigger_security_level is None and 'httpsTriggerSecurityLevel' in kwargs:
+            https_trigger_security_level = kwargs['httpsTriggerSecurityLevel']
+        if https_trigger_url is None and 'httpsTriggerUrl' in kwargs:
+            https_trigger_url = kwargs['httpsTriggerUrl']
+        if ingress_settings is None and 'ingressSettings' in kwargs:
+            ingress_settings = kwargs['ingressSettings']
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if max_instances is None and 'maxInstances' in kwargs:
+            max_instances = kwargs['maxInstances']
+        if min_instances is None and 'minInstances' in kwargs:
+            min_instances = kwargs['minInstances']
+        if secret_environment_variables is None and 'secretEnvironmentVariables' in kwargs:
+            secret_environment_variables = kwargs['secretEnvironmentVariables']
+        if secret_volumes is None and 'secretVolumes' in kwargs:
+            secret_volumes = kwargs['secretVolumes']
+        if service_account_email is None and 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+        if source_archive_bucket is None and 'sourceArchiveBucket' in kwargs:
+            source_archive_bucket = kwargs['sourceArchiveBucket']
+        if source_archive_object is None and 'sourceArchiveObject' in kwargs:
+            source_archive_object = kwargs['sourceArchiveObject']
+        if source_repository is None and 'sourceRepository' in kwargs:
+            source_repository = kwargs['sourceRepository']
+        if trigger_http is None and 'triggerHttp' in kwargs:
+            trigger_http = kwargs['triggerHttp']
+        if vpc_connector is None and 'vpcConnector' in kwargs:
+            vpc_connector = kwargs['vpcConnector']
+        if vpc_connector_egress_settings is None and 'vpcConnectorEgressSettings' in kwargs:
+            vpc_connector_egress_settings = kwargs['vpcConnectorEgressSettings']
+
         _setter("runtime", runtime)
         if available_memory_mb is not None:
             _setter("available_memory_mb", available_memory_mb)
@@ -718,7 +768,55 @@ class _FunctionState:
              trigger_http: Optional[pulumi.Input[bool]] = None,
              vpc_connector: Optional[pulumi.Input[str]] = None,
              vpc_connector_egress_settings: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if available_memory_mb is None and 'availableMemoryMb' in kwargs:
+            available_memory_mb = kwargs['availableMemoryMb']
+        if build_environment_variables is None and 'buildEnvironmentVariables' in kwargs:
+            build_environment_variables = kwargs['buildEnvironmentVariables']
+        if build_worker_pool is None and 'buildWorkerPool' in kwargs:
+            build_worker_pool = kwargs['buildWorkerPool']
+        if docker_registry is None and 'dockerRegistry' in kwargs:
+            docker_registry = kwargs['dockerRegistry']
+        if docker_repository is None and 'dockerRepository' in kwargs:
+            docker_repository = kwargs['dockerRepository']
+        if entry_point is None and 'entryPoint' in kwargs:
+            entry_point = kwargs['entryPoint']
+        if environment_variables is None and 'environmentVariables' in kwargs:
+            environment_variables = kwargs['environmentVariables']
+        if event_trigger is None and 'eventTrigger' in kwargs:
+            event_trigger = kwargs['eventTrigger']
+        if https_trigger_security_level is None and 'httpsTriggerSecurityLevel' in kwargs:
+            https_trigger_security_level = kwargs['httpsTriggerSecurityLevel']
+        if https_trigger_url is None and 'httpsTriggerUrl' in kwargs:
+            https_trigger_url = kwargs['httpsTriggerUrl']
+        if ingress_settings is None and 'ingressSettings' in kwargs:
+            ingress_settings = kwargs['ingressSettings']
+        if kms_key_name is None and 'kmsKeyName' in kwargs:
+            kms_key_name = kwargs['kmsKeyName']
+        if max_instances is None and 'maxInstances' in kwargs:
+            max_instances = kwargs['maxInstances']
+        if min_instances is None and 'minInstances' in kwargs:
+            min_instances = kwargs['minInstances']
+        if secret_environment_variables is None and 'secretEnvironmentVariables' in kwargs:
+            secret_environment_variables = kwargs['secretEnvironmentVariables']
+        if secret_volumes is None and 'secretVolumes' in kwargs:
+            secret_volumes = kwargs['secretVolumes']
+        if service_account_email is None and 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+        if source_archive_bucket is None and 'sourceArchiveBucket' in kwargs:
+            source_archive_bucket = kwargs['sourceArchiveBucket']
+        if source_archive_object is None and 'sourceArchiveObject' in kwargs:
+            source_archive_object = kwargs['sourceArchiveObject']
+        if source_repository is None and 'sourceRepository' in kwargs:
+            source_repository = kwargs['sourceRepository']
+        if trigger_http is None and 'triggerHttp' in kwargs:
+            trigger_http = kwargs['triggerHttp']
+        if vpc_connector is None and 'vpcConnector' in kwargs:
+            vpc_connector = kwargs['vpcConnector']
+        if vpc_connector_egress_settings is None and 'vpcConnectorEgressSettings' in kwargs:
+            vpc_connector_egress_settings = kwargs['vpcConnectorEgressSettings']
+
         if available_memory_mb is not None:
             _setter("available_memory_mb", available_memory_mb)
         if build_environment_variables is not None:
@@ -1210,66 +1308,6 @@ class Function(pulumi.CustomResource):
         for Cloud Functions.
 
         ## Example Usage
-        ### Public Function
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        bucket = gcp.storage.Bucket("bucket", location="US")
-        archive = gcp.storage.BucketObject("archive",
-            bucket=bucket.name,
-            source=pulumi.FileAsset("./path/to/zip/file/which/contains/code"))
-        function = gcp.cloudfunctions.Function("function",
-            description="My function",
-            runtime="nodejs16",
-            available_memory_mb=128,
-            source_archive_bucket=bucket.name,
-            source_archive_object=archive.name,
-            trigger_http=True,
-            entry_point="helloGET")
-        # IAM entry for all users to invoke the function
-        invoker = gcp.cloudfunctions.FunctionIamMember("invoker",
-            project=function.project,
-            region=function.region,
-            cloud_function=function.name,
-            role="roles/cloudfunctions.invoker",
-            member="allUsers")
-        ```
-        ### Single User
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        bucket = gcp.storage.Bucket("bucket", location="US")
-        archive = gcp.storage.BucketObject("archive",
-            bucket=bucket.name,
-            source=pulumi.FileAsset("./path/to/zip/file/which/contains/code"))
-        function = gcp.cloudfunctions.Function("function",
-            description="My function",
-            runtime="nodejs16",
-            available_memory_mb=128,
-            source_archive_bucket=bucket.name,
-            source_archive_object=archive.name,
-            trigger_http=True,
-            https_trigger_security_level="SECURE_ALWAYS",
-            timeout=60,
-            entry_point="helloGET",
-            labels={
-                "my-label": "my-label-value",
-            },
-            environment_variables={
-                "MY_ENV_VAR": "my-env-var-value",
-            })
-        # IAM entry for a single user to invoke the function
-        invoker = gcp.cloudfunctions.FunctionIamMember("invoker",
-            project=function.project,
-            region=function.region,
-            cloud_function=function.name,
-            role="roles/cloudfunctions.invoker",
-            member="user:myFunctionInvoker@example.com")
-        ```
 
         ## Import
 
@@ -1341,66 +1379,6 @@ class Function(pulumi.CustomResource):
         for Cloud Functions.
 
         ## Example Usage
-        ### Public Function
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        bucket = gcp.storage.Bucket("bucket", location="US")
-        archive = gcp.storage.BucketObject("archive",
-            bucket=bucket.name,
-            source=pulumi.FileAsset("./path/to/zip/file/which/contains/code"))
-        function = gcp.cloudfunctions.Function("function",
-            description="My function",
-            runtime="nodejs16",
-            available_memory_mb=128,
-            source_archive_bucket=bucket.name,
-            source_archive_object=archive.name,
-            trigger_http=True,
-            entry_point="helloGET")
-        # IAM entry for all users to invoke the function
-        invoker = gcp.cloudfunctions.FunctionIamMember("invoker",
-            project=function.project,
-            region=function.region,
-            cloud_function=function.name,
-            role="roles/cloudfunctions.invoker",
-            member="allUsers")
-        ```
-        ### Single User
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        bucket = gcp.storage.Bucket("bucket", location="US")
-        archive = gcp.storage.BucketObject("archive",
-            bucket=bucket.name,
-            source=pulumi.FileAsset("./path/to/zip/file/which/contains/code"))
-        function = gcp.cloudfunctions.Function("function",
-            description="My function",
-            runtime="nodejs16",
-            available_memory_mb=128,
-            source_archive_bucket=bucket.name,
-            source_archive_object=archive.name,
-            trigger_http=True,
-            https_trigger_security_level="SECURE_ALWAYS",
-            timeout=60,
-            entry_point="helloGET",
-            labels={
-                "my-label": "my-label-value",
-            },
-            environment_variables={
-                "MY_ENV_VAR": "my-env-var-value",
-            })
-        # IAM entry for a single user to invoke the function
-        invoker = gcp.cloudfunctions.FunctionIamMember("invoker",
-            project=function.project,
-            region=function.region,
-            cloud_function=function.name,
-            role="roles/cloudfunctions.invoker",
-            member="user:myFunctionInvoker@example.com")
-        ```
 
         ## Import
 
@@ -1480,11 +1458,7 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["docker_repository"] = docker_repository
             __props__.__dict__["entry_point"] = entry_point
             __props__.__dict__["environment_variables"] = environment_variables
-            if event_trigger is not None and not isinstance(event_trigger, FunctionEventTriggerArgs):
-                event_trigger = event_trigger or {}
-                def _setter(key, value):
-                    event_trigger[key] = value
-                FunctionEventTriggerArgs._configure(_setter, **event_trigger)
+            event_trigger = _utilities.configure(event_trigger, FunctionEventTriggerArgs, True)
             __props__.__dict__["event_trigger"] = event_trigger
             __props__.__dict__["https_trigger_security_level"] = https_trigger_security_level
             __props__.__dict__["https_trigger_url"] = https_trigger_url
@@ -1504,11 +1478,7 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["service_account_email"] = service_account_email
             __props__.__dict__["source_archive_bucket"] = source_archive_bucket
             __props__.__dict__["source_archive_object"] = source_archive_object
-            if source_repository is not None and not isinstance(source_repository, FunctionSourceRepositoryArgs):
-                source_repository = source_repository or {}
-                def _setter(key, value):
-                    source_repository[key] = value
-                FunctionSourceRepositoryArgs._configure(_setter, **source_repository)
+            source_repository = _utilities.configure(source_repository, FunctionSourceRepositoryArgs, True)
             __props__.__dict__["source_repository"] = source_repository
             __props__.__dict__["timeout"] = timeout
             __props__.__dict__["trigger_http"] = trigger_http

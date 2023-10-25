@@ -15,47 +15,6 @@ namespace Pulumi.Gcp.Container
     /// and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools).
     /// 
     /// ## Example Usage
-    /// ### Using A Separately Managed Node Pool (Recommended)
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.ServiceAccount.Account("default", new()
-    ///     {
-    ///         AccountId = "service-account-id",
-    ///         DisplayName = "Service Account",
-    ///     });
-    /// 
-    ///     var primary = new Gcp.Container.Cluster("primary", new()
-    ///     {
-    ///         Location = "us-central1",
-    ///         RemoveDefaultNodePool = true,
-    ///         InitialNodeCount = 1,
-    ///     });
-    /// 
-    ///     var primaryPreemptibleNodes = new Gcp.Container.NodePool("primaryPreemptibleNodes", new()
-    ///     {
-    ///         Cluster = primary.Id,
-    ///         NodeCount = 1,
-    ///         NodeConfig = new Gcp.Container.Inputs.NodePoolNodeConfigArgs
-    ///         {
-    ///             Preemptible = true,
-    ///             MachineType = "e2-medium",
-    ///             ServiceAccount = @default.Email,
-    ///             OauthScopes = new[]
-    ///             {
-    ///                 "https://www.googleapis.com/auth/cloud-platform",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

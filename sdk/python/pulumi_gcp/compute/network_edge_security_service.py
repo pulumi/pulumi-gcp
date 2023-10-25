@@ -47,7 +47,11 @@ class NetworkEdgeSecurityServiceArgs:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              security_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
+
         if description is not None:
             _setter("description", description)
         if name is not None:
@@ -181,7 +185,19 @@ class _NetworkEdgeSecurityServiceState:
              self_link: Optional[pulumi.Input[str]] = None,
              self_link_with_service_id: Optional[pulumi.Input[str]] = None,
              service_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if security_policy is None and 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+        if self_link_with_service_id is None and 'selfLinkWithServiceId' in kwargs:
+            self_link_with_service_id = kwargs['selfLinkWithServiceId']
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+
         if creation_timestamp is not None:
             _setter("creation_timestamp", creation_timestamp)
         if description is not None:
@@ -342,17 +358,6 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Compute Network Edge Security Service Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.NetworkEdgeSecurityService("default",
-            region="us-east1",
-            description="My basic resource",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -394,17 +399,6 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Compute Network Edge Security Service Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.NetworkEdgeSecurityService("default",
-            region="us-east1",
-            description="My basic resource",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 

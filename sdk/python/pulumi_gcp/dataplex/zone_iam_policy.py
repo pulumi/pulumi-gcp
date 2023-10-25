@@ -50,12 +50,24 @@ class ZoneIamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataplex_zone: pulumi.Input[str],
-             lake: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
+             dataplex_zone: Optional[pulumi.Input[str]] = None,
+             lake: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dataplex_zone is None and 'dataplexZone' in kwargs:
+            dataplex_zone = kwargs['dataplexZone']
+        if dataplex_zone is None:
+            raise TypeError("Missing 'dataplex_zone' argument")
+        if lake is None:
+            raise TypeError("Missing 'lake' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("dataplex_zone", dataplex_zone)
         _setter("lake", lake)
         _setter("policy_data", policy_data)
@@ -181,7 +193,13 @@ class _ZoneIamPolicyState:
              location: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dataplex_zone is None and 'dataplexZone' in kwargs:
+            dataplex_zone = kwargs['dataplexZone']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if dataplex_zone is not None:
             _setter("dataplex_zone", dataplex_zone)
         if etag is not None:
@@ -302,54 +320,6 @@ class ZoneIamPolicy(pulumi.CustomResource):
 
         > **Note:** `dataplex.ZoneIamBinding` resources **can be** used in conjunction with `dataplex.ZoneIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_dataplex\\_zone\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.dataplex.ZoneIamPolicy("policy",
-            project=google_dataplex_zone["example"]["project"],
-            location=google_dataplex_zone["example"]["location"],
-            lake=google_dataplex_zone["example"]["lake"],
-            dataplex_zone=google_dataplex_zone["example"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_dataplex\\_zone\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.dataplex.ZoneIamBinding("binding",
-            project=google_dataplex_zone["example"]["project"],
-            location=google_dataplex_zone["example"]["location"],
-            lake=google_dataplex_zone["example"]["lake"],
-            dataplex_zone=google_dataplex_zone["example"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_dataplex\\_zone\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.dataplex.ZoneIamMember("member",
-            project=google_dataplex_zone["example"]["project"],
-            location=google_dataplex_zone["example"]["location"],
-            lake=google_dataplex_zone["example"]["lake"],
-            dataplex_zone=google_dataplex_zone["example"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{name}} * {{project}}/{{location}}/{{lake}}/{{name}} * {{location}}/{{lake}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Dataplex zone IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -414,54 +384,6 @@ class ZoneIamPolicy(pulumi.CustomResource):
         > **Note:** `dataplex.ZoneIamPolicy` **cannot** be used in conjunction with `dataplex.ZoneIamBinding` and `dataplex.ZoneIamMember` or they will fight over what your policy should be.
 
         > **Note:** `dataplex.ZoneIamBinding` resources **can be** used in conjunction with `dataplex.ZoneIamMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\\_dataplex\\_zone\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.dataplex.ZoneIamPolicy("policy",
-            project=google_dataplex_zone["example"]["project"],
-            location=google_dataplex_zone["example"]["location"],
-            lake=google_dataplex_zone["example"]["lake"],
-            dataplex_zone=google_dataplex_zone["example"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_dataplex\\_zone\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.dataplex.ZoneIamBinding("binding",
-            project=google_dataplex_zone["example"]["project"],
-            location=google_dataplex_zone["example"]["location"],
-            lake=google_dataplex_zone["example"]["lake"],
-            dataplex_zone=google_dataplex_zone["example"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\\_dataplex\\_zone\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.dataplex.ZoneIamMember("member",
-            project=google_dataplex_zone["example"]["project"],
-            location=google_dataplex_zone["example"]["location"],
-            lake=google_dataplex_zone["example"]["lake"],
-            dataplex_zone=google_dataplex_zone["example"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com")
-        ```
 
         ## Import
 

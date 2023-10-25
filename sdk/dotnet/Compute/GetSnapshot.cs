@@ -17,34 +17,6 @@ namespace Pulumi.Gcp.Compute
         /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
         /// * How-to Guides
         ///     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var snapshot = Gcp.Compute.GetSnapshot.Invoke(new()
-        ///     {
-        ///         Name = "my-snapshot",
-        ///     });
-        /// 
-        ///     var latest_snapshot = Gcp.Compute.GetSnapshot.Invoke(new()
-        ///     {
-        ///         Filter = "name != my-snapshot",
-        ///         MostRecent = true,
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSnapshotResult> InvokeAsync(GetSnapshotArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotResult>("gcp:compute/getSnapshot:getSnapshot", args ?? new GetSnapshotArgs(), options.WithDefaults());
@@ -55,34 +27,6 @@ namespace Pulumi.Gcp.Compute
         /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
         /// * How-to Guides
         ///     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var snapshot = Gcp.Compute.GetSnapshot.Invoke(new()
-        ///     {
-        ///         Name = "my-snapshot",
-        ///     });
-        /// 
-        ///     var latest_snapshot = Gcp.Compute.GetSnapshot.Invoke(new()
-        ///     {
-        ///         Filter = "name != my-snapshot",
-        ///         MostRecent = true,
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetSnapshotResult> Invoke(GetSnapshotInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSnapshotResult>("gcp:compute/getSnapshot:getSnapshot", args ?? new GetSnapshotInvokeArgs(), options.WithDefaults());

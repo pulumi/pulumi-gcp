@@ -71,8 +71,8 @@ class PipelineArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             state: pulumi.Input[str],
-             type: pulumi.Input[str],
+             state: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              pipeline_sources: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -81,7 +81,21 @@ class PipelineArgs:
              schedule_info: Optional[pulumi.Input['PipelineScheduleInfoArgs']] = None,
              scheduler_service_account_email: Optional[pulumi.Input[str]] = None,
              workload: Optional[pulumi.Input['PipelineWorkloadArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if state is None:
+            raise TypeError("Missing 'state' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if pipeline_sources is None and 'pipelineSources' in kwargs:
+            pipeline_sources = kwargs['pipelineSources']
+        if schedule_info is None and 'scheduleInfo' in kwargs:
+            schedule_info = kwargs['scheduleInfo']
+        if scheduler_service_account_email is None and 'schedulerServiceAccountEmail' in kwargs:
+            scheduler_service_account_email = kwargs['schedulerServiceAccountEmail']
+
         _setter("state", state)
         _setter("type", type)
         if display_name is not None:
@@ -320,7 +334,23 @@ class _PipelineState:
              state: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              workload: Optional[pulumi.Input['PipelineWorkloadArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if job_count is None and 'jobCount' in kwargs:
+            job_count = kwargs['jobCount']
+        if last_update_time is None and 'lastUpdateTime' in kwargs:
+            last_update_time = kwargs['lastUpdateTime']
+        if pipeline_sources is None and 'pipelineSources' in kwargs:
+            pipeline_sources = kwargs['pipelineSources']
+        if schedule_info is None and 'scheduleInfo' in kwargs:
+            schedule_info = kwargs['scheduleInfo']
+        if scheduler_service_account_email is None and 'schedulerServiceAccountEmail' in kwargs:
+            scheduler_service_account_email = kwargs['schedulerServiceAccountEmail']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if display_name is not None:
@@ -549,57 +579,6 @@ class Pipeline(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dataflow)
 
         ## Example Usage
-        ### Data Pipeline Pipeline
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        service_account = gcp.service_account.Account("serviceAccount",
-            account_id="my-account",
-            display_name="Service Account")
-        primary = gcp.dataflow.Pipeline("primary",
-            display_name="my-pipeline",
-            type="PIPELINE_TYPE_BATCH",
-            state="STATE_ACTIVE",
-            region="us-central1",
-            workload=gcp.dataflow.PipelineWorkloadArgs(
-                dataflow_launch_template_request=gcp.dataflow.PipelineWorkloadDataflowLaunchTemplateRequestArgs(
-                    project_id="my-project",
-                    gcs_path="gs://my-bucket/path",
-                    launch_parameters=gcp.dataflow.PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs(
-                        job_name="my-job",
-                        parameters={
-                            "name": "wrench",
-                        },
-                        environment=gcp.dataflow.PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgs(
-                            num_workers=5,
-                            max_workers=5,
-                            zone="us-centra1-a",
-                            service_account_email=service_account.email,
-                            network="default",
-                            temp_location="gs://my-bucket/tmp_dir",
-                            bypass_temp_dir_validation=False,
-                            machine_type="E2",
-                            additional_user_labels={
-                                "context": "test",
-                            },
-                            worker_region="us-central1",
-                            worker_zone="us-central1-a",
-                            enable_streaming_engine=False,
-                        ),
-                        update=False,
-                        transform_name_mapping={
-                            "name": "wrench",
-                        },
-                    ),
-                    location="us-central1",
-                ),
-            ),
-            schedule_info=gcp.dataflow.PipelineScheduleInfoArgs(
-                schedule="* */2 * * *",
-            ))
-        ```
 
         ## Import
 
@@ -666,57 +645,6 @@ class Pipeline(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dataflow)
 
         ## Example Usage
-        ### Data Pipeline Pipeline
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        service_account = gcp.service_account.Account("serviceAccount",
-            account_id="my-account",
-            display_name="Service Account")
-        primary = gcp.dataflow.Pipeline("primary",
-            display_name="my-pipeline",
-            type="PIPELINE_TYPE_BATCH",
-            state="STATE_ACTIVE",
-            region="us-central1",
-            workload=gcp.dataflow.PipelineWorkloadArgs(
-                dataflow_launch_template_request=gcp.dataflow.PipelineWorkloadDataflowLaunchTemplateRequestArgs(
-                    project_id="my-project",
-                    gcs_path="gs://my-bucket/path",
-                    launch_parameters=gcp.dataflow.PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs(
-                        job_name="my-job",
-                        parameters={
-                            "name": "wrench",
-                        },
-                        environment=gcp.dataflow.PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgs(
-                            num_workers=5,
-                            max_workers=5,
-                            zone="us-centra1-a",
-                            service_account_email=service_account.email,
-                            network="default",
-                            temp_location="gs://my-bucket/tmp_dir",
-                            bypass_temp_dir_validation=False,
-                            machine_type="E2",
-                            additional_user_labels={
-                                "context": "test",
-                            },
-                            worker_region="us-central1",
-                            worker_zone="us-central1-a",
-                            enable_streaming_engine=False,
-                        ),
-                        update=False,
-                        transform_name_mapping={
-                            "name": "wrench",
-                        },
-                    ),
-                    location="us-central1",
-                ),
-            ),
-            schedule_info=gcp.dataflow.PipelineScheduleInfoArgs(
-                schedule="* */2 * * *",
-            ))
-        ```
 
         ## Import
 
@@ -781,11 +709,7 @@ class Pipeline(pulumi.CustomResource):
             __props__.__dict__["pipeline_sources"] = pipeline_sources
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
-            if schedule_info is not None and not isinstance(schedule_info, PipelineScheduleInfoArgs):
-                schedule_info = schedule_info or {}
-                def _setter(key, value):
-                    schedule_info[key] = value
-                PipelineScheduleInfoArgs._configure(_setter, **schedule_info)
+            schedule_info = _utilities.configure(schedule_info, PipelineScheduleInfoArgs, True)
             __props__.__dict__["schedule_info"] = schedule_info
             __props__.__dict__["scheduler_service_account_email"] = scheduler_service_account_email
             if state is None and not opts.urn:
@@ -794,11 +718,7 @@ class Pipeline(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
-            if workload is not None and not isinstance(workload, PipelineWorkloadArgs):
-                workload = workload or {}
-                def _setter(key, value):
-                    workload[key] = value
-                PipelineWorkloadArgs._configure(_setter, **workload)
+            workload = _utilities.configure(workload, PipelineWorkloadArgs, True)
             __props__.__dict__["workload"] = workload
             __props__.__dict__["create_time"] = None
             __props__.__dict__["job_count"] = None

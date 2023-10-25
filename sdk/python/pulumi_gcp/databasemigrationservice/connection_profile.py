@@ -60,7 +60,7 @@ class ConnectionProfileArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection_profile_id: pulumi.Input[str],
+             connection_profile_id: Optional[pulumi.Input[str]] = None,
              alloydb: Optional[pulumi.Input['ConnectionProfileAlloydbArgs']] = None,
              cloudsql: Optional[pulumi.Input['ConnectionProfileCloudsqlArgs']] = None,
              display_name: Optional[pulumi.Input[str]] = None,
@@ -69,7 +69,15 @@ class ConnectionProfileArgs:
              mysql: Optional[pulumi.Input['ConnectionProfileMysqlArgs']] = None,
              postgresql: Optional[pulumi.Input['ConnectionProfilePostgresqlArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if connection_profile_id is None and 'connectionProfileId' in kwargs:
+            connection_profile_id = kwargs['connectionProfileId']
+        if connection_profile_id is None:
+            raise TypeError("Missing 'connection_profile_id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("connection_profile_id", connection_profile_id)
         if alloydb is not None:
             _setter("alloydb", alloydb)
@@ -282,7 +290,15 @@ class _ConnectionProfileState:
              postgresql: Optional[pulumi.Input['ConnectionProfilePostgresqlArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if connection_profile_id is None and 'connectionProfileId' in kwargs:
+            connection_profile_id = kwargs['connectionProfileId']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if alloydb is not None:
             _setter("alloydb", alloydb)
         if cloudsql is not None:
@@ -519,120 +535,6 @@ class ConnectionProfile(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
-        ### Database Migration Service Connection Profile Cloudsql
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        cloudsqldb = gcp.sql.DatabaseInstance("cloudsqldb",
-            database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-n1-standard-1",
-                deletion_protection_enabled=False,
-            ),
-            deletion_protection=False)
-        sql_client_cert = gcp.sql.SslCert("sqlClientCert",
-            common_name="my-cert",
-            instance=cloudsqldb.name,
-            opts=pulumi.ResourceOptions(depends_on=[cloudsqldb]))
-        sqldb_user = gcp.sql.User("sqldbUser",
-            instance=cloudsqldb.name,
-            password="my-password",
-            opts=pulumi.ResourceOptions(depends_on=[sql_client_cert]))
-        cloudsqlprofile = gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofile",
-            location="us-central1",
-            connection_profile_id="my-fromprofileid",
-            display_name="my-fromprofileid_display",
-            labels={
-                "foo": "bar",
-            },
-            mysql=gcp.databasemigrationservice.ConnectionProfileMysqlArgs(
-                host=cloudsqldb.ip_addresses[0].ip_address,
-                port=3306,
-                username=sqldb_user.name,
-                password=sqldb_user.password,
-                ssl=gcp.databasemigrationservice.ConnectionProfileMysqlSslArgs(
-                    client_key=sql_client_cert.private_key,
-                    client_certificate=sql_client_cert.cert,
-                    ca_certificate=sql_client_cert.server_ca_cert,
-                ),
-                cloud_sql_id="my-database",
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[sqldb_user]))
-        cloudsqlprofile_destination = gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofileDestination",
-            location="us-central1",
-            connection_profile_id="my-toprofileid",
-            display_name="my-toprofileid_displayname",
-            labels={
-                "foo": "bar",
-            },
-            cloudsql=gcp.databasemigrationservice.ConnectionProfileCloudsqlArgs(
-                settings=gcp.databasemigrationservice.ConnectionProfileCloudsqlSettingsArgs(
-                    database_version="MYSQL_5_7",
-                    user_labels={
-                        "cloudfoo": "cloudbar",
-                    },
-                    tier="db-n1-standard-1",
-                    edition="ENTERPRISE",
-                    storage_auto_resize_limit="0",
-                    activation_policy="ALWAYS",
-                    ip_config=gcp.databasemigrationservice.ConnectionProfileCloudsqlSettingsIpConfigArgs(
-                        enable_ipv4=True,
-                        require_ssl=True,
-                    ),
-                    auto_storage_increase=True,
-                    data_disk_type="PD_HDD",
-                    data_disk_size_gb="11",
-                    zone="us-central1-b",
-                    source_id=f"projects/{project.project_id}/locations/us-central1/connectionProfiles/my-fromprofileid",
-                    root_password="testpasscloudsql",
-                ),
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[cloudsqlprofile]))
-        ```
-        ### Database Migration Service Connection Profile Postgres
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        postgresqldb = gcp.sql.DatabaseInstance("postgresqldb",
-            database_version="POSTGRES_12",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-custom-2-13312",
-            ),
-            deletion_protection=False)
-        sql_client_cert = gcp.sql.SslCert("sqlClientCert",
-            common_name="my-cert",
-            instance=postgresqldb.name,
-            opts=pulumi.ResourceOptions(depends_on=[postgresqldb]))
-        sqldb_user = gcp.sql.User("sqldbUser",
-            instance=postgresqldb.name,
-            password="my-password",
-            opts=pulumi.ResourceOptions(depends_on=[sql_client_cert]))
-        postgresprofile = gcp.databasemigrationservice.ConnectionProfile("postgresprofile",
-            location="us-central1",
-            connection_profile_id="my-profileid",
-            display_name="my-profileid_display",
-            labels={
-                "foo": "bar",
-            },
-            postgresql=gcp.databasemigrationservice.ConnectionProfilePostgresqlArgs(
-                host=postgresqldb.ip_addresses[0].ip_address,
-                port=5432,
-                username=sqldb_user.name,
-                password=sqldb_user.password,
-                ssl=gcp.databasemigrationservice.ConnectionProfilePostgresqlSslArgs(
-                    client_key=sql_client_cert.private_key,
-                    client_certificate=sql_client_cert.cert,
-                    ca_certificate=sql_client_cert.server_ca_cert,
-                ),
-                cloud_sql_id="my-database",
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[sqldb_user]))
-        ```
 
         ## Import
 
@@ -690,120 +592,6 @@ class ConnectionProfile(pulumi.CustomResource):
         Read more about sensitive data in state.
 
         ## Example Usage
-        ### Database Migration Service Connection Profile Cloudsql
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        cloudsqldb = gcp.sql.DatabaseInstance("cloudsqldb",
-            database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-n1-standard-1",
-                deletion_protection_enabled=False,
-            ),
-            deletion_protection=False)
-        sql_client_cert = gcp.sql.SslCert("sqlClientCert",
-            common_name="my-cert",
-            instance=cloudsqldb.name,
-            opts=pulumi.ResourceOptions(depends_on=[cloudsqldb]))
-        sqldb_user = gcp.sql.User("sqldbUser",
-            instance=cloudsqldb.name,
-            password="my-password",
-            opts=pulumi.ResourceOptions(depends_on=[sql_client_cert]))
-        cloudsqlprofile = gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofile",
-            location="us-central1",
-            connection_profile_id="my-fromprofileid",
-            display_name="my-fromprofileid_display",
-            labels={
-                "foo": "bar",
-            },
-            mysql=gcp.databasemigrationservice.ConnectionProfileMysqlArgs(
-                host=cloudsqldb.ip_addresses[0].ip_address,
-                port=3306,
-                username=sqldb_user.name,
-                password=sqldb_user.password,
-                ssl=gcp.databasemigrationservice.ConnectionProfileMysqlSslArgs(
-                    client_key=sql_client_cert.private_key,
-                    client_certificate=sql_client_cert.cert,
-                    ca_certificate=sql_client_cert.server_ca_cert,
-                ),
-                cloud_sql_id="my-database",
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[sqldb_user]))
-        cloudsqlprofile_destination = gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofileDestination",
-            location="us-central1",
-            connection_profile_id="my-toprofileid",
-            display_name="my-toprofileid_displayname",
-            labels={
-                "foo": "bar",
-            },
-            cloudsql=gcp.databasemigrationservice.ConnectionProfileCloudsqlArgs(
-                settings=gcp.databasemigrationservice.ConnectionProfileCloudsqlSettingsArgs(
-                    database_version="MYSQL_5_7",
-                    user_labels={
-                        "cloudfoo": "cloudbar",
-                    },
-                    tier="db-n1-standard-1",
-                    edition="ENTERPRISE",
-                    storage_auto_resize_limit="0",
-                    activation_policy="ALWAYS",
-                    ip_config=gcp.databasemigrationservice.ConnectionProfileCloudsqlSettingsIpConfigArgs(
-                        enable_ipv4=True,
-                        require_ssl=True,
-                    ),
-                    auto_storage_increase=True,
-                    data_disk_type="PD_HDD",
-                    data_disk_size_gb="11",
-                    zone="us-central1-b",
-                    source_id=f"projects/{project.project_id}/locations/us-central1/connectionProfiles/my-fromprofileid",
-                    root_password="testpasscloudsql",
-                ),
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[cloudsqlprofile]))
-        ```
-        ### Database Migration Service Connection Profile Postgres
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        postgresqldb = gcp.sql.DatabaseInstance("postgresqldb",
-            database_version="POSTGRES_12",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-custom-2-13312",
-            ),
-            deletion_protection=False)
-        sql_client_cert = gcp.sql.SslCert("sqlClientCert",
-            common_name="my-cert",
-            instance=postgresqldb.name,
-            opts=pulumi.ResourceOptions(depends_on=[postgresqldb]))
-        sqldb_user = gcp.sql.User("sqldbUser",
-            instance=postgresqldb.name,
-            password="my-password",
-            opts=pulumi.ResourceOptions(depends_on=[sql_client_cert]))
-        postgresprofile = gcp.databasemigrationservice.ConnectionProfile("postgresprofile",
-            location="us-central1",
-            connection_profile_id="my-profileid",
-            display_name="my-profileid_display",
-            labels={
-                "foo": "bar",
-            },
-            postgresql=gcp.databasemigrationservice.ConnectionProfilePostgresqlArgs(
-                host=postgresqldb.ip_addresses[0].ip_address,
-                port=5432,
-                username=sqldb_user.name,
-                password=sqldb_user.password,
-                ssl=gcp.databasemigrationservice.ConnectionProfilePostgresqlSslArgs(
-                    client_key=sql_client_cert.private_key,
-                    client_certificate=sql_client_cert.cert,
-                    ca_certificate=sql_client_cert.server_ca_cert,
-                ),
-                cloud_sql_id="my-database",
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[sqldb_user]))
-        ```
 
         ## Import
 
@@ -858,17 +646,9 @@ class ConnectionProfile(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectionProfileArgs.__new__(ConnectionProfileArgs)
 
-            if alloydb is not None and not isinstance(alloydb, ConnectionProfileAlloydbArgs):
-                alloydb = alloydb or {}
-                def _setter(key, value):
-                    alloydb[key] = value
-                ConnectionProfileAlloydbArgs._configure(_setter, **alloydb)
+            alloydb = _utilities.configure(alloydb, ConnectionProfileAlloydbArgs, True)
             __props__.__dict__["alloydb"] = alloydb
-            if cloudsql is not None and not isinstance(cloudsql, ConnectionProfileCloudsqlArgs):
-                cloudsql = cloudsql or {}
-                def _setter(key, value):
-                    cloudsql[key] = value
-                ConnectionProfileCloudsqlArgs._configure(_setter, **cloudsql)
+            cloudsql = _utilities.configure(cloudsql, ConnectionProfileCloudsqlArgs, True)
             __props__.__dict__["cloudsql"] = cloudsql
             if connection_profile_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_profile_id'")
@@ -876,17 +656,9 @@ class ConnectionProfile(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
-            if mysql is not None and not isinstance(mysql, ConnectionProfileMysqlArgs):
-                mysql = mysql or {}
-                def _setter(key, value):
-                    mysql[key] = value
-                ConnectionProfileMysqlArgs._configure(_setter, **mysql)
+            mysql = _utilities.configure(mysql, ConnectionProfileMysqlArgs, True)
             __props__.__dict__["mysql"] = mysql
-            if postgresql is not None and not isinstance(postgresql, ConnectionProfilePostgresqlArgs):
-                postgresql = postgresql or {}
-                def _setter(key, value):
-                    postgresql[key] = value
-                ConnectionProfilePostgresqlArgs._configure(_setter, **postgresql)
+            postgresql = _utilities.configure(postgresql, ConnectionProfilePostgresqlArgs, True)
             __props__.__dict__["postgresql"] = postgresql
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None

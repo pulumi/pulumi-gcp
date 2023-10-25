@@ -103,17 +103,6 @@ def get_autoscaling_policy_iam_policy(location: Optional[str] = None,
     """
     Retrieves the current IAM policy data for autoscalingpolicy
 
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.dataproc.get_autoscaling_policy_iam_policy(project=google_dataproc_autoscaling_policy["basic"]["project"],
-        location=google_dataproc_autoscaling_policy["basic"]["location"],
-        policy_id=google_dataproc_autoscaling_policy["basic"]["policy_id"])
-    ```
-
 
     :param str location: The  location where the autoscaling policy should reside.
            The default value is `global`.
@@ -148,17 +137,6 @@ def get_autoscaling_policy_iam_policy_output(location: Optional[pulumi.Input[Opt
                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAutoscalingPolicyIamPolicyResult]:
     """
     Retrieves the current IAM policy data for autoscalingpolicy
-
-    ## example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    policy = gcp.dataproc.get_autoscaling_policy_iam_policy(project=google_dataproc_autoscaling_policy["basic"]["project"],
-        location=google_dataproc_autoscaling_policy["basic"]["location"],
-        policy_id=google_dataproc_autoscaling_policy["basic"]["policy_id"])
-    ```
 
 
     :param str location: The  location where the autoscaling policy should reside.

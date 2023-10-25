@@ -26,8 +26,12 @@ class SharedVPCHostProjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+
         _setter("project", project)
 
     @property
@@ -59,7 +63,9 @@ class _SharedVPCHostProjectState:
     def _configure(
              _setter: Callable[[Any, Any], None],
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if project is not None:
             _setter("project", project)
 
@@ -92,24 +98,6 @@ class SharedVPCHostProject(pulumi.CustomResource):
         [the Project API documentation](https://cloud.google.com/compute/docs/reference/latest/projects),
         where the Shared VPC feature is referred to by its former name "XPN".
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        # A host project provides network resources to associated service projects.
-        host = gcp.compute.SharedVPCHostProject("host", project="host-project-id")
-        # A service project gains access to network resources provided by its
-        # associated host project.
-        service1 = gcp.compute.SharedVPCServiceProject("service1",
-            host_project=host.project,
-            service_project="service-project-id-1")
-        service2 = gcp.compute.SharedVPCServiceProject("service2",
-            host_project=host.project,
-            service_project="service-project-id-2")
-        ```
-
         ## Import
 
         Google Compute Engine Shared VPC host project feature can be imported using the `project`, e.g.
@@ -136,24 +124,6 @@ class SharedVPCHostProject(pulumi.CustomResource):
         For more information, see,
         [the Project API documentation](https://cloud.google.com/compute/docs/reference/latest/projects),
         where the Shared VPC feature is referred to by its former name "XPN".
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        # A host project provides network resources to associated service projects.
-        host = gcp.compute.SharedVPCHostProject("host", project="host-project-id")
-        # A service project gains access to network resources provided by its
-        # associated host project.
-        service1 = gcp.compute.SharedVPCServiceProject("service1",
-            host_project=host.project,
-            service_project="service-project-id-1")
-        service2 = gcp.compute.SharedVPCServiceProject("service2",
-            host_project=host.project,
-            service_project="service-project-id-2")
-        ```
 
         ## Import
 

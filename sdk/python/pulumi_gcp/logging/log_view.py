@@ -44,13 +44,17 @@ class LogViewArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: pulumi.Input[str],
+             bucket: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              filter: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              parent: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+
         _setter("bucket", bucket)
         if description is not None:
             _setter("description", description)
@@ -186,7 +190,13 @@ class _LogViewState:
              name: Optional[pulumi.Input[str]] = None,
              parent: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if bucket is not None:
             _setter("bucket", bucket)
         if create_time is not None:
@@ -326,22 +336,6 @@ class LogView(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/logging/docs/apis)
 
         ## Example Usage
-        ### Logging Log View Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        logging_log_view_project_bucket_config = gcp.logging.ProjectBucketConfig("loggingLogViewProjectBucketConfig",
-            project="my-project-name",
-            location="global",
-            retention_days=30,
-            bucket_id="_Default")
-        logging_log_view_log_view = gcp.logging.LogView("loggingLogViewLogView",
-            bucket=logging_log_view_project_bucket_config.id,
-            description="A logging view configured with Terraform",
-            filter="SOURCE(\\"projects/myproject\\") AND resource.type = \\"gce_instance\\" AND LOG_ID(\\"stdout\\")")
-        ```
 
         ## Import
 
@@ -379,22 +373,6 @@ class LogView(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/logging/docs/apis)
 
         ## Example Usage
-        ### Logging Log View Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        logging_log_view_project_bucket_config = gcp.logging.ProjectBucketConfig("loggingLogViewProjectBucketConfig",
-            project="my-project-name",
-            location="global",
-            retention_days=30,
-            bucket_id="_Default")
-        logging_log_view_log_view = gcp.logging.LogView("loggingLogViewLogView",
-            bucket=logging_log_view_project_bucket_config.id,
-            description="A logging view configured with Terraform",
-            filter="SOURCE(\\"projects/myproject\\") AND resource.type = \\"gce_instance\\" AND LOG_ID(\\"stdout\\")")
-        ```
 
         ## Import
 

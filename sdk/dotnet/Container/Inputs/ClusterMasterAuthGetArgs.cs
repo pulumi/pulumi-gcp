@@ -18,15 +18,6 @@ namespace Pulumi.Gcp.Container.Inputs
         /// <summary>
         /// Whether client certificate authorization is enabled for this cluster.  For example:
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// 
         /// This block also contains several computed attributes, documented below.
         /// </summary>

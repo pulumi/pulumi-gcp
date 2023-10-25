@@ -53,7 +53,9 @@ class AuthorizationPolicyRule(dict):
              _setter: Callable[[Any, Any], None],
              destinations: Optional[Sequence['outputs.AuthorizationPolicyRuleDestination']] = None,
              sources: Optional[Sequence['outputs.AuthorizationPolicyRuleSource']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if destinations is not None:
             _setter("destinations", destinations)
         if sources is not None:
@@ -122,11 +124,21 @@ class AuthorizationPolicyRuleDestination(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hosts: Sequence[str],
-             methods: Sequence[str],
-             ports: Sequence[int],
+             hosts: Optional[Sequence[str]] = None,
+             methods: Optional[Sequence[str]] = None,
+             ports: Optional[Sequence[int]] = None,
              http_header_match: Optional['outputs.AuthorizationPolicyRuleDestinationHttpHeaderMatch'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if hosts is None:
+            raise TypeError("Missing 'hosts' argument")
+        if methods is None:
+            raise TypeError("Missing 'methods' argument")
+        if ports is None:
+            raise TypeError("Missing 'ports' argument")
+        if http_header_match is None and 'httpHeaderMatch' in kwargs:
+            http_header_match = kwargs['httpHeaderMatch']
+
         _setter("hosts", hosts)
         _setter("methods", methods)
         _setter("ports", ports)
@@ -204,9 +216,19 @@ class AuthorizationPolicyRuleDestinationHttpHeaderMatch(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             header_name: str,
-             regex_match: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             header_name: Optional[str] = None,
+             regex_match: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if header_name is None and 'headerName' in kwargs:
+            header_name = kwargs['headerName']
+        if header_name is None:
+            raise TypeError("Missing 'header_name' argument")
+        if regex_match is None and 'regexMatch' in kwargs:
+            regex_match = kwargs['regexMatch']
+        if regex_match is None:
+            raise TypeError("Missing 'regex_match' argument")
+
         _setter("header_name", header_name)
         _setter("regex_match", regex_match)
 
@@ -265,7 +287,11 @@ class AuthorizationPolicyRuleSource(dict):
              _setter: Callable[[Any, Any], None],
              ip_blocks: Optional[Sequence[str]] = None,
              principals: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ip_blocks is None and 'ipBlocks' in kwargs:
+            ip_blocks = kwargs['ipBlocks']
+
         if ip_blocks is not None:
             _setter("ip_blocks", ip_blocks)
         if principals is not None:
@@ -330,7 +356,13 @@ class ClientTlsPolicyClientCertificate(dict):
              _setter: Callable[[Any, Any], None],
              certificate_provider_instance: Optional['outputs.ClientTlsPolicyClientCertificateCertificateProviderInstance'] = None,
              grpc_endpoint: Optional['outputs.ClientTlsPolicyClientCertificateGrpcEndpoint'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if certificate_provider_instance is None and 'certificateProviderInstance' in kwargs:
+            certificate_provider_instance = kwargs['certificateProviderInstance']
+        if grpc_endpoint is None and 'grpcEndpoint' in kwargs:
+            grpc_endpoint = kwargs['grpcEndpoint']
+
         if certificate_provider_instance is not None:
             _setter("certificate_provider_instance", certificate_provider_instance)
         if grpc_endpoint is not None:
@@ -386,8 +418,14 @@ class ClientTlsPolicyClientCertificateCertificateProviderInstance(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             plugin_instance: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             plugin_instance: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if plugin_instance is None and 'pluginInstance' in kwargs:
+            plugin_instance = kwargs['pluginInstance']
+        if plugin_instance is None:
+            raise TypeError("Missing 'plugin_instance' argument")
+
         _setter("plugin_instance", plugin_instance)
 
     @property
@@ -430,8 +468,14 @@ class ClientTlsPolicyClientCertificateGrpcEndpoint(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             target_uri: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             target_uri: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if target_uri is None and 'targetUri' in kwargs:
+            target_uri = kwargs['targetUri']
+        if target_uri is None:
+            raise TypeError("Missing 'target_uri' argument")
+
         _setter("target_uri", target_uri)
 
     @property
@@ -483,7 +527,13 @@ class ClientTlsPolicyServerValidationCa(dict):
              _setter: Callable[[Any, Any], None],
              certificate_provider_instance: Optional['outputs.ClientTlsPolicyServerValidationCaCertificateProviderInstance'] = None,
              grpc_endpoint: Optional['outputs.ClientTlsPolicyServerValidationCaGrpcEndpoint'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if certificate_provider_instance is None and 'certificateProviderInstance' in kwargs:
+            certificate_provider_instance = kwargs['certificateProviderInstance']
+        if grpc_endpoint is None and 'grpcEndpoint' in kwargs:
+            grpc_endpoint = kwargs['grpcEndpoint']
+
         if certificate_provider_instance is not None:
             _setter("certificate_provider_instance", certificate_provider_instance)
         if grpc_endpoint is not None:
@@ -539,8 +589,14 @@ class ClientTlsPolicyServerValidationCaCertificateProviderInstance(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             plugin_instance: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             plugin_instance: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if plugin_instance is None and 'pluginInstance' in kwargs:
+            plugin_instance = kwargs['pluginInstance']
+        if plugin_instance is None:
+            raise TypeError("Missing 'plugin_instance' argument")
+
         _setter("plugin_instance", plugin_instance)
 
     @property
@@ -583,8 +639,14 @@ class ClientTlsPolicyServerValidationCaGrpcEndpoint(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             target_uri: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             target_uri: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if target_uri is None and 'targetUri' in kwargs:
+            target_uri = kwargs['targetUri']
+        if target_uri is None:
+            raise TypeError("Missing 'target_uri' argument")
+
         _setter("target_uri", target_uri)
 
     @property
@@ -646,7 +708,15 @@ class ServerTlsPolicyMtlsPolicy(dict):
              client_validation_cas: Optional[Sequence['outputs.ServerTlsPolicyMtlsPolicyClientValidationCa']] = None,
              client_validation_mode: Optional[str] = None,
              client_validation_trust_config: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if client_validation_cas is None and 'clientValidationCas' in kwargs:
+            client_validation_cas = kwargs['clientValidationCas']
+        if client_validation_mode is None and 'clientValidationMode' in kwargs:
+            client_validation_mode = kwargs['clientValidationMode']
+        if client_validation_trust_config is None and 'clientValidationTrustConfig' in kwargs:
+            client_validation_trust_config = kwargs['clientValidationTrustConfig']
+
         if client_validation_cas is not None:
             _setter("client_validation_cas", client_validation_cas)
         if client_validation_mode is not None:
@@ -726,7 +796,13 @@ class ServerTlsPolicyMtlsPolicyClientValidationCa(dict):
              _setter: Callable[[Any, Any], None],
              certificate_provider_instance: Optional['outputs.ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance'] = None,
              grpc_endpoint: Optional['outputs.ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if certificate_provider_instance is None and 'certificateProviderInstance' in kwargs:
+            certificate_provider_instance = kwargs['certificateProviderInstance']
+        if grpc_endpoint is None and 'grpcEndpoint' in kwargs:
+            grpc_endpoint = kwargs['grpcEndpoint']
+
         if certificate_provider_instance is not None:
             _setter("certificate_provider_instance", certificate_provider_instance)
         if grpc_endpoint is not None:
@@ -783,8 +859,14 @@ class ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance(dic
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             plugin_instance: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             plugin_instance: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if plugin_instance is None and 'pluginInstance' in kwargs:
+            plugin_instance = kwargs['pluginInstance']
+        if plugin_instance is None:
+            raise TypeError("Missing 'plugin_instance' argument")
+
         _setter("plugin_instance", plugin_instance)
 
     @property
@@ -827,8 +909,14 @@ class ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             target_uri: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             target_uri: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if target_uri is None and 'targetUri' in kwargs:
+            target_uri = kwargs['targetUri']
+        if target_uri is None:
+            raise TypeError("Missing 'target_uri' argument")
+
         _setter("target_uri", target_uri)
 
     @property
@@ -881,7 +969,13 @@ class ServerTlsPolicyServerCertificate(dict):
              _setter: Callable[[Any, Any], None],
              certificate_provider_instance: Optional['outputs.ServerTlsPolicyServerCertificateCertificateProviderInstance'] = None,
              grpc_endpoint: Optional['outputs.ServerTlsPolicyServerCertificateGrpcEndpoint'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if certificate_provider_instance is None and 'certificateProviderInstance' in kwargs:
+            certificate_provider_instance = kwargs['certificateProviderInstance']
+        if grpc_endpoint is None and 'grpcEndpoint' in kwargs:
+            grpc_endpoint = kwargs['grpcEndpoint']
+
         if certificate_provider_instance is not None:
             _setter("certificate_provider_instance", certificate_provider_instance)
         if grpc_endpoint is not None:
@@ -938,8 +1032,14 @@ class ServerTlsPolicyServerCertificateCertificateProviderInstance(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             plugin_instance: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             plugin_instance: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if plugin_instance is None and 'pluginInstance' in kwargs:
+            plugin_instance = kwargs['pluginInstance']
+        if plugin_instance is None:
+            raise TypeError("Missing 'plugin_instance' argument")
+
         _setter("plugin_instance", plugin_instance)
 
     @property
@@ -982,8 +1082,14 @@ class ServerTlsPolicyServerCertificateGrpcEndpoint(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             target_uri: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             target_uri: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if target_uri is None and 'targetUri' in kwargs:
+            target_uri = kwargs['targetUri']
+        if target_uri is None:
+            raise TypeError("Missing 'target_uri' argument")
+
         _setter("target_uri", target_uri)
 
     @property

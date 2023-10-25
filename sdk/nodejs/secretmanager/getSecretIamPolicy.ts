@@ -6,18 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for secret
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.secretmanager.getSecretIamPolicy({
- *     project: google_secret_manager_secret["secret-basic"].project,
- *     secretId: google_secret_manager_secret["secret-basic"].secret_id,
- * });
- * ```
  */
 export function getSecretIamPolicy(args: GetSecretIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretIamPolicyResult> {
 
@@ -62,18 +50,6 @@ export interface GetSecretIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for secret
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.secretmanager.getSecretIamPolicy({
- *     project: google_secret_manager_secret["secret-basic"].project,
- *     secretId: google_secret_manager_secret["secret-basic"].secret_id,
- * });
- * ```
  */
 export function getSecretIamPolicyOutput(args: GetSecretIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getSecretIamPolicy(a, opts))

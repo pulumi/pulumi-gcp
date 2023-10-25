@@ -11,36 +11,6 @@ namespace Pulumi.Gcp.Firebase
 {
     /// <summary>
     /// ## Example Usage
-    /// ### Firebasestorage Bucket Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultBucket = new Gcp.Storage.Bucket("defaultBucket", new()
-    ///     {
-    ///         Location = "US",
-    ///         UniformBucketLevelAccess = true,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///     });
-    /// 
-    ///     var defaultStorageBucket = new Gcp.Firebase.StorageBucket("defaultStorageBucket", new()
-    ///     {
-    ///         Project = "my-project-name",
-    ///         BucketId = defaultBucket.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

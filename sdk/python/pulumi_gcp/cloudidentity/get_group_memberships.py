@@ -73,15 +73,6 @@ def get_group_memberships(group: Optional[str] = None,
 
     https://cloud.google.com/identity/docs/concepts/overview#memberships
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    members = gcp.cloudidentity.get_group_memberships(group="groups/123eab45c6defghi")
-    ```
-
 
     :param str group: The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
     """
@@ -103,15 +94,6 @@ def get_group_memberships_output(group: Optional[pulumi.Input[str]] = None,
     Use this data source to get list of the Cloud Identity Group Memberships within a given Group.
 
     https://cloud.google.com/identity/docs/concepts/overview#memberships
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    members = gcp.cloudidentity.get_group_memberships(group="groups/123eab45c6defghi")
-    ```
 
 
     :param str group: The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.

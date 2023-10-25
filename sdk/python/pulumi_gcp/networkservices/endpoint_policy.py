@@ -59,8 +59,8 @@ class EndpointPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint_matcher: pulumi.Input['EndpointPolicyEndpointMatcherArgs'],
-             type: pulumi.Input[str],
+             endpoint_matcher: Optional[pulumi.Input['EndpointPolicyEndpointMatcherArgs']] = None,
+             type: Optional[pulumi.Input[str]] = None,
              authorization_policy: Optional[pulumi.Input[str]] = None,
              client_tls_policy: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -69,7 +69,23 @@ class EndpointPolicyArgs:
              project: Optional[pulumi.Input[str]] = None,
              server_tls_policy: Optional[pulumi.Input[str]] = None,
              traffic_port_selector: Optional[pulumi.Input['EndpointPolicyTrafficPortSelectorArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if endpoint_matcher is None and 'endpointMatcher' in kwargs:
+            endpoint_matcher = kwargs['endpointMatcher']
+        if endpoint_matcher is None:
+            raise TypeError("Missing 'endpoint_matcher' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if authorization_policy is None and 'authorizationPolicy' in kwargs:
+            authorization_policy = kwargs['authorizationPolicy']
+        if client_tls_policy is None and 'clientTlsPolicy' in kwargs:
+            client_tls_policy = kwargs['clientTlsPolicy']
+        if server_tls_policy is None and 'serverTlsPolicy' in kwargs:
+            server_tls_policy = kwargs['serverTlsPolicy']
+        if traffic_port_selector is None and 'trafficPortSelector' in kwargs:
+            traffic_port_selector = kwargs['trafficPortSelector']
+
         _setter("endpoint_matcher", endpoint_matcher)
         _setter("type", type)
         if authorization_policy is not None:
@@ -278,7 +294,23 @@ class _EndpointPolicyState:
              traffic_port_selector: Optional[pulumi.Input['EndpointPolicyTrafficPortSelectorArgs']] = None,
              type: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if authorization_policy is None and 'authorizationPolicy' in kwargs:
+            authorization_policy = kwargs['authorizationPolicy']
+        if client_tls_policy is None and 'clientTlsPolicy' in kwargs:
+            client_tls_policy = kwargs['clientTlsPolicy']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if endpoint_matcher is None and 'endpointMatcher' in kwargs:
+            endpoint_matcher = kwargs['endpointMatcher']
+        if server_tls_policy is None and 'serverTlsPolicy' in kwargs:
+            server_tls_policy = kwargs['serverTlsPolicy']
+        if traffic_port_selector is None and 'trafficPortSelector' in kwargs:
+            traffic_port_selector = kwargs['trafficPortSelector']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if authorization_policy is not None:
             _setter("authorization_policy", authorization_policy)
         if client_tls_policy is not None:
@@ -471,54 +503,6 @@ class EndpointPolicy(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Network Services Endpoint Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networkservices.EndpointPolicy("default",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            type="SIDECAR_PROXY",
-            traffic_port_selector=gcp.networkservices.EndpointPolicyTrafficPortSelectorArgs(
-                ports=["8081"],
-            ),
-            endpoint_matcher=gcp.networkservices.EndpointPolicyEndpointMatcherArgs(
-                metadata_label_matcher=gcp.networkservices.EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs(
-                    metadata_label_match_criteria="MATCH_ANY",
-                    metadata_labels=[gcp.networkservices.EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs(
-                        label_name="foo",
-                        label_value="bar",
-                    )],
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Network Services Endpoint Policy Empty Match
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networkservices.EndpointPolicy("default",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            type="SIDECAR_PROXY",
-            traffic_port_selector=gcp.networkservices.EndpointPolicyTrafficPortSelectorArgs(
-                ports=["8081"],
-            ),
-            endpoint_matcher=gcp.networkservices.EndpointPolicyEndpointMatcherArgs(
-                metadata_label_matcher=gcp.networkservices.EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs(
-                    metadata_label_match_criteria="MATCH_ANY",
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -561,54 +545,6 @@ class EndpointPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Network Services Endpoint Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networkservices.EndpointPolicy("default",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            type="SIDECAR_PROXY",
-            traffic_port_selector=gcp.networkservices.EndpointPolicyTrafficPortSelectorArgs(
-                ports=["8081"],
-            ),
-            endpoint_matcher=gcp.networkservices.EndpointPolicyEndpointMatcherArgs(
-                metadata_label_matcher=gcp.networkservices.EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs(
-                    metadata_label_match_criteria="MATCH_ANY",
-                    metadata_labels=[gcp.networkservices.EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs(
-                        label_name="foo",
-                        label_value="bar",
-                    )],
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Network Services Endpoint Policy Empty Match
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networkservices.EndpointPolicy("default",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            type="SIDECAR_PROXY",
-            traffic_port_selector=gcp.networkservices.EndpointPolicyTrafficPortSelectorArgs(
-                ports=["8081"],
-            ),
-            endpoint_matcher=gcp.networkservices.EndpointPolicyEndpointMatcherArgs(
-                metadata_label_matcher=gcp.networkservices.EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs(
-                    metadata_label_match_criteria="MATCH_ANY",
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -667,11 +603,7 @@ class EndpointPolicy(pulumi.CustomResource):
             __props__.__dict__["authorization_policy"] = authorization_policy
             __props__.__dict__["client_tls_policy"] = client_tls_policy
             __props__.__dict__["description"] = description
-            if endpoint_matcher is not None and not isinstance(endpoint_matcher, EndpointPolicyEndpointMatcherArgs):
-                endpoint_matcher = endpoint_matcher or {}
-                def _setter(key, value):
-                    endpoint_matcher[key] = value
-                EndpointPolicyEndpointMatcherArgs._configure(_setter, **endpoint_matcher)
+            endpoint_matcher = _utilities.configure(endpoint_matcher, EndpointPolicyEndpointMatcherArgs, True)
             if endpoint_matcher is None and not opts.urn:
                 raise TypeError("Missing required property 'endpoint_matcher'")
             __props__.__dict__["endpoint_matcher"] = endpoint_matcher
@@ -679,11 +611,7 @@ class EndpointPolicy(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["server_tls_policy"] = server_tls_policy
-            if traffic_port_selector is not None and not isinstance(traffic_port_selector, EndpointPolicyTrafficPortSelectorArgs):
-                traffic_port_selector = traffic_port_selector or {}
-                def _setter(key, value):
-                    traffic_port_selector[key] = value
-                EndpointPolicyTrafficPortSelectorArgs._configure(_setter, **traffic_port_selector)
+            traffic_port_selector = _utilities.configure(traffic_port_selector, EndpointPolicyTrafficPortSelectorArgs, True)
             __props__.__dict__["traffic_port_selector"] = traffic_port_selector
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")

@@ -67,7 +67,7 @@ class JobArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             template: pulumi.Input['JobTemplateArgs'],
+             template: Optional[pulumi.Input['JobTemplateArgs']] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              binary_authorization: Optional[pulumi.Input['JobBinaryAuthorizationArgs']] = None,
              client: Optional[pulumi.Input[str]] = None,
@@ -77,7 +77,17 @@ class JobArgs:
              location: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if template is None:
+            raise TypeError("Missing 'template' argument")
+        if binary_authorization is None and 'binaryAuthorization' in kwargs:
+            binary_authorization = kwargs['binaryAuthorization']
+        if client_version is None and 'clientVersion' in kwargs:
+            client_version = kwargs['clientVersion']
+        if launch_stage is None and 'launchStage' in kwargs:
+            launch_stage = kwargs['launchStage']
+
         _setter("template", template)
         if annotations is not None:
             _setter("annotations", annotations)
@@ -363,7 +373,33 @@ class _JobState:
              terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['JobTerminalConditionArgs']]]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if binary_authorization is None and 'binaryAuthorization' in kwargs:
+            binary_authorization = kwargs['binaryAuthorization']
+        if client_version is None and 'clientVersion' in kwargs:
+            client_version = kwargs['clientVersion']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if delete_time is None and 'deleteTime' in kwargs:
+            delete_time = kwargs['deleteTime']
+        if execution_count is None and 'executionCount' in kwargs:
+            execution_count = kwargs['executionCount']
+        if expire_time is None and 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if last_modifier is None and 'lastModifier' in kwargs:
+            last_modifier = kwargs['lastModifier']
+        if latest_created_executions is None and 'latestCreatedExecutions' in kwargs:
+            latest_created_executions = kwargs['latestCreatedExecutions']
+        if launch_stage is None and 'launchStage' in kwargs:
+            launch_stage = kwargs['launchStage']
+        if observed_generation is None and 'observedGeneration' in kwargs:
+            observed_generation = kwargs['observedGeneration']
+        if terminal_conditions is None and 'terminalConditions' in kwargs:
+            terminal_conditions = kwargs['terminalConditions']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if binary_authorization is not None:
@@ -762,225 +798,6 @@ class Job(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/run/docs/)
 
         ## Example Usage
-        ### Cloudrunv2 Job Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.cloudrunv2.Job("default",
-            location="us-central1",
-            template=gcp.cloudrunv2.JobTemplateArgs(
-                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
-                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
-                    )],
-                ),
-            ))
-        ```
-        ### Cloudrunv2 Job Sql
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        secret = gcp.secretmanager.Secret("secret",
-            secret_id="secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
-        instance = gcp.sql.DatabaseInstance("instance",
-            region="us-central1",
-            database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ),
-            deletion_protection=True)
-        default = gcp.cloudrunv2.Job("default",
-            location="us-central1",
-            template=gcp.cloudrunv2.JobTemplateArgs(
-                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
-                    volumes=[gcp.cloudrunv2.JobTemplateTemplateVolumeArgs(
-                        name="cloudsql",
-                        cloud_sql_instance=gcp.cloudrunv2.JobTemplateTemplateVolumeCloudSqlInstanceArgs(
-                            instances=[instance.connection_name],
-                        ),
-                    )],
-                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
-                        envs=[
-                            gcp.cloudrunv2.JobTemplateTemplateContainerEnvArgs(
-                                name="FOO",
-                                value="bar",
-                            ),
-                            gcp.cloudrunv2.JobTemplateTemplateContainerEnvArgs(
-                                name="latestdclsecret",
-                                value_source=gcp.cloudrunv2.JobTemplateTemplateContainerEnvValueSourceArgs(
-                                    secret_key_ref=gcp.cloudrunv2.JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs(
-                                        secret=secret.secret_id,
-                                        version="1",
-                                    ),
-                                ),
-                            ),
-                        ],
-                        volume_mounts=[gcp.cloudrunv2.JobTemplateTemplateContainerVolumeMountArgs(
-                            name="cloudsql",
-                            mount_path="/cloudsql",
-                        )],
-                    )],
-                ),
-            ))
-        project = gcp.organizations.get_project()
-        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
-            secret=secret.name,
-            secret_data="secret-data")
-        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
-            secret_id=secret.id,
-            role="roles/secretmanager.secretAccessor",
-            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(depends_on=[secret]))
-        ```
-        ### Cloudrunv2 Job Vpcaccess
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        custom_test_network = gcp.compute.Network("customTestNetwork", auto_create_subnetworks=False)
-        custom_test_subnetwork = gcp.compute.Subnetwork("customTestSubnetwork",
-            ip_cidr_range="10.2.0.0/28",
-            region="us-central1",
-            network=custom_test_network.id)
-        connector = gcp.vpcaccess.Connector("connector",
-            subnet=gcp.vpcaccess.ConnectorSubnetArgs(
-                name=custom_test_subnetwork.name,
-            ),
-            machine_type="e2-standard-4",
-            min_instances=2,
-            max_instances=3,
-            region="us-central1")
-        default = gcp.cloudrunv2.Job("default",
-            location="us-central1",
-            template=gcp.cloudrunv2.JobTemplateArgs(
-                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
-                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
-                    )],
-                    vpc_access=gcp.cloudrunv2.JobTemplateTemplateVpcAccessArgs(
-                        connector=connector.id,
-                        egress="ALL_TRAFFIC",
-                    ),
-                ),
-            ))
-        ```
-        ### Cloudrunv2 Job Directvpc
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.cloudrunv2.Job("default",
-            location="us-central1",
-            launch_stage="BETA",
-            template=gcp.cloudrunv2.JobTemplateArgs(
-                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
-                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
-                        image="us-docker.pkg.dev/cloudrun/container/job",
-                    )],
-                    vpc_access=gcp.cloudrunv2.JobTemplateTemplateVpcAccessArgs(
-                        network_interfaces=[gcp.cloudrunv2.JobTemplateTemplateVpcAccessNetworkInterfaceArgs(
-                            network="default",
-                            subnetwork="default",
-                            tags=[
-                                "tag1",
-                                "tag2",
-                                "tag3",
-                            ],
-                        )],
-                        egress="ALL_TRAFFIC",
-                    ),
-                ),
-            ))
-        ```
-        ### Cloudrunv2 Job Secret
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        secret = gcp.secretmanager.Secret("secret",
-            secret_id="secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
-        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
-            secret=secret.name,
-            secret_data="secret-data")
-        project = gcp.organizations.get_project()
-        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
-            secret_id=secret.id,
-            role="roles/secretmanager.secretAccessor",
-            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(depends_on=[secret]))
-        default = gcp.cloudrunv2.Job("default",
-            location="us-central1",
-            template=gcp.cloudrunv2.JobTemplateArgs(
-                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
-                    volumes=[gcp.cloudrunv2.JobTemplateTemplateVolumeArgs(
-                        name="a-volume",
-                        secret=gcp.cloudrunv2.JobTemplateTemplateVolumeSecretArgs(
-                            secret=secret.secret_id,
-                            default_mode=292,
-                            items=[gcp.cloudrunv2.JobTemplateTemplateVolumeSecretItemArgs(
-                                version="1",
-                                path="my-secret",
-                                mode=256,
-                            )],
-                        ),
-                    )],
-                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
-                        volume_mounts=[gcp.cloudrunv2.JobTemplateTemplateContainerVolumeMountArgs(
-                            name="a-volume",
-                            mount_path="/secrets",
-                        )],
-                    )],
-                ),
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[
-                    secret_version_data,
-                    secret_access,
-                ]))
-        ```
-        ### Cloudrunv2 Job Emptydir
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.cloudrunv2.Job("default",
-            location="us-central1",
-            launch_stage="BETA",
-            template=gcp.cloudrunv2.JobTemplateArgs(
-                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
-                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
-                        volume_mounts=[gcp.cloudrunv2.JobTemplateTemplateContainerVolumeMountArgs(
-                            name="empty-dir-volume",
-                            mount_path="/mnt",
-                        )],
-                    )],
-                    volumes=[gcp.cloudrunv2.JobTemplateTemplateVolumeArgs(
-                        name="empty-dir-volume",
-                        empty_dir=gcp.cloudrunv2.JobTemplateTemplateVolumeEmptyDirArgs(
-                            medium="MEMORY",
-                            size_limit="128Mi",
-                        ),
-                    )],
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -1039,225 +856,6 @@ class Job(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/run/docs/)
 
         ## Example Usage
-        ### Cloudrunv2 Job Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.cloudrunv2.Job("default",
-            location="us-central1",
-            template=gcp.cloudrunv2.JobTemplateArgs(
-                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
-                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
-                    )],
-                ),
-            ))
-        ```
-        ### Cloudrunv2 Job Sql
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        secret = gcp.secretmanager.Secret("secret",
-            secret_id="secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
-        instance = gcp.sql.DatabaseInstance("instance",
-            region="us-central1",
-            database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ),
-            deletion_protection=True)
-        default = gcp.cloudrunv2.Job("default",
-            location="us-central1",
-            template=gcp.cloudrunv2.JobTemplateArgs(
-                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
-                    volumes=[gcp.cloudrunv2.JobTemplateTemplateVolumeArgs(
-                        name="cloudsql",
-                        cloud_sql_instance=gcp.cloudrunv2.JobTemplateTemplateVolumeCloudSqlInstanceArgs(
-                            instances=[instance.connection_name],
-                        ),
-                    )],
-                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
-                        envs=[
-                            gcp.cloudrunv2.JobTemplateTemplateContainerEnvArgs(
-                                name="FOO",
-                                value="bar",
-                            ),
-                            gcp.cloudrunv2.JobTemplateTemplateContainerEnvArgs(
-                                name="latestdclsecret",
-                                value_source=gcp.cloudrunv2.JobTemplateTemplateContainerEnvValueSourceArgs(
-                                    secret_key_ref=gcp.cloudrunv2.JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs(
-                                        secret=secret.secret_id,
-                                        version="1",
-                                    ),
-                                ),
-                            ),
-                        ],
-                        volume_mounts=[gcp.cloudrunv2.JobTemplateTemplateContainerVolumeMountArgs(
-                            name="cloudsql",
-                            mount_path="/cloudsql",
-                        )],
-                    )],
-                ),
-            ))
-        project = gcp.organizations.get_project()
-        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
-            secret=secret.name,
-            secret_data="secret-data")
-        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
-            secret_id=secret.id,
-            role="roles/secretmanager.secretAccessor",
-            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(depends_on=[secret]))
-        ```
-        ### Cloudrunv2 Job Vpcaccess
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        custom_test_network = gcp.compute.Network("customTestNetwork", auto_create_subnetworks=False)
-        custom_test_subnetwork = gcp.compute.Subnetwork("customTestSubnetwork",
-            ip_cidr_range="10.2.0.0/28",
-            region="us-central1",
-            network=custom_test_network.id)
-        connector = gcp.vpcaccess.Connector("connector",
-            subnet=gcp.vpcaccess.ConnectorSubnetArgs(
-                name=custom_test_subnetwork.name,
-            ),
-            machine_type="e2-standard-4",
-            min_instances=2,
-            max_instances=3,
-            region="us-central1")
-        default = gcp.cloudrunv2.Job("default",
-            location="us-central1",
-            template=gcp.cloudrunv2.JobTemplateArgs(
-                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
-                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
-                    )],
-                    vpc_access=gcp.cloudrunv2.JobTemplateTemplateVpcAccessArgs(
-                        connector=connector.id,
-                        egress="ALL_TRAFFIC",
-                    ),
-                ),
-            ))
-        ```
-        ### Cloudrunv2 Job Directvpc
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.cloudrunv2.Job("default",
-            location="us-central1",
-            launch_stage="BETA",
-            template=gcp.cloudrunv2.JobTemplateArgs(
-                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
-                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
-                        image="us-docker.pkg.dev/cloudrun/container/job",
-                    )],
-                    vpc_access=gcp.cloudrunv2.JobTemplateTemplateVpcAccessArgs(
-                        network_interfaces=[gcp.cloudrunv2.JobTemplateTemplateVpcAccessNetworkInterfaceArgs(
-                            network="default",
-                            subnetwork="default",
-                            tags=[
-                                "tag1",
-                                "tag2",
-                                "tag3",
-                            ],
-                        )],
-                        egress="ALL_TRAFFIC",
-                    ),
-                ),
-            ))
-        ```
-        ### Cloudrunv2 Job Secret
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        secret = gcp.secretmanager.Secret("secret",
-            secret_id="secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
-        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
-            secret=secret.name,
-            secret_data="secret-data")
-        project = gcp.organizations.get_project()
-        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
-            secret_id=secret.id,
-            role="roles/secretmanager.secretAccessor",
-            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(depends_on=[secret]))
-        default = gcp.cloudrunv2.Job("default",
-            location="us-central1",
-            template=gcp.cloudrunv2.JobTemplateArgs(
-                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
-                    volumes=[gcp.cloudrunv2.JobTemplateTemplateVolumeArgs(
-                        name="a-volume",
-                        secret=gcp.cloudrunv2.JobTemplateTemplateVolumeSecretArgs(
-                            secret=secret.secret_id,
-                            default_mode=292,
-                            items=[gcp.cloudrunv2.JobTemplateTemplateVolumeSecretItemArgs(
-                                version="1",
-                                path="my-secret",
-                                mode=256,
-                            )],
-                        ),
-                    )],
-                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
-                        volume_mounts=[gcp.cloudrunv2.JobTemplateTemplateContainerVolumeMountArgs(
-                            name="a-volume",
-                            mount_path="/secrets",
-                        )],
-                    )],
-                ),
-            ),
-            opts=pulumi.ResourceOptions(depends_on=[
-                    secret_version_data,
-                    secret_access,
-                ]))
-        ```
-        ### Cloudrunv2 Job Emptydir
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.cloudrunv2.Job("default",
-            location="us-central1",
-            launch_stage="BETA",
-            template=gcp.cloudrunv2.JobTemplateArgs(
-                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
-                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
-                        volume_mounts=[gcp.cloudrunv2.JobTemplateTemplateContainerVolumeMountArgs(
-                            name="empty-dir-volume",
-                            mount_path="/mnt",
-                        )],
-                    )],
-                    volumes=[gcp.cloudrunv2.JobTemplateTemplateVolumeArgs(
-                        name="empty-dir-volume",
-                        empty_dir=gcp.cloudrunv2.JobTemplateTemplateVolumeEmptyDirArgs(
-                            medium="MEMORY",
-                            size_limit="128Mi",
-                        ),
-                    )],
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -1314,11 +912,7 @@ class Job(pulumi.CustomResource):
             __props__ = JobArgs.__new__(JobArgs)
 
             __props__.__dict__["annotations"] = annotations
-            if binary_authorization is not None and not isinstance(binary_authorization, JobBinaryAuthorizationArgs):
-                binary_authorization = binary_authorization or {}
-                def _setter(key, value):
-                    binary_authorization[key] = value
-                JobBinaryAuthorizationArgs._configure(_setter, **binary_authorization)
+            binary_authorization = _utilities.configure(binary_authorization, JobBinaryAuthorizationArgs, True)
             __props__.__dict__["binary_authorization"] = binary_authorization
             __props__.__dict__["client"] = client
             __props__.__dict__["client_version"] = client_version
@@ -1327,11 +921,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            if template is not None and not isinstance(template, JobTemplateArgs):
-                template = template or {}
-                def _setter(key, value):
-                    template[key] = value
-                JobTemplateArgs._configure(_setter, **template)
+            template = _utilities.configure(template, JobTemplateArgs, True)
             if template is None and not opts.urn:
                 raise TypeError("Missing required property 'template'")
             __props__.__dict__["template"] = template

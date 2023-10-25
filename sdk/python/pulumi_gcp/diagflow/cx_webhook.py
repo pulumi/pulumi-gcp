@@ -58,7 +58,7 @@ class CxWebhookArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
              enable_spell_correction: Optional[pulumi.Input[bool]] = None,
              enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
@@ -67,7 +67,23 @@ class CxWebhookArgs:
              security_settings: Optional[pulumi.Input[str]] = None,
              service_directory: Optional[pulumi.Input['CxWebhookServiceDirectoryArgs']] = None,
              timeout: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if enable_spell_correction is None and 'enableSpellCorrection' in kwargs:
+            enable_spell_correction = kwargs['enableSpellCorrection']
+        if enable_stackdriver_logging is None and 'enableStackdriverLogging' in kwargs:
+            enable_stackdriver_logging = kwargs['enableStackdriverLogging']
+        if generic_web_service is None and 'genericWebService' in kwargs:
+            generic_web_service = kwargs['genericWebService']
+        if security_settings is None and 'securitySettings' in kwargs:
+            security_settings = kwargs['securitySettings']
+        if service_directory is None and 'serviceDirectory' in kwargs:
+            service_directory = kwargs['serviceDirectory']
+
         _setter("display_name", display_name)
         if disabled is not None:
             _setter("disabled", disabled)
@@ -264,7 +280,23 @@ class _CxWebhookState:
              service_directory: Optional[pulumi.Input['CxWebhookServiceDirectoryArgs']] = None,
              start_flow: Optional[pulumi.Input[str]] = None,
              timeout: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if enable_spell_correction is None and 'enableSpellCorrection' in kwargs:
+            enable_spell_correction = kwargs['enableSpellCorrection']
+        if enable_stackdriver_logging is None and 'enableStackdriverLogging' in kwargs:
+            enable_stackdriver_logging = kwargs['enableStackdriverLogging']
+        if generic_web_service is None and 'genericWebService' in kwargs:
+            generic_web_service = kwargs['genericWebService']
+        if security_settings is None and 'securitySettings' in kwargs:
+            security_settings = kwargs['securitySettings']
+        if service_directory is None and 'serviceDirectory' in kwargs:
+            service_directory = kwargs['serviceDirectory']
+        if start_flow is None and 'startFlow' in kwargs:
+            start_flow = kwargs['startFlow']
+
         if disabled is not None:
             _setter("disabled", disabled)
         if display_name is not None:
@@ -453,36 +485,6 @@ class CxWebhook(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 
         ## Example Usage
-        ### Dialogflowcx Webhook Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        agent = gcp.diagflow.CxAgent("agent",
-            display_name="dialogflowcx-agent",
-            location="global",
-            default_language_code="en",
-            supported_language_codes=[
-                "it",
-                "de",
-                "es",
-            ],
-            time_zone="America/New_York",
-            description="Example description.",
-            avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
-            enable_stackdriver_logging=True,
-            enable_spell_correction=True,
-            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
-                enable_speech_adaptation=True,
-            ))
-        basic_webhook = gcp.diagflow.CxWebhook("basicWebhook",
-            parent=agent.id,
-            display_name="MyFlow",
-            generic_web_service=gcp.diagflow.CxWebhookGenericWebServiceArgs(
-                uri="https://example.com",
-            ))
-        ```
 
         ## Import
 
@@ -530,36 +532,6 @@ class CxWebhook(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 
         ## Example Usage
-        ### Dialogflowcx Webhook Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        agent = gcp.diagflow.CxAgent("agent",
-            display_name="dialogflowcx-agent",
-            location="global",
-            default_language_code="en",
-            supported_language_codes=[
-                "it",
-                "de",
-                "es",
-            ],
-            time_zone="America/New_York",
-            description="Example description.",
-            avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
-            enable_stackdriver_logging=True,
-            enable_spell_correction=True,
-            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
-                enable_speech_adaptation=True,
-            ))
-        basic_webhook = gcp.diagflow.CxWebhook("basicWebhook",
-            parent=agent.id,
-            display_name="MyFlow",
-            generic_web_service=gcp.diagflow.CxWebhookGenericWebServiceArgs(
-                uri="https://example.com",
-            ))
-        ```
 
         ## Import
 
@@ -616,19 +588,11 @@ class CxWebhook(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["enable_spell_correction"] = enable_spell_correction
             __props__.__dict__["enable_stackdriver_logging"] = enable_stackdriver_logging
-            if generic_web_service is not None and not isinstance(generic_web_service, CxWebhookGenericWebServiceArgs):
-                generic_web_service = generic_web_service or {}
-                def _setter(key, value):
-                    generic_web_service[key] = value
-                CxWebhookGenericWebServiceArgs._configure(_setter, **generic_web_service)
+            generic_web_service = _utilities.configure(generic_web_service, CxWebhookGenericWebServiceArgs, True)
             __props__.__dict__["generic_web_service"] = generic_web_service
             __props__.__dict__["parent"] = parent
             __props__.__dict__["security_settings"] = security_settings
-            if service_directory is not None and not isinstance(service_directory, CxWebhookServiceDirectoryArgs):
-                service_directory = service_directory or {}
-                def _setter(key, value):
-                    service_directory[key] = value
-                CxWebhookServiceDirectoryArgs._configure(_setter, **service_directory)
+            service_directory = _utilities.configure(service_directory, CxWebhookServiceDirectoryArgs, True)
             __props__.__dict__["service_directory"] = service_directory
             __props__.__dict__["timeout"] = timeout
             __props__.__dict__["name"] = None

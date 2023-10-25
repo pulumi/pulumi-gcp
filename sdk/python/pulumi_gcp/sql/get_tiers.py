@@ -74,17 +74,6 @@ def get_tiers(project: Optional[str] = None,
     and
     [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/tiers/list).
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    tiers = gcp.sql.get_tiers(project="sample-project")
-    all_available_tiers = [v.tier for v in tiers.tiers]
-    pulumi.export("avaialbleTiers", all_available_tiers)
-    ```
-
 
     :param str project: The Project ID for which to list tiers. If `project` is not provided, the project defined within the default provider configuration is used.
     """
@@ -107,17 +96,6 @@ def get_tiers_output(project: Optional[pulumi.Input[Optional[str]]] = None,
     [official documentation](https://cloud.google.com/sql/)
     and
     [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/tiers/list).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    tiers = gcp.sql.get_tiers(project="sample-project")
-    all_available_tiers = [v.tier for v in tiers.tiers]
-    pulumi.export("avaialbleTiers", all_available_tiers)
-    ```
 
 
     :param str project: The Project ID for which to list tiers. If `project` is not provided, the project defined within the default provider configuration is used.

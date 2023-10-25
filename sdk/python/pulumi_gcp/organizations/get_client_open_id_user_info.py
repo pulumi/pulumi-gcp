@@ -68,15 +68,6 @@ def get_client_open_id_user_info(opts: Optional[pulumi.InvokeOptions] = None) ->
     receive an error otherwise. The provider uses this scope by default.
 
     ## Example Usage
-    ### Exporting An Email
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    me = gcp.organizations.get_client_open_id_user_info()
-    pulumi.export("my-email", me.email)
-    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -103,14 +94,5 @@ def get_client_open_id_user_info_output(opts: Optional[pulumi.InvokeOptions] = N
     receive an error otherwise. The provider uses this scope by default.
 
     ## Example Usage
-    ### Exporting An Email
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    me = gcp.organizations.get_client_open_id_user_info()
-    pulumi.export("my-email", me.email)
-    ```
     """
     ...

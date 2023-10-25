@@ -31,7 +31,9 @@ class RegistryArgs:
              _setter: Callable[[Any, Any], None],
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if location is not None:
             _setter("location", location)
         if project is not None:
@@ -86,7 +88,11 @@ class _RegistryState:
              bucket_self_link: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bucket_self_link is None and 'bucketSelfLink' in kwargs:
+            bucket_self_link = kwargs['bucketSelfLink']
+
         if bucket_self_link is not None:
             _setter("bucket_self_link", bucket_self_link)
         if location is not None:
@@ -144,32 +150,6 @@ class Registry(pulumi.CustomResource):
 
         This resource can be used to ensure that the GCS bucket exists prior to assigning permissions. For more information see the [access control page](https://cloud.google.com/container-registry/docs/access-control) for GCR.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        registry = gcp.container.Registry("registry",
-            location="EU",
-            project="my-project")
-        ```
-
-        The `id` field of the `container.Registry` is the identifier of the storage bucket that backs GCR and can be used to assign permissions to the bucket.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        registry = gcp.container.Registry("registry",
-            project="my-project",
-            location="EU")
-        viewer = gcp.storage.BucketIAMMember("viewer",
-            bucket=registry.id,
-            role="roles/storage.objectViewer",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         This resource does not support import.
@@ -189,32 +169,6 @@ class Registry(pulumi.CustomResource):
         Ensures that the Google Cloud Storage bucket that backs Google Container Registry exists. Creating this resource will create the backing bucket if it does not exist, or do nothing if the bucket already exists. Destroying this resource does *NOT* destroy the backing bucket. For more information see [the official documentation](https://cloud.google.com/container-registry/docs/overview)
 
         This resource can be used to ensure that the GCS bucket exists prior to assigning permissions. For more information see the [access control page](https://cloud.google.com/container-registry/docs/access-control) for GCR.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        registry = gcp.container.Registry("registry",
-            location="EU",
-            project="my-project")
-        ```
-
-        The `id` field of the `container.Registry` is the identifier of the storage bucket that backs GCR and can be used to assign permissions to the bucket.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        registry = gcp.container.Registry("registry",
-            project="my-project",
-            location="EU")
-        viewer = gcp.storage.BucketIAMMember("viewer",
-            bucket=registry.id,
-            role="roles/storage.objectViewer",
-            member="user:jane@example.com")
-        ```
 
         ## Import
 

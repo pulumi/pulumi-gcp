@@ -49,11 +49,15 @@ class FolderFeedCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
+             expression: Optional[str] = None,
              description: Optional[str] = None,
              location: Optional[str] = None,
              title: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+
         _setter("expression", expression)
         if description is not None:
             _setter("description", description)
@@ -130,8 +134,14 @@ class FolderFeedFeedOutputConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pubsub_destination: 'outputs.FolderFeedFeedOutputConfigPubsubDestination',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             pubsub_destination: Optional['outputs.FolderFeedFeedOutputConfigPubsubDestination'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if pubsub_destination is None and 'pubsubDestination' in kwargs:
+            pubsub_destination = kwargs['pubsubDestination']
+        if pubsub_destination is None:
+            raise TypeError("Missing 'pubsub_destination' argument")
+
         _setter("pubsub_destination", pubsub_destination)
 
     @property
@@ -160,8 +170,12 @@ class FolderFeedFeedOutputConfigPubsubDestination(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             topic: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             topic: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if topic is None:
+            raise TypeError("Missing 'topic' argument")
+
         _setter("topic", topic)
 
     @property
@@ -201,11 +215,15 @@ class OrganizationFeedCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
+             expression: Optional[str] = None,
              description: Optional[str] = None,
              location: Optional[str] = None,
              title: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+
         _setter("expression", expression)
         if description is not None:
             _setter("description", description)
@@ -282,8 +300,14 @@ class OrganizationFeedFeedOutputConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pubsub_destination: 'outputs.OrganizationFeedFeedOutputConfigPubsubDestination',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             pubsub_destination: Optional['outputs.OrganizationFeedFeedOutputConfigPubsubDestination'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if pubsub_destination is None and 'pubsubDestination' in kwargs:
+            pubsub_destination = kwargs['pubsubDestination']
+        if pubsub_destination is None:
+            raise TypeError("Missing 'pubsub_destination' argument")
+
         _setter("pubsub_destination", pubsub_destination)
 
     @property
@@ -312,8 +336,12 @@ class OrganizationFeedFeedOutputConfigPubsubDestination(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             topic: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             topic: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if topic is None:
+            raise TypeError("Missing 'topic' argument")
+
         _setter("topic", topic)
 
     @property
@@ -353,11 +381,15 @@ class ProjectFeedCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
+             expression: Optional[str] = None,
              description: Optional[str] = None,
              location: Optional[str] = None,
              title: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+
         _setter("expression", expression)
         if description is not None:
             _setter("description", description)
@@ -434,8 +466,14 @@ class ProjectFeedFeedOutputConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pubsub_destination: 'outputs.ProjectFeedFeedOutputConfigPubsubDestination',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             pubsub_destination: Optional['outputs.ProjectFeedFeedOutputConfigPubsubDestination'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if pubsub_destination is None and 'pubsubDestination' in kwargs:
+            pubsub_destination = kwargs['pubsubDestination']
+        if pubsub_destination is None:
+            raise TypeError("Missing 'pubsub_destination' argument")
+
         _setter("pubsub_destination", pubsub_destination)
 
     @property
@@ -464,8 +502,12 @@ class ProjectFeedFeedOutputConfigPubsubDestination(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             topic: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             topic: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if topic is None:
+            raise TypeError("Missing 'topic' argument")
+
         _setter("topic", topic)
 
     @property
@@ -517,16 +559,44 @@ class GetResourcesSearchAllResultResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             additional_attributes: Sequence[str],
-             asset_type: str,
-             description: str,
-             display_name: str,
-             labels: Mapping[str, str],
-             location: str,
-             name: str,
-             network_tags: Sequence[str],
-             project: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             additional_attributes: Optional[Sequence[str]] = None,
+             asset_type: Optional[str] = None,
+             description: Optional[str] = None,
+             display_name: Optional[str] = None,
+             labels: Optional[Mapping[str, str]] = None,
+             location: Optional[str] = None,
+             name: Optional[str] = None,
+             network_tags: Optional[Sequence[str]] = None,
+             project: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if additional_attributes is None and 'additionalAttributes' in kwargs:
+            additional_attributes = kwargs['additionalAttributes']
+        if additional_attributes is None:
+            raise TypeError("Missing 'additional_attributes' argument")
+        if asset_type is None and 'assetType' in kwargs:
+            asset_type = kwargs['assetType']
+        if asset_type is None:
+            raise TypeError("Missing 'asset_type' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if labels is None:
+            raise TypeError("Missing 'labels' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if network_tags is None and 'networkTags' in kwargs:
+            network_tags = kwargs['networkTags']
+        if network_tags is None:
+            raise TypeError("Missing 'network_tags' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+
         _setter("additional_attributes", additional_attributes)
         _setter("asset_type", asset_type)
         _setter("description", description)

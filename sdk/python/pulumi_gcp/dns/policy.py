@@ -65,7 +65,15 @@ class PolicyArgs:
              name: Optional[pulumi.Input[str]] = None,
              networks: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyNetworkArgs']]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if alternative_name_server_config is None and 'alternativeNameServerConfig' in kwargs:
+            alternative_name_server_config = kwargs['alternativeNameServerConfig']
+        if enable_inbound_forwarding is None and 'enableInboundForwarding' in kwargs:
+            enable_inbound_forwarding = kwargs['enableInboundForwarding']
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+
         if alternative_name_server_config is not None:
             _setter("alternative_name_server_config", alternative_name_server_config)
         if description is not None:
@@ -230,7 +238,15 @@ class _PolicyState:
              name: Optional[pulumi.Input[str]] = None,
              networks: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyNetworkArgs']]]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if alternative_name_server_config is None and 'alternativeNameServerConfig' in kwargs:
+            alternative_name_server_config = kwargs['alternativeNameServerConfig']
+        if enable_inbound_forwarding is None and 'enableInboundForwarding' in kwargs:
+            enable_inbound_forwarding = kwargs['enableInboundForwarding']
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+
         if alternative_name_server_config is not None:
             _setter("alternative_name_server_config", alternative_name_server_config)
         if description is not None:
@@ -367,37 +383,6 @@ class Policy(pulumi.CustomResource):
             * [Using DNS server policies](https://cloud.google.com/dns/zones/#using-dns-server-policies)
 
         ## Example Usage
-        ### Dns Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
-        network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False)
-        example_policy = gcp.dns.Policy("example-policy",
-            enable_inbound_forwarding=True,
-            enable_logging=True,
-            alternative_name_server_config=gcp.dns.PolicyAlternativeNameServerConfigArgs(
-                target_name_servers=[
-                    gcp.dns.PolicyAlternativeNameServerConfigTargetNameServerArgs(
-                        ipv4_address="172.16.1.10",
-                        forwarding_path="private",
-                    ),
-                    gcp.dns.PolicyAlternativeNameServerConfigTargetNameServerArgs(
-                        ipv4_address="172.16.1.20",
-                    ),
-                ],
-            ),
-            networks=[
-                gcp.dns.PolicyNetworkArgs(
-                    network_url=network_1.id,
-                ),
-                gcp.dns.PolicyNetworkArgs(
-                    network_url=network_2.id,
-                ),
-            ])
-        ```
 
         ## Import
 
@@ -454,37 +439,6 @@ class Policy(pulumi.CustomResource):
             * [Using DNS server policies](https://cloud.google.com/dns/zones/#using-dns-server-policies)
 
         ## Example Usage
-        ### Dns Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
-        network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False)
-        example_policy = gcp.dns.Policy("example-policy",
-            enable_inbound_forwarding=True,
-            enable_logging=True,
-            alternative_name_server_config=gcp.dns.PolicyAlternativeNameServerConfigArgs(
-                target_name_servers=[
-                    gcp.dns.PolicyAlternativeNameServerConfigTargetNameServerArgs(
-                        ipv4_address="172.16.1.10",
-                        forwarding_path="private",
-                    ),
-                    gcp.dns.PolicyAlternativeNameServerConfigTargetNameServerArgs(
-                        ipv4_address="172.16.1.20",
-                    ),
-                ],
-            ),
-            networks=[
-                gcp.dns.PolicyNetworkArgs(
-                    network_url=network_1.id,
-                ),
-                gcp.dns.PolicyNetworkArgs(
-                    network_url=network_2.id,
-                ),
-            ])
-        ```
 
         ## Import
 
@@ -537,11 +491,7 @@ class Policy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PolicyArgs.__new__(PolicyArgs)
 
-            if alternative_name_server_config is not None and not isinstance(alternative_name_server_config, PolicyAlternativeNameServerConfigArgs):
-                alternative_name_server_config = alternative_name_server_config or {}
-                def _setter(key, value):
-                    alternative_name_server_config[key] = value
-                PolicyAlternativeNameServerConfigArgs._configure(_setter, **alternative_name_server_config)
+            alternative_name_server_config = _utilities.configure(alternative_name_server_config, PolicyAlternativeNameServerConfigArgs, True)
             __props__.__dict__["alternative_name_server_config"] = alternative_name_server_config
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_inbound_forwarding"] = enable_inbound_forwarding

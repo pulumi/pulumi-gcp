@@ -45,13 +45,21 @@ class AppConnectorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             principal_info: pulumi.Input['AppConnectorPrincipalInfoArgs'],
+             principal_info: Optional[pulumi.Input['AppConnectorPrincipalInfoArgs']] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if principal_info is None and 'principalInfo' in kwargs:
+            principal_info = kwargs['principalInfo']
+        if principal_info is None:
+            raise TypeError("Missing 'principal_info' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("principal_info", principal_info)
         if display_name is not None:
             _setter("display_name", display_name)
@@ -181,7 +189,13 @@ class _AppConnectorState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if principal_info is None and 'principalInfo' in kwargs:
+            principal_info = kwargs['principalInfo']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if labels is not None:
@@ -309,43 +323,6 @@ class AppConnector(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
 
         ## Example Usage
-        ### Beyondcorp App Connector Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        service_account = gcp.service_account.Account("serviceAccount",
-            account_id="my-account",
-            display_name="Test Service Account")
-        app_connector = gcp.beyondcorp.AppConnector("appConnector", principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
-            service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
-                email=service_account.email,
-            ),
-        ))
-        ```
-        ### Beyondcorp App Connector Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        service_account = gcp.service_account.Account("serviceAccount",
-            account_id="my-account",
-            display_name="Test Service Account")
-        app_connector = gcp.beyondcorp.AppConnector("appConnector",
-            region="us-central1",
-            display_name="some display name",
-            principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
-                service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
-                    email=service_account.email,
-                ),
-            ),
-            labels={
-                "foo": "bar",
-                "bar": "baz",
-            })
-        ```
 
         ## Import
 
@@ -397,43 +374,6 @@ class AppConnector(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
 
         ## Example Usage
-        ### Beyondcorp App Connector Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        service_account = gcp.service_account.Account("serviceAccount",
-            account_id="my-account",
-            display_name="Test Service Account")
-        app_connector = gcp.beyondcorp.AppConnector("appConnector", principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
-            service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
-                email=service_account.email,
-            ),
-        ))
-        ```
-        ### Beyondcorp App Connector Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        service_account = gcp.service_account.Account("serviceAccount",
-            account_id="my-account",
-            display_name="Test Service Account")
-        app_connector = gcp.beyondcorp.AppConnector("appConnector",
-            region="us-central1",
-            display_name="some display name",
-            principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
-                service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
-                    email=service_account.email,
-                ),
-            ),
-            labels={
-                "foo": "bar",
-                "bar": "baz",
-            })
-        ```
 
         ## Import
 
@@ -492,11 +432,7 @@ class AppConnector(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
-            if principal_info is not None and not isinstance(principal_info, AppConnectorPrincipalInfoArgs):
-                principal_info = principal_info or {}
-                def _setter(key, value):
-                    principal_info[key] = value
-                AppConnectorPrincipalInfoArgs._configure(_setter, **principal_info)
+            principal_info = _utilities.configure(principal_info, AppConnectorPrincipalInfoArgs, True)
             if principal_info is None and not opts.urn:
                 raise TypeError("Missing required property 'principal_info'")
             __props__.__dict__["principal_info"] = principal_info

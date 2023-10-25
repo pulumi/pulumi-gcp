@@ -77,14 +77,6 @@ def get_databases(instance: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabasesResult:
     """
     Use this data source to get information about a list of databases in a Cloud SQL instance.
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    qa = gcp.sql.get_databases(instance=google_sql_database_instance["main"]["name"])
-    ```
 
 
     :param str instance: The name of the Cloud SQL database instance in which the database belongs.
@@ -111,14 +103,6 @@ def get_databases_output(instance: Optional[pulumi.Input[str]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabasesResult]:
     """
     Use this data source to get information about a list of databases in a Cloud SQL instance.
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    qa = gcp.sql.get_databases(instance=google_sql_database_instance["main"]["name"])
-    ```
 
 
     :param str instance: The name of the Cloud SQL database instance in which the database belongs.

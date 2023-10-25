@@ -17,51 +17,6 @@ import (
 //
 // > **Note:** All arguments including the private key will be stored in the raw state as plain-text
 //
-// ## Example Usage
-//
-// Example creating a SQL Client Certificate.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := random.NewRandomId(ctx, "dbNameSuffix", &random.RandomIdArgs{
-//				ByteLength: pulumi.Int(4),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			main, err := sql.NewDatabaseInstance(ctx, "main", &sql.DatabaseInstanceArgs{
-//				DatabaseVersion: pulumi.String("MYSQL_5_7"),
-//				Settings: &sql.DatabaseInstanceSettingsArgs{
-//					Tier: pulumi.String("db-f1-micro"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = sql.NewSslCert(ctx, "clientCert", &sql.SslCertArgs{
-//				CommonName: pulumi.String("client-name"),
-//				Instance:   main.Name,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Since the contents of the certificate cannot be accessed after its creation, this resource cannot be imported.

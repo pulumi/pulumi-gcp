@@ -21,46 +21,6 @@ import (
 // [the Project API documentation](https://cloud.google.com/compute/docs/reference/latest/projects),
 // where the Shared VPC feature is referred to by its former name "XPN".
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			host, err := compute.NewSharedVPCHostProject(ctx, "host", &compute.SharedVPCHostProjectArgs{
-//				Project: pulumi.String("host-project-id"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewSharedVPCServiceProject(ctx, "service1", &compute.SharedVPCServiceProjectArgs{
-//				HostProject:    host.Project,
-//				ServiceProject: pulumi.String("service-project-id-1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewSharedVPCServiceProject(ctx, "service2", &compute.SharedVPCServiceProjectArgs{
-//				HostProject:    host.Project,
-//				ServiceProject: pulumi.String("service-project-id-2"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Google Compute Engine Shared VPC host project feature can be imported using the `project`, e.g.

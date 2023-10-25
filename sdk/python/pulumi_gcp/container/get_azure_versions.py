@@ -92,17 +92,6 @@ def get_azure_versions(location: Optional[str] = None,
     """
     Provides access to available Kubernetes versions in a location for a given project.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    central1b = gcp.container.get_azure_versions(location="us-west1",
-        project="my-project")
-    pulumi.export("firstAvailableVersion", data["google_container_azure_versions"]["versions"]["valid_versions"])
-    ```
-
 
     :param str location: The location to list versions for.
     :param str project: ID of the project to list available cluster versions for. Should match the project the cluster will be deployed to.
@@ -128,17 +117,6 @@ def get_azure_versions_output(location: Optional[pulumi.Input[Optional[str]]] = 
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAzureVersionsResult]:
     """
     Provides access to available Kubernetes versions in a location for a given project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    central1b = gcp.container.get_azure_versions(location="us-west1",
-        project="my-project")
-    pulumi.export("firstAvailableVersion", data["google_container_azure_versions"]["versions"]["valid_versions"])
-    ```
 
 
     :param str location: The location to list versions for.

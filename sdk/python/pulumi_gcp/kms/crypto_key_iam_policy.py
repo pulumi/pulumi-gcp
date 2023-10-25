@@ -42,9 +42,19 @@ class CryptoKeyIAMPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             crypto_key_id: pulumi.Input[str],
-             policy_data: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             crypto_key_id: Optional[pulumi.Input[str]] = None,
+             policy_data: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if crypto_key_id is None and 'cryptoKeyId' in kwargs:
+            crypto_key_id = kwargs['cryptoKeyId']
+        if crypto_key_id is None:
+            raise TypeError("Missing 'crypto_key_id' argument")
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+        if policy_data is None:
+            raise TypeError("Missing 'policy_data' argument")
+
         _setter("crypto_key_id", crypto_key_id)
         _setter("policy_data", policy_data)
 
@@ -123,7 +133,13 @@ class _CryptoKeyIAMPolicyState:
              crypto_key_id: Optional[pulumi.Input[str]] = None,
              etag: Optional[pulumi.Input[str]] = None,
              policy_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if crypto_key_id is None and 'cryptoKeyId' in kwargs:
+            crypto_key_id = kwargs['cryptoKeyId']
+        if policy_data is None and 'policyData' in kwargs:
+            policy_data = kwargs['policyData']
+
         if crypto_key_id is not None:
             _setter("crypto_key_id", crypto_key_id)
         if etag is not None:
@@ -200,93 +216,11 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
 
         > **Note:** `kms.CryptoKeyIAMBinding` resources **can be** used in conjunction with `kms.CryptoKeyIAMMember` resources **only if** they do not grant privilege to the same role.
 
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        keyring = gcp.kms.KeyRing("keyring", location="global")
-        key = gcp.kms.CryptoKey("key",
-            key_ring=keyring.id,
-            rotation_period="100000s")
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/cloudkms.cryptoKeyEncrypter",
-            members=["user:jane@example.com"],
-        )])
-        crypto_key = gcp.kms.CryptoKeyIAMPolicy("cryptoKey",
-            crypto_key_id=key.id,
-            policy_data=admin.policy_data)
-        ```
+        With IAM Conditions:
 
         With IAM Conditions:
 
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
-            ),
-            members=["user:jane@example.com"],
-            role="roles/cloudkms.cryptoKeyEncrypter",
-        )])
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        crypto_key = gcp.kms.CryptoKeyIAMBinding("cryptoKey",
-            crypto_key_id=google_kms_crypto_key["key"]["id"],
-            role="roles/cloudkms.cryptoKeyEncrypter",
-            members=["user:jane@example.com"])
-        ```
-
         With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        crypto_key = gcp.kms.CryptoKeyIAMBinding("cryptoKey",
-            crypto_key_id=google_kms_crypto_key["key"]["id"],
-            role="roles/cloudkms.cryptoKeyEncrypter",
-            members=["user:jane@example.com"],
-            condition=gcp.kms.CryptoKeyIAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
-            crypto_key_id=google_kms_crypto_key["key"]["id"],
-            role="roles/cloudkms.cryptoKeyEncrypter",
-            member="user:jane@example.com")
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
-            crypto_key_id=google_kms_crypto_key["key"]["id"],
-            role="roles/cloudkms.cryptoKeyEncrypter",
-            member="user:jane@example.com",
-            condition=gcp.kms.CryptoKeyIAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
 
         ## Import
 
@@ -349,93 +283,11 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
 
         > **Note:** `kms.CryptoKeyIAMBinding` resources **can be** used in conjunction with `kms.CryptoKeyIAMMember` resources **only if** they do not grant privilege to the same role.
 
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        keyring = gcp.kms.KeyRing("keyring", location="global")
-        key = gcp.kms.CryptoKey("key",
-            key_ring=keyring.id,
-            rotation_period="100000s")
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/cloudkms.cryptoKeyEncrypter",
-            members=["user:jane@example.com"],
-        )])
-        crypto_key = gcp.kms.CryptoKeyIAMPolicy("cryptoKey",
-            crypto_key_id=key.id,
-            policy_data=admin.policy_data)
-        ```
+        With IAM Conditions:
 
         With IAM Conditions:
 
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-                title="expires_after_2019_12_31",
-            ),
-            members=["user:jane@example.com"],
-            role="roles/cloudkms.cryptoKeyEncrypter",
-        )])
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        crypto_key = gcp.kms.CryptoKeyIAMBinding("cryptoKey",
-            crypto_key_id=google_kms_crypto_key["key"]["id"],
-            role="roles/cloudkms.cryptoKeyEncrypter",
-            members=["user:jane@example.com"])
-        ```
-
         With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        crypto_key = gcp.kms.CryptoKeyIAMBinding("cryptoKey",
-            crypto_key_id=google_kms_crypto_key["key"]["id"],
-            role="roles/cloudkms.cryptoKeyEncrypter",
-            members=["user:jane@example.com"],
-            condition=gcp.kms.CryptoKeyIAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
-            crypto_key_id=google_kms_crypto_key["key"]["id"],
-            role="roles/cloudkms.cryptoKeyEncrypter",
-            member="user:jane@example.com")
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
-            crypto_key_id=google_kms_crypto_key["key"]["id"],
-            role="roles/cloudkms.cryptoKeyEncrypter",
-            member="user:jane@example.com",
-            condition=gcp.kms.CryptoKeyIAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
 
         ## Import
 

@@ -18,66 +18,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
  *
  * ## Example Usage
- * ### Beyondcorp App Connection Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const serviceAccount = new gcp.serviceaccount.Account("serviceAccount", {
- *     accountId: "my-account",
- *     displayName: "Test Service Account",
- * });
- * const appConnector = new gcp.beyondcorp.AppConnector("appConnector", {principalInfo: {
- *     serviceAccount: {
- *         email: serviceAccount.email,
- *     },
- * }});
- * const appConnection = new gcp.beyondcorp.AppConnection("appConnection", {
- *     type: "TCP_PROXY",
- *     applicationEndpoint: {
- *         host: "foo-host",
- *         port: 8080,
- *     },
- *     connectors: [appConnector.id],
- * });
- * ```
- * ### Beyondcorp App Connection Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const serviceAccount = new gcp.serviceaccount.Account("serviceAccount", {
- *     accountId: "my-account",
- *     displayName: "Test Service Account",
- * });
- * const appGateway = new gcp.beyondcorp.AppGateway("appGateway", {
- *     type: "TCP_PROXY",
- *     hostType: "GCP_REGIONAL_MIG",
- * });
- * const appConnector = new gcp.beyondcorp.AppConnector("appConnector", {principalInfo: {
- *     serviceAccount: {
- *         email: serviceAccount.email,
- *     },
- * }});
- * const appConnection = new gcp.beyondcorp.AppConnection("appConnection", {
- *     type: "TCP_PROXY",
- *     displayName: "some display name",
- *     applicationEndpoint: {
- *         host: "foo-host",
- *         port: 8080,
- *     },
- *     connectors: [appConnector.id],
- *     gateway: {
- *         appGateway: appGateway.id,
- *     },
- *     labels: {
- *         foo: "bar",
- *         bar: "baz",
- *     },
- * });
- * ```
  *
  * ## Import
  *

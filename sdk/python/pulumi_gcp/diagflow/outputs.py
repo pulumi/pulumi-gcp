@@ -165,7 +165,11 @@ class CxAgentSpeechToTextSettings(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              enable_speech_adaptation: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enable_speech_adaptation is None and 'enableSpeechAdaptation' in kwargs:
+            enable_speech_adaptation = kwargs['enableSpeechAdaptation']
+
         if enable_speech_adaptation is not None:
             _setter("enable_speech_adaptation", enable_speech_adaptation)
 
@@ -202,7 +206,9 @@ class CxEntityTypeEntity(dict):
              _setter: Callable[[Any, Any], None],
              synonyms: Optional[Sequence[str]] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if synonyms is not None:
             _setter("synonyms", synonyms)
         if value is not None:
@@ -245,7 +251,9 @@ class CxEntityTypeExcludedPhrase(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if value is not None:
             _setter("value", value)
 
@@ -274,8 +282,12 @@ class CxEnvironmentVersionConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             version: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+
         _setter("version", version)
 
     @property
@@ -345,7 +357,15 @@ class CxFlowEventHandler(dict):
              target_flow: Optional[str] = None,
              target_page: Optional[str] = None,
              trigger_fulfillment: Optional['outputs.CxFlowEventHandlerTriggerFulfillment'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if target_flow is None and 'targetFlow' in kwargs:
+            target_flow = kwargs['targetFlow']
+        if target_page is None and 'targetPage' in kwargs:
+            target_page = kwargs['targetPage']
+        if trigger_fulfillment is None and 'triggerFulfillment' in kwargs:
+            trigger_fulfillment = kwargs['triggerFulfillment']
+
         if event is not None:
             _setter("event", event)
         if name is not None:
@@ -461,7 +481,15 @@ class CxFlowEventHandlerTriggerFulfillment(dict):
              set_parameter_actions: Optional[Sequence['outputs.CxFlowEventHandlerTriggerFulfillmentSetParameterAction']] = None,
              tag: Optional[str] = None,
              webhook: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if conditional_cases is None and 'conditionalCases' in kwargs:
+            conditional_cases = kwargs['conditionalCases']
+        if return_partial_responses is None and 'returnPartialResponses' in kwargs:
+            return_partial_responses = kwargs['returnPartialResponses']
+        if set_parameter_actions is None and 'setParameterActions' in kwargs:
+            set_parameter_actions = kwargs['setParameterActions']
+
         if conditional_cases is not None:
             _setter("conditional_cases", conditional_cases)
         if messages is not None:
@@ -543,7 +571,9 @@ class CxFlowEventHandlerTriggerFulfillmentConditionalCase(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              cases: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if cases is not None:
             _setter("cases", cases)
 
@@ -639,7 +669,19 @@ class CxFlowEventHandlerTriggerFulfillmentMessage(dict):
              play_audio: Optional['outputs.CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio'] = None,
              telephony_transfer_call: Optional['outputs.CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall'] = None,
              text: Optional['outputs.CxFlowEventHandlerTriggerFulfillmentMessageText'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if conversation_success is None and 'conversationSuccess' in kwargs:
+            conversation_success = kwargs['conversationSuccess']
+        if live_agent_handoff is None and 'liveAgentHandoff' in kwargs:
+            live_agent_handoff = kwargs['liveAgentHandoff']
+        if output_audio_text is None and 'outputAudioText' in kwargs:
+            output_audio_text = kwargs['outputAudioText']
+        if play_audio is None and 'playAudio' in kwargs:
+            play_audio = kwargs['playAudio']
+        if telephony_transfer_call is None and 'telephonyTransferCall' in kwargs:
+            telephony_transfer_call = kwargs['telephonyTransferCall']
+
         if channel is not None:
             _setter("channel", channel)
         if conversation_success is not None:
@@ -751,7 +793,9 @@ class CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              metadata: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if metadata is not None:
             _setter("metadata", metadata)
 
@@ -779,7 +823,9 @@ class CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              metadata: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if metadata is not None:
             _setter("metadata", metadata)
 
@@ -833,7 +879,11 @@ class CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText(dict):
              allow_playback_interruption: Optional[bool] = None,
              ssml: Optional[str] = None,
              text: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_playback_interruption is None and 'allowPlaybackInterruption' in kwargs:
+            allow_playback_interruption = kwargs['allowPlaybackInterruption']
+
         if allow_playback_interruption is not None:
             _setter("allow_playback_interruption", allow_playback_interruption)
         if ssml is not None:
@@ -904,9 +954,17 @@ class CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             audio_uri: str,
+             audio_uri: Optional[str] = None,
              allow_playback_interruption: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if audio_uri is None and 'audioUri' in kwargs:
+            audio_uri = kwargs['audioUri']
+        if audio_uri is None:
+            raise TypeError("Missing 'audio_uri' argument")
+        if allow_playback_interruption is None and 'allowPlaybackInterruption' in kwargs:
+            allow_playback_interruption = kwargs['allowPlaybackInterruption']
+
         _setter("audio_uri", audio_uri)
         if allow_playback_interruption is not None:
             _setter("allow_playback_interruption", allow_playback_interruption)
@@ -960,8 +1018,14 @@ class CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             phone_number: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             phone_number: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if phone_number is None and 'phoneNumber' in kwargs:
+            phone_number = kwargs['phoneNumber']
+        if phone_number is None:
+            raise TypeError("Missing 'phone_number' argument")
+
         _setter("phone_number", phone_number)
 
     @property
@@ -1010,7 +1074,11 @@ class CxFlowEventHandlerTriggerFulfillmentMessageText(dict):
              _setter: Callable[[Any, Any], None],
              allow_playback_interruption: Optional[bool] = None,
              texts: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_playback_interruption is None and 'allowPlaybackInterruption' in kwargs:
+            allow_playback_interruption = kwargs['allowPlaybackInterruption']
+
         if allow_playback_interruption is not None:
             _setter("allow_playback_interruption", allow_playback_interruption)
         if texts is not None:
@@ -1053,7 +1121,9 @@ class CxFlowEventHandlerTriggerFulfillmentSetParameterAction(dict):
              _setter: Callable[[Any, Any], None],
              parameter: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if parameter is not None:
             _setter("parameter", parameter)
         if value is not None:
@@ -1127,7 +1197,15 @@ class CxFlowNluSettings(dict):
              classification_threshold: Optional[float] = None,
              model_training_mode: Optional[str] = None,
              model_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if classification_threshold is None and 'classificationThreshold' in kwargs:
+            classification_threshold = kwargs['classificationThreshold']
+        if model_training_mode is None and 'modelTrainingMode' in kwargs:
+            model_training_mode = kwargs['modelTrainingMode']
+        if model_type is None and 'modelType' in kwargs:
+            model_type = kwargs['modelType']
+
         if classification_threshold is not None:
             _setter("classification_threshold", classification_threshold)
         if model_training_mode is not None:
@@ -1229,7 +1307,15 @@ class CxFlowTransitionRoute(dict):
              target_flow: Optional[str] = None,
              target_page: Optional[str] = None,
              trigger_fulfillment: Optional['outputs.CxFlowTransitionRouteTriggerFulfillment'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if target_flow is None and 'targetFlow' in kwargs:
+            target_flow = kwargs['targetFlow']
+        if target_page is None and 'targetPage' in kwargs:
+            target_page = kwargs['targetPage']
+        if trigger_fulfillment is None and 'triggerFulfillment' in kwargs:
+            trigger_fulfillment = kwargs['triggerFulfillment']
+
         if condition is not None:
             _setter("condition", condition)
         if intent is not None:
@@ -1357,7 +1443,15 @@ class CxFlowTransitionRouteTriggerFulfillment(dict):
              set_parameter_actions: Optional[Sequence['outputs.CxFlowTransitionRouteTriggerFulfillmentSetParameterAction']] = None,
              tag: Optional[str] = None,
              webhook: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if conditional_cases is None and 'conditionalCases' in kwargs:
+            conditional_cases = kwargs['conditionalCases']
+        if return_partial_responses is None and 'returnPartialResponses' in kwargs:
+            return_partial_responses = kwargs['returnPartialResponses']
+        if set_parameter_actions is None and 'setParameterActions' in kwargs:
+            set_parameter_actions = kwargs['setParameterActions']
+
         if conditional_cases is not None:
             _setter("conditional_cases", conditional_cases)
         if messages is not None:
@@ -1439,7 +1533,9 @@ class CxFlowTransitionRouteTriggerFulfillmentConditionalCase(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              cases: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if cases is not None:
             _setter("cases", cases)
 
@@ -1535,7 +1631,19 @@ class CxFlowTransitionRouteTriggerFulfillmentMessage(dict):
              play_audio: Optional['outputs.CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio'] = None,
              telephony_transfer_call: Optional['outputs.CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall'] = None,
              text: Optional['outputs.CxFlowTransitionRouteTriggerFulfillmentMessageText'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if conversation_success is None and 'conversationSuccess' in kwargs:
+            conversation_success = kwargs['conversationSuccess']
+        if live_agent_handoff is None and 'liveAgentHandoff' in kwargs:
+            live_agent_handoff = kwargs['liveAgentHandoff']
+        if output_audio_text is None and 'outputAudioText' in kwargs:
+            output_audio_text = kwargs['outputAudioText']
+        if play_audio is None and 'playAudio' in kwargs:
+            play_audio = kwargs['playAudio']
+        if telephony_transfer_call is None and 'telephonyTransferCall' in kwargs:
+            telephony_transfer_call = kwargs['telephonyTransferCall']
+
         if channel is not None:
             _setter("channel", channel)
         if conversation_success is not None:
@@ -1647,7 +1755,9 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              metadata: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if metadata is not None:
             _setter("metadata", metadata)
 
@@ -1675,7 +1785,9 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              metadata: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if metadata is not None:
             _setter("metadata", metadata)
 
@@ -1729,7 +1841,11 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText(dict):
              allow_playback_interruption: Optional[bool] = None,
              ssml: Optional[str] = None,
              text: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_playback_interruption is None and 'allowPlaybackInterruption' in kwargs:
+            allow_playback_interruption = kwargs['allowPlaybackInterruption']
+
         if allow_playback_interruption is not None:
             _setter("allow_playback_interruption", allow_playback_interruption)
         if ssml is not None:
@@ -1800,9 +1916,17 @@ class CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             audio_uri: str,
+             audio_uri: Optional[str] = None,
              allow_playback_interruption: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if audio_uri is None and 'audioUri' in kwargs:
+            audio_uri = kwargs['audioUri']
+        if audio_uri is None:
+            raise TypeError("Missing 'audio_uri' argument")
+        if allow_playback_interruption is None and 'allowPlaybackInterruption' in kwargs:
+            allow_playback_interruption = kwargs['allowPlaybackInterruption']
+
         _setter("audio_uri", audio_uri)
         if allow_playback_interruption is not None:
             _setter("allow_playback_interruption", allow_playback_interruption)
@@ -1856,8 +1980,14 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             phone_number: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             phone_number: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if phone_number is None and 'phoneNumber' in kwargs:
+            phone_number = kwargs['phoneNumber']
+        if phone_number is None:
+            raise TypeError("Missing 'phone_number' argument")
+
         _setter("phone_number", phone_number)
 
     @property
@@ -1906,7 +2036,11 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageText(dict):
              _setter: Callable[[Any, Any], None],
              allow_playback_interruption: Optional[bool] = None,
              texts: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_playback_interruption is None and 'allowPlaybackInterruption' in kwargs:
+            allow_playback_interruption = kwargs['allowPlaybackInterruption']
+
         if allow_playback_interruption is not None:
             _setter("allow_playback_interruption", allow_playback_interruption)
         if texts is not None:
@@ -1949,7 +2083,9 @@ class CxFlowTransitionRouteTriggerFulfillmentSetParameterAction(dict):
              _setter: Callable[[Any, Any], None],
              parameter: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if parameter is not None:
             _setter("parameter", parameter)
         if value is not None:
@@ -2016,11 +2152,21 @@ class CxIntentParameter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
-             id: str,
+             entity_type: Optional[str] = None,
+             id: Optional[str] = None,
              is_list: Optional[bool] = None,
              redact: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if is_list is None and 'isList' in kwargs:
+            is_list = kwargs['isList']
+
         _setter("entity_type", entity_type)
         _setter("id", id)
         if is_list is not None:
@@ -2108,10 +2254,16 @@ class CxIntentTrainingPhrase(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parts: Sequence['outputs.CxIntentTrainingPhrasePart'],
+             parts: Optional[Sequence['outputs.CxIntentTrainingPhrasePart']] = None,
              id: Optional[str] = None,
              repeat_count: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if parts is None:
+            raise TypeError("Missing 'parts' argument")
+        if repeat_count is None and 'repeatCount' in kwargs:
+            repeat_count = kwargs['repeatCount']
+
         _setter("parts", parts)
         if id is not None:
             _setter("id", id)
@@ -2185,9 +2337,15 @@ class CxIntentTrainingPhrasePart(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             text: str,
+             text: Optional[str] = None,
              parameter_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if text is None:
+            raise TypeError("Missing 'text' argument")
+        if parameter_id is None and 'parameterId' in kwargs:
+            parameter_id = kwargs['parameterId']
+
         _setter("text", text)
         if parameter_id is not None:
             _setter("parameter_id", parameter_id)
@@ -2268,7 +2426,15 @@ class CxPageEntryFulfillment(dict):
              set_parameter_actions: Optional[Sequence['outputs.CxPageEntryFulfillmentSetParameterAction']] = None,
              tag: Optional[str] = None,
              webhook: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if conditional_cases is None and 'conditionalCases' in kwargs:
+            conditional_cases = kwargs['conditionalCases']
+        if return_partial_responses is None and 'returnPartialResponses' in kwargs:
+            return_partial_responses = kwargs['returnPartialResponses']
+        if set_parameter_actions is None and 'setParameterActions' in kwargs:
+            set_parameter_actions = kwargs['setParameterActions']
+
         if conditional_cases is not None:
             _setter("conditional_cases", conditional_cases)
         if messages is not None:
@@ -2350,7 +2516,9 @@ class CxPageEntryFulfillmentConditionalCase(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              cases: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if cases is not None:
             _setter("cases", cases)
 
@@ -2446,7 +2614,19 @@ class CxPageEntryFulfillmentMessage(dict):
              play_audio: Optional['outputs.CxPageEntryFulfillmentMessagePlayAudio'] = None,
              telephony_transfer_call: Optional['outputs.CxPageEntryFulfillmentMessageTelephonyTransferCall'] = None,
              text: Optional['outputs.CxPageEntryFulfillmentMessageText'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if conversation_success is None and 'conversationSuccess' in kwargs:
+            conversation_success = kwargs['conversationSuccess']
+        if live_agent_handoff is None and 'liveAgentHandoff' in kwargs:
+            live_agent_handoff = kwargs['liveAgentHandoff']
+        if output_audio_text is None and 'outputAudioText' in kwargs:
+            output_audio_text = kwargs['outputAudioText']
+        if play_audio is None and 'playAudio' in kwargs:
+            play_audio = kwargs['playAudio']
+        if telephony_transfer_call is None and 'telephonyTransferCall' in kwargs:
+            telephony_transfer_call = kwargs['telephonyTransferCall']
+
         if channel is not None:
             _setter("channel", channel)
         if conversation_success is not None:
@@ -2558,7 +2738,9 @@ class CxPageEntryFulfillmentMessageConversationSuccess(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              metadata: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if metadata is not None:
             _setter("metadata", metadata)
 
@@ -2586,7 +2768,9 @@ class CxPageEntryFulfillmentMessageLiveAgentHandoff(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              metadata: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if metadata is not None:
             _setter("metadata", metadata)
 
@@ -2640,7 +2824,11 @@ class CxPageEntryFulfillmentMessageOutputAudioText(dict):
              allow_playback_interruption: Optional[bool] = None,
              ssml: Optional[str] = None,
              text: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_playback_interruption is None and 'allowPlaybackInterruption' in kwargs:
+            allow_playback_interruption = kwargs['allowPlaybackInterruption']
+
         if allow_playback_interruption is not None:
             _setter("allow_playback_interruption", allow_playback_interruption)
         if ssml is not None:
@@ -2711,9 +2899,17 @@ class CxPageEntryFulfillmentMessagePlayAudio(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             audio_uri: str,
+             audio_uri: Optional[str] = None,
              allow_playback_interruption: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if audio_uri is None and 'audioUri' in kwargs:
+            audio_uri = kwargs['audioUri']
+        if audio_uri is None:
+            raise TypeError("Missing 'audio_uri' argument")
+        if allow_playback_interruption is None and 'allowPlaybackInterruption' in kwargs:
+            allow_playback_interruption = kwargs['allowPlaybackInterruption']
+
         _setter("audio_uri", audio_uri)
         if allow_playback_interruption is not None:
             _setter("allow_playback_interruption", allow_playback_interruption)
@@ -2767,8 +2963,14 @@ class CxPageEntryFulfillmentMessageTelephonyTransferCall(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             phone_number: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             phone_number: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if phone_number is None and 'phoneNumber' in kwargs:
+            phone_number = kwargs['phoneNumber']
+        if phone_number is None:
+            raise TypeError("Missing 'phone_number' argument")
+
         _setter("phone_number", phone_number)
 
     @property
@@ -2817,7 +3019,11 @@ class CxPageEntryFulfillmentMessageText(dict):
              _setter: Callable[[Any, Any], None],
              allow_playback_interruption: Optional[bool] = None,
              texts: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_playback_interruption is None and 'allowPlaybackInterruption' in kwargs:
+            allow_playback_interruption = kwargs['allowPlaybackInterruption']
+
         if allow_playback_interruption is not None:
             _setter("allow_playback_interruption", allow_playback_interruption)
         if texts is not None:
@@ -2860,7 +3066,9 @@ class CxPageEntryFulfillmentSetParameterAction(dict):
              _setter: Callable[[Any, Any], None],
              parameter: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if parameter is not None:
             _setter("parameter", parameter)
         if value is not None:
@@ -2939,7 +3147,15 @@ class CxPageEventHandler(dict):
              target_flow: Optional[str] = None,
              target_page: Optional[str] = None,
              trigger_fulfillment: Optional['outputs.CxPageEventHandlerTriggerFulfillment'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if target_flow is None and 'targetFlow' in kwargs:
+            target_flow = kwargs['targetFlow']
+        if target_page is None and 'targetPage' in kwargs:
+            target_page = kwargs['targetPage']
+        if trigger_fulfillment is None and 'triggerFulfillment' in kwargs:
+            trigger_fulfillment = kwargs['triggerFulfillment']
+
         if event is not None:
             _setter("event", event)
         if name is not None:
@@ -3055,7 +3271,15 @@ class CxPageEventHandlerTriggerFulfillment(dict):
              set_parameter_actions: Optional[Sequence['outputs.CxPageEventHandlerTriggerFulfillmentSetParameterAction']] = None,
              tag: Optional[str] = None,
              webhook: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if conditional_cases is None and 'conditionalCases' in kwargs:
+            conditional_cases = kwargs['conditionalCases']
+        if return_partial_responses is None and 'returnPartialResponses' in kwargs:
+            return_partial_responses = kwargs['returnPartialResponses']
+        if set_parameter_actions is None and 'setParameterActions' in kwargs:
+            set_parameter_actions = kwargs['setParameterActions']
+
         if conditional_cases is not None:
             _setter("conditional_cases", conditional_cases)
         if messages is not None:
@@ -3137,7 +3361,9 @@ class CxPageEventHandlerTriggerFulfillmentConditionalCase(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              cases: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if cases is not None:
             _setter("cases", cases)
 
@@ -3233,7 +3459,19 @@ class CxPageEventHandlerTriggerFulfillmentMessage(dict):
              play_audio: Optional['outputs.CxPageEventHandlerTriggerFulfillmentMessagePlayAudio'] = None,
              telephony_transfer_call: Optional['outputs.CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall'] = None,
              text: Optional['outputs.CxPageEventHandlerTriggerFulfillmentMessageText'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if conversation_success is None and 'conversationSuccess' in kwargs:
+            conversation_success = kwargs['conversationSuccess']
+        if live_agent_handoff is None and 'liveAgentHandoff' in kwargs:
+            live_agent_handoff = kwargs['liveAgentHandoff']
+        if output_audio_text is None and 'outputAudioText' in kwargs:
+            output_audio_text = kwargs['outputAudioText']
+        if play_audio is None and 'playAudio' in kwargs:
+            play_audio = kwargs['playAudio']
+        if telephony_transfer_call is None and 'telephonyTransferCall' in kwargs:
+            telephony_transfer_call = kwargs['telephonyTransferCall']
+
         if channel is not None:
             _setter("channel", channel)
         if conversation_success is not None:
@@ -3345,7 +3583,9 @@ class CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              metadata: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if metadata is not None:
             _setter("metadata", metadata)
 
@@ -3373,7 +3613,9 @@ class CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              metadata: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if metadata is not None:
             _setter("metadata", metadata)
 
@@ -3427,7 +3669,11 @@ class CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText(dict):
              allow_playback_interruption: Optional[bool] = None,
              ssml: Optional[str] = None,
              text: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_playback_interruption is None and 'allowPlaybackInterruption' in kwargs:
+            allow_playback_interruption = kwargs['allowPlaybackInterruption']
+
         if allow_playback_interruption is not None:
             _setter("allow_playback_interruption", allow_playback_interruption)
         if ssml is not None:
@@ -3498,9 +3744,17 @@ class CxPageEventHandlerTriggerFulfillmentMessagePlayAudio(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             audio_uri: str,
+             audio_uri: Optional[str] = None,
              allow_playback_interruption: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if audio_uri is None and 'audioUri' in kwargs:
+            audio_uri = kwargs['audioUri']
+        if audio_uri is None:
+            raise TypeError("Missing 'audio_uri' argument")
+        if allow_playback_interruption is None and 'allowPlaybackInterruption' in kwargs:
+            allow_playback_interruption = kwargs['allowPlaybackInterruption']
+
         _setter("audio_uri", audio_uri)
         if allow_playback_interruption is not None:
             _setter("allow_playback_interruption", allow_playback_interruption)
@@ -3554,8 +3808,14 @@ class CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             phone_number: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             phone_number: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if phone_number is None and 'phoneNumber' in kwargs:
+            phone_number = kwargs['phoneNumber']
+        if phone_number is None:
+            raise TypeError("Missing 'phone_number' argument")
+
         _setter("phone_number", phone_number)
 
     @property
@@ -3604,7 +3864,11 @@ class CxPageEventHandlerTriggerFulfillmentMessageText(dict):
              _setter: Callable[[Any, Any], None],
              allow_playback_interruption: Optional[bool] = None,
              texts: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_playback_interruption is None and 'allowPlaybackInterruption' in kwargs:
+            allow_playback_interruption = kwargs['allowPlaybackInterruption']
+
         if allow_playback_interruption is not None:
             _setter("allow_playback_interruption", allow_playback_interruption)
         if texts is not None:
@@ -3647,7 +3911,9 @@ class CxPageEventHandlerTriggerFulfillmentSetParameterAction(dict):
              _setter: Callable[[Any, Any], None],
              parameter: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if parameter is not None:
             _setter("parameter", parameter)
         if value is not None:
@@ -3686,7 +3952,9 @@ class CxPageForm(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              parameters: Optional[Sequence['outputs.CxPageFormParameter']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if parameters is not None:
             _setter("parameters", parameters)
 
@@ -3768,7 +4036,19 @@ class CxPageFormParameter(dict):
              is_list: Optional[bool] = None,
              redact: Optional[bool] = None,
              required: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if default_value is None and 'defaultValue' in kwargs:
+            default_value = kwargs['defaultValue']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if fill_behavior is None and 'fillBehavior' in kwargs:
+            fill_behavior = kwargs['fillBehavior']
+        if is_list is None and 'isList' in kwargs:
+            is_list = kwargs['isList']
+
         if default_value is not None:
             _setter("default_value", default_value)
         if display_name is not None:
@@ -3895,7 +4175,13 @@ class CxPageFormParameterFillBehavior(dict):
              _setter: Callable[[Any, Any], None],
              initial_prompt_fulfillment: Optional['outputs.CxPageFormParameterFillBehaviorInitialPromptFulfillment'] = None,
              reprompt_event_handlers: Optional[Sequence['outputs.CxPageFormParameterFillBehaviorRepromptEventHandler']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if initial_prompt_fulfillment is None and 'initialPromptFulfillment' in kwargs:
+            initial_prompt_fulfillment = kwargs['initialPromptFulfillment']
+        if reprompt_event_handlers is None and 'repromptEventHandlers' in kwargs:
+            reprompt_event_handlers = kwargs['repromptEventHandlers']
+
         if initial_prompt_fulfillment is not None:
             _setter("initial_prompt_fulfillment", initial_prompt_fulfillment)
         if reprompt_event_handlers is not None:
@@ -3989,7 +4275,15 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillment(dict):
              set_parameter_actions: Optional[Sequence['outputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction']] = None,
              tag: Optional[str] = None,
              webhook: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if conditional_cases is None and 'conditionalCases' in kwargs:
+            conditional_cases = kwargs['conditionalCases']
+        if return_partial_responses is None and 'returnPartialResponses' in kwargs:
+            return_partial_responses = kwargs['returnPartialResponses']
+        if set_parameter_actions is None and 'setParameterActions' in kwargs:
+            set_parameter_actions = kwargs['setParameterActions']
+
         if conditional_cases is not None:
             _setter("conditional_cases", conditional_cases)
         if messages is not None:
@@ -4071,7 +4365,9 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase(dic
     def _configure(
              _setter: Callable[[Any, Any], None],
              cases: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if cases is not None:
             _setter("cases", cases)
 
@@ -4167,7 +4463,19 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage(dict):
              play_audio: Optional['outputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio'] = None,
              telephony_transfer_call: Optional['outputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall'] = None,
              text: Optional['outputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if conversation_success is None and 'conversationSuccess' in kwargs:
+            conversation_success = kwargs['conversationSuccess']
+        if live_agent_handoff is None and 'liveAgentHandoff' in kwargs:
+            live_agent_handoff = kwargs['liveAgentHandoff']
+        if output_audio_text is None and 'outputAudioText' in kwargs:
+            output_audio_text = kwargs['outputAudioText']
+        if play_audio is None and 'playAudio' in kwargs:
+            play_audio = kwargs['playAudio']
+        if telephony_transfer_call is None and 'telephonyTransferCall' in kwargs:
+            telephony_transfer_call = kwargs['telephonyTransferCall']
+
         if channel is not None:
             _setter("channel", channel)
         if conversation_success is not None:
@@ -4279,7 +4587,9 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversation
     def _configure(
              _setter: Callable[[Any, Any], None],
              metadata: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if metadata is not None:
             _setter("metadata", metadata)
 
@@ -4307,7 +4617,9 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHan
     def _configure(
              _setter: Callable[[Any, Any], None],
              metadata: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if metadata is not None:
             _setter("metadata", metadata)
 
@@ -4361,7 +4673,11 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioT
              allow_playback_interruption: Optional[bool] = None,
              ssml: Optional[str] = None,
              text: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_playback_interruption is None and 'allowPlaybackInterruption' in kwargs:
+            allow_playback_interruption = kwargs['allowPlaybackInterruption']
+
         if allow_playback_interruption is not None:
             _setter("allow_playback_interruption", allow_playback_interruption)
         if ssml is not None:
@@ -4432,9 +4748,17 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio(di
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             audio_uri: str,
+             audio_uri: Optional[str] = None,
              allow_playback_interruption: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if audio_uri is None and 'audioUri' in kwargs:
+            audio_uri = kwargs['audioUri']
+        if audio_uri is None:
+            raise TypeError("Missing 'audio_uri' argument")
+        if allow_playback_interruption is None and 'allowPlaybackInterruption' in kwargs:
+            allow_playback_interruption = kwargs['allowPlaybackInterruption']
+
         _setter("audio_uri", audio_uri)
         if allow_playback_interruption is not None:
             _setter("allow_playback_interruption", allow_playback_interruption)
@@ -4488,8 +4812,14 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTra
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             phone_number: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             phone_number: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if phone_number is None and 'phoneNumber' in kwargs:
+            phone_number = kwargs['phoneNumber']
+        if phone_number is None:
+            raise TypeError("Missing 'phone_number' argument")
+
         _setter("phone_number", phone_number)
 
     @property
@@ -4538,7 +4868,11 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText(dict):
              _setter: Callable[[Any, Any], None],
              allow_playback_interruption: Optional[bool] = None,
              texts: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_playback_interruption is None and 'allowPlaybackInterruption' in kwargs:
+            allow_playback_interruption = kwargs['allowPlaybackInterruption']
+
         if allow_playback_interruption is not None:
             _setter("allow_playback_interruption", allow_playback_interruption)
         if texts is not None:
@@ -4581,7 +4915,9 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction(
              _setter: Callable[[Any, Any], None],
              parameter: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if parameter is not None:
             _setter("parameter", parameter)
         if value is not None:
@@ -4660,7 +4996,15 @@ class CxPageFormParameterFillBehaviorRepromptEventHandler(dict):
              target_flow: Optional[str] = None,
              target_page: Optional[str] = None,
              trigger_fulfillment: Optional['outputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if target_flow is None and 'targetFlow' in kwargs:
+            target_flow = kwargs['targetFlow']
+        if target_page is None and 'targetPage' in kwargs:
+            target_page = kwargs['targetPage']
+        if trigger_fulfillment is None and 'triggerFulfillment' in kwargs:
+            trigger_fulfillment = kwargs['triggerFulfillment']
+
         if event is not None:
             _setter("event", event)
         if name is not None:
@@ -4776,7 +5120,15 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment(dict
              set_parameter_actions: Optional[Sequence['outputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction']] = None,
              tag: Optional[str] = None,
              webhook: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if conditional_cases is None and 'conditionalCases' in kwargs:
+            conditional_cases = kwargs['conditionalCases']
+        if return_partial_responses is None and 'returnPartialResponses' in kwargs:
+            return_partial_responses = kwargs['returnPartialResponses']
+        if set_parameter_actions is None and 'setParameterActions' in kwargs:
+            set_parameter_actions = kwargs['setParameterActions']
+
         if conditional_cases is not None:
             _setter("conditional_cases", conditional_cases)
         if messages is not None:
@@ -4858,7 +5210,9 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentCondi
     def _configure(
              _setter: Callable[[Any, Any], None],
              cases: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if cases is not None:
             _setter("cases", cases)
 
@@ -4954,7 +5308,19 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
              play_audio: Optional['outputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio'] = None,
              telephony_transfer_call: Optional['outputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall'] = None,
              text: Optional['outputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if conversation_success is None and 'conversationSuccess' in kwargs:
+            conversation_success = kwargs['conversationSuccess']
+        if live_agent_handoff is None and 'liveAgentHandoff' in kwargs:
+            live_agent_handoff = kwargs['liveAgentHandoff']
+        if output_audio_text is None and 'outputAudioText' in kwargs:
+            output_audio_text = kwargs['outputAudioText']
+        if play_audio is None and 'playAudio' in kwargs:
+            play_audio = kwargs['playAudio']
+        if telephony_transfer_call is None and 'telephonyTransferCall' in kwargs:
+            telephony_transfer_call = kwargs['telephonyTransferCall']
+
         if channel is not None:
             _setter("channel", channel)
         if conversation_success is not None:
@@ -5066,7 +5432,9 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
     def _configure(
              _setter: Callable[[Any, Any], None],
              metadata: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if metadata is not None:
             _setter("metadata", metadata)
 
@@ -5094,7 +5462,9 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
     def _configure(
              _setter: Callable[[Any, Any], None],
              metadata: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if metadata is not None:
             _setter("metadata", metadata)
 
@@ -5148,7 +5518,11 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
              allow_playback_interruption: Optional[bool] = None,
              ssml: Optional[str] = None,
              text: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_playback_interruption is None and 'allowPlaybackInterruption' in kwargs:
+            allow_playback_interruption = kwargs['allowPlaybackInterruption']
+
         if allow_playback_interruption is not None:
             _setter("allow_playback_interruption", allow_playback_interruption)
         if ssml is not None:
@@ -5219,9 +5593,17 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             audio_uri: str,
+             audio_uri: Optional[str] = None,
              allow_playback_interruption: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if audio_uri is None and 'audioUri' in kwargs:
+            audio_uri = kwargs['audioUri']
+        if audio_uri is None:
+            raise TypeError("Missing 'audio_uri' argument")
+        if allow_playback_interruption is None and 'allowPlaybackInterruption' in kwargs:
+            allow_playback_interruption = kwargs['allowPlaybackInterruption']
+
         _setter("audio_uri", audio_uri)
         if allow_playback_interruption is not None:
             _setter("allow_playback_interruption", allow_playback_interruption)
@@ -5275,8 +5657,14 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             phone_number: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             phone_number: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if phone_number is None and 'phoneNumber' in kwargs:
+            phone_number = kwargs['phoneNumber']
+        if phone_number is None:
+            raise TypeError("Missing 'phone_number' argument")
+
         _setter("phone_number", phone_number)
 
     @property
@@ -5325,7 +5713,11 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
              _setter: Callable[[Any, Any], None],
              allow_playback_interruption: Optional[bool] = None,
              texts: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_playback_interruption is None and 'allowPlaybackInterruption' in kwargs:
+            allow_playback_interruption = kwargs['allowPlaybackInterruption']
+
         if allow_playback_interruption is not None:
             _setter("allow_playback_interruption", allow_playback_interruption)
         if texts is not None:
@@ -5368,7 +5760,9 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetPa
              _setter: Callable[[Any, Any], None],
              parameter: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if parameter is not None:
             _setter("parameter", parameter)
         if value is not None:
@@ -5453,7 +5847,15 @@ class CxPageTransitionRoute(dict):
              target_flow: Optional[str] = None,
              target_page: Optional[str] = None,
              trigger_fulfillment: Optional['outputs.CxPageTransitionRouteTriggerFulfillment'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if target_flow is None and 'targetFlow' in kwargs:
+            target_flow = kwargs['targetFlow']
+        if target_page is None and 'targetPage' in kwargs:
+            target_page = kwargs['targetPage']
+        if trigger_fulfillment is None and 'triggerFulfillment' in kwargs:
+            trigger_fulfillment = kwargs['triggerFulfillment']
+
         if condition is not None:
             _setter("condition", condition)
         if intent is not None:
@@ -5581,7 +5983,15 @@ class CxPageTransitionRouteTriggerFulfillment(dict):
              set_parameter_actions: Optional[Sequence['outputs.CxPageTransitionRouteTriggerFulfillmentSetParameterAction']] = None,
              tag: Optional[str] = None,
              webhook: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if conditional_cases is None and 'conditionalCases' in kwargs:
+            conditional_cases = kwargs['conditionalCases']
+        if return_partial_responses is None and 'returnPartialResponses' in kwargs:
+            return_partial_responses = kwargs['returnPartialResponses']
+        if set_parameter_actions is None and 'setParameterActions' in kwargs:
+            set_parameter_actions = kwargs['setParameterActions']
+
         if conditional_cases is not None:
             _setter("conditional_cases", conditional_cases)
         if messages is not None:
@@ -5663,7 +6073,9 @@ class CxPageTransitionRouteTriggerFulfillmentConditionalCase(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              cases: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if cases is not None:
             _setter("cases", cases)
 
@@ -5759,7 +6171,19 @@ class CxPageTransitionRouteTriggerFulfillmentMessage(dict):
              play_audio: Optional['outputs.CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio'] = None,
              telephony_transfer_call: Optional['outputs.CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall'] = None,
              text: Optional['outputs.CxPageTransitionRouteTriggerFulfillmentMessageText'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if conversation_success is None and 'conversationSuccess' in kwargs:
+            conversation_success = kwargs['conversationSuccess']
+        if live_agent_handoff is None and 'liveAgentHandoff' in kwargs:
+            live_agent_handoff = kwargs['liveAgentHandoff']
+        if output_audio_text is None and 'outputAudioText' in kwargs:
+            output_audio_text = kwargs['outputAudioText']
+        if play_audio is None and 'playAudio' in kwargs:
+            play_audio = kwargs['playAudio']
+        if telephony_transfer_call is None and 'telephonyTransferCall' in kwargs:
+            telephony_transfer_call = kwargs['telephonyTransferCall']
+
         if channel is not None:
             _setter("channel", channel)
         if conversation_success is not None:
@@ -5871,7 +6295,9 @@ class CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              metadata: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if metadata is not None:
             _setter("metadata", metadata)
 
@@ -5899,7 +6325,9 @@ class CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              metadata: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if metadata is not None:
             _setter("metadata", metadata)
 
@@ -5953,7 +6381,11 @@ class CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText(dict):
              allow_playback_interruption: Optional[bool] = None,
              ssml: Optional[str] = None,
              text: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_playback_interruption is None and 'allowPlaybackInterruption' in kwargs:
+            allow_playback_interruption = kwargs['allowPlaybackInterruption']
+
         if allow_playback_interruption is not None:
             _setter("allow_playback_interruption", allow_playback_interruption)
         if ssml is not None:
@@ -6024,9 +6456,17 @@ class CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             audio_uri: str,
+             audio_uri: Optional[str] = None,
              allow_playback_interruption: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if audio_uri is None and 'audioUri' in kwargs:
+            audio_uri = kwargs['audioUri']
+        if audio_uri is None:
+            raise TypeError("Missing 'audio_uri' argument")
+        if allow_playback_interruption is None and 'allowPlaybackInterruption' in kwargs:
+            allow_playback_interruption = kwargs['allowPlaybackInterruption']
+
         _setter("audio_uri", audio_uri)
         if allow_playback_interruption is not None:
             _setter("allow_playback_interruption", allow_playback_interruption)
@@ -6080,8 +6520,14 @@ class CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             phone_number: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             phone_number: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if phone_number is None and 'phoneNumber' in kwargs:
+            phone_number = kwargs['phoneNumber']
+        if phone_number is None:
+            raise TypeError("Missing 'phone_number' argument")
+
         _setter("phone_number", phone_number)
 
     @property
@@ -6130,7 +6576,11 @@ class CxPageTransitionRouteTriggerFulfillmentMessageText(dict):
              _setter: Callable[[Any, Any], None],
              allow_playback_interruption: Optional[bool] = None,
              texts: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_playback_interruption is None and 'allowPlaybackInterruption' in kwargs:
+            allow_playback_interruption = kwargs['allowPlaybackInterruption']
+
         if allow_playback_interruption is not None:
             _setter("allow_playback_interruption", allow_playback_interruption)
         if texts is not None:
@@ -6173,7 +6623,9 @@ class CxPageTransitionRouteTriggerFulfillmentSetParameterAction(dict):
              _setter: Callable[[Any, Any], None],
              parameter: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if parameter is not None:
             _setter("parameter", parameter)
         if value is not None:
@@ -6250,7 +6702,17 @@ class CxSecuritySettingsAudioExportSettings(dict):
              audio_format: Optional[str] = None,
              enable_audio_redaction: Optional[bool] = None,
              gcs_bucket: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if audio_export_pattern is None and 'audioExportPattern' in kwargs:
+            audio_export_pattern = kwargs['audioExportPattern']
+        if audio_format is None and 'audioFormat' in kwargs:
+            audio_format = kwargs['audioFormat']
+        if enable_audio_redaction is None and 'enableAudioRedaction' in kwargs:
+            enable_audio_redaction = kwargs['enableAudioRedaction']
+        if gcs_bucket is None and 'gcsBucket' in kwargs:
+            gcs_bucket = kwargs['gcsBucket']
+
         if audio_export_pattern is not None:
             _setter("audio_export_pattern", audio_export_pattern)
         if audio_format is not None:
@@ -6328,8 +6790,14 @@ class CxSecuritySettingsInsightsExportSettings(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enable_insights_export: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             enable_insights_export: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enable_insights_export is None and 'enableInsightsExport' in kwargs:
+            enable_insights_export = kwargs['enableInsightsExport']
+        if enable_insights_export is None:
+            raise TypeError("Missing 'enable_insights_export' argument")
+
         _setter("enable_insights_export", enable_insights_export)
 
     @property
@@ -6398,7 +6866,15 @@ class CxTestCaseLastTestResult(dict):
              name: Optional[str] = None,
              test_result: Optional[str] = None,
              test_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if conversation_turns is None and 'conversationTurns' in kwargs:
+            conversation_turns = kwargs['conversationTurns']
+        if test_result is None and 'testResult' in kwargs:
+            test_result = kwargs['testResult']
+        if test_time is None and 'testTime' in kwargs:
+            test_time = kwargs['testTime']
+
         if conversation_turns is not None:
             _setter("conversation_turns", conversation_turns)
         if environment is not None:
@@ -6496,7 +6972,13 @@ class CxTestCaseLastTestResultConversationTurn(dict):
              _setter: Callable[[Any, Any], None],
              user_input: Optional['outputs.CxTestCaseLastTestResultConversationTurnUserInput'] = None,
              virtual_agent_output: Optional['outputs.CxTestCaseLastTestResultConversationTurnVirtualAgentOutput'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if user_input is None and 'userInput' in kwargs:
+            user_input = kwargs['userInput']
+        if virtual_agent_output is None and 'virtualAgentOutput' in kwargs:
+            virtual_agent_output = kwargs['virtualAgentOutput']
+
         if user_input is not None:
             _setter("user_input", user_input)
         if virtual_agent_output is not None:
@@ -6570,7 +7052,15 @@ class CxTestCaseLastTestResultConversationTurnUserInput(dict):
              injected_parameters: Optional[str] = None,
              input: Optional['outputs.CxTestCaseLastTestResultConversationTurnUserInputInput'] = None,
              is_webhook_enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enable_sentiment_analysis is None and 'enableSentimentAnalysis' in kwargs:
+            enable_sentiment_analysis = kwargs['enableSentimentAnalysis']
+        if injected_parameters is None and 'injectedParameters' in kwargs:
+            injected_parameters = kwargs['injectedParameters']
+        if is_webhook_enabled is None and 'isWebhookEnabled' in kwargs:
+            is_webhook_enabled = kwargs['isWebhookEnabled']
+
         if enable_sentiment_analysis is not None:
             _setter("enable_sentiment_analysis", enable_sentiment_analysis)
         if injected_parameters is not None:
@@ -6662,7 +7152,11 @@ class CxTestCaseLastTestResultConversationTurnUserInputInput(dict):
              event: Optional['outputs.CxTestCaseLastTestResultConversationTurnUserInputInputEvent'] = None,
              language_code: Optional[str] = None,
              text: Optional['outputs.CxTestCaseLastTestResultConversationTurnUserInputInputText'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if language_code is None and 'languageCode' in kwargs:
+            language_code = kwargs['languageCode']
+
         if dtmf is not None:
             _setter("dtmf", dtmf)
         if event is not None:
@@ -6745,7 +7239,11 @@ class CxTestCaseLastTestResultConversationTurnUserInputInputDtmf(dict):
              _setter: Callable[[Any, Any], None],
              digits: Optional[str] = None,
              finish_digit: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if finish_digit is None and 'finishDigit' in kwargs:
+            finish_digit = kwargs['finishDigit']
+
         if digits is not None:
             _setter("digits", digits)
         if finish_digit is not None:
@@ -6782,8 +7280,12 @@ class CxTestCaseLastTestResultConversationTurnUserInputInputEvent(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             event: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             event: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if event is None:
+            raise TypeError("Missing 'event' argument")
+
         _setter("event", event)
 
     @property
@@ -6809,8 +7311,12 @@ class CxTestCaseLastTestResultConversationTurnUserInputInputText(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             text: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             text: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if text is None:
+            raise TypeError("Missing 'text' argument")
+
         _setter("text", text)
 
     @property
@@ -6885,7 +7391,17 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutput(dict):
              status: Optional['outputs.CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus'] = None,
              text_responses: Optional[Sequence['outputs.CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse']] = None,
              triggered_intent: Optional['outputs.CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if current_page is None and 'currentPage' in kwargs:
+            current_page = kwargs['currentPage']
+        if session_parameters is None and 'sessionParameters' in kwargs:
+            session_parameters = kwargs['sessionParameters']
+        if text_responses is None and 'textResponses' in kwargs:
+            text_responses = kwargs['textResponses']
+        if triggered_intent is None and 'triggeredIntent' in kwargs:
+            triggered_intent = kwargs['triggeredIntent']
+
         if current_page is not None:
             _setter("current_page", current_page)
         if differences is not None:
@@ -6991,7 +7507,11 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage(dict
              _setter: Callable[[Any, Any], None],
              display_name: Optional[str] = None,
              name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if name is not None:
@@ -7041,7 +7561,9 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference(dict)
              _setter: Callable[[Any, Any], None],
              description: Optional[str] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if description is not None:
             _setter("description", description)
         if type is not None:
@@ -7093,7 +7615,9 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus(dict):
              code: Optional[int] = None,
              details: Optional[str] = None,
              message: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if code is not None:
             _setter("code", code)
         if details is not None:
@@ -7141,7 +7665,9 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse(dic
     def _configure(
              _setter: Callable[[Any, Any], None],
              texts: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if texts is not None:
             _setter("texts", texts)
 
@@ -7192,7 +7718,11 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent(
              _setter: Callable[[Any, Any], None],
              display_name: Optional[str] = None,
              name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if name is not None:
@@ -7257,7 +7787,13 @@ class CxTestCaseTestCaseConversationTurn(dict):
              _setter: Callable[[Any, Any], None],
              user_input: Optional['outputs.CxTestCaseTestCaseConversationTurnUserInput'] = None,
              virtual_agent_output: Optional['outputs.CxTestCaseTestCaseConversationTurnVirtualAgentOutput'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if user_input is None and 'userInput' in kwargs:
+            user_input = kwargs['userInput']
+        if virtual_agent_output is None and 'virtualAgentOutput' in kwargs:
+            virtual_agent_output = kwargs['virtualAgentOutput']
+
         if user_input is not None:
             _setter("user_input", user_input)
         if virtual_agent_output is not None:
@@ -7331,7 +7867,15 @@ class CxTestCaseTestCaseConversationTurnUserInput(dict):
              injected_parameters: Optional[str] = None,
              input: Optional['outputs.CxTestCaseTestCaseConversationTurnUserInputInput'] = None,
              is_webhook_enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enable_sentiment_analysis is None and 'enableSentimentAnalysis' in kwargs:
+            enable_sentiment_analysis = kwargs['enableSentimentAnalysis']
+        if injected_parameters is None and 'injectedParameters' in kwargs:
+            injected_parameters = kwargs['injectedParameters']
+        if is_webhook_enabled is None and 'isWebhookEnabled' in kwargs:
+            is_webhook_enabled = kwargs['isWebhookEnabled']
+
         if enable_sentiment_analysis is not None:
             _setter("enable_sentiment_analysis", enable_sentiment_analysis)
         if injected_parameters is not None:
@@ -7423,7 +7967,11 @@ class CxTestCaseTestCaseConversationTurnUserInputInput(dict):
              event: Optional['outputs.CxTestCaseTestCaseConversationTurnUserInputInputEvent'] = None,
              language_code: Optional[str] = None,
              text: Optional['outputs.CxTestCaseTestCaseConversationTurnUserInputInputText'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if language_code is None and 'languageCode' in kwargs:
+            language_code = kwargs['languageCode']
+
         if dtmf is not None:
             _setter("dtmf", dtmf)
         if event is not None:
@@ -7506,7 +8054,11 @@ class CxTestCaseTestCaseConversationTurnUserInputInputDtmf(dict):
              _setter: Callable[[Any, Any], None],
              digits: Optional[str] = None,
              finish_digit: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if finish_digit is None and 'finishDigit' in kwargs:
+            finish_digit = kwargs['finishDigit']
+
         if digits is not None:
             _setter("digits", digits)
         if finish_digit is not None:
@@ -7543,8 +8095,12 @@ class CxTestCaseTestCaseConversationTurnUserInputInputEvent(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             event: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             event: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if event is None:
+            raise TypeError("Missing 'event' argument")
+
         _setter("event", event)
 
     @property
@@ -7570,8 +8126,12 @@ class CxTestCaseTestCaseConversationTurnUserInputInputText(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             text: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             text: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if text is None:
+            raise TypeError("Missing 'text' argument")
+
         _setter("text", text)
 
     @property
@@ -7636,7 +8196,17 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutput(dict):
              session_parameters: Optional[str] = None,
              text_responses: Optional[Sequence['outputs.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse']] = None,
              triggered_intent: Optional['outputs.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if current_page is None and 'currentPage' in kwargs:
+            current_page = kwargs['currentPage']
+        if session_parameters is None and 'sessionParameters' in kwargs:
+            session_parameters = kwargs['sessionParameters']
+        if text_responses is None and 'textResponses' in kwargs:
+            text_responses = kwargs['textResponses']
+        if triggered_intent is None and 'triggeredIntent' in kwargs:
+            triggered_intent = kwargs['triggeredIntent']
+
         if current_page is not None:
             _setter("current_page", current_page)
         if session_parameters is not None:
@@ -7720,7 +8290,11 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage(dict):
              _setter: Callable[[Any, Any], None],
              display_name: Optional[str] = None,
              name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if name is not None:
@@ -7760,7 +8334,9 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              texts: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if texts is not None:
             _setter("texts", texts)
 
@@ -7811,7 +8387,11 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent(dict):
              _setter: Callable[[Any, Any], None],
              display_name: Optional[str] = None,
              name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if name is not None:
@@ -7880,7 +8460,11 @@ class CxTestCaseTestConfig(dict):
              flow: Optional[str] = None,
              page: Optional[str] = None,
              tracking_parameters: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if tracking_parameters is None and 'trackingParameters' in kwargs:
+            tracking_parameters = kwargs['trackingParameters']
+
         if flow is not None:
             _setter("flow", flow)
         if page is not None:
@@ -7968,7 +8552,15 @@ class CxVersionNluSetting(dict):
              classification_threshold: Optional[float] = None,
              model_training_mode: Optional[str] = None,
              model_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if classification_threshold is None and 'classificationThreshold' in kwargs:
+            classification_threshold = kwargs['classificationThreshold']
+        if model_training_mode is None and 'modelTrainingMode' in kwargs:
+            model_training_mode = kwargs['modelTrainingMode']
+        if model_type is None and 'modelType' in kwargs:
+            model_type = kwargs['modelType']
+
         if classification_threshold is not None:
             _setter("classification_threshold", classification_threshold)
         if model_training_mode is not None:
@@ -8047,10 +8639,18 @@ class CxWebhookGenericWebService(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             uri: str,
+             uri: Optional[str] = None,
              allowed_ca_certs: Optional[Sequence[str]] = None,
              request_headers: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if uri is None:
+            raise TypeError("Missing 'uri' argument")
+        if allowed_ca_certs is None and 'allowedCaCerts' in kwargs:
+            allowed_ca_certs = kwargs['allowedCaCerts']
+        if request_headers is None and 'requestHeaders' in kwargs:
+            request_headers = kwargs['requestHeaders']
+
         _setter("uri", uri)
         if allowed_ca_certs is not None:
             _setter("allowed_ca_certs", allowed_ca_certs)
@@ -8117,9 +8717,17 @@ class CxWebhookServiceDirectory(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             generic_web_service: 'outputs.CxWebhookServiceDirectoryGenericWebService',
-             service: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             generic_web_service: Optional['outputs.CxWebhookServiceDirectoryGenericWebService'] = None,
+             service: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if generic_web_service is None and 'genericWebService' in kwargs:
+            generic_web_service = kwargs['genericWebService']
+        if generic_web_service is None:
+            raise TypeError("Missing 'generic_web_service' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
         _setter("generic_web_service", generic_web_service)
         _setter("service", service)
 
@@ -8180,10 +8788,18 @@ class CxWebhookServiceDirectoryGenericWebService(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             uri: str,
+             uri: Optional[str] = None,
              allowed_ca_certs: Optional[Sequence[str]] = None,
              request_headers: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if uri is None:
+            raise TypeError("Missing 'uri' argument")
+        if allowed_ca_certs is None and 'allowedCaCerts' in kwargs:
+            allowed_ca_certs = kwargs['allowedCaCerts']
+        if request_headers is None and 'requestHeaders' in kwargs:
+            request_headers = kwargs['requestHeaders']
+
         _setter("uri", uri)
         if allowed_ca_certs is not None:
             _setter("allowed_ca_certs", allowed_ca_certs)
@@ -8240,9 +8856,15 @@ class EntityTypeEntity(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             synonyms: Sequence[str],
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             synonyms: Optional[Sequence[str]] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if synonyms is None:
+            raise TypeError("Missing 'synonyms' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("synonyms", synonyms)
         _setter("value", value)
 
@@ -8287,8 +8909,12 @@ class FulfillmentFeature(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("type", type)
 
     @property
@@ -8342,11 +8968,17 @@ class FulfillmentGenericWebService(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             uri: str,
+             uri: Optional[str] = None,
              password: Optional[str] = None,
              request_headers: Optional[Mapping[str, str]] = None,
              username: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if uri is None:
+            raise TypeError("Missing 'uri' argument")
+        if request_headers is None and 'requestHeaders' in kwargs:
+            request_headers = kwargs['requestHeaders']
+
         _setter("uri", uri)
         if password is not None:
             _setter("password", password)
@@ -8428,7 +9060,13 @@ class IntentFollowupIntentInfo(dict):
              _setter: Callable[[Any, Any], None],
              followup_intent_name: Optional[str] = None,
              parent_followup_intent_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if followup_intent_name is None and 'followupIntentName' in kwargs:
+            followup_intent_name = kwargs['followupIntentName']
+        if parent_followup_intent_name is None and 'parentFollowupIntentName' in kwargs:
+            parent_followup_intent_name = kwargs['parentFollowupIntentName']
+
         if followup_intent_name is not None:
             _setter("followup_intent_name", followup_intent_name)
         if parent_followup_intent_name is not None:

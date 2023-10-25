@@ -6,18 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for a Bigtable Table.
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.bigtable.getTableIamPolicy({
- *     instance: google_bigtable_instance.instance.name,
- *     table: google_bigtable_table.table.name,
- * });
- * ```
  */
 export function getTableIamPolicy(args: GetTableIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetTableIamPolicyResult> {
 
@@ -66,18 +54,6 @@ export interface GetTableIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for a Bigtable Table.
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.bigtable.getTableIamPolicy({
- *     instance: google_bigtable_instance.instance.name,
- *     table: google_bigtable_table.table.name,
- * });
- * ```
  */
 export function getTableIamPolicyOutput(args: GetTableIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTableIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getTableIamPolicy(a, opts))

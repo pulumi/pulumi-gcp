@@ -41,11 +41,21 @@ class BackendBucketSignedUrlKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backend_bucket: pulumi.Input[str],
-             key_value: pulumi.Input[str],
+             backend_bucket: Optional[pulumi.Input[str]] = None,
+             key_value: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if backend_bucket is None and 'backendBucket' in kwargs:
+            backend_bucket = kwargs['backendBucket']
+        if backend_bucket is None:
+            raise TypeError("Missing 'backend_bucket' argument")
+        if key_value is None and 'keyValue' in kwargs:
+            key_value = kwargs['keyValue']
+        if key_value is None:
+            raise TypeError("Missing 'key_value' argument")
+
         _setter("backend_bucket", backend_bucket)
         _setter("key_value", key_value)
         if name is not None:
@@ -142,7 +152,13 @@ class _BackendBucketSignedUrlKeyState:
              key_value: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if backend_bucket is None and 'backendBucket' in kwargs:
+            backend_bucket = kwargs['backendBucket']
+        if key_value is None and 'keyValue' in kwargs:
+            key_value = kwargs['keyValue']
+
         if backend_bucket is not None:
             _setter("backend_bucket", backend_bucket)
         if key_value is not None:
@@ -230,23 +246,6 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
-        ### Backend Bucket Signed Url Key
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-
-        url_signature = random.RandomId("urlSignature", byte_length=16)
-        bucket = gcp.storage.Bucket("bucket", location="EU")
-        test_backend = gcp.compute.BackendBucket("testBackend",
-            description="Contains beautiful images",
-            bucket_name=bucket.name,
-            enable_cdn=True)
-        backend_key = gcp.compute.BackendBucketSignedUrlKey("backendKey",
-            key_value=url_signature.b64_url,
-            backend_bucket=test_backend.name)
-        ```
 
         ## Import
 
@@ -284,23 +283,6 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
-        ### Backend Bucket Signed Url Key
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-
-        url_signature = random.RandomId("urlSignature", byte_length=16)
-        bucket = gcp.storage.Bucket("bucket", location="EU")
-        test_backend = gcp.compute.BackendBucket("testBackend",
-            description="Contains beautiful images",
-            bucket_name=bucket.name,
-            enable_cdn=True)
-        backend_key = gcp.compute.BackendBucketSignedUrlKey("backendKey",
-            key_value=url_signature.b64_url,
-            backend_bucket=test_backend.name)
-        ```
 
         ## Import
 

@@ -55,8 +55,8 @@ class SpokeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hub: pulumi.Input[str],
-             location: pulumi.Input[str],
+             hub: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              linked_interconnect_attachments: Optional[pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs']] = None,
@@ -65,7 +65,21 @@ class SpokeArgs:
              linked_vpn_tunnels: Optional[pulumi.Input['SpokeLinkedVpnTunnelsArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if hub is None:
+            raise TypeError("Missing 'hub' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if linked_interconnect_attachments is None and 'linkedInterconnectAttachments' in kwargs:
+            linked_interconnect_attachments = kwargs['linkedInterconnectAttachments']
+        if linked_router_appliance_instances is None and 'linkedRouterApplianceInstances' in kwargs:
+            linked_router_appliance_instances = kwargs['linkedRouterApplianceInstances']
+        if linked_vpc_network is None and 'linkedVpcNetwork' in kwargs:
+            linked_vpc_network = kwargs['linkedVpcNetwork']
+        if linked_vpn_tunnels is None and 'linkedVpnTunnels' in kwargs:
+            linked_vpn_tunnels = kwargs['linkedVpnTunnels']
+
         _setter("hub", hub)
         _setter("location", location)
         if description is not None:
@@ -274,7 +288,23 @@ class _SpokeState:
              state: Optional[pulumi.Input[str]] = None,
              unique_id: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if linked_interconnect_attachments is None and 'linkedInterconnectAttachments' in kwargs:
+            linked_interconnect_attachments = kwargs['linkedInterconnectAttachments']
+        if linked_router_appliance_instances is None and 'linkedRouterApplianceInstances' in kwargs:
+            linked_router_appliance_instances = kwargs['linkedRouterApplianceInstances']
+        if linked_vpc_network is None and 'linkedVpcNetwork' in kwargs:
+            linked_vpc_network = kwargs['linkedVpcNetwork']
+        if linked_vpn_tunnels is None and 'linkedVpnTunnels' in kwargs:
+            linked_vpn_tunnels = kwargs['linkedVpnTunnels']
+        if unique_id is None and 'uniqueId' in kwargs:
+            unique_id = kwargs['uniqueId']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:
@@ -493,78 +523,6 @@ class Spoke(pulumi.CustomResource):
         The NetworkConnectivity Spoke resource
 
         ## Example Usage
-        ### Linked_vpc_network
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network = gcp.compute.Network("network", auto_create_subnetworks=False)
-        basic_hub = gcp.networkconnectivity.Hub("basicHub",
-            description="A sample hub",
-            labels={
-                "label-two": "value-one",
-            })
-        primary = gcp.networkconnectivity.Spoke("primary",
-            location="global",
-            description="A sample spoke with a linked routher appliance instance",
-            labels={
-                "label-one": "value-one",
-            },
-            hub=basic_hub.id,
-            linked_vpc_network=gcp.networkconnectivity.SpokeLinkedVpcNetworkArgs(
-                exclude_export_ranges=[
-                    "198.51.100.0/24",
-                    "10.10.0.0/16",
-                ],
-                uri=network.self_link,
-            ))
-        ```
-        ### Router_appliance
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network = gcp.compute.Network("network", auto_create_subnetworks=False)
-        subnetwork = gcp.compute.Subnetwork("subnetwork",
-            ip_cidr_range="10.0.0.0/28",
-            region="us-west1",
-            network=network.self_link)
-        instance = gcp.compute.Instance("instance",
-            machine_type="e2-medium",
-            can_ip_forward=True,
-            zone="us-west1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="projects/debian-cloud/global/images/debian-10-buster-v20210817",
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                subnetwork=subnetwork.name,
-                network_ip="10.0.0.2",
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs(
-                    network_tier="PREMIUM",
-                )],
-            )])
-        basic_hub = gcp.networkconnectivity.Hub("basicHub",
-            description="A sample hub",
-            labels={
-                "label-two": "value-one",
-            })
-        primary = gcp.networkconnectivity.Spoke("primary",
-            location="us-west1",
-            description="A sample spoke with a linked routher appliance instance",
-            labels={
-                "label-one": "value-one",
-            },
-            hub=basic_hub.id,
-            linked_router_appliance_instances=gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesArgs(
-                instances=[gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArgs(
-                    virtual_machine=instance.self_link,
-                    ip_address="10.0.0.2",
-                )],
-                site_to_site_data_transfer=True,
-            ))
-        ```
 
         ## Import
 
@@ -605,78 +563,6 @@ class Spoke(pulumi.CustomResource):
         The NetworkConnectivity Spoke resource
 
         ## Example Usage
-        ### Linked_vpc_network
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network = gcp.compute.Network("network", auto_create_subnetworks=False)
-        basic_hub = gcp.networkconnectivity.Hub("basicHub",
-            description="A sample hub",
-            labels={
-                "label-two": "value-one",
-            })
-        primary = gcp.networkconnectivity.Spoke("primary",
-            location="global",
-            description="A sample spoke with a linked routher appliance instance",
-            labels={
-                "label-one": "value-one",
-            },
-            hub=basic_hub.id,
-            linked_vpc_network=gcp.networkconnectivity.SpokeLinkedVpcNetworkArgs(
-                exclude_export_ranges=[
-                    "198.51.100.0/24",
-                    "10.10.0.0/16",
-                ],
-                uri=network.self_link,
-            ))
-        ```
-        ### Router_appliance
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network = gcp.compute.Network("network", auto_create_subnetworks=False)
-        subnetwork = gcp.compute.Subnetwork("subnetwork",
-            ip_cidr_range="10.0.0.0/28",
-            region="us-west1",
-            network=network.self_link)
-        instance = gcp.compute.Instance("instance",
-            machine_type="e2-medium",
-            can_ip_forward=True,
-            zone="us-west1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="projects/debian-cloud/global/images/debian-10-buster-v20210817",
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                subnetwork=subnetwork.name,
-                network_ip="10.0.0.2",
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs(
-                    network_tier="PREMIUM",
-                )],
-            )])
-        basic_hub = gcp.networkconnectivity.Hub("basicHub",
-            description="A sample hub",
-            labels={
-                "label-two": "value-one",
-            })
-        primary = gcp.networkconnectivity.Spoke("primary",
-            location="us-west1",
-            description="A sample spoke with a linked routher appliance instance",
-            labels={
-                "label-one": "value-one",
-            },
-            hub=basic_hub.id,
-            linked_router_appliance_instances=gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesArgs(
-                instances=[gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArgs(
-                    virtual_machine=instance.self_link,
-                    ip_address="10.0.0.2",
-                )],
-                site_to_site_data_transfer=True,
-            ))
-        ```
 
         ## Import
 
@@ -737,29 +623,13 @@ class Spoke(pulumi.CustomResource):
                 raise TypeError("Missing required property 'hub'")
             __props__.__dict__["hub"] = hub
             __props__.__dict__["labels"] = labels
-            if linked_interconnect_attachments is not None and not isinstance(linked_interconnect_attachments, SpokeLinkedInterconnectAttachmentsArgs):
-                linked_interconnect_attachments = linked_interconnect_attachments or {}
-                def _setter(key, value):
-                    linked_interconnect_attachments[key] = value
-                SpokeLinkedInterconnectAttachmentsArgs._configure(_setter, **linked_interconnect_attachments)
+            linked_interconnect_attachments = _utilities.configure(linked_interconnect_attachments, SpokeLinkedInterconnectAttachmentsArgs, True)
             __props__.__dict__["linked_interconnect_attachments"] = linked_interconnect_attachments
-            if linked_router_appliance_instances is not None and not isinstance(linked_router_appliance_instances, SpokeLinkedRouterApplianceInstancesArgs):
-                linked_router_appliance_instances = linked_router_appliance_instances or {}
-                def _setter(key, value):
-                    linked_router_appliance_instances[key] = value
-                SpokeLinkedRouterApplianceInstancesArgs._configure(_setter, **linked_router_appliance_instances)
+            linked_router_appliance_instances = _utilities.configure(linked_router_appliance_instances, SpokeLinkedRouterApplianceInstancesArgs, True)
             __props__.__dict__["linked_router_appliance_instances"] = linked_router_appliance_instances
-            if linked_vpc_network is not None and not isinstance(linked_vpc_network, SpokeLinkedVpcNetworkArgs):
-                linked_vpc_network = linked_vpc_network or {}
-                def _setter(key, value):
-                    linked_vpc_network[key] = value
-                SpokeLinkedVpcNetworkArgs._configure(_setter, **linked_vpc_network)
+            linked_vpc_network = _utilities.configure(linked_vpc_network, SpokeLinkedVpcNetworkArgs, True)
             __props__.__dict__["linked_vpc_network"] = linked_vpc_network
-            if linked_vpn_tunnels is not None and not isinstance(linked_vpn_tunnels, SpokeLinkedVpnTunnelsArgs):
-                linked_vpn_tunnels = linked_vpn_tunnels or {}
-                def _setter(key, value):
-                    linked_vpn_tunnels[key] = value
-                SpokeLinkedVpnTunnelsArgs._configure(_setter, **linked_vpn_tunnels)
+            linked_vpn_tunnels = _utilities.configure(linked_vpn_tunnels, SpokeLinkedVpnTunnelsArgs, True)
             __props__.__dict__["linked_vpn_tunnels"] = linked_vpn_tunnels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")

@@ -25,38 +25,6 @@ namespace Pulumi.Gcp.DeploymentManager
     /// `preview=false`).
     /// 
     /// ## Example Usage
-    /// ### Deployment Manager Deployment Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.IO;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var deployment = new Gcp.DeploymentManager.Deployment("deployment", new()
-    ///     {
-    ///         Target = new Gcp.DeploymentManager.Inputs.DeploymentTargetArgs
-    ///         {
-    ///             Config = new Gcp.DeploymentManager.Inputs.DeploymentTargetConfigArgs
-    ///             {
-    ///                 Content = File.ReadAllText("path/to/config.yml"),
-    ///             },
-    ///         },
-    ///         Labels = new[]
-    ///         {
-    ///             new Gcp.DeploymentManager.Inputs.DeploymentLabelArgs
-    ///             {
-    ///                 Key = "foo",
-    ///                 Value = "bar",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

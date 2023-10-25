@@ -13,56 +13,12 @@ namespace Pulumi.Gcp.Alloydb
     {
         /// <summary>
         /// Use this data source to get information about the supported alloydb database flags in a location.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var qa = Gcp.Alloydb.GetSupportedDatabaseFlags.Invoke(new()
-        ///     {
-        ///         Location = "us-central1",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSupportedDatabaseFlagsResult> InvokeAsync(GetSupportedDatabaseFlagsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSupportedDatabaseFlagsResult>("gcp:alloydb/getSupportedDatabaseFlags:getSupportedDatabaseFlags", args ?? new GetSupportedDatabaseFlagsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get information about the supported alloydb database flags in a location.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var qa = Gcp.Alloydb.GetSupportedDatabaseFlags.Invoke(new()
-        ///     {
-        ///         Location = "us-central1",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetSupportedDatabaseFlagsResult> Invoke(GetSupportedDatabaseFlagsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSupportedDatabaseFlagsResult>("gcp:alloydb/getSupportedDatabaseFlags:getSupportedDatabaseFlags", args ?? new GetSupportedDatabaseFlagsInvokeArgs(), options.WithDefaults());

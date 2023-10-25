@@ -28,7 +28,9 @@ class ProjectArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if project is not None:
             _setter("project", project)
 
@@ -71,7 +73,13 @@ class _ProjectState:
              display_name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              project_number: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if project_number is None and 'projectNumber' in kwargs:
+            project_number = kwargs['projectNumber']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if project is not None:
@@ -137,22 +145,6 @@ class Project(pulumi.CustomResource):
             * [Official Documentation](https://firebase.google.com/)
 
         ## Example Usage
-        ### Firebase Project Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_project = gcp.organizations.Project("defaultProject",
-            project_id="my-project",
-            org_id="123456789",
-            labels={
-                "firebase": "enabled",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_firebase_project_project = gcp.firebase.Project("defaultFirebase/projectProject", project=default_project.project_id,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -190,22 +182,6 @@ class Project(pulumi.CustomResource):
             * [Official Documentation](https://firebase.google.com/)
 
         ## Example Usage
-        ### Firebase Project Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_project = gcp.organizations.Project("defaultProject",
-            project_id="my-project",
-            org_id="123456789",
-            labels={
-                "firebase": "enabled",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_firebase_project_project = gcp.firebase.Project("defaultFirebase/projectProject", project=default_project.project_id,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 

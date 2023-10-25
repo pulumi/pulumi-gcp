@@ -47,12 +47,20 @@ class FirewallRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: pulumi.Input[str],
-             source_range: pulumi.Input[str],
+             action: Optional[pulumi.Input[str]] = None,
+             source_range: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              priority: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if source_range is None and 'sourceRange' in kwargs:
+            source_range = kwargs['sourceRange']
+        if source_range is None:
+            raise TypeError("Missing 'source_range' argument")
+
         _setter("action", action)
         _setter("source_range", source_range)
         if description is not None:
@@ -173,7 +181,11 @@ class _FirewallRuleState:
              priority: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
              source_range: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if source_range is None and 'sourceRange' in kwargs:
+            source_range = kwargs['sourceRange']
+
         if action is not None:
             _setter("action", action)
         if description is not None:
@@ -277,25 +289,6 @@ class FirewallRule(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/creating-firewalls#creating_firewall_rules)
 
         ## Example Usage
-        ### App Engine Firewall Rule Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_project = gcp.organizations.Project("myProject",
-            project_id="ae-project",
-            org_id="123456789",
-            billing_account="000000-0000000-0000000-000000")
-        app = gcp.appengine.Application("app",
-            project=my_project.project_id,
-            location_id="us-central")
-        rule = gcp.appengine.FirewallRule("rule",
-            project=app.project,
-            priority=1000,
-            action="ALLOW",
-            source_range="*")
-        ```
 
         ## Import
 
@@ -347,25 +340,6 @@ class FirewallRule(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/creating-firewalls#creating_firewall_rules)
 
         ## Example Usage
-        ### App Engine Firewall Rule Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_project = gcp.organizations.Project("myProject",
-            project_id="ae-project",
-            org_id="123456789",
-            billing_account="000000-0000000-0000000-000000")
-        app = gcp.appengine.Application("app",
-            project=my_project.project_id,
-            location_id="us-central")
-        rule = gcp.appengine.FirewallRule("rule",
-            project=app.project,
-            priority=1000,
-            action="ALLOW",
-            source_range="*")
-        ```
 
         ## Import
 

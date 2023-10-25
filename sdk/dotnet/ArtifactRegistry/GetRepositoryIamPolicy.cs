@@ -13,56 +13,12 @@ namespace Pulumi.Gcp.ArtifactRegistry
     {
         /// <summary>
         /// Retrieves the current IAM policy data for repository
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.ArtifactRegistry.GetRepositoryIamPolicy.Invoke(new()
-        ///     {
-        ///         Project = google_artifact_registry_repository.My_repo.Project,
-        ///         Location = google_artifact_registry_repository.My_repo.Location,
-        ///         Repository = google_artifact_registry_repository.My_repo.Name,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetRepositoryIamPolicyResult> InvokeAsync(GetRepositoryIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRepositoryIamPolicyResult>("gcp:artifactregistry/getRepositoryIamPolicy:getRepositoryIamPolicy", args ?? new GetRepositoryIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the current IAM policy data for repository
-        /// 
-        /// 
-        /// 
-        /// ## example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var policy = Gcp.ArtifactRegistry.GetRepositoryIamPolicy.Invoke(new()
-        ///     {
-        ///         Project = google_artifact_registry_repository.My_repo.Project,
-        ///         Location = google_artifact_registry_repository.My_repo.Location,
-        ///         Repository = google_artifact_registry_repository.My_repo.Name,
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetRepositoryIamPolicyResult> Invoke(GetRepositoryIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRepositoryIamPolicyResult>("gcp:artifactregistry/getRepositoryIamPolicy:getRepositoryIamPolicy", args ?? new GetRepositoryIamPolicyInvokeArgs(), options.WithDefaults());

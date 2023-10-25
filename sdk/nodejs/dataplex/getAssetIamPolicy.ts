@@ -6,21 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the current IAM policy data for asset
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.dataplex.getAssetIamPolicy({
- *     project: google_dataplex_asset.example.project,
- *     location: google_dataplex_asset.example.location,
- *     lake: google_dataplex_asset.example.lake,
- *     dataplexZone: google_dataplex_asset.example.dataplex_zone,
- *     asset: google_dataplex_asset.example.name,
- * });
- * ```
  */
 export function getAssetIamPolicy(args: GetAssetIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAssetIamPolicyResult> {
 
@@ -77,21 +62,6 @@ export interface GetAssetIamPolicyResult {
 }
 /**
  * Retrieves the current IAM policy data for asset
- *
- * ## example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const policy = gcp.dataplex.getAssetIamPolicy({
- *     project: google_dataplex_asset.example.project,
- *     location: google_dataplex_asset.example.location,
- *     lake: google_dataplex_asset.example.lake,
- *     dataplexZone: google_dataplex_asset.example.dataplex_zone,
- *     asset: google_dataplex_asset.example.name,
- * });
- * ```
  */
 export function getAssetIamPolicyOutput(args: GetAssetIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAssetIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getAssetIamPolicy(a, opts))

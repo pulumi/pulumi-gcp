@@ -13,53 +13,6 @@ namespace Pulumi.Gcp.AssuredWorkloads
     /// The AssuredWorkloads Workload resource
     /// 
     /// ## Example Usage
-    /// ### Basic_workload
-    /// A basic test of a assuredworkloads api
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var primary = new Gcp.AssuredWorkloads.Workload("primary", new()
-    ///     {
-    ///         BillingAccount = "billingAccounts/000000-0000000-0000000-000000",
-    ///         ComplianceRegime = "FEDRAMP_MODERATE",
-    ///         DisplayName = "Workload Example",
-    ///         KmsSettings = new Gcp.AssuredWorkloads.Inputs.WorkloadKmsSettingsArgs
-    ///         {
-    ///             NextRotationTime = "9999-10-02T15:01:23Z",
-    ///             RotationPeriod = "10368000s",
-    ///         },
-    ///         Labels = 
-    ///         {
-    ///             { "label-one", "value-one" },
-    ///         },
-    ///         Location = "us-west1",
-    ///         Organization = "123456789",
-    ///         ProvisionedResourcesParent = "folders/519620126891",
-    ///         ResourceSettings = new[]
-    ///         {
-    ///             new Gcp.AssuredWorkloads.Inputs.WorkloadResourceSettingArgs
-    ///             {
-    ///                 ResourceType = "CONSUMER_PROJECT",
-    ///             },
-    ///             new Gcp.AssuredWorkloads.Inputs.WorkloadResourceSettingArgs
-    ///             {
-    ///                 ResourceType = "ENCRYPTION_KEYS_PROJECT",
-    ///             },
-    ///             new Gcp.AssuredWorkloads.Inputs.WorkloadResourceSettingArgs
-    ///             {
-    ///                 ResourceId = "ring",
-    ///                 ResourceType = "KEYRING",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

@@ -59,15 +59,29 @@ class VMwareNodePoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config: pulumi.Input['VMwareNodePoolConfigArgs'],
-             location: pulumi.Input[str],
-             vmware_cluster: pulumi.Input[str],
+             config: Optional[pulumi.Input['VMwareNodePoolConfigArgs']] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             vmware_cluster: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              node_pool_autoscaling: Optional[pulumi.Input['VMwareNodePoolNodePoolAutoscalingArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if config is None:
+            raise TypeError("Missing 'config' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if vmware_cluster is None and 'vmwareCluster' in kwargs:
+            vmware_cluster = kwargs['vmwareCluster']
+        if vmware_cluster is None:
+            raise TypeError("Missing 'vmware_cluster' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if node_pool_autoscaling is None and 'nodePoolAutoscaling' in kwargs:
+            node_pool_autoscaling = kwargs['nodePoolAutoscaling']
+
         _setter("config", config)
         _setter("location", location)
         _setter("vmware_cluster", vmware_cluster)
@@ -285,7 +299,23 @@ class _VMwareNodePoolState:
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              vmware_cluster: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if delete_time is None and 'deleteTime' in kwargs:
+            delete_time = kwargs['deleteTime']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if node_pool_autoscaling is None and 'nodePoolAutoscaling' in kwargs:
+            node_pool_autoscaling = kwargs['nodePoolAutoscaling']
+        if on_prem_version is None and 'onPremVersion' in kwargs:
+            on_prem_version = kwargs['onPremVersion']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if vmware_cluster is None and 'vmwareCluster' in kwargs:
+            vmware_cluster = kwargs['vmwareCluster']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if config is not None:
@@ -558,135 +588,6 @@ class VMwareNodePool(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Gkeonprem Vmware Node Pool Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_basic = gcp.gkeonprem.VMwareCluster("default-basic",
-            location="us-west1",
-            admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
-            description="test cluster",
-            on_prem_version="1.13.1-gke.35",
-            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
-                service_address_cidr_blocks=["10.96.0.0/12"],
-                pod_address_cidr_blocks=["192.168.0.0/16"],
-                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArgs(
-                    enabled=True,
-                ),
-            ),
-            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
-                cpus=4,
-                memory=8192,
-                replicas=1,
-            ),
-            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
-                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
-                    control_plane_vip="10.251.133.5",
-                    ingress_vip="10.251.135.19",
-                ),
-                metal_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigArgs(
-                    address_pools=[
-                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
-                            pool="ingress-ip",
-                            manual_assign=True,
-                            addresses=["10.251.135.19"],
-                        ),
-                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
-                            pool="lb-test-ip",
-                            manual_assign=True,
-                            addresses=["10.251.135.19"],
-                        ),
-                    ],
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        nodepool_basic = gcp.gkeonprem.VMwareNodePool("nodepool-basic",
-            location="us-west1",
-            vmware_cluster=default_basic.name,
-            config=gcp.gkeonprem.VMwareNodePoolConfigArgs(
-                replicas=3,
-                image_type="ubuntu_containerd",
-                enable_load_balancer=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Gkeonprem Vmware Node Pool Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_full = gcp.gkeonprem.VMwareCluster("default-full",
-            location="us-west1",
-            admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
-            description="test cluster",
-            on_prem_version="1.13.1-gke.35",
-            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
-                service_address_cidr_blocks=["10.96.0.0/12"],
-                pod_address_cidr_blocks=["192.168.0.0/16"],
-                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArgs(
-                    enabled=True,
-                ),
-            ),
-            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
-                cpus=4,
-                memory=8192,
-                replicas=1,
-            ),
-            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
-                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
-                    control_plane_vip="10.251.133.5",
-                    ingress_vip="10.251.135.19",
-                ),
-                metal_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigArgs(
-                    address_pools=[
-                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
-                            pool="ingress-ip",
-                            manual_assign=True,
-                            addresses=["10.251.135.19"],
-                        ),
-                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
-                            pool="lb-test-ip",
-                            manual_assign=True,
-                            addresses=["10.251.135.19"],
-                        ),
-                    ],
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        nodepool_full = gcp.gkeonprem.VMwareNodePool("nodepool-full",
-            location="us-west1",
-            vmware_cluster=default_full.name,
-            annotations={},
-            config=gcp.gkeonprem.VMwareNodePoolConfigArgs(
-                cpus=4,
-                memory_mb=8196,
-                replicas=3,
-                image_type="ubuntu_containerd",
-                image="image",
-                boot_disk_size_gb=10,
-                taints=[
-                    gcp.gkeonprem.VMwareNodePoolConfigTaintArgs(
-                        key="key",
-                        value="value",
-                    ),
-                    gcp.gkeonprem.VMwareNodePoolConfigTaintArgs(
-                        key="key",
-                        value="value",
-                        effect="NO_SCHEDULE",
-                    ),
-                ],
-                labels={},
-                enable_load_balancer=True,
-            ),
-            node_pool_autoscaling=gcp.gkeonprem.VMwareNodePoolNodePoolAutoscalingArgs(
-                min_replicas=1,
-                max_replicas=5,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -733,135 +634,6 @@ class VMwareNodePool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Gkeonprem Vmware Node Pool Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_basic = gcp.gkeonprem.VMwareCluster("default-basic",
-            location="us-west1",
-            admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
-            description="test cluster",
-            on_prem_version="1.13.1-gke.35",
-            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
-                service_address_cidr_blocks=["10.96.0.0/12"],
-                pod_address_cidr_blocks=["192.168.0.0/16"],
-                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArgs(
-                    enabled=True,
-                ),
-            ),
-            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
-                cpus=4,
-                memory=8192,
-                replicas=1,
-            ),
-            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
-                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
-                    control_plane_vip="10.251.133.5",
-                    ingress_vip="10.251.135.19",
-                ),
-                metal_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigArgs(
-                    address_pools=[
-                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
-                            pool="ingress-ip",
-                            manual_assign=True,
-                            addresses=["10.251.135.19"],
-                        ),
-                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
-                            pool="lb-test-ip",
-                            manual_assign=True,
-                            addresses=["10.251.135.19"],
-                        ),
-                    ],
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        nodepool_basic = gcp.gkeonprem.VMwareNodePool("nodepool-basic",
-            location="us-west1",
-            vmware_cluster=default_basic.name,
-            config=gcp.gkeonprem.VMwareNodePoolConfigArgs(
-                replicas=3,
-                image_type="ubuntu_containerd",
-                enable_load_balancer=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Gkeonprem Vmware Node Pool Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_full = gcp.gkeonprem.VMwareCluster("default-full",
-            location="us-west1",
-            admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
-            description="test cluster",
-            on_prem_version="1.13.1-gke.35",
-            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
-                service_address_cidr_blocks=["10.96.0.0/12"],
-                pod_address_cidr_blocks=["192.168.0.0/16"],
-                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArgs(
-                    enabled=True,
-                ),
-            ),
-            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
-                cpus=4,
-                memory=8192,
-                replicas=1,
-            ),
-            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
-                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
-                    control_plane_vip="10.251.133.5",
-                    ingress_vip="10.251.135.19",
-                ),
-                metal_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigArgs(
-                    address_pools=[
-                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
-                            pool="ingress-ip",
-                            manual_assign=True,
-                            addresses=["10.251.135.19"],
-                        ),
-                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
-                            pool="lb-test-ip",
-                            manual_assign=True,
-                            addresses=["10.251.135.19"],
-                        ),
-                    ],
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        nodepool_full = gcp.gkeonprem.VMwareNodePool("nodepool-full",
-            location="us-west1",
-            vmware_cluster=default_full.name,
-            annotations={},
-            config=gcp.gkeonprem.VMwareNodePoolConfigArgs(
-                cpus=4,
-                memory_mb=8196,
-                replicas=3,
-                image_type="ubuntu_containerd",
-                image="image",
-                boot_disk_size_gb=10,
-                taints=[
-                    gcp.gkeonprem.VMwareNodePoolConfigTaintArgs(
-                        key="key",
-                        value="value",
-                    ),
-                    gcp.gkeonprem.VMwareNodePoolConfigTaintArgs(
-                        key="key",
-                        value="value",
-                        effect="NO_SCHEDULE",
-                    ),
-                ],
-                labels={},
-                enable_load_balancer=True,
-            ),
-            node_pool_autoscaling=gcp.gkeonprem.VMwareNodePoolNodePoolAutoscalingArgs(
-                min_replicas=1,
-                max_replicas=5,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -916,11 +688,7 @@ class VMwareNodePool(pulumi.CustomResource):
             __props__ = VMwareNodePoolArgs.__new__(VMwareNodePoolArgs)
 
             __props__.__dict__["annotations"] = annotations
-            if config is not None and not isinstance(config, VMwareNodePoolConfigArgs):
-                config = config or {}
-                def _setter(key, value):
-                    config[key] = value
-                VMwareNodePoolConfigArgs._configure(_setter, **config)
+            config = _utilities.configure(config, VMwareNodePoolConfigArgs, True)
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
@@ -929,11 +697,7 @@ class VMwareNodePool(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if node_pool_autoscaling is not None and not isinstance(node_pool_autoscaling, VMwareNodePoolNodePoolAutoscalingArgs):
-                node_pool_autoscaling = node_pool_autoscaling or {}
-                def _setter(key, value):
-                    node_pool_autoscaling[key] = value
-                VMwareNodePoolNodePoolAutoscalingArgs._configure(_setter, **node_pool_autoscaling)
+            node_pool_autoscaling = _utilities.configure(node_pool_autoscaling, VMwareNodePoolNodePoolAutoscalingArgs, True)
             __props__.__dict__["node_pool_autoscaling"] = node_pool_autoscaling
             __props__.__dict__["project"] = project
             if vmware_cluster is None and not opts.urn:

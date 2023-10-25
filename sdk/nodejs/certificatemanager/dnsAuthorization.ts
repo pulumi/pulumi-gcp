@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * DnsAuthorization represents a HTTP-reachable backend for a DnsAuthorization.
  *
  * ## Example Usage
- * ### Certificate Manager Dns Authorization Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.certificatemanager.DnsAuthorization("default", {
- *     description: "The default dnss",
- *     domain: "subdomain.hashicorptest.com",
- * });
- * export const recordNameToInsert = _default.dnsResourceRecords.apply(dnsResourceRecords => dnsResourceRecords[0].name);
- * export const recordTypeToInsert = _default.dnsResourceRecords.apply(dnsResourceRecords => dnsResourceRecords[0].type);
- * export const recordDataToInsert = _default.dnsResourceRecords.apply(dnsResourceRecords => dnsResourceRecords[0].data);
- * ```
  *
  * ## Import
  *

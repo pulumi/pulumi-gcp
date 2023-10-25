@@ -39,11 +39,27 @@ class EndpointAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint_attachment_id: pulumi.Input[str],
-             location: pulumi.Input[str],
-             org_id: pulumi.Input[str],
-             service_attachment: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             endpoint_attachment_id: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             service_attachment: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if endpoint_attachment_id is None and 'endpointAttachmentId' in kwargs:
+            endpoint_attachment_id = kwargs['endpointAttachmentId']
+        if endpoint_attachment_id is None:
+            raise TypeError("Missing 'endpoint_attachment_id' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+        if service_attachment is None and 'serviceAttachment' in kwargs:
+            service_attachment = kwargs['serviceAttachment']
+        if service_attachment is None:
+            raise TypeError("Missing 'service_attachment' argument")
+
         _setter("endpoint_attachment_id", endpoint_attachment_id)
         _setter("location", location)
         _setter("org_id", org_id)
@@ -147,7 +163,17 @@ class _EndpointAttachmentState:
              name: Optional[pulumi.Input[str]] = None,
              org_id: Optional[pulumi.Input[str]] = None,
              service_attachment: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if connection_state is None and 'connectionState' in kwargs:
+            connection_state = kwargs['connectionState']
+        if endpoint_attachment_id is None and 'endpointAttachmentId' in kwargs:
+            endpoint_attachment_id = kwargs['endpointAttachmentId']
+        if org_id is None and 'orgId' in kwargs:
+            org_id = kwargs['orgId']
+        if service_attachment is None and 'serviceAttachment' in kwargs:
+            service_attachment = kwargs['serviceAttachment']
+
         if connection_state is not None:
             _setter("connection_state", connection_state)
         if endpoint_attachment_id is not None:
@@ -273,34 +299,6 @@ class EndpointAttachment(pulumi.CustomResource):
             * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
 
         ## Example Usage
-        ### Apigee Endpoint Attachment Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        current = gcp.organizations.get_client_config()
-        apigee_network = gcp.compute.Network("apigeeNetwork")
-        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=apigee_network.id)
-        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
-            network=apigee_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[apigee_range.name])
-        apigee_org = gcp.apigee.Organization("apigeeOrg",
-            analytics_region="us-central1",
-            project_id=current.project,
-            authorized_network=apigee_network.id,
-            opts=pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
-        apigee_endpoint_attachment = gcp.apigee.EndpointAttachment("apigeeEndpointAttachment",
-            org_id=apigee_org.id,
-            endpoint_attachment_id="test1",
-            location="{google_compute_service_attachment location}",
-            service_attachment="{google_compute_service_attachment id}")
-        ```
 
         ## Import
 
@@ -341,34 +339,6 @@ class EndpointAttachment(pulumi.CustomResource):
             * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
 
         ## Example Usage
-        ### Apigee Endpoint Attachment Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        current = gcp.organizations.get_client_config()
-        apigee_network = gcp.compute.Network("apigeeNetwork")
-        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=apigee_network.id)
-        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
-            network=apigee_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[apigee_range.name])
-        apigee_org = gcp.apigee.Organization("apigeeOrg",
-            analytics_region="us-central1",
-            project_id=current.project,
-            authorized_network=apigee_network.id,
-            opts=pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
-        apigee_endpoint_attachment = gcp.apigee.EndpointAttachment("apigeeEndpointAttachment",
-            org_id=apigee_org.id,
-            endpoint_attachment_id="test1",
-            location="{google_compute_service_attachment location}",
-            service_attachment="{google_compute_service_attachment id}")
-        ```
 
         ## Import
 

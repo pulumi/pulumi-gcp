@@ -39,7 +39,9 @@ class ConfigArgs:
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if description is not None:
             _setter("description", description)
         if name is not None:
@@ -116,7 +118,9 @@ class _ConfigState:
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if description is not None:
             _setter("description", description)
         if name is not None:
@@ -175,17 +179,6 @@ class Config(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        Example creating a RuntimeConfig resource.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_runtime_config = gcp.runtimeconfig.Config("my-runtime-config", description="Runtime configuration values for my service")
-        ```
-
         ## Import
 
         Runtime Configs can be imported using the `name` or full config name, e.g.
@@ -215,17 +208,6 @@ class Config(pulumi.CustomResource):
                  args: Optional[ConfigArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        Example creating a RuntimeConfig resource.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_runtime_config = gcp.runtimeconfig.Config("my-runtime-config", description="Runtime configuration values for my service")
-        ```
-
         ## Import
 
         Runtime Configs can be imported using the `name` or full config name, e.g.

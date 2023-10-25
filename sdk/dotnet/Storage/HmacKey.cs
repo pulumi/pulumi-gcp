@@ -27,30 +27,6 @@ namespace Pulumi.Gcp.Storage
     /// state as plain-text.
     /// 
     /// ## Example Usage
-    /// ### Storage Hmac Key
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create a new service account
-    ///     var serviceAccount = new Gcp.ServiceAccount.Account("serviceAccount", new()
-    ///     {
-    ///         AccountId = "my-svc-acc",
-    ///     });
-    /// 
-    ///     //Create the HMAC key for the associated service account
-    ///     var key = new Gcp.Storage.HmacKey("key", new()
-    ///     {
-    ///         ServiceAccountEmail = serviceAccount.Email,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

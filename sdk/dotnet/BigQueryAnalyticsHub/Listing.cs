@@ -19,47 +19,6 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     ///     * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
     /// 
     /// ## Example Usage
-    /// ### Bigquery Analyticshub Listing Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var listingDataExchange = new Gcp.BigQueryAnalyticsHub.DataExchange("listingDataExchange", new()
-    ///     {
-    ///         Location = "US",
-    ///         DataExchangeId = "my_data_exchange",
-    ///         DisplayName = "my_data_exchange",
-    ///         Description = "example data exchange",
-    ///     });
-    /// 
-    ///     var listingDataset = new Gcp.BigQuery.Dataset("listingDataset", new()
-    ///     {
-    ///         DatasetId = "my_listing",
-    ///         FriendlyName = "my_listing",
-    ///         Description = "example data exchange",
-    ///         Location = "US",
-    ///     });
-    /// 
-    ///     var listingListing = new Gcp.BigQueryAnalyticsHub.Listing("listingListing", new()
-    ///     {
-    ///         Location = "US",
-    ///         DataExchangeId = listingDataExchange.DataExchangeId,
-    ///         ListingId = "my_listing",
-    ///         DisplayName = "my_listing",
-    ///         Description = "example data exchange",
-    ///         BigqueryDataset = new Gcp.BigQueryAnalyticsHub.Inputs.ListingBigqueryDatasetArgs
-    ///         {
-    ///             Dataset = listingDataset.Id,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

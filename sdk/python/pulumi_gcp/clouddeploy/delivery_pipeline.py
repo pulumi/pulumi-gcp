@@ -49,7 +49,7 @@ class DeliveryPipelineArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -57,7 +57,13 @@ class DeliveryPipelineArgs:
              project: Optional[pulumi.Input[str]] = None,
              serial_pipeline: Optional[pulumi.Input['DeliveryPipelineSerialPipelineArgs']] = None,
              suspended: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if serial_pipeline is None and 'serialPipeline' in kwargs:
+            serial_pipeline = kwargs['serialPipeline']
+
         _setter("location", location)
         if annotations is not None:
             _setter("annotations", annotations)
@@ -235,7 +241,15 @@ class _DeliveryPipelineState:
              suspended: Optional[pulumi.Input[bool]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if serial_pipeline is None and 'serialPipeline' in kwargs:
+            serial_pipeline = kwargs['serialPipeline']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if conditions is not None:
@@ -438,210 +452,6 @@ class DeliveryPipeline(pulumi.CustomResource):
         The Cloud Deploy `DeliveryPipeline` resource
 
         ## Example Usage
-        ### Canary_delivery_pipeline
-        Creates a basic Cloud Deploy delivery pipeline
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.clouddeploy.DeliveryPipeline("primary",
-            location="us-west1",
-            annotations={
-                "my_first_annotation": "example-annotation-1",
-                "my_second_annotation": "example-annotation-2",
-            },
-            description="basic description",
-            labels={
-                "my_first_label": "example-label-1",
-                "my_second_label": "example-label-2",
-            },
-            project="my-project-name",
-            serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
-                stages=[
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
-                            values={
-                                "deployParameterKey": "deployParameterValue",
-                            },
-                            match_target_labels={},
-                        )],
-                        profiles=[
-                            "example-profile-one",
-                            "example-profile-two",
-                        ],
-                        target_id="example-target-one",
-                    ),
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        profiles=[],
-                        target_id="example-target-two",
-                    ),
-                ],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Canary_service_networking_delivery_pipeline
-        Creates a basic Cloud Deploy delivery pipeline
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.clouddeploy.DeliveryPipeline("primary",
-            location="us-west1",
-            annotations={
-                "my_first_annotation": "example-annotation-1",
-                "my_second_annotation": "example-annotation-2",
-            },
-            description="basic description",
-            labels={
-                "my_first_label": "example-label-1",
-                "my_second_label": "example-label-2",
-            },
-            project="my-project-name",
-            serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
-                stages=[
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
-                            values={
-                                "deployParameterKey": "deployParameterValue",
-                            },
-                            match_target_labels={},
-                        )],
-                        profiles=[
-                            "example-profile-one",
-                            "example-profile-two",
-                        ],
-                        target_id="example-target-one",
-                    ),
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        profiles=[],
-                        target_id="example-target-two",
-                    ),
-                ],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Canaryrun_delivery_pipeline
-        Creates a basic Cloud Deploy delivery pipeline
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.clouddeploy.DeliveryPipeline("primary",
-            location="us-west1",
-            annotations={
-                "my_first_annotation": "example-annotation-1",
-                "my_second_annotation": "example-annotation-2",
-            },
-            description="basic description",
-            labels={
-                "my_first_label": "example-label-1",
-                "my_second_label": "example-label-2",
-            },
-            project="my-project-name",
-            serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
-                stages=[
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
-                            values={
-                                "deployParameterKey": "deployParameterValue",
-                            },
-                            match_target_labels={},
-                        )],
-                        profiles=[
-                            "example-profile-one",
-                            "example-profile-two",
-                        ],
-                        target_id="example-target-one",
-                    ),
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        profiles=[],
-                        target_id="example-target-two",
-                    ),
-                ],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Delivery_pipeline
-        Creates a basic Cloud Deploy delivery pipeline
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.clouddeploy.DeliveryPipeline("primary",
-            annotations={
-                "my_first_annotation": "example-annotation-1",
-                "my_second_annotation": "example-annotation-2",
-            },
-            description="basic description",
-            labels={
-                "my_first_label": "example-label-1",
-                "my_second_label": "example-label-2",
-            },
-            location="us-west1",
-            project="my-project-name",
-            serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
-                stages=[
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
-                            match_target_labels={},
-                            values={
-                                "deployParameterKey": "deployParameterValue",
-                            },
-                        )],
-                        profiles=[
-                            "example-profile-one",
-                            "example-profile-two",
-                        ],
-                        target_id="example-target-one",
-                    ),
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        profiles=[],
-                        target_id="example-target-two",
-                    ),
-                ],
-            ))
-        ```
-        ### Verify_delivery_pipeline
-        tests creating and updating a delivery pipeline with deployment verification strategy
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.clouddeploy.DeliveryPipeline("primary",
-            location="us-west1",
-            annotations={
-                "my_first_annotation": "example-annotation-1",
-                "my_second_annotation": "example-annotation-2",
-            },
-            description="basic description",
-            labels={
-                "my_first_label": "example-label-1",
-                "my_second_label": "example-label-2",
-            },
-            project="my-project-name",
-            serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
-                stages=[
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
-                            values={
-                                "deployParameterKey": "deployParameterValue",
-                            },
-                            match_target_labels={},
-                        )],
-                        profiles=[
-                            "example-profile-one",
-                            "example-profile-two",
-                        ],
-                        target_id="example-target-one",
-                    ),
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        profiles=[],
-                        target_id="example-target-two",
-                    ),
-                ],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -680,210 +490,6 @@ class DeliveryPipeline(pulumi.CustomResource):
         The Cloud Deploy `DeliveryPipeline` resource
 
         ## Example Usage
-        ### Canary_delivery_pipeline
-        Creates a basic Cloud Deploy delivery pipeline
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.clouddeploy.DeliveryPipeline("primary",
-            location="us-west1",
-            annotations={
-                "my_first_annotation": "example-annotation-1",
-                "my_second_annotation": "example-annotation-2",
-            },
-            description="basic description",
-            labels={
-                "my_first_label": "example-label-1",
-                "my_second_label": "example-label-2",
-            },
-            project="my-project-name",
-            serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
-                stages=[
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
-                            values={
-                                "deployParameterKey": "deployParameterValue",
-                            },
-                            match_target_labels={},
-                        )],
-                        profiles=[
-                            "example-profile-one",
-                            "example-profile-two",
-                        ],
-                        target_id="example-target-one",
-                    ),
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        profiles=[],
-                        target_id="example-target-two",
-                    ),
-                ],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Canary_service_networking_delivery_pipeline
-        Creates a basic Cloud Deploy delivery pipeline
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.clouddeploy.DeliveryPipeline("primary",
-            location="us-west1",
-            annotations={
-                "my_first_annotation": "example-annotation-1",
-                "my_second_annotation": "example-annotation-2",
-            },
-            description="basic description",
-            labels={
-                "my_first_label": "example-label-1",
-                "my_second_label": "example-label-2",
-            },
-            project="my-project-name",
-            serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
-                stages=[
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
-                            values={
-                                "deployParameterKey": "deployParameterValue",
-                            },
-                            match_target_labels={},
-                        )],
-                        profiles=[
-                            "example-profile-one",
-                            "example-profile-two",
-                        ],
-                        target_id="example-target-one",
-                    ),
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        profiles=[],
-                        target_id="example-target-two",
-                    ),
-                ],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Canaryrun_delivery_pipeline
-        Creates a basic Cloud Deploy delivery pipeline
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.clouddeploy.DeliveryPipeline("primary",
-            location="us-west1",
-            annotations={
-                "my_first_annotation": "example-annotation-1",
-                "my_second_annotation": "example-annotation-2",
-            },
-            description="basic description",
-            labels={
-                "my_first_label": "example-label-1",
-                "my_second_label": "example-label-2",
-            },
-            project="my-project-name",
-            serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
-                stages=[
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
-                            values={
-                                "deployParameterKey": "deployParameterValue",
-                            },
-                            match_target_labels={},
-                        )],
-                        profiles=[
-                            "example-profile-one",
-                            "example-profile-two",
-                        ],
-                        target_id="example-target-one",
-                    ),
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        profiles=[],
-                        target_id="example-target-two",
-                    ),
-                ],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Delivery_pipeline
-        Creates a basic Cloud Deploy delivery pipeline
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.clouddeploy.DeliveryPipeline("primary",
-            annotations={
-                "my_first_annotation": "example-annotation-1",
-                "my_second_annotation": "example-annotation-2",
-            },
-            description="basic description",
-            labels={
-                "my_first_label": "example-label-1",
-                "my_second_label": "example-label-2",
-            },
-            location="us-west1",
-            project="my-project-name",
-            serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
-                stages=[
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
-                            match_target_labels={},
-                            values={
-                                "deployParameterKey": "deployParameterValue",
-                            },
-                        )],
-                        profiles=[
-                            "example-profile-one",
-                            "example-profile-two",
-                        ],
-                        target_id="example-target-one",
-                    ),
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        profiles=[],
-                        target_id="example-target-two",
-                    ),
-                ],
-            ))
-        ```
-        ### Verify_delivery_pipeline
-        tests creating and updating a delivery pipeline with deployment verification strategy
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.clouddeploy.DeliveryPipeline("primary",
-            location="us-west1",
-            annotations={
-                "my_first_annotation": "example-annotation-1",
-                "my_second_annotation": "example-annotation-2",
-            },
-            description="basic description",
-            labels={
-                "my_first_label": "example-label-1",
-                "my_second_label": "example-label-2",
-            },
-            project="my-project-name",
-            serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
-                stages=[
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
-                            values={
-                                "deployParameterKey": "deployParameterValue",
-                            },
-                            match_target_labels={},
-                        )],
-                        profiles=[
-                            "example-profile-one",
-                            "example-profile-two",
-                        ],
-                        target_id="example-target-one",
-                    ),
-                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
-                        profiles=[],
-                        target_id="example-target-two",
-                    ),
-                ],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -945,11 +551,7 @@ class DeliveryPipeline(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            if serial_pipeline is not None and not isinstance(serial_pipeline, DeliveryPipelineSerialPipelineArgs):
-                serial_pipeline = serial_pipeline or {}
-                def _setter(key, value):
-                    serial_pipeline[key] = value
-                DeliveryPipelineSerialPipelineArgs._configure(_setter, **serial_pipeline)
+            serial_pipeline = _utilities.configure(serial_pipeline, DeliveryPipelineSerialPipelineArgs, True)
             __props__.__dict__["serial_pipeline"] = serial_pipeline
             __props__.__dict__["suspended"] = suspended
             __props__.__dict__["conditions"] = None

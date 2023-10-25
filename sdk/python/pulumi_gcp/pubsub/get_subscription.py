@@ -197,15 +197,6 @@ def get_subscription(name: Optional[str] = None,
     the [official documentation](https://cloud.google.com/pubsub/docs/)
     and [API](https://cloud.google.com/pubsub/docs/apis).
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    my_pubsub_subscription = gcp.pubsub.get_subscription(name="my-pubsub-subscription")
-    ```
-
 
     :param str name: The name of the Cloud Pub/Sub Subscription.
            
@@ -247,15 +238,6 @@ def get_subscription_output(name: Optional[pulumi.Input[str]] = None,
     Get information about a Google Cloud Pub/Sub Subscription. For more information see
     the [official documentation](https://cloud.google.com/pubsub/docs/)
     and [API](https://cloud.google.com/pubsub/docs/apis).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    my_pubsub_subscription = gcp.pubsub.get_subscription(name="my-pubsub-subscription")
-    ```
 
 
     :param str name: The name of the Cloud Pub/Sub Subscription.

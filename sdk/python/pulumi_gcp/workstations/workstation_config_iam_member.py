@@ -58,14 +58,28 @@ class WorkstationConfigIamMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             member: pulumi.Input[str],
-             role: pulumi.Input[str],
-             workstation_cluster_id: pulumi.Input[str],
-             workstation_config_id: pulumi.Input[str],
+             member: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             workstation_cluster_id: Optional[pulumi.Input[str]] = None,
+             workstation_config_id: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['WorkstationConfigIamMemberConditionArgs']] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if member is None:
+            raise TypeError("Missing 'member' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if workstation_cluster_id is None and 'workstationClusterId' in kwargs:
+            workstation_cluster_id = kwargs['workstationClusterId']
+        if workstation_cluster_id is None:
+            raise TypeError("Missing 'workstation_cluster_id' argument")
+        if workstation_config_id is None and 'workstationConfigId' in kwargs:
+            workstation_config_id = kwargs['workstationConfigId']
+        if workstation_config_id is None:
+            raise TypeError("Missing 'workstation_config_id' argument")
+
         _setter("member", member)
         _setter("role", role)
         _setter("workstation_cluster_id", workstation_cluster_id)
@@ -222,7 +236,13 @@ class _WorkstationConfigIamMemberState:
              role: Optional[pulumi.Input[str]] = None,
              workstation_cluster_id: Optional[pulumi.Input[str]] = None,
              workstation_config_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if workstation_cluster_id is None and 'workstationClusterId' in kwargs:
+            workstation_cluster_id = kwargs['workstationClusterId']
+        if workstation_config_id is None and 'workstationConfigId' in kwargs:
+            workstation_config_id = kwargs['workstationConfigId']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -467,11 +487,7 @@ class WorkstationConfigIamMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkstationConfigIamMemberArgs.__new__(WorkstationConfigIamMemberArgs)
 
-            if condition is not None and not isinstance(condition, WorkstationConfigIamMemberConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                WorkstationConfigIamMemberConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, WorkstationConfigIamMemberConditionArgs, True)
             __props__.__dict__["condition"] = condition
             __props__.__dict__["location"] = location
             if member is None and not opts.urn:

@@ -41,11 +41,17 @@ class LiteReservationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             throughput_capacity: pulumi.Input[int],
+             throughput_capacity: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if throughput_capacity is None and 'throughputCapacity' in kwargs:
+            throughput_capacity = kwargs['throughputCapacity']
+        if throughput_capacity is None:
+            raise TypeError("Missing 'throughput_capacity' argument")
+
         _setter("throughput_capacity", throughput_capacity)
         if name is not None:
             _setter("name", name)
@@ -143,7 +149,11 @@ class _LiteReservationState:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              throughput_capacity: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if throughput_capacity is None and 'throughputCapacity' in kwargs:
+            throughput_capacity = kwargs['throughputCapacity']
+
         if name is not None:
             _setter("name", name)
         if project is not None:
@@ -228,17 +238,6 @@ class LiteReservation(pulumi.CustomResource):
             * [Managing Reservations](https://cloud.google.com/pubsub/lite/docs/reservations)
 
         ## Example Usage
-        ### Pubsub Lite Reservation Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        example = gcp.pubsub.LiteReservation("example",
-            project=project.number,
-            throughput_capacity=2)
-        ```
 
         ## Import
 
@@ -289,17 +288,6 @@ class LiteReservation(pulumi.CustomResource):
             * [Managing Reservations](https://cloud.google.com/pubsub/lite/docs/reservations)
 
         ## Example Usage
-        ### Pubsub Lite Reservation Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        example = gcp.pubsub.LiteReservation("example",
-            project=project.number,
-            throughput_capacity=2)
-        ```
 
         ## Import
 

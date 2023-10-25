@@ -22,49 +22,6 @@ namespace Pulumi.Gcp.Monitoring
     ///     * [Official Documentation](https://cloud.google.com/monitoring/groups/)
     /// 
     /// ## Example Usage
-    /// ### Monitoring Group Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var basic = new Gcp.Monitoring.Group("basic", new()
-    ///     {
-    ///         DisplayName = "tf-test MonitoringGroup",
-    ///         Filter = "resource.metadata.region=\"europe-west2\"",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Monitoring Group Subgroup
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var parent = new Gcp.Monitoring.Group("parent", new()
-    ///     {
-    ///         DisplayName = "tf-test MonitoringParentGroup",
-    ///         Filter = "resource.metadata.region=\"europe-west2\"",
-    ///     });
-    /// 
-    ///     var subgroup = new Gcp.Monitoring.Group("subgroup", new()
-    ///     {
-    ///         DisplayName = "tf-test MonitoringSubGroup",
-    ///         Filter = "resource.metadata.region=\"europe-west2\"",
-    ///         ParentName = parent.Name,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

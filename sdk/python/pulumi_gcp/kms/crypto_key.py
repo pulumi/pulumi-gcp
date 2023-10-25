@@ -65,7 +65,7 @@ class CryptoKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key_ring: pulumi.Input[str],
+             key_ring: Optional[pulumi.Input[str]] = None,
              destroy_scheduled_duration: Optional[pulumi.Input[str]] = None,
              import_only: Optional[pulumi.Input[bool]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -74,7 +74,23 @@ class CryptoKeyArgs:
              rotation_period: Optional[pulumi.Input[str]] = None,
              skip_initial_version_creation: Optional[pulumi.Input[bool]] = None,
              version_template: Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key_ring is None and 'keyRing' in kwargs:
+            key_ring = kwargs['keyRing']
+        if key_ring is None:
+            raise TypeError("Missing 'key_ring' argument")
+        if destroy_scheduled_duration is None and 'destroyScheduledDuration' in kwargs:
+            destroy_scheduled_duration = kwargs['destroyScheduledDuration']
+        if import_only is None and 'importOnly' in kwargs:
+            import_only = kwargs['importOnly']
+        if rotation_period is None and 'rotationPeriod' in kwargs:
+            rotation_period = kwargs['rotationPeriod']
+        if skip_initial_version_creation is None and 'skipInitialVersionCreation' in kwargs:
+            skip_initial_version_creation = kwargs['skipInitialVersionCreation']
+        if version_template is None and 'versionTemplate' in kwargs:
+            version_template = kwargs['versionTemplate']
+
         _setter("key_ring", key_ring)
         if destroy_scheduled_duration is not None:
             _setter("destroy_scheduled_duration", destroy_scheduled_duration)
@@ -276,7 +292,21 @@ class _CryptoKeyState:
              rotation_period: Optional[pulumi.Input[str]] = None,
              skip_initial_version_creation: Optional[pulumi.Input[bool]] = None,
              version_template: Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if destroy_scheduled_duration is None and 'destroyScheduledDuration' in kwargs:
+            destroy_scheduled_duration = kwargs['destroyScheduledDuration']
+        if import_only is None and 'importOnly' in kwargs:
+            import_only = kwargs['importOnly']
+        if key_ring is None and 'keyRing' in kwargs:
+            key_ring = kwargs['keyRing']
+        if rotation_period is None and 'rotationPeriod' in kwargs:
+            rotation_period = kwargs['rotationPeriod']
+        if skip_initial_version_creation is None and 'skipInitialVersionCreation' in kwargs:
+            skip_initial_version_creation = kwargs['skipInitialVersionCreation']
+        if version_template is None and 'versionTemplate' in kwargs:
+            version_template = kwargs['versionTemplate']
+
         if destroy_scheduled_duration is not None:
             _setter("destroy_scheduled_duration", destroy_scheduled_duration)
         if import_only is not None:
@@ -451,31 +481,6 @@ class CryptoKey(pulumi.CustomResource):
             * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
 
         ## Example Usage
-        ### Kms Crypto Key Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        keyring = gcp.kms.KeyRing("keyring", location="global")
-        example_key = gcp.kms.CryptoKey("example-key",
-            key_ring=keyring.id,
-            rotation_period="100000s")
-        ```
-        ### Kms Crypto Key Asymmetric Sign
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        keyring = gcp.kms.KeyRing("keyring", location="global")
-        example_asymmetric_sign_key = gcp.kms.CryptoKey("example-asymmetric-sign-key",
-            key_ring=keyring.id,
-            purpose="ASYMMETRIC_SIGN",
-            version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
-                algorithm="EC_SIGN_P384_SHA384",
-            ))
-        ```
 
         ## Import
 
@@ -538,31 +543,6 @@ class CryptoKey(pulumi.CustomResource):
             * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
 
         ## Example Usage
-        ### Kms Crypto Key Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        keyring = gcp.kms.KeyRing("keyring", location="global")
-        example_key = gcp.kms.CryptoKey("example-key",
-            key_ring=keyring.id,
-            rotation_period="100000s")
-        ```
-        ### Kms Crypto Key Asymmetric Sign
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        keyring = gcp.kms.KeyRing("keyring", location="global")
-        example_asymmetric_sign_key = gcp.kms.CryptoKey("example-asymmetric-sign-key",
-            key_ring=keyring.id,
-            purpose="ASYMMETRIC_SIGN",
-            version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
-                algorithm="EC_SIGN_P384_SHA384",
-            ))
-        ```
 
         ## Import
 
@@ -623,11 +603,7 @@ class CryptoKey(pulumi.CustomResource):
             __props__.__dict__["purpose"] = purpose
             __props__.__dict__["rotation_period"] = rotation_period
             __props__.__dict__["skip_initial_version_creation"] = skip_initial_version_creation
-            if version_template is not None and not isinstance(version_template, CryptoKeyVersionTemplateArgs):
-                version_template = version_template or {}
-                def _setter(key, value):
-                    version_template[key] = value
-                CryptoKeyVersionTemplateArgs._configure(_setter, **version_template)
+            version_template = _utilities.configure(version_template, CryptoKeyVersionTemplateArgs, True)
             __props__.__dict__["version_template"] = version_template
         super(CryptoKey, __self__).__init__(
             'gcp:kms/cryptoKey:CryptoKey',

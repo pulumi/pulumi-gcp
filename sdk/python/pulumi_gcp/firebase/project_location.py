@@ -34,9 +34,15 @@ class ProjectLocationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location_id: pulumi.Input[str],
+             location_id: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location_id is None and 'locationId' in kwargs:
+            location_id = kwargs['locationId']
+        if location_id is None:
+            raise TypeError("Missing 'location_id' argument")
+
         _setter("location_id", location_id)
         if project is not None:
             _setter("project", project)
@@ -96,7 +102,11 @@ class _ProjectLocationState:
              _setter: Callable[[Any, Any], None],
              location_id: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location_id is None and 'locationId' in kwargs:
+            location_id = kwargs['locationId']
+
         if location_id is not None:
             _setter("location_id", location_id)
         if project is not None:
@@ -159,26 +169,6 @@ class ProjectLocation(pulumi.CustomResource):
             * [Official Documentation](https://firebase.google.com/)
 
         ## Example Usage
-        ### Firebase Project Location Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_project = gcp.organizations.Project("defaultProject",
-            project_id="my-project",
-            org_id="123456789",
-            labels={
-                "firebase": "enabled",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_firebase_project_project = gcp.firebase.Project("defaultFirebase/projectProject", project=default_project.project_id,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        basic = gcp.firebase.ProjectLocation("basic",
-            project=default_firebase / project_project["project"],
-            location_id="us-central",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -227,26 +217,6 @@ class ProjectLocation(pulumi.CustomResource):
             * [Official Documentation](https://firebase.google.com/)
 
         ## Example Usage
-        ### Firebase Project Location Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_project = gcp.organizations.Project("defaultProject",
-            project_id="my-project",
-            org_id="123456789",
-            labels={
-                "firebase": "enabled",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_firebase_project_project = gcp.firebase.Project("defaultFirebase/projectProject", project=default_project.project_id,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        basic = gcp.firebase.ProjectLocation("basic",
-            project=default_firebase / project_project["project"],
-            location_id="us-central",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 

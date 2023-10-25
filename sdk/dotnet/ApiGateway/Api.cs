@@ -19,26 +19,6 @@ namespace Pulumi.Gcp.ApiGateway
     ///     * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
     /// 
     /// ## Example Usage
-    /// ### Apigateway Api Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var api = new Gcp.ApiGateway.Api("api", new()
-    ///     {
-    ///         ApiId = "my-api",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

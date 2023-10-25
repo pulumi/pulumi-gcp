@@ -104,8 +104,8 @@ class RouteArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dest_range: pulumi.Input[str],
-             network: pulumi.Input[str],
+             dest_range: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              next_hop_gateway: Optional[pulumi.Input[str]] = None,
@@ -117,7 +117,27 @@ class RouteArgs:
              priority: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dest_range is None and 'destRange' in kwargs:
+            dest_range = kwargs['destRange']
+        if dest_range is None:
+            raise TypeError("Missing 'dest_range' argument")
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if next_hop_gateway is None and 'nextHopGateway' in kwargs:
+            next_hop_gateway = kwargs['nextHopGateway']
+        if next_hop_ilb is None and 'nextHopIlb' in kwargs:
+            next_hop_ilb = kwargs['nextHopIlb']
+        if next_hop_instance is None and 'nextHopInstance' in kwargs:
+            next_hop_instance = kwargs['nextHopInstance']
+        if next_hop_instance_zone is None and 'nextHopInstanceZone' in kwargs:
+            next_hop_instance_zone = kwargs['nextHopInstanceZone']
+        if next_hop_ip is None and 'nextHopIp' in kwargs:
+            next_hop_ip = kwargs['nextHopIp']
+        if next_hop_vpn_tunnel is None and 'nextHopVpnTunnel' in kwargs:
+            next_hop_vpn_tunnel = kwargs['nextHopVpnTunnel']
+
         _setter("dest_range", dest_range)
         _setter("network", network)
         if description is not None:
@@ -456,7 +476,27 @@ class _RouteState:
              project: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dest_range is None and 'destRange' in kwargs:
+            dest_range = kwargs['destRange']
+        if next_hop_gateway is None and 'nextHopGateway' in kwargs:
+            next_hop_gateway = kwargs['nextHopGateway']
+        if next_hop_ilb is None and 'nextHopIlb' in kwargs:
+            next_hop_ilb = kwargs['nextHopIlb']
+        if next_hop_instance is None and 'nextHopInstance' in kwargs:
+            next_hop_instance = kwargs['nextHopInstance']
+        if next_hop_instance_zone is None and 'nextHopInstanceZone' in kwargs:
+            next_hop_instance_zone = kwargs['nextHopInstanceZone']
+        if next_hop_ip is None and 'nextHopIp' in kwargs:
+            next_hop_ip = kwargs['nextHopIp']
+        if next_hop_network is None and 'nextHopNetwork' in kwargs:
+            next_hop_network = kwargs['nextHopNetwork']
+        if next_hop_vpn_tunnel is None and 'nextHopVpnTunnel' in kwargs:
+            next_hop_vpn_tunnel = kwargs['nextHopVpnTunnel']
+        if self_link is None and 'selfLink' in kwargs:
+            self_link = kwargs['selfLink']
+
         if description is not None:
             _setter("description", description)
         if dest_range is not None:
@@ -761,19 +801,6 @@ class Route(pulumi.CustomResource):
             * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
 
         ## Example Usage
-        ### Route Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork")
-        default_route = gcp.compute.Route("defaultRoute",
-            dest_range="15.0.0.0/24",
-            network=default_network.name,
-            next_hop_ip="10.132.1.5",
-            priority=100)
-        ```
 
         ## Import
 
@@ -886,19 +913,6 @@ class Route(pulumi.CustomResource):
             * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
 
         ## Example Usage
-        ### Route Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("defaultNetwork")
-        default_route = gcp.compute.Route("defaultRoute",
-            dest_range="15.0.0.0/24",
-            network=default_network.name,
-            next_hop_ip="10.132.1.5",
-            priority=100)
-        ```
 
         ## Import
 

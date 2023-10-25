@@ -19,35 +19,6 @@ namespace Pulumi.Gcp.VpcAccess
         /// * [API documentation](https://cloud.google.com/vpc/docs/reference/vpcaccess/rest/v1/projects.locations.connectors)
         /// * How-to Guides
         ///     * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var sample = Gcp.VpcAccess.GetConnector.Invoke(new()
-        ///     {
-        ///         Name = "vpc-con",
-        ///     });
-        /// 
-        ///     var connector = new Gcp.VpcAccess.Connector("connector", new()
-        ///     {
-        ///         IpCidrRange = "10.8.0.0/28",
-        ///         Network = "default",
-        ///         Region = "us-central1",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetConnectorResult> InvokeAsync(GetConnectorArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectorResult>("gcp:vpcaccess/getConnector:getConnector", args ?? new GetConnectorArgs(), options.WithDefaults());
@@ -60,35 +31,6 @@ namespace Pulumi.Gcp.VpcAccess
         /// * [API documentation](https://cloud.google.com/vpc/docs/reference/vpcaccess/rest/v1/projects.locations.connectors)
         /// * How-to Guides
         ///     * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var sample = Gcp.VpcAccess.GetConnector.Invoke(new()
-        ///     {
-        ///         Name = "vpc-con",
-        ///     });
-        /// 
-        ///     var connector = new Gcp.VpcAccess.Connector("connector", new()
-        ///     {
-        ///         IpCidrRange = "10.8.0.0/28",
-        ///         Network = "default",
-        ///         Region = "us-central1",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetConnectorResult> Invoke(GetConnectorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectorResult>("gcp:vpcaccess/getConnector:getConnector", args ?? new GetConnectorInvokeArgs(), options.WithDefaults());

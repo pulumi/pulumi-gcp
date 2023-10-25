@@ -42,11 +42,17 @@ class BiReservationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input[str],
+             location: Optional[pulumi.Input[str]] = None,
              preferred_tables: Optional[pulumi.Input[Sequence[pulumi.Input['BiReservationPreferredTableArgs']]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              size: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if preferred_tables is None and 'preferredTables' in kwargs:
+            preferred_tables = kwargs['preferredTables']
+
         _setter("location", location)
         if preferred_tables is not None:
             _setter("preferred_tables", preferred_tables)
@@ -151,7 +157,13 @@ class _BiReservationState:
              project: Optional[pulumi.Input[str]] = None,
              size: Optional[pulumi.Input[int]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if preferred_tables is None and 'preferredTables' in kwargs:
+            preferred_tables = kwargs['preferredTables']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if location is not None:
             _setter("location", location)
         if name is not None:
@@ -264,16 +276,6 @@ class BiReservation(pulumi.CustomResource):
             * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
 
         ## Example Usage
-        ### Bigquery Reservation Bi Reservation Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        reservation = gcp.bigquery.BiReservation("reservation",
-            location="us-west2",
-            size=3000000000)
-        ```
 
         ## Import
 
@@ -319,16 +321,6 @@ class BiReservation(pulumi.CustomResource):
             * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
 
         ## Example Usage
-        ### Bigquery Reservation Bi Reservation Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        reservation = gcp.bigquery.BiReservation("reservation",
-            location="us-west2",
-            size=3000000000)
-        ```
 
         ## Import
 

@@ -19,26 +19,6 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
-        /// ### Retrieve Project Logging Sink Basic
-        /// 
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var project_sink = Gcp.Logging.GetSink.Invoke(new()
-        ///     {
-        ///         Id = "projects/0123456789/sinks/my-sink-name",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSinkResult> InvokeAsync(GetSinkArgs args, InvokeOptions? options = null)
@@ -52,26 +32,6 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
-        /// ### Retrieve Project Logging Sink Basic
-        /// 
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var project_sink = Gcp.Logging.GetSink.Invoke(new()
-        ///     {
-        ///         Id = "projects/0123456789/sinks/my-sink-name",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSinkResult> Invoke(GetSinkInvokeArgs args, InvokeOptions? options = null)

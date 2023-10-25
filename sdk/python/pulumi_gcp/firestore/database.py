@@ -69,15 +69,31 @@ class DatabaseArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location_id: pulumi.Input[str],
-             type: pulumi.Input[str],
+             location_id: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              app_engine_integration_mode: Optional[pulumi.Input[str]] = None,
              concurrency_mode: Optional[pulumi.Input[str]] = None,
              delete_protection_state: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              point_in_time_recovery_enablement: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location_id is None and 'locationId' in kwargs:
+            location_id = kwargs['locationId']
+        if location_id is None:
+            raise TypeError("Missing 'location_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if app_engine_integration_mode is None and 'appEngineIntegrationMode' in kwargs:
+            app_engine_integration_mode = kwargs['appEngineIntegrationMode']
+        if concurrency_mode is None and 'concurrencyMode' in kwargs:
+            concurrency_mode = kwargs['concurrencyMode']
+        if delete_protection_state is None and 'deleteProtectionState' in kwargs:
+            delete_protection_state = kwargs['deleteProtectionState']
+        if point_in_time_recovery_enablement is None and 'pointInTimeRecoveryEnablement' in kwargs:
+            point_in_time_recovery_enablement = kwargs['pointInTimeRecoveryEnablement']
+
         _setter("location_id", location_id)
         _setter("type", type)
         if app_engine_integration_mode is not None:
@@ -316,7 +332,29 @@ class _DatabaseState:
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              version_retention_period: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if app_engine_integration_mode is None and 'appEngineIntegrationMode' in kwargs:
+            app_engine_integration_mode = kwargs['appEngineIntegrationMode']
+        if concurrency_mode is None and 'concurrencyMode' in kwargs:
+            concurrency_mode = kwargs['concurrencyMode']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if delete_protection_state is None and 'deleteProtectionState' in kwargs:
+            delete_protection_state = kwargs['deleteProtectionState']
+        if earliest_version_time is None and 'earliestVersionTime' in kwargs:
+            earliest_version_time = kwargs['earliestVersionTime']
+        if key_prefix is None and 'keyPrefix' in kwargs:
+            key_prefix = kwargs['keyPrefix']
+        if location_id is None and 'locationId' in kwargs:
+            location_id = kwargs['locationId']
+        if point_in_time_recovery_enablement is None and 'pointInTimeRecoveryEnablement' in kwargs:
+            point_in_time_recovery_enablement = kwargs['pointInTimeRecoveryEnablement']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if version_retention_period is None and 'versionRetentionPeriod' in kwargs:
+            version_retention_period = kwargs['versionRetentionPeriod']
+
         if app_engine_integration_mode is not None:
             _setter("app_engine_integration_mode", app_engine_integration_mode)
         if concurrency_mode is not None:
@@ -589,19 +627,6 @@ class Database(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/firestore/docs/)
 
         ## Example Usage
-        ### Firestore Database With Delete Protection
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        database = gcp.firestore.Database("database",
-            project=google_project["project"]["project_id"],
-            location_id="nam5",
-            type="FIRESTORE_NATIVE",
-            delete_protection_state="DELETE_PROTECTION_ENABLED",
-            opts=pulumi.ResourceOptions(depends_on=[google_project_service["firestore"]]))
-        ```
 
         ## Import
 
@@ -672,19 +697,6 @@ class Database(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/firestore/docs/)
 
         ## Example Usage
-        ### Firestore Database With Delete Protection
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        database = gcp.firestore.Database("database",
-            project=google_project["project"]["project_id"],
-            location_id="nam5",
-            type="FIRESTORE_NATIVE",
-            delete_protection_state="DELETE_PROTECTION_ENABLED",
-            opts=pulumi.ResourceOptions(depends_on=[google_project_service["firestore"]]))
-        ```
 
         ## Import
 

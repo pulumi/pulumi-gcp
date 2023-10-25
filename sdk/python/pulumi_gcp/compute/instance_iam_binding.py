@@ -60,13 +60,23 @@ class InstanceIAMBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_name: pulumi.Input[str],
-             members: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
+             instance_name: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input['InstanceIAMBindingConditionArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if members is None:
+            raise TypeError("Missing 'members' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
         _setter("instance_name", instance_name)
         _setter("members", members)
         _setter("role", role)
@@ -222,7 +232,11 @@ class _InstanceIAMBindingState:
              project: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+
         if condition is not None:
             _setter("condition", condition)
         if etag is not None:
@@ -367,109 +381,6 @@ class InstanceIAMBinding(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_compute\\_instance\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.osLogin",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.compute.InstanceIAMPolicy("policy",
-            project=google_compute_instance["default"]["project"],
-            zone=google_compute_instance["default"]["zone"],
-            instance_name=google_compute_instance["default"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.osLogin",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
-        policy = gcp.compute.InstanceIAMPolicy("policy",
-            project=google_compute_instance["default"]["project"],
-            zone=google_compute_instance["default"]["zone"],
-            instance_name=google_compute_instance["default"]["name"],
-            policy_data=admin.policy_data)
-        ```
-        ## google\\_compute\\_instance\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.compute.InstanceIAMBinding("binding",
-            project=google_compute_instance["default"]["project"],
-            zone=google_compute_instance["default"]["zone"],
-            instance_name=google_compute_instance["default"]["name"],
-            role="roles/compute.osLogin",
-            members=["user:jane@example.com"])
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.compute.InstanceIAMBinding("binding",
-            project=google_compute_instance["default"]["project"],
-            zone=google_compute_instance["default"]["zone"],
-            instance_name=google_compute_instance["default"]["name"],
-            role="roles/compute.osLogin",
-            members=["user:jane@example.com"],
-            condition=gcp.compute.InstanceIAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-        ## google\\_compute\\_instance\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.compute.InstanceIAMMember("member",
-            project=google_compute_instance["default"]["project"],
-            zone=google_compute_instance["default"]["zone"],
-            instance_name=google_compute_instance["default"]["name"],
-            role="roles/compute.osLogin",
-            member="user:jane@example.com")
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.compute.InstanceIAMMember("member",
-            project=google_compute_instance["default"]["project"],
-            zone=google_compute_instance["default"]["zone"],
-            instance_name=google_compute_instance["default"]["name"],
-            role="roles/compute.osLogin",
-            member="user:jane@example.com",
-            condition=gcp.compute.InstanceIAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/zones/{{zone}}/instances/{{name}} * {{project}}/{{zone}}/{{name}} * {{zone}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Compute Engine instance IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -543,109 +454,6 @@ class InstanceIAMBinding(pulumi.CustomResource):
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
-        ## google\\_compute\\_instance\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.osLogin",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.compute.InstanceIAMPolicy("policy",
-            project=google_compute_instance["default"]["project"],
-            zone=google_compute_instance["default"]["zone"],
-            instance_name=google_compute_instance["default"]["name"],
-            policy_data=admin.policy_data)
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.osLogin",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
-        policy = gcp.compute.InstanceIAMPolicy("policy",
-            project=google_compute_instance["default"]["project"],
-            zone=google_compute_instance["default"]["zone"],
-            instance_name=google_compute_instance["default"]["name"],
-            policy_data=admin.policy_data)
-        ```
-        ## google\\_compute\\_instance\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.compute.InstanceIAMBinding("binding",
-            project=google_compute_instance["default"]["project"],
-            zone=google_compute_instance["default"]["zone"],
-            instance_name=google_compute_instance["default"]["name"],
-            role="roles/compute.osLogin",
-            members=["user:jane@example.com"])
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.compute.InstanceIAMBinding("binding",
-            project=google_compute_instance["default"]["project"],
-            zone=google_compute_instance["default"]["zone"],
-            instance_name=google_compute_instance["default"]["name"],
-            role="roles/compute.osLogin",
-            members=["user:jane@example.com"],
-            condition=gcp.compute.InstanceIAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-        ## google\\_compute\\_instance\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.compute.InstanceIAMMember("member",
-            project=google_compute_instance["default"]["project"],
-            zone=google_compute_instance["default"]["zone"],
-            instance_name=google_compute_instance["default"]["name"],
-            role="roles/compute.osLogin",
-            member="user:jane@example.com")
-        ```
-
-        With IAM Conditions:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.compute.InstanceIAMMember("member",
-            project=google_compute_instance["default"]["project"],
-            zone=google_compute_instance["default"]["zone"],
-            instance_name=google_compute_instance["default"]["name"],
-            role="roles/compute.osLogin",
-            member="user:jane@example.com",
-            condition=gcp.compute.InstanceIAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/zones/{{zone}}/instances/{{name}} * {{project}}/{{zone}}/{{name}} * {{zone}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Compute Engine instance IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -704,11 +512,7 @@ class InstanceIAMBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceIAMBindingArgs.__new__(InstanceIAMBindingArgs)
 
-            if condition is not None and not isinstance(condition, InstanceIAMBindingConditionArgs):
-                condition = condition or {}
-                def _setter(key, value):
-                    condition[key] = value
-                InstanceIAMBindingConditionArgs._configure(_setter, **condition)
+            condition = _utilities.configure(condition, InstanceIAMBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_name'")
