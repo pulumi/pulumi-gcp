@@ -1,0 +1,141 @@
+package gcp
+
+import (
+	"context"
+	gcp "github.com/pulumi/pulumi-gcp/provider/v7"
+	"github.com/pulumi/pulumi-gcp/provider/v7/pkg/version"
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
+	testutils "github.com/pulumi/pulumi-terraform-bridge/testing/x"
+	"github.com/stretchr/testify/require"
+	"testing"
+)
+
+func init() {
+	// This is necessary for gRPC testing. It doesn't effect integration tests, since
+	// they use their own binary.
+	version.Version = "7.0.0"
+}
+
+func replay(t *testing.T, sequence string) {
+	info := gcp.Provider()
+	ctx := context.Background()
+	p, err := pfbridge.MakeMuxedServer(ctx, info.Name, info,
+		/*
+		 * We leave the schema blank. This will result in incorrect calls to
+		 * GetSchema, but otherwise does not effect the provider. It reduces the
+		 * time to test start by minutes.
+		 */
+		[]byte("{}"),
+	)(nil)
+	require.NoError(t, err)
+	testutils.ReplaySequence(t, p, sequence)
+}
+
+func TestUpdateDefaultLabels(t *testing.T) {
+	replay(t, `[
+{"method":"/pulumirpc.ResourceProvider/Configure","request":{"variables":{"gcp:config:defaultLabels":"{\"hello\":\"goodbye\",\"new\":\"defaultLabel\"}","gcp:config:project":"pulumi-development"},"args":{"defaultLabels":"{\"hello\":\"goodbye\",\"new\":\"defaultLabel\"}","project":"pulumi-development"},"acceptSecrets":true,"acceptResources":true,"sendsOldInputs":true},"response":{"supportsPreview":true},"metadata":{"kind":"resource","mode":"client","name":"gcp"}},
+{
+  "method": "/pulumirpc.ResourceProvider/Diff",
+  "request": {
+    "id": "my-bucket-eca8e95",
+    "urn": "urn:pulumi:dev::dev::gcp:storage/bucket:Bucket::my-bucket",
+    "olds": {
+      "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":600000000000,\"read\":240000000000,\"update\":240000000000},\"schema_version\":\"1\"}",
+      "autoclass": null,
+      "cors": [],
+      "customPlacementConfig": null,
+      "defaultEventBasedHold": false,
+      "effectiveLabels": {
+        "bad": "things",
+        "good": "morning",
+        "hello": "goodbye"
+      },
+      "encryption": null,
+      "forceDestroy": false,
+      "id": "my-bucket-eca8e95",
+      "labels": {
+        "bad": "things",
+        "good": "morning"
+      },
+      "lifecycleRules": [],
+      "location": "EU",
+      "logging": null,
+      "name": "my-bucket-eca8e95",
+      "project": "pulumi-development",
+      "publicAccessPrevention": "inherited",
+      "requesterPays": false,
+      "retentionPolicy": null,
+      "selfLink": "https://www.googleapis.com/storage/v1/b/my-bucket-eca8e95",
+      "storageClass": "STANDARD",
+      "terraformLabels": {
+        "bad": "things",
+        "good": "morning",
+        "hello": "goodbye"
+      },
+      "uniformBucketLevelAccess": false,
+      "url": "gs://my-bucket-eca8e95",
+      "versioning": null,
+      "website": null
+    },
+    "news": {
+      "__defaults": [
+        "forceDestroy",
+        "name",
+        "storageClass"
+      ],
+      "forceDestroy": false,
+      "labels": {
+        "__defaults": [],
+        "bad": "things",
+        "good": "morning"
+      },
+      "location": "EU",
+      "name": "my-bucket-eca8e95",
+      "storageClass": "STANDARD"
+    },
+    "oldInputs": {
+      "__defaults": [
+        "forceDestroy",
+        "name",
+        "storageClass"
+      ],
+      "forceDestroy": false,
+      "labels": {
+        "__defaults": [],
+        "bad": "things",
+        "good": "morning"
+      },
+      "location": "EU",
+      "name": "my-bucket-eca8e95",
+      "storageClass": "STANDARD"
+    }
+  },
+  "response": {
+    "stables": [
+      "name",
+      "project",
+      "location"
+    ],
+    "changes": "DIFF_SOME",
+    "diffs": [
+      "terraformLabels",
+      "effectiveLabels"
+    ],
+    "detailedDiff": {
+      "effectiveLabels.hello": {
+        "kind": "DELETE"
+      },
+      "terraformLabels.hello": {
+        "kind": "DELETE"
+      }
+    },
+    "hasDetailedDiff": true
+  },
+  "metadata": {
+    "kind": "resource",
+    "mode": "client",
+    "name": "gcp"
+  }
+}
+	]`)
+}
