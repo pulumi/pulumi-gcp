@@ -4,7 +4,7 @@ go 1.21.0
 
 require (
 	github.com/hashicorp/terraform-provider-google-beta v0.0.0
-	github.com/pulumi/providertest v0.0.0-20231010211708-1b49f9ab1794
+	github.com/pulumi/providertest v0.0.2
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.18.2
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.63.1
 	github.com/pulumi/pulumi/pkg/v3 v3.90.1
@@ -206,7 +206,6 @@ require (
 	github.com/posener/complete v1.2.3 // indirect
 	github.com/pulumi/esc v0.5.6 // indirect
 	github.com/pulumi/pulumi-java/pkg v0.9.8 // indirect
-	github.com/pulumi/pulumi-terraform-bridge/testing v0.0.1 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.7-0.20230801203955-5d215c892096 // indirect
 	github.com/pulumi/pulumi-yaml v1.2.2 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
