@@ -4,67 +4,69 @@ package gcp
 
 import (
 	"context"
+	"fmt"
 	"path/filepath"
 	"testing"
 
 	"github.com/stretchr/testify/require"
 
 	"github.com/pulumi/providertest"
+	"github.com/pulumi/providertest/flags"
 	"github.com/pulumi/pulumi-gcp/provider/v6/pkg/version"
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
 )
 
 func TestDNSRecordSet(t *testing.T) {
-	test(t, "test-programs/dns-recordset").Run(t)
+	runTest(t, test(t, "test-programs/dns-recordset"))
 }
 
 func TestPubSubSubscription(t *testing.T) {
-	test(t, "test-programs/pubsub-subscription").Run(t)
+	runTest(t, test(t, "test-programs/pubsub-subscription"))
 }
 
 func TestPubSubTopic(t *testing.T) {
-	test(t, "test-programs/pubsub-topic").Run(t)
+	runTest(t, test(t, "test-programs/pubsub-topic"))
 }
 
 func TestServiceAccount(t *testing.T) {
-	test(t, "test-programs/serviceaccount-account",
+	runTest(t, test(t, "test-programs/serviceaccount-account",
 		providertest.WithSkippedUpgradeTestMode(providertest.UpgradeTestMode_PreviewOnly,
 			"TODO[pulumi/providertest#7] PreviewOnly is confused about stack names"),
-	).Run(t)
+	))
 }
 
 func TestStorageBucket(t *testing.T) {
-	test(t, "test-programs/storage-bucket").Run(t)
+	runTest(t, test(t, "test-programs/storage-bucket"))
 }
 
 func TestStorageBucketObject(t *testing.T) {
 	t.Skipf("TODO[pulumi/providertest#2] skipping because Assets are not working yet")
-	test(t, "test-programs/storage-bucketobject").Run(t)
+	runTest(t, test(t, "test-programs/storage-bucketobject"))
 }
 
 func TestSecretManagerSecret(t *testing.T) {
-	test(t, "test-programs/secretmanager-secret").Run(t)
+	runTest(t, test(t, "test-programs/secretmanager-secret"))
 }
 
 func TestSqlUser(t *testing.T) {
-	test(t, "test-programs/sql-user").Run(t)
+	runTest(t, test(t, "test-programs/sql-user"))
 }
 
 func TestBigQueryTable(t *testing.T) {
-	test(t, "test-programs/bigquery-table",
+	runTest(t, test(t, "test-programs/bigquery-table",
 		providertest.WithSkippedUpgradeTestMode(providertest.UpgradeTestMode_PreviewOnly,
 			"TODO[pulumi/providertest#7] PreviewOnly is confused about stack names"),
-	).Run(t)
+	))
 }
 
 func TestComputeFirewall(t *testing.T) {
-	test(t, "test-programs/compute-firewall").Run(t)
+	runTest(t, test(t, "test-programs/compute-firewall"))
 }
 
 func TestCloudFunction(t *testing.T) {
 	t.Skipf("TODO[pulumi/providertest#2] skipping because Assets are not working yet")
-	test(t, "test-programs/cloudfunctions-function").Run(t)
+	runTest(t, test(t, "test-programs/cloudfunctions-function"))
 }
 
 // Test programs that were automatically extracted from examples without autocorrection.
@@ -89,7 +91,7 @@ func TestAutoExtractedPrograms(t *testing.T) {
 	for _, tc := range testCases {
 		tc := tc
 		t.Run(tc.program, func(t *testing.T) {
-			test(t, filepath.Join("test-programs", tc.program)).Run(t)
+			runTest(t, test(t, filepath.Join("test-programs", tc.program)))
 		})
 	}
 }
@@ -105,6 +107,28 @@ func test(t *testing.T, dir string, opts ...providertest.Option) *providertest.P
 		providertest.WithConfig("gcp:project", "pulumi-development"),
 		providertest.WithResourceProviderServer(providerServer(t)))
 	return providertest.NewProviderTest(dir, opts...)
+}
+
+// This funcion inlines bits of ProviderTest.Run to avoid running E2E tests and instead focuses on
+// upgrade tests. Currently E2E tests are not able to run in this provider.
+//
+// TODO[pulumi/ci-mgmt#675] expose credentials so this just becomes pt.Run(t).
+func runTest(t *testing.T, pt *providertest.ProviderTest) {
+	t.Run("upgrade-snapshot", func(t *testing.T) {
+		t.Helper()
+		if flags.Snapshot.IsSet() {
+			t.Logf("Recording baseline behavior because %s", flags.Snapshot.WhySet())
+			pt.VerifyUpgradeSnapshot(t)
+		} else {
+			t.Skipf("Skip recording baseline behavior because %s", flags.Snapshot.WhyNotSet())
+		}
+	})
+	for _, m := range providertest.UpgradeTestModes() {
+		t.Run(fmt.Sprintf("upgrade-%s", m), func(t *testing.T) {
+			t.Helper()
+			pt.VerifyUpgrade(t, m)
+		})
+	}
 }
 
 func providerServer(t *testing.T) pulumirpc.ResourceProviderServer {
