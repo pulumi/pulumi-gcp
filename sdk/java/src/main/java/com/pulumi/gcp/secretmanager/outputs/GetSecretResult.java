@@ -29,10 +29,10 @@ public final class GetSecretResult {
     private Map<String,String> labels;
     private String name;
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private List<GetSecretReplication> replications;
     private List<GetSecretRotation> rotations;
     private String secretId;
-    private Map<String,String> terraformLabels;
     private List<GetSecretTopic> topics;
     private String ttl;
     private Map<String,String> versionAliases;
@@ -69,6 +69,9 @@ public final class GetSecretResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public List<GetSecretReplication> replications() {
         return this.replications;
     }
@@ -77,9 +80,6 @@ public final class GetSecretResult {
     }
     public String secretId() {
         return this.secretId;
-    }
-    public Map<String,String> terraformLabels() {
-        return this.terraformLabels;
     }
     public List<GetSecretTopic> topics() {
         return this.topics;
@@ -109,10 +109,10 @@ public final class GetSecretResult {
         private Map<String,String> labels;
         private String name;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private List<GetSecretReplication> replications;
         private List<GetSecretRotation> rotations;
         private String secretId;
-        private Map<String,String> terraformLabels;
         private List<GetSecretTopic> topics;
         private String ttl;
         private Map<String,String> versionAliases;
@@ -128,10 +128,10 @@ public final class GetSecretResult {
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.replications = defaults.replications;
     	      this.rotations = defaults.rotations;
     	      this.secretId = defaults.secretId;
-    	      this.terraformLabels = defaults.terraformLabels;
     	      this.topics = defaults.topics;
     	      this.ttl = defaults.ttl;
     	      this.versionAliases = defaults.versionAliases;
@@ -183,6 +183,11 @@ public final class GetSecretResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder replications(List<GetSecretReplication> replications) {
             this.replications = Objects.requireNonNull(replications);
             return this;
@@ -201,11 +206,6 @@ public final class GetSecretResult {
         @CustomType.Setter
         public Builder secretId(String secretId) {
             this.secretId = Objects.requireNonNull(secretId);
-            return this;
-        }
-        @CustomType.Setter
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            this.terraformLabels = Objects.requireNonNull(terraformLabels);
             return this;
         }
         @CustomType.Setter
@@ -237,10 +237,10 @@ public final class GetSecretResult {
             o.labels = labels;
             o.name = name;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.replications = replications;
             o.rotations = rotations;
             o.secretId = secretId;
-            o.terraformLabels = terraformLabels;
             o.topics = topics;
             o.ttl = ttl;
             o.versionAliases = versionAliases;

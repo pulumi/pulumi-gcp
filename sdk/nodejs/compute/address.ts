@@ -240,6 +240,10 @@ export class Address extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The purpose of this resource, which can be one of the following values.
      * * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
      * ranges, load balancers, and similar resources.
@@ -273,10 +277,6 @@ export class Address extends pulumi.CustomResource {
      */
     public readonly subnetwork!: pulumi.Output<string>;
     /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
-    /**
      * The URLs of the resources that are using this address.
      */
     public /*out*/ readonly users!: pulumi.Output<string[]>;
@@ -308,11 +308,11 @@ export class Address extends pulumi.CustomResource {
             resourceInputs["networkTier"] = state ? state.networkTier : undefined;
             resourceInputs["prefixLength"] = state ? state.prefixLength : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["purpose"] = state ? state.purpose : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["users"] = state ? state.users : undefined;
         } else {
             const args = argsOrState as AddressArgs | undefined;
@@ -333,8 +333,8 @@ export class Address extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["users"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -430,6 +430,10 @@ export interface AddressState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The purpose of this resource, which can be one of the following values.
      * * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
      * ranges, load balancers, and similar resources.
@@ -462,10 +466,6 @@ export interface AddressState {
      * GCE_ENDPOINT/DNS_RESOLVER purposes.
      */
     subnetwork?: pulumi.Input<string>;
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The URLs of the resources that are using this address.
      */

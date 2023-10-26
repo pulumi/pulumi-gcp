@@ -329,6 +329,9 @@ type ForwardingRule struct {
 	PscConnectionId pulumi.StringOutput `pulumi:"pscConnectionId"`
 	// The PSC connection status of the PSC Forwarding Rule. Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`
 	PscConnectionStatus pulumi.StringOutput `pulumi:"pscConnectionStatus"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// A reference to the region where the regional forwarding rule resides.
 	// This field is not applicable to global forwarding rules.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -373,9 +376,6 @@ type ForwardingRule struct {
 	//
 	// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
 	Target pulumi.StringPtrOutput `pulumi:"target"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewForwardingRule registers a new resource with the given unique name, arguments, and options.
@@ -597,6 +597,9 @@ type forwardingRuleState struct {
 	PscConnectionId *string `pulumi:"pscConnectionId"`
 	// The PSC connection status of the PSC Forwarding Rule. Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`
 	PscConnectionStatus *string `pulumi:"pscConnectionStatus"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// A reference to the region where the regional forwarding rule resides.
 	// This field is not applicable to global forwarding rules.
 	Region *string `pulumi:"region"`
@@ -641,9 +644,6 @@ type forwardingRuleState struct {
 	//
 	// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
 	Target *string `pulumi:"target"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type ForwardingRuleState struct {
@@ -836,6 +836,9 @@ type ForwardingRuleState struct {
 	PscConnectionId pulumi.StringPtrInput
 	// The PSC connection status of the PSC Forwarding Rule. Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`
 	PscConnectionStatus pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// A reference to the region where the regional forwarding rule resides.
 	// This field is not applicable to global forwarding rules.
 	Region pulumi.StringPtrInput
@@ -880,9 +883,6 @@ type ForwardingRuleState struct {
 	//
 	// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
 	Target pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 }
 
 func (ForwardingRuleState) ElementType() reflect.Type {
@@ -1696,6 +1696,12 @@ func (o ForwardingRuleOutput) PscConnectionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.PscConnectionStatus }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ForwardingRuleOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ForwardingRule) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // A reference to the region where the regional forwarding rule resides.
 // This field is not applicable to global forwarding rules.
 func (o ForwardingRuleOutput) Region() pulumi.StringOutput {
@@ -1764,12 +1770,6 @@ func (o ForwardingRuleOutput) Subnetwork() pulumi.StringOutput {
 // For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
 func (o ForwardingRuleOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringPtrOutput { return v.Target }).(pulumi.StringPtrOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o ForwardingRuleOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ForwardingRule) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type ForwardingRuleArrayOutput struct{ *pulumi.OutputState }

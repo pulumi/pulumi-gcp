@@ -442,6 +442,23 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * Returns true if the Service is currently being acted upon by the system to bring it into the desired state.
      * When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
      * If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
@@ -494,23 +511,6 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<ServiceTerminalConditionArgs>>> terminalConditions() {
         return Optional.ofNullable(this.terminalConditions);
-    }
-
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    @Import(name="terraformLabels")
-    private @Nullable Output<Map<String,String>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    public Optional<Output<Map<String,String>>> terraformLabels() {
-        return Optional.ofNullable(this.terraformLabels);
     }
 
     /**
@@ -622,10 +622,10 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.observedGeneration = $.observedGeneration;
         this.project = $.project;
+        this.pulumiLabels = $.pulumiLabels;
         this.reconciling = $.reconciling;
         this.template = $.template;
         this.terminalConditions = $.terminalConditions;
-        this.terraformLabels = $.terraformLabels;
         this.trafficStatuses = $.trafficStatuses;
         this.traffics = $.traffics;
         this.uid = $.uid;
@@ -1242,6 +1242,29 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
          * @param reconciling Returns true if the Service is currently being acted upon by the system to bring it into the desired state.
          * When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
          * If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
@@ -1323,29 +1346,6 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder terminalConditions(ServiceTerminalConditionArgs... terminalConditions) {
             return terminalConditions(List.of(terminalConditions));
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
-            $.terraformLabels = terraformLabels;
-            return this;
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

@@ -135,11 +135,11 @@ type Gateway struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The region of the gateway for the API.
-	Region pulumi.StringOutput `pulumi:"region"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// The region of the gateway for the API.
+	Region pulumi.StringOutput `pulumi:"region"`
 }
 
 // NewGateway registers a new resource with the given unique name, arguments, and options.
@@ -202,11 +202,11 @@ type gatewayState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The region of the gateway for the API.
-	Region *string `pulumi:"region"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// The region of the gateway for the API.
+	Region *string `pulumi:"region"`
 }
 
 type GatewayState struct {
@@ -234,11 +234,11 @@ type GatewayState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The region of the gateway for the API.
-	Region pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
+	PulumiLabels pulumi.StringMapInput
+	// The region of the gateway for the API.
+	Region pulumi.StringPtrInput
 }
 
 func (GatewayState) ElementType() reflect.Type {
@@ -449,15 +449,15 @@ func (o GatewayOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o GatewayOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The region of the gateway for the API.
 func (o GatewayOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o GatewayOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Gateway) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type GatewayArrayOutput struct{ *pulumi.OutputState }

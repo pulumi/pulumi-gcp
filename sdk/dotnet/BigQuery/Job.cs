@@ -435,6 +435,14 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// (Output)
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
         /// *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
         /// (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
@@ -448,14 +456,6 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Output("statuses")]
         public Output<ImmutableArray<Outputs.JobStatus>> Statuses { get; private set; } = null!;
-
-        /// <summary>
-        /// (Output)
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// Email address of the user who ran the job.
@@ -667,6 +667,20 @@ namespace Pulumi.Gcp.BigQuery
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// (Output)
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
+
         /// <summary>
         /// SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
         /// *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
@@ -686,20 +700,6 @@ namespace Pulumi.Gcp.BigQuery
         {
             get => _statuses ?? (_statuses = new InputList<Inputs.JobStatusGetArgs>());
             set => _statuses = value;
-        }
-
-        [Input("terraformLabels")]
-        private InputMap<string>? _terraformLabels;
-
-        /// <summary>
-        /// (Output)
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        public InputMap<string> TerraformLabels
-        {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
-            set => _terraformLabels = value;
         }
 
         /// <summary>

@@ -271,6 +271,7 @@ namespace Pulumi.Gcp.Compute
         /// is not provided, the provider project is used.
         /// </summary>
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         /// <summary>
         /// An instance template is a global resource that is not
         /// bound to a zone or a region. However, you can still specify some regional
@@ -316,7 +317,6 @@ namespace Pulumi.Gcp.Compute
         /// The unique fingerprint of the tags.
         /// </summary>
         public readonly string TagsFingerprint;
-        public readonly ImmutableDictionary<string, string> TerraformLabels;
 
         [OutputConstructor]
         private GetInstanceTemplateResult(
@@ -366,6 +366,8 @@ namespace Pulumi.Gcp.Compute
 
             string? project,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             string region,
 
             ImmutableArray<Outputs.GetInstanceTemplateReservationAffinityResult> reservationAffinities,
@@ -384,9 +386,7 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<string> tags,
 
-            string tagsFingerprint,
-
-            ImmutableDictionary<string, string> terraformLabels)
+            string tagsFingerprint)
         {
             AdvancedMachineFeatures = advancedMachineFeatures;
             CanIpForward = canIpForward;
@@ -411,6 +411,7 @@ namespace Pulumi.Gcp.Compute
             NetworkInterfaces = networkInterfaces;
             NetworkPerformanceConfigs = networkPerformanceConfigs;
             Project = project;
+            PulumiLabels = pulumiLabels;
             Region = region;
             ReservationAffinities = reservationAffinities;
             ResourcePolicies = resourcePolicies;
@@ -421,7 +422,6 @@ namespace Pulumi.Gcp.Compute
             ShieldedInstanceConfigs = shieldedInstanceConfigs;
             Tags = tags;
             TagsFingerprint = tagsFingerprint;
-            TerraformLabels = terraformLabels;
         }
     }
 }

@@ -73,17 +73,17 @@ type LookupFunctionResult struct {
 	Environment     string                    `pulumi:"environment"`
 	EventTriggers   []GetFunctionEventTrigger `pulumi:"eventTriggers"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string                     `pulumi:"id"`
-	KmsKeyName      string                     `pulumi:"kmsKeyName"`
-	Labels          map[string]string          `pulumi:"labels"`
-	Location        string                     `pulumi:"location"`
-	Name            string                     `pulumi:"name"`
-	Project         *string                    `pulumi:"project"`
-	ServiceConfigs  []GetFunctionServiceConfig `pulumi:"serviceConfigs"`
-	State           string                     `pulumi:"state"`
-	TerraformLabels map[string]string          `pulumi:"terraformLabels"`
-	UpdateTime      string                     `pulumi:"updateTime"`
-	Url             string                     `pulumi:"url"`
+	Id             string                     `pulumi:"id"`
+	KmsKeyName     string                     `pulumi:"kmsKeyName"`
+	Labels         map[string]string          `pulumi:"labels"`
+	Location       string                     `pulumi:"location"`
+	Name           string                     `pulumi:"name"`
+	Project        *string                    `pulumi:"project"`
+	PulumiLabels   map[string]string          `pulumi:"pulumiLabels"`
+	ServiceConfigs []GetFunctionServiceConfig `pulumi:"serviceConfigs"`
+	State          string                     `pulumi:"state"`
+	UpdateTime     string                     `pulumi:"updateTime"`
+	Url            string                     `pulumi:"url"`
 }
 
 func LookupFunctionOutput(ctx *pulumi.Context, args LookupFunctionOutputArgs, opts ...pulumi.InvokeOption) LookupFunctionResultOutput {
@@ -182,16 +182,16 @@ func (o LookupFunctionResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFunctionResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
+func (o LookupFunctionResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupFunctionResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupFunctionResultOutput) ServiceConfigs() GetFunctionServiceConfigArrayOutput {
 	return o.ApplyT(func(v LookupFunctionResult) []GetFunctionServiceConfig { return v.ServiceConfigs }).(GetFunctionServiceConfigArrayOutput)
 }
 
 func (o LookupFunctionResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.State }).(pulumi.StringOutput)
-}
-
-func (o LookupFunctionResultOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupFunctionResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupFunctionResultOutput) UpdateTime() pulumi.StringOutput {

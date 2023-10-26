@@ -22,7 +22,7 @@ class GetBucketResult:
     """
     A collection of values returned by getBucket.
     """
-    def __init__(__self__, autoclasses=None, cors=None, custom_placement_configs=None, default_event_based_hold=None, effective_labels=None, encryptions=None, force_destroy=None, id=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, public_access_prevention=None, requester_pays=None, retention_policies=None, self_link=None, storage_class=None, terraform_labels=None, uniform_bucket_level_access=None, url=None, versionings=None, websites=None):
+    def __init__(__self__, autoclasses=None, cors=None, custom_placement_configs=None, default_event_based_hold=None, effective_labels=None, encryptions=None, force_destroy=None, id=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, public_access_prevention=None, pulumi_labels=None, requester_pays=None, retention_policies=None, self_link=None, storage_class=None, uniform_bucket_level_access=None, url=None, versionings=None, websites=None):
         if autoclasses and not isinstance(autoclasses, list):
             raise TypeError("Expected argument 'autoclasses' to be a list")
         pulumi.set(__self__, "autoclasses", autoclasses)
@@ -68,6 +68,9 @@ class GetBucketResult:
         if public_access_prevention and not isinstance(public_access_prevention, str):
             raise TypeError("Expected argument 'public_access_prevention' to be a str")
         pulumi.set(__self__, "public_access_prevention", public_access_prevention)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if requester_pays and not isinstance(requester_pays, bool):
             raise TypeError("Expected argument 'requester_pays' to be a bool")
         pulumi.set(__self__, "requester_pays", requester_pays)
@@ -80,9 +83,6 @@ class GetBucketResult:
         if storage_class and not isinstance(storage_class, str):
             raise TypeError("Expected argument 'storage_class' to be a str")
         pulumi.set(__self__, "storage_class", storage_class)
-        if terraform_labels and not isinstance(terraform_labels, dict):
-            raise TypeError("Expected argument 'terraform_labels' to be a dict")
-        pulumi.set(__self__, "terraform_labels", terraform_labels)
         if uniform_bucket_level_access and not isinstance(uniform_bucket_level_access, bool):
             raise TypeError("Expected argument 'uniform_bucket_level_access' to be a bool")
         pulumi.set(__self__, "uniform_bucket_level_access", uniform_bucket_level_access)
@@ -175,6 +175,11 @@ class GetBucketResult:
         return pulumi.get(self, "public_access_prevention")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="requesterPays")
     def requester_pays(self) -> bool:
         return pulumi.get(self, "requester_pays")
@@ -193,11 +198,6 @@ class GetBucketResult:
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> str:
         return pulumi.get(self, "storage_class")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Mapping[str, str]:
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="uniformBucketLevelAccess")
@@ -241,11 +241,11 @@ class AwaitableGetBucketResult(GetBucketResult):
             name=self.name,
             project=self.project,
             public_access_prevention=self.public_access_prevention,
+            pulumi_labels=self.pulumi_labels,
             requester_pays=self.requester_pays,
             retention_policies=self.retention_policies,
             self_link=self.self_link,
             storage_class=self.storage_class,
-            terraform_labels=self.terraform_labels,
             uniform_bucket_level_access=self.uniform_bucket_level_access,
             url=self.url,
             versionings=self.versionings,
@@ -293,11 +293,11 @@ def get_bucket(name: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         public_access_prevention=pulumi.get(__ret__, 'public_access_prevention'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         requester_pays=pulumi.get(__ret__, 'requester_pays'),
         retention_policies=pulumi.get(__ret__, 'retention_policies'),
         self_link=pulumi.get(__ret__, 'self_link'),
         storage_class=pulumi.get(__ret__, 'storage_class'),
-        terraform_labels=pulumi.get(__ret__, 'terraform_labels'),
         uniform_bucket_level_access=pulumi.get(__ret__, 'uniform_bucket_level_access'),
         url=pulumi.get(__ret__, 'url'),
         versionings=pulumi.get(__ret__, 'versionings'),

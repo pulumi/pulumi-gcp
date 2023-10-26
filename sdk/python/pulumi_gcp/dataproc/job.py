@@ -325,14 +325,14 @@ class _JobState:
                  placement: Optional[pulumi.Input['JobPlacementArgs']] = None,
                  presto_config: Optional[pulumi.Input['JobPrestoConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  pyspark_config: Optional[pulumi.Input['JobPysparkConfigArgs']] = None,
                  reference: Optional[pulumi.Input['JobReferenceArgs']] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  scheduling: Optional[pulumi.Input['JobSchedulingArgs']] = None,
                  spark_config: Optional[pulumi.Input['JobSparkConfigArgs']] = None,
                  sparksql_config: Optional[pulumi.Input['JobSparksqlConfigArgs']] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]] = None):
         """
         Input properties used for looking up and filtering Job resources.
         :param pulumi.Input[str] driver_controls_files_uri: If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
@@ -352,6 +352,7 @@ class _JobState:
         :param pulumi.Input['JobPrestoConfigArgs'] presto_config: The config of presto job
         :param pulumi.Input[str] project: The project in which the `cluster` can be found and jobs
                subsequently run against. If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input['JobPysparkConfigArgs'] pyspark_config: The config of pySpark job.
         :param pulumi.Input['JobReferenceArgs'] reference: The reference of the job
         :param pulumi.Input[str] region: The Cloud Dataproc region. This essentially determines which clusters are available
@@ -360,7 +361,6 @@ class _JobState:
         :param pulumi.Input['JobSparkConfigArgs'] spark_config: The config of the Spark job.
         :param pulumi.Input['JobSparksqlConfigArgs'] sparksql_config: The config of SparkSql job
         :param pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]] statuses: The status of the job.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         _JobState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -375,6 +375,7 @@ class _JobState:
             placement=placement,
             presto_config=presto_config,
             project=project,
+            pulumi_labels=pulumi_labels,
             pyspark_config=pyspark_config,
             reference=reference,
             region=region,
@@ -382,7 +383,6 @@ class _JobState:
             spark_config=spark_config,
             sparksql_config=sparksql_config,
             statuses=statuses,
-            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
@@ -398,6 +398,7 @@ class _JobState:
              placement: Optional[pulumi.Input['JobPlacementArgs']] = None,
              presto_config: Optional[pulumi.Input['JobPrestoConfigArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              pyspark_config: Optional[pulumi.Input['JobPysparkConfigArgs']] = None,
              reference: Optional[pulumi.Input['JobReferenceArgs']] = None,
              region: Optional[pulumi.Input[str]] = None,
@@ -405,7 +406,6 @@ class _JobState:
              spark_config: Optional[pulumi.Input['JobSparkConfigArgs']] = None,
              sparksql_config: Optional[pulumi.Input['JobSparksqlConfigArgs']] = None,
              statuses: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if driver_controls_files_uri is None and 'driverControlsFilesUri' in kwargs:
@@ -424,14 +424,14 @@ class _JobState:
             pig_config = kwargs['pigConfig']
         if presto_config is None and 'prestoConfig' in kwargs:
             presto_config = kwargs['prestoConfig']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if pyspark_config is None and 'pysparkConfig' in kwargs:
             pyspark_config = kwargs['pysparkConfig']
         if spark_config is None and 'sparkConfig' in kwargs:
             spark_config = kwargs['sparkConfig']
         if sparksql_config is None and 'sparksqlConfig' in kwargs:
             sparksql_config = kwargs['sparksqlConfig']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
 
         if driver_controls_files_uri is not None:
             _setter("driver_controls_files_uri", driver_controls_files_uri)
@@ -455,6 +455,8 @@ class _JobState:
             _setter("presto_config", presto_config)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if pyspark_config is not None:
             _setter("pyspark_config", pyspark_config)
         if reference is not None:
@@ -469,8 +471,6 @@ class _JobState:
             _setter("sparksql_config", sparksql_config)
         if statuses is not None:
             _setter("statuses", statuses)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter(name="driverControlsFilesUri")
@@ -611,6 +611,18 @@ class _JobState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="pysparkConfig")
     def pyspark_config(self) -> Optional[pulumi.Input['JobPysparkConfigArgs']]:
         """
@@ -694,18 +706,6 @@ class _JobState:
     @statuses.setter
     def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]]):
         pulumi.set(self, "statuses", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
 
 class Job(pulumi.CustomResource):
@@ -936,8 +936,8 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["driver_controls_files_uri"] = None
             __props__.__dict__["driver_output_resource_uri"] = None
             __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["statuses"] = None
-            __props__.__dict__["terraform_labels"] = None
         super(Job, __self__).__init__(
             'gcp:dataproc/job:Job',
             resource_name,
@@ -959,14 +959,14 @@ class Job(pulumi.CustomResource):
             placement: Optional[pulumi.Input[pulumi.InputType['JobPlacementArgs']]] = None,
             presto_config: Optional[pulumi.Input[pulumi.InputType['JobPrestoConfigArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             pyspark_config: Optional[pulumi.Input[pulumi.InputType['JobPysparkConfigArgs']]] = None,
             reference: Optional[pulumi.Input[pulumi.InputType['JobReferenceArgs']]] = None,
             region: Optional[pulumi.Input[str]] = None,
             scheduling: Optional[pulumi.Input[pulumi.InputType['JobSchedulingArgs']]] = None,
             spark_config: Optional[pulumi.Input[pulumi.InputType['JobSparkConfigArgs']]] = None,
             sparksql_config: Optional[pulumi.Input[pulumi.InputType['JobSparksqlConfigArgs']]] = None,
-            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobStatusArgs']]]]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Job':
+            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobStatusArgs']]]]] = None) -> 'Job':
         """
         Get an existing Job resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -991,6 +991,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['JobPrestoConfigArgs']] presto_config: The config of presto job
         :param pulumi.Input[str] project: The project in which the `cluster` can be found and jobs
                subsequently run against. If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['JobPysparkConfigArgs']] pyspark_config: The config of pySpark job.
         :param pulumi.Input[pulumi.InputType['JobReferenceArgs']] reference: The reference of the job
         :param pulumi.Input[str] region: The Cloud Dataproc region. This essentially determines which clusters are available
@@ -999,7 +1000,6 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['JobSparkConfigArgs']] spark_config: The config of the Spark job.
         :param pulumi.Input[pulumi.InputType['JobSparksqlConfigArgs']] sparksql_config: The config of SparkSql job
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobStatusArgs']]]] statuses: The status of the job.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1016,6 +1016,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["placement"] = placement
         __props__.__dict__["presto_config"] = presto_config
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["pyspark_config"] = pyspark_config
         __props__.__dict__["reference"] = reference
         __props__.__dict__["region"] = region
@@ -1023,7 +1024,6 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["spark_config"] = spark_config
         __props__.__dict__["sparksql_config"] = sparksql_config
         __props__.__dict__["statuses"] = statuses
-        __props__.__dict__["terraform_labels"] = terraform_labels
         return Job(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1121,6 +1121,14 @@ class Job(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="pysparkConfig")
     def pyspark_config(self) -> pulumi.Output[Optional['outputs.JobPysparkConfig']]:
         """
@@ -1176,12 +1184,4 @@ class Job(pulumi.CustomResource):
         The status of the job.
         """
         return pulumi.get(self, "statuses")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 

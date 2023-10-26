@@ -22,7 +22,7 @@ class GetKMSCryptoKeyResult:
     """
     A collection of values returned by getKMSCryptoKey.
     """
-    def __init__(__self__, destroy_scheduled_duration=None, effective_labels=None, id=None, import_only=None, key_ring=None, labels=None, name=None, purpose=None, rotation_period=None, skip_initial_version_creation=None, terraform_labels=None, version_templates=None):
+    def __init__(__self__, destroy_scheduled_duration=None, effective_labels=None, id=None, import_only=None, key_ring=None, labels=None, name=None, pulumi_labels=None, purpose=None, rotation_period=None, skip_initial_version_creation=None, version_templates=None):
         if destroy_scheduled_duration and not isinstance(destroy_scheduled_duration, str):
             raise TypeError("Expected argument 'destroy_scheduled_duration' to be a str")
         pulumi.set(__self__, "destroy_scheduled_duration", destroy_scheduled_duration)
@@ -44,6 +44,9 @@ class GetKMSCryptoKeyResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if purpose and not isinstance(purpose, str):
             raise TypeError("Expected argument 'purpose' to be a str")
         pulumi.set(__self__, "purpose", purpose)
@@ -53,9 +56,6 @@ class GetKMSCryptoKeyResult:
         if skip_initial_version_creation and not isinstance(skip_initial_version_creation, bool):
             raise TypeError("Expected argument 'skip_initial_version_creation' to be a bool")
         pulumi.set(__self__, "skip_initial_version_creation", skip_initial_version_creation)
-        if terraform_labels and not isinstance(terraform_labels, dict):
-            raise TypeError("Expected argument 'terraform_labels' to be a dict")
-        pulumi.set(__self__, "terraform_labels", terraform_labels)
         if version_templates and not isinstance(version_templates, list):
             raise TypeError("Expected argument 'version_templates' to be a list")
         pulumi.set(__self__, "version_templates", version_templates)
@@ -99,6 +99,11 @@ class GetKMSCryptoKeyResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def purpose(self) -> str:
         """
@@ -122,11 +127,6 @@ class GetKMSCryptoKeyResult:
         return pulumi.get(self, "skip_initial_version_creation")
 
     @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Mapping[str, str]:
-        return pulumi.get(self, "terraform_labels")
-
-    @property
     @pulumi.getter(name="versionTemplates")
     def version_templates(self) -> Sequence['outputs.GetKMSCryptoKeyVersionTemplateResult']:
         return pulumi.get(self, "version_templates")
@@ -145,10 +145,10 @@ class AwaitableGetKMSCryptoKeyResult(GetKMSCryptoKeyResult):
             key_ring=self.key_ring,
             labels=self.labels,
             name=self.name,
+            pulumi_labels=self.pulumi_labels,
             purpose=self.purpose,
             rotation_period=self.rotation_period,
             skip_initial_version_creation=self.skip_initial_version_creation,
-            terraform_labels=self.terraform_labels,
             version_templates=self.version_templates)
 
 
@@ -195,10 +195,10 @@ def get_kms_crypto_key(key_ring: Optional[str] = None,
         key_ring=pulumi.get(__ret__, 'key_ring'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         purpose=pulumi.get(__ret__, 'purpose'),
         rotation_period=pulumi.get(__ret__, 'rotation_period'),
         skip_initial_version_creation=pulumi.get(__ret__, 'skip_initial_version_creation'),
-        terraform_labels=pulumi.get(__ret__, 'terraform_labels'),
         version_templates=pulumi.get(__ret__, 'version_templates'))
 
 

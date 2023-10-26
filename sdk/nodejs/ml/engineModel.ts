@@ -133,15 +133,15 @@ export class EngineModel extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The list of regions where the model is going to be deployed.
      * Currently only one region per model is supported
      */
     public readonly regions!: pulumi.Output<string | undefined>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a EngineModel resource with the given unique name, arguments, and options.
@@ -164,8 +164,8 @@ export class EngineModel extends pulumi.CustomResource {
             resourceInputs["onlinePredictionConsoleLogging"] = state ? state.onlinePredictionConsoleLogging : undefined;
             resourceInputs["onlinePredictionLogging"] = state ? state.onlinePredictionLogging : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["regions"] = state ? state.regions : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as EngineModelArgs | undefined;
             resourceInputs["defaultVersion"] = args ? args.defaultVersion : undefined;
@@ -177,7 +177,7 @@ export class EngineModel extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["regions"] = args ? args.regions : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EngineModel.__pulumiType, name, resourceInputs, opts);
@@ -230,15 +230,15 @@ export interface EngineModelState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The list of regions where the model is going to be deployed.
      * Currently only one region per model is supported
      */
     regions?: pulumi.Input<string>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**

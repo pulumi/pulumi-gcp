@@ -676,6 +676,13 @@ namespace Pulumi.Gcp.CloudRunV2
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Returns true if the Service is currently being acted upon by the system to bring it into the desired state.
         /// When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
         /// If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
@@ -697,13 +704,6 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Output("terminalConditions")]
         public Output<ImmutableArray<Outputs.ServiceTerminalCondition>> TerminalConditions { get; private set; } = null!;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
@@ -1127,6 +1127,19 @@ namespace Pulumi.Gcp.CloudRunV2
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
+
         /// <summary>
         /// Returns true if the Service is currently being acted upon by the system to bring it into the desired state.
         /// When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
@@ -1154,19 +1167,6 @@ namespace Pulumi.Gcp.CloudRunV2
         {
             get => _terminalConditions ?? (_terminalConditions = new InputList<Inputs.ServiceTerminalConditionGetArgs>());
             set => _terminalConditions = value;
-        }
-
-        [Input("terraformLabels")]
-        private InputMap<string>? _terraformLabels;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        public InputMap<string> TerraformLabels
-        {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
-            set => _terraformLabels = value;
         }
 
         [Input("trafficStatuses")]

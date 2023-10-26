@@ -359,10 +359,10 @@ class _ServiceState:
                  name: Optional[pulumi.Input[str]] = None,
                  observed_generation: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  reconciling: Optional[pulumi.Input[bool]] = None,
                  template: Optional[pulumi.Input['ServiceTemplateArgs']] = None,
                  terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTerminalConditionArgs']]]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  traffic_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficStatusArgs']]]] = None,
                  traffics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
@@ -416,6 +416,8 @@ class _ServiceState:
         :param pulumi.Input[str] observed_generation: The generation of this Service currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[bool] reconciling: Returns true if the Service is currently being acted upon by the system to bring it into the desired state.
                When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
                If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
@@ -424,8 +426,6 @@ class _ServiceState:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTerminalConditionArgs']]] terminal_conditions: The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficStatusArgs']]] traffic_statuses: Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
@@ -462,10 +462,10 @@ class _ServiceState:
             name=name,
             observed_generation=observed_generation,
             project=project,
+            pulumi_labels=pulumi_labels,
             reconciling=reconciling,
             template=template,
             terminal_conditions=terminal_conditions,
-            terraform_labels=terraform_labels,
             traffic_statuses=traffic_statuses,
             traffics=traffics,
             uid=uid,
@@ -500,10 +500,10 @@ class _ServiceState:
              name: Optional[pulumi.Input[str]] = None,
              observed_generation: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              reconciling: Optional[pulumi.Input[bool]] = None,
              template: Optional[pulumi.Input['ServiceTemplateArgs']] = None,
              terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTerminalConditionArgs']]]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              traffic_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficStatusArgs']]]] = None,
              traffics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]] = None,
              uid: Optional[pulumi.Input[str]] = None,
@@ -537,10 +537,10 @@ class _ServiceState:
             launch_stage = kwargs['launchStage']
         if observed_generation is None and 'observedGeneration' in kwargs:
             observed_generation = kwargs['observedGeneration']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if terminal_conditions is None and 'terminalConditions' in kwargs:
             terminal_conditions = kwargs['terminalConditions']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
         if traffic_statuses is None and 'trafficStatuses' in kwargs:
             traffic_statuses = kwargs['trafficStatuses']
         if update_time is None and 'updateTime' in kwargs:
@@ -596,14 +596,14 @@ class _ServiceState:
             _setter("observed_generation", observed_generation)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if reconciling is not None:
             _setter("reconciling", reconciling)
         if template is not None:
             _setter("template", template)
         if terminal_conditions is not None:
             _setter("terminal_conditions", terminal_conditions)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if traffic_statuses is not None:
             _setter("traffic_statuses", traffic_statuses)
         if traffics is not None:
@@ -937,6 +937,19 @@ class _ServiceState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter
     def reconciling(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -976,19 +989,6 @@ class _ServiceState:
     @terminal_conditions.setter
     def terminal_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTerminalConditionArgs']]]]):
         pulumi.set(self, "terminal_conditions", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="trafficStatuses")
@@ -1752,9 +1752,9 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["latest_created_revision"] = None
             __props__.__dict__["latest_ready_revision"] = None
             __props__.__dict__["observed_generation"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["reconciling"] = None
             __props__.__dict__["terminal_conditions"] = None
-            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["traffic_statuses"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
@@ -1794,10 +1794,10 @@ class Service(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             observed_generation: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             reconciling: Optional[pulumi.Input[bool]] = None,
             template: Optional[pulumi.Input[pulumi.InputType['ServiceTemplateArgs']]] = None,
             terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTerminalConditionArgs']]]]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             traffic_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficStatusArgs']]]]] = None,
             traffics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
@@ -1856,6 +1856,8 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] observed_generation: The generation of this Service currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[bool] reconciling: Returns true if the Service is currently being acted upon by the system to bring it into the desired state.
                When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
                If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
@@ -1864,8 +1866,6 @@ class Service(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTerminalConditionArgs']]]] terminal_conditions: The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficStatusArgs']]]] traffic_statuses: Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
@@ -1904,10 +1904,10 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["observed_generation"] = observed_generation
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["reconciling"] = reconciling
         __props__.__dict__["template"] = template
         __props__.__dict__["terminal_conditions"] = terminal_conditions
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["traffic_statuses"] = traffic_statuses
         __props__.__dict__["traffics"] = traffics
         __props__.__dict__["uid"] = uid
@@ -2137,6 +2137,15 @@ class Service(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def reconciling(self) -> pulumi.Output[bool]:
         """
@@ -2164,15 +2173,6 @@ class Service(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "terminal_conditions")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="trafficStatuses")

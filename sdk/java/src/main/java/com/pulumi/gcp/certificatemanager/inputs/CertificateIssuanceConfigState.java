@@ -193,6 +193,23 @@ public final class CertificateIssuanceConfigState extends com.pulumi.resources.R
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
      * Must be a number between 1-99, inclusive.
      * You must set the rotation window percentage in relation to the certificate lifetime so that certificate renewal occurs at least 7 days after
@@ -211,23 +228,6 @@ public final class CertificateIssuanceConfigState extends com.pulumi.resources.R
      */
     public Optional<Output<Integer>> rotationWindowPercentage() {
         return Optional.ofNullable(this.rotationWindowPercentage);
-    }
-
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    @Import(name="terraformLabels")
-    private @Nullable Output<Map<String,String>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    public Optional<Output<Map<String,String>>> terraformLabels() {
-        return Optional.ofNullable(this.terraformLabels);
     }
 
     /**
@@ -262,8 +262,8 @@ public final class CertificateIssuanceConfigState extends com.pulumi.resources.R
         this.location = $.location;
         this.name = $.name;
         this.project = $.project;
+        this.pulumiLabels = $.pulumiLabels;
         this.rotationWindowPercentage = $.rotationWindowPercentage;
-        this.terraformLabels = $.terraformLabels;
         this.updateTime = $.updateTime;
     }
 
@@ -520,6 +520,29 @@ public final class CertificateIssuanceConfigState extends com.pulumi.resources.R
         }
 
         /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
          * @param rotationWindowPercentage It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
          * Must be a number between 1-99, inclusive.
          * You must set the rotation window percentage in relation to the certificate lifetime so that certificate renewal occurs at least 7 days after
@@ -544,29 +567,6 @@ public final class CertificateIssuanceConfigState extends com.pulumi.resources.R
          */
         public Builder rotationWindowPercentage(Integer rotationWindowPercentage) {
             return rotationWindowPercentage(Output.of(rotationWindowPercentage));
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
-            $.terraformLabels = terraformLabels;
-            return this;
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

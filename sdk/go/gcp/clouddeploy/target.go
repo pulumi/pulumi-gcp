@@ -224,14 +224,14 @@ type Target struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.MapOutput `pulumi:"pulumiLabels"`
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval pulumi.BoolPtrOutput `pulumi:"requireApproval"`
 	// Information specifying a Cloud Run deployment target.
 	Run TargetRunPtrOutput `pulumi:"run"`
 	// Output only. Resource id of the `Target`.
 	TargetId pulumi.StringOutput `pulumi:"targetId"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.MapOutput `pulumi:"terraformLabels"`
 	// Output only. Unique identifier of the `Target`.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Output only. Most recent time at which the `Target` was updated.
@@ -311,14 +311,14 @@ type targetState struct {
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]interface{} `pulumi:"pulumiLabels"`
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval *bool `pulumi:"requireApproval"`
 	// Information specifying a Cloud Run deployment target.
 	Run *TargetRun `pulumi:"run"`
 	// Output only. Resource id of the `Target`.
 	TargetId *string `pulumi:"targetId"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels map[string]interface{} `pulumi:"terraformLabels"`
 	// Output only. Unique identifier of the `Target`.
 	Uid *string `pulumi:"uid"`
 	// Output only. Most recent time at which the `Target` was updated.
@@ -366,14 +366,14 @@ type TargetState struct {
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.MapInput
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval pulumi.BoolPtrInput
 	// Information specifying a Cloud Run deployment target.
 	Run TargetRunPtrInput
 	// Output only. Resource id of the `Target`.
 	TargetId pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.MapInput
 	// Output only. Unique identifier of the `Target`.
 	Uid pulumi.StringPtrInput
 	// Output only. Most recent time at which the `Target` was updated.
@@ -655,6 +655,11 @@ func (o TargetOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o TargetOutput) PulumiLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Target) pulumi.MapOutput { return v.PulumiLabels }).(pulumi.MapOutput)
+}
+
 // Optional. Whether or not the `Target` requires approval.
 func (o TargetOutput) RequireApproval() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Target) pulumi.BoolPtrOutput { return v.RequireApproval }).(pulumi.BoolPtrOutput)
@@ -668,11 +673,6 @@ func (o TargetOutput) Run() TargetRunPtrOutput {
 // Output only. Resource id of the `Target`.
 func (o TargetOutput) TargetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.TargetId }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o TargetOutput) TerraformLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Target) pulumi.MapOutput { return v.TerraformLabels }).(pulumi.MapOutput)
 }
 
 // Output only. Unique identifier of the `Target`.

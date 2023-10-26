@@ -222,6 +222,8 @@ type Instance struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity InstanceReservationAffinityOutput `pulumi:"reservationAffinity"`
@@ -247,8 +249,6 @@ type Instance struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The unique fingerprint of the tags.
 	TagsFingerprint pulumi.StringOutput `pulumi:"tagsFingerprint"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The zone that the machine should be created in. If it is not provided, the provider zone is used.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
@@ -400,6 +400,8 @@ type instanceState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity *InstanceReservationAffinity `pulumi:"reservationAffinity"`
@@ -425,8 +427,6 @@ type instanceState struct {
 	Tags []string `pulumi:"tags"`
 	// The unique fingerprint of the tags.
 	TagsFingerprint *string `pulumi:"tagsFingerprint"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The zone that the machine should be created in. If it is not provided, the provider zone is used.
 	Zone *string `pulumi:"zone"`
 }
@@ -540,6 +540,8 @@ type InstanceState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity InstanceReservationAffinityPtrInput
@@ -565,8 +567,6 @@ type InstanceState struct {
 	Tags pulumi.StringArrayInput
 	// The unique fingerprint of the tags.
 	TagsFingerprint pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// The zone that the machine should be created in. If it is not provided, the provider zone is used.
 	Zone pulumi.StringPtrInput
 }
@@ -1121,6 +1121,11 @@ func (o InstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o InstanceOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Specifies the reservations that this instance can consume from.
 // Structure is documented below.
 func (o InstanceOutput) ReservationAffinity() InstanceReservationAffinityOutput {
@@ -1171,11 +1176,6 @@ func (o InstanceOutput) Tags() pulumi.StringArrayOutput {
 // The unique fingerprint of the tags.
 func (o InstanceOutput) TagsFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.TagsFingerprint }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o InstanceOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The zone that the machine should be created in. If it is not provided, the provider zone is used.

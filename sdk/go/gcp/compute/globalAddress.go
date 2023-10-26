@@ -154,14 +154,14 @@ type GlobalAddress struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The purpose of the resource. Possible values include:
 	// * VPC_PEERING - for peer networks
 	// * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
 	Purpose pulumi.StringPtrOutput `pulumi:"purpose"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewGlobalAddress registers a new resource with the given unique name, arguments, and options.
@@ -244,14 +244,14 @@ type globalAddressState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The purpose of the resource. Possible values include:
 	// * VPC_PEERING - for peer networks
 	// * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
 	Purpose *string `pulumi:"purpose"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type GlobalAddressState struct {
@@ -305,14 +305,14 @@ type GlobalAddressState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The purpose of the resource. Possible values include:
 	// * VPC_PEERING - for peer networks
 	// * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
 	Purpose pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 }
 
 func (GlobalAddressState) ElementType() reflect.Type {
@@ -617,6 +617,11 @@ func (o GlobalAddressOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalAddress) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o GlobalAddressOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GlobalAddress) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The purpose of the resource. Possible values include:
 // * VPC_PEERING - for peer networks
 // * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
@@ -627,11 +632,6 @@ func (o GlobalAddressOutput) Purpose() pulumi.StringPtrOutput {
 // The URI of the created resource.
 func (o GlobalAddressOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalAddress) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o GlobalAddressOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GlobalAddress) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type GlobalAddressArrayOutput struct{ *pulumi.OutputState }

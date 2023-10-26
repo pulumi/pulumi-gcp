@@ -100,6 +100,12 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, object>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
         /// </summary>
         [Output("routingVpcs")]
@@ -110,12 +116,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource and default labels configured on the provider.
-        /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, object>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
@@ -276,6 +276,18 @@ namespace Pulumi.Gcp.NetworkConnectivity
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<object>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        public InputMap<object> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<object>());
+            set => _pulumiLabels = value;
+        }
+
         [Input("routingVpcs")]
         private InputList<Inputs.HubRoutingVpcGetArgs>? _routingVpcs;
 
@@ -293,18 +305,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
-
-        [Input("terraformLabels")]
-        private InputMap<object>? _terraformLabels;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource and default labels configured on the provider.
-        /// </summary>
-        public InputMap<object> TerraformLabels
-        {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<object>());
-            set => _terraformLabels = value;
-        }
 
         /// <summary>
         /// Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.

@@ -135,6 +135,7 @@ public final class GetInstanceTemplateResult {
      * 
      */
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     /**
      * @return An instance template is a global resource that is not
      * bound to a zone or a region. However, you can still specify some regional
@@ -189,7 +190,6 @@ public final class GetInstanceTemplateResult {
      * 
      */
     private String tagsFingerprint;
-    private Map<String,String> terraformLabels;
 
     private GetInstanceTemplateResult() {}
     public List<GetInstanceTemplateAdvancedMachineFeature> advancedMachineFeatures() {
@@ -348,6 +348,9 @@ public final class GetInstanceTemplateResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     /**
      * @return An instance template is a global resource that is not
      * bound to a zone or a region. However, you can still specify some regional
@@ -422,9 +425,6 @@ public final class GetInstanceTemplateResult {
     public String tagsFingerprint() {
         return this.tagsFingerprint;
     }
-    public Map<String,String> terraformLabels() {
-        return this.terraformLabels;
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -458,6 +458,7 @@ public final class GetInstanceTemplateResult {
         private List<GetInstanceTemplateNetworkInterface> networkInterfaces;
         private List<GetInstanceTemplateNetworkPerformanceConfig> networkPerformanceConfigs;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private String region;
         private List<GetInstanceTemplateReservationAffinity> reservationAffinities;
         private List<String> resourcePolicies;
@@ -468,7 +469,6 @@ public final class GetInstanceTemplateResult {
         private List<GetInstanceTemplateShieldedInstanceConfig> shieldedInstanceConfigs;
         private List<String> tags;
         private String tagsFingerprint;
-        private Map<String,String> terraformLabels;
         public Builder() {}
         public Builder(GetInstanceTemplateResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -495,6 +495,7 @@ public final class GetInstanceTemplateResult {
     	      this.networkInterfaces = defaults.networkInterfaces;
     	      this.networkPerformanceConfigs = defaults.networkPerformanceConfigs;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.region = defaults.region;
     	      this.reservationAffinities = defaults.reservationAffinities;
     	      this.resourcePolicies = defaults.resourcePolicies;
@@ -505,7 +506,6 @@ public final class GetInstanceTemplateResult {
     	      this.shieldedInstanceConfigs = defaults.shieldedInstanceConfigs;
     	      this.tags = defaults.tags;
     	      this.tagsFingerprint = defaults.tagsFingerprint;
-    	      this.terraformLabels = defaults.terraformLabels;
         }
 
         @CustomType.Setter
@@ -642,6 +642,11 @@ public final class GetInstanceTemplateResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
@@ -709,11 +714,6 @@ public final class GetInstanceTemplateResult {
             this.tagsFingerprint = Objects.requireNonNull(tagsFingerprint);
             return this;
         }
-        @CustomType.Setter
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            this.terraformLabels = Objects.requireNonNull(terraformLabels);
-            return this;
-        }
         public GetInstanceTemplateResult build() {
             final var o = new GetInstanceTemplateResult();
             o.advancedMachineFeatures = advancedMachineFeatures;
@@ -739,6 +739,7 @@ public final class GetInstanceTemplateResult {
             o.networkInterfaces = networkInterfaces;
             o.networkPerformanceConfigs = networkPerformanceConfigs;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.region = region;
             o.reservationAffinities = reservationAffinities;
             o.resourcePolicies = resourcePolicies;
@@ -749,7 +750,6 @@ public final class GetInstanceTemplateResult {
             o.shieldedInstanceConfigs = shieldedInstanceConfigs;
             o.tags = tags;
             o.tagsFingerprint = tagsFingerprint;
-            o.terraformLabels = terraformLabels;
             return o;
         }
     }

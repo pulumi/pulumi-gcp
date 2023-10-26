@@ -278,6 +278,12 @@ namespace Pulumi.Gcp.CloudDeploy
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, object>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Whether or not the `Target` requires approval.
         /// </summary>
         [Output("requireApproval")]
@@ -294,12 +300,6 @@ namespace Pulumi.Gcp.CloudDeploy
         /// </summary>
         [Output("targetId")]
         public Output<string> TargetId { get; private set; } = null!;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource and default labels configured on the provider.
-        /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, object>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// Output only. Unique identifier of the `Target`.
@@ -617,6 +617,18 @@ namespace Pulumi.Gcp.CloudDeploy
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<object>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        public InputMap<object> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<object>());
+            set => _pulumiLabels = value;
+        }
+
         /// <summary>
         /// Optional. Whether or not the `Target` requires approval.
         /// </summary>
@@ -634,18 +646,6 @@ namespace Pulumi.Gcp.CloudDeploy
         /// </summary>
         [Input("targetId")]
         public Input<string>? TargetId { get; set; }
-
-        [Input("terraformLabels")]
-        private InputMap<object>? _terraformLabels;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource and default labels configured on the provider.
-        /// </summary>
-        public InputMap<object> TerraformLabels
-        {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<object>());
-            set => _terraformLabels = value;
-        }
 
         /// <summary>
         /// Output only. Unique identifier of the `Target`.

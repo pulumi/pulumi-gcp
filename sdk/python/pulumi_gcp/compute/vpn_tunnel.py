@@ -430,6 +430,7 @@ class _VPNTunnelState:
                  peer_gcp_gateway: Optional[pulumi.Input[str]] = None,
                  peer_ip: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  remote_traffic_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  router: Optional[pulumi.Input[str]] = None,
@@ -437,7 +438,6 @@ class _VPNTunnelState:
                  shared_secret: Optional[pulumi.Input[str]] = None,
                  shared_secret_hash: Optional[pulumi.Input[str]] = None,
                  target_vpn_gateway: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tunnel_id: Optional[pulumi.Input[str]] = None,
                  vpn_gateway: Optional[pulumi.Input[str]] = None,
                  vpn_gateway_interface: Optional[pulumi.Input[int]] = None):
@@ -475,6 +475,7 @@ class _VPNTunnelState:
         :param pulumi.Input[str] peer_ip: IP address of the peer VPN gateway. Only IPv4 is supported.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] region: The region where the tunnel is located. If unset, is set to the region of `target_vpn_gateway`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_traffic_selectors: Remote traffic selector to use when establishing the VPN tunnel with
                peer VPN gateway. The value should be a CIDR formatted string,
@@ -491,7 +492,6 @@ class _VPNTunnelState:
         :param pulumi.Input[str] shared_secret_hash: Hash of the shared secret.
         :param pulumi.Input[str] target_vpn_gateway: URL of the Target VPN gateway with which this VPN tunnel is
                associated.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] tunnel_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] vpn_gateway: URL of the VPN gateway with which this VPN tunnel is associated.
                This must be used if a High Availability VPN gateway resource is created.
@@ -514,6 +514,7 @@ class _VPNTunnelState:
             peer_gcp_gateway=peer_gcp_gateway,
             peer_ip=peer_ip,
             project=project,
+            pulumi_labels=pulumi_labels,
             region=region,
             remote_traffic_selectors=remote_traffic_selectors,
             router=router,
@@ -521,7 +522,6 @@ class _VPNTunnelState:
             shared_secret=shared_secret,
             shared_secret_hash=shared_secret_hash,
             target_vpn_gateway=target_vpn_gateway,
-            terraform_labels=terraform_labels,
             tunnel_id=tunnel_id,
             vpn_gateway=vpn_gateway,
             vpn_gateway_interface=vpn_gateway_interface,
@@ -543,6 +543,7 @@ class _VPNTunnelState:
              peer_gcp_gateway: Optional[pulumi.Input[str]] = None,
              peer_ip: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              region: Optional[pulumi.Input[str]] = None,
              remote_traffic_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              router: Optional[pulumi.Input[str]] = None,
@@ -550,7 +551,6 @@ class _VPNTunnelState:
              shared_secret: Optional[pulumi.Input[str]] = None,
              shared_secret_hash: Optional[pulumi.Input[str]] = None,
              target_vpn_gateway: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              tunnel_id: Optional[pulumi.Input[str]] = None,
              vpn_gateway: Optional[pulumi.Input[str]] = None,
              vpn_gateway_interface: Optional[pulumi.Input[int]] = None,
@@ -576,6 +576,8 @@ class _VPNTunnelState:
             peer_gcp_gateway = kwargs['peerGcpGateway']
         if peer_ip is None and 'peerIp' in kwargs:
             peer_ip = kwargs['peerIp']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if remote_traffic_selectors is None and 'remoteTrafficSelectors' in kwargs:
             remote_traffic_selectors = kwargs['remoteTrafficSelectors']
         if self_link is None and 'selfLink' in kwargs:
@@ -586,8 +588,6 @@ class _VPNTunnelState:
             shared_secret_hash = kwargs['sharedSecretHash']
         if target_vpn_gateway is None and 'targetVpnGateway' in kwargs:
             target_vpn_gateway = kwargs['targetVpnGateway']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
         if tunnel_id is None and 'tunnelId' in kwargs:
             tunnel_id = kwargs['tunnelId']
         if vpn_gateway is None and 'vpnGateway' in kwargs:
@@ -623,6 +623,8 @@ class _VPNTunnelState:
             _setter("peer_ip", peer_ip)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if region is not None:
             _setter("region", region)
         if remote_traffic_selectors is not None:
@@ -637,8 +639,6 @@ class _VPNTunnelState:
             _setter("shared_secret_hash", shared_secret_hash)
         if target_vpn_gateway is not None:
             _setter("target_vpn_gateway", target_vpn_gateway)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if tunnel_id is not None:
             _setter("tunnel_id", tunnel_id)
         if vpn_gateway is not None:
@@ -833,6 +833,18 @@ class _VPNTunnelState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
@@ -924,18 +936,6 @@ class _VPNTunnelState:
     @target_vpn_gateway.setter
     def target_vpn_gateway(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target_vpn_gateway", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="tunnelId")
@@ -1361,9 +1361,9 @@ class VPNTunnel(pulumi.CustomResource):
             __props__.__dict__["detailed_status"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["label_fingerprint"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["shared_secret_hash"] = None
-            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["tunnel_id"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["sharedSecret"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -1391,6 +1391,7 @@ class VPNTunnel(pulumi.CustomResource):
             peer_gcp_gateway: Optional[pulumi.Input[str]] = None,
             peer_ip: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
             remote_traffic_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             router: Optional[pulumi.Input[str]] = None,
@@ -1398,7 +1399,6 @@ class VPNTunnel(pulumi.CustomResource):
             shared_secret: Optional[pulumi.Input[str]] = None,
             shared_secret_hash: Optional[pulumi.Input[str]] = None,
             target_vpn_gateway: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             tunnel_id: Optional[pulumi.Input[str]] = None,
             vpn_gateway: Optional[pulumi.Input[str]] = None,
             vpn_gateway_interface: Optional[pulumi.Input[int]] = None) -> 'VPNTunnel':
@@ -1441,6 +1441,7 @@ class VPNTunnel(pulumi.CustomResource):
         :param pulumi.Input[str] peer_ip: IP address of the peer VPN gateway. Only IPv4 is supported.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] region: The region where the tunnel is located. If unset, is set to the region of `target_vpn_gateway`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_traffic_selectors: Remote traffic selector to use when establishing the VPN tunnel with
                peer VPN gateway. The value should be a CIDR formatted string,
@@ -1457,7 +1458,6 @@ class VPNTunnel(pulumi.CustomResource):
         :param pulumi.Input[str] shared_secret_hash: Hash of the shared secret.
         :param pulumi.Input[str] target_vpn_gateway: URL of the Target VPN gateway with which this VPN tunnel is
                associated.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] tunnel_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] vpn_gateway: URL of the VPN gateway with which this VPN tunnel is associated.
                This must be used if a High Availability VPN gateway resource is created.
@@ -1482,6 +1482,7 @@ class VPNTunnel(pulumi.CustomResource):
         __props__.__dict__["peer_gcp_gateway"] = peer_gcp_gateway
         __props__.__dict__["peer_ip"] = peer_ip
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["region"] = region
         __props__.__dict__["remote_traffic_selectors"] = remote_traffic_selectors
         __props__.__dict__["router"] = router
@@ -1489,7 +1490,6 @@ class VPNTunnel(pulumi.CustomResource):
         __props__.__dict__["shared_secret"] = shared_secret
         __props__.__dict__["shared_secret_hash"] = shared_secret_hash
         __props__.__dict__["target_vpn_gateway"] = target_vpn_gateway
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["tunnel_id"] = tunnel_id
         __props__.__dict__["vpn_gateway"] = vpn_gateway
         __props__.__dict__["vpn_gateway_interface"] = vpn_gateway_interface
@@ -1626,6 +1626,14 @@ class VPNTunnel(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
@@ -1689,14 +1697,6 @@ class VPNTunnel(pulumi.CustomResource):
         associated.
         """
         return pulumi.get(self, "target_vpn_gateway")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="tunnelId")

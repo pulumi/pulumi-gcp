@@ -159,6 +159,11 @@ export class DicomStore extends pulumi.CustomResource {
      */
     public readonly notificationConfig!: pulumi.Output<outputs.healthcare.DicomStoreNotificationConfig | undefined>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The fully qualified name of this dataset
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -168,11 +173,6 @@ export class DicomStore extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly streamConfigs!: pulumi.Output<outputs.healthcare.DicomStoreStreamConfig[] | undefined>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a DicomStore resource with the given unique name, arguments, and options.
@@ -192,9 +192,9 @@ export class DicomStore extends pulumi.CustomResource {
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["notificationConfig"] = state ? state.notificationConfig : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["streamConfigs"] = state ? state.streamConfigs : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as DicomStoreArgs | undefined;
             if ((!args || args.dataset === undefined) && !opts.urn) {
@@ -206,8 +206,8 @@ export class DicomStore extends pulumi.CustomResource {
             resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
             resourceInputs["streamConfigs"] = args ? args.streamConfigs : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DicomStore.__pulumiType, name, resourceInputs, opts);
@@ -256,6 +256,11 @@ export interface DicomStoreState {
      */
     notificationConfig?: pulumi.Input<inputs.healthcare.DicomStoreNotificationConfig>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The fully qualified name of this dataset
      */
     selfLink?: pulumi.Input<string>;
@@ -265,11 +270,6 @@ export interface DicomStoreState {
      * Structure is documented below.
      */
     streamConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.DicomStoreStreamConfig>[]>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**

@@ -263,10 +263,10 @@ class _BackupPlanState:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protected_pod_count: Optional[pulumi.Input[int]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  retention_policy: Optional[pulumi.Input['BackupPlanRetentionPolicyArgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  state_reason: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  uid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering BackupPlan resources.
@@ -302,12 +302,12 @@ class _BackupPlanState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[int] protected_pod_count: The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input['BackupPlanRetentionPolicyArgs'] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
                Structure is documented below.
         :param pulumi.Input[str] state: The State of the BackupPlan.
         :param pulumi.Input[str] state_reason: Detailed description of why BackupPlan is in its current state.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] uid: Server generated, unique identifier of UUID format.
         """
         _BackupPlanState._configure(
@@ -324,10 +324,10 @@ class _BackupPlanState:
             name=name,
             project=project,
             protected_pod_count=protected_pod_count,
+            pulumi_labels=pulumi_labels,
             retention_policy=retention_policy,
             state=state,
             state_reason=state_reason,
-            terraform_labels=terraform_labels,
             uid=uid,
         )
     @staticmethod
@@ -345,10 +345,10 @@ class _BackupPlanState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              protected_pod_count: Optional[pulumi.Input[int]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              retention_policy: Optional[pulumi.Input['BackupPlanRetentionPolicyArgs']] = None,
              state: Optional[pulumi.Input[str]] = None,
              state_reason: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -360,12 +360,12 @@ class _BackupPlanState:
             effective_labels = kwargs['effectiveLabels']
         if protected_pod_count is None and 'protectedPodCount' in kwargs:
             protected_pod_count = kwargs['protectedPodCount']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if retention_policy is None and 'retentionPolicy' in kwargs:
             retention_policy = kwargs['retentionPolicy']
         if state_reason is None and 'stateReason' in kwargs:
             state_reason = kwargs['stateReason']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
 
         if backup_config is not None:
             _setter("backup_config", backup_config)
@@ -391,14 +391,14 @@ class _BackupPlanState:
             _setter("project", project)
         if protected_pod_count is not None:
             _setter("protected_pod_count", protected_pod_count)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if retention_policy is not None:
             _setter("retention_policy", retention_policy)
         if state is not None:
             _setter("state", state)
         if state_reason is not None:
             _setter("state_reason", state_reason)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if uid is not None:
             _setter("uid", uid)
 
@@ -567,6 +567,19 @@ class _BackupPlanState:
         pulumi.set(self, "protected_pod_count", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="retentionPolicy")
     def retention_policy(self) -> Optional[pulumi.Input['BackupPlanRetentionPolicyArgs']]:
         """
@@ -602,19 +615,6 @@ class _BackupPlanState:
     @state_reason.setter
     def state_reason(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state_reason", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -1065,9 +1065,9 @@ class BackupPlan(pulumi.CustomResource):
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["protected_pod_count"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["state_reason"] = None
-            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["uid"] = None
         super(BackupPlan, __self__).__init__(
             'gcp:gkebackup/backupPlan:BackupPlan',
@@ -1091,10 +1091,10 @@ class BackupPlan(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             protected_pod_count: Optional[pulumi.Input[int]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             retention_policy: Optional[pulumi.Input[pulumi.InputType['BackupPlanRetentionPolicyArgs']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             state_reason: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             uid: Optional[pulumi.Input[str]] = None) -> 'BackupPlan':
         """
         Get an existing BackupPlan resource's state with the given name, id, and optional extra
@@ -1135,12 +1135,12 @@ class BackupPlan(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[int] protected_pod_count: The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['BackupPlanRetentionPolicyArgs']] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
                Structure is documented below.
         :param pulumi.Input[str] state: The State of the BackupPlan.
         :param pulumi.Input[str] state_reason: Detailed description of why BackupPlan is in its current state.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] uid: Server generated, unique identifier of UUID format.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1159,10 +1159,10 @@ class BackupPlan(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["protected_pod_count"] = protected_pod_count
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["retention_policy"] = retention_policy
         __props__.__dict__["state"] = state
         __props__.__dict__["state_reason"] = state_reason
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["uid"] = uid
         return BackupPlan(resource_name, opts=opts, __props__=__props__)
 
@@ -1283,6 +1283,15 @@ class BackupPlan(pulumi.CustomResource):
         return pulumi.get(self, "protected_pod_count")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="retentionPolicy")
     def retention_policy(self) -> pulumi.Output[Optional['outputs.BackupPlanRetentionPolicy']]:
         """
@@ -1306,15 +1315,6 @@ class BackupPlan(pulumi.CustomResource):
         Detailed description of why BackupPlan is in its current state.
         """
         return pulumi.get(self, "state_reason")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

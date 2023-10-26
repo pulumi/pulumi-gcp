@@ -190,6 +190,23 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * Sets the scheduling options for this TPU instance.
      * Structure is documented below.
      * 
@@ -247,23 +264,6 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    @Import(name="terraformLabels")
-    private @Nullable Output<Map<String,String>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    public Optional<Output<Map<String,String>>> terraformLabels() {
-        return Optional.ofNullable(this.terraformLabels);
-    }
-
-    /**
      * Whether the VPC peering for the node is set up through Service Networking API.
      * The VPC Peering should be set up before provisioning the node. If this field is set,
      * cidr_block field should not be specified. If the network that you want to peer the
@@ -311,10 +311,10 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
         this.network = $.network;
         this.networkEndpoints = $.networkEndpoints;
         this.project = $.project;
+        this.pulumiLabels = $.pulumiLabels;
         this.schedulingConfig = $.schedulingConfig;
         this.serviceAccount = $.serviceAccount;
         this.tensorflowVersion = $.tensorflowVersion;
-        this.terraformLabels = $.terraformLabels;
         this.useServiceNetworking = $.useServiceNetworking;
         this.zone = $.zone;
     }
@@ -574,6 +574,29 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
          * @param schedulingConfig Sets the scheduling options for this TPU instance.
          * Structure is documented below.
          * 
@@ -646,29 +669,6 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tensorflowVersion(String tensorflowVersion) {
             return tensorflowVersion(Output.of(tensorflowVersion));
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
-            $.terraformLabels = terraformLabels;
-            return this;
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

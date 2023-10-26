@@ -307,8 +307,8 @@ class _InstanceState:
                  node_config: Optional[pulumi.Input['InstanceNodeConfigArgs']] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
@@ -346,9 +346,9 @@ class _InstanceState:
         :param pulumi.Input[int] node_count: Number of nodes in the memcache instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] region: The region of the Memcache instance. If it is not provided, the provider region is used.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[str] region: The region of the Memcache instance. If it is not provided, the provider region is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Zones where memcache nodes should be provisioned.  If not
                provided, all zones will be used.
         """
@@ -370,8 +370,8 @@ class _InstanceState:
             node_config=node_config,
             node_count=node_count,
             project=project,
+            pulumi_labels=pulumi_labels,
             region=region,
-            terraform_labels=terraform_labels,
             zones=zones,
         )
     @staticmethod
@@ -393,8 +393,8 @@ class _InstanceState:
              node_config: Optional[pulumi.Input['InstanceNodeConfigArgs']] = None,
              node_count: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -424,8 +424,8 @@ class _InstanceState:
             node_config = kwargs['nodeConfig']
         if node_count is None and 'nodeCount' in kwargs:
             node_count = kwargs['nodeCount']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
 
         if authorized_network is not None:
             _setter("authorized_network", authorized_network)
@@ -459,10 +459,10 @@ class _InstanceState:
             _setter("node_count", node_count)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if region is not None:
             _setter("region", region)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if zones is not None:
             _setter("zones", zones)
 
@@ -677,6 +677,19 @@ class _InstanceState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
@@ -687,19 +700,6 @@ class _InstanceState:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -990,7 +990,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["maintenance_schedules"] = None
             __props__.__dict__["memcache_full_version"] = None
             __props__.__dict__["memcache_nodes"] = None
-            __props__.__dict__["terraform_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
         super(Instance, __self__).__init__(
             'gcp:memcache/instance:Instance',
             resource_name,
@@ -1017,8 +1017,8 @@ class Instance(pulumi.CustomResource):
             node_config: Optional[pulumi.Input[pulumi.InputType['InstanceNodeConfigArgs']]] = None,
             node_count: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
@@ -1061,9 +1061,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] node_count: Number of nodes in the memcache instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] region: The region of the Memcache instance. If it is not provided, the provider region is used.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[str] region: The region of the Memcache instance. If it is not provided, the provider region is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Zones where memcache nodes should be provisioned.  If not
                provided, all zones will be used.
         """
@@ -1087,8 +1087,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["node_config"] = node_config
         __props__.__dict__["node_count"] = node_count
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["region"] = region
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["zones"] = zones
         return Instance(resource_name, opts=opts, __props__=__props__)
 
@@ -1239,21 +1239,21 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
         The region of the Memcache instance. If it is not provided, the provider region is used.
         """
         return pulumi.get(self, "region")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

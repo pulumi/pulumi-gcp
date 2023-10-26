@@ -162,11 +162,11 @@ type AiEndpoint struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The region for the resource
-	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// The region for the resource
+	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// Output only. Timestamp when this Endpoint was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -242,11 +242,11 @@ type aiEndpointState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The region for the resource
-	Region *string `pulumi:"region"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// The region for the resource
+	Region *string `pulumi:"region"`
 	// Output only. Timestamp when this Endpoint was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -287,11 +287,11 @@ type AiEndpointState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The region for the resource
-	Region pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
+	PulumiLabels pulumi.StringMapInput
+	// The region for the resource
+	Region pulumi.StringPtrInput
 	// Output only. Timestamp when this Endpoint was last updated.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -540,15 +540,15 @@ func (o AiEndpointOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiEndpoint) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o AiEndpointOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiEndpoint) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The region for the resource
 func (o AiEndpointOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiEndpoint) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o AiEndpointOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *AiEndpoint) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Output only. Timestamp when this Endpoint was last updated.

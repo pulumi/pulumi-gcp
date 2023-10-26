@@ -164,14 +164,14 @@ export class AiEndpoint extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The region for the resource
-     */
-    public readonly region!: pulumi.Output<string | undefined>;
-    /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The region for the resource
+     */
+    public readonly region!: pulumi.Output<string | undefined>;
     /**
      * Output only. Timestamp when this Endpoint was last updated.
      */
@@ -203,8 +203,8 @@ export class AiEndpoint extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as AiEndpointArgs | undefined;
@@ -228,7 +228,7 @@ export class AiEndpoint extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["modelDeploymentMonitoringJob"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -303,14 +303,14 @@ export interface AiEndpointState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The region for the resource
-     */
-    region?: pulumi.Input<string>;
-    /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The region for the resource
+     */
+    region?: pulumi.Input<string>;
     /**
      * Output only. Timestamp when this Endpoint was last updated.
      */

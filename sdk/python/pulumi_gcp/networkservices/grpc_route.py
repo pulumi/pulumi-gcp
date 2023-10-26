@@ -196,9 +196,9 @@ class _GrpcRouteState:
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleArgs']]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GrpcRoute resources.
@@ -215,11 +215,11 @@ class _GrpcRouteState:
         :param pulumi.Input[str] name: Name of the GrpcRoute resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleArgs']]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Time the GrpcRoute was updated in UTC.
         """
         _GrpcRouteState._configure(
@@ -233,9 +233,9 @@ class _GrpcRouteState:
             meshes=meshes,
             name=name,
             project=project,
+            pulumi_labels=pulumi_labels,
             rules=rules,
             self_link=self_link,
-            terraform_labels=terraform_labels,
             update_time=update_time,
         )
     @staticmethod
@@ -250,9 +250,9 @@ class _GrpcRouteState:
              meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleArgs']]]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -260,10 +260,10 @@ class _GrpcRouteState:
             create_time = kwargs['createTime']
         if effective_labels is None and 'effectiveLabels' in kwargs:
             effective_labels = kwargs['effectiveLabels']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if self_link is None and 'selfLink' in kwargs:
             self_link = kwargs['selfLink']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
         if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
 
@@ -285,12 +285,12 @@ class _GrpcRouteState:
             _setter("name", name)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if rules is not None:
             _setter("rules", rules)
         if self_link is not None:
             _setter("self_link", self_link)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if update_time is not None:
             _setter("update_time", update_time)
 
@@ -407,6 +407,19 @@ class _GrpcRouteState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleArgs']]]]:
         """
@@ -430,19 +443,6 @@ class _GrpcRouteState:
     @self_link.setter
     def self_link(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "self_link", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="updateTime")
@@ -802,8 +802,8 @@ class GrpcRoute(pulumi.CustomResource):
             __props__.__dict__["rules"] = rules
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["self_link"] = None
-            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["update_time"] = None
         super(GrpcRoute, __self__).__init__(
             'gcp:networkservices/grpcRoute:GrpcRoute',
@@ -824,9 +824,9 @@ class GrpcRoute(pulumi.CustomResource):
             meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrpcRouteRuleArgs']]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'GrpcRoute':
         """
         Get an existing GrpcRoute resource's state with the given name, id, and optional extra
@@ -848,11 +848,11 @@ class GrpcRoute(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the GrpcRoute resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrpcRouteRuleArgs']]]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Time the GrpcRoute was updated in UTC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -868,9 +868,9 @@ class GrpcRoute(pulumi.CustomResource):
         __props__.__dict__["meshes"] = meshes
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["rules"] = rules
         __props__.__dict__["self_link"] = self_link
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["update_time"] = update_time
         return GrpcRoute(resource_name, opts=opts, __props__=__props__)
 
@@ -951,6 +951,15 @@ class GrpcRoute(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def rules(self) -> pulumi.Output[Sequence['outputs.GrpcRouteRule']]:
         """
@@ -966,15 +975,6 @@ class GrpcRoute(pulumi.CustomResource):
         Server-defined URL of this resource.
         """
         return pulumi.get(self, "self_link")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="updateTime")

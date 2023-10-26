@@ -295,6 +295,9 @@ type MetastoreService struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The release channel of the service. If unspecified, defaults to `STABLE`.
 	// Default value is `STABLE`.
 	// Possible values are: `CANARY`, `STABLE`.
@@ -315,9 +318,6 @@ type MetastoreService struct {
 	// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
 	// Structure is documented below.
 	TelemetryConfig MetastoreServiceTelemetryConfigOutput `pulumi:"telemetryConfig"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The tier of the service.
 	// Possible values are: `DEVELOPER`, `ENTERPRISE`.
 	Tier pulumi.StringOutput `pulumi:"tier"`
@@ -404,6 +404,9 @@ type metastoreServiceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The release channel of the service. If unspecified, defaults to `STABLE`.
 	// Default value is `STABLE`.
 	// Possible values are: `CANARY`, `STABLE`.
@@ -424,9 +427,6 @@ type metastoreServiceState struct {
 	// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
 	// Structure is documented below.
 	TelemetryConfig *MetastoreServiceTelemetryConfig `pulumi:"telemetryConfig"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The tier of the service.
 	// Possible values are: `DEVELOPER`, `ENTERPRISE`.
 	Tier *string `pulumi:"tier"`
@@ -481,6 +481,9 @@ type MetastoreServiceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The release channel of the service. If unspecified, defaults to `STABLE`.
 	// Default value is `STABLE`.
 	// Possible values are: `CANARY`, `STABLE`.
@@ -501,9 +504,6 @@ type MetastoreServiceState struct {
 	// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
 	// Structure is documented below.
 	TelemetryConfig MetastoreServiceTelemetryConfigPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// The tier of the service.
 	// Possible values are: `DEVELOPER`, `ENTERPRISE`.
 	Tier pulumi.StringPtrInput
@@ -834,6 +834,12 @@ func (o MetastoreServiceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreService) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o MetastoreServiceOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *MetastoreService) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The release channel of the service. If unspecified, defaults to `STABLE`.
 // Default value is `STABLE`.
 // Possible values are: `CANARY`, `STABLE`.
@@ -870,12 +876,6 @@ func (o MetastoreServiceOutput) StateMessage() pulumi.StringOutput {
 // Structure is documented below.
 func (o MetastoreServiceOutput) TelemetryConfig() MetastoreServiceTelemetryConfigOutput {
 	return o.ApplyT(func(v *MetastoreService) MetastoreServiceTelemetryConfigOutput { return v.TelemetryConfig }).(MetastoreServiceTelemetryConfigOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o MetastoreServiceOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *MetastoreService) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The tier of the service.

@@ -353,6 +353,9 @@ type Instance struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region of the Data Fusion instance.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Service account which will be used to access resources in the customer project.
@@ -368,9 +371,6 @@ type Instance struct {
 	StateMessage pulumi.StringOutput `pulumi:"stateMessage"`
 	// The name of the tenant project.
 	TenantProjectId pulumi.StringOutput `pulumi:"tenantProjectId"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Represents the type of Data Fusion instance. Each type is configured with
 	// the default settings for processing and memory.
 	// - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
@@ -480,6 +480,9 @@ type instanceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region of the Data Fusion instance.
 	Region *string `pulumi:"region"`
 	// Service account which will be used to access resources in the customer project.
@@ -495,9 +498,6 @@ type instanceState struct {
 	StateMessage *string `pulumi:"stateMessage"`
 	// The name of the tenant project.
 	TenantProjectId *string `pulumi:"tenantProjectId"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Represents the type of Data Fusion instance. Each type is configured with
 	// the default settings for processing and memory.
 	// - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
@@ -575,6 +575,9 @@ type InstanceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The region of the Data Fusion instance.
 	Region pulumi.StringPtrInput
 	// Service account which will be used to access resources in the customer project.
@@ -590,9 +593,6 @@ type InstanceState struct {
 	StateMessage pulumi.StringPtrInput
 	// The name of the tenant project.
 	TenantProjectId pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// Represents the type of Data Fusion instance. Each type is configured with
 	// the default settings for processing and memory.
 	// - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
@@ -977,6 +977,12 @@ func (o InstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o InstanceOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The region of the Data Fusion instance.
 func (o InstanceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
@@ -1008,12 +1014,6 @@ func (o InstanceOutput) StateMessage() pulumi.StringOutput {
 // The name of the tenant project.
 func (o InstanceOutput) TenantProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.TenantProjectId }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o InstanceOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Represents the type of Data Fusion instance. Each type is configured with

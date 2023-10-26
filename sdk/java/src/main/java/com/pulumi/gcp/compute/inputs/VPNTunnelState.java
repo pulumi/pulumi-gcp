@@ -265,6 +265,21 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * The region where the tunnel is located. If unset, is set to the region of `target_vpn_gateway`.
      * 
      */
@@ -386,21 +401,6 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     * 
-     */
-    @Import(name="terraformLabels")
-    private @Nullable Output<Map<String,String>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
-     * 
-     */
-    public Optional<Output<Map<String,String>>> terraformLabels() {
-        return Optional.ofNullable(this.terraformLabels);
-    }
-
-    /**
      * The unique identifier for the resource. This identifier is defined by the server.
      * 
      */
@@ -466,6 +466,7 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
         this.peerGcpGateway = $.peerGcpGateway;
         this.peerIp = $.peerIp;
         this.project = $.project;
+        this.pulumiLabels = $.pulumiLabels;
         this.region = $.region;
         this.remoteTrafficSelectors = $.remoteTrafficSelectors;
         this.router = $.router;
@@ -473,7 +474,6 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
         this.sharedSecret = $.sharedSecret;
         this.sharedSecretHash = $.sharedSecretHash;
         this.targetVpnGateway = $.targetVpnGateway;
-        this.terraformLabels = $.terraformLabels;
         this.tunnelId = $.tunnelId;
         this.vpnGateway = $.vpnGateway;
         this.vpnGatewayInterface = $.vpnGatewayInterface;
@@ -841,6 +841,27 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
          * @param region The region where the tunnel is located. If unset, is set to the region of `target_vpn_gateway`.
          * 
          * @return builder
@@ -1014,27 +1035,6 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder targetVpnGateway(String targetVpnGateway) {
             return targetVpnGateway(Output.of(targetVpnGateway));
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
-            $.terraformLabels = terraformLabels;
-            return this;
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

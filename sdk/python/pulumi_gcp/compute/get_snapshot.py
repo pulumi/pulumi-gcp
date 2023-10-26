@@ -22,7 +22,7 @@ class GetSnapshotResult:
     """
     A collection of values returned by getSnapshot.
     """
-    def __init__(__self__, chain_name=None, creation_timestamp=None, description=None, disk_size_gb=None, effective_labels=None, filter=None, id=None, label_fingerprint=None, labels=None, licenses=None, most_recent=None, name=None, project=None, self_link=None, snapshot_encryption_keys=None, snapshot_id=None, source_disk=None, source_disk_encryption_keys=None, storage_bytes=None, storage_locations=None, terraform_labels=None, zone=None):
+    def __init__(__self__, chain_name=None, creation_timestamp=None, description=None, disk_size_gb=None, effective_labels=None, filter=None, id=None, label_fingerprint=None, labels=None, licenses=None, most_recent=None, name=None, project=None, pulumi_labels=None, self_link=None, snapshot_encryption_keys=None, snapshot_id=None, source_disk=None, source_disk_encryption_keys=None, storage_bytes=None, storage_locations=None, zone=None):
         if chain_name and not isinstance(chain_name, str):
             raise TypeError("Expected argument 'chain_name' to be a str")
         pulumi.set(__self__, "chain_name", chain_name)
@@ -62,6 +62,9 @@ class GetSnapshotResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
@@ -83,9 +86,6 @@ class GetSnapshotResult:
         if storage_locations and not isinstance(storage_locations, list):
             raise TypeError("Expected argument 'storage_locations' to be a list")
         pulumi.set(__self__, "storage_locations", storage_locations)
-        if terraform_labels and not isinstance(terraform_labels, dict):
-            raise TypeError("Expected argument 'terraform_labels' to be a dict")
-        pulumi.set(__self__, "terraform_labels", terraform_labels)
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         pulumi.set(__self__, "zone", zone)
@@ -159,6 +159,11 @@ class GetSnapshotResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         return pulumi.get(self, "self_link")
@@ -194,11 +199,6 @@ class GetSnapshotResult:
         return pulumi.get(self, "storage_locations")
 
     @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Mapping[str, str]:
-        return pulumi.get(self, "terraform_labels")
-
-    @property
     @pulumi.getter
     def zone(self) -> str:
         return pulumi.get(self, "zone")
@@ -223,6 +223,7 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             most_recent=self.most_recent,
             name=self.name,
             project=self.project,
+            pulumi_labels=self.pulumi_labels,
             self_link=self.self_link,
             snapshot_encryption_keys=self.snapshot_encryption_keys,
             snapshot_id=self.snapshot_id,
@@ -230,7 +231,6 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             source_disk_encryption_keys=self.source_disk_encryption_keys,
             storage_bytes=self.storage_bytes,
             storage_locations=self.storage_locations,
-            terraform_labels=self.terraform_labels,
             zone=self.zone)
 
 
@@ -290,6 +290,7 @@ def get_snapshot(filter: Optional[str] = None,
         most_recent=pulumi.get(__ret__, 'most_recent'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         self_link=pulumi.get(__ret__, 'self_link'),
         snapshot_encryption_keys=pulumi.get(__ret__, 'snapshot_encryption_keys'),
         snapshot_id=pulumi.get(__ret__, 'snapshot_id'),
@@ -297,7 +298,6 @@ def get_snapshot(filter: Optional[str] = None,
         source_disk_encryption_keys=pulumi.get(__ret__, 'source_disk_encryption_keys'),
         storage_bytes=pulumi.get(__ret__, 'storage_bytes'),
         storage_locations=pulumi.get(__ret__, 'storage_locations'),
-        terraform_labels=pulumi.get(__ret__, 'terraform_labels'),
         zone=pulumi.get(__ret__, 'zone'))
 
 

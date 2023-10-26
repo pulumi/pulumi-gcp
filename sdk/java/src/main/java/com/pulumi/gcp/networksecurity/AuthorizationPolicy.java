@@ -259,6 +259,22 @@ public class AuthorizationPolicy extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
+    }
+    /**
      * List of rules to match. Note that at least one of the rules must match in order for the action specified in the &#39;action&#39; field to be taken.
      * A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
      * Structure is documented below.
@@ -275,22 +291,6 @@ public class AuthorizationPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<AuthorizationPolicyRule>>> rules() {
         return Codegen.optional(this.rules);
-    }
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    @Export(name="terraformLabels", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output<Map<String,String>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    public Output<Map<String,String>> terraformLabels() {
-        return this.terraformLabels;
     }
     /**
      * Time the AuthorizationPolicy was updated in UTC.

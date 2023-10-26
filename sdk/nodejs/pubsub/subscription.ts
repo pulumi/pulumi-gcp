@@ -292,6 +292,11 @@ export class Subscription extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * If push delivery is used with this subscription, this field is used to
      * configure it. An empty pushConfig signifies that the subscriber will
      * pull and ack messages using API methods.
@@ -312,11 +317,6 @@ export class Subscription extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly retryPolicy!: pulumi.Output<outputs.pubsub.SubscriptionRetryPolicy | undefined>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * A reference to a Topic resource.
      *
@@ -351,10 +351,10 @@ export class Subscription extends pulumi.CustomResource {
             resourceInputs["messageRetentionDuration"] = state ? state.messageRetentionDuration : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["pushConfig"] = state ? state.pushConfig : undefined;
             resourceInputs["retainAckedMessages"] = state ? state.retainAckedMessages : undefined;
             resourceInputs["retryPolicy"] = state ? state.retryPolicy : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["topic"] = state ? state.topic : undefined;
         } else {
             const args = argsOrState as SubscriptionArgs | undefined;
@@ -378,7 +378,7 @@ export class Subscription extends pulumi.CustomResource {
             resourceInputs["retryPolicy"] = args ? args.retryPolicy : undefined;
             resourceInputs["topic"] = args ? args.topic : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Subscription.__pulumiType, name, resourceInputs, opts);
@@ -498,6 +498,11 @@ export interface SubscriptionState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * If push delivery is used with this subscription, this field is used to
      * configure it. An empty pushConfig signifies that the subscriber will
      * pull and ack messages using API methods.
@@ -518,11 +523,6 @@ export interface SubscriptionState {
      * Structure is documented below.
      */
     retryPolicy?: pulumi.Input<inputs.pubsub.SubscriptionRetryPolicy>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A reference to a Topic resource.
      *

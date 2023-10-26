@@ -174,9 +174,9 @@ class _HostingChannelState:
                  expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  retained_release_count: Optional[pulumi.Input[int]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ttl: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering HostingChannel resources.
@@ -194,11 +194,11 @@ class _HostingChannelState:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The fully-qualified resource name for the channel, in the format:
                sites/SITE_ID/channels/CHANNEL_ID
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[int] retained_release_count: The number of previous releases to retain on the channel for rollback or other
                purposes. Must be a number between 1-100. Defaults to 10 for new channels.
         :param pulumi.Input[str] site_id: Required. The ID of the site in which to create this channel.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] ttl: Input only. A time-to-live for this channel. Sets `expire_time` to the provided
                duration past the time of the request. A duration in seconds with up to nine fractional
                digits, terminated by 's'. Example: "86400s" (one day).
@@ -210,9 +210,9 @@ class _HostingChannelState:
             expire_time=expire_time,
             labels=labels,
             name=name,
+            pulumi_labels=pulumi_labels,
             retained_release_count=retained_release_count,
             site_id=site_id,
-            terraform_labels=terraform_labels,
             ttl=ttl,
         )
     @staticmethod
@@ -223,9 +223,9 @@ class _HostingChannelState:
              expire_time: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              retained_release_count: Optional[pulumi.Input[int]] = None,
              site_id: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              ttl: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -235,12 +235,12 @@ class _HostingChannelState:
             effective_labels = kwargs['effectiveLabels']
         if expire_time is None and 'expireTime' in kwargs:
             expire_time = kwargs['expireTime']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if retained_release_count is None and 'retainedReleaseCount' in kwargs:
             retained_release_count = kwargs['retainedReleaseCount']
         if site_id is None and 'siteId' in kwargs:
             site_id = kwargs['siteId']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
 
         if channel_id is not None:
             _setter("channel_id", channel_id)
@@ -252,12 +252,12 @@ class _HostingChannelState:
             _setter("labels", labels)
         if name is not None:
             _setter("name", name)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if retained_release_count is not None:
             _setter("retained_release_count", retained_release_count)
         if site_id is not None:
             _setter("site_id", site_id)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if ttl is not None:
             _setter("ttl", ttl)
 
@@ -331,6 +331,19 @@ class _HostingChannelState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="retainedReleaseCount")
     def retained_release_count(self) -> Optional[pulumi.Input[int]]:
         """
@@ -354,19 +367,6 @@ class _HostingChannelState:
     @site_id.setter
     def site_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "site_id", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -566,7 +566,7 @@ class HostingChannel(pulumi.CustomResource):
             __props__.__dict__["ttl"] = ttl
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
-            __props__.__dict__["terraform_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
         super(HostingChannel, __self__).__init__(
             'gcp:firebase/hostingChannel:HostingChannel',
             resource_name,
@@ -582,9 +582,9 @@ class HostingChannel(pulumi.CustomResource):
             expire_time: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             retained_release_count: Optional[pulumi.Input[int]] = None,
             site_id: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             ttl: Optional[pulumi.Input[str]] = None) -> 'HostingChannel':
         """
         Get an existing HostingChannel resource's state with the given name, id, and optional extra
@@ -607,11 +607,11 @@ class HostingChannel(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The fully-qualified resource name for the channel, in the format:
                sites/SITE_ID/channels/CHANNEL_ID
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[int] retained_release_count: The number of previous releases to retain on the channel for rollback or other
                purposes. Must be a number between 1-100. Defaults to 10 for new channels.
         :param pulumi.Input[str] site_id: Required. The ID of the site in which to create this channel.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] ttl: Input only. A time-to-live for this channel. Sets `expire_time` to the provided
                duration past the time of the request. A duration in seconds with up to nine fractional
                digits, terminated by 's'. Example: "86400s" (one day).
@@ -625,9 +625,9 @@ class HostingChannel(pulumi.CustomResource):
         __props__.__dict__["expire_time"] = expire_time
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["retained_release_count"] = retained_release_count
         __props__.__dict__["site_id"] = site_id
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["ttl"] = ttl
         return HostingChannel(resource_name, opts=opts, __props__=__props__)
 
@@ -681,6 +681,15 @@ class HostingChannel(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="retainedReleaseCount")
     def retained_release_count(self) -> pulumi.Output[int]:
         """
@@ -696,15 +705,6 @@ class HostingChannel(pulumi.CustomResource):
         Required. The ID of the site in which to create this channel.
         """
         return pulumi.get(self, "site_id")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

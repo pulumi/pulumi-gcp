@@ -114,7 +114,7 @@ export class CertificateMap extends pulumi.CustomResource {
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
      * accurate to nanoseconds with up to nine fractional digits.
@@ -142,7 +142,7 @@ export class CertificateMap extends pulumi.CustomResource {
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as CertificateMapArgs | undefined;
@@ -153,7 +153,7 @@ export class CertificateMap extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["gclbTargets"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -209,7 +209,7 @@ export interface CertificateMapState {
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
      * accurate to nanoseconds with up to nine fractional digits.

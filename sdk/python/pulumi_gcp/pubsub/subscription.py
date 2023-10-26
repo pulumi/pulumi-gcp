@@ -491,10 +491,10 @@ class _SubscriptionState:
                  message_retention_duration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  push_config: Optional[pulumi.Input['SubscriptionPushConfigArgs']] = None,
                  retain_acked_messages: Optional[pulumi.Input[bool]] = None,
                  retry_policy: Optional[pulumi.Input['SubscriptionRetryPolicyArgs']] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  topic: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Subscription resources.
@@ -567,6 +567,8 @@ class _SubscriptionState:
         :param pulumi.Input[str] name: Name of the subscription.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input['SubscriptionPushConfigArgs'] push_config: If push delivery is used with this subscription, this field is used to
                configure it. An empty pushConfig signifies that the subscriber will
                pull and ack messages using API methods.
@@ -579,8 +581,6 @@ class _SubscriptionState:
                If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
                RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] topic: A reference to a Topic resource.
                
                
@@ -601,10 +601,10 @@ class _SubscriptionState:
             message_retention_duration=message_retention_duration,
             name=name,
             project=project,
+            pulumi_labels=pulumi_labels,
             push_config=push_config,
             retain_acked_messages=retain_acked_messages,
             retry_policy=retry_policy,
-            terraform_labels=terraform_labels,
             topic=topic,
         )
     @staticmethod
@@ -623,10 +623,10 @@ class _SubscriptionState:
              message_retention_duration: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              push_config: Optional[pulumi.Input['SubscriptionPushConfigArgs']] = None,
              retain_acked_messages: Optional[pulumi.Input[bool]] = None,
              retry_policy: Optional[pulumi.Input['SubscriptionRetryPolicyArgs']] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              topic: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -648,14 +648,14 @@ class _SubscriptionState:
             expiration_policy = kwargs['expirationPolicy']
         if message_retention_duration is None and 'messageRetentionDuration' in kwargs:
             message_retention_duration = kwargs['messageRetentionDuration']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if push_config is None and 'pushConfig' in kwargs:
             push_config = kwargs['pushConfig']
         if retain_acked_messages is None and 'retainAckedMessages' in kwargs:
             retain_acked_messages = kwargs['retainAckedMessages']
         if retry_policy is None and 'retryPolicy' in kwargs:
             retry_policy = kwargs['retryPolicy']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
 
         if ack_deadline_seconds is not None:
             _setter("ack_deadline_seconds", ack_deadline_seconds)
@@ -683,14 +683,14 @@ class _SubscriptionState:
             _setter("name", name)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if push_config is not None:
             _setter("push_config", push_config)
         if retain_acked_messages is not None:
             _setter("retain_acked_messages", retain_acked_messages)
         if retry_policy is not None:
             _setter("retry_policy", retry_policy)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if topic is not None:
             _setter("topic", topic)
 
@@ -907,6 +907,19 @@ class _SubscriptionState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="pushConfig")
     def push_config(self) -> Optional[pulumi.Input['SubscriptionPushConfigArgs']]:
         """
@@ -950,19 +963,6 @@ class _SubscriptionState:
     @retry_policy.setter
     def retry_policy(self, value: Optional[pulumi.Input['SubscriptionRetryPolicyArgs']]):
         pulumi.set(self, "retry_policy", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -1443,7 +1443,7 @@ class Subscription(pulumi.CustomResource):
                 raise TypeError("Missing required property 'topic'")
             __props__.__dict__["topic"] = topic
             __props__.__dict__["effective_labels"] = None
-            __props__.__dict__["terraform_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
         super(Subscription, __self__).__init__(
             'gcp:pubsub/subscription:Subscription',
             resource_name,
@@ -1467,10 +1467,10 @@ class Subscription(pulumi.CustomResource):
             message_retention_duration: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             push_config: Optional[pulumi.Input[pulumi.InputType['SubscriptionPushConfigArgs']]] = None,
             retain_acked_messages: Optional[pulumi.Input[bool]] = None,
             retry_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionRetryPolicyArgs']]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             topic: Optional[pulumi.Input[str]] = None) -> 'Subscription':
         """
         Get an existing Subscription resource's state with the given name, id, and optional extra
@@ -1548,6 +1548,8 @@ class Subscription(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the subscription.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['SubscriptionPushConfigArgs']] push_config: If push delivery is used with this subscription, this field is used to
                configure it. An empty pushConfig signifies that the subscriber will
                pull and ack messages using API methods.
@@ -1560,8 +1562,6 @@ class Subscription(pulumi.CustomResource):
                If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
                RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] topic: A reference to a Topic resource.
                
                
@@ -1584,10 +1584,10 @@ class Subscription(pulumi.CustomResource):
         __props__.__dict__["message_retention_duration"] = message_retention_duration
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["push_config"] = push_config
         __props__.__dict__["retain_acked_messages"] = retain_acked_messages
         __props__.__dict__["retry_policy"] = retry_policy
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["topic"] = topic
         return Subscription(resource_name, opts=opts, __props__=__props__)
 
@@ -1752,6 +1752,15 @@ class Subscription(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="pushConfig")
     def push_config(self) -> pulumi.Output[Optional['outputs.SubscriptionPushConfig']]:
         """
@@ -1783,15 +1792,6 @@ class Subscription(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "retry_policy")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

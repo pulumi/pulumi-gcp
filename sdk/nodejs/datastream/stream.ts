@@ -641,6 +641,11 @@ export class Stream extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Source connection profile configuration.
      * Structure is documented below.
      */
@@ -653,11 +658,6 @@ export class Stream extends pulumi.CustomResource {
      * The stream identifier.
      */
     public readonly streamId!: pulumi.Output<string>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a Stream resource with the given unique name, arguments, and options.
@@ -683,10 +683,10 @@ export class Stream extends pulumi.CustomResource {
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["sourceConfig"] = state ? state.sourceConfig : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["streamId"] = state ? state.streamId : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as StreamArgs | undefined;
             if ((!args || args.destinationConfig === undefined) && !opts.urn) {
@@ -717,8 +717,8 @@ export class Stream extends pulumi.CustomResource {
             resourceInputs["streamId"] = args ? args.streamId : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Stream.__pulumiType, name, resourceInputs, opts);
@@ -781,6 +781,11 @@ export interface StreamState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Source connection profile configuration.
      * Structure is documented below.
      */
@@ -793,11 +798,6 @@ export interface StreamState {
      * The stream identifier.
      */
     streamId?: pulumi.Input<string>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**

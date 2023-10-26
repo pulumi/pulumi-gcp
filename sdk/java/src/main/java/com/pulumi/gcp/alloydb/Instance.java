@@ -368,6 +368,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
+    }
+    /**
      * Configuration for query insights.
      * Structure is documented below.
      * 
@@ -426,22 +442,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> state() {
         return this.state;
-    }
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    @Export(name="terraformLabels", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output<Map<String,String>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    public Output<Map<String,String>> terraformLabels() {
-        return this.terraformLabels;
     }
     /**
      * The system-generated UID of the resource.

@@ -116,6 +116,11 @@ export class Peering extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The current state of this Peering.
      */
     public readonly status!: pulumi.Output<string | undefined>;
@@ -123,11 +128,6 @@ export class Peering extends pulumi.CustomResource {
      * Additional information about the current status of this peering, if available.
      */
     public readonly statusMessage!: pulumi.Output<string | undefined>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a Peering resource with the given unique name, arguments, and options.
@@ -149,9 +149,9 @@ export class Peering extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["peeringId"] = state ? state.peeringId : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["statusMessage"] = state ? state.statusMessage : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as PeeringArgs | undefined;
             if ((!args || args.authorizedNetwork === undefined) && !opts.urn) {
@@ -172,7 +172,7 @@ export class Peering extends pulumi.CustomResource {
             resourceInputs["statusMessage"] = args ? args.statusMessage : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Peering.__pulumiType, name, resourceInputs, opts);
@@ -216,6 +216,11 @@ export interface PeeringState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The current state of this Peering.
      */
     status?: pulumi.Input<string>;
@@ -223,11 +228,6 @@ export interface PeeringState {
      * Additional information about the current status of this peering, if available.
      */
     statusMessage?: pulumi.Input<string>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**

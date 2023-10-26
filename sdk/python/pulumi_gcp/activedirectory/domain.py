@@ -197,8 +197,8 @@ class _DomainState:
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 reserved_ip_range: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 reserved_ip_range: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
         :param pulumi.Input[str] admin: The name of delegated administrator account used to perform Active Directory operations.
@@ -222,10 +222,10 @@ class _DomainState:
         :param pulumi.Input[str] name: The unique name of the domain using the format: `projects/{project}/locations/global/domains/{domainName}`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] reserved_ip_range: The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger.
                Ranges must be unique and non-overlapping with existing subnets in authorizedNetworks
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         """
         _DomainState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -238,8 +238,8 @@ class _DomainState:
             locations=locations,
             name=name,
             project=project,
+            pulumi_labels=pulumi_labels,
             reserved_ip_range=reserved_ip_range,
-            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
@@ -253,8 +253,8 @@ class _DomainState:
              locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              reserved_ip_range: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if authorized_networks is None and 'authorizedNetworks' in kwargs:
@@ -263,10 +263,10 @@ class _DomainState:
             domain_name = kwargs['domainName']
         if effective_labels is None and 'effectiveLabels' in kwargs:
             effective_labels = kwargs['effectiveLabels']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if reserved_ip_range is None and 'reservedIpRange' in kwargs:
             reserved_ip_range = kwargs['reservedIpRange']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
 
         if admin is not None:
             _setter("admin", admin)
@@ -286,10 +286,10 @@ class _DomainState:
             _setter("name", name)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if reserved_ip_range is not None:
             _setter("reserved_ip_range", reserved_ip_range)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter
@@ -412,6 +412,19 @@ class _DomainState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="reservedIpRange")
     def reserved_ip_range(self) -> Optional[pulumi.Input[str]]:
         """
@@ -423,19 +436,6 @@ class _DomainState:
     @reserved_ip_range.setter
     def reserved_ip_range(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "reserved_ip_range", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
 
 class Domain(pulumi.CustomResource):
@@ -589,7 +589,7 @@ class Domain(pulumi.CustomResource):
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["fqdn"] = None
             __props__.__dict__["name"] = None
-            __props__.__dict__["terraform_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
         super(Domain, __self__).__init__(
             'gcp:activedirectory/domain:Domain',
             resource_name,
@@ -609,8 +609,8 @@ class Domain(pulumi.CustomResource):
             locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            reserved_ip_range: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Domain':
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            reserved_ip_range: Optional[pulumi.Input[str]] = None) -> 'Domain':
         """
         Get an existing Domain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -639,10 +639,10 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] name: The unique name of the domain using the format: `projects/{project}/locations/global/domains/{domainName}`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] reserved_ip_range: The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger.
                Ranges must be unique and non-overlapping with existing subnets in authorizedNetworks
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -657,8 +657,8 @@ class Domain(pulumi.CustomResource):
         __props__.__dict__["locations"] = locations
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["reserved_ip_range"] = reserved_ip_range
-        __props__.__dict__["terraform_labels"] = terraform_labels
         return Domain(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -746,6 +746,15 @@ class Domain(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="reservedIpRange")
     def reserved_ip_range(self) -> pulumi.Output[str]:
         """
@@ -753,13 +762,4 @@ class Domain(pulumi.CustomResource):
         Ranges must be unique and non-overlapping with existing subnets in authorizedNetworks
         """
         return pulumi.get(self, "reserved_ip_range")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 

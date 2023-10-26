@@ -105,7 +105,7 @@ export class CertificateTemplate extends pulumi.CustomResource {
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: any}>;
     /**
      * Output only. The time at which this CertificateTemplate was updated.
      */
@@ -134,7 +134,7 @@ export class CertificateTemplate extends pulumi.CustomResource {
             resourceInputs["passthroughExtensions"] = state ? state.passthroughExtensions : undefined;
             resourceInputs["predefinedValues"] = state ? state.predefinedValues : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as CertificateTemplateArgs | undefined;
@@ -151,7 +151,7 @@ export class CertificateTemplate extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -210,7 +210,7 @@ export interface CertificateTemplateState {
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    terraformLabels?: pulumi.Input<{[key: string]: any}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Output only. The time at which this CertificateTemplate was updated.
      */

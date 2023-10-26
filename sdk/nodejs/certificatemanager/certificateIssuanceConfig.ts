@@ -178,17 +178,17 @@ export class CertificateIssuanceConfig extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
      * Must be a number between 1-99, inclusive.
      * You must set the rotation window percentage in relation to the certificate lifetime so that certificate renewal occurs at least 7 days after
      * the certificate has been issued and at least 7 days before it expires.
      */
     public readonly rotationWindowPercentage!: pulumi.Output<number>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The last update timestamp of a CertificateIssuanceConfig. Timestamp is in RFC3339 UTC "Zulu" format,
      * accurate to nanoseconds with up to nine fractional digits.
@@ -219,8 +219,8 @@ export class CertificateIssuanceConfig extends pulumi.CustomResource {
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["rotationWindowPercentage"] = state ? state.rotationWindowPercentage : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as CertificateIssuanceConfigArgs | undefined;
@@ -247,7 +247,7 @@ export class CertificateIssuanceConfig extends pulumi.CustomResource {
             resourceInputs["rotationWindowPercentage"] = args ? args.rotationWindowPercentage : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -312,17 +312,17 @@ export interface CertificateIssuanceConfigState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
      * Must be a number between 1-99, inclusive.
      * You must set the rotation window percentage in relation to the certificate lifetime so that certificate renewal occurs at least 7 days after
      * the certificate has been issued and at least 7 days before it expires.
      */
     rotationWindowPercentage?: pulumi.Input<number>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The last update timestamp of a CertificateIssuanceConfig. Timestamp is in RFC3339 UTC "Zulu" format,
      * accurate to nanoseconds with up to nine fractional digits.

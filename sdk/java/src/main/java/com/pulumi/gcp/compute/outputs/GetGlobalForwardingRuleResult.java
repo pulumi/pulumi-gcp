@@ -38,11 +38,11 @@ public final class GetGlobalForwardingRuleResult {
     private @Nullable String project;
     private String pscConnectionId;
     private String pscConnectionStatus;
+    private Map<String,String> pulumiLabels;
     private String selfLink;
     private List<String> sourceIpRanges;
     private String subnetwork;
     private String target;
-    private Map<String,String> terraformLabels;
 
     private GetGlobalForwardingRuleResult() {}
     public Boolean allowPscGlobalAccess() {
@@ -106,6 +106,9 @@ public final class GetGlobalForwardingRuleResult {
     public String pscConnectionStatus() {
         return this.pscConnectionStatus;
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public String selfLink() {
         return this.selfLink;
     }
@@ -117,9 +120,6 @@ public final class GetGlobalForwardingRuleResult {
     }
     public String target() {
         return this.target;
-    }
-    public Map<String,String> terraformLabels() {
-        return this.terraformLabels;
     }
 
     public static Builder builder() {
@@ -150,11 +150,11 @@ public final class GetGlobalForwardingRuleResult {
         private @Nullable String project;
         private String pscConnectionId;
         private String pscConnectionStatus;
+        private Map<String,String> pulumiLabels;
         private String selfLink;
         private List<String> sourceIpRanges;
         private String subnetwork;
         private String target;
-        private Map<String,String> terraformLabels;
         public Builder() {}
         public Builder(GetGlobalForwardingRuleResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -177,11 +177,11 @@ public final class GetGlobalForwardingRuleResult {
     	      this.project = defaults.project;
     	      this.pscConnectionId = defaults.pscConnectionId;
     	      this.pscConnectionStatus = defaults.pscConnectionStatus;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.selfLink = defaults.selfLink;
     	      this.sourceIpRanges = defaults.sourceIpRanges;
     	      this.subnetwork = defaults.subnetwork;
     	      this.target = defaults.target;
-    	      this.terraformLabels = defaults.terraformLabels;
         }
 
         @CustomType.Setter
@@ -283,6 +283,11 @@ public final class GetGlobalForwardingRuleResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
             return this;
@@ -303,11 +308,6 @@ public final class GetGlobalForwardingRuleResult {
         @CustomType.Setter
         public Builder target(String target) {
             this.target = Objects.requireNonNull(target);
-            return this;
-        }
-        @CustomType.Setter
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            this.terraformLabels = Objects.requireNonNull(terraformLabels);
             return this;
         }
         public GetGlobalForwardingRuleResult build() {
@@ -331,11 +331,11 @@ public final class GetGlobalForwardingRuleResult {
             o.project = project;
             o.pscConnectionId = pscConnectionId;
             o.pscConnectionStatus = pscConnectionStatus;
+            o.pulumiLabels = pulumiLabels;
             o.selfLink = selfLink;
             o.sourceIpRanges = sourceIpRanges;
             o.subnetwork = subnetwork;
             o.target = target;
-            o.terraformLabels = terraformLabels;
             return o;
         }
     }

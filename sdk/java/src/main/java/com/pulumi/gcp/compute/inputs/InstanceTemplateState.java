@@ -388,6 +388,21 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * An instance template is a global resource that is not
      * bound to a zone or a region. However, you can still specify some regional
      * resources in an instance template, which restricts the template to the
@@ -555,21 +570,6 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.tagsFingerprint);
     }
 
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     * 
-     */
-    @Import(name="terraformLabels")
-    private @Nullable Output<Map<String,String>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
-     * 
-     */
-    public Optional<Output<Map<String,String>>> terraformLabels() {
-        return Optional.ofNullable(this.terraformLabels);
-    }
-
     private InstanceTemplateState() {}
 
     private InstanceTemplateState(InstanceTemplateState $) {
@@ -593,6 +593,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
         this.networkInterfaces = $.networkInterfaces;
         this.networkPerformanceConfig = $.networkPerformanceConfig;
         this.project = $.project;
+        this.pulumiLabels = $.pulumiLabels;
         this.region = $.region;
         this.reservationAffinity = $.reservationAffinity;
         this.resourcePolicies = $.resourcePolicies;
@@ -603,7 +604,6 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
         this.shieldedInstanceConfig = $.shieldedInstanceConfig;
         this.tags = $.tags;
         this.tagsFingerprint = $.tagsFingerprint;
-        this.terraformLabels = $.terraformLabels;
     }
 
     public static Builder builder() {
@@ -1137,6 +1137,27 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
          * @param region An instance template is a global resource that is not
          * bound to a zone or a region. However, you can still specify some regional
          * resources in an instance template, which restricts the template to the
@@ -1372,27 +1393,6 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
          */
         public Builder tagsFingerprint(String tagsFingerprint) {
             return tagsFingerprint(Output.of(tagsFingerprint));
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
-            $.terraformLabels = terraformLabels;
-            return this;
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            return terraformLabels(Output.of(terraformLabels));
         }
 
         public InstanceTemplateState build() {

@@ -154,13 +154,13 @@ type AppConnector struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region of the AppConnector.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// Represents the different states of a AppConnector.
 	State pulumi.StringOutput `pulumi:"state"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewAppConnector registers a new resource with the given unique name, arguments, and options.
@@ -214,13 +214,13 @@ type appConnectorState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region of the AppConnector.
 	Region *string `pulumi:"region"`
 	// Represents the different states of a AppConnector.
 	State *string `pulumi:"state"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type AppConnectorState struct {
@@ -242,13 +242,13 @@ type AppConnectorState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The region of the AppConnector.
 	Region pulumi.StringPtrInput
 	// Represents the different states of a AppConnector.
 	State pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 }
 
 func (AppConnectorState) ElementType() reflect.Type {
@@ -443,6 +443,12 @@ func (o AppConnectorOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppConnector) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o AppConnectorOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AppConnector) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The region of the AppConnector.
 func (o AppConnectorOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppConnector) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
@@ -451,12 +457,6 @@ func (o AppConnectorOutput) Region() pulumi.StringPtrOutput {
 // Represents the different states of a AppConnector.
 func (o AppConnectorOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppConnector) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o AppConnectorOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *AppConnector) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type AppConnectorArrayOutput struct{ *pulumi.OutputState }

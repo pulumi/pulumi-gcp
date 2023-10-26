@@ -250,6 +250,21 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
      * 
      */
@@ -307,21 +322,6 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> storageClass() {
         return Optional.ofNullable(this.storageClass);
-    }
-
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     * 
-     */
-    @Import(name="terraformLabels")
-    private @Nullable Output<Map<String,String>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
-     * 
-     */
-    public Optional<Output<Map<String,String>>> terraformLabels() {
-        return Optional.ofNullable(this.terraformLabels);
     }
 
     /**
@@ -401,11 +401,11 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.project = $.project;
         this.publicAccessPrevention = $.publicAccessPrevention;
+        this.pulumiLabels = $.pulumiLabels;
         this.requesterPays = $.requesterPays;
         this.retentionPolicy = $.retentionPolicy;
         this.selfLink = $.selfLink;
         this.storageClass = $.storageClass;
-        this.terraformLabels = $.terraformLabels;
         this.uniformBucketLevelAccess = $.uniformBucketLevelAccess;
         this.url = $.url;
         this.versioning = $.versioning;
@@ -757,6 +757,27 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
          * @param requesterPays Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
          * 
          * @return builder
@@ -838,27 +859,6 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder storageClass(String storageClass) {
             return storageClass(Output.of(storageClass));
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
-            $.terraformLabels = terraformLabels;
-            return this;
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

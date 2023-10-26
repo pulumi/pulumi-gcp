@@ -452,6 +452,22 @@ public class EdgeCacheOrigin extends com.pulumi.resources.CustomResource {
         return this.protocol;
     }
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
+    }
+    /**
      * Specifies one or more retry conditions for the configured origin.
      * If the failure mode during a connection attempt to the origin matches the configured retryCondition(s),
      * the origin request will be retried up to maxAttempts times. The failoverOrigin, if configured, will then be used to satisfy the request.
@@ -490,22 +506,6 @@ public class EdgeCacheOrigin extends com.pulumi.resources.CustomResource {
      */
     public Output<List<String>> retryConditions() {
         return this.retryConditions;
-    }
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    @Export(name="terraformLabels", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output<Map<String,String>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    public Output<Map<String,String>> terraformLabels() {
-        return this.terraformLabels;
     }
     /**
      * The connection and HTTP timeout configuration for this origin.

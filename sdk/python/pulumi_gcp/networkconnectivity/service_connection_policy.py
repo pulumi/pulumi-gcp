@@ -214,8 +214,8 @@ class _ServiceConnectionPolicyState:
                  project: Optional[pulumi.Input[str]] = None,
                  psc_config: Optional[pulumi.Input['ServiceConnectionPolicyPscConfigArgs']] = None,
                  psc_connections: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceConnectionPolicyPscConnectionArgs']]]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  service_class: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServiceConnectionPolicy resources.
@@ -241,10 +241,10 @@ class _ServiceConnectionPolicyState:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceConnectionPolicyPscConnectionArgs']]] psc_connections: Information about each Private Service Connect connection.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] service_class: The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
                It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: The timestamp when the resource was updated.
         """
         _ServiceConnectionPolicyState._configure(
@@ -261,8 +261,8 @@ class _ServiceConnectionPolicyState:
             project=project,
             psc_config=psc_config,
             psc_connections=psc_connections,
+            pulumi_labels=pulumi_labels,
             service_class=service_class,
-            terraform_labels=terraform_labels,
             update_time=update_time,
         )
     @staticmethod
@@ -280,8 +280,8 @@ class _ServiceConnectionPolicyState:
              project: Optional[pulumi.Input[str]] = None,
              psc_config: Optional[pulumi.Input['ServiceConnectionPolicyPscConfigArgs']] = None,
              psc_connections: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceConnectionPolicyPscConnectionArgs']]]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              service_class: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -293,10 +293,10 @@ class _ServiceConnectionPolicyState:
             psc_config = kwargs['pscConfig']
         if psc_connections is None and 'pscConnections' in kwargs:
             psc_connections = kwargs['pscConnections']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if service_class is None and 'serviceClass' in kwargs:
             service_class = kwargs['serviceClass']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
         if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
 
@@ -324,10 +324,10 @@ class _ServiceConnectionPolicyState:
             _setter("psc_config", psc_config)
         if psc_connections is not None:
             _setter("psc_connections", psc_connections)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if service_class is not None:
             _setter("service_class", service_class)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if update_time is not None:
             _setter("update_time", update_time)
 
@@ -486,6 +486,19 @@ class _ServiceConnectionPolicyState:
         pulumi.set(self, "psc_connections", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="serviceClass")
     def service_class(self) -> Optional[pulumi.Input[str]]:
         """
@@ -497,19 +510,6 @@ class _ServiceConnectionPolicyState:
     @service_class.setter
     def service_class(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_class", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="updateTime")
@@ -716,7 +716,7 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
             __props__.__dict__["etag"] = None
             __props__.__dict__["infrastructure"] = None
             __props__.__dict__["psc_connections"] = None
-            __props__.__dict__["terraform_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["update_time"] = None
         super(ServiceConnectionPolicy, __self__).__init__(
             'gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy',
@@ -740,8 +740,8 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             psc_config: Optional[pulumi.Input[pulumi.InputType['ServiceConnectionPolicyPscConfigArgs']]] = None,
             psc_connections: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceConnectionPolicyPscConnectionArgs']]]]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             service_class: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'ServiceConnectionPolicy':
         """
         Get an existing ServiceConnectionPolicy resource's state with the given name, id, and optional extra
@@ -772,10 +772,10 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceConnectionPolicyPscConnectionArgs']]]] psc_connections: Information about each Private Service Connect connection.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] service_class: The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
                It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: The timestamp when the resource was updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -794,8 +794,8 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["psc_config"] = psc_config
         __props__.__dict__["psc_connections"] = psc_connections
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["service_class"] = service_class
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["update_time"] = update_time
         return ServiceConnectionPolicy(resource_name, opts=opts, __props__=__props__)
 
@@ -906,6 +906,15 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
         return pulumi.get(self, "psc_connections")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="serviceClass")
     def service_class(self) -> pulumi.Output[str]:
         """
@@ -913,15 +922,6 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
         It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
         """
         return pulumi.get(self, "service_class")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="updateTime")

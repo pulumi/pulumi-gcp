@@ -52,8 +52,8 @@ type LookupAiIndexResult struct {
 	Metadatas         []GetAiIndexMetadata  `pulumi:"metadatas"`
 	Name              string                `pulumi:"name"`
 	Project           *string               `pulumi:"project"`
+	PulumiLabels      map[string]string     `pulumi:"pulumiLabels"`
 	Region            string                `pulumi:"region"`
-	TerraformLabels   map[string]string     `pulumi:"terraformLabels"`
 	UpdateTime        string                `pulumi:"updateTime"`
 }
 
@@ -164,12 +164,12 @@ func (o LookupAiIndexResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAiIndexResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
-func (o LookupAiIndexResultOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAiIndexResult) string { return v.Region }).(pulumi.StringOutput)
+func (o LookupAiIndexResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAiIndexResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-func (o LookupAiIndexResultOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupAiIndexResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
+func (o LookupAiIndexResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAiIndexResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
 func (o LookupAiIndexResultOutput) UpdateTime() pulumi.StringOutput {

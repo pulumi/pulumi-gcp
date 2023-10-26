@@ -171,6 +171,20 @@ public class Hub extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output<Map<String,Object>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,Object>> pulumiLabels() {
+        return this.pulumiLabels;
+    }
+    /**
      * The VPC network associated with this hub&#39;s spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub&#39;s spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
      * 
      */
@@ -197,20 +211,6 @@ public class Hub extends com.pulumi.resources.CustomResource {
      */
     public Output<String> state() {
         return this.state;
-    }
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     * 
-     */
-    @Export(name="terraformLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
-     * 
-     */
-    public Output<Map<String,Object>> terraformLabels() {
-        return this.terraformLabels;
     }
     /**
      * Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.

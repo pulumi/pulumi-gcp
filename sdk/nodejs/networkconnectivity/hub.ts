@@ -102,6 +102,10 @@ export class Hub extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: any}>;
+    /**
      * The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
      */
     public /*out*/ readonly routingVpcs!: pulumi.Output<outputs.networkconnectivity.HubRoutingVpc[]>;
@@ -109,10 +113,6 @@ export class Hub extends pulumi.CustomResource {
      * Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: any}>;
     /**
      * Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
      */
@@ -141,9 +141,9 @@ export class Hub extends pulumi.CustomResource {
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["routingVpcs"] = state ? state.routingVpcs : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["uniqueId"] = state ? state.uniqueId : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -154,9 +154,9 @@ export class Hub extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["routingVpcs"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["uniqueId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
@@ -202,6 +202,10 @@ export interface HubState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: any}>;
+    /**
      * The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
      */
     routingVpcs?: pulumi.Input<pulumi.Input<inputs.networkconnectivity.HubRoutingVpc>[]>;
@@ -209,10 +213,6 @@ export interface HubState {
      * Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
      */
     state?: pulumi.Input<string>;
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
      */

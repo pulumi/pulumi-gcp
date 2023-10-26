@@ -72,9 +72,9 @@ export interface GetFunctionResult {
     readonly location: string;
     readonly name: string;
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly serviceConfigs: outputs.cloudfunctionsv2.GetFunctionServiceConfig[];
     readonly state: string;
-    readonly terraformLabels: {[key: string]: string};
     readonly updateTime: string;
     readonly url: string;
 }

@@ -174,9 +174,9 @@ class _MembershipBindingState:
                  membership_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
                  states: Optional[pulumi.Input[Sequence[pulumi.Input['MembershipBindingStateArgs']]]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -198,12 +198,12 @@ class _MembershipBindingState:
         :param pulumi.Input[str] name: The resource name for the membershipbinding itself
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] scope: A Workspace resource name in the format
                `projects/*/locations/*/scopes/*`.
         :param pulumi.Input[Sequence[pulumi.Input['MembershipBindingStateArgs']]] states: State of the membership binding resource.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[str] update_time: Time the MembershipBinding was updated in UTC.
         """
@@ -218,9 +218,9 @@ class _MembershipBindingState:
             membership_id=membership_id,
             name=name,
             project=project,
+            pulumi_labels=pulumi_labels,
             scope=scope,
             states=states,
-            terraform_labels=terraform_labels,
             uid=uid,
             update_time=update_time,
         )
@@ -236,9 +236,9 @@ class _MembershipBindingState:
              membership_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              scope: Optional[pulumi.Input[str]] = None,
              states: Optional[pulumi.Input[Sequence[pulumi.Input['MembershipBindingStateArgs']]]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
@@ -253,8 +253,8 @@ class _MembershipBindingState:
             membership_binding_id = kwargs['membershipBindingId']
         if membership_id is None and 'membershipId' in kwargs:
             membership_id = kwargs['membershipId']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
 
@@ -276,12 +276,12 @@ class _MembershipBindingState:
             _setter("name", name)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if scope is not None:
             _setter("scope", scope)
         if states is not None:
             _setter("states", states)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if uid is not None:
             _setter("uid", uid)
         if update_time is not None:
@@ -404,6 +404,19 @@ class _MembershipBindingState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter
     def scope(self) -> Optional[pulumi.Input[str]]:
         """
@@ -428,19 +441,6 @@ class _MembershipBindingState:
     @states.setter
     def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MembershipBindingStateArgs']]]]):
         pulumi.set(self, "states", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -608,8 +608,8 @@ class MembershipBinding(pulumi.CustomResource):
             __props__.__dict__["delete_time"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["states"] = None
-            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
         super(MembershipBinding, __self__).__init__(
@@ -631,9 +631,9 @@ class MembershipBinding(pulumi.CustomResource):
             membership_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             scope: Optional[pulumi.Input[str]] = None,
             states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembershipBindingStateArgs']]]]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'MembershipBinding':
         """
@@ -660,12 +660,12 @@ class MembershipBinding(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource name for the membershipbinding itself
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] scope: A Workspace resource name in the format
                `projects/*/locations/*/scopes/*`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembershipBindingStateArgs']]]] states: State of the membership binding resource.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[str] update_time: Time the MembershipBinding was updated in UTC.
         """
@@ -682,9 +682,9 @@ class MembershipBinding(pulumi.CustomResource):
         __props__.__dict__["membership_id"] = membership_id
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["scope"] = scope
         __props__.__dict__["states"] = states
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
         return MembershipBinding(resource_name, opts=opts, __props__=__props__)
@@ -770,6 +770,15 @@ class MembershipBinding(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def scope(self) -> pulumi.Output[str]:
         """
@@ -786,15 +795,6 @@ class MembershipBinding(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "states")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

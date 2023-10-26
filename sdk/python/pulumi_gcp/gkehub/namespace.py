@@ -179,11 +179,11 @@ class _NamespaceState:
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
                  scope_id: Optional[pulumi.Input[str]] = None,
                  scope_namespace_id: Optional[pulumi.Input[str]] = None,
                  states: Optional[pulumi.Input[Sequence[pulumi.Input['NamespaceStateArgs']]]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -204,6 +204,8 @@ class _NamespaceState:
                a key. Keys and values must be Kubernetes-conformant.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] scope: The name of the Scope instance.
         :param pulumi.Input[str] scope_id: Id of the scope
                
@@ -212,8 +214,6 @@ class _NamespaceState:
         :param pulumi.Input[str] scope_namespace_id: The client-provided identifier of the namespace.
         :param pulumi.Input[Sequence[pulumi.Input['NamespaceStateArgs']]] states: State of the namespace resource.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[str] update_time: Time the Namespace was updated in UTC.
         """
@@ -226,11 +226,11 @@ class _NamespaceState:
             name=name,
             namespace_labels=namespace_labels,
             project=project,
+            pulumi_labels=pulumi_labels,
             scope=scope,
             scope_id=scope_id,
             scope_namespace_id=scope_namespace_id,
             states=states,
-            terraform_labels=terraform_labels,
             uid=uid,
             update_time=update_time,
         )
@@ -244,11 +244,11 @@ class _NamespaceState:
              name: Optional[pulumi.Input[str]] = None,
              namespace_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              scope: Optional[pulumi.Input[str]] = None,
              scope_id: Optional[pulumi.Input[str]] = None,
              scope_namespace_id: Optional[pulumi.Input[str]] = None,
              states: Optional[pulumi.Input[Sequence[pulumi.Input['NamespaceStateArgs']]]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
@@ -261,12 +261,12 @@ class _NamespaceState:
             effective_labels = kwargs['effectiveLabels']
         if namespace_labels is None and 'namespaceLabels' in kwargs:
             namespace_labels = kwargs['namespaceLabels']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if scope_id is None and 'scopeId' in kwargs:
             scope_id = kwargs['scopeId']
         if scope_namespace_id is None and 'scopeNamespaceId' in kwargs:
             scope_namespace_id = kwargs['scopeNamespaceId']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
         if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
 
@@ -284,6 +284,8 @@ class _NamespaceState:
             _setter("namespace_labels", namespace_labels)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if scope is not None:
             _setter("scope", scope)
         if scope_id is not None:
@@ -292,8 +294,6 @@ class _NamespaceState:
             _setter("scope_namespace_id", scope_namespace_id)
         if states is not None:
             _setter("states", states)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if uid is not None:
             _setter("uid", uid)
         if update_time is not None:
@@ -393,6 +393,19 @@ class _NamespaceState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter
     def scope(self) -> Optional[pulumi.Input[str]]:
         """
@@ -443,19 +456,6 @@ class _NamespaceState:
     @states.setter
     def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NamespaceStateArgs']]]]):
         pulumi.set(self, "states", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -624,8 +624,8 @@ class Namespace(pulumi.CustomResource):
             __props__.__dict__["delete_time"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["states"] = None
-            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
         super(Namespace, __self__).__init__(
@@ -645,11 +645,11 @@ class Namespace(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             namespace_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             scope: Optional[pulumi.Input[str]] = None,
             scope_id: Optional[pulumi.Input[str]] = None,
             scope_namespace_id: Optional[pulumi.Input[str]] = None,
             states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamespaceStateArgs']]]]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Namespace':
         """
@@ -675,6 +675,8 @@ class Namespace(pulumi.CustomResource):
                a key. Keys and values must be Kubernetes-conformant.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] scope: The name of the Scope instance.
         :param pulumi.Input[str] scope_id: Id of the scope
                
@@ -683,8 +685,6 @@ class Namespace(pulumi.CustomResource):
         :param pulumi.Input[str] scope_namespace_id: The client-provided identifier of the namespace.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamespaceStateArgs']]]] states: State of the namespace resource.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[str] update_time: Time the Namespace was updated in UTC.
         """
@@ -699,11 +699,11 @@ class Namespace(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["namespace_labels"] = namespace_labels
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["scope"] = scope
         __props__.__dict__["scope_id"] = scope_id
         __props__.__dict__["scope_namespace_id"] = scope_namespace_id
         __props__.__dict__["states"] = states
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
         return Namespace(resource_name, opts=opts, __props__=__props__)
@@ -774,6 +774,15 @@ class Namespace(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def scope(self) -> pulumi.Output[str]:
         """
@@ -808,15 +817,6 @@ class Namespace(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "states")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

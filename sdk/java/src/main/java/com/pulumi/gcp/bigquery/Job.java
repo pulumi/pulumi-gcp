@@ -585,6 +585,24 @@ public class Job extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * (Output)
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return (Output)
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
+    }
+    /**
      * SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
      * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
      * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = &#34;&#34;` and `write_disposition = &#34;&#34;`.
@@ -617,24 +635,6 @@ public class Job extends com.pulumi.resources.CustomResource {
      */
     public Output<List<JobStatus>> statuses() {
         return this.statuses;
-    }
-    /**
-     * (Output)
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    @Export(name="terraformLabels", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output<Map<String,String>> terraformLabels;
-
-    /**
-     * @return (Output)
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    public Output<Map<String,String>> terraformLabels() {
-        return this.terraformLabels;
     }
     /**
      * Email address of the user who ran the job.

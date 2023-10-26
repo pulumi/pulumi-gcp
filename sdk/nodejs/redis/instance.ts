@@ -342,6 +342,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
      * Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
      * will exhibit some lag behind the primary. Write requests must target 'host'.
@@ -406,11 +411,6 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly serverCaCerts!: pulumi.Output<outputs.redis.InstanceServerCaCert[]>;
     /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
-    /**
      * The service tier of the instance. Must be one of these values:
      * - BASIC: standalone instance
      * - STANDARD_HA: highly available primary/replica instances
@@ -461,6 +461,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["persistenceIamIdentity"] = state ? state.persistenceIamIdentity : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["readEndpoint"] = state ? state.readEndpoint : undefined;
             resourceInputs["readEndpointPort"] = state ? state.readEndpointPort : undefined;
             resourceInputs["readReplicasMode"] = state ? state.readReplicasMode : undefined;
@@ -471,7 +472,6 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["reservedIpRange"] = state ? state.reservedIpRange : undefined;
             resourceInputs["secondaryIpRange"] = state ? state.secondaryIpRange : undefined;
             resourceInputs["serverCaCerts"] = state ? state.serverCaCerts : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["tier"] = state ? state.tier : undefined;
             resourceInputs["transitEncryptionMode"] = state ? state.transitEncryptionMode : undefined;
         } else {
@@ -510,10 +510,10 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["nodes"] = undefined /*out*/;
             resourceInputs["persistenceIamIdentity"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["readEndpoint"] = undefined /*out*/;
             resourceInputs["readEndpointPort"] = undefined /*out*/;
             resourceInputs["serverCaCerts"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["authString"] };
@@ -651,6 +651,11 @@ export interface InstanceState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
      * Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
      * will exhibit some lag behind the primary. Write requests must target 'host'.
@@ -714,11 +719,6 @@ export interface InstanceState {
      * Structure is documented below.
      */
     serverCaCerts?: pulumi.Input<pulumi.Input<inputs.redis.InstanceServerCaCert>[]>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The service tier of the instance. Must be one of these values:
      * - BASIC: standalone instance

@@ -76,11 +76,11 @@ type LookupBucketResult struct {
 	Name                     string                     `pulumi:"name"`
 	Project                  string                     `pulumi:"project"`
 	PublicAccessPrevention   string                     `pulumi:"publicAccessPrevention"`
+	PulumiLabels             map[string]string          `pulumi:"pulumiLabels"`
 	RequesterPays            bool                       `pulumi:"requesterPays"`
 	RetentionPolicies        []GetBucketRetentionPolicy `pulumi:"retentionPolicies"`
 	SelfLink                 string                     `pulumi:"selfLink"`
 	StorageClass             string                     `pulumi:"storageClass"`
-	TerraformLabels          map[string]string          `pulumi:"terraformLabels"`
 	UniformBucketLevelAccess bool                       `pulumi:"uniformBucketLevelAccess"`
 	Url                      string                     `pulumi:"url"`
 	Versionings              []GetBucketVersioning      `pulumi:"versionings"`
@@ -192,6 +192,10 @@ func (o LookupBucketResultOutput) PublicAccessPrevention() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketResult) string { return v.PublicAccessPrevention }).(pulumi.StringOutput)
 }
 
+func (o LookupBucketResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupBucketResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupBucketResultOutput) RequesterPays() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBucketResult) bool { return v.RequesterPays }).(pulumi.BoolOutput)
 }
@@ -206,10 +210,6 @@ func (o LookupBucketResultOutput) SelfLink() pulumi.StringOutput {
 
 func (o LookupBucketResultOutput) StorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketResult) string { return v.StorageClass }).(pulumi.StringOutput)
-}
-
-func (o LookupBucketResultOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupBucketResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupBucketResultOutput) UniformBucketLevelAccess() pulumi.BoolOutput {

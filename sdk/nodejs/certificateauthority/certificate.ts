@@ -416,16 +416,16 @@ export class Certificate extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Output only. Details regarding the revocation of this Certificate. This Certificate is
      * considered revoked if and only if this field is present.
      * Structure is documented below.
      */
     public /*out*/ readonly revocationDetails!: pulumi.Output<outputs.certificateauthority.CertificateRevocationDetail[]>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Output only. The time at which this CertificateAuthority was updated.
      * This is in RFC3339 text format.
@@ -461,8 +461,8 @@ export class Certificate extends pulumi.CustomResource {
             resourceInputs["pemCsr"] = state ? state.pemCsr : undefined;
             resourceInputs["pool"] = state ? state.pool : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["revocationDetails"] = state ? state.revocationDetails : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as CertificateArgs | undefined;
@@ -488,8 +488,8 @@ export class Certificate extends pulumi.CustomResource {
             resourceInputs["issuerCertificateAuthority"] = undefined /*out*/;
             resourceInputs["pemCertificate"] = undefined /*out*/;
             resourceInputs["pemCertificateChains"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["revocationDetails"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -587,16 +587,16 @@ export interface CertificateState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Output only. Details regarding the revocation of this Certificate. This Certificate is
      * considered revoked if and only if this field is present.
      * Structure is documented below.
      */
     revocationDetails?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateRevocationDetail>[]>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Output only. The time at which this CertificateAuthority was updated.
      * This is in RFC3339 text format.

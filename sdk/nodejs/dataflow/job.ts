@@ -186,6 +186,10 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The region in which the created job should run.
      */
     public readonly region!: pulumi.Output<string | undefined>;
@@ -215,10 +219,6 @@ export class Job extends pulumi.CustomResource {
      * The GCS path to the Dataflow job template.
      */
     public readonly templateGcsPath!: pulumi.Output<string>;
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
      */
@@ -259,6 +259,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["onDelete"] = state ? state.onDelete : undefined;
             resourceInputs["parameters"] = state ? state.parameters : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["serviceAccountEmail"] = state ? state.serviceAccountEmail : undefined;
             resourceInputs["skipWaitOnJobTermination"] = state ? state.skipWaitOnJobTermination : undefined;
@@ -266,7 +267,6 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
             resourceInputs["tempGcsLocation"] = state ? state.tempGcsLocation : undefined;
             resourceInputs["templateGcsPath"] = state ? state.templateGcsPath : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["transformNameMapping"] = state ? state.transformNameMapping : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["zone"] = state ? state.zone : undefined;
@@ -300,8 +300,8 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["jobId"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -373,6 +373,10 @@ export interface JobState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The region in which the created job should run.
      */
     region?: pulumi.Input<string>;
@@ -402,10 +406,6 @@ export interface JobState {
      * The GCS path to the Dataflow job template.
      */
     templateGcsPath?: pulumi.Input<string>;
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
      */

@@ -119,14 +119,14 @@ export class PrivateConnection extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * State of the PrivateConnection.
-     */
-    public /*out*/ readonly state!: pulumi.Output<string>;
-    /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * State of the PrivateConnection.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
     /**
      * The VPC Peering configuration is used to create VPC peering
      * between Datastream and the consumer's VPC.
@@ -155,8 +155,8 @@ export class PrivateConnection extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["privateConnectionId"] = state ? state.privateConnectionId : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["vpcPeeringConfig"] = state ? state.vpcPeeringConfig : undefined;
         } else {
             const args = argsOrState as PrivateConnectionArgs | undefined;
@@ -181,8 +181,8 @@ export class PrivateConnection extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["errors"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PrivateConnection.__pulumiType, name, resourceInputs, opts);
@@ -231,14 +231,14 @@ export interface PrivateConnectionState {
      */
     project?: pulumi.Input<string>;
     /**
-     * State of the PrivateConnection.
-     */
-    state?: pulumi.Input<string>;
-    /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * State of the PrivateConnection.
+     */
+    state?: pulumi.Input<string>;
     /**
      * The VPC Peering configuration is used to create VPC peering
      * between Datastream and the consumer's VPC.

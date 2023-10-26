@@ -392,13 +392,13 @@ class _ImageState:
                  licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  raw_disk: Optional[pulumi.Input['ImageRawDiskArgs']] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
                  source_snapshot: Optional[pulumi.Input[str]] = None,
-                 storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Image resources.
         :param pulumi.Input[int] archive_size_bytes: Size of the image tar.gz archive stored in Google Cloud Storage (in
@@ -440,6 +440,8 @@ class _ImageState:
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input['ImageRawDiskArgs'] raw_disk: The parameters of the raw disk image.
                Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -462,8 +464,6 @@ class _ImageState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the image
                (regional or multi-regional).
                Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         """
         _ImageState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -480,13 +480,13 @@ class _ImageState:
             licenses=licenses,
             name=name,
             project=project,
+            pulumi_labels=pulumi_labels,
             raw_disk=raw_disk,
             self_link=self_link,
             source_disk=source_disk,
             source_image=source_image,
             source_snapshot=source_snapshot,
             storage_locations=storage_locations,
-            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
@@ -504,13 +504,13 @@ class _ImageState:
              licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              raw_disk: Optional[pulumi.Input['ImageRawDiskArgs']] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              source_disk: Optional[pulumi.Input[str]] = None,
              source_image: Optional[pulumi.Input[str]] = None,
              source_snapshot: Optional[pulumi.Input[str]] = None,
              storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if archive_size_bytes is None and 'archiveSizeBytes' in kwargs:
@@ -527,6 +527,8 @@ class _ImageState:
             image_encryption_key = kwargs['imageEncryptionKey']
         if label_fingerprint is None and 'labelFingerprint' in kwargs:
             label_fingerprint = kwargs['labelFingerprint']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if raw_disk is None and 'rawDisk' in kwargs:
             raw_disk = kwargs['rawDisk']
         if self_link is None and 'selfLink' in kwargs:
@@ -539,8 +541,6 @@ class _ImageState:
             source_snapshot = kwargs['sourceSnapshot']
         if storage_locations is None and 'storageLocations' in kwargs:
             storage_locations = kwargs['storageLocations']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
 
         if archive_size_bytes is not None:
             _setter("archive_size_bytes", archive_size_bytes)
@@ -568,6 +568,8 @@ class _ImageState:
             _setter("name", name)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if raw_disk is not None:
             _setter("raw_disk", raw_disk)
         if self_link is not None:
@@ -580,8 +582,6 @@ class _ImageState:
             _setter("source_snapshot", source_snapshot)
         if storage_locations is not None:
             _setter("storage_locations", storage_locations)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter(name="archiveSizeBytes")
@@ -766,6 +766,19 @@ class _ImageState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="rawDisk")
     def raw_disk(self) -> Optional[pulumi.Input['ImageRawDiskArgs']]:
         """
@@ -852,19 +865,6 @@ class _ImageState:
     @storage_locations.setter
     def storage_locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "storage_locations", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
 
 class Image(pulumi.CustomResource):
@@ -1177,8 +1177,8 @@ class Image(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["label_fingerprint"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["self_link"] = None
-            __props__.__dict__["terraform_labels"] = None
         super(Image, __self__).__init__(
             'gcp:compute/image:Image',
             resource_name,
@@ -1202,13 +1202,13 @@ class Image(pulumi.CustomResource):
             licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             raw_disk: Optional[pulumi.Input[pulumi.InputType['ImageRawDiskArgs']]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             source_disk: Optional[pulumi.Input[str]] = None,
             source_image: Optional[pulumi.Input[str]] = None,
             source_snapshot: Optional[pulumi.Input[str]] = None,
-            storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Image':
+            storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Image':
         """
         Get an existing Image resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1255,6 +1255,8 @@ class Image(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['ImageRawDiskArgs']] raw_disk: The parameters of the raw disk image.
                Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -1277,8 +1279,6 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the image
                (regional or multi-regional).
                Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1297,13 +1297,13 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["licenses"] = licenses
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["raw_disk"] = raw_disk
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["source_disk"] = source_disk
         __props__.__dict__["source_image"] = source_image
         __props__.__dict__["source_snapshot"] = source_snapshot
         __props__.__dict__["storage_locations"] = storage_locations
-        __props__.__dict__["terraform_labels"] = terraform_labels
         return Image(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1437,6 +1437,15 @@ class Image(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="rawDisk")
     def raw_disk(self) -> pulumi.Output[Optional['outputs.ImageRawDisk']]:
         """
@@ -1499,13 +1508,4 @@ class Image(pulumi.CustomResource):
         Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
         """
         return pulumi.get(self, "storage_locations")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 

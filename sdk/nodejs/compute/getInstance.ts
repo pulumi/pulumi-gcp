@@ -152,6 +152,7 @@ export interface GetInstanceResult {
     readonly networkPerformanceConfigs: outputs.compute.GetInstanceNetworkPerformanceConfig[];
     readonly params: outputs.compute.GetInstanceParam[];
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly reservationAffinities: outputs.compute.GetInstanceReservationAffinity[];
     readonly resourcePolicies: string[];
     /**
@@ -182,7 +183,6 @@ export interface GetInstanceResult {
      * The unique fingerprint of the tags.
      */
     readonly tagsFingerprint: string;
-    readonly terraformLabels: {[key: string]: string};
     readonly zone?: string;
 }
 /**

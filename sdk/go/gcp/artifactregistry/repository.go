@@ -440,15 +440,15 @@ type Repository struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Configuration specific for a Remote Repository.
 	// Structure is documented below.
 	RemoteRepositoryConfig RepositoryRemoteRepositoryConfigPtrOutput `pulumi:"remoteRepositoryConfig"`
 	// The last part of the repository name, for example:
 	// "repo1"
 	RepositoryId pulumi.StringOutput `pulumi:"repositoryId"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The time when the repository was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Configuration specific for a Virtual Repository.
@@ -546,15 +546,15 @@ type repositoryState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Configuration specific for a Remote Repository.
 	// Structure is documented below.
 	RemoteRepositoryConfig *RepositoryRemoteRepositoryConfig `pulumi:"remoteRepositoryConfig"`
 	// The last part of the repository name, for example:
 	// "repo1"
 	RepositoryId *string `pulumi:"repositoryId"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The time when the repository was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 	// Configuration specific for a Virtual Repository.
@@ -617,15 +617,15 @@ type RepositoryState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Configuration specific for a Remote Repository.
 	// Structure is documented below.
 	RemoteRepositoryConfig RepositoryRemoteRepositoryConfigPtrInput
 	// The last part of the repository name, for example:
 	// "repo1"
 	RepositoryId pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// The time when the repository was last updated.
 	UpdateTime pulumi.StringPtrInput
 	// Configuration specific for a Virtual Repository.
@@ -961,6 +961,12 @@ func (o RepositoryOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o RepositoryOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Configuration specific for a Remote Repository.
 // Structure is documented below.
 func (o RepositoryOutput) RemoteRepositoryConfig() RepositoryRemoteRepositoryConfigPtrOutput {
@@ -971,12 +977,6 @@ func (o RepositoryOutput) RemoteRepositoryConfig() RepositoryRemoteRepositoryCon
 // "repo1"
 func (o RepositoryOutput) RepositoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.RepositoryId }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o RepositoryOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Repository) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The time when the repository was last updated.

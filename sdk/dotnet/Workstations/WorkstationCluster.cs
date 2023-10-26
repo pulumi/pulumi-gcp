@@ -234,18 +234,18 @@ namespace Pulumi.Gcp.Workstations
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
         /// Must be part of the subnetwork specified for this cluster.
         /// </summary>
         [Output("subnetwork")]
         public Output<string> Subnetwork { get; private set; } = null!;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// The system-generated UID of the resource.
@@ -519,25 +519,25 @@ namespace Pulumi.Gcp.Workstations
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
+
         /// <summary>
         /// Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
         /// Must be part of the subnetwork specified for this cluster.
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
-
-        [Input("terraformLabels")]
-        private InputMap<string>? _terraformLabels;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        public InputMap<string> TerraformLabels
-        {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
-            set => _terraformLabels = value;
-        }
 
         /// <summary>
         /// The system-generated UID of the resource.

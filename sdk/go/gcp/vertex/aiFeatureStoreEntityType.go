@@ -180,11 +180,11 @@ type AiFeatureStoreEntityType struct {
 	// storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
 	// since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
 	OfflineStorageTtlDays pulumi.IntPtrOutput `pulumi:"offlineStorageTtlDays"`
-	// The region of the EntityType.
-	Region pulumi.StringOutput `pulumi:"region"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// The region of the EntityType.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -250,11 +250,11 @@ type aiFeatureStoreEntityTypeState struct {
 	// storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
 	// since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
 	OfflineStorageTtlDays *int `pulumi:"offlineStorageTtlDays"`
-	// The region of the EntityType.
-	Region *string `pulumi:"region"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// The region of the EntityType.
+	Region *string `pulumi:"region"`
 	// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -288,11 +288,11 @@ type AiFeatureStoreEntityTypeState struct {
 	// storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
 	// since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
 	OfflineStorageTtlDays pulumi.IntPtrInput
-	// The region of the EntityType.
-	Region pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
+	PulumiLabels pulumi.StringMapInput
+	// The region of the EntityType.
+	Region pulumi.StringPtrInput
 	// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -518,15 +518,15 @@ func (o AiFeatureStoreEntityTypeOutput) OfflineStorageTtlDays() pulumi.IntPtrOut
 	return o.ApplyT(func(v *AiFeatureStoreEntityType) pulumi.IntPtrOutput { return v.OfflineStorageTtlDays }).(pulumi.IntPtrOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o AiFeatureStoreEntityTypeOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityType) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The region of the EntityType.
 func (o AiFeatureStoreEntityTypeOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureStoreEntityType) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o AiFeatureStoreEntityTypeOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *AiFeatureStoreEntityType) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.

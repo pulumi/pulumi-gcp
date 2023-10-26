@@ -211,14 +211,14 @@ type ExternalVpnGateway struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Indicates the redundancy type of this external VPN gateway
 	// Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
 	RedundancyType pulumi.StringPtrOutput `pulumi:"redundancyType"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewExternalVpnGateway registers a new resource with the given unique name, arguments, and options.
@@ -279,14 +279,14 @@ type externalVpnGatewayState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Indicates the redundancy type of this external VPN gateway
 	// Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
 	RedundancyType *string `pulumi:"redundancyType"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type ExternalVpnGatewayState struct {
@@ -318,14 +318,14 @@ type ExternalVpnGatewayState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Indicates the redundancy type of this external VPN gateway
 	// Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
 	RedundancyType pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 }
 
 func (ExternalVpnGatewayState) ElementType() reflect.Type {
@@ -549,6 +549,12 @@ func (o ExternalVpnGatewayOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalVpnGateway) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ExternalVpnGatewayOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ExternalVpnGateway) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Indicates the redundancy type of this external VPN gateway
 // Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
 func (o ExternalVpnGatewayOutput) RedundancyType() pulumi.StringPtrOutput {
@@ -558,12 +564,6 @@ func (o ExternalVpnGatewayOutput) RedundancyType() pulumi.StringPtrOutput {
 // The URI of the created resource.
 func (o ExternalVpnGatewayOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalVpnGateway) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o ExternalVpnGatewayOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ExternalVpnGateway) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type ExternalVpnGatewayArrayOutput struct{ *pulumi.OutputState }

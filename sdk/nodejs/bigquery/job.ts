@@ -342,6 +342,12 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * (Output)
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
      * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
      * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `createDisposition = ""` and `writeDisposition = ""`.
@@ -352,12 +358,6 @@ export class Job extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public /*out*/ readonly statuses!: pulumi.Output<outputs.bigquery.JobStatus[]>;
-    /**
-     * (Output)
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Email address of the user who ran the job.
      */
@@ -386,9 +386,9 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["load"] = state ? state.load : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["query"] = state ? state.query : undefined;
             resourceInputs["statuses"] = state ? state.statuses : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["userEmail"] = state ? state.userEmail : undefined;
         } else {
             const args = argsOrState as JobArgs | undefined;
@@ -406,8 +406,8 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["query"] = args ? args.query : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["jobType"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["statuses"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["userEmail"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -469,6 +469,12 @@ export interface JobState {
      */
     project?: pulumi.Input<string>;
     /**
+     * (Output)
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
      * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
      * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `createDisposition = ""` and `writeDisposition = ""`.
@@ -479,12 +485,6 @@ export interface JobState {
      * Structure is documented below.
      */
     statuses?: pulumi.Input<pulumi.Input<inputs.bigquery.JobStatus>[]>;
-    /**
-     * (Output)
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Email address of the user who ran the job.
      */

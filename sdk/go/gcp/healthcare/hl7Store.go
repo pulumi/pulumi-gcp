@@ -277,11 +277,11 @@ type Hl7Store struct {
 	// A nested object resource
 	// Structure is documented below.
 	ParserConfig Hl7StoreParserConfigOutput `pulumi:"parserConfig"`
-	// The fully qualified name of this dataset
-	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// The fully qualified name of this dataset
+	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 }
 
 // NewHl7Store registers a new resource with the given unique name, arguments, and options.
@@ -356,11 +356,11 @@ type hl7StoreState struct {
 	// A nested object resource
 	// Structure is documented below.
 	ParserConfig *Hl7StoreParserConfig `pulumi:"parserConfig"`
-	// The fully qualified name of this dataset
-	SelfLink *string `pulumi:"selfLink"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// The fully qualified name of this dataset
+	SelfLink *string `pulumi:"selfLink"`
 }
 
 type Hl7StoreState struct {
@@ -403,11 +403,11 @@ type Hl7StoreState struct {
 	// A nested object resource
 	// Structure is documented below.
 	ParserConfig Hl7StoreParserConfigPtrInput
-	// The fully qualified name of this dataset
-	SelfLink pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
+	PulumiLabels pulumi.StringMapInput
+	// The fully qualified name of this dataset
+	SelfLink pulumi.StringPtrInput
 }
 
 func (Hl7StoreState) ElementType() reflect.Type {
@@ -664,15 +664,15 @@ func (o Hl7StoreOutput) ParserConfig() Hl7StoreParserConfigOutput {
 	return o.ApplyT(func(v *Hl7Store) Hl7StoreParserConfigOutput { return v.ParserConfig }).(Hl7StoreParserConfigOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o Hl7StoreOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Hl7Store) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The fully qualified name of this dataset
 func (o Hl7StoreOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hl7Store) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o Hl7StoreOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Hl7Store) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type Hl7StoreArrayOutput struct{ *pulumi.OutputState }

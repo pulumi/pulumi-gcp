@@ -72,15 +72,15 @@ type MembershipBinding struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// A Workspace resource name in the format
 	// `projects/*/locations/*/scopes/*`.
 	Scope pulumi.StringOutput `pulumi:"scope"`
 	// State of the membership binding resource.
 	// Structure is documented below.
 	States MembershipBindingStateTypeArrayOutput `pulumi:"states"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Google-generated UUID for this resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Time the MembershipBinding was updated in UTC.
@@ -154,15 +154,15 @@ type membershipBindingState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// A Workspace resource name in the format
 	// `projects/*/locations/*/scopes/*`.
 	Scope *string `pulumi:"scope"`
 	// State of the membership binding resource.
 	// Structure is documented below.
 	States []MembershipBindingStateType `pulumi:"states"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Google-generated UUID for this resource.
 	Uid *string `pulumi:"uid"`
 	// Time the MembershipBinding was updated in UTC.
@@ -195,15 +195,15 @@ type MembershipBindingState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// A Workspace resource name in the format
 	// `projects/*/locations/*/scopes/*`.
 	Scope pulumi.StringPtrInput
 	// State of the membership binding resource.
 	// Structure is documented below.
 	States MembershipBindingStateTypeArrayInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// Google-generated UUID for this resource.
 	Uid pulumi.StringPtrInput
 	// Time the MembershipBinding was updated in UTC.
@@ -422,6 +422,12 @@ func (o MembershipBindingOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *MembershipBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o MembershipBindingOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *MembershipBinding) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // A Workspace resource name in the format
 // `projects/*/locations/*/scopes/*`.
 func (o MembershipBindingOutput) Scope() pulumi.StringOutput {
@@ -432,12 +438,6 @@ func (o MembershipBindingOutput) Scope() pulumi.StringOutput {
 // Structure is documented below.
 func (o MembershipBindingOutput) States() MembershipBindingStateTypeArrayOutput {
 	return o.ApplyT(func(v *MembershipBinding) MembershipBindingStateTypeArrayOutput { return v.States }).(MembershipBindingStateTypeArrayOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o MembershipBindingOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *MembershipBinding) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Google-generated UUID for this resource.

@@ -22,7 +22,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, alternative_location_id=None, auth_enabled=None, auth_string=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, customer_managed_key=None, display_name=None, effective_labels=None, host=None, id=None, labels=None, location_id=None, maintenance_policies=None, maintenance_schedules=None, memory_size_gb=None, name=None, nodes=None, persistence_configs=None, persistence_iam_identity=None, port=None, project=None, read_endpoint=None, read_endpoint_port=None, read_replicas_mode=None, redis_configs=None, redis_version=None, region=None, replica_count=None, reserved_ip_range=None, secondary_ip_range=None, server_ca_certs=None, terraform_labels=None, tier=None, transit_encryption_mode=None):
+    def __init__(__self__, alternative_location_id=None, auth_enabled=None, auth_string=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, customer_managed_key=None, display_name=None, effective_labels=None, host=None, id=None, labels=None, location_id=None, maintenance_policies=None, maintenance_schedules=None, memory_size_gb=None, name=None, nodes=None, persistence_configs=None, persistence_iam_identity=None, port=None, project=None, pulumi_labels=None, read_endpoint=None, read_endpoint_port=None, read_replicas_mode=None, redis_configs=None, redis_version=None, region=None, replica_count=None, reserved_ip_range=None, secondary_ip_range=None, server_ca_certs=None, tier=None, transit_encryption_mode=None):
         if alternative_location_id and not isinstance(alternative_location_id, str):
             raise TypeError("Expected argument 'alternative_location_id' to be a str")
         pulumi.set(__self__, "alternative_location_id", alternative_location_id)
@@ -92,6 +92,9 @@ class GetInstanceResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if read_endpoint and not isinstance(read_endpoint, str):
             raise TypeError("Expected argument 'read_endpoint' to be a str")
         pulumi.set(__self__, "read_endpoint", read_endpoint)
@@ -122,9 +125,6 @@ class GetInstanceResult:
         if server_ca_certs and not isinstance(server_ca_certs, list):
             raise TypeError("Expected argument 'server_ca_certs' to be a list")
         pulumi.set(__self__, "server_ca_certs", server_ca_certs)
-        if terraform_labels and not isinstance(terraform_labels, dict):
-            raise TypeError("Expected argument 'terraform_labels' to be a dict")
-        pulumi.set(__self__, "terraform_labels", terraform_labels)
         if tier and not isinstance(tier, str):
             raise TypeError("Expected argument 'tier' to be a str")
         pulumi.set(__self__, "tier", tier)
@@ -251,6 +251,11 @@ class GetInstanceResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="readEndpoint")
     def read_endpoint(self) -> str:
         return pulumi.get(self, "read_endpoint")
@@ -301,11 +306,6 @@ class GetInstanceResult:
         return pulumi.get(self, "server_ca_certs")
 
     @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Mapping[str, str]:
-        return pulumi.get(self, "terraform_labels")
-
-    @property
     @pulumi.getter
     def tier(self) -> str:
         return pulumi.get(self, "tier")
@@ -345,6 +345,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             persistence_iam_identity=self.persistence_iam_identity,
             port=self.port,
             project=self.project,
+            pulumi_labels=self.pulumi_labels,
             read_endpoint=self.read_endpoint,
             read_endpoint_port=self.read_endpoint_port,
             read_replicas_mode=self.read_replicas_mode,
@@ -355,7 +356,6 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             reserved_ip_range=self.reserved_ip_range,
             secondary_ip_range=self.secondary_ip_range,
             server_ca_certs=self.server_ca_certs,
-            terraform_labels=self.terraform_labels,
             tier=self.tier,
             transit_encryption_mode=self.transit_encryption_mode)
 
@@ -419,6 +419,7 @@ def get_instance(name: Optional[str] = None,
         persistence_iam_identity=pulumi.get(__ret__, 'persistence_iam_identity'),
         port=pulumi.get(__ret__, 'port'),
         project=pulumi.get(__ret__, 'project'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         read_endpoint=pulumi.get(__ret__, 'read_endpoint'),
         read_endpoint_port=pulumi.get(__ret__, 'read_endpoint_port'),
         read_replicas_mode=pulumi.get(__ret__, 'read_replicas_mode'),
@@ -429,7 +430,6 @@ def get_instance(name: Optional[str] = None,
         reserved_ip_range=pulumi.get(__ret__, 'reserved_ip_range'),
         secondary_ip_range=pulumi.get(__ret__, 'secondary_ip_range'),
         server_ca_certs=pulumi.get(__ret__, 'server_ca_certs'),
-        terraform_labels=pulumi.get(__ret__, 'terraform_labels'),
         tier=pulumi.get(__ret__, 'tier'),
         transit_encryption_mode=pulumi.get(__ret__, 'transit_encryption_mode'))
 

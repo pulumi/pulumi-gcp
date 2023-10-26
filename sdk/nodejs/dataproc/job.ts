@@ -141,6 +141,10 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The config of pySpark job.
      */
     public readonly pysparkConfig!: pulumi.Output<outputs.dataproc.JobPysparkConfig | undefined>;
@@ -169,10 +173,6 @@ export class Job extends pulumi.CustomResource {
      * The status of the job.
      */
     public /*out*/ readonly statuses!: pulumi.Output<outputs.dataproc.JobStatus[]>;
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a Job resource with the given unique name, arguments, and options.
@@ -198,6 +198,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["placement"] = state ? state.placement : undefined;
             resourceInputs["prestoConfig"] = state ? state.prestoConfig : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["pysparkConfig"] = state ? state.pysparkConfig : undefined;
             resourceInputs["reference"] = state ? state.reference : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
@@ -205,7 +206,6 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["sparkConfig"] = state ? state.sparkConfig : undefined;
             resourceInputs["sparksqlConfig"] = state ? state.sparksqlConfig : undefined;
             resourceInputs["statuses"] = state ? state.statuses : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as JobArgs | undefined;
             if ((!args || args.placement === undefined) && !opts.urn) {
@@ -228,8 +228,8 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["driverControlsFilesUri"] = undefined /*out*/;
             resourceInputs["driverOutputResourceUri"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["statuses"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Job.__pulumiType, name, resourceInputs, opts);
@@ -291,6 +291,10 @@ export interface JobState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The config of pySpark job.
      */
     pysparkConfig?: pulumi.Input<inputs.dataproc.JobPysparkConfig>;
@@ -319,10 +323,6 @@ export interface JobState {
      * The status of the job.
      */
     statuses?: pulumi.Input<pulumi.Input<inputs.dataproc.JobStatus>[]>;
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**

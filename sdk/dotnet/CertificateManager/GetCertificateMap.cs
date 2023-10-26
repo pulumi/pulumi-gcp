@@ -130,7 +130,7 @@ namespace Pulumi.Gcp.CertificateManager
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         public readonly string? Project;
-        public readonly ImmutableDictionary<string, string> TerraformLabels;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string UpdateTime;
 
         [OutputConstructor]
@@ -151,7 +151,7 @@ namespace Pulumi.Gcp.CertificateManager
 
             string? project,
 
-            ImmutableDictionary<string, string> terraformLabels,
+            ImmutableDictionary<string, string> pulumiLabels,
 
             string updateTime)
         {
@@ -163,7 +163,7 @@ namespace Pulumi.Gcp.CertificateManager
             Labels = labels;
             Name = name;
             Project = project;
-            TerraformLabels = terraformLabels;
+            PulumiLabels = pulumiLabels;
             UpdateTime = updateTime;
         }
     }

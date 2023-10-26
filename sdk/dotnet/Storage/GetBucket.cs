@@ -127,11 +127,11 @@ namespace Pulumi.Gcp.Storage
         public readonly string Name;
         public readonly string Project;
         public readonly string PublicAccessPrevention;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly bool RequesterPays;
         public readonly ImmutableArray<Outputs.GetBucketRetentionPolicyResult> RetentionPolicies;
         public readonly string SelfLink;
         public readonly string StorageClass;
-        public readonly ImmutableDictionary<string, string> TerraformLabels;
         public readonly bool UniformBucketLevelAccess;
         public readonly string Url;
         public readonly ImmutableArray<Outputs.GetBucketVersioningResult> Versionings;
@@ -169,6 +169,8 @@ namespace Pulumi.Gcp.Storage
 
             string publicAccessPrevention,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             bool requesterPays,
 
             ImmutableArray<Outputs.GetBucketRetentionPolicyResult> retentionPolicies,
@@ -176,8 +178,6 @@ namespace Pulumi.Gcp.Storage
             string selfLink,
 
             string storageClass,
-
-            ImmutableDictionary<string, string> terraformLabels,
 
             bool uniformBucketLevelAccess,
 
@@ -202,11 +202,11 @@ namespace Pulumi.Gcp.Storage
             Name = name;
             Project = project;
             PublicAccessPrevention = publicAccessPrevention;
+            PulumiLabels = pulumiLabels;
             RequesterPays = requesterPays;
             RetentionPolicies = retentionPolicies;
             SelfLink = selfLink;
             StorageClass = storageClass;
-            TerraformLabels = terraformLabels;
             UniformBucketLevelAccess = uniformBucketLevelAccess;
             Url = url;
             Versionings = versionings;

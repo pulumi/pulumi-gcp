@@ -63,11 +63,11 @@ export interface GetBucketResult {
     readonly name: string;
     readonly project: string;
     readonly publicAccessPrevention: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly requesterPays: boolean;
     readonly retentionPolicies: outputs.storage.GetBucketRetentionPolicy[];
     readonly selfLink: string;
     readonly storageClass: string;
-    readonly terraformLabels: {[key: string]: string};
     readonly uniformBucketLevelAccess: boolean;
     readonly url: string;
     readonly versionings: outputs.storage.GetBucketVersioning[];

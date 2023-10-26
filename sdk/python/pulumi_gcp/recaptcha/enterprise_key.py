@@ -192,7 +192,7 @@ class _EnterpriseKeyState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  testing_options: Optional[pulumi.Input['EnterpriseKeyTestingOptionsArgs']] = None,
                  web_settings: Optional[pulumi.Input['EnterpriseKeyWebSettingsArgs']] = None):
         """
@@ -213,7 +213,7 @@ class _EnterpriseKeyState:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the Key in the format "projects/{project}/keys/{key}".
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[Mapping[str, Any]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input['EnterpriseKeyTestingOptionsArgs'] testing_options: Options for user acceptance testing.
         :param pulumi.Input['EnterpriseKeyWebSettingsArgs'] web_settings: Settings for keys that can be used by websites.
         """
@@ -227,7 +227,7 @@ class _EnterpriseKeyState:
             labels=labels,
             name=name,
             project=project,
-            terraform_labels=terraform_labels,
+            pulumi_labels=pulumi_labels,
             testing_options=testing_options,
             web_settings=web_settings,
         )
@@ -242,7 +242,7 @@ class _EnterpriseKeyState:
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              testing_options: Optional[pulumi.Input['EnterpriseKeyTestingOptionsArgs']] = None,
              web_settings: Optional[pulumi.Input['EnterpriseKeyWebSettingsArgs']] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
@@ -257,8 +257,8 @@ class _EnterpriseKeyState:
             effective_labels = kwargs['effectiveLabels']
         if ios_settings is None and 'iosSettings' in kwargs:
             ios_settings = kwargs['iosSettings']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if testing_options is None and 'testingOptions' in kwargs:
             testing_options = kwargs['testingOptions']
         if web_settings is None and 'webSettings' in kwargs:
@@ -280,8 +280,8 @@ class _EnterpriseKeyState:
             _setter("name", name)
         if project is not None:
             _setter("project", project)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if testing_options is not None:
             _setter("testing_options", testing_options)
         if web_settings is not None:
@@ -392,16 +392,16 @@ class _EnterpriseKeyState:
         pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         The combination of labels configured directly on the resource and default labels configured on the provider.
         """
-        return pulumi.get(self, "terraform_labels")
+        return pulumi.get(self, "pulumi_labels")
 
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "terraform_labels", value)
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "pulumi_labels", value)
 
     @property
     @pulumi.getter(name="testingOptions")
@@ -757,7 +757,7 @@ class EnterpriseKey(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
-            __props__.__dict__["terraform_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
         super(EnterpriseKey, __self__).__init__(
             'gcp:recaptcha/enterpriseKey:EnterpriseKey',
             resource_name,
@@ -776,7 +776,7 @@ class EnterpriseKey(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             testing_options: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyTestingOptionsArgs']]] = None,
             web_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyWebSettingsArgs']]] = None) -> 'EnterpriseKey':
         """
@@ -802,7 +802,7 @@ class EnterpriseKey(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the Key in the format "projects/{project}/keys/{key}".
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[Mapping[str, Any]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['EnterpriseKeyTestingOptionsArgs']] testing_options: Options for user acceptance testing.
         :param pulumi.Input[pulumi.InputType['EnterpriseKeyWebSettingsArgs']] web_settings: Settings for keys that can be used by websites.
         """
@@ -818,7 +818,7 @@ class EnterpriseKey(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
-        __props__.__dict__["terraform_labels"] = terraform_labels
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["testing_options"] = testing_options
         __props__.__dict__["web_settings"] = web_settings
         return EnterpriseKey(resource_name, opts=opts, __props__=__props__)
@@ -896,12 +896,12 @@ class EnterpriseKey(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         The combination of labels configured directly on the resource and default labels configured on the provider.
         """
-        return pulumi.get(self, "terraform_labels")
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter(name="testingOptions")

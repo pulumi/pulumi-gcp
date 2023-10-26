@@ -125,9 +125,9 @@ class _HubState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  routing_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['HubRoutingVpcArgs']]]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  unique_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -146,9 +146,9 @@ class _HubState:
                
                - - -
         :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['HubRoutingVpcArgs']]] routing_vpcs: The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
         :param pulumi.Input[str] state: Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
-        :param pulumi.Input[Mapping[str, Any]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] unique_id: Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
         :param pulumi.Input[str] update_time: Output only. The time the hub was last updated.
         """
@@ -160,9 +160,9 @@ class _HubState:
             labels=labels,
             name=name,
             project=project,
+            pulumi_labels=pulumi_labels,
             routing_vpcs=routing_vpcs,
             state=state,
-            terraform_labels=terraform_labels,
             unique_id=unique_id,
             update_time=update_time,
         )
@@ -175,9 +175,9 @@ class _HubState:
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              routing_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['HubRoutingVpcArgs']]]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              unique_id: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
@@ -186,10 +186,10 @@ class _HubState:
             create_time = kwargs['createTime']
         if effective_labels is None and 'effectiveLabels' in kwargs:
             effective_labels = kwargs['effectiveLabels']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if routing_vpcs is None and 'routingVpcs' in kwargs:
             routing_vpcs = kwargs['routingVpcs']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
         if unique_id is None and 'uniqueId' in kwargs:
             unique_id = kwargs['uniqueId']
         if update_time is None and 'updateTime' in kwargs:
@@ -207,12 +207,12 @@ class _HubState:
             _setter("name", name)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if routing_vpcs is not None:
             _setter("routing_vpcs", routing_vpcs)
         if state is not None:
             _setter("state", state)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if unique_id is not None:
             _setter("unique_id", unique_id)
         if update_time is not None:
@@ -299,6 +299,18 @@ class _HubState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="routingVpcs")
     def routing_vpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HubRoutingVpcArgs']]]]:
         """
@@ -321,18 +333,6 @@ class _HubState:
     @state.setter
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="uniqueId")
@@ -495,9 +495,9 @@ class Hub(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["routing_vpcs"] = None
             __props__.__dict__["state"] = None
-            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["unique_id"] = None
             __props__.__dict__["update_time"] = None
         super(Hub, __self__).__init__(
@@ -516,9 +516,9 @@ class Hub(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             routing_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HubRoutingVpcArgs']]]]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             unique_id: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Hub':
         """
@@ -542,9 +542,9 @@ class Hub(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HubRoutingVpcArgs']]]] routing_vpcs: The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
         :param pulumi.Input[str] state: Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
-        :param pulumi.Input[Mapping[str, Any]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] unique_id: Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
         :param pulumi.Input[str] update_time: Output only. The time the hub was last updated.
         """
@@ -558,9 +558,9 @@ class Hub(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["routing_vpcs"] = routing_vpcs
         __props__.__dict__["state"] = state
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["unique_id"] = unique_id
         __props__.__dict__["update_time"] = update_time
         return Hub(resource_name, opts=opts, __props__=__props__)
@@ -622,6 +622,14 @@ class Hub(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="routingVpcs")
     def routing_vpcs(self) -> pulumi.Output[Sequence['outputs.HubRoutingVpc']]:
         """
@@ -636,14 +644,6 @@ class Hub(pulumi.CustomResource):
         Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
         """
         return pulumi.get(self, "state")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, Any]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="uniqueId")

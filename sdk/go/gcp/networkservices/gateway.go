@@ -394,6 +394,9 @@ type Gateway struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Immutable. Scope determines how configuration across multiple Gateway instances are merged.
 	// The configuration for multiple Gateway instances with the same scope will be merged as presented as
 	// a single coniguration to the proxy/load balancer.
@@ -408,9 +411,6 @@ type Gateway struct {
 	// For example: `projects/*/regions/us-central1/subnetworks/network-1`.
 	// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
 	Subnetwork pulumi.StringPtrOutput `pulumi:"subnetwork"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
 	// Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -497,6 +497,9 @@ type gatewayState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Immutable. Scope determines how configuration across multiple Gateway instances are merged.
 	// The configuration for multiple Gateway instances with the same scope will be merged as presented as
 	// a single coniguration to the proxy/load balancer.
@@ -511,9 +514,6 @@ type gatewayState struct {
 	// For example: `projects/*/regions/us-central1/subnetworks/network-1`.
 	// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
 	Subnetwork *string `pulumi:"subnetwork"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
 	// Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
 	Type *string `pulumi:"type"`
@@ -565,6 +565,9 @@ type GatewayState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Immutable. Scope determines how configuration across multiple Gateway instances are merged.
 	// The configuration for multiple Gateway instances with the same scope will be merged as presented as
 	// a single coniguration to the proxy/load balancer.
@@ -579,9 +582,6 @@ type GatewayState struct {
 	// For example: `projects/*/regions/us-central1/subnetworks/network-1`.
 	// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
 	Subnetwork pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
 	// Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
 	Type pulumi.StringPtrInput
@@ -899,6 +899,12 @@ func (o GatewayOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o GatewayOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Immutable. Scope determines how configuration across multiple Gateway instances are merged.
 // The configuration for multiple Gateway instances with the same scope will be merged as presented as
 // a single coniguration to the proxy/load balancer.
@@ -923,12 +929,6 @@ func (o GatewayOutput) ServerTlsPolicy() pulumi.StringPtrOutput {
 // Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
 func (o GatewayOutput) Subnetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.Subnetwork }).(pulumi.StringPtrOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o GatewayOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Gateway) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.

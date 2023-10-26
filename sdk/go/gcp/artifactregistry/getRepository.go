@@ -83,9 +83,9 @@ type LookupRepositoryResult struct {
 	Mode                     string                                 `pulumi:"mode"`
 	Name                     string                                 `pulumi:"name"`
 	Project                  *string                                `pulumi:"project"`
+	PulumiLabels             map[string]string                      `pulumi:"pulumiLabels"`
 	RemoteRepositoryConfigs  []GetRepositoryRemoteRepositoryConfig  `pulumi:"remoteRepositoryConfigs"`
 	RepositoryId             string                                 `pulumi:"repositoryId"`
-	TerraformLabels          map[string]string                      `pulumi:"terraformLabels"`
 	UpdateTime               string                                 `pulumi:"updateTime"`
 	VirtualRepositoryConfigs []GetRepositoryVirtualRepositoryConfig `pulumi:"virtualRepositoryConfigs"`
 }
@@ -202,16 +202,16 @@ func (o LookupRepositoryResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
+func (o LookupRepositoryResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupRepositoryResultOutput) RemoteRepositoryConfigs() GetRepositoryRemoteRepositoryConfigArrayOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) []GetRepositoryRemoteRepositoryConfig { return v.RemoteRepositoryConfigs }).(GetRepositoryRemoteRepositoryConfigArrayOutput)
 }
 
 func (o LookupRepositoryResultOutput) RepositoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) string { return v.RepositoryId }).(pulumi.StringOutput)
-}
-
-func (o LookupRepositoryResultOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupRepositoryResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupRepositoryResultOutput) UpdateTime() pulumi.StringOutput {

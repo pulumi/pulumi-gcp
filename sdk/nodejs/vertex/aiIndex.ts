@@ -211,14 +211,14 @@ export class AiIndex extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The region of the index. eg us-central1
-     */
-    public readonly region!: pulumi.Output<string | undefined>;
-    /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The region of the index. eg us-central1
+     */
+    public readonly region!: pulumi.Output<string | undefined>;
     /**
      * The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
@@ -250,8 +250,8 @@ export class AiIndex extends pulumi.CustomResource {
             resourceInputs["metadataSchemaUri"] = state ? state.metadataSchemaUri : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as AiIndexArgs | undefined;
@@ -272,7 +272,7 @@ export class AiIndex extends pulumi.CustomResource {
             resourceInputs["indexStats"] = undefined /*out*/;
             resourceInputs["metadataSchemaUri"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -349,14 +349,14 @@ export interface AiIndexState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The region of the index. eg us-central1
-     */
-    region?: pulumi.Input<string>;
-    /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The region of the index. eg us-central1
+     */
+    region?: pulumi.Input<string>;
     /**
      * The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */

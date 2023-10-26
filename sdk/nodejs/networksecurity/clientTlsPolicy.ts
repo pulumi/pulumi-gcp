@@ -143,6 +143,11 @@ export class ClientTlsPolicy extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
      * Structure is documented below.
      */
@@ -151,11 +156,6 @@ export class ClientTlsPolicy extends pulumi.CustomResource {
      * Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
      */
     public readonly sni!: pulumi.Output<string | undefined>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Time the ClientTlsPolicy was updated in UTC.
      */
@@ -182,9 +182,9 @@ export class ClientTlsPolicy extends pulumi.CustomResource {
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["serverValidationCas"] = state ? state.serverValidationCas : undefined;
             resourceInputs["sni"] = state ? state.sni : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as ClientTlsPolicyArgs | undefined;
@@ -198,7 +198,7 @@ export class ClientTlsPolicy extends pulumi.CustomResource {
             resourceInputs["sni"] = args ? args.sni : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -252,6 +252,11 @@ export interface ClientTlsPolicyState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
      * Structure is documented below.
      */
@@ -260,11 +265,6 @@ export interface ClientTlsPolicyState {
      * Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
      */
     sni?: pulumi.Input<string>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Time the ClientTlsPolicy was updated in UTC.
      */

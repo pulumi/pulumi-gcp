@@ -102,11 +102,12 @@ type LookupDiskResult struct {
 	MultiWriter         bool     `pulumi:"multiWriter"`
 	Name                string   `pulumi:"name"`
 	// Physical block size of the persistent disk, in bytes.
-	PhysicalBlockSizeBytes int      `pulumi:"physicalBlockSizeBytes"`
-	Project                *string  `pulumi:"project"`
-	ProvisionedIops        int      `pulumi:"provisionedIops"`
-	ProvisionedThroughput  int      `pulumi:"provisionedThroughput"`
-	ResourcePolicies       []string `pulumi:"resourcePolicies"`
+	PhysicalBlockSizeBytes int               `pulumi:"physicalBlockSizeBytes"`
+	Project                *string           `pulumi:"project"`
+	ProvisionedIops        int               `pulumi:"provisionedIops"`
+	ProvisionedThroughput  int               `pulumi:"provisionedThroughput"`
+	PulumiLabels           map[string]string `pulumi:"pulumiLabels"`
+	ResourcePolicies       []string          `pulumi:"resourcePolicies"`
 	// The URI of the created resource.
 	SelfLink string `pulumi:"selfLink"`
 	// Size of the persistent disk, specified in GB.
@@ -131,8 +132,7 @@ type LookupDiskResult struct {
 	// that was later deleted and recreated under the same name, the source
 	// snapshot ID would identify the exact version of the snapshot that was
 	// used.
-	SourceSnapshotId string            `pulumi:"sourceSnapshotId"`
-	TerraformLabels  map[string]string `pulumi:"terraformLabels"`
+	SourceSnapshotId string `pulumi:"sourceSnapshotId"`
 	// URL of the disk type resource describing which disk type to use to
 	// create the disk.
 	Type string `pulumi:"type"`
@@ -287,6 +287,10 @@ func (o LookupDiskResultOutput) ProvisionedThroughput() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDiskResult) int { return v.ProvisionedThroughput }).(pulumi.IntOutput)
 }
 
+func (o LookupDiskResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupDiskResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupDiskResultOutput) ResourcePolicies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDiskResult) []string { return v.ResourcePolicies }).(pulumi.StringArrayOutput)
 }
@@ -341,10 +345,6 @@ func (o LookupDiskResultOutput) SourceSnapshotEncryptionKeys() GetDiskSourceSnap
 // used.
 func (o LookupDiskResultOutput) SourceSnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.SourceSnapshotId }).(pulumi.StringOutput)
-}
-
-func (o LookupDiskResultOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupDiskResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // URL of the disk type resource describing which disk type to use to

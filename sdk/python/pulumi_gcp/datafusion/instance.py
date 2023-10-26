@@ -466,13 +466,13 @@ class _InstanceState:
                  p4_service_account: Optional[pulumi.Input[str]] = None,
                  private_instance: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  service_endpoint: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  state_message: Optional[pulumi.Input[str]] = None,
                  tenant_project_id: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -513,6 +513,8 @@ class _InstanceState:
                able to access the public internet.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] region: The region of the Data Fusion instance.
         :param pulumi.Input[str] service_account: Service account which will be used to access resources in the customer project.
         :param pulumi.Input[str] service_endpoint: Endpoint on which the Data Fusion UI and REST APIs are accessible.
@@ -520,8 +522,6 @@ class _InstanceState:
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[str] state_message: Additional information about the current state of this Data Fusion instance if available.
         :param pulumi.Input[str] tenant_project_id: The name of the tenant project.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] type: Represents the type of Data Fusion instance. Each type is configured with
                the default settings for processing and memory.
                - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
@@ -562,13 +562,13 @@ class _InstanceState:
             p4_service_account=p4_service_account,
             private_instance=private_instance,
             project=project,
+            pulumi_labels=pulumi_labels,
             region=region,
             service_account=service_account,
             service_endpoint=service_endpoint,
             state=state,
             state_message=state_message,
             tenant_project_id=tenant_project_id,
-            terraform_labels=terraform_labels,
             type=type,
             update_time=update_time,
             version=version,
@@ -597,13 +597,13 @@ class _InstanceState:
              p4_service_account: Optional[pulumi.Input[str]] = None,
              private_instance: Optional[pulumi.Input[bool]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              region: Optional[pulumi.Input[str]] = None,
              service_account: Optional[pulumi.Input[str]] = None,
              service_endpoint: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              state_message: Optional[pulumi.Input[str]] = None,
              tenant_project_id: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
@@ -638,6 +638,8 @@ class _InstanceState:
             p4_service_account = kwargs['p4ServiceAccount']
         if private_instance is None and 'privateInstance' in kwargs:
             private_instance = kwargs['privateInstance']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if service_account is None and 'serviceAccount' in kwargs:
             service_account = kwargs['serviceAccount']
         if service_endpoint is None and 'serviceEndpoint' in kwargs:
@@ -646,8 +648,6 @@ class _InstanceState:
             state_message = kwargs['stateMessage']
         if tenant_project_id is None and 'tenantProjectId' in kwargs:
             tenant_project_id = kwargs['tenantProjectId']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
         if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
 
@@ -691,6 +691,8 @@ class _InstanceState:
             _setter("private_instance", private_instance)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if region is not None:
             _setter("region", region)
         if service_account is not None:
@@ -706,8 +708,6 @@ class _InstanceState:
             _setter("state_message", state_message)
         if tenant_project_id is not None:
             _setter("tenant_project_id", tenant_project_id)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if type is not None:
             _setter("type", type)
         if update_time is not None:
@@ -972,6 +972,19 @@ class _InstanceState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1046,19 +1059,6 @@ class _InstanceState:
     @tenant_project_id.setter
     def tenant_project_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tenant_project_id", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -1543,12 +1543,12 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["gcs_bucket"] = None
             __props__.__dict__["p4_service_account"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["service_account"] = None
             __props__.__dict__["service_endpoint"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["state_message"] = None
             __props__.__dict__["tenant_project_id"] = None
-            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["update_time"] = None
         super(Instance, __self__).__init__(
             'gcp:datafusion/instance:Instance',
@@ -1580,13 +1580,13 @@ class Instance(pulumi.CustomResource):
             p4_service_account: Optional[pulumi.Input[str]] = None,
             private_instance: Optional[pulumi.Input[bool]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
             service_endpoint: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             state_message: Optional[pulumi.Input[str]] = None,
             tenant_project_id: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None,
@@ -1632,6 +1632,8 @@ class Instance(pulumi.CustomResource):
                able to access the public internet.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] region: The region of the Data Fusion instance.
         :param pulumi.Input[str] service_account: Service account which will be used to access resources in the customer project.
         :param pulumi.Input[str] service_endpoint: Endpoint on which the Data Fusion UI and REST APIs are accessible.
@@ -1639,8 +1641,6 @@ class Instance(pulumi.CustomResource):
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[str] state_message: Additional information about the current state of this Data Fusion instance if available.
         :param pulumi.Input[str] tenant_project_id: The name of the tenant project.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] type: Represents the type of Data Fusion instance. Each type is configured with
                the default settings for processing and memory.
                - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
@@ -1683,13 +1683,13 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["p4_service_account"] = p4_service_account
         __props__.__dict__["private_instance"] = private_instance
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["region"] = region
         __props__.__dict__["service_account"] = service_account
         __props__.__dict__["service_endpoint"] = service_endpoint
         __props__.__dict__["state"] = state
         __props__.__dict__["state_message"] = state_message
         __props__.__dict__["tenant_project_id"] = tenant_project_id
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["type"] = type
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["version"] = version
@@ -1871,6 +1871,15 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
@@ -1921,15 +1930,6 @@ class Instance(pulumi.CustomResource):
         The name of the tenant project.
         """
         return pulumi.get(self, "tenant_project_id")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

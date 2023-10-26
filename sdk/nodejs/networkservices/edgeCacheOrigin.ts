@@ -237,6 +237,11 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
      */
     public readonly protocol!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Specifies one or more retry conditions for the configured origin.
      * If the failure mode during a connection attempt to the origin matches the configured retryCondition(s),
      * the origin request will be retried up to maxAttempts times. The failoverOrigin, if configured, will then be used to satisfy the request.
@@ -253,11 +258,6 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
      * Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
      */
     public readonly retryConditions!: pulumi.Output<string[]>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The connection and HTTP timeout configuration for this origin.
      * Structure is documented below.
@@ -290,8 +290,8 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
             resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["retryConditions"] = state ? state.retryConditions : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["timeout"] = state ? state.timeout : undefined;
         } else {
             const args = argsOrState as EdgeCacheOriginArgs | undefined;
@@ -313,7 +313,7 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
             resourceInputs["retryConditions"] = args ? args.retryConditions : undefined;
             resourceInputs["timeout"] = args ? args.timeout : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EdgeCacheOrigin.__pulumiType, name, resourceInputs, opts);
@@ -406,6 +406,11 @@ export interface EdgeCacheOriginState {
      */
     protocol?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Specifies one or more retry conditions for the configured origin.
      * If the failure mode during a connection attempt to the origin matches the configured retryCondition(s),
      * the origin request will be retried up to maxAttempts times. The failoverOrigin, if configured, will then be used to satisfy the request.
@@ -422,11 +427,6 @@ export interface EdgeCacheOriginState {
      * Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
      */
     retryConditions?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The connection and HTTP timeout configuration for this origin.
      * Structure is documented below.

@@ -255,6 +255,23 @@ public final class WorkstationClusterState extends com.pulumi.resources.Resource
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
      * Must be part of the subnetwork specified for this cluster.
      * 
@@ -269,23 +286,6 @@ public final class WorkstationClusterState extends com.pulumi.resources.Resource
      */
     public Optional<Output<String>> subnetwork() {
         return Optional.ofNullable(this.subnetwork);
-    }
-
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    @Import(name="terraformLabels")
-    private @Nullable Output<Map<String,String>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    public Optional<Output<Map<String,String>>> terraformLabels() {
-        return Optional.ofNullable(this.terraformLabels);
     }
 
     /**
@@ -339,8 +339,8 @@ public final class WorkstationClusterState extends com.pulumi.resources.Resource
         this.network = $.network;
         this.privateClusterConfig = $.privateClusterConfig;
         this.project = $.project;
+        this.pulumiLabels = $.pulumiLabels;
         this.subnetwork = $.subnetwork;
-        this.terraformLabels = $.terraformLabels;
         this.uid = $.uid;
         this.workstationClusterId = $.workstationClusterId;
     }
@@ -693,6 +693,29 @@ public final class WorkstationClusterState extends com.pulumi.resources.Resource
         }
 
         /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
          * @param subnetwork Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
          * Must be part of the subnetwork specified for this cluster.
          * 
@@ -713,29 +736,6 @@ public final class WorkstationClusterState extends com.pulumi.resources.Resource
          */
         public Builder subnetwork(String subnetwork) {
             return subnetwork(Output.of(subnetwork));
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
-            $.terraformLabels = terraformLabels;
-            return this;
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

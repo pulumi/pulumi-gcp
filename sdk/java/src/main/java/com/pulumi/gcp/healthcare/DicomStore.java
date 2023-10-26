@@ -276,6 +276,22 @@ public class DicomStore extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.notificationConfig);
     }
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
+    }
+    /**
      * The fully qualified name of this dataset
      * 
      */
@@ -306,22 +322,6 @@ public class DicomStore extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<DicomStoreStreamConfig>>> streamConfigs() {
         return Codegen.optional(this.streamConfigs);
-    }
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    @Export(name="terraformLabels", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output<Map<String,String>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    public Output<Map<String,String>> terraformLabels() {
-        return this.terraformLabels;
     }
 
     /**

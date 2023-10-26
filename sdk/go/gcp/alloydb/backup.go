@@ -253,6 +253,9 @@ type Backup struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
 	// This can happen due to user-triggered updates or system actions like failover or maintenance.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
@@ -260,9 +263,6 @@ type Backup struct {
 	SizeBytes pulumi.StringOutput `pulumi:"sizeBytes"`
 	// Output only. The current state of the backup.
 	State pulumi.StringOutput `pulumi:"state"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The backup type, which suggests the trigger for the backup.
 	// Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -369,6 +369,9 @@ type backupState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
 	// This can happen due to user-triggered updates or system actions like failover or maintenance.
 	Reconciling *bool `pulumi:"reconciling"`
@@ -376,9 +379,6 @@ type backupState struct {
 	SizeBytes *string `pulumi:"sizeBytes"`
 	// Output only. The current state of the backup.
 	State *string `pulumi:"state"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The backup type, which suggests the trigger for the backup.
 	// Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
 	Type *string `pulumi:"type"`
@@ -447,6 +447,9 @@ type BackupState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
 	// This can happen due to user-triggered updates or system actions like failover or maintenance.
 	Reconciling pulumi.BoolPtrInput
@@ -454,9 +457,6 @@ type BackupState struct {
 	SizeBytes pulumi.StringPtrInput
 	// Output only. The current state of the backup.
 	State pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// The backup type, which suggests the trigger for the backup.
 	// Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
 	Type pulumi.StringPtrInput
@@ -767,6 +767,12 @@ func (o BackupOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o BackupOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
 // This can happen due to user-triggered updates or system actions like failover or maintenance.
 func (o BackupOutput) Reconciling() pulumi.BoolOutput {
@@ -781,12 +787,6 @@ func (o BackupOutput) SizeBytes() pulumi.StringOutput {
 // Output only. The current state of the backup.
 func (o BackupOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o BackupOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Backup) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The backup type, which suggests the trigger for the backup.

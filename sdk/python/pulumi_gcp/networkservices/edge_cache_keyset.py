@@ -187,7 +187,7 @@ class _EdgeCacheKeysetState:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  public_keys: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetPublicKeyArgs']]]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  validation_shared_keys: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetValidationSharedKeyArgs']]]] = None):
         """
         Input properties used for looking up and filtering EdgeCacheKeyset resources.
@@ -212,7 +212,7 @@ class _EdgeCacheKeysetState:
                Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
                Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetValidationSharedKeyArgs']]] validation_shared_keys: An ordered list of shared keys to use for validating signed requests.
                Shared keys are secret.  Ensure that only authorized users can add `validation_shared_keys` to a keyset.
@@ -228,7 +228,7 @@ class _EdgeCacheKeysetState:
             name=name,
             project=project,
             public_keys=public_keys,
-            terraform_labels=terraform_labels,
+            pulumi_labels=pulumi_labels,
             validation_shared_keys=validation_shared_keys,
         )
     @staticmethod
@@ -240,7 +240,7 @@ class _EdgeCacheKeysetState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              public_keys: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetPublicKeyArgs']]]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              validation_shared_keys: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetValidationSharedKeyArgs']]]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -248,8 +248,8 @@ class _EdgeCacheKeysetState:
             effective_labels = kwargs['effectiveLabels']
         if public_keys is None and 'publicKeys' in kwargs:
             public_keys = kwargs['publicKeys']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if validation_shared_keys is None and 'validationSharedKeys' in kwargs:
             validation_shared_keys = kwargs['validationSharedKeys']
 
@@ -265,8 +265,8 @@ class _EdgeCacheKeysetState:
             _setter("project", project)
         if public_keys is not None:
             _setter("public_keys", public_keys)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if validation_shared_keys is not None:
             _setter("validation_shared_keys", validation_shared_keys)
 
@@ -358,17 +358,17 @@ class _EdgeCacheKeysetState:
         pulumi.set(self, "public_keys", value)
 
     @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The combination of labels configured directly on the resource
         and default labels configured on the provider.
         """
-        return pulumi.get(self, "terraform_labels")
+        return pulumi.get(self, "pulumi_labels")
 
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
 
     @property
     @pulumi.getter(name="validationSharedKeys")
@@ -621,7 +621,7 @@ class EdgeCacheKeyset(pulumi.CustomResource):
             __props__.__dict__["public_keys"] = public_keys
             __props__.__dict__["validation_shared_keys"] = validation_shared_keys
             __props__.__dict__["effective_labels"] = None
-            __props__.__dict__["terraform_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
         super(EdgeCacheKeyset, __self__).__init__(
             'gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset',
             resource_name,
@@ -638,7 +638,7 @@ class EdgeCacheKeyset(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeCacheKeysetPublicKeyArgs']]]]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             validation_shared_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeCacheKeysetValidationSharedKeyArgs']]]]] = None) -> 'EdgeCacheKeyset':
         """
         Get an existing EdgeCacheKeyset resource's state with the given name, id, and optional extra
@@ -668,7 +668,7 @@ class EdgeCacheKeyset(pulumi.CustomResource):
                Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
                Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeCacheKeysetValidationSharedKeyArgs']]]] validation_shared_keys: An ordered list of shared keys to use for validating signed requests.
                Shared keys are secret.  Ensure that only authorized users can add `validation_shared_keys` to a keyset.
@@ -686,7 +686,7 @@ class EdgeCacheKeyset(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["public_keys"] = public_keys
-        __props__.__dict__["terraform_labels"] = terraform_labels
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["validation_shared_keys"] = validation_shared_keys
         return EdgeCacheKeyset(resource_name, opts=opts, __props__=__props__)
 
@@ -754,13 +754,13 @@ class EdgeCacheKeyset(pulumi.CustomResource):
         return pulumi.get(self, "public_keys")
 
     @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         The combination of labels configured directly on the resource
         and default labels configured on the provider.
         """
-        return pulumi.get(self, "terraform_labels")
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter(name="validationSharedKeys")

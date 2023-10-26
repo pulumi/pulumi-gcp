@@ -100,12 +100,12 @@ type Lake struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.MapOutput `pulumi:"pulumiLabels"`
 	// Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State pulumi.StringOutput `pulumi:"state"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.MapOutput `pulumi:"terraformLabels"`
 	// Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Output only. The time when the lake was last updated.
@@ -173,12 +173,12 @@ type lakeState struct {
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]interface{} `pulumi:"pulumiLabels"`
 	// Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State *string `pulumi:"state"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels map[string]interface{} `pulumi:"terraformLabels"`
 	// Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
 	Uid *string `pulumi:"uid"`
 	// Output only. The time when the lake was last updated.
@@ -214,12 +214,12 @@ type LakeState struct {
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.MapInput
 	// Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
 	ServiceAccount pulumi.StringPtrInput
 	// Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.MapInput
 	// Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
 	Uid pulumi.StringPtrInput
 	// Output only. The time when the lake was last updated.
@@ -447,6 +447,11 @@ func (o LakeOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Lake) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o LakeOutput) PulumiLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Lake) pulumi.MapOutput { return v.PulumiLabels }).(pulumi.MapOutput)
+}
+
 // Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
 func (o LakeOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *Lake) pulumi.StringOutput { return v.ServiceAccount }).(pulumi.StringOutput)
@@ -455,11 +460,6 @@ func (o LakeOutput) ServiceAccount() pulumi.StringOutput {
 // Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 func (o LakeOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Lake) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o LakeOutput) TerraformLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Lake) pulumi.MapOutput { return v.TerraformLabels }).(pulumi.MapOutput)
 }
 
 // Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.

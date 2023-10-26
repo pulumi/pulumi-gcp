@@ -28,8 +28,8 @@ public final class GetAppConnectionResult {
     private Map<String,String> labels;
     private String name;
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private @Nullable String region;
-    private Map<String,String> terraformLabels;
     private String type;
 
     private GetAppConnectionResult() {}
@@ -64,11 +64,11 @@ public final class GetAppConnectionResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
-    }
-    public Map<String,String> terraformLabels() {
-        return this.terraformLabels;
     }
     public String type() {
         return this.type;
@@ -92,8 +92,8 @@ public final class GetAppConnectionResult {
         private Map<String,String> labels;
         private String name;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private @Nullable String region;
-        private Map<String,String> terraformLabels;
         private String type;
         public Builder() {}
         public Builder(GetAppConnectionResult defaults) {
@@ -107,8 +107,8 @@ public final class GetAppConnectionResult {
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.region = defaults.region;
-    	      this.terraformLabels = defaults.terraformLabels;
     	      this.type = defaults.type;
         }
 
@@ -167,13 +167,13 @@ public final class GetAppConnectionResult {
             return this;
         }
         @CustomType.Setter
-        public Builder region(@Nullable String region) {
-            this.region = region;
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
             return this;
         }
         @CustomType.Setter
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            this.terraformLabels = Objects.requireNonNull(terraformLabels);
+        public Builder region(@Nullable String region) {
+            this.region = region;
             return this;
         }
         @CustomType.Setter
@@ -192,8 +192,8 @@ public final class GetAppConnectionResult {
             o.labels = labels;
             o.name = name;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.region = region;
-            o.terraformLabels = terraformLabels;
             o.type = type;
             return o;
         }

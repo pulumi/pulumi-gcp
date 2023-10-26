@@ -314,6 +314,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// The region where the tunnel is located. If unset, is set to the region of `target_vpn_gateway`.
         /// </summary>
         [Output("region")]
@@ -363,12 +369,6 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("targetVpnGateway")]
         public Output<string?> TargetVpnGateway { get; private set; } = null!;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource and default labels configured on the provider.
-        /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// The unique identifier for the resource. This identifier is defined by the server.
@@ -726,6 +726,18 @@ namespace Pulumi.Gcp.Compute
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
+
         /// <summary>
         /// The region where the tunnel is located. If unset, is set to the region of `target_vpn_gateway`.
         /// </summary>
@@ -792,18 +804,6 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("targetVpnGateway")]
         public Input<string>? TargetVpnGateway { get; set; }
-
-        [Input("terraformLabels")]
-        private InputMap<string>? _terraformLabels;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource and default labels configured on the provider.
-        /// </summary>
-        public InputMap<string> TerraformLabels
-        {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
-            set => _terraformLabels = value;
-        }
 
         /// <summary>
         /// The unique identifier for the resource. This identifier is defined by the server.

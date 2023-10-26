@@ -60,8 +60,8 @@ export interface GetAiIndexResult {
     readonly metadatas: outputs.vertex.GetAiIndexMetadata[];
     readonly name: string;
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly region: string;
-    readonly terraformLabels: {[key: string]: string};
     readonly updateTime: string;
 }
 /**

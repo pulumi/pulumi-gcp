@@ -184,6 +184,7 @@ namespace Pulumi.Gcp.CloudFunctions
         /// </summary>
         public readonly string Name;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string? Region;
         /// <summary>
         /// The runtime in which the function is running.
@@ -208,7 +209,6 @@ namespace Pulumi.Gcp.CloudFunctions
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFunctionSourceRepositoryResult> SourceRepositories;
         public readonly string Status;
-        public readonly ImmutableDictionary<string, string> TerraformLabels;
         /// <summary>
         /// Function execution timeout (in seconds).
         /// </summary>
@@ -268,6 +268,8 @@ namespace Pulumi.Gcp.CloudFunctions
 
             string? project,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             string? region,
 
             string runtime,
@@ -285,8 +287,6 @@ namespace Pulumi.Gcp.CloudFunctions
             ImmutableArray<Outputs.GetFunctionSourceRepositoryResult> sourceRepositories,
 
             string status,
-
-            ImmutableDictionary<string, string> terraformLabels,
 
             int timeout,
 
@@ -316,6 +316,7 @@ namespace Pulumi.Gcp.CloudFunctions
             MinInstances = minInstances;
             Name = name;
             Project = project;
+            PulumiLabels = pulumiLabels;
             Region = region;
             Runtime = runtime;
             SecretEnvironmentVariables = secretEnvironmentVariables;
@@ -325,7 +326,6 @@ namespace Pulumi.Gcp.CloudFunctions
             SourceArchiveObject = sourceArchiveObject;
             SourceRepositories = sourceRepositories;
             Status = status;
-            TerraformLabels = terraformLabels;
             Timeout = timeout;
             TriggerHttp = triggerHttp;
             VpcConnector = vpcConnector;

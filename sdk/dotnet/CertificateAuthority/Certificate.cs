@@ -553,19 +553,19 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Output only. Details regarding the revocation of this Certificate. This Certificate is
         /// considered revoked if and only if this field is present.
         /// Structure is documented below.
         /// </summary>
         [Output("revocationDetails")]
         public Output<ImmutableArray<Outputs.CertificateRevocationDetail>> RevocationDetails { get; private set; } = null!;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// Output only. The time at which this CertificateAuthority was updated.
@@ -853,6 +853,19 @@ namespace Pulumi.Gcp.CertificateAuthority
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
+
         [Input("revocationDetails")]
         private InputList<Inputs.CertificateRevocationDetailGetArgs>? _revocationDetails;
 
@@ -865,19 +878,6 @@ namespace Pulumi.Gcp.CertificateAuthority
         {
             get => _revocationDetails ?? (_revocationDetails = new InputList<Inputs.CertificateRevocationDetailGetArgs>());
             set => _revocationDetails = value;
-        }
-
-        [Input("terraformLabels")]
-        private InputMap<string>? _terraformLabels;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        public InputMap<string> TerraformLabels
-        {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
-            set => _terraformLabels = value;
         }
 
         /// <summary>

@@ -249,6 +249,23 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * Immutable. Scope determines how configuration across multiple Gateway instances are merged.
      * The configuration for multiple Gateway instances with the same scope will be merged as presented as
      * a single coniguration to the proxy/load balancer.
@@ -321,23 +338,6 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    @Import(name="terraformLabels")
-    private @Nullable Output<Map<String,String>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    public Optional<Output<Map<String,String>>> terraformLabels() {
-        return Optional.ofNullable(this.terraformLabels);
-    }
-
-    /**
      * Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
      * Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
      * 
@@ -385,11 +385,11 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         this.network = $.network;
         this.ports = $.ports;
         this.project = $.project;
+        this.pulumiLabels = $.pulumiLabels;
         this.scope = $.scope;
         this.selfLink = $.selfLink;
         this.serverTlsPolicy = $.serverTlsPolicy;
         this.subnetwork = $.subnetwork;
-        this.terraformLabels = $.terraformLabels;
         this.type = $.type;
         this.updateTime = $.updateTime;
     }
@@ -755,6 +755,29 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
          * @param scope Immutable. Scope determines how configuration across multiple Gateway instances are merged.
          * The configuration for multiple Gateway instances with the same scope will be merged as presented as
          * a single coniguration to the proxy/load balancer.
@@ -848,29 +871,6 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder subnetwork(String subnetwork) {
             return subnetwork(Output.of(subnetwork));
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
-            $.terraformLabels = terraformLabels;
-            return this;
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

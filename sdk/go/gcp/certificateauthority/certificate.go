@@ -480,13 +480,13 @@ type Certificate struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Output only. Details regarding the revocation of this Certificate. This Certificate is
 	// considered revoked if and only if this field is present.
 	// Structure is documented below.
 	RevocationDetails CertificateRevocationDetailArrayOutput `pulumi:"revocationDetails"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Output only. The time at which this CertificateAuthority was updated.
 	// This is in RFC3339 text format.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -580,13 +580,13 @@ type certificateState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Output only. Details regarding the revocation of this Certificate. This Certificate is
 	// considered revoked if and only if this field is present.
 	// Structure is documented below.
 	RevocationDetails []CertificateRevocationDetail `pulumi:"revocationDetails"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Output only. The time at which this CertificateAuthority was updated.
 	// This is in RFC3339 text format.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -645,13 +645,13 @@ type CertificateState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Output only. Details regarding the revocation of this Certificate. This Certificate is
 	// considered revoked if and only if this field is present.
 	// Structure is documented below.
 	RevocationDetails CertificateRevocationDetailArrayInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// Output only. The time at which this CertificateAuthority was updated.
 	// This is in RFC3339 text format.
 	UpdateTime pulumi.StringPtrInput
@@ -953,17 +953,17 @@ func (o CertificateOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o CertificateOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Output only. Details regarding the revocation of this Certificate. This Certificate is
 // considered revoked if and only if this field is present.
 // Structure is documented below.
 func (o CertificateOutput) RevocationDetails() CertificateRevocationDetailArrayOutput {
 	return o.ApplyT(func(v *Certificate) CertificateRevocationDetailArrayOutput { return v.RevocationDetails }).(CertificateRevocationDetailArrayOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o CertificateOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Certificate) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Output only. The time at which this CertificateAuthority was updated.

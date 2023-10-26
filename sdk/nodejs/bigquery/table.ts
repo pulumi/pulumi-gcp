@@ -213,6 +213,10 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * If specified, configures range-based
      * partitioning for this table. Structure is documented below.
      */
@@ -249,10 +253,6 @@ export class Table extends pulumi.CustomResource {
      * Changing this forces a new resource to be created.
      */
     public readonly tableId!: pulumi.Output<string>;
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * If specified, configures time-based
      * partitioning for this table. Structure is documented below.
@@ -302,12 +302,12 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["numLongTermBytes"] = state ? state.numLongTermBytes : undefined;
             resourceInputs["numRows"] = state ? state.numRows : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["rangePartitioning"] = state ? state.rangePartitioning : undefined;
             resourceInputs["schema"] = state ? state.schema : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["tableConstraints"] = state ? state.tableConstraints : undefined;
             resourceInputs["tableId"] = state ? state.tableId : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["timePartitioning"] = state ? state.timePartitioning : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["view"] = state ? state.view : undefined;
@@ -345,8 +345,8 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["numBytes"] = undefined /*out*/;
             resourceInputs["numLongTermBytes"] = undefined /*out*/;
             resourceInputs["numRows"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -457,6 +457,10 @@ export interface TableState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * If specified, configures range-based
      * partitioning for this table. Structure is documented below.
      */
@@ -493,10 +497,6 @@ export interface TableState {
      * Changing this forces a new resource to be created.
      */
     tableId?: pulumi.Input<string>;
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * If specified, configures time-based
      * partitioning for this table. Structure is documented below.

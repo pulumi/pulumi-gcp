@@ -239,16 +239,16 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, object>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource and default labels configured on the provider.
-        /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, object>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
@@ -473,23 +473,23 @@ namespace Pulumi.Gcp.NetworkConnectivity
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<object>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        public InputMap<object> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<object>());
+            set => _pulumiLabels = value;
+        }
+
         /// <summary>
         /// Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
-
-        [Input("terraformLabels")]
-        private InputMap<object>? _terraformLabels;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource and default labels configured on the provider.
-        /// </summary>
-        public InputMap<object> TerraformLabels
-        {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<object>());
-            set => _terraformLabels = value;
-        }
 
         /// <summary>
         /// Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.

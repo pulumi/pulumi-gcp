@@ -182,14 +182,14 @@ export class AiFeatureStore extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The region of the dataset. eg us-central1
-     */
-    public readonly region!: pulumi.Output<string>;
-    /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The region of the dataset. eg us-central1
+     */
+    public readonly region!: pulumi.Output<string>;
     /**
      * The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
@@ -218,8 +218,8 @@ export class AiFeatureStore extends pulumi.CustomResource {
             resourceInputs["onlineServingConfig"] = state ? state.onlineServingConfig : undefined;
             resourceInputs["onlineStorageTtlDays"] = state ? state.onlineStorageTtlDays : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as AiFeatureStoreArgs | undefined;
@@ -234,7 +234,7 @@ export class AiFeatureStore extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -297,14 +297,14 @@ export interface AiFeatureStoreState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The region of the dataset. eg us-central1
-     */
-    region?: pulumi.Input<string>;
-    /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The region of the dataset. eg us-central1
+     */
+    region?: pulumi.Input<string>;
     /**
      * The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */

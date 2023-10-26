@@ -67,12 +67,12 @@ type GetCertificateMapResult struct {
 	EffectiveLabels map[string]string             `pulumi:"effectiveLabels"`
 	GclbTargets     []GetCertificateMapGclbTarget `pulumi:"gclbTargets"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string            `pulumi:"id"`
-	Labels          map[string]string `pulumi:"labels"`
-	Name            string            `pulumi:"name"`
-	Project         *string           `pulumi:"project"`
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
-	UpdateTime      string            `pulumi:"updateTime"`
+	Id           string            `pulumi:"id"`
+	Labels       map[string]string `pulumi:"labels"`
+	Name         string            `pulumi:"name"`
+	Project      *string           `pulumi:"project"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	UpdateTime   string            `pulumi:"updateTime"`
 }
 
 func GetCertificateMapOutput(ctx *pulumi.Context, args GetCertificateMapOutputArgs, opts ...pulumi.InvokeOption) GetCertificateMapResultOutput {
@@ -157,8 +157,8 @@ func (o GetCertificateMapResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCertificateMapResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
-func (o GetCertificateMapResultOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetCertificateMapResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
+func (o GetCertificateMapResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetCertificateMapResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 func (o GetCertificateMapResultOutput) UpdateTime() pulumi.StringOutput {

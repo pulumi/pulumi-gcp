@@ -22,7 +22,7 @@ class GetAppGatewayResult:
     """
     A collection of values returned by getAppGateway.
     """
-    def __init__(__self__, allocated_connections=None, display_name=None, effective_labels=None, host_type=None, id=None, labels=None, name=None, project=None, region=None, state=None, terraform_labels=None, type=None, uri=None):
+    def __init__(__self__, allocated_connections=None, display_name=None, effective_labels=None, host_type=None, id=None, labels=None, name=None, project=None, pulumi_labels=None, region=None, state=None, type=None, uri=None):
         if allocated_connections and not isinstance(allocated_connections, list):
             raise TypeError("Expected argument 'allocated_connections' to be a list")
         pulumi.set(__self__, "allocated_connections", allocated_connections)
@@ -47,15 +47,15 @@ class GetAppGatewayResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
-        if terraform_labels and not isinstance(terraform_labels, dict):
-            raise TypeError("Expected argument 'terraform_labels' to be a dict")
-        pulumi.set(__self__, "terraform_labels", terraform_labels)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -107,6 +107,11 @@ class GetAppGatewayResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[str]:
         return pulumi.get(self, "region")
@@ -115,11 +120,6 @@ class GetAppGatewayResult:
     @pulumi.getter
     def state(self) -> str:
         return pulumi.get(self, "state")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Mapping[str, str]:
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter
@@ -146,9 +146,9 @@ class AwaitableGetAppGatewayResult(GetAppGatewayResult):
             labels=self.labels,
             name=self.name,
             project=self.project,
+            pulumi_labels=self.pulumi_labels,
             region=self.region,
             state=self.state,
-            terraform_labels=self.terraform_labels,
             type=self.type,
             uri=self.uri)
 
@@ -194,9 +194,9 @@ def get_app_gateway(name: Optional[str] = None,
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         region=pulumi.get(__ret__, 'region'),
         state=pulumi.get(__ret__, 'state'),
-        terraform_labels=pulumi.get(__ret__, 'terraform_labels'),
         type=pulumi.get(__ret__, 'type'),
         uri=pulumi.get(__ret__, 'uri'))
 

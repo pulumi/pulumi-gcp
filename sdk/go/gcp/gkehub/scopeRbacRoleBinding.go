@@ -68,6 +68,9 @@ type ScopeRbacRoleBinding struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Role to bind to the principal.
 	// Structure is documented below.
 	Role ScopeRbacRoleBindingRoleOutput `pulumi:"role"`
@@ -78,9 +81,6 @@ type ScopeRbacRoleBinding struct {
 	// State of the RBAC Role Binding resource.
 	// Structure is documented below.
 	States ScopeRbacRoleBindingStateTypeArrayOutput `pulumi:"states"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Google-generated UUID for this resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Time the RBAC Role Binding was updated in UTC.
@@ -152,6 +152,9 @@ type scopeRbacRoleBindingState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Role to bind to the principal.
 	// Structure is documented below.
 	Role *ScopeRbacRoleBindingRole `pulumi:"role"`
@@ -162,9 +165,6 @@ type scopeRbacRoleBindingState struct {
 	// State of the RBAC Role Binding resource.
 	// Structure is documented below.
 	States []ScopeRbacRoleBindingStateType `pulumi:"states"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Google-generated UUID for this resource.
 	Uid *string `pulumi:"uid"`
 	// Time the RBAC Role Binding was updated in UTC.
@@ -198,6 +198,9 @@ type ScopeRbacRoleBindingState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Role to bind to the principal.
 	// Structure is documented below.
 	Role ScopeRbacRoleBindingRolePtrInput
@@ -208,9 +211,6 @@ type ScopeRbacRoleBindingState struct {
 	// State of the RBAC Role Binding resource.
 	// Structure is documented below.
 	States ScopeRbacRoleBindingStateTypeArrayInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// Google-generated UUID for this resource.
 	Uid pulumi.StringPtrInput
 	// Time the RBAC Role Binding was updated in UTC.
@@ -434,6 +434,12 @@ func (o ScopeRbacRoleBindingOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScopeRbacRoleBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ScopeRbacRoleBindingOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ScopeRbacRoleBinding) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Role to bind to the principal.
 // Structure is documented below.
 func (o ScopeRbacRoleBindingOutput) Role() ScopeRbacRoleBindingRoleOutput {
@@ -454,12 +460,6 @@ func (o ScopeRbacRoleBindingOutput) ScopeRbacRoleBindingId() pulumi.StringOutput
 // Structure is documented below.
 func (o ScopeRbacRoleBindingOutput) States() ScopeRbacRoleBindingStateTypeArrayOutput {
 	return o.ApplyT(func(v *ScopeRbacRoleBinding) ScopeRbacRoleBindingStateTypeArrayOutput { return v.States }).(ScopeRbacRoleBindingStateTypeArrayOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o ScopeRbacRoleBindingOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ScopeRbacRoleBinding) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Google-generated UUID for this resource.

@@ -309,6 +309,8 @@ type InstanceTemplate struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// An instance template is a global resource that is not
 	// bound to a zone or a region. However, you can still specify some regional
 	// resources in an instance template, which restricts the template to the
@@ -338,8 +340,6 @@ type InstanceTemplate struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The unique fingerprint of the tags.
 	TagsFingerprint pulumi.StringOutput `pulumi:"tagsFingerprint"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewInstanceTemplate registers a new resource with the given unique name, arguments, and options.
@@ -447,6 +447,8 @@ type instanceTemplateState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// An instance template is a global resource that is not
 	// bound to a zone or a region. However, you can still specify some regional
 	// resources in an instance template, which restricts the template to the
@@ -476,8 +478,6 @@ type instanceTemplateState struct {
 	Tags []string `pulumi:"tags"`
 	// The unique fingerprint of the tags.
 	TagsFingerprint *string `pulumi:"tagsFingerprint"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type InstanceTemplateState struct {
@@ -550,6 +550,8 @@ type InstanceTemplateState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// An instance template is a global resource that is not
 	// bound to a zone or a region. However, you can still specify some regional
 	// resources in an instance template, which restricts the template to the
@@ -579,8 +581,6 @@ type InstanceTemplateState struct {
 	Tags pulumi.StringArrayInput
 	// The unique fingerprint of the tags.
 	TagsFingerprint pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 }
 
 func (InstanceTemplateState) ElementType() reflect.Type {
@@ -1012,6 +1012,11 @@ func (o InstanceTemplateOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceTemplate) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o InstanceTemplateOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InstanceTemplate) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // An instance template is a global resource that is not
 // bound to a zone or a region. However, you can still specify some regional
 // resources in an instance template, which restricts the template to the
@@ -1071,11 +1076,6 @@ func (o InstanceTemplateOutput) Tags() pulumi.StringArrayOutput {
 // The unique fingerprint of the tags.
 func (o InstanceTemplateOutput) TagsFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceTemplate) pulumi.StringOutput { return v.TagsFingerprint }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o InstanceTemplateOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *InstanceTemplate) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type InstanceTemplateArrayOutput struct{ *pulumi.OutputState }

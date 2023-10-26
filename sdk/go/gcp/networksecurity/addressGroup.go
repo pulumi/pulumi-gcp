@@ -159,7 +159,7 @@ type AddressGroup struct {
 	Parent pulumi.StringPtrOutput `pulumi:"parent"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The type of the Address Group. Possible values are "IPV4" or "IPV6".
 	// Possible values are: `IPV4`, `IPV6`.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -238,7 +238,7 @@ type addressGroupState struct {
 	Parent *string `pulumi:"parent"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The type of the Address Group. Possible values are "IPV4" or "IPV6".
 	// Possible values are: `IPV4`, `IPV6`.
 	Type *string `pulumi:"type"`
@@ -279,7 +279,7 @@ type AddressGroupState struct {
 	Parent pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
+	PulumiLabels pulumi.StringMapInput
 	// The type of the Address Group. Possible values are "IPV4" or "IPV6".
 	// Possible values are: `IPV4`, `IPV6`.
 	Type pulumi.StringPtrInput
@@ -516,8 +516,8 @@ func (o AddressGroupOutput) Parent() pulumi.StringPtrOutput {
 
 // The combination of labels configured directly on the resource
 // and default labels configured on the provider.
-func (o AddressGroupOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *AddressGroup) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
+func (o AddressGroupOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AddressGroup) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The type of the Address Group. Possible values are "IPV4" or "IPV6".

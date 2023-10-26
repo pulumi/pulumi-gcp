@@ -171,7 +171,7 @@ export class CxIntent extends pulumi.CustomResource {
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The collection of training phrases the agent is trained on to identify the intent.
      * Structure is documented below.
@@ -201,7 +201,7 @@ export class CxIntent extends pulumi.CustomResource {
             resourceInputs["parameters"] = state ? state.parameters : undefined;
             resourceInputs["parent"] = state ? state.parent : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["trainingPhrases"] = state ? state.trainingPhrases : undefined;
         } else {
             const args = argsOrState as CxIntentArgs | undefined;
@@ -219,7 +219,7 @@ export class CxIntent extends pulumi.CustomResource {
             resourceInputs["trainingPhrases"] = args ? args.trainingPhrases : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CxIntent.__pulumiType, name, resourceInputs, opts);
@@ -291,7 +291,7 @@ export interface CxIntentState {
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The collection of training phrases the agent is trained on to identify the intent.
      * Structure is documented below.

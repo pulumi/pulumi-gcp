@@ -372,11 +372,11 @@ class _GatewayState:
                  network: Optional[pulumi.Input[str]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  server_tls_policy: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -412,6 +412,8 @@ class _GatewayState:
                limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] scope: Immutable. Scope determines how configuration across multiple Gateway instances are merged.
                The configuration for multiple Gateway instances with the same scope will be merged as presented as
                a single coniguration to the proxy/load balancer.
@@ -422,8 +424,6 @@ class _GatewayState:
         :param pulumi.Input[str] subnetwork: The relative resource name identifying the subnetwork in which this SWG is allocated.
                For example: `projects/*/regions/us-central1/subnetworks/network-1`.
                Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] type: Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
                Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
         :param pulumi.Input[str] update_time: Time the AccessPolicy was updated in UTC.
@@ -443,11 +443,11 @@ class _GatewayState:
             network=network,
             ports=ports,
             project=project,
+            pulumi_labels=pulumi_labels,
             scope=scope,
             self_link=self_link,
             server_tls_policy=server_tls_policy,
             subnetwork=subnetwork,
-            terraform_labels=terraform_labels,
             type=type,
             update_time=update_time,
         )
@@ -467,11 +467,11 @@ class _GatewayState:
              network: Optional[pulumi.Input[str]] = None,
              ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              scope: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              server_tls_policy: Optional[pulumi.Input[str]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
@@ -486,12 +486,12 @@ class _GatewayState:
             effective_labels = kwargs['effectiveLabels']
         if gateway_security_policy is None and 'gatewaySecurityPolicy' in kwargs:
             gateway_security_policy = kwargs['gatewaySecurityPolicy']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if self_link is None and 'selfLink' in kwargs:
             self_link = kwargs['selfLink']
         if server_tls_policy is None and 'serverTlsPolicy' in kwargs:
             server_tls_policy = kwargs['serverTlsPolicy']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
         if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
 
@@ -521,6 +521,8 @@ class _GatewayState:
             _setter("ports", ports)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if scope is not None:
             _setter("scope", scope)
         if self_link is not None:
@@ -529,8 +531,6 @@ class _GatewayState:
             _setter("server_tls_policy", server_tls_policy)
         if subnetwork is not None:
             _setter("subnetwork", subnetwork)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if type is not None:
             _setter("type", type)
         if update_time is not None:
@@ -711,6 +711,19 @@ class _GatewayState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter
     def scope(self) -> Optional[pulumi.Input[str]]:
         """
@@ -763,19 +776,6 @@ class _GatewayState:
     @subnetwork.setter
     def subnetwork(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -1260,8 +1260,8 @@ class Gateway(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["self_link"] = None
-            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["update_time"] = None
         super(Gateway, __self__).__init__(
             'gcp:networkservices/gateway:Gateway',
@@ -1286,11 +1286,11 @@ class Gateway(pulumi.CustomResource):
             network: Optional[pulumi.Input[str]] = None,
             ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             scope: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             server_tls_policy: Optional[pulumi.Input[str]] = None,
             subnetwork: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Gateway':
         """
@@ -1331,6 +1331,8 @@ class Gateway(pulumi.CustomResource):
                limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] scope: Immutable. Scope determines how configuration across multiple Gateway instances are merged.
                The configuration for multiple Gateway instances with the same scope will be merged as presented as
                a single coniguration to the proxy/load balancer.
@@ -1341,8 +1343,6 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] subnetwork: The relative resource name identifying the subnetwork in which this SWG is allocated.
                For example: `projects/*/regions/us-central1/subnetworks/network-1`.
                Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] type: Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
                Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
         :param pulumi.Input[str] update_time: Time the AccessPolicy was updated in UTC.
@@ -1364,11 +1364,11 @@ class Gateway(pulumi.CustomResource):
         __props__.__dict__["network"] = network
         __props__.__dict__["ports"] = ports
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["scope"] = scope
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["server_tls_policy"] = server_tls_policy
         __props__.__dict__["subnetwork"] = subnetwork
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["type"] = type
         __props__.__dict__["update_time"] = update_time
         return Gateway(resource_name, opts=opts, __props__=__props__)
@@ -1496,6 +1496,15 @@ class Gateway(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def scope(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1532,15 +1541,6 @@ class Gateway(pulumi.CustomResource):
         Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
         """
         return pulumi.get(self, "subnetwork")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

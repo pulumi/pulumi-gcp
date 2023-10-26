@@ -321,11 +321,11 @@ class _InstanceState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_config: Optional[pulumi.Input['InstanceMachineConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  query_insights_config: Optional[pulumi.Input['InstanceQueryInsightsConfigArgs']] = None,
                  read_pool_config: Optional[pulumi.Input['InstanceReadPoolConfigArgs']] = None,
                  reconciling: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -363,14 +363,14 @@ class _InstanceState:
         :param pulumi.Input['InstanceMachineConfigArgs'] machine_config: Configurations for the machines that host the underlying database engine.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the instance resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input['InstanceQueryInsightsConfigArgs'] query_insights_config: Configuration for query insights.
                Structure is documented below.
         :param pulumi.Input['InstanceReadPoolConfigArgs'] read_pool_config: Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
                Structure is documented below.
         :param pulumi.Input[bool] reconciling: Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
         :param pulumi.Input[str] state: The current state of the alloydb instance.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
         :param pulumi.Input[str] update_time: Time the Instance was updated in UTC.
         """
@@ -391,11 +391,11 @@ class _InstanceState:
             labels=labels,
             machine_config=machine_config,
             name=name,
+            pulumi_labels=pulumi_labels,
             query_insights_config=query_insights_config,
             read_pool_config=read_pool_config,
             reconciling=reconciling,
             state=state,
-            terraform_labels=terraform_labels,
             uid=uid,
             update_time=update_time,
         )
@@ -417,11 +417,11 @@ class _InstanceState:
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              machine_config: Optional[pulumi.Input['InstanceMachineConfigArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              query_insights_config: Optional[pulumi.Input['InstanceQueryInsightsConfigArgs']] = None,
              read_pool_config: Optional[pulumi.Input['InstanceReadPoolConfigArgs']] = None,
              reconciling: Optional[pulumi.Input[bool]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
@@ -448,12 +448,12 @@ class _InstanceState:
             ip_address = kwargs['ipAddress']
         if machine_config is None and 'machineConfig' in kwargs:
             machine_config = kwargs['machineConfig']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if query_insights_config is None and 'queryInsightsConfig' in kwargs:
             query_insights_config = kwargs['queryInsightsConfig']
         if read_pool_config is None and 'readPoolConfig' in kwargs:
             read_pool_config = kwargs['readPoolConfig']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
         if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
 
@@ -487,6 +487,8 @@ class _InstanceState:
             _setter("machine_config", machine_config)
         if name is not None:
             _setter("name", name)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if query_insights_config is not None:
             _setter("query_insights_config", query_insights_config)
         if read_pool_config is not None:
@@ -495,8 +497,6 @@ class _InstanceState:
             _setter("reconciling", reconciling)
         if state is not None:
             _setter("state", state)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if uid is not None:
             _setter("uid", uid)
         if update_time is not None:
@@ -701,6 +701,19 @@ class _InstanceState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="queryInsightsConfig")
     def query_insights_config(self) -> Optional[pulumi.Input['InstanceQueryInsightsConfigArgs']]:
         """
@@ -749,19 +762,6 @@ class _InstanceState:
     @state.setter
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -1031,9 +1031,9 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["ip_address"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["reconciling"] = None
             __props__.__dict__["state"] = None
-            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
         super(Instance, __self__).__init__(
@@ -1061,11 +1061,11 @@ class Instance(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             machine_config: Optional[pulumi.Input[pulumi.InputType['InstanceMachineConfigArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             query_insights_config: Optional[pulumi.Input[pulumi.InputType['InstanceQueryInsightsConfigArgs']]] = None,
             read_pool_config: Optional[pulumi.Input[pulumi.InputType['InstanceReadPoolConfigArgs']]] = None,
             reconciling: Optional[pulumi.Input[bool]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
@@ -1108,14 +1108,14 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstanceMachineConfigArgs']] machine_config: Configurations for the machines that host the underlying database engine.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the instance resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['InstanceQueryInsightsConfigArgs']] query_insights_config: Configuration for query insights.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['InstanceReadPoolConfigArgs']] read_pool_config: Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
                Structure is documented below.
         :param pulumi.Input[bool] reconciling: Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
         :param pulumi.Input[str] state: The current state of the alloydb instance.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
         :param pulumi.Input[str] update_time: Time the Instance was updated in UTC.
         """
@@ -1138,11 +1138,11 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["machine_config"] = machine_config
         __props__.__dict__["name"] = name
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["query_insights_config"] = query_insights_config
         __props__.__dict__["read_pool_config"] = read_pool_config
         __props__.__dict__["reconciling"] = reconciling
         __props__.__dict__["state"] = state
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
         return Instance(resource_name, opts=opts, __props__=__props__)
@@ -1286,6 +1286,15 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="queryInsightsConfig")
     def query_insights_config(self) -> pulumi.Output['outputs.InstanceQueryInsightsConfig']:
         """
@@ -1318,15 +1327,6 @@ class Instance(pulumi.CustomResource):
         The current state of the alloydb instance.
         """
         return pulumi.get(self, "state")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

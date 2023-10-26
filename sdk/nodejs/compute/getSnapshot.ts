@@ -87,6 +87,7 @@ export interface GetSnapshotResult {
     readonly mostRecent?: boolean;
     readonly name?: string;
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly selfLink: string;
     readonly snapshotEncryptionKeys: outputs.compute.GetSnapshotSnapshotEncryptionKey[];
     readonly snapshotId: number;
@@ -94,7 +95,6 @@ export interface GetSnapshotResult {
     readonly sourceDiskEncryptionKeys: outputs.compute.GetSnapshotSourceDiskEncryptionKey[];
     readonly storageBytes: number;
     readonly storageLocations: string[];
-    readonly terraformLabels: {[key: string]: string};
     readonly zone: string;
 }
 /**

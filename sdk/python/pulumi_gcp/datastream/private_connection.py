@@ -169,8 +169,8 @@ class _PrivateConnectionState:
                  name: Optional[pulumi.Input[str]] = None,
                  private_connection_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_peering_config: Optional[pulumi.Input['PrivateConnectionVpcPeeringConfigArgs']] = None):
         """
         Input properties used for looking up and filtering PrivateConnection resources.
@@ -187,9 +187,9 @@ class _PrivateConnectionState:
         :param pulumi.Input[str] private_connection_id: The private connectivity identifier.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] state: State of the PrivateConnection.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[str] state: State of the PrivateConnection.
         :param pulumi.Input['PrivateConnectionVpcPeeringConfigArgs'] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
                between Datastream and the consumer's VPC.
                Structure is documented below.
@@ -204,8 +204,8 @@ class _PrivateConnectionState:
             name=name,
             private_connection_id=private_connection_id,
             project=project,
+            pulumi_labels=pulumi_labels,
             state=state,
-            terraform_labels=terraform_labels,
             vpc_peering_config=vpc_peering_config,
         )
     @staticmethod
@@ -219,8 +219,8 @@ class _PrivateConnectionState:
              name: Optional[pulumi.Input[str]] = None,
              private_connection_id: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              vpc_peering_config: Optional[pulumi.Input['PrivateConnectionVpcPeeringConfigArgs']] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -230,8 +230,8 @@ class _PrivateConnectionState:
             effective_labels = kwargs['effectiveLabels']
         if private_connection_id is None and 'privateConnectionId' in kwargs:
             private_connection_id = kwargs['privateConnectionId']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if vpc_peering_config is None and 'vpcPeeringConfig' in kwargs:
             vpc_peering_config = kwargs['vpcPeeringConfig']
 
@@ -251,10 +251,10 @@ class _PrivateConnectionState:
             _setter("private_connection_id", private_connection_id)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if state is not None:
             _setter("state", state)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if vpc_peering_config is not None:
             _setter("vpc_peering_config", vpc_peering_config)
 
@@ -360,6 +360,19 @@ class _PrivateConnectionState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
@@ -370,19 +383,6 @@ class _PrivateConnectionState:
     @state.setter
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="vpcPeeringConfig")
@@ -575,8 +575,8 @@ class PrivateConnection(pulumi.CustomResource):
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["errors"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["state"] = None
-            __props__.__dict__["terraform_labels"] = None
         super(PrivateConnection, __self__).__init__(
             'gcp:datastream/privateConnection:PrivateConnection',
             resource_name,
@@ -595,8 +595,8 @@ class PrivateConnection(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             private_connection_id: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vpc_peering_config: Optional[pulumi.Input[pulumi.InputType['PrivateConnectionVpcPeeringConfigArgs']]] = None) -> 'PrivateConnection':
         """
         Get an existing PrivateConnection resource's state with the given name, id, and optional extra
@@ -618,9 +618,9 @@ class PrivateConnection(pulumi.CustomResource):
         :param pulumi.Input[str] private_connection_id: The private connectivity identifier.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] state: State of the PrivateConnection.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[str] state: State of the PrivateConnection.
         :param pulumi.Input[pulumi.InputType['PrivateConnectionVpcPeeringConfigArgs']] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
                between Datastream and the consumer's VPC.
                Structure is documented below.
@@ -637,8 +637,8 @@ class PrivateConnection(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["private_connection_id"] = private_connection_id
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["state"] = state
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["vpc_peering_config"] = vpc_peering_config
         return PrivateConnection(resource_name, opts=opts, __props__=__props__)
 
@@ -712,21 +712,21 @@ class PrivateConnection(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
         State of the PrivateConnection.
         """
         return pulumi.get(self, "state")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="vpcPeeringConfig")

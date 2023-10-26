@@ -226,6 +226,10 @@ export class Target extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: any}>;
+    /**
      * Optional. Whether or not the `Target` requires approval.
      */
     public readonly requireApproval!: pulumi.Output<boolean | undefined>;
@@ -237,10 +241,6 @@ export class Target extends pulumi.CustomResource {
      * Output only. Resource id of the `Target`.
      */
     public /*out*/ readonly targetId!: pulumi.Output<string>;
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: any}>;
     /**
      * Output only. Unique identifier of the `Target`.
      */
@@ -278,10 +278,10 @@ export class Target extends pulumi.CustomResource {
             resourceInputs["multiTarget"] = state ? state.multiTarget : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["requireApproval"] = state ? state.requireApproval : undefined;
             resourceInputs["run"] = state ? state.run : undefined;
             resourceInputs["targetId"] = state ? state.targetId : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -306,8 +306,8 @@ export class Target extends pulumi.CustomResource {
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["targetId"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
@@ -393,6 +393,10 @@ export interface TargetState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: any}>;
+    /**
      * Optional. Whether or not the `Target` requires approval.
      */
     requireApproval?: pulumi.Input<boolean>;
@@ -404,10 +408,6 @@ export interface TargetState {
      * Output only. Resource id of the `Target`.
      */
     targetId?: pulumi.Input<string>;
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Output only. Unique identifier of the `Target`.
      */

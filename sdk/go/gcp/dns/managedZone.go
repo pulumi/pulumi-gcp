@@ -469,6 +469,9 @@ type ManagedZone struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
 	// lookup queries using automatically configured records for VPC resources. This only applies
 	// to networks listed under `privateVisibilityConfig`.
@@ -476,9 +479,6 @@ type ManagedZone struct {
 	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
 	// Structure is documented below.
 	ServiceDirectoryConfig ManagedZoneServiceDirectoryConfigPtrOutput `pulumi:"serviceDirectoryConfig"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The zone's visibility: public zones are exposed to the Internet,
 	// while private zones are visible only to Virtual Private Cloud resources.
 	// Default value is `public`.
@@ -571,6 +571,9 @@ type managedZoneState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
 	// lookup queries using automatically configured records for VPC resources. This only applies
 	// to networks listed under `privateVisibilityConfig`.
@@ -578,9 +581,6 @@ type managedZoneState struct {
 	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
 	// Structure is documented below.
 	ServiceDirectoryConfig *ManagedZoneServiceDirectoryConfig `pulumi:"serviceDirectoryConfig"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The zone's visibility: public zones are exposed to the Internet,
 	// while private zones are visible only to Virtual Private Cloud resources.
 	// Default value is `public`.
@@ -638,6 +638,9 @@ type ManagedZoneState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
 	// lookup queries using automatically configured records for VPC resources. This only applies
 	// to networks listed under `privateVisibilityConfig`.
@@ -645,9 +648,6 @@ type ManagedZoneState struct {
 	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
 	// Structure is documented below.
 	ServiceDirectoryConfig ManagedZoneServiceDirectoryConfigPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// The zone's visibility: public zones are exposed to the Internet,
 	// while private zones are visible only to Virtual Private Cloud resources.
 	// Default value is `public`.
@@ -971,6 +971,12 @@ func (o ManagedZoneOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedZone) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ManagedZoneOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ManagedZone) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
 // lookup queries using automatically configured records for VPC resources. This only applies
 // to networks listed under `privateVisibilityConfig`.
@@ -982,12 +988,6 @@ func (o ManagedZoneOutput) ReverseLookup() pulumi.BoolPtrOutput {
 // Structure is documented below.
 func (o ManagedZoneOutput) ServiceDirectoryConfig() ManagedZoneServiceDirectoryConfigPtrOutput {
 	return o.ApplyT(func(v *ManagedZone) ManagedZoneServiceDirectoryConfigPtrOutput { return v.ServiceDirectoryConfig }).(ManagedZoneServiceDirectoryConfigPtrOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o ManagedZoneOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ManagedZone) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The zone's visibility: public zones are exposed to the Internet,

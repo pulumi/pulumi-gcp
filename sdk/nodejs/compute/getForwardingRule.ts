@@ -85,6 +85,7 @@ export interface GetForwardingRuleResult {
     readonly project?: string;
     readonly pscConnectionId: string;
     readonly pscConnectionStatus: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly region?: string;
     readonly selfLink: string;
     readonly serviceDirectoryRegistrations: outputs.compute.GetForwardingRuleServiceDirectoryRegistration[];
@@ -93,7 +94,6 @@ export interface GetForwardingRuleResult {
     readonly sourceIpRanges: string[];
     readonly subnetwork: string;
     readonly target: string;
-    readonly terraformLabels: {[key: string]: string};
 }
 /**
  * Get a forwarding rule within GCE from its name.

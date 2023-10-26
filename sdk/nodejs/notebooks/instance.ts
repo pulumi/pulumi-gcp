@@ -294,6 +294,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly proxyUri!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Reservation Affinity for consuming Zonal reservation.
      * Structure is documented below.
      */
@@ -332,11 +337,6 @@ export class Instance extends pulumi.CustomResource {
      * The Compute Engine tags to add to instance.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Instance update time.
      */
@@ -386,6 +386,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["postStartupScript"] = state ? state.postStartupScript : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["proxyUri"] = state ? state.proxyUri : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["reservationAffinity"] = state ? state.reservationAffinity : undefined;
             resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
             resourceInputs["serviceAccountScopes"] = state ? state.serviceAccountScopes : undefined;
@@ -393,7 +394,6 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["subnet"] = state ? state.subnet : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
             resourceInputs["vmImage"] = state ? state.vmImage : undefined;
         } else {
@@ -438,8 +438,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["vmImage"] = args ? args.vmImage : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["proxyUri"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
@@ -592,6 +592,11 @@ export interface InstanceState {
      */
     proxyUri?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Reservation Affinity for consuming Zonal reservation.
      * Structure is documented below.
      */
@@ -630,11 +635,6 @@ export interface InstanceState {
      * The Compute Engine tags to add to instance.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Instance update time.
      */

@@ -248,6 +248,10 @@ export class VPNTunnel extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
      */
     public readonly region!: pulumi.Output<string>;
@@ -284,10 +288,6 @@ export class VPNTunnel extends pulumi.CustomResource {
      * associated.
      */
     public readonly targetVpnGateway!: pulumi.Output<string | undefined>;
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The unique identifier for the resource. This identifier is defined by the server.
      */
@@ -330,6 +330,7 @@ export class VPNTunnel extends pulumi.CustomResource {
             resourceInputs["peerGcpGateway"] = state ? state.peerGcpGateway : undefined;
             resourceInputs["peerIp"] = state ? state.peerIp : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["remoteTrafficSelectors"] = state ? state.remoteTrafficSelectors : undefined;
             resourceInputs["router"] = state ? state.router : undefined;
@@ -337,7 +338,6 @@ export class VPNTunnel extends pulumi.CustomResource {
             resourceInputs["sharedSecret"] = state ? state.sharedSecret : undefined;
             resourceInputs["sharedSecretHash"] = state ? state.sharedSecretHash : undefined;
             resourceInputs["targetVpnGateway"] = state ? state.targetVpnGateway : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["tunnelId"] = state ? state.tunnelId : undefined;
             resourceInputs["vpnGateway"] = state ? state.vpnGateway : undefined;
             resourceInputs["vpnGatewayInterface"] = state ? state.vpnGatewayInterface : undefined;
@@ -367,9 +367,9 @@ export class VPNTunnel extends pulumi.CustomResource {
             resourceInputs["detailedStatus"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["sharedSecretHash"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["tunnelId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -458,6 +458,10 @@ export interface VPNTunnelState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
      */
     region?: pulumi.Input<string>;
@@ -494,10 +498,6 @@ export interface VPNTunnelState {
      * associated.
      */
     targetVpnGateway?: pulumi.Input<string>;
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The unique identifier for the resource. This identifier is defined by the server.
      */

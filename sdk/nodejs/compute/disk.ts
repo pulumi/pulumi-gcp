@@ -273,6 +273,11 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly provisionedThroughput!: pulumi.Output<number>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Resource policies applied to this disk for automatic snapshot creations.
      * ~>**NOTE** This value does not support updating the
      * resource policy, as resource policies can not be updated more than
@@ -354,11 +359,6 @@ export class Disk extends pulumi.CustomResource {
      */
     public /*out*/ readonly sourceSnapshotId!: pulumi.Output<string>;
     /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
-    /**
      * URL of the disk type resource describing which disk type to use to
      * create the disk. Provide this when creating the disk.
      */
@@ -406,6 +406,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["provisionedIops"] = state ? state.provisionedIops : undefined;
             resourceInputs["provisionedThroughput"] = state ? state.provisionedThroughput : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["resourcePolicies"] = state ? state.resourcePolicies : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["size"] = state ? state.size : undefined;
@@ -416,7 +417,6 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["sourceImageId"] = state ? state.sourceImageId : undefined;
             resourceInputs["sourceSnapshotEncryptionKey"] = state ? state.sourceSnapshotEncryptionKey : undefined;
             resourceInputs["sourceSnapshotId"] = state ? state.sourceSnapshotId : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["users"] = state ? state.users : undefined;
             resourceInputs["zone"] = state ? state.zone : undefined;
@@ -450,11 +450,11 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["lastAttachTimestamp"] = undefined /*out*/;
             resourceInputs["lastDetachTimestamp"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["sourceDiskId"] = undefined /*out*/;
             resourceInputs["sourceImageId"] = undefined /*out*/;
             resourceInputs["sourceSnapshotId"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["users"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -597,6 +597,11 @@ export interface DiskState {
      */
     provisionedThroughput?: pulumi.Input<number>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Resource policies applied to this disk for automatic snapshot creations.
      * ~>**NOTE** This value does not support updating the
      * resource policy, as resource policies can not be updated more than
@@ -677,11 +682,6 @@ export interface DiskState {
      * used.
      */
     sourceSnapshotId?: pulumi.Input<string>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * URL of the disk type resource describing which disk type to use to
      * create the disk. Provide this when creating the disk.

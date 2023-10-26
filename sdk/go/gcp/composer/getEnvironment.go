@@ -40,12 +40,12 @@ type LookupEnvironmentResult struct {
 	Configs         []GetEnvironmentConfig `pulumi:"configs"`
 	EffectiveLabels map[string]string      `pulumi:"effectiveLabels"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string            `pulumi:"id"`
-	Labels          map[string]string `pulumi:"labels"`
-	Name            string            `pulumi:"name"`
-	Project         *string           `pulumi:"project"`
-	Region          *string           `pulumi:"region"`
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	Id           string            `pulumi:"id"`
+	Labels       map[string]string `pulumi:"labels"`
+	Name         string            `pulumi:"name"`
+	Project      *string           `pulumi:"project"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	Region       *string           `pulumi:"region"`
 }
 
 func LookupEnvironmentOutput(ctx *pulumi.Context, args LookupEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentResultOutput {
@@ -123,12 +123,12 @@ func (o LookupEnvironmentResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
-func (o LookupEnvironmentResultOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupEnvironmentResult) *string { return v.Region }).(pulumi.StringPtrOutput)
+func (o LookupEnvironmentResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-func (o LookupEnvironmentResultOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupEnvironmentResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
+func (o LookupEnvironmentResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 func init() {

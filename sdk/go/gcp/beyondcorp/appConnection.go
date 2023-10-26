@@ -193,11 +193,11 @@ type AppConnection struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The region of the AppConnection.
-	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// The region of the AppConnection.
+	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// The type of network connectivity used by the AppConnection. Refer to
 	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
 	// for a list of possible values.
@@ -260,11 +260,11 @@ type appConnectionState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The region of the AppConnection.
-	Region *string `pulumi:"region"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// The region of the AppConnection.
+	Region *string `pulumi:"region"`
 	// The type of network connectivity used by the AppConnection. Refer to
 	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
 	// for a list of possible values.
@@ -295,11 +295,11 @@ type AppConnectionState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The region of the AppConnection.
-	Region pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
+	PulumiLabels pulumi.StringMapInput
+	// The region of the AppConnection.
+	Region pulumi.StringPtrInput
 	// The type of network connectivity used by the AppConnection. Refer to
 	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
 	// for a list of possible values.
@@ -527,15 +527,15 @@ func (o AppConnectionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppConnection) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o AppConnectionOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AppConnection) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The region of the AppConnection.
 func (o AppConnectionOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppConnection) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o AppConnectionOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *AppConnection) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The type of network connectivity used by the AppConnection. Refer to

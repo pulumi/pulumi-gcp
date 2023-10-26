@@ -137,7 +137,7 @@ class _NamespaceState:
                  name: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Namespace resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
@@ -160,7 +160,7 @@ class _NamespaceState:
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         """
         _NamespaceState._configure(
@@ -171,7 +171,7 @@ class _NamespaceState:
             name=name,
             namespace_id=namespace_id,
             project=project,
-            terraform_labels=terraform_labels,
+            pulumi_labels=pulumi_labels,
         )
     @staticmethod
     def _configure(
@@ -182,15 +182,15 @@ class _NamespaceState:
              name: Optional[pulumi.Input[str]] = None,
              namespace_id: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if effective_labels is None and 'effectiveLabels' in kwargs:
             effective_labels = kwargs['effectiveLabels']
         if namespace_id is None and 'namespaceId' in kwargs:
             namespace_id = kwargs['namespaceId']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
 
         if effective_labels is not None:
             _setter("effective_labels", effective_labels)
@@ -204,8 +204,8 @@ class _NamespaceState:
             _setter("namespace_id", namespace_id)
         if project is not None:
             _setter("project", project)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
 
     @property
     @pulumi.getter(name="effectiveLabels")
@@ -294,17 +294,17 @@ class _NamespaceState:
         pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The combination of labels configured directly on the resource
         and default labels configured on the provider.
         """
-        return pulumi.get(self, "terraform_labels")
+        return pulumi.get(self, "pulumi_labels")
 
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
 
 
 class Namespace(pulumi.CustomResource):
@@ -470,7 +470,7 @@ class Namespace(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
-            __props__.__dict__["terraform_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
         super(Namespace, __self__).__init__(
             'gcp:servicedirectory/namespace:Namespace',
             resource_name,
@@ -487,7 +487,7 @@ class Namespace(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             namespace_id: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Namespace':
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Namespace':
         """
         Get an existing Namespace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -515,7 +515,7 @@ class Namespace(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -528,7 +528,7 @@ class Namespace(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["namespace_id"] = namespace_id
         __props__.__dict__["project"] = project
-        __props__.__dict__["terraform_labels"] = terraform_labels
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         return Namespace(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -594,11 +594,11 @@ class Namespace(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         The combination of labels configured directly on the resource
         and default labels configured on the provider.
         """
-        return pulumi.get(self, "terraform_labels")
+        return pulumi.get(self, "pulumi_labels")
 

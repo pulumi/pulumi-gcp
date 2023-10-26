@@ -70,6 +70,9 @@ type Namespace struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The name of the Scope instance.
 	Scope pulumi.StringOutput `pulumi:"scope"`
 	// Id of the scope
@@ -81,9 +84,6 @@ type Namespace struct {
 	// State of the namespace resource.
 	// Structure is documented below.
 	States NamespaceStateTypeArrayOutput `pulumi:"states"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Google-generated UUID for this resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Time the Namespace was updated in UTC.
@@ -152,6 +152,9 @@ type namespaceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The name of the Scope instance.
 	Scope *string `pulumi:"scope"`
 	// Id of the scope
@@ -163,9 +166,6 @@ type namespaceState struct {
 	// State of the namespace resource.
 	// Structure is documented below.
 	States []NamespaceStateType `pulumi:"states"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Google-generated UUID for this resource.
 	Uid *string `pulumi:"uid"`
 	// Time the Namespace was updated in UTC.
@@ -196,6 +196,9 @@ type NamespaceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The name of the Scope instance.
 	Scope pulumi.StringPtrInput
 	// Id of the scope
@@ -207,9 +210,6 @@ type NamespaceState struct {
 	// State of the namespace resource.
 	// Structure is documented below.
 	States NamespaceStateTypeArrayInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// Google-generated UUID for this resource.
 	Uid pulumi.StringPtrInput
 	// Time the Namespace was updated in UTC.
@@ -426,6 +426,12 @@ func (o NamespaceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o NamespaceOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The name of the Scope instance.
 func (o NamespaceOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Scope }).(pulumi.StringOutput)
@@ -447,12 +453,6 @@ func (o NamespaceOutput) ScopeNamespaceId() pulumi.StringOutput {
 // Structure is documented below.
 func (o NamespaceOutput) States() NamespaceStateTypeArrayOutput {
 	return o.ApplyT(func(v *Namespace) NamespaceStateTypeArrayOutput { return v.States }).(NamespaceStateTypeArrayOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o NamespaceOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Namespace) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Google-generated UUID for this resource.

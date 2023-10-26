@@ -313,10 +313,10 @@ class _TargetState:
                  multi_target: Optional[pulumi.Input['TargetMultiTargetArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  require_approval: Optional[pulumi.Input[bool]] = None,
                  run: Optional[pulumi.Input['TargetRunArgs']] = None,
                  target_id: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -348,10 +348,10 @@ class _TargetState:
                
                - - -
         :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[bool] require_approval: Optional. Whether or not the `Target` requires approval.
         :param pulumi.Input['TargetRunArgs'] run: Information specifying a Cloud Run deployment target.
         :param pulumi.Input[str] target_id: Output only. Resource id of the `Target`.
-        :param pulumi.Input[Mapping[str, Any]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] uid: Output only. Unique identifier of the `Target`.
         :param pulumi.Input[str] update_time: Output only. Most recent time at which the `Target` was updated.
         """
@@ -372,10 +372,10 @@ class _TargetState:
             multi_target=multi_target,
             name=name,
             project=project,
+            pulumi_labels=pulumi_labels,
             require_approval=require_approval,
             run=run,
             target_id=target_id,
-            terraform_labels=terraform_labels,
             uid=uid,
             update_time=update_time,
         )
@@ -397,10 +397,10 @@ class _TargetState:
              multi_target: Optional[pulumi.Input['TargetMultiTargetArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              require_approval: Optional[pulumi.Input[bool]] = None,
              run: Optional[pulumi.Input['TargetRunArgs']] = None,
              target_id: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
@@ -419,12 +419,12 @@ class _TargetState:
             execution_configs = kwargs['executionConfigs']
         if multi_target is None and 'multiTarget' in kwargs:
             multi_target = kwargs['multiTarget']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if require_approval is None and 'requireApproval' in kwargs:
             require_approval = kwargs['requireApproval']
         if target_id is None and 'targetId' in kwargs:
             target_id = kwargs['targetId']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
         if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
 
@@ -458,14 +458,14 @@ class _TargetState:
             _setter("name", name)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if require_approval is not None:
             _setter("require_approval", require_approval)
         if run is not None:
             _setter("run", run)
         if target_id is not None:
             _setter("target_id", target_id)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if uid is not None:
             _setter("uid", uid)
         if update_time is not None:
@@ -664,6 +664,18 @@ class _TargetState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="requireApproval")
     def require_approval(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -698,18 +710,6 @@ class _TargetState:
     @target_id.setter
     def target_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target_id", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -1079,8 +1079,8 @@ class Target(pulumi.CustomResource):
             __props__.__dict__["effective_annotations"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["etag"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["target_id"] = None
-            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
         super(Target, __self__).__init__(
@@ -1108,10 +1108,10 @@ class Target(pulumi.CustomResource):
             multi_target: Optional[pulumi.Input[pulumi.InputType['TargetMultiTargetArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             require_approval: Optional[pulumi.Input[bool]] = None,
             run: Optional[pulumi.Input[pulumi.InputType['TargetRunArgs']]] = None,
             target_id: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Target':
         """
@@ -1148,10 +1148,10 @@ class Target(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[bool] require_approval: Optional. Whether or not the `Target` requires approval.
         :param pulumi.Input[pulumi.InputType['TargetRunArgs']] run: Information specifying a Cloud Run deployment target.
         :param pulumi.Input[str] target_id: Output only. Resource id of the `Target`.
-        :param pulumi.Input[Mapping[str, Any]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] uid: Output only. Unique identifier of the `Target`.
         :param pulumi.Input[str] update_time: Output only. Most recent time at which the `Target` was updated.
         """
@@ -1174,10 +1174,10 @@ class Target(pulumi.CustomResource):
         __props__.__dict__["multi_target"] = multi_target
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["require_approval"] = require_approval
         __props__.__dict__["run"] = run
         __props__.__dict__["target_id"] = target_id
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
         return Target(resource_name, opts=opts, __props__=__props__)
@@ -1315,6 +1315,14 @@ class Target(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="requireApproval")
     def require_approval(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -1337,14 +1345,6 @@ class Target(pulumi.CustomResource):
         Output only. Resource id of the `Target`.
         """
         return pulumi.get(self, "target_id")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, Any]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

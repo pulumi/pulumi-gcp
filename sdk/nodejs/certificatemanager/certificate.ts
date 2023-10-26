@@ -246,6 +246,11 @@ export class Certificate extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The scope of the certificate.
      * DEFAULT: Certificates with default scope are served from core Google data centers.
      * If unsure, choose this option.
@@ -262,11 +267,6 @@ export class Certificate extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly selfManaged!: pulumi.Output<outputs.certificatemanager.CertificateSelfManaged | undefined>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a Certificate resource with the given unique name, arguments, and options.
@@ -288,9 +288,9 @@ export class Certificate extends pulumi.CustomResource {
             resourceInputs["managed"] = state ? state.managed : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["scope"] = state ? state.scope : undefined;
             resourceInputs["selfManaged"] = state ? state.selfManaged : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as CertificateArgs | undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -302,7 +302,7 @@ export class Certificate extends pulumi.CustomResource {
             resourceInputs["scope"] = args ? args.scope : undefined;
             resourceInputs["selfManaged"] = args ? args.selfManaged : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Certificate.__pulumiType, name, resourceInputs, opts);
@@ -354,6 +354,11 @@ export interface CertificateState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The scope of the certificate.
      * DEFAULT: Certificates with default scope are served from core Google data centers.
      * If unsure, choose this option.
@@ -370,11 +375,6 @@ export interface CertificateState {
      * Structure is documented below.
      */
     selfManaged?: pulumi.Input<inputs.certificatemanager.CertificateSelfManaged>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**

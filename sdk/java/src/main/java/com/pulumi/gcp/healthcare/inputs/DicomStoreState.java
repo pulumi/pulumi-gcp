@@ -127,6 +127,23 @@ public final class DicomStoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * The fully qualified name of this dataset
      * 
      */
@@ -160,23 +177,6 @@ public final class DicomStoreState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.streamConfigs);
     }
 
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    @Import(name="terraformLabels")
-    private @Nullable Output<Map<String,String>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    public Optional<Output<Map<String,String>>> terraformLabels() {
-        return Optional.ofNullable(this.terraformLabels);
-    }
-
     private DicomStoreState() {}
 
     private DicomStoreState(DicomStoreState $) {
@@ -185,9 +185,9 @@ public final class DicomStoreState extends com.pulumi.resources.ResourceArgs {
         this.labels = $.labels;
         this.name = $.name;
         this.notificationConfig = $.notificationConfig;
+        this.pulumiLabels = $.pulumiLabels;
         this.selfLink = $.selfLink;
         this.streamConfigs = $.streamConfigs;
-        this.terraformLabels = $.terraformLabels;
     }
 
     public static Builder builder() {
@@ -346,6 +346,29 @@ public final class DicomStoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
          * @param selfLink The fully qualified name of this dataset
          * 
          * @return builder
@@ -401,29 +424,6 @@ public final class DicomStoreState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder streamConfigs(DicomStoreStreamConfigArgs... streamConfigs) {
             return streamConfigs(List.of(streamConfigs));
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
-            $.terraformLabels = terraformLabels;
-            return this;
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            return terraformLabels(Output.of(terraformLabels));
         }
 
         public DicomStoreState build() {

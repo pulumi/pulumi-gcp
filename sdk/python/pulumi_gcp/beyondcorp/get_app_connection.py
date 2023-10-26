@@ -22,7 +22,7 @@ class GetAppConnectionResult:
     """
     A collection of values returned by getAppConnection.
     """
-    def __init__(__self__, application_endpoints=None, connectors=None, display_name=None, effective_labels=None, gateways=None, id=None, labels=None, name=None, project=None, region=None, terraform_labels=None, type=None):
+    def __init__(__self__, application_endpoints=None, connectors=None, display_name=None, effective_labels=None, gateways=None, id=None, labels=None, name=None, project=None, pulumi_labels=None, region=None, type=None):
         if application_endpoints and not isinstance(application_endpoints, list):
             raise TypeError("Expected argument 'application_endpoints' to be a list")
         pulumi.set(__self__, "application_endpoints", application_endpoints)
@@ -50,12 +50,12 @@ class GetAppConnectionResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
-        if terraform_labels and not isinstance(terraform_labels, dict):
-            raise TypeError("Expected argument 'terraform_labels' to be a dict")
-        pulumi.set(__self__, "terraform_labels", terraform_labels)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -109,14 +109,14 @@ class GetAppConnectionResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[str]:
         return pulumi.get(self, "region")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Mapping[str, str]:
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter
@@ -139,8 +139,8 @@ class AwaitableGetAppConnectionResult(GetAppConnectionResult):
             labels=self.labels,
             name=self.name,
             project=self.project,
+            pulumi_labels=self.pulumi_labels,
             region=self.region,
-            terraform_labels=self.terraform_labels,
             type=self.type)
 
 
@@ -186,8 +186,8 @@ def get_app_connection(name: Optional[str] = None,
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         region=pulumi.get(__ret__, 'region'),
-        terraform_labels=pulumi.get(__ret__, 'terraform_labels'),
         type=pulumi.get(__ret__, 'type'))
 
 

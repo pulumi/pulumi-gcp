@@ -73,8 +73,8 @@ type LookupTopicResult struct {
 	MessageStoragePolicies   []GetTopicMessageStoragePolicy `pulumi:"messageStoragePolicies"`
 	Name                     string                         `pulumi:"name"`
 	Project                  *string                        `pulumi:"project"`
+	PulumiLabels             map[string]string              `pulumi:"pulumiLabels"`
 	SchemaSettings           []GetTopicSchemaSetting        `pulumi:"schemaSettings"`
-	TerraformLabels          map[string]string              `pulumi:"terraformLabels"`
 }
 
 func LookupTopicOutput(ctx *pulumi.Context, args LookupTopicOutputArgs, opts ...pulumi.InvokeOption) LookupTopicResultOutput {
@@ -159,12 +159,12 @@ func (o LookupTopicResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTopicResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
-func (o LookupTopicResultOutput) SchemaSettings() GetTopicSchemaSettingArrayOutput {
-	return o.ApplyT(func(v LookupTopicResult) []GetTopicSchemaSetting { return v.SchemaSettings }).(GetTopicSchemaSettingArrayOutput)
+func (o LookupTopicResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupTopicResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-func (o LookupTopicResultOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupTopicResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
+func (o LookupTopicResultOutput) SchemaSettings() GetTopicSchemaSettingArrayOutput {
+	return o.ApplyT(func(v LookupTopicResult) []GetTopicSchemaSetting { return v.SchemaSettings }).(GetTopicSchemaSettingArrayOutput)
 }
 
 func init() {

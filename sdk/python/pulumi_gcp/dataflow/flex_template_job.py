@@ -554,6 +554,7 @@ class _FlexTemplateJobState:
                  on_delete: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  sdk_container_image: Optional[pulumi.Input[str]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
@@ -562,7 +563,6 @@ class _FlexTemplateJobState:
                  state: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  temp_location: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
@@ -601,6 +601,7 @@ class _FlexTemplateJobState:
                such as `serviceAccount`, `workerMachineType`, etc can be specified here.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not
                provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] region: The region in which the created job should run.
         :param pulumi.Input[str] sdk_container_image: Docker registry location of container image to use for the 'worker harness. Default is the container for the version of
                the SDK. Note this field is only valid for portable pipelines.
@@ -612,7 +613,6 @@ class _FlexTemplateJobState:
         :param pulumi.Input[str] state: The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
         :param pulumi.Input[str] temp_location: The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
                corresponding name prefixes of the new job.
         :param pulumi.Input[str] type: The type of this job, selected from the JobType enum.
@@ -637,6 +637,7 @@ class _FlexTemplateJobState:
             on_delete=on_delete,
             parameters=parameters,
             project=project,
+            pulumi_labels=pulumi_labels,
             region=region,
             sdk_container_image=sdk_container_image,
             service_account_email=service_account_email,
@@ -645,7 +646,6 @@ class _FlexTemplateJobState:
             state=state,
             subnetwork=subnetwork,
             temp_location=temp_location,
-            terraform_labels=terraform_labels,
             transform_name_mapping=transform_name_mapping,
             type=type,
         )
@@ -670,6 +670,7 @@ class _FlexTemplateJobState:
              on_delete: Optional[pulumi.Input[str]] = None,
              parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              region: Optional[pulumi.Input[str]] = None,
              sdk_container_image: Optional[pulumi.Input[str]] = None,
              service_account_email: Optional[pulumi.Input[str]] = None,
@@ -678,7 +679,6 @@ class _FlexTemplateJobState:
              state: Optional[pulumi.Input[str]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
              temp_location: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
@@ -709,6 +709,8 @@ class _FlexTemplateJobState:
             num_workers = kwargs['numWorkers']
         if on_delete is None and 'onDelete' in kwargs:
             on_delete = kwargs['onDelete']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if sdk_container_image is None and 'sdkContainerImage' in kwargs:
             sdk_container_image = kwargs['sdkContainerImage']
         if service_account_email is None and 'serviceAccountEmail' in kwargs:
@@ -719,8 +721,6 @@ class _FlexTemplateJobState:
             staging_location = kwargs['stagingLocation']
         if temp_location is None and 'tempLocation' in kwargs:
             temp_location = kwargs['tempLocation']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
         if transform_name_mapping is None and 'transformNameMapping' in kwargs:
             transform_name_mapping = kwargs['transformNameMapping']
 
@@ -760,6 +760,8 @@ class _FlexTemplateJobState:
             _setter("parameters", parameters)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if region is not None:
             _setter("region", region)
         if sdk_container_image is not None:
@@ -776,8 +778,6 @@ class _FlexTemplateJobState:
             _setter("subnetwork", subnetwork)
         if temp_location is not None:
             _setter("temp_location", temp_location)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if transform_name_mapping is not None:
             _setter("transform_name_mapping", transform_name_mapping)
         if type is not None:
@@ -1016,6 +1016,18 @@ class _FlexTemplateJobState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1113,18 +1125,6 @@ class _FlexTemplateJobState:
     @temp_location.setter
     def temp_location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "temp_location", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="transformNameMapping")
@@ -1458,8 +1458,8 @@ class FlexTemplateJob(pulumi.CustomResource):
             __props__.__dict__["transform_name_mapping"] = transform_name_mapping
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["job_id"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["state"] = None
-            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["type"] = None
         super(FlexTemplateJob, __self__).__init__(
             'gcp:dataflow/flexTemplateJob:FlexTemplateJob',
@@ -1489,6 +1489,7 @@ class FlexTemplateJob(pulumi.CustomResource):
             on_delete: Optional[pulumi.Input[str]] = None,
             parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
             sdk_container_image: Optional[pulumi.Input[str]] = None,
             service_account_email: Optional[pulumi.Input[str]] = None,
@@ -1497,7 +1498,6 @@ class FlexTemplateJob(pulumi.CustomResource):
             state: Optional[pulumi.Input[str]] = None,
             subnetwork: Optional[pulumi.Input[str]] = None,
             temp_location: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'FlexTemplateJob':
         """
@@ -1541,6 +1541,7 @@ class FlexTemplateJob(pulumi.CustomResource):
                such as `serviceAccount`, `workerMachineType`, etc can be specified here.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not
                provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] region: The region in which the created job should run.
         :param pulumi.Input[str] sdk_container_image: Docker registry location of container image to use for the 'worker harness. Default is the container for the version of
                the SDK. Note this field is only valid for portable pipelines.
@@ -1552,7 +1553,6 @@ class FlexTemplateJob(pulumi.CustomResource):
         :param pulumi.Input[str] state: The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
         :param pulumi.Input[str] temp_location: The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
                corresponding name prefixes of the new job.
         :param pulumi.Input[str] type: The type of this job, selected from the JobType enum.
@@ -1579,6 +1579,7 @@ class FlexTemplateJob(pulumi.CustomResource):
         __props__.__dict__["on_delete"] = on_delete
         __props__.__dict__["parameters"] = parameters
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["region"] = region
         __props__.__dict__["sdk_container_image"] = sdk_container_image
         __props__.__dict__["service_account_email"] = service_account_email
@@ -1587,7 +1588,6 @@ class FlexTemplateJob(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["subnetwork"] = subnetwork
         __props__.__dict__["temp_location"] = temp_location
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["transform_name_mapping"] = transform_name_mapping
         __props__.__dict__["type"] = type
         return FlexTemplateJob(resource_name, opts=opts, __props__=__props__)
@@ -1753,6 +1753,14 @@ class FlexTemplateJob(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
@@ -1818,14 +1826,6 @@ class FlexTemplateJob(pulumi.CustomResource):
         The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
         """
         return pulumi.get(self, "temp_location")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="transformNameMapping")

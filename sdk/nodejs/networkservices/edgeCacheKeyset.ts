@@ -155,7 +155,7 @@ export class EdgeCacheKeyset extends pulumi.CustomResource {
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * An ordered list of shared keys to use for validating signed requests.
      * Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
@@ -184,7 +184,7 @@ export class EdgeCacheKeyset extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["publicKeys"] = state ? state.publicKeys : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["validationSharedKeys"] = state ? state.validationSharedKeys : undefined;
         } else {
             const args = argsOrState as EdgeCacheKeysetArgs | undefined;
@@ -195,7 +195,7 @@ export class EdgeCacheKeyset extends pulumi.CustomResource {
             resourceInputs["publicKeys"] = args ? args.publicKeys : undefined;
             resourceInputs["validationSharedKeys"] = args ? args.validationSharedKeys : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EdgeCacheKeyset.__pulumiType, name, resourceInputs, opts);
@@ -249,7 +249,7 @@ export interface EdgeCacheKeysetState {
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * An ordered list of shared keys to use for validating signed requests.
      * Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.

@@ -105,7 +105,7 @@ type Namespace struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 }
 
 // NewNamespace registers a new resource with the given unique name, arguments, and options.
@@ -171,7 +171,7 @@ type namespaceState struct {
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 }
 
 type NamespaceState struct {
@@ -202,7 +202,7 @@ type NamespaceState struct {
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
+	PulumiLabels pulumi.StringMapInput
 }
 
 func (NamespaceState) ElementType() reflect.Type {
@@ -410,8 +410,8 @@ func (o NamespaceOutput) Project() pulumi.StringOutput {
 
 // The combination of labels configured directly on the resource
 // and default labels configured on the provider.
-func (o NamespaceOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Namespace) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
+func (o NamespaceOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 type NamespaceArrayOutput struct{ *pulumi.OutputState }

@@ -246,10 +246,10 @@ class _CryptoKeyState:
                  key_ring: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
                  rotation_period: Optional[pulumi.Input[str]] = None,
                  skip_initial_version_creation: Optional[pulumi.Input[bool]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version_template: Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']] = None):
         """
         Input properties used for looking up and filtering CryptoKey resources.
@@ -268,6 +268,8 @@ class _CryptoKeyState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the CryptoKey.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] purpose: The immutable purpose of this CryptoKey. See the
                [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
                for possible inputs.
@@ -278,8 +280,6 @@ class _CryptoKeyState:
                letter `s` (seconds). It must be greater than a day (ie, 86400).
         :param pulumi.Input[bool] skip_initial_version_creation: If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
                You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input['CryptoKeyVersionTemplateArgs'] version_template: A template describing settings for new crypto key versions.
                Structure is documented below.
         """
@@ -291,10 +291,10 @@ class _CryptoKeyState:
             key_ring=key_ring,
             labels=labels,
             name=name,
+            pulumi_labels=pulumi_labels,
             purpose=purpose,
             rotation_period=rotation_period,
             skip_initial_version_creation=skip_initial_version_creation,
-            terraform_labels=terraform_labels,
             version_template=version_template,
         )
     @staticmethod
@@ -306,10 +306,10 @@ class _CryptoKeyState:
              key_ring: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              purpose: Optional[pulumi.Input[str]] = None,
              rotation_period: Optional[pulumi.Input[str]] = None,
              skip_initial_version_creation: Optional[pulumi.Input[bool]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              version_template: Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -321,12 +321,12 @@ class _CryptoKeyState:
             import_only = kwargs['importOnly']
         if key_ring is None and 'keyRing' in kwargs:
             key_ring = kwargs['keyRing']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if rotation_period is None and 'rotationPeriod' in kwargs:
             rotation_period = kwargs['rotationPeriod']
         if skip_initial_version_creation is None and 'skipInitialVersionCreation' in kwargs:
             skip_initial_version_creation = kwargs['skipInitialVersionCreation']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
         if version_template is None and 'versionTemplate' in kwargs:
             version_template = kwargs['versionTemplate']
 
@@ -342,14 +342,14 @@ class _CryptoKeyState:
             _setter("labels", labels)
         if name is not None:
             _setter("name", name)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if purpose is not None:
             _setter("purpose", purpose)
         if rotation_period is not None:
             _setter("rotation_period", rotation_period)
         if skip_initial_version_creation is not None:
             _setter("skip_initial_version_creation", skip_initial_version_creation)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if version_template is not None:
             _setter("version_template", version_template)
 
@@ -435,6 +435,19 @@ class _CryptoKeyState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter
     def purpose(self) -> Optional[pulumi.Input[str]]:
         """
@@ -476,19 +489,6 @@ class _CryptoKeyState:
     @skip_initial_version_creation.setter
     def skip_initial_version_creation(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "skip_initial_version_creation", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="versionTemplate")
@@ -715,7 +715,7 @@ class CryptoKey(pulumi.CustomResource):
             version_template = _utilities.configure(version_template, CryptoKeyVersionTemplateArgs, True)
             __props__.__dict__["version_template"] = version_template
             __props__.__dict__["effective_labels"] = None
-            __props__.__dict__["terraform_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
         super(CryptoKey, __self__).__init__(
             'gcp:kms/cryptoKey:CryptoKey',
             resource_name,
@@ -732,10 +732,10 @@ class CryptoKey(pulumi.CustomResource):
             key_ring: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             purpose: Optional[pulumi.Input[str]] = None,
             rotation_period: Optional[pulumi.Input[str]] = None,
             skip_initial_version_creation: Optional[pulumi.Input[bool]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             version_template: Optional[pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']]] = None) -> 'CryptoKey':
         """
         Get an existing CryptoKey resource's state with the given name, id, and optional extra
@@ -759,6 +759,8 @@ class CryptoKey(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the CryptoKey.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] purpose: The immutable purpose of this CryptoKey. See the
                [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
                for possible inputs.
@@ -769,8 +771,6 @@ class CryptoKey(pulumi.CustomResource):
                letter `s` (seconds). It must be greater than a day (ie, 86400).
         :param pulumi.Input[bool] skip_initial_version_creation: If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
                You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']] version_template: A template describing settings for new crypto key versions.
                Structure is documented below.
         """
@@ -784,10 +784,10 @@ class CryptoKey(pulumi.CustomResource):
         __props__.__dict__["key_ring"] = key_ring
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["purpose"] = purpose
         __props__.__dict__["rotation_period"] = rotation_period
         __props__.__dict__["skip_initial_version_creation"] = skip_initial_version_creation
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["version_template"] = version_template
         return CryptoKey(resource_name, opts=opts, __props__=__props__)
 
@@ -849,6 +849,15 @@ class CryptoKey(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def purpose(self) -> pulumi.Output[Optional[str]]:
         """
@@ -878,15 +887,6 @@ class CryptoKey(pulumi.CustomResource):
         You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
         """
         return pulumi.get(self, "skip_initial_version_creation")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="versionTemplate")

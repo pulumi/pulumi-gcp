@@ -159,7 +159,7 @@ export class WorkflowTemplate extends pulumi.CustomResource {
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: any}>;
     /**
      * Output only. The time template was last updated.
      */
@@ -194,7 +194,7 @@ export class WorkflowTemplate extends pulumi.CustomResource {
             resourceInputs["parameters"] = state ? state.parameters : undefined;
             resourceInputs["placement"] = state ? state.placement : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
         } else {
@@ -219,7 +219,7 @@ export class WorkflowTemplate extends pulumi.CustomResource {
             resourceInputs["version"] = args ? args.version : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -275,7 +275,7 @@ export interface WorkflowTemplateState {
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    terraformLabels?: pulumi.Input<{[key: string]: any}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Output only. The time template was last updated.
      */

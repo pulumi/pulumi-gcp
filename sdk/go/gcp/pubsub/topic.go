@@ -231,12 +231,12 @@ type Topic struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Settings for validating messages published against a schema.
 	// Structure is documented below.
 	SchemaSettings TopicSchemaSettingsOutput `pulumi:"schemaSettings"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewTopic registers a new resource with the given unique name, arguments, and options.
@@ -303,12 +303,12 @@ type topicState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Settings for validating messages published against a schema.
 	// Structure is documented below.
 	SchemaSettings *TopicSchemaSettings `pulumi:"schemaSettings"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type TopicState struct {
@@ -346,12 +346,12 @@ type TopicState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Settings for validating messages published against a schema.
 	// Structure is documented below.
 	SchemaSettings TopicSchemaSettingsPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 }
 
 func (TopicState) ElementType() reflect.Type {
@@ -599,16 +599,16 @@ func (o TopicOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o TopicOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Settings for validating messages published against a schema.
 // Structure is documented below.
 func (o TopicOutput) SchemaSettings() TopicSchemaSettingsOutput {
 	return o.ApplyT(func(v *Topic) TopicSchemaSettingsOutput { return v.SchemaSettings }).(TopicSchemaSettingsOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o TopicOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Topic) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type TopicArrayOutput struct{ *pulumi.OutputState }

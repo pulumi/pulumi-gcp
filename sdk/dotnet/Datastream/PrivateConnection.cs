@@ -123,17 +123,17 @@ namespace Pulumi.Gcp.Datastream
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// State of the PrivateConnection.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// The VPC Peering configuration is used to create VPC peering
@@ -315,24 +315,24 @@ namespace Pulumi.Gcp.Datastream
         [Input("project")]
         public Input<string>? Project { get; set; }
 
-        /// <summary>
-        /// State of the PrivateConnection.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
-
-        [Input("terraformLabels")]
-        private InputMap<string>? _terraformLabels;
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
 
         /// <summary>
         /// The combination of labels configured directly on the resource
         /// and default labels configured on the provider.
         /// </summary>
-        public InputMap<string> TerraformLabels
+        public InputMap<string> PulumiLabels
         {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
-            set => _terraformLabels = value;
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
         }
+
+        /// <summary>
+        /// State of the PrivateConnection.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
 
         /// <summary>
         /// The VPC Peering configuration is used to create VPC peering

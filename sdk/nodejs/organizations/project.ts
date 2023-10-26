@@ -142,14 +142,14 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * If true, the resource can be deleted
      * without deleting the Project via the Google API.
      */
     public readonly skipDelete!: pulumi.Output<boolean>;
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -173,8 +173,8 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["number"] = state ? state.number : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["skipDelete"] = state ? state.skipDelete : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
             if ((!args || args.projectId === undefined) && !opts.urn) {
@@ -190,7 +190,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["skipDelete"] = args ? args.skipDelete : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["number"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Project.__pulumiType, name, resourceInputs, opts);
@@ -256,14 +256,14 @@ export interface ProjectState {
      */
     projectId?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * If true, the resource can be deleted
      * without deleting the Project via the Google API.
      */
     skipDelete?: pulumi.Input<boolean>;
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**

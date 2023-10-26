@@ -151,7 +151,7 @@ class _DnsAuthorizationState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering DnsAuthorization resources.
         :param pulumi.Input[str] description: A human-readable description of the resource.
@@ -175,7 +175,7 @@ class _DnsAuthorizationState:
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         """
         _DnsAuthorizationState._configure(
@@ -187,7 +187,7 @@ class _DnsAuthorizationState:
             labels=labels,
             name=name,
             project=project,
-            terraform_labels=terraform_labels,
+            pulumi_labels=pulumi_labels,
         )
     @staticmethod
     def _configure(
@@ -199,15 +199,15 @@ class _DnsAuthorizationState:
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if dns_resource_records is None and 'dnsResourceRecords' in kwargs:
             dns_resource_records = kwargs['dnsResourceRecords']
         if effective_labels is None and 'effectiveLabels' in kwargs:
             effective_labels = kwargs['effectiveLabels']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
 
         if description is not None:
             _setter("description", description)
@@ -223,8 +223,8 @@ class _DnsAuthorizationState:
             _setter("name", name)
         if project is not None:
             _setter("project", project)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
 
     @property
     @pulumi.getter
@@ -325,17 +325,17 @@ class _DnsAuthorizationState:
         pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The combination of labels configured directly on the resource
         and default labels configured on the provider.
         """
-        return pulumi.get(self, "terraform_labels")
+        return pulumi.get(self, "pulumi_labels")
 
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
 
 
 class DnsAuthorization(pulumi.CustomResource):
@@ -483,7 +483,7 @@ class DnsAuthorization(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["dns_resource_records"] = None
             __props__.__dict__["effective_labels"] = None
-            __props__.__dict__["terraform_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
         super(DnsAuthorization, __self__).__init__(
             'gcp:certificatemanager/dnsAuthorization:DnsAuthorization',
             resource_name,
@@ -501,7 +501,7 @@ class DnsAuthorization(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'DnsAuthorization':
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'DnsAuthorization':
         """
         Get an existing DnsAuthorization resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -530,7 +530,7 @@ class DnsAuthorization(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -544,7 +544,7 @@ class DnsAuthorization(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
-        __props__.__dict__["terraform_labels"] = terraform_labels
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         return DnsAuthorization(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -618,11 +618,11 @@ class DnsAuthorization(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         The combination of labels configured directly on the resource
         and default labels configured on the provider.
         """
-        return pulumi.get(self, "terraform_labels")
+        return pulumi.get(self, "pulumi_labels")
 

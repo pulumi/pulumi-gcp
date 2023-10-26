@@ -126,6 +126,11 @@ export class CryptoKey extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The immutable purpose of this CryptoKey. See the
      * [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
      * for possible inputs.
@@ -144,11 +149,6 @@ export class CryptoKey extends pulumi.CustomResource {
      * You must use the `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
      */
     public readonly skipInitialVersionCreation!: pulumi.Output<boolean | undefined>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * A template describing settings for new crypto key versions.
      * Structure is documented below.
@@ -174,10 +174,10 @@ export class CryptoKey extends pulumi.CustomResource {
             resourceInputs["keyRing"] = state ? state.keyRing : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["purpose"] = state ? state.purpose : undefined;
             resourceInputs["rotationPeriod"] = state ? state.rotationPeriod : undefined;
             resourceInputs["skipInitialVersionCreation"] = state ? state.skipInitialVersionCreation : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["versionTemplate"] = state ? state.versionTemplate : undefined;
         } else {
             const args = argsOrState as CryptoKeyArgs | undefined;
@@ -194,7 +194,7 @@ export class CryptoKey extends pulumi.CustomResource {
             resourceInputs["skipInitialVersionCreation"] = args ? args.skipInitialVersionCreation : undefined;
             resourceInputs["versionTemplate"] = args ? args.versionTemplate : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CryptoKey.__pulumiType, name, resourceInputs, opts);
@@ -239,6 +239,11 @@ export interface CryptoKeyState {
      */
     name?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The immutable purpose of this CryptoKey. See the
      * [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
      * for possible inputs.
@@ -257,11 +262,6 @@ export interface CryptoKeyState {
      * You must use the `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
      */
     skipInitialVersionCreation?: pulumi.Input<boolean>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A template describing settings for new crypto key versions.
      * Structure is documented below.

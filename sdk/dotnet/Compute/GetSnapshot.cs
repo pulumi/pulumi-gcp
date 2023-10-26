@@ -183,6 +183,7 @@ namespace Pulumi.Gcp.Compute
         public readonly bool? MostRecent;
         public readonly string? Name;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string SelfLink;
         public readonly ImmutableArray<Outputs.GetSnapshotSnapshotEncryptionKeyResult> SnapshotEncryptionKeys;
         public readonly int SnapshotId;
@@ -190,7 +191,6 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<Outputs.GetSnapshotSourceDiskEncryptionKeyResult> SourceDiskEncryptionKeys;
         public readonly int StorageBytes;
         public readonly ImmutableArray<string> StorageLocations;
-        public readonly ImmutableDictionary<string, string> TerraformLabels;
         public readonly string Zone;
 
         [OutputConstructor]
@@ -221,6 +221,8 @@ namespace Pulumi.Gcp.Compute
 
             string? project,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             string selfLink,
 
             ImmutableArray<Outputs.GetSnapshotSnapshotEncryptionKeyResult> snapshotEncryptionKeys,
@@ -234,8 +236,6 @@ namespace Pulumi.Gcp.Compute
             int storageBytes,
 
             ImmutableArray<string> storageLocations,
-
-            ImmutableDictionary<string, string> terraformLabels,
 
             string zone)
         {
@@ -252,6 +252,7 @@ namespace Pulumi.Gcp.Compute
             MostRecent = mostRecent;
             Name = name;
             Project = project;
+            PulumiLabels = pulumiLabels;
             SelfLink = selfLink;
             SnapshotEncryptionKeys = snapshotEncryptionKeys;
             SnapshotId = snapshotId;
@@ -259,7 +260,6 @@ namespace Pulumi.Gcp.Compute
             SourceDiskEncryptionKeys = sourceDiskEncryptionKeys;
             StorageBytes = storageBytes;
             StorageLocations = storageLocations;
-            TerraformLabels = terraformLabels;
             Zone = zone;
         }
     }

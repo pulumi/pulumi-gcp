@@ -144,8 +144,8 @@ namespace Pulumi.Gcp.Spanner
         public readonly int NumNodes;
         public readonly int ProcessingUnits;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string State;
-        public readonly ImmutableDictionary<string, string> TerraformLabels;
 
         [OutputConstructor]
         private GetInstanceResult(
@@ -169,9 +169,9 @@ namespace Pulumi.Gcp.Spanner
 
             string? project,
 
-            string state,
+            ImmutableDictionary<string, string> pulumiLabels,
 
-            ImmutableDictionary<string, string> terraformLabels)
+            string state)
         {
             Config = config;
             DisplayName = displayName;
@@ -183,8 +183,8 @@ namespace Pulumi.Gcp.Spanner
             NumNodes = numNodes;
             ProcessingUnits = processingUnits;
             Project = project;
+            PulumiLabels = pulumiLabels;
             State = state;
-            TerraformLabels = terraformLabels;
         }
     }
 }

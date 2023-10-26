@@ -22,7 +22,7 @@ class GetRegionInstanceTemplateResult:
     """
     A collection of values returned by getRegionInstanceTemplate.
     """
-    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_configs=None, description=None, disks=None, effective_labels=None, enable_display=None, filter=None, guest_accelerators=None, id=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, most_recent=None, name=None, name_prefix=None, network_interfaces=None, network_performance_configs=None, project=None, region=None, reservation_affinities=None, resource_policies=None, schedulings=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, terraform_labels=None):
+    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_configs=None, description=None, disks=None, effective_labels=None, enable_display=None, filter=None, guest_accelerators=None, id=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, most_recent=None, name=None, name_prefix=None, network_interfaces=None, network_performance_configs=None, project=None, pulumi_labels=None, region=None, reservation_affinities=None, resource_policies=None, schedulings=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None):
         if advanced_machine_features and not isinstance(advanced_machine_features, list):
             raise TypeError("Expected argument 'advanced_machine_features' to be a list")
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -92,6 +92,9 @@ class GetRegionInstanceTemplateResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -119,9 +122,6 @@ class GetRegionInstanceTemplateResult:
         if tags_fingerprint and not isinstance(tags_fingerprint, str):
             raise TypeError("Expected argument 'tags_fingerprint' to be a str")
         pulumi.set(__self__, "tags_fingerprint", tags_fingerprint)
-        if terraform_labels and not isinstance(terraform_labels, dict):
-            raise TypeError("Expected argument 'terraform_labels' to be a dict")
-        pulumi.set(__self__, "terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter(name="advancedMachineFeatures")
@@ -309,6 +309,11 @@ class GetRegionInstanceTemplateResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[str]:
         return pulumi.get(self, "region")
@@ -376,11 +381,6 @@ class GetRegionInstanceTemplateResult:
         """
         return pulumi.get(self, "tags_fingerprint")
 
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Mapping[str, str]:
-        return pulumi.get(self, "terraform_labels")
-
 
 class AwaitableGetRegionInstanceTemplateResult(GetRegionInstanceTemplateResult):
     # pylint: disable=using-constant-test
@@ -411,6 +411,7 @@ class AwaitableGetRegionInstanceTemplateResult(GetRegionInstanceTemplateResult):
             network_interfaces=self.network_interfaces,
             network_performance_configs=self.network_performance_configs,
             project=self.project,
+            pulumi_labels=self.pulumi_labels,
             region=self.region,
             reservation_affinities=self.reservation_affinities,
             resource_policies=self.resource_policies,
@@ -419,8 +420,7 @@ class AwaitableGetRegionInstanceTemplateResult(GetRegionInstanceTemplateResult):
             service_accounts=self.service_accounts,
             shielded_instance_configs=self.shielded_instance_configs,
             tags=self.tags,
-            tags_fingerprint=self.tags_fingerprint,
-            terraform_labels=self.terraform_labels)
+            tags_fingerprint=self.tags_fingerprint)
 
 
 def get_region_instance_template(filter: Optional[str] = None,
@@ -490,6 +490,7 @@ def get_region_instance_template(filter: Optional[str] = None,
         network_interfaces=pulumi.get(__ret__, 'network_interfaces'),
         network_performance_configs=pulumi.get(__ret__, 'network_performance_configs'),
         project=pulumi.get(__ret__, 'project'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         region=pulumi.get(__ret__, 'region'),
         reservation_affinities=pulumi.get(__ret__, 'reservation_affinities'),
         resource_policies=pulumi.get(__ret__, 'resource_policies'),
@@ -498,8 +499,7 @@ def get_region_instance_template(filter: Optional[str] = None,
         service_accounts=pulumi.get(__ret__, 'service_accounts'),
         shielded_instance_configs=pulumi.get(__ret__, 'shielded_instance_configs'),
         tags=pulumi.get(__ret__, 'tags'),
-        tags_fingerprint=pulumi.get(__ret__, 'tags_fingerprint'),
-        terraform_labels=pulumi.get(__ret__, 'terraform_labels'))
+        tags_fingerprint=pulumi.get(__ret__, 'tags_fingerprint'))
 
 
 @_utilities.lift_output_func(get_region_instance_template)

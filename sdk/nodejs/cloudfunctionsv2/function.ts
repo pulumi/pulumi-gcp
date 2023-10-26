@@ -318,6 +318,11 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Describes the Service being deployed.
      * Structure is documented below.
      */
@@ -326,11 +331,6 @@ export class Function extends pulumi.CustomResource {
      * Describes the current state of the function.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The last update timestamp of a Cloud Function.
      */
@@ -363,9 +363,9 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["serviceConfig"] = state ? state.serviceConfig : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
         } else {
@@ -384,8 +384,8 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["serviceConfig"] = args ? args.serviceConfig : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["environment"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["url"] = undefined /*out*/;
         }
@@ -453,6 +453,11 @@ export interface FunctionState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Describes the Service being deployed.
      * Structure is documented below.
      */
@@ -461,11 +466,6 @@ export interface FunctionState {
      * Describes the current state of the function.
      */
     state?: pulumi.Input<string>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The last update timestamp of a Cloud Function.
      */

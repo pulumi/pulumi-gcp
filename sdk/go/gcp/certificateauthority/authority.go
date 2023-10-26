@@ -418,6 +418,9 @@ type Authority struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// If this flag is set, the Certificate Authority will be deleted as soon as
 	// possible without a 30-day grace period where undeletion would have been
 	// allowed. If you proceed, there will be no way to recover this CA.
@@ -429,9 +432,6 @@ type Authority struct {
 	// with the subordinate configuration, which describes its issuers.
 	// Structure is documented below.
 	SubordinateConfig AuthoritySubordinateConfigPtrOutput `pulumi:"subordinateConfig"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The Type of this CertificateAuthority.
 	// > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
 	// be activated before they can issue certificates.
@@ -552,6 +552,9 @@ type authorityState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// If this flag is set, the Certificate Authority will be deleted as soon as
 	// possible without a 30-day grace period where undeletion would have been
 	// allowed. If you proceed, there will be no way to recover this CA.
@@ -563,9 +566,6 @@ type authorityState struct {
 	// with the subordinate configuration, which describes its issuers.
 	// Structure is documented below.
 	SubordinateConfig *AuthoritySubordinateConfig `pulumi:"subordinateConfig"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The Type of this CertificateAuthority.
 	// > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
 	// be activated before they can issue certificates.
@@ -642,6 +642,9 @@ type AuthorityState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// If this flag is set, the Certificate Authority will be deleted as soon as
 	// possible without a 30-day grace period where undeletion would have been
 	// allowed. If you proceed, there will be no way to recover this CA.
@@ -653,9 +656,6 @@ type AuthorityState struct {
 	// with the subordinate configuration, which describes its issuers.
 	// Structure is documented below.
 	SubordinateConfig AuthoritySubordinateConfigPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// The Type of this CertificateAuthority.
 	// > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
 	// be activated before they can issue certificates.
@@ -1027,6 +1027,12 @@ func (o AuthorityOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Authority) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o AuthorityOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Authority) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // If this flag is set, the Certificate Authority will be deleted as soon as
 // possible without a 30-day grace period where undeletion would have been
 // allowed. If you proceed, there will be no way to recover this CA.
@@ -1045,12 +1051,6 @@ func (o AuthorityOutput) State() pulumi.StringOutput {
 // Structure is documented below.
 func (o AuthorityOutput) SubordinateConfig() AuthoritySubordinateConfigPtrOutput {
 	return o.ApplyT(func(v *Authority) AuthoritySubordinateConfigPtrOutput { return v.SubordinateConfig }).(AuthoritySubordinateConfigPtrOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o AuthorityOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Authority) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The Type of this CertificateAuthority.

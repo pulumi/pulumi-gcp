@@ -198,6 +198,11 @@ export class Image extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The parameters of the raw disk image.
      * Structure is documented below.
      */
@@ -237,11 +242,6 @@ export class Image extends pulumi.CustomResource {
      * Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
      */
     public readonly storageLocations!: pulumi.Output<string[]>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a Image resource with the given unique name, arguments, and options.
@@ -269,13 +269,13 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["licenses"] = state ? state.licenses : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["rawDisk"] = state ? state.rawDisk : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["sourceDisk"] = state ? state.sourceDisk : undefined;
             resourceInputs["sourceImage"] = state ? state.sourceImage : undefined;
             resourceInputs["sourceSnapshot"] = state ? state.sourceSnapshot : undefined;
             resourceInputs["storageLocations"] = state ? state.storageLocations : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as ImageArgs | undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -296,8 +296,8 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Image.__pulumiType, name, resourceInputs, opts);
@@ -387,6 +387,11 @@ export interface ImageState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The parameters of the raw disk image.
      * Structure is documented below.
      */
@@ -426,11 +431,6 @@ export interface ImageState {
      * Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
      */
     storageLocations?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**

@@ -275,6 +275,11 @@ export class BackupPlan extends pulumi.CustomResource {
      */
     public /*out*/ readonly protectedPodCount!: pulumi.Output<number>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * RetentionPolicy governs lifecycle of Backups created under this plan.
      * Structure is documented below.
      */
@@ -287,11 +292,6 @@ export class BackupPlan extends pulumi.CustomResource {
      * Detailed description of why BackupPlan is in its current state.
      */
     public /*out*/ readonly stateReason!: pulumi.Output<string>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Server generated, unique identifier of UUID format.
      */
@@ -322,10 +322,10 @@ export class BackupPlan extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["protectedPodCount"] = state ? state.protectedPodCount : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["retentionPolicy"] = state ? state.retentionPolicy : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["stateReason"] = state ? state.stateReason : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
         } else {
             const args = argsOrState as BackupPlanArgs | undefined;
@@ -348,9 +348,9 @@ export class BackupPlan extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["protectedPodCount"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateReason"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -431,6 +431,11 @@ export interface BackupPlanState {
      */
     protectedPodCount?: pulumi.Input<number>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * RetentionPolicy governs lifecycle of Backups created under this plan.
      * Structure is documented below.
      */
@@ -443,11 +448,6 @@ export interface BackupPlanState {
      * Detailed description of why BackupPlan is in its current state.
      */
     stateReason?: pulumi.Input<string>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Server generated, unique identifier of UUID format.
      */

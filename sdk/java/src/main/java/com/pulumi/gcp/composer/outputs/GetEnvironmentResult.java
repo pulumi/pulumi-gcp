@@ -28,8 +28,8 @@ public final class GetEnvironmentResult {
     private Map<String,String> labels;
     private String name;
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private @Nullable String region;
-    private Map<String,String> terraformLabels;
 
     private GetEnvironmentResult() {}
     /**
@@ -58,11 +58,11 @@ public final class GetEnvironmentResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
-    }
-    public Map<String,String> terraformLabels() {
-        return this.terraformLabels;
     }
 
     public static Builder builder() {
@@ -80,8 +80,8 @@ public final class GetEnvironmentResult {
         private Map<String,String> labels;
         private String name;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private @Nullable String region;
-        private Map<String,String> terraformLabels;
         public Builder() {}
         public Builder(GetEnvironmentResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -91,8 +91,8 @@ public final class GetEnvironmentResult {
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.region = defaults.region;
-    	      this.terraformLabels = defaults.terraformLabels;
         }
 
         @CustomType.Setter
@@ -129,13 +129,13 @@ public final class GetEnvironmentResult {
             return this;
         }
         @CustomType.Setter
-        public Builder region(@Nullable String region) {
-            this.region = region;
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
             return this;
         }
         @CustomType.Setter
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            this.terraformLabels = Objects.requireNonNull(terraformLabels);
+        public Builder region(@Nullable String region) {
+            this.region = region;
             return this;
         }
         public GetEnvironmentResult build() {
@@ -146,8 +146,8 @@ public final class GetEnvironmentResult {
             o.labels = labels;
             o.name = name;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.region = region;
-            o.terraformLabels = terraformLabels;
             return o;
         }
     }

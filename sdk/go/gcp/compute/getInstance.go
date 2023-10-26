@@ -119,6 +119,7 @@ type LookupInstanceResult struct {
 	NetworkPerformanceConfigs []GetInstanceNetworkPerformanceConfig `pulumi:"networkPerformanceConfigs"`
 	Params                    []GetInstanceParam                    `pulumi:"params"`
 	Project                   *string                               `pulumi:"project"`
+	PulumiLabels              map[string]string                     `pulumi:"pulumiLabels"`
 	ReservationAffinities     []GetInstanceReservationAffinity      `pulumi:"reservationAffinities"`
 	ResourcePolicies          []string                              `pulumi:"resourcePolicies"`
 	// The scheduling strategy being used by the instance. Structure is documented below
@@ -134,9 +135,8 @@ type LookupInstanceResult struct {
 	// The list of tags attached to the instance.
 	Tags []string `pulumi:"tags"`
 	// The unique fingerprint of the tags.
-	TagsFingerprint string            `pulumi:"tagsFingerprint"`
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
-	Zone            *string           `pulumi:"zone"`
+	TagsFingerprint string  `pulumi:"tagsFingerprint"`
+	Zone            *string `pulumi:"zone"`
 }
 
 func LookupInstanceOutput(ctx *pulumi.Context, args LookupInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceResultOutput {
@@ -330,6 +330,10 @@ func (o LookupInstanceResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInstanceResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
+func (o LookupInstanceResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupInstanceResultOutput) ReservationAffinities() GetInstanceReservationAffinityArrayOutput {
 	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceReservationAffinity { return v.ReservationAffinities }).(GetInstanceReservationAffinityArrayOutput)
 }
@@ -371,10 +375,6 @@ func (o LookupInstanceResultOutput) Tags() pulumi.StringArrayOutput {
 // The unique fingerprint of the tags.
 func (o LookupInstanceResultOutput) TagsFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.TagsFingerprint }).(pulumi.StringOutput)
-}
-
-func (o LookupInstanceResultOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupInstanceResultOutput) Zone() pulumi.StringPtrOutput {

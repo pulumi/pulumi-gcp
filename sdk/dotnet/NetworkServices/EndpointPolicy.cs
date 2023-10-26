@@ -177,17 +177,17 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
         /// </summary>
         [Output("serverTlsPolicy")]
         public Output<string?> ServerTlsPolicy { get; private set; } = null!;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
@@ -406,24 +406,24 @@ namespace Pulumi.Gcp.NetworkServices
         [Input("project")]
         public Input<string>? Project { get; set; }
 
-        /// <summary>
-        /// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
-        /// </summary>
-        [Input("serverTlsPolicy")]
-        public Input<string>? ServerTlsPolicy { get; set; }
-
-        [Input("terraformLabels")]
-        private InputMap<string>? _terraformLabels;
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
 
         /// <summary>
         /// The combination of labels configured directly on the resource
         /// and default labels configured on the provider.
         /// </summary>
-        public InputMap<string> TerraformLabels
+        public InputMap<string> PulumiLabels
         {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
-            set => _terraformLabels = value;
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
         }
+
+        /// <summary>
+        /// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
+        /// </summary>
+        [Input("serverTlsPolicy")]
+        public Input<string>? ServerTlsPolicy { get; set; }
 
         /// <summary>
         /// Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.

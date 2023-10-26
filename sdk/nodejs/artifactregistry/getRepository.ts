@@ -76,9 +76,9 @@ export interface GetRepositoryResult {
     readonly mode: string;
     readonly name: string;
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly remoteRepositoryConfigs: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfig[];
     readonly repositoryId: string;
-    readonly terraformLabels: {[key: string]: string};
     readonly updateTime: string;
     readonly virtualRepositoryConfigs: outputs.artifactregistry.GetRepositoryVirtualRepositoryConfig[];
 }

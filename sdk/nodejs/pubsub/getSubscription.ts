@@ -69,10 +69,10 @@ export interface GetSubscriptionResult {
     readonly messageRetentionDuration: string;
     readonly name: string;
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly pushConfigs: outputs.pubsub.GetSubscriptionPushConfig[];
     readonly retainAckedMessages: boolean;
     readonly retryPolicies: outputs.pubsub.GetSubscriptionRetryPolicy[];
-    readonly terraformLabels: {[key: string]: string};
     readonly topic: string;
 }
 /**

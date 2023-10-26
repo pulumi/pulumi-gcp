@@ -109,6 +109,23 @@ public final class HostingChannelState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * The number of previous releases to retain on the channel for rollback or other
      * purposes. Must be a number between 1-100. Defaults to 10 for new channels.
      * 
@@ -141,23 +158,6 @@ public final class HostingChannelState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    @Import(name="terraformLabels")
-    private @Nullable Output<Map<String,String>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    public Optional<Output<Map<String,String>>> terraformLabels() {
-        return Optional.ofNullable(this.terraformLabels);
-    }
-
-    /**
      * Input only. A time-to-live for this channel. Sets `expire_time` to the provided
      * duration past the time of the request. A duration in seconds with up to nine fractional
      * digits, terminated by &#39;s&#39;. Example: &#34;86400s&#34; (one day).
@@ -184,9 +184,9 @@ public final class HostingChannelState extends com.pulumi.resources.ResourceArgs
         this.expireTime = $.expireTime;
         this.labels = $.labels;
         this.name = $.name;
+        this.pulumiLabels = $.pulumiLabels;
         this.retainedReleaseCount = $.retainedReleaseCount;
         this.siteId = $.siteId;
-        this.terraformLabels = $.terraformLabels;
         this.ttl = $.ttl;
     }
 
@@ -330,6 +330,29 @@ public final class HostingChannelState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
          * @param retainedReleaseCount The number of previous releases to retain on the channel for rollback or other
          * purposes. Must be a number between 1-100. Defaults to 10 for new channels.
          * 
@@ -371,29 +394,6 @@ public final class HostingChannelState extends com.pulumi.resources.ResourceArgs
          */
         public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
-            $.terraformLabels = terraformLabels;
-            return this;
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

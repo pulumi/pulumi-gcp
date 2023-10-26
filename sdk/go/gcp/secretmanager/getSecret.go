@@ -65,17 +65,17 @@ type LookupSecretResult struct {
 	EffectiveLabels      map[string]string `pulumi:"effectiveLabels"`
 	ExpireTime           string            `pulumi:"expireTime"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string                 `pulumi:"id"`
-	Labels          map[string]string      `pulumi:"labels"`
-	Name            string                 `pulumi:"name"`
-	Project         *string                `pulumi:"project"`
-	Replications    []GetSecretReplication `pulumi:"replications"`
-	Rotations       []GetSecretRotation    `pulumi:"rotations"`
-	SecretId        string                 `pulumi:"secretId"`
-	TerraformLabels map[string]string      `pulumi:"terraformLabels"`
-	Topics          []GetSecretTopic       `pulumi:"topics"`
-	Ttl             string                 `pulumi:"ttl"`
-	VersionAliases  map[string]string      `pulumi:"versionAliases"`
+	Id             string                 `pulumi:"id"`
+	Labels         map[string]string      `pulumi:"labels"`
+	Name           string                 `pulumi:"name"`
+	Project        *string                `pulumi:"project"`
+	PulumiLabels   map[string]string      `pulumi:"pulumiLabels"`
+	Replications   []GetSecretReplication `pulumi:"replications"`
+	Rotations      []GetSecretRotation    `pulumi:"rotations"`
+	SecretId       string                 `pulumi:"secretId"`
+	Topics         []GetSecretTopic       `pulumi:"topics"`
+	Ttl            string                 `pulumi:"ttl"`
+	VersionAliases map[string]string      `pulumi:"versionAliases"`
 }
 
 func LookupSecretOutput(ctx *pulumi.Context, args LookupSecretOutputArgs, opts ...pulumi.InvokeOption) LookupSecretResultOutput {
@@ -161,6 +161,10 @@ func (o LookupSecretResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecretResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
+func (o LookupSecretResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSecretResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupSecretResultOutput) Replications() GetSecretReplicationArrayOutput {
 	return o.ApplyT(func(v LookupSecretResult) []GetSecretReplication { return v.Replications }).(GetSecretReplicationArrayOutput)
 }
@@ -171,10 +175,6 @@ func (o LookupSecretResultOutput) Rotations() GetSecretRotationArrayOutput {
 
 func (o LookupSecretResultOutput) SecretId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretResult) string { return v.SecretId }).(pulumi.StringOutput)
-}
-
-func (o LookupSecretResultOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupSecretResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupSecretResultOutput) Topics() GetSecretTopicArrayOutput {

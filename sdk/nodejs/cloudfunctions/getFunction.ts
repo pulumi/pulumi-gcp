@@ -105,6 +105,7 @@ export interface GetFunctionResult {
      */
     readonly name: string;
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly region?: string;
     /**
      * The runtime in which the function is running.
@@ -129,7 +130,6 @@ export interface GetFunctionResult {
      */
     readonly sourceRepositories: outputs.cloudfunctions.GetFunctionSourceRepository[];
     readonly status: string;
-    readonly terraformLabels: {[key: string]: string};
     /**
      * Function execution timeout (in seconds).
      */

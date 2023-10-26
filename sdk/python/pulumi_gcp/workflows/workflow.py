@@ -233,12 +233,12 @@ class _WorkflowState:
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  revision_id: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  source_contents: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Workflow resources.
@@ -257,6 +257,8 @@ class _WorkflowState:
                specified prefix. If this and name are unspecified, a random value is chosen for the name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] region: The region of the workflow.
         :param pulumi.Input[str] revision_id: The revision of the workflow. A new one is generated if the service account or source contents is changed.
         :param pulumi.Input[str] service_account: Name of the service account associated with the latest workflow version. This service
@@ -268,8 +270,6 @@ class _WorkflowState:
                Modifying this field for an existing workflow results in a new workflow revision.
         :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 32KB.
         :param pulumi.Input[str] state: State of the workflow deployment.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         _WorkflowState._configure(
@@ -282,12 +282,12 @@ class _WorkflowState:
             name=name,
             name_prefix=name_prefix,
             project=project,
+            pulumi_labels=pulumi_labels,
             region=region,
             revision_id=revision_id,
             service_account=service_account,
             source_contents=source_contents,
             state=state,
-            terraform_labels=terraform_labels,
             update_time=update_time,
         )
     @staticmethod
@@ -301,12 +301,12 @@ class _WorkflowState:
              name: Optional[pulumi.Input[str]] = None,
              name_prefix: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              region: Optional[pulumi.Input[str]] = None,
              revision_id: Optional[pulumi.Input[str]] = None,
              service_account: Optional[pulumi.Input[str]] = None,
              source_contents: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -318,14 +318,14 @@ class _WorkflowState:
             effective_labels = kwargs['effectiveLabels']
         if name_prefix is None and 'namePrefix' in kwargs:
             name_prefix = kwargs['namePrefix']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if revision_id is None and 'revisionId' in kwargs:
             revision_id = kwargs['revisionId']
         if service_account is None and 'serviceAccount' in kwargs:
             service_account = kwargs['serviceAccount']
         if source_contents is None and 'sourceContents' in kwargs:
             source_contents = kwargs['sourceContents']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
         if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
 
@@ -345,6 +345,8 @@ class _WorkflowState:
             _setter("name_prefix", name_prefix)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if region is not None:
             _setter("region", region)
         if revision_id is not None:
@@ -355,8 +357,6 @@ class _WorkflowState:
             _setter("source_contents", source_contents)
         if state is not None:
             _setter("state", state)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if update_time is not None:
             _setter("update_time", update_time)
 
@@ -464,6 +464,19 @@ class _WorkflowState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
@@ -528,19 +541,6 @@ class _WorkflowState:
     @state.setter
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="updateTime")
@@ -766,9 +766,9 @@ class Workflow(pulumi.CustomResource):
             __props__.__dict__["source_contents"] = source_contents
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["revision_id"] = None
             __props__.__dict__["state"] = None
-            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["update_time"] = None
         super(Workflow, __self__).__init__(
             'gcp:workflows/workflow:Workflow',
@@ -788,12 +788,12 @@ class Workflow(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             name_prefix: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
             revision_id: Optional[pulumi.Input[str]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
             source_contents: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Workflow':
         """
         Get an existing Workflow resource's state with the given name, id, and optional extra
@@ -817,6 +817,8 @@ class Workflow(pulumi.CustomResource):
                specified prefix. If this and name are unspecified, a random value is chosen for the name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] region: The region of the workflow.
         :param pulumi.Input[str] revision_id: The revision of the workflow. A new one is generated if the service account or source contents is changed.
         :param pulumi.Input[str] service_account: Name of the service account associated with the latest workflow version. This service
@@ -828,8 +830,6 @@ class Workflow(pulumi.CustomResource):
                Modifying this field for an existing workflow results in a new workflow revision.
         :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 32KB.
         :param pulumi.Input[str] state: State of the workflow deployment.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -844,12 +844,12 @@ class Workflow(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["name_prefix"] = name_prefix
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["region"] = region
         __props__.__dict__["revision_id"] = revision_id
         __props__.__dict__["service_account"] = service_account
         __props__.__dict__["source_contents"] = source_contents
         __props__.__dict__["state"] = state
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["update_time"] = update_time
         return Workflow(resource_name, opts=opts, __props__=__props__)
 
@@ -925,6 +925,15 @@ class Workflow(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def region(self) -> pulumi.Output[Optional[str]]:
         """
@@ -969,15 +978,6 @@ class Workflow(pulumi.CustomResource):
         State of the workflow deployment.
         """
         return pulumi.get(self, "state")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="updateTime")

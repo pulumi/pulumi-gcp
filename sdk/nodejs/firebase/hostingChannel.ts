@@ -120,6 +120,11 @@ export class HostingChannel extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The number of previous releases to retain on the channel for rollback or other
      * purposes. Must be a number between 1-100. Defaults to 10 for new channels.
      */
@@ -128,11 +133,6 @@ export class HostingChannel extends pulumi.CustomResource {
      * Required. The ID of the site in which to create this channel.
      */
     public readonly siteId!: pulumi.Output<string>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Input only. A time-to-live for this channel. Sets `expireTime` to the provided
      * duration past the time of the request. A duration in seconds with up to nine fractional
@@ -158,9 +158,9 @@ export class HostingChannel extends pulumi.CustomResource {
             resourceInputs["expireTime"] = state ? state.expireTime : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["retainedReleaseCount"] = state ? state.retainedReleaseCount : undefined;
             resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["ttl"] = state ? state.ttl : undefined;
         } else {
             const args = argsOrState as HostingChannelArgs | undefined;
@@ -178,7 +178,7 @@ export class HostingChannel extends pulumi.CustomResource {
             resourceInputs["ttl"] = args ? args.ttl : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(HostingChannel.__pulumiType, name, resourceInputs, opts);
@@ -219,6 +219,11 @@ export interface HostingChannelState {
      */
     name?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The number of previous releases to retain on the channel for rollback or other
      * purposes. Must be a number between 1-100. Defaults to 10 for new channels.
      */
@@ -227,11 +232,6 @@ export interface HostingChannelState {
      * Required. The ID of the site in which to create this channel.
      */
     siteId?: pulumi.Input<string>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Input only. A time-to-live for this channel. Sets `expireTime` to the provided
      * duration past the time of the request. A duration in seconds with up to nine fractional

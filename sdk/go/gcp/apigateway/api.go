@@ -98,7 +98,7 @@ type Api struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 }
 
 // NewApi registers a new resource with the given unique name, arguments, and options.
@@ -160,7 +160,7 @@ type apiState struct {
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 }
 
 type ApiState struct {
@@ -190,7 +190,7 @@ type ApiState struct {
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
+	PulumiLabels pulumi.StringMapInput
 }
 
 func (ApiState) ElementType() reflect.Type {
@@ -399,8 +399,8 @@ func (o ApiOutput) Project() pulumi.StringOutput {
 
 // The combination of labels configured directly on the resource
 // and default labels configured on the provider.
-func (o ApiOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Api) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
+func (o ApiOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Api) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 type ApiArrayOutput struct{ *pulumi.OutputState }

@@ -207,8 +207,8 @@ class _Hl7StoreState:
                  notification_config: Optional[pulumi.Input['Hl7StoreNotificationConfigArgs']] = None,
                  notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]]] = None,
                  parser_config: Optional[pulumi.Input['Hl7StoreParserConfigArgs']] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Hl7Store resources.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
@@ -242,9 +242,9 @@ class _Hl7StoreState:
                Structure is documented below.
         :param pulumi.Input['Hl7StoreParserConfigArgs'] parser_config: A nested object resource
                Structure is documented below.
-        :param pulumi.Input[str] self_link: The fully qualified name of this dataset
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[str] self_link: The fully qualified name of this dataset
         """
         _Hl7StoreState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -255,8 +255,8 @@ class _Hl7StoreState:
             notification_config=notification_config,
             notification_configs=notification_configs,
             parser_config=parser_config,
+            pulumi_labels=pulumi_labels,
             self_link=self_link,
-            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
@@ -268,8 +268,8 @@ class _Hl7StoreState:
              notification_config: Optional[pulumi.Input['Hl7StoreNotificationConfigArgs']] = None,
              notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]]] = None,
              parser_config: Optional[pulumi.Input['Hl7StoreParserConfigArgs']] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if effective_labels is None and 'effectiveLabels' in kwargs:
@@ -280,10 +280,10 @@ class _Hl7StoreState:
             notification_configs = kwargs['notificationConfigs']
         if parser_config is None and 'parserConfig' in kwargs:
             parser_config = kwargs['parserConfig']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if self_link is None and 'selfLink' in kwargs:
             self_link = kwargs['selfLink']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
 
         if dataset is not None:
             _setter("dataset", dataset)
@@ -302,10 +302,10 @@ class _Hl7StoreState:
             _setter("notification_configs", notification_configs)
         if parser_config is not None:
             _setter("parser_config", parser_config)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if self_link is not None:
             _setter("self_link", self_link)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter
@@ -419,6 +419,19 @@ class _Hl7StoreState:
         pulumi.set(self, "parser_config", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
@@ -429,19 +442,6 @@ class _Hl7StoreState:
     @self_link.setter
     def self_link(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "self_link", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
 
 class Hl7Store(pulumi.CustomResource):
@@ -845,8 +845,8 @@ class Hl7Store(pulumi.CustomResource):
             parser_config = _utilities.configure(parser_config, Hl7StoreParserConfigArgs, True)
             __props__.__dict__["parser_config"] = parser_config
             __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["self_link"] = None
-            __props__.__dict__["terraform_labels"] = None
         super(Hl7Store, __self__).__init__(
             'gcp:healthcare/hl7Store:Hl7Store',
             resource_name,
@@ -864,8 +864,8 @@ class Hl7Store(pulumi.CustomResource):
             notification_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigArgs']]] = None,
             notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArgs']]]]] = None,
             parser_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreParserConfigArgs']]] = None,
-            self_link: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Hl7Store':
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            self_link: Optional[pulumi.Input[str]] = None) -> 'Hl7Store':
         """
         Get an existing Hl7Store resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -904,9 +904,9 @@ class Hl7Store(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['Hl7StoreParserConfigArgs']] parser_config: A nested object resource
                Structure is documented below.
-        :param pulumi.Input[str] self_link: The fully qualified name of this dataset
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[str] self_link: The fully qualified name of this dataset
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -919,8 +919,8 @@ class Hl7Store(pulumi.CustomResource):
         __props__.__dict__["notification_config"] = notification_config
         __props__.__dict__["notification_configs"] = notification_configs
         __props__.__dict__["parser_config"] = parser_config
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["self_link"] = self_link
-        __props__.__dict__["terraform_labels"] = terraform_labels
         return Hl7Store(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1007,19 +1007,19 @@ class Hl7Store(pulumi.CustomResource):
         return pulumi.get(self, "parser_config")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
         The fully qualified name of this dataset
         """
         return pulumi.get(self, "self_link")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 

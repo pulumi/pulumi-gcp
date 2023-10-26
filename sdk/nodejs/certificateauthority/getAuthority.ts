@@ -90,10 +90,10 @@ export interface GetAuthorityResult {
     readonly pemCsr: string;
     readonly pool?: string;
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly skipGracePeriod: boolean;
     readonly state: string;
     readonly subordinateConfigs: outputs.certificateauthority.GetAuthoritySubordinateConfig[];
-    readonly terraformLabels: {[key: string]: string};
     readonly type: string;
     readonly updateTime: string;
 }

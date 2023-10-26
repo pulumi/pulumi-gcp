@@ -40,11 +40,11 @@ public final class GetBucketResult {
     private String name;
     private String project;
     private String publicAccessPrevention;
+    private Map<String,String> pulumiLabels;
     private Boolean requesterPays;
     private List<GetBucketRetentionPolicy> retentionPolicies;
     private String selfLink;
     private String storageClass;
-    private Map<String,String> terraformLabels;
     private Boolean uniformBucketLevelAccess;
     private String url;
     private List<GetBucketVersioning> versionings;
@@ -100,6 +100,9 @@ public final class GetBucketResult {
     public String publicAccessPrevention() {
         return this.publicAccessPrevention;
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public Boolean requesterPays() {
         return this.requesterPays;
     }
@@ -111,9 +114,6 @@ public final class GetBucketResult {
     }
     public String storageClass() {
         return this.storageClass;
-    }
-    public Map<String,String> terraformLabels() {
-        return this.terraformLabels;
     }
     public Boolean uniformBucketLevelAccess() {
         return this.uniformBucketLevelAccess;
@@ -152,11 +152,11 @@ public final class GetBucketResult {
         private String name;
         private String project;
         private String publicAccessPrevention;
+        private Map<String,String> pulumiLabels;
         private Boolean requesterPays;
         private List<GetBucketRetentionPolicy> retentionPolicies;
         private String selfLink;
         private String storageClass;
-        private Map<String,String> terraformLabels;
         private Boolean uniformBucketLevelAccess;
         private String url;
         private List<GetBucketVersioning> versionings;
@@ -179,11 +179,11 @@ public final class GetBucketResult {
     	      this.name = defaults.name;
     	      this.project = defaults.project;
     	      this.publicAccessPrevention = defaults.publicAccessPrevention;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.requesterPays = defaults.requesterPays;
     	      this.retentionPolicies = defaults.retentionPolicies;
     	      this.selfLink = defaults.selfLink;
     	      this.storageClass = defaults.storageClass;
-    	      this.terraformLabels = defaults.terraformLabels;
     	      this.uniformBucketLevelAccess = defaults.uniformBucketLevelAccess;
     	      this.url = defaults.url;
     	      this.versionings = defaults.versionings;
@@ -284,6 +284,11 @@ public final class GetBucketResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder requesterPays(Boolean requesterPays) {
             this.requesterPays = Objects.requireNonNull(requesterPays);
             return this;
@@ -304,11 +309,6 @@ public final class GetBucketResult {
         @CustomType.Setter
         public Builder storageClass(String storageClass) {
             this.storageClass = Objects.requireNonNull(storageClass);
-            return this;
-        }
-        @CustomType.Setter
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            this.terraformLabels = Objects.requireNonNull(terraformLabels);
             return this;
         }
         @CustomType.Setter
@@ -354,11 +354,11 @@ public final class GetBucketResult {
             o.name = name;
             o.project = project;
             o.publicAccessPrevention = publicAccessPrevention;
+            o.pulumiLabels = pulumiLabels;
             o.requesterPays = requesterPays;
             o.retentionPolicies = retentionPolicies;
             o.selfLink = selfLink;
             o.storageClass = storageClass;
-            o.terraformLabels = terraformLabels;
             o.uniformBucketLevelAccess = uniformBucketLevelAccess;
             o.url = url;
             o.versionings = versionings;

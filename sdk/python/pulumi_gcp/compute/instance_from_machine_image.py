@@ -640,6 +640,7 @@ class _InstanceFromMachineImageState:
                  network_performance_config: Optional[pulumi.Input['InstanceFromMachineImageNetworkPerformanceConfigArgs']] = None,
                  params: Optional[pulumi.Input['InstanceFromMachineImageParamsArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  reservation_affinity: Optional[pulumi.Input['InstanceFromMachineImageReservationAffinityArgs']] = None,
                  resource_policies: Optional[pulumi.Input[str]] = None,
                  scheduling: Optional[pulumi.Input['InstanceFromMachineImageSchedulingArgs']] = None,
@@ -650,7 +651,6 @@ class _InstanceFromMachineImageState:
                  source_machine_image: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags_fingerprint: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering InstanceFromMachineImage resources.
@@ -694,6 +694,7 @@ class _InstanceFromMachineImageState:
         :param pulumi.Input['InstanceFromMachineImageParamsArgs'] params: Stores additional params passed with the request, but not persisted as part of resource payload.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
                self_link nor project are provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input['InstanceFromMachineImageReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[str] resource_policies: A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
         :param pulumi.Input['InstanceFromMachineImageSchedulingArgs'] scheduling: The scheduling strategy being used by the instance.
@@ -707,7 +708,6 @@ class _InstanceFromMachineImageState:
                - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags attached to the instance.
         :param pulumi.Input[str] tags_fingerprint: The unique fingerprint of the tags.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
                set, the provider zone is used.
                
@@ -747,6 +747,7 @@ class _InstanceFromMachineImageState:
             network_performance_config=network_performance_config,
             params=params,
             project=project,
+            pulumi_labels=pulumi_labels,
             reservation_affinity=reservation_affinity,
             resource_policies=resource_policies,
             scheduling=scheduling,
@@ -757,7 +758,6 @@ class _InstanceFromMachineImageState:
             source_machine_image=source_machine_image,
             tags=tags,
             tags_fingerprint=tags_fingerprint,
-            terraform_labels=terraform_labels,
             zone=zone,
         )
     @staticmethod
@@ -791,6 +791,7 @@ class _InstanceFromMachineImageState:
              network_performance_config: Optional[pulumi.Input['InstanceFromMachineImageNetworkPerformanceConfigArgs']] = None,
              params: Optional[pulumi.Input['InstanceFromMachineImageParamsArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              reservation_affinity: Optional[pulumi.Input['InstanceFromMachineImageReservationAffinityArgs']] = None,
              resource_policies: Optional[pulumi.Input[str]] = None,
              scheduling: Optional[pulumi.Input['InstanceFromMachineImageSchedulingArgs']] = None,
@@ -801,7 +802,6 @@ class _InstanceFromMachineImageState:
              source_machine_image: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tags_fingerprint: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              zone: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -847,6 +847,8 @@ class _InstanceFromMachineImageState:
             network_interfaces = kwargs['networkInterfaces']
         if network_performance_config is None and 'networkPerformanceConfig' in kwargs:
             network_performance_config = kwargs['networkPerformanceConfig']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if reservation_affinity is None and 'reservationAffinity' in kwargs:
             reservation_affinity = kwargs['reservationAffinity']
         if resource_policies is None and 'resourcePolicies' in kwargs:
@@ -863,8 +865,6 @@ class _InstanceFromMachineImageState:
             source_machine_image = kwargs['sourceMachineImage']
         if tags_fingerprint is None and 'tagsFingerprint' in kwargs:
             tags_fingerprint = kwargs['tagsFingerprint']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
 
         if advanced_machine_features is not None:
             _setter("advanced_machine_features", advanced_machine_features)
@@ -922,6 +922,8 @@ class _InstanceFromMachineImageState:
             _setter("params", params)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if reservation_affinity is not None:
             _setter("reservation_affinity", reservation_affinity)
         if resource_policies is not None:
@@ -942,8 +944,6 @@ class _InstanceFromMachineImageState:
             _setter("tags", tags)
         if tags_fingerprint is not None:
             _setter("tags_fingerprint", tags_fingerprint)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if zone is not None:
             _setter("zone", zone)
 
@@ -1296,6 +1296,18 @@ class _InstanceFromMachineImageState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="reservationAffinity")
     def reservation_affinity(self) -> Optional[pulumi.Input['InstanceFromMachineImageReservationAffinityArgs']]:
         """
@@ -1417,18 +1429,6 @@ class _InstanceFromMachineImageState:
     @tags_fingerprint.setter
     def tags_fingerprint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tags_fingerprint", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -1694,10 +1694,10 @@ class InstanceFromMachineImage(pulumi.CustomResource):
             __props__.__dict__["instance_id"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["metadata_fingerprint"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["scratch_disks"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["tags_fingerprint"] = None
-            __props__.__dict__["terraform_labels"] = None
         super(InstanceFromMachineImage, __self__).__init__(
             'gcp:compute/instanceFromMachineImage:InstanceFromMachineImage',
             resource_name,
@@ -1736,6 +1736,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
             network_performance_config: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkPerformanceConfigArgs']]] = None,
             params: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageParamsArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageReservationAffinityArgs']]] = None,
             resource_policies: Optional[pulumi.Input[str]] = None,
             scheduling: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageSchedulingArgs']]] = None,
@@ -1746,7 +1747,6 @@ class InstanceFromMachineImage(pulumi.CustomResource):
             source_machine_image: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags_fingerprint: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'InstanceFromMachineImage':
         """
         Get an existing InstanceFromMachineImage resource's state with the given name, id, and optional extra
@@ -1795,6 +1795,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageParamsArgs']] params: Stores additional params passed with the request, but not persisted as part of resource payload.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
                self_link nor project are provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[str] resource_policies: A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
         :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageSchedulingArgs']] scheduling: The scheduling strategy being used by the instance.
@@ -1808,7 +1809,6 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags attached to the instance.
         :param pulumi.Input[str] tags_fingerprint: The unique fingerprint of the tags.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
                set, the provider zone is used.
                
@@ -1850,6 +1850,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         __props__.__dict__["network_performance_config"] = network_performance_config
         __props__.__dict__["params"] = params
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["reservation_affinity"] = reservation_affinity
         __props__.__dict__["resource_policies"] = resource_policies
         __props__.__dict__["scheduling"] = scheduling
@@ -1860,7 +1861,6 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         __props__.__dict__["source_machine_image"] = source_machine_image
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tags_fingerprint"] = tags_fingerprint
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["zone"] = zone
         return InstanceFromMachineImage(resource_name, opts=opts, __props__=__props__)
 
@@ -2101,6 +2101,14 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="reservationAffinity")
     def reservation_affinity(self) -> pulumi.Output['outputs.InstanceFromMachineImageReservationAffinity']:
         """
@@ -2182,14 +2190,6 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         The unique fingerprint of the tags.
         """
         return pulumi.get(self, "tags_fingerprint")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

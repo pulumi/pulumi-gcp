@@ -21,7 +21,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, config=None, display_name=None, effective_labels=None, force_destroy=None, id=None, labels=None, name=None, num_nodes=None, processing_units=None, project=None, state=None, terraform_labels=None):
+    def __init__(__self__, config=None, display_name=None, effective_labels=None, force_destroy=None, id=None, labels=None, name=None, num_nodes=None, processing_units=None, project=None, pulumi_labels=None, state=None):
         if config and not isinstance(config, str):
             raise TypeError("Expected argument 'config' to be a str")
         pulumi.set(__self__, "config", config)
@@ -52,12 +52,12 @@ class GetInstanceResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
-        if terraform_labels and not isinstance(terraform_labels, dict):
-            raise TypeError("Expected argument 'terraform_labels' to be a dict")
-        pulumi.set(__self__, "terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter
@@ -113,14 +113,14 @@ class GetInstanceResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def state(self) -> str:
         return pulumi.get(self, "state")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Mapping[str, str]:
-        return pulumi.get(self, "terraform_labels")
 
 
 class AwaitableGetInstanceResult(GetInstanceResult):
@@ -139,8 +139,8 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             num_nodes=self.num_nodes,
             processing_units=self.processing_units,
             project=self.project,
-            state=self.state,
-            terraform_labels=self.terraform_labels)
+            pulumi_labels=self.pulumi_labels,
+            state=self.state)
 
 
 def get_instance(config: Optional[str] = None,
@@ -186,8 +186,8 @@ def get_instance(config: Optional[str] = None,
         num_nodes=pulumi.get(__ret__, 'num_nodes'),
         processing_units=pulumi.get(__ret__, 'processing_units'),
         project=pulumi.get(__ret__, 'project'),
-        state=pulumi.get(__ret__, 'state'),
-        terraform_labels=pulumi.get(__ret__, 'terraform_labels'))
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_instance)

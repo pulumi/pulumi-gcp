@@ -69,6 +69,7 @@ export interface GetKMSCryptoKeyResult {
     readonly keyRing: string;
     readonly labels: {[key: string]: string};
     readonly name: string;
+    readonly pulumiLabels: {[key: string]: string};
     /**
      * Defines the cryptographic capabilities of the key.
      */
@@ -80,7 +81,6 @@ export interface GetKMSCryptoKeyResult {
      */
     readonly rotationPeriod: string;
     readonly skipInitialVersionCreation: boolean;
-    readonly terraformLabels: {[key: string]: string};
     readonly versionTemplates: outputs.kms.GetKMSCryptoKeyVersionTemplate[];
 }
 /**

@@ -31,9 +31,9 @@ public final class GetFunctionResult {
     private String location;
     private String name;
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private List<GetFunctionServiceConfig> serviceConfigs;
     private String state;
-    private Map<String,String> terraformLabels;
     private String updateTime;
     private String url;
 
@@ -75,14 +75,14 @@ public final class GetFunctionResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public List<GetFunctionServiceConfig> serviceConfigs() {
         return this.serviceConfigs;
     }
     public String state() {
         return this.state;
-    }
-    public Map<String,String> terraformLabels() {
-        return this.terraformLabels;
     }
     public String updateTime() {
         return this.updateTime;
@@ -111,9 +111,9 @@ public final class GetFunctionResult {
         private String location;
         private String name;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private List<GetFunctionServiceConfig> serviceConfigs;
         private String state;
-        private Map<String,String> terraformLabels;
         private String updateTime;
         private String url;
         public Builder() {}
@@ -130,9 +130,9 @@ public final class GetFunctionResult {
     	      this.location = defaults.location;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.serviceConfigs = defaults.serviceConfigs;
     	      this.state = defaults.state;
-    	      this.terraformLabels = defaults.terraformLabels;
     	      this.updateTime = defaults.updateTime;
     	      this.url = defaults.url;
         }
@@ -199,6 +199,11 @@ public final class GetFunctionResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceConfigs(List<GetFunctionServiceConfig> serviceConfigs) {
             this.serviceConfigs = Objects.requireNonNull(serviceConfigs);
             return this;
@@ -209,11 +214,6 @@ public final class GetFunctionResult {
         @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
-            return this;
-        }
-        @CustomType.Setter
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            this.terraformLabels = Objects.requireNonNull(terraformLabels);
             return this;
         }
         @CustomType.Setter
@@ -239,9 +239,9 @@ public final class GetFunctionResult {
             o.location = location;
             o.name = name;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.serviceConfigs = serviceConfigs;
             o.state = state;
-            o.terraformLabels = terraformLabels;
             o.updateTime = updateTime;
             o.url = url;
             return o;

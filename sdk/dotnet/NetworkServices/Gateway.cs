@@ -397,6 +397,13 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Immutable. Scope determines how configuration across multiple Gateway instances are merged.
         /// The configuration for multiple Gateway instances with the same scope will be merged as presented as
         /// a single coniguration to the proxy/load balancer.
@@ -425,13 +432,6 @@ namespace Pulumi.Gcp.NetworkServices
         /// </summary>
         [Output("subnetwork")]
         public Output<string?> Subnetwork { get; private set; } = null!;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
@@ -764,6 +764,19 @@ namespace Pulumi.Gcp.NetworkServices
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
+
         /// <summary>
         /// Immutable. Scope determines how configuration across multiple Gateway instances are merged.
         /// The configuration for multiple Gateway instances with the same scope will be merged as presented as
@@ -793,19 +806,6 @@ namespace Pulumi.Gcp.NetworkServices
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
-
-        [Input("terraformLabels")]
-        private InputMap<string>? _terraformLabels;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        public InputMap<string> TerraformLabels
-        {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
-            set => _terraformLabels = value;
-        }
 
         /// <summary>
         /// Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.

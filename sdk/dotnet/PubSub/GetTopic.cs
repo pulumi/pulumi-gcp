@@ -134,8 +134,8 @@ namespace Pulumi.Gcp.PubSub
         public readonly ImmutableArray<Outputs.GetTopicMessageStoragePolicyResult> MessageStoragePolicies;
         public readonly string Name;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly ImmutableArray<Outputs.GetTopicSchemaSettingResult> SchemaSettings;
-        public readonly ImmutableDictionary<string, string> TerraformLabels;
 
         [OutputConstructor]
         private GetTopicResult(
@@ -155,9 +155,9 @@ namespace Pulumi.Gcp.PubSub
 
             string? project,
 
-            ImmutableArray<Outputs.GetTopicSchemaSettingResult> schemaSettings,
+            ImmutableDictionary<string, string> pulumiLabels,
 
-            ImmutableDictionary<string, string> terraformLabels)
+            ImmutableArray<Outputs.GetTopicSchemaSettingResult> schemaSettings)
         {
             EffectiveLabels = effectiveLabels;
             Id = id;
@@ -167,8 +167,8 @@ namespace Pulumi.Gcp.PubSub
             MessageStoragePolicies = messageStoragePolicies;
             Name = name;
             Project = project;
+            PulumiLabels = pulumiLabels;
             SchemaSettings = schemaSettings;
-            TerraformLabels = terraformLabels;
         }
     }
 }

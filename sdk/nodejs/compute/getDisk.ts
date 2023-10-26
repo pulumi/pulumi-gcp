@@ -109,6 +109,7 @@ export interface GetDiskResult {
     readonly project?: string;
     readonly provisionedIops: number;
     readonly provisionedThroughput: number;
+    readonly pulumiLabels: {[key: string]: string};
     readonly resourcePolicies: string[];
     /**
      * The URI of the created resource.
@@ -149,7 +150,6 @@ export interface GetDiskResult {
      * used.
      */
     readonly sourceSnapshotId: string;
-    readonly terraformLabels: {[key: string]: string};
     /**
      * URL of the disk type resource describing which disk type to use to
      * create the disk.

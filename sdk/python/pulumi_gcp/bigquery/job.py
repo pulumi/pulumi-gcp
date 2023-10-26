@@ -228,9 +228,9 @@ class _JobState:
                  load: Optional[pulumi.Input['JobLoadArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  query: Optional[pulumi.Input['JobQueryArgs']] = None,
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_email: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Job resources.
@@ -253,14 +253,14 @@ class _JobState:
         :param pulumi.Input[str] location: The geographic location of the job. The default value is US.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: (Output)
+               The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input['JobQueryArgs'] query: SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
                *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
                (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
         :param pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]] statuses: The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: (Output)
-               The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] user_email: Email address of the user who ran the job.
         """
         _JobState._configure(
@@ -275,9 +275,9 @@ class _JobState:
             load=load,
             location=location,
             project=project,
+            pulumi_labels=pulumi_labels,
             query=query,
             statuses=statuses,
-            terraform_labels=terraform_labels,
             user_email=user_email,
         )
     @staticmethod
@@ -293,9 +293,9 @@ class _JobState:
              load: Optional[pulumi.Input['JobLoadArgs']] = None,
              location: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              query: Optional[pulumi.Input['JobQueryArgs']] = None,
              statuses: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              user_email: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -307,8 +307,8 @@ class _JobState:
             job_timeout_ms = kwargs['jobTimeoutMs']
         if job_type is None and 'jobType' in kwargs:
             job_type = kwargs['jobType']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if user_email is None and 'userEmail' in kwargs:
             user_email = kwargs['userEmail']
 
@@ -332,12 +332,12 @@ class _JobState:
             _setter("location", location)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if query is not None:
             _setter("query", query)
         if statuses is not None:
             _setter("statuses", statuses)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if user_email is not None:
             _setter("user_email", user_email)
 
@@ -471,6 +471,20 @@ class _JobState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        (Output)
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter
     def query(self) -> Optional[pulumi.Input['JobQueryArgs']]:
         """
@@ -496,20 +510,6 @@ class _JobState:
     @statuses.setter
     def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]]):
         pulumi.set(self, "statuses", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        (Output)
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="userEmail")
@@ -1100,8 +1100,8 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["query"] = query
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["job_type"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["statuses"] = None
-            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["user_email"] = None
         super(Job, __self__).__init__(
             'gcp:bigquery/job:Job',
@@ -1123,9 +1123,9 @@ class Job(pulumi.CustomResource):
             load: Optional[pulumi.Input[pulumi.InputType['JobLoadArgs']]] = None,
             location: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             query: Optional[pulumi.Input[pulumi.InputType['JobQueryArgs']]] = None,
             statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobStatusArgs']]]]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             user_email: Optional[pulumi.Input[str]] = None) -> 'Job':
         """
         Get an existing Job resource's state with the given name, id, and optional extra
@@ -1153,14 +1153,14 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] location: The geographic location of the job. The default value is US.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: (Output)
+               The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['JobQueryArgs']] query: SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
                *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
                (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobStatusArgs']]]] statuses: The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: (Output)
-               The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] user_email: Email address of the user who ran the job.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1177,9 +1177,9 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["load"] = load
         __props__.__dict__["location"] = location
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["query"] = query
         __props__.__dict__["statuses"] = statuses
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["user_email"] = user_email
         return Job(resource_name, opts=opts, __props__=__props__)
 
@@ -1273,6 +1273,16 @@ class Job(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        (Output)
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def query(self) -> pulumi.Output[Optional['outputs.JobQuery']]:
         """
@@ -1290,16 +1300,6 @@ class Job(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "statuses")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        (Output)
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="userEmail")

@@ -164,13 +164,13 @@ type MetastoreFederation struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The current state of the metastore federation.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Additional information about the current state of the metastore federation, if available.
 	StateMessage pulumi.StringOutput `pulumi:"stateMessage"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The globally unique resource identifier of the metastore federation.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
@@ -239,13 +239,13 @@ type metastoreFederationState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The current state of the metastore federation.
 	State *string `pulumi:"state"`
 	// Additional information about the current state of the metastore federation, if available.
 	StateMessage *string `pulumi:"stateMessage"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The globally unique resource identifier of the metastore federation.
 	Uid *string `pulumi:"uid"`
 	// The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
@@ -276,13 +276,13 @@ type MetastoreFederationState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The current state of the metastore federation.
 	State pulumi.StringPtrInput
 	// Additional information about the current state of the metastore federation, if available.
 	StateMessage pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// The globally unique resource identifier of the metastore federation.
 	Uid pulumi.StringPtrInput
 	// The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
@@ -496,6 +496,12 @@ func (o MetastoreFederationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreFederation) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o MetastoreFederationOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *MetastoreFederation) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The current state of the metastore federation.
 func (o MetastoreFederationOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreFederation) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
@@ -504,12 +510,6 @@ func (o MetastoreFederationOutput) State() pulumi.StringOutput {
 // Additional information about the current state of the metastore federation, if available.
 func (o MetastoreFederationOutput) StateMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreFederation) pulumi.StringOutput { return v.StateMessage }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o MetastoreFederationOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *MetastoreFederation) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The globally unique resource identifier of the metastore federation.

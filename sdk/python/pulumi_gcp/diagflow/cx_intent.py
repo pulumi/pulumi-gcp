@@ -246,7 +246,7 @@ class _CxIntentState:
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['CxIntentParameterArgs']]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input['CxIntentTrainingPhraseArgs']]]] = None):
         """
         Input properties used for looking up and filtering CxIntent resources.
@@ -277,7 +277,7 @@ class _CxIntentState:
         :param pulumi.Input[int] priority: The priority of this intent. Higher numbers represent higher priorities.
                If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the Normal priority in the console.
                If the supplied value is negative, the intent is ignored in runtime detect intent requests.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['CxIntentTrainingPhraseArgs']]] training_phrases: The collection of training phrases the agent is trained on to identify the intent.
                Structure is documented below.
@@ -294,7 +294,7 @@ class _CxIntentState:
             parameters=parameters,
             parent=parent,
             priority=priority,
-            terraform_labels=terraform_labels,
+            pulumi_labels=pulumi_labels,
             training_phrases=training_phrases,
         )
     @staticmethod
@@ -310,7 +310,7 @@ class _CxIntentState:
              parameters: Optional[pulumi.Input[Sequence[pulumi.Input['CxIntentParameterArgs']]]] = None,
              parent: Optional[pulumi.Input[str]] = None,
              priority: Optional[pulumi.Input[int]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input['CxIntentTrainingPhraseArgs']]]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -322,8 +322,8 @@ class _CxIntentState:
             is_fallback = kwargs['isFallback']
         if language_code is None and 'languageCode' in kwargs:
             language_code = kwargs['languageCode']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if training_phrases is None and 'trainingPhrases' in kwargs:
             training_phrases = kwargs['trainingPhrases']
 
@@ -347,8 +347,8 @@ class _CxIntentState:
             _setter("parent", parent)
         if priority is not None:
             _setter("priority", priority)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if training_phrases is not None:
             _setter("training_phrases", training_phrases)
 
@@ -490,17 +490,17 @@ class _CxIntentState:
         pulumi.set(self, "priority", value)
 
     @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The combination of labels configured directly on the resource
         and default labels configured on the provider.
         """
-        return pulumi.get(self, "terraform_labels")
+        return pulumi.get(self, "pulumi_labels")
 
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
 
     @property
     @pulumi.getter(name="trainingPhrases")
@@ -763,7 +763,7 @@ class CxIntent(pulumi.CustomResource):
             __props__.__dict__["training_phrases"] = training_phrases
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
-            __props__.__dict__["terraform_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
         super(CxIntent, __self__).__init__(
             'gcp:diagflow/cxIntent:CxIntent',
             resource_name,
@@ -784,7 +784,7 @@ class CxIntent(pulumi.CustomResource):
             parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxIntentParameterArgs']]]]] = None,
             parent: Optional[pulumi.Input[str]] = None,
             priority: Optional[pulumi.Input[int]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxIntentTrainingPhraseArgs']]]]] = None) -> 'CxIntent':
         """
         Get an existing CxIntent resource's state with the given name, id, and optional extra
@@ -820,7 +820,7 @@ class CxIntent(pulumi.CustomResource):
         :param pulumi.Input[int] priority: The priority of this intent. Higher numbers represent higher priorities.
                If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the Normal priority in the console.
                If the supplied value is negative, the intent is ignored in runtime detect intent requests.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxIntentTrainingPhraseArgs']]]] training_phrases: The collection of training phrases the agent is trained on to identify the intent.
                Structure is documented below.
@@ -839,7 +839,7 @@ class CxIntent(pulumi.CustomResource):
         __props__.__dict__["parameters"] = parameters
         __props__.__dict__["parent"] = parent
         __props__.__dict__["priority"] = priority
-        __props__.__dict__["terraform_labels"] = terraform_labels
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["training_phrases"] = training_phrases
         return CxIntent(resource_name, opts=opts, __props__=__props__)
 
@@ -941,13 +941,13 @@ class CxIntent(pulumi.CustomResource):
         return pulumi.get(self, "priority")
 
     @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         The combination of labels configured directly on the resource
         and default labels configured on the provider.
         """
-        return pulumi.get(self, "terraform_labels")
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter(name="trainingPhrases")

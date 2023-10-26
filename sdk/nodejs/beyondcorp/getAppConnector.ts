@@ -66,9 +66,9 @@ export interface GetAppConnectorResult {
     readonly name: string;
     readonly principalInfos: outputs.beyondcorp.GetAppConnectorPrincipalInfo[];
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly region?: string;
     readonly state: string;
-    readonly terraformLabels: {[key: string]: string};
 }
 /**
  * Get information about a Google BeyondCorp App Connector.

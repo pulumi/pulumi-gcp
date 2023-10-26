@@ -151,9 +151,9 @@ namespace Pulumi.Gcp.CloudFunctionsV2
         public readonly string Location;
         public readonly string Name;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly ImmutableArray<Outputs.GetFunctionServiceConfigResult> ServiceConfigs;
         public readonly string State;
-        public readonly ImmutableDictionary<string, string> TerraformLabels;
         public readonly string UpdateTime;
         public readonly string Url;
 
@@ -181,11 +181,11 @@ namespace Pulumi.Gcp.CloudFunctionsV2
 
             string? project,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             ImmutableArray<Outputs.GetFunctionServiceConfigResult> serviceConfigs,
 
             string state,
-
-            ImmutableDictionary<string, string> terraformLabels,
 
             string updateTime,
 
@@ -202,9 +202,9 @@ namespace Pulumi.Gcp.CloudFunctionsV2
             Location = location;
             Name = name;
             Project = project;
+            PulumiLabels = pulumiLabels;
             ServiceConfigs = serviceConfigs;
             State = state;
-            TerraformLabels = terraformLabels;
             UpdateTime = updateTime;
             Url = url;
         }

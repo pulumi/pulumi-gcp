@@ -192,6 +192,11 @@ export class Secret extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The replication policy of the secret data attached to the Secret. It cannot be changed
      * after the Secret has been created.
      * Structure is documented below.
@@ -206,11 +211,6 @@ export class Secret extends pulumi.CustomResource {
      * This must be unique within the project.
      */
     public readonly secretId!: pulumi.Output<string>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
      * Structure is documented below.
@@ -253,10 +253,10 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["replication"] = state ? state.replication : undefined;
             resourceInputs["rotation"] = state ? state.rotation : undefined;
             resourceInputs["secretId"] = state ? state.secretId : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["topics"] = state ? state.topics : undefined;
             resourceInputs["ttl"] = state ? state.ttl : undefined;
             resourceInputs["versionAliases"] = state ? state.versionAliases : undefined;
@@ -282,7 +282,7 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Secret.__pulumiType, name, resourceInputs, opts);
@@ -353,6 +353,11 @@ export interface SecretState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The replication policy of the secret data attached to the Secret. It cannot be changed
      * after the Secret has been created.
      * Structure is documented below.
@@ -367,11 +372,6 @@ export interface SecretState {
      * This must be unique within the project.
      */
     secretId?: pulumi.Input<string>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
      * Structure is documented below.

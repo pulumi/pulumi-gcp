@@ -349,6 +349,11 @@ export class Repository extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Configuration specific for a Remote Repository.
      * Structure is documented below.
      */
@@ -358,11 +363,6 @@ export class Repository extends pulumi.CustomResource {
      * "repo1"
      */
     public readonly repositoryId!: pulumi.Output<string>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The time when the repository was last updated.
      */
@@ -400,9 +400,9 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["mode"] = state ? state.mode : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["remoteRepositoryConfig"] = state ? state.remoteRepositoryConfig : undefined;
             resourceInputs["repositoryId"] = state ? state.repositoryId : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
             resourceInputs["virtualRepositoryConfig"] = state ? state.virtualRepositoryConfig : undefined;
         } else {
@@ -430,7 +430,7 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -526,6 +526,11 @@ export interface RepositoryState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Configuration specific for a Remote Repository.
      * Structure is documented below.
      */
@@ -535,11 +540,6 @@ export interface RepositoryState {
      * "repo1"
      */
     repositoryId?: pulumi.Input<string>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The time when the repository was last updated.
      */

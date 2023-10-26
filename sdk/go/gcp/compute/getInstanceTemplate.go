@@ -136,7 +136,8 @@ type LookupInstanceTemplateResult struct {
 	NetworkPerformanceConfigs []GetInstanceTemplateNetworkPerformanceConfig `pulumi:"networkPerformanceConfigs"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	Project      *string           `pulumi:"project"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// An instance template is a global resource that is not
 	// bound to a zone or a region. However, you can still specify some regional
 	// resources in an instance template, which restricts the template to the
@@ -163,8 +164,7 @@ type LookupInstanceTemplateResult struct {
 	// Tags to attach to the instance.
 	Tags []string `pulumi:"tags"`
 	// The unique fingerprint of the tags.
-	TagsFingerprint string            `pulumi:"tagsFingerprint"`
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	TagsFingerprint string `pulumi:"tagsFingerprint"`
 }
 
 func LookupInstanceTemplateOutput(ctx *pulumi.Context, args LookupInstanceTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceTemplateResultOutput {
@@ -354,6 +354,10 @@ func (o LookupInstanceTemplateResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInstanceTemplateResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
+func (o LookupInstanceTemplateResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // An instance template is a global resource that is not
 // bound to a zone or a region. However, you can still specify some regional
 // resources in an instance template, which restricts the template to the
@@ -413,10 +417,6 @@ func (o LookupInstanceTemplateResultOutput) Tags() pulumi.StringArrayOutput {
 // The unique fingerprint of the tags.
 func (o LookupInstanceTemplateResultOutput) TagsFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceTemplateResult) string { return v.TagsFingerprint }).(pulumi.StringOutput)
-}
-
-func (o LookupInstanceTemplateResultOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupInstanceTemplateResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func init() {

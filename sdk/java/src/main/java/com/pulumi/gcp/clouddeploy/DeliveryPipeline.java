@@ -517,6 +517,20 @@ public class DeliveryPipeline extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output<Map<String,Object>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,Object>> pulumiLabels() {
+        return this.pulumiLabels;
+    }
+    /**
      * SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
      * 
      */
@@ -543,20 +557,6 @@ public class DeliveryPipeline extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> suspended() {
         return Codegen.optional(this.suspended);
-    }
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     * 
-     */
-    @Export(name="terraformLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
-     * 
-     */
-    public Output<Map<String,Object>> terraformLabels() {
-        return this.terraformLabels;
     }
     /**
      * Output only. Unique identifier of the `DeliveryPipeline`.

@@ -154,11 +154,11 @@ type CertificateMapEntry struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// A serving state of this Certificate Map Entry.
-	State pulumi.StringOutput `pulumi:"state"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// A serving state of this Certificate Map Entry.
+	State pulumi.StringOutput `pulumi:"state"`
 	// Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
 	// with nanosecond resolution and up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -238,11 +238,11 @@ type certificateMapEntryState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// A serving state of this Certificate Map Entry.
-	State *string `pulumi:"state"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// A serving state of this Certificate Map Entry.
+	State *string `pulumi:"state"`
 	// Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
 	// with nanosecond resolution and up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -287,11 +287,11 @@ type CertificateMapEntryState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// A serving state of this Certificate Map Entry.
-	State pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
+	PulumiLabels pulumi.StringMapInput
+	// A serving state of this Certificate Map Entry.
+	State pulumi.StringPtrInput
 	// Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
 	// with nanosecond resolution and up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -547,15 +547,15 @@ func (o CertificateMapEntryOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o CertificateMapEntryOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // A serving state of this Certificate Map Entry.
 func (o CertificateMapEntryOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o CertificateMapEntryOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,

@@ -110,13 +110,13 @@ type Peering struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The current state of this Peering.
 	Status pulumi.StringPtrOutput `pulumi:"status"`
 	// Additional information about the current status of this peering, if available.
 	StatusMessage pulumi.StringPtrOutput `pulumi:"statusMessage"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewPeering registers a new resource with the given unique name, arguments, and options.
@@ -176,13 +176,13 @@ type peeringState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The current state of this Peering.
 	Status *string `pulumi:"status"`
 	// Additional information about the current status of this peering, if available.
 	StatusMessage *string `pulumi:"statusMessage"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type PeeringState struct {
@@ -204,13 +204,13 @@ type PeeringState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The current state of this Peering.
 	Status pulumi.StringPtrInput
 	// Additional information about the current status of this peering, if available.
 	StatusMessage pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 }
 
 func (PeeringState) ElementType() reflect.Type {
@@ -408,6 +408,12 @@ func (o PeeringOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Peering) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o PeeringOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Peering) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The current state of this Peering.
 func (o PeeringOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Peering) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
@@ -416,12 +422,6 @@ func (o PeeringOutput) Status() pulumi.StringPtrOutput {
 // Additional information about the current status of this peering, if available.
 func (o PeeringOutput) StatusMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Peering) pulumi.StringPtrOutput { return v.StatusMessage }).(pulumi.StringPtrOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o PeeringOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Peering) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type PeeringArrayOutput struct{ *pulumi.OutputState }

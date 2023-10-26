@@ -69,7 +69,7 @@ type CertificateTemplate struct {
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.MapOutput `pulumi:"terraformLabels"`
+	PulumiLabels pulumi.MapOutput `pulumi:"pulumiLabels"`
 	// Output only. The time at which this CertificateTemplate was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -132,7 +132,7 @@ type certificateTemplateState struct {
 	// The project for the resource
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels map[string]interface{} `pulumi:"terraformLabels"`
+	PulumiLabels map[string]interface{} `pulumi:"pulumiLabels"`
 	// Output only. The time at which this CertificateTemplate was updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -163,7 +163,7 @@ type CertificateTemplateState struct {
 	// The project for the resource
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.MapInput
+	PulumiLabels pulumi.MapInput
 	// Output only. The time at which this CertificateTemplate was updated.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -387,8 +387,8 @@ func (o CertificateTemplateOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o CertificateTemplateOutput) TerraformLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *CertificateTemplate) pulumi.MapOutput { return v.TerraformLabels }).(pulumi.MapOutput)
+func (o CertificateTemplateOutput) PulumiLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *CertificateTemplate) pulumi.MapOutput { return v.PulumiLabels }).(pulumi.MapOutput)
 }
 
 // Output only. The time at which this CertificateTemplate was updated.

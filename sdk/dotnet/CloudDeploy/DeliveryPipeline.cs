@@ -420,6 +420,12 @@ namespace Pulumi.Gcp.CloudDeploy
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, object>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
         /// </summary>
         [Output("serialPipeline")]
@@ -430,12 +436,6 @@ namespace Pulumi.Gcp.CloudDeploy
         /// </summary>
         [Output("suspended")]
         public Output<bool?> Suspended { get; private set; } = null!;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource and default labels configured on the provider.
-        /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, object>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// Output only. Unique identifier of the `DeliveryPipeline`.
@@ -673,6 +673,18 @@ namespace Pulumi.Gcp.CloudDeploy
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<object>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        public InputMap<object> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<object>());
+            set => _pulumiLabels = value;
+        }
+
         /// <summary>
         /// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
         /// </summary>
@@ -684,18 +696,6 @@ namespace Pulumi.Gcp.CloudDeploy
         /// </summary>
         [Input("suspended")]
         public Input<bool>? Suspended { get; set; }
-
-        [Input("terraformLabels")]
-        private InputMap<object>? _terraformLabels;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource and default labels configured on the provider.
-        /// </summary>
-        public InputMap<object> TerraformLabels
-        {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<object>());
-            set => _terraformLabels = value;
-        }
 
         /// <summary>
         /// Output only. Unique identifier of the `DeliveryPipeline`.

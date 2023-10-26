@@ -183,6 +183,8 @@ type Table struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// If specified, configures range-based
 	// partitioning for this table. Structure is documented below.
 	RangePartitioning TableRangePartitioningPtrOutput `pulumi:"rangePartitioning"`
@@ -210,8 +212,6 @@ type Table struct {
 	// A unique ID for the resource.
 	// Changing this forces a new resource to be created.
 	TableId pulumi.StringOutput `pulumi:"tableId"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// If specified, configures time-based
 	// partitioning for this table. Structure is documented below.
 	TimePartitioning TableTimePartitioningPtrOutput `pulumi:"timePartitioning"`
@@ -317,6 +317,8 @@ type tableState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// If specified, configures range-based
 	// partitioning for this table. Structure is documented below.
 	RangePartitioning *TableRangePartitioning `pulumi:"rangePartitioning"`
@@ -344,8 +346,6 @@ type tableState struct {
 	// A unique ID for the resource.
 	// Changing this forces a new resource to be created.
 	TableId *string `pulumi:"tableId"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// If specified, configures time-based
 	// partitioning for this table. Structure is documented below.
 	TimePartitioning *TableTimePartitioning `pulumi:"timePartitioning"`
@@ -416,6 +416,8 @@ type TableState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// If specified, configures range-based
 	// partitioning for this table. Structure is documented below.
 	RangePartitioning TableRangePartitioningPtrInput
@@ -443,8 +445,6 @@ type TableState struct {
 	// A unique ID for the resource.
 	// Changing this forces a new resource to be created.
 	TableId pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// If specified, configures time-based
 	// partitioning for this table. Structure is documented below.
 	TimePartitioning TableTimePartitioningPtrInput
@@ -840,6 +840,11 @@ func (o TableOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o TableOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // If specified, configures range-based
 // partitioning for this table. Structure is documented below.
 func (o TableOutput) RangePartitioning() TableRangePartitioningPtrOutput {
@@ -880,11 +885,6 @@ func (o TableOutput) TableConstraints() TableTableConstraintsPtrOutput {
 // Changing this forces a new resource to be created.
 func (o TableOutput) TableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.TableId }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o TableOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Table) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // If specified, configures time-based

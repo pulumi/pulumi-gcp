@@ -203,7 +203,7 @@ export class EnterpriseKey extends pulumi.CustomResource {
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: any}>;
     /**
      * Options for user acceptance testing.
      */
@@ -234,7 +234,7 @@ export class EnterpriseKey extends pulumi.CustomResource {
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["testingOptions"] = state ? state.testingOptions : undefined;
             resourceInputs["webSettings"] = state ? state.webSettings : undefined;
         } else {
@@ -252,7 +252,7 @@ export class EnterpriseKey extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EnterpriseKey.__pulumiType, name, resourceInputs, opts);
@@ -306,7 +306,7 @@ export interface EnterpriseKeyState {
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    terraformLabels?: pulumi.Input<{[key: string]: any}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Options for user acceptance testing.
      */

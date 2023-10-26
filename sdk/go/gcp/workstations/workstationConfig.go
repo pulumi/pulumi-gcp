@@ -627,15 +627,15 @@ type WorkstationConfig struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
 	// If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
 	ReplicaZones pulumi.StringArrayOutput `pulumi:"replicaZones"`
 	// How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryptionKey` is set. Defaults to 12 hours.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	RunningTimeout pulumi.StringPtrOutput `pulumi:"runningTimeout"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The system-generated UID of the resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The ID of the parent workstation cluster.
@@ -738,15 +738,15 @@ type workstationConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
 	// If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
 	ReplicaZones []string `pulumi:"replicaZones"`
 	// How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryptionKey` is set. Defaults to 12 hours.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	RunningTimeout *string `pulumi:"runningTimeout"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The system-generated UID of the resource.
 	Uid *string `pulumi:"uid"`
 	// The ID of the parent workstation cluster.
@@ -811,15 +811,15 @@ type WorkstationConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
 	// If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
 	ReplicaZones pulumi.StringArrayInput
 	// How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryptionKey` is set. Defaults to 12 hours.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	RunningTimeout pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// The system-generated UID of the resource.
 	Uid pulumi.StringPtrInput
 	// The ID of the parent workstation cluster.
@@ -1155,6 +1155,12 @@ func (o WorkstationConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o WorkstationConfigOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
 // If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
 func (o WorkstationConfigOutput) ReplicaZones() pulumi.StringArrayOutput {
@@ -1165,12 +1171,6 @@ func (o WorkstationConfigOutput) ReplicaZones() pulumi.StringArrayOutput {
 // A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 func (o WorkstationConfigOutput) RunningTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringPtrOutput { return v.RunningTimeout }).(pulumi.StringPtrOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o WorkstationConfigOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The system-generated UID of the resource.

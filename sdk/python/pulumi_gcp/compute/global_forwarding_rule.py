@@ -586,11 +586,11 @@ class _GlobalForwardingRuleState:
                  project: Optional[pulumi.Input[str]] = None,
                  psc_connection_id: Optional[pulumi.Input[str]] = None,
                  psc_connection_status: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
-                 target: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 target: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GlobalForwardingRule resources.
         :param pulumi.Input[bool] allow_psc_global_access: This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
@@ -709,6 +709,8 @@ class _GlobalForwardingRuleState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] psc_connection_id: The PSC connection id of the PSC Forwarding Rule.
         :param pulumi.Input[str] psc_connection_status: The PSC connection status of the PSC Forwarding Rule. Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_ip_ranges: If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
         :param pulumi.Input[str] subnetwork: This field identifies the subnetwork that the load balanced IP should
@@ -731,8 +733,6 @@ class _GlobalForwardingRuleState:
                
                
                - - -
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         """
         _GlobalForwardingRuleState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -754,11 +754,11 @@ class _GlobalForwardingRuleState:
             project=project,
             psc_connection_id=psc_connection_id,
             psc_connection_status=psc_connection_status,
+            pulumi_labels=pulumi_labels,
             self_link=self_link,
             source_ip_ranges=source_ip_ranges,
             subnetwork=subnetwork,
             target=target,
-            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
@@ -781,11 +781,11 @@ class _GlobalForwardingRuleState:
              project: Optional[pulumi.Input[str]] = None,
              psc_connection_id: Optional[pulumi.Input[str]] = None,
              psc_connection_status: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
              target: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if allow_psc_global_access is None and 'allowPscGlobalAccess' in kwargs:
@@ -814,12 +814,12 @@ class _GlobalForwardingRuleState:
             psc_connection_id = kwargs['pscConnectionId']
         if psc_connection_status is None and 'pscConnectionStatus' in kwargs:
             psc_connection_status = kwargs['pscConnectionStatus']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if self_link is None and 'selfLink' in kwargs:
             self_link = kwargs['selfLink']
         if source_ip_ranges is None and 'sourceIpRanges' in kwargs:
             source_ip_ranges = kwargs['sourceIpRanges']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
 
         if allow_psc_global_access is not None:
             _setter("allow_psc_global_access", allow_psc_global_access)
@@ -857,6 +857,8 @@ class _GlobalForwardingRuleState:
             _setter("psc_connection_id", psc_connection_id)
         if psc_connection_status is not None:
             _setter("psc_connection_status", psc_connection_status)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if self_link is not None:
             _setter("self_link", self_link)
         if source_ip_ranges is not None:
@@ -865,8 +867,6 @@ class _GlobalForwardingRuleState:
             _setter("subnetwork", subnetwork)
         if target is not None:
             _setter("target", target)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter(name="allowPscGlobalAccess")
@@ -1183,6 +1183,19 @@ class _GlobalForwardingRuleState:
         pulumi.set(self, "psc_connection_status", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1247,19 +1260,6 @@ class _GlobalForwardingRuleState:
     @target.setter
     def target(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
 
 class GlobalForwardingRule(pulumi.CustomResource):
@@ -1742,8 +1742,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["psc_connection_id"] = None
             __props__.__dict__["psc_connection_status"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["self_link"] = None
-            __props__.__dict__["terraform_labels"] = None
         super(GlobalForwardingRule, __self__).__init__(
             'gcp:compute/globalForwardingRule:GlobalForwardingRule',
             resource_name,
@@ -1772,11 +1772,11 @@ class GlobalForwardingRule(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             psc_connection_id: Optional[pulumi.Input[str]] = None,
             psc_connection_status: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             subnetwork: Optional[pulumi.Input[str]] = None,
-            target: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'GlobalForwardingRule':
+            target: Optional[pulumi.Input[str]] = None) -> 'GlobalForwardingRule':
         """
         Get an existing GlobalForwardingRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1900,6 +1900,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] psc_connection_id: The PSC connection id of the PSC Forwarding Rule.
         :param pulumi.Input[str] psc_connection_status: The PSC connection status of the PSC Forwarding Rule. Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_ip_ranges: If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
         :param pulumi.Input[str] subnetwork: This field identifies the subnetwork that the load balanced IP should
@@ -1922,8 +1924,6 @@ class GlobalForwardingRule(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1947,11 +1947,11 @@ class GlobalForwardingRule(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["psc_connection_id"] = psc_connection_id
         __props__.__dict__["psc_connection_status"] = psc_connection_status
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["source_ip_ranges"] = source_ip_ranges
         __props__.__dict__["subnetwork"] = subnetwork
         __props__.__dict__["target"] = target
-        __props__.__dict__["terraform_labels"] = terraform_labels
         return GlobalForwardingRule(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -2197,6 +2197,15 @@ class GlobalForwardingRule(pulumi.CustomResource):
         return pulumi.get(self, "psc_connection_status")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
@@ -2245,13 +2254,4 @@ class GlobalForwardingRule(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "target")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 

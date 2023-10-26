@@ -266,6 +266,11 @@ export class FhirStore extends pulumi.CustomResource {
      */
     public readonly notificationConfigs!: pulumi.Output<outputs.healthcare.FhirStoreNotificationConfig[] | undefined>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The fully qualified name of this dataset
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -279,11 +284,6 @@ export class FhirStore extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly streamConfigs!: pulumi.Output<outputs.healthcare.FhirStoreStreamConfig[] | undefined>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The FHIR specification version.
      * Default value is `STU3`.
@@ -316,9 +316,9 @@ export class FhirStore extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["notificationConfig"] = state ? state.notificationConfig : undefined;
             resourceInputs["notificationConfigs"] = state ? state.notificationConfigs : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["streamConfigs"] = state ? state.streamConfigs : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as FhirStoreArgs | undefined;
@@ -339,8 +339,8 @@ export class FhirStore extends pulumi.CustomResource {
             resourceInputs["streamConfigs"] = args ? args.streamConfigs : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FhirStore.__pulumiType, name, resourceInputs, opts);
@@ -440,6 +440,11 @@ export interface FhirStoreState {
      */
     notificationConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>[]>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The fully qualified name of this dataset
      */
     selfLink?: pulumi.Input<string>;
@@ -453,11 +458,6 @@ export interface FhirStoreState {
      * Structure is documented below.
      */
     streamConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.FhirStoreStreamConfig>[]>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The FHIR specification version.
      * Default value is `STU3`.

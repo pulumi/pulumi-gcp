@@ -92,6 +92,7 @@ type LookupInstanceResult struct {
 	PersistenceIamIdentity string                           `pulumi:"persistenceIamIdentity"`
 	Port                   int                              `pulumi:"port"`
 	Project                *string                          `pulumi:"project"`
+	PulumiLabels           map[string]string                `pulumi:"pulumiLabels"`
 	ReadEndpoint           string                           `pulumi:"readEndpoint"`
 	ReadEndpointPort       int                              `pulumi:"readEndpointPort"`
 	ReadReplicasMode       string                           `pulumi:"readReplicasMode"`
@@ -102,7 +103,6 @@ type LookupInstanceResult struct {
 	ReservedIpRange        string                           `pulumi:"reservedIpRange"`
 	SecondaryIpRange       string                           `pulumi:"secondaryIpRange"`
 	ServerCaCerts          []GetInstanceServerCaCert        `pulumi:"serverCaCerts"`
-	TerraformLabels        map[string]string                `pulumi:"terraformLabels"`
 	Tier                   string                           `pulumi:"tier"`
 	TransitEncryptionMode  string                           `pulumi:"transitEncryptionMode"`
 }
@@ -252,6 +252,10 @@ func (o LookupInstanceResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInstanceResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
+func (o LookupInstanceResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupInstanceResultOutput) ReadEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.ReadEndpoint }).(pulumi.StringOutput)
 }
@@ -290,10 +294,6 @@ func (o LookupInstanceResultOutput) SecondaryIpRange() pulumi.StringOutput {
 
 func (o LookupInstanceResultOutput) ServerCaCerts() GetInstanceServerCaCertArrayOutput {
 	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceServerCaCert { return v.ServerCaCerts }).(GetInstanceServerCaCertArrayOutput)
-}
-
-func (o LookupInstanceResultOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupInstanceResultOutput) Tier() pulumi.StringOutput {

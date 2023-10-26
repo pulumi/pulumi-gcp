@@ -209,8 +209,8 @@ class _EngineModelState:
                  online_prediction_console_logging: Optional[pulumi.Input[bool]] = None,
                  online_prediction_logging: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 regions: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 regions: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering EngineModel resources.
         :param pulumi.Input['EngineModelDefaultVersionArgs'] default_version: The default version of the model. This version will be used to handle
@@ -230,10 +230,10 @@ class _EngineModelState:
         :param pulumi.Input[bool] online_prediction_logging: If true, online prediction access logs are sent to StackDriver Logging.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] regions: The list of regions where the model is going to be deployed.
                Currently only one region per model is supported
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         """
         _EngineModelState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -245,8 +245,8 @@ class _EngineModelState:
             online_prediction_console_logging=online_prediction_console_logging,
             online_prediction_logging=online_prediction_logging,
             project=project,
+            pulumi_labels=pulumi_labels,
             regions=regions,
-            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
@@ -259,8 +259,8 @@ class _EngineModelState:
              online_prediction_console_logging: Optional[pulumi.Input[bool]] = None,
              online_prediction_logging: Optional[pulumi.Input[bool]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              regions: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if default_version is None and 'defaultVersion' in kwargs:
@@ -271,8 +271,8 @@ class _EngineModelState:
             online_prediction_console_logging = kwargs['onlinePredictionConsoleLogging']
         if online_prediction_logging is None and 'onlinePredictionLogging' in kwargs:
             online_prediction_logging = kwargs['onlinePredictionLogging']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
 
         if default_version is not None:
             _setter("default_version", default_version)
@@ -290,10 +290,10 @@ class _EngineModelState:
             _setter("online_prediction_logging", online_prediction_logging)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if regions is not None:
             _setter("regions", regions)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter(name="defaultVersion")
@@ -401,6 +401,19 @@ class _EngineModelState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter
     def regions(self) -> Optional[pulumi.Input[str]]:
         """
@@ -412,19 +425,6 @@ class _EngineModelState:
     @regions.setter
     def regions(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "regions", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
 
 class EngineModel(pulumi.CustomResource):
@@ -623,7 +623,7 @@ class EngineModel(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["regions"] = regions
             __props__.__dict__["effective_labels"] = None
-            __props__.__dict__["terraform_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
         super(EngineModel, __self__).__init__(
             'gcp:ml/engineModel:EngineModel',
             resource_name,
@@ -642,8 +642,8 @@ class EngineModel(pulumi.CustomResource):
             online_prediction_console_logging: Optional[pulumi.Input[bool]] = None,
             online_prediction_logging: Optional[pulumi.Input[bool]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            regions: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'EngineModel':
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            regions: Optional[pulumi.Input[str]] = None) -> 'EngineModel':
         """
         Get an existing EngineModel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -668,10 +668,10 @@ class EngineModel(pulumi.CustomResource):
         :param pulumi.Input[bool] online_prediction_logging: If true, online prediction access logs are sent to StackDriver Logging.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] regions: The list of regions where the model is going to be deployed.
                Currently only one region per model is supported
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -685,8 +685,8 @@ class EngineModel(pulumi.CustomResource):
         __props__.__dict__["online_prediction_console_logging"] = online_prediction_console_logging
         __props__.__dict__["online_prediction_logging"] = online_prediction_logging
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["regions"] = regions
-        __props__.__dict__["terraform_labels"] = terraform_labels
         return EngineModel(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -763,6 +763,15 @@ class EngineModel(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def regions(self) -> pulumi.Output[Optional[str]]:
         """
@@ -770,13 +779,4 @@ class EngineModel(pulumi.CustomResource):
         Currently only one region per model is supported
         """
         return pulumi.get(self, "regions")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 

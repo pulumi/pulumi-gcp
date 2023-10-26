@@ -176,7 +176,7 @@ type Membership struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 }
 
 // NewMembership registers a new resource with the given unique name, arguments, and options.
@@ -246,7 +246,7 @@ type membershipState struct {
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 }
 
 type MembershipState struct {
@@ -284,7 +284,7 @@ type MembershipState struct {
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
+	PulumiLabels pulumi.StringMapInput
 }
 
 func (MembershipState) ElementType() reflect.Type {
@@ -521,8 +521,8 @@ func (o MembershipOutput) Project() pulumi.StringOutput {
 
 // The combination of labels configured directly on the resource
 // and default labels configured on the provider.
-func (o MembershipOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Membership) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
+func (o MembershipOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Membership) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 type MembershipArrayOutput struct{ *pulumi.OutputState }

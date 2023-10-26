@@ -136,6 +136,7 @@ public final class GetRegionInstanceTemplateResult {
      * 
      */
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private @Nullable String region;
     private List<GetRegionInstanceTemplateReservationAffinity> reservationAffinities;
     /**
@@ -175,7 +176,6 @@ public final class GetRegionInstanceTemplateResult {
      * 
      */
     private String tagsFingerprint;
-    private Map<String,String> terraformLabels;
 
     private GetRegionInstanceTemplateResult() {}
     public List<GetRegionInstanceTemplateAdvancedMachineFeature> advancedMachineFeatures() {
@@ -335,6 +335,9 @@ public final class GetRegionInstanceTemplateResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
@@ -392,9 +395,6 @@ public final class GetRegionInstanceTemplateResult {
     public String tagsFingerprint() {
         return this.tagsFingerprint;
     }
-    public Map<String,String> terraformLabels() {
-        return this.terraformLabels;
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -428,6 +428,7 @@ public final class GetRegionInstanceTemplateResult {
         private List<GetRegionInstanceTemplateNetworkInterface> networkInterfaces;
         private List<GetRegionInstanceTemplateNetworkPerformanceConfig> networkPerformanceConfigs;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private @Nullable String region;
         private List<GetRegionInstanceTemplateReservationAffinity> reservationAffinities;
         private List<String> resourcePolicies;
@@ -437,7 +438,6 @@ public final class GetRegionInstanceTemplateResult {
         private List<GetRegionInstanceTemplateShieldedInstanceConfig> shieldedInstanceConfigs;
         private List<String> tags;
         private String tagsFingerprint;
-        private Map<String,String> terraformLabels;
         public Builder() {}
         public Builder(GetRegionInstanceTemplateResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -464,6 +464,7 @@ public final class GetRegionInstanceTemplateResult {
     	      this.networkInterfaces = defaults.networkInterfaces;
     	      this.networkPerformanceConfigs = defaults.networkPerformanceConfigs;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.region = defaults.region;
     	      this.reservationAffinities = defaults.reservationAffinities;
     	      this.resourcePolicies = defaults.resourcePolicies;
@@ -473,7 +474,6 @@ public final class GetRegionInstanceTemplateResult {
     	      this.shieldedInstanceConfigs = defaults.shieldedInstanceConfigs;
     	      this.tags = defaults.tags;
     	      this.tagsFingerprint = defaults.tagsFingerprint;
-    	      this.terraformLabels = defaults.terraformLabels;
         }
 
         @CustomType.Setter
@@ -610,6 +610,11 @@ public final class GetRegionInstanceTemplateResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
@@ -672,11 +677,6 @@ public final class GetRegionInstanceTemplateResult {
             this.tagsFingerprint = Objects.requireNonNull(tagsFingerprint);
             return this;
         }
-        @CustomType.Setter
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            this.terraformLabels = Objects.requireNonNull(terraformLabels);
-            return this;
-        }
         public GetRegionInstanceTemplateResult build() {
             final var o = new GetRegionInstanceTemplateResult();
             o.advancedMachineFeatures = advancedMachineFeatures;
@@ -702,6 +702,7 @@ public final class GetRegionInstanceTemplateResult {
             o.networkInterfaces = networkInterfaces;
             o.networkPerformanceConfigs = networkPerformanceConfigs;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.region = region;
             o.reservationAffinities = reservationAffinities;
             o.resourcePolicies = resourcePolicies;
@@ -711,7 +712,6 @@ public final class GetRegionInstanceTemplateResult {
             o.shieldedInstanceConfigs = shieldedInstanceConfigs;
             o.tags = tags;
             o.tagsFingerprint = tagsFingerprint;
-            o.terraformLabels = terraformLabels;
             return o;
         }
     }

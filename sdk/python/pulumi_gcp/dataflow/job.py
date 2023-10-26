@@ -439,6 +439,7 @@ class _JobState:
                  on_delete: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  skip_wait_on_job_termination: Optional[pulumi.Input[bool]] = None,
@@ -446,7 +447,6 @@ class _JobState:
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  temp_gcs_location: Optional[pulumi.Input[str]] = None,
                  template_gcs_path: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -469,6 +469,7 @@ class _JobState:
         :param pulumi.Input[str] on_delete: One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
         :param pulumi.Input[Mapping[str, Any]] parameters: Key/Value pairs to be passed to the Dataflow job (as used in the template).
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] region: The region in which the created job should run.
         :param pulumi.Input[str] service_account_email: The Service Account email used to create the job.
         :param pulumi.Input[bool] skip_wait_on_job_termination: If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
@@ -478,7 +479,6 @@ class _JobState:
                
                - - -
         :param pulumi.Input[str] template_gcs_path: The GCS path to the Dataflow job template.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
         :param pulumi.Input[str] type: The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
         :param pulumi.Input[str] zone: The zone in which the created job should run. If it is not provided, the provider zone is used.
@@ -499,6 +499,7 @@ class _JobState:
             on_delete=on_delete,
             parameters=parameters,
             project=project,
+            pulumi_labels=pulumi_labels,
             region=region,
             service_account_email=service_account_email,
             skip_wait_on_job_termination=skip_wait_on_job_termination,
@@ -506,7 +507,6 @@ class _JobState:
             subnetwork=subnetwork,
             temp_gcs_location=temp_gcs_location,
             template_gcs_path=template_gcs_path,
-            terraform_labels=terraform_labels,
             transform_name_mapping=transform_name_mapping,
             type=type,
             zone=zone,
@@ -528,6 +528,7 @@ class _JobState:
              on_delete: Optional[pulumi.Input[str]] = None,
              parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              region: Optional[pulumi.Input[str]] = None,
              service_account_email: Optional[pulumi.Input[str]] = None,
              skip_wait_on_job_termination: Optional[pulumi.Input[bool]] = None,
@@ -535,7 +536,6 @@ class _JobState:
              subnetwork: Optional[pulumi.Input[str]] = None,
              temp_gcs_location: Optional[pulumi.Input[str]] = None,
              template_gcs_path: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
@@ -559,6 +559,8 @@ class _JobState:
             max_workers = kwargs['maxWorkers']
         if on_delete is None and 'onDelete' in kwargs:
             on_delete = kwargs['onDelete']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if service_account_email is None and 'serviceAccountEmail' in kwargs:
             service_account_email = kwargs['serviceAccountEmail']
         if skip_wait_on_job_termination is None and 'skipWaitOnJobTermination' in kwargs:
@@ -567,8 +569,6 @@ class _JobState:
             temp_gcs_location = kwargs['tempGcsLocation']
         if template_gcs_path is None and 'templateGcsPath' in kwargs:
             template_gcs_path = kwargs['templateGcsPath']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
         if transform_name_mapping is None and 'transformNameMapping' in kwargs:
             transform_name_mapping = kwargs['transformNameMapping']
 
@@ -600,6 +600,8 @@ class _JobState:
             _setter("parameters", parameters)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if region is not None:
             _setter("region", region)
         if service_account_email is not None:
@@ -614,8 +616,6 @@ class _JobState:
             _setter("temp_gcs_location", temp_gcs_location)
         if template_gcs_path is not None:
             _setter("template_gcs_path", template_gcs_path)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if transform_name_mapping is not None:
             _setter("transform_name_mapping", transform_name_mapping)
         if type is not None:
@@ -795,6 +795,18 @@ class _JobState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
@@ -879,18 +891,6 @@ class _JobState:
     @template_gcs_path.setter
     def template_gcs_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "template_gcs_path", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="transformNameMapping")
@@ -1240,8 +1240,8 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["zone"] = zone
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["job_id"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["state"] = None
-            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["type"] = None
         super(Job, __self__).__init__(
             'gcp:dataflow/job:Job',
@@ -1267,6 +1267,7 @@ class Job(pulumi.CustomResource):
             on_delete: Optional[pulumi.Input[str]] = None,
             parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
             service_account_email: Optional[pulumi.Input[str]] = None,
             skip_wait_on_job_termination: Optional[pulumi.Input[bool]] = None,
@@ -1274,7 +1275,6 @@ class Job(pulumi.CustomResource):
             subnetwork: Optional[pulumi.Input[str]] = None,
             temp_gcs_location: Optional[pulumi.Input[str]] = None,
             template_gcs_path: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'Job':
@@ -1302,6 +1302,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] on_delete: One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
         :param pulumi.Input[Mapping[str, Any]] parameters: Key/Value pairs to be passed to the Dataflow job (as used in the template).
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] region: The region in which the created job should run.
         :param pulumi.Input[str] service_account_email: The Service Account email used to create the job.
         :param pulumi.Input[bool] skip_wait_on_job_termination: If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
@@ -1311,7 +1312,6 @@ class Job(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[str] template_gcs_path: The GCS path to the Dataflow job template.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
         :param pulumi.Input[str] type: The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
         :param pulumi.Input[str] zone: The zone in which the created job should run. If it is not provided, the provider zone is used.
@@ -1334,6 +1334,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["on_delete"] = on_delete
         __props__.__dict__["parameters"] = parameters
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["region"] = region
         __props__.__dict__["service_account_email"] = service_account_email
         __props__.__dict__["skip_wait_on_job_termination"] = skip_wait_on_job_termination
@@ -1341,7 +1342,6 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["subnetwork"] = subnetwork
         __props__.__dict__["temp_gcs_location"] = temp_gcs_location
         __props__.__dict__["template_gcs_path"] = template_gcs_path
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["transform_name_mapping"] = transform_name_mapping
         __props__.__dict__["type"] = type
         __props__.__dict__["zone"] = zone
@@ -1463,6 +1463,14 @@ class Job(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def region(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1519,14 +1527,6 @@ class Job(pulumi.CustomResource):
         The GCS path to the Dataflow job template.
         """
         return pulumi.get(self, "template_gcs_path")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="transformNameMapping")

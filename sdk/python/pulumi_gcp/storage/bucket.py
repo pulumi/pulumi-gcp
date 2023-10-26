@@ -418,11 +418,11 @@ class _BucketState:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  public_access_prevention: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  requester_pays: Optional[pulumi.Input[bool]] = None,
                  retention_policy: Optional[pulumi.Input['BucketRetentionPolicyArgs']] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  uniform_bucket_level_access: Optional[pulumi.Input[bool]] = None,
                  url: Optional[pulumi.Input[str]] = None,
                  versioning: Optional[pulumi.Input['BucketVersioningArgs']] = None,
@@ -449,11 +449,11 @@ class _BucketState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] public_access_prevention: Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[bool] requester_pays: Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
         :param pulumi.Input['BucketRetentionPolicyArgs'] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] storage_class: The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[bool] uniform_bucket_level_access: Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
         :param pulumi.Input[str] url: The base URL of the bucket, in the format `gs://<bucket-name>`.
         :param pulumi.Input['BucketVersioningArgs'] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
@@ -475,11 +475,11 @@ class _BucketState:
             name=name,
             project=project,
             public_access_prevention=public_access_prevention,
+            pulumi_labels=pulumi_labels,
             requester_pays=requester_pays,
             retention_policy=retention_policy,
             self_link=self_link,
             storage_class=storage_class,
-            terraform_labels=terraform_labels,
             uniform_bucket_level_access=uniform_bucket_level_access,
             url=url,
             versioning=versioning,
@@ -502,11 +502,11 @@ class _BucketState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              public_access_prevention: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              requester_pays: Optional[pulumi.Input[bool]] = None,
              retention_policy: Optional[pulumi.Input['BucketRetentionPolicyArgs']] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              storage_class: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              uniform_bucket_level_access: Optional[pulumi.Input[bool]] = None,
              url: Optional[pulumi.Input[str]] = None,
              versioning: Optional[pulumi.Input['BucketVersioningArgs']] = None,
@@ -525,6 +525,8 @@ class _BucketState:
             lifecycle_rules = kwargs['lifecycleRules']
         if public_access_prevention is None and 'publicAccessPrevention' in kwargs:
             public_access_prevention = kwargs['publicAccessPrevention']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if requester_pays is None and 'requesterPays' in kwargs:
             requester_pays = kwargs['requesterPays']
         if retention_policy is None and 'retentionPolicy' in kwargs:
@@ -533,8 +535,6 @@ class _BucketState:
             self_link = kwargs['selfLink']
         if storage_class is None and 'storageClass' in kwargs:
             storage_class = kwargs['storageClass']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
         if uniform_bucket_level_access is None and 'uniformBucketLevelAccess' in kwargs:
             uniform_bucket_level_access = kwargs['uniformBucketLevelAccess']
 
@@ -566,6 +566,8 @@ class _BucketState:
             _setter("project", project)
         if public_access_prevention is not None:
             _setter("public_access_prevention", public_access_prevention)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if requester_pays is not None:
             _setter("requester_pays", requester_pays)
         if retention_policy is not None:
@@ -574,8 +576,6 @@ class _BucketState:
             _setter("self_link", self_link)
         if storage_class is not None:
             _setter("storage_class", storage_class)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if uniform_bucket_level_access is not None:
             _setter("uniform_bucket_level_access", uniform_bucket_level_access)
         if url is not None:
@@ -760,6 +760,18 @@ class _BucketState:
         pulumi.set(self, "public_access_prevention", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="requesterPays")
     def requester_pays(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -806,18 +818,6 @@ class _BucketState:
     @storage_class.setter
     def storage_class(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "storage_class", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="uniformBucketLevelAccess")
@@ -1194,8 +1194,8 @@ class Bucket(pulumi.CustomResource):
             website = _utilities.configure(website, BucketWebsiteArgs, True)
             __props__.__dict__["website"] = website
             __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["self_link"] = None
-            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["url"] = None
         super(Bucket, __self__).__init__(
             'gcp:storage/bucket:Bucket',
@@ -1221,11 +1221,11 @@ class Bucket(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             public_access_prevention: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             requester_pays: Optional[pulumi.Input[bool]] = None,
             retention_policy: Optional[pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             storage_class: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             uniform_bucket_level_access: Optional[pulumi.Input[bool]] = None,
             url: Optional[pulumi.Input[str]] = None,
             versioning: Optional[pulumi.Input[pulumi.InputType['BucketVersioningArgs']]] = None,
@@ -1257,11 +1257,11 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] public_access_prevention: Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[bool] requester_pays: Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
         :param pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] storage_class: The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[bool] uniform_bucket_level_access: Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
         :param pulumi.Input[str] url: The base URL of the bucket, in the format `gs://<bucket-name>`.
         :param pulumi.Input[pulumi.InputType['BucketVersioningArgs']] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
@@ -1285,11 +1285,11 @@ class Bucket(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["public_access_prevention"] = public_access_prevention
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["requester_pays"] = requester_pays
         __props__.__dict__["retention_policy"] = retention_policy
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["storage_class"] = storage_class
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["uniform_bucket_level_access"] = uniform_bucket_level_access
         __props__.__dict__["url"] = url
         __props__.__dict__["versioning"] = versioning
@@ -1415,6 +1415,14 @@ class Bucket(pulumi.CustomResource):
         return pulumi.get(self, "public_access_prevention")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="requesterPays")
     def requester_pays(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -1445,14 +1453,6 @@ class Bucket(pulumi.CustomResource):
         The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         """
         return pulumi.get(self, "storage_class")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="uniformBucketLevelAccess")

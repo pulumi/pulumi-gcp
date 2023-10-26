@@ -150,6 +150,8 @@ type InstanceFromTemplate struct {
 	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
 	// self_link nor project are provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity InstanceFromTemplateReservationAffinityOutput `pulumi:"reservationAffinity"`
 	// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
@@ -174,8 +176,6 @@ type InstanceFromTemplate struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The unique fingerprint of the tags.
 	TagsFingerprint pulumi.StringOutput `pulumi:"tagsFingerprint"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The zone that the machine should be created in. If not
 	// set, the provider zone is used.
 	//
@@ -286,6 +286,8 @@ type instanceFromTemplateState struct {
 	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
 	// self_link nor project are provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity *InstanceFromTemplateReservationAffinity `pulumi:"reservationAffinity"`
 	// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
@@ -310,8 +312,6 @@ type instanceFromTemplateState struct {
 	Tags []string `pulumi:"tags"`
 	// The unique fingerprint of the tags.
 	TagsFingerprint *string `pulumi:"tagsFingerprint"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The zone that the machine should be created in. If not
 	// set, the provider zone is used.
 	//
@@ -390,6 +390,8 @@ type InstanceFromTemplateState struct {
 	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
 	// self_link nor project are provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity InstanceFromTemplateReservationAffinityPtrInput
 	// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
@@ -414,8 +416,6 @@ type InstanceFromTemplateState struct {
 	Tags pulumi.StringArrayInput
 	// The unique fingerprint of the tags.
 	TagsFingerprint pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// The zone that the machine should be created in. If not
 	// set, the provider zone is used.
 	//
@@ -869,6 +869,11 @@ func (o InstanceFromTemplateOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o InstanceFromTemplateOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Specifies the reservations that this instance can consume from.
 func (o InstanceFromTemplateOutput) ReservationAffinity() InstanceFromTemplateReservationAffinityOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) InstanceFromTemplateReservationAffinityOutput {
@@ -925,11 +930,6 @@ func (o InstanceFromTemplateOutput) Tags() pulumi.StringArrayOutput {
 // The unique fingerprint of the tags.
 func (o InstanceFromTemplateOutput) TagsFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringOutput { return v.TagsFingerprint }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o InstanceFromTemplateOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The zone that the machine should be created in. If not

@@ -283,6 +283,13 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<string> Protocol { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies one or more retry conditions for the configured origin.
         /// If the failure mode during a connection attempt to the origin matches the configured retryCondition(s),
         /// the origin request will be retried up to maxAttempts times. The failoverOrigin, if configured, will then be used to satisfy the request.
@@ -300,13 +307,6 @@ namespace Pulumi.Gcp.NetworkServices
         /// </summary>
         [Output("retryConditions")]
         public Output<ImmutableArray<string>> RetryConditions { get; private set; } = null!;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// The connection and HTTP timeout configuration for this origin.
@@ -626,6 +626,19 @@ namespace Pulumi.Gcp.NetworkServices
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
+
         [Input("retryConditions")]
         private InputList<string>? _retryConditions;
 
@@ -649,19 +662,6 @@ namespace Pulumi.Gcp.NetworkServices
         {
             get => _retryConditions ?? (_retryConditions = new InputList<string>());
             set => _retryConditions = value;
-        }
-
-        [Input("terraformLabels")]
-        private InputMap<string>? _terraformLabels;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        public InputMap<string> TerraformLabels
-        {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
-            set => _terraformLabels = value;
         }
 
         /// <summary>

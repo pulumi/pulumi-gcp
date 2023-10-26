@@ -300,7 +300,7 @@ type ConnectionProfile struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 }
 
 // NewConnectionProfile registers a new resource with the given unique name, arguments, and options.
@@ -384,7 +384,7 @@ type connectionProfileState struct {
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 }
 
 type ConnectionProfileState struct {
@@ -430,7 +430,7 @@ type ConnectionProfileState struct {
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
+	PulumiLabels pulumi.StringMapInput
 }
 
 func (ConnectionProfileState) ElementType() reflect.Type {
@@ -711,8 +711,8 @@ func (o ConnectionProfileOutput) Project() pulumi.StringOutput {
 
 // The combination of labels configured directly on the resource
 // and default labels configured on the provider.
-func (o ConnectionProfileOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
+func (o ConnectionProfileOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 type ConnectionProfileArrayOutput struct{ *pulumi.OutputState }

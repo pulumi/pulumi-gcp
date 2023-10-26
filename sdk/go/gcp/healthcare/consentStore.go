@@ -184,7 +184,7 @@ type ConsentStore struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 }
 
 // NewConsentStore registers a new resource with the given unique name, arguments, and options.
@@ -250,7 +250,7 @@ type consentStoreState struct {
 	Name *string `pulumi:"name"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 }
 
 type ConsentStoreState struct {
@@ -284,7 +284,7 @@ type ConsentStoreState struct {
 	Name pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
+	PulumiLabels pulumi.StringMapInput
 }
 
 func (ConsentStoreState) ElementType() reflect.Type {
@@ -507,8 +507,8 @@ func (o ConsentStoreOutput) Name() pulumi.StringOutput {
 
 // The combination of labels configured directly on the resource
 // and default labels configured on the provider.
-func (o ConsentStoreOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ConsentStore) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
+func (o ConsentStoreOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConsentStore) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 type ConsentStoreArrayOutput struct{ *pulumi.OutputState }

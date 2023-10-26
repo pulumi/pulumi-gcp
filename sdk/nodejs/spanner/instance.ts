@@ -164,14 +164,14 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Instance status: `CREATING` or `READY`.
-     */
-    public /*out*/ readonly state!: pulumi.Output<string>;
-    /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Instance status: `CREATING` or `READY`.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -195,8 +195,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["numNodes"] = state ? state.numNodes : undefined;
             resourceInputs["processingUnits"] = state ? state.processingUnits : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.config === undefined) && !opts.urn) {
@@ -214,8 +214,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["processingUnits"] = args ? args.processingUnits : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
@@ -285,14 +285,14 @@ export interface InstanceState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Instance status: `CREATING` or `READY`.
-     */
-    state?: pulumi.Input<string>;
-    /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Instance status: `CREATING` or `READY`.
+     */
+    state?: pulumi.Input<string>;
 }
 
 /**

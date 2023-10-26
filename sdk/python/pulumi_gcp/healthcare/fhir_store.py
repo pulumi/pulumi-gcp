@@ -392,9 +392,9 @@ class _FhirStoreState:
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input['FhirStoreNotificationConfigArgs']] = None,
                  notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering FhirStore resources.
@@ -450,6 +450,8 @@ class _FhirStoreState:
         :param pulumi.Input['FhirStoreNotificationConfigArgs'] notification_config: A nested object resource
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]] notification_configs: A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] self_link: The fully qualified name of this dataset
         :param pulumi.Input[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]] stream_configs: A list of streaming configs that configure the destinations of streaming export for every resource mutation in
                this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
@@ -458,8 +460,6 @@ class _FhirStoreState:
                bigquery.dataEditor role to your project's Cloud Healthcare Service Agent service account. Some lag (typically on
                the order of dozens of seconds) is expected before the results show up in the streaming destination.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] version: The FHIR specification version.
                Default value is `STU3`.
                Possible values are: `DSTU2`, `STU3`, `R4`.
@@ -478,9 +478,9 @@ class _FhirStoreState:
             name=name,
             notification_config=notification_config,
             notification_configs=notification_configs,
+            pulumi_labels=pulumi_labels,
             self_link=self_link,
             stream_configs=stream_configs,
-            terraform_labels=terraform_labels,
             version=version,
         )
     @staticmethod
@@ -498,9 +498,9 @@ class _FhirStoreState:
              name: Optional[pulumi.Input[str]] = None,
              notification_config: Optional[pulumi.Input['FhirStoreNotificationConfigArgs']] = None,
              notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              version: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -522,12 +522,12 @@ class _FhirStoreState:
             notification_config = kwargs['notificationConfig']
         if notification_configs is None and 'notificationConfigs' in kwargs:
             notification_configs = kwargs['notificationConfigs']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if self_link is None and 'selfLink' in kwargs:
             self_link = kwargs['selfLink']
         if stream_configs is None and 'streamConfigs' in kwargs:
             stream_configs = kwargs['streamConfigs']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
 
         if complex_data_type_reference_parsing is not None:
             _setter("complex_data_type_reference_parsing", complex_data_type_reference_parsing)
@@ -553,12 +553,12 @@ class _FhirStoreState:
             _setter("notification_config", notification_config)
         if notification_configs is not None:
             _setter("notification_configs", notification_configs)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if self_link is not None:
             _setter("self_link", self_link)
         if stream_configs is not None:
             _setter("stream_configs", stream_configs)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if version is not None:
             _setter("version", version)
 
@@ -747,6 +747,19 @@ class _FhirStoreState:
         pulumi.set(self, "notification_configs", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
@@ -775,19 +788,6 @@ class _FhirStoreState:
     @stream_configs.setter
     def stream_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]]]):
         pulumi.set(self, "stream_configs", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -1218,8 +1218,8 @@ class FhirStore(pulumi.CustomResource):
             __props__.__dict__["stream_configs"] = stream_configs
             __props__.__dict__["version"] = version
             __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["self_link"] = None
-            __props__.__dict__["terraform_labels"] = None
         super(FhirStore, __self__).__init__(
             'gcp:healthcare/fhirStore:FhirStore',
             resource_name,
@@ -1242,9 +1242,9 @@ class FhirStore(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             notification_config: Optional[pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']]] = None,
             notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']]]]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreStreamConfigArgs']]]]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'FhirStore':
         """
         Get an existing FhirStore resource's state with the given name, id, and optional extra
@@ -1305,6 +1305,8 @@ class FhirStore(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']] notification_config: A nested object resource
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']]]] notification_configs: A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] self_link: The fully qualified name of this dataset
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreStreamConfigArgs']]]] stream_configs: A list of streaming configs that configure the destinations of streaming export for every resource mutation in
                this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
@@ -1313,8 +1315,6 @@ class FhirStore(pulumi.CustomResource):
                bigquery.dataEditor role to your project's Cloud Healthcare Service Agent service account. Some lag (typically on
                the order of dozens of seconds) is expected before the results show up in the streaming destination.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] version: The FHIR specification version.
                Default value is `STU3`.
                Possible values are: `DSTU2`, `STU3`, `R4`.
@@ -1335,9 +1335,9 @@ class FhirStore(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["notification_config"] = notification_config
         __props__.__dict__["notification_configs"] = notification_configs
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["stream_configs"] = stream_configs
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["version"] = version
         return FhirStore(resource_name, opts=opts, __props__=__props__)
 
@@ -1478,6 +1478,15 @@ class FhirStore(pulumi.CustomResource):
         return pulumi.get(self, "notification_configs")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
@@ -1498,15 +1507,6 @@ class FhirStore(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "stream_configs")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

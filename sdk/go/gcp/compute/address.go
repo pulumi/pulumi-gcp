@@ -295,6 +295,8 @@ type Address struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The purpose of this resource, which can be one of the following values.
 	// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
 	//   ranges, load balancers, and similar resources.
@@ -320,8 +322,6 @@ type Address struct {
 	// This field can only be used with INTERNAL type with
 	// GCE_ENDPOINT/DNS_RESOLVER purposes.
 	Subnetwork pulumi.StringOutput `pulumi:"subnetwork"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The URLs of the resources that are using this address.
 	Users pulumi.StringArrayOutput `pulumi:"users"`
 }
@@ -410,6 +410,8 @@ type addressState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The purpose of this resource, which can be one of the following values.
 	// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
 	//   ranges, load balancers, and similar resources.
@@ -435,8 +437,6 @@ type addressState struct {
 	// This field can only be used with INTERNAL type with
 	// GCE_ENDPOINT/DNS_RESOLVER purposes.
 	Subnetwork *string `pulumi:"subnetwork"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The URLs of the resources that are using this address.
 	Users []string `pulumi:"users"`
 }
@@ -496,6 +496,8 @@ type AddressState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The purpose of this resource, which can be one of the following values.
 	// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
 	//   ranges, load balancers, and similar resources.
@@ -521,8 +523,6 @@ type AddressState struct {
 	// This field can only be used with INTERNAL type with
 	// GCE_ENDPOINT/DNS_RESOLVER purposes.
 	Subnetwork pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// The URLs of the resources that are using this address.
 	Users pulumi.StringArrayInput
 }
@@ -885,6 +885,11 @@ func (o AddressOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o AddressOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Address) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The purpose of this resource, which can be one of the following values.
 //   - GCE_ENDPOINT for addresses that are used by VM instances, alias IP
 //     ranges, load balancers, and similar resources.
@@ -920,11 +925,6 @@ func (o AddressOutput) SelfLink() pulumi.StringOutput {
 // GCE_ENDPOINT/DNS_RESOLVER purposes.
 func (o AddressOutput) Subnetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.Subnetwork }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o AddressOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Address) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The URLs of the resources that are using this address.

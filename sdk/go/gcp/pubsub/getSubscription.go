@@ -79,10 +79,10 @@ type LookupSubscriptionResult struct {
 	MessageRetentionDuration string                       `pulumi:"messageRetentionDuration"`
 	Name                     string                       `pulumi:"name"`
 	Project                  *string                      `pulumi:"project"`
+	PulumiLabels             map[string]string            `pulumi:"pulumiLabels"`
 	PushConfigs              []GetSubscriptionPushConfig  `pulumi:"pushConfigs"`
 	RetainAckedMessages      bool                         `pulumi:"retainAckedMessages"`
 	RetryPolicies            []GetSubscriptionRetryPolicy `pulumi:"retryPolicies"`
-	TerraformLabels          map[string]string            `pulumi:"terraformLabels"`
 	Topic                    string                       `pulumi:"topic"`
 }
 
@@ -192,6 +192,10 @@ func (o LookupSubscriptionResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSubscriptionResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
+func (o LookupSubscriptionResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupSubscriptionResultOutput) PushConfigs() GetSubscriptionPushConfigArrayOutput {
 	return o.ApplyT(func(v LookupSubscriptionResult) []GetSubscriptionPushConfig { return v.PushConfigs }).(GetSubscriptionPushConfigArrayOutput)
 }
@@ -202,10 +206,6 @@ func (o LookupSubscriptionResultOutput) RetainAckedMessages() pulumi.BoolOutput 
 
 func (o LookupSubscriptionResultOutput) RetryPolicies() GetSubscriptionRetryPolicyArrayOutput {
 	return o.ApplyT(func(v LookupSubscriptionResult) []GetSubscriptionRetryPolicy { return v.RetryPolicies }).(GetSubscriptionRetryPolicyArrayOutput)
-}
-
-func (o LookupSubscriptionResultOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupSubscriptionResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupSubscriptionResultOutput) Topic() pulumi.StringOutput {

@@ -314,6 +314,22 @@ public class CertificateIssuanceConfig extends com.pulumi.resources.CustomResour
         return this.project;
     }
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
+    }
+    /**
      * It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
      * Must be a number between 1-99, inclusive.
      * You must set the rotation window percentage in relation to the certificate lifetime so that certificate renewal occurs at least 7 days after
@@ -332,22 +348,6 @@ public class CertificateIssuanceConfig extends com.pulumi.resources.CustomResour
      */
     public Output<Integer> rotationWindowPercentage() {
         return this.rotationWindowPercentage;
-    }
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    @Export(name="terraformLabels", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output<Map<String,String>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    public Output<Map<String,String>> terraformLabels() {
-        return this.terraformLabels;
     }
     /**
      * The last update timestamp of a CertificateIssuanceConfig. Timestamp is in RFC3339 UTC &#34;Zulu&#34; format,

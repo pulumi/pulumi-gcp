@@ -378,6 +378,11 @@ export class Authority extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * If this flag is set, the Certificate Authority will be deleted as soon as
      * possible without a 30-day grace period where undeletion would have been
      * allowed. If you proceed, there will be no way to recover this CA.
@@ -394,11 +399,6 @@ export class Authority extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly subordinateConfig!: pulumi.Output<outputs.certificateauthority.AuthoritySubordinateConfig | undefined>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The Type of this CertificateAuthority.
      * > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
@@ -445,10 +445,10 @@ export class Authority extends pulumi.CustomResource {
             resourceInputs["pemCaCertificates"] = state ? state.pemCaCertificates : undefined;
             resourceInputs["pool"] = state ? state.pool : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["skipGracePeriod"] = state ? state.skipGracePeriod : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["subordinateConfig"] = state ? state.subordinateConfig : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -489,8 +489,8 @@ export class Authority extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pemCaCertificates"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -602,6 +602,11 @@ export interface AuthorityState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * If this flag is set, the Certificate Authority will be deleted as soon as
      * possible without a 30-day grace period where undeletion would have been
      * allowed. If you proceed, there will be no way to recover this CA.
@@ -618,11 +623,6 @@ export interface AuthorityState {
      * Structure is documented below.
      */
     subordinateConfig?: pulumi.Input<inputs.certificateauthority.AuthoritySubordinateConfig>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The Type of this CertificateAuthority.
      * > **Note:** For `SUBORDINATE` Certificate Authorities, they need to

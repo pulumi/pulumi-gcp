@@ -140,11 +140,11 @@ type Project struct {
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
 	// The project ID. Changing this forces a new project to be created.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// If true, the resource can be deleted
 	// without deleting the Project via the Google API.
 	SkipDelete pulumi.BoolOutput `pulumi:"skipDelete"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewProject registers a new resource with the given unique name, arguments, and options.
@@ -216,11 +216,11 @@ type projectState struct {
 	OrgId *string `pulumi:"orgId"`
 	// The project ID. Changing this forces a new project to be created.
 	ProjectId *string `pulumi:"projectId"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// If true, the resource can be deleted
 	// without deleting the Project via the Google API.
 	SkipDelete *bool `pulumi:"skipDelete"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type ProjectState struct {
@@ -260,11 +260,11 @@ type ProjectState struct {
 	OrgId pulumi.StringPtrInput
 	// The project ID. Changing this forces a new project to be created.
 	ProjectId pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// If true, the resource can be deleted
 	// without deleting the Project via the Google API.
 	SkipDelete pulumi.BoolPtrInput
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 }
 
 func (ProjectState) ElementType() reflect.Type {
@@ -520,15 +520,15 @@ func (o ProjectOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o ProjectOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // If true, the resource can be deleted
 // without deleting the Project via the Google API.
 func (o ProjectOutput) SkipDelete() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.SkipDelete }).(pulumi.BoolOutput)
-}
-
-// The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o ProjectOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Project) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type ProjectArrayOutput struct{ *pulumi.OutputState }

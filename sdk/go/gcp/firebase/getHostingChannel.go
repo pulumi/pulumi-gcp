@@ -40,9 +40,9 @@ type LookupHostingChannelResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The fully-qualified resource name for the channel, in the format: `sites/{{site_id}}/channels/{{channel_id}}`.
 	Name                 string            `pulumi:"name"`
+	PulumiLabels         map[string]string `pulumi:"pulumiLabels"`
 	RetainedReleaseCount int               `pulumi:"retainedReleaseCount"`
 	SiteId               string            `pulumi:"siteId"`
-	TerraformLabels      map[string]string `pulumi:"terraformLabels"`
 	Ttl                  string            `pulumi:"ttl"`
 }
 
@@ -118,16 +118,16 @@ func (o LookupHostingChannelResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostingChannelResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o LookupHostingChannelResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupHostingChannelResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupHostingChannelResultOutput) RetainedReleaseCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupHostingChannelResult) int { return v.RetainedReleaseCount }).(pulumi.IntOutput)
 }
 
 func (o LookupHostingChannelResultOutput) SiteId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostingChannelResult) string { return v.SiteId }).(pulumi.StringOutput)
-}
-
-func (o LookupHostingChannelResultOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupHostingChannelResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupHostingChannelResultOutput) Ttl() pulumi.StringOutput {

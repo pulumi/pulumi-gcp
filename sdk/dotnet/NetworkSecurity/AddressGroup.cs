@@ -173,8 +173,8 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// The combination of labels configured directly on the resource
         /// and default labels configured on the provider.
         /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
         /// The type of the Address Group. Possible values are "IPV4" or "IPV6".
@@ -397,17 +397,17 @@ namespace Pulumi.Gcp.NetworkSecurity
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
-        [Input("terraformLabels")]
-        private InputMap<string>? _terraformLabels;
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
 
         /// <summary>
         /// The combination of labels configured directly on the resource
         /// and default labels configured on the provider.
         /// </summary>
-        public InputMap<string> TerraformLabels
+        public InputMap<string> PulumiLabels
         {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
-            set => _terraformLabels = value;
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
         }
 
         /// <summary>

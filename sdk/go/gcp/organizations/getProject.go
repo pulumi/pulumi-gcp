@@ -67,11 +67,11 @@ type LookupProjectResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	Name   string            `pulumi:"name"`
 	// The numeric identifier of the project.
-	Number          string            `pulumi:"number"`
-	OrgId           string            `pulumi:"orgId"`
-	ProjectId       *string           `pulumi:"projectId"`
-	SkipDelete      bool              `pulumi:"skipDelete"`
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	Number       string            `pulumi:"number"`
+	OrgId        string            `pulumi:"orgId"`
+	ProjectId    *string           `pulumi:"projectId"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	SkipDelete   bool              `pulumi:"skipDelete"`
 }
 
 func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts ...pulumi.InvokeOption) LookupProjectResultOutput {
@@ -160,12 +160,12 @@ func (o LookupProjectResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProjectResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-func (o LookupProjectResultOutput) SkipDelete() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupProjectResult) bool { return v.SkipDelete }).(pulumi.BoolOutput)
+func (o LookupProjectResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupProjectResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-func (o LookupProjectResultOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupProjectResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
+func (o LookupProjectResultOutput) SkipDelete() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupProjectResult) bool { return v.SkipDelete }).(pulumi.BoolOutput)
 }
 
 func init() {

@@ -365,9 +365,9 @@ class _ManagedZoneState:
                  peering_config: Optional[pulumi.Input['ManagedZonePeeringConfigArgs']] = None,
                  private_visibility_config: Optional[pulumi.Input['ManagedZonePrivateVisibilityConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  reverse_lookup: Optional[pulumi.Input[bool]] = None,
                  service_directory_config: Optional[pulumi.Input['ManagedZoneServiceDirectoryConfigArgs']] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  visibility: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ManagedZone resources.
@@ -405,13 +405,13 @@ class _ManagedZoneState:
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[bool] reverse_lookup: Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
                lookup queries using automatically configured records for VPC resources. This only applies
                to networks listed under `private_visibility_config`.
         :param pulumi.Input['ManagedZoneServiceDirectoryConfigArgs'] service_directory_config: The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] visibility: The zone's visibility: public zones are exposed to the Internet,
                while private zones are visible only to Virtual Private Cloud resources.
                Default value is `public`.
@@ -434,9 +434,9 @@ class _ManagedZoneState:
             peering_config=peering_config,
             private_visibility_config=private_visibility_config,
             project=project,
+            pulumi_labels=pulumi_labels,
             reverse_lookup=reverse_lookup,
             service_directory_config=service_directory_config,
-            terraform_labels=terraform_labels,
             visibility=visibility,
         )
     @staticmethod
@@ -457,9 +457,9 @@ class _ManagedZoneState:
              peering_config: Optional[pulumi.Input['ManagedZonePeeringConfigArgs']] = None,
              private_visibility_config: Optional[pulumi.Input['ManagedZonePrivateVisibilityConfigArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              reverse_lookup: Optional[pulumi.Input[bool]] = None,
              service_directory_config: Optional[pulumi.Input['ManagedZoneServiceDirectoryConfigArgs']] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              visibility: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -485,12 +485,12 @@ class _ManagedZoneState:
             peering_config = kwargs['peeringConfig']
         if private_visibility_config is None and 'privateVisibilityConfig' in kwargs:
             private_visibility_config = kwargs['privateVisibilityConfig']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if reverse_lookup is None and 'reverseLookup' in kwargs:
             reverse_lookup = kwargs['reverseLookup']
         if service_directory_config is None and 'serviceDirectoryConfig' in kwargs:
             service_directory_config = kwargs['serviceDirectoryConfig']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
 
         if cloud_logging_config is not None:
             _setter("cloud_logging_config", cloud_logging_config)
@@ -524,12 +524,12 @@ class _ManagedZoneState:
             _setter("private_visibility_config", private_visibility_config)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if reverse_lookup is not None:
             _setter("reverse_lookup", reverse_lookup)
         if service_directory_config is not None:
             _setter("service_directory_config", service_directory_config)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if visibility is not None:
             _setter("visibility", visibility)
 
@@ -733,6 +733,19 @@ class _ManagedZoneState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="reverseLookup")
     def reverse_lookup(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -758,19 +771,6 @@ class _ManagedZoneState:
     @service_directory_config.setter
     def service_directory_config(self, value: Optional[pulumi.Input['ManagedZoneServiceDirectoryConfigArgs']]):
         pulumi.set(self, "service_directory_config", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -1371,7 +1371,7 @@ class ManagedZone(pulumi.CustomResource):
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["managed_zone_id"] = None
             __props__.__dict__["name_servers"] = None
-            __props__.__dict__["terraform_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
         super(ManagedZone, __self__).__init__(
             'gcp:dns/managedZone:ManagedZone',
             resource_name,
@@ -1397,9 +1397,9 @@ class ManagedZone(pulumi.CustomResource):
             peering_config: Optional[pulumi.Input[pulumi.InputType['ManagedZonePeeringConfigArgs']]] = None,
             private_visibility_config: Optional[pulumi.Input[pulumi.InputType['ManagedZonePrivateVisibilityConfigArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             reverse_lookup: Optional[pulumi.Input[bool]] = None,
             service_directory_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneServiceDirectoryConfigArgs']]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             visibility: Optional[pulumi.Input[str]] = None) -> 'ManagedZone':
         """
         Get an existing ManagedZone resource's state with the given name, id, and optional extra
@@ -1442,13 +1442,13 @@ class ManagedZone(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[bool] reverse_lookup: Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
                lookup queries using automatically configured records for VPC resources. This only applies
                to networks listed under `private_visibility_config`.
         :param pulumi.Input[pulumi.InputType['ManagedZoneServiceDirectoryConfigArgs']] service_directory_config: The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] visibility: The zone's visibility: public zones are exposed to the Internet,
                while private zones are visible only to Virtual Private Cloud resources.
                Default value is `public`.
@@ -1473,9 +1473,9 @@ class ManagedZone(pulumi.CustomResource):
         __props__.__dict__["peering_config"] = peering_config
         __props__.__dict__["private_visibility_config"] = private_visibility_config
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["reverse_lookup"] = reverse_lookup
         __props__.__dict__["service_directory_config"] = service_directory_config
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["visibility"] = visibility
         return ManagedZone(resource_name, opts=opts, __props__=__props__)
 
@@ -1619,6 +1619,15 @@ class ManagedZone(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="reverseLookup")
     def reverse_lookup(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -1636,15 +1645,6 @@ class ManagedZone(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "service_directory_config")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

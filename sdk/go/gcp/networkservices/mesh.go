@@ -119,11 +119,11 @@ type Mesh struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Server-defined URL of this resource.
-	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// Server-defined URL of this resource.
+	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Time the Mesh was updated in UTC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -182,11 +182,11 @@ type meshState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Server-defined URL of this resource.
-	SelfLink *string `pulumi:"selfLink"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// Server-defined URL of this resource.
+	SelfLink *string `pulumi:"selfLink"`
 	// Time the Mesh was updated in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -216,11 +216,11 @@ type MeshState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Server-defined URL of this resource.
-	SelfLink pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
+	PulumiLabels pulumi.StringMapInput
+	// Server-defined URL of this resource.
+	SelfLink pulumi.StringPtrInput
 	// Time the Mesh was updated in UTC.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -430,15 +430,15 @@ func (o MeshOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Mesh) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o MeshOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Mesh) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Server-defined URL of this resource.
 func (o MeshOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *Mesh) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o MeshOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Mesh) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Time the Mesh was updated in UTC.

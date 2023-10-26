@@ -47,6 +47,7 @@ public final class GetInstanceResult {
     private String persistenceIamIdentity;
     private Integer port;
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private String readEndpoint;
     private Integer readEndpointPort;
     private String readReplicasMode;
@@ -57,7 +58,6 @@ public final class GetInstanceResult {
     private String reservedIpRange;
     private String secondaryIpRange;
     private List<GetInstanceServerCaCert> serverCaCerts;
-    private Map<String,String> terraformLabels;
     private String tier;
     private String transitEncryptionMode;
 
@@ -135,6 +135,9 @@ public final class GetInstanceResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public String readEndpoint() {
         return this.readEndpoint;
     }
@@ -164,9 +167,6 @@ public final class GetInstanceResult {
     }
     public List<GetInstanceServerCaCert> serverCaCerts() {
         return this.serverCaCerts;
-    }
-    public Map<String,String> terraformLabels() {
-        return this.terraformLabels;
     }
     public String tier() {
         return this.tier;
@@ -207,6 +207,7 @@ public final class GetInstanceResult {
         private String persistenceIamIdentity;
         private Integer port;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private String readEndpoint;
         private Integer readEndpointPort;
         private String readReplicasMode;
@@ -217,7 +218,6 @@ public final class GetInstanceResult {
         private String reservedIpRange;
         private String secondaryIpRange;
         private List<GetInstanceServerCaCert> serverCaCerts;
-        private Map<String,String> terraformLabels;
         private String tier;
         private String transitEncryptionMode;
         public Builder() {}
@@ -246,6 +246,7 @@ public final class GetInstanceResult {
     	      this.persistenceIamIdentity = defaults.persistenceIamIdentity;
     	      this.port = defaults.port;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.readEndpoint = defaults.readEndpoint;
     	      this.readEndpointPort = defaults.readEndpointPort;
     	      this.readReplicasMode = defaults.readReplicasMode;
@@ -256,7 +257,6 @@ public final class GetInstanceResult {
     	      this.reservedIpRange = defaults.reservedIpRange;
     	      this.secondaryIpRange = defaults.secondaryIpRange;
     	      this.serverCaCerts = defaults.serverCaCerts;
-    	      this.terraformLabels = defaults.terraformLabels;
     	      this.tier = defaults.tier;
     	      this.transitEncryptionMode = defaults.transitEncryptionMode;
         }
@@ -389,6 +389,11 @@ public final class GetInstanceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder readEndpoint(String readEndpoint) {
             this.readEndpoint = Objects.requireNonNull(readEndpoint);
             return this;
@@ -442,11 +447,6 @@ public final class GetInstanceResult {
             return serverCaCerts(List.of(serverCaCerts));
         }
         @CustomType.Setter
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            this.terraformLabels = Objects.requireNonNull(terraformLabels);
-            return this;
-        }
-        @CustomType.Setter
         public Builder tier(String tier) {
             this.tier = Objects.requireNonNull(tier);
             return this;
@@ -481,6 +481,7 @@ public final class GetInstanceResult {
             o.persistenceIamIdentity = persistenceIamIdentity;
             o.port = port;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.readEndpoint = readEndpoint;
             o.readEndpointPort = readEndpointPort;
             o.readReplicasMode = readReplicasMode;
@@ -491,7 +492,6 @@ public final class GetInstanceResult {
             o.reservedIpRange = reservedIpRange;
             o.secondaryIpRange = secondaryIpRange;
             o.serverCaCerts = serverCaCerts;
-            o.terraformLabels = terraformLabels;
             o.tier = tier;
             o.transitEncryptionMode = transitEncryptionMode;
             return o;

@@ -104,7 +104,7 @@ type CaPool struct {
 	PublishingOptions CaPoolPublishingOptionsPtrOutput `pulumi:"publishingOptions"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The Tier of this CaPool.
 	// Possible values are: `ENTERPRISE`, `DEVOPS`.
 	Tier pulumi.StringOutput `pulumi:"tier"`
@@ -174,7 +174,7 @@ type caPoolState struct {
 	PublishingOptions *CaPoolPublishingOptions `pulumi:"publishingOptions"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The Tier of this CaPool.
 	// Possible values are: `ENTERPRISE`, `DEVOPS`.
 	Tier *string `pulumi:"tier"`
@@ -209,7 +209,7 @@ type CaPoolState struct {
 	PublishingOptions CaPoolPublishingOptionsPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
+	PulumiLabels pulumi.StringMapInput
 	// The Tier of this CaPool.
 	// Possible values are: `ENTERPRISE`, `DEVOPS`.
 	Tier pulumi.StringPtrInput
@@ -438,8 +438,8 @@ func (o CaPoolOutput) PublishingOptions() CaPoolPublishingOptionsPtrOutput {
 
 // The combination of labels configured directly on the resource
 // and default labels configured on the provider.
-func (o CaPoolOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *CaPool) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
+func (o CaPoolOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CaPool) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The Tier of this CaPool.

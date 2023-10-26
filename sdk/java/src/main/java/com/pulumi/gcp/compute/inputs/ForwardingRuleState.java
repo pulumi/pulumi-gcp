@@ -662,6 +662,23 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * A reference to the region where the regional forwarding rule resides.
      * This field is not applicable to global forwarding rules.
      * 
@@ -837,23 +854,6 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.target);
     }
 
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    @Import(name="terraformLabels")
-    private @Nullable Output<Map<String,String>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    public Optional<Output<Map<String,String>>> terraformLabels() {
-        return Optional.ofNullable(this.terraformLabels);
-    }
-
     private ForwardingRuleState() {}
 
     private ForwardingRuleState(ForwardingRuleState $) {
@@ -881,6 +881,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
         this.project = $.project;
         this.pscConnectionId = $.pscConnectionId;
         this.pscConnectionStatus = $.pscConnectionStatus;
+        this.pulumiLabels = $.pulumiLabels;
         this.region = $.region;
         this.selfLink = $.selfLink;
         this.serviceDirectoryRegistrations = $.serviceDirectoryRegistrations;
@@ -889,7 +890,6 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
         this.sourceIpRanges = $.sourceIpRanges;
         this.subnetwork = $.subnetwork;
         this.target = $.target;
-        this.terraformLabels = $.terraformLabels;
     }
 
     public static Builder builder() {
@@ -1722,6 +1722,29 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
          * @param region A reference to the region where the regional forwarding rule resides.
          * This field is not applicable to global forwarding rules.
          * 
@@ -1953,29 +1976,6 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
          */
         public Builder target(String target) {
             return target(Output.of(target));
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
-            $.terraformLabels = terraformLabels;
-            return this;
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            return terraformLabels(Output.of(terraformLabels));
         }
 
         public ForwardingRuleState build() {

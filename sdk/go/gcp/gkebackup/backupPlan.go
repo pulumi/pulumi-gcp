@@ -322,6 +322,9 @@ type BackupPlan struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
 	ProtectedPodCount pulumi.IntOutput `pulumi:"protectedPodCount"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// RetentionPolicy governs lifecycle of Backups created under this plan.
 	// Structure is documented below.
 	RetentionPolicy BackupPlanRetentionPolicyPtrOutput `pulumi:"retentionPolicy"`
@@ -329,9 +332,6 @@ type BackupPlan struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// Detailed description of why BackupPlan is in its current state.
 	StateReason pulumi.StringOutput `pulumi:"stateReason"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Server generated, unique identifier of UUID format.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 }
@@ -415,6 +415,9 @@ type backupPlanState struct {
 	Project *string `pulumi:"project"`
 	// The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
 	ProtectedPodCount *int `pulumi:"protectedPodCount"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// RetentionPolicy governs lifecycle of Backups created under this plan.
 	// Structure is documented below.
 	RetentionPolicy *BackupPlanRetentionPolicy `pulumi:"retentionPolicy"`
@@ -422,9 +425,6 @@ type backupPlanState struct {
 	State *string `pulumi:"state"`
 	// Detailed description of why BackupPlan is in its current state.
 	StateReason *string `pulumi:"stateReason"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Server generated, unique identifier of UUID format.
 	Uid *string `pulumi:"uid"`
 }
@@ -473,6 +473,9 @@ type BackupPlanState struct {
 	Project pulumi.StringPtrInput
 	// The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
 	ProtectedPodCount pulumi.IntPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// RetentionPolicy governs lifecycle of Backups created under this plan.
 	// Structure is documented below.
 	RetentionPolicy BackupPlanRetentionPolicyPtrInput
@@ -480,9 +483,6 @@ type BackupPlanState struct {
 	State pulumi.StringPtrInput
 	// Detailed description of why BackupPlan is in its current state.
 	StateReason pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// Server generated, unique identifier of UUID format.
 	Uid pulumi.StringPtrInput
 }
@@ -756,6 +756,12 @@ func (o BackupPlanOutput) ProtectedPodCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *BackupPlan) pulumi.IntOutput { return v.ProtectedPodCount }).(pulumi.IntOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o BackupPlanOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *BackupPlan) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // RetentionPolicy governs lifecycle of Backups created under this plan.
 // Structure is documented below.
 func (o BackupPlanOutput) RetentionPolicy() BackupPlanRetentionPolicyPtrOutput {
@@ -770,12 +776,6 @@ func (o BackupPlanOutput) State() pulumi.StringOutput {
 // Detailed description of why BackupPlan is in its current state.
 func (o BackupPlanOutput) StateReason() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.StateReason }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o BackupPlanOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *BackupPlan) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Server generated, unique identifier of UUID format.

@@ -167,14 +167,14 @@ export class AppConnection extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The region of the AppConnection.
-     */
-    public readonly region!: pulumi.Output<string | undefined>;
-    /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The region of the AppConnection.
+     */
+    public readonly region!: pulumi.Output<string | undefined>;
     /**
      * The type of network connectivity used by the AppConnection. Refer to
      * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
@@ -203,8 +203,8 @@ export class AppConnection extends pulumi.CustomResource {
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as AppConnectionArgs | undefined;
@@ -221,7 +221,7 @@ export class AppConnection extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AppConnection.__pulumiType, name, resourceInputs, opts);
@@ -272,14 +272,14 @@ export interface AppConnectionState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The region of the AppConnection.
-     */
-    region?: pulumi.Input<string>;
-    /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The region of the AppConnection.
+     */
+    region?: pulumi.Input<string>;
     /**
      * The type of network connectivity used by the AppConnection. Refer to
      * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type

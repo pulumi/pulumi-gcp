@@ -125,10 +125,10 @@ namespace Pulumi.Gcp.SecretManager
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly ImmutableArray<Outputs.GetSecretReplicationResult> Replications;
         public readonly ImmutableArray<Outputs.GetSecretRotationResult> Rotations;
         public readonly string SecretId;
-        public readonly ImmutableDictionary<string, string> TerraformLabels;
         public readonly ImmutableArray<Outputs.GetSecretTopicResult> Topics;
         public readonly string Ttl;
         public readonly ImmutableDictionary<string, string> VersionAliases;
@@ -153,13 +153,13 @@ namespace Pulumi.Gcp.SecretManager
 
             string? project,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             ImmutableArray<Outputs.GetSecretReplicationResult> replications,
 
             ImmutableArray<Outputs.GetSecretRotationResult> rotations,
 
             string secretId,
-
-            ImmutableDictionary<string, string> terraformLabels,
 
             ImmutableArray<Outputs.GetSecretTopicResult> topics,
 
@@ -176,10 +176,10 @@ namespace Pulumi.Gcp.SecretManager
             Labels = labels;
             Name = name;
             Project = project;
+            PulumiLabels = pulumiLabels;
             Replications = replications;
             Rotations = rotations;
             SecretId = secretId;
-            TerraformLabels = terraformLabels;
             Topics = topics;
             Ttl = ttl;
             VersionAliases = versionAliases;

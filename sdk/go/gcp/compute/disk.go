@@ -268,6 +268,9 @@ type Disk struct {
 	// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
 	// allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
 	ProvisionedThroughput pulumi.IntOutput `pulumi:"provisionedThroughput"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Resource policies applied to this disk for automatic snapshot creations.
 	// ~>**NOTE** This value does not support updating the
 	// resource policy, as resource policies can not be updated more than
@@ -329,9 +332,6 @@ type Disk struct {
 	// snapshot ID would identify the exact version of the snapshot that was
 	// used.
 	SourceSnapshotId pulumi.StringOutput `pulumi:"sourceSnapshotId"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// URL of the disk type resource describing which disk type to use to
 	// create the disk. Provide this when creating the disk.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
@@ -461,6 +461,9 @@ type diskState struct {
 	// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
 	// allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
 	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Resource policies applied to this disk for automatic snapshot creations.
 	// ~>**NOTE** This value does not support updating the
 	// resource policy, as resource policies can not be updated more than
@@ -522,9 +525,6 @@ type diskState struct {
 	// snapshot ID would identify the exact version of the snapshot that was
 	// used.
 	SourceSnapshotId *string `pulumi:"sourceSnapshotId"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// URL of the disk type resource describing which disk type to use to
 	// create the disk. Provide this when creating the disk.
 	Type *string `pulumi:"type"`
@@ -625,6 +625,9 @@ type DiskState struct {
 	// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
 	// allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
 	ProvisionedThroughput pulumi.IntPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Resource policies applied to this disk for automatic snapshot creations.
 	// ~>**NOTE** This value does not support updating the
 	// resource policy, as resource policies can not be updated more than
@@ -686,9 +689,6 @@ type DiskState struct {
 	// snapshot ID would identify the exact version of the snapshot that was
 	// used.
 	SourceSnapshotId pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// URL of the disk type resource describing which disk type to use to
 	// create the disk. Provide this when creating the disk.
 	Type pulumi.StringPtrInput
@@ -1218,6 +1218,12 @@ func (o DiskOutput) ProvisionedThroughput() pulumi.IntOutput {
 	return o.ApplyT(func(v *Disk) pulumi.IntOutput { return v.ProvisionedThroughput }).(pulumi.IntOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o DiskOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Resource policies applied to this disk for automatic snapshot creations.
 // ~>**NOTE** This value does not support updating the
 // resource policy, as resource policies can not be updated more than
@@ -1307,12 +1313,6 @@ func (o DiskOutput) SourceSnapshotEncryptionKey() DiskSourceSnapshotEncryptionKe
 // used.
 func (o DiskOutput) SourceSnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.SourceSnapshotId }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o DiskOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Disk) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // URL of the disk type resource describing which disk type to use to

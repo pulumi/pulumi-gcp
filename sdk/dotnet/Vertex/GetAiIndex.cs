@@ -102,8 +102,8 @@ namespace Pulumi.Gcp.Vertex
         public readonly ImmutableArray<Outputs.GetAiIndexMetadataResult> Metadatas;
         public readonly string Name;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string Region;
-        public readonly ImmutableDictionary<string, string> TerraformLabels;
         public readonly string UpdateTime;
 
         [OutputConstructor]
@@ -136,9 +136,9 @@ namespace Pulumi.Gcp.Vertex
 
             string? project,
 
-            string region,
+            ImmutableDictionary<string, string> pulumiLabels,
 
-            ImmutableDictionary<string, string> terraformLabels,
+            string region,
 
             string updateTime)
         {
@@ -156,8 +156,8 @@ namespace Pulumi.Gcp.Vertex
             Metadatas = metadatas;
             Name = name;
             Project = project;
+            PulumiLabels = pulumiLabels;
             Region = region;
-            TerraformLabels = terraformLabels;
             UpdateTime = updateTime;
         }
     }

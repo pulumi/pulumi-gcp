@@ -243,14 +243,14 @@ type GrpcRoute struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Rules that define how traffic is routed and handled.
 	// Structure is documented below.
 	Rules GrpcRouteRuleArrayOutput `pulumi:"rules"`
 	// Server-defined URL of this resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Time the GrpcRoute was updated in UTC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -313,14 +313,14 @@ type grpcRouteState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Rules that define how traffic is routed and handled.
 	// Structure is documented below.
 	Rules []GrpcRouteRule `pulumi:"rules"`
 	// Server-defined URL of this resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Time the GrpcRoute was updated in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -348,14 +348,14 @@ type GrpcRouteState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Rules that define how traffic is routed and handled.
 	// Structure is documented below.
 	Rules GrpcRouteRuleArrayInput
 	// Server-defined URL of this resource.
 	SelfLink pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// Time the GrpcRoute was updated in UTC.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -571,6 +571,12 @@ func (o GrpcRouteOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *GrpcRoute) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o GrpcRouteOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GrpcRoute) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Rules that define how traffic is routed and handled.
 // Structure is documented below.
 func (o GrpcRouteOutput) Rules() GrpcRouteRuleArrayOutput {
@@ -580,12 +586,6 @@ func (o GrpcRouteOutput) Rules() GrpcRouteRuleArrayOutput {
 // Server-defined URL of this resource.
 func (o GrpcRouteOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *GrpcRoute) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o GrpcRouteOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GrpcRoute) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Time the GrpcRoute was updated in UTC.

@@ -43,9 +43,9 @@ export interface GetHostingChannelResult {
      * The fully-qualified resource name for the channel, in the format: `sites/{{site_id}}/channels/{{channel_id}}`.
      */
     readonly name: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly retainedReleaseCount: number;
     readonly siteId: string;
-    readonly terraformLabels: {[key: string]: string};
     readonly ttl: string;
 }
 export function getHostingChannelOutput(args: GetHostingChannelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostingChannelResult> {

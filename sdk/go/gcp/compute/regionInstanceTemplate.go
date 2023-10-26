@@ -107,6 +107,8 @@ type RegionInstanceTemplate struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The Region in which the resource belongs.
 	// If region is not provided, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -129,8 +131,6 @@ type RegionInstanceTemplate struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The unique fingerprint of the tags.
 	TagsFingerprint pulumi.StringOutput `pulumi:"tagsFingerprint"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewRegionInstanceTemplate registers a new resource with the given unique name, arguments, and options.
@@ -237,6 +237,8 @@ type regionInstanceTemplateState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The Region in which the resource belongs.
 	// If region is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
@@ -259,8 +261,6 @@ type regionInstanceTemplateState struct {
 	Tags []string `pulumi:"tags"`
 	// The unique fingerprint of the tags.
 	TagsFingerprint *string `pulumi:"tagsFingerprint"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type RegionInstanceTemplateState struct {
@@ -332,6 +332,8 @@ type RegionInstanceTemplateState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The Region in which the resource belongs.
 	// If region is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
@@ -354,8 +356,6 @@ type RegionInstanceTemplateState struct {
 	Tags pulumi.StringArrayInput
 	// The unique fingerprint of the tags.
 	TagsFingerprint pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 }
 
 func (RegionInstanceTemplateState) ElementType() reflect.Type {
@@ -780,6 +780,11 @@ func (o RegionInstanceTemplateOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionInstanceTemplate) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o RegionInstanceTemplateOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RegionInstanceTemplate) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The Region in which the resource belongs.
 // If region is not provided, the provider region is used.
 func (o RegionInstanceTemplateOutput) Region() pulumi.StringOutput {
@@ -831,11 +836,6 @@ func (o RegionInstanceTemplateOutput) Tags() pulumi.StringArrayOutput {
 // The unique fingerprint of the tags.
 func (o RegionInstanceTemplateOutput) TagsFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionInstanceTemplate) pulumi.StringOutput { return v.TagsFingerprint }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o RegionInstanceTemplateOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *RegionInstanceTemplate) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type RegionInstanceTemplateArrayOutput struct{ *pulumi.OutputState }

@@ -344,6 +344,9 @@ type Cluster struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Output only. Reconciling (https://google.aip.dev/128#reconciliation).
 	// Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
 	// This can happen due to user-triggered updates or system actions like failover or maintenance.
@@ -356,9 +359,6 @@ type Cluster struct {
 	RestoreContinuousBackupSource ClusterRestoreContinuousBackupSourcePtrOutput `pulumi:"restoreContinuousBackupSource"`
 	// Output only. The current serving state of the cluster.
 	State pulumi.StringOutput `pulumi:"state"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The system-generated UID of the resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 }
@@ -469,6 +469,9 @@ type clusterState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Output only. Reconciling (https://google.aip.dev/128#reconciliation).
 	// Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
 	// This can happen due to user-triggered updates or system actions like failover or maintenance.
@@ -481,9 +484,6 @@ type clusterState struct {
 	RestoreContinuousBackupSource *ClusterRestoreContinuousBackupSource `pulumi:"restoreContinuousBackupSource"`
 	// Output only. The current serving state of the cluster.
 	State *string `pulumi:"state"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The system-generated UID of the resource.
 	Uid *string `pulumi:"uid"`
 }
@@ -559,6 +559,9 @@ type ClusterState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Output only. Reconciling (https://google.aip.dev/128#reconciliation).
 	// Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
 	// This can happen due to user-triggered updates or system actions like failover or maintenance.
@@ -571,9 +574,6 @@ type ClusterState struct {
 	RestoreContinuousBackupSource ClusterRestoreContinuousBackupSourcePtrInput
 	// Output only. The current serving state of the cluster.
 	State pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// The system-generated UID of the resource.
 	Uid pulumi.StringPtrInput
 }
@@ -939,6 +939,12 @@ func (o ClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ClusterOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Output only. Reconciling (https://google.aip.dev/128#reconciliation).
 // Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
 // This can happen due to user-triggered updates or system actions like failover or maintenance.
@@ -961,12 +967,6 @@ func (o ClusterOutput) RestoreContinuousBackupSource() ClusterRestoreContinuousB
 // Output only. The current serving state of the cluster.
 func (o ClusterOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o ClusterOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The system-generated UID of the resource.

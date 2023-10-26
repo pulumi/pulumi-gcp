@@ -34,6 +34,7 @@ public final class GetSnapshotResult {
     private @Nullable Boolean mostRecent;
     private @Nullable String name;
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private String selfLink;
     private List<GetSnapshotSnapshotEncryptionKey> snapshotEncryptionKeys;
     private Integer snapshotId;
@@ -41,7 +42,6 @@ public final class GetSnapshotResult {
     private List<GetSnapshotSourceDiskEncryptionKey> sourceDiskEncryptionKeys;
     private Integer storageBytes;
     private List<String> storageLocations;
-    private Map<String,String> terraformLabels;
     private String zone;
 
     private GetSnapshotResult() {}
@@ -88,6 +88,9 @@ public final class GetSnapshotResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public String selfLink() {
         return this.selfLink;
     }
@@ -108,9 +111,6 @@ public final class GetSnapshotResult {
     }
     public List<String> storageLocations() {
         return this.storageLocations;
-    }
-    public Map<String,String> terraformLabels() {
-        return this.terraformLabels;
     }
     public String zone() {
         return this.zone;
@@ -138,6 +138,7 @@ public final class GetSnapshotResult {
         private @Nullable Boolean mostRecent;
         private @Nullable String name;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private String selfLink;
         private List<GetSnapshotSnapshotEncryptionKey> snapshotEncryptionKeys;
         private Integer snapshotId;
@@ -145,7 +146,6 @@ public final class GetSnapshotResult {
         private List<GetSnapshotSourceDiskEncryptionKey> sourceDiskEncryptionKeys;
         private Integer storageBytes;
         private List<String> storageLocations;
-        private Map<String,String> terraformLabels;
         private String zone;
         public Builder() {}
         public Builder(GetSnapshotResult defaults) {
@@ -163,6 +163,7 @@ public final class GetSnapshotResult {
     	      this.mostRecent = defaults.mostRecent;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.selfLink = defaults.selfLink;
     	      this.snapshotEncryptionKeys = defaults.snapshotEncryptionKeys;
     	      this.snapshotId = defaults.snapshotId;
@@ -170,7 +171,6 @@ public final class GetSnapshotResult {
     	      this.sourceDiskEncryptionKeys = defaults.sourceDiskEncryptionKeys;
     	      this.storageBytes = defaults.storageBytes;
     	      this.storageLocations = defaults.storageLocations;
-    	      this.terraformLabels = defaults.terraformLabels;
     	      this.zone = defaults.zone;
         }
 
@@ -243,6 +243,11 @@ public final class GetSnapshotResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
             return this;
@@ -287,11 +292,6 @@ public final class GetSnapshotResult {
             return storageLocations(List.of(storageLocations));
         }
         @CustomType.Setter
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            this.terraformLabels = Objects.requireNonNull(terraformLabels);
-            return this;
-        }
-        @CustomType.Setter
         public Builder zone(String zone) {
             this.zone = Objects.requireNonNull(zone);
             return this;
@@ -311,6 +311,7 @@ public final class GetSnapshotResult {
             o.mostRecent = mostRecent;
             o.name = name;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.selfLink = selfLink;
             o.snapshotEncryptionKeys = snapshotEncryptionKeys;
             o.snapshotId = snapshotId;
@@ -318,7 +319,6 @@ public final class GetSnapshotResult {
             o.sourceDiskEncryptionKeys = sourceDiskEncryptionKeys;
             o.storageBytes = storageBytes;
             o.storageLocations = storageLocations;
-            o.terraformLabels = terraformLabels;
             o.zone = zone;
             return o;
         }

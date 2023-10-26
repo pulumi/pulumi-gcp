@@ -200,7 +200,7 @@ class _CertificateTemplateState:
                  passthrough_extensions: Optional[pulumi.Input['CertificateTemplatePassthroughExtensionsArgs']] = None,
                  predefined_values: Optional[pulumi.Input['CertificateTemplatePredefinedValuesArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CertificateTemplate resources.
@@ -218,7 +218,7 @@ class _CertificateTemplateState:
         :param pulumi.Input['CertificateTemplatePassthroughExtensionsArgs'] passthrough_extensions: Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
         :param pulumi.Input['CertificateTemplatePredefinedValuesArgs'] predefined_values: Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[Mapping[str, Any]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Output only. The time at which this CertificateTemplate was updated.
         """
         _CertificateTemplateState._configure(
@@ -233,7 +233,7 @@ class _CertificateTemplateState:
             passthrough_extensions=passthrough_extensions,
             predefined_values=predefined_values,
             project=project,
-            terraform_labels=terraform_labels,
+            pulumi_labels=pulumi_labels,
             update_time=update_time,
         )
     @staticmethod
@@ -249,7 +249,7 @@ class _CertificateTemplateState:
              passthrough_extensions: Optional[pulumi.Input['CertificateTemplatePassthroughExtensionsArgs']] = None,
              predefined_values: Optional[pulumi.Input['CertificateTemplatePredefinedValuesArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -263,8 +263,8 @@ class _CertificateTemplateState:
             passthrough_extensions = kwargs['passthroughExtensions']
         if predefined_values is None and 'predefinedValues' in kwargs:
             predefined_values = kwargs['predefinedValues']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
 
@@ -288,8 +288,8 @@ class _CertificateTemplateState:
             _setter("predefined_values", predefined_values)
         if project is not None:
             _setter("project", project)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if update_time is not None:
             _setter("update_time", update_time)
 
@@ -418,16 +418,16 @@ class _CertificateTemplateState:
         pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         The combination of labels configured directly on the resource and default labels configured on the provider.
         """
-        return pulumi.get(self, "terraform_labels")
+        return pulumi.get(self, "pulumi_labels")
 
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "terraform_labels", value)
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "pulumi_labels", value)
 
     @property
     @pulumi.getter(name="updateTime")
@@ -575,7 +575,7 @@ class CertificateTemplate(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
-            __props__.__dict__["terraform_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["update_time"] = None
         super(CertificateTemplate, __self__).__init__(
             'gcp:certificateauthority/certificateTemplate:CertificateTemplate',
@@ -597,7 +597,7 @@ class CertificateTemplate(pulumi.CustomResource):
             passthrough_extensions: Optional[pulumi.Input[pulumi.InputType['CertificateTemplatePassthroughExtensionsArgs']]] = None,
             predefined_values: Optional[pulumi.Input[pulumi.InputType['CertificateTemplatePredefinedValuesArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'CertificateTemplate':
         """
         Get an existing CertificateTemplate resource's state with the given name, id, and optional extra
@@ -620,7 +620,7 @@ class CertificateTemplate(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['CertificateTemplatePassthroughExtensionsArgs']] passthrough_extensions: Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
         :param pulumi.Input[pulumi.InputType['CertificateTemplatePredefinedValuesArgs']] predefined_values: Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[Mapping[str, Any]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Output only. The time at which this CertificateTemplate was updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -637,7 +637,7 @@ class CertificateTemplate(pulumi.CustomResource):
         __props__.__dict__["passthrough_extensions"] = passthrough_extensions
         __props__.__dict__["predefined_values"] = predefined_values
         __props__.__dict__["project"] = project
-        __props__.__dict__["terraform_labels"] = terraform_labels
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["update_time"] = update_time
         return CertificateTemplate(resource_name, opts=opts, __props__=__props__)
 
@@ -726,12 +726,12 @@ class CertificateTemplate(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         The combination of labels configured directly on the resource and default labels configured on the provider.
         """
-        return pulumi.get(self, "terraform_labels")
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter(name="updateTime")

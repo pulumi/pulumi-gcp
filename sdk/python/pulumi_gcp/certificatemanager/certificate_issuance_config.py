@@ -239,8 +239,8 @@ class _CertificateIssuanceConfigState:
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  rotation_window_percentage: Optional[pulumi.Input[int]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CertificateIssuanceConfig resources.
@@ -266,12 +266,12 @@ class _CertificateIssuanceConfigState:
                CertificateIssuanceConfig names must be unique globally.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[int] rotation_window_percentage: It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
                Must be a number between 1-99, inclusive.
                You must set the rotation window percentage in relation to the certificate lifetime so that certificate renewal occurs at least 7 days after
                the certificate has been issued and at least 7 days before it expires.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: The last update timestamp of a CertificateIssuanceConfig. Timestamp is in RFC3339 UTC "Zulu" format,
                accurate to nanoseconds with up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -288,8 +288,8 @@ class _CertificateIssuanceConfigState:
             location=location,
             name=name,
             project=project,
+            pulumi_labels=pulumi_labels,
             rotation_window_percentage=rotation_window_percentage,
-            terraform_labels=terraform_labels,
             update_time=update_time,
         )
     @staticmethod
@@ -305,8 +305,8 @@ class _CertificateIssuanceConfigState:
              location: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              rotation_window_percentage: Optional[pulumi.Input[int]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -318,10 +318,10 @@ class _CertificateIssuanceConfigState:
             effective_labels = kwargs['effectiveLabels']
         if key_algorithm is None and 'keyAlgorithm' in kwargs:
             key_algorithm = kwargs['keyAlgorithm']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if rotation_window_percentage is None and 'rotationWindowPercentage' in kwargs:
             rotation_window_percentage = kwargs['rotationWindowPercentage']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
         if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
 
@@ -345,10 +345,10 @@ class _CertificateIssuanceConfigState:
             _setter("name", name)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if rotation_window_percentage is not None:
             _setter("rotation_window_percentage", rotation_window_percentage)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if update_time is not None:
             _setter("update_time", update_time)
 
@@ -485,6 +485,19 @@ class _CertificateIssuanceConfigState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="rotationWindowPercentage")
     def rotation_window_percentage(self) -> Optional[pulumi.Input[int]]:
         """
@@ -498,19 +511,6 @@ class _CertificateIssuanceConfigState:
     @rotation_window_percentage.setter
     def rotation_window_percentage(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "rotation_window_percentage", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="updateTime")
@@ -803,7 +803,7 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
             __props__.__dict__["rotation_window_percentage"] = rotation_window_percentage
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
-            __props__.__dict__["terraform_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["update_time"] = None
         super(CertificateIssuanceConfig, __self__).__init__(
             'gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig',
@@ -825,8 +825,8 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             rotation_window_percentage: Optional[pulumi.Input[int]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'CertificateIssuanceConfig':
         """
         Get an existing CertificateIssuanceConfig resource's state with the given name, id, and optional extra
@@ -857,12 +857,12 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
                CertificateIssuanceConfig names must be unique globally.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[int] rotation_window_percentage: It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
                Must be a number between 1-99, inclusive.
                You must set the rotation window percentage in relation to the certificate lifetime so that certificate renewal occurs at least 7 days after
                the certificate has been issued and at least 7 days before it expires.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: The last update timestamp of a CertificateIssuanceConfig. Timestamp is in RFC3339 UTC "Zulu" format,
                accurate to nanoseconds with up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -881,8 +881,8 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["rotation_window_percentage"] = rotation_window_percentage
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["update_time"] = update_time
         return CertificateIssuanceConfig(resource_name, opts=opts, __props__=__props__)
 
@@ -979,6 +979,15 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="rotationWindowPercentage")
     def rotation_window_percentage(self) -> pulumi.Output[int]:
         """
@@ -988,15 +997,6 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
         the certificate has been issued and at least 7 days before it expires.
         """
         return pulumi.get(self, "rotation_window_percentage")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="updateTime")

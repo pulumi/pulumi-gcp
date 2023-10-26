@@ -282,6 +282,23 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * The release channel of the service. If unspecified, defaults to `STABLE`.
      * Default value is `STABLE`.
      * Possible values are: `CANARY`, `STABLE`.
@@ -388,23 +405,6 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    @Import(name="terraformLabels")
-    private @Nullable Output<Map<String,String>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    public Optional<Output<Map<String,String>>> terraformLabels() {
-        return Optional.ofNullable(this.terraformLabels);
-    }
-
-    /**
      * The tier of the service.
      * Possible values are: `DEVELOPER`, `ENTERPRISE`.
      * 
@@ -454,13 +454,13 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
         this.networkConfig = $.networkConfig;
         this.port = $.port;
         this.project = $.project;
+        this.pulumiLabels = $.pulumiLabels;
         this.releaseChannel = $.releaseChannel;
         this.scalingConfig = $.scalingConfig;
         this.serviceId = $.serviceId;
         this.state = $.state;
         this.stateMessage = $.stateMessage;
         this.telemetryConfig = $.telemetryConfig;
-        this.terraformLabels = $.terraformLabels;
         this.tier = $.tier;
         this.uid = $.uid;
     }
@@ -831,6 +831,29 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
          * @param releaseChannel The release channel of the service. If unspecified, defaults to `STABLE`.
          * Default value is `STABLE`.
          * Possible values are: `CANARY`, `STABLE`.
@@ -970,29 +993,6 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
          */
         public Builder telemetryConfig(MetastoreServiceTelemetryConfigArgs telemetryConfig) {
             return telemetryConfig(Output.of(telemetryConfig));
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
-            $.terraformLabels = terraformLabels;
-            return this;
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

@@ -367,6 +367,13 @@ namespace Pulumi.Gcp.PubSub
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// If push delivery is used with this subscription, this field is used to
         /// configure it. An empty pushConfig signifies that the subscriber will
         /// pull and ack messages using API methods.
@@ -392,13 +399,6 @@ namespace Pulumi.Gcp.PubSub
         /// </summary>
         [Output("retryPolicy")]
         public Output<Outputs.SubscriptionRetryPolicy?> RetryPolicy { get; private set; } = null!;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// A reference to a Topic resource.
@@ -778,6 +778,19 @@ namespace Pulumi.Gcp.PubSub
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
+
         /// <summary>
         /// If push delivery is used with this subscription, this field is used to
         /// configure it. An empty pushConfig signifies that the subscriber will
@@ -804,19 +817,6 @@ namespace Pulumi.Gcp.PubSub
         /// </summary>
         [Input("retryPolicy")]
         public Input<Inputs.SubscriptionRetryPolicyGetArgs>? RetryPolicy { get; set; }
-
-        [Input("terraformLabels")]
-        private InputMap<string>? _terraformLabels;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        public InputMap<string> TerraformLabels
-        {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
-            set => _terraformLabels = value;
-        }
 
         /// <summary>
         /// A reference to a Topic resource.

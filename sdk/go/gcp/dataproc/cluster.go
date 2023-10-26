@@ -197,11 +197,11 @@ type Cluster struct {
 	// The ID of the project in which the `cluster` will exist. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region in which the cluster and associated nodes will be created in.
 	// Defaults to `global`.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Allows you to configure a virtual Dataproc on GKE cluster.
 	// Structure defined below.
 	VirtualClusterConfig ClusterVirtualClusterConfigOutput `pulumi:"virtualClusterConfig"`
@@ -259,11 +259,11 @@ type clusterState struct {
 	// The ID of the project in which the `cluster` will exist. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region in which the cluster and associated nodes will be created in.
 	// Defaults to `global`.
 	Region *string `pulumi:"region"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Allows you to configure a virtual Dataproc on GKE cluster.
 	// Structure defined below.
 	VirtualClusterConfig *ClusterVirtualClusterConfig `pulumi:"virtualClusterConfig"`
@@ -292,11 +292,11 @@ type ClusterState struct {
 	// The ID of the project in which the `cluster` will exist. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The region in which the cluster and associated nodes will be created in.
 	// Defaults to `global`.
 	Region pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// Allows you to configure a virtual Dataproc on GKE cluster.
 	// Structure defined below.
 	VirtualClusterConfig ClusterVirtualClusterConfigPtrInput
@@ -512,15 +512,15 @@ func (o ClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o ClusterOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The region in which the cluster and associated nodes will be created in.
 // Defaults to `global`.
 func (o ClusterOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
-}
-
-// The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o ClusterOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Allows you to configure a virtual Dataproc on GKE cluster.

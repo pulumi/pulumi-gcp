@@ -444,6 +444,13 @@ namespace Pulumi.Gcp.Redis
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
         /// Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
         /// will exhibit some lag behind the primary. Write requests must target 'host'.
@@ -526,13 +533,6 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Output("serverCaCerts")]
         public Output<ImmutableArray<Outputs.InstanceServerCaCert>> ServerCaCerts { get; private set; } = null!;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// The service tier of the instance. Must be one of these values:
@@ -1006,6 +1006,19 @@ namespace Pulumi.Gcp.Redis
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
+
         /// <summary>
         /// Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
         /// Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
@@ -1100,19 +1113,6 @@ namespace Pulumi.Gcp.Redis
         {
             get => _serverCaCerts ?? (_serverCaCerts = new InputList<Inputs.InstanceServerCaCertGetArgs>());
             set => _serverCaCerts = value;
-        }
-
-        [Input("terraformLabels")]
-        private InputMap<string>? _terraformLabels;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        public InputMap<string> TerraformLabels
-        {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
-            set => _terraformLabels = value;
         }
 
         /// <summary>

@@ -296,6 +296,10 @@ export class InstanceTemplate extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * An instance template is a global resource that is not
      * bound to a zone or a region. However, you can still specify some regional
      * resources in an instance template, which restricts the template to the
@@ -344,10 +348,6 @@ export class InstanceTemplate extends pulumi.CustomResource {
      * The unique fingerprint of the tags.
      */
     public /*out*/ readonly tagsFingerprint!: pulumi.Output<string>;
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a InstanceTemplate resource with the given unique name, arguments, and options.
@@ -382,6 +382,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
             resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
             resourceInputs["networkPerformanceConfig"] = state ? state.networkPerformanceConfig : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["reservationAffinity"] = state ? state.reservationAffinity : undefined;
             resourceInputs["resourcePolicies"] = state ? state.resourcePolicies : undefined;
@@ -392,7 +393,6 @@ export class InstanceTemplate extends pulumi.CustomResource {
             resourceInputs["shieldedInstanceConfig"] = state ? state.shieldedInstanceConfig : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["tagsFingerprint"] = state ? state.tagsFingerprint : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as InstanceTemplateArgs | undefined;
             if ((!args || args.disks === undefined) && !opts.urn) {
@@ -428,10 +428,10 @@ export class InstanceTemplate extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["metadataFingerprint"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkUnique"] = undefined /*out*/;
             resourceInputs["tagsFingerprint"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InstanceTemplate.__pulumiType, name, resourceInputs, opts);
@@ -552,6 +552,10 @@ export interface InstanceTemplateState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * An instance template is a global resource that is not
      * bound to a zone or a region. However, you can still specify some regional
      * resources in an instance template, which restricts the template to the
@@ -600,10 +604,6 @@ export interface InstanceTemplateState {
      * The unique fingerprint of the tags.
      */
     tagsFingerprint?: pulumi.Input<string>;
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**

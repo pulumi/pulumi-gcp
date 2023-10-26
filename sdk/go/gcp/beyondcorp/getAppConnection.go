@@ -71,13 +71,13 @@ type LookupAppConnectionResult struct {
 	EffectiveLabels      map[string]string                     `pulumi:"effectiveLabels"`
 	Gateways             []GetAppConnectionGateway             `pulumi:"gateways"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string            `pulumi:"id"`
-	Labels          map[string]string `pulumi:"labels"`
-	Name            string            `pulumi:"name"`
-	Project         *string           `pulumi:"project"`
-	Region          *string           `pulumi:"region"`
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
-	Type            string            `pulumi:"type"`
+	Id           string            `pulumi:"id"`
+	Labels       map[string]string `pulumi:"labels"`
+	Name         string            `pulumi:"name"`
+	Project      *string           `pulumi:"project"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	Region       *string           `pulumi:"region"`
+	Type         string            `pulumi:"type"`
 }
 
 func LookupAppConnectionOutput(ctx *pulumi.Context, args LookupAppConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupAppConnectionResultOutput {
@@ -169,12 +169,12 @@ func (o LookupAppConnectionResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAppConnectionResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
-func (o LookupAppConnectionResultOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupAppConnectionResult) *string { return v.Region }).(pulumi.StringPtrOutput)
+func (o LookupAppConnectionResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAppConnectionResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-func (o LookupAppConnectionResultOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupAppConnectionResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
+func (o LookupAppConnectionResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAppConnectionResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupAppConnectionResultOutput) Type() pulumi.StringOutput {

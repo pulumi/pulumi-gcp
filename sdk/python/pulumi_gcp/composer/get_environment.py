@@ -22,7 +22,7 @@ class GetEnvironmentResult:
     """
     A collection of values returned by getEnvironment.
     """
-    def __init__(__self__, configs=None, effective_labels=None, id=None, labels=None, name=None, project=None, region=None, terraform_labels=None):
+    def __init__(__self__, configs=None, effective_labels=None, id=None, labels=None, name=None, project=None, pulumi_labels=None, region=None):
         if configs and not isinstance(configs, list):
             raise TypeError("Expected argument 'configs' to be a list")
         pulumi.set(__self__, "configs", configs)
@@ -41,12 +41,12 @@ class GetEnvironmentResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
-        if terraform_labels and not isinstance(terraform_labels, dict):
-            raise TypeError("Expected argument 'terraform_labels' to be a dict")
-        pulumi.set(__self__, "terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter
@@ -85,14 +85,14 @@ class GetEnvironmentResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[str]:
         return pulumi.get(self, "region")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Mapping[str, str]:
-        return pulumi.get(self, "terraform_labels")
 
 
 class AwaitableGetEnvironmentResult(GetEnvironmentResult):
@@ -107,8 +107,8 @@ class AwaitableGetEnvironmentResult(GetEnvironmentResult):
             labels=self.labels,
             name=self.name,
             project=self.project,
-            region=self.region,
-            terraform_labels=self.terraform_labels)
+            pulumi_labels=self.pulumi_labels,
+            region=self.region)
 
 
 def get_environment(name: Optional[str] = None,
@@ -138,8 +138,8 @@ def get_environment(name: Optional[str] = None,
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
-        region=pulumi.get(__ret__, 'region'),
-        terraform_labels=pulumi.get(__ret__, 'terraform_labels'))
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
+        region=pulumi.get(__ret__, 'region'))
 
 
 @_utilities.lift_output_func(get_environment)

@@ -25,9 +25,9 @@ public final class GetHostingChannelResult {
      * 
      */
     private String name;
+    private Map<String,String> pulumiLabels;
     private Integer retainedReleaseCount;
     private String siteId;
-    private Map<String,String> terraformLabels;
     private String ttl;
 
     private GetHostingChannelResult() {}
@@ -57,14 +57,14 @@ public final class GetHostingChannelResult {
     public String name() {
         return this.name;
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public Integer retainedReleaseCount() {
         return this.retainedReleaseCount;
     }
     public String siteId() {
         return this.siteId;
-    }
-    public Map<String,String> terraformLabels() {
-        return this.terraformLabels;
     }
     public String ttl() {
         return this.ttl;
@@ -85,9 +85,9 @@ public final class GetHostingChannelResult {
         private String id;
         private Map<String,String> labels;
         private String name;
+        private Map<String,String> pulumiLabels;
         private Integer retainedReleaseCount;
         private String siteId;
-        private Map<String,String> terraformLabels;
         private String ttl;
         public Builder() {}
         public Builder(GetHostingChannelResult defaults) {
@@ -98,9 +98,9 @@ public final class GetHostingChannelResult {
     	      this.id = defaults.id;
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.retainedReleaseCount = defaults.retainedReleaseCount;
     	      this.siteId = defaults.siteId;
-    	      this.terraformLabels = defaults.terraformLabels;
     	      this.ttl = defaults.ttl;
         }
 
@@ -135,6 +135,11 @@ public final class GetHostingChannelResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder retainedReleaseCount(Integer retainedReleaseCount) {
             this.retainedReleaseCount = Objects.requireNonNull(retainedReleaseCount);
             return this;
@@ -142,11 +147,6 @@ public final class GetHostingChannelResult {
         @CustomType.Setter
         public Builder siteId(String siteId) {
             this.siteId = Objects.requireNonNull(siteId);
-            return this;
-        }
-        @CustomType.Setter
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            this.terraformLabels = Objects.requireNonNull(terraformLabels);
             return this;
         }
         @CustomType.Setter
@@ -162,9 +162,9 @@ public final class GetHostingChannelResult {
             o.id = id;
             o.labels = labels;
             o.name = name;
+            o.pulumiLabels = pulumiLabels;
             o.retainedReleaseCount = retainedReleaseCount;
             o.siteId = siteId;
-            o.terraformLabels = terraformLabels;
             o.ttl = ttl;
             return o;
         }

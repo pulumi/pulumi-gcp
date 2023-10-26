@@ -22,7 +22,7 @@ class GetSecretResult:
     """
     A collection of values returned by getSecret.
     """
-    def __init__(__self__, annotations=None, create_time=None, effective_annotations=None, effective_labels=None, expire_time=None, id=None, labels=None, name=None, project=None, replications=None, rotations=None, secret_id=None, terraform_labels=None, topics=None, ttl=None, version_aliases=None):
+    def __init__(__self__, annotations=None, create_time=None, effective_annotations=None, effective_labels=None, expire_time=None, id=None, labels=None, name=None, project=None, pulumi_labels=None, replications=None, rotations=None, secret_id=None, topics=None, ttl=None, version_aliases=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -50,6 +50,9 @@ class GetSecretResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if replications and not isinstance(replications, list):
             raise TypeError("Expected argument 'replications' to be a list")
         pulumi.set(__self__, "replications", replications)
@@ -59,9 +62,6 @@ class GetSecretResult:
         if secret_id and not isinstance(secret_id, str):
             raise TypeError("Expected argument 'secret_id' to be a str")
         pulumi.set(__self__, "secret_id", secret_id)
-        if terraform_labels and not isinstance(terraform_labels, dict):
-            raise TypeError("Expected argument 'terraform_labels' to be a dict")
-        pulumi.set(__self__, "terraform_labels", terraform_labels)
         if topics and not isinstance(topics, list):
             raise TypeError("Expected argument 'topics' to be a list")
         pulumi.set(__self__, "topics", topics)
@@ -121,6 +121,11 @@ class GetSecretResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def replications(self) -> Sequence['outputs.GetSecretReplicationResult']:
         return pulumi.get(self, "replications")
@@ -134,11 +139,6 @@ class GetSecretResult:
     @pulumi.getter(name="secretId")
     def secret_id(self) -> str:
         return pulumi.get(self, "secret_id")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Mapping[str, str]:
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter
@@ -171,10 +171,10 @@ class AwaitableGetSecretResult(GetSecretResult):
             labels=self.labels,
             name=self.name,
             project=self.project,
+            pulumi_labels=self.pulumi_labels,
             replications=self.replications,
             rotations=self.rotations,
             secret_id=self.secret_id,
-            terraform_labels=self.terraform_labels,
             topics=self.topics,
             ttl=self.ttl,
             version_aliases=self.version_aliases)
@@ -215,10 +215,10 @@ def get_secret(project: Optional[str] = None,
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         replications=pulumi.get(__ret__, 'replications'),
         rotations=pulumi.get(__ret__, 'rotations'),
         secret_id=pulumi.get(__ret__, 'secret_id'),
-        terraform_labels=pulumi.get(__ret__, 'terraform_labels'),
         topics=pulumi.get(__ret__, 'topics'),
         ttl=pulumi.get(__ret__, 'ttl'),
         version_aliases=pulumi.get(__ret__, 'version_aliases'))

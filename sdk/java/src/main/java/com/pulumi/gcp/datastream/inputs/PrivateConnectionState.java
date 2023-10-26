@@ -150,6 +150,23 @@ public final class PrivateConnectionState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * State of the PrivateConnection.
      * 
      */
@@ -162,23 +179,6 @@ public final class PrivateConnectionState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> state() {
         return Optional.ofNullable(this.state);
-    }
-
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    @Import(name="terraformLabels")
-    private @Nullable Output<Map<String,String>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    public Optional<Output<Map<String,String>>> terraformLabels() {
-        return Optional.ofNullable(this.terraformLabels);
     }
 
     /**
@@ -211,8 +211,8 @@ public final class PrivateConnectionState extends com.pulumi.resources.ResourceA
         this.name = $.name;
         this.privateConnectionId = $.privateConnectionId;
         this.project = $.project;
+        this.pulumiLabels = $.pulumiLabels;
         this.state = $.state;
-        this.terraformLabels = $.terraformLabels;
         this.vpcPeeringConfig = $.vpcPeeringConfig;
     }
 
@@ -424,6 +424,29 @@ public final class PrivateConnectionState extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
          * @param state State of the PrivateConnection.
          * 
          * @return builder
@@ -442,29 +465,6 @@ public final class PrivateConnectionState extends com.pulumi.resources.ResourceA
          */
         public Builder state(String state) {
             return state(Output.of(state));
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
-            $.terraformLabels = terraformLabels;
-            return this;
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

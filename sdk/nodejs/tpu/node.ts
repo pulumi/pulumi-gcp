@@ -167,6 +167,11 @@ export class Node extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Sets the scheduling options for this TPU instance.
      * Structure is documented below.
      */
@@ -185,11 +190,6 @@ export class Node extends pulumi.CustomResource {
      * - - -
      */
     public readonly tensorflowVersion!: pulumi.Output<string>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Whether the VPC peering for the node is set up through Service Networking API.
      * The VPC Peering should be set up before provisioning the node. If this field is set,
@@ -224,10 +224,10 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["networkEndpoints"] = state ? state.networkEndpoints : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["schedulingConfig"] = state ? state.schedulingConfig : undefined;
             resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
             resourceInputs["tensorflowVersion"] = state ? state.tensorflowVersion : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["useServiceNetworking"] = state ? state.useServiceNetworking : undefined;
             resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
@@ -251,8 +251,8 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["networkEndpoints"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Node.__pulumiType, name, resourceInputs, opts);
@@ -317,6 +317,11 @@ export interface NodeState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Sets the scheduling options for this TPU instance.
      * Structure is documented below.
      */
@@ -335,11 +340,6 @@ export interface NodeState {
      * - - -
      */
     tensorflowVersion?: pulumi.Input<string>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Whether the VPC peering for the node is set up through Service Networking API.
      * The VPC Peering should be set up before provisioning the node. If this field is set,

@@ -234,6 +234,9 @@ type ConnectivityTest struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// IP Protocol of the test. When not provided, "TCP" is assumed.
 	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Other projects that may be relevant for reachability analysis.
 	// This is applicable to scenarios where a test can cross project
 	// boundaries.
@@ -258,9 +261,6 @@ type ConnectivityTest struct {
 	// you don't intend to test.
 	// Structure is documented below.
 	Source ConnectivityTestSourceOutput `pulumi:"source"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewConnectivityTest registers a new resource with the given unique name, arguments, and options.
@@ -333,6 +333,9 @@ type connectivityTestState struct {
 	Project *string `pulumi:"project"`
 	// IP Protocol of the test. When not provided, "TCP" is assumed.
 	Protocol *string `pulumi:"protocol"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Other projects that may be relevant for reachability analysis.
 	// This is applicable to scenarios where a test can cross project
 	// boundaries.
@@ -357,9 +360,6 @@ type connectivityTestState struct {
 	// you don't intend to test.
 	// Structure is documented below.
 	Source *ConnectivityTestSource `pulumi:"source"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type ConnectivityTestState struct {
@@ -397,6 +397,9 @@ type ConnectivityTestState struct {
 	Project pulumi.StringPtrInput
 	// IP Protocol of the test. When not provided, "TCP" is assumed.
 	Protocol pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Other projects that may be relevant for reachability analysis.
 	// This is applicable to scenarios where a test can cross project
 	// boundaries.
@@ -421,9 +424,6 @@ type ConnectivityTestState struct {
 	// you don't intend to test.
 	// Structure is documented below.
 	Source ConnectivityTestSourcePtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 }
 
 func (ConnectivityTestState) ElementType() reflect.Type {
@@ -713,6 +713,12 @@ func (o ConnectivityTestOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTest) pulumi.StringPtrOutput { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ConnectivityTestOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConnectivityTest) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Other projects that may be relevant for reachability analysis.
 // This is applicable to scenarios where a test can cross project
 // boundaries.
@@ -741,12 +747,6 @@ func (o ConnectivityTestOutput) RelatedProjects() pulumi.StringArrayOutput {
 // Structure is documented below.
 func (o ConnectivityTestOutput) Source() ConnectivityTestSourceOutput {
 	return o.ApplyT(func(v *ConnectivityTest) ConnectivityTestSourceOutput { return v.Source }).(ConnectivityTestSourceOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o ConnectivityTestOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ConnectivityTest) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type ConnectivityTestArrayOutput struct{ *pulumi.OutputState }

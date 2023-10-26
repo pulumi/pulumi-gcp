@@ -198,16 +198,16 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * and default labels configured on the provider.
      * 
      */
-    @Export(name="terraformLabels", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output<Map<String,String>> terraformLabels;
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
 
     /**
      * @return The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      * 
      */
-    public Output<Map<String,String>> terraformLabels() {
-        return this.terraformLabels;
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
     }
 
     /**

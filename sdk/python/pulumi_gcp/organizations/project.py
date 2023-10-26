@@ -233,8 +233,8 @@ class _ProjectState:
                  number: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 skip_delete: Optional[pulumi.Input[bool]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 skip_delete: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Project resources.
         :param pulumi.Input[bool] auto_create_network: Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
@@ -264,9 +264,9 @@ class _ProjectState:
                this forces the project to be migrated to the newly specified
                organization.
         :param pulumi.Input[str] project_id: The project ID. Changing this forces a new project to be created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[bool] skip_delete: If true, the resource can be deleted
                without deleting the Project via the Google API.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         _ProjectState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -279,8 +279,8 @@ class _ProjectState:
             number=number,
             org_id=org_id,
             project_id=project_id,
+            pulumi_labels=pulumi_labels,
             skip_delete=skip_delete,
-            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
@@ -294,8 +294,8 @@ class _ProjectState:
              number: Optional[pulumi.Input[str]] = None,
              org_id: Optional[pulumi.Input[str]] = None,
              project_id: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              skip_delete: Optional[pulumi.Input[bool]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if auto_create_network is None and 'autoCreateNetwork' in kwargs:
@@ -310,10 +310,10 @@ class _ProjectState:
             org_id = kwargs['orgId']
         if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if skip_delete is None and 'skipDelete' in kwargs:
             skip_delete = kwargs['skipDelete']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
 
         if auto_create_network is not None:
             _setter("auto_create_network", auto_create_network)
@@ -333,10 +333,10 @@ class _ProjectState:
             _setter("org_id", org_id)
         if project_id is not None:
             _setter("project_id", project_id)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if skip_delete is not None:
             _setter("skip_delete", skip_delete)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter(name="autoCreateNetwork")
@@ -465,6 +465,18 @@ class _ProjectState:
         pulumi.set(self, "project_id", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="skipDelete")
     def skip_delete(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -476,18 +488,6 @@ class _ProjectState:
     @skip_delete.setter
     def skip_delete(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "skip_delete", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
 
 class Project(pulumi.CustomResource):
@@ -691,7 +691,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["skip_delete"] = skip_delete
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["number"] = None
-            __props__.__dict__["terraform_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
         super(Project, __self__).__init__(
             'gcp:organizations/project:Project',
             resource_name,
@@ -711,8 +711,8 @@ class Project(pulumi.CustomResource):
             number: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
-            skip_delete: Optional[pulumi.Input[bool]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Project':
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            skip_delete: Optional[pulumi.Input[bool]] = None) -> 'Project':
         """
         Get an existing Project resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -747,9 +747,9 @@ class Project(pulumi.CustomResource):
                this forces the project to be migrated to the newly specified
                organization.
         :param pulumi.Input[str] project_id: The project ID. Changing this forces a new project to be created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[bool] skip_delete: If true, the resource can be deleted
                without deleting the Project via the Google API.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -764,8 +764,8 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["number"] = number
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["project_id"] = project_id
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["skip_delete"] = skip_delete
-        __props__.__dict__["terraform_labels"] = terraform_labels
         return Project(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -859,6 +859,14 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "project_id")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="skipDelete")
     def skip_delete(self) -> pulumi.Output[bool]:
         """
@@ -866,12 +874,4 @@ class Project(pulumi.CustomResource):
         without deleting the Project via the Google API.
         """
         return pulumi.get(self, "skip_delete")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 

@@ -185,6 +185,9 @@ type Node struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Sets the scheduling options for this TPU instance.
 	// Structure is documented below.
 	SchedulingConfig NodeSchedulingConfigPtrOutput `pulumi:"schedulingConfig"`
@@ -197,9 +200,6 @@ type Node struct {
 	//
 	// ***
 	TensorflowVersion pulumi.StringOutput `pulumi:"tensorflowVersion"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Whether the VPC peering for the node is set up through Service Networking API.
 	// The VPC Peering should be set up before provisioning the node. If this field is set,
 	// cidrBlock field should not be specified. If the network that you want to peer the
@@ -280,6 +280,9 @@ type nodeState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Sets the scheduling options for this TPU instance.
 	// Structure is documented below.
 	SchedulingConfig *NodeSchedulingConfig `pulumi:"schedulingConfig"`
@@ -292,9 +295,6 @@ type nodeState struct {
 	//
 	// ***
 	TensorflowVersion *string `pulumi:"tensorflowVersion"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Whether the VPC peering for the node is set up through Service Networking API.
 	// The VPC Peering should be set up before provisioning the node. If this field is set,
 	// cidrBlock field should not be specified. If the network that you want to peer the
@@ -340,6 +340,9 @@ type NodeState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Sets the scheduling options for this TPU instance.
 	// Structure is documented below.
 	SchedulingConfig NodeSchedulingConfigPtrInput
@@ -352,9 +355,6 @@ type NodeState struct {
 	//
 	// ***
 	TensorflowVersion pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// Whether the VPC peering for the node is set up through Service Networking API.
 	// The VPC Peering should be set up before provisioning the node. If this field is set,
 	// cidrBlock field should not be specified. If the network that you want to peer the
@@ -630,6 +630,12 @@ func (o NodeOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o NodeOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Sets the scheduling options for this TPU instance.
 // Structure is documented below.
 func (o NodeOutput) SchedulingConfig() NodeSchedulingConfigPtrOutput {
@@ -649,12 +655,6 @@ func (o NodeOutput) ServiceAccount() pulumi.StringOutput {
 // ***
 func (o NodeOutput) TensorflowVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.TensorflowVersion }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o NodeOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Node) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Whether the VPC peering for the node is set up through Service Networking API.

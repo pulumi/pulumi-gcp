@@ -166,7 +166,7 @@ type EdgeCacheKeyset struct {
 	PublicKeys EdgeCacheKeysetPublicKeyArrayOutput `pulumi:"publicKeys"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// An ordered list of shared keys to use for validating signed requests.
 	// Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
 	// You can rotate keys by appending (pushing) a new key to the list of `validationSharedKeys` and removing any superseded keys.
@@ -233,7 +233,7 @@ type edgeCacheKeysetState struct {
 	PublicKeys []EdgeCacheKeysetPublicKey `pulumi:"publicKeys"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// An ordered list of shared keys to use for validating signed requests.
 	// Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
 	// You can rotate keys by appending (pushing) a new key to the list of `validationSharedKeys` and removing any superseded keys.
@@ -271,7 +271,7 @@ type EdgeCacheKeysetState struct {
 	PublicKeys EdgeCacheKeysetPublicKeyArrayInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
+	PulumiLabels pulumi.StringMapInput
 	// An ordered list of shared keys to use for validating signed requests.
 	// Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
 	// You can rotate keys by appending (pushing) a new key to the list of `validationSharedKeys` and removing any superseded keys.
@@ -506,8 +506,8 @@ func (o EdgeCacheKeysetOutput) PublicKeys() EdgeCacheKeysetPublicKeyArrayOutput 
 
 // The combination of labels configured directly on the resource
 // and default labels configured on the provider.
-func (o EdgeCacheKeysetOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *EdgeCacheKeyset) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
+func (o EdgeCacheKeysetOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EdgeCacheKeyset) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // An ordered list of shared keys to use for validating signed requests.

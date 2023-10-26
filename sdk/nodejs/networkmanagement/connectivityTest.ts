@@ -199,6 +199,11 @@ export class ConnectivityTest extends pulumi.CustomResource {
      */
     public readonly protocol!: pulumi.Output<string | undefined>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Other projects that may be relevant for reachability analysis.
      * This is applicable to scenarios where a test can cross project
      * boundaries.
@@ -226,11 +231,6 @@ export class ConnectivityTest extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly source!: pulumi.Output<outputs.networkmanagement.ConnectivityTestSource>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a ConnectivityTest resource with the given unique name, arguments, and options.
@@ -252,9 +252,9 @@ export class ConnectivityTest extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["relatedProjects"] = state ? state.relatedProjects : undefined;
             resourceInputs["source"] = state ? state.source : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as ConnectivityTestArgs | undefined;
             if ((!args || args.destination === undefined) && !opts.urn) {
@@ -272,7 +272,7 @@ export class ConnectivityTest extends pulumi.CustomResource {
             resourceInputs["relatedProjects"] = args ? args.relatedProjects : undefined;
             resourceInputs["source"] = args ? args.source : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConnectivityTest.__pulumiType, name, resourceInputs, opts);
@@ -332,6 +332,11 @@ export interface ConnectivityTestState {
      */
     protocol?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Other projects that may be relevant for reachability analysis.
      * This is applicable to scenarios where a test can cross project
      * boundaries.
@@ -359,11 +364,6 @@ export interface ConnectivityTestState {
      * Structure is documented below.
      */
     source?: pulumi.Input<inputs.networkmanagement.ConnectivityTestSource>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**

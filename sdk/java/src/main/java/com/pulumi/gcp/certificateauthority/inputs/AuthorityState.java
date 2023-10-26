@@ -347,6 +347,23 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * If this flag is set, the Certificate Authority will be deleted as soon as
      * possible without a 30-day grace period where undeletion would have been
      * allowed. If you proceed, there will be no way to recover this CA.
@@ -399,23 +416,6 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<AuthoritySubordinateConfigArgs>> subordinateConfig() {
         return Optional.ofNullable(this.subordinateConfig);
-    }
-
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    @Import(name="terraformLabels")
-    private @Nullable Output<Map<String,String>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    public Optional<Output<Map<String,String>>> terraformLabels() {
-        return Optional.ofNullable(this.terraformLabels);
     }
 
     /**
@@ -481,10 +481,10 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
         this.pemCaCertificates = $.pemCaCertificates;
         this.pool = $.pool;
         this.project = $.project;
+        this.pulumiLabels = $.pulumiLabels;
         this.skipGracePeriod = $.skipGracePeriod;
         this.state = $.state;
         this.subordinateConfig = $.subordinateConfig;
-        this.terraformLabels = $.terraformLabels;
         this.type = $.type;
         this.updateTime = $.updateTime;
     }
@@ -964,6 +964,29 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
          * @param skipGracePeriod If this flag is set, the Certificate Authority will be deleted as soon as
          * possible without a 30-day grace period where undeletion would have been
          * allowed. If you proceed, there will be no way to recover this CA.
@@ -1034,29 +1057,6 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder subordinateConfig(AuthoritySubordinateConfigArgs subordinateConfig) {
             return subordinateConfig(Output.of(subordinateConfig));
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
-            $.terraformLabels = terraformLabels;
-            return this;
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

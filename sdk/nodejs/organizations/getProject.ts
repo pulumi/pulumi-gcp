@@ -58,8 +58,8 @@ export interface GetProjectResult {
     readonly number: string;
     readonly orgId: string;
     readonly projectId?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly skipDelete: boolean;
-    readonly terraformLabels: {[key: string]: string};
 }
 /**
  * Use this data source to get project details.

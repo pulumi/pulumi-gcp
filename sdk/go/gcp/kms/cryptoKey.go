@@ -136,6 +136,9 @@ type CryptoKey struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The resource name for the CryptoKey.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The immutable purpose of this CryptoKey. See the
 	// [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
 	// for possible inputs.
@@ -149,9 +152,6 @@ type CryptoKey struct {
 	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
 	// You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
 	SkipInitialVersionCreation pulumi.BoolPtrOutput `pulumi:"skipInitialVersionCreation"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// A template describing settings for new crypto key versions.
 	// Structure is documented below.
 	VersionTemplate CryptoKeyVersionTemplateOutput `pulumi:"versionTemplate"`
@@ -210,6 +210,9 @@ type cryptoKeyState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name for the CryptoKey.
 	Name *string `pulumi:"name"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The immutable purpose of this CryptoKey. See the
 	// [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
 	// for possible inputs.
@@ -223,9 +226,6 @@ type cryptoKeyState struct {
 	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
 	// You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
 	SkipInitialVersionCreation *bool `pulumi:"skipInitialVersionCreation"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// A template describing settings for new crypto key versions.
 	// Structure is documented below.
 	VersionTemplate *CryptoKeyVersionTemplate `pulumi:"versionTemplate"`
@@ -252,6 +252,9 @@ type CryptoKeyState struct {
 	Labels pulumi.StringMapInput
 	// The resource name for the CryptoKey.
 	Name pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The immutable purpose of this CryptoKey. See the
 	// [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
 	// for possible inputs.
@@ -265,9 +268,6 @@ type CryptoKeyState struct {
 	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
 	// You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
 	SkipInitialVersionCreation pulumi.BoolPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// A template describing settings for new crypto key versions.
 	// Structure is documented below.
 	VersionTemplate CryptoKeyVersionTemplatePtrInput
@@ -499,6 +499,12 @@ func (o CryptoKeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o CryptoKeyOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CryptoKey) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The immutable purpose of this CryptoKey. See the
 // [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
 // for possible inputs.
@@ -519,12 +525,6 @@ func (o CryptoKeyOutput) RotationPeriod() pulumi.StringPtrOutput {
 // You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
 func (o CryptoKeyOutput) SkipInitialVersionCreation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.BoolPtrOutput { return v.SkipInitialVersionCreation }).(pulumi.BoolPtrOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o CryptoKeyOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *CryptoKey) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // A template describing settings for new crypto key versions.

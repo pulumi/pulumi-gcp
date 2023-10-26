@@ -140,7 +140,7 @@ type WorkflowTemplate struct {
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.MapOutput `pulumi:"terraformLabels"`
+	PulumiLabels pulumi.MapOutput `pulumi:"pulumiLabels"`
 	// Output only. The time template was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
@@ -210,7 +210,7 @@ type workflowTemplateState struct {
 	// The project for the resource
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels map[string]interface{} `pulumi:"terraformLabels"`
+	PulumiLabels map[string]interface{} `pulumi:"pulumiLabels"`
 	// Output only. The time template was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 	// Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
@@ -242,7 +242,7 @@ type WorkflowTemplateState struct {
 	// The project for the resource
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.MapInput
+	PulumiLabels pulumi.MapInput
 	// Output only. The time template was last updated.
 	UpdateTime pulumi.StringPtrInput
 	// Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
@@ -465,8 +465,8 @@ func (o WorkflowTemplateOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o WorkflowTemplateOutput) TerraformLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *WorkflowTemplate) pulumi.MapOutput { return v.TerraformLabels }).(pulumi.MapOutput)
+func (o WorkflowTemplateOutput) PulumiLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *WorkflowTemplate) pulumi.MapOutput { return v.PulumiLabels }).(pulumi.MapOutput)
 }
 
 // Output only. The time template was last updated.

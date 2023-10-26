@@ -369,14 +369,14 @@ type Function struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Describes the Service being deployed.
 	// Structure is documented below.
 	ServiceConfig FunctionServiceConfigPtrOutput `pulumi:"serviceConfig"`
 	// Describes the current state of the function.
 	State pulumi.StringOutput `pulumi:"state"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The last update timestamp of a Cloud Function.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Output only. The deployed url for the function.
@@ -449,14 +449,14 @@ type functionState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Describes the Service being deployed.
 	// Structure is documented below.
 	ServiceConfig *FunctionServiceConfig `pulumi:"serviceConfig"`
 	// Describes the current state of the function.
 	State *string `pulumi:"state"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The last update timestamp of a Cloud Function.
 	UpdateTime *string `pulumi:"updateTime"`
 	// Output only. The deployed url for the function.
@@ -497,14 +497,14 @@ type FunctionState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Describes the Service being deployed.
 	// Structure is documented below.
 	ServiceConfig FunctionServiceConfigPtrInput
 	// Describes the current state of the function.
 	State pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// The last update timestamp of a Cloud Function.
 	UpdateTime pulumi.StringPtrInput
 	// Output only. The deployed url for the function.
@@ -758,6 +758,12 @@ func (o FunctionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o FunctionOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Describes the Service being deployed.
 // Structure is documented below.
 func (o FunctionOutput) ServiceConfig() FunctionServiceConfigPtrOutput {
@@ -767,12 +773,6 @@ func (o FunctionOutput) ServiceConfig() FunctionServiceConfigPtrOutput {
 // Describes the current state of the function.
 func (o FunctionOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o FunctionOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Function) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The last update timestamp of a Cloud Function.

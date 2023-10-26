@@ -257,6 +257,12 @@ namespace Pulumi.Gcp.CloudFunctions
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Region of function. If it is not provided, the provider region is used.
         /// </summary>
         [Output("region")]
@@ -313,12 +319,6 @@ namespace Pulumi.Gcp.CloudFunctions
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource and default labels configured on the provider.
-        /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
@@ -759,6 +759,18 @@ namespace Pulumi.Gcp.CloudFunctions
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
+
         /// <summary>
         /// Region of function. If it is not provided, the provider region is used.
         /// </summary>
@@ -828,18 +840,6 @@ namespace Pulumi.Gcp.CloudFunctions
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
-
-        [Input("terraformLabels")]
-        private InputMap<string>? _terraformLabels;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource and default labels configured on the provider.
-        /// </summary>
-        public InputMap<string> TerraformLabels
-        {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
-            set => _terraformLabels = value;
-        }
 
         /// <summary>
         /// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.

@@ -144,9 +144,9 @@ namespace Pulumi.Gcp.Beyondcorp
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string? Region;
         public readonly string State;
-        public readonly ImmutableDictionary<string, string> TerraformLabels;
         public readonly string Type;
         public readonly string Uri;
 
@@ -168,11 +168,11 @@ namespace Pulumi.Gcp.Beyondcorp
 
             string? project,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             string? region,
 
             string state,
-
-            ImmutableDictionary<string, string> terraformLabels,
 
             string type,
 
@@ -186,9 +186,9 @@ namespace Pulumi.Gcp.Beyondcorp
             Labels = labels;
             Name = name;
             Project = project;
+            PulumiLabels = pulumiLabels;
             Region = region;
             State = state;
-            TerraformLabels = terraformLabels;
             Type = type;
             Uri = uri;
         }

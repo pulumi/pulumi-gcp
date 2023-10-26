@@ -726,6 +726,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
+    }
+    /**
      * Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
      * Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
      * will exhibit some lag behind the primary. Write requests must target &#39;host&#39;.
@@ -912,22 +928,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<List<InstanceServerCaCert>> serverCaCerts() {
         return this.serverCaCerts;
-    }
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    @Export(name="terraformLabels", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output<Map<String,String>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    public Output<Map<String,String>> terraformLabels() {
-        return this.terraformLabels;
     }
     /**
      * The service tier of the instance. Must be one of these values:

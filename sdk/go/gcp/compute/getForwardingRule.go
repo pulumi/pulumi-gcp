@@ -91,6 +91,7 @@ type LookupForwardingRuleResult struct {
 	Project                       *string                                         `pulumi:"project"`
 	PscConnectionId               string                                          `pulumi:"pscConnectionId"`
 	PscConnectionStatus           string                                          `pulumi:"pscConnectionStatus"`
+	PulumiLabels                  map[string]string                               `pulumi:"pulumiLabels"`
 	Region                        *string                                         `pulumi:"region"`
 	SelfLink                      string                                          `pulumi:"selfLink"`
 	ServiceDirectoryRegistrations []GetForwardingRuleServiceDirectoryRegistration `pulumi:"serviceDirectoryRegistrations"`
@@ -99,7 +100,6 @@ type LookupForwardingRuleResult struct {
 	SourceIpRanges                []string                                        `pulumi:"sourceIpRanges"`
 	Subnetwork                    string                                          `pulumi:"subnetwork"`
 	Target                        string                                          `pulumi:"target"`
-	TerraformLabels               map[string]string                               `pulumi:"terraformLabels"`
 }
 
 func LookupForwardingRuleOutput(ctx *pulumi.Context, args LookupForwardingRuleOutputArgs, opts ...pulumi.InvokeOption) LookupForwardingRuleResultOutput {
@@ -255,6 +255,10 @@ func (o LookupForwardingRuleResultOutput) PscConnectionStatus() pulumi.StringOut
 	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.PscConnectionStatus }).(pulumi.StringOutput)
 }
 
+func (o LookupForwardingRuleResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupForwardingRuleResultOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -287,10 +291,6 @@ func (o LookupForwardingRuleResultOutput) Subnetwork() pulumi.StringOutput {
 
 func (o LookupForwardingRuleResultOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.Target }).(pulumi.StringOutput)
-}
-
-func (o LookupForwardingRuleResultOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupForwardingRuleResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func init() {

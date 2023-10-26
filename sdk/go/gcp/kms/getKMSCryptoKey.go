@@ -77,11 +77,12 @@ type GetKMSCryptoKeyResult struct {
 	DestroyScheduledDuration string            `pulumi:"destroyScheduledDuration"`
 	EffectiveLabels          map[string]string `pulumi:"effectiveLabels"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string            `pulumi:"id"`
-	ImportOnly bool              `pulumi:"importOnly"`
-	KeyRing    string            `pulumi:"keyRing"`
-	Labels     map[string]string `pulumi:"labels"`
-	Name       string            `pulumi:"name"`
+	Id           string            `pulumi:"id"`
+	ImportOnly   bool              `pulumi:"importOnly"`
+	KeyRing      string            `pulumi:"keyRing"`
+	Labels       map[string]string `pulumi:"labels"`
+	Name         string            `pulumi:"name"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Defines the cryptographic capabilities of the key.
 	Purpose string `pulumi:"purpose"`
 	// Every time this period passes, generate a new CryptoKeyVersion and set it as
@@ -89,7 +90,6 @@ type GetKMSCryptoKeyResult struct {
 	// of a decimal number with up to 9 fractional digits, followed by the letter s (seconds).
 	RotationPeriod             string                           `pulumi:"rotationPeriod"`
 	SkipInitialVersionCreation bool                             `pulumi:"skipInitialVersionCreation"`
-	TerraformLabels            map[string]string                `pulumi:"terraformLabels"`
 	VersionTemplates           []GetKMSCryptoKeyVersionTemplate `pulumi:"versionTemplates"`
 }
 
@@ -169,6 +169,10 @@ func (o GetKMSCryptoKeyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKMSCryptoKeyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o GetKMSCryptoKeyResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetKMSCryptoKeyResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Defines the cryptographic capabilities of the key.
 func (o GetKMSCryptoKeyResultOutput) Purpose() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKMSCryptoKeyResult) string { return v.Purpose }).(pulumi.StringOutput)
@@ -183,10 +187,6 @@ func (o GetKMSCryptoKeyResultOutput) RotationPeriod() pulumi.StringOutput {
 
 func (o GetKMSCryptoKeyResultOutput) SkipInitialVersionCreation() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetKMSCryptoKeyResult) bool { return v.SkipInitialVersionCreation }).(pulumi.BoolOutput)
-}
-
-func (o GetKMSCryptoKeyResultOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetKMSCryptoKeyResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func (o GetKMSCryptoKeyResultOutput) VersionTemplates() GetKMSCryptoKeyVersionTemplateArrayOutput {

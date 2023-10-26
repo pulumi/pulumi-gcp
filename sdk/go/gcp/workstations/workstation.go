@@ -154,11 +154,11 @@ type Workstation struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Current state of the workstation.
-	State pulumi.StringOutput `pulumi:"state"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// Current state of the workstation.
+	State pulumi.StringOutput `pulumi:"state"`
 	// A system-assigned unique identified for this resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The ID of the parent workstation cluster.
@@ -244,11 +244,11 @@ type workstationState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Current state of the workstation.
-	State *string `pulumi:"state"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// Current state of the workstation.
+	State *string `pulumi:"state"`
 	// A system-assigned unique identified for this resource.
 	Uid *string `pulumi:"uid"`
 	// The ID of the parent workstation cluster.
@@ -293,11 +293,11 @@ type WorkstationState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Current state of the workstation.
-	State pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
+	PulumiLabels pulumi.StringMapInput
+	// Current state of the workstation.
+	State pulumi.StringPtrInput
 	// A system-assigned unique identified for this resource.
 	Uid pulumi.StringPtrInput
 	// The ID of the parent workstation cluster.
@@ -546,15 +546,15 @@ func (o WorkstationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o WorkstationOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Workstation) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Current state of the workstation.
 func (o WorkstationOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o WorkstationOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Workstation) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // A system-assigned unique identified for this resource.

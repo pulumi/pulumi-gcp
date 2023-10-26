@@ -167,14 +167,14 @@ type CertificateIssuanceConfig struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
 	// Must be a number between 1-99, inclusive.
 	// You must set the rotation window percentage in relation to the certificate lifetime so that certificate renewal occurs at least 7 days after
 	// the certificate has been issued and at least 7 days before it expires.
 	RotationWindowPercentage pulumi.IntOutput `pulumi:"rotationWindowPercentage"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The last update timestamp of a CertificateIssuanceConfig. Timestamp is in RFC3339 UTC "Zulu" format,
 	// accurate to nanoseconds with up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -255,14 +255,14 @@ type certificateIssuanceConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
 	// Must be a number between 1-99, inclusive.
 	// You must set the rotation window percentage in relation to the certificate lifetime so that certificate renewal occurs at least 7 days after
 	// the certificate has been issued and at least 7 days before it expires.
 	RotationWindowPercentage *int `pulumi:"rotationWindowPercentage"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The last update timestamp of a CertificateIssuanceConfig. Timestamp is in RFC3339 UTC "Zulu" format,
 	// accurate to nanoseconds with up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -302,14 +302,14 @@ type CertificateIssuanceConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
 	// Must be a number between 1-99, inclusive.
 	// You must set the rotation window percentage in relation to the certificate lifetime so that certificate renewal occurs at least 7 days after
 	// the certificate has been issued and at least 7 days before it expires.
 	RotationWindowPercentage pulumi.IntPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// The last update timestamp of a CertificateIssuanceConfig. Timestamp is in RFC3339 UTC "Zulu" format,
 	// accurate to nanoseconds with up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -562,18 +562,18 @@ func (o CertificateIssuanceConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateIssuanceConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o CertificateIssuanceConfigOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CertificateIssuanceConfig) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
 // Must be a number between 1-99, inclusive.
 // You must set the rotation window percentage in relation to the certificate lifetime so that certificate renewal occurs at least 7 days after
 // the certificate has been issued and at least 7 days before it expires.
 func (o CertificateIssuanceConfigOutput) RotationWindowPercentage() pulumi.IntOutput {
 	return o.ApplyT(func(v *CertificateIssuanceConfig) pulumi.IntOutput { return v.RotationWindowPercentage }).(pulumi.IntOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o CertificateIssuanceConfigOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *CertificateIssuanceConfig) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The last update timestamp of a CertificateIssuanceConfig. Timestamp is in RFC3339 UTC "Zulu" format,

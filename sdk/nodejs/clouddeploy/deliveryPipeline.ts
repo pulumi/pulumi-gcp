@@ -321,6 +321,10 @@ export class DeliveryPipeline extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: any}>;
+    /**
      * SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
      */
     public readonly serialPipeline!: pulumi.Output<outputs.clouddeploy.DeliveryPipelineSerialPipeline | undefined>;
@@ -328,10 +332,6 @@ export class DeliveryPipeline extends pulumi.CustomResource {
      * When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
      */
     public readonly suspended!: pulumi.Output<boolean | undefined>;
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: any}>;
     /**
      * Output only. Unique identifier of the `DeliveryPipeline`.
      */
@@ -365,9 +365,9 @@ export class DeliveryPipeline extends pulumi.CustomResource {
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["serialPipeline"] = state ? state.serialPipeline : undefined;
             resourceInputs["suspended"] = state ? state.suspended : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -388,7 +388,7 @@ export class DeliveryPipeline extends pulumi.CustomResource {
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
@@ -454,6 +454,10 @@ export interface DeliveryPipelineState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: any}>;
+    /**
      * SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
      */
     serialPipeline?: pulumi.Input<inputs.clouddeploy.DeliveryPipelineSerialPipeline>;
@@ -461,10 +465,6 @@ export interface DeliveryPipelineState {
      * When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
      */
     suspended?: pulumi.Input<boolean>;
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Output only. Unique identifier of the `DeliveryPipeline`.
      */

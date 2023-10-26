@@ -299,10 +299,10 @@ class _SecretState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  replication: Optional[pulumi.Input['SecretReplicationArgs']] = None,
                  rotation: Optional[pulumi.Input['SecretRotationArgs']] = None,
                  secret_id: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  topics: Optional[pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]]] = None,
                  ttl: Optional[pulumi.Input[str]] = None,
                  version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -343,14 +343,14 @@ class _SecretState:
                For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input['SecretReplicationArgs'] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
                after the Secret has been created.
                Structure is documented below.
         :param pulumi.Input['SecretRotationArgs'] rotation: The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
                Structure is documented below.
         :param pulumi.Input[str] secret_id: This must be unique within the project.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
                Structure is documented below.
         :param pulumi.Input[str] ttl: The TTL for the Secret.
@@ -373,10 +373,10 @@ class _SecretState:
             labels=labels,
             name=name,
             project=project,
+            pulumi_labels=pulumi_labels,
             replication=replication,
             rotation=rotation,
             secret_id=secret_id,
-            terraform_labels=terraform_labels,
             topics=topics,
             ttl=ttl,
             version_aliases=version_aliases,
@@ -392,10 +392,10 @@ class _SecretState:
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              replication: Optional[pulumi.Input['SecretReplicationArgs']] = None,
              rotation: Optional[pulumi.Input['SecretRotationArgs']] = None,
              secret_id: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              topics: Optional[pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]]] = None,
              ttl: Optional[pulumi.Input[str]] = None,
              version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -409,10 +409,10 @@ class _SecretState:
             effective_labels = kwargs['effectiveLabels']
         if expire_time is None and 'expireTime' in kwargs:
             expire_time = kwargs['expireTime']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if secret_id is None and 'secretId' in kwargs:
             secret_id = kwargs['secretId']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
         if version_aliases is None and 'versionAliases' in kwargs:
             version_aliases = kwargs['versionAliases']
 
@@ -432,14 +432,14 @@ class _SecretState:
             _setter("name", name)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if replication is not None:
             _setter("replication", replication)
         if rotation is not None:
             _setter("rotation", rotation)
         if secret_id is not None:
             _setter("secret_id", secret_id)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if topics is not None:
             _setter("topics", topics)
         if ttl is not None:
@@ -571,6 +571,19 @@ class _SecretState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter
     def replication(self) -> Optional[pulumi.Input['SecretReplicationArgs']]:
         """
@@ -608,19 +621,6 @@ class _SecretState:
     @secret_id.setter
     def secret_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_id", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -981,7 +981,7 @@ class Secret(pulumi.CustomResource):
             __props__.__dict__["effective_annotations"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
-            __props__.__dict__["terraform_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
         super(Secret, __self__).__init__(
             'gcp:secretmanager/secret:Secret',
             resource_name,
@@ -1000,10 +1000,10 @@ class Secret(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             replication: Optional[pulumi.Input[pulumi.InputType['SecretReplicationArgs']]] = None,
             rotation: Optional[pulumi.Input[pulumi.InputType['SecretRotationArgs']]] = None,
             secret_id: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             topics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretTopicArgs']]]]] = None,
             ttl: Optional[pulumi.Input[str]] = None,
             version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Secret':
@@ -1049,14 +1049,14 @@ class Secret(pulumi.CustomResource):
                For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['SecretReplicationArgs']] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
                after the Secret has been created.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['SecretRotationArgs']] rotation: The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
                Structure is documented below.
         :param pulumi.Input[str] secret_id: This must be unique within the project.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretTopicArgs']]]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
                Structure is documented below.
         :param pulumi.Input[str] ttl: The TTL for the Secret.
@@ -1081,10 +1081,10 @@ class Secret(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["replication"] = replication
         __props__.__dict__["rotation"] = rotation
         __props__.__dict__["secret_id"] = secret_id
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["topics"] = topics
         __props__.__dict__["ttl"] = ttl
         __props__.__dict__["version_aliases"] = version_aliases
@@ -1182,6 +1182,15 @@ class Secret(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def replication(self) -> pulumi.Output['outputs.SecretReplication']:
         """
@@ -1207,15 +1216,6 @@ class Secret(pulumi.CustomResource):
         This must be unique within the project.
         """
         return pulumi.get(self, "secret_id")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

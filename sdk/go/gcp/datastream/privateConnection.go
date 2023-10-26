@@ -107,11 +107,11 @@ type PrivateConnection struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// State of the PrivateConnection.
-	State pulumi.StringOutput `pulumi:"state"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// State of the PrivateConnection.
+	State pulumi.StringOutput `pulumi:"state"`
 	// The VPC Peering configuration is used to create VPC peering
 	// between Datastream and the consumer's VPC.
 	// Structure is documented below.
@@ -181,11 +181,11 @@ type privateConnectionState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// State of the PrivateConnection.
-	State *string `pulumi:"state"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// State of the PrivateConnection.
+	State *string `pulumi:"state"`
 	// The VPC Peering configuration is used to create VPC peering
 	// between Datastream and the consumer's VPC.
 	// Structure is documented below.
@@ -214,11 +214,11 @@ type PrivateConnectionState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// State of the PrivateConnection.
-	State pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
+	PulumiLabels pulumi.StringMapInput
+	// State of the PrivateConnection.
+	State pulumi.StringPtrInput
 	// The VPC Peering configuration is used to create VPC peering
 	// between Datastream and the consumer's VPC.
 	// Structure is documented below.
@@ -426,15 +426,15 @@ func (o PrivateConnectionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateConnection) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o PrivateConnectionOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PrivateConnection) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // State of the PrivateConnection.
 func (o PrivateConnectionOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateConnection) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o PrivateConnectionOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *PrivateConnection) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The VPC Peering configuration is used to create VPC peering

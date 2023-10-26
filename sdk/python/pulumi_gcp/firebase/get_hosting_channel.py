@@ -21,7 +21,7 @@ class GetHostingChannelResult:
     """
     A collection of values returned by getHostingChannel.
     """
-    def __init__(__self__, channel_id=None, effective_labels=None, expire_time=None, id=None, labels=None, name=None, retained_release_count=None, site_id=None, terraform_labels=None, ttl=None):
+    def __init__(__self__, channel_id=None, effective_labels=None, expire_time=None, id=None, labels=None, name=None, pulumi_labels=None, retained_release_count=None, site_id=None, ttl=None):
         if channel_id and not isinstance(channel_id, str):
             raise TypeError("Expected argument 'channel_id' to be a str")
         pulumi.set(__self__, "channel_id", channel_id)
@@ -40,15 +40,15 @@ class GetHostingChannelResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if retained_release_count and not isinstance(retained_release_count, int):
             raise TypeError("Expected argument 'retained_release_count' to be a int")
         pulumi.set(__self__, "retained_release_count", retained_release_count)
         if site_id and not isinstance(site_id, str):
             raise TypeError("Expected argument 'site_id' to be a str")
         pulumi.set(__self__, "site_id", site_id)
-        if terraform_labels and not isinstance(terraform_labels, dict):
-            raise TypeError("Expected argument 'terraform_labels' to be a dict")
-        pulumi.set(__self__, "terraform_labels", terraform_labels)
         if ttl and not isinstance(ttl, str):
             raise TypeError("Expected argument 'ttl' to be a str")
         pulumi.set(__self__, "ttl", ttl)
@@ -90,6 +90,11 @@ class GetHostingChannelResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="retainedReleaseCount")
     def retained_release_count(self) -> int:
         return pulumi.get(self, "retained_release_count")
@@ -98,11 +103,6 @@ class GetHostingChannelResult:
     @pulumi.getter(name="siteId")
     def site_id(self) -> str:
         return pulumi.get(self, "site_id")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Mapping[str, str]:
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter
@@ -122,9 +122,9 @@ class AwaitableGetHostingChannelResult(GetHostingChannelResult):
             id=self.id,
             labels=self.labels,
             name=self.name,
+            pulumi_labels=self.pulumi_labels,
             retained_release_count=self.retained_release_count,
             site_id=self.site_id,
-            terraform_labels=self.terraform_labels,
             ttl=self.ttl)
 
 
@@ -150,9 +150,9 @@ def get_hosting_channel(channel_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         retained_release_count=pulumi.get(__ret__, 'retained_release_count'),
         site_id=pulumi.get(__ret__, 'site_id'),
-        terraform_labels=pulumi.get(__ret__, 'terraform_labels'),
         ttl=pulumi.get(__ret__, 'ttl'))
 
 

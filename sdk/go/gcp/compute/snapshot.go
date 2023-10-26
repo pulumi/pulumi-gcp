@@ -197,6 +197,9 @@ type Snapshot struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Encrypts the snapshot using a customer-supplied encryption key.
@@ -228,9 +231,6 @@ type Snapshot struct {
 	StorageBytes pulumi.IntOutput `pulumi:"storageBytes"`
 	// Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
 	StorageLocations pulumi.StringArrayOutput `pulumi:"storageLocations"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// A reference to the zone where the disk is hosted.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
@@ -307,6 +307,9 @@ type snapshotState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// Encrypts the snapshot using a customer-supplied encryption key.
@@ -338,9 +341,6 @@ type snapshotState struct {
 	StorageBytes *int `pulumi:"storageBytes"`
 	// Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
 	StorageLocations []string `pulumi:"storageLocations"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// A reference to the zone where the disk is hosted.
 	Zone *string `pulumi:"zone"`
 }
@@ -385,6 +385,9 @@ type SnapshotState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// Encrypts the snapshot using a customer-supplied encryption key.
@@ -416,9 +419,6 @@ type SnapshotState struct {
 	StorageBytes pulumi.IntPtrInput
 	// Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
 	StorageLocations pulumi.StringArrayInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// A reference to the zone where the disk is hosted.
 	Zone pulumi.StringPtrInput
 }
@@ -712,6 +712,12 @@ func (o SnapshotOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o SnapshotOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The URI of the created resource.
 func (o SnapshotOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
@@ -762,12 +768,6 @@ func (o SnapshotOutput) StorageBytes() pulumi.IntOutput {
 // Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
 func (o SnapshotOutput) StorageLocations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringArrayOutput { return v.StorageLocations }).(pulumi.StringArrayOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o SnapshotOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Snapshot) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // A reference to the zone where the disk is hosted.

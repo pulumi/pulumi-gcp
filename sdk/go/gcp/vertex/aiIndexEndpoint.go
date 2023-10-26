@@ -180,11 +180,11 @@ type AiIndexEndpoint struct {
 	PublicEndpointDomainName pulumi.StringOutput `pulumi:"publicEndpointDomainName"`
 	// If true, the deployed index will be accessible through public endpoint.
 	PublicEndpointEnabled pulumi.BoolPtrOutput `pulumi:"publicEndpointEnabled"`
-	// The region of the index endpoint. eg us-central1
-	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// The region of the index endpoint. eg us-central1
+	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -253,11 +253,11 @@ type aiIndexEndpointState struct {
 	PublicEndpointDomainName *string `pulumi:"publicEndpointDomainName"`
 	// If true, the deployed index will be accessible through public endpoint.
 	PublicEndpointEnabled *bool `pulumi:"publicEndpointEnabled"`
-	// The region of the index endpoint. eg us-central1
-	Region *string `pulumi:"region"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// The region of the index endpoint. eg us-central1
+	Region *string `pulumi:"region"`
 	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -294,11 +294,11 @@ type AiIndexEndpointState struct {
 	PublicEndpointDomainName pulumi.StringPtrInput
 	// If true, the deployed index will be accessible through public endpoint.
 	PublicEndpointEnabled pulumi.BoolPtrInput
-	// The region of the index endpoint. eg us-central1
-	Region pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
+	PulumiLabels pulumi.StringMapInput
+	// The region of the index endpoint. eg us-central1
+	Region pulumi.StringPtrInput
 	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -533,15 +533,15 @@ func (o AiIndexEndpointOutput) PublicEndpointEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AiIndexEndpoint) pulumi.BoolPtrOutput { return v.PublicEndpointEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o AiIndexEndpointOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiIndexEndpoint) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The region of the index endpoint. eg us-central1
 func (o AiIndexEndpointOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiIndexEndpoint) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o AiIndexEndpointOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *AiIndexEndpoint) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.

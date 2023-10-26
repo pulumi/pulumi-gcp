@@ -136,14 +136,14 @@ type ClientTlsPolicy struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
 	// Structure is documented below.
 	ServerValidationCas ClientTlsPolicyServerValidationCaArrayOutput `pulumi:"serverValidationCas"`
 	// Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
 	Sni pulumi.StringPtrOutput `pulumi:"sni"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Time the ClientTlsPolicy was updated in UTC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -202,14 +202,14 @@ type clientTlsPolicyState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
 	// Structure is documented below.
 	ServerValidationCas []ClientTlsPolicyServerValidationCa `pulumi:"serverValidationCas"`
 	// Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
 	Sni *string `pulumi:"sni"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Time the ClientTlsPolicy was updated in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -239,14 +239,14 @@ type ClientTlsPolicyState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
 	// Structure is documented below.
 	ServerValidationCas ClientTlsPolicyServerValidationCaArrayInput
 	// Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
 	Sni pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// Time the ClientTlsPolicy was updated in UTC.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -469,6 +469,12 @@ func (o ClientTlsPolicyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientTlsPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ClientTlsPolicyOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClientTlsPolicy) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
 // Structure is documented below.
 func (o ClientTlsPolicyOutput) ServerValidationCas() ClientTlsPolicyServerValidationCaArrayOutput {
@@ -478,12 +484,6 @@ func (o ClientTlsPolicyOutput) ServerValidationCas() ClientTlsPolicyServerValida
 // Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
 func (o ClientTlsPolicyOutput) Sni() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientTlsPolicy) pulumi.StringPtrOutput { return v.Sni }).(pulumi.StringPtrOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o ClientTlsPolicyOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ClientTlsPolicy) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Time the ClientTlsPolicy was updated in UTC.

@@ -273,8 +273,8 @@ class _CertificateState:
                  pem_csr: Optional[pulumi.Input[str]] = None,
                  pool: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  revocation_details: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateRevocationDetailArgs']]]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Certificate resources.
@@ -315,11 +315,11 @@ class _CertificateState:
         :param pulumi.Input[str] pool: The name of the CaPool this Certificate belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['CertificateRevocationDetailArgs']]] revocation_details: Output only. Details regarding the revocation of this Certificate. This Certificate is
                considered revoked if and only if this field is present.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Output only. The time at which this CertificateAuthority was updated.
                This is in RFC3339 text format.
         """
@@ -341,8 +341,8 @@ class _CertificateState:
             pem_csr=pem_csr,
             pool=pool,
             project=project,
+            pulumi_labels=pulumi_labels,
             revocation_details=revocation_details,
-            terraform_labels=terraform_labels,
             update_time=update_time,
         )
     @staticmethod
@@ -364,8 +364,8 @@ class _CertificateState:
              pem_csr: Optional[pulumi.Input[str]] = None,
              pool: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              revocation_details: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateRevocationDetailArgs']]]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -387,10 +387,10 @@ class _CertificateState:
             pem_certificate_chains = kwargs['pemCertificateChains']
         if pem_csr is None and 'pemCsr' in kwargs:
             pem_csr = kwargs['pemCsr']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if revocation_details is None and 'revocationDetails' in kwargs:
             revocation_details = kwargs['revocationDetails']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
         if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
 
@@ -426,10 +426,10 @@ class _CertificateState:
             _setter("pool", pool)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if revocation_details is not None:
             _setter("revocation_details", revocation_details)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if update_time is not None:
             _setter("update_time", update_time)
 
@@ -647,6 +647,19 @@ class _CertificateState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="revocationDetails")
     def revocation_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateRevocationDetailArgs']]]]:
         """
@@ -659,19 +672,6 @@ class _CertificateState:
     @revocation_details.setter
     def revocation_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateRevocationDetailArgs']]]]):
         pulumi.set(self, "revocation_details", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="updateTime")
@@ -1365,8 +1365,8 @@ class Certificate(pulumi.CustomResource):
             __props__.__dict__["issuer_certificate_authority"] = None
             __props__.__dict__["pem_certificate"] = None
             __props__.__dict__["pem_certificate_chains"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["revocation_details"] = None
-            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["update_time"] = None
         super(Certificate, __self__).__init__(
             'gcp:certificateauthority/certificate:Certificate',
@@ -1394,8 +1394,8 @@ class Certificate(pulumi.CustomResource):
             pem_csr: Optional[pulumi.Input[str]] = None,
             pool: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             revocation_details: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateRevocationDetailArgs']]]]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Certificate':
         """
         Get an existing Certificate resource's state with the given name, id, and optional extra
@@ -1441,11 +1441,11 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[str] pool: The name of the CaPool this Certificate belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateRevocationDetailArgs']]]] revocation_details: Output only. Details regarding the revocation of this Certificate. This Certificate is
                considered revoked if and only if this field is present.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Output only. The time at which this CertificateAuthority was updated.
                This is in RFC3339 text format.
         """
@@ -1469,8 +1469,8 @@ class Certificate(pulumi.CustomResource):
         __props__.__dict__["pem_csr"] = pem_csr
         __props__.__dict__["pool"] = pool
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["revocation_details"] = revocation_details
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["update_time"] = update_time
         return Certificate(resource_name, opts=opts, __props__=__props__)
 
@@ -1624,6 +1624,15 @@ class Certificate(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="revocationDetails")
     def revocation_details(self) -> pulumi.Output[Sequence['outputs.CertificateRevocationDetail']]:
         """
@@ -1632,15 +1641,6 @@ class Certificate(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "revocation_details")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="updateTime")

@@ -244,7 +244,7 @@ type EnterpriseKey struct {
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.MapOutput `pulumi:"terraformLabels"`
+	PulumiLabels pulumi.MapOutput `pulumi:"pulumiLabels"`
 	// Options for user acceptance testing.
 	TestingOptions EnterpriseKeyTestingOptionsPtrOutput `pulumi:"testingOptions"`
 	// Settings for keys that can be used by websites.
@@ -307,7 +307,7 @@ type enterpriseKeyState struct {
 	// The project for the resource
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels map[string]interface{} `pulumi:"terraformLabels"`
+	PulumiLabels map[string]interface{} `pulumi:"pulumiLabels"`
 	// Options for user acceptance testing.
 	TestingOptions *EnterpriseKeyTestingOptions `pulumi:"testingOptions"`
 	// Settings for keys that can be used by websites.
@@ -338,7 +338,7 @@ type EnterpriseKeyState struct {
 	// The project for the resource
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.MapInput
+	PulumiLabels pulumi.MapInput
 	// Options for user acceptance testing.
 	TestingOptions EnterpriseKeyTestingOptionsPtrInput
 	// Settings for keys that can be used by websites.
@@ -552,8 +552,8 @@ func (o EnterpriseKeyOutput) Project() pulumi.StringOutput {
 }
 
 // The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o EnterpriseKeyOutput) TerraformLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *EnterpriseKey) pulumi.MapOutput { return v.TerraformLabels }).(pulumi.MapOutput)
+func (o EnterpriseKeyOutput) PulumiLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *EnterpriseKey) pulumi.MapOutput { return v.PulumiLabels }).(pulumi.MapOutput)
 }
 
 // Options for user acceptance testing.

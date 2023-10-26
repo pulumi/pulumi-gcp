@@ -205,6 +205,10 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Specifies the reservations that this instance can consume from.
      */
     public readonly reservationAffinity!: pulumi.Output<outputs.compute.InstanceFromTemplateReservationAffinity>;
@@ -248,10 +252,6 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
      * The unique fingerprint of the tags.
      */
     public /*out*/ readonly tagsFingerprint!: pulumi.Output<string>;
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The zone that the machine should be created in. If not
      * set, the provider zone is used.
@@ -303,6 +303,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             resourceInputs["networkPerformanceConfig"] = state ? state.networkPerformanceConfig : undefined;
             resourceInputs["params"] = state ? state.params : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["reservationAffinity"] = state ? state.reservationAffinity : undefined;
             resourceInputs["resourcePolicies"] = state ? state.resourcePolicies : undefined;
             resourceInputs["scheduling"] = state ? state.scheduling : undefined;
@@ -313,7 +314,6 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             resourceInputs["sourceInstanceTemplate"] = state ? state.sourceInstanceTemplate : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["tagsFingerprint"] = state ? state.tagsFingerprint : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as InstanceFromTemplateArgs | undefined;
@@ -357,9 +357,9 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["metadataFingerprint"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["tagsFingerprint"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InstanceFromTemplate.__pulumiType, name, resourceInputs, opts);
@@ -495,6 +495,10 @@ export interface InstanceFromTemplateState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Specifies the reservations that this instance can consume from.
      */
     reservationAffinity?: pulumi.Input<inputs.compute.InstanceFromTemplateReservationAffinity>;
@@ -538,10 +542,6 @@ export interface InstanceFromTemplateState {
      * The unique fingerprint of the tags.
      */
     tagsFingerprint?: pulumi.Input<string>;
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The zone that the machine should be created in. If not
      * set, the provider zone is used.

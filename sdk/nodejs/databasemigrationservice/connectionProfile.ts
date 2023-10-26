@@ -265,14 +265,14 @@ export class ConnectionProfile extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The current connection profile state.
-     */
-    public /*out*/ readonly state!: pulumi.Output<string>;
-    /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The current connection profile state.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a ConnectionProfile resource with the given unique name, arguments, and options.
@@ -301,8 +301,8 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["postgresql"] = state ? state.postgresql : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as ConnectionProfileArgs | undefined;
             if ((!args || args.connectionProfileId === undefined) && !opts.urn) {
@@ -322,8 +322,8 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["errors"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConnectionProfile.__pulumiType, name, resourceInputs, opts);
@@ -404,14 +404,14 @@ export interface ConnectionProfileState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The current connection profile state.
-     */
-    state?: pulumi.Input<string>;
-    /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The current connection profile state.
+     */
+    state?: pulumi.Input<string>;
 }
 
 /**

@@ -54,8 +54,8 @@ export interface GetEnvironmentResult {
     readonly labels: {[key: string]: string};
     readonly name: string;
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly region?: string;
-    readonly terraformLabels: {[key: string]: string};
 }
 /**
  * Provides access to Cloud Composer environment configuration in a region for a given project.

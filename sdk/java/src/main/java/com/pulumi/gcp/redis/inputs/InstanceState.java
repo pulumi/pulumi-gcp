@@ -425,6 +425,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
      * Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
      * will exhibit some lag behind the primary. Write requests must target &#39;host&#39;.
@@ -623,23 +640,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    @Import(name="terraformLabels")
-    private @Nullable Output<Map<String,String>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    public Optional<Output<Map<String,String>>> terraformLabels() {
-        return Optional.ofNullable(this.terraformLabels);
-    }
-
-    /**
      * The service tier of the instance. Must be one of these values:
      * - BASIC: standalone instance
      * - STANDARD_HA: highly available primary/replica instances
@@ -708,6 +708,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.persistenceIamIdentity = $.persistenceIamIdentity;
         this.port = $.port;
         this.project = $.project;
+        this.pulumiLabels = $.pulumiLabels;
         this.readEndpoint = $.readEndpoint;
         this.readEndpointPort = $.readEndpointPort;
         this.readReplicasMode = $.readReplicasMode;
@@ -718,7 +719,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.reservedIpRange = $.reservedIpRange;
         this.secondaryIpRange = $.secondaryIpRange;
         this.serverCaCerts = $.serverCaCerts;
-        this.terraformLabels = $.terraformLabels;
         this.tier = $.tier;
         this.transitEncryptionMode = $.transitEncryptionMode;
     }
@@ -1296,6 +1296,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
          * @param readEndpoint Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
          * Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
          * will exhibit some lag behind the primary. Write requests must target &#39;host&#39;.
@@ -1562,29 +1585,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder serverCaCerts(InstanceServerCaCertArgs... serverCaCerts) {
             return serverCaCerts(List.of(serverCaCerts));
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
-            $.terraformLabels = terraformLabels;
-            return this;
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

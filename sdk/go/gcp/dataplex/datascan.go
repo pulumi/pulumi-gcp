@@ -368,11 +368,11 @@ type Datascan struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Current state of the DataScan.
-	State pulumi.StringOutput `pulumi:"state"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// Current state of the DataScan.
+	State pulumi.StringOutput `pulumi:"state"`
 	// The type of DataScan.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// System generated globally unique ID for the scan. This ID will be different if the scan is deleted and re-created with the same name.
@@ -466,11 +466,11 @@ type datascanState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Current state of the DataScan.
-	State *string `pulumi:"state"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// Current state of the DataScan.
+	State *string `pulumi:"state"`
 	// The type of DataScan.
 	Type *string `pulumi:"type"`
 	// System generated globally unique ID for the scan. This ID will be different if the scan is deleted and re-created with the same name.
@@ -523,11 +523,11 @@ type DatascanState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Current state of the DataScan.
-	State pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
+	PulumiLabels pulumi.StringMapInput
+	// Current state of the DataScan.
+	State pulumi.StringPtrInput
 	// The type of DataScan.
 	Type pulumi.StringPtrInput
 	// System generated globally unique ID for the scan. This ID will be different if the scan is deleted and re-created with the same name.
@@ -801,15 +801,15 @@ func (o DatascanOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Datascan) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o DatascanOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Datascan) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Current state of the DataScan.
 func (o DatascanOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Datascan) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o DatascanOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Datascan) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The type of DataScan.

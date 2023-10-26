@@ -53,10 +53,10 @@ type Environment struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The location or Compute Engine region for the environment.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewEnvironment registers a new resource with the given unique name, arguments, and options.
@@ -106,10 +106,10 @@ type environmentState struct {
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The location or Compute Engine region for the environment.
 	Region *string `pulumi:"region"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type EnvironmentState struct {
@@ -130,10 +130,10 @@ type EnvironmentState struct {
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The location or Compute Engine region for the environment.
 	Region pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 }
 
 func (EnvironmentState) ElementType() reflect.Type {
@@ -322,14 +322,14 @@ func (o EnvironmentOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o EnvironmentOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The location or Compute Engine region for the environment.
 func (o EnvironmentOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o EnvironmentOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Environment) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type EnvironmentArrayOutput struct{ *pulumi.OutputState }

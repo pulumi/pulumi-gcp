@@ -102,6 +102,13 @@ namespace Pulumi.Gcp.GkeHub
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// A Workspace resource name in the format
         /// `projects/*/locations/*/scopes/*`.
         /// </summary>
@@ -114,13 +121,6 @@ namespace Pulumi.Gcp.GkeHub
         /// </summary>
         [Output("states")]
         public Output<ImmutableArray<Outputs.MembershipBindingState>> States { get; private set; } = null!;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// Google-generated UUID for this resource.
@@ -312,6 +312,19 @@ namespace Pulumi.Gcp.GkeHub
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
+
         /// <summary>
         /// A Workspace resource name in the format
         /// `projects/*/locations/*/scopes/*`.
@@ -330,19 +343,6 @@ namespace Pulumi.Gcp.GkeHub
         {
             get => _states ?? (_states = new InputList<Inputs.MembershipBindingStateGetArgs>());
             set => _states = value;
-        }
-
-        [Input("terraformLabels")]
-        private InputMap<string>? _terraformLabels;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        public InputMap<string> TerraformLabels
-        {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
-            set => _terraformLabels = value;
         }
 
         /// <summary>

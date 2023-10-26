@@ -418,10 +418,10 @@ class _AuthorityState:
                  pem_ca_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  pool: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  skip_grace_period: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  subordinate_config: Optional[pulumi.Input['AuthoritySubordinateConfigArgs']] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -471,6 +471,8 @@ class _AuthorityState:
         :param pulumi.Input[str] pool: The name of the CaPool this Certificate Authority belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[bool] skip_grace_period: If this flag is set, the Certificate Authority will be deleted as soon as
                possible without a 30-day grace period where undeletion would have been
                allowed. If you proceed, there will be no way to recover this CA.
@@ -479,8 +481,6 @@ class _AuthorityState:
         :param pulumi.Input['AuthoritySubordinateConfigArgs'] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set
                with the subordinate configuration, which describes its issuers.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] type: The Type of this CertificateAuthority.
                > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
                be activated before they can issue certificates.
@@ -510,10 +510,10 @@ class _AuthorityState:
             pem_ca_certificates=pem_ca_certificates,
             pool=pool,
             project=project,
+            pulumi_labels=pulumi_labels,
             skip_grace_period=skip_grace_period,
             state=state,
             subordinate_config=subordinate_config,
-            terraform_labels=terraform_labels,
             type=type,
             update_time=update_time,
         )
@@ -538,10 +538,10 @@ class _AuthorityState:
              pem_ca_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              pool: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              skip_grace_period: Optional[pulumi.Input[bool]] = None,
              state: Optional[pulumi.Input[str]] = None,
              subordinate_config: Optional[pulumi.Input['AuthoritySubordinateConfigArgs']] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
@@ -568,12 +568,12 @@ class _AuthorityState:
             pem_ca_certificate = kwargs['pemCaCertificate']
         if pem_ca_certificates is None and 'pemCaCertificates' in kwargs:
             pem_ca_certificates = kwargs['pemCaCertificates']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if skip_grace_period is None and 'skipGracePeriod' in kwargs:
             skip_grace_period = kwargs['skipGracePeriod']
         if subordinate_config is None and 'subordinateConfig' in kwargs:
             subordinate_config = kwargs['subordinateConfig']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
         if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
 
@@ -613,14 +613,14 @@ class _AuthorityState:
             _setter("pool", pool)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if skip_grace_period is not None:
             _setter("skip_grace_period", skip_grace_period)
         if state is not None:
             _setter("state", state)
         if subordinate_config is not None:
             _setter("subordinate_config", subordinate_config)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if type is not None:
             _setter("type", type)
         if update_time is not None:
@@ -870,6 +870,19 @@ class _AuthorityState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="skipGracePeriod")
     def skip_grace_period(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -909,19 +922,6 @@ class _AuthorityState:
     @subordinate_config.setter
     def subordinate_config(self, value: Optional[pulumi.Input['AuthoritySubordinateConfigArgs']]):
         pulumi.set(self, "subordinate_config", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -1581,8 +1581,8 @@ class Authority(pulumi.CustomResource):
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["pem_ca_certificates"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["state"] = None
-            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["update_time"] = None
         super(Authority, __self__).__init__(
             'gcp:certificateauthority/authority:Authority',
@@ -1612,10 +1612,10 @@ class Authority(pulumi.CustomResource):
             pem_ca_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             pool: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             skip_grace_period: Optional[pulumi.Input[bool]] = None,
             state: Optional[pulumi.Input[str]] = None,
             subordinate_config: Optional[pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArgs']]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Authority':
         """
@@ -1670,6 +1670,8 @@ class Authority(pulumi.CustomResource):
         :param pulumi.Input[str] pool: The name of the CaPool this Certificate Authority belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[bool] skip_grace_period: If this flag is set, the Certificate Authority will be deleted as soon as
                possible without a 30-day grace period where undeletion would have been
                allowed. If you proceed, there will be no way to recover this CA.
@@ -1678,8 +1680,6 @@ class Authority(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArgs']] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set
                with the subordinate configuration, which describes its issuers.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] type: The Type of this CertificateAuthority.
                > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
                be activated before they can issue certificates.
@@ -1711,10 +1711,10 @@ class Authority(pulumi.CustomResource):
         __props__.__dict__["pem_ca_certificates"] = pem_ca_certificates
         __props__.__dict__["pool"] = pool
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["skip_grace_period"] = skip_grace_period
         __props__.__dict__["state"] = state
         __props__.__dict__["subordinate_config"] = subordinate_config
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["type"] = type
         __props__.__dict__["update_time"] = update_time
         return Authority(resource_name, opts=opts, __props__=__props__)
@@ -1891,6 +1891,15 @@ class Authority(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="skipGracePeriod")
     def skip_grace_period(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -1918,15 +1927,6 @@ class Authority(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "subordinate_config")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

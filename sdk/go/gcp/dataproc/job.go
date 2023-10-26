@@ -127,6 +127,8 @@ type Job struct {
 	// The project in which the `cluster` can be found and jobs
 	// subsequently run against. If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The config of pySpark job.
 	PysparkConfig JobPysparkConfigPtrOutput `pulumi:"pysparkConfig"`
 	// The reference of the job
@@ -142,8 +144,6 @@ type Job struct {
 	SparksqlConfig JobSparksqlConfigPtrOutput `pulumi:"sparksqlConfig"`
 	// The status of the job.
 	Statuses JobStatusArrayOutput `pulumi:"statuses"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewJob registers a new resource with the given unique name, arguments, and options.
@@ -207,6 +207,8 @@ type jobState struct {
 	// The project in which the `cluster` can be found and jobs
 	// subsequently run against. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The config of pySpark job.
 	PysparkConfig *JobPysparkConfig `pulumi:"pysparkConfig"`
 	// The reference of the job
@@ -222,8 +224,6 @@ type jobState struct {
 	SparksqlConfig *JobSparksqlConfig `pulumi:"sparksqlConfig"`
 	// The status of the job.
 	Statuses []JobStatus `pulumi:"statuses"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type JobState struct {
@@ -255,6 +255,8 @@ type JobState struct {
 	// The project in which the `cluster` can be found and jobs
 	// subsequently run against. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The config of pySpark job.
 	PysparkConfig JobPysparkConfigPtrInput
 	// The reference of the job
@@ -270,8 +272,6 @@ type JobState struct {
 	SparksqlConfig JobSparksqlConfigPtrInput
 	// The status of the job.
 	Statuses JobStatusArrayInput
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 }
 
 func (JobState) ElementType() reflect.Type {
@@ -525,6 +525,11 @@ func (o JobOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o JobOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The config of pySpark job.
 func (o JobOutput) PysparkConfig() JobPysparkConfigPtrOutput {
 	return o.ApplyT(func(v *Job) JobPysparkConfigPtrOutput { return v.PysparkConfig }).(JobPysparkConfigPtrOutput)
@@ -559,11 +564,6 @@ func (o JobOutput) SparksqlConfig() JobSparksqlConfigPtrOutput {
 // The status of the job.
 func (o JobOutput) Statuses() JobStatusArrayOutput {
 	return o.ApplyT(func(v *Job) JobStatusArrayOutput { return v.Statuses }).(JobStatusArrayOutput)
-}
-
-// The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o JobOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type JobArrayOutput struct{ *pulumi.OutputState }

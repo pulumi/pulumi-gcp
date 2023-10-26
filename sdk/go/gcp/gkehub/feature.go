@@ -279,6 +279,9 @@ type Feature struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// State of the Feature resource itself.
 	// Structure is documented below.
 	ResourceStates FeatureResourceStateArrayOutput `pulumi:"resourceStates"`
@@ -289,9 +292,6 @@ type Feature struct {
 	// Output only. The "running state" of the Feature in this Hub.
 	// Structure is documented below.
 	States FeatureStateTypeArrayOutput `pulumi:"states"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// (Output)
 	// The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -350,6 +350,9 @@ type featureState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// State of the Feature resource itself.
 	// Structure is documented below.
 	ResourceStates []FeatureResourceState `pulumi:"resourceStates"`
@@ -360,9 +363,6 @@ type featureState struct {
 	// Output only. The "running state" of the Feature in this Hub.
 	// Structure is documented below.
 	States []FeatureStateType `pulumi:"states"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// (Output)
 	// The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 	UpdateTime *string `pulumi:"updateTime"`
@@ -389,6 +389,9 @@ type FeatureState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// State of the Feature resource itself.
 	// Structure is documented below.
 	ResourceStates FeatureResourceStateArrayInput
@@ -399,9 +402,6 @@ type FeatureState struct {
 	// Output only. The "running state" of the Feature in this Hub.
 	// Structure is documented below.
 	States FeatureStateTypeArrayInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// (Output)
 	// The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 	UpdateTime pulumi.StringPtrInput
@@ -602,6 +602,12 @@ func (o FeatureOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Feature) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o FeatureOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Feature) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // State of the Feature resource itself.
 // Structure is documented below.
 func (o FeatureOutput) ResourceStates() FeatureResourceStateArrayOutput {
@@ -619,12 +625,6 @@ func (o FeatureOutput) Spec() FeatureSpecPtrOutput {
 // Structure is documented below.
 func (o FeatureOutput) States() FeatureStateTypeArrayOutput {
 	return o.ApplyT(func(v *Feature) FeatureStateTypeArrayOutput { return v.States }).(FeatureStateTypeArrayOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o FeatureOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Feature) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // (Output)

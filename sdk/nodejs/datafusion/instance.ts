@@ -271,6 +271,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The region of the Data Fusion instance.
      */
     public readonly region!: pulumi.Output<string>;
@@ -297,11 +302,6 @@ export class Instance extends pulumi.CustomResource {
      * The name of the tenant project.
      */
     public /*out*/ readonly tenantProjectId!: pulumi.Output<string>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Represents the type of Data Fusion instance. Each type is configured with
      * the default settings for processing and memory.
@@ -365,13 +365,13 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["p4ServiceAccount"] = state ? state.p4ServiceAccount : undefined;
             resourceInputs["privateInstance"] = state ? state.privateInstance : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
             resourceInputs["serviceEndpoint"] = state ? state.serviceEndpoint : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["stateMessage"] = state ? state.stateMessage : undefined;
             resourceInputs["tenantProjectId"] = state ? state.tenantProjectId : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
@@ -405,12 +405,12 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["gcsBucket"] = undefined /*out*/;
             resourceInputs["p4ServiceAccount"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
             resourceInputs["serviceEndpoint"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateMessage"] = undefined /*out*/;
             resourceInputs["tenantProjectId"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -517,6 +517,11 @@ export interface InstanceState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The region of the Data Fusion instance.
      */
     region?: pulumi.Input<string>;
@@ -543,11 +548,6 @@ export interface InstanceState {
      * The name of the tenant project.
      */
     tenantProjectId?: pulumi.Input<string>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Represents the type of Data Fusion instance. Each type is configured with
      * the default settings for processing and memory.

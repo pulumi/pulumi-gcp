@@ -154,6 +154,10 @@ export class Asset extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: any}>;
+    /**
      * Required. Immutable. Specification of the resource that is referenced by this asset.
      */
     public readonly resourceSpec!: pulumi.Output<outputs.dataplex.AssetResourceSpec>;
@@ -169,10 +173,6 @@ export class Asset extends pulumi.CustomResource {
      * Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: any}>;
     /**
      * Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
      */
@@ -207,11 +207,11 @@ export class Asset extends pulumi.CustomResource {
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["resourceSpec"] = state ? state.resourceSpec : undefined;
             resourceInputs["resourceStatuses"] = state ? state.resourceStatuses : undefined;
             resourceInputs["securityStatuses"] = state ? state.securityStatuses : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -244,10 +244,10 @@ export class Asset extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["discoveryStatuses"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["resourceStatuses"] = undefined /*out*/;
             resourceInputs["securityStatuses"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
@@ -313,6 +313,10 @@ export interface AssetState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: any}>;
+    /**
      * Required. Immutable. Specification of the resource that is referenced by this asset.
      */
     resourceSpec?: pulumi.Input<inputs.dataplex.AssetResourceSpec>;
@@ -328,10 +332,6 @@ export interface AssetState {
      * Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
      */
     state?: pulumi.Input<string>;
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: any}>;
     /**
      * Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
      */

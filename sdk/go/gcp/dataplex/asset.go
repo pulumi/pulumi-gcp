@@ -140,6 +140,8 @@ type Asset struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.MapOutput `pulumi:"pulumiLabels"`
 	// Required. Immutable. Specification of the resource that is referenced by this asset.
 	ResourceSpec AssetResourceSpecOutput `pulumi:"resourceSpec"`
 	// Output only. Status of the resource referenced by this asset.
@@ -148,8 +150,6 @@ type Asset struct {
 	SecurityStatuses AssetSecurityStatusArrayOutput `pulumi:"securityStatuses"`
 	// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State pulumi.StringOutput `pulumi:"state"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.MapOutput `pulumi:"terraformLabels"`
 	// Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Output only. The time when the asset was last updated.
@@ -229,6 +229,8 @@ type assetState struct {
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]interface{} `pulumi:"pulumiLabels"`
 	// Required. Immutable. Specification of the resource that is referenced by this asset.
 	ResourceSpec *AssetResourceSpec `pulumi:"resourceSpec"`
 	// Output only. Status of the resource referenced by this asset.
@@ -237,8 +239,6 @@ type assetState struct {
 	SecurityStatuses []AssetSecurityStatus `pulumi:"securityStatuses"`
 	// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State *string `pulumi:"state"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels map[string]interface{} `pulumi:"terraformLabels"`
 	// Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
 	Uid *string `pulumi:"uid"`
 	// Output only. The time when the asset was last updated.
@@ -274,6 +274,8 @@ type AssetState struct {
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.MapInput
 	// Required. Immutable. Specification of the resource that is referenced by this asset.
 	ResourceSpec AssetResourceSpecPtrInput
 	// Output only. Status of the resource referenced by this asset.
@@ -282,8 +284,6 @@ type AssetState struct {
 	SecurityStatuses AssetSecurityStatusArrayInput
 	// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.MapInput
 	// Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
 	Uid pulumi.StringPtrInput
 	// Output only. The time when the asset was last updated.
@@ -522,6 +522,11 @@ func (o AssetOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o AssetOutput) PulumiLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Asset) pulumi.MapOutput { return v.PulumiLabels }).(pulumi.MapOutput)
+}
+
 // Required. Immutable. Specification of the resource that is referenced by this asset.
 func (o AssetOutput) ResourceSpec() AssetResourceSpecOutput {
 	return o.ApplyT(func(v *Asset) AssetResourceSpecOutput { return v.ResourceSpec }).(AssetResourceSpecOutput)
@@ -540,11 +545,6 @@ func (o AssetOutput) SecurityStatuses() AssetSecurityStatusArrayOutput {
 // Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 func (o AssetOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o AssetOutput) TerraformLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Asset) pulumi.MapOutput { return v.TerraformLabels }).(pulumi.MapOutput)
 }
 
 // Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.

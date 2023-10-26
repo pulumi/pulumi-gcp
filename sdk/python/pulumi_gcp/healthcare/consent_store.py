@@ -164,7 +164,7 @@ class _ConsentStoreState:
                  enable_consent_create_on_update: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering ConsentStore resources.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
@@ -190,7 +190,7 @@ class _ConsentStoreState:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name of this ConsentStore, for example:
                "consent1"
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         """
         _ConsentStoreState._configure(
@@ -201,7 +201,7 @@ class _ConsentStoreState:
             enable_consent_create_on_update=enable_consent_create_on_update,
             labels=labels,
             name=name,
-            terraform_labels=terraform_labels,
+            pulumi_labels=pulumi_labels,
         )
     @staticmethod
     def _configure(
@@ -212,7 +212,7 @@ class _ConsentStoreState:
              enable_consent_create_on_update: Optional[pulumi.Input[bool]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if default_consent_ttl is None and 'defaultConsentTtl' in kwargs:
@@ -221,8 +221,8 @@ class _ConsentStoreState:
             effective_labels = kwargs['effectiveLabels']
         if enable_consent_create_on_update is None and 'enableConsentCreateOnUpdate' in kwargs:
             enable_consent_create_on_update = kwargs['enableConsentCreateOnUpdate']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
 
         if dataset is not None:
             _setter("dataset", dataset)
@@ -236,8 +236,8 @@ class _ConsentStoreState:
             _setter("labels", labels)
         if name is not None:
             _setter("name", name)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
 
     @property
     @pulumi.getter
@@ -329,17 +329,17 @@ class _ConsentStoreState:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The combination of labels configured directly on the resource
         and default labels configured on the provider.
         """
-        return pulumi.get(self, "terraform_labels")
+        return pulumi.get(self, "pulumi_labels")
 
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
 
 
 class ConsentStore(pulumi.CustomResource):
@@ -544,7 +544,7 @@ class ConsentStore(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["effective_labels"] = None
-            __props__.__dict__["terraform_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
         super(ConsentStore, __self__).__init__(
             'gcp:healthcare/consentStore:ConsentStore',
             resource_name,
@@ -561,7 +561,7 @@ class ConsentStore(pulumi.CustomResource):
             enable_consent_create_on_update: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'ConsentStore':
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'ConsentStore':
         """
         Get an existing ConsentStore resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -592,7 +592,7 @@ class ConsentStore(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name of this ConsentStore, for example:
                "consent1"
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -605,7 +605,7 @@ class ConsentStore(pulumi.CustomResource):
         __props__.__dict__["enable_consent_create_on_update"] = enable_consent_create_on_update
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
-        __props__.__dict__["terraform_labels"] = terraform_labels
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         return ConsentStore(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -674,11 +674,11 @@ class ConsentStore(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         The combination of labels configured directly on the resource
         and default labels configured on the provider.
         """
-        return pulumi.get(self, "terraform_labels")
+        return pulumi.get(self, "pulumi_labels")
 

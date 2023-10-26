@@ -361,12 +361,12 @@ type DeliveryPipeline struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.MapOutput `pulumi:"pulumiLabels"`
 	// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 	SerialPipeline DeliveryPipelineSerialPipelinePtrOutput `pulumi:"serialPipeline"`
 	// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
 	Suspended pulumi.BoolPtrOutput `pulumi:"suspended"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.MapOutput `pulumi:"terraformLabels"`
 	// Output only. Unique identifier of the `DeliveryPipeline`.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Output only. Most recent time at which the pipeline was updated.
@@ -436,12 +436,12 @@ type deliveryPipelineState struct {
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]interface{} `pulumi:"pulumiLabels"`
 	// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 	SerialPipeline *DeliveryPipelineSerialPipeline `pulumi:"serialPipeline"`
 	// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
 	Suspended *bool `pulumi:"suspended"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels map[string]interface{} `pulumi:"terraformLabels"`
 	// Output only. Unique identifier of the `DeliveryPipeline`.
 	Uid *string `pulumi:"uid"`
 	// Output only. Most recent time at which the pipeline was updated.
@@ -479,12 +479,12 @@ type DeliveryPipelineState struct {
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.MapInput
 	// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 	SerialPipeline DeliveryPipelineSerialPipelinePtrInput
 	// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
 	Suspended pulumi.BoolPtrInput
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.MapInput
 	// Output only. Unique identifier of the `DeliveryPipeline`.
 	Uid pulumi.StringPtrInput
 	// Output only. Most recent time at which the pipeline was updated.
@@ -720,6 +720,11 @@ func (o DeliveryPipelineOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o DeliveryPipelineOutput) PulumiLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *DeliveryPipeline) pulumi.MapOutput { return v.PulumiLabels }).(pulumi.MapOutput)
+}
+
 // SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 func (o DeliveryPipelineOutput) SerialPipeline() DeliveryPipelineSerialPipelinePtrOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) DeliveryPipelineSerialPipelinePtrOutput { return v.SerialPipeline }).(DeliveryPipelineSerialPipelinePtrOutput)
@@ -728,11 +733,6 @@ func (o DeliveryPipelineOutput) SerialPipeline() DeliveryPipelineSerialPipelineP
 // When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
 func (o DeliveryPipelineOutput) Suspended() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) pulumi.BoolPtrOutput { return v.Suspended }).(pulumi.BoolPtrOutput)
-}
-
-// The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o DeliveryPipelineOutput) TerraformLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *DeliveryPipeline) pulumi.MapOutput { return v.TerraformLabels }).(pulumi.MapOutput)
 }
 
 // Output only. Unique identifier of the `DeliveryPipeline`.

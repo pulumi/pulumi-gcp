@@ -27,8 +27,8 @@ public final class GetTopicResult {
     private List<GetTopicMessageStoragePolicy> messageStoragePolicies;
     private String name;
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private List<GetTopicSchemaSetting> schemaSettings;
-    private Map<String,String> terraformLabels;
 
     private GetTopicResult() {}
     public Map<String,String> effectiveLabels() {
@@ -59,11 +59,11 @@ public final class GetTopicResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public List<GetTopicSchemaSetting> schemaSettings() {
         return this.schemaSettings;
-    }
-    public Map<String,String> terraformLabels() {
-        return this.terraformLabels;
     }
 
     public static Builder builder() {
@@ -83,8 +83,8 @@ public final class GetTopicResult {
         private List<GetTopicMessageStoragePolicy> messageStoragePolicies;
         private String name;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private List<GetTopicSchemaSetting> schemaSettings;
-        private Map<String,String> terraformLabels;
         public Builder() {}
         public Builder(GetTopicResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -96,8 +96,8 @@ public final class GetTopicResult {
     	      this.messageStoragePolicies = defaults.messageStoragePolicies;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.schemaSettings = defaults.schemaSettings;
-    	      this.terraformLabels = defaults.terraformLabels;
         }
 
         @CustomType.Setter
@@ -144,17 +144,17 @@ public final class GetTopicResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder schemaSettings(List<GetTopicSchemaSetting> schemaSettings) {
             this.schemaSettings = Objects.requireNonNull(schemaSettings);
             return this;
         }
         public Builder schemaSettings(GetTopicSchemaSetting... schemaSettings) {
             return schemaSettings(List.of(schemaSettings));
-        }
-        @CustomType.Setter
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            this.terraformLabels = Objects.requireNonNull(terraformLabels);
-            return this;
         }
         public GetTopicResult build() {
             final var o = new GetTopicResult();
@@ -166,8 +166,8 @@ public final class GetTopicResult {
             o.messageStoragePolicies = messageStoragePolicies;
             o.name = name;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.schemaSettings = schemaSettings;
-            o.terraformLabels = terraformLabels;
             return o;
         }
     }

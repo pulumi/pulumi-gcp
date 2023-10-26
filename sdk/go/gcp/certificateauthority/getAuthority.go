@@ -91,10 +91,10 @@ type LookupAuthorityResult struct {
 	PemCsr             string                          `pulumi:"pemCsr"`
 	Pool               *string                         `pulumi:"pool"`
 	Project            *string                         `pulumi:"project"`
+	PulumiLabels       map[string]string               `pulumi:"pulumiLabels"`
 	SkipGracePeriod    bool                            `pulumi:"skipGracePeriod"`
 	State              string                          `pulumi:"state"`
 	SubordinateConfigs []GetAuthoritySubordinateConfig `pulumi:"subordinateConfigs"`
-	TerraformLabels    map[string]string               `pulumi:"terraformLabels"`
 	Type               string                          `pulumi:"type"`
 	UpdateTime         string                          `pulumi:"updateTime"`
 }
@@ -234,6 +234,10 @@ func (o LookupAuthorityResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAuthorityResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
+func (o LookupAuthorityResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAuthorityResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupAuthorityResultOutput) SkipGracePeriod() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAuthorityResult) bool { return v.SkipGracePeriod }).(pulumi.BoolOutput)
 }
@@ -244,10 +248,6 @@ func (o LookupAuthorityResultOutput) State() pulumi.StringOutput {
 
 func (o LookupAuthorityResultOutput) SubordinateConfigs() GetAuthoritySubordinateConfigArrayOutput {
 	return o.ApplyT(func(v LookupAuthorityResult) []GetAuthoritySubordinateConfig { return v.SubordinateConfigs }).(GetAuthoritySubordinateConfigArrayOutput)
-}
-
-func (o LookupAuthorityResultOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupAuthorityResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupAuthorityResultOutput) Type() pulumi.StringOutput {

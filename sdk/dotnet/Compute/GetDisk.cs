@@ -203,6 +203,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string? Project;
         public readonly int ProvisionedIops;
         public readonly int ProvisionedThroughput;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly ImmutableArray<string> ResourcePolicies;
         /// <summary>
         /// The URI of the created resource.
@@ -243,7 +244,6 @@ namespace Pulumi.Gcp.Compute
         /// used.
         /// </summary>
         public readonly string SourceSnapshotId;
-        public readonly ImmutableDictionary<string, string> TerraformLabels;
         /// <summary>
         /// URL of the disk type resource describing which disk type to use to
         /// create the disk.
@@ -303,6 +303,8 @@ namespace Pulumi.Gcp.Compute
 
             int provisionedThroughput,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             ImmutableArray<string> resourcePolicies,
 
             string selfLink,
@@ -322,8 +324,6 @@ namespace Pulumi.Gcp.Compute
             ImmutableArray<Outputs.GetDiskSourceSnapshotEncryptionKeyResult> sourceSnapshotEncryptionKeys,
 
             string sourceSnapshotId,
-
-            ImmutableDictionary<string, string> terraformLabels,
 
             string type,
 
@@ -352,6 +352,7 @@ namespace Pulumi.Gcp.Compute
             Project = project;
             ProvisionedIops = provisionedIops;
             ProvisionedThroughput = provisionedThroughput;
+            PulumiLabels = pulumiLabels;
             ResourcePolicies = resourcePolicies;
             SelfLink = selfLink;
             Size = size;
@@ -362,7 +363,6 @@ namespace Pulumi.Gcp.Compute
             SourceImageId = sourceImageId;
             SourceSnapshotEncryptionKeys = sourceSnapshotEncryptionKeys;
             SourceSnapshotId = sourceSnapshotId;
-            TerraformLabels = terraformLabels;
             Type = type;
             Users = users;
             Zone = zone;

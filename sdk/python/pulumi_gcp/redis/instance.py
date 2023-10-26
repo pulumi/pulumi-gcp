@@ -584,6 +584,7 @@ class _InstanceState:
                  persistence_iam_identity: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  read_endpoint: Optional[pulumi.Input[str]] = None,
                  read_endpoint_port: Optional[pulumi.Input[int]] = None,
                  read_replicas_mode: Optional[pulumi.Input[str]] = None,
@@ -594,7 +595,6 @@ class _InstanceState:
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
                  secondary_ip_range: Optional[pulumi.Input[str]] = None,
                  server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArgs']]]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  transit_encryption_mode: Optional[pulumi.Input[str]] = None):
         """
@@ -657,6 +657,8 @@ class _InstanceState:
         :param pulumi.Input[int] port: The port number of the exposed Redis endpoint.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] read_endpoint: Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
                Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
                will exhibit some lag behind the primary. Write requests must target 'host'.
@@ -691,8 +693,6 @@ class _InstanceState:
                range associated with the private service access connection, or "auto".
         :param pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArgs']]] server_ca_certs: List of server CA certificates for the instance.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] tier: The service tier of the instance. Must be one of these values:
                - BASIC: standalone instance
                - STANDARD_HA: highly available primary/replica instances
@@ -727,6 +727,7 @@ class _InstanceState:
             persistence_iam_identity=persistence_iam_identity,
             port=port,
             project=project,
+            pulumi_labels=pulumi_labels,
             read_endpoint=read_endpoint,
             read_endpoint_port=read_endpoint_port,
             read_replicas_mode=read_replicas_mode,
@@ -737,7 +738,6 @@ class _InstanceState:
             reserved_ip_range=reserved_ip_range,
             secondary_ip_range=secondary_ip_range,
             server_ca_certs=server_ca_certs,
-            terraform_labels=terraform_labels,
             tier=tier,
             transit_encryption_mode=transit_encryption_mode,
         )
@@ -766,6 +766,7 @@ class _InstanceState:
              persistence_iam_identity: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              read_endpoint: Optional[pulumi.Input[str]] = None,
              read_endpoint_port: Optional[pulumi.Input[int]] = None,
              read_replicas_mode: Optional[pulumi.Input[str]] = None,
@@ -776,7 +777,6 @@ class _InstanceState:
              reserved_ip_range: Optional[pulumi.Input[str]] = None,
              secondary_ip_range: Optional[pulumi.Input[str]] = None,
              server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArgs']]]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              tier: Optional[pulumi.Input[str]] = None,
              transit_encryption_mode: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
@@ -813,6 +813,8 @@ class _InstanceState:
             persistence_config = kwargs['persistenceConfig']
         if persistence_iam_identity is None and 'persistenceIamIdentity' in kwargs:
             persistence_iam_identity = kwargs['persistenceIamIdentity']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if read_endpoint is None and 'readEndpoint' in kwargs:
             read_endpoint = kwargs['readEndpoint']
         if read_endpoint_port is None and 'readEndpointPort' in kwargs:
@@ -831,8 +833,6 @@ class _InstanceState:
             secondary_ip_range = kwargs['secondaryIpRange']
         if server_ca_certs is None and 'serverCaCerts' in kwargs:
             server_ca_certs = kwargs['serverCaCerts']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
         if transit_encryption_mode is None and 'transitEncryptionMode' in kwargs:
             transit_encryption_mode = kwargs['transitEncryptionMode']
 
@@ -880,6 +880,8 @@ class _InstanceState:
             _setter("port", port)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if read_endpoint is not None:
             _setter("read_endpoint", read_endpoint)
         if read_endpoint_port is not None:
@@ -900,8 +902,6 @@ class _InstanceState:
             _setter("secondary_ip_range", secondary_ip_range)
         if server_ca_certs is not None:
             _setter("server_ca_certs", server_ca_certs)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if tier is not None:
             _setter("tier", tier)
         if transit_encryption_mode is not None:
@@ -1208,6 +1208,19 @@ class _InstanceState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="readEndpoint")
     def read_endpoint(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1350,19 +1363,6 @@ class _InstanceState:
     @server_ca_certs.setter
     def server_ca_certs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArgs']]]]):
         pulumi.set(self, "server_ca_certs", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -1927,10 +1927,10 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["nodes"] = None
             __props__.__dict__["persistence_iam_identity"] = None
             __props__.__dict__["port"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["read_endpoint"] = None
             __props__.__dict__["read_endpoint_port"] = None
             __props__.__dict__["server_ca_certs"] = None
-            __props__.__dict__["terraform_labels"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["authString"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Instance, __self__).__init__(
@@ -1965,6 +1965,7 @@ class Instance(pulumi.CustomResource):
             persistence_iam_identity: Optional[pulumi.Input[str]] = None,
             port: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             read_endpoint: Optional[pulumi.Input[str]] = None,
             read_endpoint_port: Optional[pulumi.Input[int]] = None,
             read_replicas_mode: Optional[pulumi.Input[str]] = None,
@@ -1975,7 +1976,6 @@ class Instance(pulumi.CustomResource):
             reserved_ip_range: Optional[pulumi.Input[str]] = None,
             secondary_ip_range: Optional[pulumi.Input[str]] = None,
             server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceServerCaCertArgs']]]]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             tier: Optional[pulumi.Input[str]] = None,
             transit_encryption_mode: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
@@ -2043,6 +2043,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] port: The port number of the exposed Redis endpoint.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] read_endpoint: Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
                Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
                will exhibit some lag behind the primary. Write requests must target 'host'.
@@ -2077,8 +2079,6 @@ class Instance(pulumi.CustomResource):
                range associated with the private service access connection, or "auto".
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceServerCaCertArgs']]]] server_ca_certs: List of server CA certificates for the instance.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] tier: The service tier of the instance. Must be one of these values:
                - BASIC: standalone instance
                - STANDARD_HA: highly available primary/replica instances
@@ -2115,6 +2115,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["persistence_iam_identity"] = persistence_iam_identity
         __props__.__dict__["port"] = port
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["read_endpoint"] = read_endpoint
         __props__.__dict__["read_endpoint_port"] = read_endpoint_port
         __props__.__dict__["read_replicas_mode"] = read_replicas_mode
@@ -2125,7 +2126,6 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["reserved_ip_range"] = reserved_ip_range
         __props__.__dict__["secondary_ip_range"] = secondary_ip_range
         __props__.__dict__["server_ca_certs"] = server_ca_certs
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["tier"] = tier
         __props__.__dict__["transit_encryption_mode"] = transit_encryption_mode
         return Instance(resource_name, opts=opts, __props__=__props__)
@@ -2343,6 +2343,15 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="readEndpoint")
     def read_endpoint(self) -> pulumi.Output[str]:
         """
@@ -2445,15 +2454,6 @@ class Instance(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "server_ca_certs")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

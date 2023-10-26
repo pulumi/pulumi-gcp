@@ -31,8 +31,8 @@ public final class GetProjectResult {
     private String number;
     private String orgId;
     private @Nullable String projectId;
+    private Map<String,String> pulumiLabels;
     private Boolean skipDelete;
-    private Map<String,String> terraformLabels;
 
     private GetProjectResult() {}
     public Boolean autoCreateNetwork() {
@@ -73,11 +73,11 @@ public final class GetProjectResult {
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public Boolean skipDelete() {
         return this.skipDelete;
-    }
-    public Map<String,String> terraformLabels() {
-        return this.terraformLabels;
     }
 
     public static Builder builder() {
@@ -99,8 +99,8 @@ public final class GetProjectResult {
         private String number;
         private String orgId;
         private @Nullable String projectId;
+        private Map<String,String> pulumiLabels;
         private Boolean skipDelete;
-        private Map<String,String> terraformLabels;
         public Builder() {}
         public Builder(GetProjectResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -114,8 +114,8 @@ public final class GetProjectResult {
     	      this.number = defaults.number;
     	      this.orgId = defaults.orgId;
     	      this.projectId = defaults.projectId;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.skipDelete = defaults.skipDelete;
-    	      this.terraformLabels = defaults.terraformLabels;
         }
 
         @CustomType.Setter
@@ -169,13 +169,13 @@ public final class GetProjectResult {
             return this;
         }
         @CustomType.Setter
-        public Builder skipDelete(Boolean skipDelete) {
-            this.skipDelete = Objects.requireNonNull(skipDelete);
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
             return this;
         }
         @CustomType.Setter
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            this.terraformLabels = Objects.requireNonNull(terraformLabels);
+        public Builder skipDelete(Boolean skipDelete) {
+            this.skipDelete = Objects.requireNonNull(skipDelete);
             return this;
         }
         public GetProjectResult build() {
@@ -190,8 +190,8 @@ public final class GetProjectResult {
             o.number = number;
             o.orgId = orgId;
             o.projectId = projectId;
+            o.pulumiLabels = pulumiLabels;
             o.skipDelete = skipDelete;
-            o.terraformLabels = terraformLabels;
             return o;
         }
     }

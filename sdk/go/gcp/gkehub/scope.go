@@ -94,6 +94,9 @@ type Scope struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The client-provided identifier of the scope.
 	//
 	// ***
@@ -101,9 +104,6 @@ type Scope struct {
 	// State of the scope resource.
 	// Structure is documented below.
 	States ScopeStateTypeArrayOutput `pulumi:"states"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Google-generated UUID for this resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Time the Scope was updated in UTC.
@@ -160,6 +160,9 @@ type scopeState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The client-provided identifier of the scope.
 	//
 	// ***
@@ -167,9 +170,6 @@ type scopeState struct {
 	// State of the scope resource.
 	// Structure is documented below.
 	States []ScopeStateType `pulumi:"states"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Google-generated UUID for this resource.
 	Uid *string `pulumi:"uid"`
 	// Time the Scope was updated in UTC.
@@ -194,6 +194,9 @@ type ScopeState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The client-provided identifier of the scope.
 	//
 	// ***
@@ -201,9 +204,6 @@ type ScopeState struct {
 	// State of the scope resource.
 	// Structure is documented below.
 	States ScopeStateTypeArrayInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// Google-generated UUID for this resource.
 	Uid pulumi.StringPtrInput
 	// Time the Scope was updated in UTC.
@@ -391,6 +391,12 @@ func (o ScopeOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Scope) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ScopeOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Scope) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The client-provided identifier of the scope.
 //
 // ***
@@ -402,12 +408,6 @@ func (o ScopeOutput) ScopeId() pulumi.StringOutput {
 // Structure is documented below.
 func (o ScopeOutput) States() ScopeStateTypeArrayOutput {
 	return o.ApplyT(func(v *Scope) ScopeStateTypeArrayOutput { return v.States }).(ScopeStateTypeArrayOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o ScopeOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Scope) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Google-generated UUID for this resource.

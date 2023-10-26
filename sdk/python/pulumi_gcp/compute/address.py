@@ -393,11 +393,11 @@ class _AddressState:
                  network_tier: Optional[pulumi.Input[str]] = None,
                  prefix_length: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Address resources.
@@ -442,6 +442,7 @@ class _AddressState:
         :param pulumi.Input[int] prefix_length: The prefix length if the resource represents an IP range.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] purpose: The purpose of this resource, which can be one of the following values.
                * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
                ranges, load balancers, and similar resources.
@@ -463,7 +464,6 @@ class _AddressState:
                address is specified, it must be within the subnetwork's IP range.
                This field can only be used with INTERNAL type with
                GCE_ENDPOINT/DNS_RESOLVER purposes.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] users: The URLs of the resources that are using this address.
         """
         _AddressState._configure(
@@ -482,11 +482,11 @@ class _AddressState:
             network_tier=network_tier,
             prefix_length=prefix_length,
             project=project,
+            pulumi_labels=pulumi_labels,
             purpose=purpose,
             region=region,
             self_link=self_link,
             subnetwork=subnetwork,
-            terraform_labels=terraform_labels,
             users=users,
         )
     @staticmethod
@@ -506,11 +506,11 @@ class _AddressState:
              network_tier: Optional[pulumi.Input[str]] = None,
              prefix_length: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              purpose: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -530,10 +530,10 @@ class _AddressState:
             network_tier = kwargs['networkTier']
         if prefix_length is None and 'prefixLength' in kwargs:
             prefix_length = kwargs['prefixLength']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if self_link is None and 'selfLink' in kwargs:
             self_link = kwargs['selfLink']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
 
         if address is not None:
             _setter("address", address)
@@ -563,6 +563,8 @@ class _AddressState:
             _setter("prefix_length", prefix_length)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if purpose is not None:
             _setter("purpose", purpose)
         if region is not None:
@@ -571,8 +573,6 @@ class _AddressState:
             _setter("self_link", self_link)
         if subnetwork is not None:
             _setter("subnetwork", subnetwork)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if users is not None:
             _setter("users", users)
 
@@ -772,6 +772,18 @@ class _AddressState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter
     def purpose(self) -> Optional[pulumi.Input[str]]:
         """
@@ -835,18 +847,6 @@ class _AddressState:
     @subnetwork.setter
     def subnetwork(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -1240,8 +1240,8 @@ class Address(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["label_fingerprint"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["self_link"] = None
-            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["users"] = None
         super(Address, __self__).__init__(
             'gcp:compute/address:Address',
@@ -1267,11 +1267,11 @@ class Address(pulumi.CustomResource):
             network_tier: Optional[pulumi.Input[str]] = None,
             prefix_length: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             purpose: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             subnetwork: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Address':
         """
         Get an existing Address resource's state with the given name, id, and optional extra
@@ -1321,6 +1321,7 @@ class Address(pulumi.CustomResource):
         :param pulumi.Input[int] prefix_length: The prefix length if the resource represents an IP range.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] purpose: The purpose of this resource, which can be one of the following values.
                * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
                ranges, load balancers, and similar resources.
@@ -1342,7 +1343,6 @@ class Address(pulumi.CustomResource):
                address is specified, it must be within the subnetwork's IP range.
                This field can only be used with INTERNAL type with
                GCE_ENDPOINT/DNS_RESOLVER purposes.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] users: The URLs of the resources that are using this address.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1363,11 +1363,11 @@ class Address(pulumi.CustomResource):
         __props__.__dict__["network_tier"] = network_tier
         __props__.__dict__["prefix_length"] = prefix_length
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["purpose"] = purpose
         __props__.__dict__["region"] = region
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["subnetwork"] = subnetwork
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["users"] = users
         return Address(resource_name, opts=opts, __props__=__props__)
 
@@ -1511,6 +1511,14 @@ class Address(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def purpose(self) -> pulumi.Output[str]:
         """
@@ -1558,14 +1566,6 @@ class Address(pulumi.CustomResource):
         GCE_ENDPOINT/DNS_RESOLVER purposes.
         """
         return pulumi.get(self, "subnetwork")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

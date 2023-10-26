@@ -332,6 +332,23 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster&#39;s region must be specified—for example, `[&#39;us-central1-a&#39;, &#39;us-central1-f&#39;]`.
      * If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
      * 
@@ -363,23 +380,6 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> runningTimeout() {
         return Optional.ofNullable(this.runningTimeout);
-    }
-
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    @Import(name="terraformLabels")
-    private @Nullable Output<Map<String,String>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    public Optional<Output<Map<String,String>>> terraformLabels() {
-        return Optional.ofNullable(this.terraformLabels);
     }
 
     /**
@@ -448,9 +448,9 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
         this.name = $.name;
         this.persistentDirectories = $.persistentDirectories;
         this.project = $.project;
+        this.pulumiLabels = $.pulumiLabels;
         this.replicaZones = $.replicaZones;
         this.runningTimeout = $.runningTimeout;
-        this.terraformLabels = $.terraformLabels;
         this.uid = $.uid;
         this.workstationClusterId = $.workstationClusterId;
         this.workstationConfigId = $.workstationConfigId;
@@ -913,6 +913,29 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
          * @param replicaZones Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster&#39;s region must be specified—for example, `[&#39;us-central1-a&#39;, &#39;us-central1-f&#39;]`.
          * If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
          * 
@@ -967,29 +990,6 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
          */
         public Builder runningTimeout(String runningTimeout) {
             return runningTimeout(Output.of(runningTimeout));
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
-            $.terraformLabels = terraformLabels;
-            return this;
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

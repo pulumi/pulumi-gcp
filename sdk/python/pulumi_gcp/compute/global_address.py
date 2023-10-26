@@ -285,9 +285,9 @@ class _GlobalAddressState:
                  network: Optional[pulumi.Input[str]] = None,
                  prefix_length: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 self_link: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GlobalAddress resources.
         :param pulumi.Input[str] address: The IP address or beginning of the address range represented by this
@@ -329,11 +329,11 @@ class _GlobalAddressState:
                when purpose=PRIVATE_SERVICE_CONNECT
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] purpose: The purpose of the resource. Possible values include:
                * VPC_PEERING - for peer networks
                * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         _GlobalAddressState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -349,9 +349,9 @@ class _GlobalAddressState:
             network=network,
             prefix_length=prefix_length,
             project=project,
+            pulumi_labels=pulumi_labels,
             purpose=purpose,
             self_link=self_link,
-            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
@@ -368,9 +368,9 @@ class _GlobalAddressState:
              network: Optional[pulumi.Input[str]] = None,
              prefix_length: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              purpose: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if address_type is None and 'addressType' in kwargs:
@@ -385,10 +385,10 @@ class _GlobalAddressState:
             label_fingerprint = kwargs['labelFingerprint']
         if prefix_length is None and 'prefixLength' in kwargs:
             prefix_length = kwargs['prefixLength']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if self_link is None and 'selfLink' in kwargs:
             self_link = kwargs['selfLink']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
 
         if address is not None:
             _setter("address", address)
@@ -414,12 +414,12 @@ class _GlobalAddressState:
             _setter("prefix_length", prefix_length)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if purpose is not None:
             _setter("purpose", purpose)
         if self_link is not None:
             _setter("self_link", self_link)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter
@@ -593,6 +593,18 @@ class _GlobalAddressState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter
     def purpose(self) -> Optional[pulumi.Input[str]]:
         """
@@ -617,18 +629,6 @@ class _GlobalAddressState:
     @self_link.setter
     def self_link(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "self_link", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
 
 class GlobalAddress(pulumi.CustomResource):
@@ -847,8 +847,8 @@ class GlobalAddress(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["label_fingerprint"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["self_link"] = None
-            __props__.__dict__["terraform_labels"] = None
         super(GlobalAddress, __self__).__init__(
             'gcp:compute/globalAddress:GlobalAddress',
             resource_name,
@@ -871,9 +871,9 @@ class GlobalAddress(pulumi.CustomResource):
             network: Optional[pulumi.Input[str]] = None,
             prefix_length: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             purpose: Optional[pulumi.Input[str]] = None,
-            self_link: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'GlobalAddress':
+            self_link: Optional[pulumi.Input[str]] = None) -> 'GlobalAddress':
         """
         Get an existing GlobalAddress resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -920,11 +920,11 @@ class GlobalAddress(pulumi.CustomResource):
                when purpose=PRIVATE_SERVICE_CONNECT
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] purpose: The purpose of the resource. Possible values include:
                * VPC_PEERING - for peer networks
                * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -942,9 +942,9 @@ class GlobalAddress(pulumi.CustomResource):
         __props__.__dict__["network"] = network
         __props__.__dict__["prefix_length"] = prefix_length
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["purpose"] = purpose
         __props__.__dict__["self_link"] = self_link
-        __props__.__dict__["terraform_labels"] = terraform_labels
         return GlobalAddress(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1071,6 +1071,14 @@ class GlobalAddress(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def purpose(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1087,12 +1095,4 @@ class GlobalAddress(pulumi.CustomResource):
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 

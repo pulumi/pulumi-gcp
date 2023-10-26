@@ -28,8 +28,8 @@ public final class GetInstanceResult {
     private Integer numNodes;
     private Integer processingUnits;
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private String state;
-    private Map<String,String> terraformLabels;
 
     private GetInstanceResult() {}
     public Optional<String> config() {
@@ -66,11 +66,11 @@ public final class GetInstanceResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public String state() {
         return this.state;
-    }
-    public Map<String,String> terraformLabels() {
-        return this.terraformLabels;
     }
 
     public static Builder builder() {
@@ -92,8 +92,8 @@ public final class GetInstanceResult {
         private Integer numNodes;
         private Integer processingUnits;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private String state;
-        private Map<String,String> terraformLabels;
         public Builder() {}
         public Builder(GetInstanceResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -107,8 +107,8 @@ public final class GetInstanceResult {
     	      this.numNodes = defaults.numNodes;
     	      this.processingUnits = defaults.processingUnits;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.state = defaults.state;
-    	      this.terraformLabels = defaults.terraformLabels;
         }
 
         @CustomType.Setter
@@ -162,13 +162,13 @@ public final class GetInstanceResult {
             return this;
         }
         @CustomType.Setter
-        public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
             return this;
         }
         @CustomType.Setter
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            this.terraformLabels = Objects.requireNonNull(terraformLabels);
+        public Builder state(String state) {
+            this.state = Objects.requireNonNull(state);
             return this;
         }
         public GetInstanceResult build() {
@@ -183,8 +183,8 @@ public final class GetInstanceResult {
             o.numNodes = numNodes;
             o.processingUnits = processingUnits;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.state = state;
-            o.terraformLabels = terraformLabels;
             return o;
         }
     }

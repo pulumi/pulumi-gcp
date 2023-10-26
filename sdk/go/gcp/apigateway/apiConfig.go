@@ -136,11 +136,11 @@ type ApiConfig struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
-	ServiceConfigId pulumi.StringOutput `pulumi:"serviceConfigId"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
+	ServiceConfigId pulumi.StringOutput `pulumi:"serviceConfigId"`
 }
 
 // NewApiConfig registers a new resource with the given unique name, arguments, and options.
@@ -214,11 +214,11 @@ type apiConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
-	ServiceConfigId *string `pulumi:"serviceConfigId"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
+	ServiceConfigId *string `pulumi:"serviceConfigId"`
 }
 
 type ApiConfigState struct {
@@ -260,11 +260,11 @@ type ApiConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
-	ServiceConfigId pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
+	PulumiLabels pulumi.StringMapInput
+	// The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
+	ServiceConfigId pulumi.StringPtrInput
 }
 
 func (ApiConfigState) ElementType() reflect.Type {
@@ -529,15 +529,15 @@ func (o ApiConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ApiConfigOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ApiConfig) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
 func (o ApiConfigOutput) ServiceConfigId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiConfig) pulumi.StringOutput { return v.ServiceConfigId }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o ApiConfigOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ApiConfig) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type ApiConfigArrayOutput struct{ *pulumi.OutputState }

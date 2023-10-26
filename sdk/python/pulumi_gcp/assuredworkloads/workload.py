@@ -237,9 +237,9 @@ class _WorkloadState:
                  name: Optional[pulumi.Input[str]] = None,
                  organization: Optional[pulumi.Input[str]] = None,
                  provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArgs']]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceArgs']]]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceArgs']]]] = None):
         """
         Input properties used for looking up and filtering Workload resources.
         :param pulumi.Input[str] billing_account: Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, 'billingAccounts/012345-567890-ABCDEF`.
@@ -261,9 +261,9 @@ class _WorkloadState:
                
                - - -
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
+        :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArgs']]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
         :param pulumi.Input[Sequence[pulumi.Input['WorkloadResourceArgs']]] resources: Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
-        :param pulumi.Input[Mapping[str, Any]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         _WorkloadState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -278,9 +278,9 @@ class _WorkloadState:
             name=name,
             organization=organization,
             provisioned_resources_parent=provisioned_resources_parent,
+            pulumi_labels=pulumi_labels,
             resource_settings=resource_settings,
             resources=resources,
-            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
@@ -296,9 +296,9 @@ class _WorkloadState:
              name: Optional[pulumi.Input[str]] = None,
              organization: Optional[pulumi.Input[str]] = None,
              provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArgs']]]] = None,
              resources: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceArgs']]]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if billing_account is None and 'billingAccount' in kwargs:
@@ -315,10 +315,10 @@ class _WorkloadState:
             kms_settings = kwargs['kmsSettings']
         if provisioned_resources_parent is None and 'provisionedResourcesParent' in kwargs:
             provisioned_resources_parent = kwargs['provisionedResourcesParent']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if resource_settings is None and 'resourceSettings' in kwargs:
             resource_settings = kwargs['resourceSettings']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
 
         if billing_account is not None:
             _setter("billing_account", billing_account)
@@ -342,12 +342,12 @@ class _WorkloadState:
             _setter("organization", organization)
         if provisioned_resources_parent is not None:
             _setter("provisioned_resources_parent", provisioned_resources_parent)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if resource_settings is not None:
             _setter("resource_settings", resource_settings)
         if resources is not None:
             _setter("resources", resources)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter(name="billingAccount")
@@ -490,6 +490,18 @@ class _WorkloadState:
         pulumi.set(self, "provisioned_resources_parent", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="resourceSettings")
     def resource_settings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArgs']]]]:
         """
@@ -512,18 +524,6 @@ class _WorkloadState:
     @resources.setter
     def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceArgs']]]]):
         pulumi.set(self, "resources", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
-        pulumi.set(self, "terraform_labels", value)
 
 
 class Workload(pulumi.CustomResource):
@@ -726,8 +726,8 @@ class Workload(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["resources"] = None
-            __props__.__dict__["terraform_labels"] = None
         super(Workload, __self__).__init__(
             'gcp:assuredworkloads/workload:Workload',
             resource_name,
@@ -749,9 +749,9 @@ class Workload(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             organization: Optional[pulumi.Input[str]] = None,
             provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadResourceSettingArgs']]]]] = None,
-            resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadResourceArgs']]]]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Workload':
+            resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadResourceArgs']]]]] = None) -> 'Workload':
         """
         Get an existing Workload resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -778,9 +778,9 @@ class Workload(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
+        :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadResourceSettingArgs']]]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadResourceArgs']]]] resources: Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
-        :param pulumi.Input[Mapping[str, Any]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -797,9 +797,9 @@ class Workload(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["organization"] = organization
         __props__.__dict__["provisioned_resources_parent"] = provisioned_resources_parent
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["resource_settings"] = resource_settings
         __props__.__dict__["resources"] = resources
-        __props__.__dict__["terraform_labels"] = terraform_labels
         return Workload(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -899,6 +899,14 @@ class Workload(pulumi.CustomResource):
         return pulumi.get(self, "provisioned_resources_parent")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="resourceSettings")
     def resource_settings(self) -> pulumi.Output[Optional[Sequence['outputs.WorkloadResourceSetting']]]:
         """
@@ -913,12 +921,4 @@ class Workload(pulumi.CustomResource):
         Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
         """
         return pulumi.get(self, "resources")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, Any]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 

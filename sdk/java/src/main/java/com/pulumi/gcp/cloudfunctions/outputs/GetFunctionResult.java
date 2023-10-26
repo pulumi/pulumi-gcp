@@ -76,6 +76,7 @@ public final class GetFunctionResult {
      */
     private String name;
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private @Nullable String region;
     /**
      * @return The runtime in which the function is running.
@@ -105,7 +106,6 @@ public final class GetFunctionResult {
      */
     private List<GetFunctionSourceRepository> sourceRepositories;
     private String status;
-    private Map<String,String> terraformLabels;
     /**
      * @return Function execution timeout (in seconds).
      * 
@@ -224,6 +224,9 @@ public final class GetFunctionResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
@@ -270,9 +273,6 @@ public final class GetFunctionResult {
     }
     public String status() {
         return this.status;
-    }
-    public Map<String,String> terraformLabels() {
-        return this.terraformLabels;
     }
     /**
      * @return Function execution timeout (in seconds).
@@ -332,6 +332,7 @@ public final class GetFunctionResult {
         private Integer minInstances;
         private String name;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private @Nullable String region;
         private String runtime;
         private List<GetFunctionSecretEnvironmentVariable> secretEnvironmentVariables;
@@ -341,7 +342,6 @@ public final class GetFunctionResult {
         private String sourceArchiveObject;
         private List<GetFunctionSourceRepository> sourceRepositories;
         private String status;
-        private Map<String,String> terraformLabels;
         private Integer timeout;
         private Boolean triggerHttp;
         private String vpcConnector;
@@ -369,6 +369,7 @@ public final class GetFunctionResult {
     	      this.minInstances = defaults.minInstances;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.region = defaults.region;
     	      this.runtime = defaults.runtime;
     	      this.secretEnvironmentVariables = defaults.secretEnvironmentVariables;
@@ -378,7 +379,6 @@ public final class GetFunctionResult {
     	      this.sourceArchiveObject = defaults.sourceArchiveObject;
     	      this.sourceRepositories = defaults.sourceRepositories;
     	      this.status = defaults.status;
-    	      this.terraformLabels = defaults.terraformLabels;
     	      this.timeout = defaults.timeout;
     	      this.triggerHttp = defaults.triggerHttp;
     	      this.vpcConnector = defaults.vpcConnector;
@@ -489,6 +489,11 @@ public final class GetFunctionResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
@@ -543,11 +548,6 @@ public final class GetFunctionResult {
             return this;
         }
         @CustomType.Setter
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            this.terraformLabels = Objects.requireNonNull(terraformLabels);
-            return this;
-        }
-        @CustomType.Setter
         public Builder timeout(Integer timeout) {
             this.timeout = Objects.requireNonNull(timeout);
             return this;
@@ -589,6 +589,7 @@ public final class GetFunctionResult {
             o.minInstances = minInstances;
             o.name = name;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.region = region;
             o.runtime = runtime;
             o.secretEnvironmentVariables = secretEnvironmentVariables;
@@ -598,7 +599,6 @@ public final class GetFunctionResult {
             o.sourceArchiveObject = sourceArchiveObject;
             o.sourceRepositories = sourceRepositories;
             o.status = status;
-            o.terraformLabels = terraformLabels;
             o.timeout = timeout;
             o.triggerHttp = triggerHttp;
             o.vpcConnector = vpcConnector;

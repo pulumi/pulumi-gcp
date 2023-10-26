@@ -146,11 +146,11 @@ type EndpointPolicy struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
-	ServerTlsPolicy pulumi.StringPtrOutput `pulumi:"serverTlsPolicy"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
+	ServerTlsPolicy pulumi.StringPtrOutput `pulumi:"serverTlsPolicy"`
 	// Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
 	// Structure is documented below.
 	TrafficPortSelector EndpointPolicyTrafficPortSelectorPtrOutput `pulumi:"trafficPortSelector"`
@@ -220,11 +220,11 @@ type endpointPolicyState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
-	ServerTlsPolicy *string `pulumi:"serverTlsPolicy"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
+	ServerTlsPolicy *string `pulumi:"serverTlsPolicy"`
 	// Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
 	// Structure is documented below.
 	TrafficPortSelector *EndpointPolicyTrafficPortSelector `pulumi:"trafficPortSelector"`
@@ -259,11 +259,11 @@ type EndpointPolicyState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
-	ServerTlsPolicy pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
+	PulumiLabels pulumi.StringMapInput
+	// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
+	ServerTlsPolicy pulumi.StringPtrInput
 	// Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
 	// Structure is documented below.
 	TrafficPortSelector EndpointPolicyTrafficPortSelectorPtrInput
@@ -498,15 +498,15 @@ func (o EndpointPolicyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *EndpointPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o EndpointPolicyOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EndpointPolicy) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
 func (o EndpointPolicyOutput) ServerTlsPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EndpointPolicy) pulumi.StringPtrOutput { return v.ServerTlsPolicy }).(pulumi.StringPtrOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o EndpointPolicyOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *EndpointPolicy) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.

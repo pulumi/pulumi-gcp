@@ -141,11 +141,11 @@ namespace Pulumi.Gcp.Compute
         public readonly string? Project;
         public readonly string PscConnectionId;
         public readonly string PscConnectionStatus;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string SelfLink;
         public readonly ImmutableArray<string> SourceIpRanges;
         public readonly string Subnetwork;
         public readonly string Target;
-        public readonly ImmutableDictionary<string, string> TerraformLabels;
 
         [OutputConstructor]
         private GetGlobalForwardingRuleResult(
@@ -187,15 +187,15 @@ namespace Pulumi.Gcp.Compute
 
             string pscConnectionStatus,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             string selfLink,
 
             ImmutableArray<string> sourceIpRanges,
 
             string subnetwork,
 
-            string target,
-
-            ImmutableDictionary<string, string> terraformLabels)
+            string target)
         {
             AllowPscGlobalAccess = allowPscGlobalAccess;
             BaseForwardingRule = baseForwardingRule;
@@ -216,11 +216,11 @@ namespace Pulumi.Gcp.Compute
             Project = project;
             PscConnectionId = pscConnectionId;
             PscConnectionStatus = pscConnectionStatus;
+            PulumiLabels = pulumiLabels;
             SelfLink = selfLink;
             SourceIpRanges = sourceIpRanges;
             Subnetwork = subnetwork;
             Target = target;
-            TerraformLabels = terraformLabels;
         }
     }
 }

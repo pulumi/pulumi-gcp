@@ -199,6 +199,21 @@ public final class WorkloadState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,Object>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
      * 
      */
@@ -228,21 +243,6 @@ public final class WorkloadState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.resources);
     }
 
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     * 
-     */
-    @Import(name="terraformLabels")
-    private @Nullable Output<Map<String,Object>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
-     * 
-     */
-    public Optional<Output<Map<String,Object>>> terraformLabels() {
-        return Optional.ofNullable(this.terraformLabels);
-    }
-
     private WorkloadState() {}
 
     private WorkloadState(WorkloadState $) {
@@ -257,9 +257,9 @@ public final class WorkloadState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.organization = $.organization;
         this.provisionedResourcesParent = $.provisionedResourcesParent;
+        this.pulumiLabels = $.pulumiLabels;
         this.resourceSettings = $.resourceSettings;
         this.resources = $.resources;
-        this.terraformLabels = $.terraformLabels;
     }
 
     public static Builder builder() {
@@ -524,6 +524,27 @@ public final class WorkloadState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,Object>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,Object> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
          * @param resourceSettings Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
          * 
          * @return builder
@@ -583,27 +604,6 @@ public final class WorkloadState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder resources(WorkloadResourceArgs... resources) {
             return resources(List.of(resources));
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(@Nullable Output<Map<String,Object>> terraformLabels) {
-            $.terraformLabels = terraformLabels;
-            return this;
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(Map<String,Object> terraformLabels) {
-            return terraformLabels(Output.of(terraformLabels));
         }
 
         public WorkloadState build() {

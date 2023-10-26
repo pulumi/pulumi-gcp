@@ -155,9 +155,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public readonly string Mode;
         public readonly string Name;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigResult> RemoteRepositoryConfigs;
         public readonly string RepositoryId;
-        public readonly ImmutableDictionary<string, string> TerraformLabels;
         public readonly string UpdateTime;
         public readonly ImmutableArray<Outputs.GetRepositoryVirtualRepositoryConfigResult> VirtualRepositoryConfigs;
 
@@ -193,11 +193,11 @@ namespace Pulumi.Gcp.ArtifactRegistry
 
             string? project,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigResult> remoteRepositoryConfigs,
 
             string repositoryId,
-
-            ImmutableDictionary<string, string> terraformLabels,
 
             string updateTime,
 
@@ -218,9 +218,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
             Mode = mode;
             Name = name;
             Project = project;
+            PulumiLabels = pulumiLabels;
             RemoteRepositoryConfigs = remoteRepositoryConfigs;
             RepositoryId = repositoryId;
-            TerraformLabels = terraformLabels;
             UpdateTime = updateTime;
             VirtualRepositoryConfigs = virtualRepositoryConfigs;
         }

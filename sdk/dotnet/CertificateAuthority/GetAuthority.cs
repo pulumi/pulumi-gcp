@@ -181,10 +181,10 @@ namespace Pulumi.Gcp.CertificateAuthority
         public readonly string PemCsr;
         public readonly string? Pool;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly bool SkipGracePeriod;
         public readonly string State;
         public readonly ImmutableArray<Outputs.GetAuthoritySubordinateConfigResult> SubordinateConfigs;
-        public readonly ImmutableDictionary<string, string> TerraformLabels;
         public readonly string Type;
         public readonly string UpdateTime;
 
@@ -230,13 +230,13 @@ namespace Pulumi.Gcp.CertificateAuthority
 
             string? project,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             bool skipGracePeriod,
 
             string state,
 
             ImmutableArray<Outputs.GetAuthoritySubordinateConfigResult> subordinateConfigs,
-
-            ImmutableDictionary<string, string> terraformLabels,
 
             string type,
 
@@ -262,10 +262,10 @@ namespace Pulumi.Gcp.CertificateAuthority
             PemCsr = pemCsr;
             Pool = pool;
             Project = project;
+            PulumiLabels = pulumiLabels;
             SkipGracePeriod = skipGracePeriod;
             State = state;
             SubordinateConfigs = subordinateConfigs;
-            TerraformLabels = terraformLabels;
             Type = type;
             UpdateTime = updateTime;
         }

@@ -93,6 +93,7 @@ type LookupSnapshotResult struct {
 	MostRecent               *bool                                `pulumi:"mostRecent"`
 	Name                     *string                              `pulumi:"name"`
 	Project                  *string                              `pulumi:"project"`
+	PulumiLabels             map[string]string                    `pulumi:"pulumiLabels"`
 	SelfLink                 string                               `pulumi:"selfLink"`
 	SnapshotEncryptionKeys   []GetSnapshotSnapshotEncryptionKey   `pulumi:"snapshotEncryptionKeys"`
 	SnapshotId               int                                  `pulumi:"snapshotId"`
@@ -100,7 +101,6 @@ type LookupSnapshotResult struct {
 	SourceDiskEncryptionKeys []GetSnapshotSourceDiskEncryptionKey `pulumi:"sourceDiskEncryptionKeys"`
 	StorageBytes             int                                  `pulumi:"storageBytes"`
 	StorageLocations         []string                             `pulumi:"storageLocations"`
-	TerraformLabels          map[string]string                    `pulumi:"terraformLabels"`
 	Zone                     string                               `pulumi:"zone"`
 }
 
@@ -212,6 +212,10 @@ func (o LookupSnapshotResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
+func (o LookupSnapshotResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupSnapshotResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) string { return v.SelfLink }).(pulumi.StringOutput)
 }
@@ -238,10 +242,6 @@ func (o LookupSnapshotResultOutput) StorageBytes() pulumi.IntOutput {
 
 func (o LookupSnapshotResultOutput) StorageLocations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) []string { return v.StorageLocations }).(pulumi.StringArrayOutput)
-}
-
-func (o LookupSnapshotResultOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupSnapshotResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupSnapshotResultOutput) Zone() pulumi.StringOutput {

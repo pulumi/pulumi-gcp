@@ -351,6 +351,11 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      */
     public /*out*/ readonly pscConnectionStatus!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -384,11 +389,6 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * - - -
      */
     public readonly target!: pulumi.Output<string>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a GlobalForwardingRule resource with the given unique name, arguments, and options.
@@ -421,11 +421,11 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pscConnectionId"] = state ? state.pscConnectionId : undefined;
             resourceInputs["pscConnectionStatus"] = state ? state.pscConnectionStatus : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["sourceIpRanges"] = state ? state.sourceIpRanges : undefined;
             resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
             resourceInputs["target"] = state ? state.target : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as GlobalForwardingRuleArgs | undefined;
             if ((!args || args.target === undefined) && !opts.urn) {
@@ -452,8 +452,8 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["pscConnectionId"] = undefined /*out*/;
             resourceInputs["pscConnectionStatus"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GlobalForwardingRule.__pulumiType, name, resourceInputs, opts);
@@ -635,6 +635,11 @@ export interface GlobalForwardingRuleState {
      */
     pscConnectionStatus?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The URI of the created resource.
      */
     selfLink?: pulumi.Input<string>;
@@ -668,11 +673,6 @@ export interface GlobalForwardingRuleState {
      * - - -
      */
     target?: pulumi.Input<string>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**

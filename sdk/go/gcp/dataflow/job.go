@@ -206,6 +206,8 @@ type Job struct {
 	Parameters pulumi.MapOutput `pulumi:"parameters"`
 	// The project in which the resource belongs. If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region in which the created job should run.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// The Service Account email used to create the job.
@@ -222,8 +224,6 @@ type Job struct {
 	TempGcsLocation pulumi.StringOutput `pulumi:"tempGcsLocation"`
 	// The GCS path to the Dataflow job template.
 	TemplateGcsPath pulumi.StringOutput `pulumi:"templateGcsPath"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
 	TransformNameMapping pulumi.MapOutput `pulumi:"transformNameMapping"`
 	// The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
@@ -299,6 +299,8 @@ type jobState struct {
 	Parameters map[string]interface{} `pulumi:"parameters"`
 	// The project in which the resource belongs. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region in which the created job should run.
 	Region *string `pulumi:"region"`
 	// The Service Account email used to create the job.
@@ -315,8 +317,6 @@ type jobState struct {
 	TempGcsLocation *string `pulumi:"tempGcsLocation"`
 	// The GCS path to the Dataflow job template.
 	TemplateGcsPath *string `pulumi:"templateGcsPath"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
 	TransformNameMapping map[string]interface{} `pulumi:"transformNameMapping"`
 	// The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
@@ -357,6 +357,8 @@ type JobState struct {
 	Parameters pulumi.MapInput
 	// The project in which the resource belongs. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The region in which the created job should run.
 	Region pulumi.StringPtrInput
 	// The Service Account email used to create the job.
@@ -373,8 +375,6 @@ type JobState struct {
 	TempGcsLocation pulumi.StringPtrInput
 	// The GCS path to the Dataflow job template.
 	TemplateGcsPath pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
 	TransformNameMapping pulumi.MapInput
 	// The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
@@ -666,6 +666,11 @@ func (o JobOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o JobOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The region in which the created job should run.
 func (o JobOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
@@ -701,11 +706,6 @@ func (o JobOutput) TempGcsLocation() pulumi.StringOutput {
 // The GCS path to the Dataflow job template.
 func (o JobOutput) TemplateGcsPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.TemplateGcsPath }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o JobOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.

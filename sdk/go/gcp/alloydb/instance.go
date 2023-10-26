@@ -167,6 +167,9 @@ type Instance struct {
 	MachineConfig InstanceMachineConfigOutput `pulumi:"machineConfig"`
 	// The name of the instance resource.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Configuration for query insights.
 	// Structure is documented below.
 	QueryInsightsConfig InstanceQueryInsightsConfigOutput `pulumi:"queryInsightsConfig"`
@@ -177,9 +180,6 @@ type Instance struct {
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// The current state of the alloydb instance.
 	State pulumi.StringOutput `pulumi:"state"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The system-generated UID of the resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Time the Instance was updated in UTC.
@@ -272,6 +272,9 @@ type instanceState struct {
 	MachineConfig *InstanceMachineConfig `pulumi:"machineConfig"`
 	// The name of the instance resource.
 	Name *string `pulumi:"name"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Configuration for query insights.
 	// Structure is documented below.
 	QueryInsightsConfig *InstanceQueryInsightsConfig `pulumi:"queryInsightsConfig"`
@@ -282,9 +285,6 @@ type instanceState struct {
 	Reconciling *bool `pulumi:"reconciling"`
 	// The current state of the alloydb instance.
 	State *string `pulumi:"state"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The system-generated UID of the resource.
 	Uid *string `pulumi:"uid"`
 	// Time the Instance was updated in UTC.
@@ -339,6 +339,9 @@ type InstanceState struct {
 	MachineConfig InstanceMachineConfigPtrInput
 	// The name of the instance resource.
 	Name pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Configuration for query insights.
 	// Structure is documented below.
 	QueryInsightsConfig InstanceQueryInsightsConfigPtrInput
@@ -349,9 +352,6 @@ type InstanceState struct {
 	Reconciling pulumi.BoolPtrInput
 	// The current state of the alloydb instance.
 	State pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// The system-generated UID of the resource.
 	Uid pulumi.StringPtrInput
 	// Time the Instance was updated in UTC.
@@ -654,6 +654,12 @@ func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o InstanceOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Configuration for query insights.
 // Structure is documented below.
 func (o InstanceOutput) QueryInsightsConfig() InstanceQueryInsightsConfigOutput {
@@ -674,12 +680,6 @@ func (o InstanceOutput) Reconciling() pulumi.BoolOutput {
 // The current state of the alloydb instance.
 func (o InstanceOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o InstanceOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The system-generated UID of the resource.

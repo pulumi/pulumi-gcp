@@ -366,6 +366,13 @@ namespace Pulumi.Gcp.Notebooks
         public Output<string> ProxyUri { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Reservation Affinity for consuming Zonal reservation.
         /// Structure is documented below.
         /// </summary>
@@ -417,13 +424,6 @@ namespace Pulumi.Gcp.Notebooks
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// Instance update time.
@@ -976,6 +976,19 @@ namespace Pulumi.Gcp.Notebooks
         [Input("proxyUri")]
         public Input<string>? ProxyUri { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
+
         /// <summary>
         /// Reservation Affinity for consuming Zonal reservation.
         /// Structure is documented below.
@@ -1039,19 +1052,6 @@ namespace Pulumi.Gcp.Notebooks
         {
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
-        }
-
-        [Input("terraformLabels")]
-        private InputMap<string>? _terraformLabels;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        public InputMap<string> TerraformLabels
-        {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
-            set => _terraformLabels = value;
         }
 
         /// <summary>

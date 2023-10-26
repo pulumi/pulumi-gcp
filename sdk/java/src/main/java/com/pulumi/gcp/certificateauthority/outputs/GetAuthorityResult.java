@@ -46,10 +46,10 @@ public final class GetAuthorityResult {
     private String pemCsr;
     private @Nullable String pool;
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private Boolean skipGracePeriod;
     private String state;
     private List<GetAuthoritySubordinateConfig> subordinateConfigs;
-    private Map<String,String> terraformLabels;
     private String type;
     private String updateTime;
 
@@ -122,6 +122,9 @@ public final class GetAuthorityResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public Boolean skipGracePeriod() {
         return this.skipGracePeriod;
     }
@@ -130,9 +133,6 @@ public final class GetAuthorityResult {
     }
     public List<GetAuthoritySubordinateConfig> subordinateConfigs() {
         return this.subordinateConfigs;
-    }
-    public Map<String,String> terraformLabels() {
-        return this.terraformLabels;
     }
     public String type() {
         return this.type;
@@ -170,10 +170,10 @@ public final class GetAuthorityResult {
         private String pemCsr;
         private @Nullable String pool;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private Boolean skipGracePeriod;
         private String state;
         private List<GetAuthoritySubordinateConfig> subordinateConfigs;
-        private Map<String,String> terraformLabels;
         private String type;
         private String updateTime;
         public Builder() {}
@@ -199,10 +199,10 @@ public final class GetAuthorityResult {
     	      this.pemCsr = defaults.pemCsr;
     	      this.pool = defaults.pool;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.skipGracePeriod = defaults.skipGracePeriod;
     	      this.state = defaults.state;
     	      this.subordinateConfigs = defaults.subordinateConfigs;
-    	      this.terraformLabels = defaults.terraformLabels;
     	      this.type = defaults.type;
     	      this.updateTime = defaults.updateTime;
         }
@@ -320,6 +320,11 @@ public final class GetAuthorityResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder skipGracePeriod(Boolean skipGracePeriod) {
             this.skipGracePeriod = Objects.requireNonNull(skipGracePeriod);
             return this;
@@ -336,11 +341,6 @@ public final class GetAuthorityResult {
         }
         public Builder subordinateConfigs(GetAuthoritySubordinateConfig... subordinateConfigs) {
             return subordinateConfigs(List.of(subordinateConfigs));
-        }
-        @CustomType.Setter
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            this.terraformLabels = Objects.requireNonNull(terraformLabels);
-            return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
@@ -374,10 +374,10 @@ public final class GetAuthorityResult {
             o.pemCsr = pemCsr;
             o.pool = pool;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.skipGracePeriod = skipGracePeriod;
             o.state = state;
             o.subordinateConfigs = subordinateConfigs;
-            o.terraformLabels = terraformLabels;
             o.type = type;
             o.updateTime = updateTime;
             return o;

@@ -75,9 +75,9 @@ namespace Pulumi.Gcp.Firebase
         /// The fully-qualified resource name for the channel, in the format: `sites/{{site_id}}/channels/{{channel_id}}`.
         /// </summary>
         public readonly string Name;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly int RetainedReleaseCount;
         public readonly string SiteId;
-        public readonly ImmutableDictionary<string, string> TerraformLabels;
         public readonly string Ttl;
 
         [OutputConstructor]
@@ -94,11 +94,11 @@ namespace Pulumi.Gcp.Firebase
 
             string name,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             int retainedReleaseCount,
 
             string siteId,
-
-            ImmutableDictionary<string, string> terraformLabels,
 
             string ttl)
         {
@@ -108,9 +108,9 @@ namespace Pulumi.Gcp.Firebase
             Id = id;
             Labels = labels;
             Name = name;
+            PulumiLabels = pulumiLabels;
             RetainedReleaseCount = retainedReleaseCount;
             SiteId = siteId;
-            TerraformLabels = terraformLabels;
             Ttl = ttl;
         }
     }

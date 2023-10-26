@@ -529,6 +529,11 @@ export class WorkstationConfig extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
      * If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
      */
@@ -538,11 +543,6 @@ export class WorkstationConfig extends pulumi.CustomResource {
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      */
     public readonly runningTimeout!: pulumi.Output<string | undefined>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The system-generated UID of the resource.
      */
@@ -587,9 +587,9 @@ export class WorkstationConfig extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["persistentDirectories"] = state ? state.persistentDirectories : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["replicaZones"] = state ? state.replicaZones : undefined;
             resourceInputs["runningTimeout"] = state ? state.runningTimeout : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
             resourceInputs["workstationClusterId"] = state ? state.workstationClusterId : undefined;
             resourceInputs["workstationConfigId"] = state ? state.workstationConfigId : undefined;
@@ -626,7 +626,7 @@ export class WorkstationConfig extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -731,6 +731,11 @@ export interface WorkstationConfigState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
      * If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
      */
@@ -740,11 +745,6 @@ export interface WorkstationConfigState {
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      */
     runningTimeout?: pulumi.Input<string>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The system-generated UID of the resource.
      */

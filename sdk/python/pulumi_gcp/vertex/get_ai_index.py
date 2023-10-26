@@ -22,7 +22,7 @@ class GetAiIndexResult:
     """
     A collection of values returned by getAiIndex.
     """
-    def __init__(__self__, create_time=None, deployed_indexes=None, description=None, display_name=None, effective_labels=None, etag=None, id=None, index_stats=None, index_update_method=None, labels=None, metadata_schema_uri=None, metadatas=None, name=None, project=None, region=None, terraform_labels=None, update_time=None):
+    def __init__(__self__, create_time=None, deployed_indexes=None, description=None, display_name=None, effective_labels=None, etag=None, id=None, index_stats=None, index_update_method=None, labels=None, metadata_schema_uri=None, metadatas=None, name=None, project=None, pulumi_labels=None, region=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -65,12 +65,12 @@ class GetAiIndexResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
-        if terraform_labels and not isinstance(terraform_labels, dict):
-            raise TypeError("Expected argument 'terraform_labels' to be a dict")
-        pulumi.set(__self__, "terraform_labels", terraform_labels)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -149,14 +149,14 @@ class GetAiIndexResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def region(self) -> str:
         return pulumi.get(self, "region")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Mapping[str, str]:
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="updateTime")
@@ -184,8 +184,8 @@ class AwaitableGetAiIndexResult(GetAiIndexResult):
             metadatas=self.metadatas,
             name=self.name,
             project=self.project,
+            pulumi_labels=self.pulumi_labels,
             region=self.region,
-            terraform_labels=self.terraform_labels,
             update_time=self.update_time)
 
 
@@ -225,8 +225,8 @@ def get_ai_index(name: Optional[str] = None,
         metadatas=pulumi.get(__ret__, 'metadatas'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         region=pulumi.get(__ret__, 'region'),
-        terraform_labels=pulumi.get(__ret__, 'terraform_labels'),
         update_time=pulumi.get(__ret__, 'update_time'))
 
 

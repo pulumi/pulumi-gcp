@@ -246,8 +246,8 @@ class _EndpointPolicyState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  server_tls_policy: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  traffic_port_selector: Optional[pulumi.Input['EndpointPolicyTrafficPortSelectorArgs']] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
@@ -267,9 +267,9 @@ class _EndpointPolicyState:
         :param pulumi.Input[str] name: Name of the EndpointPolicy resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] server_tls_policy: A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[str] server_tls_policy: A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
         :param pulumi.Input['EndpointPolicyTrafficPortSelectorArgs'] traffic_port_selector: Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
                Structure is documented below.
         :param pulumi.Input[str] type: The type of endpoint policy. This is primarily used to validate the configuration.
@@ -287,8 +287,8 @@ class _EndpointPolicyState:
             labels=labels,
             name=name,
             project=project,
+            pulumi_labels=pulumi_labels,
             server_tls_policy=server_tls_policy,
-            terraform_labels=terraform_labels,
             traffic_port_selector=traffic_port_selector,
             type=type,
             update_time=update_time,
@@ -305,8 +305,8 @@ class _EndpointPolicyState:
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              server_tls_policy: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              traffic_port_selector: Optional[pulumi.Input['EndpointPolicyTrafficPortSelectorArgs']] = None,
              type: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
@@ -322,10 +322,10 @@ class _EndpointPolicyState:
             effective_labels = kwargs['effectiveLabels']
         if endpoint_matcher is None and 'endpointMatcher' in kwargs:
             endpoint_matcher = kwargs['endpointMatcher']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if server_tls_policy is None and 'serverTlsPolicy' in kwargs:
             server_tls_policy = kwargs['serverTlsPolicy']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
         if traffic_port_selector is None and 'trafficPortSelector' in kwargs:
             traffic_port_selector = kwargs['trafficPortSelector']
         if update_time is None and 'updateTime' in kwargs:
@@ -349,10 +349,10 @@ class _EndpointPolicyState:
             _setter("name", name)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if server_tls_policy is not None:
             _setter("server_tls_policy", server_tls_policy)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if traffic_port_selector is not None:
             _setter("traffic_port_selector", traffic_port_selector)
         if type is not None:
@@ -474,6 +474,19 @@ class _EndpointPolicyState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="serverTlsPolicy")
     def server_tls_policy(self) -> Optional[pulumi.Input[str]]:
         """
@@ -484,19 +497,6 @@ class _EndpointPolicyState:
     @server_tls_policy.setter
     def server_tls_policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "server_tls_policy", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="trafficPortSelector")
@@ -768,7 +768,7 @@ class EndpointPolicy(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
-            __props__.__dict__["terraform_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["update_time"] = None
         super(EndpointPolicy, __self__).__init__(
             'gcp:networkservices/endpointPolicy:EndpointPolicy',
@@ -789,8 +789,8 @@ class EndpointPolicy(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             server_tls_policy: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             traffic_port_selector: Optional[pulumi.Input[pulumi.InputType['EndpointPolicyTrafficPortSelectorArgs']]] = None,
             type: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'EndpointPolicy':
@@ -815,9 +815,9 @@ class EndpointPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the EndpointPolicy resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] server_tls_policy: A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[str] server_tls_policy: A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
         :param pulumi.Input[pulumi.InputType['EndpointPolicyTrafficPortSelectorArgs']] traffic_port_selector: Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
                Structure is documented below.
         :param pulumi.Input[str] type: The type of endpoint policy. This is primarily used to validate the configuration.
@@ -837,8 +837,8 @@ class EndpointPolicy(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["server_tls_policy"] = server_tls_policy
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["traffic_port_selector"] = traffic_port_selector
         __props__.__dict__["type"] = type
         __props__.__dict__["update_time"] = update_time
@@ -922,21 +922,21 @@ class EndpointPolicy(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="serverTlsPolicy")
     def server_tls_policy(self) -> pulumi.Output[Optional[str]]:
         """
         A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
         """
         return pulumi.get(self, "server_tls_policy")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="trafficPortSelector")

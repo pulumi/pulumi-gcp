@@ -68,14 +68,14 @@ type LookupAppConnectorResult struct {
 	DisplayName     string            `pulumi:"displayName"`
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string                         `pulumi:"id"`
-	Labels          map[string]string              `pulumi:"labels"`
-	Name            string                         `pulumi:"name"`
-	PrincipalInfos  []GetAppConnectorPrincipalInfo `pulumi:"principalInfos"`
-	Project         *string                        `pulumi:"project"`
-	Region          *string                        `pulumi:"region"`
-	State           string                         `pulumi:"state"`
-	TerraformLabels map[string]string              `pulumi:"terraformLabels"`
+	Id             string                         `pulumi:"id"`
+	Labels         map[string]string              `pulumi:"labels"`
+	Name           string                         `pulumi:"name"`
+	PrincipalInfos []GetAppConnectorPrincipalInfo `pulumi:"principalInfos"`
+	Project        *string                        `pulumi:"project"`
+	PulumiLabels   map[string]string              `pulumi:"pulumiLabels"`
+	Region         *string                        `pulumi:"region"`
+	State          string                         `pulumi:"state"`
 }
 
 func LookupAppConnectorOutput(ctx *pulumi.Context, args LookupAppConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAppConnectorResultOutput {
@@ -159,16 +159,16 @@ func (o LookupAppConnectorResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAppConnectorResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
+func (o LookupAppConnectorResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAppConnectorResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupAppConnectorResultOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAppConnectorResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupAppConnectorResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppConnectorResult) string { return v.State }).(pulumi.StringOutput)
-}
-
-func (o LookupAppConnectorResultOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupAppConnectorResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func init() {

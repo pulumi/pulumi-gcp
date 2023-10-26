@@ -219,17 +219,17 @@ namespace Pulumi.Gcp.Vertex
         public Output<int?> OfflineStorageTtlDays { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// The region of the EntityType.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -420,24 +420,24 @@ namespace Pulumi.Gcp.Vertex
         [Input("offlineStorageTtlDays")]
         public Input<int>? OfflineStorageTtlDays { get; set; }
 
-        /// <summary>
-        /// The region of the EntityType.
-        /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
-
-        [Input("terraformLabels")]
-        private InputMap<string>? _terraformLabels;
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
 
         /// <summary>
         /// The combination of labels configured directly on the resource
         /// and default labels configured on the provider.
         /// </summary>
-        public InputMap<string> TerraformLabels
+        public InputMap<string> PulumiLabels
         {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
-            set => _terraformLabels = value;
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
         }
+
+        /// <summary>
+        /// The region of the EntityType.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.

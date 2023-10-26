@@ -85,6 +85,7 @@ export interface GetInstanceResult {
     readonly persistenceIamIdentity: string;
     readonly port: number;
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly readEndpoint: string;
     readonly readEndpointPort: number;
     readonly readReplicasMode: string;
@@ -95,7 +96,6 @@ export interface GetInstanceResult {
     readonly reservedIpRange: string;
     readonly secondaryIpRange: string;
     readonly serverCaCerts: outputs.redis.GetInstanceServerCaCert[];
-    readonly terraformLabels: {[key: string]: string};
     readonly tier: string;
     readonly transitEncryptionMode: string;
 }

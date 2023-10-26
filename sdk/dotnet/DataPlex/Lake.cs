@@ -132,6 +132,12 @@ namespace Pulumi.Gcp.DataPlex
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, object>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
         /// </summary>
         [Output("serviceAccount")]
@@ -142,12 +148,6 @@ namespace Pulumi.Gcp.DataPlex
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource and default labels configured on the provider.
-        /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, object>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
@@ -368,6 +368,18 @@ namespace Pulumi.Gcp.DataPlex
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<object>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        public InputMap<object> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<object>());
+            set => _pulumiLabels = value;
+        }
+
         /// <summary>
         /// Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
         /// </summary>
@@ -379,18 +391,6 @@ namespace Pulumi.Gcp.DataPlex
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
-
-        [Input("terraformLabels")]
-        private InputMap<object>? _terraformLabels;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource and default labels configured on the provider.
-        /// </summary>
-        public InputMap<object> TerraformLabels
-        {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<object>());
-            set => _terraformLabels = value;
-        }
 
         /// <summary>
         /// Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.

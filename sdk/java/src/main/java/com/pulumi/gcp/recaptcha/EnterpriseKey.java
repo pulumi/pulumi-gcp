@@ -378,15 +378,15 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      * 
      */
-    @Export(name="terraformLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> terraformLabels;
+    @Export(name="pulumiLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output<Map<String,Object>> pulumiLabels;
 
     /**
      * @return The combination of labels configured directly on the resource and default labels configured on the provider.
      * 
      */
-    public Output<Map<String,Object>> terraformLabels() {
-        return this.terraformLabels;
+    public Output<Map<String,Object>> pulumiLabels() {
+        return this.pulumiLabels;
     }
     /**
      * Options for user acceptance testing.

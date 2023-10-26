@@ -105,12 +105,12 @@ type ServiceBinding struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The full Service Directory Service name of the format
 	// projects/*/locations/*/namespaces/*/services/*
 	Service pulumi.StringOutput `pulumi:"service"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Time the ServiceBinding was updated in UTC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -166,12 +166,12 @@ type serviceBindingState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The full Service Directory Service name of the format
 	// projects/*/locations/*/namespaces/*/services/*
 	Service *string `pulumi:"service"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Time the ServiceBinding was updated in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -195,12 +195,12 @@ type ServiceBindingState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The full Service Directory Service name of the format
 	// projects/*/locations/*/namespaces/*/services/*
 	Service pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// Time the ServiceBinding was updated in UTC.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -395,16 +395,16 @@ func (o ServiceBindingOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ServiceBindingOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServiceBinding) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The full Service Directory Service name of the format
 // projects/*/locations/*/namespaces/*/services/*
 func (o ServiceBindingOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceBinding) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o ServiceBindingOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ServiceBinding) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Time the ServiceBinding was updated in UTC.

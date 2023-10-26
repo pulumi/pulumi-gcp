@@ -145,6 +145,11 @@ export class Backup extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Name of the file share in the source Cloud Filestore instance that the backup is created from.
      */
     public readonly sourceFileShare!: pulumi.Output<string>;
@@ -164,11 +169,6 @@ export class Backup extends pulumi.CustomResource {
      * The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
      */
     public /*out*/ readonly storageBytes!: pulumi.Output<string>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a Backup resource with the given unique name, arguments, and options.
@@ -193,12 +193,12 @@ export class Backup extends pulumi.CustomResource {
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["sourceFileShare"] = state ? state.sourceFileShare : undefined;
             resourceInputs["sourceInstance"] = state ? state.sourceInstance : undefined;
             resourceInputs["sourceInstanceTier"] = state ? state.sourceInstanceTier : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["storageBytes"] = state ? state.storageBytes : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as BackupArgs | undefined;
             if ((!args || args.location === undefined) && !opts.urn) {
@@ -222,10 +222,10 @@ export class Backup extends pulumi.CustomResource {
             resourceInputs["downloadBytes"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["kmsKeyName"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["sourceInstanceTier"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["storageBytes"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Backup.__pulumiType, name, resourceInputs, opts);
@@ -291,6 +291,11 @@ export interface BackupState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Name of the file share in the source Cloud Filestore instance that the backup is created from.
      */
     sourceFileShare?: pulumi.Input<string>;
@@ -310,11 +315,6 @@ export interface BackupState {
      * The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
      */
     storageBytes?: pulumi.Input<string>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**

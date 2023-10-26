@@ -363,6 +363,11 @@ export class EdgeCacheService extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Require TLS (HTTPS) for all clients connecting to this service.
      * Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
      * You must have at least one (1) edgeSslCertificate specified to enable this.
@@ -378,11 +383,6 @@ export class EdgeCacheService extends pulumi.CustomResource {
      * If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
      */
     public readonly sslPolicy!: pulumi.Output<string | undefined>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a EdgeCacheService resource with the given unique name, arguments, and options.
@@ -409,10 +409,10 @@ export class EdgeCacheService extends pulumi.CustomResource {
             resourceInputs["logConfig"] = state ? state.logConfig : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["requireTls"] = state ? state.requireTls : undefined;
             resourceInputs["routing"] = state ? state.routing : undefined;
             resourceInputs["sslPolicy"] = state ? state.sslPolicy : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as EdgeCacheServiceArgs | undefined;
             if ((!args || args.routing === undefined) && !opts.urn) {
@@ -433,7 +433,7 @@ export class EdgeCacheService extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["ipv4Addresses"] = undefined /*out*/;
             resourceInputs["ipv6Addresses"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EdgeCacheService.__pulumiType, name, resourceInputs, opts);
@@ -503,6 +503,11 @@ export interface EdgeCacheServiceState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Require TLS (HTTPS) for all clients connecting to this service.
      * Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
      * You must have at least one (1) edgeSslCertificate specified to enable this.
@@ -518,11 +523,6 @@ export interface EdgeCacheServiceState {
      * If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
      */
     sslPolicy?: pulumi.Input<string>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**

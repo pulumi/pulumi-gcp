@@ -163,6 +163,13 @@ namespace Pulumi.Gcp.Filestore
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the file share in the source Cloud Filestore instance that the backup is created from.
         /// </summary>
         [Output("sourceFileShare")]
@@ -191,13 +198,6 @@ namespace Pulumi.Gcp.Filestore
         /// </summary>
         [Output("storageBytes")]
         public Output<string> StorageBytes { get; private set; } = null!;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
 
         /// <summary>
@@ -400,6 +400,19 @@ namespace Pulumi.Gcp.Filestore
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
+
         /// <summary>
         /// Name of the file share in the source Cloud Filestore instance that the backup is created from.
         /// </summary>
@@ -429,19 +442,6 @@ namespace Pulumi.Gcp.Filestore
         /// </summary>
         [Input("storageBytes")]
         public Input<string>? StorageBytes { get; set; }
-
-        [Input("terraformLabels")]
-        private InputMap<string>? _terraformLabels;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        public InputMap<string> TerraformLabels
-        {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
-            set => _terraformLabels = value;
-        }
 
         public BackupState()
         {

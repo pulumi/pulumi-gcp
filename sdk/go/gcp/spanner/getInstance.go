@@ -75,8 +75,8 @@ type LookupInstanceResult struct {
 	NumNodes        int               `pulumi:"numNodes"`
 	ProcessingUnits int               `pulumi:"processingUnits"`
 	Project         *string           `pulumi:"project"`
+	PulumiLabels    map[string]string `pulumi:"pulumiLabels"`
 	State           string            `pulumi:"state"`
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 func LookupInstanceOutput(ctx *pulumi.Context, args LookupInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceResultOutput {
@@ -171,12 +171,12 @@ func (o LookupInstanceResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInstanceResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
-func (o LookupInstanceResultOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupInstanceResult) string { return v.State }).(pulumi.StringOutput)
+func (o LookupInstanceResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-func (o LookupInstanceResultOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
+func (o LookupInstanceResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.State }).(pulumi.StringOutput)
 }
 
 func init() {

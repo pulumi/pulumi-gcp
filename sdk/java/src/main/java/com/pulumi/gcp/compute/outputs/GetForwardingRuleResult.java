@@ -44,6 +44,7 @@ public final class GetForwardingRuleResult {
     private @Nullable String project;
     private String pscConnectionId;
     private String pscConnectionStatus;
+    private Map<String,String> pulumiLabels;
     private @Nullable String region;
     private String selfLink;
     private List<GetForwardingRuleServiceDirectoryRegistration> serviceDirectoryRegistrations;
@@ -52,7 +53,6 @@ public final class GetForwardingRuleResult {
     private List<String> sourceIpRanges;
     private String subnetwork;
     private String target;
-    private Map<String,String> terraformLabels;
 
     private GetForwardingRuleResult() {}
     public Boolean allPorts() {
@@ -134,6 +134,9 @@ public final class GetForwardingRuleResult {
     public String pscConnectionStatus() {
         return this.pscConnectionStatus;
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
@@ -157,9 +160,6 @@ public final class GetForwardingRuleResult {
     }
     public String target() {
         return this.target;
-    }
-    public Map<String,String> terraformLabels() {
-        return this.terraformLabels;
     }
 
     public static Builder builder() {
@@ -196,6 +196,7 @@ public final class GetForwardingRuleResult {
         private @Nullable String project;
         private String pscConnectionId;
         private String pscConnectionStatus;
+        private Map<String,String> pulumiLabels;
         private @Nullable String region;
         private String selfLink;
         private List<GetForwardingRuleServiceDirectoryRegistration> serviceDirectoryRegistrations;
@@ -204,7 +205,6 @@ public final class GetForwardingRuleResult {
         private List<String> sourceIpRanges;
         private String subnetwork;
         private String target;
-        private Map<String,String> terraformLabels;
         public Builder() {}
         public Builder(GetForwardingRuleResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -233,6 +233,7 @@ public final class GetForwardingRuleResult {
     	      this.project = defaults.project;
     	      this.pscConnectionId = defaults.pscConnectionId;
     	      this.pscConnectionStatus = defaults.pscConnectionStatus;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.region = defaults.region;
     	      this.selfLink = defaults.selfLink;
     	      this.serviceDirectoryRegistrations = defaults.serviceDirectoryRegistrations;
@@ -241,7 +242,6 @@ public final class GetForwardingRuleResult {
     	      this.sourceIpRanges = defaults.sourceIpRanges;
     	      this.subnetwork = defaults.subnetwork;
     	      this.target = defaults.target;
-    	      this.terraformLabels = defaults.terraformLabels;
         }
 
         @CustomType.Setter
@@ -373,6 +373,11 @@ public final class GetForwardingRuleResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
@@ -418,11 +423,6 @@ public final class GetForwardingRuleResult {
             this.target = Objects.requireNonNull(target);
             return this;
         }
-        @CustomType.Setter
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            this.terraformLabels = Objects.requireNonNull(terraformLabels);
-            return this;
-        }
         public GetForwardingRuleResult build() {
             final var o = new GetForwardingRuleResult();
             o.allPorts = allPorts;
@@ -450,6 +450,7 @@ public final class GetForwardingRuleResult {
             o.project = project;
             o.pscConnectionId = pscConnectionId;
             o.pscConnectionStatus = pscConnectionStatus;
+            o.pulumiLabels = pulumiLabels;
             o.region = region;
             o.selfLink = selfLink;
             o.serviceDirectoryRegistrations = serviceDirectoryRegistrations;
@@ -458,7 +459,6 @@ public final class GetForwardingRuleResult {
             o.sourceIpRanges = sourceIpRanges;
             o.subnetwork = subnetwork;
             o.target = target;
-            o.terraformLabels = terraformLabels;
             return o;
         }
     }

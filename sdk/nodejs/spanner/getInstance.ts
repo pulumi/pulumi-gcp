@@ -65,8 +65,8 @@ export interface GetInstanceResult {
     readonly numNodes: number;
     readonly processingUnits: number;
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly state: string;
-    readonly terraformLabels: {[key: string]: string};
 }
 /**
  * Get a spanner instance from Google Cloud by its name.

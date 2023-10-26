@@ -266,6 +266,8 @@ type VPNTunnel struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Remote traffic selector to use when establishing the VPN tunnel with
@@ -288,8 +290,6 @@ type VPNTunnel struct {
 	// URL of the Target VPN gateway with which this VPN tunnel is
 	// associated.
 	TargetVpnGateway pulumi.StringPtrOutput `pulumi:"targetVpnGateway"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The unique identifier for the resource. This identifier is defined by the server.
 	TunnelId pulumi.StringOutput `pulumi:"tunnelId"`
 	// URL of the VPN gateway with which this VPN tunnel is associated.
@@ -386,6 +386,8 @@ type vpntunnelState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
 	Region *string `pulumi:"region"`
 	// Remote traffic selector to use when establishing the VPN tunnel with
@@ -408,8 +410,6 @@ type vpntunnelState struct {
 	// URL of the Target VPN gateway with which this VPN tunnel is
 	// associated.
 	TargetVpnGateway *string `pulumi:"targetVpnGateway"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The unique identifier for the resource. This identifier is defined by the server.
 	TunnelId *string `pulumi:"tunnelId"`
 	// URL of the VPN gateway with which this VPN tunnel is associated.
@@ -467,6 +467,8 @@ type VPNTunnelState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
 	Region pulumi.StringPtrInput
 	// Remote traffic selector to use when establishing the VPN tunnel with
@@ -489,8 +491,6 @@ type VPNTunnelState struct {
 	// URL of the Target VPN gateway with which this VPN tunnel is
 	// associated.
 	TargetVpnGateway pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// The unique identifier for the resource. This identifier is defined by the server.
 	TunnelId pulumi.StringPtrInput
 	// URL of the VPN gateway with which this VPN tunnel is associated.
@@ -833,6 +833,11 @@ func (o VPNTunnelOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *VPNTunnel) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o VPNTunnelOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *VPNTunnel) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
 func (o VPNTunnelOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *VPNTunnel) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
@@ -874,11 +879,6 @@ func (o VPNTunnelOutput) SharedSecretHash() pulumi.StringOutput {
 // associated.
 func (o VPNTunnelOutput) TargetVpnGateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VPNTunnel) pulumi.StringPtrOutput { return v.TargetVpnGateway }).(pulumi.StringPtrOutput)
-}
-
-// The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o VPNTunnelOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *VPNTunnel) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The unique identifier for the resource. This identifier is defined by the server.

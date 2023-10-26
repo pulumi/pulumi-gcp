@@ -22,7 +22,7 @@ class GetRepositoryResult:
     """
     A collection of values returned by getRepository.
     """
-    def __init__(__self__, cleanup_policies=None, cleanup_policy_dry_run=None, create_time=None, description=None, docker_configs=None, effective_labels=None, format=None, id=None, kms_key_name=None, labels=None, location=None, maven_configs=None, mode=None, name=None, project=None, remote_repository_configs=None, repository_id=None, terraform_labels=None, update_time=None, virtual_repository_configs=None):
+    def __init__(__self__, cleanup_policies=None, cleanup_policy_dry_run=None, create_time=None, description=None, docker_configs=None, effective_labels=None, format=None, id=None, kms_key_name=None, labels=None, location=None, maven_configs=None, mode=None, name=None, project=None, pulumi_labels=None, remote_repository_configs=None, repository_id=None, update_time=None, virtual_repository_configs=None):
         if cleanup_policies and not isinstance(cleanup_policies, list):
             raise TypeError("Expected argument 'cleanup_policies' to be a list")
         pulumi.set(__self__, "cleanup_policies", cleanup_policies)
@@ -68,15 +68,15 @@ class GetRepositoryResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if remote_repository_configs and not isinstance(remote_repository_configs, list):
             raise TypeError("Expected argument 'remote_repository_configs' to be a list")
         pulumi.set(__self__, "remote_repository_configs", remote_repository_configs)
         if repository_id and not isinstance(repository_id, str):
             raise TypeError("Expected argument 'repository_id' to be a str")
         pulumi.set(__self__, "repository_id", repository_id)
-        if terraform_labels and not isinstance(terraform_labels, dict):
-            raise TypeError("Expected argument 'terraform_labels' to be a dict")
-        pulumi.set(__self__, "terraform_labels", terraform_labels)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -163,6 +163,11 @@ class GetRepositoryResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="remoteRepositoryConfigs")
     def remote_repository_configs(self) -> Sequence['outputs.GetRepositoryRemoteRepositoryConfigResult']:
         return pulumi.get(self, "remote_repository_configs")
@@ -171,11 +176,6 @@ class GetRepositoryResult:
     @pulumi.getter(name="repositoryId")
     def repository_id(self) -> str:
         return pulumi.get(self, "repository_id")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Mapping[str, str]:
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="updateTime")
@@ -209,9 +209,9 @@ class AwaitableGetRepositoryResult(GetRepositoryResult):
             mode=self.mode,
             name=self.name,
             project=self.project,
+            pulumi_labels=self.pulumi_labels,
             remote_repository_configs=self.remote_repository_configs,
             repository_id=self.repository_id,
-            terraform_labels=self.terraform_labels,
             update_time=self.update_time,
             virtual_repository_configs=self.virtual_repository_configs)
 
@@ -266,9 +266,9 @@ def get_repository(location: Optional[str] = None,
         mode=pulumi.get(__ret__, 'mode'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         remote_repository_configs=pulumi.get(__ret__, 'remote_repository_configs'),
         repository_id=pulumi.get(__ret__, 'repository_id'),
-        terraform_labels=pulumi.get(__ret__, 'terraform_labels'),
         update_time=pulumi.get(__ret__, 'update_time'),
         virtual_repository_configs=pulumi.get(__ret__, 'virtual_repository_configs'))
 

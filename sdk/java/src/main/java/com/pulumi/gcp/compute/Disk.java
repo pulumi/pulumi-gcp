@@ -568,6 +568,22 @@ public class Disk extends com.pulumi.resources.CustomResource {
         return this.provisionedThroughput;
     }
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
+    }
+    /**
      * Resource policies applied to this disk for automatic snapshot creations.
      * ~&gt;**NOTE** This value does not support updating the
      * resource policy, as resource policies can not be updated more than
@@ -788,22 +804,6 @@ public class Disk extends com.pulumi.resources.CustomResource {
      */
     public Output<String> sourceSnapshotId() {
         return this.sourceSnapshotId;
-    }
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    @Export(name="terraformLabels", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output<Map<String,String>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    public Output<Map<String,String>> terraformLabels() {
-        return this.terraformLabels;
     }
     /**
      * URL of the disk type resource describing which disk type to use to

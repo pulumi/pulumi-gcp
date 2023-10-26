@@ -74,6 +74,7 @@ public final class GetDiskResult {
     private @Nullable String project;
     private Integer provisionedIops;
     private Integer provisionedThroughput;
+    private Map<String,String> pulumiLabels;
     private List<String> resourcePolicies;
     /**
      * @return The URI of the created resource.
@@ -121,7 +122,6 @@ public final class GetDiskResult {
      * 
      */
     private String sourceSnapshotId;
-    private Map<String,String> terraformLabels;
     /**
      * @return URL of the disk type resource describing which disk type to use to
      * create the disk.
@@ -237,6 +237,9 @@ public final class GetDiskResult {
     public Integer provisionedThroughput() {
         return this.provisionedThroughput;
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public List<String> resourcePolicies() {
         return this.resourcePolicies;
     }
@@ -304,9 +307,6 @@ public final class GetDiskResult {
     public String sourceSnapshotId() {
         return this.sourceSnapshotId;
     }
-    public Map<String,String> terraformLabels() {
-        return this.terraformLabels;
-    }
     /**
      * @return URL of the disk type resource describing which disk type to use to
      * create the disk.
@@ -361,6 +361,7 @@ public final class GetDiskResult {
         private @Nullable String project;
         private Integer provisionedIops;
         private Integer provisionedThroughput;
+        private Map<String,String> pulumiLabels;
         private List<String> resourcePolicies;
         private String selfLink;
         private Integer size;
@@ -371,7 +372,6 @@ public final class GetDiskResult {
         private String sourceImageId;
         private List<GetDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys;
         private String sourceSnapshotId;
-        private Map<String,String> terraformLabels;
         private String type;
         private List<String> users;
         private @Nullable String zone;
@@ -399,6 +399,7 @@ public final class GetDiskResult {
     	      this.project = defaults.project;
     	      this.provisionedIops = defaults.provisionedIops;
     	      this.provisionedThroughput = defaults.provisionedThroughput;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.resourcePolicies = defaults.resourcePolicies;
     	      this.selfLink = defaults.selfLink;
     	      this.size = defaults.size;
@@ -409,7 +410,6 @@ public final class GetDiskResult {
     	      this.sourceImageId = defaults.sourceImageId;
     	      this.sourceSnapshotEncryptionKeys = defaults.sourceSnapshotEncryptionKeys;
     	      this.sourceSnapshotId = defaults.sourceSnapshotId;
-    	      this.terraformLabels = defaults.terraformLabels;
     	      this.type = defaults.type;
     	      this.users = defaults.users;
     	      this.zone = defaults.zone;
@@ -533,6 +533,11 @@ public final class GetDiskResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder resourcePolicies(List<String> resourcePolicies) {
             this.resourcePolicies = Objects.requireNonNull(resourcePolicies);
             return this;
@@ -592,11 +597,6 @@ public final class GetDiskResult {
             return this;
         }
         @CustomType.Setter
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            this.terraformLabels = Objects.requireNonNull(terraformLabels);
-            return this;
-        }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
@@ -637,6 +637,7 @@ public final class GetDiskResult {
             o.project = project;
             o.provisionedIops = provisionedIops;
             o.provisionedThroughput = provisionedThroughput;
+            o.pulumiLabels = pulumiLabels;
             o.resourcePolicies = resourcePolicies;
             o.selfLink = selfLink;
             o.size = size;
@@ -647,7 +648,6 @@ public final class GetDiskResult {
             o.sourceImageId = sourceImageId;
             o.sourceSnapshotEncryptionKeys = sourceSnapshotEncryptionKeys;
             o.sourceSnapshotId = sourceSnapshotId;
-            o.terraformLabels = terraformLabels;
             o.type = type;
             o.users = users;
             o.zone = zone;

@@ -151,6 +151,12 @@ namespace Pulumi.Gcp.AssuredWorkloads
         public Output<string?> ProvisionedResourcesParent { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, object>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
         /// </summary>
         [Output("resourceSettings")]
@@ -161,12 +167,6 @@ namespace Pulumi.Gcp.AssuredWorkloads
         /// </summary>
         [Output("resources")]
         public Output<ImmutableArray<Outputs.WorkloadResource>> Resources { get; private set; } = null!;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource and default labels configured on the provider.
-        /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, object>> TerraformLabels { get; private set; } = null!;
 
 
         /// <summary>
@@ -381,6 +381,18 @@ namespace Pulumi.Gcp.AssuredWorkloads
         [Input("provisionedResourcesParent")]
         public Input<string>? ProvisionedResourcesParent { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<object>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        public InputMap<object> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<object>());
+            set => _pulumiLabels = value;
+        }
+
         [Input("resourceSettings")]
         private InputList<Inputs.WorkloadResourceSettingGetArgs>? _resourceSettings;
 
@@ -403,18 +415,6 @@ namespace Pulumi.Gcp.AssuredWorkloads
         {
             get => _resources ?? (_resources = new InputList<Inputs.WorkloadResourceGetArgs>());
             set => _resources = value;
-        }
-
-        [Input("terraformLabels")]
-        private InputMap<object>? _terraformLabels;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource and default labels configured on the provider.
-        /// </summary>
-        public InputMap<object> TerraformLabels
-        {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<object>());
-            set => _terraformLabels = value;
         }
 
         public WorkloadState()

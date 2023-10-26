@@ -252,6 +252,9 @@ type EdgeCacheOrigin struct {
 	// When using HTTP2 or HTTPS as the protocol, a valid, publicly-signed, unexpired TLS (SSL) certificate must be presented by the origin server.
 	// Possible values are: `HTTP2`, `HTTPS`, `HTTP`.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Specifies one or more retry conditions for the configured origin.
 	// If the failure mode during a connection attempt to the origin matches the configured retryCondition(s),
 	// the origin request will be retried up to maxAttempts times. The failoverOrigin, if configured, will then be used to satisfy the request.
@@ -267,9 +270,6 @@ type EdgeCacheOrigin struct {
 	// - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
 	//   Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
 	RetryConditions pulumi.StringArrayOutput `pulumi:"retryConditions"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The connection and HTTP timeout configuration for this origin.
 	// Structure is documented below.
 	Timeout EdgeCacheOriginTimeoutPtrOutput `pulumi:"timeout"`
@@ -362,6 +362,9 @@ type edgeCacheOriginState struct {
 	// When using HTTP2 or HTTPS as the protocol, a valid, publicly-signed, unexpired TLS (SSL) certificate must be presented by the origin server.
 	// Possible values are: `HTTP2`, `HTTPS`, `HTTP`.
 	Protocol *string `pulumi:"protocol"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Specifies one or more retry conditions for the configured origin.
 	// If the failure mode during a connection attempt to the origin matches the configured retryCondition(s),
 	// the origin request will be retried up to maxAttempts times. The failoverOrigin, if configured, will then be used to satisfy the request.
@@ -377,9 +380,6 @@ type edgeCacheOriginState struct {
 	// - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
 	//   Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
 	RetryConditions []string `pulumi:"retryConditions"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The connection and HTTP timeout configuration for this origin.
 	// Structure is documented below.
 	Timeout *EdgeCacheOriginTimeout `pulumi:"timeout"`
@@ -440,6 +440,9 @@ type EdgeCacheOriginState struct {
 	// When using HTTP2 or HTTPS as the protocol, a valid, publicly-signed, unexpired TLS (SSL) certificate must be presented by the origin server.
 	// Possible values are: `HTTP2`, `HTTPS`, `HTTP`.
 	Protocol pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Specifies one or more retry conditions for the configured origin.
 	// If the failure mode during a connection attempt to the origin matches the configured retryCondition(s),
 	// the origin request will be retried up to maxAttempts times. The failoverOrigin, if configured, will then be used to satisfy the request.
@@ -455,9 +458,6 @@ type EdgeCacheOriginState struct {
 	// - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
 	//   Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
 	RetryConditions pulumi.StringArrayInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// The connection and HTTP timeout configuration for this origin.
 	// Structure is documented below.
 	Timeout EdgeCacheOriginTimeoutPtrInput
@@ -816,6 +816,12 @@ func (o EdgeCacheOriginOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *EdgeCacheOrigin) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o EdgeCacheOriginOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EdgeCacheOrigin) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Specifies one or more retry conditions for the configured origin.
 // If the failure mode during a connection attempt to the origin matches the configured retryCondition(s),
 // the origin request will be retried up to maxAttempts times. The failoverOrigin, if configured, will then be used to satisfy the request.
@@ -832,12 +838,6 @@ func (o EdgeCacheOriginOutput) Protocol() pulumi.StringOutput {
 //     Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
 func (o EdgeCacheOriginOutput) RetryConditions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EdgeCacheOrigin) pulumi.StringArrayOutput { return v.RetryConditions }).(pulumi.StringArrayOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o EdgeCacheOriginOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *EdgeCacheOrigin) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The connection and HTTP timeout configuration for this origin.

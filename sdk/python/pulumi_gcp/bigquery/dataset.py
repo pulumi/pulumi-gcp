@@ -466,9 +466,9 @@ class _DatasetState:
                  location: Optional[pulumi.Input[str]] = None,
                  max_time_travel_hours: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 storage_billing_model: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 storage_billing_model: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Dataset resources.
         :param pulumi.Input[Sequence[pulumi.Input['DatasetAccessArgs']]] accesses: An array of objects that define dataset access for one or more entities.
@@ -551,13 +551,13 @@ class _DatasetState:
         :param pulumi.Input[str] max_time_travel_hours: Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] storage_billing_model: Specifies the storage billing model for the dataset.
                Set this flag value to LOGICAL to use logical bytes for storage billing,
                or to PHYSICAL to use physical bytes instead.
                LOGICAL is the default if this flag isn't specified.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         """
         _DatasetState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -579,9 +579,9 @@ class _DatasetState:
             location=location,
             max_time_travel_hours=max_time_travel_hours,
             project=project,
+            pulumi_labels=pulumi_labels,
             self_link=self_link,
             storage_billing_model=storage_billing_model,
-            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
@@ -604,9 +604,9 @@ class _DatasetState:
              location: Optional[pulumi.Input[str]] = None,
              max_time_travel_hours: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              storage_billing_model: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if creation_time is None and 'creationTime' in kwargs:
@@ -633,12 +633,12 @@ class _DatasetState:
             last_modified_time = kwargs['lastModifiedTime']
         if max_time_travel_hours is None and 'maxTimeTravelHours' in kwargs:
             max_time_travel_hours = kwargs['maxTimeTravelHours']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if self_link is None and 'selfLink' in kwargs:
             self_link = kwargs['selfLink']
         if storage_billing_model is None and 'storageBillingModel' in kwargs:
             storage_billing_model = kwargs['storageBillingModel']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
 
         if accesses is not None:
             _setter("accesses", accesses)
@@ -676,12 +676,12 @@ class _DatasetState:
             _setter("max_time_travel_hours", max_time_travel_hours)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if self_link is not None:
             _setter("self_link", self_link)
         if storage_billing_model is not None:
             _setter("storage_billing_model", storage_billing_model)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter
@@ -962,6 +962,19 @@ class _DatasetState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
@@ -987,19 +1000,6 @@ class _DatasetState:
     @storage_billing_model.setter
     def storage_billing_model(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "storage_billing_model", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
 
 class Dataset(pulumi.CustomResource):
@@ -1508,8 +1508,8 @@ class Dataset(pulumi.CustomResource):
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["last_modified_time"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["self_link"] = None
-            __props__.__dict__["terraform_labels"] = None
         super(Dataset, __self__).__init__(
             'gcp:bigquery/dataset:Dataset',
             resource_name,
@@ -1538,9 +1538,9 @@ class Dataset(pulumi.CustomResource):
             location: Optional[pulumi.Input[str]] = None,
             max_time_travel_hours: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            storage_billing_model: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Dataset':
+            storage_billing_model: Optional[pulumi.Input[str]] = None) -> 'Dataset':
         """
         Get an existing Dataset resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1628,13 +1628,13 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[str] max_time_travel_hours: Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] storage_billing_model: Specifies the storage billing model for the dataset.
                Set this flag value to LOGICAL to use logical bytes for storage billing,
                or to PHYSICAL to use physical bytes instead.
                LOGICAL is the default if this flag isn't specified.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1658,9 +1658,9 @@ class Dataset(pulumi.CustomResource):
         __props__.__dict__["location"] = location
         __props__.__dict__["max_time_travel_hours"] = max_time_travel_hours
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["storage_billing_model"] = storage_billing_model
-        __props__.__dict__["terraform_labels"] = terraform_labels
         return Dataset(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1870,6 +1870,15 @@ class Dataset(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
@@ -1887,13 +1896,4 @@ class Dataset(pulumi.CustomResource):
         LOGICAL is the default if this flag isn't specified.
         """
         return pulumi.get(self, "storage_billing_model")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 

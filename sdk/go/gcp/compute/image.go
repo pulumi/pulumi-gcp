@@ -204,6 +204,9 @@ type Image struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The parameters of the raw disk image.
 	// Structure is documented below.
 	RawDisk ImageRawDiskPtrOutput `pulumi:"rawDisk"`
@@ -232,9 +235,6 @@ type Image struct {
 	// (regional or multi-regional).
 	// Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
 	StorageLocations pulumi.StringArrayOutput `pulumi:"storageLocations"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewImage registers a new resource with the given unique name, arguments, and options.
@@ -318,6 +318,9 @@ type imageState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The parameters of the raw disk image.
 	// Structure is documented below.
 	RawDisk *ImageRawDisk `pulumi:"rawDisk"`
@@ -346,9 +349,6 @@ type imageState struct {
 	// (regional or multi-regional).
 	// Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
 	StorageLocations []string `pulumi:"storageLocations"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type ImageState struct {
@@ -403,6 +403,9 @@ type ImageState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The parameters of the raw disk image.
 	// Structure is documented below.
 	RawDisk ImageRawDiskPtrInput
@@ -431,9 +434,6 @@ type ImageState struct {
 	// (regional or multi-regional).
 	// Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
 	StorageLocations pulumi.StringArrayInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 }
 
 func (ImageState) ElementType() reflect.Type {
@@ -780,6 +780,12 @@ func (o ImageOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ImageOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The parameters of the raw disk image.
 // Structure is documented below.
 func (o ImageOutput) RawDisk() ImageRawDiskPtrOutput {
@@ -824,12 +830,6 @@ func (o ImageOutput) SourceSnapshot() pulumi.StringPtrOutput {
 // Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
 func (o ImageOutput) StorageLocations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringArrayOutput { return v.StorageLocations }).(pulumi.StringArrayOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o ImageOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Image) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type ImageArrayOutput struct{ *pulumi.OutputState }

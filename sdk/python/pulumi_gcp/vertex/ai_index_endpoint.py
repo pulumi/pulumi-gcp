@@ -191,8 +191,8 @@ class _AiIndexEndpointState:
                  project: Optional[pulumi.Input[str]] = None,
                  public_endpoint_domain_name: Optional[pulumi.Input[str]] = None,
                  public_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AiIndexEndpoint resources.
@@ -217,9 +217,9 @@ class _AiIndexEndpointState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] public_endpoint_domain_name: If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.
         :param pulumi.Input[bool] public_endpoint_enabled: If true, the deployed index will be accessible through public endpoint.
-        :param pulumi.Input[str] region: The region of the index endpoint. eg us-central1
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[str] region: The region of the index endpoint. eg us-central1
         :param pulumi.Input[str] update_time: The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         _AiIndexEndpointState._configure(
@@ -235,8 +235,8 @@ class _AiIndexEndpointState:
             project=project,
             public_endpoint_domain_name=public_endpoint_domain_name,
             public_endpoint_enabled=public_endpoint_enabled,
+            pulumi_labels=pulumi_labels,
             region=region,
-            terraform_labels=terraform_labels,
             update_time=update_time,
         )
     @staticmethod
@@ -253,8 +253,8 @@ class _AiIndexEndpointState:
              project: Optional[pulumi.Input[str]] = None,
              public_endpoint_domain_name: Optional[pulumi.Input[str]] = None,
              public_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -268,8 +268,8 @@ class _AiIndexEndpointState:
             public_endpoint_domain_name = kwargs['publicEndpointDomainName']
         if public_endpoint_enabled is None and 'publicEndpointEnabled' in kwargs:
             public_endpoint_enabled = kwargs['publicEndpointEnabled']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
 
@@ -295,10 +295,10 @@ class _AiIndexEndpointState:
             _setter("public_endpoint_domain_name", public_endpoint_domain_name)
         if public_endpoint_enabled is not None:
             _setter("public_endpoint_enabled", public_endpoint_enabled)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if region is not None:
             _setter("region", region)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if update_time is not None:
             _setter("update_time", update_time)
 
@@ -445,6 +445,19 @@ class _AiIndexEndpointState:
         pulumi.set(self, "public_endpoint_enabled", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
@@ -455,19 +468,6 @@ class _AiIndexEndpointState:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="updateTime")
@@ -711,7 +711,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
             __props__.__dict__["etag"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["public_endpoint_domain_name"] = None
-            __props__.__dict__["terraform_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["update_time"] = None
         super(AiIndexEndpoint, __self__).__init__(
             'gcp:vertex/aiIndexEndpoint:AiIndexEndpoint',
@@ -734,8 +734,8 @@ class AiIndexEndpoint(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             public_endpoint_domain_name: Optional[pulumi.Input[str]] = None,
             public_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'AiIndexEndpoint':
         """
         Get an existing AiIndexEndpoint resource's state with the given name, id, and optional extra
@@ -765,9 +765,9 @@ class AiIndexEndpoint(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] public_endpoint_domain_name: If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.
         :param pulumi.Input[bool] public_endpoint_enabled: If true, the deployed index will be accessible through public endpoint.
-        :param pulumi.Input[str] region: The region of the index endpoint. eg us-central1
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[str] region: The region of the index endpoint. eg us-central1
         :param pulumi.Input[str] update_time: The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -785,8 +785,8 @@ class AiIndexEndpoint(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["public_endpoint_domain_name"] = public_endpoint_domain_name
         __props__.__dict__["public_endpoint_enabled"] = public_endpoint_enabled
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["region"] = region
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["update_time"] = update_time
         return AiIndexEndpoint(resource_name, opts=opts, __props__=__props__)
 
@@ -889,21 +889,21 @@ class AiIndexEndpoint(pulumi.CustomResource):
         return pulumi.get(self, "public_endpoint_enabled")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def region(self) -> pulumi.Output[Optional[str]]:
         """
         The region of the index endpoint. eg us-central1
         """
         return pulumi.get(self, "region")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="updateTime")

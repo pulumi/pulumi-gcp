@@ -373,6 +373,9 @@ type Subscription struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// If push delivery is used with this subscription, this field is used to
 	// configure it. An empty pushConfig signifies that the subscriber will
 	// pull and ack messages using API methods.
@@ -388,9 +391,6 @@ type Subscription struct {
 	// RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
 	// Structure is documented below.
 	RetryPolicy SubscriptionRetryPolicyPtrOutput `pulumi:"retryPolicy"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// A reference to a Topic resource.
 	//
 	// ***
@@ -512,6 +512,9 @@ type subscriptionState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// If push delivery is used with this subscription, this field is used to
 	// configure it. An empty pushConfig signifies that the subscriber will
 	// pull and ack messages using API methods.
@@ -527,9 +530,6 @@ type subscriptionState struct {
 	// RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
 	// Structure is documented below.
 	RetryPolicy *SubscriptionRetryPolicy `pulumi:"retryPolicy"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// A reference to a Topic resource.
 	//
 	// ***
@@ -619,6 +619,9 @@ type SubscriptionState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// If push delivery is used with this subscription, this field is used to
 	// configure it. An empty pushConfig signifies that the subscriber will
 	// pull and ack messages using API methods.
@@ -634,9 +637,6 @@ type SubscriptionState struct {
 	// RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
 	// Structure is documented below.
 	RetryPolicy SubscriptionRetryPolicyPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// A reference to a Topic resource.
 	//
 	// ***
@@ -1082,6 +1082,12 @@ func (o SubscriptionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o SubscriptionOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Subscription) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // If push delivery is used with this subscription, this field is used to
 // configure it. An empty pushConfig signifies that the subscriber will
 // pull and ack messages using API methods.
@@ -1104,12 +1110,6 @@ func (o SubscriptionOutput) RetainAckedMessages() pulumi.BoolPtrOutput {
 // Structure is documented below.
 func (o SubscriptionOutput) RetryPolicy() SubscriptionRetryPolicyPtrOutput {
 	return o.ApplyT(func(v *Subscription) SubscriptionRetryPolicyPtrOutput { return v.RetryPolicy }).(SubscriptionRetryPolicyPtrOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o SubscriptionOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Subscription) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // A reference to a Topic resource.

@@ -129,12 +129,12 @@ type ServiceConnectionPolicy struct {
 	// Information about each Private Service Connect connection.
 	// Structure is documented below.
 	PscConnections ServiceConnectionPolicyPscConnectionArrayOutput `pulumi:"pscConnections"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
 	// It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
 	ServiceClass pulumi.StringOutput `pulumi:"serviceClass"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The timestamp when the resource was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -211,12 +211,12 @@ type serviceConnectionPolicyState struct {
 	// Information about each Private Service Connect connection.
 	// Structure is documented below.
 	PscConnections []ServiceConnectionPolicyPscConnection `pulumi:"pscConnections"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
 	// It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
 	ServiceClass *string `pulumi:"serviceClass"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The timestamp when the resource was updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -255,12 +255,12 @@ type ServiceConnectionPolicyState struct {
 	// Information about each Private Service Connect connection.
 	// Structure is documented below.
 	PscConnections ServiceConnectionPolicyPscConnectionArrayInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
 	// It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
 	ServiceClass pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// The timestamp when the resource was updated.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -506,16 +506,16 @@ func (o ServiceConnectionPolicyOutput) PscConnections() ServiceConnectionPolicyP
 	}).(ServiceConnectionPolicyPscConnectionArrayOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ServiceConnectionPolicyOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServiceConnectionPolicy) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
 // It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
 func (o ServiceConnectionPolicyOutput) ServiceClass() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceConnectionPolicy) pulumi.StringOutput { return v.ServiceClass }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o ServiceConnectionPolicyOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ServiceConnectionPolicy) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The timestamp when the resource was updated.

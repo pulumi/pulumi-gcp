@@ -22,7 +22,7 @@ class GetTopicResult:
     """
     A collection of values returned by getTopic.
     """
-    def __init__(__self__, effective_labels=None, id=None, kms_key_name=None, labels=None, message_retention_duration=None, message_storage_policies=None, name=None, project=None, schema_settings=None, terraform_labels=None):
+    def __init__(__self__, effective_labels=None, id=None, kms_key_name=None, labels=None, message_retention_duration=None, message_storage_policies=None, name=None, project=None, pulumi_labels=None, schema_settings=None):
         if effective_labels and not isinstance(effective_labels, dict):
             raise TypeError("Expected argument 'effective_labels' to be a dict")
         pulumi.set(__self__, "effective_labels", effective_labels)
@@ -47,12 +47,12 @@ class GetTopicResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if schema_settings and not isinstance(schema_settings, list):
             raise TypeError("Expected argument 'schema_settings' to be a list")
         pulumi.set(__self__, "schema_settings", schema_settings)
-        if terraform_labels and not isinstance(terraform_labels, dict):
-            raise TypeError("Expected argument 'terraform_labels' to be a dict")
-        pulumi.set(__self__, "terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter(name="effectiveLabels")
@@ -98,14 +98,14 @@ class GetTopicResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="schemaSettings")
     def schema_settings(self) -> Sequence['outputs.GetTopicSchemaSettingResult']:
         return pulumi.get(self, "schema_settings")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Mapping[str, str]:
-        return pulumi.get(self, "terraform_labels")
 
 
 class AwaitableGetTopicResult(GetTopicResult):
@@ -122,8 +122,8 @@ class AwaitableGetTopicResult(GetTopicResult):
             message_storage_policies=self.message_storage_policies,
             name=self.name,
             project=self.project,
-            schema_settings=self.schema_settings,
-            terraform_labels=self.terraform_labels)
+            pulumi_labels=self.pulumi_labels,
+            schema_settings=self.schema_settings)
 
 
 def get_topic(name: Optional[str] = None,
@@ -165,8 +165,8 @@ def get_topic(name: Optional[str] = None,
         message_storage_policies=pulumi.get(__ret__, 'message_storage_policies'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
-        schema_settings=pulumi.get(__ret__, 'schema_settings'),
-        terraform_labels=pulumi.get(__ret__, 'terraform_labels'))
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
+        schema_settings=pulumi.get(__ret__, 'schema_settings'))
 
 
 @_utilities.lift_output_func(get_topic)

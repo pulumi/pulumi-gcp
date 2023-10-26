@@ -505,6 +505,13 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// If this flag is set, the Certificate Authority will be deleted as soon as
         /// possible without a 30-day grace period where undeletion would have been
         /// allowed. If you proceed, there will be no way to recover this CA.
@@ -526,13 +533,6 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// </summary>
         [Output("subordinateConfig")]
         public Output<Outputs.AuthoritySubordinateConfig?> SubordinateConfig { get; private set; } = null!;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// The Type of this CertificateAuthority.
@@ -895,6 +895,19 @@ namespace Pulumi.Gcp.CertificateAuthority
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
+
         /// <summary>
         /// If this flag is set, the Certificate Authority will be deleted as soon as
         /// possible without a 30-day grace period where undeletion would have been
@@ -917,19 +930,6 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// </summary>
         [Input("subordinateConfig")]
         public Input<Inputs.AuthoritySubordinateConfigGetArgs>? SubordinateConfig { get; set; }
-
-        [Input("terraformLabels")]
-        private InputMap<string>? _terraformLabels;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        public InputMap<string> TerraformLabels
-        {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
-            set => _terraformLabels = value;
-        }
 
         /// <summary>
         /// The Type of this CertificateAuthority.

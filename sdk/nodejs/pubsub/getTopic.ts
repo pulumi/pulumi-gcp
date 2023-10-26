@@ -63,8 +63,8 @@ export interface GetTopicResult {
     readonly messageStoragePolicies: outputs.pubsub.GetTopicMessageStoragePolicy[];
     readonly name: string;
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly schemaSettings: outputs.pubsub.GetTopicSchemaSetting[];
-    readonly terraformLabels: {[key: string]: string};
 }
 /**
  * Get information about a Google Cloud Pub/Sub Topic. For more information see

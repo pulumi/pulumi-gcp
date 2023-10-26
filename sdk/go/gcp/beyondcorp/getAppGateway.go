@@ -70,15 +70,15 @@ type LookupAppGatewayResult struct {
 	EffectiveLabels      map[string]string                  `pulumi:"effectiveLabels"`
 	HostType             string                             `pulumi:"hostType"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string            `pulumi:"id"`
-	Labels          map[string]string `pulumi:"labels"`
-	Name            string            `pulumi:"name"`
-	Project         *string           `pulumi:"project"`
-	Region          *string           `pulumi:"region"`
-	State           string            `pulumi:"state"`
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
-	Type            string            `pulumi:"type"`
-	Uri             string            `pulumi:"uri"`
+	Id           string            `pulumi:"id"`
+	Labels       map[string]string `pulumi:"labels"`
+	Name         string            `pulumi:"name"`
+	Project      *string           `pulumi:"project"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	Region       *string           `pulumi:"region"`
+	State        string            `pulumi:"state"`
+	Type         string            `pulumi:"type"`
+	Uri          string            `pulumi:"uri"`
 }
 
 func LookupAppGatewayOutput(ctx *pulumi.Context, args LookupAppGatewayOutputArgs, opts ...pulumi.InvokeOption) LookupAppGatewayResultOutput {
@@ -166,16 +166,16 @@ func (o LookupAppGatewayResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAppGatewayResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
+func (o LookupAppGatewayResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAppGatewayResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupAppGatewayResultOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAppGatewayResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupAppGatewayResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppGatewayResult) string { return v.State }).(pulumi.StringOutput)
-}
-
-func (o LookupAppGatewayResultOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupAppGatewayResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupAppGatewayResultOutput) Type() pulumi.StringOutput {

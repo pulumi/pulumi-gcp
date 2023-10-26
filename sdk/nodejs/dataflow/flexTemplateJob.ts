@@ -196,6 +196,10 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The region in which the created job should run.
      */
     public readonly region!: pulumi.Output<string>;
@@ -230,10 +234,6 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      * The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
      */
     public readonly tempLocation!: pulumi.Output<string>;
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
      * corresponding name prefixes of the new job.
@@ -275,6 +275,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
             resourceInputs["onDelete"] = state ? state.onDelete : undefined;
             resourceInputs["parameters"] = state ? state.parameters : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["sdkContainerImage"] = state ? state.sdkContainerImage : undefined;
             resourceInputs["serviceAccountEmail"] = state ? state.serviceAccountEmail : undefined;
@@ -283,7 +284,6 @@ export class FlexTemplateJob extends pulumi.CustomResource {
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
             resourceInputs["tempLocation"] = state ? state.tempLocation : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["transformNameMapping"] = state ? state.transformNameMapping : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
@@ -317,8 +317,8 @@ export class FlexTemplateJob extends pulumi.CustomResource {
             resourceInputs["transformNameMapping"] = args ? args.transformNameMapping : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["jobId"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -419,6 +419,10 @@ export interface FlexTemplateJobState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The region in which the created job should run.
      */
     region?: pulumi.Input<string>;
@@ -453,10 +457,6 @@ export interface FlexTemplateJobState {
      * The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
      */
     tempLocation?: pulumi.Input<string>;
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
      * corresponding name prefixes of the new job.

@@ -309,6 +309,9 @@ type Certificate struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The scope of the certificate.
 	// DEFAULT: Certificates with default scope are served from core Google data centers.
 	// If unsure, choose this option.
@@ -322,9 +325,6 @@ type Certificate struct {
 	// certificates before they expire remains the user's responsibility.
 	// Structure is documented below.
 	SelfManaged CertificateSelfManagedPtrOutput `pulumi:"selfManaged"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewCertificate registers a new resource with the given unique name, arguments, and options.
@@ -382,6 +382,9 @@ type certificateState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The scope of the certificate.
 	// DEFAULT: Certificates with default scope are served from core Google data centers.
 	// If unsure, choose this option.
@@ -395,9 +398,6 @@ type certificateState struct {
 	// certificates before they expire remains the user's responsibility.
 	// Structure is documented below.
 	SelfManaged *CertificateSelfManaged `pulumi:"selfManaged"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type CertificateState struct {
@@ -426,6 +426,9 @@ type CertificateState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The scope of the certificate.
 	// DEFAULT: Certificates with default scope are served from core Google data centers.
 	// If unsure, choose this option.
@@ -439,9 +442,6 @@ type CertificateState struct {
 	// certificates before they expire remains the user's responsibility.
 	// Structure is documented below.
 	SelfManaged CertificateSelfManagedPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 }
 
 func (CertificateState) ElementType() reflect.Type {
@@ -682,6 +682,12 @@ func (o CertificateOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o CertificateOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The scope of the certificate.
 // DEFAULT: Certificates with default scope are served from core Google data centers.
 // If unsure, choose this option.
@@ -699,12 +705,6 @@ func (o CertificateOutput) Scope() pulumi.StringPtrOutput {
 // Structure is documented below.
 func (o CertificateOutput) SelfManaged() CertificateSelfManagedPtrOutput {
 	return o.ApplyT(func(v *Certificate) CertificateSelfManagedPtrOutput { return v.SelfManaged }).(CertificateSelfManagedPtrOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o CertificateOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Certificate) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type CertificateArrayOutput struct{ *pulumi.OutputState }

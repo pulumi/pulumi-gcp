@@ -209,6 +209,10 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Region of function. If it is not provided, the provider region is used.
      */
     public readonly region!: pulumi.Output<string>;
@@ -248,10 +252,6 @@ export class Function extends pulumi.CustomResource {
      * Describes the current stage of a deployment.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
      */
@@ -301,6 +301,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["minInstances"] = state ? state.minInstances : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["runtime"] = state ? state.runtime : undefined;
             resourceInputs["secretEnvironmentVariables"] = state ? state.secretEnvironmentVariables : undefined;
@@ -310,7 +311,6 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["sourceArchiveObject"] = state ? state.sourceArchiveObject : undefined;
             resourceInputs["sourceRepository"] = state ? state.sourceRepository : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["timeout"] = state ? state.timeout : undefined;
             resourceInputs["triggerHttp"] = state ? state.triggerHttp : undefined;
             resourceInputs["vpcConnector"] = state ? state.vpcConnector : undefined;
@@ -351,8 +351,8 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["vpcConnector"] = args ? args.vpcConnector : undefined;
             resourceInputs["vpcConnectorEgressSettings"] = args ? args.vpcConnectorEgressSettings : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Function.__pulumiType, name, resourceInputs, opts);
@@ -445,6 +445,10 @@ export interface FunctionState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Region of function. If it is not provided, the provider region is used.
      */
     region?: pulumi.Input<string>;
@@ -484,10 +488,6 @@ export interface FunctionState {
      * Describes the current stage of a deployment.
      */
     status?: pulumi.Input<string>;
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
      */

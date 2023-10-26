@@ -140,7 +140,7 @@ export class ConsentStore extends pulumi.CustomResource {
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a ConsentStore resource with the given unique name, arguments, and options.
@@ -161,7 +161,7 @@ export class ConsentStore extends pulumi.CustomResource {
             resourceInputs["enableConsentCreateOnUpdate"] = state ? state.enableConsentCreateOnUpdate : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
         } else {
             const args = argsOrState as ConsentStoreArgs | undefined;
             if ((!args || args.dataset === undefined) && !opts.urn) {
@@ -173,7 +173,7 @@ export class ConsentStore extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConsentStore.__pulumiType, name, resourceInputs, opts);
@@ -229,7 +229,7 @@ export interface ConsentStoreState {
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**

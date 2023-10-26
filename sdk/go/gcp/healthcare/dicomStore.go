@@ -185,15 +185,15 @@ type DicomStore struct {
 	// A nested object resource
 	// Structure is documented below.
 	NotificationConfig DicomStoreNotificationConfigPtrOutput `pulumi:"notificationConfig"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
 	// streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
 	// Structure is documented below.
 	StreamConfigs DicomStoreStreamConfigArrayOutput `pulumi:"streamConfigs"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewDicomStore registers a new resource with the given unique name, arguments, and options.
@@ -255,15 +255,15 @@ type dicomStoreState struct {
 	// A nested object resource
 	// Structure is documented below.
 	NotificationConfig *DicomStoreNotificationConfig `pulumi:"notificationConfig"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The fully qualified name of this dataset
 	SelfLink *string `pulumi:"selfLink"`
 	// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
 	// streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
 	// Structure is documented below.
 	StreamConfigs []DicomStoreStreamConfig `pulumi:"streamConfigs"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type DicomStoreState struct {
@@ -293,15 +293,15 @@ type DicomStoreState struct {
 	// A nested object resource
 	// Structure is documented below.
 	NotificationConfig DicomStoreNotificationConfigPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringPtrInput
 	// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
 	// streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
 	// Structure is documented below.
 	StreamConfigs DicomStoreStreamConfigArrayInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 }
 
 func (DicomStoreState) ElementType() reflect.Type {
@@ -521,6 +521,12 @@ func (o DicomStoreOutput) NotificationConfig() DicomStoreNotificationConfigPtrOu
 	return o.ApplyT(func(v *DicomStore) DicomStoreNotificationConfigPtrOutput { return v.NotificationConfig }).(DicomStoreNotificationConfigPtrOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o DicomStoreOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DicomStore) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The fully qualified name of this dataset
 func (o DicomStoreOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *DicomStore) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
@@ -531,12 +537,6 @@ func (o DicomStoreOutput) SelfLink() pulumi.StringOutput {
 // Structure is documented below.
 func (o DicomStoreOutput) StreamConfigs() DicomStoreStreamConfigArrayOutput {
 	return o.ApplyT(func(v *DicomStore) DicomStoreStreamConfigArrayOutput { return v.StreamConfigs }).(DicomStoreStreamConfigArrayOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o DicomStoreOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *DicomStore) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type DicomStoreArrayOutput struct{ *pulumi.OutputState }

@@ -216,8 +216,8 @@ class _ServerTlsPolicyState:
                  mtls_policy: Optional[pulumi.Input['ServerTlsPolicyMtlsPolicyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  server_certificate: Optional[pulumi.Input['ServerTlsPolicyServerCertificateArgs']] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServerTlsPolicy resources.
@@ -242,10 +242,10 @@ class _ServerTlsPolicyState:
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input['ServerTlsPolicyServerCertificateArgs'] server_certificate: Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Time the ServerTlsPolicy was updated in UTC.
         """
         _ServerTlsPolicyState._configure(
@@ -259,8 +259,8 @@ class _ServerTlsPolicyState:
             mtls_policy=mtls_policy,
             name=name,
             project=project,
+            pulumi_labels=pulumi_labels,
             server_certificate=server_certificate,
-            terraform_labels=terraform_labels,
             update_time=update_time,
         )
     @staticmethod
@@ -275,8 +275,8 @@ class _ServerTlsPolicyState:
              mtls_policy: Optional[pulumi.Input['ServerTlsPolicyMtlsPolicyArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              server_certificate: Optional[pulumi.Input['ServerTlsPolicyServerCertificateArgs']] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -288,10 +288,10 @@ class _ServerTlsPolicyState:
             effective_labels = kwargs['effectiveLabels']
         if mtls_policy is None and 'mtlsPolicy' in kwargs:
             mtls_policy = kwargs['mtlsPolicy']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if server_certificate is None and 'serverCertificate' in kwargs:
             server_certificate = kwargs['serverCertificate']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
         if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
 
@@ -313,10 +313,10 @@ class _ServerTlsPolicyState:
             _setter("name", name)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if server_certificate is not None:
             _setter("server_certificate", server_certificate)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if update_time is not None:
             _setter("update_time", update_time)
 
@@ -441,6 +441,19 @@ class _ServerTlsPolicyState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="serverCertificate")
     def server_certificate(self) -> Optional[pulumi.Input['ServerTlsPolicyServerCertificateArgs']]:
         """
@@ -452,19 +465,6 @@ class _ServerTlsPolicyState:
     @server_certificate.setter
     def server_certificate(self, value: Optional[pulumi.Input['ServerTlsPolicyServerCertificateArgs']]):
         pulumi.set(self, "server_certificate", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="updateTime")
@@ -760,7 +760,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
             __props__.__dict__["server_certificate"] = server_certificate
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
-            __props__.__dict__["terraform_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["update_time"] = None
         super(ServerTlsPolicy, __self__).__init__(
             'gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy',
@@ -781,8 +781,8 @@ class ServerTlsPolicy(pulumi.CustomResource):
             mtls_policy: Optional[pulumi.Input[pulumi.InputType['ServerTlsPolicyMtlsPolicyArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             server_certificate: Optional[pulumi.Input[pulumi.InputType['ServerTlsPolicyServerCertificateArgs']]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'ServerTlsPolicy':
         """
         Get an existing ServerTlsPolicy resource's state with the given name, id, and optional extra
@@ -812,10 +812,10 @@ class ServerTlsPolicy(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['ServerTlsPolicyServerCertificateArgs']] server_certificate: Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Time the ServerTlsPolicy was updated in UTC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -831,8 +831,8 @@ class ServerTlsPolicy(pulumi.CustomResource):
         __props__.__dict__["mtls_policy"] = mtls_policy
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["server_certificate"] = server_certificate
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["update_time"] = update_time
         return ServerTlsPolicy(resource_name, opts=opts, __props__=__props__)
 
@@ -921,6 +921,15 @@ class ServerTlsPolicy(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="serverCertificate")
     def server_certificate(self) -> pulumi.Output[Optional['outputs.ServerTlsPolicyServerCertificate']]:
         """
@@ -928,15 +937,6 @@ class ServerTlsPolicy(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "server_certificate")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="updateTime")

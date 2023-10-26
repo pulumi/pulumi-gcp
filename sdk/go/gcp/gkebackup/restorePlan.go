@@ -551,6 +551,9 @@ type RestorePlan struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Defines the configuration of Restores created via this RestorePlan.
 	// Structure is documented below.
 	RestoreConfig RestorePlanRestoreConfigOutput `pulumi:"restoreConfig"`
@@ -558,9 +561,6 @@ type RestorePlan struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// Detailed description of why RestorePlan is in its current state.
 	StateReason pulumi.StringOutput `pulumi:"stateReason"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Server generated, unique identifier of UUID format.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 }
@@ -631,6 +631,9 @@ type restorePlanState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Defines the configuration of Restores created via this RestorePlan.
 	// Structure is documented below.
 	RestoreConfig *RestorePlanRestoreConfig `pulumi:"restoreConfig"`
@@ -638,9 +641,6 @@ type restorePlanState struct {
 	State *string `pulumi:"state"`
 	// Detailed description of why RestorePlan is in its current state.
 	StateReason *string `pulumi:"stateReason"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Server generated, unique identifier of UUID format.
 	Uid *string `pulumi:"uid"`
 }
@@ -670,6 +670,9 @@ type RestorePlanState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Defines the configuration of Restores created via this RestorePlan.
 	// Structure is documented below.
 	RestoreConfig RestorePlanRestoreConfigPtrInput
@@ -677,9 +680,6 @@ type RestorePlanState struct {
 	State pulumi.StringPtrInput
 	// Detailed description of why RestorePlan is in its current state.
 	StateReason pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// Server generated, unique identifier of UUID format.
 	Uid pulumi.StringPtrInput
 }
@@ -902,6 +902,12 @@ func (o RestorePlanOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o RestorePlanOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RestorePlan) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Defines the configuration of Restores created via this RestorePlan.
 // Structure is documented below.
 func (o RestorePlanOutput) RestoreConfig() RestorePlanRestoreConfigOutput {
@@ -916,12 +922,6 @@ func (o RestorePlanOutput) State() pulumi.StringOutput {
 // Detailed description of why RestorePlan is in its current state.
 func (o RestorePlanOutput) StateReason() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.StateReason }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o RestorePlanOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *RestorePlan) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Server generated, unique identifier of UUID format.

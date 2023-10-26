@@ -26,7 +26,7 @@ public final class GetCertificateMapResult {
     private Map<String,String> labels;
     private String name;
     private @Nullable String project;
-    private Map<String,String> terraformLabels;
+    private Map<String,String> pulumiLabels;
     private String updateTime;
 
     private GetCertificateMapResult() {}
@@ -58,8 +58,8 @@ public final class GetCertificateMapResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
-    public Map<String,String> terraformLabels() {
-        return this.terraformLabels;
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
     }
     public String updateTime() {
         return this.updateTime;
@@ -82,7 +82,7 @@ public final class GetCertificateMapResult {
         private Map<String,String> labels;
         private String name;
         private @Nullable String project;
-        private Map<String,String> terraformLabels;
+        private Map<String,String> pulumiLabels;
         private String updateTime;
         public Builder() {}
         public Builder(GetCertificateMapResult defaults) {
@@ -95,7 +95,7 @@ public final class GetCertificateMapResult {
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
-    	      this.terraformLabels = defaults.terraformLabels;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.updateTime = defaults.updateTime;
         }
 
@@ -143,8 +143,8 @@ public final class GetCertificateMapResult {
             return this;
         }
         @CustomType.Setter
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            this.terraformLabels = Objects.requireNonNull(terraformLabels);
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
             return this;
         }
         @CustomType.Setter
@@ -162,7 +162,7 @@ public final class GetCertificateMapResult {
             o.labels = labels;
             o.name = name;
             o.project = project;
-            o.terraformLabels = terraformLabels;
+            o.pulumiLabels = pulumiLabels;
             o.updateTime = updateTime;
             return o;
         }

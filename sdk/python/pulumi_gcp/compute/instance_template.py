@@ -609,6 +609,7 @@ class _InstanceTemplateState:
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceArgs']]]] = None,
                  network_performance_config: Optional[pulumi.Input['InstanceTemplateNetworkPerformanceConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input['InstanceTemplateReservationAffinityArgs']] = None,
                  resource_policies: Optional[pulumi.Input[str]] = None,
@@ -618,8 +619,7 @@ class _InstanceTemplateState:
                  service_account: Optional[pulumi.Input['InstanceTemplateServiceAccountArgs']] = None,
                  shielded_instance_config: Optional[pulumi.Input['InstanceTemplateShieldedInstanceConfigArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tags_fingerprint: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 tags_fingerprint: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering InstanceTemplate resources.
         :param pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
@@ -671,6 +671,7 @@ class _InstanceTemplateState:
                in order for this setting to take effect.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] region: An instance template is a global resource that is not
                bound to a zone or a region. However, you can still specify some regional
                resources in an instance template, which restricts the template to the
@@ -690,7 +691,6 @@ class _InstanceTemplateState:
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to attach to the instance.
         :param pulumi.Input[str] tags_fingerprint: The unique fingerprint of the tags.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         _InstanceTemplateState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -714,6 +714,7 @@ class _InstanceTemplateState:
             network_interfaces=network_interfaces,
             network_performance_config=network_performance_config,
             project=project,
+            pulumi_labels=pulumi_labels,
             region=region,
             reservation_affinity=reservation_affinity,
             resource_policies=resource_policies,
@@ -724,7 +725,6 @@ class _InstanceTemplateState:
             shielded_instance_config=shielded_instance_config,
             tags=tags,
             tags_fingerprint=tags_fingerprint,
-            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
@@ -749,6 +749,7 @@ class _InstanceTemplateState:
              network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceArgs']]]] = None,
              network_performance_config: Optional[pulumi.Input['InstanceTemplateNetworkPerformanceConfigArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              region: Optional[pulumi.Input[str]] = None,
              reservation_affinity: Optional[pulumi.Input['InstanceTemplateReservationAffinityArgs']] = None,
              resource_policies: Optional[pulumi.Input[str]] = None,
@@ -759,7 +760,6 @@ class _InstanceTemplateState:
              shielded_instance_config: Optional[pulumi.Input['InstanceTemplateShieldedInstanceConfigArgs']] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tags_fingerprint: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if advanced_machine_features is None and 'advancedMachineFeatures' in kwargs:
@@ -790,6 +790,8 @@ class _InstanceTemplateState:
             network_interfaces = kwargs['networkInterfaces']
         if network_performance_config is None and 'networkPerformanceConfig' in kwargs:
             network_performance_config = kwargs['networkPerformanceConfig']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if reservation_affinity is None and 'reservationAffinity' in kwargs:
             reservation_affinity = kwargs['reservationAffinity']
         if resource_policies is None and 'resourcePolicies' in kwargs:
@@ -804,8 +806,6 @@ class _InstanceTemplateState:
             shielded_instance_config = kwargs['shieldedInstanceConfig']
         if tags_fingerprint is None and 'tagsFingerprint' in kwargs:
             tags_fingerprint = kwargs['tagsFingerprint']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
 
         if advanced_machine_features is not None:
             _setter("advanced_machine_features", advanced_machine_features)
@@ -847,6 +847,8 @@ class _InstanceTemplateState:
             _setter("network_performance_config", network_performance_config)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if region is not None:
             _setter("region", region)
         if reservation_affinity is not None:
@@ -867,8 +869,6 @@ class _InstanceTemplateState:
             _setter("tags", tags)
         if tags_fingerprint is not None:
             _setter("tags_fingerprint", tags_fingerprint)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter(name="advancedMachineFeatures")
@@ -1140,6 +1140,18 @@ class _InstanceTemplateState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1267,18 +1279,6 @@ class _InstanceTemplateState:
     @tags_fingerprint.setter
     def tags_fingerprint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tags_fingerprint", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
 
 class InstanceTemplate(pulumi.CustomResource):
@@ -1763,10 +1763,10 @@ class InstanceTemplate(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["metadata_fingerprint"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_unique"] = None
             __props__.__dict__["tags_fingerprint"] = None
-            __props__.__dict__["terraform_labels"] = None
         super(InstanceTemplate, __self__).__init__(
             'gcp:compute/instanceTemplate:InstanceTemplate',
             resource_name,
@@ -1797,6 +1797,7 @@ class InstanceTemplate(pulumi.CustomResource):
             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateNetworkInterfaceArgs']]]]] = None,
             network_performance_config: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateNetworkPerformanceConfigArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
             reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateReservationAffinityArgs']]] = None,
             resource_policies: Optional[pulumi.Input[str]] = None,
@@ -1806,8 +1807,7 @@ class InstanceTemplate(pulumi.CustomResource):
             service_account: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateServiceAccountArgs']]] = None,
             shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateShieldedInstanceConfigArgs']]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            tags_fingerprint: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'InstanceTemplate':
+            tags_fingerprint: Optional[pulumi.Input[str]] = None) -> 'InstanceTemplate':
         """
         Get an existing InstanceTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1864,6 +1864,7 @@ class InstanceTemplate(pulumi.CustomResource):
                in order for this setting to take effect.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] region: An instance template is a global resource that is not
                bound to a zone or a region. However, you can still specify some regional
                resources in an instance template, which restricts the template to the
@@ -1883,7 +1884,6 @@ class InstanceTemplate(pulumi.CustomResource):
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to attach to the instance.
         :param pulumi.Input[str] tags_fingerprint: The unique fingerprint of the tags.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1909,6 +1909,7 @@ class InstanceTemplate(pulumi.CustomResource):
         __props__.__dict__["network_interfaces"] = network_interfaces
         __props__.__dict__["network_performance_config"] = network_performance_config
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["region"] = region
         __props__.__dict__["reservation_affinity"] = reservation_affinity
         __props__.__dict__["resource_policies"] = resource_policies
@@ -1919,7 +1920,6 @@ class InstanceTemplate(pulumi.CustomResource):
         __props__.__dict__["shielded_instance_config"] = shielded_instance_config
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tags_fingerprint"] = tags_fingerprint
-        __props__.__dict__["terraform_labels"] = terraform_labels
         return InstanceTemplate(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -2112,6 +2112,14 @@ class InstanceTemplate(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
@@ -2199,12 +2207,4 @@ class InstanceTemplate(pulumi.CustomResource):
         The unique fingerprint of the tags.
         """
         return pulumi.get(self, "tags_fingerprint")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 

@@ -242,6 +242,13 @@ namespace Pulumi.Gcp.NetworkManagement
         public Output<string?> Protocol { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Other projects that may be relevant for reachability analysis.
         /// This is applicable to scenarios where a test can cross project
         /// boundaries.
@@ -272,13 +279,6 @@ namespace Pulumi.Gcp.NetworkManagement
         /// </summary>
         [Output("source")]
         public Output<Outputs.ConnectivityTestSource> Source { get; private set; } = null!;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
 
         /// <summary>
@@ -507,6 +507,19 @@ namespace Pulumi.Gcp.NetworkManagement
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
+
         [Input("relatedProjects")]
         private InputList<string>? _relatedProjects;
 
@@ -544,19 +557,6 @@ namespace Pulumi.Gcp.NetworkManagement
         /// </summary>
         [Input("source")]
         public Input<Inputs.ConnectivityTestSourceGetArgs>? Source { get; set; }
-
-        [Input("terraformLabels")]
-        private InputMap<string>? _terraformLabels;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        public InputMap<string> TerraformLabels
-        {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
-            set => _terraformLabels = value;
-        }
 
         public ConnectivityTestState()
         {

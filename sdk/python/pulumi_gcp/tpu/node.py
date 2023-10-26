@@ -292,10 +292,10 @@ class _NodeState:
                  network: Optional[pulumi.Input[str]] = None,
                  network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['NodeNetworkEndpointArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  scheduling_config: Optional[pulumi.Input['NodeSchedulingConfigArgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  tensorflow_version: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  use_service_networking: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
@@ -326,6 +326,8 @@ class _NodeState:
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input['NodeSchedulingConfigArgs'] scheduling_config: Sets the scheduling options for this TPU instance.
                Structure is documented below.
         :param pulumi.Input[str] service_account: The service account used to run the tensor flow services within the
@@ -336,8 +338,6 @@ class _NodeState:
                
                
                - - -
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[bool] use_service_networking: Whether the VPC peering for the node is set up through Service Networking API.
                The VPC Peering should be set up before provisioning the node. If this field is set,
                cidr_block field should not be specified. If the network that you want to peer the
@@ -355,10 +355,10 @@ class _NodeState:
             network=network,
             network_endpoints=network_endpoints,
             project=project,
+            pulumi_labels=pulumi_labels,
             scheduling_config=scheduling_config,
             service_account=service_account,
             tensorflow_version=tensorflow_version,
-            terraform_labels=terraform_labels,
             use_service_networking=use_service_networking,
             zone=zone,
         )
@@ -374,10 +374,10 @@ class _NodeState:
              network: Optional[pulumi.Input[str]] = None,
              network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['NodeNetworkEndpointArgs']]]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              scheduling_config: Optional[pulumi.Input['NodeSchedulingConfigArgs']] = None,
              service_account: Optional[pulumi.Input[str]] = None,
              tensorflow_version: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              use_service_networking: Optional[pulumi.Input[bool]] = None,
              zone: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
@@ -390,14 +390,14 @@ class _NodeState:
             effective_labels = kwargs['effectiveLabels']
         if network_endpoints is None and 'networkEndpoints' in kwargs:
             network_endpoints = kwargs['networkEndpoints']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if scheduling_config is None and 'schedulingConfig' in kwargs:
             scheduling_config = kwargs['schedulingConfig']
         if service_account is None and 'serviceAccount' in kwargs:
             service_account = kwargs['serviceAccount']
         if tensorflow_version is None and 'tensorflowVersion' in kwargs:
             tensorflow_version = kwargs['tensorflowVersion']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
         if use_service_networking is None and 'useServiceNetworking' in kwargs:
             use_service_networking = kwargs['useServiceNetworking']
 
@@ -419,14 +419,14 @@ class _NodeState:
             _setter("network_endpoints", network_endpoints)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if scheduling_config is not None:
             _setter("scheduling_config", scheduling_config)
         if service_account is not None:
             _setter("service_account", service_account)
         if tensorflow_version is not None:
             _setter("tensorflow_version", tensorflow_version)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if use_service_networking is not None:
             _setter("use_service_networking", use_service_networking)
         if zone is not None:
@@ -558,6 +558,19 @@ class _NodeState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="schedulingConfig")
     def scheduling_config(self) -> Optional[pulumi.Input['NodeSchedulingConfigArgs']]:
         """
@@ -599,19 +612,6 @@ class _NodeState:
     @tensorflow_version.setter
     def tensorflow_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tensorflow_version", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="useServiceNetworking")
@@ -905,8 +905,8 @@ class Node(pulumi.CustomResource):
             __props__.__dict__["zone"] = zone
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["network_endpoints"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["service_account"] = None
-            __props__.__dict__["terraform_labels"] = None
         super(Node, __self__).__init__(
             'gcp:tpu/node:Node',
             resource_name,
@@ -926,10 +926,10 @@ class Node(pulumi.CustomResource):
             network: Optional[pulumi.Input[str]] = None,
             network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeNetworkEndpointArgs']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             scheduling_config: Optional[pulumi.Input[pulumi.InputType['NodeSchedulingConfigArgs']]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
             tensorflow_version: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             use_service_networking: Optional[pulumi.Input[bool]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'Node':
         """
@@ -965,6 +965,8 @@ class Node(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['NodeSchedulingConfigArgs']] scheduling_config: Sets the scheduling options for this TPU instance.
                Structure is documented below.
         :param pulumi.Input[str] service_account: The service account used to run the tensor flow services within the
@@ -975,8 +977,6 @@ class Node(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[bool] use_service_networking: Whether the VPC peering for the node is set up through Service Networking API.
                The VPC Peering should be set up before provisioning the node. If this field is set,
                cidr_block field should not be specified. If the network that you want to peer the
@@ -996,10 +996,10 @@ class Node(pulumi.CustomResource):
         __props__.__dict__["network"] = network
         __props__.__dict__["network_endpoints"] = network_endpoints
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["scheduling_config"] = scheduling_config
         __props__.__dict__["service_account"] = service_account
         __props__.__dict__["tensorflow_version"] = tensorflow_version
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["use_service_networking"] = use_service_networking
         __props__.__dict__["zone"] = zone
         return Node(resource_name, opts=opts, __props__=__props__)
@@ -1094,6 +1094,15 @@ class Node(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="schedulingConfig")
     def scheduling_config(self) -> pulumi.Output[Optional['outputs.NodeSchedulingConfig']]:
         """
@@ -1123,15 +1132,6 @@ class Node(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "tensorflow_version")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="useServiceNetworking")

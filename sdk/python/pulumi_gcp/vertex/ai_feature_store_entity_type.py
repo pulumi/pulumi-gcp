@@ -175,8 +175,8 @@ class _AiFeatureStoreEntityTypeState:
                  monitoring_config: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  offline_storage_ttl_days: Optional[pulumi.Input[int]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AiFeatureStoreEntityType resources.
@@ -200,9 +200,9 @@ class _AiFeatureStoreEntityTypeState:
         :param pulumi.Input[int] offline_storage_ttl_days: Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
                storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
                since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
-        :param pulumi.Input[str] region: The region of the EntityType.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[str] region: The region of the EntityType.
         :param pulumi.Input[str] update_time: The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         _AiFeatureStoreEntityTypeState._configure(
@@ -216,8 +216,8 @@ class _AiFeatureStoreEntityTypeState:
             monitoring_config=monitoring_config,
             name=name,
             offline_storage_ttl_days=offline_storage_ttl_days,
+            pulumi_labels=pulumi_labels,
             region=region,
-            terraform_labels=terraform_labels,
             update_time=update_time,
         )
     @staticmethod
@@ -232,8 +232,8 @@ class _AiFeatureStoreEntityTypeState:
              monitoring_config: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              offline_storage_ttl_days: Optional[pulumi.Input[int]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -245,8 +245,8 @@ class _AiFeatureStoreEntityTypeState:
             monitoring_config = kwargs['monitoringConfig']
         if offline_storage_ttl_days is None and 'offlineStorageTtlDays' in kwargs:
             offline_storage_ttl_days = kwargs['offlineStorageTtlDays']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
 
@@ -268,10 +268,10 @@ class _AiFeatureStoreEntityTypeState:
             _setter("name", name)
         if offline_storage_ttl_days is not None:
             _setter("offline_storage_ttl_days", offline_storage_ttl_days)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if region is not None:
             _setter("region", region)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if update_time is not None:
             _setter("update_time", update_time)
 
@@ -395,6 +395,19 @@ class _AiFeatureStoreEntityTypeState:
         pulumi.set(self, "offline_storage_ttl_days", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
@@ -405,19 +418,6 @@ class _AiFeatureStoreEntityTypeState:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="updateTime")
@@ -711,8 +711,8 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["etag"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["region"] = None
-            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["update_time"] = None
         super(AiFeatureStoreEntityType, __self__).__init__(
             'gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType',
@@ -733,8 +733,8 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             monitoring_config: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeMonitoringConfigArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             offline_storage_ttl_days: Optional[pulumi.Input[int]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'AiFeatureStoreEntityType':
         """
         Get an existing AiFeatureStoreEntityType resource's state with the given name, id, and optional extra
@@ -763,9 +763,9 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
         :param pulumi.Input[int] offline_storage_ttl_days: Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
                storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
                since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
-        :param pulumi.Input[str] region: The region of the EntityType.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[str] region: The region of the EntityType.
         :param pulumi.Input[str] update_time: The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -781,8 +781,8 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
         __props__.__dict__["monitoring_config"] = monitoring_config
         __props__.__dict__["name"] = name
         __props__.__dict__["offline_storage_ttl_days"] = offline_storage_ttl_days
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["region"] = region
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["update_time"] = update_time
         return AiFeatureStoreEntityType(resource_name, opts=opts, __props__=__props__)
 
@@ -870,21 +870,21 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
         return pulumi.get(self, "offline_storage_ttl_days")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
         The region of the EntityType.
         """
         return pulumi.get(self, "region")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="updateTime")

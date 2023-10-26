@@ -216,6 +216,9 @@ type Secret struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The replication policy of the secret data attached to the Secret. It cannot be changed
 	// after the Secret has been created.
 	// Structure is documented below.
@@ -225,9 +228,6 @@ type Secret struct {
 	Rotation SecretRotationPtrOutput `pulumi:"rotation"`
 	// This must be unique within the project.
 	SecretId pulumi.StringOutput `pulumi:"secretId"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
 	// Structure is documented below.
 	Topics SecretTopicArrayOutput `pulumi:"topics"`
@@ -323,6 +323,9 @@ type secretState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The replication policy of the secret data attached to the Secret. It cannot be changed
 	// after the Secret has been created.
 	// Structure is documented below.
@@ -332,9 +335,6 @@ type secretState struct {
 	Rotation *SecretRotation `pulumi:"rotation"`
 	// This must be unique within the project.
 	SecretId *string `pulumi:"secretId"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
 	// Structure is documented below.
 	Topics []SecretTopic `pulumi:"topics"`
@@ -395,6 +395,9 @@ type SecretState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The replication policy of the secret data attached to the Secret. It cannot be changed
 	// after the Secret has been created.
 	// Structure is documented below.
@@ -404,9 +407,6 @@ type SecretState struct {
 	Rotation SecretRotationPtrInput
 	// This must be unique within the project.
 	SecretId pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
 	// Structure is documented below.
 	Topics SecretTopicArrayInput
@@ -722,6 +722,12 @@ func (o SecretOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o SecretOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The replication policy of the secret data attached to the Secret. It cannot be changed
 // after the Secret has been created.
 // Structure is documented below.
@@ -738,12 +744,6 @@ func (o SecretOutput) Rotation() SecretRotationPtrOutput {
 // This must be unique within the project.
 func (o SecretOutput) SecretId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.SecretId }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o SecretOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Secret) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.

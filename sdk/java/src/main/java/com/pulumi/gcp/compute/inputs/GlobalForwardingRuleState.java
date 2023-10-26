@@ -486,6 +486,23 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * The URI of the created resource.
      * 
      */
@@ -579,23 +596,6 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.target);
     }
 
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    @Import(name="terraformLabels")
-    private @Nullable Output<Map<String,String>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    public Optional<Output<Map<String,String>>> terraformLabels() {
-        return Optional.ofNullable(this.terraformLabels);
-    }
-
     private GlobalForwardingRuleState() {}
 
     private GlobalForwardingRuleState(GlobalForwardingRuleState $) {
@@ -617,11 +617,11 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
         this.project = $.project;
         this.pscConnectionId = $.pscConnectionId;
         this.pscConnectionStatus = $.pscConnectionStatus;
+        this.pulumiLabels = $.pulumiLabels;
         this.selfLink = $.selfLink;
         this.sourceIpRanges = $.sourceIpRanges;
         this.subnetwork = $.subnetwork;
         this.target = $.target;
-        this.terraformLabels = $.terraformLabels;
     }
 
     public static Builder builder() {
@@ -1241,6 +1241,29 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
          * @param selfLink The URI of the created resource.
          * 
          * @return builder
@@ -1366,29 +1389,6 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
          */
         public Builder target(String target) {
             return target(Output.of(target));
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
-            $.terraformLabels = terraformLabels;
-            return this;
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            return terraformLabels(Output.of(terraformLabels));
         }
 
         public GlobalForwardingRuleState build() {

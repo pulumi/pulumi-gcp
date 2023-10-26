@@ -130,12 +130,12 @@ type EngineModel struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The list of regions where the model is going to be deployed.
 	// Currently only one region per model is supported
 	Regions pulumi.StringPtrOutput `pulumi:"regions"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewEngineModel registers a new resource with the given unique name, arguments, and options.
@@ -192,12 +192,12 @@ type engineModelState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The list of regions where the model is going to be deployed.
 	// Currently only one region per model is supported
 	Regions *string `pulumi:"regions"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type EngineModelState struct {
@@ -225,12 +225,12 @@ type EngineModelState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The list of regions where the model is going to be deployed.
 	// Currently only one region per model is supported
 	Regions pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 }
 
 func (EngineModelState) ElementType() reflect.Type {
@@ -451,16 +451,16 @@ func (o EngineModelOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *EngineModel) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o EngineModelOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EngineModel) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The list of regions where the model is going to be deployed.
 // Currently only one region per model is supported
 func (o EngineModelOutput) Regions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EngineModel) pulumi.StringPtrOutput { return v.Regions }).(pulumi.StringPtrOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o EngineModelOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *EngineModel) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type EngineModelArrayOutput struct{ *pulumi.OutputState }

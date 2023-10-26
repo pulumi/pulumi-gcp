@@ -651,6 +651,7 @@ class _DiskState:
                  project: Optional[pulumi.Input[str]] = None,
                  provisioned_iops: Optional[pulumi.Input[int]] = None,
                  provisioned_throughput: Optional[pulumi.Input[int]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
@@ -661,7 +662,6 @@ class _DiskState:
                  source_image_id: Optional[pulumi.Input[str]] = None,
                  source_snapshot_encryption_key: Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArgs']] = None,
                  source_snapshot_id: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -735,6 +735,8 @@ class _DiskState:
         :param pulumi.Input[int] provisioned_throughput: Indicates how much Throughput must be provisioned for the disk.
                Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
                allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
                ~>**NOTE** This value does not support updating the
                resource policy, as resource policies can not be updated more than
@@ -786,8 +788,6 @@ class _DiskState:
                that was later deleted and recreated under the same name, the source
                snapshot ID would identify the exact version of the snapshot that was
                used.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to
                create the disk. Provide this when creating the disk.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Links to the users of the disk (attached instances) in form:
@@ -816,6 +816,7 @@ class _DiskState:
             project=project,
             provisioned_iops=provisioned_iops,
             provisioned_throughput=provisioned_throughput,
+            pulumi_labels=pulumi_labels,
             resource_policies=resource_policies,
             self_link=self_link,
             size=size,
@@ -826,7 +827,6 @@ class _DiskState:
             source_image_id=source_image_id,
             source_snapshot_encryption_key=source_snapshot_encryption_key,
             source_snapshot_id=source_snapshot_id,
-            terraform_labels=terraform_labels,
             type=type,
             users=users,
             zone=zone,
@@ -854,6 +854,7 @@ class _DiskState:
              project: Optional[pulumi.Input[str]] = None,
              provisioned_iops: Optional[pulumi.Input[int]] = None,
              provisioned_throughput: Optional[pulumi.Input[int]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              size: Optional[pulumi.Input[int]] = None,
@@ -864,7 +865,6 @@ class _DiskState:
              source_image_id: Optional[pulumi.Input[str]] = None,
              source_snapshot_encryption_key: Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArgs']] = None,
              source_snapshot_id: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              zone: Optional[pulumi.Input[str]] = None,
@@ -896,6 +896,8 @@ class _DiskState:
             provisioned_iops = kwargs['provisionedIops']
         if provisioned_throughput is None and 'provisionedThroughput' in kwargs:
             provisioned_throughput = kwargs['provisionedThroughput']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if resource_policies is None and 'resourcePolicies' in kwargs:
             resource_policies = kwargs['resourcePolicies']
         if self_link is None and 'selfLink' in kwargs:
@@ -912,8 +914,6 @@ class _DiskState:
             source_snapshot_encryption_key = kwargs['sourceSnapshotEncryptionKey']
         if source_snapshot_id is None and 'sourceSnapshotId' in kwargs:
             source_snapshot_id = kwargs['sourceSnapshotId']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
 
         if async_primary_disk is not None:
             _setter("async_primary_disk", async_primary_disk)
@@ -958,6 +958,8 @@ class _DiskState:
             _setter("provisioned_iops", provisioned_iops)
         if provisioned_throughput is not None:
             _setter("provisioned_throughput", provisioned_throughput)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if resource_policies is not None:
             _setter("resource_policies", resource_policies)
         if self_link is not None:
@@ -978,8 +980,6 @@ class _DiskState:
             _setter("source_snapshot_encryption_key", source_snapshot_encryption_key)
         if source_snapshot_id is not None:
             _setter("source_snapshot_id", source_snapshot_id)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if type is not None:
             _setter("type", type)
         if users is not None:
@@ -1279,6 +1279,19 @@ class _DiskState:
         pulumi.set(self, "provisioned_throughput", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -1438,19 +1451,6 @@ class _DiskState:
     @source_snapshot_id.setter
     def source_snapshot_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_snapshot_id", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -1920,11 +1920,11 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["last_attach_timestamp"] = None
             __props__.__dict__["last_detach_timestamp"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["source_disk_id"] = None
             __props__.__dict__["source_image_id"] = None
             __props__.__dict__["source_snapshot_id"] = None
-            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["users"] = None
         super(Disk, __self__).__init__(
             'gcp:compute/disk:Disk',
@@ -1956,6 +1956,7 @@ class Disk(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             provisioned_iops: Optional[pulumi.Input[int]] = None,
             provisioned_throughput: Optional[pulumi.Input[int]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             size: Optional[pulumi.Input[int]] = None,
@@ -1966,7 +1967,6 @@ class Disk(pulumi.CustomResource):
             source_image_id: Optional[pulumi.Input[str]] = None,
             source_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceSnapshotEncryptionKeyArgs']]] = None,
             source_snapshot_id: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'Disk':
@@ -2045,6 +2045,8 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[int] provisioned_throughput: Indicates how much Throughput must be provisioned for the disk.
                Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
                allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
                ~>**NOTE** This value does not support updating the
                resource policy, as resource policies can not be updated more than
@@ -2096,8 +2098,6 @@ class Disk(pulumi.CustomResource):
                that was later deleted and recreated under the same name, the source
                snapshot ID would identify the exact version of the snapshot that was
                used.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to
                create the disk. Provide this when creating the disk.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Links to the users of the disk (attached instances) in form:
@@ -2128,6 +2128,7 @@ class Disk(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["provisioned_iops"] = provisioned_iops
         __props__.__dict__["provisioned_throughput"] = provisioned_throughput
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["resource_policies"] = resource_policies
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["size"] = size
@@ -2138,7 +2139,6 @@ class Disk(pulumi.CustomResource):
         __props__.__dict__["source_image_id"] = source_image_id
         __props__.__dict__["source_snapshot_encryption_key"] = source_snapshot_encryption_key
         __props__.__dict__["source_snapshot_id"] = source_snapshot_id
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["type"] = type
         __props__.__dict__["users"] = users
         __props__.__dict__["zone"] = zone
@@ -2356,6 +2356,15 @@ class Disk(pulumi.CustomResource):
         return pulumi.get(self, "provisioned_throughput")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> pulumi.Output[Sequence[str]]:
         """
@@ -2475,15 +2484,6 @@ class Disk(pulumi.CustomResource):
         used.
         """
         return pulumi.get(self, "source_snapshot_id")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

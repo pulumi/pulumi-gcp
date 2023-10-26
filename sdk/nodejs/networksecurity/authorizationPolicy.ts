@@ -148,16 +148,16 @@ export class AuthorizationPolicy extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
      * A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
      * Structure is documented below.
      */
     public readonly rules!: pulumi.Output<outputs.networksecurity.AuthorizationPolicyRule[] | undefined>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Time the AuthorizationPolicy was updated in UTC.
      */
@@ -184,8 +184,8 @@ export class AuthorizationPolicy extends pulumi.CustomResource {
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as AuthorizationPolicyArgs | undefined;
@@ -201,7 +201,7 @@ export class AuthorizationPolicy extends pulumi.CustomResource {
             resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -255,16 +255,16 @@ export interface AuthorizationPolicyState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
      * A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
      * Structure is documented below.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.networksecurity.AuthorizationPolicyRule>[]>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Time the AuthorizationPolicy was updated in UTC.
      */

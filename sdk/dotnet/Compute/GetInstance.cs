@@ -239,6 +239,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<Outputs.GetInstanceNetworkPerformanceConfigResult> NetworkPerformanceConfigs;
         public readonly ImmutableArray<Outputs.GetInstanceParamResult> Params;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly ImmutableArray<Outputs.GetInstanceReservationAffinityResult> ReservationAffinities;
         public readonly ImmutableArray<string> ResourcePolicies;
         /// <summary>
@@ -269,7 +270,6 @@ namespace Pulumi.Gcp.Compute
         /// The unique fingerprint of the tags.
         /// </summary>
         public readonly string TagsFingerprint;
-        public readonly ImmutableDictionary<string, string> TerraformLabels;
         public readonly string? Zone;
 
         [OutputConstructor]
@@ -332,6 +332,8 @@ namespace Pulumi.Gcp.Compute
 
             string? project,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             ImmutableArray<Outputs.GetInstanceReservationAffinityResult> reservationAffinities,
 
             ImmutableArray<string> resourcePolicies,
@@ -349,8 +351,6 @@ namespace Pulumi.Gcp.Compute
             ImmutableArray<string> tags,
 
             string tagsFingerprint,
-
-            ImmutableDictionary<string, string> terraformLabels,
 
             string? zone)
         {
@@ -383,6 +383,7 @@ namespace Pulumi.Gcp.Compute
             NetworkPerformanceConfigs = networkPerformanceConfigs;
             Params = @params;
             Project = project;
+            PulumiLabels = pulumiLabels;
             ReservationAffinities = reservationAffinities;
             ResourcePolicies = resourcePolicies;
             Schedulings = schedulings;
@@ -392,7 +393,6 @@ namespace Pulumi.Gcp.Compute
             ShieldedInstanceConfigs = shieldedInstanceConfigs;
             Tags = tags;
             TagsFingerprint = tagsFingerprint;
-            TerraformLabels = terraformLabels;
             Zone = zone;
         }
     }

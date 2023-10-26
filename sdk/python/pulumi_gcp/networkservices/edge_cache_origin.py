@@ -397,8 +397,8 @@ class _EdgeCacheOriginState:
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  timeout: Optional[pulumi.Input['EdgeCacheOriginTimeoutArgs']] = None):
         """
         Input properties used for looking up and filtering EdgeCacheOrigin resources.
@@ -444,6 +444,8 @@ class _EdgeCacheOriginState:
         :param pulumi.Input[str] protocol: The protocol to use to connect to the configured origin. Defaults to HTTP2, and it is strongly recommended that users use HTTP2 for both security & performance.
                When using HTTP2 or HTTPS as the protocol, a valid, publicly-signed, unexpired TLS (SSL) certificate must be presented by the origin server.
                Possible values are: `HTTP2`, `HTTPS`, `HTTP`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] retry_conditions: Specifies one or more retry conditions for the configured origin.
                If the failure mode during a connection attempt to the origin matches the configured retryCondition(s),
                the origin request will be retried up to maxAttempts times. The failoverOrigin, if configured, will then be used to satisfy the request.
@@ -458,8 +460,6 @@ class _EdgeCacheOriginState:
                - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
                - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
                Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input['EdgeCacheOriginTimeoutArgs'] timeout: The connection and HTTP timeout configuration for this origin.
                Structure is documented below.
         """
@@ -478,8 +478,8 @@ class _EdgeCacheOriginState:
             port=port,
             project=project,
             protocol=protocol,
+            pulumi_labels=pulumi_labels,
             retry_conditions=retry_conditions,
-            terraform_labels=terraform_labels,
             timeout=timeout,
         )
     @staticmethod
@@ -498,8 +498,8 @@ class _EdgeCacheOriginState:
              port: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              timeout: Optional[pulumi.Input['EdgeCacheOriginTimeoutArgs']] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
@@ -517,10 +517,10 @@ class _EdgeCacheOriginState:
             origin_override_action = kwargs['originOverrideAction']
         if origin_redirect is None and 'originRedirect' in kwargs:
             origin_redirect = kwargs['originRedirect']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if retry_conditions is None and 'retryConditions' in kwargs:
             retry_conditions = kwargs['retryConditions']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
 
         if aws_v4_authentication is not None:
             _setter("aws_v4_authentication", aws_v4_authentication)
@@ -548,10 +548,10 @@ class _EdgeCacheOriginState:
             _setter("project", project)
         if protocol is not None:
             _setter("protocol", protocol)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if retry_conditions is not None:
             _setter("retry_conditions", retry_conditions)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if timeout is not None:
             _setter("timeout", timeout)
 
@@ -741,6 +741,19 @@ class _EdgeCacheOriginState:
         pulumi.set(self, "protocol", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="retryConditions")
     def retry_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -764,19 +777,6 @@ class _EdgeCacheOriginState:
     @retry_conditions.setter
     def retry_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "retry_conditions", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -1170,7 +1170,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
             timeout = _utilities.configure(timeout, EdgeCacheOriginTimeoutArgs, True)
             __props__.__dict__["timeout"] = timeout
             __props__.__dict__["effective_labels"] = None
-            __props__.__dict__["terraform_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
         super(EdgeCacheOrigin, __self__).__init__(
             'gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin',
             resource_name,
@@ -1194,8 +1194,8 @@ class EdgeCacheOrigin(pulumi.CustomResource):
             port: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             timeout: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginTimeoutArgs']]] = None) -> 'EdgeCacheOrigin':
         """
         Get an existing EdgeCacheOrigin resource's state with the given name, id, and optional extra
@@ -1246,6 +1246,8 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: The protocol to use to connect to the configured origin. Defaults to HTTP2, and it is strongly recommended that users use HTTP2 for both security & performance.
                When using HTTP2 or HTTPS as the protocol, a valid, publicly-signed, unexpired TLS (SSL) certificate must be presented by the origin server.
                Possible values are: `HTTP2`, `HTTPS`, `HTTP`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] retry_conditions: Specifies one or more retry conditions for the configured origin.
                If the failure mode during a connection attempt to the origin matches the configured retryCondition(s),
                the origin request will be retried up to maxAttempts times. The failoverOrigin, if configured, will then be used to satisfy the request.
@@ -1260,8 +1262,6 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
                - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
                Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['EdgeCacheOriginTimeoutArgs']] timeout: The connection and HTTP timeout configuration for this origin.
                Structure is documented below.
         """
@@ -1282,8 +1282,8 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         __props__.__dict__["port"] = port
         __props__.__dict__["project"] = project
         __props__.__dict__["protocol"] = protocol
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["retry_conditions"] = retry_conditions
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["timeout"] = timeout
         return EdgeCacheOrigin(resource_name, opts=opts, __props__=__props__)
 
@@ -1421,6 +1421,15 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         return pulumi.get(self, "protocol")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="retryConditions")
     def retry_conditions(self) -> pulumi.Output[Sequence[str]]:
         """
@@ -1440,15 +1449,6 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
         """
         return pulumi.get(self, "retry_conditions")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

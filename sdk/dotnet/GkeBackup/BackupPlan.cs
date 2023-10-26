@@ -346,6 +346,13 @@ namespace Pulumi.Gcp.GkeBackup
         public Output<int> ProtectedPodCount { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// RetentionPolicy governs lifecycle of Backups created under this plan.
         /// Structure is documented below.
         /// </summary>
@@ -363,13 +370,6 @@ namespace Pulumi.Gcp.GkeBackup
         /// </summary>
         [Output("stateReason")]
         public Output<string> StateReason { get; private set; } = null!;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// Server generated, unique identifier of UUID format.
@@ -616,6 +616,19 @@ namespace Pulumi.Gcp.GkeBackup
         [Input("protectedPodCount")]
         public Input<int>? ProtectedPodCount { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
+
         /// <summary>
         /// RetentionPolicy governs lifecycle of Backups created under this plan.
         /// Structure is documented below.
@@ -634,19 +647,6 @@ namespace Pulumi.Gcp.GkeBackup
         /// </summary>
         [Input("stateReason")]
         public Input<string>? StateReason { get; set; }
-
-        [Input("terraformLabels")]
-        private InputMap<string>? _terraformLabels;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        public InputMap<string> TerraformLabels
-        {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
-            set => _terraformLabels = value;
-        }
 
         /// <summary>
         /// Server generated, unique identifier of UUID format.

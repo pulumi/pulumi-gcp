@@ -24,6 +24,7 @@ public final class GetKMSCryptoKeyResult {
     private String keyRing;
     private Map<String,String> labels;
     private String name;
+    private Map<String,String> pulumiLabels;
     /**
      * @return Defines the cryptographic capabilities of the key.
      * 
@@ -37,7 +38,6 @@ public final class GetKMSCryptoKeyResult {
      */
     private String rotationPeriod;
     private Boolean skipInitialVersionCreation;
-    private Map<String,String> terraformLabels;
     private List<GetKMSCryptoKeyVersionTemplate> versionTemplates;
 
     private GetKMSCryptoKeyResult() {}
@@ -66,6 +66,9 @@ public final class GetKMSCryptoKeyResult {
     public String name() {
         return this.name;
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     /**
      * @return Defines the cryptographic capabilities of the key.
      * 
@@ -84,9 +87,6 @@ public final class GetKMSCryptoKeyResult {
     }
     public Boolean skipInitialVersionCreation() {
         return this.skipInitialVersionCreation;
-    }
-    public Map<String,String> terraformLabels() {
-        return this.terraformLabels;
     }
     public List<GetKMSCryptoKeyVersionTemplate> versionTemplates() {
         return this.versionTemplates;
@@ -108,10 +108,10 @@ public final class GetKMSCryptoKeyResult {
         private String keyRing;
         private Map<String,String> labels;
         private String name;
+        private Map<String,String> pulumiLabels;
         private String purpose;
         private String rotationPeriod;
         private Boolean skipInitialVersionCreation;
-        private Map<String,String> terraformLabels;
         private List<GetKMSCryptoKeyVersionTemplate> versionTemplates;
         public Builder() {}
         public Builder(GetKMSCryptoKeyResult defaults) {
@@ -123,10 +123,10 @@ public final class GetKMSCryptoKeyResult {
     	      this.keyRing = defaults.keyRing;
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.purpose = defaults.purpose;
     	      this.rotationPeriod = defaults.rotationPeriod;
     	      this.skipInitialVersionCreation = defaults.skipInitialVersionCreation;
-    	      this.terraformLabels = defaults.terraformLabels;
     	      this.versionTemplates = defaults.versionTemplates;
         }
 
@@ -166,6 +166,11 @@ public final class GetKMSCryptoKeyResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder purpose(String purpose) {
             this.purpose = Objects.requireNonNull(purpose);
             return this;
@@ -178,11 +183,6 @@ public final class GetKMSCryptoKeyResult {
         @CustomType.Setter
         public Builder skipInitialVersionCreation(Boolean skipInitialVersionCreation) {
             this.skipInitialVersionCreation = Objects.requireNonNull(skipInitialVersionCreation);
-            return this;
-        }
-        @CustomType.Setter
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            this.terraformLabels = Objects.requireNonNull(terraformLabels);
             return this;
         }
         @CustomType.Setter
@@ -202,10 +202,10 @@ public final class GetKMSCryptoKeyResult {
             o.keyRing = keyRing;
             o.labels = labels;
             o.name = name;
+            o.pulumiLabels = pulumiLabels;
             o.purpose = purpose;
             o.rotationPeriod = rotationPeriod;
             o.skipInitialVersionCreation = skipInitialVersionCreation;
-            o.terraformLabels = terraformLabels;
             o.versionTemplates = versionTemplates;
             return o;
         }

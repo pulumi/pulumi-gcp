@@ -168,6 +168,7 @@ export interface GetInstanceTemplateResult {
      * is not provided, the provider project is used.
      */
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     /**
      * An instance template is a global resource that is not
      * bound to a zone or a region. However, you can still specify some regional
@@ -213,7 +214,6 @@ export interface GetInstanceTemplateResult {
      * The unique fingerprint of the tags.
      */
     readonly tagsFingerprint: string;
-    readonly terraformLabels: {[key: string]: string};
 }
 /**
  * > **Note**: Global instance templates can be used in any region. To lower the impact of outages outside your region and gain data residency within your region, use google_compute_region_instance_template.

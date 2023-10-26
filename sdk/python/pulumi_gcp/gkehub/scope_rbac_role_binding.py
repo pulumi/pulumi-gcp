@@ -193,11 +193,11 @@ class _ScopeRbacRoleBindingState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input['ScopeRbacRoleBindingRoleArgs']] = None,
                  scope_id: Optional[pulumi.Input[str]] = None,
                  scope_rbac_role_binding_id: Optional[pulumi.Input[str]] = None,
                  states: Optional[pulumi.Input[Sequence[pulumi.Input['ScopeRbacRoleBindingStateArgs']]]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  user: Optional[pulumi.Input[str]] = None):
@@ -217,14 +217,14 @@ class _ScopeRbacRoleBindingState:
         :param pulumi.Input[str] name: The resource name for the RBAC Role Binding
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input['ScopeRbacRoleBindingRoleArgs'] role: Role to bind to the principal.
                Structure is documented below.
         :param pulumi.Input[str] scope_id: Id of the scope
         :param pulumi.Input[str] scope_rbac_role_binding_id: The client-provided identifier of the RBAC Role Binding.
         :param pulumi.Input[Sequence[pulumi.Input['ScopeRbacRoleBindingStateArgs']]] states: State of the RBAC Role Binding resource.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[str] update_time: Time the RBAC Role Binding was updated in UTC.
         :param pulumi.Input[str] user: Principal that is be authorized in the cluster (at least of one the oneof
@@ -241,11 +241,11 @@ class _ScopeRbacRoleBindingState:
             labels=labels,
             name=name,
             project=project,
+            pulumi_labels=pulumi_labels,
             role=role,
             scope_id=scope_id,
             scope_rbac_role_binding_id=scope_rbac_role_binding_id,
             states=states,
-            terraform_labels=terraform_labels,
             uid=uid,
             update_time=update_time,
             user=user,
@@ -260,11 +260,11 @@ class _ScopeRbacRoleBindingState:
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              role: Optional[pulumi.Input['ScopeRbacRoleBindingRoleArgs']] = None,
              scope_id: Optional[pulumi.Input[str]] = None,
              scope_rbac_role_binding_id: Optional[pulumi.Input[str]] = None,
              states: Optional[pulumi.Input[Sequence[pulumi.Input['ScopeRbacRoleBindingStateArgs']]]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              user: Optional[pulumi.Input[str]] = None,
@@ -276,12 +276,12 @@ class _ScopeRbacRoleBindingState:
             delete_time = kwargs['deleteTime']
         if effective_labels is None and 'effectiveLabels' in kwargs:
             effective_labels = kwargs['effectiveLabels']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if scope_id is None and 'scopeId' in kwargs:
             scope_id = kwargs['scopeId']
         if scope_rbac_role_binding_id is None and 'scopeRbacRoleBindingId' in kwargs:
             scope_rbac_role_binding_id = kwargs['scopeRbacRoleBindingId']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
         if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
 
@@ -299,6 +299,8 @@ class _ScopeRbacRoleBindingState:
             _setter("name", name)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if role is not None:
             _setter("role", role)
         if scope_id is not None:
@@ -307,8 +309,6 @@ class _ScopeRbacRoleBindingState:
             _setter("scope_rbac_role_binding_id", scope_rbac_role_binding_id)
         if states is not None:
             _setter("states", states)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if uid is not None:
             _setter("uid", uid)
         if update_time is not None:
@@ -408,6 +408,19 @@ class _ScopeRbacRoleBindingState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input['ScopeRbacRoleBindingRoleArgs']]:
         """
@@ -456,19 +469,6 @@ class _ScopeRbacRoleBindingState:
     @states.setter
     def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScopeRbacRoleBindingStateArgs']]]]):
         pulumi.set(self, "states", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -656,8 +656,8 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
             __props__.__dict__["delete_time"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["states"] = None
-            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
         super(ScopeRbacRoleBinding, __self__).__init__(
@@ -677,11 +677,11 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             role: Optional[pulumi.Input[pulumi.InputType['ScopeRbacRoleBindingRoleArgs']]] = None,
             scope_id: Optional[pulumi.Input[str]] = None,
             scope_rbac_role_binding_id: Optional[pulumi.Input[str]] = None,
             states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScopeRbacRoleBindingStateArgs']]]]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
             user: Optional[pulumi.Input[str]] = None) -> 'ScopeRbacRoleBinding':
@@ -706,14 +706,14 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource name for the RBAC Role Binding
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['ScopeRbacRoleBindingRoleArgs']] role: Role to bind to the principal.
                Structure is documented below.
         :param pulumi.Input[str] scope_id: Id of the scope
         :param pulumi.Input[str] scope_rbac_role_binding_id: The client-provided identifier of the RBAC Role Binding.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScopeRbacRoleBindingStateArgs']]]] states: State of the RBAC Role Binding resource.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[str] update_time: Time the RBAC Role Binding was updated in UTC.
         :param pulumi.Input[str] user: Principal that is be authorized in the cluster (at least of one the oneof
@@ -732,11 +732,11 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["role"] = role
         __props__.__dict__["scope_id"] = scope_id
         __props__.__dict__["scope_rbac_role_binding_id"] = scope_rbac_role_binding_id
         __props__.__dict__["states"] = states
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["user"] = user
@@ -806,6 +806,15 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def role(self) -> pulumi.Output['outputs.ScopeRbacRoleBindingRole']:
         """
@@ -838,15 +847,6 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "states")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

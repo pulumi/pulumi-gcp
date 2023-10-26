@@ -22,7 +22,7 @@ class GetAuthorityResult:
     """
     A collection of values returned by getAuthority.
     """
-    def __init__(__self__, access_urls=None, certificate_authority_id=None, configs=None, create_time=None, deletion_protection=None, desired_state=None, effective_labels=None, gcs_bucket=None, id=None, ignore_active_certificates_on_deletion=None, key_specs=None, labels=None, lifetime=None, location=None, name=None, pem_ca_certificate=None, pem_ca_certificates=None, pem_csr=None, pool=None, project=None, skip_grace_period=None, state=None, subordinate_configs=None, terraform_labels=None, type=None, update_time=None):
+    def __init__(__self__, access_urls=None, certificate_authority_id=None, configs=None, create_time=None, deletion_protection=None, desired_state=None, effective_labels=None, gcs_bucket=None, id=None, ignore_active_certificates_on_deletion=None, key_specs=None, labels=None, lifetime=None, location=None, name=None, pem_ca_certificate=None, pem_ca_certificates=None, pem_csr=None, pool=None, project=None, pulumi_labels=None, skip_grace_period=None, state=None, subordinate_configs=None, type=None, update_time=None):
         if access_urls and not isinstance(access_urls, list):
             raise TypeError("Expected argument 'access_urls' to be a list")
         pulumi.set(__self__, "access_urls", access_urls)
@@ -83,6 +83,9 @@ class GetAuthorityResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if skip_grace_period and not isinstance(skip_grace_period, bool):
             raise TypeError("Expected argument 'skip_grace_period' to be a bool")
         pulumi.set(__self__, "skip_grace_period", skip_grace_period)
@@ -92,9 +95,6 @@ class GetAuthorityResult:
         if subordinate_configs and not isinstance(subordinate_configs, list):
             raise TypeError("Expected argument 'subordinate_configs' to be a list")
         pulumi.set(__self__, "subordinate_configs", subordinate_configs)
-        if terraform_labels and not isinstance(terraform_labels, dict):
-            raise TypeError("Expected argument 'terraform_labels' to be a dict")
-        pulumi.set(__self__, "terraform_labels", terraform_labels)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -209,6 +209,11 @@ class GetAuthorityResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="skipGracePeriod")
     def skip_grace_period(self) -> bool:
         return pulumi.get(self, "skip_grace_period")
@@ -222,11 +227,6 @@ class GetAuthorityResult:
     @pulumi.getter(name="subordinateConfigs")
     def subordinate_configs(self) -> Sequence['outputs.GetAuthoritySubordinateConfigResult']:
         return pulumi.get(self, "subordinate_configs")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Mapping[str, str]:
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter
@@ -265,10 +265,10 @@ class AwaitableGetAuthorityResult(GetAuthorityResult):
             pem_csr=self.pem_csr,
             pool=self.pool,
             project=self.project,
+            pulumi_labels=self.pulumi_labels,
             skip_grace_period=self.skip_grace_period,
             state=self.state,
             subordinate_configs=self.subordinate_configs,
-            terraform_labels=self.terraform_labels,
             type=self.type,
             update_time=self.update_time)
 
@@ -331,10 +331,10 @@ def get_authority(certificate_authority_id: Optional[str] = None,
         pem_csr=pulumi.get(__ret__, 'pem_csr'),
         pool=pulumi.get(__ret__, 'pool'),
         project=pulumi.get(__ret__, 'project'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         skip_grace_period=pulumi.get(__ret__, 'skip_grace_period'),
         state=pulumi.get(__ret__, 'state'),
         subordinate_configs=pulumi.get(__ret__, 'subordinate_configs'),
-        terraform_labels=pulumi.get(__ret__, 'terraform_labels'),
         type=pulumi.get(__ret__, 'type'),
         update_time=pulumi.get(__ret__, 'update_time'))
 

@@ -775,6 +775,7 @@ class _InstanceState:
                  post_startup_script: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_uri: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  reservation_affinity: Optional[pulumi.Input['InstanceReservationAffinityArgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -782,7 +783,6 @@ class _InstanceState:
                  state: Optional[pulumi.Input[str]] = None,
                  subnet: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  vm_image: Optional[pulumi.Input['InstanceVmImageArgs']] = None):
         """
@@ -850,6 +850,8 @@ class _InstanceState:
                Only returned when the resource is in a `PROVISIONED` state. If
                needed you can utilize `pulumi up -refresh-only` to await
                the population of this value.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input['InstanceReservationAffinityArgs'] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
                Structure is documented below.
         :param pulumi.Input[str] service_account: The service account on this instance, giving access to other
@@ -868,8 +870,6 @@ class _InstanceState:
         :param pulumi.Input[str] subnet: The name of the subnet that this instance is in.
                Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The Compute Engine tags to add to instance.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Instance update time.
         :param pulumi.Input['InstanceVmImageArgs'] vm_image: Use a Compute Engine VM image to start the notebook instance.
                Structure is documented below.
@@ -902,6 +902,7 @@ class _InstanceState:
             post_startup_script=post_startup_script,
             project=project,
             proxy_uri=proxy_uri,
+            pulumi_labels=pulumi_labels,
             reservation_affinity=reservation_affinity,
             service_account=service_account,
             service_account_scopes=service_account_scopes,
@@ -909,7 +910,6 @@ class _InstanceState:
             state=state,
             subnet=subnet,
             tags=tags,
-            terraform_labels=terraform_labels,
             update_time=update_time,
             vm_image=vm_image,
         )
@@ -942,6 +942,7 @@ class _InstanceState:
              post_startup_script: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              proxy_uri: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              reservation_affinity: Optional[pulumi.Input['InstanceReservationAffinityArgs']] = None,
              service_account: Optional[pulumi.Input[str]] = None,
              service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -949,7 +950,6 @@ class _InstanceState:
              state: Optional[pulumi.Input[str]] = None,
              subnet: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              vm_image: Optional[pulumi.Input['InstanceVmImageArgs']] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
@@ -994,6 +994,8 @@ class _InstanceState:
             post_startup_script = kwargs['postStartupScript']
         if proxy_uri is None and 'proxyUri' in kwargs:
             proxy_uri = kwargs['proxyUri']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if reservation_affinity is None and 'reservationAffinity' in kwargs:
             reservation_affinity = kwargs['reservationAffinity']
         if service_account is None and 'serviceAccount' in kwargs:
@@ -1002,8 +1004,6 @@ class _InstanceState:
             service_account_scopes = kwargs['serviceAccountScopes']
         if shielded_instance_config is None and 'shieldedInstanceConfig' in kwargs:
             shielded_instance_config = kwargs['shieldedInstanceConfig']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
         if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
         if vm_image is None and 'vmImage' in kwargs:
@@ -1061,6 +1061,8 @@ class _InstanceState:
             _setter("project", project)
         if proxy_uri is not None:
             _setter("proxy_uri", proxy_uri)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if reservation_affinity is not None:
             _setter("reservation_affinity", reservation_affinity)
         if service_account is not None:
@@ -1075,8 +1077,6 @@ class _InstanceState:
             _setter("subnet", subnet)
         if tags is not None:
             _setter("tags", tags)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if update_time is not None:
             _setter("update_time", update_time)
         if vm_image is not None:
@@ -1432,6 +1432,19 @@ class _InstanceState:
         pulumi.set(self, "proxy_uri", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="reservationAffinity")
     def reservation_affinity(self) -> Optional[pulumi.Input['InstanceReservationAffinityArgs']]:
         """
@@ -1525,19 +1538,6 @@ class _InstanceState:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="updateTime")
@@ -2012,8 +2012,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["vm_image"] = vm_image
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["proxy_uri"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["state"] = None
-            __props__.__dict__["terraform_labels"] = None
         super(Instance, __self__).__init__(
             'gcp:notebooks/instance:Instance',
             resource_name,
@@ -2050,6 +2050,7 @@ class Instance(pulumi.CustomResource):
             post_startup_script: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             proxy_uri: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
             service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -2057,7 +2058,6 @@ class Instance(pulumi.CustomResource):
             state: Optional[pulumi.Input[str]] = None,
             subnet: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
             vm_image: Optional[pulumi.Input[pulumi.InputType['InstanceVmImageArgs']]] = None) -> 'Instance':
         """
@@ -2130,6 +2130,8 @@ class Instance(pulumi.CustomResource):
                Only returned when the resource is in a `PROVISIONED` state. If
                needed you can utilize `pulumi up -refresh-only` to await
                the population of this value.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
                Structure is documented below.
         :param pulumi.Input[str] service_account: The service account on this instance, giving access to other
@@ -2148,8 +2150,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] subnet: The name of the subnet that this instance is in.
                Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The Compute Engine tags to add to instance.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Instance update time.
         :param pulumi.Input[pulumi.InputType['InstanceVmImageArgs']] vm_image: Use a Compute Engine VM image to start the notebook instance.
                Structure is documented below.
@@ -2184,6 +2184,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["post_startup_script"] = post_startup_script
         __props__.__dict__["project"] = project
         __props__.__dict__["proxy_uri"] = proxy_uri
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["reservation_affinity"] = reservation_affinity
         __props__.__dict__["service_account"] = service_account
         __props__.__dict__["service_account_scopes"] = service_account_scopes
@@ -2191,7 +2192,6 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["subnet"] = subnet
         __props__.__dict__["tags"] = tags
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["vm_image"] = vm_image
         return Instance(resource_name, opts=opts, __props__=__props__)
@@ -2442,6 +2442,15 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "proxy_uri")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="reservationAffinity")
     def reservation_affinity(self) -> pulumi.Output[Optional['outputs.InstanceReservationAffinity']]:
         """
@@ -2507,15 +2516,6 @@ class Instance(pulumi.CustomResource):
         The Compute Engine tags to add to instance.
         """
         return pulumi.get(self, "tags")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="updateTime")

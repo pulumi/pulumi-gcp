@@ -277,10 +277,10 @@ class _StreamState:
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  source_config: Optional[pulumi.Input['StreamSourceConfigArgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 stream_id: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 stream_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Stream resources.
         :param pulumi.Input['StreamBackfillAllArgs'] backfill_all: Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
@@ -301,12 +301,12 @@ class _StreamState:
         :param pulumi.Input[str] name: The stream's name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input['StreamSourceConfigArgs'] source_config: Source connection profile configuration.
                Structure is documented below.
         :param pulumi.Input[str] state: The state of the stream.
         :param pulumi.Input[str] stream_id: The stream identifier.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         """
         _StreamState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -321,10 +321,10 @@ class _StreamState:
             location=location,
             name=name,
             project=project,
+            pulumi_labels=pulumi_labels,
             source_config=source_config,
             state=state,
             stream_id=stream_id,
-            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
@@ -340,10 +340,10 @@ class _StreamState:
              location: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              source_config: Optional[pulumi.Input['StreamSourceConfigArgs']] = None,
              state: Optional[pulumi.Input[str]] = None,
              stream_id: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if backfill_all is None and 'backfillAll' in kwargs:
@@ -360,12 +360,12 @@ class _StreamState:
             display_name = kwargs['displayName']
         if effective_labels is None and 'effectiveLabels' in kwargs:
             effective_labels = kwargs['effectiveLabels']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if source_config is None and 'sourceConfig' in kwargs:
             source_config = kwargs['sourceConfig']
         if stream_id is None and 'streamId' in kwargs:
             stream_id = kwargs['streamId']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
 
         if backfill_all is not None:
             _setter("backfill_all", backfill_all)
@@ -389,14 +389,14 @@ class _StreamState:
             _setter("name", name)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if source_config is not None:
             _setter("source_config", source_config)
         if state is not None:
             _setter("state", state)
         if stream_id is not None:
             _setter("stream_id", stream_id)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter(name="backfillAll")
@@ -538,6 +538,19 @@ class _StreamState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="sourceConfig")
     def source_config(self) -> Optional[pulumi.Input['StreamSourceConfigArgs']]:
         """
@@ -573,19 +586,6 @@ class _StreamState:
     @stream_id.setter
     def stream_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "stream_id", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
 
 class Stream(pulumi.CustomResource):
@@ -1742,8 +1742,8 @@ class Stream(pulumi.CustomResource):
             __props__.__dict__["stream_id"] = stream_id
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["state"] = None
-            __props__.__dict__["terraform_labels"] = None
         super(Stream, __self__).__init__(
             'gcp:datastream/stream:Stream',
             resource_name,
@@ -1765,10 +1765,10 @@ class Stream(pulumi.CustomResource):
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             source_config: Optional[pulumi.Input[pulumi.InputType['StreamSourceConfigArgs']]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            stream_id: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Stream':
+            stream_id: Optional[pulumi.Input[str]] = None) -> 'Stream':
         """
         Get an existing Stream resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1794,12 +1794,12 @@ class Stream(pulumi.CustomResource):
         :param pulumi.Input[str] name: The stream's name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['StreamSourceConfigArgs']] source_config: Source connection profile configuration.
                Structure is documented below.
         :param pulumi.Input[str] state: The state of the stream.
         :param pulumi.Input[str] stream_id: The stream identifier.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1816,10 +1816,10 @@ class Stream(pulumi.CustomResource):
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["source_config"] = source_config
         __props__.__dict__["state"] = state
         __props__.__dict__["stream_id"] = stream_id
-        __props__.__dict__["terraform_labels"] = terraform_labels
         return Stream(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1918,6 +1918,15 @@ class Stream(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="sourceConfig")
     def source_config(self) -> pulumi.Output['outputs.StreamSourceConfig']:
         """
@@ -1941,13 +1950,4 @@ class Stream(pulumi.CustomResource):
         The stream identifier.
         """
         return pulumi.get(self, "stream_id")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 

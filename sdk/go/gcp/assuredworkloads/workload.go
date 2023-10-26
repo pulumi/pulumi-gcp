@@ -112,12 +112,12 @@ type Workload struct {
 	Organization pulumi.StringOutput `pulumi:"organization"`
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
 	ProvisionedResourcesParent pulumi.StringPtrOutput `pulumi:"provisionedResourcesParent"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.MapOutput `pulumi:"pulumiLabels"`
 	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
 	ResourceSettings WorkloadResourceSettingArrayOutput `pulumi:"resourceSettings"`
 	// Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
 	Resources WorkloadResourceArrayOutput `pulumi:"resources"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.MapOutput `pulumi:"terraformLabels"`
 }
 
 // NewWorkload registers a new resource with the given unique name, arguments, and options.
@@ -193,12 +193,12 @@ type workloadState struct {
 	Organization *string `pulumi:"organization"`
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
 	ProvisionedResourcesParent *string `pulumi:"provisionedResourcesParent"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]interface{} `pulumi:"pulumiLabels"`
 	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
 	ResourceSettings []WorkloadResourceSetting `pulumi:"resourceSettings"`
 	// Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
 	Resources []WorkloadResource `pulumi:"resources"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels map[string]interface{} `pulumi:"terraformLabels"`
 }
 
 type WorkloadState struct {
@@ -230,12 +230,12 @@ type WorkloadState struct {
 	Organization pulumi.StringPtrInput
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
 	ProvisionedResourcesParent pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.MapInput
 	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
 	ResourceSettings WorkloadResourceSettingArrayInput
 	// Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
 	Resources WorkloadResourceArrayInput
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.MapInput
 }
 
 func (WorkloadState) ElementType() reflect.Type {
@@ -467,6 +467,11 @@ func (o WorkloadOutput) ProvisionedResourcesParent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workload) pulumi.StringPtrOutput { return v.ProvisionedResourcesParent }).(pulumi.StringPtrOutput)
 }
 
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o WorkloadOutput) PulumiLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Workload) pulumi.MapOutput { return v.PulumiLabels }).(pulumi.MapOutput)
+}
+
 // Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
 func (o WorkloadOutput) ResourceSettings() WorkloadResourceSettingArrayOutput {
 	return o.ApplyT(func(v *Workload) WorkloadResourceSettingArrayOutput { return v.ResourceSettings }).(WorkloadResourceSettingArrayOutput)
@@ -475,11 +480,6 @@ func (o WorkloadOutput) ResourceSettings() WorkloadResourceSettingArrayOutput {
 // Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
 func (o WorkloadOutput) Resources() WorkloadResourceArrayOutput {
 	return o.ApplyT(func(v *Workload) WorkloadResourceArrayOutput { return v.Resources }).(WorkloadResourceArrayOutput)
-}
-
-// The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o WorkloadOutput) TerraformLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Workload) pulumi.MapOutput { return v.TerraformLabels }).(pulumi.MapOutput)
 }
 
 type WorkloadArrayOutput struct{ *pulumi.OutputState }

@@ -61,7 +61,7 @@ export interface GetCertificateMapResult {
     readonly labels: {[key: string]: string};
     readonly name: string;
     readonly project?: string;
-    readonly terraformLabels: {[key: string]: string};
+    readonly pulumiLabels: {[key: string]: string};
     readonly updateTime: string;
 }
 /**

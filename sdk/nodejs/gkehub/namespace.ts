@@ -99,6 +99,11 @@ export class Namespace extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The name of the Scope instance.
      */
     public readonly scope!: pulumi.Output<string>;
@@ -118,11 +123,6 @@ export class Namespace extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public /*out*/ readonly states!: pulumi.Output<outputs.gkehub.NamespaceState[]>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Google-generated UUID for this resource.
      */
@@ -152,11 +152,11 @@ export class Namespace extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["namespaceLabels"] = state ? state.namespaceLabels : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["scope"] = state ? state.scope : undefined;
             resourceInputs["scopeId"] = state ? state.scopeId : undefined;
             resourceInputs["scopeNamespaceId"] = state ? state.scopeNamespaceId : undefined;
             resourceInputs["states"] = state ? state.states : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -180,8 +180,8 @@ export class Namespace extends pulumi.CustomResource {
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["states"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
@@ -232,6 +232,11 @@ export interface NamespaceState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The name of the Scope instance.
      */
     scope?: pulumi.Input<string>;
@@ -251,11 +256,6 @@ export interface NamespaceState {
      * Structure is documented below.
      */
     states?: pulumi.Input<pulumi.Input<inputs.gkehub.NamespaceState>[]>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Google-generated UUID for this resource.
      */

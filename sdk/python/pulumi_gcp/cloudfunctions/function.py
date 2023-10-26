@@ -655,6 +655,7 @@ class _FunctionState:
                  min_instances: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
                  secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArgs']]]] = None,
@@ -664,7 +665,6 @@ class _FunctionState:
                  source_archive_object: Optional[pulumi.Input[str]] = None,
                  source_repository: Optional[pulumi.Input['FunctionSourceRepositoryArgs']] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  timeout: Optional[pulumi.Input[int]] = None,
                  trigger_http: Optional[pulumi.Input[bool]] = None,
                  vpc_connector: Optional[pulumi.Input[str]] = None,
@@ -695,6 +695,7 @@ class _FunctionState:
         :param pulumi.Input[int] min_instances: The limit on the minimum number of function instances that may coexist at a given time.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally.
         :param pulumi.Input[str] project: Project of the function. If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] region: Region of function. If it is not provided, the provider region is used.
         :param pulumi.Input[str] runtime: The runtime in which the function is going to run.
                Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
@@ -708,7 +709,6 @@ class _FunctionState:
         :param pulumi.Input['FunctionSourceRepositoryArgs'] source_repository: Represents parameters related to source repository where a function is hosted.
                Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
         :param pulumi.Input[str] status: Describes the current stage of a deployment.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[int] timeout: Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
         :param pulumi.Input[bool] trigger_http: Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `event_trigger`.
         :param pulumi.Input[str] vpc_connector: The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.
@@ -735,6 +735,7 @@ class _FunctionState:
             min_instances=min_instances,
             name=name,
             project=project,
+            pulumi_labels=pulumi_labels,
             region=region,
             runtime=runtime,
             secret_environment_variables=secret_environment_variables,
@@ -744,7 +745,6 @@ class _FunctionState:
             source_archive_object=source_archive_object,
             source_repository=source_repository,
             status=status,
-            terraform_labels=terraform_labels,
             timeout=timeout,
             trigger_http=trigger_http,
             vpc_connector=vpc_connector,
@@ -772,6 +772,7 @@ class _FunctionState:
              min_instances: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              region: Optional[pulumi.Input[str]] = None,
              runtime: Optional[pulumi.Input[str]] = None,
              secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArgs']]]] = None,
@@ -781,7 +782,6 @@ class _FunctionState:
              source_archive_object: Optional[pulumi.Input[str]] = None,
              source_repository: Optional[pulumi.Input['FunctionSourceRepositoryArgs']] = None,
              status: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
              trigger_http: Optional[pulumi.Input[bool]] = None,
              vpc_connector: Optional[pulumi.Input[str]] = None,
@@ -818,6 +818,8 @@ class _FunctionState:
             max_instances = kwargs['maxInstances']
         if min_instances is None and 'minInstances' in kwargs:
             min_instances = kwargs['minInstances']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if secret_environment_variables is None and 'secretEnvironmentVariables' in kwargs:
             secret_environment_variables = kwargs['secretEnvironmentVariables']
         if secret_volumes is None and 'secretVolumes' in kwargs:
@@ -830,8 +832,6 @@ class _FunctionState:
             source_archive_object = kwargs['sourceArchiveObject']
         if source_repository is None and 'sourceRepository' in kwargs:
             source_repository = kwargs['sourceRepository']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
         if trigger_http is None and 'triggerHttp' in kwargs:
             trigger_http = kwargs['triggerHttp']
         if vpc_connector is None and 'vpcConnector' in kwargs:
@@ -877,6 +877,8 @@ class _FunctionState:
             _setter("name", name)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if region is not None:
             _setter("region", region)
         if runtime is not None:
@@ -895,8 +897,6 @@ class _FunctionState:
             _setter("source_repository", source_repository)
         if status is not None:
             _setter("status", status)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if timeout is not None:
             _setter("timeout", timeout)
         if trigger_http is not None:
@@ -1140,6 +1140,18 @@ class _FunctionState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1250,18 +1262,6 @@ class _FunctionState:
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -1662,8 +1662,8 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["vpc_connector"] = vpc_connector
             __props__.__dict__["vpc_connector_egress_settings"] = vpc_connector_egress_settings
             __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["status"] = None
-            __props__.__dict__["terraform_labels"] = None
         super(Function, __self__).__init__(
             'gcp:cloudfunctions/function:Function',
             resource_name,
@@ -1693,6 +1693,7 @@ class Function(pulumi.CustomResource):
             min_instances: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
             runtime: Optional[pulumi.Input[str]] = None,
             secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretEnvironmentVariableArgs']]]]] = None,
@@ -1702,7 +1703,6 @@ class Function(pulumi.CustomResource):
             source_archive_object: Optional[pulumi.Input[str]] = None,
             source_repository: Optional[pulumi.Input[pulumi.InputType['FunctionSourceRepositoryArgs']]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             timeout: Optional[pulumi.Input[int]] = None,
             trigger_http: Optional[pulumi.Input[bool]] = None,
             vpc_connector: Optional[pulumi.Input[str]] = None,
@@ -1738,6 +1738,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[int] min_instances: The limit on the minimum number of function instances that may coexist at a given time.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally.
         :param pulumi.Input[str] project: Project of the function. If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] region: Region of function. If it is not provided, the provider region is used.
         :param pulumi.Input[str] runtime: The runtime in which the function is going to run.
                Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
@@ -1751,7 +1752,6 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['FunctionSourceRepositoryArgs']] source_repository: Represents parameters related to source repository where a function is hosted.
                Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
         :param pulumi.Input[str] status: Describes the current stage of a deployment.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[int] timeout: Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
         :param pulumi.Input[bool] trigger_http: Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `event_trigger`.
         :param pulumi.Input[str] vpc_connector: The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.
@@ -1780,6 +1780,7 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["min_instances"] = min_instances
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["region"] = region
         __props__.__dict__["runtime"] = runtime
         __props__.__dict__["secret_environment_variables"] = secret_environment_variables
@@ -1789,7 +1790,6 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["source_archive_object"] = source_archive_object
         __props__.__dict__["source_repository"] = source_repository
         __props__.__dict__["status"] = status
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["timeout"] = timeout
         __props__.__dict__["trigger_http"] = trigger_http
         __props__.__dict__["vpc_connector"] = vpc_connector
@@ -1954,6 +1954,14 @@ class Function(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
@@ -2028,14 +2036,6 @@ class Function(pulumi.CustomResource):
         Describes the current stage of a deployment.
         """
         return pulumi.get(self, "status")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

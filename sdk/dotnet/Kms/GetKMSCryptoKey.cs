@@ -151,6 +151,7 @@ namespace Pulumi.Gcp.Kms
         public readonly string KeyRing;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         /// <summary>
         /// Defines the cryptographic capabilities of the key.
         /// </summary>
@@ -162,7 +163,6 @@ namespace Pulumi.Gcp.Kms
         /// </summary>
         public readonly string RotationPeriod;
         public readonly bool SkipInitialVersionCreation;
-        public readonly ImmutableDictionary<string, string> TerraformLabels;
         public readonly ImmutableArray<Outputs.GetKMSCryptoKeyVersionTemplateResult> VersionTemplates;
 
         [OutputConstructor]
@@ -181,13 +181,13 @@ namespace Pulumi.Gcp.Kms
 
             string name,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             string purpose,
 
             string rotationPeriod,
 
             bool skipInitialVersionCreation,
-
-            ImmutableDictionary<string, string> terraformLabels,
 
             ImmutableArray<Outputs.GetKMSCryptoKeyVersionTemplateResult> versionTemplates)
         {
@@ -198,10 +198,10 @@ namespace Pulumi.Gcp.Kms
             KeyRing = keyRing;
             Labels = labels;
             Name = name;
+            PulumiLabels = pulumiLabels;
             Purpose = purpose;
             RotationPeriod = rotationPeriod;
             SkipInitialVersionCreation = skipInitialVersionCreation;
-            TerraformLabels = terraformLabels;
             VersionTemplates = versionTemplates;
         }
     }

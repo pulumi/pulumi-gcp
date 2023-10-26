@@ -171,6 +171,7 @@ namespace Pulumi.Gcp.Redis
         public readonly string PersistenceIamIdentity;
         public readonly int Port;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string ReadEndpoint;
         public readonly int ReadEndpointPort;
         public readonly string ReadReplicasMode;
@@ -181,7 +182,6 @@ namespace Pulumi.Gcp.Redis
         public readonly string ReservedIpRange;
         public readonly string SecondaryIpRange;
         public readonly ImmutableArray<Outputs.GetInstanceServerCaCertResult> ServerCaCerts;
-        public readonly ImmutableDictionary<string, string> TerraformLabels;
         public readonly string Tier;
         public readonly string TransitEncryptionMode;
 
@@ -233,6 +233,8 @@ namespace Pulumi.Gcp.Redis
 
             string? project,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             string readEndpoint,
 
             int readEndpointPort,
@@ -252,8 +254,6 @@ namespace Pulumi.Gcp.Redis
             string secondaryIpRange,
 
             ImmutableArray<Outputs.GetInstanceServerCaCertResult> serverCaCerts,
-
-            ImmutableDictionary<string, string> terraformLabels,
 
             string tier,
 
@@ -282,6 +282,7 @@ namespace Pulumi.Gcp.Redis
             PersistenceIamIdentity = persistenceIamIdentity;
             Port = port;
             Project = project;
+            PulumiLabels = pulumiLabels;
             ReadEndpoint = readEndpoint;
             ReadEndpointPort = readEndpointPort;
             ReadReplicasMode = readReplicasMode;
@@ -292,7 +293,6 @@ namespace Pulumi.Gcp.Redis
             ReservedIpRange = reservedIpRange;
             SecondaryIpRange = secondaryIpRange;
             ServerCaCerts = serverCaCerts;
-            TerraformLabels = terraformLabels;
             Tier = tier;
             TransitEncryptionMode = transitEncryptionMode;
         }

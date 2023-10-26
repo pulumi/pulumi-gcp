@@ -72,11 +72,11 @@ export interface GetGlobalForwardingRuleResult {
     readonly project?: string;
     readonly pscConnectionId: string;
     readonly pscConnectionStatus: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly selfLink: string;
     readonly sourceIpRanges: string[];
     readonly subnetwork: string;
     readonly target: string;
-    readonly terraformLabels: {[key: string]: string};
 }
 /**
  * Get a global forwarding rule within GCE from its name.

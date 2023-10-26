@@ -176,11 +176,11 @@ type Instance struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The region of the Memcache instance. If it is not provided, the provider region is used.
-	Region pulumi.StringOutput `pulumi:"region"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// The region of the Memcache instance. If it is not provided, the provider region is used.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// Zones where memcache nodes should be provisioned.  If not
 	// provided, all zones will be used.
 	Zones pulumi.StringArrayOutput `pulumi:"zones"`
@@ -272,11 +272,11 @@ type instanceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The region of the Memcache instance. If it is not provided, the provider region is used.
-	Region *string `pulumi:"region"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// The region of the Memcache instance. If it is not provided, the provider region is used.
+	Region *string `pulumi:"region"`
 	// Zones where memcache nodes should be provisioned.  If not
 	// provided, all zones will be used.
 	Zones []string `pulumi:"zones"`
@@ -333,11 +333,11 @@ type InstanceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The region of the Memcache instance. If it is not provided, the provider region is used.
-	Region pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
+	PulumiLabels pulumi.StringMapInput
+	// The region of the Memcache instance. If it is not provided, the provider region is used.
+	Region pulumi.StringPtrInput
 	// Zones where memcache nodes should be provisioned.  If not
 	// provided, all zones will be used.
 	Zones pulumi.StringArrayInput
@@ -637,15 +637,15 @@ func (o InstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o InstanceOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The region of the Memcache instance. If it is not provided, the provider region is used.
 func (o InstanceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o InstanceOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Zones where memcache nodes should be provisioned.  If not

@@ -853,6 +853,7 @@ class _ForwardingRuleState:
                  project: Optional[pulumi.Input[str]] = None,
                  psc_connection_id: Optional[pulumi.Input[str]] = None,
                  psc_connection_status: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  service_directory_registrations: Optional[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationsArgs']] = None,
@@ -860,8 +861,7 @@ class _ForwardingRuleState:
                  service_name: Optional[pulumi.Input[str]] = None,
                  source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
-                 target: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 target: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ForwardingRule resources.
         :param pulumi.Input[bool] all_ports: This field can only be used:
@@ -1030,6 +1030,8 @@ class _ForwardingRuleState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] psc_connection_id: The PSC connection id of the PSC Forwarding Rule.
         :param pulumi.Input[str] psc_connection_status: The PSC connection status of the PSC Forwarding Rule. Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] region: A reference to the region where the regional forwarding rule resides.
                This field is not applicable to global forwarding rules.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -1066,8 +1068,6 @@ class _ForwardingRuleState:
                *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
                
                For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         """
         _ForwardingRuleState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -1095,6 +1095,7 @@ class _ForwardingRuleState:
             project=project,
             psc_connection_id=psc_connection_id,
             psc_connection_status=psc_connection_status,
+            pulumi_labels=pulumi_labels,
             region=region,
             self_link=self_link,
             service_directory_registrations=service_directory_registrations,
@@ -1103,7 +1104,6 @@ class _ForwardingRuleState:
             source_ip_ranges=source_ip_ranges,
             subnetwork=subnetwork,
             target=target,
-            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
@@ -1132,6 +1132,7 @@ class _ForwardingRuleState:
              project: Optional[pulumi.Input[str]] = None,
              psc_connection_id: Optional[pulumi.Input[str]] = None,
              psc_connection_status: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              region: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              service_directory_registrations: Optional[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationsArgs']] = None,
@@ -1140,7 +1141,6 @@ class _ForwardingRuleState:
              source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
              target: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if all_ports is None and 'allPorts' in kwargs:
@@ -1179,6 +1179,8 @@ class _ForwardingRuleState:
             psc_connection_id = kwargs['pscConnectionId']
         if psc_connection_status is None and 'pscConnectionStatus' in kwargs:
             psc_connection_status = kwargs['pscConnectionStatus']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if self_link is None and 'selfLink' in kwargs:
             self_link = kwargs['selfLink']
         if service_directory_registrations is None and 'serviceDirectoryRegistrations' in kwargs:
@@ -1189,8 +1191,6 @@ class _ForwardingRuleState:
             service_name = kwargs['serviceName']
         if source_ip_ranges is None and 'sourceIpRanges' in kwargs:
             source_ip_ranges = kwargs['sourceIpRanges']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
 
         if all_ports is not None:
             _setter("all_ports", all_ports)
@@ -1240,6 +1240,8 @@ class _ForwardingRuleState:
             _setter("psc_connection_id", psc_connection_id)
         if psc_connection_status is not None:
             _setter("psc_connection_status", psc_connection_status)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if region is not None:
             _setter("region", region)
         if self_link is not None:
@@ -1256,8 +1258,6 @@ class _ForwardingRuleState:
             _setter("subnetwork", subnetwork)
         if target is not None:
             _setter("target", target)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter(name="allPorts")
@@ -1690,6 +1690,19 @@ class _ForwardingRuleState:
         pulumi.set(self, "psc_connection_status", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1812,19 +1825,6 @@ class _ForwardingRuleState:
     @target.setter
     def target(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
 
 class ForwardingRule(pulumi.CustomResource):
@@ -2280,9 +2280,9 @@ class ForwardingRule(pulumi.CustomResource):
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["psc_connection_id"] = None
             __props__.__dict__["psc_connection_status"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["service_name"] = None
-            __props__.__dict__["terraform_labels"] = None
         super(ForwardingRule, __self__).__init__(
             'gcp:compute/forwardingRule:ForwardingRule',
             resource_name,
@@ -2317,6 +2317,7 @@ class ForwardingRule(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             psc_connection_id: Optional[pulumi.Input[str]] = None,
             psc_connection_status: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             service_directory_registrations: Optional[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationsArgs']]] = None,
@@ -2324,8 +2325,7 @@ class ForwardingRule(pulumi.CustomResource):
             service_name: Optional[pulumi.Input[str]] = None,
             source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             subnetwork: Optional[pulumi.Input[str]] = None,
-            target: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'ForwardingRule':
+            target: Optional[pulumi.Input[str]] = None) -> 'ForwardingRule':
         """
         Get an existing ForwardingRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -2499,6 +2499,8 @@ class ForwardingRule(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] psc_connection_id: The PSC connection id of the PSC Forwarding Rule.
         :param pulumi.Input[str] psc_connection_status: The PSC connection status of the PSC Forwarding Rule. Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] region: A reference to the region where the regional forwarding rule resides.
                This field is not applicable to global forwarding rules.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -2535,8 +2537,6 @@ class ForwardingRule(pulumi.CustomResource):
                *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
                
                For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2566,6 +2566,7 @@ class ForwardingRule(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["psc_connection_id"] = psc_connection_id
         __props__.__dict__["psc_connection_status"] = psc_connection_status
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["region"] = region
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["service_directory_registrations"] = service_directory_registrations
@@ -2574,7 +2575,6 @@ class ForwardingRule(pulumi.CustomResource):
         __props__.__dict__["source_ip_ranges"] = source_ip_ranges
         __props__.__dict__["subnetwork"] = subnetwork
         __props__.__dict__["target"] = target
-        __props__.__dict__["terraform_labels"] = terraform_labels
         return ForwardingRule(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -2912,6 +2912,15 @@ class ForwardingRule(pulumi.CustomResource):
         return pulumi.get(self, "psc_connection_status")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
@@ -3002,13 +3011,4 @@ class ForwardingRule(pulumi.CustomResource):
         For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
         """
         return pulumi.get(self, "target")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 

@@ -122,14 +122,14 @@ type HostingChannel struct {
 	// The fully-qualified resource name for the channel, in the format:
 	// sites/SITE_ID/channels/CHANNEL_ID
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The number of previous releases to retain on the channel for rollback or other
 	// purposes. Must be a number between 1-100. Defaults to 10 for new channels.
 	RetainedReleaseCount pulumi.IntOutput `pulumi:"retainedReleaseCount"`
 	// Required. The ID of the site in which to create this channel.
 	SiteId pulumi.StringOutput `pulumi:"siteId"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Input only. A time-to-live for this channel. Sets `expireTime` to the provided
 	// duration past the time of the request. A duration in seconds with up to nine fractional
 	// digits, terminated by 's'. Example: "86400s" (one day).
@@ -190,14 +190,14 @@ type hostingChannelState struct {
 	// The fully-qualified resource name for the channel, in the format:
 	// sites/SITE_ID/channels/CHANNEL_ID
 	Name *string `pulumi:"name"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The number of previous releases to retain on the channel for rollback or other
 	// purposes. Must be a number between 1-100. Defaults to 10 for new channels.
 	RetainedReleaseCount *int `pulumi:"retainedReleaseCount"`
 	// Required. The ID of the site in which to create this channel.
 	SiteId *string `pulumi:"siteId"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Input only. A time-to-live for this channel. Sets `expireTime` to the provided
 	// duration past the time of the request. A duration in seconds with up to nine fractional
 	// digits, terminated by 's'. Example: "86400s" (one day).
@@ -223,14 +223,14 @@ type HostingChannelState struct {
 	// The fully-qualified resource name for the channel, in the format:
 	// sites/SITE_ID/channels/CHANNEL_ID
 	Name pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The number of previous releases to retain on the channel for rollback or other
 	// purposes. Must be a number between 1-100. Defaults to 10 for new channels.
 	RetainedReleaseCount pulumi.IntPtrInput
 	// Required. The ID of the site in which to create this channel.
 	SiteId pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// Input only. A time-to-live for this channel. Sets `expireTime` to the provided
 	// duration past the time of the request. A duration in seconds with up to nine fractional
 	// digits, terminated by 's'. Example: "86400s" (one day).
@@ -434,6 +434,12 @@ func (o HostingChannelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostingChannel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o HostingChannelOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *HostingChannel) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The number of previous releases to retain on the channel for rollback or other
 // purposes. Must be a number between 1-100. Defaults to 10 for new channels.
 func (o HostingChannelOutput) RetainedReleaseCount() pulumi.IntOutput {
@@ -443,12 +449,6 @@ func (o HostingChannelOutput) RetainedReleaseCount() pulumi.IntOutput {
 // Required. The ID of the site in which to create this channel.
 func (o HostingChannelOutput) SiteId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostingChannel) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o HostingChannelOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *HostingChannel) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Input only. A time-to-live for this channel. Sets `expireTime` to the provided

@@ -295,6 +295,9 @@ type Instance struct {
 	// needed you can utilize `pulumi up -refresh-only` to await
 	// the population of this value.
 	ProxyUri pulumi.StringOutput `pulumi:"proxyUri"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Reservation Affinity for consuming Zonal reservation.
 	// Structure is documented below.
 	ReservationAffinity InstanceReservationAffinityPtrOutput `pulumi:"reservationAffinity"`
@@ -320,9 +323,6 @@ type Instance struct {
 	Subnet pulumi.StringOutput `pulumi:"subnet"`
 	// The Compute Engine tags to add to instance.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Instance update time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Use a Compute Engine VM image to start the notebook instance.
@@ -454,6 +454,9 @@ type instanceState struct {
 	// needed you can utilize `pulumi up -refresh-only` to await
 	// the population of this value.
 	ProxyUri *string `pulumi:"proxyUri"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Reservation Affinity for consuming Zonal reservation.
 	// Structure is documented below.
 	ReservationAffinity *InstanceReservationAffinity `pulumi:"reservationAffinity"`
@@ -479,9 +482,6 @@ type instanceState struct {
 	Subnet *string `pulumi:"subnet"`
 	// The Compute Engine tags to add to instance.
 	Tags []string `pulumi:"tags"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Instance update time.
 	UpdateTime *string `pulumi:"updateTime"`
 	// Use a Compute Engine VM image to start the notebook instance.
@@ -578,6 +578,9 @@ type InstanceState struct {
 	// needed you can utilize `pulumi up -refresh-only` to await
 	// the population of this value.
 	ProxyUri pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Reservation Affinity for consuming Zonal reservation.
 	// Structure is documented below.
 	ReservationAffinity InstanceReservationAffinityPtrInput
@@ -603,9 +606,6 @@ type InstanceState struct {
 	Subnet pulumi.StringPtrInput
 	// The Compute Engine tags to add to instance.
 	Tags pulumi.StringArrayInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// Instance update time.
 	UpdateTime pulumi.StringPtrInput
 	// Use a Compute Engine VM image to start the notebook instance.
@@ -1117,6 +1117,12 @@ func (o InstanceOutput) ProxyUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ProxyUri }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o InstanceOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Reservation Affinity for consuming Zonal reservation.
 // Structure is documented below.
 func (o InstanceOutput) ReservationAffinity() InstanceReservationAffinityPtrOutput {
@@ -1161,12 +1167,6 @@ func (o InstanceOutput) Subnet() pulumi.StringOutput {
 // The Compute Engine tags to add to instance.
 func (o InstanceOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o InstanceOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Instance update time.

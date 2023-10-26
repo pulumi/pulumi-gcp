@@ -22,7 +22,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, advanced_machine_features=None, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, confidential_instance_configs=None, cpu_platform=None, current_status=None, deletion_protection=None, description=None, desired_status=None, effective_labels=None, enable_display=None, guest_accelerators=None, hostname=None, id=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_configs=None, params=None, project=None, reservation_affinities=None, resource_policies=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, terraform_labels=None, zone=None):
+    def __init__(__self__, advanced_machine_features=None, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, confidential_instance_configs=None, cpu_platform=None, current_status=None, deletion_protection=None, description=None, desired_status=None, effective_labels=None, enable_display=None, guest_accelerators=None, hostname=None, id=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_configs=None, params=None, project=None, pulumi_labels=None, reservation_affinities=None, resource_policies=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, zone=None):
         if advanced_machine_features and not isinstance(advanced_machine_features, list):
             raise TypeError("Expected argument 'advanced_machine_features' to be a list")
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -110,6 +110,9 @@ class GetInstanceResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if reservation_affinities and not isinstance(reservation_affinities, list):
             raise TypeError("Expected argument 'reservation_affinities' to be a list")
         pulumi.set(__self__, "reservation_affinities", reservation_affinities)
@@ -137,9 +140,6 @@ class GetInstanceResult:
         if tags_fingerprint and not isinstance(tags_fingerprint, str):
             raise TypeError("Expected argument 'tags_fingerprint' to be a str")
         pulumi.set(__self__, "tags_fingerprint", tags_fingerprint)
-        if terraform_labels and not isinstance(terraform_labels, dict):
-            raise TypeError("Expected argument 'terraform_labels' to be a dict")
-        pulumi.set(__self__, "terraform_labels", terraform_labels)
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         pulumi.set(__self__, "zone", zone)
@@ -347,6 +347,11 @@ class GetInstanceResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="reservationAffinities")
     def reservation_affinities(self) -> Sequence['outputs.GetInstanceReservationAffinityResult']:
         return pulumi.get(self, "reservation_affinities")
@@ -413,11 +418,6 @@ class GetInstanceResult:
         return pulumi.get(self, "tags_fingerprint")
 
     @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Mapping[str, str]:
-        return pulumi.get(self, "terraform_labels")
-
-    @property
     @pulumi.getter
     def zone(self) -> Optional[str]:
         return pulumi.get(self, "zone")
@@ -458,6 +458,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             network_performance_configs=self.network_performance_configs,
             params=self.params,
             project=self.project,
+            pulumi_labels=self.pulumi_labels,
             reservation_affinities=self.reservation_affinities,
             resource_policies=self.resource_policies,
             schedulings=self.schedulings,
@@ -467,7 +468,6 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             shielded_instance_configs=self.shielded_instance_configs,
             tags=self.tags,
             tags_fingerprint=self.tags_fingerprint,
-            terraform_labels=self.terraform_labels,
             zone=self.zone)
 
 
@@ -540,6 +540,7 @@ def get_instance(name: Optional[str] = None,
         network_performance_configs=pulumi.get(__ret__, 'network_performance_configs'),
         params=pulumi.get(__ret__, 'params'),
         project=pulumi.get(__ret__, 'project'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         reservation_affinities=pulumi.get(__ret__, 'reservation_affinities'),
         resource_policies=pulumi.get(__ret__, 'resource_policies'),
         schedulings=pulumi.get(__ret__, 'schedulings'),
@@ -549,7 +550,6 @@ def get_instance(name: Optional[str] = None,
         shielded_instance_configs=pulumi.get(__ret__, 'shielded_instance_configs'),
         tags=pulumi.get(__ret__, 'tags'),
         tags_fingerprint=pulumi.get(__ret__, 'tags_fingerprint'),
-        terraform_labels=pulumi.get(__ret__, 'terraform_labels'),
         zone=pulumi.get(__ret__, 'zone'))
 
 

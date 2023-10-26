@@ -323,6 +323,21 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * The region in which the created job should run.
      * 
      */
@@ -449,21 +464,6 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     * 
-     */
-    @Import(name="terraformLabels")
-    private @Nullable Output<Map<String,String>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
-     * 
-     */
-    public Optional<Output<Map<String,String>>> terraformLabels() {
-        return Optional.ofNullable(this.terraformLabels);
-    }
-
-    /**
      * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
      * corresponding name prefixes of the new job.
      * 
@@ -516,6 +516,7 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
         this.onDelete = $.onDelete;
         this.parameters = $.parameters;
         this.project = $.project;
+        this.pulumiLabels = $.pulumiLabels;
         this.region = $.region;
         this.sdkContainerImage = $.sdkContainerImage;
         this.serviceAccountEmail = $.serviceAccountEmail;
@@ -524,7 +525,6 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
         this.state = $.state;
         this.subnetwork = $.subnetwork;
         this.tempLocation = $.tempLocation;
-        this.terraformLabels = $.terraformLabels;
         this.transformNameMapping = $.transformNameMapping;
         this.type = $.type;
     }
@@ -968,6 +968,27 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
          * @param region The region in which the created job should run.
          * 
          * @return builder
@@ -1139,27 +1160,6 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
          */
         public Builder tempLocation(String tempLocation) {
             return tempLocation(Output.of(tempLocation));
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
-            $.terraformLabels = terraformLabels;
-            return this;
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

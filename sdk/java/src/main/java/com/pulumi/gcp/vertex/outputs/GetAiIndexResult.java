@@ -34,8 +34,8 @@ public final class GetAiIndexResult {
     private List<GetAiIndexMetadata> metadatas;
     private String name;
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private String region;
-    private Map<String,String> terraformLabels;
     private String updateTime;
 
     private GetAiIndexResult() {}
@@ -85,11 +85,11 @@ public final class GetAiIndexResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public String region() {
         return this.region;
-    }
-    public Map<String,String> terraformLabels() {
-        return this.terraformLabels;
     }
     public String updateTime() {
         return this.updateTime;
@@ -118,8 +118,8 @@ public final class GetAiIndexResult {
         private List<GetAiIndexMetadata> metadatas;
         private String name;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private String region;
-        private Map<String,String> terraformLabels;
         private String updateTime;
         public Builder() {}
         public Builder(GetAiIndexResult defaults) {
@@ -138,8 +138,8 @@ public final class GetAiIndexResult {
     	      this.metadatas = defaults.metadatas;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.region = defaults.region;
-    	      this.terraformLabels = defaults.terraformLabels;
     	      this.updateTime = defaults.updateTime;
         }
 
@@ -223,13 +223,13 @@ public final class GetAiIndexResult {
             return this;
         }
         @CustomType.Setter
-        public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
             return this;
         }
         @CustomType.Setter
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            this.terraformLabels = Objects.requireNonNull(terraformLabels);
+        public Builder region(String region) {
+            this.region = Objects.requireNonNull(region);
             return this;
         }
         @CustomType.Setter
@@ -253,8 +253,8 @@ public final class GetAiIndexResult {
             o.metadatas = metadatas;
             o.name = name;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.region = region;
-            o.terraformLabels = terraformLabels;
             o.updateTime = updateTime;
             return o;
         }

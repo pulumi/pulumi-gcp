@@ -206,6 +206,8 @@ type Function struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Project of the function. If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Region of function. If it is not provided, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The runtime in which the function is going to run.
@@ -228,8 +230,6 @@ type Function struct {
 	SourceRepository FunctionSourceRepositoryPtrOutput `pulumi:"sourceRepository"`
 	// Describes the current stage of a deployment.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
 	Timeout pulumi.IntPtrOutput `pulumi:"timeout"`
 	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `eventTrigger`.
@@ -316,6 +316,8 @@ type functionState struct {
 	Name *string `pulumi:"name"`
 	// Project of the function. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Region of function. If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// The runtime in which the function is going to run.
@@ -338,8 +340,6 @@ type functionState struct {
 	SourceRepository *FunctionSourceRepository `pulumi:"sourceRepository"`
 	// Describes the current stage of a deployment.
 	Status *string `pulumi:"status"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
 	Timeout *int `pulumi:"timeout"`
 	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `eventTrigger`.
@@ -394,6 +394,8 @@ type FunctionState struct {
 	Name pulumi.StringPtrInput
 	// Project of the function. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Region of function. If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 	// The runtime in which the function is going to run.
@@ -416,8 +418,6 @@ type FunctionState struct {
 	SourceRepository FunctionSourceRepositoryPtrInput
 	// Describes the current stage of a deployment.
 	Status pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
 	Timeout pulumi.IntPtrInput
 	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `eventTrigger`.
@@ -786,6 +786,11 @@ func (o FunctionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o FunctionOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Region of function. If it is not provided, the provider region is used.
 func (o FunctionOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
@@ -833,11 +838,6 @@ func (o FunctionOutput) SourceRepository() FunctionSourceRepositoryPtrOutput {
 // Describes the current stage of a deployment.
 func (o FunctionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o FunctionOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Function) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.

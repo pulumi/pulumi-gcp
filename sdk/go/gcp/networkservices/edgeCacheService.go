@@ -419,6 +419,9 @@ type EdgeCacheService struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Require TLS (HTTPS) for all clients connecting to this service.
 	// Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
 	// You must have at least one (1) edgeSslCertificate specified to enable this.
@@ -429,9 +432,6 @@ type EdgeCacheService struct {
 	// URL of the SslPolicy resource that will be associated with the EdgeCacheService.
 	// If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
 	SslPolicy pulumi.StringPtrOutput `pulumi:"sslPolicy"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewEdgeCacheService registers a new resource with the given unique name, arguments, and options.
@@ -501,6 +501,9 @@ type edgeCacheServiceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Require TLS (HTTPS) for all clients connecting to this service.
 	// Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
 	// You must have at least one (1) edgeSslCertificate specified to enable this.
@@ -511,9 +514,6 @@ type edgeCacheServiceState struct {
 	// URL of the SslPolicy resource that will be associated with the EdgeCacheService.
 	// If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
 	SslPolicy *string `pulumi:"sslPolicy"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type EdgeCacheServiceState struct {
@@ -551,6 +551,9 @@ type EdgeCacheServiceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Require TLS (HTTPS) for all clients connecting to this service.
 	// Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
 	// You must have at least one (1) edgeSslCertificate specified to enable this.
@@ -561,9 +564,6 @@ type EdgeCacheServiceState struct {
 	// URL of the SslPolicy resource that will be associated with the EdgeCacheService.
 	// If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
 	SslPolicy pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 }
 
 func (EdgeCacheServiceState) ElementType() reflect.Type {
@@ -832,6 +832,12 @@ func (o EdgeCacheServiceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *EdgeCacheService) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o EdgeCacheServiceOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EdgeCacheService) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Require TLS (HTTPS) for all clients connecting to this service.
 // Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
 // You must have at least one (1) edgeSslCertificate specified to enable this.
@@ -849,12 +855,6 @@ func (o EdgeCacheServiceOutput) Routing() EdgeCacheServiceRoutingOutput {
 // If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
 func (o EdgeCacheServiceOutput) SslPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheService) pulumi.StringPtrOutput { return v.SslPolicy }).(pulumi.StringPtrOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o EdgeCacheServiceOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *EdgeCacheService) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type EdgeCacheServiceArrayOutput struct{ *pulumi.OutputState }

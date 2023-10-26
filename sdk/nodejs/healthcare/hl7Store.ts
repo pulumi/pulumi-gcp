@@ -249,14 +249,14 @@ export class Hl7Store extends pulumi.CustomResource {
      */
     public readonly parserConfig!: pulumi.Output<outputs.healthcare.Hl7StoreParserConfig>;
     /**
-     * The fully qualified name of this dataset
-     */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
-    /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The fully qualified name of this dataset
+     */
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
 
     /**
      * Create a Hl7Store resource with the given unique name, arguments, and options.
@@ -278,8 +278,8 @@ export class Hl7Store extends pulumi.CustomResource {
             resourceInputs["notificationConfig"] = state ? state.notificationConfig : undefined;
             resourceInputs["notificationConfigs"] = state ? state.notificationConfigs : undefined;
             resourceInputs["parserConfig"] = state ? state.parserConfig : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as Hl7StoreArgs | undefined;
             if ((!args || args.dataset === undefined) && !opts.urn) {
@@ -292,8 +292,8 @@ export class Hl7Store extends pulumi.CustomResource {
             resourceInputs["notificationConfigs"] = args ? args.notificationConfigs : undefined;
             resourceInputs["parserConfig"] = args ? args.parserConfig : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Hl7Store.__pulumiType, name, resourceInputs, opts);
@@ -359,14 +359,14 @@ export interface Hl7StoreState {
      */
     parserConfig?: pulumi.Input<inputs.healthcare.Hl7StoreParserConfig>;
     /**
-     * The fully qualified name of this dataset
-     */
-    selfLink?: pulumi.Input<string>;
-    /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The fully qualified name of this dataset
+     */
+    selfLink?: pulumi.Input<string>;
 }
 
 /**

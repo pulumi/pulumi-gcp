@@ -116,12 +116,12 @@ type Zone struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.MapOutput `pulumi:"pulumiLabels"`
 	// Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
 	ResourceSpec ZoneResourceSpecOutput `pulumi:"resourceSpec"`
 	// Output only. Current state of the zone. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State pulumi.StringOutput `pulumi:"state"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.MapOutput `pulumi:"terraformLabels"`
 	// Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
@@ -201,12 +201,12 @@ type zoneState struct {
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]interface{} `pulumi:"pulumiLabels"`
 	// Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
 	ResourceSpec *ZoneResourceSpec `pulumi:"resourceSpec"`
 	// Output only. Current state of the zone. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State *string `pulumi:"state"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels map[string]interface{} `pulumi:"terraformLabels"`
 	// Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED
 	Type *string `pulumi:"type"`
 	// Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
@@ -242,12 +242,12 @@ type ZoneState struct {
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.MapInput
 	// Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
 	ResourceSpec ZoneResourceSpecPtrInput
 	// Output only. Current state of the zone. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.MapInput
 	// Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED
 	Type pulumi.StringPtrInput
 	// Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
@@ -483,6 +483,11 @@ func (o ZoneOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o ZoneOutput) PulumiLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Zone) pulumi.MapOutput { return v.PulumiLabels }).(pulumi.MapOutput)
+}
+
 // Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
 func (o ZoneOutput) ResourceSpec() ZoneResourceSpecOutput {
 	return o.ApplyT(func(v *Zone) ZoneResourceSpecOutput { return v.ResourceSpec }).(ZoneResourceSpecOutput)
@@ -491,11 +496,6 @@ func (o ZoneOutput) ResourceSpec() ZoneResourceSpecOutput {
 // Output only. Current state of the zone. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 func (o ZoneOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o ZoneOutput) TerraformLabels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Zone) pulumi.MapOutput { return v.TerraformLabels }).(pulumi.MapOutput)
 }
 
 // Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED

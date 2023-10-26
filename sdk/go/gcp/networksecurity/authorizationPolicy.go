@@ -166,13 +166,13 @@ type AuthorizationPolicy struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
 	// A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
 	// Structure is documented below.
 	Rules AuthorizationPolicyRuleArrayOutput `pulumi:"rules"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Time the AuthorizationPolicy was updated in UTC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -234,13 +234,13 @@ type authorizationPolicyState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
 	// A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
 	// Structure is documented below.
 	Rules []AuthorizationPolicyRule `pulumi:"rules"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Time the AuthorizationPolicy was updated in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -270,13 +270,13 @@ type AuthorizationPolicyState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
 	// A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
 	// Structure is documented below.
 	Rules AuthorizationPolicyRuleArrayInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// Time the AuthorizationPolicy was updated in UTC.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -497,17 +497,17 @@ func (o AuthorizationPolicyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthorizationPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o AuthorizationPolicyOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AuthorizationPolicy) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
 // A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
 // Structure is documented below.
 func (o AuthorizationPolicyOutput) Rules() AuthorizationPolicyRuleArrayOutput {
 	return o.ApplyT(func(v *AuthorizationPolicy) AuthorizationPolicyRuleArrayOutput { return v.Rules }).(AuthorizationPolicyRuleArrayOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o AuthorizationPolicyOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *AuthorizationPolicy) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Time the AuthorizationPolicy was updated in UTC.

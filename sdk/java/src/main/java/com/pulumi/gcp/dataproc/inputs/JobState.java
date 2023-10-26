@@ -207,6 +207,21 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * The config of pySpark job.
      * 
      */
@@ -313,21 +328,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.statuses);
     }
 
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     * 
-     */
-    @Import(name="terraformLabels")
-    private @Nullable Output<Map<String,String>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
-     * 
-     */
-    public Optional<Output<Map<String,String>>> terraformLabels() {
-        return Optional.ofNullable(this.terraformLabels);
-    }
-
     private JobState() {}
 
     private JobState(JobState $) {
@@ -342,6 +342,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         this.placement = $.placement;
         this.prestoConfig = $.prestoConfig;
         this.project = $.project;
+        this.pulumiLabels = $.pulumiLabels;
         this.pysparkConfig = $.pysparkConfig;
         this.reference = $.reference;
         this.region = $.region;
@@ -349,7 +350,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         this.sparkConfig = $.sparkConfig;
         this.sparksqlConfig = $.sparksqlConfig;
         this.statuses = $.statuses;
-        this.terraformLabels = $.terraformLabels;
     }
 
     public static Builder builder() {
@@ -614,6 +614,27 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
          * @param pysparkConfig The config of pySpark job.
          * 
          * @return builder
@@ -770,27 +791,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder statuses(JobStatusArgs... statuses) {
             return statuses(List.of(statuses));
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
-            $.terraformLabels = terraformLabels;
-            return this;
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            return terraformLabels(Output.of(terraformLabels));
         }
 
         public JobState build() {

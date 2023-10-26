@@ -178,15 +178,15 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      * 
      */
-    @Import(name="terraformLabels")
-    private @Nullable Output<Map<String,Object>> terraformLabels;
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,Object>> pulumiLabels;
 
     /**
      * @return The combination of labels configured directly on the resource and default labels configured on the provider.
      * 
      */
-    public Optional<Output<Map<String,Object>>> terraformLabels() {
-        return Optional.ofNullable(this.terraformLabels);
+    public Optional<Output<Map<String,Object>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
     }
 
     /**
@@ -240,7 +240,7 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
         this.parameters = $.parameters;
         this.placement = $.placement;
         this.project = $.project;
-        this.terraformLabels = $.terraformLabels;
+        this.pulumiLabels = $.pulumiLabels;
         this.updateTime = $.updateTime;
         this.version = $.version;
     }
@@ -496,24 +496,24 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
          * 
          * @return builder
          * 
          */
-        public Builder terraformLabels(@Nullable Output<Map<String,Object>> terraformLabels) {
-            $.terraformLabels = terraformLabels;
+        public Builder pulumiLabels(@Nullable Output<Map<String,Object>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
             return this;
         }
 
         /**
-         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
          * 
          * @return builder
          * 
          */
-        public Builder terraformLabels(Map<String,Object> terraformLabels) {
-            return terraformLabels(Output.of(terraformLabels));
+        public Builder pulumiLabels(Map<String,Object> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
         }
 
         /**

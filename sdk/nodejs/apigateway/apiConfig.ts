@@ -148,14 +148,14 @@ export class ApiConfig extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
-     */
-    public /*out*/ readonly serviceConfigId!: pulumi.Output<string>;
-    /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
+     */
+    public /*out*/ readonly serviceConfigId!: pulumi.Output<string>;
 
     /**
      * Create a ApiConfig resource with the given unique name, arguments, and options.
@@ -182,8 +182,8 @@ export class ApiConfig extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["openapiDocuments"] = state ? state.openapiDocuments : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["serviceConfigId"] = state ? state.serviceConfigId : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as ApiConfigArgs | undefined;
             if ((!args || args.api === undefined) && !opts.urn) {
@@ -201,8 +201,8 @@ export class ApiConfig extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["serviceConfigId"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApiConfig.__pulumiType, name, resourceInputs, opts);
@@ -277,14 +277,14 @@ export interface ApiConfigState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
-     */
-    serviceConfigId?: pulumi.Input<string>;
-    /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
+     */
+    serviceConfigId?: pulumi.Input<string>;
 }
 
 /**

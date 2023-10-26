@@ -143,9 +143,9 @@ namespace Pulumi.Gcp.Beyondcorp
         public readonly string Name;
         public readonly ImmutableArray<Outputs.GetAppConnectorPrincipalInfoResult> PrincipalInfos;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string? Region;
         public readonly string State;
-        public readonly ImmutableDictionary<string, string> TerraformLabels;
 
         [OutputConstructor]
         private GetAppConnectorResult(
@@ -163,11 +163,11 @@ namespace Pulumi.Gcp.Beyondcorp
 
             string? project,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             string? region,
 
-            string state,
-
-            ImmutableDictionary<string, string> terraformLabels)
+            string state)
         {
             DisplayName = displayName;
             EffectiveLabels = effectiveLabels;
@@ -176,9 +176,9 @@ namespace Pulumi.Gcp.Beyondcorp
             Name = name;
             PrincipalInfos = principalInfos;
             Project = project;
+            PulumiLabels = pulumiLabels;
             Region = region;
             State = state;
-            TerraformLabels = terraformLabels;
         }
     }
 }

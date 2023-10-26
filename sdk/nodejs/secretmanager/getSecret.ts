@@ -59,10 +59,10 @@ export interface GetSecretResult {
     readonly labels: {[key: string]: string};
     readonly name: string;
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly replications: outputs.secretmanager.GetSecretReplication[];
     readonly rotations: outputs.secretmanager.GetSecretRotation[];
     readonly secretId: string;
-    readonly terraformLabels: {[key: string]: string};
     readonly topics: outputs.secretmanager.GetSecretTopic[];
     readonly ttl: string;
     readonly versionAliases: {[key: string]: string};

@@ -849,6 +849,9 @@ type Stream struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Source connection profile configuration.
 	// Structure is documented below.
 	SourceConfig StreamSourceConfigOutput `pulumi:"sourceConfig"`
@@ -856,9 +859,6 @@ type Stream struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// The stream identifier.
 	StreamId pulumi.StringOutput `pulumi:"streamId"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewStream registers a new resource with the given unique name, arguments, and options.
@@ -935,6 +935,9 @@ type streamState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Source connection profile configuration.
 	// Structure is documented below.
 	SourceConfig *StreamSourceConfig `pulumi:"sourceConfig"`
@@ -942,9 +945,6 @@ type streamState struct {
 	State *string `pulumi:"state"`
 	// The stream identifier.
 	StreamId *string `pulumi:"streamId"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type StreamState struct {
@@ -977,6 +977,9 @@ type StreamState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Source connection profile configuration.
 	// Structure is documented below.
 	SourceConfig StreamSourceConfigPtrInput
@@ -984,9 +987,6 @@ type StreamState struct {
 	State pulumi.StringPtrInput
 	// The stream identifier.
 	StreamId pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 }
 
 func (StreamState) ElementType() reflect.Type {
@@ -1231,6 +1231,12 @@ func (o StreamOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o StreamOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Stream) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Source connection profile configuration.
 // Structure is documented below.
 func (o StreamOutput) SourceConfig() StreamSourceConfigOutput {
@@ -1245,12 +1251,6 @@ func (o StreamOutput) State() pulumi.StringOutput {
 // The stream identifier.
 func (o StreamOutput) StreamId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.StreamId }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o StreamOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Stream) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type StreamArrayOutput struct{ *pulumi.OutputState }

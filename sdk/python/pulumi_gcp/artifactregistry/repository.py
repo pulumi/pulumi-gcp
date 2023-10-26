@@ -373,9 +373,9 @@ class _RepositoryState:
                  mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  remote_repository_config: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigArgs']] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  virtual_repository_config: Optional[pulumi.Input['RepositoryVirtualRepositoryConfigArgs']] = None):
         """
@@ -421,12 +421,12 @@ class _RepositoryState:
                "repo1"
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input['RepositoryRemoteRepositoryConfigArgs'] remote_repository_config: Configuration specific for a Remote Repository.
                Structure is documented below.
         :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
                "repo1"
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: The time when the repository was last updated.
         :param pulumi.Input['RepositoryVirtualRepositoryConfigArgs'] virtual_repository_config: Configuration specific for a Virtual Repository.
                Structure is documented below.
@@ -447,9 +447,9 @@ class _RepositoryState:
             mode=mode,
             name=name,
             project=project,
+            pulumi_labels=pulumi_labels,
             remote_repository_config=remote_repository_config,
             repository_id=repository_id,
-            terraform_labels=terraform_labels,
             update_time=update_time,
             virtual_repository_config=virtual_repository_config,
         )
@@ -470,9 +470,9 @@ class _RepositoryState:
              mode: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              remote_repository_config: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigArgs']] = None,
              repository_id: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              virtual_repository_config: Optional[pulumi.Input['RepositoryVirtualRepositoryConfigArgs']] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
@@ -491,12 +491,12 @@ class _RepositoryState:
             kms_key_name = kwargs['kmsKeyName']
         if maven_config is None and 'mavenConfig' in kwargs:
             maven_config = kwargs['mavenConfig']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if remote_repository_config is None and 'remoteRepositoryConfig' in kwargs:
             remote_repository_config = kwargs['remoteRepositoryConfig']
         if repository_id is None and 'repositoryId' in kwargs:
             repository_id = kwargs['repositoryId']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
         if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
         if virtual_repository_config is None and 'virtualRepositoryConfig' in kwargs:
@@ -530,12 +530,12 @@ class _RepositoryState:
             _setter("name", name)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if remote_repository_config is not None:
             _setter("remote_repository_config", remote_repository_config)
         if repository_id is not None:
             _setter("repository_id", repository_id)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if update_time is not None:
             _setter("update_time", update_time)
         if virtual_repository_config is not None:
@@ -737,6 +737,19 @@ class _RepositoryState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="remoteRepositoryConfig")
     def remote_repository_config(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigArgs']]:
         """
@@ -761,19 +774,6 @@ class _RepositoryState:
     @repository_id.setter
     def repository_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repository_id", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="updateTime")
@@ -1375,7 +1375,7 @@ class Repository(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
-            __props__.__dict__["terraform_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["update_time"] = None
         super(Repository, __self__).__init__(
             'gcp:artifactregistry/repository:Repository',
@@ -1401,9 +1401,9 @@ class Repository(pulumi.CustomResource):
             mode: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             remote_repository_config: Optional[pulumi.Input[pulumi.InputType['RepositoryRemoteRepositoryConfigArgs']]] = None,
             repository_id: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
             virtual_repository_config: Optional[pulumi.Input[pulumi.InputType['RepositoryVirtualRepositoryConfigArgs']]] = None) -> 'Repository':
         """
@@ -1454,12 +1454,12 @@ class Repository(pulumi.CustomResource):
                "repo1"
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['RepositoryRemoteRepositoryConfigArgs']] remote_repository_config: Configuration specific for a Remote Repository.
                Structure is documented below.
         :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
                "repo1"
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: The time when the repository was last updated.
         :param pulumi.Input[pulumi.InputType['RepositoryVirtualRepositoryConfigArgs']] virtual_repository_config: Configuration specific for a Virtual Repository.
                Structure is documented below.
@@ -1482,9 +1482,9 @@ class Repository(pulumi.CustomResource):
         __props__.__dict__["mode"] = mode
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["remote_repository_config"] = remote_repository_config
         __props__.__dict__["repository_id"] = repository_id
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["virtual_repository_config"] = virtual_repository_config
         return Repository(resource_name, opts=opts, __props__=__props__)
@@ -1629,6 +1629,15 @@ class Repository(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="remoteRepositoryConfig")
     def remote_repository_config(self) -> pulumi.Output[Optional['outputs.RepositoryRemoteRepositoryConfig']]:
         """
@@ -1645,15 +1654,6 @@ class Repository(pulumi.CustomResource):
         "repo1"
         """
         return pulumi.get(self, "repository_id")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="updateTime")

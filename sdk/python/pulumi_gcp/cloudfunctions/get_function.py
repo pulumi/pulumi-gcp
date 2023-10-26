@@ -22,7 +22,7 @@ class GetFunctionResult:
     """
     A collection of values returned by getFunction.
     """
-    def __init__(__self__, available_memory_mb=None, build_environment_variables=None, build_worker_pool=None, description=None, docker_registry=None, docker_repository=None, effective_labels=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_security_level=None, https_trigger_url=None, id=None, ingress_settings=None, kms_key_name=None, labels=None, max_instances=None, min_instances=None, name=None, project=None, region=None, runtime=None, secret_environment_variables=None, secret_volumes=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, status=None, terraform_labels=None, timeout=None, trigger_http=None, vpc_connector=None, vpc_connector_egress_settings=None):
+    def __init__(__self__, available_memory_mb=None, build_environment_variables=None, build_worker_pool=None, description=None, docker_registry=None, docker_repository=None, effective_labels=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_security_level=None, https_trigger_url=None, id=None, ingress_settings=None, kms_key_name=None, labels=None, max_instances=None, min_instances=None, name=None, project=None, pulumi_labels=None, region=None, runtime=None, secret_environment_variables=None, secret_volumes=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, status=None, timeout=None, trigger_http=None, vpc_connector=None, vpc_connector_egress_settings=None):
         if available_memory_mb and not isinstance(available_memory_mb, int):
             raise TypeError("Expected argument 'available_memory_mb' to be a int")
         pulumi.set(__self__, "available_memory_mb", available_memory_mb)
@@ -83,6 +83,9 @@ class GetFunctionResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -110,9 +113,6 @@ class GetFunctionResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
-        if terraform_labels and not isinstance(terraform_labels, dict):
-            raise TypeError("Expected argument 'terraform_labels' to be a dict")
-        pulumi.set(__self__, "terraform_labels", terraform_labels)
         if timeout and not isinstance(timeout, int):
             raise TypeError("Expected argument 'timeout' to be a int")
         pulumi.set(__self__, "timeout", timeout)
@@ -254,6 +254,11 @@ class GetFunctionResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[str]:
         return pulumi.get(self, "region")
@@ -314,11 +319,6 @@ class GetFunctionResult:
         return pulumi.get(self, "status")
 
     @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Mapping[str, str]:
-        return pulumi.get(self, "terraform_labels")
-
-    @property
     @pulumi.getter
     def timeout(self) -> int:
         """
@@ -377,6 +377,7 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             min_instances=self.min_instances,
             name=self.name,
             project=self.project,
+            pulumi_labels=self.pulumi_labels,
             region=self.region,
             runtime=self.runtime,
             secret_environment_variables=self.secret_environment_variables,
@@ -386,7 +387,6 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             source_archive_object=self.source_archive_object,
             source_repositories=self.source_repositories,
             status=self.status,
-            terraform_labels=self.terraform_labels,
             timeout=self.timeout,
             trigger_http=self.trigger_http,
             vpc_connector=self.vpc_connector,
@@ -448,6 +448,7 @@ def get_function(name: Optional[str] = None,
         min_instances=pulumi.get(__ret__, 'min_instances'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         region=pulumi.get(__ret__, 'region'),
         runtime=pulumi.get(__ret__, 'runtime'),
         secret_environment_variables=pulumi.get(__ret__, 'secret_environment_variables'),
@@ -457,7 +458,6 @@ def get_function(name: Optional[str] = None,
         source_archive_object=pulumi.get(__ret__, 'source_archive_object'),
         source_repositories=pulumi.get(__ret__, 'source_repositories'),
         status=pulumi.get(__ret__, 'status'),
-        terraform_labels=pulumi.get(__ret__, 'terraform_labels'),
         timeout=pulumi.get(__ret__, 'timeout'),
         trigger_http=pulumi.get(__ret__, 'trigger_http'),
         vpc_connector=pulumi.get(__ret__, 'vpc_connector'),

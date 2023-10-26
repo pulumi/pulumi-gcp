@@ -94,9 +94,10 @@ type LookupFunctionResult struct {
 	MaxInstances int `pulumi:"maxInstances"`
 	MinInstances int `pulumi:"minInstances"`
 	// The name of the Cloud Function.
-	Name    string  `pulumi:"name"`
-	Project *string `pulumi:"project"`
-	Region  *string `pulumi:"region"`
+	Name         string            `pulumi:"name"`
+	Project      *string           `pulumi:"project"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	Region       *string           `pulumi:"region"`
 	// The runtime in which the function is running.
 	Runtime                    string                                 `pulumi:"runtime"`
 	SecretEnvironmentVariables []GetFunctionSecretEnvironmentVariable `pulumi:"secretEnvironmentVariables"`
@@ -110,7 +111,6 @@ type LookupFunctionResult struct {
 	// The URL of the Cloud Source Repository that the function is deployed from. Structure is documented below.
 	SourceRepositories []GetFunctionSourceRepository `pulumi:"sourceRepositories"`
 	Status             string                        `pulumi:"status"`
-	TerraformLabels    map[string]string             `pulumi:"terraformLabels"`
 	// Function execution timeout (in seconds).
 	Timeout int `pulumi:"timeout"`
 	// If function is triggered by HTTP, this boolean is set.
@@ -262,6 +262,10 @@ func (o LookupFunctionResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFunctionResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
+func (o LookupFunctionResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupFunctionResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupFunctionResultOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFunctionResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -303,10 +307,6 @@ func (o LookupFunctionResultOutput) SourceRepositories() GetFunctionSourceReposi
 
 func (o LookupFunctionResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.Status }).(pulumi.StringOutput)
-}
-
-func (o LookupFunctionResultOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupFunctionResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Function execution timeout (in seconds).

@@ -22,7 +22,7 @@ class GetFunctionResult:
     """
     A collection of values returned by getFunction.
     """
-    def __init__(__self__, build_configs=None, description=None, effective_labels=None, environment=None, event_triggers=None, id=None, kms_key_name=None, labels=None, location=None, name=None, project=None, service_configs=None, state=None, terraform_labels=None, update_time=None, url=None):
+    def __init__(__self__, build_configs=None, description=None, effective_labels=None, environment=None, event_triggers=None, id=None, kms_key_name=None, labels=None, location=None, name=None, project=None, pulumi_labels=None, service_configs=None, state=None, update_time=None, url=None):
         if build_configs and not isinstance(build_configs, list):
             raise TypeError("Expected argument 'build_configs' to be a list")
         pulumi.set(__self__, "build_configs", build_configs)
@@ -56,15 +56,15 @@ class GetFunctionResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if service_configs and not isinstance(service_configs, list):
             raise TypeError("Expected argument 'service_configs' to be a list")
         pulumi.set(__self__, "service_configs", service_configs)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
-        if terraform_labels and not isinstance(terraform_labels, dict):
-            raise TypeError("Expected argument 'terraform_labels' to be a dict")
-        pulumi.set(__self__, "terraform_labels", terraform_labels)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -131,6 +131,11 @@ class GetFunctionResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="serviceConfigs")
     def service_configs(self) -> Sequence['outputs.GetFunctionServiceConfigResult']:
         return pulumi.get(self, "service_configs")
@@ -139,11 +144,6 @@ class GetFunctionResult:
     @pulumi.getter
     def state(self) -> str:
         return pulumi.get(self, "state")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Mapping[str, str]:
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="updateTime")
@@ -173,9 +173,9 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             location=self.location,
             name=self.name,
             project=self.project,
+            pulumi_labels=self.pulumi_labels,
             service_configs=self.service_configs,
             state=self.state,
-            terraform_labels=self.terraform_labels,
             update_time=self.update_time,
             url=self.url)
 
@@ -226,9 +226,9 @@ def get_function(location: Optional[str] = None,
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         service_configs=pulumi.get(__ret__, 'service_configs'),
         state=pulumi.get(__ret__, 'state'),
-        terraform_labels=pulumi.get(__ret__, 'terraform_labels'),
         update_time=pulumi.get(__ret__, 'update_time'),
         url=pulumi.get(__ret__, 'url'))
 

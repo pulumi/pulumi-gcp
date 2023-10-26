@@ -133,6 +133,13 @@ namespace Pulumi.Gcp.Firebase
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// The number of previous releases to retain on the channel for rollback or other
         /// purposes. Must be a number between 1-100. Defaults to 10 for new channels.
         /// </summary>
@@ -144,13 +151,6 @@ namespace Pulumi.Gcp.Firebase
         /// </summary>
         [Output("siteId")]
         public Output<string> SiteId { get; private set; } = null!;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// Input only. A time-to-live for this channel. Sets `expire_time` to the provided
@@ -317,6 +317,19 @@ namespace Pulumi.Gcp.Firebase
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
+
         /// <summary>
         /// The number of previous releases to retain on the channel for rollback or other
         /// purposes. Must be a number between 1-100. Defaults to 10 for new channels.
@@ -329,19 +342,6 @@ namespace Pulumi.Gcp.Firebase
         /// </summary>
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
-
-        [Input("terraformLabels")]
-        private InputMap<string>? _terraformLabels;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        public InputMap<string> TerraformLabels
-        {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
-            set => _terraformLabels = value;
-        }
 
         /// <summary>
         /// Input only. A time-to-live for this channel. Sets `expire_time` to the provided

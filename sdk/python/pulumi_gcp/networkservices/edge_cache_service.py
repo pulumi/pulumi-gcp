@@ -302,10 +302,10 @@ class _EdgeCacheServiceState:
                  log_config: Optional[pulumi.Input['EdgeCacheServiceLogConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  require_tls: Optional[pulumi.Input[bool]] = None,
                  routing: Optional[pulumi.Input['EdgeCacheServiceRoutingArgs']] = None,
-                 ssl_policy: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 ssl_policy: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering EdgeCacheService resources.
         :param pulumi.Input[str] description: A human-readable description of the hostRule.
@@ -330,6 +330,8 @@ class _EdgeCacheServiceState:
                and all following characters must be a dash, underscore, letter or digit.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[bool] require_tls: Require TLS (HTTPS) for all clients connecting to this service.
                Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
                You must have at least one (1) edgeSslCertificate specified to enable this.
@@ -337,8 +339,6 @@ class _EdgeCacheServiceState:
                Structure is documented below.
         :param pulumi.Input[str] ssl_policy: URL of the SslPolicy resource that will be associated with the EdgeCacheService.
                If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         """
         _EdgeCacheServiceState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -354,10 +354,10 @@ class _EdgeCacheServiceState:
             log_config=log_config,
             name=name,
             project=project,
+            pulumi_labels=pulumi_labels,
             require_tls=require_tls,
             routing=routing,
             ssl_policy=ssl_policy,
-            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
@@ -374,10 +374,10 @@ class _EdgeCacheServiceState:
              log_config: Optional[pulumi.Input['EdgeCacheServiceLogConfigArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              require_tls: Optional[pulumi.Input[bool]] = None,
              routing: Optional[pulumi.Input['EdgeCacheServiceRoutingArgs']] = None,
              ssl_policy: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if disable_http2 is None and 'disableHttp2' in kwargs:
@@ -396,12 +396,12 @@ class _EdgeCacheServiceState:
             ipv6_addresses = kwargs['ipv6Addresses']
         if log_config is None and 'logConfig' in kwargs:
             log_config = kwargs['logConfig']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if require_tls is None and 'requireTls' in kwargs:
             require_tls = kwargs['requireTls']
         if ssl_policy is None and 'sslPolicy' in kwargs:
             ssl_policy = kwargs['sslPolicy']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
 
         if description is not None:
             _setter("description", description)
@@ -427,14 +427,14 @@ class _EdgeCacheServiceState:
             _setter("name", name)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if require_tls is not None:
             _setter("require_tls", require_tls)
         if routing is not None:
             _setter("routing", routing)
         if ssl_policy is not None:
             _setter("ssl_policy", ssl_policy)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter
@@ -591,6 +591,19 @@ class _EdgeCacheServiceState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="requireTls")
     def require_tls(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -629,19 +642,6 @@ class _EdgeCacheServiceState:
     @ssl_policy.setter
     def ssl_policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ssl_policy", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
 
 class EdgeCacheService(pulumi.CustomResource):
@@ -1281,7 +1281,7 @@ class EdgeCacheService(pulumi.CustomResource):
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["ipv4_addresses"] = None
             __props__.__dict__["ipv6_addresses"] = None
-            __props__.__dict__["terraform_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
         super(EdgeCacheService, __self__).__init__(
             'gcp:networkservices/edgeCacheService:EdgeCacheService',
             resource_name,
@@ -1304,10 +1304,10 @@ class EdgeCacheService(pulumi.CustomResource):
             log_config: Optional[pulumi.Input[pulumi.InputType['EdgeCacheServiceLogConfigArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             require_tls: Optional[pulumi.Input[bool]] = None,
             routing: Optional[pulumi.Input[pulumi.InputType['EdgeCacheServiceRoutingArgs']]] = None,
-            ssl_policy: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'EdgeCacheService':
+            ssl_policy: Optional[pulumi.Input[str]] = None) -> 'EdgeCacheService':
         """
         Get an existing EdgeCacheService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1337,6 +1337,8 @@ class EdgeCacheService(pulumi.CustomResource):
                and all following characters must be a dash, underscore, letter or digit.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[bool] require_tls: Require TLS (HTTPS) for all clients connecting to this service.
                Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
                You must have at least one (1) edgeSslCertificate specified to enable this.
@@ -1344,8 +1346,6 @@ class EdgeCacheService(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] ssl_policy: URL of the SslPolicy resource that will be associated with the EdgeCacheService.
                If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1363,10 +1363,10 @@ class EdgeCacheService(pulumi.CustomResource):
         __props__.__dict__["log_config"] = log_config
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["require_tls"] = require_tls
         __props__.__dict__["routing"] = routing
         __props__.__dict__["ssl_policy"] = ssl_policy
-        __props__.__dict__["terraform_labels"] = terraform_labels
         return EdgeCacheService(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1476,6 +1476,15 @@ class EdgeCacheService(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="requireTls")
     def require_tls(self) -> pulumi.Output[bool]:
         """
@@ -1502,13 +1511,4 @@ class EdgeCacheService(pulumi.CustomResource):
         If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
         """
         return pulumi.get(self, "ssl_policy")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 

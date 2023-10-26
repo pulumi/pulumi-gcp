@@ -95,8 +95,8 @@ namespace Pulumi.Gcp.Composer
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string? Region;
-        public readonly ImmutableDictionary<string, string> TerraformLabels;
 
         [OutputConstructor]
         private GetEnvironmentResult(
@@ -112,9 +112,9 @@ namespace Pulumi.Gcp.Composer
 
             string? project,
 
-            string? region,
+            ImmutableDictionary<string, string> pulumiLabels,
 
-            ImmutableDictionary<string, string> terraformLabels)
+            string? region)
         {
             Configs = configs;
             EffectiveLabels = effectiveLabels;
@@ -122,8 +122,8 @@ namespace Pulumi.Gcp.Composer
             Labels = labels;
             Name = name;
             Project = project;
+            PulumiLabels = pulumiLabels;
             Region = region;
-            TerraformLabels = terraformLabels;
         }
     }
 }

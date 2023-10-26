@@ -405,13 +405,13 @@ class _MetastoreServiceState:
                  network_config: Optional[pulumi.Input['MetastoreServiceNetworkConfigArgs']] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  release_channel: Optional[pulumi.Input[str]] = None,
                  scaling_config: Optional[pulumi.Input['MetastoreServiceScalingConfigArgs']] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  state_message: Optional[pulumi.Input[str]] = None,
                  telemetry_config: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None):
         """
@@ -447,6 +447,8 @@ class _MetastoreServiceState:
         :param pulumi.Input[int] port: The TCP port at which the metastore service is reached. Default: 9083.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] release_channel: The release channel of the service. If unspecified, defaults to `STABLE`.
                Default value is `STABLE`.
                Possible values are: `CANARY`, `STABLE`.
@@ -462,8 +464,6 @@ class _MetastoreServiceState:
         :param pulumi.Input[str] state_message: Additional information about the current state of the metastore service, if available.
         :param pulumi.Input['MetastoreServiceTelemetryConfigArgs'] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] tier: The tier of the service.
                Possible values are: `DEVELOPER`, `ENTERPRISE`.
         :param pulumi.Input[str] uid: The globally unique resource identifier of the metastore service.
@@ -485,13 +485,13 @@ class _MetastoreServiceState:
             network_config=network_config,
             port=port,
             project=project,
+            pulumi_labels=pulumi_labels,
             release_channel=release_channel,
             scaling_config=scaling_config,
             service_id=service_id,
             state=state,
             state_message=state_message,
             telemetry_config=telemetry_config,
-            terraform_labels=terraform_labels,
             tier=tier,
             uid=uid,
         )
@@ -513,13 +513,13 @@ class _MetastoreServiceState:
              network_config: Optional[pulumi.Input['MetastoreServiceNetworkConfigArgs']] = None,
              port: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              release_channel: Optional[pulumi.Input[str]] = None,
              scaling_config: Optional[pulumi.Input['MetastoreServiceScalingConfigArgs']] = None,
              service_id: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              state_message: Optional[pulumi.Input[str]] = None,
              telemetry_config: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              tier: Optional[pulumi.Input[str]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
@@ -542,6 +542,8 @@ class _MetastoreServiceState:
             metadata_integration = kwargs['metadataIntegration']
         if network_config is None and 'networkConfig' in kwargs:
             network_config = kwargs['networkConfig']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if release_channel is None and 'releaseChannel' in kwargs:
             release_channel = kwargs['releaseChannel']
         if scaling_config is None and 'scalingConfig' in kwargs:
@@ -552,8 +554,6 @@ class _MetastoreServiceState:
             state_message = kwargs['stateMessage']
         if telemetry_config is None and 'telemetryConfig' in kwargs:
             telemetry_config = kwargs['telemetryConfig']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
 
         if artifact_gcs_uri is not None:
             _setter("artifact_gcs_uri", artifact_gcs_uri)
@@ -585,6 +585,8 @@ class _MetastoreServiceState:
             _setter("port", port)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if release_channel is not None:
             _setter("release_channel", release_channel)
         if scaling_config is not None:
@@ -597,8 +599,6 @@ class _MetastoreServiceState:
             _setter("state_message", state_message)
         if telemetry_config is not None:
             _setter("telemetry_config", telemetry_config)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if tier is not None:
             _setter("tier", tier)
         if uid is not None:
@@ -801,6 +801,19 @@ class _MetastoreServiceState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="releaseChannel")
     def release_channel(self) -> Optional[pulumi.Input[str]]:
         """
@@ -880,19 +893,6 @@ class _MetastoreServiceState:
     @telemetry_config.setter
     def telemetry_config(self, value: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']]):
         pulumi.set(self, "telemetry_config", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -1322,9 +1322,9 @@ class MetastoreService(pulumi.CustomResource):
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["endpoint_uri"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["state_message"] = None
-            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["uid"] = None
         super(MetastoreService, __self__).__init__(
             'gcp:dataproc/metastoreService:MetastoreService',
@@ -1351,13 +1351,13 @@ class MetastoreService(pulumi.CustomResource):
             network_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceNetworkConfigArgs']]] = None,
             port: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             release_channel: Optional[pulumi.Input[str]] = None,
             scaling_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceScalingConfigArgs']]] = None,
             service_id: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             state_message: Optional[pulumi.Input[str]] = None,
             telemetry_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceTelemetryConfigArgs']]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             tier: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None) -> 'MetastoreService':
         """
@@ -1398,6 +1398,8 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[int] port: The TCP port at which the metastore service is reached. Default: 9083.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] release_channel: The release channel of the service. If unspecified, defaults to `STABLE`.
                Default value is `STABLE`.
                Possible values are: `CANARY`, `STABLE`.
@@ -1413,8 +1415,6 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[str] state_message: Additional information about the current state of the metastore service, if available.
         :param pulumi.Input[pulumi.InputType['MetastoreServiceTelemetryConfigArgs']] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         :param pulumi.Input[str] tier: The tier of the service.
                Possible values are: `DEVELOPER`, `ENTERPRISE`.
         :param pulumi.Input[str] uid: The globally unique resource identifier of the metastore service.
@@ -1438,13 +1438,13 @@ class MetastoreService(pulumi.CustomResource):
         __props__.__dict__["network_config"] = network_config
         __props__.__dict__["port"] = port
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["release_channel"] = release_channel
         __props__.__dict__["scaling_config"] = scaling_config
         __props__.__dict__["service_id"] = service_id
         __props__.__dict__["state"] = state
         __props__.__dict__["state_message"] = state_message
         __props__.__dict__["telemetry_config"] = telemetry_config
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["tier"] = tier
         __props__.__dict__["uid"] = uid
         return MetastoreService(resource_name, opts=opts, __props__=__props__)
@@ -1586,6 +1586,15 @@ class MetastoreService(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="releaseChannel")
     def release_channel(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1641,15 +1650,6 @@ class MetastoreService(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "telemetry_config")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

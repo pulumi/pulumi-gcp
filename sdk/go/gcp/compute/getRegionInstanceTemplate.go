@@ -136,6 +136,7 @@ type LookupRegionInstanceTemplateResult struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project               *string                                        `pulumi:"project"`
+	PulumiLabels          map[string]string                              `pulumi:"pulumiLabels"`
 	Region                *string                                        `pulumi:"region"`
 	ReservationAffinities []GetRegionInstanceTemplateReservationAffinity `pulumi:"reservationAffinities"`
 	// (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
@@ -153,8 +154,7 @@ type LookupRegionInstanceTemplateResult struct {
 	// Tags to attach to the instance.
 	Tags []string `pulumi:"tags"`
 	// The unique fingerprint of the tags.
-	TagsFingerprint string            `pulumi:"tagsFingerprint"`
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	TagsFingerprint string `pulumi:"tagsFingerprint"`
 }
 
 func LookupRegionInstanceTemplateOutput(ctx *pulumi.Context, args LookupRegionInstanceTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupRegionInstanceTemplateResultOutput {
@@ -349,6 +349,10 @@ func (o LookupRegionInstanceTemplateResultOutput) Project() pulumi.StringPtrOutp
 	return o.ApplyT(func(v LookupRegionInstanceTemplateResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
+func (o LookupRegionInstanceTemplateResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRegionInstanceTemplateResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupRegionInstanceTemplateResultOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRegionInstanceTemplateResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -398,10 +402,6 @@ func (o LookupRegionInstanceTemplateResultOutput) Tags() pulumi.StringArrayOutpu
 // The unique fingerprint of the tags.
 func (o LookupRegionInstanceTemplateResultOutput) TagsFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionInstanceTemplateResult) string { return v.TagsFingerprint }).(pulumi.StringOutput)
-}
-
-func (o LookupRegionInstanceTemplateResultOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupRegionInstanceTemplateResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func init() {

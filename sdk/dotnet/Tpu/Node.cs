@@ -189,6 +189,13 @@ namespace Pulumi.Gcp.Tpu
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Sets the scheduling options for this TPU instance.
         /// Structure is documented below.
         /// </summary>
@@ -212,13 +219,6 @@ namespace Pulumi.Gcp.Tpu
         /// </summary>
         [Output("tensorflowVersion")]
         public Output<string> TensorflowVersion { get; private set; } = null!;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// Whether the VPC peering for the node is set up through Service Networking API.
@@ -470,6 +470,19 @@ namespace Pulumi.Gcp.Tpu
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
+
         /// <summary>
         /// Sets the scheduling options for this TPU instance.
         /// Structure is documented below.
@@ -494,19 +507,6 @@ namespace Pulumi.Gcp.Tpu
         /// </summary>
         [Input("tensorflowVersion")]
         public Input<string>? TensorflowVersion { get; set; }
-
-        [Input("terraformLabels")]
-        private InputMap<string>? _terraformLabels;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        public InputMap<string> TerraformLabels
-        {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
-            set => _terraformLabels = value;
-        }
 
         /// <summary>
         /// Whether the VPC peering for the node is set up through Service Networking API.

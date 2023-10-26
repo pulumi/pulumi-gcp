@@ -406,6 +406,9 @@ type Instance struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
 	// Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
 	// will exhibit some lag behind the primary. Write requests must target 'host'.
@@ -450,9 +453,6 @@ type Instance struct {
 	// List of server CA certificates for the instance.
 	// Structure is documented below.
 	ServerCaCerts InstanceServerCaCertArrayOutput `pulumi:"serverCaCerts"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The service tier of the instance. Must be one of these values:
 	// - BASIC: standalone instance
 	// - STANDARD_HA: highly available primary/replica instances
@@ -582,6 +582,9 @@ type instanceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
 	// Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
 	// will exhibit some lag behind the primary. Write requests must target 'host'.
@@ -626,9 +629,6 @@ type instanceState struct {
 	// List of server CA certificates for the instance.
 	// Structure is documented below.
 	ServerCaCerts []InstanceServerCaCert `pulumi:"serverCaCerts"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The service tier of the instance. Must be one of these values:
 	// - BASIC: standalone instance
 	// - STANDARD_HA: highly available primary/replica instances
@@ -722,6 +722,9 @@ type InstanceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
 	// Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
 	// will exhibit some lag behind the primary. Write requests must target 'host'.
@@ -766,9 +769,6 @@ type InstanceState struct {
 	// List of server CA certificates for the instance.
 	// Structure is documented below.
 	ServerCaCerts InstanceServerCaCertArrayInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// The service tier of the instance. Must be one of these values:
 	// - BASIC: standalone instance
 	// - STANDARD_HA: highly available primary/replica instances
@@ -1233,6 +1233,12 @@ func (o InstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o InstanceOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
 // Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
 // will exhibit some lag behind the primary. Write requests must target 'host'.
@@ -1305,12 +1311,6 @@ func (o InstanceOutput) SecondaryIpRange() pulumi.StringOutput {
 // Structure is documented below.
 func (o InstanceOutput) ServerCaCerts() InstanceServerCaCertArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceServerCaCertArrayOutput { return v.ServerCaCerts }).(InstanceServerCaCertArrayOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o InstanceOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The service tier of the instance. Must be one of these values:

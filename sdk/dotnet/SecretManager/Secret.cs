@@ -226,6 +226,13 @@ namespace Pulumi.Gcp.SecretManager
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// The replication policy of the secret data attached to the Secret. It cannot be changed
         /// after the Secret has been created.
         /// Structure is documented below.
@@ -245,13 +252,6 @@ namespace Pulumi.Gcp.SecretManager
         /// </summary>
         [Output("secretId")]
         public Output<string> SecretId { get; private set; } = null!;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
@@ -551,6 +551,19 @@ namespace Pulumi.Gcp.SecretManager
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
+
         /// <summary>
         /// The replication policy of the secret data attached to the Secret. It cannot be changed
         /// after the Secret has been created.
@@ -571,19 +584,6 @@ namespace Pulumi.Gcp.SecretManager
         /// </summary>
         [Input("secretId")]
         public Input<string>? SecretId { get; set; }
-
-        [Input("terraformLabels")]
-        private InputMap<string>? _terraformLabels;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        public InputMap<string> TerraformLabels
-        {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
-            set => _terraformLabels = value;
-        }
 
         [Input("topics")]
         private InputList<Inputs.SecretTopicGetArgs>? _topics;

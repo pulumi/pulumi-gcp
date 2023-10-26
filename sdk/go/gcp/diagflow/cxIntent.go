@@ -154,7 +154,7 @@ type CxIntent struct {
 	Priority pulumi.IntPtrOutput `pulumi:"priority"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The collection of training phrases the agent is trained on to identify the intent.
 	// Structure is documented below.
 	TrainingPhrases CxIntentTrainingPhraseArrayOutput `pulumi:"trainingPhrases"`
@@ -231,7 +231,7 @@ type cxIntentState struct {
 	Priority *int `pulumi:"priority"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The collection of training phrases the agent is trained on to identify the intent.
 	// Structure is documented below.
 	TrainingPhrases []CxIntentTrainingPhrase `pulumi:"trainingPhrases"`
@@ -276,7 +276,7 @@ type CxIntentState struct {
 	Priority pulumi.IntPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
+	PulumiLabels pulumi.StringMapInput
 	// The collection of training phrases the agent is trained on to identify the intent.
 	// Structure is documented below.
 	TrainingPhrases CxIntentTrainingPhraseArrayInput
@@ -538,8 +538,8 @@ func (o CxIntentOutput) Priority() pulumi.IntPtrOutput {
 
 // The combination of labels configured directly on the resource
 // and default labels configured on the provider.
-func (o CxIntentOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *CxIntent) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
+func (o CxIntentOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CxIntent) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The collection of training phrases the agent is trained on to identify the intent.

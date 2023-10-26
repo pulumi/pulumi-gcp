@@ -181,9 +181,9 @@ class _PeeringState:
                  name: Optional[pulumi.Input[str]] = None,
                  peering_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 status_message: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 status_message: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Peering resources.
         :param pulumi.Input[str] authorized_network: The full names of the Google Compute Engine networks to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.
@@ -197,10 +197,10 @@ class _PeeringState:
         :param pulumi.Input[str] peering_id: - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] status: The current state of this Peering.
         :param pulumi.Input[str] status_message: Additional information about the current status of this peering, if available.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         """
         _PeeringState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -211,9 +211,9 @@ class _PeeringState:
             name=name,
             peering_id=peering_id,
             project=project,
+            pulumi_labels=pulumi_labels,
             status=status,
             status_message=status_message,
-            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
@@ -225,9 +225,9 @@ class _PeeringState:
              name: Optional[pulumi.Input[str]] = None,
              peering_id: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              status: Optional[pulumi.Input[str]] = None,
              status_message: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if authorized_network is None and 'authorizedNetwork' in kwargs:
@@ -238,10 +238,10 @@ class _PeeringState:
             effective_labels = kwargs['effectiveLabels']
         if peering_id is None and 'peeringId' in kwargs:
             peering_id = kwargs['peeringId']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if status_message is None and 'statusMessage' in kwargs:
             status_message = kwargs['statusMessage']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
 
         if authorized_network is not None:
             _setter("authorized_network", authorized_network)
@@ -257,12 +257,12 @@ class _PeeringState:
             _setter("peering_id", peering_id)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if status is not None:
             _setter("status", status)
         if status_message is not None:
             _setter("status_message", status_message)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter(name="authorizedNetwork")
@@ -353,6 +353,19 @@ class _PeeringState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -375,19 +388,6 @@ class _PeeringState:
     @status_message.setter
     def status_message(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status_message", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
 
 class Peering(pulumi.CustomResource):
@@ -552,7 +552,7 @@ class Peering(pulumi.CustomResource):
             __props__.__dict__["status_message"] = status_message
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
-            __props__.__dict__["terraform_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
         super(Peering, __self__).__init__(
             'gcp:activedirectory/peering:Peering',
             resource_name,
@@ -570,9 +570,9 @@ class Peering(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             peering_id: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            status_message: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Peering':
+            status_message: Optional[pulumi.Input[str]] = None) -> 'Peering':
         """
         Get an existing Peering resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -591,10 +591,10 @@ class Peering(pulumi.CustomResource):
         :param pulumi.Input[str] peering_id: - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] status: The current state of this Peering.
         :param pulumi.Input[str] status_message: Additional information about the current status of this peering, if available.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -607,9 +607,9 @@ class Peering(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["peering_id"] = peering_id
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["status"] = status
         __props__.__dict__["status_message"] = status_message
-        __props__.__dict__["terraform_labels"] = terraform_labels
         return Peering(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -673,6 +673,15 @@ class Peering(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter
     def status(self) -> pulumi.Output[Optional[str]]:
         """
@@ -687,13 +696,4 @@ class Peering(pulumi.CustomResource):
         Additional information about the current status of this peering, if available.
         """
         return pulumi.get(self, "status_message")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 

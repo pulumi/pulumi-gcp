@@ -330,6 +330,9 @@ type FhirStore struct {
 	NotificationConfig FhirStoreNotificationConfigPtrOutput `pulumi:"notificationConfig"`
 	// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
 	NotificationConfigs FhirStoreNotificationConfigArrayOutput `pulumi:"notificationConfigs"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// A list of streaming configs that configure the destinations of streaming export for every resource mutation in
@@ -340,9 +343,6 @@ type FhirStore struct {
 	// the order of dozens of seconds) is expected before the results show up in the streaming destination.
 	// Structure is documented below.
 	StreamConfigs FhirStoreStreamConfigArrayOutput `pulumi:"streamConfigs"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The FHIR specification version.
 	// Default value is `STU3`.
 	// Possible values are: `DSTU2`, `STU3`, `R4`.
@@ -445,6 +445,9 @@ type fhirStoreState struct {
 	NotificationConfig *FhirStoreNotificationConfig `pulumi:"notificationConfig"`
 	// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
 	NotificationConfigs []FhirStoreNotificationConfig `pulumi:"notificationConfigs"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The fully qualified name of this dataset
 	SelfLink *string `pulumi:"selfLink"`
 	// A list of streaming configs that configure the destinations of streaming export for every resource mutation in
@@ -455,9 +458,6 @@ type fhirStoreState struct {
 	// the order of dozens of seconds) is expected before the results show up in the streaming destination.
 	// Structure is documented below.
 	StreamConfigs []FhirStoreStreamConfig `pulumi:"streamConfigs"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The FHIR specification version.
 	// Default value is `STU3`.
 	// Possible values are: `DSTU2`, `STU3`, `R4`.
@@ -528,6 +528,9 @@ type FhirStoreState struct {
 	NotificationConfig FhirStoreNotificationConfigPtrInput
 	// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
 	NotificationConfigs FhirStoreNotificationConfigArrayInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringPtrInput
 	// A list of streaming configs that configure the destinations of streaming export for every resource mutation in
@@ -538,9 +541,6 @@ type FhirStoreState struct {
 	// the order of dozens of seconds) is expected before the results show up in the streaming destination.
 	// Structure is documented below.
 	StreamConfigs FhirStoreStreamConfigArrayInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// The FHIR specification version.
 	// Default value is `STU3`.
 	// Possible values are: `DSTU2`, `STU3`, `R4`.
@@ -912,6 +912,12 @@ func (o FhirStoreOutput) NotificationConfigs() FhirStoreNotificationConfigArrayO
 	return o.ApplyT(func(v *FhirStore) FhirStoreNotificationConfigArrayOutput { return v.NotificationConfigs }).(FhirStoreNotificationConfigArrayOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o FhirStoreOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *FhirStore) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The fully qualified name of this dataset
 func (o FhirStoreOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *FhirStore) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
@@ -926,12 +932,6 @@ func (o FhirStoreOutput) SelfLink() pulumi.StringOutput {
 // Structure is documented below.
 func (o FhirStoreOutput) StreamConfigs() FhirStoreStreamConfigArrayOutput {
 	return o.ApplyT(func(v *FhirStore) FhirStoreStreamConfigArrayOutput { return v.StreamConfigs }).(FhirStoreStreamConfigArrayOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o FhirStoreOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *FhirStore) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The FHIR specification version.

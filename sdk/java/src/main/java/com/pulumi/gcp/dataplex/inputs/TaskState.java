@@ -221,6 +221,23 @@ public final class TaskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
      * Structure is documented below.
      * 
@@ -267,23 +284,6 @@ public final class TaskState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> taskId() {
         return Optional.ofNullable(this.taskId);
-    }
-
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    @Import(name="terraformLabels")
-    private @Nullable Output<Map<String,String>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    public Optional<Output<Map<String,String>>> terraformLabels() {
-        return Optional.ofNullable(this.terraformLabels);
     }
 
     /**
@@ -352,10 +352,10 @@ public final class TaskState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.notebook = $.notebook;
         this.project = $.project;
+        this.pulumiLabels = $.pulumiLabels;
         this.spark = $.spark;
         this.state = $.state;
         this.taskId = $.taskId;
-        this.terraformLabels = $.terraformLabels;
         this.triggerSpec = $.triggerSpec;
         this.uid = $.uid;
         this.updateTime = $.updateTime;
@@ -661,6 +661,29 @@ public final class TaskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
          * @param spark A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
          * Structure is documented below.
          * 
@@ -725,29 +748,6 @@ public final class TaskState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder taskId(String taskId) {
             return taskId(Output.of(taskId));
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
-            $.terraformLabels = terraformLabels;
-            return this;
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

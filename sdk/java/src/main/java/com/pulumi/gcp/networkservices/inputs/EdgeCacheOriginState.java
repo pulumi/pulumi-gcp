@@ -274,6 +274,23 @@ public final class EdgeCacheOriginState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * Specifies one or more retry conditions for the configured origin.
      * If the failure mode during a connection attempt to the origin matches the configured retryCondition(s),
      * the origin request will be retried up to maxAttempts times. The failoverOrigin, if configured, will then be used to satisfy the request.
@@ -315,23 +332,6 @@ public final class EdgeCacheOriginState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    @Import(name="terraformLabels")
-    private @Nullable Output<Map<String,String>> terraformLabels;
-
-    /**
-     * @return The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     * 
-     */
-    public Optional<Output<Map<String,String>>> terraformLabels() {
-        return Optional.ofNullable(this.terraformLabels);
-    }
-
-    /**
      * The connection and HTTP timeout configuration for this origin.
      * Structure is documented below.
      * 
@@ -364,8 +364,8 @@ public final class EdgeCacheOriginState extends com.pulumi.resources.ResourceArg
         this.port = $.port;
         this.project = $.project;
         this.protocol = $.protocol;
+        this.pulumiLabels = $.pulumiLabels;
         this.retryConditions = $.retryConditions;
-        this.terraformLabels = $.terraformLabels;
         this.timeout = $.timeout;
     }
 
@@ -717,6 +717,29 @@ public final class EdgeCacheOriginState extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
          * @param retryConditions Specifies one or more retry conditions for the configured origin.
          * If the failure mode during a connection attempt to the origin matches the configured retryCondition(s),
          * the origin request will be retried up to maxAttempts times. The failoverOrigin, if configured, will then be used to satisfy the request.
@@ -784,29 +807,6 @@ public final class EdgeCacheOriginState extends com.pulumi.resources.ResourceArg
          */
         public Builder retryConditions(String... retryConditions) {
             return retryConditions(List.of(retryConditions));
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
-            $.terraformLabels = terraformLabels;
-            return this;
-        }
-
-        /**
-         * @param terraformLabels The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

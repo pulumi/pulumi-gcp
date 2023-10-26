@@ -216,8 +216,8 @@ class _TopicState:
                  message_storage_policy: Optional[pulumi.Input['TopicMessageStoragePolicyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 schema_settings: Optional[pulumi.Input['TopicSchemaSettingsArgs']] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 schema_settings: Optional[pulumi.Input['TopicSchemaSettingsArgs']] = None):
         """
         Input properties used for looking up and filtering Topic resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
@@ -248,10 +248,10 @@ class _TopicState:
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input['TopicSchemaSettingsArgs'] schema_settings: Settings for validating messages published against a schema.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         """
         _TopicState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -262,8 +262,8 @@ class _TopicState:
             message_storage_policy=message_storage_policy,
             name=name,
             project=project,
+            pulumi_labels=pulumi_labels,
             schema_settings=schema_settings,
-            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
@@ -275,8 +275,8 @@ class _TopicState:
              message_storage_policy: Optional[pulumi.Input['TopicMessageStoragePolicyArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              schema_settings: Optional[pulumi.Input['TopicSchemaSettingsArgs']] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         if effective_labels is None and 'effectiveLabels' in kwargs:
@@ -287,10 +287,10 @@ class _TopicState:
             message_retention_duration = kwargs['messageRetentionDuration']
         if message_storage_policy is None and 'messageStoragePolicy' in kwargs:
             message_storage_policy = kwargs['messageStoragePolicy']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if schema_settings is None and 'schemaSettings' in kwargs:
             schema_settings = kwargs['schemaSettings']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
 
         if effective_labels is not None:
             _setter("effective_labels", effective_labels)
@@ -306,10 +306,10 @@ class _TopicState:
             _setter("name", name)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if schema_settings is not None:
             _setter("schema_settings", schema_settings)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter(name="effectiveLabels")
@@ -417,6 +417,19 @@ class _TopicState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="schemaSettings")
     def schema_settings(self) -> Optional[pulumi.Input['TopicSchemaSettingsArgs']]:
         """
@@ -428,19 +441,6 @@ class _TopicState:
     @schema_settings.setter
     def schema_settings(self, value: Optional[pulumi.Input['TopicSchemaSettingsArgs']]):
         pulumi.set(self, "schema_settings", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
 
 class Topic(pulumi.CustomResource):
@@ -720,7 +720,7 @@ class Topic(pulumi.CustomResource):
             schema_settings = _utilities.configure(schema_settings, TopicSchemaSettingsArgs, True)
             __props__.__dict__["schema_settings"] = schema_settings
             __props__.__dict__["effective_labels"] = None
-            __props__.__dict__["terraform_labels"] = None
+            __props__.__dict__["pulumi_labels"] = None
         super(Topic, __self__).__init__(
             'gcp:pubsub/topic:Topic',
             resource_name,
@@ -738,8 +738,8 @@ class Topic(pulumi.CustomResource):
             message_storage_policy: Optional[pulumi.Input[pulumi.InputType['TopicMessageStoragePolicyArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            schema_settings: Optional[pulumi.Input[pulumi.InputType['TopicSchemaSettingsArgs']]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Topic':
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            schema_settings: Optional[pulumi.Input[pulumi.InputType['TopicSchemaSettingsArgs']]] = None) -> 'Topic':
         """
         Get an existing Topic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -775,10 +775,10 @@ class Topic(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['TopicSchemaSettingsArgs']] schema_settings: Settings for validating messages published against a schema.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
-               and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -791,8 +791,8 @@ class Topic(pulumi.CustomResource):
         __props__.__dict__["message_storage_policy"] = message_storage_policy
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["schema_settings"] = schema_settings
-        __props__.__dict__["terraform_labels"] = terraform_labels
         return Topic(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -873,6 +873,15 @@ class Topic(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="schemaSettings")
     def schema_settings(self) -> pulumi.Output['outputs.TopicSchemaSettings']:
         """
@@ -880,13 +889,4 @@ class Topic(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "schema_settings")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 

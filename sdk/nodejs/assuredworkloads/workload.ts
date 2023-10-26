@@ -138,6 +138,10 @@ export class Workload extends pulumi.CustomResource {
      */
     public readonly provisionedResourcesParent!: pulumi.Output<string | undefined>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: any}>;
+    /**
      * Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
      */
     public readonly resourceSettings!: pulumi.Output<outputs.assuredworkloads.WorkloadResourceSetting[] | undefined>;
@@ -145,10 +149,6 @@ export class Workload extends pulumi.CustomResource {
      * Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
      */
     public /*out*/ readonly resources!: pulumi.Output<outputs.assuredworkloads.WorkloadResource[]>;
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: any}>;
 
     /**
      * Create a Workload resource with the given unique name, arguments, and options.
@@ -174,9 +174,9 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["organization"] = state ? state.organization : undefined;
             resourceInputs["provisionedResourcesParent"] = state ? state.provisionedResourcesParent : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["resourceSettings"] = state ? state.resourceSettings : undefined;
             resourceInputs["resources"] = state ? state.resources : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as WorkloadArgs | undefined;
             if ((!args || args.billingAccount === undefined) && !opts.urn) {
@@ -206,8 +206,8 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["resources"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Workload.__pulumiType, name, resourceInputs, opts);
@@ -271,6 +271,10 @@ export interface WorkloadState {
      */
     provisionedResourcesParent?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: any}>;
+    /**
      * Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
      */
     resourceSettings?: pulumi.Input<pulumi.Input<inputs.assuredworkloads.WorkloadResourceSetting>[]>;
@@ -278,10 +282,6 @@ export interface WorkloadState {
      * Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
      */
     resources?: pulumi.Input<pulumi.Input<inputs.assuredworkloads.WorkloadResource>[]>;
-    /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**

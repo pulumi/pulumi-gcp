@@ -123,8 +123,8 @@ namespace Pulumi.Gcp.Organizations
         public readonly string Number;
         public readonly string OrgId;
         public readonly string? ProjectId;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly bool SkipDelete;
-        public readonly ImmutableDictionary<string, string> TerraformLabels;
 
         [OutputConstructor]
         private GetProjectResult(
@@ -148,9 +148,9 @@ namespace Pulumi.Gcp.Organizations
 
             string? projectId,
 
-            bool skipDelete,
+            ImmutableDictionary<string, string> pulumiLabels,
 
-            ImmutableDictionary<string, string> terraformLabels)
+            bool skipDelete)
         {
             AutoCreateNetwork = autoCreateNetwork;
             BillingAccount = billingAccount;
@@ -162,8 +162,8 @@ namespace Pulumi.Gcp.Organizations
             Number = number;
             OrgId = orgId;
             ProjectId = projectId;
+            PulumiLabels = pulumiLabels;
             SkipDelete = skipDelete;
-            TerraformLabels = terraformLabels;
         }
     }
 }

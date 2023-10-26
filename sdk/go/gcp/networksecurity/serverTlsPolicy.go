@@ -188,12 +188,12 @@ type ServerTlsPolicy struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
 	// Structure is documented below.
 	ServerCertificate ServerTlsPolicyServerCertificatePtrOutput `pulumi:"serverCertificate"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Time the ServerTlsPolicy was updated in UTC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -257,12 +257,12 @@ type serverTlsPolicyState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
 	// Structure is documented below.
 	ServerCertificate *ServerTlsPolicyServerCertificate `pulumi:"serverCertificate"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Time the ServerTlsPolicy was updated in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -297,12 +297,12 @@ type ServerTlsPolicyState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
 	// Structure is documented below.
 	ServerCertificate ServerTlsPolicyServerCertificatePtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// Time the ServerTlsPolicy was updated in UTC.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -539,16 +539,16 @@ func (o ServerTlsPolicyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerTlsPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ServerTlsPolicyOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServerTlsPolicy) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
 // Structure is documented below.
 func (o ServerTlsPolicyOutput) ServerCertificate() ServerTlsPolicyServerCertificatePtrOutput {
 	return o.ApplyT(func(v *ServerTlsPolicy) ServerTlsPolicyServerCertificatePtrOutput { return v.ServerCertificate }).(ServerTlsPolicyServerCertificatePtrOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o ServerTlsPolicyOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ServerTlsPolicy) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Time the ServerTlsPolicy was updated in UTC.

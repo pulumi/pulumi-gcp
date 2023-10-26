@@ -186,6 +186,11 @@ export class Snapshot extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -232,11 +237,6 @@ export class Snapshot extends pulumi.CustomResource {
      */
     public readonly storageLocations!: pulumi.Output<string[]>;
     /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
-    /**
      * A reference to the zone where the disk is hosted.
      */
     public readonly zone!: pulumi.Output<string>;
@@ -264,6 +264,7 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["licenses"] = state ? state.licenses : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["snapshotEncryptionKey"] = state ? state.snapshotEncryptionKey : undefined;
             resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
@@ -271,7 +272,6 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["sourceDiskEncryptionKey"] = state ? state.sourceDiskEncryptionKey : undefined;
             resourceInputs["storageBytes"] = state ? state.storageBytes : undefined;
             resourceInputs["storageLocations"] = state ? state.storageLocations : undefined;
-            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as SnapshotArgs | undefined;
@@ -293,10 +293,10 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["licenses"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["snapshotId"] = undefined /*out*/;
             resourceInputs["storageBytes"] = undefined /*out*/;
-            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Snapshot.__pulumiType, name, resourceInputs, opts);
@@ -367,6 +367,11 @@ export interface SnapshotState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The URI of the created resource.
      */
     selfLink?: pulumi.Input<string>;
@@ -412,11 +417,6 @@ export interface SnapshotState {
      * Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
      */
     storageLocations?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
-     */
-    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A reference to the zone where the disk is hosted.
      */

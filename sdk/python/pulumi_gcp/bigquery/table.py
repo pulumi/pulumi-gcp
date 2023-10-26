@@ -475,12 +475,12 @@ class _TableState:
                  num_long_term_bytes: Optional[pulumi.Input[int]] = None,
                  num_rows: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  range_partitioning: Optional[pulumi.Input['TableRangePartitioningArgs']] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  table_constraints: Optional[pulumi.Input['TableTableConstraintsArgs']] = None,
                  table_id: Optional[pulumi.Input[str]] = None,
-                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  time_partitioning: Optional[pulumi.Input['TableTimePartitioningArgs']] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  view: Optional[pulumi.Input['TableViewArgs']] = None):
@@ -524,6 +524,7 @@ class _TableState:
         :param pulumi.Input[int] num_rows: The number of rows of data in this table, excluding any data in the streaming buffer.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input['TableRangePartitioningArgs'] range_partitioning: If specified, configures range-based
                partitioning for this table. Structure is documented below.
         :param pulumi.Input[str] schema: A JSON schema for the external table. Schema is required
@@ -546,7 +547,6 @@ class _TableState:
                Structure is documented below.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input['TableTimePartitioningArgs'] time_partitioning: If specified, configures time-based
                partitioning for this table. Structure is documented below.
         :param pulumi.Input[str] type: The supported types are DAY, HOUR, MONTH, and YEAR,
@@ -576,12 +576,12 @@ class _TableState:
             num_long_term_bytes=num_long_term_bytes,
             num_rows=num_rows,
             project=project,
+            pulumi_labels=pulumi_labels,
             range_partitioning=range_partitioning,
             schema=schema,
             self_link=self_link,
             table_constraints=table_constraints,
             table_id=table_id,
-            terraform_labels=terraform_labels,
             time_partitioning=time_partitioning,
             type=type,
             view=view,
@@ -609,12 +609,12 @@ class _TableState:
              num_long_term_bytes: Optional[pulumi.Input[int]] = None,
              num_rows: Optional[pulumi.Input[int]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              range_partitioning: Optional[pulumi.Input['TableRangePartitioningArgs']] = None,
              schema: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              table_constraints: Optional[pulumi.Input['TableTableConstraintsArgs']] = None,
              table_id: Optional[pulumi.Input[str]] = None,
-             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              time_partitioning: Optional[pulumi.Input['TableTimePartitioningArgs']] = None,
              type: Optional[pulumi.Input[str]] = None,
              view: Optional[pulumi.Input['TableViewArgs']] = None,
@@ -648,6 +648,8 @@ class _TableState:
             num_long_term_bytes = kwargs['numLongTermBytes']
         if num_rows is None and 'numRows' in kwargs:
             num_rows = kwargs['numRows']
+        if pulumi_labels is None and 'pulumiLabels' in kwargs:
+            pulumi_labels = kwargs['pulumiLabels']
         if range_partitioning is None and 'rangePartitioning' in kwargs:
             range_partitioning = kwargs['rangePartitioning']
         if self_link is None and 'selfLink' in kwargs:
@@ -656,8 +658,6 @@ class _TableState:
             table_constraints = kwargs['tableConstraints']
         if table_id is None and 'tableId' in kwargs:
             table_id = kwargs['tableId']
-        if terraform_labels is None and 'terraformLabels' in kwargs:
-            terraform_labels = kwargs['terraformLabels']
         if time_partitioning is None and 'timePartitioning' in kwargs:
             time_partitioning = kwargs['timePartitioning']
 
@@ -701,6 +701,8 @@ class _TableState:
             _setter("num_rows", num_rows)
         if project is not None:
             _setter("project", project)
+        if pulumi_labels is not None:
+            _setter("pulumi_labels", pulumi_labels)
         if range_partitioning is not None:
             _setter("range_partitioning", range_partitioning)
         if schema is not None:
@@ -711,8 +713,6 @@ class _TableState:
             _setter("table_constraints", table_constraints)
         if table_id is not None:
             _setter("table_id", table_id)
-        if terraform_labels is not None:
-            _setter("terraform_labels", terraform_labels)
         if time_partitioning is not None:
             _setter("time_partitioning", time_partitioning)
         if type is not None:
@@ -979,6 +979,18 @@ class _TableState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="rangePartitioning")
     def range_partitioning(self) -> Optional[pulumi.Input['TableRangePartitioningArgs']]:
         """
@@ -1054,18 +1066,6 @@ class _TableState:
     @table_id.setter
     def table_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "table_id", value)
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
-
-    @terraform_labels.setter
-    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="timePartitioning")
@@ -1431,8 +1431,8 @@ class Table(pulumi.CustomResource):
             __props__.__dict__["num_bytes"] = None
             __props__.__dict__["num_long_term_bytes"] = None
             __props__.__dict__["num_rows"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["self_link"] = None
-            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["type"] = None
         super(Table, __self__).__init__(
             'gcp:bigquery/table:Table',
@@ -1464,12 +1464,12 @@ class Table(pulumi.CustomResource):
             num_long_term_bytes: Optional[pulumi.Input[int]] = None,
             num_rows: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             range_partitioning: Optional[pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']]] = None,
             schema: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             table_constraints: Optional[pulumi.Input[pulumi.InputType['TableTableConstraintsArgs']]] = None,
             table_id: Optional[pulumi.Input[str]] = None,
-            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             time_partitioning: Optional[pulumi.Input[pulumi.InputType['TableTimePartitioningArgs']]] = None,
             type: Optional[pulumi.Input[str]] = None,
             view: Optional[pulumi.Input[pulumi.InputType['TableViewArgs']]] = None) -> 'Table':
@@ -1518,6 +1518,7 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[int] num_rows: The number of rows of data in this table, excluding any data in the streaming buffer.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']] range_partitioning: If specified, configures range-based
                partitioning for this table. Structure is documented below.
         :param pulumi.Input[str] schema: A JSON schema for the external table. Schema is required
@@ -1540,7 +1541,6 @@ class Table(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['TableTimePartitioningArgs']] time_partitioning: If specified, configures time-based
                partitioning for this table. Structure is documented below.
         :param pulumi.Input[str] type: The supported types are DAY, HOUR, MONTH, and YEAR,
@@ -1572,12 +1572,12 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["num_long_term_bytes"] = num_long_term_bytes
         __props__.__dict__["num_rows"] = num_rows
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["range_partitioning"] = range_partitioning
         __props__.__dict__["schema"] = schema
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["table_constraints"] = table_constraints
         __props__.__dict__["table_id"] = table_id
-        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["time_partitioning"] = time_partitioning
         __props__.__dict__["type"] = type
         __props__.__dict__["view"] = view
@@ -1762,6 +1762,14 @@ class Table(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
     @pulumi.getter(name="rangePartitioning")
     def range_partitioning(self) -> pulumi.Output[Optional['outputs.TableRangePartitioning']]:
         """
@@ -1817,14 +1825,6 @@ class Table(pulumi.CustomResource):
         Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "table_id")
-
-    @property
-    @pulumi.getter(name="terraformLabels")
-    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
-        """
-        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="timePartitioning")

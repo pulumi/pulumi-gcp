@@ -121,6 +121,9 @@ type Workflow struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region of the workflow.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// The revision of the workflow. A new one is generated if the service account or source contents is changed.
@@ -137,9 +140,6 @@ type Workflow struct {
 	SourceContents pulumi.StringPtrOutput `pulumi:"sourceContents"`
 	// State of the workflow deployment.
 	State pulumi.StringOutput `pulumi:"state"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -197,6 +197,9 @@ type workflowState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region of the workflow.
 	Region *string `pulumi:"region"`
 	// The revision of the workflow. A new one is generated if the service account or source contents is changed.
@@ -213,9 +216,6 @@ type workflowState struct {
 	SourceContents *string `pulumi:"sourceContents"`
 	// State of the workflow deployment.
 	State *string `pulumi:"state"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -244,6 +244,9 @@ type WorkflowState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The region of the workflow.
 	Region pulumi.StringPtrInput
 	// The revision of the workflow. A new one is generated if the service account or source contents is changed.
@@ -260,9 +263,6 @@ type WorkflowState struct {
 	SourceContents pulumi.StringPtrInput
 	// State of the workflow deployment.
 	State pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -496,6 +496,12 @@ func (o WorkflowOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o WorkflowOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The region of the workflow.
 func (o WorkflowOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
@@ -525,12 +531,6 @@ func (o WorkflowOutput) SourceContents() pulumi.StringPtrOutput {
 // State of the workflow deployment.
 func (o WorkflowOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o WorkflowOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Workflow) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.

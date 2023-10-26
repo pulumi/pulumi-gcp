@@ -140,10 +140,10 @@ namespace Pulumi.Gcp.PubSub
         public readonly string MessageRetentionDuration;
         public readonly string Name;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly ImmutableArray<Outputs.GetSubscriptionPushConfigResult> PushConfigs;
         public readonly bool RetainAckedMessages;
         public readonly ImmutableArray<Outputs.GetSubscriptionRetryPolicyResult> RetryPolicies;
-        public readonly ImmutableDictionary<string, string> TerraformLabels;
         public readonly string Topic;
 
         [OutputConstructor]
@@ -176,13 +176,13 @@ namespace Pulumi.Gcp.PubSub
 
             string? project,
 
+            ImmutableDictionary<string, string> pulumiLabels,
+
             ImmutableArray<Outputs.GetSubscriptionPushConfigResult> pushConfigs,
 
             bool retainAckedMessages,
 
             ImmutableArray<Outputs.GetSubscriptionRetryPolicyResult> retryPolicies,
-
-            ImmutableDictionary<string, string> terraformLabels,
 
             string topic)
         {
@@ -200,10 +200,10 @@ namespace Pulumi.Gcp.PubSub
             MessageRetentionDuration = messageRetentionDuration;
             Name = name;
             Project = project;
+            PulumiLabels = pulumiLabels;
             PushConfigs = pushConfigs;
             RetainAckedMessages = retainAckedMessages;
             RetryPolicies = retryPolicies;
-            TerraformLabels = terraformLabels;
             Topic = topic;
         }
     }

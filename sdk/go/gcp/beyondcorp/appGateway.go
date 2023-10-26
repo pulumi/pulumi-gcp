@@ -137,13 +137,13 @@ type AppGateway struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region of the AppGateway.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// Represents the different states of a AppGateway.
 	State pulumi.StringOutput `pulumi:"state"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The type of network connectivity used by the AppGateway.
 	// Default value is `TYPE_UNSPECIFIED`.
 	// Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
@@ -206,13 +206,13 @@ type appGatewayState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region of the AppGateway.
 	Region *string `pulumi:"region"`
 	// Represents the different states of a AppGateway.
 	State *string `pulumi:"state"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The type of network connectivity used by the AppGateway.
 	// Default value is `TYPE_UNSPECIFIED`.
 	// Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
@@ -246,13 +246,13 @@ type AppGatewayState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The region of the AppGateway.
 	Region pulumi.StringPtrInput
 	// Represents the different states of a AppGateway.
 	State pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// The type of network connectivity used by the AppGateway.
 	// Default value is `TYPE_UNSPECIFIED`.
 	// Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
@@ -476,6 +476,12 @@ func (o AppGatewayOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppGateway) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o AppGatewayOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AppGateway) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The region of the AppGateway.
 func (o AppGatewayOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppGateway) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
@@ -484,12 +490,6 @@ func (o AppGatewayOutput) Region() pulumi.StringPtrOutput {
 // Represents the different states of a AppGateway.
 func (o AppGatewayOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppGateway) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o AppGatewayOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *AppGateway) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The type of network connectivity used by the AppGateway.

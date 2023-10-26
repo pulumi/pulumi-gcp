@@ -322,6 +322,13 @@ namespace Pulumi.Gcp.Compute
         public Output<int> ProvisionedThroughput { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Resource policies applied to this disk for automatic snapshot creations.
         /// ~&gt;**NOTE** This value does not support updating the
         /// resource policy, as resource policies can not be updated more than
@@ -421,13 +428,6 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("sourceSnapshotId")]
         public Output<string> SourceSnapshotId { get; private set; } = null!;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// URL of the disk type resource describing which disk type to use to
@@ -934,6 +934,19 @@ namespace Pulumi.Gcp.Compute
         [Input("provisionedThroughput")]
         public Input<int>? ProvisionedThroughput { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set => _pulumiLabels = value;
+        }
+
         [Input("resourcePolicies")]
         private InputList<string>? _resourcePolicies;
 
@@ -1040,19 +1053,6 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("sourceSnapshotId")]
         public Input<string>? SourceSnapshotId { get; set; }
-
-        [Input("terraformLabels")]
-        private InputMap<string>? _terraformLabels;
-
-        /// <summary>
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
-        /// </summary>
-        public InputMap<string> TerraformLabels
-        {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
-            set => _terraformLabels = value;
-        }
 
         /// <summary>
         /// URL of the disk type resource describing which disk type to use to

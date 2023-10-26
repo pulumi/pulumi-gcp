@@ -174,6 +174,8 @@ type FlexTemplateJob struct {
 	// The project in which the resource belongs. If it is not
 	// provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region in which the created job should run.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Docker registry location of container image to use for the 'worker harness. Default is the container for the version of
@@ -193,8 +195,6 @@ type FlexTemplateJob struct {
 	Subnetwork pulumi.StringOutput `pulumi:"subnetwork"`
 	// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
 	TempLocation pulumi.StringOutput `pulumi:"tempLocation"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
 	// corresponding name prefixes of the new job.
 	TransformNameMapping pulumi.MapOutput `pulumi:"transformNameMapping"`
@@ -287,6 +287,8 @@ type flexTemplateJobState struct {
 	// The project in which the resource belongs. If it is not
 	// provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region in which the created job should run.
 	Region *string `pulumi:"region"`
 	// Docker registry location of container image to use for the 'worker harness. Default is the container for the version of
@@ -306,8 +308,6 @@ type flexTemplateJobState struct {
 	Subnetwork *string `pulumi:"subnetwork"`
 	// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
 	TempLocation *string `pulumi:"tempLocation"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
 	// corresponding name prefixes of the new job.
 	TransformNameMapping map[string]interface{} `pulumi:"transformNameMapping"`
@@ -368,6 +368,8 @@ type FlexTemplateJobState struct {
 	// The project in which the resource belongs. If it is not
 	// provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The region in which the created job should run.
 	Region pulumi.StringPtrInput
 	// Docker registry location of container image to use for the 'worker harness. Default is the container for the version of
@@ -387,8 +389,6 @@ type FlexTemplateJobState struct {
 	Subnetwork pulumi.StringPtrInput
 	// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
 	TempLocation pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 	// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
 	// corresponding name prefixes of the new job.
 	TransformNameMapping pulumi.MapInput
@@ -758,6 +758,11 @@ func (o FlexTemplateJobOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlexTemplateJob) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o FlexTemplateJobOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *FlexTemplateJob) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The region in which the created job should run.
 func (o FlexTemplateJobOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlexTemplateJob) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
@@ -799,11 +804,6 @@ func (o FlexTemplateJobOutput) Subnetwork() pulumi.StringOutput {
 // The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
 func (o FlexTemplateJobOutput) TempLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlexTemplateJob) pulumi.StringOutput { return v.TempLocation }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource and default labels configured on the provider.
-func (o FlexTemplateJobOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *FlexTemplateJob) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the

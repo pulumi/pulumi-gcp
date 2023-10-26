@@ -132,6 +132,7 @@ public final class GetInstanceResult {
     private List<GetInstanceNetworkPerformanceConfig> networkPerformanceConfigs;
     private List<GetInstanceParam> params;
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private List<GetInstanceReservationAffinity> reservationAffinities;
     private List<String> resourcePolicies;
     /**
@@ -169,7 +170,6 @@ public final class GetInstanceResult {
      * 
      */
     private String tagsFingerprint;
-    private Map<String,String> terraformLabels;
     private @Nullable String zone;
 
     private GetInstanceResult() {}
@@ -336,6 +336,9 @@ public final class GetInstanceResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
+    }
     public List<GetInstanceReservationAffinity> reservationAffinities() {
         return this.reservationAffinities;
     }
@@ -391,9 +394,6 @@ public final class GetInstanceResult {
     public String tagsFingerprint() {
         return this.tagsFingerprint;
     }
-    public Map<String,String> terraformLabels() {
-        return this.terraformLabels;
-    }
     public Optional<String> zone() {
         return Optional.ofNullable(this.zone);
     }
@@ -436,6 +436,7 @@ public final class GetInstanceResult {
         private List<GetInstanceNetworkPerformanceConfig> networkPerformanceConfigs;
         private List<GetInstanceParam> params;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private List<GetInstanceReservationAffinity> reservationAffinities;
         private List<String> resourcePolicies;
         private List<GetInstanceScheduling> schedulings;
@@ -445,7 +446,6 @@ public final class GetInstanceResult {
         private List<GetInstanceShieldedInstanceConfig> shieldedInstanceConfigs;
         private List<String> tags;
         private String tagsFingerprint;
-        private Map<String,String> terraformLabels;
         private @Nullable String zone;
         public Builder() {}
         public Builder(GetInstanceResult defaults) {
@@ -479,6 +479,7 @@ public final class GetInstanceResult {
     	      this.networkPerformanceConfigs = defaults.networkPerformanceConfigs;
     	      this.params = defaults.params;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.reservationAffinities = defaults.reservationAffinities;
     	      this.resourcePolicies = defaults.resourcePolicies;
     	      this.schedulings = defaults.schedulings;
@@ -488,7 +489,6 @@ public final class GetInstanceResult {
     	      this.shieldedInstanceConfigs = defaults.shieldedInstanceConfigs;
     	      this.tags = defaults.tags;
     	      this.tagsFingerprint = defaults.tagsFingerprint;
-    	      this.terraformLabels = defaults.terraformLabels;
     	      this.zone = defaults.zone;
         }
 
@@ -662,6 +662,11 @@ public final class GetInstanceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder reservationAffinities(List<GetInstanceReservationAffinity> reservationAffinities) {
             this.reservationAffinities = Objects.requireNonNull(reservationAffinities);
             return this;
@@ -728,11 +733,6 @@ public final class GetInstanceResult {
             return this;
         }
         @CustomType.Setter
-        public Builder terraformLabels(Map<String,String> terraformLabels) {
-            this.terraformLabels = Objects.requireNonNull(terraformLabels);
-            return this;
-        }
-        @CustomType.Setter
         public Builder zone(@Nullable String zone) {
             this.zone = zone;
             return this;
@@ -768,6 +768,7 @@ public final class GetInstanceResult {
             o.networkPerformanceConfigs = networkPerformanceConfigs;
             o.params = params;
             o.project = project;
+            o.pulumiLabels = pulumiLabels;
             o.reservationAffinities = reservationAffinities;
             o.resourcePolicies = resourcePolicies;
             o.schedulings = schedulings;
@@ -777,7 +778,6 @@ public final class GetInstanceResult {
             o.shieldedInstanceConfigs = shieldedInstanceConfigs;
             o.tags = tags;
             o.tagsFingerprint = tagsFingerprint;
-            o.terraformLabels = terraformLabels;
             o.zone = zone;
             return o;
         }

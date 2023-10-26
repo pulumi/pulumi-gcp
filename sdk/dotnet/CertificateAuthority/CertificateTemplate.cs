@@ -103,8 +103,8 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// <summary>
         /// The combination of labels configured directly on the resource and default labels configured on the provider.
         /// </summary>
-        [Output("terraformLabels")]
-        public Output<ImmutableDictionary<string, object>> TerraformLabels { get; private set; } = null!;
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, object>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
         /// Output only. The time at which this CertificateTemplate was updated.
@@ -299,16 +299,16 @@ namespace Pulumi.Gcp.CertificateAuthority
         [Input("project")]
         public Input<string>? Project { get; set; }
 
-        [Input("terraformLabels")]
-        private InputMap<object>? _terraformLabels;
+        [Input("pulumiLabels")]
+        private InputMap<object>? _pulumiLabels;
 
         /// <summary>
         /// The combination of labels configured directly on the resource and default labels configured on the provider.
         /// </summary>
-        public InputMap<object> TerraformLabels
+        public InputMap<object> PulumiLabels
         {
-            get => _terraformLabels ?? (_terraformLabels = new InputMap<object>());
-            set => _terraformLabels = value;
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<object>());
+            set => _pulumiLabels = value;
         }
 
         /// <summary>

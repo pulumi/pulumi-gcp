@@ -400,6 +400,9 @@ type Dataset struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Specifies the storage billing model for the dataset.
@@ -407,9 +410,6 @@ type Dataset struct {
 	// or to PHYSICAL to use physical bytes instead.
 	// LOGICAL is the default if this flag isn't specified.
 	StorageBillingModel pulumi.StringOutput `pulumi:"storageBillingModel"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewDataset registers a new resource with the given unique name, arguments, and options.
@@ -542,6 +542,9 @@ type datasetState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// Specifies the storage billing model for the dataset.
@@ -549,9 +552,6 @@ type datasetState struct {
 	// or to PHYSICAL to use physical bytes instead.
 	// LOGICAL is the default if this flag isn't specified.
 	StorageBillingModel *string `pulumi:"storageBillingModel"`
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type DatasetState struct {
@@ -652,6 +652,9 @@ type DatasetState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// Specifies the storage billing model for the dataset.
@@ -659,9 +662,6 @@ type DatasetState struct {
 	// or to PHYSICAL to use physical bytes instead.
 	// LOGICAL is the default if this flag isn't specified.
 	StorageBillingModel pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource
-	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
 }
 
 func (DatasetState) ElementType() reflect.Type {
@@ -1121,6 +1121,12 @@ func (o DatasetOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o DatasetOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
 // The URI of the created resource.
 func (o DatasetOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
@@ -1132,12 +1138,6 @@ func (o DatasetOutput) SelfLink() pulumi.StringOutput {
 // LOGICAL is the default if this flag isn't specified.
 func (o DatasetOutput) StorageBillingModel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.StorageBillingModel }).(pulumi.StringOutput)
-}
-
-// The combination of labels configured directly on the resource
-// and default labels configured on the provider.
-func (o DatasetOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Dataset) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type DatasetArrayOutput struct{ *pulumi.OutputState }

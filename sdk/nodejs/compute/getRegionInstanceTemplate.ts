@@ -167,6 +167,7 @@ export interface GetRegionInstanceTemplateResult {
      * is not provided, the provider project is used.
      */
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly region?: string;
     readonly reservationAffinities: outputs.compute.GetRegionInstanceTemplateReservationAffinity[];
     /**
@@ -199,7 +200,6 @@ export interface GetRegionInstanceTemplateResult {
      * The unique fingerprint of the tags.
      */
     readonly tagsFingerprint: string;
-    readonly terraformLabels: {[key: string]: string};
 }
 /**
  * Get information about a VM instance template resource within GCE. For more information see

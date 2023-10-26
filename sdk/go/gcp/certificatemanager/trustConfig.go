@@ -128,7 +128,7 @@ type TrustConfig struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Set of trust stores to perform validation against.
 	// This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation.
 	// Structure is documented below.
@@ -196,7 +196,7 @@ type trustConfigState struct {
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Set of trust stores to perform validation against.
 	// This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation.
 	// Structure is documented below.
@@ -232,7 +232,7 @@ type TrustConfigState struct {
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
-	TerraformLabels pulumi.StringMapInput
+	PulumiLabels pulumi.StringMapInput
 	// Set of trust stores to perform validation against.
 	// This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation.
 	// Structure is documented below.
@@ -448,8 +448,8 @@ func (o TrustConfigOutput) Project() pulumi.StringOutput {
 
 // The combination of labels configured directly on the resource
 // and default labels configured on the provider.
-func (o TrustConfigOutput) TerraformLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *TrustConfig) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
+func (o TrustConfigOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TrustConfig) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // Set of trust stores to perform validation against.
