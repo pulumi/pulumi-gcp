@@ -4,6 +4,8 @@ package gcp
 
 import (
 	"context"
+	"os"
+	"path"
 	"path/filepath"
 	"testing"
 
@@ -12,6 +14,8 @@ import (
 	ptest "github.com/pulumi/providertest"
 	"github.com/pulumi/pulumi-gcp/provider/v6/pkg/version"
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
+	"github.com/pulumi/pulumi-trace-tool/traces"
+	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
 	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
 )
 
@@ -87,4 +91,68 @@ func providerServer(t *testing.T) pulumirpc.ResourceProviderServer {
 	)(nil)
 	require.NoError(t, err)
 	return p
+}
+
+func bench(name, provider, runtime, lang string) traces.Benchmark {
+	b := traces.NewBenchmark(name)
+	b.Provider = provider
+	b.Runtime = runtime
+	b.Language = lang
+	b.Repository = "pulumi/pulumi-gcp"
+	return b
+}
+
+func programTestAsBenchmark(
+	t *testing.T,
+	bench traces.Benchmark,
+	test integration.ProgramTestOptions,
+) {
+	// Run preview only to make sure all needed plugins are
+	// downloaded so that these downloads do not skew
+	// measurements.
+	t.Run("prewarm", func(t *testing.T) {
+		prewarmOptions := test.With(integration.ProgramTestOptions{
+			SkipRefresh:              true,
+			SkipEmptyPreviewUpdate:   true,
+			SkipExportImport:         true,
+			SkipUpdate:               true,
+			AllowEmptyPreviewChanges: true,
+			AllowEmptyUpdateChanges:  true,
+			Config:                   map[string]string{"gcp:project": "pulumi-development"},
+			Quick:                    true,
+		})
+		prewarmOptions.ExtraRuntimeValidation = nil
+		integration.ProgramTest(t, &prewarmOptions)
+	})
+
+	tracing_dir := path.Join(getCwd(t), "tracing_dir")
+	os.Setenv(traces.TRACING_DIR_ENV_VAR, tracing_dir)
+	t.Run("benchmark", func(t *testing.T) {
+		finalOptions := test.With(bench.ProgramTestOptions()).With(
+			integration.ProgramTestOptions{
+				Quick:         true,
+				Config:        map[string]string{"gcp:project": "pulumi-development"},
+				Verbose:       true,
+				DebugLogLevel: 5,
+			},
+		)
+		integration.ProgramTest(t, &finalOptions)
+	})
+}
+
+func getCwd(t *testing.T) string {
+	cwd, err := os.Getwd()
+	if err != nil {
+		t.FailNow()
+	}
+
+	return cwd
+}
+
+func TestInitTime(t *testing.T) {
+	benchmark := bench("bucket-example", "gcp", "go", "go")
+	opts := integration.ProgramTestOptions{
+		Dir: path.Join(getCwd(t), "..", "examples", "bucket-go"),
+	}
+	programTestAsBenchmark(t, benchmark, opts)
 }

@@ -7,6 +7,7 @@ require (
 	github.com/pulumi/providertest v0.0.0-20231010211708-1b49f9ab1794
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.18.2
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.63.1
+	github.com/pulumi/pulumi-trace-tool v0.0.0-20220919133229-0202c5a1e590
 	github.com/pulumi/pulumi/pkg/v3 v3.90.1
 	github.com/pulumi/pulumi/sdk/v3 v3.90.1
 	github.com/stretchr/testify v1.8.4
@@ -52,6 +53,7 @@ require (
 	github.com/acomagu/bufpipe v1.0.4 // indirect
 	github.com/aead/chacha20 v0.0.0-20180709150244-8b13a72661da // indirect
 	github.com/agext/levenshtein v1.2.3 // indirect
+	github.com/apache/thrift v0.16.0 // indirect
 	github.com/apparentlymart/go-cidr v1.1.0 // indirect
 	github.com/apparentlymart/go-textseg/v15 v15.0.0 // indirect
 	github.com/armon/go-metrics v0.4.0 // indirect
@@ -239,6 +241,8 @@ require (
 	github.com/xeipuuv/gojsonpointer v0.0.0-20190905194746-02993c407bfb // indirect
 	github.com/xeipuuv/gojsonreference v0.0.0-20180127040603-bd5ef7bd5415 // indirect
 	github.com/xeipuuv/gojsonschema v1.2.0 // indirect
+	github.com/xitongsys/parquet-go v1.6.0 // indirect
+	github.com/xitongsys/parquet-go-source v0.0.0-20200817004010-026bad9b25d0 // indirect
 	github.com/zclconf/go-cty v1.14.0 // indirect
 	go.opencensus.io v0.24.0 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
