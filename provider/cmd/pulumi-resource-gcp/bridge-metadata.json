@@ -28189,8 +28189,8 @@
                 "authorizedNetworks": "authorized_networks",
                 "domainName": "domain_name",
                 "effectiveLabels": "effective_labels",
-                "reservedIpRange": "reserved_ip_range",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels",
+                "reservedIpRange": "reserved_ip_range"
             },
             "gcp:activedirectory/domainTrust:DomainTrust": {
                 "selectiveAuthentication": "selective_authentication",
@@ -28205,8 +28205,8 @@
                 "domainResource": "domain_resource",
                 "effectiveLabels": "effective_labels",
                 "peeringId": "peering_id",
-                "statusMessage": "status_message",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels",
+                "statusMessage": "status_message"
             },
             "gcp:alloydb/BackupEncryptionConfig:BackupEncryptionConfig": {
                 "kmsKeyName": "kms_key_name"
@@ -28302,8 +28302,8 @@
                 "encryptionInfos": "encryption_info",
                 "expiryQuantities": "expiry_quantity",
                 "expiryTime": "expiry_time",
+                "pulumiLabels": "terraform_labels",
                 "sizeBytes": "size_bytes",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:alloydb/cluster:Cluster": {
@@ -28321,9 +28321,9 @@
                 "initialUser": "initial_user",
                 "migrationSources": "migration_source",
                 "networkConfig": "network_config",
+                "pulumiLabels": "terraform_labels",
                 "restoreBackupSource": "restore_backup_source",
-                "restoreContinuousBackupSource": "restore_continuous_backup_source",
-                "terraformLabels": "terraform_labels"
+                "restoreContinuousBackupSource": "restore_continuous_backup_source"
             },
             "gcp:alloydb/getLocationsLocation:getLocationsLocation": {
                 "displayName": "display_name",
@@ -28360,9 +28360,9 @@
                 "instanceType": "instance_type",
                 "ipAddress": "ip_address",
                 "machineConfig": "machine_config",
+                "pulumiLabels": "terraform_labels",
                 "queryInsightsConfig": "query_insights_config",
                 "readPoolConfig": "read_pool_config",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:apigateway/ApiConfigGatewayConfig:ApiConfigGatewayConfig": {
@@ -28381,7 +28381,7 @@
                 "displayName": "display_name",
                 "effectiveLabels": "effective_labels",
                 "managedService": "managed_service",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels"
             },
             "gcp:apigateway/apiConfig:ApiConfig": {
                 "apiConfigId": "api_config_id",
@@ -28392,8 +28392,8 @@
                 "grpcServices": "grpc_services",
                 "managedServiceConfigs": "managed_service_configs",
                 "openapiDocuments": "openapi_documents",
-                "serviceConfigId": "service_config_id",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels",
+                "serviceConfigId": "service_config_id"
             },
             "gcp:apigateway/apiConfigIamBinding:ApiConfigIamBinding": {
                 "apiConfig": "api_config"
@@ -28414,7 +28414,7 @@
                 "displayName": "display_name",
                 "effectiveLabels": "effective_labels",
                 "gatewayId": "gateway_id",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels"
             },
             "gcp:apigateway/gatewayIamPolicy:GatewayIamPolicy": {
                 "policyData": "policy_data"
@@ -28933,9 +28933,9 @@
                 "effectiveLabels": "effective_labels",
                 "kmsKeyName": "kms_key_name",
                 "mavenConfigs": "maven_config",
+                "pulumiLabels": "terraform_labels",
                 "remoteRepositoryConfigs": "remote_repository_config",
                 "repositoryId": "repository_id",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time",
                 "virtualRepositoryConfigs": "virtual_repository_config"
             },
@@ -29010,9 +29010,9 @@
                 "effectiveLabels": "effective_labels",
                 "kmsKeyName": "kms_key_name",
                 "mavenConfig": "maven_config",
+                "pulumiLabels": "terraform_labels",
                 "remoteRepositoryConfig": "remote_repository_config",
                 "repositoryId": "repository_id",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time",
                 "virtualRepositoryConfig": "virtual_repository_config"
             },
@@ -29042,8 +29042,8 @@
                 "effectiveLabels": "effective_labels",
                 "kmsSettings": "kms_settings",
                 "provisionedResourcesParent": "provisioned_resources_parent",
-                "resourceSettings": "resource_settings",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels",
+                "resourceSettings": "resource_settings"
             },
             "gcp:backupdisasterrecovery/ManagementServerManagementUri:ManagementServerManagementUri": {
                 "webUi": "web_ui"
@@ -29070,27 +29070,27 @@
                 "applicationEndpoint": "application_endpoint",
                 "displayName": "display_name",
                 "effectiveLabels": "effective_labels",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels"
             },
             "gcp:beyondcorp/appConnector:AppConnector": {
                 "displayName": "display_name",
                 "effectiveLabels": "effective_labels",
                 "principalInfo": "principal_info",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels"
             },
             "gcp:beyondcorp/appGateway:AppGateway": {
                 "allocatedConnections": "allocated_connections",
                 "displayName": "display_name",
                 "effectiveLabels": "effective_labels",
                 "hostType": "host_type",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels"
             },
             "gcp:beyondcorp/getAppConnection:getAppConnection": {
                 "applicationEndpoints": "application_endpoint",
                 "displayName": "display_name",
                 "effectiveLabels": "effective_labels",
                 "gateways": "gateway",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels"
             },
             "gcp:beyondcorp/getAppConnectionGateway:getAppConnectionGateway": {
                 "appGateway": "app_gateway",
@@ -29100,7 +29100,7 @@
                 "displayName": "display_name",
                 "effectiveLabels": "effective_labels",
                 "principalInfos": "principal_info",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels"
             },
             "gcp:beyondcorp/getAppConnectorPrincipalInfo:getAppConnectorPrincipalInfo": {
                 "serviceAccounts": "service_account"
@@ -29110,7 +29110,7 @@
                 "displayName": "display_name",
                 "effectiveLabels": "effective_labels",
                 "hostType": "host_type",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels"
             },
             "gcp:beyondcorp/getAppGatewayAllocatedConnection:getAppGatewayAllocatedConnection": {
                 "ingressPort": "ingress_port",
@@ -29482,9 +29482,9 @@
                 "isCaseInsensitive": "is_case_insensitive",
                 "lastModifiedTime": "last_modified_time",
                 "maxTimeTravelHours": "max_time_travel_hours",
+                "pulumiLabels": "terraform_labels",
                 "selfLink": "self_link",
-                "storageBillingModel": "storage_billing_model",
-                "terraformLabels": "terraform_labels"
+                "storageBillingModel": "storage_billing_model"
             },
             "gcp:bigquery/datasetAccess:DatasetAccess": {
                 "apiUpdatedMember": "api_updated_member",
@@ -29536,8 +29536,8 @@
                 "jobId": "job_id",
                 "jobTimeoutMs": "job_timeout_ms",
                 "jobType": "job_type",
+                "pulumiLabels": "terraform_labels",
                 "statuses": "status",
-                "terraformLabels": "terraform_labels",
                 "userEmail": "user_email"
             },
             "gcp:bigquery/reservation:Reservation": {
@@ -29576,11 +29576,11 @@
                 "numBytes": "num_bytes",
                 "numLongTermBytes": "num_long_term_bytes",
                 "numRows": "num_rows",
+                "pulumiLabels": "terraform_labels",
                 "rangePartitioning": "range_partitioning",
                 "selfLink": "self_link",
                 "tableConstraints": "table_constraints",
                 "tableId": "table_id",
-                "terraformLabels": "terraform_labels",
                 "timePartitioning": "time_partitioning"
             },
             "gcp:bigqueryanalyticshub/ListingDataProvider:ListingDataProvider": {
@@ -29692,7 +29692,7 @@
                 "displayName": "display_name",
                 "effectiveLabels": "effective_labels",
                 "instanceType": "instance_type",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels"
             },
             "gcp:bigtable/instanceIamPolicy:InstanceIamPolicy": {
                 "policyData": "policy_data"
@@ -30248,16 +30248,16 @@
                 "keySpec": "key_spec",
                 "pemCaCertificate": "pem_ca_certificate",
                 "pemCaCertificates": "pem_ca_certificates",
+                "pulumiLabels": "terraform_labels",
                 "skipGracePeriod": "skip_grace_period",
                 "subordinateConfig": "subordinate_config",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:certificateauthority/caPool:CaPool": {
                 "effectiveLabels": "effective_labels",
                 "issuancePolicy": "issuance_policy",
                 "publishingOptions": "publishing_options",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels"
             },
             "gcp:certificateauthority/caPoolIamBinding:CaPoolIamBinding": {
                 "caPool": "ca_pool"
@@ -30279,8 +30279,8 @@
                 "pemCertificate": "pem_certificate",
                 "pemCertificateChains": "pem_certificate_chain",
                 "pemCsr": "pem_csr",
+                "pulumiLabels": "terraform_labels",
                 "revocationDetails": "revocation_details",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:certificateauthority/certificateTemplate:CertificateTemplate": {
@@ -30289,7 +30289,7 @@
                 "identityConstraints": "identity_constraints",
                 "passthroughExtensions": "passthrough_extensions",
                 "predefinedValues": "predefined_values",
-                "terraformLabels": "terraform_labels",
+                "pulumiLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:certificateauthority/certificateTemplateIamBinding:CertificateTemplateIamBinding": {
@@ -30316,9 +30316,9 @@
                 "pemCaCertificate": "pem_ca_certificate",
                 "pemCaCertificates": "pem_ca_certificates",
                 "pemCsr": "pem_csr",
+                "pulumiLabels": "terraform_labels",
                 "skipGracePeriod": "skip_grace_period",
                 "subordinateConfigs": "subordinate_config",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:certificateauthority/getAuthorityAccessUrl:getAuthorityAccessUrl": {
@@ -30464,41 +30464,41 @@
             },
             "gcp:certificatemanager/certificate:Certificate": {
                 "effectiveLabels": "effective_labels",
-                "selfManaged": "self_managed",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels",
+                "selfManaged": "self_managed"
             },
             "gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig": {
                 "certificateAuthorityConfig": "certificate_authority_config",
                 "createTime": "create_time",
                 "effectiveLabels": "effective_labels",
                 "keyAlgorithm": "key_algorithm",
+                "pulumiLabels": "terraform_labels",
                 "rotationWindowPercentage": "rotation_window_percentage",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:certificatemanager/certificateMap:CertificateMap": {
                 "createTime": "create_time",
                 "effectiveLabels": "effective_labels",
                 "gclbTargets": "gclb_targets",
-                "terraformLabels": "terraform_labels",
+                "pulumiLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:certificatemanager/certificateMapEntry:CertificateMapEntry": {
                 "createTime": "create_time",
                 "effectiveLabels": "effective_labels",
-                "terraformLabels": "terraform_labels",
+                "pulumiLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:certificatemanager/dnsAuthorization:DnsAuthorization": {
                 "dnsResourceRecords": "dns_resource_record",
                 "effectiveLabels": "effective_labels",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels"
             },
             "gcp:certificatemanager/getCertificateMap:getCertificateMap": {
                 "createTime": "create_time",
                 "effectiveLabels": "effective_labels",
                 "gclbTargets": "gclb_targets",
-                "terraformLabels": "terraform_labels",
+                "pulumiLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:certificatemanager/getCertificateMapGclbTarget:getCertificateMapGclbTarget": {
@@ -30512,7 +30512,7 @@
             "gcp:certificatemanager/trustConfig:TrustConfig": {
                 "createTime": "create_time",
                 "effectiveLabels": "effective_labels",
-                "terraformLabels": "terraform_labels",
+                "pulumiLabels": "terraform_labels",
                 "trustStores": "trust_stores",
                 "updateTime": "update_time"
             },
@@ -30984,8 +30984,8 @@
                 "createTime": "create_time",
                 "effectiveAnnotations": "effective_annotations",
                 "effectiveLabels": "effective_labels",
+                "pulumiLabels": "terraform_labels",
                 "serialPipeline": "serial_pipeline",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:clouddeploy/target:Target": {
@@ -30996,9 +30996,9 @@
                 "effectiveLabels": "effective_labels",
                 "executionConfigs": "execution_configs",
                 "multiTarget": "multi_target",
+                "pulumiLabels": "terraform_labels",
                 "requireApproval": "require_approval",
                 "targetId": "target_id",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:cloudfunctions/FunctionEventTrigger:FunctionEventTrigger": {
@@ -31031,13 +31031,13 @@
                 "kmsKeyName": "kms_key_name",
                 "maxInstances": "max_instances",
                 "minInstances": "min_instances",
+                "pulumiLabels": "terraform_labels",
                 "secretEnvironmentVariables": "secret_environment_variables",
                 "secretVolumes": "secret_volumes",
                 "serviceAccountEmail": "service_account_email",
                 "sourceArchiveBucket": "source_archive_bucket",
                 "sourceArchiveObject": "source_archive_object",
                 "sourceRepository": "source_repository",
-                "terraformLabels": "terraform_labels",
                 "triggerHttp": "trigger_http",
                 "vpcConnector": "vpc_connector",
                 "vpcConnectorEgressSettings": "vpc_connector_egress_settings"
@@ -31068,13 +31068,13 @@
                 "kmsKeyName": "kms_key_name",
                 "maxInstances": "max_instances",
                 "minInstances": "min_instances",
+                "pulumiLabels": "terraform_labels",
                 "secretEnvironmentVariables": "secret_environment_variables",
                 "secretVolumes": "secret_volumes",
                 "serviceAccountEmail": "service_account_email",
                 "sourceArchiveBucket": "source_archive_bucket",
                 "sourceArchiveObject": "source_archive_object",
                 "sourceRepositories": "source_repository",
-                "terraformLabels": "terraform_labels",
                 "triggerHttp": "trigger_http",
                 "vpcConnector": "vpc_connector",
                 "vpcConnectorEgressSettings": "vpc_connector_egress_settings"
@@ -31152,8 +31152,8 @@
                 "effectiveLabels": "effective_labels",
                 "eventTrigger": "event_trigger",
                 "kmsKeyName": "kms_key_name",
+                "pulumiLabels": "terraform_labels",
                 "serviceConfig": "service_config",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:cloudfunctionsv2/functionIamBinding:FunctionIamBinding": {
@@ -31171,8 +31171,8 @@
                 "effectiveLabels": "effective_labels",
                 "eventTriggers": "event_trigger",
                 "kmsKeyName": "kms_key_name",
+                "pulumiLabels": "terraform_labels",
                 "serviceConfigs": "service_config",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:cloudfunctionsv2/getFunctionBuildConfig:getFunctionBuildConfig": {
@@ -31657,8 +31657,8 @@
                 "latestCreatedExecutions": "latest_created_execution",
                 "launchStage": "launch_stage",
                 "observedGeneration": "observed_generation",
+                "pulumiLabels": "terraform_labels",
                 "terminalConditions": "terminal_condition",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:cloudrunv2/jobIamPolicy:JobIamPolicy": {
@@ -31678,8 +31678,8 @@
                 "latestReadyRevision": "latest_ready_revision",
                 "launchStage": "launch_stage",
                 "observedGeneration": "observed_generation",
+                "pulumiLabels": "terraform_labels",
                 "terminalConditions": "terminal_condition",
-                "terraformLabels": "terraform_labels",
                 "trafficStatuses": "traffic_statuses",
                 "traffics": "traffic",
                 "updateTime": "update_time"
@@ -31855,12 +31855,12 @@
             },
             "gcp:composer/environment:Environment": {
                 "effectiveLabels": "effective_labels",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels"
             },
             "gcp:composer/getEnvironment:getEnvironment": {
                 "configs": "config",
                 "effectiveLabels": "effective_labels",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels"
             },
             "gcp:composer/getEnvironmentConfig:getEnvironmentConfig": {
                 "airflowUri": "airflow_uri",
@@ -33826,8 +33826,8 @@
                 "labelFingerprint": "label_fingerprint",
                 "networkTier": "network_tier",
                 "prefixLength": "prefix_length",
-                "selfLink": "self_link",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels",
+                "selfLink": "self_link"
             },
             "gcp:compute/attachedDisk:AttachedDisk": {
                 "deviceName": "device_name"
@@ -33906,6 +33906,7 @@
                 "physicalBlockSizeBytes": "physical_block_size_bytes",
                 "provisionedIops": "provisioned_iops",
                 "provisionedThroughput": "provisioned_throughput",
+                "pulumiLabels": "terraform_labels",
                 "resourcePolicies": "resource_policies",
                 "selfLink": "self_link",
                 "sourceDisk": "source_disk",
@@ -33913,8 +33914,7 @@
                 "sourceImageEncryptionKey": "source_image_encryption_key",
                 "sourceImageId": "source_image_id",
                 "sourceSnapshotEncryptionKey": "source_snapshot_encryption_key",
-                "sourceSnapshotId": "source_snapshot_id",
-                "terraformLabels": "terraform_labels"
+                "sourceSnapshotId": "source_snapshot_id"
             },
             "gcp:compute/diskAsyncReplication:DiskAsyncReplication": {
                 "primaryDisk": "primary_disk",
@@ -33927,9 +33927,9 @@
                 "effectiveLabels": "effective_labels",
                 "interfaces": "interface",
                 "labelFingerprint": "label_fingerprint",
+                "pulumiLabels": "terraform_labels",
                 "redundancyType": "redundancy_type",
-                "selfLink": "self_link",
-                "terraformLabels": "terraform_labels"
+                "selfLink": "self_link"
             },
             "gcp:compute/firewall:Firewall": {
                 "allows": "allow",
@@ -33984,12 +33984,12 @@
                 "portRange": "port_range",
                 "pscConnectionId": "psc_connection_id",
                 "pscConnectionStatus": "psc_connection_status",
+                "pulumiLabels": "terraform_labels",
                 "selfLink": "self_link",
                 "serviceDirectoryRegistrations": "service_directory_registrations",
                 "serviceLabel": "service_label",
                 "serviceName": "service_name",
-                "sourceIpRanges": "source_ip_ranges",
-                "terraformLabels": "terraform_labels"
+                "sourceIpRanges": "source_ip_ranges"
             },
             "gcp:compute/getAddress:getAddress": {
                 "addressType": "address_type",
@@ -34171,6 +34171,7 @@
                 "physicalBlockSizeBytes": "physical_block_size_bytes",
                 "provisionedIops": "provisioned_iops",
                 "provisionedThroughput": "provisioned_throughput",
+                "pulumiLabels": "terraform_labels",
                 "resourcePolicies": "resource_policies",
                 "selfLink": "self_link",
                 "sourceDisk": "source_disk",
@@ -34178,8 +34179,7 @@
                 "sourceImageEncryptionKeys": "source_image_encryption_key",
                 "sourceImageId": "source_image_id",
                 "sourceSnapshotEncryptionKeys": "source_snapshot_encryption_key",
-                "sourceSnapshotId": "source_snapshot_id",
-                "terraformLabels": "terraform_labels"
+                "sourceSnapshotId": "source_snapshot_id"
             },
             "gcp:compute/getDiskDiskEncryptionKey:getDiskDiskEncryptionKey": {
                 "kmsKeySelfLink": "kms_key_self_link",
@@ -34219,12 +34219,12 @@
                 "portRange": "port_range",
                 "pscConnectionId": "psc_connection_id",
                 "pscConnectionStatus": "psc_connection_status",
+                "pulumiLabels": "terraform_labels",
                 "selfLink": "self_link",
                 "serviceDirectoryRegistrations": "service_directory_registrations",
                 "serviceLabel": "service_label",
                 "serviceName": "service_name",
-                "sourceIpRanges": "source_ip_ranges",
-                "terraformLabels": "terraform_labels"
+                "sourceIpRanges": "source_ip_ranges"
             },
             "gcp:compute/getGlobalAddress:getGlobalAddress": {
                 "addressType": "address_type",
@@ -34246,9 +34246,9 @@
                 "portRange": "port_range",
                 "pscConnectionId": "psc_connection_id",
                 "pscConnectionStatus": "psc_connection_status",
+                "pulumiLabels": "terraform_labels",
                 "selfLink": "self_link",
-                "sourceIpRanges": "source_ip_ranges",
-                "terraformLabels": "terraform_labels"
+                "sourceIpRanges": "source_ip_ranges"
             },
             "gcp:compute/getGlobalForwardingRuleMetadataFilter:getGlobalForwardingRuleMetadataFilter": {
                 "filterLabels": "filter_labels",
@@ -34350,6 +34350,7 @@
                 "minCpuPlatform": "min_cpu_platform",
                 "networkInterfaces": "network_interface",
                 "networkPerformanceConfigs": "network_performance_config",
+                "pulumiLabels": "terraform_labels",
                 "reservationAffinities": "reservation_affinity",
                 "resourcePolicies": "resource_policies",
                 "schedulings": "scheduling",
@@ -34357,8 +34358,7 @@
                 "selfLink": "self_link",
                 "serviceAccounts": "service_account",
                 "shieldedInstanceConfigs": "shielded_instance_config",
-                "tagsFingerprint": "tags_fingerprint",
-                "terraformLabels": "terraform_labels"
+                "tagsFingerprint": "tags_fingerprint"
             },
             "gcp:compute/getInstanceAdvancedMachineFeature:getInstanceAdvancedMachineFeature": {
                 "enableNestedVirtualization": "enable_nested_virtualization",
@@ -34536,6 +34536,7 @@
                 "namePrefix": "name_prefix",
                 "networkInterfaces": "network_interface",
                 "networkPerformanceConfigs": "network_performance_config",
+                "pulumiLabels": "terraform_labels",
                 "reservationAffinities": "reservation_affinity",
                 "resourcePolicies": "resource_policies",
                 "schedulings": "scheduling",
@@ -34543,8 +34544,7 @@
                 "selfLinkUnique": "self_link_unique",
                 "serviceAccounts": "service_account",
                 "shieldedInstanceConfigs": "shielded_instance_config",
-                "tagsFingerprint": "tags_fingerprint",
-                "terraformLabels": "terraform_labels"
+                "tagsFingerprint": "tags_fingerprint"
             },
             "gcp:compute/getInstanceTemplateAdvancedMachineFeature:getInstanceTemplateAdvancedMachineFeature": {
                 "enableNestedVirtualization": "enable_nested_virtualization",
@@ -34692,14 +34692,14 @@
                 "namePrefix": "name_prefix",
                 "networkInterfaces": "network_interface",
                 "networkPerformanceConfigs": "network_performance_config",
+                "pulumiLabels": "terraform_labels",
                 "reservationAffinities": "reservation_affinity",
                 "resourcePolicies": "resource_policies",
                 "schedulings": "scheduling",
                 "selfLink": "self_link",
                 "serviceAccounts": "service_account",
                 "shieldedInstanceConfigs": "shielded_instance_config",
-                "tagsFingerprint": "tags_fingerprint",
-                "terraformLabels": "terraform_labels"
+                "tagsFingerprint": "tags_fingerprint"
             },
             "gcp:compute/getRegionInstanceTemplateAdvancedMachineFeature:getRegionInstanceTemplateAdvancedMachineFeature": {
                 "enableNestedVirtualization": "enable_nested_virtualization",
@@ -34948,14 +34948,14 @@
                 "effectiveLabels": "effective_labels",
                 "labelFingerprint": "label_fingerprint",
                 "mostRecent": "most_recent",
+                "pulumiLabels": "terraform_labels",
                 "selfLink": "self_link",
                 "snapshotEncryptionKeys": "snapshot_encryption_key",
                 "snapshotId": "snapshot_id",
                 "sourceDisk": "source_disk",
                 "sourceDiskEncryptionKeys": "source_disk_encryption_key",
                 "storageBytes": "storage_bytes",
-                "storageLocations": "storage_locations",
-                "terraformLabels": "terraform_labels"
+                "storageLocations": "storage_locations"
             },
             "gcp:compute/getSnapshotIamPolicy:getSnapshotIamPolicy": {
                 "policyData": "policy_data"
@@ -34993,8 +34993,8 @@
                 "ipVersion": "ip_version",
                 "labelFingerprint": "label_fingerprint",
                 "prefixLength": "prefix_length",
-                "selfLink": "self_link",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels",
+                "selfLink": "self_link"
             },
             "gcp:compute/globalForwardingRule:GlobalForwardingRule": {
                 "allowPscGlobalAccess": "allow_psc_global_access",
@@ -35010,9 +35010,9 @@
                 "portRange": "port_range",
                 "pscConnectionId": "psc_connection_id",
                 "pscConnectionStatus": "psc_connection_status",
+                "pulumiLabels": "terraform_labels",
                 "selfLink": "self_link",
-                "sourceIpRanges": "source_ip_ranges",
-                "terraformLabels": "terraform_labels"
+                "sourceIpRanges": "source_ip_ranges"
             },
             "gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint": {
                 "globalNetworkEndpointGroup": "global_network_endpoint_group",
@@ -35069,13 +35069,13 @@
                 "guestOsFeatures": "guest_os_features",
                 "imageEncryptionKey": "image_encryption_key",
                 "labelFingerprint": "label_fingerprint",
+                "pulumiLabels": "terraform_labels",
                 "rawDisk": "raw_disk",
                 "selfLink": "self_link",
                 "sourceDisk": "source_disk",
                 "sourceImage": "source_image",
                 "sourceSnapshot": "source_snapshot",
-                "storageLocations": "storage_locations",
-                "terraformLabels": "terraform_labels"
+                "storageLocations": "storage_locations"
             },
             "gcp:compute/imageIamPolicy:ImageIamPolicy": {
                 "policyData": "policy_data"
@@ -35102,14 +35102,14 @@
                 "minCpuPlatform": "min_cpu_platform",
                 "networkInterfaces": "network_interface",
                 "networkPerformanceConfig": "network_performance_config",
+                "pulumiLabels": "terraform_labels",
                 "reservationAffinity": "reservation_affinity",
                 "resourcePolicies": "resource_policies",
                 "scratchDisks": "scratch_disk",
                 "selfLink": "self_link",
                 "serviceAccount": "service_account",
                 "shieldedInstanceConfig": "shielded_instance_config",
-                "tagsFingerprint": "tags_fingerprint",
-                "terraformLabels": "terraform_labels"
+                "tagsFingerprint": "tags_fingerprint"
             },
             "gcp:compute/instanceFromMachineImage:InstanceFromMachineImage": {
                 "advancedMachineFeatures": "advanced_machine_features",
@@ -35133,6 +35133,7 @@
                 "minCpuPlatform": "min_cpu_platform",
                 "networkInterfaces": "network_interface",
                 "networkPerformanceConfig": "network_performance_config",
+                "pulumiLabels": "terraform_labels",
                 "reservationAffinity": "reservation_affinity",
                 "resourcePolicies": "resource_policies",
                 "scratchDisks": "scratch_disk",
@@ -35140,8 +35141,7 @@
                 "serviceAccount": "service_account",
                 "shieldedInstanceConfig": "shielded_instance_config",
                 "sourceMachineImage": "source_machine_image",
-                "tagsFingerprint": "tags_fingerprint",
-                "terraformLabels": "terraform_labels"
+                "tagsFingerprint": "tags_fingerprint"
             },
             "gcp:compute/instanceFromTemplate:InstanceFromTemplate": {
                 "advancedMachineFeatures": "advanced_machine_features",
@@ -35165,6 +35165,7 @@
                 "minCpuPlatform": "min_cpu_platform",
                 "networkInterfaces": "network_interface",
                 "networkPerformanceConfig": "network_performance_config",
+                "pulumiLabels": "terraform_labels",
                 "reservationAffinity": "reservation_affinity",
                 "resourcePolicies": "resource_policies",
                 "scratchDisks": "scratch_disk",
@@ -35172,8 +35173,7 @@
                 "serviceAccount": "service_account",
                 "shieldedInstanceConfig": "shielded_instance_config",
                 "sourceInstanceTemplate": "source_instance_template",
-                "tagsFingerprint": "tags_fingerprint",
-                "terraformLabels": "terraform_labels"
+                "tagsFingerprint": "tags_fingerprint"
             },
             "gcp:compute/instanceGroup:InstanceGroup": {
                 "namedPorts": "named_port",
@@ -35225,14 +35225,14 @@
                 "namePrefix": "name_prefix",
                 "networkInterfaces": "network_interface",
                 "networkPerformanceConfig": "network_performance_config",
+                "pulumiLabels": "terraform_labels",
                 "reservationAffinity": "reservation_affinity",
                 "resourcePolicies": "resource_policies",
                 "selfLink": "self_link",
                 "selfLinkUnique": "self_link_unique",
                 "serviceAccount": "service_account",
                 "shieldedInstanceConfig": "shielded_instance_config",
-                "tagsFingerprint": "tags_fingerprint",
-                "terraformLabels": "terraform_labels"
+                "tagsFingerprint": "tags_fingerprint"
             },
             "gcp:compute/interconnectAttachment:InterconnectAttachment": {
                 "adminEnabled": "admin_enabled",
@@ -35461,13 +35461,13 @@
                 "lastAttachTimestamp": "last_attach_timestamp",
                 "lastDetachTimestamp": "last_detach_timestamp",
                 "physicalBlockSizeBytes": "physical_block_size_bytes",
+                "pulumiLabels": "terraform_labels",
                 "replicaZones": "replica_zones",
                 "selfLink": "self_link",
                 "sourceDisk": "source_disk",
                 "sourceDiskId": "source_disk_id",
                 "sourceSnapshotEncryptionKey": "source_snapshot_encryption_key",
-                "sourceSnapshotId": "source_snapshot_id",
-                "terraformLabels": "terraform_labels"
+                "sourceSnapshotId": "source_snapshot_id"
             },
             "gcp:compute/regionDiskIamPolicy:RegionDiskIamPolicy": {
                 "policyData": "policy_data"
@@ -35525,13 +35525,13 @@
                 "namePrefix": "name_prefix",
                 "networkInterfaces": "network_interface",
                 "networkPerformanceConfig": "network_performance_config",
+                "pulumiLabels": "terraform_labels",
                 "reservationAffinity": "reservation_affinity",
                 "resourcePolicies": "resource_policies",
                 "selfLink": "self_link",
                 "serviceAccount": "service_account",
                 "shieldedInstanceConfig": "shielded_instance_config",
-                "tagsFingerprint": "tags_fingerprint",
-                "terraformLabels": "terraform_labels"
+                "tagsFingerprint": "tags_fingerprint"
             },
             "gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup": {
                 "appEngine": "app_engine",
@@ -35754,14 +35754,14 @@
                 "diskSizeGb": "disk_size_gb",
                 "effectiveLabels": "effective_labels",
                 "labelFingerprint": "label_fingerprint",
+                "pulumiLabels": "terraform_labels",
                 "selfLink": "self_link",
                 "snapshotEncryptionKey": "snapshot_encryption_key",
                 "snapshotId": "snapshot_id",
                 "sourceDisk": "source_disk",
                 "sourceDiskEncryptionKey": "source_disk_encryption_key",
                 "storageBytes": "storage_bytes",
-                "storageLocations": "storage_locations",
-                "terraformLabels": "terraform_labels"
+                "storageLocations": "storage_locations"
             },
             "gcp:compute/snapshotIamPolicy:SnapshotIamPolicy": {
                 "policyData": "policy_data"
@@ -35872,12 +35872,12 @@
                 "peerExternalGatewayInterface": "peer_external_gateway_interface",
                 "peerGcpGateway": "peer_gcp_gateway",
                 "peerIp": "peer_ip",
+                "pulumiLabels": "terraform_labels",
                 "remoteTrafficSelectors": "remote_traffic_selector",
                 "selfLink": "self_link",
                 "sharedSecret": "shared_secret",
                 "sharedSecretHash": "shared_secret_hash",
                 "targetVpnGateway": "target_vpn_gateway",
-                "terraformLabels": "terraform_labels",
                 "tunnelId": "tunnel_id",
                 "vpnGateway": "vpn_gateway",
                 "vpnGatewayInterface": "vpn_gateway_interface"
@@ -37373,7 +37373,7 @@
                 "displayName": "display_name",
                 "effectiveLabels": "effective_labels",
                 "errors": "error",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels"
             },
             "gcp:datacatalog/EntryBigqueryDateShardedSpec:EntryBigqueryDateShardedSpec": {
                 "shardCount": "shard_count",
@@ -37576,12 +37576,12 @@
                 "maxWorkers": "max_workers",
                 "numWorkers": "num_workers",
                 "onDelete": "on_delete",
+                "pulumiLabels": "terraform_labels",
                 "sdkContainerImage": "sdk_container_image",
                 "serviceAccountEmail": "service_account_email",
                 "skipWaitOnJobTermination": "skip_wait_on_job_termination",
                 "stagingLocation": "staging_location",
                 "tempLocation": "temp_location",
-                "terraformLabels": "terraform_labels",
                 "transformNameMapping": "transform_name_mapping"
             },
             "gcp:dataflow/job:Job": {
@@ -37594,11 +37594,11 @@
                 "machineType": "machine_type",
                 "maxWorkers": "max_workers",
                 "onDelete": "on_delete",
+                "pulumiLabels": "terraform_labels",
                 "serviceAccountEmail": "service_account_email",
                 "skipWaitOnJobTermination": "skip_wait_on_job_termination",
                 "tempGcsLocation": "temp_gcs_location",
                 "templateGcsPath": "template_gcs_path",
-                "terraformLabels": "terraform_labels",
                 "transformNameMapping": "transform_name_mapping"
             },
             "gcp:dataflow/pipeline:Pipeline": {
@@ -37692,11 +37692,11 @@
                 "networkConfig": "network_config",
                 "p4ServiceAccount": "p4_service_account",
                 "privateInstance": "private_instance",
+                "pulumiLabels": "terraform_labels",
                 "serviceAccount": "service_account",
                 "serviceEndpoint": "service_endpoint",
                 "stateMessage": "state_message",
                 "tenantProjectId": "tenant_project_id",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:dataloss/PreventionDeidentifyTemplateDeidentifyConfig:PreventionDeidentifyTemplateDeidentifyConfig": {
@@ -38723,10 +38723,10 @@
                 "discoveryStatuses": "discovery_status",
                 "displayName": "display_name",
                 "effectiveLabels": "effective_labels",
+                "pulumiLabels": "terraform_labels",
                 "resourceSpec": "resource_spec",
                 "resourceStatuses": "resource_status",
                 "securityStatuses": "security_status",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:dataplex/assetIamBinding:AssetIamBinding": {
@@ -38748,7 +38748,7 @@
                 "effectiveLabels": "effective_labels",
                 "executionSpec": "execution_spec",
                 "executionStatuses": "execution_status",
-                "terraformLabels": "terraform_labels",
+                "pulumiLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:dataplex/datascanIamBinding:DatascanIamBinding": {
@@ -38786,8 +38786,8 @@
                 "displayName": "display_name",
                 "effectiveLabels": "effective_labels",
                 "metastoreStatuses": "metastore_status",
+                "pulumiLabels": "terraform_labels",
                 "serviceAccount": "service_account",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:dataplex/lakeIamPolicy:LakeIamPolicy": {
@@ -38799,8 +38799,8 @@
                 "effectiveLabels": "effective_labels",
                 "executionSpec": "execution_spec",
                 "executionStatuses": "execution_status",
+                "pulumiLabels": "terraform_labels",
                 "taskId": "task_id",
-                "terraformLabels": "terraform_labels",
                 "triggerSpec": "trigger_spec",
                 "updateTime": "update_time"
             },
@@ -38820,8 +38820,8 @@
                 "discoverySpec": "discovery_spec",
                 "displayName": "display_name",
                 "effectiveLabels": "effective_labels",
+                "pulumiLabels": "terraform_labels",
                 "resourceSpec": "resource_spec",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:dataplex/zoneIamBinding:ZoneIamBinding": {
@@ -39424,7 +39424,7 @@
                 "clusterConfig": "cluster_config",
                 "effectiveLabels": "effective_labels",
                 "gracefulDecommissionTimeout": "graceful_decommission_timeout",
-                "terraformLabels": "terraform_labels",
+                "pulumiLabels": "terraform_labels",
                 "virtualClusterConfig": "virtual_cluster_config"
             },
             "gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy": {
@@ -39458,11 +39458,11 @@
                 "hiveConfig": "hive_config",
                 "pigConfig": "pig_config",
                 "prestoConfig": "presto_config",
+                "pulumiLabels": "terraform_labels",
                 "pysparkConfig": "pyspark_config",
                 "sparkConfig": "spark_config",
                 "sparksqlConfig": "sparksql_config",
-                "statuses": "status",
-                "terraformLabels": "terraform_labels"
+                "statuses": "status"
             },
             "gcp:dataproc/jobIAMBinding:JobIAMBinding": {
                 "jobId": "job_id"
@@ -39479,8 +39479,8 @@
                 "effectiveLabels": "effective_labels",
                 "endpointUri": "endpoint_uri",
                 "federationId": "federation_id",
-                "stateMessage": "state_message",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels",
+                "stateMessage": "state_message"
             },
             "gcp:dataproc/metastoreFederationIamBinding:MetastoreFederationIamBinding": {
                 "federationId": "federation_id"
@@ -39502,12 +39502,12 @@
                 "maintenanceWindow": "maintenance_window",
                 "metadataIntegration": "metadata_integration",
                 "networkConfig": "network_config",
+                "pulumiLabels": "terraform_labels",
                 "releaseChannel": "release_channel",
                 "scalingConfig": "scaling_config",
                 "serviceId": "service_id",
                 "stateMessage": "state_message",
-                "telemetryConfig": "telemetry_config",
-                "terraformLabels": "terraform_labels"
+                "telemetryConfig": "telemetry_config"
             },
             "gcp:dataproc/metastoreServiceIamBinding:MetastoreServiceIamBinding": {
                 "serviceId": "service_id"
@@ -39523,7 +39523,7 @@
                 "createTime": "create_time",
                 "dagTimeout": "dag_timeout",
                 "effectiveLabels": "effective_labels",
-                "terraformLabels": "terraform_labels",
+                "pulumiLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:datastore/dataStoreIndex:DataStoreIndex": {
@@ -39750,7 +39750,7 @@
                 "oracleProfile": "oracle_profile",
                 "postgresqlProfile": "postgresql_profile",
                 "privateConnectivity": "private_connectivity",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels"
             },
             "gcp:datastream/getStaticIps:getStaticIps": {
                 "staticIps": "static_ips"
@@ -39760,7 +39760,7 @@
                 "effectiveLabels": "effective_labels",
                 "errors": "error",
                 "privateConnectionId": "private_connection_id",
-                "terraformLabels": "terraform_labels",
+                "pulumiLabels": "terraform_labels",
                 "vpcPeeringConfig": "vpc_peering_config"
             },
             "gcp:datastream/stream:Stream": {
@@ -39771,9 +39771,9 @@
                 "destinationConfig": "destination_config",
                 "displayName": "display_name",
                 "effectiveLabels": "effective_labels",
+                "pulumiLabels": "terraform_labels",
                 "sourceConfig": "source_config",
-                "streamId": "stream_id",
-                "terraformLabels": "terraform_labels"
+                "streamId": "stream_id"
             },
             "gcp:deploymentmanager/deployment:Deployment": {
                 "createPolicy": "create_policy",
@@ -40166,7 +40166,7 @@
                 "effectiveLabels": "effective_labels",
                 "isFallback": "is_fallback",
                 "languageCode": "language_code",
-                "terraformLabels": "terraform_labels",
+                "pulumiLabels": "terraform_labels",
                 "trainingPhrases": "training_phrases"
             },
             "gcp:diagflow/cxPage:CxPage": {
@@ -40395,9 +40395,9 @@
                 "nameServers": "name_servers",
                 "peeringConfig": "peering_config",
                 "privateVisibilityConfig": "private_visibility_config",
+                "pulumiLabels": "terraform_labels",
                 "reverseLookup": "reverse_lookup",
-                "serviceDirectoryConfig": "service_directory_config",
-                "terraformLabels": "terraform_labels"
+                "serviceDirectoryConfig": "service_directory_config"
             },
             "gcp:dns/policy:Policy": {
                 "alternativeNameServerConfig": "alternative_name_server_config",
@@ -40569,8 +40569,8 @@
                 "effectiveLabels": "effective_labels",
                 "eventDataContentType": "event_data_content_type",
                 "matchingCriterias": "matching_criteria",
+                "pulumiLabels": "terraform_labels",
                 "serviceAccount": "service_account",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:filestore/InstanceFileShares:InstanceFileShares": {
@@ -40596,24 +40596,24 @@
                 "downloadBytes": "download_bytes",
                 "effectiveLabels": "effective_labels",
                 "kmsKeyName": "kms_key_name",
+                "pulumiLabels": "terraform_labels",
                 "sourceFileShare": "source_file_share",
                 "sourceInstance": "source_instance",
                 "sourceInstanceTier": "source_instance_tier",
-                "storageBytes": "storage_bytes",
-                "terraformLabels": "terraform_labels"
+                "storageBytes": "storage_bytes"
             },
             "gcp:filestore/instance:Instance": {
                 "createTime": "create_time",
                 "effectiveLabels": "effective_labels",
                 "fileShares": "file_shares",
                 "kmsKeyName": "kms_key_name",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels"
             },
             "gcp:filestore/snapshot:Snapshot": {
                 "createTime": "create_time",
                 "effectiveLabels": "effective_labels",
                 "filesystemUsedBytes": "filesystem_used_bytes",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels"
             },
             "gcp:firebase/ExtensionsInstanceConfig:ExtensionsInstanceConfig": {
                 "allowedEventTypes": "allowed_event_types",
@@ -40706,9 +40706,9 @@
                 "channelId": "channel_id",
                 "effectiveLabels": "effective_labels",
                 "expireTime": "expire_time",
+                "pulumiLabels": "terraform_labels",
                 "retainedReleaseCount": "retained_release_count",
-                "siteId": "site_id",
-                "terraformLabels": "terraform_labels"
+                "siteId": "site_id"
             },
             "gcp:firebase/getWebApp:getWebApp": {
                 "apiKeyId": "api_key_id",
@@ -40731,9 +40731,9 @@
                 "channelId": "channel_id",
                 "effectiveLabels": "effective_labels",
                 "expireTime": "expire_time",
+                "pulumiLabels": "terraform_labels",
                 "retainedReleaseCount": "retained_release_count",
-                "siteId": "site_id",
-                "terraformLabels": "terraform_labels"
+                "siteId": "site_id"
             },
             "gcp:firebase/hostingRelease:HostingRelease": {
                 "channelId": "channel_id",
@@ -40923,9 +40923,9 @@
                 "backupSchedule": "backup_schedule",
                 "effectiveLabels": "effective_labels",
                 "protectedPodCount": "protected_pod_count",
+                "pulumiLabels": "terraform_labels",
                 "retentionPolicy": "retention_policy",
-                "stateReason": "state_reason",
-                "terraformLabels": "terraform_labels"
+                "stateReason": "state_reason"
             },
             "gcp:gkebackup/backupPlanIamPolicy:BackupPlanIamPolicy": {
                 "policyData": "policy_data"
@@ -40939,9 +40939,9 @@
             "gcp:gkebackup/restorePlan:RestorePlan": {
                 "backupPlan": "backup_plan",
                 "effectiveLabels": "effective_labels",
+                "pulumiLabels": "terraform_labels",
                 "restoreConfig": "restore_config",
-                "stateReason": "state_reason",
-                "terraformLabels": "terraform_labels"
+                "stateReason": "state_reason"
             },
             "gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy": {
                 "policyData": "policy_data"
@@ -41022,9 +41022,9 @@
                 "createTime": "create_time",
                 "deleteTime": "delete_time",
                 "effectiveLabels": "effective_labels",
+                "pulumiLabels": "terraform_labels",
                 "resourceStates": "resource_state",
                 "states": "state",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:gkehub/featureIamPolicy:FeatureIamPolicy": {
@@ -41044,7 +41044,7 @@
             "gcp:gkehub/membership:Membership": {
                 "effectiveLabels": "effective_labels",
                 "membershipId": "membership_id",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels"
             },
             "gcp:gkehub/membershipBinding:MembershipBinding": {
                 "createTime": "create_time",
@@ -41052,8 +41052,8 @@
                 "effectiveLabels": "effective_labels",
                 "membershipBindingId": "membership_binding_id",
                 "membershipId": "membership_id",
+                "pulumiLabels": "terraform_labels",
                 "states": "state",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:gkehub/membershipIamBinding:MembershipIamBinding": {
@@ -41079,19 +41079,19 @@
                 "deleteTime": "delete_time",
                 "effectiveLabels": "effective_labels",
                 "namespaceLabels": "namespace_labels",
+                "pulumiLabels": "terraform_labels",
                 "scopeId": "scope_id",
                 "scopeNamespaceId": "scope_namespace_id",
                 "states": "state",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:gkehub/scope:Scope": {
                 "createTime": "create_time",
                 "deleteTime": "delete_time",
                 "effectiveLabels": "effective_labels",
+                "pulumiLabels": "terraform_labels",
                 "scopeId": "scope_id",
                 "states": "state",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:gkehub/scopeIamBinding:ScopeIamBinding": {
@@ -41108,10 +41108,10 @@
                 "createTime": "create_time",
                 "deleteTime": "delete_time",
                 "effectiveLabels": "effective_labels",
+                "pulumiLabels": "terraform_labels",
                 "scopeId": "scope_id",
                 "scopeRbacRoleBindingId": "scope_rbac_role_binding_id",
                 "states": "state",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:gkeonprem/BareMetalAdminClusterClusterOperations:BareMetalAdminClusterClusterOperations": {
@@ -41572,7 +41572,7 @@
                 "defaultConsentTtl": "default_consent_ttl",
                 "effectiveLabels": "effective_labels",
                 "enableConsentCreateOnUpdate": "enable_consent_create_on_update",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels"
             },
             "gcp:healthcare/consentStoreIamBinding:ConsentStoreIamBinding": {
                 "consentStoreId": "consent_store_id"
@@ -41601,9 +41601,9 @@
             "gcp:healthcare/dicomStore:DicomStore": {
                 "effectiveLabels": "effective_labels",
                 "notificationConfig": "notification_config",
+                "pulumiLabels": "terraform_labels",
                 "selfLink": "self_link",
-                "streamConfigs": "stream_configs",
-                "terraformLabels": "terraform_labels"
+                "streamConfigs": "stream_configs"
             },
             "gcp:healthcare/dicomStoreIamBinding:DicomStoreIamBinding": {
                 "dicomStoreId": "dicom_store_id"
@@ -41625,9 +41625,9 @@
                 "enableUpdateCreate": "enable_update_create",
                 "notificationConfig": "notification_config",
                 "notificationConfigs": "notification_configs",
+                "pulumiLabels": "terraform_labels",
                 "selfLink": "self_link",
-                "streamConfigs": "stream_configs",
-                "terraformLabels": "terraform_labels"
+                "streamConfigs": "stream_configs"
             },
             "gcp:healthcare/fhirStoreIamBinding:FhirStoreIamBinding": {
                 "fhirStoreId": "fhir_store_id"
@@ -41664,8 +41664,8 @@
                 "notificationConfig": "notification_config",
                 "notificationConfigs": "notification_configs",
                 "parserConfig": "parser_config",
-                "selfLink": "self_link",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels",
+                "selfLink": "self_link"
             },
             "gcp:healthcare/hl7StoreIamBinding:Hl7StoreIamBinding": {
                 "hl7V2StoreId": "hl7_v2_store_id"
@@ -42194,9 +42194,9 @@
                 "effectiveLabels": "effective_labels",
                 "importOnly": "import_only",
                 "keyRing": "key_ring",
+                "pulumiLabels": "terraform_labels",
                 "rotationPeriod": "rotation_period",
                 "skipInitialVersionCreation": "skip_initial_version_creation",
-                "terraformLabels": "terraform_labels",
                 "versionTemplate": "version_template"
             },
             "gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding": {
@@ -42224,9 +42224,9 @@
                 "effectiveLabels": "effective_labels",
                 "importOnly": "import_only",
                 "keyRing": "key_ring",
+                "pulumiLabels": "terraform_labels",
                 "rotationPeriod": "rotation_period",
                 "skipInitialVersionCreation": "skip_initial_version_creation",
-                "terraformLabels": "terraform_labels",
                 "versionTemplates": "version_template"
             },
             "gcp:kms/getKMSCryptoKeyVersion:getKMSCryptoKeyVersion": {
@@ -42490,14 +42490,14 @@
                 "memcacheVersion": "memcache_version",
                 "nodeConfig": "node_config",
                 "nodeCount": "node_count",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels"
             },
             "gcp:ml/engineModel:EngineModel": {
                 "defaultVersion": "default_version",
                 "effectiveLabels": "effective_labels",
                 "onlinePredictionConsoleLogging": "online_prediction_console_logging",
                 "onlinePredictionLogging": "online_prediction_logging",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels"
             },
             "gcp:monitoring/AlertPolicyAlertStrategy:AlertPolicyAlertStrategy": {
                 "autoClose": "auto_close",
@@ -42823,8 +42823,8 @@
             "gcp:networkconnectivity/hub:Hub": {
                 "createTime": "create_time",
                 "effectiveLabels": "effective_labels",
+                "pulumiLabels": "terraform_labels",
                 "routingVpcs": "routing_vpcs",
-                "terraformLabels": "terraform_labels",
                 "uniqueId": "unique_id",
                 "updateTime": "update_time"
             },
@@ -42833,8 +42833,8 @@
                 "effectiveLabels": "effective_labels",
                 "pscConfig": "psc_config",
                 "pscConnections": "psc_connections",
+                "pulumiLabels": "terraform_labels",
                 "serviceClass": "service_class",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:networkconnectivity/spoke:Spoke": {
@@ -42844,7 +42844,7 @@
                 "linkedRouterApplianceInstances": "linked_router_appliance_instances",
                 "linkedVpcNetwork": "linked_vpc_network",
                 "linkedVpnTunnels": "linked_vpn_tunnels",
-                "terraformLabels": "terraform_labels",
+                "pulumiLabels": "terraform_labels",
                 "uniqueId": "unique_id",
                 "updateTime": "update_time"
             },
@@ -42859,8 +42859,8 @@
             },
             "gcp:networkmanagement/connectivityTest:ConnectivityTest": {
                 "effectiveLabels": "effective_labels",
-                "relatedProjects": "related_projects",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels",
+                "relatedProjects": "related_projects"
             },
             "gcp:networksecurity/AuthorizationPolicyRuleDestination:AuthorizationPolicyRuleDestination": {
                 "httpHeaderMatch": "http_header_match"
@@ -42920,21 +42920,21 @@
             "gcp:networksecurity/addressGroup:AddressGroup": {
                 "createTime": "create_time",
                 "effectiveLabels": "effective_labels",
-                "terraformLabels": "terraform_labels",
+                "pulumiLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:networksecurity/authorizationPolicy:AuthorizationPolicy": {
                 "createTime": "create_time",
                 "effectiveLabels": "effective_labels",
-                "terraformLabels": "terraform_labels",
+                "pulumiLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy": {
                 "clientCertificate": "client_certificate",
                 "createTime": "create_time",
                 "effectiveLabels": "effective_labels",
+                "pulumiLabels": "terraform_labels",
                 "serverValidationCas": "server_validation_ca",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy": {
@@ -42958,8 +42958,8 @@
                 "createTime": "create_time",
                 "effectiveLabels": "effective_labels",
                 "mtlsPolicy": "mtls_policy",
+                "pulumiLabels": "terraform_labels",
                 "serverCertificate": "server_certificate",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy": {
@@ -43245,7 +43245,7 @@
             "gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset": {
                 "effectiveLabels": "effective_labels",
                 "publicKeys": "public_key",
-                "terraformLabels": "terraform_labels",
+                "pulumiLabels": "terraform_labels",
                 "validationSharedKeys": "validation_shared_keys"
             },
             "gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin": {
@@ -43256,8 +43256,8 @@
                 "originAddress": "origin_address",
                 "originOverrideAction": "origin_override_action",
                 "originRedirect": "origin_redirect",
-                "retryConditions": "retry_conditions",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels",
+                "retryConditions": "retry_conditions"
             },
             "gcp:networkservices/edgeCacheService:EdgeCacheService": {
                 "disableHttp2": "disable_http2",
@@ -43268,9 +43268,9 @@
                 "ipv4Addresses": "ipv4_addresses",
                 "ipv6Addresses": "ipv6_addresses",
                 "logConfig": "log_config",
+                "pulumiLabels": "terraform_labels",
                 "requireTls": "require_tls",
-                "sslPolicy": "ssl_policy",
-                "terraformLabels": "terraform_labels"
+                "sslPolicy": "ssl_policy"
             },
             "gcp:networkservices/endpointPolicy:EndpointPolicy": {
                 "authorizationPolicy": "authorization_policy",
@@ -43278,8 +43278,8 @@
                 "createTime": "create_time",
                 "effectiveLabels": "effective_labels",
                 "endpointMatcher": "endpoint_matcher",
+                "pulumiLabels": "terraform_labels",
                 "serverTlsPolicy": "server_tls_policy",
-                "terraformLabels": "terraform_labels",
                 "trafficPortSelector": "traffic_port_selector",
                 "updateTime": "update_time"
             },
@@ -43289,44 +43289,44 @@
                 "deleteSwgAutogenRouterOnDestroy": "delete_swg_autogen_router_on_destroy",
                 "effectiveLabels": "effective_labels",
                 "gatewaySecurityPolicy": "gateway_security_policy",
+                "pulumiLabels": "terraform_labels",
                 "selfLink": "self_link",
                 "serverTlsPolicy": "server_tls_policy",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:networkservices/grpcRoute:GrpcRoute": {
                 "createTime": "create_time",
                 "effectiveLabels": "effective_labels",
+                "pulumiLabels": "terraform_labels",
                 "selfLink": "self_link",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:networkservices/httpRoute:HttpRoute": {
                 "createTime": "create_time",
                 "effectiveLabels": "effective_labels",
+                "pulumiLabels": "terraform_labels",
                 "selfLink": "self_link",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:networkservices/mesh:Mesh": {
                 "createTime": "create_time",
                 "effectiveLabels": "effective_labels",
                 "interceptionPort": "interception_port",
+                "pulumiLabels": "terraform_labels",
                 "selfLink": "self_link",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:networkservices/serviceBinding:ServiceBinding": {
                 "createTime": "create_time",
                 "effectiveLabels": "effective_labels",
-                "terraformLabels": "terraform_labels",
+                "pulumiLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:networkservices/tcpRoute:TcpRoute": {
                 "createTime": "create_time",
                 "effectiveLabels": "effective_labels",
+                "pulumiLabels": "terraform_labels",
                 "selfLink": "self_link",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:networkservices/tlsRoute:TlsRoute": {
@@ -43446,11 +43446,11 @@
                 "noRemoveDataDisk": "no_remove_data_disk",
                 "postStartupScript": "post_startup_script",
                 "proxyUri": "proxy_uri",
+                "pulumiLabels": "terraform_labels",
                 "reservationAffinity": "reservation_affinity",
                 "serviceAccount": "service_account",
                 "serviceAccountScopes": "service_account_scopes",
                 "shieldedInstanceConfig": "shielded_instance_config",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time",
                 "vmImage": "vm_image"
             },
@@ -43563,8 +43563,8 @@
                 "folderId": "folder_id",
                 "orgId": "org_id",
                 "projectId": "project_id",
-                "skipDelete": "skip_delete",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels",
+                "skipDelete": "skip_delete"
             },
             "gcp:organizations/iAMBinding:IAMBinding": {
                 "orgId": "org_id"
@@ -43598,8 +43598,8 @@
                 "folderId": "folder_id",
                 "orgId": "org_id",
                 "projectId": "project_id",
-                "skipDelete": "skip_delete",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels",
+                "skipDelete": "skip_delete"
             },
             "gcp:orgpolicy/PolicySpec:PolicySpec": {
                 "inheritFromParent": "inherit_from_parent",
@@ -44094,10 +44094,10 @@
                 "enableMessageOrdering": "enable_message_ordering",
                 "expirationPolicies": "expiration_policy",
                 "messageRetentionDuration": "message_retention_duration",
+                "pulumiLabels": "terraform_labels",
                 "pushConfigs": "push_config",
                 "retainAckedMessages": "retain_acked_messages",
-                "retryPolicies": "retry_policy",
-                "terraformLabels": "terraform_labels"
+                "retryPolicies": "retry_policy"
             },
             "gcp:pubsub/getSubscriptionBigqueryConfig:getSubscriptionBigqueryConfig": {
                 "dropUnknownFields": "drop_unknown_fields",
@@ -44141,8 +44141,8 @@
                 "kmsKeyName": "kms_key_name",
                 "messageRetentionDuration": "message_retention_duration",
                 "messageStoragePolicies": "message_storage_policy",
-                "schemaSettings": "schema_settings",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels",
+                "schemaSettings": "schema_settings"
             },
             "gcp:pubsub/getTopicIamPolicy:getTopicIamPolicy": {
                 "policyData": "policy_data"
@@ -44171,10 +44171,10 @@
                 "enableMessageOrdering": "enable_message_ordering",
                 "expirationPolicy": "expiration_policy",
                 "messageRetentionDuration": "message_retention_duration",
+                "pulumiLabels": "terraform_labels",
                 "pushConfig": "push_config",
                 "retainAckedMessages": "retain_acked_messages",
-                "retryPolicy": "retry_policy",
-                "terraformLabels": "terraform_labels"
+                "retryPolicy": "retry_policy"
             },
             "gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy": {
                 "policyData": "policy_data"
@@ -44184,8 +44184,8 @@
                 "kmsKeyName": "kms_key_name",
                 "messageRetentionDuration": "message_retention_duration",
                 "messageStoragePolicy": "message_storage_policy",
-                "schemaSettings": "schema_settings",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels",
+                "schemaSettings": "schema_settings"
             },
             "gcp:pubsub/topicIAMPolicy:TopicIAMPolicy": {
                 "policyData": "policy_data"
@@ -44215,7 +44215,7 @@
                 "displayName": "display_name",
                 "effectiveLabels": "effective_labels",
                 "iosSettings": "ios_settings",
-                "terraformLabels": "terraform_labels",
+                "pulumiLabels": "terraform_labels",
                 "testingOptions": "testing_options",
                 "webSettings": "web_settings"
             },
@@ -44288,6 +44288,7 @@
                 "memorySizeGb": "memory_size_gb",
                 "persistenceConfigs": "persistence_config",
                 "persistenceIamIdentity": "persistence_iam_identity",
+                "pulumiLabels": "terraform_labels",
                 "readEndpoint": "read_endpoint",
                 "readEndpointPort": "read_endpoint_port",
                 "readReplicasMode": "read_replicas_mode",
@@ -44297,7 +44298,6 @@
                 "reservedIpRange": "reserved_ip_range",
                 "secondaryIpRange": "secondary_ip_range",
                 "serverCaCerts": "server_ca_certs",
-                "terraformLabels": "terraform_labels",
                 "transitEncryptionMode": "transit_encryption_mode"
             },
             "gcp:redis/getInstanceMaintenancePolicy:getInstanceMaintenancePolicy": {
@@ -44342,6 +44342,7 @@
                 "memorySizeGb": "memory_size_gb",
                 "persistenceConfig": "persistence_config",
                 "persistenceIamIdentity": "persistence_iam_identity",
+                "pulumiLabels": "terraform_labels",
                 "readEndpoint": "read_endpoint",
                 "readEndpointPort": "read_endpoint_port",
                 "readReplicasMode": "read_replicas_mode",
@@ -44351,7 +44352,6 @@
                 "reservedIpRange": "reserved_ip_range",
                 "secondaryIpRange": "secondary_ip_range",
                 "serverCaCerts": "server_ca_certs",
-                "terraformLabels": "terraform_labels",
                 "transitEncryptionMode": "transit_encryption_mode"
             },
             "gcp:resourcemanager/lien:Lien": {
@@ -44393,10 +44393,10 @@
                 "effectiveAnnotations": "effective_annotations",
                 "effectiveLabels": "effective_labels",
                 "expireTime": "expire_time",
+                "pulumiLabels": "terraform_labels",
                 "replications": "replication",
                 "rotations": "rotation",
                 "secretId": "secret_id",
-                "terraformLabels": "terraform_labels",
                 "versionAliases": "version_aliases"
             },
             "gcp:secretmanager/getSecretIamPolicy:getSecretIamPolicy": {
@@ -44436,8 +44436,8 @@
                 "effectiveAnnotations": "effective_annotations",
                 "effectiveLabels": "effective_labels",
                 "expireTime": "expire_time",
+                "pulumiLabels": "terraform_labels",
                 "secretId": "secret_id",
-                "terraformLabels": "terraform_labels",
                 "versionAliases": "version_aliases"
             },
             "gcp:secretmanager/secretIamBinding:SecretIamBinding": {
@@ -44601,7 +44601,7 @@
             "gcp:servicedirectory/namespace:Namespace": {
                 "effectiveLabels": "effective_labels",
                 "namespaceId": "namespace_id",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels"
             },
             "gcp:servicedirectory/namespaceIamPolicy:NamespaceIamPolicy": {
                 "policyData": "policy_data"
@@ -44667,7 +44667,7 @@
                 "forceDestroy": "force_destroy",
                 "numNodes": "num_nodes",
                 "processingUnits": "processing_units",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels"
             },
             "gcp:spanner/getInstanceIamPolicy:getInstanceIamPolicy": {
                 "policyData": "policy_data"
@@ -44678,7 +44678,7 @@
                 "forceDestroy": "force_destroy",
                 "numNodes": "num_nodes",
                 "processingUnits": "processing_units",
-                "terraformLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels"
             },
             "gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy": {
                 "policyData": "policy_data"
@@ -45326,11 +45326,11 @@
                 "forceDestroy": "force_destroy",
                 "lifecycleRules": "lifecycle_rule",
                 "publicAccessPrevention": "public_access_prevention",
+                "pulumiLabels": "terraform_labels",
                 "requesterPays": "requester_pays",
                 "retentionPolicy": "retention_policy",
                 "selfLink": "self_link",
                 "storageClass": "storage_class",
-                "terraformLabels": "terraform_labels",
                 "uniformBucketLevelAccess": "uniform_bucket_level_access"
             },
             "gcp:storage/bucketACL:BucketACL": {
@@ -45374,11 +45374,11 @@
                 "lifecycleRules": "lifecycle_rule",
                 "loggings": "logging",
                 "publicAccessPrevention": "public_access_prevention",
+                "pulumiLabels": "terraform_labels",
                 "requesterPays": "requester_pays",
                 "retentionPolicies": "retention_policy",
                 "selfLink": "self_link",
                 "storageClass": "storage_class",
-                "terraformLabels": "terraform_labels",
                 "uniformBucketLevelAccess": "uniform_bucket_level_access",
                 "versionings": "versioning",
                 "websites": "website"
@@ -45592,10 +45592,10 @@
                 "cidrBlock": "cidr_block",
                 "effectiveLabels": "effective_labels",
                 "networkEndpoints": "network_endpoints",
+                "pulumiLabels": "terraform_labels",
                 "schedulingConfig": "scheduling_config",
                 "serviceAccount": "service_account",
                 "tensorflowVersion": "tensorflow_version",
-                "terraformLabels": "terraform_labels",
                 "useServiceNetworking": "use_service_networking"
             },
             "gcp:tpu/v2Vm:V2Vm": {
@@ -45710,7 +45710,7 @@
                 "effectiveLabels": "effective_labels",
                 "encryptionSpec": "encryption_spec",
                 "metadataSchemaUri": "metadata_schema_uri",
-                "terraformLabels": "terraform_labels",
+                "pulumiLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:vertex/aiEndpoint:AiEndpoint": {
@@ -45720,7 +45720,7 @@
                 "effectiveLabels": "effective_labels",
                 "encryptionSpec": "encryption_spec",
                 "modelDeploymentMonitoringJob": "model_deployment_monitoring_job",
-                "terraformLabels": "terraform_labels",
+                "pulumiLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:vertex/aiFeatureStore:AiFeatureStore": {
@@ -45730,7 +45730,7 @@
                 "forceDestroy": "force_destroy",
                 "onlineServingConfig": "online_serving_config",
                 "onlineStorageTtlDays": "online_storage_ttl_days",
-                "terraformLabels": "terraform_labels",
+                "pulumiLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType": {
@@ -45738,13 +45738,13 @@
                 "effectiveLabels": "effective_labels",
                 "monitoringConfig": "monitoring_config",
                 "offlineStorageTtlDays": "offline_storage_ttl_days",
-                "terraformLabels": "terraform_labels",
+                "pulumiLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature": {
                 "createTime": "create_time",
                 "effectiveLabels": "effective_labels",
-                "terraformLabels": "terraform_labels",
+                "pulumiLabels": "terraform_labels",
                 "updateTime": "update_time",
                 "valueType": "value_type"
             },
@@ -45762,7 +45762,7 @@
                 "indexStats": "index_stats",
                 "indexUpdateMethod": "index_update_method",
                 "metadataSchemaUri": "metadata_schema_uri",
-                "terraformLabels": "terraform_labels",
+                "pulumiLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:vertex/aiIndexEndpoint:AiIndexEndpoint": {
@@ -45771,7 +45771,7 @@
                 "effectiveLabels": "effective_labels",
                 "publicEndpointDomainName": "public_endpoint_domain_name",
                 "publicEndpointEnabled": "public_endpoint_enabled",
-                "terraformLabels": "terraform_labels",
+                "pulumiLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:vertex/aiMetadataStore:AiMetadataStore": {
@@ -45786,8 +45786,8 @@
                 "displayName": "display_name",
                 "effectiveLabels": "effective_labels",
                 "encryptionSpec": "encryption_spec",
+                "pulumiLabels": "terraform_labels",
                 "runCount": "run_count",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy": {
@@ -45805,7 +45805,7 @@
                 "indexUpdateMethod": "index_update_method",
                 "metadataSchemaUri": "metadata_schema_uri",
                 "metadatas": "metadata",
-                "terraformLabels": "terraform_labels",
+                "pulumiLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:vertex/getAiIndexDeployedIndex:getAiIndexDeployedIndex": {
@@ -45952,10 +45952,10 @@
                 "cryptoKeyName": "crypto_key_name",
                 "effectiveLabels": "effective_labels",
                 "namePrefix": "name_prefix",
+                "pulumiLabels": "terraform_labels",
                 "revisionId": "revision_id",
                 "serviceAccount": "service_account",
                 "sourceContents": "source_contents",
-                "terraformLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
             "gcp:workstations/WorkstationClusterPrivateClusterConfig:WorkstationClusterPrivateClusterConfig": {
@@ -46022,7 +46022,7 @@
                 "displayName": "display_name",
                 "effectiveAnnotations": "effective_annotations",
                 "effectiveLabels": "effective_labels",
-                "terraformLabels": "terraform_labels",
+                "pulumiLabels": "terraform_labels",
                 "workstationClusterId": "workstation_cluster_id",
                 "workstationConfigId": "workstation_config_id",
                 "workstationId": "workstation_id"
@@ -46033,7 +46033,7 @@
                 "effectiveAnnotations": "effective_annotations",
                 "effectiveLabels": "effective_labels",
                 "privateClusterConfig": "private_cluster_config",
-                "terraformLabels": "terraform_labels",
+                "pulumiLabels": "terraform_labels",
                 "workstationClusterId": "workstation_cluster_id"
             },
             "gcp:workstations/workstationConfig:WorkstationConfig": {
@@ -46045,9 +46045,9 @@
                 "encryptionKey": "encryption_key",
                 "idleTimeout": "idle_timeout",
                 "persistentDirectories": "persistent_directories",
+                "pulumiLabels": "terraform_labels",
                 "replicaZones": "replica_zones",
                 "runningTimeout": "running_timeout",
-                "terraformLabels": "terraform_labels",
                 "workstationClusterId": "workstation_cluster_id",
                 "workstationConfigId": "workstation_config_id"
             },
