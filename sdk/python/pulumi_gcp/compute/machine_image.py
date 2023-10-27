@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -40,46 +40,17 @@ class MachineImageArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        MachineImageArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            source_instance=source_instance,
-            description=description,
-            guest_flush=guest_flush,
-            machine_image_encryption_key=machine_image_encryption_key,
-            name=name,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             source_instance: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             guest_flush: Optional[pulumi.Input[bool]] = None,
-             machine_image_encryption_key: Optional[pulumi.Input['MachineImageMachineImageEncryptionKeyArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if source_instance is None and 'sourceInstance' in kwargs:
-            source_instance = kwargs['sourceInstance']
-        if source_instance is None:
-            raise TypeError("Missing 'source_instance' argument")
-        if guest_flush is None and 'guestFlush' in kwargs:
-            guest_flush = kwargs['guestFlush']
-        if machine_image_encryption_key is None and 'machineImageEncryptionKey' in kwargs:
-            machine_image_encryption_key = kwargs['machineImageEncryptionKey']
-
-        _setter("source_instance", source_instance)
+        pulumi.set(__self__, "source_instance", source_instance)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if guest_flush is not None:
-            _setter("guest_flush", guest_flush)
+            pulumi.set(__self__, "guest_flush", guest_flush)
         if machine_image_encryption_key is not None:
-            _setter("machine_image_encryption_key", machine_image_encryption_key)
+            pulumi.set(__self__, "machine_image_encryption_key", machine_image_encryption_key)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="sourceInstance")
@@ -194,57 +165,22 @@ class _MachineImageState:
                - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
         """
-        _MachineImageState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            guest_flush=guest_flush,
-            machine_image_encryption_key=machine_image_encryption_key,
-            name=name,
-            project=project,
-            self_link=self_link,
-            source_instance=source_instance,
-            storage_locations=storage_locations,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             guest_flush: Optional[pulumi.Input[bool]] = None,
-             machine_image_encryption_key: Optional[pulumi.Input['MachineImageMachineImageEncryptionKeyArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             self_link: Optional[pulumi.Input[str]] = None,
-             source_instance: Optional[pulumi.Input[str]] = None,
-             storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if guest_flush is None and 'guestFlush' in kwargs:
-            guest_flush = kwargs['guestFlush']
-        if machine_image_encryption_key is None and 'machineImageEncryptionKey' in kwargs:
-            machine_image_encryption_key = kwargs['machineImageEncryptionKey']
-        if self_link is None and 'selfLink' in kwargs:
-            self_link = kwargs['selfLink']
-        if source_instance is None and 'sourceInstance' in kwargs:
-            source_instance = kwargs['sourceInstance']
-        if storage_locations is None and 'storageLocations' in kwargs:
-            storage_locations = kwargs['storageLocations']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if guest_flush is not None:
-            _setter("guest_flush", guest_flush)
+            pulumi.set(__self__, "guest_flush", guest_flush)
         if machine_image_encryption_key is not None:
-            _setter("machine_image_encryption_key", machine_image_encryption_key)
+            pulumi.set(__self__, "machine_image_encryption_key", machine_image_encryption_key)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if self_link is not None:
-            _setter("self_link", self_link)
+            pulumi.set(__self__, "self_link", self_link)
         if source_instance is not None:
-            _setter("source_instance", source_instance)
+            pulumi.set(__self__, "source_instance", source_instance)
         if storage_locations is not None:
-            _setter("storage_locations", storage_locations)
+            pulumi.set(__self__, "storage_locations", storage_locations)
 
     @property
     @pulumi.getter
@@ -552,10 +488,6 @@ class MachineImage(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            MachineImageArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -578,7 +510,6 @@ class MachineImage(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["guest_flush"] = guest_flush
-            machine_image_encryption_key = _utilities.configure(machine_image_encryption_key, MachineImageMachineImageEncryptionKeyArgs, True)
             __props__.__dict__["machine_image_encryption_key"] = machine_image_encryption_key
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

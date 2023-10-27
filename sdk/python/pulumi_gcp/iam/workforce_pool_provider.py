@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -95,68 +95,23 @@ class WorkforcePoolProviderArgs:
         :param pulumi.Input['WorkforcePoolProviderSamlArgs'] saml: Represents a SAML identity provider.
                Structure is documented below.
         """
-        WorkforcePoolProviderArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            location=location,
-            provider_id=provider_id,
-            workforce_pool_id=workforce_pool_id,
-            attribute_condition=attribute_condition,
-            attribute_mapping=attribute_mapping,
-            description=description,
-            disabled=disabled,
-            display_name=display_name,
-            oidc=oidc,
-            saml=saml,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             location: Optional[pulumi.Input[str]] = None,
-             provider_id: Optional[pulumi.Input[str]] = None,
-             workforce_pool_id: Optional[pulumi.Input[str]] = None,
-             attribute_condition: Optional[pulumi.Input[str]] = None,
-             attribute_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disabled: Optional[pulumi.Input[bool]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             oidc: Optional[pulumi.Input['WorkforcePoolProviderOidcArgs']] = None,
-             saml: Optional[pulumi.Input['WorkforcePoolProviderSamlArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if provider_id is None and 'providerId' in kwargs:
-            provider_id = kwargs['providerId']
-        if provider_id is None:
-            raise TypeError("Missing 'provider_id' argument")
-        if workforce_pool_id is None and 'workforcePoolId' in kwargs:
-            workforce_pool_id = kwargs['workforcePoolId']
-        if workforce_pool_id is None:
-            raise TypeError("Missing 'workforce_pool_id' argument")
-        if attribute_condition is None and 'attributeCondition' in kwargs:
-            attribute_condition = kwargs['attributeCondition']
-        if attribute_mapping is None and 'attributeMapping' in kwargs:
-            attribute_mapping = kwargs['attributeMapping']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-
-        _setter("location", location)
-        _setter("provider_id", provider_id)
-        _setter("workforce_pool_id", workforce_pool_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "provider_id", provider_id)
+        pulumi.set(__self__, "workforce_pool_id", workforce_pool_id)
         if attribute_condition is not None:
-            _setter("attribute_condition", attribute_condition)
+            pulumi.set(__self__, "attribute_condition", attribute_condition)
         if attribute_mapping is not None:
-            _setter("attribute_mapping", attribute_mapping)
+            pulumi.set(__self__, "attribute_mapping", attribute_mapping)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if oidc is not None:
-            _setter("oidc", oidc)
+            pulumi.set(__self__, "oidc", oidc)
         if saml is not None:
-            _setter("saml", saml)
+            pulumi.set(__self__, "saml", saml)
 
     @property
     @pulumi.getter
@@ -427,73 +382,30 @@ class _WorkforcePoolProviderState:
                It must start with a letter, and cannot have a trailing hyphen.
                The prefix `gcp-` is reserved for use by Google, and may not be specified.
         """
-        _WorkforcePoolProviderState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            attribute_condition=attribute_condition,
-            attribute_mapping=attribute_mapping,
-            description=description,
-            disabled=disabled,
-            display_name=display_name,
-            location=location,
-            name=name,
-            oidc=oidc,
-            provider_id=provider_id,
-            saml=saml,
-            state=state,
-            workforce_pool_id=workforce_pool_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             attribute_condition: Optional[pulumi.Input[str]] = None,
-             attribute_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disabled: Optional[pulumi.Input[bool]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             oidc: Optional[pulumi.Input['WorkforcePoolProviderOidcArgs']] = None,
-             provider_id: Optional[pulumi.Input[str]] = None,
-             saml: Optional[pulumi.Input['WorkforcePoolProviderSamlArgs']] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             workforce_pool_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if attribute_condition is None and 'attributeCondition' in kwargs:
-            attribute_condition = kwargs['attributeCondition']
-        if attribute_mapping is None and 'attributeMapping' in kwargs:
-            attribute_mapping = kwargs['attributeMapping']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if provider_id is None and 'providerId' in kwargs:
-            provider_id = kwargs['providerId']
-        if workforce_pool_id is None and 'workforcePoolId' in kwargs:
-            workforce_pool_id = kwargs['workforcePoolId']
-
         if attribute_condition is not None:
-            _setter("attribute_condition", attribute_condition)
+            pulumi.set(__self__, "attribute_condition", attribute_condition)
         if attribute_mapping is not None:
-            _setter("attribute_mapping", attribute_mapping)
+            pulumi.set(__self__, "attribute_mapping", attribute_mapping)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if oidc is not None:
-            _setter("oidc", oidc)
+            pulumi.set(__self__, "oidc", oidc)
         if provider_id is not None:
-            _setter("provider_id", provider_id)
+            pulumi.set(__self__, "provider_id", provider_id)
         if saml is not None:
-            _setter("saml", saml)
+            pulumi.set(__self__, "saml", saml)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if workforce_pool_id is not None:
-            _setter("workforce_pool_id", workforce_pool_id)
+            pulumi.set(__self__, "workforce_pool_id", workforce_pool_id)
 
     @property
     @pulumi.getter(name="attributeCondition")
@@ -1095,10 +1007,6 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            WorkforcePoolProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1131,12 +1039,10 @@ class WorkforcePoolProvider(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            oidc = _utilities.configure(oidc, WorkforcePoolProviderOidcArgs, True)
             __props__.__dict__["oidc"] = oidc
             if provider_id is None and not opts.urn:
                 raise TypeError("Missing required property 'provider_id'")
             __props__.__dict__["provider_id"] = provider_id
-            saml = _utilities.configure(saml, WorkforcePoolProviderSamlArgs, True)
             __props__.__dict__["saml"] = saml
             if workforce_pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workforce_pool_id'")

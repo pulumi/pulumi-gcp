@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -32,29 +32,10 @@ class InstanceIamBindingConditionArgs:
         """
         :param pulumi.Input[str] description: An optional description of the instance.
         """
-        InstanceIamBindingConditionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[pulumi.Input[str]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -96,29 +77,10 @@ class InstanceIamMemberConditionArgs:
         """
         :param pulumi.Input[str] description: An optional description of the instance.
         """
-        InstanceIamMemberConditionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[pulumi.Input[str]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -178,20 +140,7 @@ class NotificationConfigStreamingConfigArgs:
                
                - - -
         """
-        NotificationConfigStreamingConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            filter=filter,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             filter: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if filter is None:
-            raise TypeError("Missing 'filter' argument")
-
-        _setter("filter", filter)
+        pulumi.set(__self__, "filter", filter)
 
     @property
     @pulumi.getter
@@ -253,47 +202,14 @@ class ProjectCustomModuleCustomConfigArgs:
                module detects. This explanation is returned with each finding instance to
                help investigators understand the detected issue. The text must be enclosed in quotation marks.
         """
-        ProjectCustomModuleCustomConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            predicate=predicate,
-            recommendation=recommendation,
-            resource_selector=resource_selector,
-            severity=severity,
-            custom_output=custom_output,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             predicate: Optional[pulumi.Input['ProjectCustomModuleCustomConfigPredicateArgs']] = None,
-             recommendation: Optional[pulumi.Input[str]] = None,
-             resource_selector: Optional[pulumi.Input['ProjectCustomModuleCustomConfigResourceSelectorArgs']] = None,
-             severity: Optional[pulumi.Input[str]] = None,
-             custom_output: Optional[pulumi.Input['ProjectCustomModuleCustomConfigCustomOutputArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if predicate is None:
-            raise TypeError("Missing 'predicate' argument")
-        if recommendation is None:
-            raise TypeError("Missing 'recommendation' argument")
-        if resource_selector is None and 'resourceSelector' in kwargs:
-            resource_selector = kwargs['resourceSelector']
-        if resource_selector is None:
-            raise TypeError("Missing 'resource_selector' argument")
-        if severity is None:
-            raise TypeError("Missing 'severity' argument")
-        if custom_output is None and 'customOutput' in kwargs:
-            custom_output = kwargs['customOutput']
-
-        _setter("predicate", predicate)
-        _setter("recommendation", recommendation)
-        _setter("resource_selector", resource_selector)
-        _setter("severity", severity)
+        pulumi.set(__self__, "predicate", predicate)
+        pulumi.set(__self__, "recommendation", recommendation)
+        pulumi.set(__self__, "resource_selector", resource_selector)
+        pulumi.set(__self__, "severity", severity)
         if custom_output is not None:
-            _setter("custom_output", custom_output)
+            pulumi.set(__self__, "custom_output", custom_output)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -386,19 +302,8 @@ class ProjectCustomModuleCustomConfigCustomOutputArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ProjectCustomModuleCustomConfigCustomOutputPropertyArgs']]] properties: A list of custom output properties to add to the finding.
                Structure is documented below.
         """
-        ProjectCustomModuleCustomConfigCustomOutputArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            properties=properties,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             properties: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectCustomModuleCustomConfigCustomOutputPropertyArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if properties is not None:
-            _setter("properties", properties)
+            pulumi.set(__self__, "properties", properties)
 
     @property
     @pulumi.getter
@@ -425,25 +330,10 @@ class ProjectCustomModuleCustomConfigCustomOutputPropertyArgs:
                to return the value of the property or a text string enclosed in quotation marks.
                Structure is documented below.
         """
-        ProjectCustomModuleCustomConfigCustomOutputPropertyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            value_expression=value_expression,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[pulumi.Input[str]] = None,
-             value_expression: Optional[pulumi.Input['ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if value_expression is None and 'valueExpression' in kwargs:
-            value_expression = kwargs['valueExpression']
-
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if value_expression is not None:
-            _setter("value_expression", value_expression)
+            pulumi.set(__self__, "value_expression", value_expression)
 
     @property
     @pulumi.getter
@@ -488,32 +378,13 @@ class ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs:
         :param pulumi.Input[str] title: Title for the expression, i.e. a short string describing its purpose. This can
                be used e.g. in UIs which allow to enter the expression.
         """
-        ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            description=description,
-            location=location,
-            title=title,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-
-        _setter("expression", expression)
+        pulumi.set(__self__, "expression", expression)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if title is not None:
-            _setter("title", title)
+            pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter
@@ -583,32 +454,13 @@ class ProjectCustomModuleCustomConfigPredicateArgs:
         :param pulumi.Input[str] title: Title for the expression, i.e. a short string describing its purpose. This can
                be used e.g. in UIs which allow to enter the expression.
         """
-        ProjectCustomModuleCustomConfigPredicateArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            description=description,
-            location=location,
-            title=title,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-
-        _setter("expression", expression)
+        pulumi.set(__self__, "expression", expression)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if title is not None:
-            _setter("title", title)
+            pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter
@@ -671,22 +523,7 @@ class ProjectCustomModuleCustomConfigResourceSelectorArgs:
                
                - - -
         """
-        ProjectCustomModuleCustomConfigResourceSelectorArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            resource_types=resource_types,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if resource_types is None and 'resourceTypes' in kwargs:
-            resource_types = kwargs['resourceTypes']
-        if resource_types is None:
-            raise TypeError("Missing 'resource_types' argument")
-
-        _setter("resource_types", resource_types)
+        pulumi.set(__self__, "resource_types", resource_types)
 
     @property
     @pulumi.getter(name="resourceTypes")
@@ -712,29 +549,10 @@ class SourceIamBindingConditionArgs:
         """
         :param pulumi.Input[str] description: The description of the source (max of 1024 characters).
         """
-        SourceIamBindingConditionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[pulumi.Input[str]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -776,29 +594,10 @@ class SourceIamMemberConditionArgs:
         """
         :param pulumi.Input[str] description: The description of the source (max of 1024 characters).
         """
-        SourceIamMemberConditionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[pulumi.Input[str]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter

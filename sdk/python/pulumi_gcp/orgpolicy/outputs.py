@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -51,39 +51,16 @@ class PolicySpec(dict):
         :param Sequence['PolicySpecRuleArgs'] rules: Up to 10 PolicyRules are allowed. In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence.
         :param str update_time: Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that `Policy`.
         """
-        PolicySpec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            etag=etag,
-            inherit_from_parent=inherit_from_parent,
-            reset=reset,
-            rules=rules,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             etag: Optional[str] = None,
-             inherit_from_parent: Optional[bool] = None,
-             reset: Optional[bool] = None,
-             rules: Optional[Sequence['outputs.PolicySpecRule']] = None,
-             update_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if inherit_from_parent is None and 'inheritFromParent' in kwargs:
-            inherit_from_parent = kwargs['inheritFromParent']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if inherit_from_parent is not None:
-            _setter("inherit_from_parent", inherit_from_parent)
+            pulumi.set(__self__, "inherit_from_parent", inherit_from_parent)
         if reset is not None:
-            _setter("reset", reset)
+            pulumi.set(__self__, "reset", reset)
         if rules is not None:
-            _setter("rules", rules)
+            pulumi.set(__self__, "rules", rules)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter
@@ -160,39 +137,16 @@ class PolicySpecRule(dict):
         :param str enforce: If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
         :param 'PolicySpecRuleValuesArgs' values: List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
         """
-        PolicySpecRule._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_all=allow_all,
-            condition=condition,
-            deny_all=deny_all,
-            enforce=enforce,
-            values=values,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_all: Optional[str] = None,
-             condition: Optional['outputs.PolicySpecRuleCondition'] = None,
-             deny_all: Optional[str] = None,
-             enforce: Optional[str] = None,
-             values: Optional['outputs.PolicySpecRuleValues'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_all is None and 'allowAll' in kwargs:
-            allow_all = kwargs['allowAll']
-        if deny_all is None and 'denyAll' in kwargs:
-            deny_all = kwargs['denyAll']
-
         if allow_all is not None:
-            _setter("allow_all", allow_all)
+            pulumi.set(__self__, "allow_all", allow_all)
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
         if deny_all is not None:
-            _setter("deny_all", deny_all)
+            pulumi.set(__self__, "deny_all", deny_all)
         if enforce is not None:
-            _setter("enforce", enforce)
+            pulumi.set(__self__, "enforce", enforce)
         if values is not None:
-            _setter("values", values)
+            pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter(name="allowAll")
@@ -248,31 +202,14 @@ class PolicySpecRuleCondition(dict):
         :param str location: Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
         :param str title: Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
-        PolicySpecRuleCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            expression=expression,
-            location=location,
-            title=title,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[str] = None,
-             expression: Optional[str] = None,
-             location: Optional[str] = None,
-             title: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if expression is not None:
-            _setter("expression", expression)
+            pulumi.set(__self__, "expression", expression)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if title is not None:
-            _setter("title", title)
+            pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter
@@ -335,27 +272,10 @@ class PolicySpecRuleValues(dict):
         :param Sequence[str] allowed_values: List of values allowed at this resource.
         :param Sequence[str] denied_values: List of values denied at this resource.
         """
-        PolicySpecRuleValues._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_values=allowed_values,
-            denied_values=denied_values,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_values: Optional[Sequence[str]] = None,
-             denied_values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_values is None and 'allowedValues' in kwargs:
-            allowed_values = kwargs['allowedValues']
-        if denied_values is None and 'deniedValues' in kwargs:
-            denied_values = kwargs['deniedValues']
-
         if allowed_values is not None:
-            _setter("allowed_values", allowed_values)
+            pulumi.set(__self__, "allowed_values", allowed_values)
         if denied_values is not None:
-            _setter("denied_values", denied_values)
+            pulumi.set(__self__, "denied_values", denied_values)
 
     @property
     @pulumi.getter(name="allowedValues")

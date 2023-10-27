@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,46 +37,19 @@ class LakeArgs:
                - - -
         :param pulumi.Input[str] project: The project for the resource
         """
-        LakeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            location=location,
-            description=description,
-            display_name=display_name,
-            labels=labels,
-            metastore=metastore,
-            name=name,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             location: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             metastore: Optional[pulumi.Input['LakeMetastoreArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-
-        _setter("location", location)
+        pulumi.set(__self__, "location", location)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if metastore is not None:
-            _setter("metastore", metastore)
+            pulumi.set(__self__, "metastore", metastore)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -205,83 +178,34 @@ class _LakeState:
         :param pulumi.Input[str] uid: Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
         :param pulumi.Input[str] update_time: Output only. The time when the lake was last updated.
         """
-        _LakeState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            asset_statuses=asset_statuses,
-            create_time=create_time,
-            description=description,
-            display_name=display_name,
-            labels=labels,
-            location=location,
-            metastore=metastore,
-            metastore_statuses=metastore_statuses,
-            name=name,
-            project=project,
-            service_account=service_account,
-            state=state,
-            uid=uid,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             asset_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['LakeAssetStatusArgs']]]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             metastore: Optional[pulumi.Input['LakeMetastoreArgs']] = None,
-             metastore_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['LakeMetastoreStatusArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             service_account: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             uid: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if asset_statuses is None and 'assetStatuses' in kwargs:
-            asset_statuses = kwargs['assetStatuses']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if metastore_statuses is None and 'metastoreStatuses' in kwargs:
-            metastore_statuses = kwargs['metastoreStatuses']
-        if service_account is None and 'serviceAccount' in kwargs:
-            service_account = kwargs['serviceAccount']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if asset_statuses is not None:
-            _setter("asset_statuses", asset_statuses)
+            pulumi.set(__self__, "asset_statuses", asset_statuses)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if metastore is not None:
-            _setter("metastore", metastore)
+            pulumi.set(__self__, "metastore", metastore)
         if metastore_statuses is not None:
-            _setter("metastore_statuses", metastore_statuses)
+            pulumi.set(__self__, "metastore_statuses", metastore_statuses)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if service_account is not None:
-            _setter("service_account", service_account)
+            pulumi.set(__self__, "service_account", service_account)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if uid is not None:
-            _setter("uid", uid)
+            pulumi.set(__self__, "uid", uid)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="assetStatuses")
@@ -571,10 +495,6 @@ class Lake(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            LakeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -602,7 +522,6 @@ class Lake(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            metastore = _utilities.configure(metastore, LakeMetastoreArgs, True)
             __props__.__dict__["metastore"] = metastore
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RegionNetworkFirewallPolicyArgs', 'RegionNetworkFirewallPolicy']
@@ -29,31 +29,14 @@ class RegionNetworkFirewallPolicyArgs:
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] region: The location of this resource.
         """
-        RegionNetworkFirewallPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            name=name,
-            project=project,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter
@@ -138,65 +121,26 @@ class _RegionNetworkFirewallPolicyState:
         :param pulumi.Input[str] self_link: Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: Server-defined URL for this resource with the resource id.
         """
-        _RegionNetworkFirewallPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            creation_timestamp=creation_timestamp,
-            description=description,
-            fingerprint=fingerprint,
-            name=name,
-            project=project,
-            region=region,
-            region_network_firewall_policy_id=region_network_firewall_policy_id,
-            rule_tuple_count=rule_tuple_count,
-            self_link=self_link,
-            self_link_with_id=self_link_with_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             creation_timestamp: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             fingerprint: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             region_network_firewall_policy_id: Optional[pulumi.Input[str]] = None,
-             rule_tuple_count: Optional[pulumi.Input[int]] = None,
-             self_link: Optional[pulumi.Input[str]] = None,
-             self_link_with_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if creation_timestamp is None and 'creationTimestamp' in kwargs:
-            creation_timestamp = kwargs['creationTimestamp']
-        if region_network_firewall_policy_id is None and 'regionNetworkFirewallPolicyId' in kwargs:
-            region_network_firewall_policy_id = kwargs['regionNetworkFirewallPolicyId']
-        if rule_tuple_count is None and 'ruleTupleCount' in kwargs:
-            rule_tuple_count = kwargs['ruleTupleCount']
-        if self_link is None and 'selfLink' in kwargs:
-            self_link = kwargs['selfLink']
-        if self_link_with_id is None and 'selfLinkWithId' in kwargs:
-            self_link_with_id = kwargs['selfLinkWithId']
-
         if creation_timestamp is not None:
-            _setter("creation_timestamp", creation_timestamp)
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if fingerprint is not None:
-            _setter("fingerprint", fingerprint)
+            pulumi.set(__self__, "fingerprint", fingerprint)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if region_network_firewall_policy_id is not None:
-            _setter("region_network_firewall_policy_id", region_network_firewall_policy_id)
+            pulumi.set(__self__, "region_network_firewall_policy_id", region_network_firewall_policy_id)
         if rule_tuple_count is not None:
-            _setter("rule_tuple_count", rule_tuple_count)
+            pulumi.set(__self__, "rule_tuple_count", rule_tuple_count)
         if self_link is not None:
-            _setter("self_link", self_link)
+            pulumi.set(__self__, "self_link", self_link)
         if self_link_with_id is not None:
-            _setter("self_link_with_id", self_link_with_id)
+            pulumi.set(__self__, "self_link_with_id", self_link_with_id)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -430,10 +374,6 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RegionNetworkFirewallPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

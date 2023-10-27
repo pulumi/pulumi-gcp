@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ProjectArgs', 'Project']
@@ -20,19 +20,8 @@ class ProjectArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        ProjectArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -61,31 +50,12 @@ class _ProjectState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] project_number: The number of the google project that firebase is enabled on.
         """
-        _ProjectState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            display_name=display_name,
-            project=project,
-            project_number=project_number,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             display_name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             project_number: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if project_number is None and 'projectNumber' in kwargs:
-            project_number = kwargs['projectNumber']
-
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if project_number is not None:
-            _setter("project_number", project_number)
+            pulumi.set(__self__, "project_number", project_number)
 
     @property
     @pulumi.getter(name="displayName")
@@ -237,10 +207,6 @@ class Project(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProjectArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

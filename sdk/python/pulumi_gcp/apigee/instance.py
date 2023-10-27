@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InstanceArgs', 'Instance']
@@ -50,65 +50,22 @@ class InstanceArgs:
         :param pulumi.Input[str] peering_cidr_range: The size of the CIDR block range that will be reserved by the instance. For valid values,
                see [CidrRange](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances#CidrRange) on the documentation.
         """
-        InstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            location=location,
-            org_id=org_id,
-            consumer_accept_lists=consumer_accept_lists,
-            description=description,
-            disk_encryption_key_name=disk_encryption_key_name,
-            display_name=display_name,
-            ip_range=ip_range,
-            name=name,
-            peering_cidr_range=peering_cidr_range,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             location: Optional[pulumi.Input[str]] = None,
-             org_id: Optional[pulumi.Input[str]] = None,
-             consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disk_encryption_key_name: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             ip_range: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             peering_cidr_range: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if org_id is None and 'orgId' in kwargs:
-            org_id = kwargs['orgId']
-        if org_id is None:
-            raise TypeError("Missing 'org_id' argument")
-        if consumer_accept_lists is None and 'consumerAcceptLists' in kwargs:
-            consumer_accept_lists = kwargs['consumerAcceptLists']
-        if disk_encryption_key_name is None and 'diskEncryptionKeyName' in kwargs:
-            disk_encryption_key_name = kwargs['diskEncryptionKeyName']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if ip_range is None and 'ipRange' in kwargs:
-            ip_range = kwargs['ipRange']
-        if peering_cidr_range is None and 'peeringCidrRange' in kwargs:
-            peering_cidr_range = kwargs['peeringCidrRange']
-
-        _setter("location", location)
-        _setter("org_id", org_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "org_id", org_id)
         if consumer_accept_lists is not None:
-            _setter("consumer_accept_lists", consumer_accept_lists)
+            pulumi.set(__self__, "consumer_accept_lists", consumer_accept_lists)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disk_encryption_key_name is not None:
-            _setter("disk_encryption_key_name", disk_encryption_key_name)
+            pulumi.set(__self__, "disk_encryption_key_name", disk_encryption_key_name)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if ip_range is not None:
-            _setter("ip_range", ip_range)
+            pulumi.set(__self__, "ip_range", ip_range)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if peering_cidr_range is not None:
-            _setter("peering_cidr_range", peering_cidr_range)
+            pulumi.set(__self__, "peering_cidr_range", peering_cidr_range)
 
     @property
     @pulumi.getter
@@ -281,77 +238,30 @@ class _InstanceState:
                the format: projects/*/regions/*/serviceAttachments/* Apigee customers can privately
                forward traffic to this service attachment using the PSC endpoints.
         """
-        _InstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            consumer_accept_lists=consumer_accept_lists,
-            description=description,
-            disk_encryption_key_name=disk_encryption_key_name,
-            display_name=display_name,
-            host=host,
-            ip_range=ip_range,
-            location=location,
-            name=name,
-            org_id=org_id,
-            peering_cidr_range=peering_cidr_range,
-            port=port,
-            service_attachment=service_attachment,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disk_encryption_key_name: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             host: Optional[pulumi.Input[str]] = None,
-             ip_range: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             org_id: Optional[pulumi.Input[str]] = None,
-             peering_cidr_range: Optional[pulumi.Input[str]] = None,
-             port: Optional[pulumi.Input[str]] = None,
-             service_attachment: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if consumer_accept_lists is None and 'consumerAcceptLists' in kwargs:
-            consumer_accept_lists = kwargs['consumerAcceptLists']
-        if disk_encryption_key_name is None and 'diskEncryptionKeyName' in kwargs:
-            disk_encryption_key_name = kwargs['diskEncryptionKeyName']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if ip_range is None and 'ipRange' in kwargs:
-            ip_range = kwargs['ipRange']
-        if org_id is None and 'orgId' in kwargs:
-            org_id = kwargs['orgId']
-        if peering_cidr_range is None and 'peeringCidrRange' in kwargs:
-            peering_cidr_range = kwargs['peeringCidrRange']
-        if service_attachment is None and 'serviceAttachment' in kwargs:
-            service_attachment = kwargs['serviceAttachment']
-
         if consumer_accept_lists is not None:
-            _setter("consumer_accept_lists", consumer_accept_lists)
+            pulumi.set(__self__, "consumer_accept_lists", consumer_accept_lists)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disk_encryption_key_name is not None:
-            _setter("disk_encryption_key_name", disk_encryption_key_name)
+            pulumi.set(__self__, "disk_encryption_key_name", disk_encryption_key_name)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if host is not None:
-            _setter("host", host)
+            pulumi.set(__self__, "host", host)
         if ip_range is not None:
-            _setter("ip_range", ip_range)
+            pulumi.set(__self__, "ip_range", ip_range)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if org_id is not None:
-            _setter("org_id", org_id)
+            pulumi.set(__self__, "org_id", org_id)
         if peering_cidr_range is not None:
-            _setter("peering_cidr_range", peering_cidr_range)
+            pulumi.set(__self__, "peering_cidr_range", peering_cidr_range)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if service_attachment is not None:
-            _setter("service_attachment", service_attachment)
+            pulumi.set(__self__, "service_attachment", service_attachment)
 
     @property
     @pulumi.getter(name="consumerAcceptLists")
@@ -869,10 +779,6 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

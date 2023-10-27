@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -25,25 +25,10 @@ class NodeNetworkEndpointArgs:
         :param pulumi.Input[int] port: (Output)
                The port of this network endpoint.
         """
-        NodeNetworkEndpointArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ip_address=ip_address,
-            port=port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ip_address: Optional[pulumi.Input[str]] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ip_address is None and 'ipAddress' in kwargs:
-            ip_address = kwargs['ipAddress']
-
         if ip_address is not None:
-            _setter("ip_address", ip_address)
+            pulumi.set(__self__, "ip_address", ip_address)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -79,20 +64,7 @@ class NodeSchedulingConfigArgs:
         """
         :param pulumi.Input[bool] preemptible: Defines whether the TPU instance is preemptible.
         """
-        NodeSchedulingConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            preemptible=preemptible,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             preemptible: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if preemptible is None:
-            raise TypeError("Missing 'preemptible' argument")
-
-        _setter("preemptible", preemptible)
+        pulumi.set(__self__, "preemptible", preemptible)
 
     @property
     @pulumi.getter

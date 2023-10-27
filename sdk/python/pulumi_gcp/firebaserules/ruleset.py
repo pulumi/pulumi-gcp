@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -23,24 +23,9 @@ class RulesetArgs:
         :param pulumi.Input['RulesetSourceArgs'] source: `Source` for the `Ruleset`.
         :param pulumi.Input[str] project: The project for the resource
         """
-        RulesetArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            source=source,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             source: Optional[pulumi.Input['RulesetSourceArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if source is None:
-            raise TypeError("Missing 'source' argument")
-
-        _setter("source", source)
+        pulumi.set(__self__, "source", source)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -85,37 +70,16 @@ class _RulesetState:
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input['RulesetSourceArgs'] source: `Source` for the `Ruleset`.
         """
-        _RulesetState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            metadatas=metadatas,
-            name=name,
-            project=project,
-            source=source,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[pulumi.Input[str]] = None,
-             metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetMetadataArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             source: Optional[pulumi.Input['RulesetSourceArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if metadatas is not None:
-            _setter("metadatas", metadatas)
+            pulumi.set(__self__, "metadatas", metadatas)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter(name="createTime")
@@ -315,10 +279,6 @@ class Ruleset(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RulesetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -336,7 +296,6 @@ class Ruleset(pulumi.CustomResource):
             __props__ = RulesetArgs.__new__(RulesetArgs)
 
             __props__.__dict__["project"] = project
-            source = _utilities.configure(source, RulesetSourceArgs, True)
             if source is None and not opts.urn:
                 raise TypeError("Missing required property 'source'")
             __props__.__dict__["source"] = source

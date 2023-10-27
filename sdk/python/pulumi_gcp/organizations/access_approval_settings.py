@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -34,41 +34,12 @@ class AccessApprovalSettingsArgs:
                Notifications relating to a resource will be sent to all emails in the settings of ancestor
                resources of that resource. A maximum of 50 email addresses are allowed.
         """
-        AccessApprovalSettingsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enrolled_services=enrolled_services,
-            organization_id=organization_id,
-            active_key_version=active_key_version,
-            notification_emails=notification_emails,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enrolled_services: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]]] = None,
-             organization_id: Optional[pulumi.Input[str]] = None,
-             active_key_version: Optional[pulumi.Input[str]] = None,
-             notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enrolled_services is None and 'enrolledServices' in kwargs:
-            enrolled_services = kwargs['enrolledServices']
-        if enrolled_services is None:
-            raise TypeError("Missing 'enrolled_services' argument")
-        if organization_id is None and 'organizationId' in kwargs:
-            organization_id = kwargs['organizationId']
-        if organization_id is None:
-            raise TypeError("Missing 'organization_id' argument")
-        if active_key_version is None and 'activeKeyVersion' in kwargs:
-            active_key_version = kwargs['activeKeyVersion']
-        if notification_emails is None and 'notificationEmails' in kwargs:
-            notification_emails = kwargs['notificationEmails']
-
-        _setter("enrolled_services", enrolled_services)
-        _setter("organization_id", organization_id)
+        pulumi.set(__self__, "enrolled_services", enrolled_services)
+        pulumi.set(__self__, "organization_id", organization_id)
         if active_key_version is not None:
-            _setter("active_key_version", active_key_version)
+            pulumi.set(__self__, "active_key_version", active_key_version)
         if notification_emails is not None:
-            _setter("notification_emails", notification_emails)
+            pulumi.set(__self__, "notification_emails", notification_emails)
 
     @property
     @pulumi.getter(name="enrolledServices")
@@ -157,61 +128,22 @@ class _AccessApprovalSettingsState:
                resources of that resource. A maximum of 50 email addresses are allowed.
         :param pulumi.Input[str] organization_id: ID of the organization of the access approval settings.
         """
-        _AccessApprovalSettingsState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            active_key_version=active_key_version,
-            ancestor_has_active_key_version=ancestor_has_active_key_version,
-            enrolled_ancestor=enrolled_ancestor,
-            enrolled_services=enrolled_services,
-            invalid_key_version=invalid_key_version,
-            name=name,
-            notification_emails=notification_emails,
-            organization_id=organization_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             active_key_version: Optional[pulumi.Input[str]] = None,
-             ancestor_has_active_key_version: Optional[pulumi.Input[bool]] = None,
-             enrolled_ancestor: Optional[pulumi.Input[bool]] = None,
-             enrolled_services: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]]] = None,
-             invalid_key_version: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             organization_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if active_key_version is None and 'activeKeyVersion' in kwargs:
-            active_key_version = kwargs['activeKeyVersion']
-        if ancestor_has_active_key_version is None and 'ancestorHasActiveKeyVersion' in kwargs:
-            ancestor_has_active_key_version = kwargs['ancestorHasActiveKeyVersion']
-        if enrolled_ancestor is None and 'enrolledAncestor' in kwargs:
-            enrolled_ancestor = kwargs['enrolledAncestor']
-        if enrolled_services is None and 'enrolledServices' in kwargs:
-            enrolled_services = kwargs['enrolledServices']
-        if invalid_key_version is None and 'invalidKeyVersion' in kwargs:
-            invalid_key_version = kwargs['invalidKeyVersion']
-        if notification_emails is None and 'notificationEmails' in kwargs:
-            notification_emails = kwargs['notificationEmails']
-        if organization_id is None and 'organizationId' in kwargs:
-            organization_id = kwargs['organizationId']
-
         if active_key_version is not None:
-            _setter("active_key_version", active_key_version)
+            pulumi.set(__self__, "active_key_version", active_key_version)
         if ancestor_has_active_key_version is not None:
-            _setter("ancestor_has_active_key_version", ancestor_has_active_key_version)
+            pulumi.set(__self__, "ancestor_has_active_key_version", ancestor_has_active_key_version)
         if enrolled_ancestor is not None:
-            _setter("enrolled_ancestor", enrolled_ancestor)
+            pulumi.set(__self__, "enrolled_ancestor", enrolled_ancestor)
         if enrolled_services is not None:
-            _setter("enrolled_services", enrolled_services)
+            pulumi.set(__self__, "enrolled_services", enrolled_services)
         if invalid_key_version is not None:
-            _setter("invalid_key_version", invalid_key_version)
+            pulumi.set(__self__, "invalid_key_version", invalid_key_version)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if notification_emails is not None:
-            _setter("notification_emails", notification_emails)
+            pulumi.set(__self__, "notification_emails", notification_emails)
         if organization_id is not None:
-            _setter("organization_id", organization_id)
+            pulumi.set(__self__, "organization_id", organization_id)
 
     @property
     @pulumi.getter(name="activeKeyVersion")
@@ -509,10 +441,6 @@ class AccessApprovalSettings(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AccessApprovalSettingsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -32,30 +32,11 @@ class ClusterArgs:
                where the key is canonical identifier of the node type (corresponds to the NodeType).
                Structure is documented below.
         """
-        ClusterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            parent=parent,
-            name=name,
-            node_type_configs=node_type_configs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             parent: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if parent is None:
-            raise TypeError("Missing 'parent' argument")
-        if node_type_configs is None and 'nodeTypeConfigs' in kwargs:
-            node_type_configs = kwargs['nodeTypeConfigs']
-
-        _setter("parent", parent)
+        pulumi.set(__self__, "parent", parent)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if node_type_configs is not None:
-            _setter("node_type_configs", node_type_configs)
+            pulumi.set(__self__, "node_type_configs", node_type_configs)
 
     @property
     @pulumi.getter
@@ -127,41 +108,18 @@ class _ClusterState:
         :param pulumi.Input[str] state: State of the Cluster.
         :param pulumi.Input[str] uid: System-generated unique identifier for the resource.
         """
-        _ClusterState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            management=management,
-            name=name,
-            node_type_configs=node_type_configs,
-            parent=parent,
-            state=state,
-            uid=uid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             management: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]]] = None,
-             parent: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if node_type_configs is None and 'nodeTypeConfigs' in kwargs:
-            node_type_configs = kwargs['nodeTypeConfigs']
-
         if management is not None:
-            _setter("management", management)
+            pulumi.set(__self__, "management", management)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if node_type_configs is not None:
-            _setter("node_type_configs", node_type_configs)
+            pulumi.set(__self__, "node_type_configs", node_type_configs)
         if parent is not None:
-            _setter("parent", parent)
+            pulumi.set(__self__, "parent", parent)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if uid is not None:
-            _setter("uid", uid)
+            pulumi.set(__self__, "uid", uid)
 
     @property
     @pulumi.getter
@@ -444,10 +402,6 @@ class Cluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

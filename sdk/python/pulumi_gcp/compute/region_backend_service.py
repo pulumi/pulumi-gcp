@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -132,153 +132,58 @@ class RegionBackendServiceArgs:
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
                failed request. Default is 30 seconds. Valid range is [1, 86400].
         """
-        RegionBackendServiceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            affinity_cookie_ttl_sec=affinity_cookie_ttl_sec,
-            backends=backends,
-            cdn_policy=cdn_policy,
-            circuit_breakers=circuit_breakers,
-            connection_draining_timeout_sec=connection_draining_timeout_sec,
-            connection_tracking_policy=connection_tracking_policy,
-            consistent_hash=consistent_hash,
-            description=description,
-            enable_cdn=enable_cdn,
-            failover_policy=failover_policy,
-            health_checks=health_checks,
-            iap=iap,
-            load_balancing_scheme=load_balancing_scheme,
-            locality_lb_policy=locality_lb_policy,
-            log_config=log_config,
-            name=name,
-            network=network,
-            outlier_detection=outlier_detection,
-            port_name=port_name,
-            project=project,
-            protocol=protocol,
-            region=region,
-            security_policy=security_policy,
-            session_affinity=session_affinity,
-            subsetting=subsetting,
-            timeout_sec=timeout_sec,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             affinity_cookie_ttl_sec: Optional[pulumi.Input[int]] = None,
-             backends: Optional[pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceBackendArgs']]]] = None,
-             cdn_policy: Optional[pulumi.Input['RegionBackendServiceCdnPolicyArgs']] = None,
-             circuit_breakers: Optional[pulumi.Input['RegionBackendServiceCircuitBreakersArgs']] = None,
-             connection_draining_timeout_sec: Optional[pulumi.Input[int]] = None,
-             connection_tracking_policy: Optional[pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs']] = None,
-             consistent_hash: Optional[pulumi.Input['RegionBackendServiceConsistentHashArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             enable_cdn: Optional[pulumi.Input[bool]] = None,
-             failover_policy: Optional[pulumi.Input['RegionBackendServiceFailoverPolicyArgs']] = None,
-             health_checks: Optional[pulumi.Input[str]] = None,
-             iap: Optional[pulumi.Input['RegionBackendServiceIapArgs']] = None,
-             load_balancing_scheme: Optional[pulumi.Input[str]] = None,
-             locality_lb_policy: Optional[pulumi.Input[str]] = None,
-             log_config: Optional[pulumi.Input['RegionBackendServiceLogConfigArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network: Optional[pulumi.Input[str]] = None,
-             outlier_detection: Optional[pulumi.Input['RegionBackendServiceOutlierDetectionArgs']] = None,
-             port_name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             protocol: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             security_policy: Optional[pulumi.Input[str]] = None,
-             session_affinity: Optional[pulumi.Input[str]] = None,
-             subsetting: Optional[pulumi.Input['RegionBackendServiceSubsettingArgs']] = None,
-             timeout_sec: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if affinity_cookie_ttl_sec is None and 'affinityCookieTtlSec' in kwargs:
-            affinity_cookie_ttl_sec = kwargs['affinityCookieTtlSec']
-        if cdn_policy is None and 'cdnPolicy' in kwargs:
-            cdn_policy = kwargs['cdnPolicy']
-        if circuit_breakers is None and 'circuitBreakers' in kwargs:
-            circuit_breakers = kwargs['circuitBreakers']
-        if connection_draining_timeout_sec is None and 'connectionDrainingTimeoutSec' in kwargs:
-            connection_draining_timeout_sec = kwargs['connectionDrainingTimeoutSec']
-        if connection_tracking_policy is None and 'connectionTrackingPolicy' in kwargs:
-            connection_tracking_policy = kwargs['connectionTrackingPolicy']
-        if consistent_hash is None and 'consistentHash' in kwargs:
-            consistent_hash = kwargs['consistentHash']
-        if enable_cdn is None and 'enableCdn' in kwargs:
-            enable_cdn = kwargs['enableCdn']
-        if failover_policy is None and 'failoverPolicy' in kwargs:
-            failover_policy = kwargs['failoverPolicy']
-        if health_checks is None and 'healthChecks' in kwargs:
-            health_checks = kwargs['healthChecks']
-        if load_balancing_scheme is None and 'loadBalancingScheme' in kwargs:
-            load_balancing_scheme = kwargs['loadBalancingScheme']
-        if locality_lb_policy is None and 'localityLbPolicy' in kwargs:
-            locality_lb_policy = kwargs['localityLbPolicy']
-        if log_config is None and 'logConfig' in kwargs:
-            log_config = kwargs['logConfig']
-        if outlier_detection is None and 'outlierDetection' in kwargs:
-            outlier_detection = kwargs['outlierDetection']
-        if port_name is None and 'portName' in kwargs:
-            port_name = kwargs['portName']
-        if security_policy is None and 'securityPolicy' in kwargs:
-            security_policy = kwargs['securityPolicy']
-        if session_affinity is None and 'sessionAffinity' in kwargs:
-            session_affinity = kwargs['sessionAffinity']
-        if timeout_sec is None and 'timeoutSec' in kwargs:
-            timeout_sec = kwargs['timeoutSec']
-
         if affinity_cookie_ttl_sec is not None:
-            _setter("affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
+            pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
         if backends is not None:
-            _setter("backends", backends)
+            pulumi.set(__self__, "backends", backends)
         if cdn_policy is not None:
-            _setter("cdn_policy", cdn_policy)
+            pulumi.set(__self__, "cdn_policy", cdn_policy)
         if circuit_breakers is not None:
-            _setter("circuit_breakers", circuit_breakers)
+            pulumi.set(__self__, "circuit_breakers", circuit_breakers)
         if connection_draining_timeout_sec is not None:
-            _setter("connection_draining_timeout_sec", connection_draining_timeout_sec)
+            pulumi.set(__self__, "connection_draining_timeout_sec", connection_draining_timeout_sec)
         if connection_tracking_policy is not None:
-            _setter("connection_tracking_policy", connection_tracking_policy)
+            pulumi.set(__self__, "connection_tracking_policy", connection_tracking_policy)
         if consistent_hash is not None:
-            _setter("consistent_hash", consistent_hash)
+            pulumi.set(__self__, "consistent_hash", consistent_hash)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if enable_cdn is not None:
-            _setter("enable_cdn", enable_cdn)
+            pulumi.set(__self__, "enable_cdn", enable_cdn)
         if failover_policy is not None:
-            _setter("failover_policy", failover_policy)
+            pulumi.set(__self__, "failover_policy", failover_policy)
         if health_checks is not None:
-            _setter("health_checks", health_checks)
+            pulumi.set(__self__, "health_checks", health_checks)
         if iap is not None:
-            _setter("iap", iap)
+            pulumi.set(__self__, "iap", iap)
         if load_balancing_scheme is not None:
-            _setter("load_balancing_scheme", load_balancing_scheme)
+            pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
         if locality_lb_policy is not None:
-            _setter("locality_lb_policy", locality_lb_policy)
+            pulumi.set(__self__, "locality_lb_policy", locality_lb_policy)
         if log_config is not None:
-            _setter("log_config", log_config)
+            pulumi.set(__self__, "log_config", log_config)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if outlier_detection is not None:
-            _setter("outlier_detection", outlier_detection)
+            pulumi.set(__self__, "outlier_detection", outlier_detection)
         if port_name is not None:
-            _setter("port_name", port_name)
+            pulumi.set(__self__, "port_name", port_name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if protocol is not None:
-            _setter("protocol", protocol)
+            pulumi.set(__self__, "protocol", protocol)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if security_policy is not None:
-            _setter("security_policy", security_policy)
+            pulumi.set(__self__, "security_policy", security_policy)
         if session_affinity is not None:
-            _setter("session_affinity", session_affinity)
+            pulumi.set(__self__, "session_affinity", session_affinity)
         if subsetting is not None:
-            _setter("subsetting", subsetting)
+            pulumi.set(__self__, "subsetting", subsetting)
         if timeout_sec is not None:
-            _setter("timeout_sec", timeout_sec)
+            pulumi.set(__self__, "timeout_sec", timeout_sec)
 
     @property
     @pulumi.getter(name="affinityCookieTtlSec")
@@ -780,169 +685,64 @@ class _RegionBackendServiceState:
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
                failed request. Default is 30 seconds. Valid range is [1, 86400].
         """
-        _RegionBackendServiceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            affinity_cookie_ttl_sec=affinity_cookie_ttl_sec,
-            backends=backends,
-            cdn_policy=cdn_policy,
-            circuit_breakers=circuit_breakers,
-            connection_draining_timeout_sec=connection_draining_timeout_sec,
-            connection_tracking_policy=connection_tracking_policy,
-            consistent_hash=consistent_hash,
-            creation_timestamp=creation_timestamp,
-            description=description,
-            enable_cdn=enable_cdn,
-            failover_policy=failover_policy,
-            fingerprint=fingerprint,
-            health_checks=health_checks,
-            iap=iap,
-            load_balancing_scheme=load_balancing_scheme,
-            locality_lb_policy=locality_lb_policy,
-            log_config=log_config,
-            name=name,
-            network=network,
-            outlier_detection=outlier_detection,
-            port_name=port_name,
-            project=project,
-            protocol=protocol,
-            region=region,
-            security_policy=security_policy,
-            self_link=self_link,
-            session_affinity=session_affinity,
-            subsetting=subsetting,
-            timeout_sec=timeout_sec,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             affinity_cookie_ttl_sec: Optional[pulumi.Input[int]] = None,
-             backends: Optional[pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceBackendArgs']]]] = None,
-             cdn_policy: Optional[pulumi.Input['RegionBackendServiceCdnPolicyArgs']] = None,
-             circuit_breakers: Optional[pulumi.Input['RegionBackendServiceCircuitBreakersArgs']] = None,
-             connection_draining_timeout_sec: Optional[pulumi.Input[int]] = None,
-             connection_tracking_policy: Optional[pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs']] = None,
-             consistent_hash: Optional[pulumi.Input['RegionBackendServiceConsistentHashArgs']] = None,
-             creation_timestamp: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             enable_cdn: Optional[pulumi.Input[bool]] = None,
-             failover_policy: Optional[pulumi.Input['RegionBackendServiceFailoverPolicyArgs']] = None,
-             fingerprint: Optional[pulumi.Input[str]] = None,
-             health_checks: Optional[pulumi.Input[str]] = None,
-             iap: Optional[pulumi.Input['RegionBackendServiceIapArgs']] = None,
-             load_balancing_scheme: Optional[pulumi.Input[str]] = None,
-             locality_lb_policy: Optional[pulumi.Input[str]] = None,
-             log_config: Optional[pulumi.Input['RegionBackendServiceLogConfigArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network: Optional[pulumi.Input[str]] = None,
-             outlier_detection: Optional[pulumi.Input['RegionBackendServiceOutlierDetectionArgs']] = None,
-             port_name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             protocol: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             security_policy: Optional[pulumi.Input[str]] = None,
-             self_link: Optional[pulumi.Input[str]] = None,
-             session_affinity: Optional[pulumi.Input[str]] = None,
-             subsetting: Optional[pulumi.Input['RegionBackendServiceSubsettingArgs']] = None,
-             timeout_sec: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if affinity_cookie_ttl_sec is None and 'affinityCookieTtlSec' in kwargs:
-            affinity_cookie_ttl_sec = kwargs['affinityCookieTtlSec']
-        if cdn_policy is None and 'cdnPolicy' in kwargs:
-            cdn_policy = kwargs['cdnPolicy']
-        if circuit_breakers is None and 'circuitBreakers' in kwargs:
-            circuit_breakers = kwargs['circuitBreakers']
-        if connection_draining_timeout_sec is None and 'connectionDrainingTimeoutSec' in kwargs:
-            connection_draining_timeout_sec = kwargs['connectionDrainingTimeoutSec']
-        if connection_tracking_policy is None and 'connectionTrackingPolicy' in kwargs:
-            connection_tracking_policy = kwargs['connectionTrackingPolicy']
-        if consistent_hash is None and 'consistentHash' in kwargs:
-            consistent_hash = kwargs['consistentHash']
-        if creation_timestamp is None and 'creationTimestamp' in kwargs:
-            creation_timestamp = kwargs['creationTimestamp']
-        if enable_cdn is None and 'enableCdn' in kwargs:
-            enable_cdn = kwargs['enableCdn']
-        if failover_policy is None and 'failoverPolicy' in kwargs:
-            failover_policy = kwargs['failoverPolicy']
-        if health_checks is None and 'healthChecks' in kwargs:
-            health_checks = kwargs['healthChecks']
-        if load_balancing_scheme is None and 'loadBalancingScheme' in kwargs:
-            load_balancing_scheme = kwargs['loadBalancingScheme']
-        if locality_lb_policy is None and 'localityLbPolicy' in kwargs:
-            locality_lb_policy = kwargs['localityLbPolicy']
-        if log_config is None and 'logConfig' in kwargs:
-            log_config = kwargs['logConfig']
-        if outlier_detection is None and 'outlierDetection' in kwargs:
-            outlier_detection = kwargs['outlierDetection']
-        if port_name is None and 'portName' in kwargs:
-            port_name = kwargs['portName']
-        if security_policy is None and 'securityPolicy' in kwargs:
-            security_policy = kwargs['securityPolicy']
-        if self_link is None and 'selfLink' in kwargs:
-            self_link = kwargs['selfLink']
-        if session_affinity is None and 'sessionAffinity' in kwargs:
-            session_affinity = kwargs['sessionAffinity']
-        if timeout_sec is None and 'timeoutSec' in kwargs:
-            timeout_sec = kwargs['timeoutSec']
-
         if affinity_cookie_ttl_sec is not None:
-            _setter("affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
+            pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
         if backends is not None:
-            _setter("backends", backends)
+            pulumi.set(__self__, "backends", backends)
         if cdn_policy is not None:
-            _setter("cdn_policy", cdn_policy)
+            pulumi.set(__self__, "cdn_policy", cdn_policy)
         if circuit_breakers is not None:
-            _setter("circuit_breakers", circuit_breakers)
+            pulumi.set(__self__, "circuit_breakers", circuit_breakers)
         if connection_draining_timeout_sec is not None:
-            _setter("connection_draining_timeout_sec", connection_draining_timeout_sec)
+            pulumi.set(__self__, "connection_draining_timeout_sec", connection_draining_timeout_sec)
         if connection_tracking_policy is not None:
-            _setter("connection_tracking_policy", connection_tracking_policy)
+            pulumi.set(__self__, "connection_tracking_policy", connection_tracking_policy)
         if consistent_hash is not None:
-            _setter("consistent_hash", consistent_hash)
+            pulumi.set(__self__, "consistent_hash", consistent_hash)
         if creation_timestamp is not None:
-            _setter("creation_timestamp", creation_timestamp)
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if enable_cdn is not None:
-            _setter("enable_cdn", enable_cdn)
+            pulumi.set(__self__, "enable_cdn", enable_cdn)
         if failover_policy is not None:
-            _setter("failover_policy", failover_policy)
+            pulumi.set(__self__, "failover_policy", failover_policy)
         if fingerprint is not None:
-            _setter("fingerprint", fingerprint)
+            pulumi.set(__self__, "fingerprint", fingerprint)
         if health_checks is not None:
-            _setter("health_checks", health_checks)
+            pulumi.set(__self__, "health_checks", health_checks)
         if iap is not None:
-            _setter("iap", iap)
+            pulumi.set(__self__, "iap", iap)
         if load_balancing_scheme is not None:
-            _setter("load_balancing_scheme", load_balancing_scheme)
+            pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
         if locality_lb_policy is not None:
-            _setter("locality_lb_policy", locality_lb_policy)
+            pulumi.set(__self__, "locality_lb_policy", locality_lb_policy)
         if log_config is not None:
-            _setter("log_config", log_config)
+            pulumi.set(__self__, "log_config", log_config)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if outlier_detection is not None:
-            _setter("outlier_detection", outlier_detection)
+            pulumi.set(__self__, "outlier_detection", outlier_detection)
         if port_name is not None:
-            _setter("port_name", port_name)
+            pulumi.set(__self__, "port_name", port_name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if protocol is not None:
-            _setter("protocol", protocol)
+            pulumi.set(__self__, "protocol", protocol)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if security_policy is not None:
-            _setter("security_policy", security_policy)
+            pulumi.set(__self__, "security_policy", security_policy)
         if self_link is not None:
-            _setter("self_link", self_link)
+            pulumi.set(__self__, "self_link", self_link)
         if session_affinity is not None:
-            _setter("session_affinity", session_affinity)
+            pulumi.set(__self__, "session_affinity", session_affinity)
         if subsetting is not None:
-            _setter("subsetting", subsetting)
+            pulumi.set(__self__, "subsetting", subsetting)
         if timeout_sec is not None:
-            _setter("timeout_sec", timeout_sec)
+            pulumi.set(__self__, "timeout_sec", timeout_sec)
 
     @property
     @pulumi.getter(name="affinityCookieTtlSec")
@@ -1565,10 +1365,6 @@ class RegionBackendService(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RegionBackendServiceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1611,29 +1407,21 @@ class RegionBackendService(pulumi.CustomResource):
 
             __props__.__dict__["affinity_cookie_ttl_sec"] = affinity_cookie_ttl_sec
             __props__.__dict__["backends"] = backends
-            cdn_policy = _utilities.configure(cdn_policy, RegionBackendServiceCdnPolicyArgs, True)
             __props__.__dict__["cdn_policy"] = cdn_policy
-            circuit_breakers = _utilities.configure(circuit_breakers, RegionBackendServiceCircuitBreakersArgs, True)
             __props__.__dict__["circuit_breakers"] = circuit_breakers
             __props__.__dict__["connection_draining_timeout_sec"] = connection_draining_timeout_sec
-            connection_tracking_policy = _utilities.configure(connection_tracking_policy, RegionBackendServiceConnectionTrackingPolicyArgs, True)
             __props__.__dict__["connection_tracking_policy"] = connection_tracking_policy
-            consistent_hash = _utilities.configure(consistent_hash, RegionBackendServiceConsistentHashArgs, True)
             __props__.__dict__["consistent_hash"] = consistent_hash
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_cdn"] = enable_cdn
-            failover_policy = _utilities.configure(failover_policy, RegionBackendServiceFailoverPolicyArgs, True)
             __props__.__dict__["failover_policy"] = failover_policy
             __props__.__dict__["health_checks"] = health_checks
-            iap = _utilities.configure(iap, RegionBackendServiceIapArgs, True)
             __props__.__dict__["iap"] = iap
             __props__.__dict__["load_balancing_scheme"] = load_balancing_scheme
             __props__.__dict__["locality_lb_policy"] = locality_lb_policy
-            log_config = _utilities.configure(log_config, RegionBackendServiceLogConfigArgs, True)
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
-            outlier_detection = _utilities.configure(outlier_detection, RegionBackendServiceOutlierDetectionArgs, True)
             __props__.__dict__["outlier_detection"] = outlier_detection
             __props__.__dict__["port_name"] = port_name
             __props__.__dict__["project"] = project
@@ -1641,7 +1429,6 @@ class RegionBackendService(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["security_policy"] = security_policy
             __props__.__dict__["session_affinity"] = session_affinity
-            subsetting = _utilities.configure(subsetting, RegionBackendServiceSubsettingArgs, True)
             __props__.__dict__["subsetting"] = subsetting
             __props__.__dict__["timeout_sec"] = timeout_sec
             __props__.__dict__["creation_timestamp"] = None

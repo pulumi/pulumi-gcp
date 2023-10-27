@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['NetworkEndpointGroupArgs', 'NetworkEndpointGroup']
@@ -55,52 +55,21 @@ class NetworkEndpointGroupArgs:
         :param pulumi.Input[str] subnetwork: Optional subnetwork to which all network endpoints in the NEG belong.
         :param pulumi.Input[str] zone: Zone where the network endpoint group is located.
         """
-        NetworkEndpointGroupArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            network=network,
-            default_port=default_port,
-            description=description,
-            name=name,
-            network_endpoint_type=network_endpoint_type,
-            project=project,
-            subnetwork=subnetwork,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             network: Optional[pulumi.Input[str]] = None,
-             default_port: Optional[pulumi.Input[int]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network_endpoint_type: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             subnetwork: Optional[pulumi.Input[str]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if network is None:
-            raise TypeError("Missing 'network' argument")
-        if default_port is None and 'defaultPort' in kwargs:
-            default_port = kwargs['defaultPort']
-        if network_endpoint_type is None and 'networkEndpointType' in kwargs:
-            network_endpoint_type = kwargs['networkEndpointType']
-
-        _setter("network", network)
+        pulumi.set(__self__, "network", network)
         if default_port is not None:
-            _setter("default_port", default_port)
+            pulumi.set(__self__, "default_port", default_port)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network_endpoint_type is not None:
-            _setter("network_endpoint_type", network_endpoint_type)
+            pulumi.set(__self__, "network_endpoint_type", network_endpoint_type)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if subnetwork is not None:
-            _setter("subnetwork", subnetwork)
+            pulumi.set(__self__, "subnetwork", subnetwork)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter
@@ -269,61 +238,26 @@ class _NetworkEndpointGroupState:
         :param pulumi.Input[str] subnetwork: Optional subnetwork to which all network endpoints in the NEG belong.
         :param pulumi.Input[str] zone: Zone where the network endpoint group is located.
         """
-        _NetworkEndpointGroupState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            default_port=default_port,
-            description=description,
-            name=name,
-            network=network,
-            network_endpoint_type=network_endpoint_type,
-            project=project,
-            self_link=self_link,
-            size=size,
-            subnetwork=subnetwork,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             default_port: Optional[pulumi.Input[int]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network: Optional[pulumi.Input[str]] = None,
-             network_endpoint_type: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             self_link: Optional[pulumi.Input[str]] = None,
-             size: Optional[pulumi.Input[int]] = None,
-             subnetwork: Optional[pulumi.Input[str]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if default_port is None and 'defaultPort' in kwargs:
-            default_port = kwargs['defaultPort']
-        if network_endpoint_type is None and 'networkEndpointType' in kwargs:
-            network_endpoint_type = kwargs['networkEndpointType']
-        if self_link is None and 'selfLink' in kwargs:
-            self_link = kwargs['selfLink']
-
         if default_port is not None:
-            _setter("default_port", default_port)
+            pulumi.set(__self__, "default_port", default_port)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if network_endpoint_type is not None:
-            _setter("network_endpoint_type", network_endpoint_type)
+            pulumi.set(__self__, "network_endpoint_type", network_endpoint_type)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if self_link is not None:
-            _setter("self_link", self_link)
+            pulumi.set(__self__, "self_link", self_link)
         if size is not None:
-            _setter("size", size)
+            pulumi.set(__self__, "size", size)
         if subnetwork is not None:
-            _setter("subnetwork", subnetwork)
+            pulumi.set(__self__, "subnetwork", subnetwork)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="defaultPort")
@@ -687,10 +621,6 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            NetworkEndpointGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

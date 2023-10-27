@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -45,69 +45,22 @@ class DatascanArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        DatascanArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            data=data,
-            data_scan_id=data_scan_id,
-            execution_spec=execution_spec,
-            location=location,
-            data_profile_spec=data_profile_spec,
-            data_quality_spec=data_quality_spec,
-            description=description,
-            display_name=display_name,
-            labels=labels,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             data: Optional[pulumi.Input['DatascanDataArgs']] = None,
-             data_scan_id: Optional[pulumi.Input[str]] = None,
-             execution_spec: Optional[pulumi.Input['DatascanExecutionSpecArgs']] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             data_profile_spec: Optional[pulumi.Input['DatascanDataProfileSpecArgs']] = None,
-             data_quality_spec: Optional[pulumi.Input['DatascanDataQualitySpecArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if data is None:
-            raise TypeError("Missing 'data' argument")
-        if data_scan_id is None and 'dataScanId' in kwargs:
-            data_scan_id = kwargs['dataScanId']
-        if data_scan_id is None:
-            raise TypeError("Missing 'data_scan_id' argument")
-        if execution_spec is None and 'executionSpec' in kwargs:
-            execution_spec = kwargs['executionSpec']
-        if execution_spec is None:
-            raise TypeError("Missing 'execution_spec' argument")
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if data_profile_spec is None and 'dataProfileSpec' in kwargs:
-            data_profile_spec = kwargs['dataProfileSpec']
-        if data_quality_spec is None and 'dataQualitySpec' in kwargs:
-            data_quality_spec = kwargs['dataQualitySpec']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-
-        _setter("data", data)
-        _setter("data_scan_id", data_scan_id)
-        _setter("execution_spec", execution_spec)
-        _setter("location", location)
+        pulumi.set(__self__, "data", data)
+        pulumi.set(__self__, "data_scan_id", data_scan_id)
+        pulumi.set(__self__, "execution_spec", execution_spec)
+        pulumi.set(__self__, "location", location)
         if data_profile_spec is not None:
-            _setter("data_profile_spec", data_profile_spec)
+            pulumi.set(__self__, "data_profile_spec", data_profile_spec)
         if data_quality_spec is not None:
-            _setter("data_quality_spec", data_quality_spec)
+            pulumi.set(__self__, "data_quality_spec", data_quality_spec)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -295,117 +248,50 @@ class _DatascanState:
         :param pulumi.Input[str] uid: System generated globally unique ID for the scan. This ID will be different if the scan is deleted and re-created with the same name.
         :param pulumi.Input[str] update_time: The time when the scan was last updated.
         """
-        _DatascanState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            data=data,
-            data_profile_results=data_profile_results,
-            data_profile_spec=data_profile_spec,
-            data_quality_results=data_quality_results,
-            data_quality_spec=data_quality_spec,
-            data_scan_id=data_scan_id,
-            description=description,
-            display_name=display_name,
-            execution_spec=execution_spec,
-            execution_statuses=execution_statuses,
-            labels=labels,
-            location=location,
-            name=name,
-            project=project,
-            state=state,
-            type=type,
-            uid=uid,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[pulumi.Input[str]] = None,
-             data: Optional[pulumi.Input['DatascanDataArgs']] = None,
-             data_profile_results: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultArgs']]]] = None,
-             data_profile_spec: Optional[pulumi.Input['DatascanDataProfileSpecArgs']] = None,
-             data_quality_results: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultArgs']]]] = None,
-             data_quality_spec: Optional[pulumi.Input['DatascanDataQualitySpecArgs']] = None,
-             data_scan_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             execution_spec: Optional[pulumi.Input['DatascanExecutionSpecArgs']] = None,
-             execution_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanExecutionStatusArgs']]]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             uid: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if data_profile_results is None and 'dataProfileResults' in kwargs:
-            data_profile_results = kwargs['dataProfileResults']
-        if data_profile_spec is None and 'dataProfileSpec' in kwargs:
-            data_profile_spec = kwargs['dataProfileSpec']
-        if data_quality_results is None and 'dataQualityResults' in kwargs:
-            data_quality_results = kwargs['dataQualityResults']
-        if data_quality_spec is None and 'dataQualitySpec' in kwargs:
-            data_quality_spec = kwargs['dataQualitySpec']
-        if data_scan_id is None and 'dataScanId' in kwargs:
-            data_scan_id = kwargs['dataScanId']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if execution_spec is None and 'executionSpec' in kwargs:
-            execution_spec = kwargs['executionSpec']
-        if execution_statuses is None and 'executionStatuses' in kwargs:
-            execution_statuses = kwargs['executionStatuses']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if data is not None:
-            _setter("data", data)
+            pulumi.set(__self__, "data", data)
         if data_profile_results is not None:
             warnings.warn("""`data_profile_result` is deprecated and will be removed in a future major release.""", DeprecationWarning)
             pulumi.log.warn("""data_profile_results is deprecated: `data_profile_result` is deprecated and will be removed in a future major release.""")
         if data_profile_results is not None:
-            _setter("data_profile_results", data_profile_results)
+            pulumi.set(__self__, "data_profile_results", data_profile_results)
         if data_profile_spec is not None:
-            _setter("data_profile_spec", data_profile_spec)
+            pulumi.set(__self__, "data_profile_spec", data_profile_spec)
         if data_quality_results is not None:
             warnings.warn("""`data_quality_result` is deprecated and will be removed in a future major release.""", DeprecationWarning)
             pulumi.log.warn("""data_quality_results is deprecated: `data_quality_result` is deprecated and will be removed in a future major release.""")
         if data_quality_results is not None:
-            _setter("data_quality_results", data_quality_results)
+            pulumi.set(__self__, "data_quality_results", data_quality_results)
         if data_quality_spec is not None:
-            _setter("data_quality_spec", data_quality_spec)
+            pulumi.set(__self__, "data_quality_spec", data_quality_spec)
         if data_scan_id is not None:
-            _setter("data_scan_id", data_scan_id)
+            pulumi.set(__self__, "data_scan_id", data_scan_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if execution_spec is not None:
-            _setter("execution_spec", execution_spec)
+            pulumi.set(__self__, "execution_spec", execution_spec)
         if execution_statuses is not None:
-            _setter("execution_statuses", execution_statuses)
+            pulumi.set(__self__, "execution_statuses", execution_statuses)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if uid is not None:
-            _setter("uid", uid)
+            pulumi.set(__self__, "uid", uid)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -1162,10 +1048,6 @@ class Datascan(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DatascanArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1190,20 +1072,16 @@ class Datascan(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatascanArgs.__new__(DatascanArgs)
 
-            data = _utilities.configure(data, DatascanDataArgs, True)
             if data is None and not opts.urn:
                 raise TypeError("Missing required property 'data'")
             __props__.__dict__["data"] = data
-            data_profile_spec = _utilities.configure(data_profile_spec, DatascanDataProfileSpecArgs, True)
             __props__.__dict__["data_profile_spec"] = data_profile_spec
-            data_quality_spec = _utilities.configure(data_quality_spec, DatascanDataQualitySpecArgs, True)
             __props__.__dict__["data_quality_spec"] = data_quality_spec
             if data_scan_id is None and not opts.urn:
                 raise TypeError("Missing required property 'data_scan_id'")
             __props__.__dict__["data_scan_id"] = data_scan_id
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
-            execution_spec = _utilities.configure(execution_spec, DatascanExecutionSpecArgs, True)
             if execution_spec is None and not opts.urn:
                 raise TypeError("Missing required property 'execution_spec'")
             __props__.__dict__["execution_spec"] = execution_spec

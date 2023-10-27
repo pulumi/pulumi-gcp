@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -42,27 +42,12 @@ class WorkstationClusterConditionArgs:
         :param pulumi.Input[str] message: (Output)
                Human readable message indicating details about the current status.
         """
-        WorkstationClusterConditionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            code=code,
-            details=details,
-            message=message,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             code: Optional[pulumi.Input[int]] = None,
-             details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
-             message: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if code is not None:
-            _setter("code", code)
+            pulumi.set(__self__, "code", code)
         if details is not None:
-            _setter("details", details)
+            pulumi.set(__self__, "details", details)
         if message is not None:
-            _setter("message", message)
+            pulumi.set(__self__, "message", message)
 
     @property
     @pulumi.getter
@@ -124,40 +109,13 @@ class WorkstationClusterPrivateClusterConfigArgs:
                The service attachment is created when private endpoint is enabled.
                To access workstations in the cluster, configure access to the managed service using (Private Service Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
         """
-        WorkstationClusterPrivateClusterConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enable_private_endpoint=enable_private_endpoint,
-            allowed_projects=allowed_projects,
-            cluster_hostname=cluster_hostname,
-            service_attachment_uri=service_attachment_uri,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enable_private_endpoint: Optional[pulumi.Input[bool]] = None,
-             allowed_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             cluster_hostname: Optional[pulumi.Input[str]] = None,
-             service_attachment_uri: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enable_private_endpoint is None and 'enablePrivateEndpoint' in kwargs:
-            enable_private_endpoint = kwargs['enablePrivateEndpoint']
-        if enable_private_endpoint is None:
-            raise TypeError("Missing 'enable_private_endpoint' argument")
-        if allowed_projects is None and 'allowedProjects' in kwargs:
-            allowed_projects = kwargs['allowedProjects']
-        if cluster_hostname is None and 'clusterHostname' in kwargs:
-            cluster_hostname = kwargs['clusterHostname']
-        if service_attachment_uri is None and 'serviceAttachmentUri' in kwargs:
-            service_attachment_uri = kwargs['serviceAttachmentUri']
-
-        _setter("enable_private_endpoint", enable_private_endpoint)
+        pulumi.set(__self__, "enable_private_endpoint", enable_private_endpoint)
         if allowed_projects is not None:
-            _setter("allowed_projects", allowed_projects)
+            pulumi.set(__self__, "allowed_projects", allowed_projects)
         if cluster_hostname is not None:
-            _setter("cluster_hostname", cluster_hostname)
+            pulumi.set(__self__, "cluster_hostname", cluster_hostname)
         if service_attachment_uri is not None:
-            _setter("service_attachment_uri", service_attachment_uri)
+            pulumi.set(__self__, "service_attachment_uri", service_attachment_uri)
 
     @property
     @pulumi.getter(name="enablePrivateEndpoint")
@@ -229,27 +187,12 @@ class WorkstationConfigConditionArgs:
         :param pulumi.Input[str] message: (Output)
                Human readable message indicating details about the current status.
         """
-        WorkstationConfigConditionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            code=code,
-            details=details,
-            message=message,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             code: Optional[pulumi.Input[int]] = None,
-             details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
-             message: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if code is not None:
-            _setter("code", code)
+            pulumi.set(__self__, "code", code)
         if details is not None:
-            _setter("details", details)
+            pulumi.set(__self__, "details", details)
         if message is not None:
-            _setter("message", message)
+            pulumi.set(__self__, "message", message)
 
     @property
     @pulumi.getter
@@ -309,43 +252,18 @@ class WorkstationConfigContainerArgs:
         :param pulumi.Input[int] run_as_user: If set, overrides the USER specified in the image with the given uid.
         :param pulumi.Input[str] working_dir: If set, overrides the default DIR specified by the image.
         """
-        WorkstationConfigContainerArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            args=args,
-            commands=commands,
-            env=env,
-            image=image,
-            run_as_user=run_as_user,
-            working_dir=working_dir,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             env: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             image: Optional[pulumi.Input[str]] = None,
-             run_as_user: Optional[pulumi.Input[int]] = None,
-             working_dir: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if run_as_user is None and 'runAsUser' in kwargs:
-            run_as_user = kwargs['runAsUser']
-        if working_dir is None and 'workingDir' in kwargs:
-            working_dir = kwargs['workingDir']
-
         if args is not None:
-            _setter("args", args)
+            pulumi.set(__self__, "args", args)
         if commands is not None:
-            _setter("commands", commands)
+            pulumi.set(__self__, "commands", commands)
         if env is not None:
-            _setter("env", env)
+            pulumi.set(__self__, "env", env)
         if image is not None:
-            _setter("image", image)
+            pulumi.set(__self__, "image", image)
         if run_as_user is not None:
-            _setter("run_as_user", run_as_user)
+            pulumi.set(__self__, "run_as_user", run_as_user)
         if working_dir is not None:
-            _setter("working_dir", working_dir)
+            pulumi.set(__self__, "working_dir", working_dir)
 
     @property
     @pulumi.getter
@@ -430,29 +348,8 @@ class WorkstationConfigEncryptionKeyArgs:
         :param pulumi.Input[str] kms_key: The name of the Google Cloud KMS encryption key.
         :param pulumi.Input[str] kms_key_service_account: The service account to use with the specified KMS key.
         """
-        WorkstationConfigEncryptionKeyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            kms_key=kms_key,
-            kms_key_service_account=kms_key_service_account,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             kms_key: Optional[pulumi.Input[str]] = None,
-             kms_key_service_account: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if kms_key is None and 'kmsKey' in kwargs:
-            kms_key = kwargs['kmsKey']
-        if kms_key is None:
-            raise TypeError("Missing 'kms_key' argument")
-        if kms_key_service_account is None and 'kmsKeyServiceAccount' in kwargs:
-            kms_key_service_account = kwargs['kmsKeyServiceAccount']
-        if kms_key_service_account is None:
-            raise TypeError("Missing 'kms_key_service_account' argument")
-
-        _setter("kms_key", kms_key)
-        _setter("kms_key_service_account", kms_key_service_account)
+        pulumi.set(__self__, "kms_key", kms_key)
+        pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
 
     @property
     @pulumi.getter(name="kmsKey")
@@ -487,21 +384,8 @@ class WorkstationConfigHostArgs:
         :param pulumi.Input['WorkstationConfigHostGceInstanceArgs'] gce_instance: A runtime using a Compute Engine instance.
                Structure is documented below.
         """
-        WorkstationConfigHostArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            gce_instance=gce_instance,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             gce_instance: Optional[pulumi.Input['WorkstationConfigHostGceInstanceArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if gce_instance is None and 'gceInstance' in kwargs:
-            gce_instance = kwargs['gceInstance']
-
         if gce_instance is not None:
-            _setter("gce_instance", gce_instance)
+            pulumi.set(__self__, "gce_instance", gce_instance)
 
     @property
     @pulumi.getter(name="gceInstance")
@@ -546,71 +430,26 @@ class WorkstationConfigHostGceInstanceArgs:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Network tags to add to the Compute Engine machines backing the Workstations.
         """
-        WorkstationConfigHostGceInstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            accelerators=accelerators,
-            boot_disk_size_gb=boot_disk_size_gb,
-            confidential_instance_config=confidential_instance_config,
-            disable_public_ip_addresses=disable_public_ip_addresses,
-            enable_nested_virtualization=enable_nested_virtualization,
-            machine_type=machine_type,
-            pool_size=pool_size,
-            service_account=service_account,
-            shielded_instance_config=shielded_instance_config,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceAcceleratorArgs']]]] = None,
-             boot_disk_size_gb: Optional[pulumi.Input[int]] = None,
-             confidential_instance_config: Optional[pulumi.Input['WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs']] = None,
-             disable_public_ip_addresses: Optional[pulumi.Input[bool]] = None,
-             enable_nested_virtualization: Optional[pulumi.Input[bool]] = None,
-             machine_type: Optional[pulumi.Input[str]] = None,
-             pool_size: Optional[pulumi.Input[int]] = None,
-             service_account: Optional[pulumi.Input[str]] = None,
-             shielded_instance_config: Optional[pulumi.Input['WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs']] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if boot_disk_size_gb is None and 'bootDiskSizeGb' in kwargs:
-            boot_disk_size_gb = kwargs['bootDiskSizeGb']
-        if confidential_instance_config is None and 'confidentialInstanceConfig' in kwargs:
-            confidential_instance_config = kwargs['confidentialInstanceConfig']
-        if disable_public_ip_addresses is None and 'disablePublicIpAddresses' in kwargs:
-            disable_public_ip_addresses = kwargs['disablePublicIpAddresses']
-        if enable_nested_virtualization is None and 'enableNestedVirtualization' in kwargs:
-            enable_nested_virtualization = kwargs['enableNestedVirtualization']
-        if machine_type is None and 'machineType' in kwargs:
-            machine_type = kwargs['machineType']
-        if pool_size is None and 'poolSize' in kwargs:
-            pool_size = kwargs['poolSize']
-        if service_account is None and 'serviceAccount' in kwargs:
-            service_account = kwargs['serviceAccount']
-        if shielded_instance_config is None and 'shieldedInstanceConfig' in kwargs:
-            shielded_instance_config = kwargs['shieldedInstanceConfig']
-
         if accelerators is not None:
-            _setter("accelerators", accelerators)
+            pulumi.set(__self__, "accelerators", accelerators)
         if boot_disk_size_gb is not None:
-            _setter("boot_disk_size_gb", boot_disk_size_gb)
+            pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
         if confidential_instance_config is not None:
-            _setter("confidential_instance_config", confidential_instance_config)
+            pulumi.set(__self__, "confidential_instance_config", confidential_instance_config)
         if disable_public_ip_addresses is not None:
-            _setter("disable_public_ip_addresses", disable_public_ip_addresses)
+            pulumi.set(__self__, "disable_public_ip_addresses", disable_public_ip_addresses)
         if enable_nested_virtualization is not None:
-            _setter("enable_nested_virtualization", enable_nested_virtualization)
+            pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
         if machine_type is not None:
-            _setter("machine_type", machine_type)
+            pulumi.set(__self__, "machine_type", machine_type)
         if pool_size is not None:
-            _setter("pool_size", pool_size)
+            pulumi.set(__self__, "pool_size", pool_size)
         if service_account is not None:
-            _setter("service_account", service_account)
+            pulumi.set(__self__, "service_account", service_account)
         if shielded_instance_config is not None:
-            _setter("shielded_instance_config", shielded_instance_config)
+            pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -746,25 +585,8 @@ class WorkstationConfigHostGceInstanceAcceleratorArgs:
         :param pulumi.Input[int] count: Number of accelerator cards exposed to the instance.
         :param pulumi.Input[str] type: Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
         """
-        WorkstationConfigHostGceInstanceAcceleratorArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            count=count,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             count: Optional[pulumi.Input[int]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if count is None:
-            raise TypeError("Missing 'count' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("count", count)
-        _setter("type", type)
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -798,21 +620,8 @@ class WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs:
         """
         :param pulumi.Input[bool] enable_confidential_compute: Whether the instance has confidential compute enabled.
         """
-        WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enable_confidential_compute=enable_confidential_compute,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enable_confidential_compute is None and 'enableConfidentialCompute' in kwargs:
-            enable_confidential_compute = kwargs['enableConfidentialCompute']
-
         if enable_confidential_compute is not None:
-            _setter("enable_confidential_compute", enable_confidential_compute)
+            pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
 
     @property
     @pulumi.getter(name="enableConfidentialCompute")
@@ -838,33 +647,12 @@ class WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs:
         :param pulumi.Input[bool] enable_secure_boot: Whether the instance has Secure Boot enabled.
         :param pulumi.Input[bool] enable_vtpm: Whether the instance has the vTPM enabled.
         """
-        WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enable_integrity_monitoring=enable_integrity_monitoring,
-            enable_secure_boot=enable_secure_boot,
-            enable_vtpm=enable_vtpm,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
-             enable_secure_boot: Optional[pulumi.Input[bool]] = None,
-             enable_vtpm: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enable_integrity_monitoring is None and 'enableIntegrityMonitoring' in kwargs:
-            enable_integrity_monitoring = kwargs['enableIntegrityMonitoring']
-        if enable_secure_boot is None and 'enableSecureBoot' in kwargs:
-            enable_secure_boot = kwargs['enableSecureBoot']
-        if enable_vtpm is None and 'enableVtpm' in kwargs:
-            enable_vtpm = kwargs['enableVtpm']
-
         if enable_integrity_monitoring is not None:
-            _setter("enable_integrity_monitoring", enable_integrity_monitoring)
+            pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
         if enable_secure_boot is not None:
-            _setter("enable_secure_boot", enable_secure_boot)
+            pulumi.set(__self__, "enable_secure_boot", enable_secure_boot)
         if enable_vtpm is not None:
-            _setter("enable_vtpm", enable_vtpm)
+            pulumi.set(__self__, "enable_vtpm", enable_vtpm)
 
     @property
     @pulumi.getter(name="enableIntegrityMonitoring")
@@ -909,29 +697,10 @@ class WorkstationConfigIamBindingConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        WorkstationConfigIamBindingConditionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[pulumi.Input[str]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -967,29 +736,10 @@ class WorkstationConfigIamMemberConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        WorkstationConfigIamMemberConditionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[pulumi.Input[str]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -1029,27 +779,10 @@ class WorkstationConfigPersistentDirectoryArgs:
                Structure is documented below.
         :param pulumi.Input[str] mount_path: Location of this directory in the running workstation.
         """
-        WorkstationConfigPersistentDirectoryArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            gce_pd=gce_pd,
-            mount_path=mount_path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             gce_pd: Optional[pulumi.Input['WorkstationConfigPersistentDirectoryGcePdArgs']] = None,
-             mount_path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if gce_pd is None and 'gcePd' in kwargs:
-            gce_pd = kwargs['gcePd']
-        if mount_path is None and 'mountPath' in kwargs:
-            mount_path = kwargs['mountPath']
-
         if gce_pd is not None:
-            _setter("gce_pd", gce_pd)
+            pulumi.set(__self__, "gce_pd", gce_pd)
         if mount_path is not None:
-            _setter("mount_path", mount_path)
+            pulumi.set(__self__, "mount_path", mount_path)
 
     @property
     @pulumi.getter(name="gcePd")
@@ -1094,45 +827,16 @@ class WorkstationConfigPersistentDirectoryGcePdArgs:
                Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the `diskType` must be `pd-balanced` or `pd-ssd`.
         :param pulumi.Input[str] source_snapshot: Name of the snapshot to use as the source for the disk. This can be the snapshot's `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
         """
-        WorkstationConfigPersistentDirectoryGcePdArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            disk_type=disk_type,
-            fs_type=fs_type,
-            reclaim_policy=reclaim_policy,
-            size_gb=size_gb,
-            source_snapshot=source_snapshot,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             disk_type: Optional[pulumi.Input[str]] = None,
-             fs_type: Optional[pulumi.Input[str]] = None,
-             reclaim_policy: Optional[pulumi.Input[str]] = None,
-             size_gb: Optional[pulumi.Input[int]] = None,
-             source_snapshot: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disk_type is None and 'diskType' in kwargs:
-            disk_type = kwargs['diskType']
-        if fs_type is None and 'fsType' in kwargs:
-            fs_type = kwargs['fsType']
-        if reclaim_policy is None and 'reclaimPolicy' in kwargs:
-            reclaim_policy = kwargs['reclaimPolicy']
-        if size_gb is None and 'sizeGb' in kwargs:
-            size_gb = kwargs['sizeGb']
-        if source_snapshot is None and 'sourceSnapshot' in kwargs:
-            source_snapshot = kwargs['sourceSnapshot']
-
         if disk_type is not None:
-            _setter("disk_type", disk_type)
+            pulumi.set(__self__, "disk_type", disk_type)
         if fs_type is not None:
-            _setter("fs_type", fs_type)
+            pulumi.set(__self__, "fs_type", fs_type)
         if reclaim_policy is not None:
-            _setter("reclaim_policy", reclaim_policy)
+            pulumi.set(__self__, "reclaim_policy", reclaim_policy)
         if size_gb is not None:
-            _setter("size_gb", size_gb)
+            pulumi.set(__self__, "size_gb", size_gb)
         if source_snapshot is not None:
-            _setter("source_snapshot", source_snapshot)
+            pulumi.set(__self__, "source_snapshot", source_snapshot)
 
     @property
     @pulumi.getter(name="diskType")
@@ -1203,29 +907,10 @@ class WorkstationIamBindingConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        WorkstationIamBindingConditionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[pulumi.Input[str]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -1261,29 +946,10 @@ class WorkstationIamMemberConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        WorkstationIamMemberConditionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[pulumi.Input[str]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter

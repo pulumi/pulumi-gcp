@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['NetworkArgs', 'Network']
@@ -69,67 +69,26 @@ class NetworkArgs:
                subnetworks of this network, across regions.
                Possible values are: `REGIONAL`, `GLOBAL`.
         """
-        NetworkArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_create_subnetworks=auto_create_subnetworks,
-            delete_default_routes_on_create=delete_default_routes_on_create,
-            description=description,
-            enable_ula_internal_ipv6=enable_ula_internal_ipv6,
-            internal_ipv6_range=internal_ipv6_range,
-            mtu=mtu,
-            name=name,
-            network_firewall_policy_enforcement_order=network_firewall_policy_enforcement_order,
-            project=project,
-            routing_mode=routing_mode,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
-             delete_default_routes_on_create: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             enable_ula_internal_ipv6: Optional[pulumi.Input[bool]] = None,
-             internal_ipv6_range: Optional[pulumi.Input[str]] = None,
-             mtu: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network_firewall_policy_enforcement_order: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             routing_mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_create_subnetworks is None and 'autoCreateSubnetworks' in kwargs:
-            auto_create_subnetworks = kwargs['autoCreateSubnetworks']
-        if delete_default_routes_on_create is None and 'deleteDefaultRoutesOnCreate' in kwargs:
-            delete_default_routes_on_create = kwargs['deleteDefaultRoutesOnCreate']
-        if enable_ula_internal_ipv6 is None and 'enableUlaInternalIpv6' in kwargs:
-            enable_ula_internal_ipv6 = kwargs['enableUlaInternalIpv6']
-        if internal_ipv6_range is None and 'internalIpv6Range' in kwargs:
-            internal_ipv6_range = kwargs['internalIpv6Range']
-        if network_firewall_policy_enforcement_order is None and 'networkFirewallPolicyEnforcementOrder' in kwargs:
-            network_firewall_policy_enforcement_order = kwargs['networkFirewallPolicyEnforcementOrder']
-        if routing_mode is None and 'routingMode' in kwargs:
-            routing_mode = kwargs['routingMode']
-
         if auto_create_subnetworks is not None:
-            _setter("auto_create_subnetworks", auto_create_subnetworks)
+            pulumi.set(__self__, "auto_create_subnetworks", auto_create_subnetworks)
         if delete_default_routes_on_create is not None:
-            _setter("delete_default_routes_on_create", delete_default_routes_on_create)
+            pulumi.set(__self__, "delete_default_routes_on_create", delete_default_routes_on_create)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if enable_ula_internal_ipv6 is not None:
-            _setter("enable_ula_internal_ipv6", enable_ula_internal_ipv6)
+            pulumi.set(__self__, "enable_ula_internal_ipv6", enable_ula_internal_ipv6)
         if internal_ipv6_range is not None:
-            _setter("internal_ipv6_range", internal_ipv6_range)
+            pulumi.set(__self__, "internal_ipv6_range", internal_ipv6_range)
         if mtu is not None:
-            _setter("mtu", mtu)
+            pulumi.set(__self__, "mtu", mtu)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network_firewall_policy_enforcement_order is not None:
-            _setter("network_firewall_policy_enforcement_order", network_firewall_policy_enforcement_order)
+            pulumi.set(__self__, "network_firewall_policy_enforcement_order", network_firewall_policy_enforcement_order)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if routing_mode is not None:
-            _setter("routing_mode", routing_mode)
+            pulumi.set(__self__, "routing_mode", routing_mode)
 
     @property
     @pulumi.getter(name="autoCreateSubnetworks")
@@ -347,79 +306,30 @@ class _NetworkState:
                Possible values are: `REGIONAL`, `GLOBAL`.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
-        _NetworkState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_create_subnetworks=auto_create_subnetworks,
-            delete_default_routes_on_create=delete_default_routes_on_create,
-            description=description,
-            enable_ula_internal_ipv6=enable_ula_internal_ipv6,
-            gateway_ipv4=gateway_ipv4,
-            internal_ipv6_range=internal_ipv6_range,
-            mtu=mtu,
-            name=name,
-            network_firewall_policy_enforcement_order=network_firewall_policy_enforcement_order,
-            project=project,
-            routing_mode=routing_mode,
-            self_link=self_link,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
-             delete_default_routes_on_create: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             enable_ula_internal_ipv6: Optional[pulumi.Input[bool]] = None,
-             gateway_ipv4: Optional[pulumi.Input[str]] = None,
-             internal_ipv6_range: Optional[pulumi.Input[str]] = None,
-             mtu: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network_firewall_policy_enforcement_order: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             routing_mode: Optional[pulumi.Input[str]] = None,
-             self_link: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_create_subnetworks is None and 'autoCreateSubnetworks' in kwargs:
-            auto_create_subnetworks = kwargs['autoCreateSubnetworks']
-        if delete_default_routes_on_create is None and 'deleteDefaultRoutesOnCreate' in kwargs:
-            delete_default_routes_on_create = kwargs['deleteDefaultRoutesOnCreate']
-        if enable_ula_internal_ipv6 is None and 'enableUlaInternalIpv6' in kwargs:
-            enable_ula_internal_ipv6 = kwargs['enableUlaInternalIpv6']
-        if gateway_ipv4 is None and 'gatewayIpv4' in kwargs:
-            gateway_ipv4 = kwargs['gatewayIpv4']
-        if internal_ipv6_range is None and 'internalIpv6Range' in kwargs:
-            internal_ipv6_range = kwargs['internalIpv6Range']
-        if network_firewall_policy_enforcement_order is None and 'networkFirewallPolicyEnforcementOrder' in kwargs:
-            network_firewall_policy_enforcement_order = kwargs['networkFirewallPolicyEnforcementOrder']
-        if routing_mode is None and 'routingMode' in kwargs:
-            routing_mode = kwargs['routingMode']
-        if self_link is None and 'selfLink' in kwargs:
-            self_link = kwargs['selfLink']
-
         if auto_create_subnetworks is not None:
-            _setter("auto_create_subnetworks", auto_create_subnetworks)
+            pulumi.set(__self__, "auto_create_subnetworks", auto_create_subnetworks)
         if delete_default_routes_on_create is not None:
-            _setter("delete_default_routes_on_create", delete_default_routes_on_create)
+            pulumi.set(__self__, "delete_default_routes_on_create", delete_default_routes_on_create)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if enable_ula_internal_ipv6 is not None:
-            _setter("enable_ula_internal_ipv6", enable_ula_internal_ipv6)
+            pulumi.set(__self__, "enable_ula_internal_ipv6", enable_ula_internal_ipv6)
         if gateway_ipv4 is not None:
-            _setter("gateway_ipv4", gateway_ipv4)
+            pulumi.set(__self__, "gateway_ipv4", gateway_ipv4)
         if internal_ipv6_range is not None:
-            _setter("internal_ipv6_range", internal_ipv6_range)
+            pulumi.set(__self__, "internal_ipv6_range", internal_ipv6_range)
         if mtu is not None:
-            _setter("mtu", mtu)
+            pulumi.set(__self__, "mtu", mtu)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network_firewall_policy_enforcement_order is not None:
-            _setter("network_firewall_policy_enforcement_order", network_firewall_policy_enforcement_order)
+            pulumi.set(__self__, "network_firewall_policy_enforcement_order", network_firewall_policy_enforcement_order)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if routing_mode is not None:
-            _setter("routing_mode", routing_mode)
+            pulumi.set(__self__, "routing_mode", routing_mode)
         if self_link is not None:
-            _setter("self_link", self_link)
+            pulumi.set(__self__, "self_link", self_link)
 
     @property
     @pulumi.getter(name="autoCreateSubnetworks")
@@ -790,10 +700,6 @@ class Network(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            NetworkArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

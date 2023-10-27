@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -47,48 +47,19 @@ class HaVpnGatewayArgs:
         :param pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]] vpn_interfaces: A list of interfaces on this VPN gateway.
                Structure is documented below.
         """
-        HaVpnGatewayArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            network=network,
-            description=description,
-            name=name,
-            project=project,
-            region=region,
-            stack_type=stack_type,
-            vpn_interfaces=vpn_interfaces,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             network: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             stack_type: Optional[pulumi.Input[str]] = None,
-             vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if network is None:
-            raise TypeError("Missing 'network' argument")
-        if stack_type is None and 'stackType' in kwargs:
-            stack_type = kwargs['stackType']
-        if vpn_interfaces is None and 'vpnInterfaces' in kwargs:
-            vpn_interfaces = kwargs['vpnInterfaces']
-
-        _setter("network", network)
+        pulumi.set(__self__, "network", network)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if stack_type is not None:
-            _setter("stack_type", stack_type)
+            pulumi.set(__self__, "stack_type", stack_type)
         if vpn_interfaces is not None:
-            _setter("vpn_interfaces", vpn_interfaces)
+            pulumi.set(__self__, "vpn_interfaces", vpn_interfaces)
 
     @property
     @pulumi.getter
@@ -225,53 +196,22 @@ class _HaVpnGatewayState:
         :param pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]] vpn_interfaces: A list of interfaces on this VPN gateway.
                Structure is documented below.
         """
-        _HaVpnGatewayState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            name=name,
-            network=network,
-            project=project,
-            region=region,
-            self_link=self_link,
-            stack_type=stack_type,
-            vpn_interfaces=vpn_interfaces,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             self_link: Optional[pulumi.Input[str]] = None,
-             stack_type: Optional[pulumi.Input[str]] = None,
-             vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if self_link is None and 'selfLink' in kwargs:
-            self_link = kwargs['selfLink']
-        if stack_type is None and 'stackType' in kwargs:
-            stack_type = kwargs['stackType']
-        if vpn_interfaces is None and 'vpnInterfaces' in kwargs:
-            vpn_interfaces = kwargs['vpnInterfaces']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if self_link is not None:
-            _setter("self_link", self_link)
+            pulumi.set(__self__, "self_link", self_link)
         if stack_type is not None:
-            _setter("stack_type", stack_type)
+            pulumi.set(__self__, "stack_type", stack_type)
         if vpn_interfaces is not None:
-            _setter("vpn_interfaces", vpn_interfaces)
+            pulumi.set(__self__, "vpn_interfaces", vpn_interfaces)
 
     @property
     @pulumi.getter
@@ -651,10 +591,6 @@ class HaVpnGateway(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            HaVpnGatewayArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

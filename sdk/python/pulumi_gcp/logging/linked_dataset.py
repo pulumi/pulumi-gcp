@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,45 +37,16 @@ class LinkedDatasetArgs:
         :param pulumi.Input[str] location: The location of the linked dataset.
         :param pulumi.Input[str] parent: The parent of the linked dataset.
         """
-        LinkedDatasetArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            link_id=link_id,
-            bigquery_datasets=bigquery_datasets,
-            description=description,
-            location=location,
-            parent=parent,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[pulumi.Input[str]] = None,
-             link_id: Optional[pulumi.Input[str]] = None,
-             bigquery_datasets: Optional[pulumi.Input[Sequence[pulumi.Input['LinkedDatasetBigqueryDatasetArgs']]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             parent: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket is None:
-            raise TypeError("Missing 'bucket' argument")
-        if link_id is None and 'linkId' in kwargs:
-            link_id = kwargs['linkId']
-        if link_id is None:
-            raise TypeError("Missing 'link_id' argument")
-        if bigquery_datasets is None and 'bigqueryDatasets' in kwargs:
-            bigquery_datasets = kwargs['bigqueryDatasets']
-
-        _setter("bucket", bucket)
-        _setter("link_id", link_id)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "link_id", link_id)
         if bigquery_datasets is not None:
-            _setter("bigquery_datasets", bigquery_datasets)
+            pulumi.set(__self__, "bigquery_datasets", bigquery_datasets)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if parent is not None:
-            _setter("parent", parent)
+            pulumi.set(__self__, "parent", parent)
 
     @property
     @pulumi.getter
@@ -189,59 +160,24 @@ class _LinkedDatasetState:
                (at the end of the link name) must only have alphanumeric characters and underscores within it.
         :param pulumi.Input[str] parent: The parent of the linked dataset.
         """
-        _LinkedDatasetState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bigquery_datasets=bigquery_datasets,
-            bucket=bucket,
-            create_time=create_time,
-            description=description,
-            lifecycle_state=lifecycle_state,
-            link_id=link_id,
-            location=location,
-            name=name,
-            parent=parent,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bigquery_datasets: Optional[pulumi.Input[Sequence[pulumi.Input['LinkedDatasetBigqueryDatasetArgs']]]] = None,
-             bucket: Optional[pulumi.Input[str]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             lifecycle_state: Optional[pulumi.Input[str]] = None,
-             link_id: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             parent: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bigquery_datasets is None and 'bigqueryDatasets' in kwargs:
-            bigquery_datasets = kwargs['bigqueryDatasets']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if lifecycle_state is None and 'lifecycleState' in kwargs:
-            lifecycle_state = kwargs['lifecycleState']
-        if link_id is None and 'linkId' in kwargs:
-            link_id = kwargs['linkId']
-
         if bigquery_datasets is not None:
-            _setter("bigquery_datasets", bigquery_datasets)
+            pulumi.set(__self__, "bigquery_datasets", bigquery_datasets)
         if bucket is not None:
-            _setter("bucket", bucket)
+            pulumi.set(__self__, "bucket", bucket)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if lifecycle_state is not None:
-            _setter("lifecycle_state", lifecycle_state)
+            pulumi.set(__self__, "lifecycle_state", lifecycle_state)
         if link_id is not None:
-            _setter("link_id", link_id)
+            pulumi.set(__self__, "link_id", link_id)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if parent is not None:
-            _setter("parent", parent)
+            pulumi.set(__self__, "parent", parent)
 
     @property
     @pulumi.getter(name="bigqueryDatasets")
@@ -512,10 +448,6 @@ class LinkedDataset(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            LinkedDatasetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

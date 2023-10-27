@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -37,29 +37,10 @@ class SecretIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        SecretIamBindingCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -83,29 +64,10 @@ class SecretIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        SecretIamMemberCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -156,29 +118,12 @@ class SecretReplication(dict):
         :param 'SecretReplicationUserManagedArgs' user_managed: The Secret will be replicated to the regions specified by the user.
                Structure is documented below.
         """
-        SecretReplication._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto=auto,
-            automatic=automatic,
-            user_managed=user_managed,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto: Optional['outputs.SecretReplicationAuto'] = None,
-             automatic: Optional[bool] = None,
-             user_managed: Optional['outputs.SecretReplicationUserManaged'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if user_managed is None and 'userManaged' in kwargs:
-            user_managed = kwargs['userManaged']
-
         if auto is not None:
-            _setter("auto", auto)
+            pulumi.set(__self__, "auto", auto)
         if automatic is not None:
-            _setter("automatic", automatic)
+            pulumi.set(__self__, "automatic", automatic)
         if user_managed is not None:
-            _setter("user_managed", user_managed)
+            pulumi.set(__self__, "user_managed", user_managed)
 
     @property
     @pulumi.getter
@@ -240,21 +185,8 @@ class SecretReplicationAuto(dict):
                encryption is used.
                Structure is documented below.
         """
-        SecretReplicationAuto._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            customer_managed_encryption=customer_managed_encryption,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             customer_managed_encryption: Optional['outputs.SecretReplicationAutoCustomerManagedEncryption'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if customer_managed_encryption is None and 'customerManagedEncryption' in kwargs:
-            customer_managed_encryption = kwargs['customerManagedEncryption']
-
         if customer_managed_encryption is not None:
-            _setter("customer_managed_encryption", customer_managed_encryption)
+            pulumi.set(__self__, "customer_managed_encryption", customer_managed_encryption)
 
     @property
     @pulumi.getter(name="customerManagedEncryption")
@@ -294,22 +226,7 @@ class SecretReplicationAutoCustomerManagedEncryption(dict):
                
                - - -
         """
-        SecretReplicationAutoCustomerManagedEncryption._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            kms_key_name=kms_key_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             kms_key_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if kms_key_name is None and 'kmsKeyName' in kwargs:
-            kms_key_name = kwargs['kmsKeyName']
-        if kms_key_name is None:
-            raise TypeError("Missing 'kms_key_name' argument")
-
-        _setter("kms_key_name", kms_key_name)
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -330,20 +247,7 @@ class SecretReplicationUserManaged(dict):
         :param Sequence['SecretReplicationUserManagedReplicaArgs'] replicas: The list of Replicas for this Secret. Cannot be empty.
                Structure is documented below.
         """
-        SecretReplicationUserManaged._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            replicas=replicas,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             replicas: Optional[Sequence['outputs.SecretReplicationUserManagedReplica']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if replicas is None:
-            raise TypeError("Missing 'replicas' argument")
-
-        _setter("replicas", replicas)
+        pulumi.set(__self__, "replicas", replicas)
 
     @property
     @pulumi.getter
@@ -382,26 +286,9 @@ class SecretReplicationUserManagedReplica(dict):
         :param 'SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs' customer_managed_encryption: Customer Managed Encryption for the secret.
                Structure is documented below.
         """
-        SecretReplicationUserManagedReplica._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            location=location,
-            customer_managed_encryption=customer_managed_encryption,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             location: Optional[str] = None,
-             customer_managed_encryption: Optional['outputs.SecretReplicationUserManagedReplicaCustomerManagedEncryption'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if customer_managed_encryption is None and 'customerManagedEncryption' in kwargs:
-            customer_managed_encryption = kwargs['customerManagedEncryption']
-
-        _setter("location", location)
+        pulumi.set(__self__, "location", location)
         if customer_managed_encryption is not None:
-            _setter("customer_managed_encryption", customer_managed_encryption)
+            pulumi.set(__self__, "customer_managed_encryption", customer_managed_encryption)
 
     @property
     @pulumi.getter
@@ -447,22 +334,7 @@ class SecretReplicationUserManagedReplicaCustomerManagedEncryption(dict):
                
                - - -
         """
-        SecretReplicationUserManagedReplicaCustomerManagedEncryption._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            kms_key_name=kms_key_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             kms_key_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if kms_key_name is None and 'kmsKeyName' in kwargs:
-            kms_key_name = kwargs['kmsKeyName']
-        if kms_key_name is None:
-            raise TypeError("Missing 'kms_key_name' argument")
-
-        _setter("kms_key_name", kms_key_name)
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -505,27 +377,10 @@ class SecretRotation(dict):
         :param str rotation_period: The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years).
                If rotationPeriod is set, `next_rotation_time` must be set. `next_rotation_time` will be advanced by this period when the service automatically sends rotation notifications.
         """
-        SecretRotation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            next_rotation_time=next_rotation_time,
-            rotation_period=rotation_period,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             next_rotation_time: Optional[str] = None,
-             rotation_period: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if next_rotation_time is None and 'nextRotationTime' in kwargs:
-            next_rotation_time = kwargs['nextRotationTime']
-        if rotation_period is None and 'rotationPeriod' in kwargs:
-            rotation_period = kwargs['rotationPeriod']
-
         if next_rotation_time is not None:
-            _setter("next_rotation_time", next_rotation_time)
+            pulumi.set(__self__, "next_rotation_time", next_rotation_time)
         if rotation_period is not None:
-            _setter("rotation_period", rotation_period)
+            pulumi.set(__self__, "rotation_period", rotation_period)
 
     @property
     @pulumi.getter(name="nextRotationTime")
@@ -554,20 +409,7 @@ class SecretTopic(dict):
         :param str name: The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
                For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
         """
-        SecretTopic._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -585,32 +427,9 @@ class GetSecretReplicationResult(dict):
                  automatic: bool,
                  autos: Sequence['outputs.GetSecretReplicationAutoResult'],
                  user_manageds: Sequence['outputs.GetSecretReplicationUserManagedResult']):
-        GetSecretReplicationResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            automatic=automatic,
-            autos=autos,
-            user_manageds=user_manageds,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             automatic: Optional[bool] = None,
-             autos: Optional[Sequence['outputs.GetSecretReplicationAutoResult']] = None,
-             user_manageds: Optional[Sequence['outputs.GetSecretReplicationUserManagedResult']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if automatic is None:
-            raise TypeError("Missing 'automatic' argument")
-        if autos is None:
-            raise TypeError("Missing 'autos' argument")
-        if user_manageds is None and 'userManageds' in kwargs:
-            user_manageds = kwargs['userManageds']
-        if user_manageds is None:
-            raise TypeError("Missing 'user_manageds' argument")
-
-        _setter("automatic", automatic)
-        _setter("autos", autos)
-        _setter("user_manageds", user_manageds)
+        pulumi.set(__self__, "automatic", automatic)
+        pulumi.set(__self__, "autos", autos)
+        pulumi.set(__self__, "user_manageds", user_manageds)
 
     @property
     @pulumi.getter
@@ -632,22 +451,7 @@ class GetSecretReplicationResult(dict):
 class GetSecretReplicationAutoResult(dict):
     def __init__(__self__, *,
                  customer_managed_encryptions: Sequence['outputs.GetSecretReplicationAutoCustomerManagedEncryptionResult']):
-        GetSecretReplicationAutoResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            customer_managed_encryptions=customer_managed_encryptions,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             customer_managed_encryptions: Optional[Sequence['outputs.GetSecretReplicationAutoCustomerManagedEncryptionResult']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if customer_managed_encryptions is None and 'customerManagedEncryptions' in kwargs:
-            customer_managed_encryptions = kwargs['customerManagedEncryptions']
-        if customer_managed_encryptions is None:
-            raise TypeError("Missing 'customer_managed_encryptions' argument")
-
-        _setter("customer_managed_encryptions", customer_managed_encryptions)
+        pulumi.set(__self__, "customer_managed_encryptions", customer_managed_encryptions)
 
     @property
     @pulumi.getter(name="customerManagedEncryptions")
@@ -659,22 +463,7 @@ class GetSecretReplicationAutoResult(dict):
 class GetSecretReplicationAutoCustomerManagedEncryptionResult(dict):
     def __init__(__self__, *,
                  kms_key_name: str):
-        GetSecretReplicationAutoCustomerManagedEncryptionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            kms_key_name=kms_key_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             kms_key_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if kms_key_name is None and 'kmsKeyName' in kwargs:
-            kms_key_name = kwargs['kmsKeyName']
-        if kms_key_name is None:
-            raise TypeError("Missing 'kms_key_name' argument")
-
-        _setter("kms_key_name", kms_key_name)
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -686,20 +475,7 @@ class GetSecretReplicationAutoCustomerManagedEncryptionResult(dict):
 class GetSecretReplicationUserManagedResult(dict):
     def __init__(__self__, *,
                  replicas: Sequence['outputs.GetSecretReplicationUserManagedReplicaResult']):
-        GetSecretReplicationUserManagedResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            replicas=replicas,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             replicas: Optional[Sequence['outputs.GetSecretReplicationUserManagedReplicaResult']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if replicas is None:
-            raise TypeError("Missing 'replicas' argument")
-
-        _setter("replicas", replicas)
+        pulumi.set(__self__, "replicas", replicas)
 
     @property
     @pulumi.getter
@@ -712,27 +488,8 @@ class GetSecretReplicationUserManagedReplicaResult(dict):
     def __init__(__self__, *,
                  customer_managed_encryptions: Sequence['outputs.GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionResult'],
                  location: str):
-        GetSecretReplicationUserManagedReplicaResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            customer_managed_encryptions=customer_managed_encryptions,
-            location=location,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             customer_managed_encryptions: Optional[Sequence['outputs.GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionResult']] = None,
-             location: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if customer_managed_encryptions is None and 'customerManagedEncryptions' in kwargs:
-            customer_managed_encryptions = kwargs['customerManagedEncryptions']
-        if customer_managed_encryptions is None:
-            raise TypeError("Missing 'customer_managed_encryptions' argument")
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-
-        _setter("customer_managed_encryptions", customer_managed_encryptions)
-        _setter("location", location)
+        pulumi.set(__self__, "customer_managed_encryptions", customer_managed_encryptions)
+        pulumi.set(__self__, "location", location)
 
     @property
     @pulumi.getter(name="customerManagedEncryptions")
@@ -749,22 +506,7 @@ class GetSecretReplicationUserManagedReplicaResult(dict):
 class GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionResult(dict):
     def __init__(__self__, *,
                  kms_key_name: str):
-        GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            kms_key_name=kms_key_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             kms_key_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if kms_key_name is None and 'kmsKeyName' in kwargs:
-            kms_key_name = kwargs['kmsKeyName']
-        if kms_key_name is None:
-            raise TypeError("Missing 'kms_key_name' argument")
-
-        _setter("kms_key_name", kms_key_name)
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -777,29 +519,8 @@ class GetSecretRotationResult(dict):
     def __init__(__self__, *,
                  next_rotation_time: str,
                  rotation_period: str):
-        GetSecretRotationResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            next_rotation_time=next_rotation_time,
-            rotation_period=rotation_period,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             next_rotation_time: Optional[str] = None,
-             rotation_period: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if next_rotation_time is None and 'nextRotationTime' in kwargs:
-            next_rotation_time = kwargs['nextRotationTime']
-        if next_rotation_time is None:
-            raise TypeError("Missing 'next_rotation_time' argument")
-        if rotation_period is None and 'rotationPeriod' in kwargs:
-            rotation_period = kwargs['rotationPeriod']
-        if rotation_period is None:
-            raise TypeError("Missing 'rotation_period' argument")
-
-        _setter("next_rotation_time", next_rotation_time)
-        _setter("rotation_period", rotation_period)
+        pulumi.set(__self__, "next_rotation_time", next_rotation_time)
+        pulumi.set(__self__, "rotation_period", rotation_period)
 
     @property
     @pulumi.getter(name="nextRotationTime")
@@ -816,20 +537,7 @@ class GetSecretRotationResult(dict):
 class GetSecretTopicResult(dict):
     def __init__(__self__, *,
                  name: str):
-        GetSecretTopicResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter

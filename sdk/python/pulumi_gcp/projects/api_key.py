@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,33 +27,14 @@ class ApiKeyArgs:
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input['ApiKeyRestrictionsArgs'] restrictions: Key restrictions.
         """
-        ApiKeyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            display_name=display_name,
-            name=name,
-            project=project,
-            restrictions=restrictions,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             display_name: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             restrictions: Optional[pulumi.Input['ApiKeyRestrictionsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if restrictions is not None:
-            _setter("restrictions", restrictions)
+            pulumi.set(__self__, "restrictions", restrictions)
 
     @property
     @pulumi.getter(name="displayName")
@@ -122,43 +103,18 @@ class _ApiKeyState:
         :param pulumi.Input['ApiKeyRestrictionsArgs'] restrictions: Key restrictions.
         :param pulumi.Input[str] uid: Output only. Unique id in UUID4 format.
         """
-        _ApiKeyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            display_name=display_name,
-            key_string=key_string,
-            name=name,
-            project=project,
-            restrictions=restrictions,
-            uid=uid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             display_name: Optional[pulumi.Input[str]] = None,
-             key_string: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             restrictions: Optional[pulumi.Input['ApiKeyRestrictionsArgs']] = None,
-             uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if key_string is None and 'keyString' in kwargs:
-            key_string = kwargs['keyString']
-
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if key_string is not None:
-            _setter("key_string", key_string)
+            pulumi.set(__self__, "key_string", key_string)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if restrictions is not None:
-            _setter("restrictions", restrictions)
+            pulumi.set(__self__, "restrictions", restrictions)
         if uid is not None:
-            _setter("uid", uid)
+            pulumi.set(__self__, "uid", uid)
 
     @property
     @pulumi.getter(name="displayName")
@@ -516,10 +472,6 @@ class ApiKey(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ApiKeyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -541,7 +493,6 @@ class ApiKey(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            restrictions = _utilities.configure(restrictions, ApiKeyRestrictionsArgs, True)
             __props__.__dict__["restrictions"] = restrictions
             __props__.__dict__["key_string"] = None
             __props__.__dict__["uid"] = None

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -53,79 +53,28 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Zones where memcache nodes should be provisioned.  If not
                provided, all zones will be used.
         """
-        InstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            node_config=node_config,
-            node_count=node_count,
-            authorized_network=authorized_network,
-            display_name=display_name,
-            labels=labels,
-            maintenance_policy=maintenance_policy,
-            memcache_parameters=memcache_parameters,
-            memcache_version=memcache_version,
-            name=name,
-            project=project,
-            region=region,
-            zones=zones,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             node_config: Optional[pulumi.Input['InstanceNodeConfigArgs']] = None,
-             node_count: Optional[pulumi.Input[int]] = None,
-             authorized_network: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
-             memcache_parameters: Optional[pulumi.Input['InstanceMemcacheParametersArgs']] = None,
-             memcache_version: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if node_config is None and 'nodeConfig' in kwargs:
-            node_config = kwargs['nodeConfig']
-        if node_config is None:
-            raise TypeError("Missing 'node_config' argument")
-        if node_count is None and 'nodeCount' in kwargs:
-            node_count = kwargs['nodeCount']
-        if node_count is None:
-            raise TypeError("Missing 'node_count' argument")
-        if authorized_network is None and 'authorizedNetwork' in kwargs:
-            authorized_network = kwargs['authorizedNetwork']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if maintenance_policy is None and 'maintenancePolicy' in kwargs:
-            maintenance_policy = kwargs['maintenancePolicy']
-        if memcache_parameters is None and 'memcacheParameters' in kwargs:
-            memcache_parameters = kwargs['memcacheParameters']
-        if memcache_version is None and 'memcacheVersion' in kwargs:
-            memcache_version = kwargs['memcacheVersion']
-
-        _setter("node_config", node_config)
-        _setter("node_count", node_count)
+        pulumi.set(__self__, "node_config", node_config)
+        pulumi.set(__self__, "node_count", node_count)
         if authorized_network is not None:
-            _setter("authorized_network", authorized_network)
+            pulumi.set(__self__, "authorized_network", authorized_network)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if maintenance_policy is not None:
-            _setter("maintenance_policy", maintenance_policy)
+            pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if memcache_parameters is not None:
-            _setter("memcache_parameters", memcache_parameters)
+            pulumi.set(__self__, "memcache_parameters", memcache_parameters)
         if memcache_version is not None:
-            _setter("memcache_version", memcache_version)
+            pulumi.set(__self__, "memcache_version", memcache_version)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if zones is not None:
-            _setter("zones", zones)
+            pulumi.set(__self__, "zones", zones)
 
     @property
     @pulumi.getter(name="nodeConfig")
@@ -337,107 +286,40 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Zones where memcache nodes should be provisioned.  If not
                provided, all zones will be used.
         """
-        _InstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            authorized_network=authorized_network,
-            create_time=create_time,
-            discovery_endpoint=discovery_endpoint,
-            display_name=display_name,
-            labels=labels,
-            maintenance_policy=maintenance_policy,
-            maintenance_schedules=maintenance_schedules,
-            memcache_full_version=memcache_full_version,
-            memcache_nodes=memcache_nodes,
-            memcache_parameters=memcache_parameters,
-            memcache_version=memcache_version,
-            name=name,
-            node_config=node_config,
-            node_count=node_count,
-            project=project,
-            region=region,
-            zones=zones,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             authorized_network: Optional[pulumi.Input[str]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             discovery_endpoint: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
-             maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]] = None,
-             memcache_full_version: Optional[pulumi.Input[str]] = None,
-             memcache_nodes: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMemcacheNodeArgs']]]] = None,
-             memcache_parameters: Optional[pulumi.Input['InstanceMemcacheParametersArgs']] = None,
-             memcache_version: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             node_config: Optional[pulumi.Input['InstanceNodeConfigArgs']] = None,
-             node_count: Optional[pulumi.Input[int]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if authorized_network is None and 'authorizedNetwork' in kwargs:
-            authorized_network = kwargs['authorizedNetwork']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if discovery_endpoint is None and 'discoveryEndpoint' in kwargs:
-            discovery_endpoint = kwargs['discoveryEndpoint']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if maintenance_policy is None and 'maintenancePolicy' in kwargs:
-            maintenance_policy = kwargs['maintenancePolicy']
-        if maintenance_schedules is None and 'maintenanceSchedules' in kwargs:
-            maintenance_schedules = kwargs['maintenanceSchedules']
-        if memcache_full_version is None and 'memcacheFullVersion' in kwargs:
-            memcache_full_version = kwargs['memcacheFullVersion']
-        if memcache_nodes is None and 'memcacheNodes' in kwargs:
-            memcache_nodes = kwargs['memcacheNodes']
-        if memcache_parameters is None and 'memcacheParameters' in kwargs:
-            memcache_parameters = kwargs['memcacheParameters']
-        if memcache_version is None and 'memcacheVersion' in kwargs:
-            memcache_version = kwargs['memcacheVersion']
-        if node_config is None and 'nodeConfig' in kwargs:
-            node_config = kwargs['nodeConfig']
-        if node_count is None and 'nodeCount' in kwargs:
-            node_count = kwargs['nodeCount']
-
         if authorized_network is not None:
-            _setter("authorized_network", authorized_network)
+            pulumi.set(__self__, "authorized_network", authorized_network)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if discovery_endpoint is not None:
-            _setter("discovery_endpoint", discovery_endpoint)
+            pulumi.set(__self__, "discovery_endpoint", discovery_endpoint)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if maintenance_policy is not None:
-            _setter("maintenance_policy", maintenance_policy)
+            pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if maintenance_schedules is not None:
-            _setter("maintenance_schedules", maintenance_schedules)
+            pulumi.set(__self__, "maintenance_schedules", maintenance_schedules)
         if memcache_full_version is not None:
-            _setter("memcache_full_version", memcache_full_version)
+            pulumi.set(__self__, "memcache_full_version", memcache_full_version)
         if memcache_nodes is not None:
-            _setter("memcache_nodes", memcache_nodes)
+            pulumi.set(__self__, "memcache_nodes", memcache_nodes)
         if memcache_parameters is not None:
-            _setter("memcache_parameters", memcache_parameters)
+            pulumi.set(__self__, "memcache_parameters", memcache_parameters)
         if memcache_version is not None:
-            _setter("memcache_version", memcache_version)
+            pulumi.set(__self__, "memcache_version", memcache_version)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if node_config is not None:
-            _setter("node_config", node_config)
+            pulumi.set(__self__, "node_config", node_config)
         if node_count is not None:
-            _setter("node_count", node_count)
+            pulumi.set(__self__, "node_count", node_count)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if zones is not None:
-            _setter("zones", zones)
+            pulumi.set(__self__, "zones", zones)
 
     @property
     @pulumi.getter(name="authorizedNetwork")
@@ -854,10 +736,6 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -887,13 +765,10 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["authorized_network"] = authorized_network
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
-            maintenance_policy = _utilities.configure(maintenance_policy, InstanceMaintenancePolicyArgs, True)
             __props__.__dict__["maintenance_policy"] = maintenance_policy
-            memcache_parameters = _utilities.configure(memcache_parameters, InstanceMemcacheParametersArgs, True)
             __props__.__dict__["memcache_parameters"] = memcache_parameters
             __props__.__dict__["memcache_version"] = memcache_version
             __props__.__dict__["name"] = name
-            node_config = _utilities.configure(node_config, InstanceNodeConfigArgs, True)
             if node_config is None and not opts.urn:
                 raise TypeError("Missing required property 'node_config'")
             __props__.__dict__["node_config"] = node_config

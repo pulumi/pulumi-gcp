@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -61,37 +61,14 @@ class DeviceConfig(dict):
         :param str version: (Output)
                The version of this update.
         """
-        DeviceConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            binary_data=binary_data,
-            cloud_update_time=cloud_update_time,
-            device_ack_time=device_ack_time,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             binary_data: Optional[str] = None,
-             cloud_update_time: Optional[str] = None,
-             device_ack_time: Optional[str] = None,
-             version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if binary_data is None and 'binaryData' in kwargs:
-            binary_data = kwargs['binaryData']
-        if cloud_update_time is None and 'cloudUpdateTime' in kwargs:
-            cloud_update_time = kwargs['cloudUpdateTime']
-        if device_ack_time is None and 'deviceAckTime' in kwargs:
-            device_ack_time = kwargs['deviceAckTime']
-
         if binary_data is not None:
-            _setter("binary_data", binary_data)
+            pulumi.set(__self__, "binary_data", binary_data)
         if cloud_update_time is not None:
-            _setter("cloud_update_time", cloud_update_time)
+            pulumi.set(__self__, "cloud_update_time", cloud_update_time)
         if device_ack_time is not None:
-            _setter("device_ack_time", device_ack_time)
+            pulumi.set(__self__, "device_ack_time", device_ack_time)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="binaryData")
@@ -159,28 +136,9 @@ class DeviceCredential(dict):
                Structure is documented below.
         :param str expiration_time: The time at which this credential becomes invalid.
         """
-        DeviceCredential._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            public_key=public_key,
-            expiration_time=expiration_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             public_key: Optional['outputs.DeviceCredentialPublicKey'] = None,
-             expiration_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if public_key is None and 'publicKey' in kwargs:
-            public_key = kwargs['publicKey']
-        if public_key is None:
-            raise TypeError("Missing 'public_key' argument")
-        if expiration_time is None and 'expirationTime' in kwargs:
-            expiration_time = kwargs['expirationTime']
-
-        _setter("public_key", public_key)
+        pulumi.set(__self__, "public_key", public_key)
         if expiration_time is not None:
-            _setter("expiration_time", expiration_time)
+            pulumi.set(__self__, "expiration_time", expiration_time)
 
     @property
     @pulumi.getter(name="publicKey")
@@ -210,25 +168,8 @@ class DeviceCredentialPublicKey(dict):
                Possible values are: `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, `ES256_X509_PEM`.
         :param str key: The key data.
         """
-        DeviceCredentialPublicKey._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            format=format,
-            key=key,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             format: Optional[str] = None,
-             key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if format is None:
-            raise TypeError("Missing 'format' argument")
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-
-        _setter("format", format)
-        _setter("key", key)
+        pulumi.set(__self__, "format", format)
+        pulumi.set(__self__, "key", key)
 
     @property
     @pulumi.getter
@@ -289,39 +230,14 @@ class DeviceGatewayConfig(dict):
         :param str last_accessed_gateway_time: (Output)
                The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
         """
-        DeviceGatewayConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            gateway_auth_method=gateway_auth_method,
-            gateway_type=gateway_type,
-            last_accessed_gateway_id=last_accessed_gateway_id,
-            last_accessed_gateway_time=last_accessed_gateway_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             gateway_auth_method: Optional[str] = None,
-             gateway_type: Optional[str] = None,
-             last_accessed_gateway_id: Optional[str] = None,
-             last_accessed_gateway_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if gateway_auth_method is None and 'gatewayAuthMethod' in kwargs:
-            gateway_auth_method = kwargs['gatewayAuthMethod']
-        if gateway_type is None and 'gatewayType' in kwargs:
-            gateway_type = kwargs['gatewayType']
-        if last_accessed_gateway_id is None and 'lastAccessedGatewayId' in kwargs:
-            last_accessed_gateway_id = kwargs['lastAccessedGatewayId']
-        if last_accessed_gateway_time is None and 'lastAccessedGatewayTime' in kwargs:
-            last_accessed_gateway_time = kwargs['lastAccessedGatewayTime']
-
         if gateway_auth_method is not None:
-            _setter("gateway_auth_method", gateway_auth_method)
+            pulumi.set(__self__, "gateway_auth_method", gateway_auth_method)
         if gateway_type is not None:
-            _setter("gateway_type", gateway_type)
+            pulumi.set(__self__, "gateway_type", gateway_type)
         if last_accessed_gateway_id is not None:
-            _setter("last_accessed_gateway_id", last_accessed_gateway_id)
+            pulumi.set(__self__, "last_accessed_gateway_id", last_accessed_gateway_id)
         if last_accessed_gateway_time is not None:
-            _setter("last_accessed_gateway_time", last_accessed_gateway_time)
+            pulumi.set(__self__, "last_accessed_gateway_time", last_accessed_gateway_time)
 
     @property
     @pulumi.getter(name="gatewayAuthMethod")
@@ -372,27 +288,12 @@ class DeviceLastErrorStatus(dict):
         :param str message: A developer-facing error message, which should be in English.
         :param int number: The status code, which should be an enum value of google.rpc.Code.
         """
-        DeviceLastErrorStatus._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            details=details,
-            message=message,
-            number=number,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             details: Optional[Sequence[Mapping[str, Any]]] = None,
-             message: Optional[str] = None,
-             number: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if details is not None:
-            _setter("details", details)
+            pulumi.set(__self__, "details", details)
         if message is not None:
-            _setter("message", message)
+            pulumi.set(__self__, "message", message)
         if number is not None:
-            _setter("number", number)
+            pulumi.set(__self__, "number", number)
 
     @property
     @pulumi.getter
@@ -447,27 +348,10 @@ class DeviceState(dict):
         :param str binary_data: The device state data.
         :param str update_time: The time at which this state version was updated in Cloud IoT Core.
         """
-        DeviceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            binary_data=binary_data,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             binary_data: Optional[str] = None,
-             update_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if binary_data is None and 'binaryData' in kwargs:
-            binary_data = kwargs['binaryData']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if binary_data is not None:
-            _setter("binary_data", binary_data)
+            pulumi.set(__self__, "binary_data", binary_data)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="binaryData")
@@ -510,22 +394,7 @@ class RegistryCredential(dict):
         """
         :param Mapping[str, Any] public_key_certificate: A public key certificate format and data.
         """
-        RegistryCredential._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            public_key_certificate=public_key_certificate,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             public_key_certificate: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if public_key_certificate is None and 'publicKeyCertificate' in kwargs:
-            public_key_certificate = kwargs['publicKeyCertificate']
-        if public_key_certificate is None:
-            raise TypeError("Missing 'public_key_certificate' argument")
-
-        _setter("public_key_certificate", public_key_certificate)
+        pulumi.set(__self__, "public_key_certificate", public_key_certificate)
 
     @property
     @pulumi.getter(name="publicKeyCertificate")
@@ -568,28 +437,9 @@ class RegistryEventNotificationConfigItem(dict):
                value can only be used for the last `event_notification_configs`
                item.
         """
-        RegistryEventNotificationConfigItem._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            pubsub_topic_name=pubsub_topic_name,
-            subfolder_matches=subfolder_matches,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             pubsub_topic_name: Optional[str] = None,
-             subfolder_matches: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if pubsub_topic_name is None and 'pubsubTopicName' in kwargs:
-            pubsub_topic_name = kwargs['pubsubTopicName']
-        if pubsub_topic_name is None:
-            raise TypeError("Missing 'pubsub_topic_name' argument")
-        if subfolder_matches is None and 'subfolderMatches' in kwargs:
-            subfolder_matches = kwargs['subfolderMatches']
-
-        _setter("pubsub_topic_name", pubsub_topic_name)
+        pulumi.set(__self__, "pubsub_topic_name", pubsub_topic_name)
         if subfolder_matches is not None:
-            _setter("subfolder_matches", subfolder_matches)
+            pulumi.set(__self__, "subfolder_matches", subfolder_matches)
 
     @property
     @pulumi.getter(name="pubsubTopicName")
@@ -618,29 +468,10 @@ class RegistryIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        RegistryIamBindingCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -664,29 +495,10 @@ class RegistryIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        RegistryIamMemberCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter

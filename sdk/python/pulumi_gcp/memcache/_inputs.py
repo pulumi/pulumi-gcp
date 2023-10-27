@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -43,38 +43,13 @@ class InstanceMaintenancePolicyArgs:
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits.
         """
-        InstanceMaintenancePolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            weekly_maintenance_windows=weekly_maintenance_windows,
-            create_time=create_time,
-            description=description,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             weekly_maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if weekly_maintenance_windows is None and 'weeklyMaintenanceWindows' in kwargs:
-            weekly_maintenance_windows = kwargs['weeklyMaintenanceWindows']
-        if weekly_maintenance_windows is None:
-            raise TypeError("Missing 'weekly_maintenance_windows' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
-        _setter("weekly_maintenance_windows", weekly_maintenance_windows)
+        pulumi.set(__self__, "weekly_maintenance_windows", weekly_maintenance_windows)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="weeklyMaintenanceWindows")
@@ -159,32 +134,9 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
         :param pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs'] start_time: Required. Start time of the window in UTC time.
                Structure is documented below.
         """
-        InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            day=day,
-            duration=duration,
-            start_time=start_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             day: Optional[pulumi.Input[str]] = None,
-             duration: Optional[pulumi.Input[str]] = None,
-             start_time: Optional[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if day is None:
-            raise TypeError("Missing 'day' argument")
-        if duration is None:
-            raise TypeError("Missing 'duration' argument")
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-        if start_time is None:
-            raise TypeError("Missing 'start_time' argument")
-
-        _setter("day", day)
-        _setter("duration", duration)
-        _setter("start_time", start_time)
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "start_time", start_time)
 
     @property
     @pulumi.getter
@@ -250,31 +202,14 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
         :param pulumi.Input[int] seconds: Seconds of minutes of the time. Must normally be from 0 to 59.
                An API may allow the value 60 if it allows leap-seconds.
         """
-        InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            hours=hours,
-            minutes=minutes,
-            nanos=nanos,
-            seconds=seconds,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             hours: Optional[pulumi.Input[int]] = None,
-             minutes: Optional[pulumi.Input[int]] = None,
-             nanos: Optional[pulumi.Input[int]] = None,
-             seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if hours is not None:
-            _setter("hours", hours)
+            pulumi.set(__self__, "hours", hours)
         if minutes is not None:
-            _setter("minutes", minutes)
+            pulumi.set(__self__, "minutes", minutes)
         if nanos is not None:
-            _setter("nanos", nanos)
+            pulumi.set(__self__, "nanos", nanos)
         if seconds is not None:
-            _setter("seconds", seconds)
+            pulumi.set(__self__, "seconds", seconds)
 
     @property
     @pulumi.getter
@@ -346,33 +281,12 @@ class InstanceMaintenanceScheduleArgs:
         :param pulumi.Input[str] start_time: Required. Start time of the window in UTC time.
                Structure is documented below.
         """
-        InstanceMaintenanceScheduleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            end_time=end_time,
-            schedule_deadline_time=schedule_deadline_time,
-            start_time=start_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             end_time: Optional[pulumi.Input[str]] = None,
-             schedule_deadline_time: Optional[pulumi.Input[str]] = None,
-             start_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if end_time is None and 'endTime' in kwargs:
-            end_time = kwargs['endTime']
-        if schedule_deadline_time is None and 'scheduleDeadlineTime' in kwargs:
-            schedule_deadline_time = kwargs['scheduleDeadlineTime']
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-
         if end_time is not None:
-            _setter("end_time", end_time)
+            pulumi.set(__self__, "end_time", end_time)
         if schedule_deadline_time is not None:
-            _setter("schedule_deadline_time", schedule_deadline_time)
+            pulumi.set(__self__, "schedule_deadline_time", schedule_deadline_time)
         if start_time is not None:
-            _setter("start_time", start_time)
+            pulumi.set(__self__, "start_time", start_time)
 
     @property
     @pulumi.getter(name="endTime")
@@ -439,37 +353,16 @@ class InstanceMemcacheNodeArgs:
         :param pulumi.Input[str] zone: (Output)
                Location (GCP Zone) for the Memcached node.
         """
-        InstanceMemcacheNodeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            host=host,
-            node_id=node_id,
-            port=port,
-            state=state,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             host: Optional[pulumi.Input[str]] = None,
-             node_id: Optional[pulumi.Input[str]] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if node_id is None and 'nodeId' in kwargs:
-            node_id = kwargs['nodeId']
-
         if host is not None:
-            _setter("host", host)
+            pulumi.set(__self__, "host", host)
         if node_id is not None:
-            _setter("node_id", node_id)
+            pulumi.set(__self__, "node_id", node_id)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter
@@ -547,23 +440,10 @@ class InstanceMemcacheParametersArgs:
                This is a unique ID associated with this set of parameters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: User-defined set of parameters to use in the memcache process.
         """
-        InstanceMemcacheParametersArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            params=params,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[pulumi.Input[str]] = None,
-             params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if id is not None:
-            _setter("id", id)
+            pulumi.set(__self__, "id", id)
         if params is not None:
-            _setter("params", params)
+            pulumi.set(__self__, "params", params)
 
     @property
     @pulumi.getter
@@ -602,29 +482,8 @@ class InstanceNodeConfigArgs:
                
                - - -
         """
-        InstanceNodeConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cpu_count=cpu_count,
-            memory_size_mb=memory_size_mb,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cpu_count: Optional[pulumi.Input[int]] = None,
-             memory_size_mb: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cpu_count is None and 'cpuCount' in kwargs:
-            cpu_count = kwargs['cpuCount']
-        if cpu_count is None:
-            raise TypeError("Missing 'cpu_count' argument")
-        if memory_size_mb is None and 'memorySizeMb' in kwargs:
-            memory_size_mb = kwargs['memorySizeMb']
-        if memory_size_mb is None:
-            raise TypeError("Missing 'memory_size_mb' argument")
-
-        _setter("cpu_count", cpu_count)
-        _setter("memory_size_mb", memory_size_mb)
+        pulumi.set(__self__, "cpu_count", cpu_count)
+        pulumi.set(__self__, "memory_size_mb", memory_size_mb)
 
     @property
     @pulumi.getter(name="cpuCount")

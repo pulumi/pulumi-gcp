@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ServiceArgs', 'Service']
@@ -30,31 +30,10 @@ class ServiceArgs:
                up to 2000 characters, spread across all key-value pairs.
                Metadata that goes beyond any these limits will be rejected.
         """
-        ServiceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            namespace=namespace,
-            service_id=service_id,
-            metadata=metadata,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             namespace: Optional[pulumi.Input[str]] = None,
-             service_id: Optional[pulumi.Input[str]] = None,
-             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if namespace is None:
-            raise TypeError("Missing 'namespace' argument")
-        if service_id is None and 'serviceId' in kwargs:
-            service_id = kwargs['serviceId']
-        if service_id is None:
-            raise TypeError("Missing 'service_id' argument")
-
-        _setter("namespace", namespace)
-        _setter("service_id", service_id)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "service_id", service_id)
         if metadata is not None:
-            _setter("metadata", metadata)
+            pulumi.set(__self__, "metadata", metadata)
 
     @property
     @pulumi.getter
@@ -122,33 +101,14 @@ class _ServiceState:
                
                - - -
         """
-        _ServiceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            metadata=metadata,
-            name=name,
-            namespace=namespace,
-            service_id=service_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             namespace: Optional[pulumi.Input[str]] = None,
-             service_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if service_id is None and 'serviceId' in kwargs:
-            service_id = kwargs['serviceId']
-
         if metadata is not None:
-            _setter("metadata", metadata)
+            pulumi.set(__self__, "metadata", metadata)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if namespace is not None:
-            _setter("namespace", namespace)
+            pulumi.set(__self__, "namespace", namespace)
         if service_id is not None:
-            _setter("service_id", service_id)
+            pulumi.set(__self__, "service_id", service_id)
 
     @property
     @pulumi.getter
@@ -337,10 +297,6 @@ class Service(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ServiceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

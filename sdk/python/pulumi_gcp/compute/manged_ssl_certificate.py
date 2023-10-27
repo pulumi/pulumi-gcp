@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -45,41 +45,18 @@ class MangedSslCertificateArgs:
                Default value is `MANAGED`.
                Possible values are: `MANAGED`.
         """
-        MangedSslCertificateArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            certificate_id=certificate_id,
-            description=description,
-            managed=managed,
-            name=name,
-            project=project,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             certificate_id: Optional[pulumi.Input[int]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             managed: Optional[pulumi.Input['MangedSslCertificateManagedArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if certificate_id is None and 'certificateId' in kwargs:
-            certificate_id = kwargs['certificateId']
-
         if certificate_id is not None:
-            _setter("certificate_id", certificate_id)
+            pulumi.set(__self__, "certificate_id", certificate_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if managed is not None:
-            _setter("managed", managed)
+            pulumi.set(__self__, "managed", managed)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="certificateId")
@@ -208,65 +185,26 @@ class _MangedSslCertificateState:
                Default value is `MANAGED`.
                Possible values are: `MANAGED`.
         """
-        _MangedSslCertificateState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            certificate_id=certificate_id,
-            creation_timestamp=creation_timestamp,
-            description=description,
-            expire_time=expire_time,
-            managed=managed,
-            name=name,
-            project=project,
-            self_link=self_link,
-            subject_alternative_names=subject_alternative_names,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             certificate_id: Optional[pulumi.Input[int]] = None,
-             creation_timestamp: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             expire_time: Optional[pulumi.Input[str]] = None,
-             managed: Optional[pulumi.Input['MangedSslCertificateManagedArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             self_link: Optional[pulumi.Input[str]] = None,
-             subject_alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if certificate_id is None and 'certificateId' in kwargs:
-            certificate_id = kwargs['certificateId']
-        if creation_timestamp is None and 'creationTimestamp' in kwargs:
-            creation_timestamp = kwargs['creationTimestamp']
-        if expire_time is None and 'expireTime' in kwargs:
-            expire_time = kwargs['expireTime']
-        if self_link is None and 'selfLink' in kwargs:
-            self_link = kwargs['selfLink']
-        if subject_alternative_names is None and 'subjectAlternativeNames' in kwargs:
-            subject_alternative_names = kwargs['subjectAlternativeNames']
-
         if certificate_id is not None:
-            _setter("certificate_id", certificate_id)
+            pulumi.set(__self__, "certificate_id", certificate_id)
         if creation_timestamp is not None:
-            _setter("creation_timestamp", creation_timestamp)
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if expire_time is not None:
-            _setter("expire_time", expire_time)
+            pulumi.set(__self__, "expire_time", expire_time)
         if managed is not None:
-            _setter("managed", managed)
+            pulumi.set(__self__, "managed", managed)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if self_link is not None:
-            _setter("self_link", self_link)
+            pulumi.set(__self__, "self_link", self_link)
         if subject_alternative_names is not None:
-            _setter("subject_alternative_names", subject_alternative_names)
+            pulumi.set(__self__, "subject_alternative_names", subject_alternative_names)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="certificateId")
@@ -549,10 +487,6 @@ class MangedSslCertificate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            MangedSslCertificateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -576,7 +510,6 @@ class MangedSslCertificate(pulumi.CustomResource):
 
             __props__.__dict__["certificate_id"] = certificate_id
             __props__.__dict__["description"] = description
-            managed = _utilities.configure(managed, MangedSslCertificateManagedArgs, True)
             __props__.__dict__["managed"] = managed
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

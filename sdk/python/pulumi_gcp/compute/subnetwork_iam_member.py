@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -49,42 +49,15 @@ class SubnetworkIAMMemberArgs:
                the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
                region is specified, it is taken from the provider configuration.
         """
-        SubnetworkIAMMemberArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            member=member,
-            role=role,
-            subnetwork=subnetwork,
-            condition=condition,
-            project=project,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             member: Optional[pulumi.Input[str]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             subnetwork: Optional[pulumi.Input[str]] = None,
-             condition: Optional[pulumi.Input['SubnetworkIAMMemberConditionArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if member is None:
-            raise TypeError("Missing 'member' argument")
-        if role is None:
-            raise TypeError("Missing 'role' argument")
-        if subnetwork is None:
-            raise TypeError("Missing 'subnetwork' argument")
-
-        _setter("member", member)
-        _setter("role", role)
-        _setter("subnetwork", subnetwork)
+        pulumi.set(__self__, "member", member)
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "subnetwork", subnetwork)
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter
@@ -213,43 +186,20 @@ class _SubnetworkIAMMemberState:
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] subnetwork: Used to find the parent resource to bind the IAM policy to
         """
-        _SubnetworkIAMMemberState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            condition=condition,
-            etag=etag,
-            member=member,
-            project=project,
-            region=region,
-            role=role,
-            subnetwork=subnetwork,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             condition: Optional[pulumi.Input['SubnetworkIAMMemberConditionArgs']] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             member: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             subnetwork: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if member is not None:
-            _setter("member", member)
+            pulumi.set(__self__, "member", member)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if role is not None:
-            _setter("role", role)
+            pulumi.set(__self__, "role", role)
         if subnetwork is not None:
-            _setter("subnetwork", subnetwork)
+            pulumi.set(__self__, "subnetwork", subnetwork)
 
     @property
     @pulumi.getter
@@ -695,10 +645,6 @@ class SubnetworkIAMMember(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SubnetworkIAMMemberArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -719,7 +665,6 @@ class SubnetworkIAMMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SubnetworkIAMMemberArgs.__new__(SubnetworkIAMMemberArgs)
 
-            condition = _utilities.configure(condition, SubnetworkIAMMemberConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")

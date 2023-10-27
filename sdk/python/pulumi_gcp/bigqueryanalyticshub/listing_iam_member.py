@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -47,51 +47,16 @@ class ListingIamMemberArgs:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
-        ListingIamMemberArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            data_exchange_id=data_exchange_id,
-            listing_id=listing_id,
-            member=member,
-            role=role,
-            condition=condition,
-            location=location,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             data_exchange_id: Optional[pulumi.Input[str]] = None,
-             listing_id: Optional[pulumi.Input[str]] = None,
-             member: Optional[pulumi.Input[str]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             condition: Optional[pulumi.Input['ListingIamMemberConditionArgs']] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if data_exchange_id is None and 'dataExchangeId' in kwargs:
-            data_exchange_id = kwargs['dataExchangeId']
-        if data_exchange_id is None:
-            raise TypeError("Missing 'data_exchange_id' argument")
-        if listing_id is None and 'listingId' in kwargs:
-            listing_id = kwargs['listingId']
-        if listing_id is None:
-            raise TypeError("Missing 'listing_id' argument")
-        if member is None:
-            raise TypeError("Missing 'member' argument")
-        if role is None:
-            raise TypeError("Missing 'role' argument")
-
-        _setter("data_exchange_id", data_exchange_id)
-        _setter("listing_id", listing_id)
-        _setter("member", member)
-        _setter("role", role)
+        pulumi.set(__self__, "data_exchange_id", data_exchange_id)
+        pulumi.set(__self__, "listing_id", listing_id)
+        pulumi.set(__self__, "member", member)
+        pulumi.set(__self__, "role", role)
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="dataExchangeId")
@@ -224,51 +189,22 @@ class _ListingIamMemberState:
                `bigqueryanalyticshub.ListingIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
-        _ListingIamMemberState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            condition=condition,
-            data_exchange_id=data_exchange_id,
-            etag=etag,
-            listing_id=listing_id,
-            location=location,
-            member=member,
-            project=project,
-            role=role,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             condition: Optional[pulumi.Input['ListingIamMemberConditionArgs']] = None,
-             data_exchange_id: Optional[pulumi.Input[str]] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             listing_id: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             member: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if data_exchange_id is None and 'dataExchangeId' in kwargs:
-            data_exchange_id = kwargs['dataExchangeId']
-        if listing_id is None and 'listingId' in kwargs:
-            listing_id = kwargs['listingId']
-
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
         if data_exchange_id is not None:
-            _setter("data_exchange_id", data_exchange_id)
+            pulumi.set(__self__, "data_exchange_id", data_exchange_id)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if listing_id is not None:
-            _setter("listing_id", listing_id)
+            pulumi.set(__self__, "listing_id", listing_id)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if member is not None:
-            _setter("member", member)
+            pulumi.set(__self__, "member", member)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if role is not None:
-            _setter("role", role)
+            pulumi.set(__self__, "role", role)
 
     @property
     @pulumi.getter
@@ -604,10 +540,6 @@ class ListingIamMember(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ListingIamMemberArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -629,7 +561,6 @@ class ListingIamMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ListingIamMemberArgs.__new__(ListingIamMemberArgs)
 
-            condition = _utilities.configure(condition, ListingIamMemberConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if data_exchange_id is None and not opts.urn:
                 raise TypeError("Missing required property 'data_exchange_id'")

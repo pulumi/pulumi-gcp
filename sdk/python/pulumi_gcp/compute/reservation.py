@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -44,51 +44,18 @@ class ReservationArgs:
                consume this reservation. Otherwise, it can be consumed by VMs with
                affinity for any reservation. Defaults to false.
         """
-        ReservationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            specific_reservation=specific_reservation,
-            zone=zone,
-            description=description,
-            name=name,
-            project=project,
-            share_settings=share_settings,
-            specific_reservation_required=specific_reservation_required,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             specific_reservation: Optional[pulumi.Input['ReservationSpecificReservationArgs']] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             share_settings: Optional[pulumi.Input['ReservationShareSettingsArgs']] = None,
-             specific_reservation_required: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if specific_reservation is None and 'specificReservation' in kwargs:
-            specific_reservation = kwargs['specificReservation']
-        if specific_reservation is None:
-            raise TypeError("Missing 'specific_reservation' argument")
-        if zone is None:
-            raise TypeError("Missing 'zone' argument")
-        if share_settings is None and 'shareSettings' in kwargs:
-            share_settings = kwargs['shareSettings']
-        if specific_reservation_required is None and 'specificReservationRequired' in kwargs:
-            specific_reservation_required = kwargs['specificReservationRequired']
-
-        _setter("specific_reservation", specific_reservation)
-        _setter("zone", zone)
+        pulumi.set(__self__, "specific_reservation", specific_reservation)
+        pulumi.set(__self__, "zone", zone)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if share_settings is not None:
-            _setter("share_settings", share_settings)
+            pulumi.set(__self__, "share_settings", share_settings)
         if specific_reservation_required is not None:
-            _setter("specific_reservation_required", specific_reservation_required)
+            pulumi.set(__self__, "specific_reservation_required", specific_reservation_required)
 
     @property
     @pulumi.getter(name="specificReservation")
@@ -226,69 +193,28 @@ class _ReservationState:
         :param pulumi.Input[str] status: The status of the reservation.
         :param pulumi.Input[str] zone: The zone where the reservation is made.
         """
-        _ReservationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            commitment=commitment,
-            creation_timestamp=creation_timestamp,
-            description=description,
-            name=name,
-            project=project,
-            self_link=self_link,
-            share_settings=share_settings,
-            specific_reservation=specific_reservation,
-            specific_reservation_required=specific_reservation_required,
-            status=status,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             commitment: Optional[pulumi.Input[str]] = None,
-             creation_timestamp: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             self_link: Optional[pulumi.Input[str]] = None,
-             share_settings: Optional[pulumi.Input['ReservationShareSettingsArgs']] = None,
-             specific_reservation: Optional[pulumi.Input['ReservationSpecificReservationArgs']] = None,
-             specific_reservation_required: Optional[pulumi.Input[bool]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if creation_timestamp is None and 'creationTimestamp' in kwargs:
-            creation_timestamp = kwargs['creationTimestamp']
-        if self_link is None and 'selfLink' in kwargs:
-            self_link = kwargs['selfLink']
-        if share_settings is None and 'shareSettings' in kwargs:
-            share_settings = kwargs['shareSettings']
-        if specific_reservation is None and 'specificReservation' in kwargs:
-            specific_reservation = kwargs['specificReservation']
-        if specific_reservation_required is None and 'specificReservationRequired' in kwargs:
-            specific_reservation_required = kwargs['specificReservationRequired']
-
         if commitment is not None:
-            _setter("commitment", commitment)
+            pulumi.set(__self__, "commitment", commitment)
         if creation_timestamp is not None:
-            _setter("creation_timestamp", creation_timestamp)
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if self_link is not None:
-            _setter("self_link", self_link)
+            pulumi.set(__self__, "self_link", self_link)
         if share_settings is not None:
-            _setter("share_settings", share_settings)
+            pulumi.set(__self__, "share_settings", share_settings)
         if specific_reservation is not None:
-            _setter("specific_reservation", specific_reservation)
+            pulumi.set(__self__, "specific_reservation", specific_reservation)
         if specific_reservation_required is not None:
-            _setter("specific_reservation_required", specific_reservation_required)
+            pulumi.set(__self__, "specific_reservation_required", specific_reservation_required)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter
@@ -593,10 +519,6 @@ class Reservation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ReservationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -621,9 +543,7 @@ class Reservation(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            share_settings = _utilities.configure(share_settings, ReservationShareSettingsArgs, True)
             __props__.__dict__["share_settings"] = share_settings
-            specific_reservation = _utilities.configure(specific_reservation, ReservationSpecificReservationArgs, True)
             if specific_reservation is None and not opts.urn:
                 raise TypeError("Missing required property 'specific_reservation'")
             __props__.__dict__["specific_reservation"] = specific_reservation

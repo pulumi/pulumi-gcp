@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -72,98 +72,37 @@ class BareMetalAdminClusterArgs:
         :param pulumi.Input['BareMetalAdminClusterStorageArgs'] storage: Specifies the cluster storage configuration.
                Structure is documented below.
         """
-        BareMetalAdminClusterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            location=location,
-            annotations=annotations,
-            bare_metal_version=bare_metal_version,
-            cluster_operations=cluster_operations,
-            control_plane=control_plane,
-            description=description,
-            load_balancer=load_balancer,
-            maintenance_config=maintenance_config,
-            name=name,
-            network_config=network_config,
-            node_access_config=node_access_config,
-            node_config=node_config,
-            project=project,
-            proxy=proxy,
-            security_config=security_config,
-            storage=storage,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             location: Optional[pulumi.Input[str]] = None,
-             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             bare_metal_version: Optional[pulumi.Input[str]] = None,
-             cluster_operations: Optional[pulumi.Input['BareMetalAdminClusterClusterOperationsArgs']] = None,
-             control_plane: Optional[pulumi.Input['BareMetalAdminClusterControlPlaneArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             load_balancer: Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerArgs']] = None,
-             maintenance_config: Optional[pulumi.Input['BareMetalAdminClusterMaintenanceConfigArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network_config: Optional[pulumi.Input['BareMetalAdminClusterNetworkConfigArgs']] = None,
-             node_access_config: Optional[pulumi.Input['BareMetalAdminClusterNodeAccessConfigArgs']] = None,
-             node_config: Optional[pulumi.Input['BareMetalAdminClusterNodeConfigArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             proxy: Optional[pulumi.Input['BareMetalAdminClusterProxyArgs']] = None,
-             security_config: Optional[pulumi.Input['BareMetalAdminClusterSecurityConfigArgs']] = None,
-             storage: Optional[pulumi.Input['BareMetalAdminClusterStorageArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if bare_metal_version is None and 'bareMetalVersion' in kwargs:
-            bare_metal_version = kwargs['bareMetalVersion']
-        if cluster_operations is None and 'clusterOperations' in kwargs:
-            cluster_operations = kwargs['clusterOperations']
-        if control_plane is None and 'controlPlane' in kwargs:
-            control_plane = kwargs['controlPlane']
-        if load_balancer is None and 'loadBalancer' in kwargs:
-            load_balancer = kwargs['loadBalancer']
-        if maintenance_config is None and 'maintenanceConfig' in kwargs:
-            maintenance_config = kwargs['maintenanceConfig']
-        if network_config is None and 'networkConfig' in kwargs:
-            network_config = kwargs['networkConfig']
-        if node_access_config is None and 'nodeAccessConfig' in kwargs:
-            node_access_config = kwargs['nodeAccessConfig']
-        if node_config is None and 'nodeConfig' in kwargs:
-            node_config = kwargs['nodeConfig']
-        if security_config is None and 'securityConfig' in kwargs:
-            security_config = kwargs['securityConfig']
-
-        _setter("location", location)
+        pulumi.set(__self__, "location", location)
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if bare_metal_version is not None:
-            _setter("bare_metal_version", bare_metal_version)
+            pulumi.set(__self__, "bare_metal_version", bare_metal_version)
         if cluster_operations is not None:
-            _setter("cluster_operations", cluster_operations)
+            pulumi.set(__self__, "cluster_operations", cluster_operations)
         if control_plane is not None:
-            _setter("control_plane", control_plane)
+            pulumi.set(__self__, "control_plane", control_plane)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if load_balancer is not None:
-            _setter("load_balancer", load_balancer)
+            pulumi.set(__self__, "load_balancer", load_balancer)
         if maintenance_config is not None:
-            _setter("maintenance_config", maintenance_config)
+            pulumi.set(__self__, "maintenance_config", maintenance_config)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network_config is not None:
-            _setter("network_config", network_config)
+            pulumi.set(__self__, "network_config", network_config)
         if node_access_config is not None:
-            _setter("node_access_config", node_access_config)
+            pulumi.set(__self__, "node_access_config", node_access_config)
         if node_config is not None:
-            _setter("node_config", node_config)
+            pulumi.set(__self__, "node_config", node_config)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if proxy is not None:
-            _setter("proxy", proxy)
+            pulumi.set(__self__, "proxy", proxy)
         if security_config is not None:
-            _setter("security_config", security_config)
+            pulumi.set(__self__, "security_config", security_config)
         if storage is not None:
-            _setter("storage", storage)
+            pulumi.set(__self__, "storage", storage)
 
     @property
     @pulumi.getter
@@ -485,155 +424,62 @@ class _BareMetalAdminClusterState:
         :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckArgs']]] validation_checks: Specifies the security related settings for the Bare Metal Admin Cluster.
                Structure is documented below.
         """
-        _BareMetalAdminClusterState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            annotations=annotations,
-            bare_metal_version=bare_metal_version,
-            cluster_operations=cluster_operations,
-            control_plane=control_plane,
-            create_time=create_time,
-            delete_time=delete_time,
-            description=description,
-            endpoint=endpoint,
-            etag=etag,
-            fleets=fleets,
-            load_balancer=load_balancer,
-            local_name=local_name,
-            location=location,
-            maintenance_config=maintenance_config,
-            name=name,
-            network_config=network_config,
-            node_access_config=node_access_config,
-            node_config=node_config,
-            project=project,
-            proxy=proxy,
-            reconciling=reconciling,
-            security_config=security_config,
-            state=state,
-            statuses=statuses,
-            storage=storage,
-            uid=uid,
-            update_time=update_time,
-            validation_checks=validation_checks,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             bare_metal_version: Optional[pulumi.Input[str]] = None,
-             cluster_operations: Optional[pulumi.Input['BareMetalAdminClusterClusterOperationsArgs']] = None,
-             control_plane: Optional[pulumi.Input['BareMetalAdminClusterControlPlaneArgs']] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             delete_time: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             endpoint: Optional[pulumi.Input[str]] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             fleets: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterFleetArgs']]]] = None,
-             load_balancer: Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerArgs']] = None,
-             local_name: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             maintenance_config: Optional[pulumi.Input['BareMetalAdminClusterMaintenanceConfigArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network_config: Optional[pulumi.Input['BareMetalAdminClusterNetworkConfigArgs']] = None,
-             node_access_config: Optional[pulumi.Input['BareMetalAdminClusterNodeAccessConfigArgs']] = None,
-             node_config: Optional[pulumi.Input['BareMetalAdminClusterNodeConfigArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             proxy: Optional[pulumi.Input['BareMetalAdminClusterProxyArgs']] = None,
-             reconciling: Optional[pulumi.Input[bool]] = None,
-             security_config: Optional[pulumi.Input['BareMetalAdminClusterSecurityConfigArgs']] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             statuses: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterStatusArgs']]]] = None,
-             storage: Optional[pulumi.Input['BareMetalAdminClusterStorageArgs']] = None,
-             uid: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             validation_checks: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bare_metal_version is None and 'bareMetalVersion' in kwargs:
-            bare_metal_version = kwargs['bareMetalVersion']
-        if cluster_operations is None and 'clusterOperations' in kwargs:
-            cluster_operations = kwargs['clusterOperations']
-        if control_plane is None and 'controlPlane' in kwargs:
-            control_plane = kwargs['controlPlane']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if delete_time is None and 'deleteTime' in kwargs:
-            delete_time = kwargs['deleteTime']
-        if load_balancer is None and 'loadBalancer' in kwargs:
-            load_balancer = kwargs['loadBalancer']
-        if local_name is None and 'localName' in kwargs:
-            local_name = kwargs['localName']
-        if maintenance_config is None and 'maintenanceConfig' in kwargs:
-            maintenance_config = kwargs['maintenanceConfig']
-        if network_config is None and 'networkConfig' in kwargs:
-            network_config = kwargs['networkConfig']
-        if node_access_config is None and 'nodeAccessConfig' in kwargs:
-            node_access_config = kwargs['nodeAccessConfig']
-        if node_config is None and 'nodeConfig' in kwargs:
-            node_config = kwargs['nodeConfig']
-        if security_config is None and 'securityConfig' in kwargs:
-            security_config = kwargs['securityConfig']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-        if validation_checks is None and 'validationChecks' in kwargs:
-            validation_checks = kwargs['validationChecks']
-
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if bare_metal_version is not None:
-            _setter("bare_metal_version", bare_metal_version)
+            pulumi.set(__self__, "bare_metal_version", bare_metal_version)
         if cluster_operations is not None:
-            _setter("cluster_operations", cluster_operations)
+            pulumi.set(__self__, "cluster_operations", cluster_operations)
         if control_plane is not None:
-            _setter("control_plane", control_plane)
+            pulumi.set(__self__, "control_plane", control_plane)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if delete_time is not None:
-            _setter("delete_time", delete_time)
+            pulumi.set(__self__, "delete_time", delete_time)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if endpoint is not None:
-            _setter("endpoint", endpoint)
+            pulumi.set(__self__, "endpoint", endpoint)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if fleets is not None:
-            _setter("fleets", fleets)
+            pulumi.set(__self__, "fleets", fleets)
         if load_balancer is not None:
-            _setter("load_balancer", load_balancer)
+            pulumi.set(__self__, "load_balancer", load_balancer)
         if local_name is not None:
-            _setter("local_name", local_name)
+            pulumi.set(__self__, "local_name", local_name)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if maintenance_config is not None:
-            _setter("maintenance_config", maintenance_config)
+            pulumi.set(__self__, "maintenance_config", maintenance_config)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network_config is not None:
-            _setter("network_config", network_config)
+            pulumi.set(__self__, "network_config", network_config)
         if node_access_config is not None:
-            _setter("node_access_config", node_access_config)
+            pulumi.set(__self__, "node_access_config", node_access_config)
         if node_config is not None:
-            _setter("node_config", node_config)
+            pulumi.set(__self__, "node_config", node_config)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if proxy is not None:
-            _setter("proxy", proxy)
+            pulumi.set(__self__, "proxy", proxy)
         if reconciling is not None:
-            _setter("reconciling", reconciling)
+            pulumi.set(__self__, "reconciling", reconciling)
         if security_config is not None:
-            _setter("security_config", security_config)
+            pulumi.set(__self__, "security_config", security_config)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if statuses is not None:
-            _setter("statuses", statuses)
+            pulumi.set(__self__, "statuses", statuses)
         if storage is not None:
-            _setter("storage", storage)
+            pulumi.set(__self__, "storage", storage)
         if uid is not None:
-            _setter("uid", uid)
+            pulumi.set(__self__, "uid", uid)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
         if validation_checks is not None:
-            _setter("validation_checks", validation_checks)
+            pulumi.set(__self__, "validation_checks", validation_checks)
 
     @property
     @pulumi.getter
@@ -1464,10 +1310,6 @@ class BareMetalAdminCluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            BareMetalAdminClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1500,31 +1342,21 @@ class BareMetalAdminCluster(pulumi.CustomResource):
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["bare_metal_version"] = bare_metal_version
-            cluster_operations = _utilities.configure(cluster_operations, BareMetalAdminClusterClusterOperationsArgs, True)
             __props__.__dict__["cluster_operations"] = cluster_operations
-            control_plane = _utilities.configure(control_plane, BareMetalAdminClusterControlPlaneArgs, True)
             __props__.__dict__["control_plane"] = control_plane
             __props__.__dict__["description"] = description
-            load_balancer = _utilities.configure(load_balancer, BareMetalAdminClusterLoadBalancerArgs, True)
             __props__.__dict__["load_balancer"] = load_balancer
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            maintenance_config = _utilities.configure(maintenance_config, BareMetalAdminClusterMaintenanceConfigArgs, True)
             __props__.__dict__["maintenance_config"] = maintenance_config
             __props__.__dict__["name"] = name
-            network_config = _utilities.configure(network_config, BareMetalAdminClusterNetworkConfigArgs, True)
             __props__.__dict__["network_config"] = network_config
-            node_access_config = _utilities.configure(node_access_config, BareMetalAdminClusterNodeAccessConfigArgs, True)
             __props__.__dict__["node_access_config"] = node_access_config
-            node_config = _utilities.configure(node_config, BareMetalAdminClusterNodeConfigArgs, True)
             __props__.__dict__["node_config"] = node_config
             __props__.__dict__["project"] = project
-            proxy = _utilities.configure(proxy, BareMetalAdminClusterProxyArgs, True)
             __props__.__dict__["proxy"] = proxy
-            security_config = _utilities.configure(security_config, BareMetalAdminClusterSecurityConfigArgs, True)
             __props__.__dict__["security_config"] = security_config
-            storage = _utilities.configure(storage, BareMetalAdminClusterStorageArgs, True)
             __props__.__dict__["storage"] = storage
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None

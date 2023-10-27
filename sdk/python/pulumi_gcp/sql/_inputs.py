@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -51,40 +51,13 @@ class DatabaseInstanceCloneArgs:
                
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
-        DatabaseInstanceCloneArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            source_instance_name=source_instance_name,
-            allocated_ip_range=allocated_ip_range,
-            database_names=database_names,
-            point_in_time=point_in_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             source_instance_name: Optional[pulumi.Input[str]] = None,
-             allocated_ip_range: Optional[pulumi.Input[str]] = None,
-             database_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             point_in_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if source_instance_name is None and 'sourceInstanceName' in kwargs:
-            source_instance_name = kwargs['sourceInstanceName']
-        if source_instance_name is None:
-            raise TypeError("Missing 'source_instance_name' argument")
-        if allocated_ip_range is None and 'allocatedIpRange' in kwargs:
-            allocated_ip_range = kwargs['allocatedIpRange']
-        if database_names is None and 'databaseNames' in kwargs:
-            database_names = kwargs['databaseNames']
-        if point_in_time is None and 'pointInTime' in kwargs:
-            point_in_time = kwargs['pointInTime']
-
-        _setter("source_instance_name", source_instance_name)
+        pulumi.set(__self__, "source_instance_name", source_instance_name)
         if allocated_ip_range is not None:
-            _setter("allocated_ip_range", allocated_ip_range)
+            pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         if database_names is not None:
-            _setter("database_names", database_names)
+            pulumi.set(__self__, "database_names", database_names)
         if point_in_time is not None:
-            _setter("point_in_time", point_in_time)
+            pulumi.set(__self__, "point_in_time", point_in_time)
 
     @property
     @pulumi.getter(name="sourceInstanceName")
@@ -143,31 +116,12 @@ class DatabaseInstanceIpAddressArgs:
                  ip_address: Optional[pulumi.Input[str]] = None,
                  time_to_retire: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
-        DatabaseInstanceIpAddressArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ip_address=ip_address,
-            time_to_retire=time_to_retire,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ip_address: Optional[pulumi.Input[str]] = None,
-             time_to_retire: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ip_address is None and 'ipAddress' in kwargs:
-            ip_address = kwargs['ipAddress']
-        if time_to_retire is None and 'timeToRetire' in kwargs:
-            time_to_retire = kwargs['timeToRetire']
-
         if ip_address is not None:
-            _setter("ip_address", ip_address)
+            pulumi.set(__self__, "ip_address", ip_address)
         if time_to_retire is not None:
-            _setter("time_to_retire", time_to_retire)
+            pulumi.set(__self__, "time_to_retire", time_to_retire)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -234,77 +188,28 @@ class DatabaseInstanceReplicaConfigurationArgs:
         :param pulumi.Input[bool] verify_server_certificate: True if the master's common name
                value is checked during the SSL handshake.
         """
-        DatabaseInstanceReplicaConfigurationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ca_certificate=ca_certificate,
-            client_certificate=client_certificate,
-            client_key=client_key,
-            connect_retry_interval=connect_retry_interval,
-            dump_file_path=dump_file_path,
-            failover_target=failover_target,
-            master_heartbeat_period=master_heartbeat_period,
-            password=password,
-            ssl_cipher=ssl_cipher,
-            username=username,
-            verify_server_certificate=verify_server_certificate,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ca_certificate: Optional[pulumi.Input[str]] = None,
-             client_certificate: Optional[pulumi.Input[str]] = None,
-             client_key: Optional[pulumi.Input[str]] = None,
-             connect_retry_interval: Optional[pulumi.Input[int]] = None,
-             dump_file_path: Optional[pulumi.Input[str]] = None,
-             failover_target: Optional[pulumi.Input[bool]] = None,
-             master_heartbeat_period: Optional[pulumi.Input[int]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             ssl_cipher: Optional[pulumi.Input[str]] = None,
-             username: Optional[pulumi.Input[str]] = None,
-             verify_server_certificate: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ca_certificate is None and 'caCertificate' in kwargs:
-            ca_certificate = kwargs['caCertificate']
-        if client_certificate is None and 'clientCertificate' in kwargs:
-            client_certificate = kwargs['clientCertificate']
-        if client_key is None and 'clientKey' in kwargs:
-            client_key = kwargs['clientKey']
-        if connect_retry_interval is None and 'connectRetryInterval' in kwargs:
-            connect_retry_interval = kwargs['connectRetryInterval']
-        if dump_file_path is None and 'dumpFilePath' in kwargs:
-            dump_file_path = kwargs['dumpFilePath']
-        if failover_target is None and 'failoverTarget' in kwargs:
-            failover_target = kwargs['failoverTarget']
-        if master_heartbeat_period is None and 'masterHeartbeatPeriod' in kwargs:
-            master_heartbeat_period = kwargs['masterHeartbeatPeriod']
-        if ssl_cipher is None and 'sslCipher' in kwargs:
-            ssl_cipher = kwargs['sslCipher']
-        if verify_server_certificate is None and 'verifyServerCertificate' in kwargs:
-            verify_server_certificate = kwargs['verifyServerCertificate']
-
         if ca_certificate is not None:
-            _setter("ca_certificate", ca_certificate)
+            pulumi.set(__self__, "ca_certificate", ca_certificate)
         if client_certificate is not None:
-            _setter("client_certificate", client_certificate)
+            pulumi.set(__self__, "client_certificate", client_certificate)
         if client_key is not None:
-            _setter("client_key", client_key)
+            pulumi.set(__self__, "client_key", client_key)
         if connect_retry_interval is not None:
-            _setter("connect_retry_interval", connect_retry_interval)
+            pulumi.set(__self__, "connect_retry_interval", connect_retry_interval)
         if dump_file_path is not None:
-            _setter("dump_file_path", dump_file_path)
+            pulumi.set(__self__, "dump_file_path", dump_file_path)
         if failover_target is not None:
-            _setter("failover_target", failover_target)
+            pulumi.set(__self__, "failover_target", failover_target)
         if master_heartbeat_period is not None:
-            _setter("master_heartbeat_period", master_heartbeat_period)
+            pulumi.set(__self__, "master_heartbeat_period", master_heartbeat_period)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if ssl_cipher is not None:
-            _setter("ssl_cipher", ssl_cipher)
+            pulumi.set(__self__, "ssl_cipher", ssl_cipher)
         if username is not None:
-            _setter("username", username)
+            pulumi.set(__self__, "username", username)
         if verify_server_certificate is not None:
-            _setter("verify_server_certificate", verify_server_certificate)
+            pulumi.set(__self__, "verify_server_certificate", verify_server_certificate)
 
     @property
     @pulumi.getter(name="caCertificate")
@@ -459,32 +364,11 @@ class DatabaseInstanceRestoreBackupContextArgs:
                this instance's ID will be used.
         :param pulumi.Input[str] project: The full project ID of the source instance.`
         """
-        DatabaseInstanceRestoreBackupContextArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            backup_run_id=backup_run_id,
-            instance_id=instance_id,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             backup_run_id: Optional[pulumi.Input[int]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if backup_run_id is None and 'backupRunId' in kwargs:
-            backup_run_id = kwargs['backupRunId']
-        if backup_run_id is None:
-            raise TypeError("Missing 'backup_run_id' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-
-        _setter("backup_run_id", backup_run_id)
+        pulumi.set(__self__, "backup_run_id", backup_run_id)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="backupRunId")
@@ -536,43 +420,16 @@ class DatabaseInstanceServerCaCertArgs:
         :param pulumi.Input[str] expiration_time: The [RFC 3339](https://tools.ietf.org/html/rfc3339)
                formatted date time string indicating when this whitelist expires.
         """
-        DatabaseInstanceServerCaCertArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cert=cert,
-            common_name=common_name,
-            create_time=create_time,
-            expiration_time=expiration_time,
-            sha1_fingerprint=sha1_fingerprint,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cert: Optional[pulumi.Input[str]] = None,
-             common_name: Optional[pulumi.Input[str]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             expiration_time: Optional[pulumi.Input[str]] = None,
-             sha1_fingerprint: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if common_name is None and 'commonName' in kwargs:
-            common_name = kwargs['commonName']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if expiration_time is None and 'expirationTime' in kwargs:
-            expiration_time = kwargs['expirationTime']
-        if sha1_fingerprint is None and 'sha1Fingerprint' in kwargs:
-            sha1_fingerprint = kwargs['sha1Fingerprint']
-
         if cert is not None:
-            _setter("cert", cert)
+            pulumi.set(__self__, "cert", cert)
         if common_name is not None:
-            _setter("common_name", common_name)
+            pulumi.set(__self__, "common_name", common_name)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if expiration_time is not None:
-            _setter("expiration_time", expiration_time)
+            pulumi.set(__self__, "expiration_time", expiration_time)
         if sha1_fingerprint is not None:
-            _setter("sha1_fingerprint", sha1_fingerprint)
+            pulumi.set(__self__, "sha1_fingerprint", sha1_fingerprint)
 
     @property
     @pulumi.getter
@@ -677,170 +534,59 @@ class DatabaseInstanceSettingsArgs:
         :param pulumi.Input[str] time_zone: The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: A set of key/value user label pairs to assign to the instance.
         """
-        DatabaseInstanceSettingsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            tier=tier,
-            activation_policy=activation_policy,
-            active_directory_config=active_directory_config,
-            advanced_machine_features=advanced_machine_features,
-            availability_type=availability_type,
-            backup_configuration=backup_configuration,
-            collation=collation,
-            connector_enforcement=connector_enforcement,
-            data_cache_config=data_cache_config,
-            database_flags=database_flags,
-            deletion_protection_enabled=deletion_protection_enabled,
-            deny_maintenance_period=deny_maintenance_period,
-            disk_autoresize=disk_autoresize,
-            disk_autoresize_limit=disk_autoresize_limit,
-            disk_size=disk_size,
-            disk_type=disk_type,
-            edition=edition,
-            insights_config=insights_config,
-            ip_configuration=ip_configuration,
-            location_preference=location_preference,
-            maintenance_window=maintenance_window,
-            password_validation_policy=password_validation_policy,
-            pricing_plan=pricing_plan,
-            sql_server_audit_config=sql_server_audit_config,
-            time_zone=time_zone,
-            user_labels=user_labels,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             tier: Optional[pulumi.Input[str]] = None,
-             activation_policy: Optional[pulumi.Input[str]] = None,
-             active_directory_config: Optional[pulumi.Input['DatabaseInstanceSettingsActiveDirectoryConfigArgs']] = None,
-             advanced_machine_features: Optional[pulumi.Input['DatabaseInstanceSettingsAdvancedMachineFeaturesArgs']] = None,
-             availability_type: Optional[pulumi.Input[str]] = None,
-             backup_configuration: Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationArgs']] = None,
-             collation: Optional[pulumi.Input[str]] = None,
-             connector_enforcement: Optional[pulumi.Input[str]] = None,
-             data_cache_config: Optional[pulumi.Input['DatabaseInstanceSettingsDataCacheConfigArgs']] = None,
-             database_flags: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArgs']]]] = None,
-             deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
-             deny_maintenance_period: Optional[pulumi.Input['DatabaseInstanceSettingsDenyMaintenancePeriodArgs']] = None,
-             disk_autoresize: Optional[pulumi.Input[bool]] = None,
-             disk_autoresize_limit: Optional[pulumi.Input[int]] = None,
-             disk_size: Optional[pulumi.Input[int]] = None,
-             disk_type: Optional[pulumi.Input[str]] = None,
-             edition: Optional[pulumi.Input[str]] = None,
-             insights_config: Optional[pulumi.Input['DatabaseInstanceSettingsInsightsConfigArgs']] = None,
-             ip_configuration: Optional[pulumi.Input['DatabaseInstanceSettingsIpConfigurationArgs']] = None,
-             location_preference: Optional[pulumi.Input['DatabaseInstanceSettingsLocationPreferenceArgs']] = None,
-             maintenance_window: Optional[pulumi.Input['DatabaseInstanceSettingsMaintenanceWindowArgs']] = None,
-             password_validation_policy: Optional[pulumi.Input['DatabaseInstanceSettingsPasswordValidationPolicyArgs']] = None,
-             pricing_plan: Optional[pulumi.Input[str]] = None,
-             sql_server_audit_config: Optional[pulumi.Input['DatabaseInstanceSettingsSqlServerAuditConfigArgs']] = None,
-             time_zone: Optional[pulumi.Input[str]] = None,
-             user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if tier is None:
-            raise TypeError("Missing 'tier' argument")
-        if activation_policy is None and 'activationPolicy' in kwargs:
-            activation_policy = kwargs['activationPolicy']
-        if active_directory_config is None and 'activeDirectoryConfig' in kwargs:
-            active_directory_config = kwargs['activeDirectoryConfig']
-        if advanced_machine_features is None and 'advancedMachineFeatures' in kwargs:
-            advanced_machine_features = kwargs['advancedMachineFeatures']
-        if availability_type is None and 'availabilityType' in kwargs:
-            availability_type = kwargs['availabilityType']
-        if backup_configuration is None and 'backupConfiguration' in kwargs:
-            backup_configuration = kwargs['backupConfiguration']
-        if connector_enforcement is None and 'connectorEnforcement' in kwargs:
-            connector_enforcement = kwargs['connectorEnforcement']
-        if data_cache_config is None and 'dataCacheConfig' in kwargs:
-            data_cache_config = kwargs['dataCacheConfig']
-        if database_flags is None and 'databaseFlags' in kwargs:
-            database_flags = kwargs['databaseFlags']
-        if deletion_protection_enabled is None and 'deletionProtectionEnabled' in kwargs:
-            deletion_protection_enabled = kwargs['deletionProtectionEnabled']
-        if deny_maintenance_period is None and 'denyMaintenancePeriod' in kwargs:
-            deny_maintenance_period = kwargs['denyMaintenancePeriod']
-        if disk_autoresize is None and 'diskAutoresize' in kwargs:
-            disk_autoresize = kwargs['diskAutoresize']
-        if disk_autoresize_limit is None and 'diskAutoresizeLimit' in kwargs:
-            disk_autoresize_limit = kwargs['diskAutoresizeLimit']
-        if disk_size is None and 'diskSize' in kwargs:
-            disk_size = kwargs['diskSize']
-        if disk_type is None and 'diskType' in kwargs:
-            disk_type = kwargs['diskType']
-        if insights_config is None and 'insightsConfig' in kwargs:
-            insights_config = kwargs['insightsConfig']
-        if ip_configuration is None and 'ipConfiguration' in kwargs:
-            ip_configuration = kwargs['ipConfiguration']
-        if location_preference is None and 'locationPreference' in kwargs:
-            location_preference = kwargs['locationPreference']
-        if maintenance_window is None and 'maintenanceWindow' in kwargs:
-            maintenance_window = kwargs['maintenanceWindow']
-        if password_validation_policy is None and 'passwordValidationPolicy' in kwargs:
-            password_validation_policy = kwargs['passwordValidationPolicy']
-        if pricing_plan is None and 'pricingPlan' in kwargs:
-            pricing_plan = kwargs['pricingPlan']
-        if sql_server_audit_config is None and 'sqlServerAuditConfig' in kwargs:
-            sql_server_audit_config = kwargs['sqlServerAuditConfig']
-        if time_zone is None and 'timeZone' in kwargs:
-            time_zone = kwargs['timeZone']
-        if user_labels is None and 'userLabels' in kwargs:
-            user_labels = kwargs['userLabels']
-
-        _setter("tier", tier)
+        pulumi.set(__self__, "tier", tier)
         if activation_policy is not None:
-            _setter("activation_policy", activation_policy)
+            pulumi.set(__self__, "activation_policy", activation_policy)
         if active_directory_config is not None:
-            _setter("active_directory_config", active_directory_config)
+            pulumi.set(__self__, "active_directory_config", active_directory_config)
         if advanced_machine_features is not None:
-            _setter("advanced_machine_features", advanced_machine_features)
+            pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         if availability_type is not None:
-            _setter("availability_type", availability_type)
+            pulumi.set(__self__, "availability_type", availability_type)
         if backup_configuration is not None:
-            _setter("backup_configuration", backup_configuration)
+            pulumi.set(__self__, "backup_configuration", backup_configuration)
         if collation is not None:
-            _setter("collation", collation)
+            pulumi.set(__self__, "collation", collation)
         if connector_enforcement is not None:
-            _setter("connector_enforcement", connector_enforcement)
+            pulumi.set(__self__, "connector_enforcement", connector_enforcement)
         if data_cache_config is not None:
-            _setter("data_cache_config", data_cache_config)
+            pulumi.set(__self__, "data_cache_config", data_cache_config)
         if database_flags is not None:
-            _setter("database_flags", database_flags)
+            pulumi.set(__self__, "database_flags", database_flags)
         if deletion_protection_enabled is not None:
-            _setter("deletion_protection_enabled", deletion_protection_enabled)
+            pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
         if deny_maintenance_period is not None:
-            _setter("deny_maintenance_period", deny_maintenance_period)
+            pulumi.set(__self__, "deny_maintenance_period", deny_maintenance_period)
         if disk_autoresize is not None:
-            _setter("disk_autoresize", disk_autoresize)
+            pulumi.set(__self__, "disk_autoresize", disk_autoresize)
         if disk_autoresize_limit is not None:
-            _setter("disk_autoresize_limit", disk_autoresize_limit)
+            pulumi.set(__self__, "disk_autoresize_limit", disk_autoresize_limit)
         if disk_size is not None:
-            _setter("disk_size", disk_size)
+            pulumi.set(__self__, "disk_size", disk_size)
         if disk_type is not None:
-            _setter("disk_type", disk_type)
+            pulumi.set(__self__, "disk_type", disk_type)
         if edition is not None:
-            _setter("edition", edition)
+            pulumi.set(__self__, "edition", edition)
         if insights_config is not None:
-            _setter("insights_config", insights_config)
+            pulumi.set(__self__, "insights_config", insights_config)
         if ip_configuration is not None:
-            _setter("ip_configuration", ip_configuration)
+            pulumi.set(__self__, "ip_configuration", ip_configuration)
         if location_preference is not None:
-            _setter("location_preference", location_preference)
+            pulumi.set(__self__, "location_preference", location_preference)
         if maintenance_window is not None:
-            _setter("maintenance_window", maintenance_window)
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
         if password_validation_policy is not None:
-            _setter("password_validation_policy", password_validation_policy)
+            pulumi.set(__self__, "password_validation_policy", password_validation_policy)
         if pricing_plan is not None:
-            _setter("pricing_plan", pricing_plan)
+            pulumi.set(__self__, "pricing_plan", pricing_plan)
         if sql_server_audit_config is not None:
-            _setter("sql_server_audit_config", sql_server_audit_config)
+            pulumi.set(__self__, "sql_server_audit_config", sql_server_audit_config)
         if time_zone is not None:
-            _setter("time_zone", time_zone)
+            pulumi.set(__self__, "time_zone", time_zone)
         if user_labels is not None:
-            _setter("user_labels", user_labels)
+            pulumi.set(__self__, "user_labels", user_labels)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -1141,20 +887,7 @@ class DatabaseInstanceSettingsActiveDirectoryConfigArgs:
         :param pulumi.Input[str] domain: The domain name for the active directory (e.g., mydomain.com).
                Can only be used with SQL Server.
         """
-        DatabaseInstanceSettingsActiveDirectoryConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            domain=domain,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             domain: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if domain is None:
-            raise TypeError("Missing 'domain' argument")
-
-        _setter("domain", domain)
+        pulumi.set(__self__, "domain", domain)
 
     @property
     @pulumi.getter
@@ -1177,21 +910,8 @@ class DatabaseInstanceSettingsAdvancedMachineFeaturesArgs:
         """
         :param pulumi.Input[int] threads_per_core: The number of threads per core. The value of this flag can be 1 or 2. To disable SMT, set this flag to 1. Only available in Cloud SQL for SQL Server instances. See [smt](https://cloud.google.com/sql/docs/sqlserver/create-instance#smt-create-instance) for more details.
         """
-        DatabaseInstanceSettingsAdvancedMachineFeaturesArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            threads_per_core=threads_per_core,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             threads_per_core: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if threads_per_core is None and 'threadsPerCore' in kwargs:
-            threads_per_core = kwargs['threadsPerCore']
-
         if threads_per_core is not None:
-            _setter("threads_per_core", threads_per_core)
+            pulumi.set(__self__, "threads_per_core", threads_per_core)
 
     @property
     @pulumi.getter(name="threadsPerCore")
@@ -1227,53 +947,20 @@ class DatabaseInstanceSettingsBackupConfigurationArgs:
                configuration starts.
         :param pulumi.Input[int] transaction_log_retention_days: The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
         """
-        DatabaseInstanceSettingsBackupConfigurationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            backup_retention_settings=backup_retention_settings,
-            binary_log_enabled=binary_log_enabled,
-            enabled=enabled,
-            location=location,
-            point_in_time_recovery_enabled=point_in_time_recovery_enabled,
-            start_time=start_time,
-            transaction_log_retention_days=transaction_log_retention_days,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             backup_retention_settings: Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs']] = None,
-             binary_log_enabled: Optional[pulumi.Input[bool]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             point_in_time_recovery_enabled: Optional[pulumi.Input[bool]] = None,
-             start_time: Optional[pulumi.Input[str]] = None,
-             transaction_log_retention_days: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if backup_retention_settings is None and 'backupRetentionSettings' in kwargs:
-            backup_retention_settings = kwargs['backupRetentionSettings']
-        if binary_log_enabled is None and 'binaryLogEnabled' in kwargs:
-            binary_log_enabled = kwargs['binaryLogEnabled']
-        if point_in_time_recovery_enabled is None and 'pointInTimeRecoveryEnabled' in kwargs:
-            point_in_time_recovery_enabled = kwargs['pointInTimeRecoveryEnabled']
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-        if transaction_log_retention_days is None and 'transactionLogRetentionDays' in kwargs:
-            transaction_log_retention_days = kwargs['transactionLogRetentionDays']
-
         if backup_retention_settings is not None:
-            _setter("backup_retention_settings", backup_retention_settings)
+            pulumi.set(__self__, "backup_retention_settings", backup_retention_settings)
         if binary_log_enabled is not None:
-            _setter("binary_log_enabled", binary_log_enabled)
+            pulumi.set(__self__, "binary_log_enabled", binary_log_enabled)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if point_in_time_recovery_enabled is not None:
-            _setter("point_in_time_recovery_enabled", point_in_time_recovery_enabled)
+            pulumi.set(__self__, "point_in_time_recovery_enabled", point_in_time_recovery_enabled)
         if start_time is not None:
-            _setter("start_time", start_time)
+            pulumi.set(__self__, "start_time", start_time)
         if transaction_log_retention_days is not None:
-            _setter("transaction_log_retention_days", transaction_log_retention_days)
+            pulumi.set(__self__, "transaction_log_retention_days", transaction_log_retention_days)
 
     @property
     @pulumi.getter(name="backupRetentionSettings")
@@ -1372,28 +1059,9 @@ class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs:
                is 'COUNT', we will retain this many backups.
         :param pulumi.Input[str] retention_unit: The unit that 'retained_backups' represents. Defaults to `COUNT`.
         """
-        DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            retained_backups=retained_backups,
-            retention_unit=retention_unit,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             retained_backups: Optional[pulumi.Input[int]] = None,
-             retention_unit: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if retained_backups is None and 'retainedBackups' in kwargs:
-            retained_backups = kwargs['retainedBackups']
-        if retained_backups is None:
-            raise TypeError("Missing 'retained_backups' argument")
-        if retention_unit is None and 'retentionUnit' in kwargs:
-            retention_unit = kwargs['retentionUnit']
-
-        _setter("retained_backups", retained_backups)
+        pulumi.set(__self__, "retained_backups", retained_backups)
         if retention_unit is not None:
-            _setter("retention_unit", retention_unit)
+            pulumi.set(__self__, "retention_unit", retention_unit)
 
     @property
     @pulumi.getter(name="retainedBackups")
@@ -1429,21 +1097,8 @@ class DatabaseInstanceSettingsDataCacheConfigArgs:
         :param pulumi.Input[bool] data_cache_enabled: Whether data cache is enabled for the instance. Defaults to `false`
                Can only be used with MYSQL.
         """
-        DatabaseInstanceSettingsDataCacheConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            data_cache_enabled=data_cache_enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             data_cache_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if data_cache_enabled is None and 'dataCacheEnabled' in kwargs:
-            data_cache_enabled = kwargs['dataCacheEnabled']
-
         if data_cache_enabled is not None:
-            _setter("data_cache_enabled", data_cache_enabled)
+            pulumi.set(__self__, "data_cache_enabled", data_cache_enabled)
 
     @property
     @pulumi.getter(name="dataCacheEnabled")
@@ -1468,25 +1123,8 @@ class DatabaseInstanceSettingsDatabaseFlagArgs:
         :param pulumi.Input[str] name: Name of the flag.
         :param pulumi.Input[str] value: Value of the flag.
         """
-        DatabaseInstanceSettingsDatabaseFlagArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[pulumi.Input[str]] = None,
-             value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("name", name)
-        _setter("value", value)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -1524,34 +1162,9 @@ class DatabaseInstanceSettingsDenyMaintenancePeriodArgs:
         :param pulumi.Input[str] start_date: "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
         :param pulumi.Input[str] time: Time in UTC when the "deny maintenance period" starts on startDate and ends on endDate. The time is in format: HH:mm:SS, i.e., 00:00:00
         """
-        DatabaseInstanceSettingsDenyMaintenancePeriodArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            end_date=end_date,
-            start_date=start_date,
-            time=time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             end_date: Optional[pulumi.Input[str]] = None,
-             start_date: Optional[pulumi.Input[str]] = None,
-             time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if end_date is None and 'endDate' in kwargs:
-            end_date = kwargs['endDate']
-        if end_date is None:
-            raise TypeError("Missing 'end_date' argument")
-        if start_date is None and 'startDate' in kwargs:
-            start_date = kwargs['startDate']
-        if start_date is None:
-            raise TypeError("Missing 'start_date' argument")
-        if time is None:
-            raise TypeError("Missing 'time' argument")
-
-        _setter("end_date", end_date)
-        _setter("start_date", start_date)
-        _setter("time", time)
+        pulumi.set(__self__, "end_date", end_date)
+        pulumi.set(__self__, "start_date", start_date)
+        pulumi.set(__self__, "time", time)
 
     @property
     @pulumi.getter(name="endDate")
@@ -1607,45 +1220,16 @@ class DatabaseInstanceSettingsInsightsConfigArgs:
         :param pulumi.Input[bool] record_application_tags: True if Query Insights will record application tags from query when enabled.
         :param pulumi.Input[bool] record_client_address: True if Query Insights will record client address when enabled.
         """
-        DatabaseInstanceSettingsInsightsConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            query_insights_enabled=query_insights_enabled,
-            query_plans_per_minute=query_plans_per_minute,
-            query_string_length=query_string_length,
-            record_application_tags=record_application_tags,
-            record_client_address=record_client_address,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             query_insights_enabled: Optional[pulumi.Input[bool]] = None,
-             query_plans_per_minute: Optional[pulumi.Input[int]] = None,
-             query_string_length: Optional[pulumi.Input[int]] = None,
-             record_application_tags: Optional[pulumi.Input[bool]] = None,
-             record_client_address: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if query_insights_enabled is None and 'queryInsightsEnabled' in kwargs:
-            query_insights_enabled = kwargs['queryInsightsEnabled']
-        if query_plans_per_minute is None and 'queryPlansPerMinute' in kwargs:
-            query_plans_per_minute = kwargs['queryPlansPerMinute']
-        if query_string_length is None and 'queryStringLength' in kwargs:
-            query_string_length = kwargs['queryStringLength']
-        if record_application_tags is None and 'recordApplicationTags' in kwargs:
-            record_application_tags = kwargs['recordApplicationTags']
-        if record_client_address is None and 'recordClientAddress' in kwargs:
-            record_client_address = kwargs['recordClientAddress']
-
         if query_insights_enabled is not None:
-            _setter("query_insights_enabled", query_insights_enabled)
+            pulumi.set(__self__, "query_insights_enabled", query_insights_enabled)
         if query_plans_per_minute is not None:
-            _setter("query_plans_per_minute", query_plans_per_minute)
+            pulumi.set(__self__, "query_plans_per_minute", query_plans_per_minute)
         if query_string_length is not None:
-            _setter("query_string_length", query_string_length)
+            pulumi.set(__self__, "query_string_length", query_string_length)
         if record_application_tags is not None:
-            _setter("record_application_tags", record_application_tags)
+            pulumi.set(__self__, "record_application_tags", record_application_tags)
         if record_client_address is not None:
-            _setter("record_client_address", record_client_address)
+            pulumi.set(__self__, "record_client_address", record_client_address)
 
     @property
     @pulumi.getter(name="queryInsightsEnabled")
@@ -1733,57 +1317,20 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
                This setting can be updated, but it cannot be removed after it is set.
         :param pulumi.Input[bool] require_ssl: Whether SSL connections over IP are enforced or not.
         """
-        DatabaseInstanceSettingsIpConfigurationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allocated_ip_range=allocated_ip_range,
-            authorized_networks=authorized_networks,
-            enable_private_path_for_google_cloud_services=enable_private_path_for_google_cloud_services,
-            ipv4_enabled=ipv4_enabled,
-            private_network=private_network,
-            psc_configs=psc_configs,
-            require_ssl=require_ssl,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allocated_ip_range: Optional[pulumi.Input[str]] = None,
-             authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs']]]] = None,
-             enable_private_path_for_google_cloud_services: Optional[pulumi.Input[bool]] = None,
-             ipv4_enabled: Optional[pulumi.Input[bool]] = None,
-             private_network: Optional[pulumi.Input[str]] = None,
-             psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigArgs']]]] = None,
-             require_ssl: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allocated_ip_range is None and 'allocatedIpRange' in kwargs:
-            allocated_ip_range = kwargs['allocatedIpRange']
-        if authorized_networks is None and 'authorizedNetworks' in kwargs:
-            authorized_networks = kwargs['authorizedNetworks']
-        if enable_private_path_for_google_cloud_services is None and 'enablePrivatePathForGoogleCloudServices' in kwargs:
-            enable_private_path_for_google_cloud_services = kwargs['enablePrivatePathForGoogleCloudServices']
-        if ipv4_enabled is None and 'ipv4Enabled' in kwargs:
-            ipv4_enabled = kwargs['ipv4Enabled']
-        if private_network is None and 'privateNetwork' in kwargs:
-            private_network = kwargs['privateNetwork']
-        if psc_configs is None and 'pscConfigs' in kwargs:
-            psc_configs = kwargs['pscConfigs']
-        if require_ssl is None and 'requireSsl' in kwargs:
-            require_ssl = kwargs['requireSsl']
-
         if allocated_ip_range is not None:
-            _setter("allocated_ip_range", allocated_ip_range)
+            pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         if authorized_networks is not None:
-            _setter("authorized_networks", authorized_networks)
+            pulumi.set(__self__, "authorized_networks", authorized_networks)
         if enable_private_path_for_google_cloud_services is not None:
-            _setter("enable_private_path_for_google_cloud_services", enable_private_path_for_google_cloud_services)
+            pulumi.set(__self__, "enable_private_path_for_google_cloud_services", enable_private_path_for_google_cloud_services)
         if ipv4_enabled is not None:
-            _setter("ipv4_enabled", ipv4_enabled)
+            pulumi.set(__self__, "ipv4_enabled", ipv4_enabled)
         if private_network is not None:
-            _setter("private_network", private_network)
+            pulumi.set(__self__, "private_network", private_network)
         if psc_configs is not None:
-            _setter("psc_configs", psc_configs)
+            pulumi.set(__self__, "psc_configs", psc_configs)
         if require_ssl is not None:
-            _setter("require_ssl", require_ssl)
+            pulumi.set(__self__, "require_ssl", require_ssl)
 
     @property
     @pulumi.getter(name="allocatedIpRange")
@@ -1884,30 +1431,11 @@ class DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs:
                formatted date time string indicating when this whitelist expires.
         :param pulumi.Input[str] name: A name for this whitelist entry.
         """
-        DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            value=value,
-            expiration_time=expiration_time,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             value: Optional[pulumi.Input[str]] = None,
-             expiration_time: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-        if expiration_time is None and 'expirationTime' in kwargs:
-            expiration_time = kwargs['expirationTime']
-
-        _setter("value", value)
+        pulumi.set(__self__, "value", value)
         if expiration_time is not None:
-            _setter("expiration_time", expiration_time)
+            pulumi.set(__self__, "expiration_time", expiration_time)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -1958,27 +1486,10 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_consumer_projects: List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
         :param pulumi.Input[bool] psc_enabled: Whether PSC connectivity is enabled for this instance.
         """
-        DatabaseInstanceSettingsIpConfigurationPscConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_consumer_projects=allowed_consumer_projects,
-            psc_enabled=psc_enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_consumer_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             psc_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_consumer_projects is None and 'allowedConsumerProjects' in kwargs:
-            allowed_consumer_projects = kwargs['allowedConsumerProjects']
-        if psc_enabled is None and 'pscEnabled' in kwargs:
-            psc_enabled = kwargs['pscEnabled']
-
         if allowed_consumer_projects is not None:
-            _setter("allowed_consumer_projects", allowed_consumer_projects)
+            pulumi.set(__self__, "allowed_consumer_projects", allowed_consumer_projects)
         if psc_enabled is not None:
-            _setter("psc_enabled", psc_enabled)
+            pulumi.set(__self__, "psc_enabled", psc_enabled)
 
     @property
     @pulumi.getter(name="allowedConsumerProjects")
@@ -2022,31 +1533,12 @@ class DatabaseInstanceSettingsLocationPreferenceArgs:
         :param pulumi.Input[str] zone: The preferred compute engine
                [zone](https://cloud.google.com/compute/docs/zones?hl=en).
         """
-        DatabaseInstanceSettingsLocationPreferenceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            follow_gae_application=follow_gae_application,
-            secondary_zone=secondary_zone,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             follow_gae_application: Optional[pulumi.Input[str]] = None,
-             secondary_zone: Optional[pulumi.Input[str]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if follow_gae_application is None and 'followGaeApplication' in kwargs:
-            follow_gae_application = kwargs['followGaeApplication']
-        if secondary_zone is None and 'secondaryZone' in kwargs:
-            secondary_zone = kwargs['secondaryZone']
-
         if follow_gae_application is not None:
-            _setter("follow_gae_application", follow_gae_application)
+            pulumi.set(__self__, "follow_gae_application", follow_gae_application)
         if secondary_zone is not None:
-            _setter("secondary_zone", secondary_zone)
+            pulumi.set(__self__, "secondary_zone", secondary_zone)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="followGaeApplication")
@@ -2105,29 +1597,12 @@ class DatabaseInstanceSettingsMaintenanceWindowArgs:
                
                The optional `settings.insights_config` subblock for instances declares Query Insights([MySQL](https://cloud.google.com/sql/docs/mysql/using-query-insights), [PostgreSQL](https://cloud.google.com/sql/docs/postgres/using-query-insights)) configuration. It contains:
         """
-        DatabaseInstanceSettingsMaintenanceWindowArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            day=day,
-            hour=hour,
-            update_track=update_track,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             day: Optional[pulumi.Input[int]] = None,
-             hour: Optional[pulumi.Input[int]] = None,
-             update_track: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if update_track is None and 'updateTrack' in kwargs:
-            update_track = kwargs['updateTrack']
-
         if day is not None:
-            _setter("day", day)
+            pulumi.set(__self__, "day", day)
         if hour is not None:
-            _setter("hour", hour)
+            pulumi.set(__self__, "hour", hour)
         if update_track is not None:
-            _setter("update_track", update_track)
+            pulumi.set(__self__, "update_track", update_track)
 
     @property
     @pulumi.getter
@@ -2189,50 +1664,17 @@ class DatabaseInstanceSettingsPasswordValidationPolicyArgs:
         :param pulumi.Input[str] password_change_interval: Specifies the minimum duration after which you can change the password.
         :param pulumi.Input[int] reuse_interval: Specifies the number of previous passwords that you can't reuse.
         """
-        DatabaseInstanceSettingsPasswordValidationPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enable_password_policy=enable_password_policy,
-            complexity=complexity,
-            disallow_username_substring=disallow_username_substring,
-            min_length=min_length,
-            password_change_interval=password_change_interval,
-            reuse_interval=reuse_interval,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enable_password_policy: Optional[pulumi.Input[bool]] = None,
-             complexity: Optional[pulumi.Input[str]] = None,
-             disallow_username_substring: Optional[pulumi.Input[bool]] = None,
-             min_length: Optional[pulumi.Input[int]] = None,
-             password_change_interval: Optional[pulumi.Input[str]] = None,
-             reuse_interval: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enable_password_policy is None and 'enablePasswordPolicy' in kwargs:
-            enable_password_policy = kwargs['enablePasswordPolicy']
-        if enable_password_policy is None:
-            raise TypeError("Missing 'enable_password_policy' argument")
-        if disallow_username_substring is None and 'disallowUsernameSubstring' in kwargs:
-            disallow_username_substring = kwargs['disallowUsernameSubstring']
-        if min_length is None and 'minLength' in kwargs:
-            min_length = kwargs['minLength']
-        if password_change_interval is None and 'passwordChangeInterval' in kwargs:
-            password_change_interval = kwargs['passwordChangeInterval']
-        if reuse_interval is None and 'reuseInterval' in kwargs:
-            reuse_interval = kwargs['reuseInterval']
-
-        _setter("enable_password_policy", enable_password_policy)
+        pulumi.set(__self__, "enable_password_policy", enable_password_policy)
         if complexity is not None:
-            _setter("complexity", complexity)
+            pulumi.set(__self__, "complexity", complexity)
         if disallow_username_substring is not None:
-            _setter("disallow_username_substring", disallow_username_substring)
+            pulumi.set(__self__, "disallow_username_substring", disallow_username_substring)
         if min_length is not None:
-            _setter("min_length", min_length)
+            pulumi.set(__self__, "min_length", min_length)
         if password_change_interval is not None:
-            _setter("password_change_interval", password_change_interval)
+            pulumi.set(__self__, "password_change_interval", password_change_interval)
         if reuse_interval is not None:
-            _setter("reuse_interval", reuse_interval)
+            pulumi.set(__self__, "reuse_interval", reuse_interval)
 
     @property
     @pulumi.getter(name="enablePasswordPolicy")
@@ -2321,31 +1763,12 @@ class DatabaseInstanceSettingsSqlServerAuditConfigArgs:
         :param pulumi.Input[str] retention_interval: How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         :param pulumi.Input[str] upload_interval: How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
-        DatabaseInstanceSettingsSqlServerAuditConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            retention_interval=retention_interval,
-            upload_interval=upload_interval,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[pulumi.Input[str]] = None,
-             retention_interval: Optional[pulumi.Input[str]] = None,
-             upload_interval: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if retention_interval is None and 'retentionInterval' in kwargs:
-            retention_interval = kwargs['retentionInterval']
-        if upload_interval is None and 'uploadInterval' in kwargs:
-            upload_interval = kwargs['uploadInterval']
-
         if bucket is not None:
-            _setter("bucket", bucket)
+            pulumi.set(__self__, "bucket", bucket)
         if retention_interval is not None:
-            _setter("retention_interval", retention_interval)
+            pulumi.set(__self__, "retention_interval", retention_interval)
         if upload_interval is not None:
-            _setter("upload_interval", upload_interval)
+            pulumi.set(__self__, "upload_interval", upload_interval)
 
     @property
     @pulumi.getter
@@ -2398,43 +1821,16 @@ class UserPasswordPolicyArgs:
         :param pulumi.Input[bool] enable_password_verification: If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
         :param pulumi.Input[str] password_expiration_duration: Password expiration duration with one week grace period.
         """
-        UserPasswordPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_failed_attempts=allowed_failed_attempts,
-            enable_failed_attempts_check=enable_failed_attempts_check,
-            enable_password_verification=enable_password_verification,
-            password_expiration_duration=password_expiration_duration,
-            statuses=statuses,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_failed_attempts: Optional[pulumi.Input[int]] = None,
-             enable_failed_attempts_check: Optional[pulumi.Input[bool]] = None,
-             enable_password_verification: Optional[pulumi.Input[bool]] = None,
-             password_expiration_duration: Optional[pulumi.Input[str]] = None,
-             statuses: Optional[pulumi.Input[Sequence[pulumi.Input['UserPasswordPolicyStatusArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_failed_attempts is None and 'allowedFailedAttempts' in kwargs:
-            allowed_failed_attempts = kwargs['allowedFailedAttempts']
-        if enable_failed_attempts_check is None and 'enableFailedAttemptsCheck' in kwargs:
-            enable_failed_attempts_check = kwargs['enableFailedAttemptsCheck']
-        if enable_password_verification is None and 'enablePasswordVerification' in kwargs:
-            enable_password_verification = kwargs['enablePasswordVerification']
-        if password_expiration_duration is None and 'passwordExpirationDuration' in kwargs:
-            password_expiration_duration = kwargs['passwordExpirationDuration']
-
         if allowed_failed_attempts is not None:
-            _setter("allowed_failed_attempts", allowed_failed_attempts)
+            pulumi.set(__self__, "allowed_failed_attempts", allowed_failed_attempts)
         if enable_failed_attempts_check is not None:
-            _setter("enable_failed_attempts_check", enable_failed_attempts_check)
+            pulumi.set(__self__, "enable_failed_attempts_check", enable_failed_attempts_check)
         if enable_password_verification is not None:
-            _setter("enable_password_verification", enable_password_verification)
+            pulumi.set(__self__, "enable_password_verification", enable_password_verification)
         if password_expiration_duration is not None:
-            _setter("password_expiration_duration", password_expiration_duration)
+            pulumi.set(__self__, "password_expiration_duration", password_expiration_duration)
         if statuses is not None:
-            _setter("statuses", statuses)
+            pulumi.set(__self__, "statuses", statuses)
 
     @property
     @pulumi.getter(name="allowedFailedAttempts")
@@ -2503,25 +1899,10 @@ class UserPasswordPolicyStatusArgs:
         :param pulumi.Input[bool] locked: If true, user does not have login privileges.
         :param pulumi.Input[str] password_expiration_time: Password expiration duration with one week grace period.
         """
-        UserPasswordPolicyStatusArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            locked=locked,
-            password_expiration_time=password_expiration_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             locked: Optional[pulumi.Input[bool]] = None,
-             password_expiration_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if password_expiration_time is None and 'passwordExpirationTime' in kwargs:
-            password_expiration_time = kwargs['passwordExpirationTime']
-
         if locked is not None:
-            _setter("locked", locked)
+            pulumi.set(__self__, "locked", locked)
         if password_expiration_time is not None:
-            _setter("password_expiration_time", password_expiration_time)
+            pulumi.set(__self__, "password_expiration_time", password_expiration_time)
 
     @property
     @pulumi.getter
@@ -2553,25 +1934,10 @@ class UserSqlServerUserDetailArgs:
     def __init__(__self__, *,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  server_roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        UserSqlServerUserDetailArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            disabled=disabled,
-            server_roles=server_roles,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             disabled: Optional[pulumi.Input[bool]] = None,
-             server_roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if server_roles is None and 'serverRoles' in kwargs:
-            server_roles = kwargs['serverRoles']
-
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if server_roles is not None:
-            _setter("server_roles", server_roles)
+            pulumi.set(__self__, "server_roles", server_roles)
 
     @property
     @pulumi.getter

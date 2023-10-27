@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -36,49 +36,16 @@ class InsightsReportConfigArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        InsightsReportConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            csv_options=csv_options,
-            location=location,
-            display_name=display_name,
-            frequency_options=frequency_options,
-            object_metadata_report_options=object_metadata_report_options,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             csv_options: Optional[pulumi.Input['InsightsReportConfigCsvOptionsArgs']] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             frequency_options: Optional[pulumi.Input['InsightsReportConfigFrequencyOptionsArgs']] = None,
-             object_metadata_report_options: Optional[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if csv_options is None and 'csvOptions' in kwargs:
-            csv_options = kwargs['csvOptions']
-        if csv_options is None:
-            raise TypeError("Missing 'csv_options' argument")
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if frequency_options is None and 'frequencyOptions' in kwargs:
-            frequency_options = kwargs['frequencyOptions']
-        if object_metadata_report_options is None and 'objectMetadataReportOptions' in kwargs:
-            object_metadata_report_options = kwargs['objectMetadataReportOptions']
-
-        _setter("csv_options", csv_options)
-        _setter("location", location)
+        pulumi.set(__self__, "csv_options", csv_options)
+        pulumi.set(__self__, "location", location)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if frequency_options is not None:
-            _setter("frequency_options", frequency_options)
+            pulumi.set(__self__, "frequency_options", frequency_options)
         if object_metadata_report_options is not None:
-            _setter("object_metadata_report_options", object_metadata_report_options)
+            pulumi.set(__self__, "object_metadata_report_options", object_metadata_report_options)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="csvOptions")
@@ -183,51 +150,20 @@ class _InsightsReportConfigState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        _InsightsReportConfigState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            csv_options=csv_options,
-            display_name=display_name,
-            frequency_options=frequency_options,
-            location=location,
-            name=name,
-            object_metadata_report_options=object_metadata_report_options,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             csv_options: Optional[pulumi.Input['InsightsReportConfigCsvOptionsArgs']] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             frequency_options: Optional[pulumi.Input['InsightsReportConfigFrequencyOptionsArgs']] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             object_metadata_report_options: Optional[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if csv_options is None and 'csvOptions' in kwargs:
-            csv_options = kwargs['csvOptions']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if frequency_options is None and 'frequencyOptions' in kwargs:
-            frequency_options = kwargs['frequencyOptions']
-        if object_metadata_report_options is None and 'objectMetadataReportOptions' in kwargs:
-            object_metadata_report_options = kwargs['objectMetadataReportOptions']
-
         if csv_options is not None:
-            _setter("csv_options", csv_options)
+            pulumi.set(__self__, "csv_options", csv_options)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if frequency_options is not None:
-            _setter("frequency_options", frequency_options)
+            pulumi.set(__self__, "frequency_options", frequency_options)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if object_metadata_report_options is not None:
-            _setter("object_metadata_report_options", object_metadata_report_options)
+            pulumi.set(__self__, "object_metadata_report_options", object_metadata_report_options)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="csvOptions")
@@ -517,10 +453,6 @@ class InsightsReportConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InsightsReportConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -541,17 +473,14 @@ class InsightsReportConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InsightsReportConfigArgs.__new__(InsightsReportConfigArgs)
 
-            csv_options = _utilities.configure(csv_options, InsightsReportConfigCsvOptionsArgs, True)
             if csv_options is None and not opts.urn:
                 raise TypeError("Missing required property 'csv_options'")
             __props__.__dict__["csv_options"] = csv_options
             __props__.__dict__["display_name"] = display_name
-            frequency_options = _utilities.configure(frequency_options, InsightsReportConfigFrequencyOptionsArgs, True)
             __props__.__dict__["frequency_options"] = frequency_options
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            object_metadata_report_options = _utilities.configure(object_metadata_report_options, InsightsReportConfigObjectMetadataReportOptionsArgs, True)
             __props__.__dict__["object_metadata_report_options"] = object_metadata_report_options
             __props__.__dict__["project"] = project
             __props__.__dict__["name"] = None

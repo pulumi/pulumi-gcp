@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -49,78 +49,31 @@ class TargetArgs:
         :param pulumi.Input[bool] require_approval: Optional. Whether or not the `Target` requires approval.
         :param pulumi.Input['TargetRunArgs'] run: Information specifying a Cloud Run deployment target.
         """
-        TargetArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            location=location,
-            annotations=annotations,
-            anthos_cluster=anthos_cluster,
-            deploy_parameters=deploy_parameters,
-            description=description,
-            execution_configs=execution_configs,
-            gke=gke,
-            labels=labels,
-            multi_target=multi_target,
-            name=name,
-            project=project,
-            require_approval=require_approval,
-            run=run,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             location: Optional[pulumi.Input[str]] = None,
-             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             anthos_cluster: Optional[pulumi.Input['TargetAnthosClusterArgs']] = None,
-             deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             execution_configs: Optional[pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArgs']]]] = None,
-             gke: Optional[pulumi.Input['TargetGkeArgs']] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             multi_target: Optional[pulumi.Input['TargetMultiTargetArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             require_approval: Optional[pulumi.Input[bool]] = None,
-             run: Optional[pulumi.Input['TargetRunArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if anthos_cluster is None and 'anthosCluster' in kwargs:
-            anthos_cluster = kwargs['anthosCluster']
-        if deploy_parameters is None and 'deployParameters' in kwargs:
-            deploy_parameters = kwargs['deployParameters']
-        if execution_configs is None and 'executionConfigs' in kwargs:
-            execution_configs = kwargs['executionConfigs']
-        if multi_target is None and 'multiTarget' in kwargs:
-            multi_target = kwargs['multiTarget']
-        if require_approval is None and 'requireApproval' in kwargs:
-            require_approval = kwargs['requireApproval']
-
-        _setter("location", location)
+        pulumi.set(__self__, "location", location)
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if anthos_cluster is not None:
-            _setter("anthos_cluster", anthos_cluster)
+            pulumi.set(__self__, "anthos_cluster", anthos_cluster)
         if deploy_parameters is not None:
-            _setter("deploy_parameters", deploy_parameters)
+            pulumi.set(__self__, "deploy_parameters", deploy_parameters)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if execution_configs is not None:
-            _setter("execution_configs", execution_configs)
+            pulumi.set(__self__, "execution_configs", execution_configs)
         if gke is not None:
-            _setter("gke", gke)
+            pulumi.set(__self__, "gke", gke)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if multi_target is not None:
-            _setter("multi_target", multi_target)
+            pulumi.set(__self__, "multi_target", multi_target)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if require_approval is not None:
-            _setter("require_approval", require_approval)
+            pulumi.set(__self__, "require_approval", require_approval)
         if run is not None:
-            _setter("run", run)
+            pulumi.set(__self__, "run", run)
 
     @property
     @pulumi.getter
@@ -329,103 +282,42 @@ class _TargetState:
         :param pulumi.Input[str] uid: Output only. Unique identifier of the `Target`.
         :param pulumi.Input[str] update_time: Output only. Most recent time at which the `Target` was updated.
         """
-        _TargetState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            annotations=annotations,
-            anthos_cluster=anthos_cluster,
-            create_time=create_time,
-            deploy_parameters=deploy_parameters,
-            description=description,
-            etag=etag,
-            execution_configs=execution_configs,
-            gke=gke,
-            labels=labels,
-            location=location,
-            multi_target=multi_target,
-            name=name,
-            project=project,
-            require_approval=require_approval,
-            run=run,
-            target_id=target_id,
-            uid=uid,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             anthos_cluster: Optional[pulumi.Input['TargetAnthosClusterArgs']] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             execution_configs: Optional[pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArgs']]]] = None,
-             gke: Optional[pulumi.Input['TargetGkeArgs']] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             multi_target: Optional[pulumi.Input['TargetMultiTargetArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             require_approval: Optional[pulumi.Input[bool]] = None,
-             run: Optional[pulumi.Input['TargetRunArgs']] = None,
-             target_id: Optional[pulumi.Input[str]] = None,
-             uid: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if anthos_cluster is None and 'anthosCluster' in kwargs:
-            anthos_cluster = kwargs['anthosCluster']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if deploy_parameters is None and 'deployParameters' in kwargs:
-            deploy_parameters = kwargs['deployParameters']
-        if execution_configs is None and 'executionConfigs' in kwargs:
-            execution_configs = kwargs['executionConfigs']
-        if multi_target is None and 'multiTarget' in kwargs:
-            multi_target = kwargs['multiTarget']
-        if require_approval is None and 'requireApproval' in kwargs:
-            require_approval = kwargs['requireApproval']
-        if target_id is None and 'targetId' in kwargs:
-            target_id = kwargs['targetId']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if anthos_cluster is not None:
-            _setter("anthos_cluster", anthos_cluster)
+            pulumi.set(__self__, "anthos_cluster", anthos_cluster)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if deploy_parameters is not None:
-            _setter("deploy_parameters", deploy_parameters)
+            pulumi.set(__self__, "deploy_parameters", deploy_parameters)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if execution_configs is not None:
-            _setter("execution_configs", execution_configs)
+            pulumi.set(__self__, "execution_configs", execution_configs)
         if gke is not None:
-            _setter("gke", gke)
+            pulumi.set(__self__, "gke", gke)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if multi_target is not None:
-            _setter("multi_target", multi_target)
+            pulumi.set(__self__, "multi_target", multi_target)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if require_approval is not None:
-            _setter("require_approval", require_approval)
+            pulumi.set(__self__, "require_approval", require_approval)
         if run is not None:
-            _setter("run", run)
+            pulumi.set(__self__, "run", run)
         if target_id is not None:
-            _setter("target_id", target_id)
+            pulumi.set(__self__, "target_id", target_id)
         if uid is not None:
-            _setter("uid", uid)
+            pulumi.set(__self__, "uid", uid)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter
@@ -931,10 +823,6 @@ class Target(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TargetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -963,23 +851,19 @@ class Target(pulumi.CustomResource):
             __props__ = TargetArgs.__new__(TargetArgs)
 
             __props__.__dict__["annotations"] = annotations
-            anthos_cluster = _utilities.configure(anthos_cluster, TargetAnthosClusterArgs, True)
             __props__.__dict__["anthos_cluster"] = anthos_cluster
             __props__.__dict__["deploy_parameters"] = deploy_parameters
             __props__.__dict__["description"] = description
             __props__.__dict__["execution_configs"] = execution_configs
-            gke = _utilities.configure(gke, TargetGkeArgs, True)
             __props__.__dict__["gke"] = gke
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            multi_target = _utilities.configure(multi_target, TargetMultiTargetArgs, True)
             __props__.__dict__["multi_target"] = multi_target
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["require_approval"] = require_approval
-            run = _utilities.configure(run, TargetRunArgs, True)
             __props__.__dict__["run"] = run
             __props__.__dict__["create_time"] = None
             __props__.__dict__["etag"] = None

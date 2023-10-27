@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -26,23 +26,10 @@ class DeploymentLabel(dict):
         :param str key: Key for label.
         :param str value: Value of label.
         """
-        DeploymentLabel._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -74,24 +61,9 @@ class DeploymentTarget(dict):
                import a text file in order to use the file in a template.
                Structure is documented below.
         """
-        DeploymentTarget._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            config=config,
-            imports=imports,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             config: Optional['outputs.DeploymentTargetConfig'] = None,
-             imports: Optional[Sequence['outputs.DeploymentTargetImport']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if config is None:
-            raise TypeError("Missing 'config' argument")
-
-        _setter("config", config)
+        pulumi.set(__self__, "config", config)
         if imports is not None:
-            _setter("imports", imports)
+            pulumi.set(__self__, "imports", imports)
 
     @property
     @pulumi.getter
@@ -121,20 +93,7 @@ class DeploymentTargetConfig(dict):
         """
         :param str content: The full YAML contents of your configuration file.
         """
-        DeploymentTargetConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            content=content,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             content: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if content is None:
-            raise TypeError("Missing 'content' argument")
-
-        _setter("content", content)
+        pulumi.set(__self__, "content", content)
 
     @property
     @pulumi.getter
@@ -157,23 +116,10 @@ class DeploymentTargetImport(dict):
                
                - - -
         """
-        DeploymentTargetImport._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            content=content,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             content: Optional[str] = None,
-             name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if content is not None:
-            _setter("content", content)
+            pulumi.set(__self__, "content", content)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter

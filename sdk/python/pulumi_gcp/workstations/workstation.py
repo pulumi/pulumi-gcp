@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['WorkstationArgs', 'Workstation']
@@ -39,63 +39,20 @@ class WorkstationArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        WorkstationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            location=location,
-            workstation_cluster_id=workstation_cluster_id,
-            workstation_config_id=workstation_config_id,
-            workstation_id=workstation_id,
-            annotations=annotations,
-            display_name=display_name,
-            env=env,
-            labels=labels,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             location: Optional[pulumi.Input[str]] = None,
-             workstation_cluster_id: Optional[pulumi.Input[str]] = None,
-             workstation_config_id: Optional[pulumi.Input[str]] = None,
-             workstation_id: Optional[pulumi.Input[str]] = None,
-             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             env: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if workstation_cluster_id is None and 'workstationClusterId' in kwargs:
-            workstation_cluster_id = kwargs['workstationClusterId']
-        if workstation_cluster_id is None:
-            raise TypeError("Missing 'workstation_cluster_id' argument")
-        if workstation_config_id is None and 'workstationConfigId' in kwargs:
-            workstation_config_id = kwargs['workstationConfigId']
-        if workstation_config_id is None:
-            raise TypeError("Missing 'workstation_config_id' argument")
-        if workstation_id is None and 'workstationId' in kwargs:
-            workstation_id = kwargs['workstationId']
-        if workstation_id is None:
-            raise TypeError("Missing 'workstation_id' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-
-        _setter("location", location)
-        _setter("workstation_cluster_id", workstation_cluster_id)
-        _setter("workstation_config_id", workstation_config_id)
-        _setter("workstation_id", workstation_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "workstation_cluster_id", workstation_cluster_id)
+        pulumi.set(__self__, "workstation_config_id", workstation_config_id)
+        pulumi.set(__self__, "workstation_id", workstation_id)
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if env is not None:
-            _setter("env", env)
+            pulumi.set(__self__, "env", env)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -250,81 +207,34 @@ class _WorkstationState:
         :param pulumi.Input[str] workstation_config_id: The ID of the parent workstation cluster config.
         :param pulumi.Input[str] workstation_id: ID to use for the workstation.
         """
-        _WorkstationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            annotations=annotations,
-            create_time=create_time,
-            display_name=display_name,
-            env=env,
-            host=host,
-            labels=labels,
-            location=location,
-            name=name,
-            project=project,
-            state=state,
-            uid=uid,
-            workstation_cluster_id=workstation_cluster_id,
-            workstation_config_id=workstation_config_id,
-            workstation_id=workstation_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             env: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             host: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             uid: Optional[pulumi.Input[str]] = None,
-             workstation_cluster_id: Optional[pulumi.Input[str]] = None,
-             workstation_config_id: Optional[pulumi.Input[str]] = None,
-             workstation_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if workstation_cluster_id is None and 'workstationClusterId' in kwargs:
-            workstation_cluster_id = kwargs['workstationClusterId']
-        if workstation_config_id is None and 'workstationConfigId' in kwargs:
-            workstation_config_id = kwargs['workstationConfigId']
-        if workstation_id is None and 'workstationId' in kwargs:
-            workstation_id = kwargs['workstationId']
-
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if env is not None:
-            _setter("env", env)
+            pulumi.set(__self__, "env", env)
         if host is not None:
-            _setter("host", host)
+            pulumi.set(__self__, "host", host)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if uid is not None:
-            _setter("uid", uid)
+            pulumi.set(__self__, "uid", uid)
         if workstation_cluster_id is not None:
-            _setter("workstation_cluster_id", workstation_cluster_id)
+            pulumi.set(__self__, "workstation_cluster_id", workstation_cluster_id)
         if workstation_config_id is not None:
-            _setter("workstation_config_id", workstation_config_id)
+            pulumi.set(__self__, "workstation_config_id", workstation_config_id)
         if workstation_id is not None:
-            _setter("workstation_id", workstation_id)
+            pulumi.set(__self__, "workstation_id", workstation_id)
 
     @property
     @pulumi.getter
@@ -692,10 +602,6 @@ class Workstation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            WorkstationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

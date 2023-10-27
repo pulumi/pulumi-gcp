@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -57,40 +57,11 @@ class RepositoryGitRemoteSettings(dict):
         :param str token_status: (Output)
                Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
         """
-        RepositoryGitRemoteSettings._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            authentication_token_secret_version=authentication_token_secret_version,
-            default_branch=default_branch,
-            url=url,
-            token_status=token_status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             authentication_token_secret_version: Optional[str] = None,
-             default_branch: Optional[str] = None,
-             url: Optional[str] = None,
-             token_status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if authentication_token_secret_version is None and 'authenticationTokenSecretVersion' in kwargs:
-            authentication_token_secret_version = kwargs['authenticationTokenSecretVersion']
-        if authentication_token_secret_version is None:
-            raise TypeError("Missing 'authentication_token_secret_version' argument")
-        if default_branch is None and 'defaultBranch' in kwargs:
-            default_branch = kwargs['defaultBranch']
-        if default_branch is None:
-            raise TypeError("Missing 'default_branch' argument")
-        if url is None:
-            raise TypeError("Missing 'url' argument")
-        if token_status is None and 'tokenStatus' in kwargs:
-            token_status = kwargs['tokenStatus']
-
-        _setter("authentication_token_secret_version", authentication_token_secret_version)
-        _setter("default_branch", default_branch)
-        _setter("url", url)
+        pulumi.set(__self__, "authentication_token_secret_version", authentication_token_secret_version)
+        pulumi.set(__self__, "default_branch", default_branch)
+        pulumi.set(__self__, "url", url)
         if token_status is not None:
-            _setter("token_status", token_status)
+            pulumi.set(__self__, "token_status", token_status)
 
     @property
     @pulumi.getter(name="authenticationTokenSecretVersion")
@@ -179,61 +150,22 @@ class RepositoryReleaseConfigCodeCompilationConfig(dict):
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
-        RepositoryReleaseConfigCodeCompilationConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            assertion_schema=assertion_schema,
-            database_suffix=database_suffix,
-            default_database=default_database,
-            default_location=default_location,
-            default_schema=default_schema,
-            schema_suffix=schema_suffix,
-            table_prefix=table_prefix,
-            vars=vars,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             assertion_schema: Optional[str] = None,
-             database_suffix: Optional[str] = None,
-             default_database: Optional[str] = None,
-             default_location: Optional[str] = None,
-             default_schema: Optional[str] = None,
-             schema_suffix: Optional[str] = None,
-             table_prefix: Optional[str] = None,
-             vars: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if assertion_schema is None and 'assertionSchema' in kwargs:
-            assertion_schema = kwargs['assertionSchema']
-        if database_suffix is None and 'databaseSuffix' in kwargs:
-            database_suffix = kwargs['databaseSuffix']
-        if default_database is None and 'defaultDatabase' in kwargs:
-            default_database = kwargs['defaultDatabase']
-        if default_location is None and 'defaultLocation' in kwargs:
-            default_location = kwargs['defaultLocation']
-        if default_schema is None and 'defaultSchema' in kwargs:
-            default_schema = kwargs['defaultSchema']
-        if schema_suffix is None and 'schemaSuffix' in kwargs:
-            schema_suffix = kwargs['schemaSuffix']
-        if table_prefix is None and 'tablePrefix' in kwargs:
-            table_prefix = kwargs['tablePrefix']
-
         if assertion_schema is not None:
-            _setter("assertion_schema", assertion_schema)
+            pulumi.set(__self__, "assertion_schema", assertion_schema)
         if database_suffix is not None:
-            _setter("database_suffix", database_suffix)
+            pulumi.set(__self__, "database_suffix", database_suffix)
         if default_database is not None:
-            _setter("default_database", default_database)
+            pulumi.set(__self__, "default_database", default_database)
         if default_location is not None:
-            _setter("default_location", default_location)
+            pulumi.set(__self__, "default_location", default_location)
         if default_schema is not None:
-            _setter("default_schema", default_schema)
+            pulumi.set(__self__, "default_schema", default_schema)
         if schema_suffix is not None:
-            _setter("schema_suffix", schema_suffix)
+            pulumi.set(__self__, "schema_suffix", schema_suffix)
         if table_prefix is not None:
-            _setter("table_prefix", table_prefix)
+            pulumi.set(__self__, "table_prefix", table_prefix)
         if vars is not None:
-            _setter("vars", vars)
+            pulumi.set(__self__, "vars", vars)
 
     @property
     @pulumi.getter(name="assertionSchema")
@@ -339,33 +271,12 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecord(dict):
         :param str release_time: (Output)
                The timestamp of this release attempt.
         """
-        RepositoryReleaseConfigRecentScheduledReleaseRecord._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            compilation_result=compilation_result,
-            error_statuses=error_statuses,
-            release_time=release_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             compilation_result: Optional[str] = None,
-             error_statuses: Optional[Sequence['outputs.RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus']] = None,
-             release_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if compilation_result is None and 'compilationResult' in kwargs:
-            compilation_result = kwargs['compilationResult']
-        if error_statuses is None and 'errorStatuses' in kwargs:
-            error_statuses = kwargs['errorStatuses']
-        if release_time is None and 'releaseTime' in kwargs:
-            release_time = kwargs['releaseTime']
-
         if compilation_result is not None:
-            _setter("compilation_result", compilation_result)
+            pulumi.set(__self__, "compilation_result", compilation_result)
         if error_statuses is not None:
-            _setter("error_statuses", error_statuses)
+            pulumi.set(__self__, "error_statuses", error_statuses)
         if release_time is not None:
-            _setter("release_time", release_time)
+            pulumi.set(__self__, "release_time", release_time)
 
     @property
     @pulumi.getter(name="compilationResult")
@@ -407,23 +318,10 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus(dict):
         :param str message: (Output)
                A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
-        RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            code=code,
-            message=message,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             code: Optional[int] = None,
-             message: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if code is not None:
-            _setter("code", code)
+            pulumi.set(__self__, "code", code)
         if message is not None:
-            _setter("message", message)
+            pulumi.set(__self__, "message", message)
 
     @property
     @pulumi.getter
@@ -489,51 +387,18 @@ class RepositoryWorkflowConfigInvocationConfig(dict):
         :param bool transitive_dependencies_included: Optional. When set to true, transitive dependencies of included actions will be executed.
         :param bool transitive_dependents_included: Optional. When set to true, transitive dependents of included actions will be executed.
         """
-        RepositoryWorkflowConfigInvocationConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            fully_refresh_incremental_tables_enabled=fully_refresh_incremental_tables_enabled,
-            included_tags=included_tags,
-            included_targets=included_targets,
-            service_account=service_account,
-            transitive_dependencies_included=transitive_dependencies_included,
-            transitive_dependents_included=transitive_dependents_included,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             fully_refresh_incremental_tables_enabled: Optional[bool] = None,
-             included_tags: Optional[Sequence[str]] = None,
-             included_targets: Optional[Sequence['outputs.RepositoryWorkflowConfigInvocationConfigIncludedTarget']] = None,
-             service_account: Optional[str] = None,
-             transitive_dependencies_included: Optional[bool] = None,
-             transitive_dependents_included: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if fully_refresh_incremental_tables_enabled is None and 'fullyRefreshIncrementalTablesEnabled' in kwargs:
-            fully_refresh_incremental_tables_enabled = kwargs['fullyRefreshIncrementalTablesEnabled']
-        if included_tags is None and 'includedTags' in kwargs:
-            included_tags = kwargs['includedTags']
-        if included_targets is None and 'includedTargets' in kwargs:
-            included_targets = kwargs['includedTargets']
-        if service_account is None and 'serviceAccount' in kwargs:
-            service_account = kwargs['serviceAccount']
-        if transitive_dependencies_included is None and 'transitiveDependenciesIncluded' in kwargs:
-            transitive_dependencies_included = kwargs['transitiveDependenciesIncluded']
-        if transitive_dependents_included is None and 'transitiveDependentsIncluded' in kwargs:
-            transitive_dependents_included = kwargs['transitiveDependentsIncluded']
-
         if fully_refresh_incremental_tables_enabled is not None:
-            _setter("fully_refresh_incremental_tables_enabled", fully_refresh_incremental_tables_enabled)
+            pulumi.set(__self__, "fully_refresh_incremental_tables_enabled", fully_refresh_incremental_tables_enabled)
         if included_tags is not None:
-            _setter("included_tags", included_tags)
+            pulumi.set(__self__, "included_tags", included_tags)
         if included_targets is not None:
-            _setter("included_targets", included_targets)
+            pulumi.set(__self__, "included_targets", included_targets)
         if service_account is not None:
-            _setter("service_account", service_account)
+            pulumi.set(__self__, "service_account", service_account)
         if transitive_dependencies_included is not None:
-            _setter("transitive_dependencies_included", transitive_dependencies_included)
+            pulumi.set(__self__, "transitive_dependencies_included", transitive_dependencies_included)
         if transitive_dependents_included is not None:
-            _setter("transitive_dependents_included", transitive_dependents_included)
+            pulumi.set(__self__, "transitive_dependents_included", transitive_dependents_included)
 
     @property
     @pulumi.getter(name="fullyRefreshIncrementalTablesEnabled")
@@ -596,27 +461,12 @@ class RepositoryWorkflowConfigInvocationConfigIncludedTarget(dict):
         :param str name: The action's name, within database and schema.
         :param str schema: The action's schema (BigQuery dataset ID), within database.
         """
-        RepositoryWorkflowConfigInvocationConfigIncludedTarget._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            database=database,
-            name=name,
-            schema=schema,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             database: Optional[str] = None,
-             name: Optional[str] = None,
-             schema: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if database is not None:
-            _setter("database", database)
+            pulumi.set(__self__, "database", database)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if schema is not None:
-            _setter("schema", schema)
+            pulumi.set(__self__, "schema", schema)
 
     @property
     @pulumi.getter
@@ -679,33 +529,12 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecord(dict):
         :param str workflow_invocation: (Output)
                The name of the created workflow invocation, if one was successfully created. In the format projects/*/locations/*/repositories/*/workflowInvocations/*.
         """
-        RepositoryWorkflowConfigRecentScheduledExecutionRecord._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            error_statuses=error_statuses,
-            execution_time=execution_time,
-            workflow_invocation=workflow_invocation,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             error_statuses: Optional[Sequence['outputs.RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus']] = None,
-             execution_time: Optional[str] = None,
-             workflow_invocation: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if error_statuses is None and 'errorStatuses' in kwargs:
-            error_statuses = kwargs['errorStatuses']
-        if execution_time is None and 'executionTime' in kwargs:
-            execution_time = kwargs['executionTime']
-        if workflow_invocation is None and 'workflowInvocation' in kwargs:
-            workflow_invocation = kwargs['workflowInvocation']
-
         if error_statuses is not None:
-            _setter("error_statuses", error_statuses)
+            pulumi.set(__self__, "error_statuses", error_statuses)
         if execution_time is not None:
-            _setter("execution_time", execution_time)
+            pulumi.set(__self__, "execution_time", execution_time)
         if workflow_invocation is not None:
-            _setter("workflow_invocation", workflow_invocation)
+            pulumi.set(__self__, "workflow_invocation", workflow_invocation)
 
     @property
     @pulumi.getter(name="errorStatuses")
@@ -747,23 +576,10 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus(dict):
         :param str message: (Output)
                A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
-        RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            code=code,
-            message=message,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             code: Optional[int] = None,
-             message: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if code is not None:
-            _setter("code", code)
+            pulumi.set(__self__, "code", code)
         if message is not None:
-            _setter("message", message)
+            pulumi.set(__self__, "message", message)
 
     @property
     @pulumi.getter
@@ -816,33 +632,12 @@ class RepositoryWorkspaceCompilationOverrides(dict):
         :param str schema_suffix: Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
         :param str table_prefix: Optional. The prefix that should be prepended to all table names.
         """
-        RepositoryWorkspaceCompilationOverrides._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            default_database=default_database,
-            schema_suffix=schema_suffix,
-            table_prefix=table_prefix,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             default_database: Optional[str] = None,
-             schema_suffix: Optional[str] = None,
-             table_prefix: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if default_database is None and 'defaultDatabase' in kwargs:
-            default_database = kwargs['defaultDatabase']
-        if schema_suffix is None and 'schemaSuffix' in kwargs:
-            schema_suffix = kwargs['schemaSuffix']
-        if table_prefix is None and 'tablePrefix' in kwargs:
-            table_prefix = kwargs['tablePrefix']
-
         if default_database is not None:
-            _setter("default_database", default_database)
+            pulumi.set(__self__, "default_database", default_database)
         if schema_suffix is not None:
-            _setter("schema_suffix", schema_suffix)
+            pulumi.set(__self__, "schema_suffix", schema_suffix)
         if table_prefix is not None:
-            _setter("table_prefix", table_prefix)
+            pulumi.set(__self__, "table_prefix", table_prefix)
 
     @property
     @pulumi.getter(name="defaultDatabase")

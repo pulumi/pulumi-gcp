@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -42,42 +42,13 @@ class OccurenceArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the note.
         """
-        OccurenceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            attestation=attestation,
-            note_name=note_name,
-            resource_uri=resource_uri,
-            project=project,
-            remediation=remediation,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             attestation: Optional[pulumi.Input['OccurenceAttestationArgs']] = None,
-             note_name: Optional[pulumi.Input[str]] = None,
-             resource_uri: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             remediation: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if attestation is None:
-            raise TypeError("Missing 'attestation' argument")
-        if note_name is None and 'noteName' in kwargs:
-            note_name = kwargs['noteName']
-        if note_name is None:
-            raise TypeError("Missing 'note_name' argument")
-        if resource_uri is None and 'resourceUri' in kwargs:
-            resource_uri = kwargs['resourceUri']
-        if resource_uri is None:
-            raise TypeError("Missing 'resource_uri' argument")
-
-        _setter("attestation", attestation)
-        _setter("note_name", note_name)
-        _setter("resource_uri", resource_uri)
+        pulumi.set(__self__, "attestation", attestation)
+        pulumi.set(__self__, "note_name", note_name)
+        pulumi.set(__self__, "resource_uri", resource_uri)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if remediation is not None:
-            _setter("remediation", remediation)
+            pulumi.set(__self__, "remediation", remediation)
 
     @property
     @pulumi.getter
@@ -192,59 +163,24 @@ class _OccurenceState:
                https://gcr.io/project/image@sha256:123abc for a Docker image.
         :param pulumi.Input[str] update_time: The time when the repository was last updated.
         """
-        _OccurenceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            attestation=attestation,
-            create_time=create_time,
-            kind=kind,
-            name=name,
-            note_name=note_name,
-            project=project,
-            remediation=remediation,
-            resource_uri=resource_uri,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             attestation: Optional[pulumi.Input['OccurenceAttestationArgs']] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             kind: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             note_name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             remediation: Optional[pulumi.Input[str]] = None,
-             resource_uri: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if note_name is None and 'noteName' in kwargs:
-            note_name = kwargs['noteName']
-        if resource_uri is None and 'resourceUri' in kwargs:
-            resource_uri = kwargs['resourceUri']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if attestation is not None:
-            _setter("attestation", attestation)
+            pulumi.set(__self__, "attestation", attestation)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if kind is not None:
-            _setter("kind", kind)
+            pulumi.set(__self__, "kind", kind)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if note_name is not None:
-            _setter("note_name", note_name)
+            pulumi.set(__self__, "note_name", note_name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if remediation is not None:
-            _setter("remediation", remediation)
+            pulumi.set(__self__, "remediation", remediation)
         if resource_uri is not None:
-            _setter("resource_uri", resource_uri)
+            pulumi.set(__self__, "resource_uri", resource_uri)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter
@@ -474,10 +410,6 @@ class Occurence(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            OccurenceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -497,7 +429,6 @@ class Occurence(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OccurenceArgs.__new__(OccurenceArgs)
 
-            attestation = _utilities.configure(attestation, OccurenceAttestationArgs, True)
             if attestation is None and not opts.urn:
                 raise TypeError("Missing required property 'attestation'")
             __props__.__dict__["attestation"] = attestation

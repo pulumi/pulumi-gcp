@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,38 +39,13 @@ class SubscriptionIAMBindingArgs:
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
         """
-        SubscriptionIAMBindingArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            members=members,
-            role=role,
-            subscription=subscription,
-            condition=condition,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             subscription: Optional[pulumi.Input[str]] = None,
-             condition: Optional[pulumi.Input['SubscriptionIAMBindingConditionArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if members is None:
-            raise TypeError("Missing 'members' argument")
-        if role is None:
-            raise TypeError("Missing 'role' argument")
-        if subscription is None:
-            raise TypeError("Missing 'subscription' argument")
-
-        _setter("members", members)
-        _setter("role", role)
-        _setter("subscription", subscription)
+        pulumi.set(__self__, "members", members)
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "subscription", subscription)
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -167,39 +142,18 @@ class _SubscriptionIAMBindingState:
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
-        _SubscriptionIAMBindingState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            condition=condition,
-            etag=etag,
-            members=members,
-            project=project,
-            role=role,
-            subscription=subscription,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             condition: Optional[pulumi.Input['SubscriptionIAMBindingConditionArgs']] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             subscription: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if members is not None:
-            _setter("members", members)
+            pulumi.set(__self__, "members", members)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if role is not None:
-            _setter("role", role)
+            pulumi.set(__self__, "role", role)
         if subscription is not None:
-            _setter("subscription", subscription)
+            pulumi.set(__self__, "subscription", subscription)
 
     @property
     @pulumi.getter
@@ -465,10 +419,6 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SubscriptionIAMBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -488,7 +438,6 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SubscriptionIAMBindingArgs.__new__(SubscriptionIAMBindingArgs)
 
-            condition = _utilities.configure(condition, SubscriptionIAMBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -42,51 +42,22 @@ class ClientTlsPolicyArgs:
                Structure is documented below.
         :param pulumi.Input[str] sni: Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
         """
-        ClientTlsPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            client_certificate=client_certificate,
-            description=description,
-            labels=labels,
-            location=location,
-            name=name,
-            project=project,
-            server_validation_cas=server_validation_cas,
-            sni=sni,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             client_certificate: Optional[pulumi.Input['ClientTlsPolicyClientCertificateArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             server_validation_cas: Optional[pulumi.Input[Sequence[pulumi.Input['ClientTlsPolicyServerValidationCaArgs']]]] = None,
-             sni: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if client_certificate is None and 'clientCertificate' in kwargs:
-            client_certificate = kwargs['clientCertificate']
-        if server_validation_cas is None and 'serverValidationCas' in kwargs:
-            server_validation_cas = kwargs['serverValidationCas']
-
         if client_certificate is not None:
-            _setter("client_certificate", client_certificate)
+            pulumi.set(__self__, "client_certificate", client_certificate)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if server_validation_cas is not None:
-            _setter("server_validation_cas", server_validation_cas)
+            pulumi.set(__self__, "server_validation_cas", server_validation_cas)
         if sni is not None:
-            _setter("sni", sni)
+            pulumi.set(__self__, "sni", sni)
 
     @property
     @pulumi.getter(name="clientCertificate")
@@ -225,63 +196,26 @@ class _ClientTlsPolicyState:
         :param pulumi.Input[str] sni: Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
         :param pulumi.Input[str] update_time: Time the ClientTlsPolicy was updated in UTC.
         """
-        _ClientTlsPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            client_certificate=client_certificate,
-            create_time=create_time,
-            description=description,
-            labels=labels,
-            location=location,
-            name=name,
-            project=project,
-            server_validation_cas=server_validation_cas,
-            sni=sni,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             client_certificate: Optional[pulumi.Input['ClientTlsPolicyClientCertificateArgs']] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             server_validation_cas: Optional[pulumi.Input[Sequence[pulumi.Input['ClientTlsPolicyServerValidationCaArgs']]]] = None,
-             sni: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if client_certificate is None and 'clientCertificate' in kwargs:
-            client_certificate = kwargs['clientCertificate']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if server_validation_cas is None and 'serverValidationCas' in kwargs:
-            server_validation_cas = kwargs['serverValidationCas']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if client_certificate is not None:
-            _setter("client_certificate", client_certificate)
+            pulumi.set(__self__, "client_certificate", client_certificate)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if server_validation_cas is not None:
-            _setter("server_validation_cas", server_validation_cas)
+            pulumi.set(__self__, "server_validation_cas", server_validation_cas)
         if sni is not None:
-            _setter("sni", sni)
+            pulumi.set(__self__, "sni", sni)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="clientCertificate")
@@ -585,10 +519,6 @@ class ClientTlsPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ClientTlsPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -611,7 +541,6 @@ class ClientTlsPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ClientTlsPolicyArgs.__new__(ClientTlsPolicyArgs)
 
-            client_certificate = _utilities.configure(client_certificate, ClientTlsPolicyClientCertificateArgs, True)
             __props__.__dict__["client_certificate"] = client_certificate
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels

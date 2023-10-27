@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -50,67 +50,22 @@ class OrganizationSecurityPolicyRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of
                instances that are applied with this rule.
         """
-        OrganizationSecurityPolicyRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action=action,
-            match=match,
-            policy_id=policy_id,
-            priority=priority,
-            description=description,
-            direction=direction,
-            enable_logging=enable_logging,
-            preview=preview,
-            target_resources=target_resources,
-            target_service_accounts=target_service_accounts,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action: Optional[pulumi.Input[str]] = None,
-             match: Optional[pulumi.Input['OrganizationSecurityPolicyRuleMatchArgs']] = None,
-             policy_id: Optional[pulumi.Input[str]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             direction: Optional[pulumi.Input[str]] = None,
-             enable_logging: Optional[pulumi.Input[bool]] = None,
-             preview: Optional[pulumi.Input[bool]] = None,
-             target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if action is None:
-            raise TypeError("Missing 'action' argument")
-        if match is None:
-            raise TypeError("Missing 'match' argument")
-        if policy_id is None and 'policyId' in kwargs:
-            policy_id = kwargs['policyId']
-        if policy_id is None:
-            raise TypeError("Missing 'policy_id' argument")
-        if priority is None:
-            raise TypeError("Missing 'priority' argument")
-        if enable_logging is None and 'enableLogging' in kwargs:
-            enable_logging = kwargs['enableLogging']
-        if target_resources is None and 'targetResources' in kwargs:
-            target_resources = kwargs['targetResources']
-        if target_service_accounts is None and 'targetServiceAccounts' in kwargs:
-            target_service_accounts = kwargs['targetServiceAccounts']
-
-        _setter("action", action)
-        _setter("match", match)
-        _setter("policy_id", policy_id)
-        _setter("priority", priority)
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "match", match)
+        pulumi.set(__self__, "policy_id", policy_id)
+        pulumi.set(__self__, "priority", priority)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if direction is not None:
-            _setter("direction", direction)
+            pulumi.set(__self__, "direction", direction)
         if enable_logging is not None:
-            _setter("enable_logging", enable_logging)
+            pulumi.set(__self__, "enable_logging", enable_logging)
         if preview is not None:
-            _setter("preview", preview)
+            pulumi.set(__self__, "preview", preview)
         if target_resources is not None:
-            _setter("target_resources", target_resources)
+            pulumi.set(__self__, "target_resources", target_resources)
         if target_service_accounts is not None:
-            _setter("target_service_accounts", target_service_accounts)
+            pulumi.set(__self__, "target_service_accounts", target_service_accounts)
 
     @property
     @pulumi.getter
@@ -281,63 +236,26 @@ class _OrganizationSecurityPolicyRuleState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of
                instances that are applied with this rule.
         """
-        _OrganizationSecurityPolicyRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action=action,
-            description=description,
-            direction=direction,
-            enable_logging=enable_logging,
-            match=match,
-            policy_id=policy_id,
-            preview=preview,
-            priority=priority,
-            target_resources=target_resources,
-            target_service_accounts=target_service_accounts,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             direction: Optional[pulumi.Input[str]] = None,
-             enable_logging: Optional[pulumi.Input[bool]] = None,
-             match: Optional[pulumi.Input['OrganizationSecurityPolicyRuleMatchArgs']] = None,
-             policy_id: Optional[pulumi.Input[str]] = None,
-             preview: Optional[pulumi.Input[bool]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enable_logging is None and 'enableLogging' in kwargs:
-            enable_logging = kwargs['enableLogging']
-        if policy_id is None and 'policyId' in kwargs:
-            policy_id = kwargs['policyId']
-        if target_resources is None and 'targetResources' in kwargs:
-            target_resources = kwargs['targetResources']
-        if target_service_accounts is None and 'targetServiceAccounts' in kwargs:
-            target_service_accounts = kwargs['targetServiceAccounts']
-
         if action is not None:
-            _setter("action", action)
+            pulumi.set(__self__, "action", action)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if direction is not None:
-            _setter("direction", direction)
+            pulumi.set(__self__, "direction", direction)
         if enable_logging is not None:
-            _setter("enable_logging", enable_logging)
+            pulumi.set(__self__, "enable_logging", enable_logging)
         if match is not None:
-            _setter("match", match)
+            pulumi.set(__self__, "match", match)
         if policy_id is not None:
-            _setter("policy_id", policy_id)
+            pulumi.set(__self__, "policy_id", policy_id)
         if preview is not None:
-            _setter("preview", preview)
+            pulumi.set(__self__, "preview", preview)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if target_resources is not None:
-            _setter("target_resources", target_resources)
+            pulumi.set(__self__, "target_resources", target_resources)
         if target_service_accounts is not None:
-            _setter("target_service_accounts", target_service_accounts)
+            pulumi.set(__self__, "target_service_accounts", target_service_accounts)
 
     @property
     @pulumi.getter
@@ -635,10 +553,6 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            OrganizationSecurityPolicyRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -669,7 +583,6 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["direction"] = direction
             __props__.__dict__["enable_logging"] = enable_logging
-            match = _utilities.configure(match, OrganizationSecurityPolicyRuleMatchArgs, True)
             if match is None and not opts.urn:
                 raise TypeError("Missing required property 'match'")
             __props__.__dict__["match"] = match

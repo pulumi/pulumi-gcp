@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ServiceArgs', 'Service']
@@ -29,36 +29,13 @@ class ServiceArgs:
         :param pulumi.Input[str] project: The project ID. If not provided, the provider project
                is used.
         """
-        ServiceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            service=service,
-            disable_dependent_services=disable_dependent_services,
-            disable_on_destroy=disable_on_destroy,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             service: Optional[pulumi.Input[str]] = None,
-             disable_dependent_services: Optional[pulumi.Input[bool]] = None,
-             disable_on_destroy: Optional[pulumi.Input[bool]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if service is None:
-            raise TypeError("Missing 'service' argument")
-        if disable_dependent_services is None and 'disableDependentServices' in kwargs:
-            disable_dependent_services = kwargs['disableDependentServices']
-        if disable_on_destroy is None and 'disableOnDestroy' in kwargs:
-            disable_on_destroy = kwargs['disableOnDestroy']
-
-        _setter("service", service)
+        pulumi.set(__self__, "service", service)
         if disable_dependent_services is not None:
-            _setter("disable_dependent_services", disable_dependent_services)
+            pulumi.set(__self__, "disable_dependent_services", disable_dependent_services)
         if disable_on_destroy is not None:
-            _setter("disable_on_destroy", disable_on_destroy)
+            pulumi.set(__self__, "disable_on_destroy", disable_on_destroy)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -131,35 +108,14 @@ class _ServiceState:
                is used.
         :param pulumi.Input[str] service: The service to enable.
         """
-        _ServiceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            disable_dependent_services=disable_dependent_services,
-            disable_on_destroy=disable_on_destroy,
-            project=project,
-            service=service,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             disable_dependent_services: Optional[pulumi.Input[bool]] = None,
-             disable_on_destroy: Optional[pulumi.Input[bool]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disable_dependent_services is None and 'disableDependentServices' in kwargs:
-            disable_dependent_services = kwargs['disableDependentServices']
-        if disable_on_destroy is None and 'disableOnDestroy' in kwargs:
-            disable_on_destroy = kwargs['disableOnDestroy']
-
         if disable_dependent_services is not None:
-            _setter("disable_dependent_services", disable_dependent_services)
+            pulumi.set(__self__, "disable_dependent_services", disable_dependent_services)
         if disable_on_destroy is not None:
-            _setter("disable_on_destroy", disable_on_destroy)
+            pulumi.set(__self__, "disable_on_destroy", disable_on_destroy)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if service is not None:
-            _setter("service", service)
+            pulumi.set(__self__, "service", service)
 
     @property
     @pulumi.getter(name="disableDependentServices")
@@ -323,10 +279,6 @@ class Service(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ServiceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

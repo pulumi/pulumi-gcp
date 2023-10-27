@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -49,57 +49,22 @@ class FolderSinkArgs:
                associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
         :param pulumi.Input[str] name: The name of the logging sink.
         """
-        FolderSinkArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            destination=destination,
-            folder=folder,
-            bigquery_options=bigquery_options,
-            description=description,
-            disabled=disabled,
-            exclusions=exclusions,
-            filter=filter,
-            include_children=include_children,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             destination: Optional[pulumi.Input[str]] = None,
-             folder: Optional[pulumi.Input[str]] = None,
-             bigquery_options: Optional[pulumi.Input['FolderSinkBigqueryOptionsArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disabled: Optional[pulumi.Input[bool]] = None,
-             exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['FolderSinkExclusionArgs']]]] = None,
-             filter: Optional[pulumi.Input[str]] = None,
-             include_children: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if destination is None:
-            raise TypeError("Missing 'destination' argument")
-        if folder is None:
-            raise TypeError("Missing 'folder' argument")
-        if bigquery_options is None and 'bigqueryOptions' in kwargs:
-            bigquery_options = kwargs['bigqueryOptions']
-        if include_children is None and 'includeChildren' in kwargs:
-            include_children = kwargs['includeChildren']
-
-        _setter("destination", destination)
-        _setter("folder", folder)
+        pulumi.set(__self__, "destination", destination)
+        pulumi.set(__self__, "folder", folder)
         if bigquery_options is not None:
-            _setter("bigquery_options", bigquery_options)
+            pulumi.set(__self__, "bigquery_options", bigquery_options)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if exclusions is not None:
-            _setter("exclusions", exclusions)
+            pulumi.set(__self__, "exclusions", exclusions)
         if filter is not None:
-            _setter("filter", filter)
+            pulumi.set(__self__, "filter", filter)
         if include_children is not None:
-            _setter("include_children", include_children)
+            pulumi.set(__self__, "include_children", include_children)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -261,61 +226,26 @@ class _FolderSinkState:
         :param pulumi.Input[str] writer_identity: The identity associated with this sink. This identity must be granted write access to the
                configured `destination`.
         """
-        _FolderSinkState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bigquery_options=bigquery_options,
-            description=description,
-            destination=destination,
-            disabled=disabled,
-            exclusions=exclusions,
-            filter=filter,
-            folder=folder,
-            include_children=include_children,
-            name=name,
-            writer_identity=writer_identity,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bigquery_options: Optional[pulumi.Input['FolderSinkBigqueryOptionsArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             destination: Optional[pulumi.Input[str]] = None,
-             disabled: Optional[pulumi.Input[bool]] = None,
-             exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['FolderSinkExclusionArgs']]]] = None,
-             filter: Optional[pulumi.Input[str]] = None,
-             folder: Optional[pulumi.Input[str]] = None,
-             include_children: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             writer_identity: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bigquery_options is None and 'bigqueryOptions' in kwargs:
-            bigquery_options = kwargs['bigqueryOptions']
-        if include_children is None and 'includeChildren' in kwargs:
-            include_children = kwargs['includeChildren']
-        if writer_identity is None and 'writerIdentity' in kwargs:
-            writer_identity = kwargs['writerIdentity']
-
         if bigquery_options is not None:
-            _setter("bigquery_options", bigquery_options)
+            pulumi.set(__self__, "bigquery_options", bigquery_options)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if destination is not None:
-            _setter("destination", destination)
+            pulumi.set(__self__, "destination", destination)
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if exclusions is not None:
-            _setter("exclusions", exclusions)
+            pulumi.set(__self__, "exclusions", exclusions)
         if filter is not None:
-            _setter("filter", filter)
+            pulumi.set(__self__, "filter", filter)
         if folder is not None:
-            _setter("folder", folder)
+            pulumi.set(__self__, "folder", folder)
         if include_children is not None:
-            _setter("include_children", include_children)
+            pulumi.set(__self__, "include_children", include_children)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if writer_identity is not None:
-            _setter("writer_identity", writer_identity)
+            pulumi.set(__self__, "writer_identity", writer_identity)
 
     @property
     @pulumi.getter(name="bigqueryOptions")
@@ -576,10 +506,6 @@ class FolderSink(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            FolderSinkArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -603,7 +529,6 @@ class FolderSink(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FolderSinkArgs.__new__(FolderSinkArgs)
 
-            bigquery_options = _utilities.configure(bigquery_options, FolderSinkBigqueryOptionsArgs, True)
             __props__.__dict__["bigquery_options"] = bigquery_options
             __props__.__dict__["description"] = description
             if destination is None and not opts.urn:

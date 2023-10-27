@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,54 +35,21 @@ class CertificateTemplateArgs:
         :param pulumi.Input['CertificateTemplatePredefinedValuesArgs'] predefined_values: Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
         :param pulumi.Input[str] project: The project for the resource
         """
-        CertificateTemplateArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            location=location,
-            description=description,
-            identity_constraints=identity_constraints,
-            labels=labels,
-            name=name,
-            passthrough_extensions=passthrough_extensions,
-            predefined_values=predefined_values,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             location: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             identity_constraints: Optional[pulumi.Input['CertificateTemplateIdentityConstraintsArgs']] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             passthrough_extensions: Optional[pulumi.Input['CertificateTemplatePassthroughExtensionsArgs']] = None,
-             predefined_values: Optional[pulumi.Input['CertificateTemplatePredefinedValuesArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if identity_constraints is None and 'identityConstraints' in kwargs:
-            identity_constraints = kwargs['identityConstraints']
-        if passthrough_extensions is None and 'passthroughExtensions' in kwargs:
-            passthrough_extensions = kwargs['passthroughExtensions']
-        if predefined_values is None and 'predefinedValues' in kwargs:
-            predefined_values = kwargs['predefinedValues']
-
-        _setter("location", location)
+        pulumi.set(__self__, "location", location)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if identity_constraints is not None:
-            _setter("identity_constraints", identity_constraints)
+            pulumi.set(__self__, "identity_constraints", identity_constraints)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if passthrough_extensions is not None:
-            _setter("passthrough_extensions", passthrough_extensions)
+            pulumi.set(__self__, "passthrough_extensions", passthrough_extensions)
         if predefined_values is not None:
-            _setter("predefined_values", predefined_values)
+            pulumi.set(__self__, "predefined_values", predefined_values)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -207,65 +174,26 @@ class _CertificateTemplateState:
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] update_time: Output only. The time at which this CertificateTemplate was updated.
         """
-        _CertificateTemplateState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            description=description,
-            identity_constraints=identity_constraints,
-            labels=labels,
-            location=location,
-            name=name,
-            passthrough_extensions=passthrough_extensions,
-            predefined_values=predefined_values,
-            project=project,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             identity_constraints: Optional[pulumi.Input['CertificateTemplateIdentityConstraintsArgs']] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             passthrough_extensions: Optional[pulumi.Input['CertificateTemplatePassthroughExtensionsArgs']] = None,
-             predefined_values: Optional[pulumi.Input['CertificateTemplatePredefinedValuesArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if identity_constraints is None and 'identityConstraints' in kwargs:
-            identity_constraints = kwargs['identityConstraints']
-        if passthrough_extensions is None and 'passthroughExtensions' in kwargs:
-            passthrough_extensions = kwargs['passthroughExtensions']
-        if predefined_values is None and 'predefinedValues' in kwargs:
-            predefined_values = kwargs['predefinedValues']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if identity_constraints is not None:
-            _setter("identity_constraints", identity_constraints)
+            pulumi.set(__self__, "identity_constraints", identity_constraints)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if passthrough_extensions is not None:
-            _setter("passthrough_extensions", passthrough_extensions)
+            pulumi.set(__self__, "passthrough_extensions", passthrough_extensions)
         if predefined_values is not None:
-            _setter("predefined_values", predefined_values)
+            pulumi.set(__self__, "predefined_values", predefined_values)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -477,10 +405,6 @@ class CertificateTemplate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CertificateTemplateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -504,16 +428,13 @@ class CertificateTemplate(pulumi.CustomResource):
             __props__ = CertificateTemplateArgs.__new__(CertificateTemplateArgs)
 
             __props__.__dict__["description"] = description
-            identity_constraints = _utilities.configure(identity_constraints, CertificateTemplateIdentityConstraintsArgs, True)
             __props__.__dict__["identity_constraints"] = identity_constraints
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            passthrough_extensions = _utilities.configure(passthrough_extensions, CertificateTemplatePassthroughExtensionsArgs, True)
             __props__.__dict__["passthrough_extensions"] = passthrough_extensions
-            predefined_values = _utilities.configure(predefined_values, CertificateTemplatePredefinedValuesArgs, True)
             __props__.__dict__["predefined_values"] = predefined_values
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None

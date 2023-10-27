@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -44,44 +44,15 @@ class FunctionIamMemberArgs:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
-        FunctionIamMemberArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cloud_function=cloud_function,
-            member=member,
-            role=role,
-            condition=condition,
-            location=location,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cloud_function: Optional[pulumi.Input[str]] = None,
-             member: Optional[pulumi.Input[str]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             condition: Optional[pulumi.Input['FunctionIamMemberConditionArgs']] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cloud_function is None and 'cloudFunction' in kwargs:
-            cloud_function = kwargs['cloudFunction']
-        if cloud_function is None:
-            raise TypeError("Missing 'cloud_function' argument")
-        if member is None:
-            raise TypeError("Missing 'member' argument")
-        if role is None:
-            raise TypeError("Missing 'role' argument")
-
-        _setter("cloud_function", cloud_function)
-        _setter("member", member)
-        _setter("role", role)
+        pulumi.set(__self__, "cloud_function", cloud_function)
+        pulumi.set(__self__, "member", member)
+        pulumi.set(__self__, "role", role)
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="cloudFunction")
@@ -198,45 +169,20 @@ class _FunctionIamMemberState:
                `cloudfunctionsv2.FunctionIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
-        _FunctionIamMemberState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cloud_function=cloud_function,
-            condition=condition,
-            etag=etag,
-            location=location,
-            member=member,
-            project=project,
-            role=role,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cloud_function: Optional[pulumi.Input[str]] = None,
-             condition: Optional[pulumi.Input['FunctionIamMemberConditionArgs']] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             member: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cloud_function is None and 'cloudFunction' in kwargs:
-            cloud_function = kwargs['cloudFunction']
-
         if cloud_function is not None:
-            _setter("cloud_function", cloud_function)
+            pulumi.set(__self__, "cloud_function", cloud_function)
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if member is not None:
-            _setter("member", member)
+            pulumi.set(__self__, "member", member)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if role is not None:
-            _setter("role", role)
+            pulumi.set(__self__, "role", role)
 
     @property
     @pulumi.getter(name="cloudFunction")
@@ -550,10 +496,6 @@ class FunctionIamMember(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            FunctionIamMemberArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -577,7 +519,6 @@ class FunctionIamMember(pulumi.CustomResource):
             if cloud_function is None and not opts.urn:
                 raise TypeError("Missing required property 'cloud_function'")
             __props__.__dict__["cloud_function"] = cloud_function
-            condition = _utilities.configure(condition, FunctionIamMemberConditionArgs, True)
             __props__.__dict__["condition"] = condition
             __props__.__dict__["location"] = location
             if member is None and not opts.urn:

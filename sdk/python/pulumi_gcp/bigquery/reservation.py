@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -47,58 +47,23 @@ class ReservationArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        ReservationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            slot_capacity=slot_capacity,
-            autoscale=autoscale,
-            concurrency=concurrency,
-            edition=edition,
-            ignore_idle_slots=ignore_idle_slots,
-            location=location,
-            multi_region_auxiliary=multi_region_auxiliary,
-            name=name,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             slot_capacity: Optional[pulumi.Input[int]] = None,
-             autoscale: Optional[pulumi.Input['ReservationAutoscaleArgs']] = None,
-             concurrency: Optional[pulumi.Input[int]] = None,
-             edition: Optional[pulumi.Input[str]] = None,
-             ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             multi_region_auxiliary: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if slot_capacity is None and 'slotCapacity' in kwargs:
-            slot_capacity = kwargs['slotCapacity']
-        if slot_capacity is None:
-            raise TypeError("Missing 'slot_capacity' argument")
-        if ignore_idle_slots is None and 'ignoreIdleSlots' in kwargs:
-            ignore_idle_slots = kwargs['ignoreIdleSlots']
-        if multi_region_auxiliary is None and 'multiRegionAuxiliary' in kwargs:
-            multi_region_auxiliary = kwargs['multiRegionAuxiliary']
-
-        _setter("slot_capacity", slot_capacity)
+        pulumi.set(__self__, "slot_capacity", slot_capacity)
         if autoscale is not None:
-            _setter("autoscale", autoscale)
+            pulumi.set(__self__, "autoscale", autoscale)
         if concurrency is not None:
-            _setter("concurrency", concurrency)
+            pulumi.set(__self__, "concurrency", concurrency)
         if edition is not None:
-            _setter("edition", edition)
+            pulumi.set(__self__, "edition", edition)
         if ignore_idle_slots is not None:
-            _setter("ignore_idle_slots", ignore_idle_slots)
+            pulumi.set(__self__, "ignore_idle_slots", ignore_idle_slots)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if multi_region_auxiliary is not None:
-            _setter("multi_region_auxiliary", multi_region_auxiliary)
+            pulumi.set(__self__, "multi_region_auxiliary", multi_region_auxiliary)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="slotCapacity")
@@ -253,57 +218,24 @@ class _ReservationState:
         :param pulumi.Input[int] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
                unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
         """
-        _ReservationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            autoscale=autoscale,
-            concurrency=concurrency,
-            edition=edition,
-            ignore_idle_slots=ignore_idle_slots,
-            location=location,
-            multi_region_auxiliary=multi_region_auxiliary,
-            name=name,
-            project=project,
-            slot_capacity=slot_capacity,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             autoscale: Optional[pulumi.Input['ReservationAutoscaleArgs']] = None,
-             concurrency: Optional[pulumi.Input[int]] = None,
-             edition: Optional[pulumi.Input[str]] = None,
-             ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             multi_region_auxiliary: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             slot_capacity: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ignore_idle_slots is None and 'ignoreIdleSlots' in kwargs:
-            ignore_idle_slots = kwargs['ignoreIdleSlots']
-        if multi_region_auxiliary is None and 'multiRegionAuxiliary' in kwargs:
-            multi_region_auxiliary = kwargs['multiRegionAuxiliary']
-        if slot_capacity is None and 'slotCapacity' in kwargs:
-            slot_capacity = kwargs['slotCapacity']
-
         if autoscale is not None:
-            _setter("autoscale", autoscale)
+            pulumi.set(__self__, "autoscale", autoscale)
         if concurrency is not None:
-            _setter("concurrency", concurrency)
+            pulumi.set(__self__, "concurrency", concurrency)
         if edition is not None:
-            _setter("edition", edition)
+            pulumi.set(__self__, "edition", edition)
         if ignore_idle_slots is not None:
-            _setter("ignore_idle_slots", ignore_idle_slots)
+            pulumi.set(__self__, "ignore_idle_slots", ignore_idle_slots)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if multi_region_auxiliary is not None:
-            _setter("multi_region_auxiliary", multi_region_auxiliary)
+            pulumi.set(__self__, "multi_region_auxiliary", multi_region_auxiliary)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if slot_capacity is not None:
-            _setter("slot_capacity", slot_capacity)
+            pulumi.set(__self__, "slot_capacity", slot_capacity)
 
     @property
     @pulumi.getter
@@ -563,10 +495,6 @@ class Reservation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ReservationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -590,7 +518,6 @@ class Reservation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ReservationArgs.__new__(ReservationArgs)
 
-            autoscale = _utilities.configure(autoscale, ReservationAutoscaleArgs, True)
             __props__.__dict__["autoscale"] = autoscale
             __props__.__dict__["concurrency"] = concurrency
             __props__.__dict__["edition"] = edition

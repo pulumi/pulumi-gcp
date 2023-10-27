@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['HttpHealthCheckArgs', 'HttpHealthCheck']
@@ -57,65 +57,26 @@ class HttpHealthCheckArgs:
         :param pulumi.Input[int] unhealthy_threshold: A so-far healthy instance will be marked unhealthy after this many
                consecutive failures. The default value is 2.
         """
-        HttpHealthCheckArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            check_interval_sec=check_interval_sec,
-            description=description,
-            healthy_threshold=healthy_threshold,
-            host=host,
-            name=name,
-            port=port,
-            project=project,
-            request_path=request_path,
-            timeout_sec=timeout_sec,
-            unhealthy_threshold=unhealthy_threshold,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             check_interval_sec: Optional[pulumi.Input[int]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             healthy_threshold: Optional[pulumi.Input[int]] = None,
-             host: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             request_path: Optional[pulumi.Input[str]] = None,
-             timeout_sec: Optional[pulumi.Input[int]] = None,
-             unhealthy_threshold: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if check_interval_sec is None and 'checkIntervalSec' in kwargs:
-            check_interval_sec = kwargs['checkIntervalSec']
-        if healthy_threshold is None and 'healthyThreshold' in kwargs:
-            healthy_threshold = kwargs['healthyThreshold']
-        if request_path is None and 'requestPath' in kwargs:
-            request_path = kwargs['requestPath']
-        if timeout_sec is None and 'timeoutSec' in kwargs:
-            timeout_sec = kwargs['timeoutSec']
-        if unhealthy_threshold is None and 'unhealthyThreshold' in kwargs:
-            unhealthy_threshold = kwargs['unhealthyThreshold']
-
         if check_interval_sec is not None:
-            _setter("check_interval_sec", check_interval_sec)
+            pulumi.set(__self__, "check_interval_sec", check_interval_sec)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if healthy_threshold is not None:
-            _setter("healthy_threshold", healthy_threshold)
+            pulumi.set(__self__, "healthy_threshold", healthy_threshold)
         if host is not None:
-            _setter("host", host)
+            pulumi.set(__self__, "host", host)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if request_path is not None:
-            _setter("request_path", request_path)
+            pulumi.set(__self__, "request_path", request_path)
         if timeout_sec is not None:
-            _setter("timeout_sec", timeout_sec)
+            pulumi.set(__self__, "timeout_sec", timeout_sec)
         if unhealthy_threshold is not None:
-            _setter("unhealthy_threshold", unhealthy_threshold)
+            pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
 
     @property
     @pulumi.getter(name="checkIntervalSec")
@@ -308,77 +269,30 @@ class _HttpHealthCheckState:
         :param pulumi.Input[int] unhealthy_threshold: A so-far healthy instance will be marked unhealthy after this many
                consecutive failures. The default value is 2.
         """
-        _HttpHealthCheckState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            check_interval_sec=check_interval_sec,
-            creation_timestamp=creation_timestamp,
-            description=description,
-            healthy_threshold=healthy_threshold,
-            host=host,
-            name=name,
-            port=port,
-            project=project,
-            request_path=request_path,
-            self_link=self_link,
-            timeout_sec=timeout_sec,
-            unhealthy_threshold=unhealthy_threshold,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             check_interval_sec: Optional[pulumi.Input[int]] = None,
-             creation_timestamp: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             healthy_threshold: Optional[pulumi.Input[int]] = None,
-             host: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             request_path: Optional[pulumi.Input[str]] = None,
-             self_link: Optional[pulumi.Input[str]] = None,
-             timeout_sec: Optional[pulumi.Input[int]] = None,
-             unhealthy_threshold: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if check_interval_sec is None and 'checkIntervalSec' in kwargs:
-            check_interval_sec = kwargs['checkIntervalSec']
-        if creation_timestamp is None and 'creationTimestamp' in kwargs:
-            creation_timestamp = kwargs['creationTimestamp']
-        if healthy_threshold is None and 'healthyThreshold' in kwargs:
-            healthy_threshold = kwargs['healthyThreshold']
-        if request_path is None and 'requestPath' in kwargs:
-            request_path = kwargs['requestPath']
-        if self_link is None and 'selfLink' in kwargs:
-            self_link = kwargs['selfLink']
-        if timeout_sec is None and 'timeoutSec' in kwargs:
-            timeout_sec = kwargs['timeoutSec']
-        if unhealthy_threshold is None and 'unhealthyThreshold' in kwargs:
-            unhealthy_threshold = kwargs['unhealthyThreshold']
-
         if check_interval_sec is not None:
-            _setter("check_interval_sec", check_interval_sec)
+            pulumi.set(__self__, "check_interval_sec", check_interval_sec)
         if creation_timestamp is not None:
-            _setter("creation_timestamp", creation_timestamp)
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if healthy_threshold is not None:
-            _setter("healthy_threshold", healthy_threshold)
+            pulumi.set(__self__, "healthy_threshold", healthy_threshold)
         if host is not None:
-            _setter("host", host)
+            pulumi.set(__self__, "host", host)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if request_path is not None:
-            _setter("request_path", request_path)
+            pulumi.set(__self__, "request_path", request_path)
         if self_link is not None:
-            _setter("self_link", self_link)
+            pulumi.set(__self__, "self_link", self_link)
         if timeout_sec is not None:
-            _setter("timeout_sec", timeout_sec)
+            pulumi.set(__self__, "timeout_sec", timeout_sec)
         if unhealthy_threshold is not None:
-            _setter("unhealthy_threshold", unhealthy_threshold)
+            pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
 
     @property
     @pulumi.getter(name="checkIntervalSec")
@@ -700,10 +614,6 @@ class HttpHealthCheck(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            HttpHealthCheckArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

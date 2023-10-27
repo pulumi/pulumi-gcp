@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -32,21 +32,8 @@ class CertificateIssuanceConfigCertificateAuthorityConfigArgs:
         :param pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs'] certificate_authority_service_config: Defines a CertificateAuthorityServiceConfig.
                Structure is documented below.
         """
-        CertificateIssuanceConfigCertificateAuthorityConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            certificate_authority_service_config=certificate_authority_service_config,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             certificate_authority_service_config: Optional[pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if certificate_authority_service_config is None and 'certificateAuthorityServiceConfig' in kwargs:
-            certificate_authority_service_config = kwargs['certificateAuthorityServiceConfig']
-
         if certificate_authority_service_config is not None:
-            _setter("certificate_authority_service_config", certificate_authority_service_config)
+            pulumi.set(__self__, "certificate_authority_service_config", certificate_authority_service_config)
 
     @property
     @pulumi.getter(name="certificateAuthorityServiceConfig")
@@ -73,22 +60,7 @@ class CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthoritySer
                
                - - -
         """
-        CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ca_pool=ca_pool,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ca_pool: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ca_pool is None and 'caPool' in kwargs:
-            ca_pool = kwargs['caPool']
-        if ca_pool is None:
-            raise TypeError("Missing 'ca_pool' argument")
-
-        _setter("ca_pool", ca_pool)
+        pulumi.set(__self__, "ca_pool", ca_pool)
 
     @property
     @pulumi.getter(name="caPool")
@@ -136,47 +108,18 @@ class CertificateManagedArgs:
         :param pulumi.Input[str] state: (Output)
                State of the domain for managed certificate issuance.
         """
-        CertificateManagedArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            authorization_attempt_infos=authorization_attempt_infos,
-            dns_authorizations=dns_authorizations,
-            domains=domains,
-            issuance_config=issuance_config,
-            provisioning_issues=provisioning_issues,
-            state=state,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             authorization_attempt_infos: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateManagedAuthorizationAttemptInfoArgs']]]] = None,
-             dns_authorizations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             issuance_config: Optional[pulumi.Input[str]] = None,
-             provisioning_issues: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateManagedProvisioningIssueArgs']]]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if authorization_attempt_infos is None and 'authorizationAttemptInfos' in kwargs:
-            authorization_attempt_infos = kwargs['authorizationAttemptInfos']
-        if dns_authorizations is None and 'dnsAuthorizations' in kwargs:
-            dns_authorizations = kwargs['dnsAuthorizations']
-        if issuance_config is None and 'issuanceConfig' in kwargs:
-            issuance_config = kwargs['issuanceConfig']
-        if provisioning_issues is None and 'provisioningIssues' in kwargs:
-            provisioning_issues = kwargs['provisioningIssues']
-
         if authorization_attempt_infos is not None:
-            _setter("authorization_attempt_infos", authorization_attempt_infos)
+            pulumi.set(__self__, "authorization_attempt_infos", authorization_attempt_infos)
         if dns_authorizations is not None:
-            _setter("dns_authorizations", dns_authorizations)
+            pulumi.set(__self__, "dns_authorizations", dns_authorizations)
         if domains is not None:
-            _setter("domains", domains)
+            pulumi.set(__self__, "domains", domains)
         if issuance_config is not None:
-            _setter("issuance_config", issuance_config)
+            pulumi.set(__self__, "issuance_config", issuance_config)
         if provisioning_issues is not None:
-            _setter("provisioning_issues", provisioning_issues)
+            pulumi.set(__self__, "provisioning_issues", provisioning_issues)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter(name="authorizationAttemptInfos")
@@ -282,33 +225,14 @@ class CertificateManagedAuthorizationAttemptInfoArgs:
         :param pulumi.Input[str] state: (Output)
                State of the domain for managed certificate issuance.
         """
-        CertificateManagedAuthorizationAttemptInfoArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            details=details,
-            domain=domain,
-            failure_reason=failure_reason,
-            state=state,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             details: Optional[pulumi.Input[str]] = None,
-             domain: Optional[pulumi.Input[str]] = None,
-             failure_reason: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if failure_reason is None and 'failureReason' in kwargs:
-            failure_reason = kwargs['failureReason']
-
         if details is not None:
-            _setter("details", details)
+            pulumi.set(__self__, "details", details)
         if domain is not None:
-            _setter("domain", domain)
+            pulumi.set(__self__, "domain", domain)
         if failure_reason is not None:
-            _setter("failure_reason", failure_reason)
+            pulumi.set(__self__, "failure_reason", failure_reason)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter
@@ -378,23 +302,10 @@ class CertificateManagedProvisioningIssueArgs:
         :param pulumi.Input[str] reason: (Output)
                Reason for provisioning failures.
         """
-        CertificateManagedProvisioningIssueArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            details=details,
-            reason=reason,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             details: Optional[pulumi.Input[str]] = None,
-             reason: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if details is not None:
-            _setter("details", details)
+            pulumi.set(__self__, "details", details)
         if reason is not None:
-            _setter("reason", reason)
+            pulumi.set(__self__, "reason", reason)
 
     @property
     @pulumi.getter
@@ -441,33 +352,12 @@ class CertificateMapGclbTargetArgs:
                This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
                `targetSslProxy` may be set.
         """
-        CertificateMapGclbTargetArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ip_configs=ip_configs,
-            target_https_proxy=target_https_proxy,
-            target_ssl_proxy=target_ssl_proxy,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ip_configs: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateMapGclbTargetIpConfigArgs']]]] = None,
-             target_https_proxy: Optional[pulumi.Input[str]] = None,
-             target_ssl_proxy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ip_configs is None and 'ipConfigs' in kwargs:
-            ip_configs = kwargs['ipConfigs']
-        if target_https_proxy is None and 'targetHttpsProxy' in kwargs:
-            target_https_proxy = kwargs['targetHttpsProxy']
-        if target_ssl_proxy is None and 'targetSslProxy' in kwargs:
-            target_ssl_proxy = kwargs['targetSslProxy']
-
         if ip_configs is not None:
-            _setter("ip_configs", ip_configs)
+            pulumi.set(__self__, "ip_configs", ip_configs)
         if target_https_proxy is not None:
-            _setter("target_https_proxy", target_https_proxy)
+            pulumi.set(__self__, "target_https_proxy", target_https_proxy)
         if target_ssl_proxy is not None:
-            _setter("target_ssl_proxy", target_ssl_proxy)
+            pulumi.set(__self__, "target_ssl_proxy", target_ssl_proxy)
 
     @property
     @pulumi.getter(name="ipConfigs")
@@ -520,25 +410,10 @@ class CertificateMapGclbTargetIpConfigArgs:
         :param pulumi.Input[str] ip_address: An external IP address
         :param pulumi.Input[Sequence[pulumi.Input[int]]] ports: A list of ports
         """
-        CertificateMapGclbTargetIpConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ip_address=ip_address,
-            ports=ports,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ip_address: Optional[pulumi.Input[str]] = None,
-             ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ip_address is None and 'ipAddress' in kwargs:
-            ip_address = kwargs['ipAddress']
-
         if ip_address is not None:
-            _setter("ip_address", ip_address)
+            pulumi.set(__self__, "ip_address", ip_address)
         if ports is not None:
-            _setter("ports", ports)
+            pulumi.set(__self__, "ports", ports)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -590,45 +465,20 @@ class CertificateSelfManagedArgs:
                
                > **Warning:** `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
         """
-        CertificateSelfManagedArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            certificate_pem=certificate_pem,
-            pem_certificate=pem_certificate,
-            pem_private_key=pem_private_key,
-            private_key_pem=private_key_pem,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             certificate_pem: Optional[pulumi.Input[str]] = None,
-             pem_certificate: Optional[pulumi.Input[str]] = None,
-             pem_private_key: Optional[pulumi.Input[str]] = None,
-             private_key_pem: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if certificate_pem is None and 'certificatePem' in kwargs:
-            certificate_pem = kwargs['certificatePem']
-        if pem_certificate is None and 'pemCertificate' in kwargs:
-            pem_certificate = kwargs['pemCertificate']
-        if pem_private_key is None and 'pemPrivateKey' in kwargs:
-            pem_private_key = kwargs['pemPrivateKey']
-        if private_key_pem is None and 'privateKeyPem' in kwargs:
-            private_key_pem = kwargs['privateKeyPem']
-
         if certificate_pem is not None:
             warnings.warn("""`certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.""", DeprecationWarning)
             pulumi.log.warn("""certificate_pem is deprecated: `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.""")
         if certificate_pem is not None:
-            _setter("certificate_pem", certificate_pem)
+            pulumi.set(__self__, "certificate_pem", certificate_pem)
         if pem_certificate is not None:
-            _setter("pem_certificate", pem_certificate)
+            pulumi.set(__self__, "pem_certificate", pem_certificate)
         if pem_private_key is not None:
-            _setter("pem_private_key", pem_private_key)
+            pulumi.set(__self__, "pem_private_key", pem_private_key)
         if private_key_pem is not None:
             warnings.warn("""`private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.""", DeprecationWarning)
             pulumi.log.warn("""private_key_pem is deprecated: `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.""")
         if private_key_pem is not None:
-            _setter("private_key_pem", private_key_pem)
+            pulumi.set(__self__, "private_key_pem", private_key_pem)
 
     @property
     @pulumi.getter(name="certificatePem")
@@ -715,27 +565,12 @@ class DnsAuthorizationDnsResourceRecordArgs:
         :param pulumi.Input[str] type: (Output)
                Type of the DNS Resource Record.
         """
-        DnsAuthorizationDnsResourceRecordArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            data=data,
-            name=name,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             data: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if data is not None:
-            _setter("data", data)
+            pulumi.set(__self__, "data", data)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -793,27 +628,10 @@ class TrustConfigTrustStoreArgs:
         :param pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreTrustAnchorArgs']]] trust_anchors: List of Trust Anchors to be used while performing validation against a given TrustStore.
                Structure is documented below.
         """
-        TrustConfigTrustStoreArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            intermediate_cas=intermediate_cas,
-            trust_anchors=trust_anchors,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             intermediate_cas: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreIntermediateCaArgs']]]] = None,
-             trust_anchors: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreTrustAnchorArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if intermediate_cas is None and 'intermediateCas' in kwargs:
-            intermediate_cas = kwargs['intermediateCas']
-        if trust_anchors is None and 'trustAnchors' in kwargs:
-            trust_anchors = kwargs['trustAnchors']
-
         if intermediate_cas is not None:
-            _setter("intermediate_cas", intermediate_cas)
+            pulumi.set(__self__, "intermediate_cas", intermediate_cas)
         if trust_anchors is not None:
-            _setter("trust_anchors", trust_anchors)
+            pulumi.set(__self__, "trust_anchors", trust_anchors)
 
     @property
     @pulumi.getter(name="intermediateCas")
@@ -852,21 +670,8 @@ class TrustConfigTrustStoreIntermediateCaArgs:
                Each certificate provided in PEM format may occupy up to 5kB.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
-        TrustConfigTrustStoreIntermediateCaArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            pem_certificate=pem_certificate,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             pem_certificate: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if pem_certificate is None and 'pemCertificate' in kwargs:
-            pem_certificate = kwargs['pemCertificate']
-
         if pem_certificate is not None:
-            _setter("pem_certificate", pem_certificate)
+            pulumi.set(__self__, "pem_certificate", pem_certificate)
 
     @property
     @pulumi.getter(name="pemCertificate")
@@ -892,21 +697,8 @@ class TrustConfigTrustStoreTrustAnchorArgs:
                Each certificate provided in PEM format may occupy up to 5kB.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
-        TrustConfigTrustStoreTrustAnchorArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            pem_certificate=pem_certificate,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             pem_certificate: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if pem_certificate is None and 'pemCertificate' in kwargs:
-            pem_certificate = kwargs['pemCertificate']
-
         if pem_certificate is not None:
-            _setter("pem_certificate", pem_certificate)
+            pulumi.set(__self__, "pem_certificate", pem_certificate)
 
     @property
     @pulumi.getter(name="pemCertificate")

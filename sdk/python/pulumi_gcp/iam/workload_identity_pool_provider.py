@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -96,67 +96,24 @@ class WorkloadIdentityPoolProviderArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        WorkloadIdentityPoolProviderArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            workload_identity_pool_id=workload_identity_pool_id,
-            workload_identity_pool_provider_id=workload_identity_pool_provider_id,
-            attribute_condition=attribute_condition,
-            attribute_mapping=attribute_mapping,
-            aws=aws,
-            description=description,
-            disabled=disabled,
-            display_name=display_name,
-            oidc=oidc,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
-             workload_identity_pool_provider_id: Optional[pulumi.Input[str]] = None,
-             attribute_condition: Optional[pulumi.Input[str]] = None,
-             attribute_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             aws: Optional[pulumi.Input['WorkloadIdentityPoolProviderAwsArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disabled: Optional[pulumi.Input[bool]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             oidc: Optional[pulumi.Input['WorkloadIdentityPoolProviderOidcArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if workload_identity_pool_id is None and 'workloadIdentityPoolId' in kwargs:
-            workload_identity_pool_id = kwargs['workloadIdentityPoolId']
-        if workload_identity_pool_id is None:
-            raise TypeError("Missing 'workload_identity_pool_id' argument")
-        if workload_identity_pool_provider_id is None and 'workloadIdentityPoolProviderId' in kwargs:
-            workload_identity_pool_provider_id = kwargs['workloadIdentityPoolProviderId']
-        if workload_identity_pool_provider_id is None:
-            raise TypeError("Missing 'workload_identity_pool_provider_id' argument")
-        if attribute_condition is None and 'attributeCondition' in kwargs:
-            attribute_condition = kwargs['attributeCondition']
-        if attribute_mapping is None and 'attributeMapping' in kwargs:
-            attribute_mapping = kwargs['attributeMapping']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-
-        _setter("workload_identity_pool_id", workload_identity_pool_id)
-        _setter("workload_identity_pool_provider_id", workload_identity_pool_provider_id)
+        pulumi.set(__self__, "workload_identity_pool_id", workload_identity_pool_id)
+        pulumi.set(__self__, "workload_identity_pool_provider_id", workload_identity_pool_provider_id)
         if attribute_condition is not None:
-            _setter("attribute_condition", attribute_condition)
+            pulumi.set(__self__, "attribute_condition", attribute_condition)
         if attribute_mapping is not None:
-            _setter("attribute_mapping", attribute_mapping)
+            pulumi.set(__self__, "attribute_mapping", attribute_mapping)
         if aws is not None:
-            _setter("aws", aws)
+            pulumi.set(__self__, "aws", aws)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if oidc is not None:
-            _setter("oidc", oidc)
+            pulumi.set(__self__, "oidc", oidc)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="workloadIdentityPoolId")
@@ -430,73 +387,30 @@ class _WorkloadIdentityPoolProviderState:
                
                - - -
         """
-        _WorkloadIdentityPoolProviderState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            attribute_condition=attribute_condition,
-            attribute_mapping=attribute_mapping,
-            aws=aws,
-            description=description,
-            disabled=disabled,
-            display_name=display_name,
-            name=name,
-            oidc=oidc,
-            project=project,
-            state=state,
-            workload_identity_pool_id=workload_identity_pool_id,
-            workload_identity_pool_provider_id=workload_identity_pool_provider_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             attribute_condition: Optional[pulumi.Input[str]] = None,
-             attribute_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             aws: Optional[pulumi.Input['WorkloadIdentityPoolProviderAwsArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disabled: Optional[pulumi.Input[bool]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             oidc: Optional[pulumi.Input['WorkloadIdentityPoolProviderOidcArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
-             workload_identity_pool_provider_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if attribute_condition is None and 'attributeCondition' in kwargs:
-            attribute_condition = kwargs['attributeCondition']
-        if attribute_mapping is None and 'attributeMapping' in kwargs:
-            attribute_mapping = kwargs['attributeMapping']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if workload_identity_pool_id is None and 'workloadIdentityPoolId' in kwargs:
-            workload_identity_pool_id = kwargs['workloadIdentityPoolId']
-        if workload_identity_pool_provider_id is None and 'workloadIdentityPoolProviderId' in kwargs:
-            workload_identity_pool_provider_id = kwargs['workloadIdentityPoolProviderId']
-
         if attribute_condition is not None:
-            _setter("attribute_condition", attribute_condition)
+            pulumi.set(__self__, "attribute_condition", attribute_condition)
         if attribute_mapping is not None:
-            _setter("attribute_mapping", attribute_mapping)
+            pulumi.set(__self__, "attribute_mapping", attribute_mapping)
         if aws is not None:
-            _setter("aws", aws)
+            pulumi.set(__self__, "aws", aws)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if oidc is not None:
-            _setter("oidc", oidc)
+            pulumi.set(__self__, "oidc", oidc)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if workload_identity_pool_id is not None:
-            _setter("workload_identity_pool_id", workload_identity_pool_id)
+            pulumi.set(__self__, "workload_identity_pool_id", workload_identity_pool_id)
         if workload_identity_pool_provider_id is not None:
-            _setter("workload_identity_pool_provider_id", workload_identity_pool_provider_id)
+            pulumi.set(__self__, "workload_identity_pool_provider_id", workload_identity_pool_provider_id)
 
     @property
     @pulumi.getter(name="attributeCondition")
@@ -1097,10 +1011,6 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            WorkloadIdentityPoolProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1127,12 +1037,10 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
 
             __props__.__dict__["attribute_condition"] = attribute_condition
             __props__.__dict__["attribute_mapping"] = attribute_mapping
-            aws = _utilities.configure(aws, WorkloadIdentityPoolProviderAwsArgs, True)
             __props__.__dict__["aws"] = aws
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["display_name"] = display_name
-            oidc = _utilities.configure(oidc, WorkloadIdentityPoolProviderOidcArgs, True)
             __props__.__dict__["oidc"] = oidc
             __props__.__dict__["project"] = project
             if workload_identity_pool_id is None and not opts.urn:

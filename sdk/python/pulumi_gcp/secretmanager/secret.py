@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -68,63 +68,24 @@ class SecretArgs:
                An object containing a list of "key": value pairs. Example:
                { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
-        SecretArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            replication=replication,
-            secret_id=secret_id,
-            annotations=annotations,
-            expire_time=expire_time,
-            labels=labels,
-            project=project,
-            rotation=rotation,
-            topics=topics,
-            ttl=ttl,
-            version_aliases=version_aliases,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             replication: Optional[pulumi.Input['SecretReplicationArgs']] = None,
-             secret_id: Optional[pulumi.Input[str]] = None,
-             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             expire_time: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             rotation: Optional[pulumi.Input['SecretRotationArgs']] = None,
-             topics: Optional[pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]]] = None,
-             ttl: Optional[pulumi.Input[str]] = None,
-             version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if replication is None:
-            raise TypeError("Missing 'replication' argument")
-        if secret_id is None and 'secretId' in kwargs:
-            secret_id = kwargs['secretId']
-        if secret_id is None:
-            raise TypeError("Missing 'secret_id' argument")
-        if expire_time is None and 'expireTime' in kwargs:
-            expire_time = kwargs['expireTime']
-        if version_aliases is None and 'versionAliases' in kwargs:
-            version_aliases = kwargs['versionAliases']
-
-        _setter("replication", replication)
-        _setter("secret_id", secret_id)
+        pulumi.set(__self__, "replication", replication)
+        pulumi.set(__self__, "secret_id", secret_id)
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if expire_time is not None:
-            _setter("expire_time", expire_time)
+            pulumi.set(__self__, "expire_time", expire_time)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if rotation is not None:
-            _setter("rotation", rotation)
+            pulumi.set(__self__, "rotation", rotation)
         if topics is not None:
-            _setter("topics", topics)
+            pulumi.set(__self__, "topics", topics)
         if ttl is not None:
-            _setter("ttl", ttl)
+            pulumi.set(__self__, "ttl", ttl)
         if version_aliases is not None:
-            _setter("version_aliases", version_aliases)
+            pulumi.set(__self__, "version_aliases", version_aliases)
 
     @property
     @pulumi.getter
@@ -336,71 +297,30 @@ class _SecretState:
                An object containing a list of "key": value pairs. Example:
                { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
-        _SecretState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            annotations=annotations,
-            create_time=create_time,
-            expire_time=expire_time,
-            labels=labels,
-            name=name,
-            project=project,
-            replication=replication,
-            rotation=rotation,
-            secret_id=secret_id,
-            topics=topics,
-            ttl=ttl,
-            version_aliases=version_aliases,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             expire_time: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             replication: Optional[pulumi.Input['SecretReplicationArgs']] = None,
-             rotation: Optional[pulumi.Input['SecretRotationArgs']] = None,
-             secret_id: Optional[pulumi.Input[str]] = None,
-             topics: Optional[pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]]] = None,
-             ttl: Optional[pulumi.Input[str]] = None,
-             version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if expire_time is None and 'expireTime' in kwargs:
-            expire_time = kwargs['expireTime']
-        if secret_id is None and 'secretId' in kwargs:
-            secret_id = kwargs['secretId']
-        if version_aliases is None and 'versionAliases' in kwargs:
-            version_aliases = kwargs['versionAliases']
-
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if expire_time is not None:
-            _setter("expire_time", expire_time)
+            pulumi.set(__self__, "expire_time", expire_time)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if replication is not None:
-            _setter("replication", replication)
+            pulumi.set(__self__, "replication", replication)
         if rotation is not None:
-            _setter("rotation", rotation)
+            pulumi.set(__self__, "rotation", rotation)
         if secret_id is not None:
-            _setter("secret_id", secret_id)
+            pulumi.set(__self__, "secret_id", secret_id)
         if topics is not None:
-            _setter("topics", topics)
+            pulumi.set(__self__, "topics", topics)
         if ttl is not None:
-            _setter("ttl", ttl)
+            pulumi.set(__self__, "ttl", ttl)
         if version_aliases is not None:
-            _setter("version_aliases", version_aliases)
+            pulumi.set(__self__, "version_aliases", version_aliases)
 
     @property
     @pulumi.getter
@@ -837,10 +757,6 @@ class Secret(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SecretArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -869,11 +785,9 @@ class Secret(pulumi.CustomResource):
             __props__.__dict__["expire_time"] = expire_time
             __props__.__dict__["labels"] = labels
             __props__.__dict__["project"] = project
-            replication = _utilities.configure(replication, SecretReplicationArgs, True)
             if replication is None and not opts.urn:
                 raise TypeError("Missing required property 'replication'")
             __props__.__dict__["replication"] = replication
-            rotation = _utilities.configure(rotation, SecretRotationArgs, True)
             __props__.__dict__["rotation"] = rotation
             if secret_id is None and not opts.urn:
                 raise TypeError("Missing required property 'secret_id'")

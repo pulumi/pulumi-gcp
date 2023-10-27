@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RegionDiskResourcePolicyAttachmentArgs', 'RegionDiskResourcePolicyAttachment']
@@ -30,32 +30,13 @@ class RegionDiskResourcePolicyAttachmentArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region where the disk resides.
         """
-        RegionDiskResourcePolicyAttachmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            disk=disk,
-            name=name,
-            project=project,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             disk: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disk is None:
-            raise TypeError("Missing 'disk' argument")
-
-        _setter("disk", disk)
+        pulumi.set(__self__, "disk", disk)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter
@@ -130,31 +111,14 @@ class _RegionDiskResourcePolicyAttachmentState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region where the disk resides.
         """
-        _RegionDiskResourcePolicyAttachmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            disk=disk,
-            name=name,
-            project=project,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             disk: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if disk is not None:
-            _setter("disk", disk)
+            pulumi.set(__self__, "disk", disk)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter
@@ -382,10 +346,6 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RegionDiskResourcePolicyAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

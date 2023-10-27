@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -40,49 +40,20 @@ class HttpRouteArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        HttpRouteArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            hostnames=hostnames,
-            rules=rules,
-            description=description,
-            gateways=gateways,
-            labels=labels,
-            meshes=meshes,
-            name=name,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             rules: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleArgs']]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             gateways: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if hostnames is None:
-            raise TypeError("Missing 'hostnames' argument")
-        if rules is None:
-            raise TypeError("Missing 'rules' argument")
-
-        _setter("hostnames", hostnames)
-        _setter("rules", rules)
+        pulumi.set(__self__, "hostnames", hostnames)
+        pulumi.set(__self__, "rules", rules)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if gateways is not None:
-            _setter("gateways", gateways)
+            pulumi.set(__self__, "gateways", gateways)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if meshes is not None:
-            _setter("meshes", meshes)
+            pulumi.set(__self__, "meshes", meshes)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -219,65 +190,28 @@ class _HttpRouteState:
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
         :param pulumi.Input[str] update_time: Time the HttpRoute was updated in UTC.
         """
-        _HttpRouteState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            description=description,
-            gateways=gateways,
-            hostnames=hostnames,
-            labels=labels,
-            meshes=meshes,
-            name=name,
-            project=project,
-            rules=rules,
-            self_link=self_link,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             gateways: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             rules: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleArgs']]]] = None,
-             self_link: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if self_link is None and 'selfLink' in kwargs:
-            self_link = kwargs['selfLink']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if gateways is not None:
-            _setter("gateways", gateways)
+            pulumi.set(__self__, "gateways", gateways)
         if hostnames is not None:
-            _setter("hostnames", hostnames)
+            pulumi.set(__self__, "hostnames", hostnames)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if meshes is not None:
-            _setter("meshes", meshes)
+            pulumi.set(__self__, "meshes", meshes)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if rules is not None:
-            _setter("rules", rules)
+            pulumi.set(__self__, "rules", rules)
         if self_link is not None:
-            _setter("self_link", self_link)
+            pulumi.set(__self__, "self_link", self_link)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -969,10 +903,6 @@ class HttpRoute(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            HttpRouteArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

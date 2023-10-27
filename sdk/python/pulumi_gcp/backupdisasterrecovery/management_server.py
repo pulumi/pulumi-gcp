@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,37 +33,14 @@ class ManagementServerArgs:
                Default value is `BACKUP_RESTORE`.
                Possible values are: `BACKUP_RESTORE`.
         """
-        ManagementServerArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            location=location,
-            networks=networks,
-            name=name,
-            project=project,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             location: Optional[pulumi.Input[str]] = None,
-             networks: Optional[pulumi.Input[Sequence[pulumi.Input['ManagementServerNetworkArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if networks is None:
-            raise TypeError("Missing 'networks' argument")
-
-        _setter("location", location)
-        _setter("networks", networks)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "networks", networks)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -155,47 +132,20 @@ class _ManagementServerState:
                Default value is `BACKUP_RESTORE`.
                Possible values are: `BACKUP_RESTORE`.
         """
-        _ManagementServerState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            location=location,
-            management_uris=management_uris,
-            name=name,
-            networks=networks,
-            oauth2_client_id=oauth2_client_id,
-            project=project,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             location: Optional[pulumi.Input[str]] = None,
-             management_uris: Optional[pulumi.Input[Sequence[pulumi.Input['ManagementServerManagementUriArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             networks: Optional[pulumi.Input[Sequence[pulumi.Input['ManagementServerNetworkArgs']]]] = None,
-             oauth2_client_id: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if management_uris is None and 'managementUris' in kwargs:
-            management_uris = kwargs['managementUris']
-        if oauth2_client_id is None and 'oauth2ClientId' in kwargs:
-            oauth2_client_id = kwargs['oauth2ClientId']
-
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if management_uris is not None:
-            _setter("management_uris", management_uris)
+            pulumi.set(__self__, "management_uris", management_uris)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if networks is not None:
-            _setter("networks", networks)
+            pulumi.set(__self__, "networks", networks)
         if oauth2_client_id is not None:
-            _setter("oauth2_client_id", oauth2_client_id)
+            pulumi.set(__self__, "oauth2_client_id", oauth2_client_id)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -420,10 +370,6 @@ class ManagementServer(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ManagementServerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

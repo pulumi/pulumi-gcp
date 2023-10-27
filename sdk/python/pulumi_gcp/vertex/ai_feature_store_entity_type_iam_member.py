@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,39 +41,12 @@ class AiFeatureStoreEntityTypeIamMemberArgs:
                `vertex.AiFeatureStoreEntityTypeIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
-        AiFeatureStoreEntityTypeIamMemberArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            entitytype=entitytype,
-            featurestore=featurestore,
-            member=member,
-            role=role,
-            condition=condition,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             entitytype: Optional[pulumi.Input[str]] = None,
-             featurestore: Optional[pulumi.Input[str]] = None,
-             member: Optional[pulumi.Input[str]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             condition: Optional[pulumi.Input['AiFeatureStoreEntityTypeIamMemberConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if entitytype is None:
-            raise TypeError("Missing 'entitytype' argument")
-        if featurestore is None:
-            raise TypeError("Missing 'featurestore' argument")
-        if member is None:
-            raise TypeError("Missing 'member' argument")
-        if role is None:
-            raise TypeError("Missing 'role' argument")
-
-        _setter("entitytype", entitytype)
-        _setter("featurestore", featurestore)
-        _setter("member", member)
-        _setter("role", role)
+        pulumi.set(__self__, "entitytype", entitytype)
+        pulumi.set(__self__, "featurestore", featurestore)
+        pulumi.set(__self__, "member", member)
+        pulumi.set(__self__, "role", role)
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
 
     @property
     @pulumi.getter
@@ -174,39 +147,18 @@ class _AiFeatureStoreEntityTypeIamMemberState:
                `vertex.AiFeatureStoreEntityTypeIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
-        _AiFeatureStoreEntityTypeIamMemberState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            condition=condition,
-            entitytype=entitytype,
-            etag=etag,
-            featurestore=featurestore,
-            member=member,
-            role=role,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             condition: Optional[pulumi.Input['AiFeatureStoreEntityTypeIamMemberConditionArgs']] = None,
-             entitytype: Optional[pulumi.Input[str]] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             featurestore: Optional[pulumi.Input[str]] = None,
-             member: Optional[pulumi.Input[str]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
         if entitytype is not None:
-            _setter("entitytype", entitytype)
+            pulumi.set(__self__, "entitytype", entitytype)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if featurestore is not None:
-            _setter("featurestore", featurestore)
+            pulumi.set(__self__, "featurestore", featurestore)
         if member is not None:
-            _setter("member", member)
+            pulumi.set(__self__, "member", member)
         if role is not None:
-            _setter("role", role)
+            pulumi.set(__self__, "role", role)
 
     @property
     @pulumi.getter
@@ -386,10 +338,6 @@ class AiFeatureStoreEntityTypeIamMember(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AiFeatureStoreEntityTypeIamMemberArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -409,7 +357,6 @@ class AiFeatureStoreEntityTypeIamMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AiFeatureStoreEntityTypeIamMemberArgs.__new__(AiFeatureStoreEntityTypeIamMemberArgs)
 
-            condition = _utilities.configure(condition, AiFeatureStoreEntityTypeIamMemberConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if entitytype is None and not opts.urn:
                 raise TypeError("Missing required property 'entitytype'")

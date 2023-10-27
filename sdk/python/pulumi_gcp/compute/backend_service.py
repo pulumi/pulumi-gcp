@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -140,165 +140,60 @@ class BackendServiceArgs:
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
                failed request. Default is 30 seconds. Valid range is [1, 86400].
         """
-        BackendServiceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            affinity_cookie_ttl_sec=affinity_cookie_ttl_sec,
-            backends=backends,
-            cdn_policy=cdn_policy,
-            circuit_breakers=circuit_breakers,
-            compression_mode=compression_mode,
-            connection_draining_timeout_sec=connection_draining_timeout_sec,
-            consistent_hash=consistent_hash,
-            custom_request_headers=custom_request_headers,
-            custom_response_headers=custom_response_headers,
-            description=description,
-            edge_security_policy=edge_security_policy,
-            enable_cdn=enable_cdn,
-            health_checks=health_checks,
-            iap=iap,
-            load_balancing_scheme=load_balancing_scheme,
-            locality_lb_policies=locality_lb_policies,
-            locality_lb_policy=locality_lb_policy,
-            log_config=log_config,
-            name=name,
-            outlier_detection=outlier_detection,
-            port_name=port_name,
-            project=project,
-            protocol=protocol,
-            security_policy=security_policy,
-            security_settings=security_settings,
-            session_affinity=session_affinity,
-            timeout_sec=timeout_sec,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             affinity_cookie_ttl_sec: Optional[pulumi.Input[int]] = None,
-             backends: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceBackendArgs']]]] = None,
-             cdn_policy: Optional[pulumi.Input['BackendServiceCdnPolicyArgs']] = None,
-             circuit_breakers: Optional[pulumi.Input['BackendServiceCircuitBreakersArgs']] = None,
-             compression_mode: Optional[pulumi.Input[str]] = None,
-             connection_draining_timeout_sec: Optional[pulumi.Input[int]] = None,
-             consistent_hash: Optional[pulumi.Input['BackendServiceConsistentHashArgs']] = None,
-             custom_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             edge_security_policy: Optional[pulumi.Input[str]] = None,
-             enable_cdn: Optional[pulumi.Input[bool]] = None,
-             health_checks: Optional[pulumi.Input[str]] = None,
-             iap: Optional[pulumi.Input['BackendServiceIapArgs']] = None,
-             load_balancing_scheme: Optional[pulumi.Input[str]] = None,
-             locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]]] = None,
-             locality_lb_policy: Optional[pulumi.Input[str]] = None,
-             log_config: Optional[pulumi.Input['BackendServiceLogConfigArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             outlier_detection: Optional[pulumi.Input['BackendServiceOutlierDetectionArgs']] = None,
-             port_name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             protocol: Optional[pulumi.Input[str]] = None,
-             security_policy: Optional[pulumi.Input[str]] = None,
-             security_settings: Optional[pulumi.Input['BackendServiceSecuritySettingsArgs']] = None,
-             session_affinity: Optional[pulumi.Input[str]] = None,
-             timeout_sec: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if affinity_cookie_ttl_sec is None and 'affinityCookieTtlSec' in kwargs:
-            affinity_cookie_ttl_sec = kwargs['affinityCookieTtlSec']
-        if cdn_policy is None and 'cdnPolicy' in kwargs:
-            cdn_policy = kwargs['cdnPolicy']
-        if circuit_breakers is None and 'circuitBreakers' in kwargs:
-            circuit_breakers = kwargs['circuitBreakers']
-        if compression_mode is None and 'compressionMode' in kwargs:
-            compression_mode = kwargs['compressionMode']
-        if connection_draining_timeout_sec is None and 'connectionDrainingTimeoutSec' in kwargs:
-            connection_draining_timeout_sec = kwargs['connectionDrainingTimeoutSec']
-        if consistent_hash is None and 'consistentHash' in kwargs:
-            consistent_hash = kwargs['consistentHash']
-        if custom_request_headers is None and 'customRequestHeaders' in kwargs:
-            custom_request_headers = kwargs['customRequestHeaders']
-        if custom_response_headers is None and 'customResponseHeaders' in kwargs:
-            custom_response_headers = kwargs['customResponseHeaders']
-        if edge_security_policy is None and 'edgeSecurityPolicy' in kwargs:
-            edge_security_policy = kwargs['edgeSecurityPolicy']
-        if enable_cdn is None and 'enableCdn' in kwargs:
-            enable_cdn = kwargs['enableCdn']
-        if health_checks is None and 'healthChecks' in kwargs:
-            health_checks = kwargs['healthChecks']
-        if load_balancing_scheme is None and 'loadBalancingScheme' in kwargs:
-            load_balancing_scheme = kwargs['loadBalancingScheme']
-        if locality_lb_policies is None and 'localityLbPolicies' in kwargs:
-            locality_lb_policies = kwargs['localityLbPolicies']
-        if locality_lb_policy is None and 'localityLbPolicy' in kwargs:
-            locality_lb_policy = kwargs['localityLbPolicy']
-        if log_config is None and 'logConfig' in kwargs:
-            log_config = kwargs['logConfig']
-        if outlier_detection is None and 'outlierDetection' in kwargs:
-            outlier_detection = kwargs['outlierDetection']
-        if port_name is None and 'portName' in kwargs:
-            port_name = kwargs['portName']
-        if security_policy is None and 'securityPolicy' in kwargs:
-            security_policy = kwargs['securityPolicy']
-        if security_settings is None and 'securitySettings' in kwargs:
-            security_settings = kwargs['securitySettings']
-        if session_affinity is None and 'sessionAffinity' in kwargs:
-            session_affinity = kwargs['sessionAffinity']
-        if timeout_sec is None and 'timeoutSec' in kwargs:
-            timeout_sec = kwargs['timeoutSec']
-
         if affinity_cookie_ttl_sec is not None:
-            _setter("affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
+            pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
         if backends is not None:
-            _setter("backends", backends)
+            pulumi.set(__self__, "backends", backends)
         if cdn_policy is not None:
-            _setter("cdn_policy", cdn_policy)
+            pulumi.set(__self__, "cdn_policy", cdn_policy)
         if circuit_breakers is not None:
-            _setter("circuit_breakers", circuit_breakers)
+            pulumi.set(__self__, "circuit_breakers", circuit_breakers)
         if compression_mode is not None:
-            _setter("compression_mode", compression_mode)
+            pulumi.set(__self__, "compression_mode", compression_mode)
         if connection_draining_timeout_sec is not None:
-            _setter("connection_draining_timeout_sec", connection_draining_timeout_sec)
+            pulumi.set(__self__, "connection_draining_timeout_sec", connection_draining_timeout_sec)
         if consistent_hash is not None:
-            _setter("consistent_hash", consistent_hash)
+            pulumi.set(__self__, "consistent_hash", consistent_hash)
         if custom_request_headers is not None:
-            _setter("custom_request_headers", custom_request_headers)
+            pulumi.set(__self__, "custom_request_headers", custom_request_headers)
         if custom_response_headers is not None:
-            _setter("custom_response_headers", custom_response_headers)
+            pulumi.set(__self__, "custom_response_headers", custom_response_headers)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if edge_security_policy is not None:
-            _setter("edge_security_policy", edge_security_policy)
+            pulumi.set(__self__, "edge_security_policy", edge_security_policy)
         if enable_cdn is not None:
-            _setter("enable_cdn", enable_cdn)
+            pulumi.set(__self__, "enable_cdn", enable_cdn)
         if health_checks is not None:
-            _setter("health_checks", health_checks)
+            pulumi.set(__self__, "health_checks", health_checks)
         if iap is not None:
-            _setter("iap", iap)
+            pulumi.set(__self__, "iap", iap)
         if load_balancing_scheme is not None:
-            _setter("load_balancing_scheme", load_balancing_scheme)
+            pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
         if locality_lb_policies is not None:
-            _setter("locality_lb_policies", locality_lb_policies)
+            pulumi.set(__self__, "locality_lb_policies", locality_lb_policies)
         if locality_lb_policy is not None:
-            _setter("locality_lb_policy", locality_lb_policy)
+            pulumi.set(__self__, "locality_lb_policy", locality_lb_policy)
         if log_config is not None:
-            _setter("log_config", log_config)
+            pulumi.set(__self__, "log_config", log_config)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if outlier_detection is not None:
-            _setter("outlier_detection", outlier_detection)
+            pulumi.set(__self__, "outlier_detection", outlier_detection)
         if port_name is not None:
-            _setter("port_name", port_name)
+            pulumi.set(__self__, "port_name", port_name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if protocol is not None:
-            _setter("protocol", protocol)
+            pulumi.set(__self__, "protocol", protocol)
         if security_policy is not None:
-            _setter("security_policy", security_policy)
+            pulumi.set(__self__, "security_policy", security_policy)
         if security_settings is not None:
-            _setter("security_settings", security_settings)
+            pulumi.set(__self__, "security_settings", security_settings)
         if session_affinity is not None:
-            _setter("session_affinity", session_affinity)
+            pulumi.set(__self__, "session_affinity", session_affinity)
         if timeout_sec is not None:
-            _setter("timeout_sec", timeout_sec)
+            pulumi.set(__self__, "timeout_sec", timeout_sec)
 
     @property
     @pulumi.getter(name="affinityCookieTtlSec")
@@ -828,187 +723,68 @@ class _BackendServiceState:
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
                failed request. Default is 30 seconds. Valid range is [1, 86400].
         """
-        _BackendServiceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            affinity_cookie_ttl_sec=affinity_cookie_ttl_sec,
-            backends=backends,
-            cdn_policy=cdn_policy,
-            circuit_breakers=circuit_breakers,
-            compression_mode=compression_mode,
-            connection_draining_timeout_sec=connection_draining_timeout_sec,
-            consistent_hash=consistent_hash,
-            creation_timestamp=creation_timestamp,
-            custom_request_headers=custom_request_headers,
-            custom_response_headers=custom_response_headers,
-            description=description,
-            edge_security_policy=edge_security_policy,
-            enable_cdn=enable_cdn,
-            fingerprint=fingerprint,
-            generated_id=generated_id,
-            health_checks=health_checks,
-            iap=iap,
-            load_balancing_scheme=load_balancing_scheme,
-            locality_lb_policies=locality_lb_policies,
-            locality_lb_policy=locality_lb_policy,
-            log_config=log_config,
-            name=name,
-            outlier_detection=outlier_detection,
-            port_name=port_name,
-            project=project,
-            protocol=protocol,
-            security_policy=security_policy,
-            security_settings=security_settings,
-            self_link=self_link,
-            session_affinity=session_affinity,
-            timeout_sec=timeout_sec,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             affinity_cookie_ttl_sec: Optional[pulumi.Input[int]] = None,
-             backends: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceBackendArgs']]]] = None,
-             cdn_policy: Optional[pulumi.Input['BackendServiceCdnPolicyArgs']] = None,
-             circuit_breakers: Optional[pulumi.Input['BackendServiceCircuitBreakersArgs']] = None,
-             compression_mode: Optional[pulumi.Input[str]] = None,
-             connection_draining_timeout_sec: Optional[pulumi.Input[int]] = None,
-             consistent_hash: Optional[pulumi.Input['BackendServiceConsistentHashArgs']] = None,
-             creation_timestamp: Optional[pulumi.Input[str]] = None,
-             custom_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             edge_security_policy: Optional[pulumi.Input[str]] = None,
-             enable_cdn: Optional[pulumi.Input[bool]] = None,
-             fingerprint: Optional[pulumi.Input[str]] = None,
-             generated_id: Optional[pulumi.Input[int]] = None,
-             health_checks: Optional[pulumi.Input[str]] = None,
-             iap: Optional[pulumi.Input['BackendServiceIapArgs']] = None,
-             load_balancing_scheme: Optional[pulumi.Input[str]] = None,
-             locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]]] = None,
-             locality_lb_policy: Optional[pulumi.Input[str]] = None,
-             log_config: Optional[pulumi.Input['BackendServiceLogConfigArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             outlier_detection: Optional[pulumi.Input['BackendServiceOutlierDetectionArgs']] = None,
-             port_name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             protocol: Optional[pulumi.Input[str]] = None,
-             security_policy: Optional[pulumi.Input[str]] = None,
-             security_settings: Optional[pulumi.Input['BackendServiceSecuritySettingsArgs']] = None,
-             self_link: Optional[pulumi.Input[str]] = None,
-             session_affinity: Optional[pulumi.Input[str]] = None,
-             timeout_sec: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if affinity_cookie_ttl_sec is None and 'affinityCookieTtlSec' in kwargs:
-            affinity_cookie_ttl_sec = kwargs['affinityCookieTtlSec']
-        if cdn_policy is None and 'cdnPolicy' in kwargs:
-            cdn_policy = kwargs['cdnPolicy']
-        if circuit_breakers is None and 'circuitBreakers' in kwargs:
-            circuit_breakers = kwargs['circuitBreakers']
-        if compression_mode is None and 'compressionMode' in kwargs:
-            compression_mode = kwargs['compressionMode']
-        if connection_draining_timeout_sec is None and 'connectionDrainingTimeoutSec' in kwargs:
-            connection_draining_timeout_sec = kwargs['connectionDrainingTimeoutSec']
-        if consistent_hash is None and 'consistentHash' in kwargs:
-            consistent_hash = kwargs['consistentHash']
-        if creation_timestamp is None and 'creationTimestamp' in kwargs:
-            creation_timestamp = kwargs['creationTimestamp']
-        if custom_request_headers is None and 'customRequestHeaders' in kwargs:
-            custom_request_headers = kwargs['customRequestHeaders']
-        if custom_response_headers is None and 'customResponseHeaders' in kwargs:
-            custom_response_headers = kwargs['customResponseHeaders']
-        if edge_security_policy is None and 'edgeSecurityPolicy' in kwargs:
-            edge_security_policy = kwargs['edgeSecurityPolicy']
-        if enable_cdn is None and 'enableCdn' in kwargs:
-            enable_cdn = kwargs['enableCdn']
-        if generated_id is None and 'generatedId' in kwargs:
-            generated_id = kwargs['generatedId']
-        if health_checks is None and 'healthChecks' in kwargs:
-            health_checks = kwargs['healthChecks']
-        if load_balancing_scheme is None and 'loadBalancingScheme' in kwargs:
-            load_balancing_scheme = kwargs['loadBalancingScheme']
-        if locality_lb_policies is None and 'localityLbPolicies' in kwargs:
-            locality_lb_policies = kwargs['localityLbPolicies']
-        if locality_lb_policy is None and 'localityLbPolicy' in kwargs:
-            locality_lb_policy = kwargs['localityLbPolicy']
-        if log_config is None and 'logConfig' in kwargs:
-            log_config = kwargs['logConfig']
-        if outlier_detection is None and 'outlierDetection' in kwargs:
-            outlier_detection = kwargs['outlierDetection']
-        if port_name is None and 'portName' in kwargs:
-            port_name = kwargs['portName']
-        if security_policy is None and 'securityPolicy' in kwargs:
-            security_policy = kwargs['securityPolicy']
-        if security_settings is None and 'securitySettings' in kwargs:
-            security_settings = kwargs['securitySettings']
-        if self_link is None and 'selfLink' in kwargs:
-            self_link = kwargs['selfLink']
-        if session_affinity is None and 'sessionAffinity' in kwargs:
-            session_affinity = kwargs['sessionAffinity']
-        if timeout_sec is None and 'timeoutSec' in kwargs:
-            timeout_sec = kwargs['timeoutSec']
-
         if affinity_cookie_ttl_sec is not None:
-            _setter("affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
+            pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
         if backends is not None:
-            _setter("backends", backends)
+            pulumi.set(__self__, "backends", backends)
         if cdn_policy is not None:
-            _setter("cdn_policy", cdn_policy)
+            pulumi.set(__self__, "cdn_policy", cdn_policy)
         if circuit_breakers is not None:
-            _setter("circuit_breakers", circuit_breakers)
+            pulumi.set(__self__, "circuit_breakers", circuit_breakers)
         if compression_mode is not None:
-            _setter("compression_mode", compression_mode)
+            pulumi.set(__self__, "compression_mode", compression_mode)
         if connection_draining_timeout_sec is not None:
-            _setter("connection_draining_timeout_sec", connection_draining_timeout_sec)
+            pulumi.set(__self__, "connection_draining_timeout_sec", connection_draining_timeout_sec)
         if consistent_hash is not None:
-            _setter("consistent_hash", consistent_hash)
+            pulumi.set(__self__, "consistent_hash", consistent_hash)
         if creation_timestamp is not None:
-            _setter("creation_timestamp", creation_timestamp)
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if custom_request_headers is not None:
-            _setter("custom_request_headers", custom_request_headers)
+            pulumi.set(__self__, "custom_request_headers", custom_request_headers)
         if custom_response_headers is not None:
-            _setter("custom_response_headers", custom_response_headers)
+            pulumi.set(__self__, "custom_response_headers", custom_response_headers)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if edge_security_policy is not None:
-            _setter("edge_security_policy", edge_security_policy)
+            pulumi.set(__self__, "edge_security_policy", edge_security_policy)
         if enable_cdn is not None:
-            _setter("enable_cdn", enable_cdn)
+            pulumi.set(__self__, "enable_cdn", enable_cdn)
         if fingerprint is not None:
-            _setter("fingerprint", fingerprint)
+            pulumi.set(__self__, "fingerprint", fingerprint)
         if generated_id is not None:
-            _setter("generated_id", generated_id)
+            pulumi.set(__self__, "generated_id", generated_id)
         if health_checks is not None:
-            _setter("health_checks", health_checks)
+            pulumi.set(__self__, "health_checks", health_checks)
         if iap is not None:
-            _setter("iap", iap)
+            pulumi.set(__self__, "iap", iap)
         if load_balancing_scheme is not None:
-            _setter("load_balancing_scheme", load_balancing_scheme)
+            pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
         if locality_lb_policies is not None:
-            _setter("locality_lb_policies", locality_lb_policies)
+            pulumi.set(__self__, "locality_lb_policies", locality_lb_policies)
         if locality_lb_policy is not None:
-            _setter("locality_lb_policy", locality_lb_policy)
+            pulumi.set(__self__, "locality_lb_policy", locality_lb_policy)
         if log_config is not None:
-            _setter("log_config", log_config)
+            pulumi.set(__self__, "log_config", log_config)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if outlier_detection is not None:
-            _setter("outlier_detection", outlier_detection)
+            pulumi.set(__self__, "outlier_detection", outlier_detection)
         if port_name is not None:
-            _setter("port_name", port_name)
+            pulumi.set(__self__, "port_name", port_name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if protocol is not None:
-            _setter("protocol", protocol)
+            pulumi.set(__self__, "protocol", protocol)
         if security_policy is not None:
-            _setter("security_policy", security_policy)
+            pulumi.set(__self__, "security_policy", security_policy)
         if security_settings is not None:
-            _setter("security_settings", security_settings)
+            pulumi.set(__self__, "security_settings", security_settings)
         if self_link is not None:
-            _setter("self_link", self_link)
+            pulumi.set(__self__, "self_link", self_link)
         if session_affinity is not None:
-            _setter("session_affinity", session_affinity)
+            pulumi.set(__self__, "session_affinity", session_affinity)
         if timeout_sec is not None:
-            _setter("timeout_sec", timeout_sec)
+            pulumi.set(__self__, "timeout_sec", timeout_sec)
 
     @property
     @pulumi.getter(name="affinityCookieTtlSec")
@@ -1803,10 +1579,6 @@ class BackendService(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            BackendServiceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1850,13 +1622,10 @@ class BackendService(pulumi.CustomResource):
 
             __props__.__dict__["affinity_cookie_ttl_sec"] = affinity_cookie_ttl_sec
             __props__.__dict__["backends"] = backends
-            cdn_policy = _utilities.configure(cdn_policy, BackendServiceCdnPolicyArgs, True)
             __props__.__dict__["cdn_policy"] = cdn_policy
-            circuit_breakers = _utilities.configure(circuit_breakers, BackendServiceCircuitBreakersArgs, True)
             __props__.__dict__["circuit_breakers"] = circuit_breakers
             __props__.__dict__["compression_mode"] = compression_mode
             __props__.__dict__["connection_draining_timeout_sec"] = connection_draining_timeout_sec
-            consistent_hash = _utilities.configure(consistent_hash, BackendServiceConsistentHashArgs, True)
             __props__.__dict__["consistent_hash"] = consistent_hash
             __props__.__dict__["custom_request_headers"] = custom_request_headers
             __props__.__dict__["custom_response_headers"] = custom_response_headers
@@ -1864,21 +1633,17 @@ class BackendService(pulumi.CustomResource):
             __props__.__dict__["edge_security_policy"] = edge_security_policy
             __props__.__dict__["enable_cdn"] = enable_cdn
             __props__.__dict__["health_checks"] = health_checks
-            iap = _utilities.configure(iap, BackendServiceIapArgs, True)
             __props__.__dict__["iap"] = iap
             __props__.__dict__["load_balancing_scheme"] = load_balancing_scheme
             __props__.__dict__["locality_lb_policies"] = locality_lb_policies
             __props__.__dict__["locality_lb_policy"] = locality_lb_policy
-            log_config = _utilities.configure(log_config, BackendServiceLogConfigArgs, True)
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["name"] = name
-            outlier_detection = _utilities.configure(outlier_detection, BackendServiceOutlierDetectionArgs, True)
             __props__.__dict__["outlier_detection"] = outlier_detection
             __props__.__dict__["port_name"] = port_name
             __props__.__dict__["project"] = project
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["security_policy"] = security_policy
-            security_settings = _utilities.configure(security_settings, BackendServiceSecuritySettingsArgs, True)
             __props__.__dict__["security_settings"] = security_settings
             __props__.__dict__["session_affinity"] = session_affinity
             __props__.__dict__["timeout_sec"] = timeout_sec

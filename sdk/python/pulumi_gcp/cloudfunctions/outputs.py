@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -60,33 +60,10 @@ class FunctionEventTrigger(dict):
                which to observe events. For example, `"myBucket"` or `"projects/my-project/topics/my-topic"`
         :param 'FunctionEventTriggerFailurePolicyArgs' failure_policy: Specifies policy for failed executions. Structure is documented below.
         """
-        FunctionEventTrigger._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            event_type=event_type,
-            resource=resource,
-            failure_policy=failure_policy,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             event_type: Optional[str] = None,
-             resource: Optional[str] = None,
-             failure_policy: Optional['outputs.FunctionEventTriggerFailurePolicy'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if event_type is None and 'eventType' in kwargs:
-            event_type = kwargs['eventType']
-        if event_type is None:
-            raise TypeError("Missing 'event_type' argument")
-        if resource is None:
-            raise TypeError("Missing 'resource' argument")
-        if failure_policy is None and 'failurePolicy' in kwargs:
-            failure_policy = kwargs['failurePolicy']
-
-        _setter("event_type", event_type)
-        _setter("resource", resource)
+        pulumi.set(__self__, "event_type", event_type)
+        pulumi.set(__self__, "resource", resource)
         if failure_policy is not None:
-            _setter("failure_policy", failure_policy)
+            pulumi.set(__self__, "failure_policy", failure_policy)
 
     @property
     @pulumi.getter(name="eventType")
@@ -123,20 +100,7 @@ class FunctionEventTriggerFailurePolicy(dict):
         """
         :param bool retry: Whether the function should be retried on failure. Defaults to `false`.
         """
-        FunctionEventTriggerFailurePolicy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            retry=retry,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             retry: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if retry is None:
-            raise TypeError("Missing 'retry' argument")
-
-        _setter("retry", retry)
+        pulumi.set(__self__, "retry", retry)
 
     @property
     @pulumi.getter
@@ -153,29 +117,10 @@ class FunctionIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        FunctionIamBindingCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -199,29 +144,10 @@ class FunctionIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        FunctionIamMemberCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -269,36 +195,11 @@ class FunctionSecretEnvironmentVariable(dict):
         :param str version: Version of the secret (version number or the string "latest"). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
         :param str project_id: Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
         """
-        FunctionSecretEnvironmentVariable._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            secret=secret,
-            version=version,
-            project_id=project_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             secret: Optional[str] = None,
-             version: Optional[str] = None,
-             project_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if secret is None:
-            raise TypeError("Missing 'secret' argument")
-        if version is None:
-            raise TypeError("Missing 'version' argument")
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-
-        _setter("key", key)
-        _setter("secret", secret)
-        _setter("version", version)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "version", version)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
 
     @property
     @pulumi.getter
@@ -365,37 +266,12 @@ class FunctionSecretVolume(dict):
         :param str project_id: Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
         :param Sequence['FunctionSecretVolumeVersionArgs'] versions: List of secret versions to mount for this secret. If empty, the "latest" version of the secret will be made available in a file named after the secret under the mount point. Structure is documented below.
         """
-        FunctionSecretVolume._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            mount_path=mount_path,
-            secret=secret,
-            project_id=project_id,
-            versions=versions,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             mount_path: Optional[str] = None,
-             secret: Optional[str] = None,
-             project_id: Optional[str] = None,
-             versions: Optional[Sequence['outputs.FunctionSecretVolumeVersion']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if mount_path is None and 'mountPath' in kwargs:
-            mount_path = kwargs['mountPath']
-        if mount_path is None:
-            raise TypeError("Missing 'mount_path' argument")
-        if secret is None:
-            raise TypeError("Missing 'secret' argument")
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-
-        _setter("mount_path", mount_path)
-        _setter("secret", secret)
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "secret", secret)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
         if versions is not None:
-            _setter("versions", versions)
+            pulumi.set(__self__, "versions", versions)
 
     @property
     @pulumi.getter(name="mountPath")
@@ -439,25 +315,8 @@ class FunctionSecretVolumeVersion(dict):
         :param str path: Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as "/etc/secrets" and path as "/secret_foo" would mount the secret value file at "/etc/secrets/secret_foo".
         :param str version: Version of the secret (version number or the string "latest"). It is preferable to use "latest" version with secret volumes as secret value changes are reflected immediately.
         """
-        FunctionSecretVolumeVersion._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            path=path,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             path: Optional[str] = None,
-             version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-        if version is None:
-            raise TypeError("Missing 'version' argument")
-
-        _setter("path", path)
-        _setter("version", version)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -505,26 +364,9 @@ class FunctionSourceRepository(dict):
                * To refer to a moveable alias (branch): `https://source.developers.google.com/projects/*/repos/*/moveable-aliases/*/paths/*`. To refer to HEAD, use the `master` moveable alias.
                * To refer to a specific fixed alias (tag): `https://source.developers.google.com/projects/*/repos/*/fixed-aliases/*/paths/*`
         """
-        FunctionSourceRepository._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            url=url,
-            deployed_url=deployed_url,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             url: Optional[str] = None,
-             deployed_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if url is None:
-            raise TypeError("Missing 'url' argument")
-        if deployed_url is None and 'deployedUrl' in kwargs:
-            deployed_url = kwargs['deployedUrl']
-
-        _setter("url", url)
+        pulumi.set(__self__, "url", url)
         if deployed_url is not None:
-            _setter("deployed_url", deployed_url)
+            pulumi.set(__self__, "deployed_url", deployed_url)
 
     @property
     @pulumi.getter
@@ -557,34 +399,9 @@ class GetFunctionEventTriggerResult(dict):
         :param Sequence['GetFunctionEventTriggerFailurePolicyArgs'] failure_policies: Policy for failed executions. Structure is documented below.
         :param str resource: The name of the resource whose events are being observed, for example, `"myBucket"`
         """
-        GetFunctionEventTriggerResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            event_type=event_type,
-            failure_policies=failure_policies,
-            resource=resource,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             event_type: Optional[str] = None,
-             failure_policies: Optional[Sequence['outputs.GetFunctionEventTriggerFailurePolicyResult']] = None,
-             resource: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if event_type is None and 'eventType' in kwargs:
-            event_type = kwargs['eventType']
-        if event_type is None:
-            raise TypeError("Missing 'event_type' argument")
-        if failure_policies is None and 'failurePolicies' in kwargs:
-            failure_policies = kwargs['failurePolicies']
-        if failure_policies is None:
-            raise TypeError("Missing 'failure_policies' argument")
-        if resource is None:
-            raise TypeError("Missing 'resource' argument")
-
-        _setter("event_type", event_type)
-        _setter("failure_policies", failure_policies)
-        _setter("resource", resource)
+        pulumi.set(__self__, "event_type", event_type)
+        pulumi.set(__self__, "failure_policies", failure_policies)
+        pulumi.set(__self__, "resource", resource)
 
     @property
     @pulumi.getter(name="eventType")
@@ -620,20 +437,7 @@ class GetFunctionEventTriggerFailurePolicyResult(dict):
         """
         :param bool retry: Whether the function should be retried on failure.
         """
-        GetFunctionEventTriggerFailurePolicyResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            retry=retry,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             retry: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if retry is None:
-            raise TypeError("Missing 'retry' argument")
-
-        _setter("retry", retry)
+        pulumi.set(__self__, "retry", retry)
 
     @property
     @pulumi.getter
@@ -651,37 +455,10 @@ class GetFunctionSecretEnvironmentVariableResult(dict):
                  project_id: str,
                  secret: str,
                  version: str):
-        GetFunctionSecretEnvironmentVariableResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            project_id=project_id,
-            secret=secret,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             project_id: Optional[str] = None,
-             secret: Optional[str] = None,
-             version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if project_id is None:
-            raise TypeError("Missing 'project_id' argument")
-        if secret is None:
-            raise TypeError("Missing 'secret' argument")
-        if version is None:
-            raise TypeError("Missing 'version' argument")
-
-        _setter("key", key)
-        _setter("project_id", project_id)
-        _setter("secret", secret)
-        _setter("version", version)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -711,39 +488,10 @@ class GetFunctionSecretVolumeResult(dict):
                  project_id: str,
                  secret: str,
                  versions: Sequence['outputs.GetFunctionSecretVolumeVersionResult']):
-        GetFunctionSecretVolumeResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            mount_path=mount_path,
-            project_id=project_id,
-            secret=secret,
-            versions=versions,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             mount_path: Optional[str] = None,
-             project_id: Optional[str] = None,
-             secret: Optional[str] = None,
-             versions: Optional[Sequence['outputs.GetFunctionSecretVolumeVersionResult']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if mount_path is None and 'mountPath' in kwargs:
-            mount_path = kwargs['mountPath']
-        if mount_path is None:
-            raise TypeError("Missing 'mount_path' argument")
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if project_id is None:
-            raise TypeError("Missing 'project_id' argument")
-        if secret is None:
-            raise TypeError("Missing 'secret' argument")
-        if versions is None:
-            raise TypeError("Missing 'versions' argument")
-
-        _setter("mount_path", mount_path)
-        _setter("project_id", project_id)
-        _setter("secret", secret)
-        _setter("versions", versions)
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "versions", versions)
 
     @property
     @pulumi.getter(name="mountPath")
@@ -771,25 +519,8 @@ class GetFunctionSecretVolumeVersionResult(dict):
     def __init__(__self__, *,
                  path: str,
                  version: str):
-        GetFunctionSecretVolumeVersionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            path=path,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             path: Optional[str] = None,
-             version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-        if version is None:
-            raise TypeError("Missing 'version' argument")
-
-        _setter("path", path)
-        _setter("version", version)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -810,27 +541,8 @@ class GetFunctionSourceRepositoryResult(dict):
         """
         :param str url: The URL pointing to the hosted repository where the function is defined.
         """
-        GetFunctionSourceRepositoryResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            deployed_url=deployed_url,
-            url=url,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             deployed_url: Optional[str] = None,
-             url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if deployed_url is None and 'deployedUrl' in kwargs:
-            deployed_url = kwargs['deployedUrl']
-        if deployed_url is None:
-            raise TypeError("Missing 'deployed_url' argument")
-        if url is None:
-            raise TypeError("Missing 'url' argument")
-
-        _setter("deployed_url", deployed_url)
-        _setter("url", url)
+        pulumi.set(__self__, "deployed_url", deployed_url)
+        pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter(name="deployedUrl")

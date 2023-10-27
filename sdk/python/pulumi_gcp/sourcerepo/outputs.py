@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -22,29 +22,10 @@ class RepositoryIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        RepositoryIamBindingCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -68,29 +49,10 @@ class RepositoryIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        RepositoryIamMemberCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            title=title,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             title: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-
-        _setter("expression", expression)
-        _setter("title", title)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -144,33 +106,10 @@ class RepositoryPubsubConfig(dict):
                the caller needs to have iam.serviceAccounts.actAs permission on this service account.
                If unspecified, it defaults to the compute engine default service account.
         """
-        RepositoryPubsubConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            message_format=message_format,
-            topic=topic,
-            service_account_email=service_account_email,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             message_format: Optional[str] = None,
-             topic: Optional[str] = None,
-             service_account_email: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if message_format is None and 'messageFormat' in kwargs:
-            message_format = kwargs['messageFormat']
-        if message_format is None:
-            raise TypeError("Missing 'message_format' argument")
-        if topic is None:
-            raise TypeError("Missing 'topic' argument")
-        if service_account_email is None and 'serviceAccountEmail' in kwargs:
-            service_account_email = kwargs['serviceAccountEmail']
-
-        _setter("message_format", message_format)
-        _setter("topic", topic)
+        pulumi.set(__self__, "message_format", message_format)
+        pulumi.set(__self__, "topic", topic)
         if service_account_email is not None:
-            _setter("service_account_email", service_account_email)
+            pulumi.set(__self__, "service_account_email", service_account_email)
 
     @property
     @pulumi.getter(name="messageFormat")
@@ -209,34 +148,9 @@ class GetRepositoryPubsubConfigResult(dict):
                  message_format: str,
                  service_account_email: str,
                  topic: str):
-        GetRepositoryPubsubConfigResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            message_format=message_format,
-            service_account_email=service_account_email,
-            topic=topic,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             message_format: Optional[str] = None,
-             service_account_email: Optional[str] = None,
-             topic: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if message_format is None and 'messageFormat' in kwargs:
-            message_format = kwargs['messageFormat']
-        if message_format is None:
-            raise TypeError("Missing 'message_format' argument")
-        if service_account_email is None and 'serviceAccountEmail' in kwargs:
-            service_account_email = kwargs['serviceAccountEmail']
-        if service_account_email is None:
-            raise TypeError("Missing 'service_account_email' argument")
-        if topic is None:
-            raise TypeError("Missing 'topic' argument")
-
-        _setter("message_format", message_format)
-        _setter("service_account_email", service_account_email)
-        _setter("topic", topic)
+        pulumi.set(__self__, "message_format", message_format)
+        pulumi.set(__self__, "service_account_email", service_account_email)
+        pulumi.set(__self__, "topic", topic)
 
     @property
     @pulumi.getter(name="messageFormat")

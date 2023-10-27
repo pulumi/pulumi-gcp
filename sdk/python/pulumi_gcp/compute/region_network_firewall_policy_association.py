@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RegionNetworkFirewallPolicyAssociationArgs', 'RegionNetworkFirewallPolicyAssociation']
@@ -31,41 +31,14 @@ class RegionNetworkFirewallPolicyAssociationArgs:
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] region: The location of this resource.
         """
-        RegionNetworkFirewallPolicyAssociationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            attachment_target=attachment_target,
-            firewall_policy=firewall_policy,
-            name=name,
-            project=project,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             attachment_target: Optional[pulumi.Input[str]] = None,
-             firewall_policy: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if attachment_target is None and 'attachmentTarget' in kwargs:
-            attachment_target = kwargs['attachmentTarget']
-        if attachment_target is None:
-            raise TypeError("Missing 'attachment_target' argument")
-        if firewall_policy is None and 'firewallPolicy' in kwargs:
-            firewall_policy = kwargs['firewallPolicy']
-        if firewall_policy is None:
-            raise TypeError("Missing 'firewall_policy' argument")
-
-        _setter("attachment_target", attachment_target)
-        _setter("firewall_policy", firewall_policy)
+        pulumi.set(__self__, "attachment_target", attachment_target)
+        pulumi.set(__self__, "firewall_policy", firewall_policy)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter(name="attachmentTarget")
@@ -154,45 +127,18 @@ class _RegionNetworkFirewallPolicyAssociationState:
         :param pulumi.Input[str] region: The location of this resource.
         :param pulumi.Input[str] short_name: The short name of the firewall policy of the association.
         """
-        _RegionNetworkFirewallPolicyAssociationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            attachment_target=attachment_target,
-            firewall_policy=firewall_policy,
-            name=name,
-            project=project,
-            region=region,
-            short_name=short_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             attachment_target: Optional[pulumi.Input[str]] = None,
-             firewall_policy: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             short_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if attachment_target is None and 'attachmentTarget' in kwargs:
-            attachment_target = kwargs['attachmentTarget']
-        if firewall_policy is None and 'firewallPolicy' in kwargs:
-            firewall_policy = kwargs['firewallPolicy']
-        if short_name is None and 'shortName' in kwargs:
-            short_name = kwargs['shortName']
-
         if attachment_target is not None:
-            _setter("attachment_target", attachment_target)
+            pulumi.set(__self__, "attachment_target", attachment_target)
         if firewall_policy is not None:
-            _setter("firewall_policy", firewall_policy)
+            pulumi.set(__self__, "firewall_policy", firewall_policy)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if short_name is not None:
-            _setter("short_name", short_name)
+            pulumi.set(__self__, "short_name", short_name)
 
     @property
     @pulumi.getter(name="attachmentTarget")
@@ -376,10 +322,6 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RegionNetworkFirewallPolicyAssociationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

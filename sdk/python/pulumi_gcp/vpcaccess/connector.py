@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -46,71 +46,28 @@ class ConnectorArgs:
         :param pulumi.Input['ConnectorSubnetArgs'] subnet: The subnet in which to house the connector
                Structure is documented below.
         """
-        ConnectorArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ip_cidr_range=ip_cidr_range,
-            machine_type=machine_type,
-            max_instances=max_instances,
-            max_throughput=max_throughput,
-            min_instances=min_instances,
-            min_throughput=min_throughput,
-            name=name,
-            network=network,
-            project=project,
-            region=region,
-            subnet=subnet,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ip_cidr_range: Optional[pulumi.Input[str]] = None,
-             machine_type: Optional[pulumi.Input[str]] = None,
-             max_instances: Optional[pulumi.Input[int]] = None,
-             max_throughput: Optional[pulumi.Input[int]] = None,
-             min_instances: Optional[pulumi.Input[int]] = None,
-             min_throughput: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             subnet: Optional[pulumi.Input['ConnectorSubnetArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ip_cidr_range is None and 'ipCidrRange' in kwargs:
-            ip_cidr_range = kwargs['ipCidrRange']
-        if machine_type is None and 'machineType' in kwargs:
-            machine_type = kwargs['machineType']
-        if max_instances is None and 'maxInstances' in kwargs:
-            max_instances = kwargs['maxInstances']
-        if max_throughput is None and 'maxThroughput' in kwargs:
-            max_throughput = kwargs['maxThroughput']
-        if min_instances is None and 'minInstances' in kwargs:
-            min_instances = kwargs['minInstances']
-        if min_throughput is None and 'minThroughput' in kwargs:
-            min_throughput = kwargs['minThroughput']
-
         if ip_cidr_range is not None:
-            _setter("ip_cidr_range", ip_cidr_range)
+            pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         if machine_type is not None:
-            _setter("machine_type", machine_type)
+            pulumi.set(__self__, "machine_type", machine_type)
         if max_instances is not None:
-            _setter("max_instances", max_instances)
+            pulumi.set(__self__, "max_instances", max_instances)
         if max_throughput is not None:
-            _setter("max_throughput", max_throughput)
+            pulumi.set(__self__, "max_throughput", max_throughput)
         if min_instances is not None:
-            _setter("min_instances", min_instances)
+            pulumi.set(__self__, "min_instances", min_instances)
         if min_throughput is not None:
-            _setter("min_throughput", min_throughput)
+            pulumi.set(__self__, "min_throughput", min_throughput)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if subnet is not None:
-            _setter("subnet", subnet)
+            pulumi.set(__self__, "subnet", subnet)
 
     @property
     @pulumi.getter(name="ipCidrRange")
@@ -289,87 +246,34 @@ class _ConnectorState:
         :param pulumi.Input['ConnectorSubnetArgs'] subnet: The subnet in which to house the connector
                Structure is documented below.
         """
-        _ConnectorState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            connected_projects=connected_projects,
-            ip_cidr_range=ip_cidr_range,
-            machine_type=machine_type,
-            max_instances=max_instances,
-            max_throughput=max_throughput,
-            min_instances=min_instances,
-            min_throughput=min_throughput,
-            name=name,
-            network=network,
-            project=project,
-            region=region,
-            self_link=self_link,
-            state=state,
-            subnet=subnet,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             connected_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             ip_cidr_range: Optional[pulumi.Input[str]] = None,
-             machine_type: Optional[pulumi.Input[str]] = None,
-             max_instances: Optional[pulumi.Input[int]] = None,
-             max_throughput: Optional[pulumi.Input[int]] = None,
-             min_instances: Optional[pulumi.Input[int]] = None,
-             min_throughput: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             self_link: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             subnet: Optional[pulumi.Input['ConnectorSubnetArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if connected_projects is None and 'connectedProjects' in kwargs:
-            connected_projects = kwargs['connectedProjects']
-        if ip_cidr_range is None and 'ipCidrRange' in kwargs:
-            ip_cidr_range = kwargs['ipCidrRange']
-        if machine_type is None and 'machineType' in kwargs:
-            machine_type = kwargs['machineType']
-        if max_instances is None and 'maxInstances' in kwargs:
-            max_instances = kwargs['maxInstances']
-        if max_throughput is None and 'maxThroughput' in kwargs:
-            max_throughput = kwargs['maxThroughput']
-        if min_instances is None and 'minInstances' in kwargs:
-            min_instances = kwargs['minInstances']
-        if min_throughput is None and 'minThroughput' in kwargs:
-            min_throughput = kwargs['minThroughput']
-        if self_link is None and 'selfLink' in kwargs:
-            self_link = kwargs['selfLink']
-
         if connected_projects is not None:
-            _setter("connected_projects", connected_projects)
+            pulumi.set(__self__, "connected_projects", connected_projects)
         if ip_cidr_range is not None:
-            _setter("ip_cidr_range", ip_cidr_range)
+            pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         if machine_type is not None:
-            _setter("machine_type", machine_type)
+            pulumi.set(__self__, "machine_type", machine_type)
         if max_instances is not None:
-            _setter("max_instances", max_instances)
+            pulumi.set(__self__, "max_instances", max_instances)
         if max_throughput is not None:
-            _setter("max_throughput", max_throughput)
+            pulumi.set(__self__, "max_throughput", max_throughput)
         if min_instances is not None:
-            _setter("min_instances", min_instances)
+            pulumi.set(__self__, "min_instances", min_instances)
         if min_throughput is not None:
-            _setter("min_throughput", min_throughput)
+            pulumi.set(__self__, "min_throughput", min_throughput)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if self_link is not None:
-            _setter("self_link", self_link)
+            pulumi.set(__self__, "self_link", self_link)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if subnet is not None:
-            _setter("subnet", subnet)
+            pulumi.set(__self__, "subnet", subnet)
 
     @property
     @pulumi.getter(name="connectedProjects")
@@ -713,10 +617,6 @@ class Connector(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ConnectorArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -752,7 +652,6 @@ class Connector(pulumi.CustomResource):
             __props__.__dict__["network"] = network
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
-            subnet = _utilities.configure(subnet, ConnectorSubnetArgs, True)
             __props__.__dict__["subnet"] = subnet
             __props__.__dict__["connected_projects"] = None
             __props__.__dict__["self_link"] = None

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,64 +39,23 @@ class TriggerArgs:
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
         :param pulumi.Input[Sequence[pulumi.Input['TriggerTransportArgs']]] transports: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
         """
-        TriggerArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            destination=destination,
-            location=location,
-            matching_criterias=matching_criterias,
-            channel=channel,
-            event_data_content_type=event_data_content_type,
-            labels=labels,
-            name=name,
-            project=project,
-            service_account=service_account,
-            transports=transports,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             destination: Optional[pulumi.Input['TriggerDestinationArgs']] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             matching_criterias: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]]] = None,
-             channel: Optional[pulumi.Input[str]] = None,
-             event_data_content_type: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             service_account: Optional[pulumi.Input[str]] = None,
-             transports: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerTransportArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if destination is None:
-            raise TypeError("Missing 'destination' argument")
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if matching_criterias is None and 'matchingCriterias' in kwargs:
-            matching_criterias = kwargs['matchingCriterias']
-        if matching_criterias is None:
-            raise TypeError("Missing 'matching_criterias' argument")
-        if event_data_content_type is None and 'eventDataContentType' in kwargs:
-            event_data_content_type = kwargs['eventDataContentType']
-        if service_account is None and 'serviceAccount' in kwargs:
-            service_account = kwargs['serviceAccount']
-
-        _setter("destination", destination)
-        _setter("location", location)
-        _setter("matching_criterias", matching_criterias)
+        pulumi.set(__self__, "destination", destination)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "matching_criterias", matching_criterias)
         if channel is not None:
-            _setter("channel", channel)
+            pulumi.set(__self__, "channel", channel)
         if event_data_content_type is not None:
-            _setter("event_data_content_type", event_data_content_type)
+            pulumi.set(__self__, "event_data_content_type", event_data_content_type)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if service_account is not None:
-            _setter("service_account", service_account)
+            pulumi.set(__self__, "service_account", service_account)
         if transports is not None:
-            _setter("transports", transports)
+            pulumi.set(__self__, "transports", transports)
 
     @property
     @pulumi.getter
@@ -255,85 +214,36 @@ class _TriggerState:
         :param pulumi.Input[str] uid: Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         :param pulumi.Input[str] update_time: Output only. The last-modified time.
         """
-        _TriggerState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            channel=channel,
-            conditions=conditions,
-            create_time=create_time,
-            destination=destination,
-            etag=etag,
-            event_data_content_type=event_data_content_type,
-            labels=labels,
-            location=location,
-            matching_criterias=matching_criterias,
-            name=name,
-            project=project,
-            service_account=service_account,
-            transports=transports,
-            uid=uid,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             channel: Optional[pulumi.Input[str]] = None,
-             conditions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             destination: Optional[pulumi.Input['TriggerDestinationArgs']] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             event_data_content_type: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             matching_criterias: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             service_account: Optional[pulumi.Input[str]] = None,
-             transports: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerTransportArgs']]]] = None,
-             uid: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if event_data_content_type is None and 'eventDataContentType' in kwargs:
-            event_data_content_type = kwargs['eventDataContentType']
-        if matching_criterias is None and 'matchingCriterias' in kwargs:
-            matching_criterias = kwargs['matchingCriterias']
-        if service_account is None and 'serviceAccount' in kwargs:
-            service_account = kwargs['serviceAccount']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if channel is not None:
-            _setter("channel", channel)
+            pulumi.set(__self__, "channel", channel)
         if conditions is not None:
-            _setter("conditions", conditions)
+            pulumi.set(__self__, "conditions", conditions)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if destination is not None:
-            _setter("destination", destination)
+            pulumi.set(__self__, "destination", destination)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if event_data_content_type is not None:
-            _setter("event_data_content_type", event_data_content_type)
+            pulumi.set(__self__, "event_data_content_type", event_data_content_type)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if matching_criterias is not None:
-            _setter("matching_criterias", matching_criterias)
+            pulumi.set(__self__, "matching_criterias", matching_criterias)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if service_account is not None:
-            _setter("service_account", service_account)
+            pulumi.set(__self__, "service_account", service_account)
         if transports is not None:
-            _setter("transports", transports)
+            pulumi.set(__self__, "transports", transports)
         if uid is not None:
-            _setter("uid", uid)
+            pulumi.set(__self__, "uid", uid)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter
@@ -689,10 +599,6 @@ class Trigger(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TriggerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -718,7 +624,6 @@ class Trigger(pulumi.CustomResource):
             __props__ = TriggerArgs.__new__(TriggerArgs)
 
             __props__.__dict__["channel"] = channel
-            destination = _utilities.configure(destination, TriggerDestinationArgs, True)
             if destination is None and not opts.urn:
                 raise TypeError("Missing required property 'destination'")
             __props__.__dict__["destination"] = destination

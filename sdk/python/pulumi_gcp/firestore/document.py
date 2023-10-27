@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DocumentArgs', 'Document']
@@ -31,40 +31,13 @@ class DocumentArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        DocumentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            collection=collection,
-            document_id=document_id,
-            fields=fields,
-            database=database,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             collection: Optional[pulumi.Input[str]] = None,
-             document_id: Optional[pulumi.Input[str]] = None,
-             fields: Optional[pulumi.Input[str]] = None,
-             database: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if collection is None:
-            raise TypeError("Missing 'collection' argument")
-        if document_id is None and 'documentId' in kwargs:
-            document_id = kwargs['documentId']
-        if document_id is None:
-            raise TypeError("Missing 'document_id' argument")
-        if fields is None:
-            raise TypeError("Missing 'fields' argument")
-
-        _setter("collection", collection)
-        _setter("document_id", document_id)
-        _setter("fields", fields)
+        pulumi.set(__self__, "collection", collection)
+        pulumi.set(__self__, "document_id", document_id)
+        pulumi.set(__self__, "fields", fields)
         if database is not None:
-            _setter("database", database)
+            pulumi.set(__self__, "database", database)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -160,57 +133,24 @@ class _DocumentState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] update_time: Last update timestamp in RFC3339 format.
         """
-        _DocumentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            collection=collection,
-            create_time=create_time,
-            database=database,
-            document_id=document_id,
-            fields=fields,
-            name=name,
-            path=path,
-            project=project,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             collection: Optional[pulumi.Input[str]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             database: Optional[pulumi.Input[str]] = None,
-             document_id: Optional[pulumi.Input[str]] = None,
-             fields: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             path: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if document_id is None and 'documentId' in kwargs:
-            document_id = kwargs['documentId']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if collection is not None:
-            _setter("collection", collection)
+            pulumi.set(__self__, "collection", collection)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if database is not None:
-            _setter("database", database)
+            pulumi.set(__self__, "database", database)
         if document_id is not None:
-            _setter("document_id", document_id)
+            pulumi.set(__self__, "document_id", document_id)
         if fields is not None:
-            _setter("fields", fields)
+            pulumi.set(__self__, "fields", fields)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if path is not None:
-            _setter("path", path)
+            pulumi.set(__self__, "path", path)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter
@@ -491,10 +431,6 @@ class Document(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DocumentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

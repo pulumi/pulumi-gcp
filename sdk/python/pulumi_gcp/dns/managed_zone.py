@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -66,92 +66,35 @@ class ManagedZoneArgs:
                Default value is `public`.
                Possible values are: `private`, `public`.
         """
-        ManagedZoneArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dns_name=dns_name,
-            cloud_logging_config=cloud_logging_config,
-            description=description,
-            dnssec_config=dnssec_config,
-            force_destroy=force_destroy,
-            forwarding_config=forwarding_config,
-            labels=labels,
-            name=name,
-            peering_config=peering_config,
-            private_visibility_config=private_visibility_config,
-            project=project,
-            reverse_lookup=reverse_lookup,
-            service_directory_config=service_directory_config,
-            visibility=visibility,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dns_name: Optional[pulumi.Input[str]] = None,
-             cloud_logging_config: Optional[pulumi.Input['ManagedZoneCloudLoggingConfigArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             dnssec_config: Optional[pulumi.Input['ManagedZoneDnssecConfigArgs']] = None,
-             force_destroy: Optional[pulumi.Input[bool]] = None,
-             forwarding_config: Optional[pulumi.Input['ManagedZoneForwardingConfigArgs']] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             peering_config: Optional[pulumi.Input['ManagedZonePeeringConfigArgs']] = None,
-             private_visibility_config: Optional[pulumi.Input['ManagedZonePrivateVisibilityConfigArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             reverse_lookup: Optional[pulumi.Input[bool]] = None,
-             service_directory_config: Optional[pulumi.Input['ManagedZoneServiceDirectoryConfigArgs']] = None,
-             visibility: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dns_name is None and 'dnsName' in kwargs:
-            dns_name = kwargs['dnsName']
-        if dns_name is None:
-            raise TypeError("Missing 'dns_name' argument")
-        if cloud_logging_config is None and 'cloudLoggingConfig' in kwargs:
-            cloud_logging_config = kwargs['cloudLoggingConfig']
-        if dnssec_config is None and 'dnssecConfig' in kwargs:
-            dnssec_config = kwargs['dnssecConfig']
-        if force_destroy is None and 'forceDestroy' in kwargs:
-            force_destroy = kwargs['forceDestroy']
-        if forwarding_config is None and 'forwardingConfig' in kwargs:
-            forwarding_config = kwargs['forwardingConfig']
-        if peering_config is None and 'peeringConfig' in kwargs:
-            peering_config = kwargs['peeringConfig']
-        if private_visibility_config is None and 'privateVisibilityConfig' in kwargs:
-            private_visibility_config = kwargs['privateVisibilityConfig']
-        if reverse_lookup is None and 'reverseLookup' in kwargs:
-            reverse_lookup = kwargs['reverseLookup']
-        if service_directory_config is None and 'serviceDirectoryConfig' in kwargs:
-            service_directory_config = kwargs['serviceDirectoryConfig']
-
-        _setter("dns_name", dns_name)
+        pulumi.set(__self__, "dns_name", dns_name)
         if cloud_logging_config is not None:
-            _setter("cloud_logging_config", cloud_logging_config)
+            pulumi.set(__self__, "cloud_logging_config", cloud_logging_config)
         if description is None:
             description = 'Managed by Pulumi'
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if dnssec_config is not None:
-            _setter("dnssec_config", dnssec_config)
+            pulumi.set(__self__, "dnssec_config", dnssec_config)
         if force_destroy is not None:
-            _setter("force_destroy", force_destroy)
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if forwarding_config is not None:
-            _setter("forwarding_config", forwarding_config)
+            pulumi.set(__self__, "forwarding_config", forwarding_config)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if peering_config is not None:
-            _setter("peering_config", peering_config)
+            pulumi.set(__self__, "peering_config", peering_config)
         if private_visibility_config is not None:
-            _setter("private_visibility_config", private_visibility_config)
+            pulumi.set(__self__, "private_visibility_config", private_visibility_config)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if reverse_lookup is not None:
-            _setter("reverse_lookup", reverse_lookup)
+            pulumi.set(__self__, "reverse_lookup", reverse_lookup)
         if service_directory_config is not None:
-            _setter("service_directory_config", service_directory_config)
+            pulumi.set(__self__, "service_directory_config", service_directory_config)
         if visibility is not None:
-            _setter("visibility", visibility)
+            pulumi.set(__self__, "visibility", visibility)
 
     @property
     @pulumi.getter(name="dnsName")
@@ -402,109 +345,42 @@ class _ManagedZoneState:
                Default value is `public`.
                Possible values are: `private`, `public`.
         """
-        _ManagedZoneState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cloud_logging_config=cloud_logging_config,
-            creation_time=creation_time,
-            description=description,
-            dns_name=dns_name,
-            dnssec_config=dnssec_config,
-            force_destroy=force_destroy,
-            forwarding_config=forwarding_config,
-            labels=labels,
-            managed_zone_id=managed_zone_id,
-            name=name,
-            name_servers=name_servers,
-            peering_config=peering_config,
-            private_visibility_config=private_visibility_config,
-            project=project,
-            reverse_lookup=reverse_lookup,
-            service_directory_config=service_directory_config,
-            visibility=visibility,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cloud_logging_config: Optional[pulumi.Input['ManagedZoneCloudLoggingConfigArgs']] = None,
-             creation_time: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             dns_name: Optional[pulumi.Input[str]] = None,
-             dnssec_config: Optional[pulumi.Input['ManagedZoneDnssecConfigArgs']] = None,
-             force_destroy: Optional[pulumi.Input[bool]] = None,
-             forwarding_config: Optional[pulumi.Input['ManagedZoneForwardingConfigArgs']] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             managed_zone_id: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             peering_config: Optional[pulumi.Input['ManagedZonePeeringConfigArgs']] = None,
-             private_visibility_config: Optional[pulumi.Input['ManagedZonePrivateVisibilityConfigArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             reverse_lookup: Optional[pulumi.Input[bool]] = None,
-             service_directory_config: Optional[pulumi.Input['ManagedZoneServiceDirectoryConfigArgs']] = None,
-             visibility: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cloud_logging_config is None and 'cloudLoggingConfig' in kwargs:
-            cloud_logging_config = kwargs['cloudLoggingConfig']
-        if creation_time is None and 'creationTime' in kwargs:
-            creation_time = kwargs['creationTime']
-        if dns_name is None and 'dnsName' in kwargs:
-            dns_name = kwargs['dnsName']
-        if dnssec_config is None and 'dnssecConfig' in kwargs:
-            dnssec_config = kwargs['dnssecConfig']
-        if force_destroy is None and 'forceDestroy' in kwargs:
-            force_destroy = kwargs['forceDestroy']
-        if forwarding_config is None and 'forwardingConfig' in kwargs:
-            forwarding_config = kwargs['forwardingConfig']
-        if managed_zone_id is None and 'managedZoneId' in kwargs:
-            managed_zone_id = kwargs['managedZoneId']
-        if name_servers is None and 'nameServers' in kwargs:
-            name_servers = kwargs['nameServers']
-        if peering_config is None and 'peeringConfig' in kwargs:
-            peering_config = kwargs['peeringConfig']
-        if private_visibility_config is None and 'privateVisibilityConfig' in kwargs:
-            private_visibility_config = kwargs['privateVisibilityConfig']
-        if reverse_lookup is None and 'reverseLookup' in kwargs:
-            reverse_lookup = kwargs['reverseLookup']
-        if service_directory_config is None and 'serviceDirectoryConfig' in kwargs:
-            service_directory_config = kwargs['serviceDirectoryConfig']
-
         if cloud_logging_config is not None:
-            _setter("cloud_logging_config", cloud_logging_config)
+            pulumi.set(__self__, "cloud_logging_config", cloud_logging_config)
         if creation_time is not None:
-            _setter("creation_time", creation_time)
+            pulumi.set(__self__, "creation_time", creation_time)
         if description is None:
             description = 'Managed by Pulumi'
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if dns_name is not None:
-            _setter("dns_name", dns_name)
+            pulumi.set(__self__, "dns_name", dns_name)
         if dnssec_config is not None:
-            _setter("dnssec_config", dnssec_config)
+            pulumi.set(__self__, "dnssec_config", dnssec_config)
         if force_destroy is not None:
-            _setter("force_destroy", force_destroy)
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if forwarding_config is not None:
-            _setter("forwarding_config", forwarding_config)
+            pulumi.set(__self__, "forwarding_config", forwarding_config)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if managed_zone_id is not None:
-            _setter("managed_zone_id", managed_zone_id)
+            pulumi.set(__self__, "managed_zone_id", managed_zone_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if name_servers is not None:
-            _setter("name_servers", name_servers)
+            pulumi.set(__self__, "name_servers", name_servers)
         if peering_config is not None:
-            _setter("peering_config", peering_config)
+            pulumi.set(__self__, "peering_config", peering_config)
         if private_visibility_config is not None:
-            _setter("private_visibility_config", private_visibility_config)
+            pulumi.set(__self__, "private_visibility_config", private_visibility_config)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if reverse_lookup is not None:
-            _setter("reverse_lookup", reverse_lookup)
+            pulumi.set(__self__, "reverse_lookup", reverse_lookup)
         if service_directory_config is not None:
-            _setter("service_directory_config", service_directory_config)
+            pulumi.set(__self__, "service_directory_config", service_directory_config)
         if visibility is not None:
-            _setter("visibility", visibility)
+            pulumi.set(__self__, "visibility", visibility)
 
     @property
     @pulumi.getter(name="cloudLoggingConfig")
@@ -1250,10 +1126,6 @@ class ManagedZone(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ManagedZoneArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1282,7 +1154,6 @@ class ManagedZone(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ManagedZoneArgs.__new__(ManagedZoneArgs)
 
-            cloud_logging_config = _utilities.configure(cloud_logging_config, ManagedZoneCloudLoggingConfigArgs, True)
             __props__.__dict__["cloud_logging_config"] = cloud_logging_config
             if description is None:
                 description = 'Managed by Pulumi'
@@ -1290,20 +1161,15 @@ class ManagedZone(pulumi.CustomResource):
             if dns_name is None and not opts.urn:
                 raise TypeError("Missing required property 'dns_name'")
             __props__.__dict__["dns_name"] = dns_name
-            dnssec_config = _utilities.configure(dnssec_config, ManagedZoneDnssecConfigArgs, True)
             __props__.__dict__["dnssec_config"] = dnssec_config
             __props__.__dict__["force_destroy"] = force_destroy
-            forwarding_config = _utilities.configure(forwarding_config, ManagedZoneForwardingConfigArgs, True)
             __props__.__dict__["forwarding_config"] = forwarding_config
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
-            peering_config = _utilities.configure(peering_config, ManagedZonePeeringConfigArgs, True)
             __props__.__dict__["peering_config"] = peering_config
-            private_visibility_config = _utilities.configure(private_visibility_config, ManagedZonePrivateVisibilityConfigArgs, True)
             __props__.__dict__["private_visibility_config"] = private_visibility_config
             __props__.__dict__["project"] = project
             __props__.__dict__["reverse_lookup"] = reverse_lookup
-            service_directory_config = _utilities.configure(service_directory_config, ManagedZoneServiceDirectoryConfigArgs, True)
             __props__.__dict__["service_directory_config"] = service_directory_config
             __props__.__dict__["visibility"] = visibility
             __props__.__dict__["creation_time"] = None

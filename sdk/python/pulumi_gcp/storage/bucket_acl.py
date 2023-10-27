@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BucketACLArgs', 'BucketACL']
@@ -27,38 +27,13 @@ class BucketACLArgs:
         :param pulumi.Input[str] predefined_acl: The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `role_entity` is not.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] role_entities: List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefined_acl` is not.
         """
-        BucketACLArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            default_acl=default_acl,
-            predefined_acl=predefined_acl,
-            role_entities=role_entities,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[pulumi.Input[str]] = None,
-             default_acl: Optional[pulumi.Input[str]] = None,
-             predefined_acl: Optional[pulumi.Input[str]] = None,
-             role_entities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket is None:
-            raise TypeError("Missing 'bucket' argument")
-        if default_acl is None and 'defaultAcl' in kwargs:
-            default_acl = kwargs['defaultAcl']
-        if predefined_acl is None and 'predefinedAcl' in kwargs:
-            predefined_acl = kwargs['predefinedAcl']
-        if role_entities is None and 'roleEntities' in kwargs:
-            role_entities = kwargs['roleEntities']
-
-        _setter("bucket", bucket)
+        pulumi.set(__self__, "bucket", bucket)
         if default_acl is not None:
-            _setter("default_acl", default_acl)
+            pulumi.set(__self__, "default_acl", default_acl)
         if predefined_acl is not None:
-            _setter("predefined_acl", predefined_acl)
+            pulumi.set(__self__, "predefined_acl", predefined_acl)
         if role_entities is not None:
-            _setter("role_entities", role_entities)
+            pulumi.set(__self__, "role_entities", role_entities)
 
     @property
     @pulumi.getter
@@ -127,37 +102,14 @@ class _BucketACLState:
         :param pulumi.Input[str] predefined_acl: The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `role_entity` is not.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] role_entities: List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefined_acl` is not.
         """
-        _BucketACLState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            default_acl=default_acl,
-            predefined_acl=predefined_acl,
-            role_entities=role_entities,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[pulumi.Input[str]] = None,
-             default_acl: Optional[pulumi.Input[str]] = None,
-             predefined_acl: Optional[pulumi.Input[str]] = None,
-             role_entities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if default_acl is None and 'defaultAcl' in kwargs:
-            default_acl = kwargs['defaultAcl']
-        if predefined_acl is None and 'predefinedAcl' in kwargs:
-            predefined_acl = kwargs['predefinedAcl']
-        if role_entities is None and 'roleEntities' in kwargs:
-            role_entities = kwargs['roleEntities']
-
         if bucket is not None:
-            _setter("bucket", bucket)
+            pulumi.set(__self__, "bucket", bucket)
         if default_acl is not None:
-            _setter("default_acl", default_acl)
+            pulumi.set(__self__, "default_acl", default_acl)
         if predefined_acl is not None:
-            _setter("predefined_acl", predefined_acl)
+            pulumi.set(__self__, "predefined_acl", predefined_acl)
         if role_entities is not None:
-            _setter("role_entities", role_entities)
+            pulumi.set(__self__, "role_entities", role_entities)
 
     @property
     @pulumi.getter
@@ -311,10 +263,6 @@ class BucketACL(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            BucketACLArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

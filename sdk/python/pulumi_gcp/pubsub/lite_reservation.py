@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['LiteReservationArgs', 'LiteReservation']
@@ -31,34 +31,13 @@ class LiteReservationArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the pubsub lite reservation.
         """
-        LiteReservationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            throughput_capacity=throughput_capacity,
-            name=name,
-            project=project,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             throughput_capacity: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if throughput_capacity is None and 'throughputCapacity' in kwargs:
-            throughput_capacity = kwargs['throughputCapacity']
-        if throughput_capacity is None:
-            raise TypeError("Missing 'throughput_capacity' argument")
-
-        _setter("throughput_capacity", throughput_capacity)
+        pulumi.set(__self__, "throughput_capacity", throughput_capacity)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter(name="throughputCapacity")
@@ -135,33 +114,14 @@ class _LiteReservationState:
                equivalent to 1 MiB/s of published messages or 2 MiB/s of subscribed
                messages.
         """
-        _LiteReservationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            project=project,
-            region=region,
-            throughput_capacity=throughput_capacity,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             throughput_capacity: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if throughput_capacity is None and 'throughputCapacity' in kwargs:
-            throughput_capacity = kwargs['throughputCapacity']
-
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if throughput_capacity is not None:
-            _setter("throughput_capacity", throughput_capacity)
+            pulumi.set(__self__, "throughput_capacity", throughput_capacity)
 
     @property
     @pulumi.getter
@@ -341,10 +301,6 @@ class LiteReservation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            LiteReservationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

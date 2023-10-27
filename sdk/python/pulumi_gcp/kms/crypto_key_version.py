@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -28,26 +28,9 @@ class CryptoKeyVersionArgs:
         :param pulumi.Input[str] state: The current state of the CryptoKeyVersion.
                Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
         """
-        CryptoKeyVersionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            crypto_key=crypto_key,
-            state=state,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             crypto_key: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if crypto_key is None and 'cryptoKey' in kwargs:
-            crypto_key = kwargs['cryptoKey']
-        if crypto_key is None:
-            raise TypeError("Missing 'crypto_key' argument")
-
-        _setter("crypto_key", crypto_key)
+        pulumi.set(__self__, "crypto_key", crypto_key)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter(name="cryptoKey")
@@ -106,49 +89,20 @@ class _CryptoKeyVersionState:
         :param pulumi.Input[str] state: The current state of the CryptoKeyVersion.
                Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
         """
-        _CryptoKeyVersionState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            algorithm=algorithm,
-            attestations=attestations,
-            crypto_key=crypto_key,
-            generate_time=generate_time,
-            name=name,
-            protection_level=protection_level,
-            state=state,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             algorithm: Optional[pulumi.Input[str]] = None,
-             attestations: Optional[pulumi.Input[Sequence[pulumi.Input['CryptoKeyVersionAttestationArgs']]]] = None,
-             crypto_key: Optional[pulumi.Input[str]] = None,
-             generate_time: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             protection_level: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if crypto_key is None and 'cryptoKey' in kwargs:
-            crypto_key = kwargs['cryptoKey']
-        if generate_time is None and 'generateTime' in kwargs:
-            generate_time = kwargs['generateTime']
-        if protection_level is None and 'protectionLevel' in kwargs:
-            protection_level = kwargs['protectionLevel']
-
         if algorithm is not None:
-            _setter("algorithm", algorithm)
+            pulumi.set(__self__, "algorithm", algorithm)
         if attestations is not None:
-            _setter("attestations", attestations)
+            pulumi.set(__self__, "attestations", attestations)
         if crypto_key is not None:
-            _setter("crypto_key", crypto_key)
+            pulumi.set(__self__, "crypto_key", crypto_key)
         if generate_time is not None:
-            _setter("generate_time", generate_time)
+            pulumi.set(__self__, "generate_time", generate_time)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if protection_level is not None:
-            _setter("protection_level", protection_level)
+            pulumi.set(__self__, "protection_level", protection_level)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter
@@ -342,10 +296,6 @@ class CryptoKeyVersion(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CryptoKeyVersionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

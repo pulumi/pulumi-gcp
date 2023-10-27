@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TenantArgs', 'Tenant']
@@ -33,44 +33,15 @@ class TenantArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        TenantArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            display_name=display_name,
-            allow_password_signup=allow_password_signup,
-            disable_auth=disable_auth,
-            enable_email_link_signin=enable_email_link_signin,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             display_name: Optional[pulumi.Input[str]] = None,
-             allow_password_signup: Optional[pulumi.Input[bool]] = None,
-             disable_auth: Optional[pulumi.Input[bool]] = None,
-             enable_email_link_signin: Optional[pulumi.Input[bool]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if allow_password_signup is None and 'allowPasswordSignup' in kwargs:
-            allow_password_signup = kwargs['allowPasswordSignup']
-        if disable_auth is None and 'disableAuth' in kwargs:
-            disable_auth = kwargs['disableAuth']
-        if enable_email_link_signin is None and 'enableEmailLinkSignin' in kwargs:
-            enable_email_link_signin = kwargs['enableEmailLinkSignin']
-
-        _setter("display_name", display_name)
+        pulumi.set(__self__, "display_name", display_name)
         if allow_password_signup is not None:
-            _setter("allow_password_signup", allow_password_signup)
+            pulumi.set(__self__, "allow_password_signup", allow_password_signup)
         if disable_auth is not None:
-            _setter("disable_auth", disable_auth)
+            pulumi.set(__self__, "disable_auth", disable_auth)
         if enable_email_link_signin is not None:
-            _setter("enable_email_link_signin", enable_email_link_signin)
+            pulumi.set(__self__, "enable_email_link_signin", enable_email_link_signin)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="displayName")
@@ -163,47 +134,18 @@ class _TenantState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        _TenantState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_password_signup=allow_password_signup,
-            disable_auth=disable_auth,
-            display_name=display_name,
-            enable_email_link_signin=enable_email_link_signin,
-            name=name,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_password_signup: Optional[pulumi.Input[bool]] = None,
-             disable_auth: Optional[pulumi.Input[bool]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             enable_email_link_signin: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_password_signup is None and 'allowPasswordSignup' in kwargs:
-            allow_password_signup = kwargs['allowPasswordSignup']
-        if disable_auth is None and 'disableAuth' in kwargs:
-            disable_auth = kwargs['disableAuth']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if enable_email_link_signin is None and 'enableEmailLinkSignin' in kwargs:
-            enable_email_link_signin = kwargs['enableEmailLinkSignin']
-
         if allow_password_signup is not None:
-            _setter("allow_password_signup", allow_password_signup)
+            pulumi.set(__self__, "allow_password_signup", allow_password_signup)
         if disable_auth is not None:
-            _setter("disable_auth", disable_auth)
+            pulumi.set(__self__, "disable_auth", disable_auth)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if enable_email_link_signin is not None:
-            _setter("enable_email_link_signin", enable_email_link_signin)
+            pulumi.set(__self__, "enable_email_link_signin", enable_email_link_signin)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="allowPasswordSignup")
@@ -401,10 +343,6 @@ class Tenant(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TenantArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

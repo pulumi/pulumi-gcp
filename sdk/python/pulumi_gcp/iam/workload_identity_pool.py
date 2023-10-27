@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['WorkloadIdentityPoolArgs', 'WorkloadIdentityPool']
@@ -35,40 +35,15 @@ class WorkloadIdentityPoolArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        WorkloadIdentityPoolArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            workload_identity_pool_id=workload_identity_pool_id,
-            description=description,
-            disabled=disabled,
-            display_name=display_name,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disabled: Optional[pulumi.Input[bool]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if workload_identity_pool_id is None and 'workloadIdentityPoolId' in kwargs:
-            workload_identity_pool_id = kwargs['workloadIdentityPoolId']
-        if workload_identity_pool_id is None:
-            raise TypeError("Missing 'workload_identity_pool_id' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-
-        _setter("workload_identity_pool_id", workload_identity_pool_id)
+        pulumi.set(__self__, "workload_identity_pool_id", workload_identity_pool_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="workloadIdentityPoolId")
@@ -176,47 +151,20 @@ class _WorkloadIdentityPoolState:
                
                - - -
         """
-        _WorkloadIdentityPoolState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            disabled=disabled,
-            display_name=display_name,
-            name=name,
-            project=project,
-            state=state,
-            workload_identity_pool_id=workload_identity_pool_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             disabled: Optional[pulumi.Input[bool]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if workload_identity_pool_id is None and 'workloadIdentityPoolId' in kwargs:
-            workload_identity_pool_id = kwargs['workloadIdentityPoolId']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if workload_identity_pool_id is not None:
-            _setter("workload_identity_pool_id", workload_identity_pool_id)
+            pulumi.set(__self__, "workload_identity_pool_id", workload_identity_pool_id)
 
     @property
     @pulumi.getter
@@ -459,10 +407,6 @@ class WorkloadIdentityPool(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            WorkloadIdentityPoolArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

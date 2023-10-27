@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,36 +39,11 @@ class TagKeyIamBindingArgs:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
-        TagKeyIamBindingArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            members=members,
-            role=role,
-            tag_key=tag_key,
-            condition=condition,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             tag_key: Optional[pulumi.Input[str]] = None,
-             condition: Optional[pulumi.Input['TagKeyIamBindingConditionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if members is None:
-            raise TypeError("Missing 'members' argument")
-        if role is None:
-            raise TypeError("Missing 'role' argument")
-        if tag_key is None and 'tagKey' in kwargs:
-            tag_key = kwargs['tagKey']
-        if tag_key is None:
-            raise TypeError("Missing 'tag_key' argument")
-
-        _setter("members", members)
-        _setter("role", role)
-        _setter("tag_key", tag_key)
+        pulumi.set(__self__, "members", members)
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "tag_key", tag_key)
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
 
     @property
     @pulumi.getter
@@ -155,37 +130,16 @@ class _TagKeyIamBindingState:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
-        _TagKeyIamBindingState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            condition=condition,
-            etag=etag,
-            members=members,
-            role=role,
-            tag_key=tag_key,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             condition: Optional[pulumi.Input['TagKeyIamBindingConditionArgs']] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             tag_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if tag_key is None and 'tagKey' in kwargs:
-            tag_key = kwargs['tagKey']
-
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if members is not None:
-            _setter("members", members)
+            pulumi.set(__self__, "members", members)
         if role is not None:
-            _setter("role", role)
+            pulumi.set(__self__, "role", role)
         if tag_key is not None:
-            _setter("tag_key", tag_key)
+            pulumi.set(__self__, "tag_key", tag_key)
 
     @property
     @pulumi.getter
@@ -457,10 +411,6 @@ class TagKeyIamBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TagKeyIamBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -479,7 +429,6 @@ class TagKeyIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TagKeyIamBindingArgs.__new__(TagKeyIamBindingArgs)
 
-            condition = _utilities.configure(condition, TagKeyIamBindingConditionArgs, True)
             __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -53,117 +53,40 @@ class EnvironmentConfigArgs:
                  web_server_config: Optional[pulumi.Input['EnvironmentConfigWebServerConfigArgs']] = None,
                  web_server_network_access_control: Optional[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlArgs']] = None,
                  workloads_config: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigArgs']] = None):
-        EnvironmentConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            airflow_uri=airflow_uri,
-            dag_gcs_prefix=dag_gcs_prefix,
-            database_config=database_config,
-            encryption_config=encryption_config,
-            environment_size=environment_size,
-            gke_cluster=gke_cluster,
-            maintenance_window=maintenance_window,
-            master_authorized_networks_config=master_authorized_networks_config,
-            node_config=node_config,
-            node_count=node_count,
-            private_environment_config=private_environment_config,
-            recovery_config=recovery_config,
-            resilience_mode=resilience_mode,
-            software_config=software_config,
-            web_server_config=web_server_config,
-            web_server_network_access_control=web_server_network_access_control,
-            workloads_config=workloads_config,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             airflow_uri: Optional[pulumi.Input[str]] = None,
-             dag_gcs_prefix: Optional[pulumi.Input[str]] = None,
-             database_config: Optional[pulumi.Input['EnvironmentConfigDatabaseConfigArgs']] = None,
-             encryption_config: Optional[pulumi.Input['EnvironmentConfigEncryptionConfigArgs']] = None,
-             environment_size: Optional[pulumi.Input[str]] = None,
-             gke_cluster: Optional[pulumi.Input[str]] = None,
-             maintenance_window: Optional[pulumi.Input['EnvironmentConfigMaintenanceWindowArgs']] = None,
-             master_authorized_networks_config: Optional[pulumi.Input['EnvironmentConfigMasterAuthorizedNetworksConfigArgs']] = None,
-             node_config: Optional[pulumi.Input['EnvironmentConfigNodeConfigArgs']] = None,
-             node_count: Optional[pulumi.Input[int]] = None,
-             private_environment_config: Optional[pulumi.Input['EnvironmentConfigPrivateEnvironmentConfigArgs']] = None,
-             recovery_config: Optional[pulumi.Input['EnvironmentConfigRecoveryConfigArgs']] = None,
-             resilience_mode: Optional[pulumi.Input[str]] = None,
-             software_config: Optional[pulumi.Input['EnvironmentConfigSoftwareConfigArgs']] = None,
-             web_server_config: Optional[pulumi.Input['EnvironmentConfigWebServerConfigArgs']] = None,
-             web_server_network_access_control: Optional[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlArgs']] = None,
-             workloads_config: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if airflow_uri is None and 'airflowUri' in kwargs:
-            airflow_uri = kwargs['airflowUri']
-        if dag_gcs_prefix is None and 'dagGcsPrefix' in kwargs:
-            dag_gcs_prefix = kwargs['dagGcsPrefix']
-        if database_config is None and 'databaseConfig' in kwargs:
-            database_config = kwargs['databaseConfig']
-        if encryption_config is None and 'encryptionConfig' in kwargs:
-            encryption_config = kwargs['encryptionConfig']
-        if environment_size is None and 'environmentSize' in kwargs:
-            environment_size = kwargs['environmentSize']
-        if gke_cluster is None and 'gkeCluster' in kwargs:
-            gke_cluster = kwargs['gkeCluster']
-        if maintenance_window is None and 'maintenanceWindow' in kwargs:
-            maintenance_window = kwargs['maintenanceWindow']
-        if master_authorized_networks_config is None and 'masterAuthorizedNetworksConfig' in kwargs:
-            master_authorized_networks_config = kwargs['masterAuthorizedNetworksConfig']
-        if node_config is None and 'nodeConfig' in kwargs:
-            node_config = kwargs['nodeConfig']
-        if node_count is None and 'nodeCount' in kwargs:
-            node_count = kwargs['nodeCount']
-        if private_environment_config is None and 'privateEnvironmentConfig' in kwargs:
-            private_environment_config = kwargs['privateEnvironmentConfig']
-        if recovery_config is None and 'recoveryConfig' in kwargs:
-            recovery_config = kwargs['recoveryConfig']
-        if resilience_mode is None and 'resilienceMode' in kwargs:
-            resilience_mode = kwargs['resilienceMode']
-        if software_config is None and 'softwareConfig' in kwargs:
-            software_config = kwargs['softwareConfig']
-        if web_server_config is None and 'webServerConfig' in kwargs:
-            web_server_config = kwargs['webServerConfig']
-        if web_server_network_access_control is None and 'webServerNetworkAccessControl' in kwargs:
-            web_server_network_access_control = kwargs['webServerNetworkAccessControl']
-        if workloads_config is None and 'workloadsConfig' in kwargs:
-            workloads_config = kwargs['workloadsConfig']
-
         if airflow_uri is not None:
-            _setter("airflow_uri", airflow_uri)
+            pulumi.set(__self__, "airflow_uri", airflow_uri)
         if dag_gcs_prefix is not None:
-            _setter("dag_gcs_prefix", dag_gcs_prefix)
+            pulumi.set(__self__, "dag_gcs_prefix", dag_gcs_prefix)
         if database_config is not None:
-            _setter("database_config", database_config)
+            pulumi.set(__self__, "database_config", database_config)
         if encryption_config is not None:
-            _setter("encryption_config", encryption_config)
+            pulumi.set(__self__, "encryption_config", encryption_config)
         if environment_size is not None:
-            _setter("environment_size", environment_size)
+            pulumi.set(__self__, "environment_size", environment_size)
         if gke_cluster is not None:
-            _setter("gke_cluster", gke_cluster)
+            pulumi.set(__self__, "gke_cluster", gke_cluster)
         if maintenance_window is not None:
-            _setter("maintenance_window", maintenance_window)
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
         if master_authorized_networks_config is not None:
-            _setter("master_authorized_networks_config", master_authorized_networks_config)
+            pulumi.set(__self__, "master_authorized_networks_config", master_authorized_networks_config)
         if node_config is not None:
-            _setter("node_config", node_config)
+            pulumi.set(__self__, "node_config", node_config)
         if node_count is not None:
-            _setter("node_count", node_count)
+            pulumi.set(__self__, "node_count", node_count)
         if private_environment_config is not None:
-            _setter("private_environment_config", private_environment_config)
+            pulumi.set(__self__, "private_environment_config", private_environment_config)
         if recovery_config is not None:
-            _setter("recovery_config", recovery_config)
+            pulumi.set(__self__, "recovery_config", recovery_config)
         if resilience_mode is not None:
-            _setter("resilience_mode", resilience_mode)
+            pulumi.set(__self__, "resilience_mode", resilience_mode)
         if software_config is not None:
-            _setter("software_config", software_config)
+            pulumi.set(__self__, "software_config", software_config)
         if web_server_config is not None:
-            _setter("web_server_config", web_server_config)
+            pulumi.set(__self__, "web_server_config", web_server_config)
         if web_server_network_access_control is not None:
-            _setter("web_server_network_access_control", web_server_network_access_control)
+            pulumi.set(__self__, "web_server_network_access_control", web_server_network_access_control)
         if workloads_config is not None:
-            _setter("workloads_config", workloads_config)
+            pulumi.set(__self__, "workloads_config", workloads_config)
 
     @property
     @pulumi.getter(name="airflowUri")
@@ -323,22 +246,7 @@ class EnvironmentConfigArgs:
 class EnvironmentConfigDatabaseConfigArgs:
     def __init__(__self__, *,
                  machine_type: pulumi.Input[str]):
-        EnvironmentConfigDatabaseConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            machine_type=machine_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             machine_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if machine_type is None and 'machineType' in kwargs:
-            machine_type = kwargs['machineType']
-        if machine_type is None:
-            raise TypeError("Missing 'machine_type' argument")
-
-        _setter("machine_type", machine_type)
+        pulumi.set(__self__, "machine_type", machine_type)
 
     @property
     @pulumi.getter(name="machineType")
@@ -354,22 +262,7 @@ class EnvironmentConfigDatabaseConfigArgs:
 class EnvironmentConfigEncryptionConfigArgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[str]):
-        EnvironmentConfigEncryptionConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            kms_key_name=kms_key_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             kms_key_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if kms_key_name is None and 'kmsKeyName' in kwargs:
-            kms_key_name = kwargs['kmsKeyName']
-        if kms_key_name is None:
-            raise TypeError("Missing 'kms_key_name' argument")
-
-        _setter("kms_key_name", kms_key_name)
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -387,34 +280,9 @@ class EnvironmentConfigMaintenanceWindowArgs:
                  end_time: pulumi.Input[str],
                  recurrence: pulumi.Input[str],
                  start_time: pulumi.Input[str]):
-        EnvironmentConfigMaintenanceWindowArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            end_time=end_time,
-            recurrence=recurrence,
-            start_time=start_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             end_time: Optional[pulumi.Input[str]] = None,
-             recurrence: Optional[pulumi.Input[str]] = None,
-             start_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if end_time is None and 'endTime' in kwargs:
-            end_time = kwargs['endTime']
-        if end_time is None:
-            raise TypeError("Missing 'end_time' argument")
-        if recurrence is None:
-            raise TypeError("Missing 'recurrence' argument")
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-        if start_time is None:
-            raise TypeError("Missing 'start_time' argument")
-
-        _setter("end_time", end_time)
-        _setter("recurrence", recurrence)
-        _setter("start_time", start_time)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "recurrence", recurrence)
+        pulumi.set(__self__, "start_time", start_time)
 
     @property
     @pulumi.getter(name="endTime")
@@ -449,26 +317,9 @@ class EnvironmentConfigMasterAuthorizedNetworksConfigArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool],
                  cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs']]]] = None):
-        EnvironmentConfigMasterAuthorizedNetworksConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enabled=enabled,
-            cidr_blocks=cidr_blocks,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enabled: Optional[pulumi.Input[bool]] = None,
-             cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-        if cidr_blocks is None and 'cidrBlocks' in kwargs:
-            cidr_blocks = kwargs['cidrBlocks']
-
-        _setter("enabled", enabled)
+        pulumi.set(__self__, "enabled", enabled)
         if cidr_blocks is not None:
-            _setter("cidr_blocks", cidr_blocks)
+            pulumi.set(__self__, "cidr_blocks", cidr_blocks)
 
     @property
     @pulumi.getter
@@ -494,28 +345,9 @@ class EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs:
     def __init__(__self__, *,
                  cidr_block: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None):
-        EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cidr_block=cidr_block,
-            display_name=display_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cidr_block: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cidr_block is None and 'cidrBlock' in kwargs:
-            cidr_block = kwargs['cidrBlock']
-        if cidr_block is None:
-            raise TypeError("Missing 'cidr_block' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-
-        _setter("cidr_block", cidr_block)
+        pulumi.set(__self__, "cidr_block", cidr_block)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -550,73 +382,28 @@ class EnvironmentConfigNodeConfigArgs:
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
-        EnvironmentConfigNodeConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            disk_size_gb=disk_size_gb,
-            enable_ip_masq_agent=enable_ip_masq_agent,
-            ip_allocation_policy=ip_allocation_policy,
-            machine_type=machine_type,
-            max_pods_per_node=max_pods_per_node,
-            network=network,
-            oauth_scopes=oauth_scopes,
-            service_account=service_account,
-            subnetwork=subnetwork,
-            tags=tags,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             disk_size_gb: Optional[pulumi.Input[int]] = None,
-             enable_ip_masq_agent: Optional[pulumi.Input[bool]] = None,
-             ip_allocation_policy: Optional[pulumi.Input['EnvironmentConfigNodeConfigIpAllocationPolicyArgs']] = None,
-             machine_type: Optional[pulumi.Input[str]] = None,
-             max_pods_per_node: Optional[pulumi.Input[int]] = None,
-             network: Optional[pulumi.Input[str]] = None,
-             oauth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             service_account: Optional[pulumi.Input[str]] = None,
-             subnetwork: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disk_size_gb is None and 'diskSizeGb' in kwargs:
-            disk_size_gb = kwargs['diskSizeGb']
-        if enable_ip_masq_agent is None and 'enableIpMasqAgent' in kwargs:
-            enable_ip_masq_agent = kwargs['enableIpMasqAgent']
-        if ip_allocation_policy is None and 'ipAllocationPolicy' in kwargs:
-            ip_allocation_policy = kwargs['ipAllocationPolicy']
-        if machine_type is None and 'machineType' in kwargs:
-            machine_type = kwargs['machineType']
-        if max_pods_per_node is None and 'maxPodsPerNode' in kwargs:
-            max_pods_per_node = kwargs['maxPodsPerNode']
-        if oauth_scopes is None and 'oauthScopes' in kwargs:
-            oauth_scopes = kwargs['oauthScopes']
-        if service_account is None and 'serviceAccount' in kwargs:
-            service_account = kwargs['serviceAccount']
-
         if disk_size_gb is not None:
-            _setter("disk_size_gb", disk_size_gb)
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if enable_ip_masq_agent is not None:
-            _setter("enable_ip_masq_agent", enable_ip_masq_agent)
+            pulumi.set(__self__, "enable_ip_masq_agent", enable_ip_masq_agent)
         if ip_allocation_policy is not None:
-            _setter("ip_allocation_policy", ip_allocation_policy)
+            pulumi.set(__self__, "ip_allocation_policy", ip_allocation_policy)
         if machine_type is not None:
-            _setter("machine_type", machine_type)
+            pulumi.set(__self__, "machine_type", machine_type)
         if max_pods_per_node is not None:
-            _setter("max_pods_per_node", max_pods_per_node)
+            pulumi.set(__self__, "max_pods_per_node", max_pods_per_node)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if oauth_scopes is not None:
-            _setter("oauth_scopes", oauth_scopes)
+            pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         if service_account is not None:
-            _setter("service_account", service_account)
+            pulumi.set(__self__, "service_account", service_account)
         if subnetwork is not None:
-            _setter("subnetwork", subnetwork)
+            pulumi.set(__self__, "subnetwork", subnetwork)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="diskSizeGb")
@@ -726,45 +513,16 @@ class EnvironmentConfigNodeConfigIpAllocationPolicyArgs:
                  services_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  services_secondary_range_name: Optional[pulumi.Input[str]] = None,
                  use_ip_aliases: Optional[pulumi.Input[bool]] = None):
-        EnvironmentConfigNodeConfigIpAllocationPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_ipv4_cidr_block=cluster_ipv4_cidr_block,
-            cluster_secondary_range_name=cluster_secondary_range_name,
-            services_ipv4_cidr_block=services_ipv4_cidr_block,
-            services_secondary_range_name=services_secondary_range_name,
-            use_ip_aliases=use_ip_aliases,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
-             cluster_secondary_range_name: Optional[pulumi.Input[str]] = None,
-             services_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
-             services_secondary_range_name: Optional[pulumi.Input[str]] = None,
-             use_ip_aliases: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_ipv4_cidr_block is None and 'clusterIpv4CidrBlock' in kwargs:
-            cluster_ipv4_cidr_block = kwargs['clusterIpv4CidrBlock']
-        if cluster_secondary_range_name is None and 'clusterSecondaryRangeName' in kwargs:
-            cluster_secondary_range_name = kwargs['clusterSecondaryRangeName']
-        if services_ipv4_cidr_block is None and 'servicesIpv4CidrBlock' in kwargs:
-            services_ipv4_cidr_block = kwargs['servicesIpv4CidrBlock']
-        if services_secondary_range_name is None and 'servicesSecondaryRangeName' in kwargs:
-            services_secondary_range_name = kwargs['servicesSecondaryRangeName']
-        if use_ip_aliases is None and 'useIpAliases' in kwargs:
-            use_ip_aliases = kwargs['useIpAliases']
-
         if cluster_ipv4_cidr_block is not None:
-            _setter("cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
+            pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
         if cluster_secondary_range_name is not None:
-            _setter("cluster_secondary_range_name", cluster_secondary_range_name)
+            pulumi.set(__self__, "cluster_secondary_range_name", cluster_secondary_range_name)
         if services_ipv4_cidr_block is not None:
-            _setter("services_ipv4_cidr_block", services_ipv4_cidr_block)
+            pulumi.set(__self__, "services_ipv4_cidr_block", services_ipv4_cidr_block)
         if services_secondary_range_name is not None:
-            _setter("services_secondary_range_name", services_secondary_range_name)
+            pulumi.set(__self__, "services_secondary_range_name", services_secondary_range_name)
         if use_ip_aliases is not None:
-            _setter("use_ip_aliases", use_ip_aliases)
+            pulumi.set(__self__, "use_ip_aliases", use_ip_aliases)
 
     @property
     @pulumi.getter(name="clusterIpv4CidrBlock")
@@ -823,63 +581,22 @@ class EnvironmentConfigPrivateEnvironmentConfigArgs:
                  enable_privately_used_public_ips: Optional[pulumi.Input[bool]] = None,
                  master_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  web_server_ipv4_cidr_block: Optional[pulumi.Input[str]] = None):
-        EnvironmentConfigPrivateEnvironmentConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cloud_composer_connection_subnetwork=cloud_composer_connection_subnetwork,
-            cloud_composer_network_ipv4_cidr_block=cloud_composer_network_ipv4_cidr_block,
-            cloud_sql_ipv4_cidr_block=cloud_sql_ipv4_cidr_block,
-            connection_type=connection_type,
-            enable_private_endpoint=enable_private_endpoint,
-            enable_privately_used_public_ips=enable_privately_used_public_ips,
-            master_ipv4_cidr_block=master_ipv4_cidr_block,
-            web_server_ipv4_cidr_block=web_server_ipv4_cidr_block,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cloud_composer_connection_subnetwork: Optional[pulumi.Input[str]] = None,
-             cloud_composer_network_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
-             cloud_sql_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
-             connection_type: Optional[pulumi.Input[str]] = None,
-             enable_private_endpoint: Optional[pulumi.Input[bool]] = None,
-             enable_privately_used_public_ips: Optional[pulumi.Input[bool]] = None,
-             master_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
-             web_server_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cloud_composer_connection_subnetwork is None and 'cloudComposerConnectionSubnetwork' in kwargs:
-            cloud_composer_connection_subnetwork = kwargs['cloudComposerConnectionSubnetwork']
-        if cloud_composer_network_ipv4_cidr_block is None and 'cloudComposerNetworkIpv4CidrBlock' in kwargs:
-            cloud_composer_network_ipv4_cidr_block = kwargs['cloudComposerNetworkIpv4CidrBlock']
-        if cloud_sql_ipv4_cidr_block is None and 'cloudSqlIpv4CidrBlock' in kwargs:
-            cloud_sql_ipv4_cidr_block = kwargs['cloudSqlIpv4CidrBlock']
-        if connection_type is None and 'connectionType' in kwargs:
-            connection_type = kwargs['connectionType']
-        if enable_private_endpoint is None and 'enablePrivateEndpoint' in kwargs:
-            enable_private_endpoint = kwargs['enablePrivateEndpoint']
-        if enable_privately_used_public_ips is None and 'enablePrivatelyUsedPublicIps' in kwargs:
-            enable_privately_used_public_ips = kwargs['enablePrivatelyUsedPublicIps']
-        if master_ipv4_cidr_block is None and 'masterIpv4CidrBlock' in kwargs:
-            master_ipv4_cidr_block = kwargs['masterIpv4CidrBlock']
-        if web_server_ipv4_cidr_block is None and 'webServerIpv4CidrBlock' in kwargs:
-            web_server_ipv4_cidr_block = kwargs['webServerIpv4CidrBlock']
-
         if cloud_composer_connection_subnetwork is not None:
-            _setter("cloud_composer_connection_subnetwork", cloud_composer_connection_subnetwork)
+            pulumi.set(__self__, "cloud_composer_connection_subnetwork", cloud_composer_connection_subnetwork)
         if cloud_composer_network_ipv4_cidr_block is not None:
-            _setter("cloud_composer_network_ipv4_cidr_block", cloud_composer_network_ipv4_cidr_block)
+            pulumi.set(__self__, "cloud_composer_network_ipv4_cidr_block", cloud_composer_network_ipv4_cidr_block)
         if cloud_sql_ipv4_cidr_block is not None:
-            _setter("cloud_sql_ipv4_cidr_block", cloud_sql_ipv4_cidr_block)
+            pulumi.set(__self__, "cloud_sql_ipv4_cidr_block", cloud_sql_ipv4_cidr_block)
         if connection_type is not None:
-            _setter("connection_type", connection_type)
+            pulumi.set(__self__, "connection_type", connection_type)
         if enable_private_endpoint is not None:
-            _setter("enable_private_endpoint", enable_private_endpoint)
+            pulumi.set(__self__, "enable_private_endpoint", enable_private_endpoint)
         if enable_privately_used_public_ips is not None:
-            _setter("enable_privately_used_public_ips", enable_privately_used_public_ips)
+            pulumi.set(__self__, "enable_privately_used_public_ips", enable_privately_used_public_ips)
         if master_ipv4_cidr_block is not None:
-            _setter("master_ipv4_cidr_block", master_ipv4_cidr_block)
+            pulumi.set(__self__, "master_ipv4_cidr_block", master_ipv4_cidr_block)
         if web_server_ipv4_cidr_block is not None:
-            _setter("web_server_ipv4_cidr_block", web_server_ipv4_cidr_block)
+            pulumi.set(__self__, "web_server_ipv4_cidr_block", web_server_ipv4_cidr_block)
 
     @property
     @pulumi.getter(name="cloudComposerConnectionSubnetwork")
@@ -958,21 +675,8 @@ class EnvironmentConfigPrivateEnvironmentConfigArgs:
 class EnvironmentConfigRecoveryConfigArgs:
     def __init__(__self__, *,
                  scheduled_snapshots_config: Optional[pulumi.Input['EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs']] = None):
-        EnvironmentConfigRecoveryConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            scheduled_snapshots_config=scheduled_snapshots_config,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             scheduled_snapshots_config: Optional[pulumi.Input['EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if scheduled_snapshots_config is None and 'scheduledSnapshotsConfig' in kwargs:
-            scheduled_snapshots_config = kwargs['scheduledSnapshotsConfig']
-
         if scheduled_snapshots_config is not None:
-            _setter("scheduled_snapshots_config", scheduled_snapshots_config)
+            pulumi.set(__self__, "scheduled_snapshots_config", scheduled_snapshots_config)
 
     @property
     @pulumi.getter(name="scheduledSnapshotsConfig")
@@ -991,38 +695,13 @@ class EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs:
                  snapshot_creation_schedule: Optional[pulumi.Input[str]] = None,
                  snapshot_location: Optional[pulumi.Input[str]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None):
-        EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enabled=enabled,
-            snapshot_creation_schedule=snapshot_creation_schedule,
-            snapshot_location=snapshot_location,
-            time_zone=time_zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enabled: Optional[pulumi.Input[bool]] = None,
-             snapshot_creation_schedule: Optional[pulumi.Input[str]] = None,
-             snapshot_location: Optional[pulumi.Input[str]] = None,
-             time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-        if snapshot_creation_schedule is None and 'snapshotCreationSchedule' in kwargs:
-            snapshot_creation_schedule = kwargs['snapshotCreationSchedule']
-        if snapshot_location is None and 'snapshotLocation' in kwargs:
-            snapshot_location = kwargs['snapshotLocation']
-        if time_zone is None and 'timeZone' in kwargs:
-            time_zone = kwargs['timeZone']
-
-        _setter("enabled", enabled)
+        pulumi.set(__self__, "enabled", enabled)
         if snapshot_creation_schedule is not None:
-            _setter("snapshot_creation_schedule", snapshot_creation_schedule)
+            pulumi.set(__self__, "snapshot_creation_schedule", snapshot_creation_schedule)
         if snapshot_location is not None:
-            _setter("snapshot_location", snapshot_location)
+            pulumi.set(__self__, "snapshot_location", snapshot_location)
         if time_zone is not None:
-            _setter("time_zone", time_zone)
+            pulumi.set(__self__, "time_zone", time_zone)
 
     @property
     @pulumi.getter
@@ -1071,57 +750,20 @@ class EnvironmentConfigSoftwareConfigArgs:
                  pypi_packages: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  python_version: Optional[pulumi.Input[str]] = None,
                  scheduler_count: Optional[pulumi.Input[int]] = None):
-        EnvironmentConfigSoftwareConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            airflow_config_overrides=airflow_config_overrides,
-            cloud_data_lineage_integration=cloud_data_lineage_integration,
-            env_variables=env_variables,
-            image_version=image_version,
-            pypi_packages=pypi_packages,
-            python_version=python_version,
-            scheduler_count=scheduler_count,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             airflow_config_overrides: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             cloud_data_lineage_integration: Optional[pulumi.Input['EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs']] = None,
-             env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             image_version: Optional[pulumi.Input[str]] = None,
-             pypi_packages: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             python_version: Optional[pulumi.Input[str]] = None,
-             scheduler_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if airflow_config_overrides is None and 'airflowConfigOverrides' in kwargs:
-            airflow_config_overrides = kwargs['airflowConfigOverrides']
-        if cloud_data_lineage_integration is None and 'cloudDataLineageIntegration' in kwargs:
-            cloud_data_lineage_integration = kwargs['cloudDataLineageIntegration']
-        if env_variables is None and 'envVariables' in kwargs:
-            env_variables = kwargs['envVariables']
-        if image_version is None and 'imageVersion' in kwargs:
-            image_version = kwargs['imageVersion']
-        if pypi_packages is None and 'pypiPackages' in kwargs:
-            pypi_packages = kwargs['pypiPackages']
-        if python_version is None and 'pythonVersion' in kwargs:
-            python_version = kwargs['pythonVersion']
-        if scheduler_count is None and 'schedulerCount' in kwargs:
-            scheduler_count = kwargs['schedulerCount']
-
         if airflow_config_overrides is not None:
-            _setter("airflow_config_overrides", airflow_config_overrides)
+            pulumi.set(__self__, "airflow_config_overrides", airflow_config_overrides)
         if cloud_data_lineage_integration is not None:
-            _setter("cloud_data_lineage_integration", cloud_data_lineage_integration)
+            pulumi.set(__self__, "cloud_data_lineage_integration", cloud_data_lineage_integration)
         if env_variables is not None:
-            _setter("env_variables", env_variables)
+            pulumi.set(__self__, "env_variables", env_variables)
         if image_version is not None:
-            _setter("image_version", image_version)
+            pulumi.set(__self__, "image_version", image_version)
         if pypi_packages is not None:
-            _setter("pypi_packages", pypi_packages)
+            pulumi.set(__self__, "pypi_packages", pypi_packages)
         if python_version is not None:
-            _setter("python_version", python_version)
+            pulumi.set(__self__, "python_version", python_version)
         if scheduler_count is not None:
-            _setter("scheduler_count", scheduler_count)
+            pulumi.set(__self__, "scheduler_count", scheduler_count)
 
     @property
     @pulumi.getter(name="airflowConfigOverrides")
@@ -1191,20 +833,7 @@ class EnvironmentConfigSoftwareConfigArgs:
 class EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
-        EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enabled=enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-
-        _setter("enabled", enabled)
+        pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
@@ -1220,22 +849,7 @@ class EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs:
 class EnvironmentConfigWebServerConfigArgs:
     def __init__(__self__, *,
                  machine_type: pulumi.Input[str]):
-        EnvironmentConfigWebServerConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            machine_type=machine_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             machine_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if machine_type is None and 'machineType' in kwargs:
-            machine_type = kwargs['machineType']
-        if machine_type is None:
-            raise TypeError("Missing 'machine_type' argument")
-
-        _setter("machine_type", machine_type)
+        pulumi.set(__self__, "machine_type", machine_type)
 
     @property
     @pulumi.getter(name="machineType")
@@ -1251,21 +865,8 @@ class EnvironmentConfigWebServerConfigArgs:
 class EnvironmentConfigWebServerNetworkAccessControlArgs:
     def __init__(__self__, *,
                  allowed_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs']]]] = None):
-        EnvironmentConfigWebServerNetworkAccessControlArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_ip_ranges=allowed_ip_ranges,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_ip_ranges is None and 'allowedIpRanges' in kwargs:
-            allowed_ip_ranges = kwargs['allowedIpRanges']
-
         if allowed_ip_ranges is not None:
-            _setter("allowed_ip_ranges", allowed_ip_ranges)
+            pulumi.set(__self__, "allowed_ip_ranges", allowed_ip_ranges)
 
     @property
     @pulumi.getter(name="allowedIpRanges")
@@ -1282,24 +883,9 @@ class EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs:
     def __init__(__self__, *,
                  value: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
-        EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            value=value,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             value: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("value", value)
+        pulumi.set(__self__, "value", value)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -1327,33 +913,14 @@ class EnvironmentConfigWorkloadsConfigArgs:
                  triggerer: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigTriggererArgs']] = None,
                  web_server: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigWebServerArgs']] = None,
                  worker: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigWorkerArgs']] = None):
-        EnvironmentConfigWorkloadsConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            scheduler=scheduler,
-            triggerer=triggerer,
-            web_server=web_server,
-            worker=worker,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             scheduler: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigSchedulerArgs']] = None,
-             triggerer: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigTriggererArgs']] = None,
-             web_server: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigWebServerArgs']] = None,
-             worker: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigWorkerArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if web_server is None and 'webServer' in kwargs:
-            web_server = kwargs['webServer']
-
         if scheduler is not None:
-            _setter("scheduler", scheduler)
+            pulumi.set(__self__, "scheduler", scheduler)
         if triggerer is not None:
-            _setter("triggerer", triggerer)
+            pulumi.set(__self__, "triggerer", triggerer)
         if web_server is not None:
-            _setter("web_server", web_server)
+            pulumi.set(__self__, "web_server", web_server)
         if worker is not None:
-            _setter("worker", worker)
+            pulumi.set(__self__, "worker", worker)
 
     @property
     @pulumi.getter
@@ -1399,35 +966,14 @@ class EnvironmentConfigWorkloadsConfigSchedulerArgs:
                  cpu: Optional[pulumi.Input[float]] = None,
                  memory_gb: Optional[pulumi.Input[float]] = None,
                  storage_gb: Optional[pulumi.Input[float]] = None):
-        EnvironmentConfigWorkloadsConfigSchedulerArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            count=count,
-            cpu=cpu,
-            memory_gb=memory_gb,
-            storage_gb=storage_gb,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             count: Optional[pulumi.Input[int]] = None,
-             cpu: Optional[pulumi.Input[float]] = None,
-             memory_gb: Optional[pulumi.Input[float]] = None,
-             storage_gb: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if memory_gb is None and 'memoryGb' in kwargs:
-            memory_gb = kwargs['memoryGb']
-        if storage_gb is None and 'storageGb' in kwargs:
-            storage_gb = kwargs['storageGb']
-
         if count is not None:
-            _setter("count", count)
+            pulumi.set(__self__, "count", count)
         if cpu is not None:
-            _setter("cpu", cpu)
+            pulumi.set(__self__, "cpu", cpu)
         if memory_gb is not None:
-            _setter("memory_gb", memory_gb)
+            pulumi.set(__self__, "memory_gb", memory_gb)
         if storage_gb is not None:
-            _setter("storage_gb", storage_gb)
+            pulumi.set(__self__, "storage_gb", storage_gb)
 
     @property
     @pulumi.getter
@@ -1472,32 +1018,9 @@ class EnvironmentConfigWorkloadsConfigTriggererArgs:
                  count: pulumi.Input[int],
                  cpu: pulumi.Input[float],
                  memory_gb: pulumi.Input[float]):
-        EnvironmentConfigWorkloadsConfigTriggererArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            count=count,
-            cpu=cpu,
-            memory_gb=memory_gb,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             count: Optional[pulumi.Input[int]] = None,
-             cpu: Optional[pulumi.Input[float]] = None,
-             memory_gb: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if count is None:
-            raise TypeError("Missing 'count' argument")
-        if cpu is None:
-            raise TypeError("Missing 'cpu' argument")
-        if memory_gb is None and 'memoryGb' in kwargs:
-            memory_gb = kwargs['memoryGb']
-        if memory_gb is None:
-            raise TypeError("Missing 'memory_gb' argument")
-
-        _setter("count", count)
-        _setter("cpu", cpu)
-        _setter("memory_gb", memory_gb)
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "memory_gb", memory_gb)
 
     @property
     @pulumi.getter
@@ -1533,31 +1056,12 @@ class EnvironmentConfigWorkloadsConfigWebServerArgs:
                  cpu: Optional[pulumi.Input[float]] = None,
                  memory_gb: Optional[pulumi.Input[float]] = None,
                  storage_gb: Optional[pulumi.Input[float]] = None):
-        EnvironmentConfigWorkloadsConfigWebServerArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cpu=cpu,
-            memory_gb=memory_gb,
-            storage_gb=storage_gb,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cpu: Optional[pulumi.Input[float]] = None,
-             memory_gb: Optional[pulumi.Input[float]] = None,
-             storage_gb: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if memory_gb is None and 'memoryGb' in kwargs:
-            memory_gb = kwargs['memoryGb']
-        if storage_gb is None and 'storageGb' in kwargs:
-            storage_gb = kwargs['storageGb']
-
         if cpu is not None:
-            _setter("cpu", cpu)
+            pulumi.set(__self__, "cpu", cpu)
         if memory_gb is not None:
-            _setter("memory_gb", memory_gb)
+            pulumi.set(__self__, "memory_gb", memory_gb)
         if storage_gb is not None:
-            _setter("storage_gb", storage_gb)
+            pulumi.set(__self__, "storage_gb", storage_gb)
 
     @property
     @pulumi.getter
@@ -1595,43 +1099,16 @@ class EnvironmentConfigWorkloadsConfigWorkerArgs:
                  memory_gb: Optional[pulumi.Input[float]] = None,
                  min_count: Optional[pulumi.Input[int]] = None,
                  storage_gb: Optional[pulumi.Input[float]] = None):
-        EnvironmentConfigWorkloadsConfigWorkerArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cpu=cpu,
-            max_count=max_count,
-            memory_gb=memory_gb,
-            min_count=min_count,
-            storage_gb=storage_gb,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cpu: Optional[pulumi.Input[float]] = None,
-             max_count: Optional[pulumi.Input[int]] = None,
-             memory_gb: Optional[pulumi.Input[float]] = None,
-             min_count: Optional[pulumi.Input[int]] = None,
-             storage_gb: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if max_count is None and 'maxCount' in kwargs:
-            max_count = kwargs['maxCount']
-        if memory_gb is None and 'memoryGb' in kwargs:
-            memory_gb = kwargs['memoryGb']
-        if min_count is None and 'minCount' in kwargs:
-            min_count = kwargs['minCount']
-        if storage_gb is None and 'storageGb' in kwargs:
-            storage_gb = kwargs['storageGb']
-
         if cpu is not None:
-            _setter("cpu", cpu)
+            pulumi.set(__self__, "cpu", cpu)
         if max_count is not None:
-            _setter("max_count", max_count)
+            pulumi.set(__self__, "max_count", max_count)
         if memory_gb is not None:
-            _setter("memory_gb", memory_gb)
+            pulumi.set(__self__, "memory_gb", memory_gb)
         if min_count is not None:
-            _setter("min_count", min_count)
+            pulumi.set(__self__, "min_count", min_count)
         if storage_gb is not None:
-            _setter("storage_gb", storage_gb)
+            pulumi.set(__self__, "storage_gb", storage_gb)
 
     @property
     @pulumi.getter

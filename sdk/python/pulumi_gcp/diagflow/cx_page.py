@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -64,60 +64,21 @@ class CxPageArgs:
                TransitionRoutes defined in the transition route groups with only condition specified.
                Structure is documented below.
         """
-        CxPageArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            display_name=display_name,
-            entry_fulfillment=entry_fulfillment,
-            event_handlers=event_handlers,
-            form=form,
-            language_code=language_code,
-            parent=parent,
-            transition_route_groups=transition_route_groups,
-            transition_routes=transition_routes,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             display_name: Optional[pulumi.Input[str]] = None,
-             entry_fulfillment: Optional[pulumi.Input['CxPageEntryFulfillmentArgs']] = None,
-             event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArgs']]]] = None,
-             form: Optional[pulumi.Input['CxPageFormArgs']] = None,
-             language_code: Optional[pulumi.Input[str]] = None,
-             parent: Optional[pulumi.Input[str]] = None,
-             transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if entry_fulfillment is None and 'entryFulfillment' in kwargs:
-            entry_fulfillment = kwargs['entryFulfillment']
-        if event_handlers is None and 'eventHandlers' in kwargs:
-            event_handlers = kwargs['eventHandlers']
-        if language_code is None and 'languageCode' in kwargs:
-            language_code = kwargs['languageCode']
-        if transition_route_groups is None and 'transitionRouteGroups' in kwargs:
-            transition_route_groups = kwargs['transitionRouteGroups']
-        if transition_routes is None and 'transitionRoutes' in kwargs:
-            transition_routes = kwargs['transitionRoutes']
-
-        _setter("display_name", display_name)
+        pulumi.set(__self__, "display_name", display_name)
         if entry_fulfillment is not None:
-            _setter("entry_fulfillment", entry_fulfillment)
+            pulumi.set(__self__, "entry_fulfillment", entry_fulfillment)
         if event_handlers is not None:
-            _setter("event_handlers", event_handlers)
+            pulumi.set(__self__, "event_handlers", event_handlers)
         if form is not None:
-            _setter("form", form)
+            pulumi.set(__self__, "form", form)
         if language_code is not None:
-            _setter("language_code", language_code)
+            pulumi.set(__self__, "language_code", language_code)
         if parent is not None:
-            _setter("parent", parent)
+            pulumi.set(__self__, "parent", parent)
         if transition_route_groups is not None:
-            _setter("transition_route_groups", transition_route_groups)
+            pulumi.set(__self__, "transition_route_groups", transition_route_groups)
         if transition_routes is not None:
-            _setter("transition_routes", transition_routes)
+            pulumi.set(__self__, "transition_routes", transition_routes)
 
     @property
     @pulumi.getter(name="displayName")
@@ -299,63 +260,24 @@ class _CxPageState:
                TransitionRoutes defined in the transition route groups with only condition specified.
                Structure is documented below.
         """
-        _CxPageState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            display_name=display_name,
-            entry_fulfillment=entry_fulfillment,
-            event_handlers=event_handlers,
-            form=form,
-            language_code=language_code,
-            name=name,
-            parent=parent,
-            transition_route_groups=transition_route_groups,
-            transition_routes=transition_routes,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             display_name: Optional[pulumi.Input[str]] = None,
-             entry_fulfillment: Optional[pulumi.Input['CxPageEntryFulfillmentArgs']] = None,
-             event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArgs']]]] = None,
-             form: Optional[pulumi.Input['CxPageFormArgs']] = None,
-             language_code: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             parent: Optional[pulumi.Input[str]] = None,
-             transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if entry_fulfillment is None and 'entryFulfillment' in kwargs:
-            entry_fulfillment = kwargs['entryFulfillment']
-        if event_handlers is None and 'eventHandlers' in kwargs:
-            event_handlers = kwargs['eventHandlers']
-        if language_code is None and 'languageCode' in kwargs:
-            language_code = kwargs['languageCode']
-        if transition_route_groups is None and 'transitionRouteGroups' in kwargs:
-            transition_route_groups = kwargs['transitionRouteGroups']
-        if transition_routes is None and 'transitionRoutes' in kwargs:
-            transition_routes = kwargs['transitionRoutes']
-
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if entry_fulfillment is not None:
-            _setter("entry_fulfillment", entry_fulfillment)
+            pulumi.set(__self__, "entry_fulfillment", entry_fulfillment)
         if event_handlers is not None:
-            _setter("event_handlers", event_handlers)
+            pulumi.set(__self__, "event_handlers", event_handlers)
         if form is not None:
-            _setter("form", form)
+            pulumi.set(__self__, "form", form)
         if language_code is not None:
-            _setter("language_code", language_code)
+            pulumi.set(__self__, "language_code", language_code)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if parent is not None:
-            _setter("parent", parent)
+            pulumi.set(__self__, "parent", parent)
         if transition_route_groups is not None:
-            _setter("transition_route_groups", transition_route_groups)
+            pulumi.set(__self__, "transition_route_groups", transition_route_groups)
         if transition_routes is not None:
-            _setter("transition_routes", transition_routes)
+            pulumi.set(__self__, "transition_routes", transition_routes)
 
     @property
     @pulumi.getter(name="displayName")
@@ -1716,10 +1638,6 @@ class CxPage(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CxPageArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1745,10 +1663,8 @@ class CxPage(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
-            entry_fulfillment = _utilities.configure(entry_fulfillment, CxPageEntryFulfillmentArgs, True)
             __props__.__dict__["entry_fulfillment"] = entry_fulfillment
             __props__.__dict__["event_handlers"] = event_handlers
-            form = _utilities.configure(form, CxPageFormArgs, True)
             __props__.__dict__["form"] = form
             __props__.__dict__["language_code"] = language_code
             __props__.__dict__["parent"] = parent

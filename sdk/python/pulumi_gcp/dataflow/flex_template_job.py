@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['FlexTemplateJobArgs', 'FlexTemplateJob']
@@ -84,146 +84,53 @@ class FlexTemplateJobArgs:
         :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
                corresponding name prefixes of the new job.
         """
-        FlexTemplateJobArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            container_spec_gcs_path=container_spec_gcs_path,
-            additional_experiments=additional_experiments,
-            autoscaling_algorithm=autoscaling_algorithm,
-            enable_streaming_engine=enable_streaming_engine,
-            ip_configuration=ip_configuration,
-            kms_key_name=kms_key_name,
-            labels=labels,
-            launcher_machine_type=launcher_machine_type,
-            machine_type=machine_type,
-            max_workers=max_workers,
-            name=name,
-            network=network,
-            num_workers=num_workers,
-            on_delete=on_delete,
-            parameters=parameters,
-            project=project,
-            region=region,
-            sdk_container_image=sdk_container_image,
-            service_account_email=service_account_email,
-            skip_wait_on_job_termination=skip_wait_on_job_termination,
-            staging_location=staging_location,
-            subnetwork=subnetwork,
-            temp_location=temp_location,
-            transform_name_mapping=transform_name_mapping,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             container_spec_gcs_path: Optional[pulumi.Input[str]] = None,
-             additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             autoscaling_algorithm: Optional[pulumi.Input[str]] = None,
-             enable_streaming_engine: Optional[pulumi.Input[bool]] = None,
-             ip_configuration: Optional[pulumi.Input[str]] = None,
-             kms_key_name: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             launcher_machine_type: Optional[pulumi.Input[str]] = None,
-             machine_type: Optional[pulumi.Input[str]] = None,
-             max_workers: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network: Optional[pulumi.Input[str]] = None,
-             num_workers: Optional[pulumi.Input[int]] = None,
-             on_delete: Optional[pulumi.Input[str]] = None,
-             parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             sdk_container_image: Optional[pulumi.Input[str]] = None,
-             service_account_email: Optional[pulumi.Input[str]] = None,
-             skip_wait_on_job_termination: Optional[pulumi.Input[bool]] = None,
-             staging_location: Optional[pulumi.Input[str]] = None,
-             subnetwork: Optional[pulumi.Input[str]] = None,
-             temp_location: Optional[pulumi.Input[str]] = None,
-             transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if container_spec_gcs_path is None and 'containerSpecGcsPath' in kwargs:
-            container_spec_gcs_path = kwargs['containerSpecGcsPath']
-        if container_spec_gcs_path is None:
-            raise TypeError("Missing 'container_spec_gcs_path' argument")
-        if additional_experiments is None and 'additionalExperiments' in kwargs:
-            additional_experiments = kwargs['additionalExperiments']
-        if autoscaling_algorithm is None and 'autoscalingAlgorithm' in kwargs:
-            autoscaling_algorithm = kwargs['autoscalingAlgorithm']
-        if enable_streaming_engine is None and 'enableStreamingEngine' in kwargs:
-            enable_streaming_engine = kwargs['enableStreamingEngine']
-        if ip_configuration is None and 'ipConfiguration' in kwargs:
-            ip_configuration = kwargs['ipConfiguration']
-        if kms_key_name is None and 'kmsKeyName' in kwargs:
-            kms_key_name = kwargs['kmsKeyName']
-        if launcher_machine_type is None and 'launcherMachineType' in kwargs:
-            launcher_machine_type = kwargs['launcherMachineType']
-        if machine_type is None and 'machineType' in kwargs:
-            machine_type = kwargs['machineType']
-        if max_workers is None and 'maxWorkers' in kwargs:
-            max_workers = kwargs['maxWorkers']
-        if num_workers is None and 'numWorkers' in kwargs:
-            num_workers = kwargs['numWorkers']
-        if on_delete is None and 'onDelete' in kwargs:
-            on_delete = kwargs['onDelete']
-        if sdk_container_image is None and 'sdkContainerImage' in kwargs:
-            sdk_container_image = kwargs['sdkContainerImage']
-        if service_account_email is None and 'serviceAccountEmail' in kwargs:
-            service_account_email = kwargs['serviceAccountEmail']
-        if skip_wait_on_job_termination is None and 'skipWaitOnJobTermination' in kwargs:
-            skip_wait_on_job_termination = kwargs['skipWaitOnJobTermination']
-        if staging_location is None and 'stagingLocation' in kwargs:
-            staging_location = kwargs['stagingLocation']
-        if temp_location is None and 'tempLocation' in kwargs:
-            temp_location = kwargs['tempLocation']
-        if transform_name_mapping is None and 'transformNameMapping' in kwargs:
-            transform_name_mapping = kwargs['transformNameMapping']
-
-        _setter("container_spec_gcs_path", container_spec_gcs_path)
+        pulumi.set(__self__, "container_spec_gcs_path", container_spec_gcs_path)
         if additional_experiments is not None:
-            _setter("additional_experiments", additional_experiments)
+            pulumi.set(__self__, "additional_experiments", additional_experiments)
         if autoscaling_algorithm is not None:
-            _setter("autoscaling_algorithm", autoscaling_algorithm)
+            pulumi.set(__self__, "autoscaling_algorithm", autoscaling_algorithm)
         if enable_streaming_engine is not None:
-            _setter("enable_streaming_engine", enable_streaming_engine)
+            pulumi.set(__self__, "enable_streaming_engine", enable_streaming_engine)
         if ip_configuration is not None:
-            _setter("ip_configuration", ip_configuration)
+            pulumi.set(__self__, "ip_configuration", ip_configuration)
         if kms_key_name is not None:
-            _setter("kms_key_name", kms_key_name)
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if launcher_machine_type is not None:
-            _setter("launcher_machine_type", launcher_machine_type)
+            pulumi.set(__self__, "launcher_machine_type", launcher_machine_type)
         if machine_type is not None:
-            _setter("machine_type", machine_type)
+            pulumi.set(__self__, "machine_type", machine_type)
         if max_workers is not None:
-            _setter("max_workers", max_workers)
+            pulumi.set(__self__, "max_workers", max_workers)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if num_workers is not None:
-            _setter("num_workers", num_workers)
+            pulumi.set(__self__, "num_workers", num_workers)
         if on_delete is not None:
-            _setter("on_delete", on_delete)
+            pulumi.set(__self__, "on_delete", on_delete)
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if sdk_container_image is not None:
-            _setter("sdk_container_image", sdk_container_image)
+            pulumi.set(__self__, "sdk_container_image", sdk_container_image)
         if service_account_email is not None:
-            _setter("service_account_email", service_account_email)
+            pulumi.set(__self__, "service_account_email", service_account_email)
         if skip_wait_on_job_termination is not None:
-            _setter("skip_wait_on_job_termination", skip_wait_on_job_termination)
+            pulumi.set(__self__, "skip_wait_on_job_termination", skip_wait_on_job_termination)
         if staging_location is not None:
-            _setter("staging_location", staging_location)
+            pulumi.set(__self__, "staging_location", staging_location)
         if subnetwork is not None:
-            _setter("subnetwork", subnetwork)
+            pulumi.set(__self__, "subnetwork", subnetwork)
         if temp_location is not None:
-            _setter("temp_location", temp_location)
+            pulumi.set(__self__, "temp_location", temp_location)
         if transform_name_mapping is not None:
-            _setter("transform_name_mapping", transform_name_mapping)
+            pulumi.set(__self__, "transform_name_mapping", transform_name_mapping)
 
     @property
     @pulumi.getter(name="containerSpecGcsPath")
@@ -612,159 +519,60 @@ class _FlexTemplateJobState:
                corresponding name prefixes of the new job.
         :param pulumi.Input[str] type: The type of this job, selected from the JobType enum.
         """
-        _FlexTemplateJobState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            additional_experiments=additional_experiments,
-            autoscaling_algorithm=autoscaling_algorithm,
-            container_spec_gcs_path=container_spec_gcs_path,
-            enable_streaming_engine=enable_streaming_engine,
-            ip_configuration=ip_configuration,
-            job_id=job_id,
-            kms_key_name=kms_key_name,
-            labels=labels,
-            launcher_machine_type=launcher_machine_type,
-            machine_type=machine_type,
-            max_workers=max_workers,
-            name=name,
-            network=network,
-            num_workers=num_workers,
-            on_delete=on_delete,
-            parameters=parameters,
-            project=project,
-            region=region,
-            sdk_container_image=sdk_container_image,
-            service_account_email=service_account_email,
-            skip_wait_on_job_termination=skip_wait_on_job_termination,
-            staging_location=staging_location,
-            state=state,
-            subnetwork=subnetwork,
-            temp_location=temp_location,
-            transform_name_mapping=transform_name_mapping,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             autoscaling_algorithm: Optional[pulumi.Input[str]] = None,
-             container_spec_gcs_path: Optional[pulumi.Input[str]] = None,
-             enable_streaming_engine: Optional[pulumi.Input[bool]] = None,
-             ip_configuration: Optional[pulumi.Input[str]] = None,
-             job_id: Optional[pulumi.Input[str]] = None,
-             kms_key_name: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             launcher_machine_type: Optional[pulumi.Input[str]] = None,
-             machine_type: Optional[pulumi.Input[str]] = None,
-             max_workers: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network: Optional[pulumi.Input[str]] = None,
-             num_workers: Optional[pulumi.Input[int]] = None,
-             on_delete: Optional[pulumi.Input[str]] = None,
-             parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             sdk_container_image: Optional[pulumi.Input[str]] = None,
-             service_account_email: Optional[pulumi.Input[str]] = None,
-             skip_wait_on_job_termination: Optional[pulumi.Input[bool]] = None,
-             staging_location: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             subnetwork: Optional[pulumi.Input[str]] = None,
-             temp_location: Optional[pulumi.Input[str]] = None,
-             transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if additional_experiments is None and 'additionalExperiments' in kwargs:
-            additional_experiments = kwargs['additionalExperiments']
-        if autoscaling_algorithm is None and 'autoscalingAlgorithm' in kwargs:
-            autoscaling_algorithm = kwargs['autoscalingAlgorithm']
-        if container_spec_gcs_path is None and 'containerSpecGcsPath' in kwargs:
-            container_spec_gcs_path = kwargs['containerSpecGcsPath']
-        if enable_streaming_engine is None and 'enableStreamingEngine' in kwargs:
-            enable_streaming_engine = kwargs['enableStreamingEngine']
-        if ip_configuration is None and 'ipConfiguration' in kwargs:
-            ip_configuration = kwargs['ipConfiguration']
-        if job_id is None and 'jobId' in kwargs:
-            job_id = kwargs['jobId']
-        if kms_key_name is None and 'kmsKeyName' in kwargs:
-            kms_key_name = kwargs['kmsKeyName']
-        if launcher_machine_type is None and 'launcherMachineType' in kwargs:
-            launcher_machine_type = kwargs['launcherMachineType']
-        if machine_type is None and 'machineType' in kwargs:
-            machine_type = kwargs['machineType']
-        if max_workers is None and 'maxWorkers' in kwargs:
-            max_workers = kwargs['maxWorkers']
-        if num_workers is None and 'numWorkers' in kwargs:
-            num_workers = kwargs['numWorkers']
-        if on_delete is None and 'onDelete' in kwargs:
-            on_delete = kwargs['onDelete']
-        if sdk_container_image is None and 'sdkContainerImage' in kwargs:
-            sdk_container_image = kwargs['sdkContainerImage']
-        if service_account_email is None and 'serviceAccountEmail' in kwargs:
-            service_account_email = kwargs['serviceAccountEmail']
-        if skip_wait_on_job_termination is None and 'skipWaitOnJobTermination' in kwargs:
-            skip_wait_on_job_termination = kwargs['skipWaitOnJobTermination']
-        if staging_location is None and 'stagingLocation' in kwargs:
-            staging_location = kwargs['stagingLocation']
-        if temp_location is None and 'tempLocation' in kwargs:
-            temp_location = kwargs['tempLocation']
-        if transform_name_mapping is None and 'transformNameMapping' in kwargs:
-            transform_name_mapping = kwargs['transformNameMapping']
-
         if additional_experiments is not None:
-            _setter("additional_experiments", additional_experiments)
+            pulumi.set(__self__, "additional_experiments", additional_experiments)
         if autoscaling_algorithm is not None:
-            _setter("autoscaling_algorithm", autoscaling_algorithm)
+            pulumi.set(__self__, "autoscaling_algorithm", autoscaling_algorithm)
         if container_spec_gcs_path is not None:
-            _setter("container_spec_gcs_path", container_spec_gcs_path)
+            pulumi.set(__self__, "container_spec_gcs_path", container_spec_gcs_path)
         if enable_streaming_engine is not None:
-            _setter("enable_streaming_engine", enable_streaming_engine)
+            pulumi.set(__self__, "enable_streaming_engine", enable_streaming_engine)
         if ip_configuration is not None:
-            _setter("ip_configuration", ip_configuration)
+            pulumi.set(__self__, "ip_configuration", ip_configuration)
         if job_id is not None:
-            _setter("job_id", job_id)
+            pulumi.set(__self__, "job_id", job_id)
         if kms_key_name is not None:
-            _setter("kms_key_name", kms_key_name)
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if launcher_machine_type is not None:
-            _setter("launcher_machine_type", launcher_machine_type)
+            pulumi.set(__self__, "launcher_machine_type", launcher_machine_type)
         if machine_type is not None:
-            _setter("machine_type", machine_type)
+            pulumi.set(__self__, "machine_type", machine_type)
         if max_workers is not None:
-            _setter("max_workers", max_workers)
+            pulumi.set(__self__, "max_workers", max_workers)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if num_workers is not None:
-            _setter("num_workers", num_workers)
+            pulumi.set(__self__, "num_workers", num_workers)
         if on_delete is not None:
-            _setter("on_delete", on_delete)
+            pulumi.set(__self__, "on_delete", on_delete)
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if sdk_container_image is not None:
-            _setter("sdk_container_image", sdk_container_image)
+            pulumi.set(__self__, "sdk_container_image", sdk_container_image)
         if service_account_email is not None:
-            _setter("service_account_email", service_account_email)
+            pulumi.set(__self__, "service_account_email", service_account_email)
         if skip_wait_on_job_termination is not None:
-            _setter("skip_wait_on_job_termination", skip_wait_on_job_termination)
+            pulumi.set(__self__, "skip_wait_on_job_termination", skip_wait_on_job_termination)
         if staging_location is not None:
-            _setter("staging_location", staging_location)
+            pulumi.set(__self__, "staging_location", staging_location)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if subnetwork is not None:
-            _setter("subnetwork", subnetwork)
+            pulumi.set(__self__, "subnetwork", subnetwork)
         if temp_location is not None:
-            _setter("temp_location", temp_location)
+            pulumi.set(__self__, "temp_location", temp_location)
         if transform_name_mapping is not None:
-            _setter("transform_name_mapping", transform_name_mapping)
+            pulumi.set(__self__, "transform_name_mapping", transform_name_mapping)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="additionalExperiments")
@@ -1346,10 +1154,6 @@ class FlexTemplateJob(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            FlexTemplateJobArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

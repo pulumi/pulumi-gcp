@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -28,26 +28,9 @@ class ServicePerimetersArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]] service_perimeters: The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
                Structure is documented below.
         """
-        ServicePerimetersArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            parent=parent,
-            service_perimeters=service_perimeters,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             parent: Optional[pulumi.Input[str]] = None,
-             service_perimeters: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if parent is None:
-            raise TypeError("Missing 'parent' argument")
-        if service_perimeters is None and 'servicePerimeters' in kwargs:
-            service_perimeters = kwargs['servicePerimeters']
-
-        _setter("parent", parent)
+        pulumi.set(__self__, "parent", parent)
         if service_perimeters is not None:
-            _setter("service_perimeters", service_perimeters)
+            pulumi.set(__self__, "service_perimeters", service_perimeters)
 
     @property
     @pulumi.getter
@@ -94,25 +77,10 @@ class _ServicePerimetersState:
         :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]] service_perimeters: The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
                Structure is documented below.
         """
-        _ServicePerimetersState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            parent=parent,
-            service_perimeters=service_perimeters,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             parent: Optional[pulumi.Input[str]] = None,
-             service_perimeters: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if service_perimeters is None and 'servicePerimeters' in kwargs:
-            service_perimeters = kwargs['servicePerimeters']
-
         if parent is not None:
-            _setter("parent", parent)
+            pulumi.set(__self__, "parent", parent)
         if service_perimeters is not None:
-            _setter("service_perimeters", service_perimeters)
+            pulumi.set(__self__, "service_perimeters", service_perimeters)
 
     @property
     @pulumi.getter
@@ -320,10 +288,6 @@ class ServicePerimeters(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ServicePerimetersArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

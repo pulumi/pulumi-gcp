@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -40,58 +40,19 @@ class GameServerConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GameServerConfigScalingConfigArgs']]] scaling_configs: Optional. This contains the autoscaling settings.
                Structure is documented below.
         """
-        GameServerConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            config_id=config_id,
-            deployment_id=deployment_id,
-            fleet_configs=fleet_configs,
-            description=description,
-            labels=labels,
-            location=location,
-            project=project,
-            scaling_configs=scaling_configs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             config_id: Optional[pulumi.Input[str]] = None,
-             deployment_id: Optional[pulumi.Input[str]] = None,
-             fleet_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GameServerConfigFleetConfigArgs']]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             scaling_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GameServerConfigScalingConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if config_id is None and 'configId' in kwargs:
-            config_id = kwargs['configId']
-        if config_id is None:
-            raise TypeError("Missing 'config_id' argument")
-        if deployment_id is None and 'deploymentId' in kwargs:
-            deployment_id = kwargs['deploymentId']
-        if deployment_id is None:
-            raise TypeError("Missing 'deployment_id' argument")
-        if fleet_configs is None and 'fleetConfigs' in kwargs:
-            fleet_configs = kwargs['fleetConfigs']
-        if fleet_configs is None:
-            raise TypeError("Missing 'fleet_configs' argument")
-        if scaling_configs is None and 'scalingConfigs' in kwargs:
-            scaling_configs = kwargs['scalingConfigs']
-
-        _setter("config_id", config_id)
-        _setter("deployment_id", deployment_id)
-        _setter("fleet_configs", fleet_configs)
+        pulumi.set(__self__, "config_id", config_id)
+        pulumi.set(__self__, "deployment_id", deployment_id)
+        pulumi.set(__self__, "fleet_configs", fleet_configs)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if scaling_configs is not None:
-            _setter("scaling_configs", scaling_configs)
+            pulumi.set(__self__, "scaling_configs", scaling_configs)
 
     @property
     @pulumi.getter(name="configId")
@@ -226,59 +187,24 @@ class _GameServerConfigState:
         :param pulumi.Input[Sequence[pulumi.Input['GameServerConfigScalingConfigArgs']]] scaling_configs: Optional. This contains the autoscaling settings.
                Structure is documented below.
         """
-        _GameServerConfigState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            config_id=config_id,
-            deployment_id=deployment_id,
-            description=description,
-            fleet_configs=fleet_configs,
-            labels=labels,
-            location=location,
-            name=name,
-            project=project,
-            scaling_configs=scaling_configs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             config_id: Optional[pulumi.Input[str]] = None,
-             deployment_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             fleet_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GameServerConfigFleetConfigArgs']]]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             scaling_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GameServerConfigScalingConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if config_id is None and 'configId' in kwargs:
-            config_id = kwargs['configId']
-        if deployment_id is None and 'deploymentId' in kwargs:
-            deployment_id = kwargs['deploymentId']
-        if fleet_configs is None and 'fleetConfigs' in kwargs:
-            fleet_configs = kwargs['fleetConfigs']
-        if scaling_configs is None and 'scalingConfigs' in kwargs:
-            scaling_configs = kwargs['scalingConfigs']
-
         if config_id is not None:
-            _setter("config_id", config_id)
+            pulumi.set(__self__, "config_id", config_id)
         if deployment_id is not None:
-            _setter("deployment_id", deployment_id)
+            pulumi.set(__self__, "deployment_id", deployment_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if fleet_configs is not None:
-            _setter("fleet_configs", fleet_configs)
+            pulumi.set(__self__, "fleet_configs", fleet_configs)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if scaling_configs is not None:
-            _setter("scaling_configs", scaling_configs)
+            pulumi.set(__self__, "scaling_configs", scaling_configs)
 
     @property
     @pulumi.getter(name="configId")
@@ -630,10 +556,6 @@ class GameServerConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            GameServerConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

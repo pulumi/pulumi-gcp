@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SubscriptionIAMPolicyArgs', 'SubscriptionIAMPolicy']
@@ -36,31 +36,10 @@ class SubscriptionIAMPolicyArgs:
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
         """
-        SubscriptionIAMPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            policy_data=policy_data,
-            subscription=subscription,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             policy_data: Optional[pulumi.Input[str]] = None,
-             subscription: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if policy_data is None and 'policyData' in kwargs:
-            policy_data = kwargs['policyData']
-        if policy_data is None:
-            raise TypeError("Missing 'policy_data' argument")
-        if subscription is None:
-            raise TypeError("Missing 'subscription' argument")
-
-        _setter("policy_data", policy_data)
-        _setter("subscription", subscription)
+        pulumi.set(__self__, "policy_data", policy_data)
+        pulumi.set(__self__, "subscription", subscription)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="policyData")
@@ -139,33 +118,14 @@ class _SubscriptionIAMPolicyState:
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
-        _SubscriptionIAMPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            etag=etag,
-            policy_data=policy_data,
-            project=project,
-            subscription=subscription,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             etag: Optional[pulumi.Input[str]] = None,
-             policy_data: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             subscription: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if policy_data is None and 'policyData' in kwargs:
-            policy_data = kwargs['policyData']
-
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if policy_data is not None:
-            _setter("policy_data", policy_data)
+            pulumi.set(__self__, "policy_data", policy_data)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if subscription is not None:
-            _setter("subscription", subscription)
+            pulumi.set(__self__, "subscription", subscription)
 
     @property
     @pulumi.getter
@@ -413,10 +373,6 @@ class SubscriptionIAMPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SubscriptionIAMPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

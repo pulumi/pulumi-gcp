@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -53,85 +53,26 @@ class CxAgentArgs:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] supported_language_codes: The list of all languages supported by this agent (except for the default_language_code).
         """
-        CxAgentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            default_language_code=default_language_code,
-            display_name=display_name,
-            location=location,
-            time_zone=time_zone,
-            avatar_uri=avatar_uri,
-            description=description,
-            enable_spell_correction=enable_spell_correction,
-            enable_stackdriver_logging=enable_stackdriver_logging,
-            project=project,
-            security_settings=security_settings,
-            speech_to_text_settings=speech_to_text_settings,
-            supported_language_codes=supported_language_codes,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             default_language_code: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             time_zone: Optional[pulumi.Input[str]] = None,
-             avatar_uri: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             enable_spell_correction: Optional[pulumi.Input[bool]] = None,
-             enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             security_settings: Optional[pulumi.Input[str]] = None,
-             speech_to_text_settings: Optional[pulumi.Input['CxAgentSpeechToTextSettingsArgs']] = None,
-             supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if default_language_code is None and 'defaultLanguageCode' in kwargs:
-            default_language_code = kwargs['defaultLanguageCode']
-        if default_language_code is None:
-            raise TypeError("Missing 'default_language_code' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if time_zone is None and 'timeZone' in kwargs:
-            time_zone = kwargs['timeZone']
-        if time_zone is None:
-            raise TypeError("Missing 'time_zone' argument")
-        if avatar_uri is None and 'avatarUri' in kwargs:
-            avatar_uri = kwargs['avatarUri']
-        if enable_spell_correction is None and 'enableSpellCorrection' in kwargs:
-            enable_spell_correction = kwargs['enableSpellCorrection']
-        if enable_stackdriver_logging is None and 'enableStackdriverLogging' in kwargs:
-            enable_stackdriver_logging = kwargs['enableStackdriverLogging']
-        if security_settings is None and 'securitySettings' in kwargs:
-            security_settings = kwargs['securitySettings']
-        if speech_to_text_settings is None and 'speechToTextSettings' in kwargs:
-            speech_to_text_settings = kwargs['speechToTextSettings']
-        if supported_language_codes is None and 'supportedLanguageCodes' in kwargs:
-            supported_language_codes = kwargs['supportedLanguageCodes']
-
-        _setter("default_language_code", default_language_code)
-        _setter("display_name", display_name)
-        _setter("location", location)
-        _setter("time_zone", time_zone)
+        pulumi.set(__self__, "default_language_code", default_language_code)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "time_zone", time_zone)
         if avatar_uri is not None:
-            _setter("avatar_uri", avatar_uri)
+            pulumi.set(__self__, "avatar_uri", avatar_uri)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if enable_spell_correction is not None:
-            _setter("enable_spell_correction", enable_spell_correction)
+            pulumi.set(__self__, "enable_spell_correction", enable_spell_correction)
         if enable_stackdriver_logging is not None:
-            _setter("enable_stackdriver_logging", enable_stackdriver_logging)
+            pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if security_settings is not None:
-            _setter("security_settings", security_settings)
+            pulumi.set(__self__, "security_settings", security_settings)
         if speech_to_text_settings is not None:
-            _setter("speech_to_text_settings", speech_to_text_settings)
+            pulumi.set(__self__, "speech_to_text_settings", speech_to_text_settings)
         if supported_language_codes is not None:
-            _setter("supported_language_codes", supported_language_codes)
+            pulumi.set(__self__, "supported_language_codes", supported_language_codes)
 
     @property
     @pulumi.getter(name="defaultLanguageCode")
@@ -332,91 +273,34 @@ class _CxAgentState:
                
                - - -
         """
-        _CxAgentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            avatar_uri=avatar_uri,
-            default_language_code=default_language_code,
-            description=description,
-            display_name=display_name,
-            enable_spell_correction=enable_spell_correction,
-            enable_stackdriver_logging=enable_stackdriver_logging,
-            location=location,
-            name=name,
-            project=project,
-            security_settings=security_settings,
-            speech_to_text_settings=speech_to_text_settings,
-            start_flow=start_flow,
-            supported_language_codes=supported_language_codes,
-            time_zone=time_zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             avatar_uri: Optional[pulumi.Input[str]] = None,
-             default_language_code: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             enable_spell_correction: Optional[pulumi.Input[bool]] = None,
-             enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             security_settings: Optional[pulumi.Input[str]] = None,
-             speech_to_text_settings: Optional[pulumi.Input['CxAgentSpeechToTextSettingsArgs']] = None,
-             start_flow: Optional[pulumi.Input[str]] = None,
-             supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if avatar_uri is None and 'avatarUri' in kwargs:
-            avatar_uri = kwargs['avatarUri']
-        if default_language_code is None and 'defaultLanguageCode' in kwargs:
-            default_language_code = kwargs['defaultLanguageCode']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if enable_spell_correction is None and 'enableSpellCorrection' in kwargs:
-            enable_spell_correction = kwargs['enableSpellCorrection']
-        if enable_stackdriver_logging is None and 'enableStackdriverLogging' in kwargs:
-            enable_stackdriver_logging = kwargs['enableStackdriverLogging']
-        if security_settings is None and 'securitySettings' in kwargs:
-            security_settings = kwargs['securitySettings']
-        if speech_to_text_settings is None and 'speechToTextSettings' in kwargs:
-            speech_to_text_settings = kwargs['speechToTextSettings']
-        if start_flow is None and 'startFlow' in kwargs:
-            start_flow = kwargs['startFlow']
-        if supported_language_codes is None and 'supportedLanguageCodes' in kwargs:
-            supported_language_codes = kwargs['supportedLanguageCodes']
-        if time_zone is None and 'timeZone' in kwargs:
-            time_zone = kwargs['timeZone']
-
         if avatar_uri is not None:
-            _setter("avatar_uri", avatar_uri)
+            pulumi.set(__self__, "avatar_uri", avatar_uri)
         if default_language_code is not None:
-            _setter("default_language_code", default_language_code)
+            pulumi.set(__self__, "default_language_code", default_language_code)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if enable_spell_correction is not None:
-            _setter("enable_spell_correction", enable_spell_correction)
+            pulumi.set(__self__, "enable_spell_correction", enable_spell_correction)
         if enable_stackdriver_logging is not None:
-            _setter("enable_stackdriver_logging", enable_stackdriver_logging)
+            pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if security_settings is not None:
-            _setter("security_settings", security_settings)
+            pulumi.set(__self__, "security_settings", security_settings)
         if speech_to_text_settings is not None:
-            _setter("speech_to_text_settings", speech_to_text_settings)
+            pulumi.set(__self__, "speech_to_text_settings", speech_to_text_settings)
         if start_flow is not None:
-            _setter("start_flow", start_flow)
+            pulumi.set(__self__, "start_flow", start_flow)
         if supported_language_codes is not None:
-            _setter("supported_language_codes", supported_language_codes)
+            pulumi.set(__self__, "supported_language_codes", supported_language_codes)
         if time_zone is not None:
-            _setter("time_zone", time_zone)
+            pulumi.set(__self__, "time_zone", time_zone)
 
     @property
     @pulumi.getter(name="avatarUri")
@@ -758,10 +642,6 @@ class CxAgent(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CxAgentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -803,7 +683,6 @@ class CxAgent(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["security_settings"] = security_settings
-            speech_to_text_settings = _utilities.configure(speech_to_text_settings, CxAgentSpeechToTextSettingsArgs, True)
             __props__.__dict__["speech_to_text_settings"] = speech_to_text_settings
             __props__.__dict__["supported_language_codes"] = supported_language_codes
             if time_zone is None and not opts.urn:

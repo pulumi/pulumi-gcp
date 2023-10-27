@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -26,19 +26,8 @@ __all__ = [
 class HubRoutingVpcArgs:
     def __init__(__self__, *,
                  uri: Optional[pulumi.Input[str]] = None):
-        HubRoutingVpcArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            uri=uri,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             uri: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if uri is not None:
-            _setter("uri", uri)
+            pulumi.set(__self__, "uri", uri)
 
     @property
     @pulumi.getter
@@ -59,24 +48,9 @@ class ServiceConnectionPolicyPscConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnetworks: IDs of the subnetworks or fully qualified identifiers for the subnetworks
         :param pulumi.Input[str] limit: Max number of PSC connections for this policy.
         """
-        ServiceConnectionPolicyPscConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            subnetworks=subnetworks,
-            limit=limit,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             limit: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if subnetworks is None:
-            raise TypeError("Missing 'subnetworks' argument")
-
-        _setter("subnetworks", subnetworks)
+        pulumi.set(__self__, "subnetworks", subnetworks)
         if limit is not None:
-            _setter("limit", limit)
+            pulumi.set(__self__, "limit", limit)
 
     @property
     @pulumi.getter
@@ -131,65 +105,24 @@ class ServiceConnectionPolicyPscConnectionArgs:
         :param pulumi.Input[str] state: The state of the PSC connection.
                Possible values are: `STATE_UNSPECIFIED`, `ACTIVE`, `CREATING`, `DELETING`, `FAILED`.
         """
-        ServiceConnectionPolicyPscConnectionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            consumer_address=consumer_address,
-            consumer_forwarding_rule=consumer_forwarding_rule,
-            consumer_target_project=consumer_target_project,
-            error=error,
-            error_info=error_info,
-            error_type=error_type,
-            gce_operation=gce_operation,
-            psc_connection_id=psc_connection_id,
-            state=state,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             consumer_address: Optional[pulumi.Input[str]] = None,
-             consumer_forwarding_rule: Optional[pulumi.Input[str]] = None,
-             consumer_target_project: Optional[pulumi.Input[str]] = None,
-             error: Optional[pulumi.Input['ServiceConnectionPolicyPscConnectionErrorArgs']] = None,
-             error_info: Optional[pulumi.Input['ServiceConnectionPolicyPscConnectionErrorInfoArgs']] = None,
-             error_type: Optional[pulumi.Input[str]] = None,
-             gce_operation: Optional[pulumi.Input[str]] = None,
-             psc_connection_id: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if consumer_address is None and 'consumerAddress' in kwargs:
-            consumer_address = kwargs['consumerAddress']
-        if consumer_forwarding_rule is None and 'consumerForwardingRule' in kwargs:
-            consumer_forwarding_rule = kwargs['consumerForwardingRule']
-        if consumer_target_project is None and 'consumerTargetProject' in kwargs:
-            consumer_target_project = kwargs['consumerTargetProject']
-        if error_info is None and 'errorInfo' in kwargs:
-            error_info = kwargs['errorInfo']
-        if error_type is None and 'errorType' in kwargs:
-            error_type = kwargs['errorType']
-        if gce_operation is None and 'gceOperation' in kwargs:
-            gce_operation = kwargs['gceOperation']
-        if psc_connection_id is None and 'pscConnectionId' in kwargs:
-            psc_connection_id = kwargs['pscConnectionId']
-
         if consumer_address is not None:
-            _setter("consumer_address", consumer_address)
+            pulumi.set(__self__, "consumer_address", consumer_address)
         if consumer_forwarding_rule is not None:
-            _setter("consumer_forwarding_rule", consumer_forwarding_rule)
+            pulumi.set(__self__, "consumer_forwarding_rule", consumer_forwarding_rule)
         if consumer_target_project is not None:
-            _setter("consumer_target_project", consumer_target_project)
+            pulumi.set(__self__, "consumer_target_project", consumer_target_project)
         if error is not None:
-            _setter("error", error)
+            pulumi.set(__self__, "error", error)
         if error_info is not None:
-            _setter("error_info", error_info)
+            pulumi.set(__self__, "error_info", error_info)
         if error_type is not None:
-            _setter("error_type", error_type)
+            pulumi.set(__self__, "error_type", error_type)
         if gce_operation is not None:
-            _setter("gce_operation", gce_operation)
+            pulumi.set(__self__, "gce_operation", gce_operation)
         if psc_connection_id is not None:
-            _setter("psc_connection_id", psc_connection_id)
+            pulumi.set(__self__, "psc_connection_id", psc_connection_id)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter(name="consumerAddress")
@@ -317,27 +250,12 @@ class ServiceConnectionPolicyPscConnectionErrorArgs:
                A list of messages that carry the error details.
         :param pulumi.Input[str] message: A developer-facing error message.
         """
-        ServiceConnectionPolicyPscConnectionErrorArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            code=code,
-            details=details,
-            message=message,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             code: Optional[pulumi.Input[int]] = None,
-             details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
-             message: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if code is not None:
-            _setter("code", code)
+            pulumi.set(__self__, "code", code)
         if details is not None:
-            _setter("details", details)
+            pulumi.set(__self__, "details", details)
         if message is not None:
-            _setter("message", message)
+            pulumi.set(__self__, "message", message)
 
     @property
     @pulumi.getter
@@ -388,27 +306,12 @@ class ServiceConnectionPolicyPscConnectionErrorInfoArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Additional structured details about this error.
         :param pulumi.Input[str] reason: The reason of the error.
         """
-        ServiceConnectionPolicyPscConnectionErrorInfoArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            domain=domain,
-            metadata=metadata,
-            reason=reason,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             domain: Optional[pulumi.Input[str]] = None,
-             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             reason: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if domain is not None:
-            _setter("domain", domain)
+            pulumi.set(__self__, "domain", domain)
         if metadata is not None:
-            _setter("metadata", metadata)
+            pulumi.set(__self__, "metadata", metadata)
         if reason is not None:
-            _setter("reason", reason)
+            pulumi.set(__self__, "reason", reason)
 
     @property
     @pulumi.getter
@@ -456,27 +359,8 @@ class SpokeLinkedInterconnectAttachmentsArgs:
         :param pulumi.Input[bool] site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] uris: The URIs of linked interconnect attachment resources
         """
-        SpokeLinkedInterconnectAttachmentsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            site_to_site_data_transfer=site_to_site_data_transfer,
-            uris=uris,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             site_to_site_data_transfer: Optional[pulumi.Input[bool]] = None,
-             uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if site_to_site_data_transfer is None and 'siteToSiteDataTransfer' in kwargs:
-            site_to_site_data_transfer = kwargs['siteToSiteDataTransfer']
-        if site_to_site_data_transfer is None:
-            raise TypeError("Missing 'site_to_site_data_transfer' argument")
-        if uris is None:
-            raise TypeError("Missing 'uris' argument")
-
-        _setter("site_to_site_data_transfer", site_to_site_data_transfer)
-        _setter("uris", uris)
+        pulumi.set(__self__, "site_to_site_data_transfer", site_to_site_data_transfer)
+        pulumi.set(__self__, "uris", uris)
 
     @property
     @pulumi.getter(name="siteToSiteDataTransfer")
@@ -512,27 +396,8 @@ class SpokeLinkedRouterApplianceInstancesArgs:
         :param pulumi.Input[Sequence[pulumi.Input['SpokeLinkedRouterApplianceInstancesInstanceArgs']]] instances: The list of router appliance instances
         :param pulumi.Input[bool] site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
         """
-        SpokeLinkedRouterApplianceInstancesArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instances=instances,
-            site_to_site_data_transfer=site_to_site_data_transfer,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instances: Optional[pulumi.Input[Sequence[pulumi.Input['SpokeLinkedRouterApplianceInstancesInstanceArgs']]]] = None,
-             site_to_site_data_transfer: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instances is None:
-            raise TypeError("Missing 'instances' argument")
-        if site_to_site_data_transfer is None and 'siteToSiteDataTransfer' in kwargs:
-            site_to_site_data_transfer = kwargs['siteToSiteDataTransfer']
-        if site_to_site_data_transfer is None:
-            raise TypeError("Missing 'site_to_site_data_transfer' argument")
-
-        _setter("instances", instances)
-        _setter("site_to_site_data_transfer", site_to_site_data_transfer)
+        pulumi.set(__self__, "instances", instances)
+        pulumi.set(__self__, "site_to_site_data_transfer", site_to_site_data_transfer)
 
     @property
     @pulumi.getter
@@ -570,27 +435,10 @@ class SpokeLinkedRouterApplianceInstancesInstanceArgs:
                
                - - -
         """
-        SpokeLinkedRouterApplianceInstancesInstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ip_address=ip_address,
-            virtual_machine=virtual_machine,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ip_address: Optional[pulumi.Input[str]] = None,
-             virtual_machine: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ip_address is None and 'ipAddress' in kwargs:
-            ip_address = kwargs['ipAddress']
-        if virtual_machine is None and 'virtualMachine' in kwargs:
-            virtual_machine = kwargs['virtualMachine']
-
         if ip_address is not None:
-            _setter("ip_address", ip_address)
+            pulumi.set(__self__, "ip_address", ip_address)
         if virtual_machine is not None:
-            _setter("virtual_machine", virtual_machine)
+            pulumi.set(__self__, "virtual_machine", virtual_machine)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -628,26 +476,9 @@ class SpokeLinkedVpcNetworkArgs:
         :param pulumi.Input[str] uri: The URI of the VPC network resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_export_ranges: IP ranges encompassing the subnets to be excluded from peering.
         """
-        SpokeLinkedVpcNetworkArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            uri=uri,
-            exclude_export_ranges=exclude_export_ranges,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             uri: Optional[pulumi.Input[str]] = None,
-             exclude_export_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if uri is None:
-            raise TypeError("Missing 'uri' argument")
-        if exclude_export_ranges is None and 'excludeExportRanges' in kwargs:
-            exclude_export_ranges = kwargs['excludeExportRanges']
-
-        _setter("uri", uri)
+        pulumi.set(__self__, "uri", uri)
         if exclude_export_ranges is not None:
-            _setter("exclude_export_ranges", exclude_export_ranges)
+            pulumi.set(__self__, "exclude_export_ranges", exclude_export_ranges)
 
     @property
     @pulumi.getter
@@ -683,27 +514,8 @@ class SpokeLinkedVpnTunnelsArgs:
         :param pulumi.Input[bool] site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] uris: The URIs of linked VPN tunnel resources.
         """
-        SpokeLinkedVpnTunnelsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            site_to_site_data_transfer=site_to_site_data_transfer,
-            uris=uris,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             site_to_site_data_transfer: Optional[pulumi.Input[bool]] = None,
-             uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if site_to_site_data_transfer is None and 'siteToSiteDataTransfer' in kwargs:
-            site_to_site_data_transfer = kwargs['siteToSiteDataTransfer']
-        if site_to_site_data_transfer is None:
-            raise TypeError("Missing 'site_to_site_data_transfer' argument")
-        if uris is None:
-            raise TypeError("Missing 'uris' argument")
-
-        _setter("site_to_site_data_transfer", site_to_site_data_transfer)
-        _setter("uris", uris)
+        pulumi.set(__self__, "site_to_site_data_transfer", site_to_site_data_transfer)
+        pulumi.set(__self__, "uris", uris)
 
     @property
     @pulumi.getter(name="siteToSiteDataTransfer")

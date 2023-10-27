@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,42 +31,15 @@ class FeatureMembershipArgs:
         :param pulumi.Input['FeatureMembershipMeshArgs'] mesh: Service mesh specific spec. Structure is documented below.
         :param pulumi.Input[str] project: The project of the feature
         """
-        FeatureMembershipArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            feature=feature,
-            location=location,
-            membership=membership,
-            configmanagement=configmanagement,
-            mesh=mesh,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             feature: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             membership: Optional[pulumi.Input[str]] = None,
-             configmanagement: Optional[pulumi.Input['FeatureMembershipConfigmanagementArgs']] = None,
-             mesh: Optional[pulumi.Input['FeatureMembershipMeshArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if feature is None:
-            raise TypeError("Missing 'feature' argument")
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if membership is None:
-            raise TypeError("Missing 'membership' argument")
-
-        _setter("feature", feature)
-        _setter("location", location)
-        _setter("membership", membership)
+        pulumi.set(__self__, "feature", feature)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "membership", membership)
         if configmanagement is not None:
-            _setter("configmanagement", configmanagement)
+            pulumi.set(__self__, "configmanagement", configmanagement)
         if mesh is not None:
-            _setter("mesh", mesh)
+            pulumi.set(__self__, "mesh", mesh)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -159,39 +132,18 @@ class _FeatureMembershipState:
         :param pulumi.Input['FeatureMembershipMeshArgs'] mesh: Service mesh specific spec. Structure is documented below.
         :param pulumi.Input[str] project: The project of the feature
         """
-        _FeatureMembershipState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            configmanagement=configmanagement,
-            feature=feature,
-            location=location,
-            membership=membership,
-            mesh=mesh,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             configmanagement: Optional[pulumi.Input['FeatureMembershipConfigmanagementArgs']] = None,
-             feature: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             membership: Optional[pulumi.Input[str]] = None,
-             mesh: Optional[pulumi.Input['FeatureMembershipMeshArgs']] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if configmanagement is not None:
-            _setter("configmanagement", configmanagement)
+            pulumi.set(__self__, "configmanagement", configmanagement)
         if feature is not None:
-            _setter("feature", feature)
+            pulumi.set(__self__, "feature", feature)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if membership is not None:
-            _setter("membership", membership)
+            pulumi.set(__self__, "membership", membership)
         if mesh is not None:
-            _setter("mesh", mesh)
+            pulumi.set(__self__, "mesh", mesh)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -585,10 +537,6 @@ class FeatureMembership(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            FeatureMembershipArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -609,7 +557,6 @@ class FeatureMembership(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FeatureMembershipArgs.__new__(FeatureMembershipArgs)
 
-            configmanagement = _utilities.configure(configmanagement, FeatureMembershipConfigmanagementArgs, True)
             __props__.__dict__["configmanagement"] = configmanagement
             if feature is None and not opts.urn:
                 raise TypeError("Missing required property 'feature'")
@@ -620,7 +567,6 @@ class FeatureMembership(pulumi.CustomResource):
             if membership is None and not opts.urn:
                 raise TypeError("Missing required property 'membership'")
             __props__.__dict__["membership"] = membership
-            mesh = _utilities.configure(mesh, FeatureMembershipMeshArgs, True)
             __props__.__dict__["mesh"] = mesh
             __props__.__dict__["project"] = project
         super(FeatureMembership, __self__).__init__(

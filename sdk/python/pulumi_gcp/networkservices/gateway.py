@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['GatewayArgs', 'Gateway']
@@ -69,85 +69,34 @@ class GatewayArgs:
                For example: `projects/*/regions/us-central1/subnetworks/network-1`.
                Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
         """
-        GatewayArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ports=ports,
-            type=type,
-            addresses=addresses,
-            certificate_urls=certificate_urls,
-            delete_swg_autogen_router_on_destroy=delete_swg_autogen_router_on_destroy,
-            description=description,
-            gateway_security_policy=gateway_security_policy,
-            labels=labels,
-            location=location,
-            name=name,
-            network=network,
-            project=project,
-            scope=scope,
-            server_tls_policy=server_tls_policy,
-            subnetwork=subnetwork,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             delete_swg_autogen_router_on_destroy: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             gateway_security_policy: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             scope: Optional[pulumi.Input[str]] = None,
-             server_tls_policy: Optional[pulumi.Input[str]] = None,
-             subnetwork: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ports is None:
-            raise TypeError("Missing 'ports' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if certificate_urls is None and 'certificateUrls' in kwargs:
-            certificate_urls = kwargs['certificateUrls']
-        if delete_swg_autogen_router_on_destroy is None and 'deleteSwgAutogenRouterOnDestroy' in kwargs:
-            delete_swg_autogen_router_on_destroy = kwargs['deleteSwgAutogenRouterOnDestroy']
-        if gateway_security_policy is None and 'gatewaySecurityPolicy' in kwargs:
-            gateway_security_policy = kwargs['gatewaySecurityPolicy']
-        if server_tls_policy is None and 'serverTlsPolicy' in kwargs:
-            server_tls_policy = kwargs['serverTlsPolicy']
-
-        _setter("ports", ports)
-        _setter("type", type)
+        pulumi.set(__self__, "ports", ports)
+        pulumi.set(__self__, "type", type)
         if addresses is not None:
-            _setter("addresses", addresses)
+            pulumi.set(__self__, "addresses", addresses)
         if certificate_urls is not None:
-            _setter("certificate_urls", certificate_urls)
+            pulumi.set(__self__, "certificate_urls", certificate_urls)
         if delete_swg_autogen_router_on_destroy is not None:
-            _setter("delete_swg_autogen_router_on_destroy", delete_swg_autogen_router_on_destroy)
+            pulumi.set(__self__, "delete_swg_autogen_router_on_destroy", delete_swg_autogen_router_on_destroy)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if gateway_security_policy is not None:
-            _setter("gateway_security_policy", gateway_security_policy)
+            pulumi.set(__self__, "gateway_security_policy", gateway_security_policy)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if scope is not None:
-            _setter("scope", scope)
+            pulumi.set(__self__, "scope", scope)
         if server_tls_policy is not None:
-            _setter("server_tls_policy", server_tls_policy)
+            pulumi.set(__self__, "server_tls_policy", server_tls_policy)
         if subnetwork is not None:
-            _setter("subnetwork", subnetwork)
+            pulumi.set(__self__, "subnetwork", subnetwork)
 
     @property
     @pulumi.getter
@@ -416,101 +365,42 @@ class _GatewayState:
                Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
         :param pulumi.Input[str] update_time: Time the AccessPolicy was updated in UTC.
         """
-        _GatewayState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            addresses=addresses,
-            certificate_urls=certificate_urls,
-            create_time=create_time,
-            delete_swg_autogen_router_on_destroy=delete_swg_autogen_router_on_destroy,
-            description=description,
-            gateway_security_policy=gateway_security_policy,
-            labels=labels,
-            location=location,
-            name=name,
-            network=network,
-            ports=ports,
-            project=project,
-            scope=scope,
-            self_link=self_link,
-            server_tls_policy=server_tls_policy,
-            subnetwork=subnetwork,
-            type=type,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             delete_swg_autogen_router_on_destroy: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             gateway_security_policy: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network: Optional[pulumi.Input[str]] = None,
-             ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             scope: Optional[pulumi.Input[str]] = None,
-             self_link: Optional[pulumi.Input[str]] = None,
-             server_tls_policy: Optional[pulumi.Input[str]] = None,
-             subnetwork: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if certificate_urls is None and 'certificateUrls' in kwargs:
-            certificate_urls = kwargs['certificateUrls']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if delete_swg_autogen_router_on_destroy is None and 'deleteSwgAutogenRouterOnDestroy' in kwargs:
-            delete_swg_autogen_router_on_destroy = kwargs['deleteSwgAutogenRouterOnDestroy']
-        if gateway_security_policy is None and 'gatewaySecurityPolicy' in kwargs:
-            gateway_security_policy = kwargs['gatewaySecurityPolicy']
-        if self_link is None and 'selfLink' in kwargs:
-            self_link = kwargs['selfLink']
-        if server_tls_policy is None and 'serverTlsPolicy' in kwargs:
-            server_tls_policy = kwargs['serverTlsPolicy']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if addresses is not None:
-            _setter("addresses", addresses)
+            pulumi.set(__self__, "addresses", addresses)
         if certificate_urls is not None:
-            _setter("certificate_urls", certificate_urls)
+            pulumi.set(__self__, "certificate_urls", certificate_urls)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if delete_swg_autogen_router_on_destroy is not None:
-            _setter("delete_swg_autogen_router_on_destroy", delete_swg_autogen_router_on_destroy)
+            pulumi.set(__self__, "delete_swg_autogen_router_on_destroy", delete_swg_autogen_router_on_destroy)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if gateway_security_policy is not None:
-            _setter("gateway_security_policy", gateway_security_policy)
+            pulumi.set(__self__, "gateway_security_policy", gateway_security_policy)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if ports is not None:
-            _setter("ports", ports)
+            pulumi.set(__self__, "ports", ports)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if scope is not None:
-            _setter("scope", scope)
+            pulumi.set(__self__, "scope", scope)
         if self_link is not None:
-            _setter("self_link", self_link)
+            pulumi.set(__self__, "self_link", self_link)
         if server_tls_policy is not None:
-            _setter("server_tls_policy", server_tls_policy)
+            pulumi.set(__self__, "server_tls_policy", server_tls_policy)
         if subnetwork is not None:
-            _setter("subnetwork", subnetwork)
+            pulumi.set(__self__, "subnetwork", subnetwork)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter
@@ -1152,10 +1042,6 @@ class Gateway(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            GatewayArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,48 +33,15 @@ class OrganizationBucketConfigArgs:
         :param pulumi.Input[str] description: Describes this bucket.
         :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
         """
-        OrganizationBucketConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket_id=bucket_id,
-            location=location,
-            organization=organization,
-            cmek_settings=cmek_settings,
-            description=description,
-            retention_days=retention_days,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket_id: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             organization: Optional[pulumi.Input[str]] = None,
-             cmek_settings: Optional[pulumi.Input['OrganizationBucketConfigCmekSettingsArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             retention_days: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket_id is None and 'bucketId' in kwargs:
-            bucket_id = kwargs['bucketId']
-        if bucket_id is None:
-            raise TypeError("Missing 'bucket_id' argument")
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if organization is None:
-            raise TypeError("Missing 'organization' argument")
-        if cmek_settings is None and 'cmekSettings' in kwargs:
-            cmek_settings = kwargs['cmekSettings']
-        if retention_days is None and 'retentionDays' in kwargs:
-            retention_days = kwargs['retentionDays']
-
-        _setter("bucket_id", bucket_id)
-        _setter("location", location)
-        _setter("organization", organization)
+        pulumi.set(__self__, "bucket_id", bucket_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "organization", organization)
         if cmek_settings is not None:
-            _setter("cmek_settings", cmek_settings)
+            pulumi.set(__self__, "cmek_settings", cmek_settings)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if retention_days is not None:
-            _setter("retention_days", retention_days)
+            pulumi.set(__self__, "retention_days", retention_days)
 
     @property
     @pulumi.getter(name="bucketId")
@@ -175,55 +142,22 @@ class _OrganizationBucketConfigState:
         :param pulumi.Input[str] organization: The parent resource that contains the logging bucket.
         :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
         """
-        _OrganizationBucketConfigState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket_id=bucket_id,
-            cmek_settings=cmek_settings,
-            description=description,
-            lifecycle_state=lifecycle_state,
-            location=location,
-            name=name,
-            organization=organization,
-            retention_days=retention_days,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket_id: Optional[pulumi.Input[str]] = None,
-             cmek_settings: Optional[pulumi.Input['OrganizationBucketConfigCmekSettingsArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             lifecycle_state: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             organization: Optional[pulumi.Input[str]] = None,
-             retention_days: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket_id is None and 'bucketId' in kwargs:
-            bucket_id = kwargs['bucketId']
-        if cmek_settings is None and 'cmekSettings' in kwargs:
-            cmek_settings = kwargs['cmekSettings']
-        if lifecycle_state is None and 'lifecycleState' in kwargs:
-            lifecycle_state = kwargs['lifecycleState']
-        if retention_days is None and 'retentionDays' in kwargs:
-            retention_days = kwargs['retentionDays']
-
         if bucket_id is not None:
-            _setter("bucket_id", bucket_id)
+            pulumi.set(__self__, "bucket_id", bucket_id)
         if cmek_settings is not None:
-            _setter("cmek_settings", cmek_settings)
+            pulumi.set(__self__, "cmek_settings", cmek_settings)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if lifecycle_state is not None:
-            _setter("lifecycle_state", lifecycle_state)
+            pulumi.set(__self__, "lifecycle_state", lifecycle_state)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if organization is not None:
-            _setter("organization", organization)
+            pulumi.set(__self__, "organization", organization)
         if retention_days is not None:
-            _setter("retention_days", retention_days)
+            pulumi.set(__self__, "retention_days", retention_days)
 
     @property
     @pulumi.getter(name="bucketId")
@@ -421,10 +355,6 @@ class OrganizationBucketConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            OrganizationBucketConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -448,7 +378,6 @@ class OrganizationBucketConfig(pulumi.CustomResource):
             if bucket_id is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket_id'")
             __props__.__dict__["bucket_id"] = bucket_id
-            cmek_settings = _utilities.configure(cmek_settings, OrganizationBucketConfigCmekSettingsArgs, True)
             __props__.__dict__["cmek_settings"] = cmek_settings
             __props__.__dict__["description"] = description
             if location is None and not opts.urn:

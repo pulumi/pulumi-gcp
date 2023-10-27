@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,48 +39,15 @@ class NamespaceArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        NamespaceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            scope=scope,
-            scope_id=scope_id,
-            scope_namespace_id=scope_namespace_id,
-            labels=labels,
-            namespace_labels=namespace_labels,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             scope: Optional[pulumi.Input[str]] = None,
-             scope_id: Optional[pulumi.Input[str]] = None,
-             scope_namespace_id: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             namespace_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if scope is None:
-            raise TypeError("Missing 'scope' argument")
-        if scope_id is None and 'scopeId' in kwargs:
-            scope_id = kwargs['scopeId']
-        if scope_id is None:
-            raise TypeError("Missing 'scope_id' argument")
-        if scope_namespace_id is None and 'scopeNamespaceId' in kwargs:
-            scope_namespace_id = kwargs['scopeNamespaceId']
-        if scope_namespace_id is None:
-            raise TypeError("Missing 'scope_namespace_id' argument")
-        if namespace_labels is None and 'namespaceLabels' in kwargs:
-            namespace_labels = kwargs['namespaceLabels']
-
-        _setter("scope", scope)
-        _setter("scope_id", scope_id)
-        _setter("scope_namespace_id", scope_namespace_id)
+        pulumi.set(__self__, "scope", scope)
+        pulumi.set(__self__, "scope_id", scope_id)
+        pulumi.set(__self__, "scope_namespace_id", scope_namespace_id)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if namespace_labels is not None:
-            _setter("namespace_labels", namespace_labels)
+            pulumi.set(__self__, "namespace_labels", namespace_labels)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -202,75 +169,30 @@ class _NamespaceState:
         :param pulumi.Input[str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[str] update_time: Time the Namespace was updated in UTC.
         """
-        _NamespaceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            delete_time=delete_time,
-            labels=labels,
-            name=name,
-            namespace_labels=namespace_labels,
-            project=project,
-            scope=scope,
-            scope_id=scope_id,
-            scope_namespace_id=scope_namespace_id,
-            states=states,
-            uid=uid,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[pulumi.Input[str]] = None,
-             delete_time: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             namespace_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             scope: Optional[pulumi.Input[str]] = None,
-             scope_id: Optional[pulumi.Input[str]] = None,
-             scope_namespace_id: Optional[pulumi.Input[str]] = None,
-             states: Optional[pulumi.Input[Sequence[pulumi.Input['NamespaceStateArgs']]]] = None,
-             uid: Optional[pulumi.Input[str]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if delete_time is None and 'deleteTime' in kwargs:
-            delete_time = kwargs['deleteTime']
-        if namespace_labels is None and 'namespaceLabels' in kwargs:
-            namespace_labels = kwargs['namespaceLabels']
-        if scope_id is None and 'scopeId' in kwargs:
-            scope_id = kwargs['scopeId']
-        if scope_namespace_id is None and 'scopeNamespaceId' in kwargs:
-            scope_namespace_id = kwargs['scopeNamespaceId']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if delete_time is not None:
-            _setter("delete_time", delete_time)
+            pulumi.set(__self__, "delete_time", delete_time)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if namespace_labels is not None:
-            _setter("namespace_labels", namespace_labels)
+            pulumi.set(__self__, "namespace_labels", namespace_labels)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if scope is not None:
-            _setter("scope", scope)
+            pulumi.set(__self__, "scope", scope)
         if scope_id is not None:
-            _setter("scope_id", scope_id)
+            pulumi.set(__self__, "scope_id", scope_id)
         if scope_namespace_id is not None:
-            _setter("scope_namespace_id", scope_namespace_id)
+            pulumi.set(__self__, "scope_namespace_id", scope_namespace_id)
         if states is not None:
-            _setter("states", states)
+            pulumi.set(__self__, "states", states)
         if uid is not None:
-            _setter("uid", uid)
+            pulumi.set(__self__, "uid", uid)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -525,10 +447,6 @@ class Namespace(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            NamespaceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -41,25 +41,10 @@ class ConnectorSubnet(dict):
                https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
         :param str project_id: Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
         """
-        ConnectorSubnet._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            project_id=project_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             project_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
 
     @property
     @pulumi.getter
@@ -89,27 +74,8 @@ class GetConnectorSubnetResult(dict):
                
                - - -
         """
-        GetConnectorSubnetResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            project_id=project_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             project_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if project_id is None:
-            raise TypeError("Missing 'project_id' argument")
-
-        _setter("name", name)
-        _setter("project_id", project_id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "project_id", project_id)
 
     @property
     @pulumi.getter

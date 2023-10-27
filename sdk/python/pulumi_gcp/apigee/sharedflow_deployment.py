@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SharedflowDeploymentArgs', 'SharedflowDeployment']
@@ -30,45 +30,12 @@ class SharedflowDeploymentArgs:
         :param pulumi.Input[str] sharedflow_id: Id of the Sharedflow to be deployed.
         :param pulumi.Input[str] service_account: The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
         """
-        SharedflowDeploymentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            environment=environment,
-            org_id=org_id,
-            revision=revision,
-            sharedflow_id=sharedflow_id,
-            service_account=service_account,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             environment: Optional[pulumi.Input[str]] = None,
-             org_id: Optional[pulumi.Input[str]] = None,
-             revision: Optional[pulumi.Input[str]] = None,
-             sharedflow_id: Optional[pulumi.Input[str]] = None,
-             service_account: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if environment is None:
-            raise TypeError("Missing 'environment' argument")
-        if org_id is None and 'orgId' in kwargs:
-            org_id = kwargs['orgId']
-        if org_id is None:
-            raise TypeError("Missing 'org_id' argument")
-        if revision is None:
-            raise TypeError("Missing 'revision' argument")
-        if sharedflow_id is None and 'sharedflowId' in kwargs:
-            sharedflow_id = kwargs['sharedflowId']
-        if sharedflow_id is None:
-            raise TypeError("Missing 'sharedflow_id' argument")
-        if service_account is None and 'serviceAccount' in kwargs:
-            service_account = kwargs['serviceAccount']
-
-        _setter("environment", environment)
-        _setter("org_id", org_id)
-        _setter("revision", revision)
-        _setter("sharedflow_id", sharedflow_id)
+        pulumi.set(__self__, "environment", environment)
+        pulumi.set(__self__, "org_id", org_id)
+        pulumi.set(__self__, "revision", revision)
+        pulumi.set(__self__, "sharedflow_id", sharedflow_id)
         if service_account is not None:
-            _setter("service_account", service_account)
+            pulumi.set(__self__, "service_account", service_account)
 
     @property
     @pulumi.getter
@@ -153,41 +120,16 @@ class _SharedflowDeploymentState:
         :param pulumi.Input[str] service_account: The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
         :param pulumi.Input[str] sharedflow_id: Id of the Sharedflow to be deployed.
         """
-        _SharedflowDeploymentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            environment=environment,
-            org_id=org_id,
-            revision=revision,
-            service_account=service_account,
-            sharedflow_id=sharedflow_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             environment: Optional[pulumi.Input[str]] = None,
-             org_id: Optional[pulumi.Input[str]] = None,
-             revision: Optional[pulumi.Input[str]] = None,
-             service_account: Optional[pulumi.Input[str]] = None,
-             sharedflow_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if org_id is None and 'orgId' in kwargs:
-            org_id = kwargs['orgId']
-        if service_account is None and 'serviceAccount' in kwargs:
-            service_account = kwargs['serviceAccount']
-        if sharedflow_id is None and 'sharedflowId' in kwargs:
-            sharedflow_id = kwargs['sharedflowId']
-
         if environment is not None:
-            _setter("environment", environment)
+            pulumi.set(__self__, "environment", environment)
         if org_id is not None:
-            _setter("org_id", org_id)
+            pulumi.set(__self__, "org_id", org_id)
         if revision is not None:
-            _setter("revision", revision)
+            pulumi.set(__self__, "revision", revision)
         if service_account is not None:
-            _setter("service_account", service_account)
+            pulumi.set(__self__, "service_account", service_account)
         if sharedflow_id is not None:
-            _setter("sharedflow_id", sharedflow_id)
+            pulumi.set(__self__, "sharedflow_id", sharedflow_id)
 
     @property
     @pulumi.getter
@@ -333,10 +275,6 @@ class SharedflowDeployment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SharedflowDeploymentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

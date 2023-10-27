@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,56 +39,17 @@ class KeystoresAliasesKeyCertFileArgs:
         :param pulumi.Input[str] key: Private Key content, omit if uploading to truststore
         :param pulumi.Input[str] password: Password for the Private Key if it's encrypted
         """
-        KeystoresAliasesKeyCertFileArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alias=alias,
-            cert=cert,
-            environment=environment,
-            keystore=keystore,
-            org_id=org_id,
-            certs_info=certs_info,
-            key=key,
-            password=password,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alias: Optional[pulumi.Input[str]] = None,
-             cert: Optional[pulumi.Input[str]] = None,
-             environment: Optional[pulumi.Input[str]] = None,
-             keystore: Optional[pulumi.Input[str]] = None,
-             org_id: Optional[pulumi.Input[str]] = None,
-             certs_info: Optional[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs']] = None,
-             key: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if alias is None:
-            raise TypeError("Missing 'alias' argument")
-        if cert is None:
-            raise TypeError("Missing 'cert' argument")
-        if environment is None:
-            raise TypeError("Missing 'environment' argument")
-        if keystore is None:
-            raise TypeError("Missing 'keystore' argument")
-        if org_id is None and 'orgId' in kwargs:
-            org_id = kwargs['orgId']
-        if org_id is None:
-            raise TypeError("Missing 'org_id' argument")
-        if certs_info is None and 'certsInfo' in kwargs:
-            certs_info = kwargs['certsInfo']
-
-        _setter("alias", alias)
-        _setter("cert", cert)
-        _setter("environment", environment)
-        _setter("keystore", keystore)
-        _setter("org_id", org_id)
+        pulumi.set(__self__, "alias", alias)
+        pulumi.set(__self__, "cert", cert)
+        pulumi.set(__self__, "environment", environment)
+        pulumi.set(__self__, "keystore", keystore)
+        pulumi.set(__self__, "org_id", org_id)
         if certs_info is not None:
-            _setter("certs_info", certs_info)
+            pulumi.set(__self__, "certs_info", certs_info)
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
 
     @property
     @pulumi.getter
@@ -219,55 +180,24 @@ class _KeystoresAliasesKeyCertFileState:
         :param pulumi.Input[str] password: Password for the Private Key if it's encrypted
         :param pulumi.Input[str] type: Optional.Type of Alias
         """
-        _KeystoresAliasesKeyCertFileState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alias=alias,
-            cert=cert,
-            certs_info=certs_info,
-            environment=environment,
-            key=key,
-            keystore=keystore,
-            org_id=org_id,
-            password=password,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alias: Optional[pulumi.Input[str]] = None,
-             cert: Optional[pulumi.Input[str]] = None,
-             certs_info: Optional[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs']] = None,
-             environment: Optional[pulumi.Input[str]] = None,
-             key: Optional[pulumi.Input[str]] = None,
-             keystore: Optional[pulumi.Input[str]] = None,
-             org_id: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if certs_info is None and 'certsInfo' in kwargs:
-            certs_info = kwargs['certsInfo']
-        if org_id is None and 'orgId' in kwargs:
-            org_id = kwargs['orgId']
-
         if alias is not None:
-            _setter("alias", alias)
+            pulumi.set(__self__, "alias", alias)
         if cert is not None:
-            _setter("cert", cert)
+            pulumi.set(__self__, "cert", cert)
         if certs_info is not None:
-            _setter("certs_info", certs_info)
+            pulumi.set(__self__, "certs_info", certs_info)
         if environment is not None:
-            _setter("environment", environment)
+            pulumi.set(__self__, "environment", environment)
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if keystore is not None:
-            _setter("keystore", keystore)
+            pulumi.set(__self__, "keystore", keystore)
         if org_id is not None:
-            _setter("org_id", org_id)
+            pulumi.set(__self__, "org_id", org_id)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -469,10 +399,6 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            KeystoresAliasesKeyCertFileArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -501,7 +427,6 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
             if cert is None and not opts.urn:
                 raise TypeError("Missing required property 'cert'")
             __props__.__dict__["cert"] = cert
-            certs_info = _utilities.configure(certs_info, KeystoresAliasesKeyCertFileCertsInfoArgs, True)
             __props__.__dict__["certs_info"] = certs_info
             if environment is None and not opts.urn:
                 raise TypeError("Missing required property 'environment'")
