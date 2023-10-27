@@ -7,7 +7,6 @@ import (
 	"log"
 	"os"
 	"path"
-	"q"
 	"slices"
 	"testing"
 	"time"
@@ -75,7 +74,6 @@ func programTestAsSpanBenchmark(
 
 		records := findHeaderRecordsInCsv("Name", spanName, path.Join(tracing_dir, "traces.csv"))
 		pluginInitDurations := computeCsvSpanLength(records)
-		q.Q(pluginInitDurations)
 		for _, dur := range pluginInitDurations {
 			assert.Less(t, dur, spanDurationLimit) // Adjust duration later.
 		}
