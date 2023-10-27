@@ -44,7 +44,6 @@ func programTestAsSpanBenchmark(
 			SkipUpdate:               true,
 			AllowEmptyPreviewChanges: true,
 			AllowEmptyUpdateChanges:  true,
-			Config:                   map[string]string{"gcp:project": "pulumi-development"},
 		})
 		prewarmOptions.ExtraRuntimeValidation = nil
 		integration.ProgramTest(t, &prewarmOptions)
@@ -60,7 +59,6 @@ func programTestAsSpanBenchmark(
 				SkipExportImport:         true,
 				SkipEmptyPreviewUpdate:   true,
 				AllowEmptyPreviewChanges: true,
-				Config:                   map[string]string{"gcp:project": "pulumi-development"},
 				Verbose:                  true,
 				DebugLogLevel:            5,
 			},
