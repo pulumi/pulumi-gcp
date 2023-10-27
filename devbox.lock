@@ -1,0 +1,82 @@
+{
+  "lockfile_version": "1",
+  "packages": {
+    "dotnet-sdk@latest": {
+      "last_modified": "2023-06-29T16:20:38Z",
+      "resolved": "github:NixOS/nixpkgs/3c614fbc76fc152f3e1bc4b2263da6d90adf80fb#dotnet-sdk",
+      "version": "6.0.411"
+    },
+    "go@1.21": {
+      "last_modified": "2023-10-25T20:49:13Z",
+      "resolved": "github:NixOS/nixpkgs/75a52265bda7fd25e06e3a67dee3f0354e73243c#go",
+      "source": "devbox-search",
+      "version": "1.21.3",
+      "systems": {
+        "aarch64-darwin": {
+          "store_path": "/nix/store/1fxz1flmv4a4m5pvjmmzxlaznjzybjcp-go-1.21.3"
+        },
+        "aarch64-linux": {
+          "store_path": "/nix/store/iyaywzzkhm1pi5ysd83ai9pdpic9b9ny-go-1.21.3"
+        },
+        "x86_64-darwin": {
+          "store_path": "/nix/store/yqqhrzr15819draxsyqrn2hf5c22ffhk-go-1.21.3"
+        },
+        "x86_64-linux": {
+          "store_path": "/nix/store/dwmb0qcai52d0zkgpm6f5ifx2a8yvsdg-go-1.21.3"
+        }
+      }
+    },
+    "google-cloud-sdk@latest": {
+      "last_modified": "2023-10-25T20:49:13Z",
+      "resolved": "github:NixOS/nixpkgs/75a52265bda7fd25e06e3a67dee3f0354e73243c#google-cloud-sdk",
+      "source": "devbox-search",
+      "version": "446.0.1",
+      "systems": {
+        "aarch64-darwin": {
+          "store_path": "/nix/store/1pcjdvwmk0vfm4wjbca6fqizbn6h2p3r-google-cloud-sdk-446.0.1"
+        },
+        "aarch64-linux": {
+          "store_path": "/nix/store/kc71bggxrbmbgf051la40agnmpq0mp1k-google-cloud-sdk-446.0.1"
+        },
+        "x86_64-darwin": {
+          "store_path": "/nix/store/a0f60k85c72bjjqai37yn2h4b8rj314x-google-cloud-sdk-446.0.1"
+        },
+        "x86_64-linux": {
+          "store_path": "/nix/store/hc1cbjij7h0afgvw8gas7agff9wsgid2-google-cloud-sdk-446.0.1"
+        }
+      }
+    },
+    "gradle_7@latest": {
+      "last_modified": "2023-06-29T16:20:38Z",
+      "plugin_version": "0.0.1",
+      "resolved": "github:NixOS/nixpkgs/3c614fbc76fc152f3e1bc4b2263da6d90adf80fb#gradle_7",
+      "version": "7.6.1"
+    },
+    "nodejs@latest": {
+      "last_modified": "2023-06-29T16:20:38Z",
+      "resolved": "github:NixOS/nixpkgs/3c614fbc76fc152f3e1bc4b2263da6d90adf80fb#nodejs_20",
+      "version": "20.3.1"
+    },
+    "pdm@latest": {
+      "last_modified": "2023-06-29T16:20:38Z",
+      "resolved": "github:NixOS/nixpkgs/3c614fbc76fc152f3e1bc4b2263da6d90adf80fb#pdm",
+      "version": "2.7.0"
+    },
+    "pulumictl@latest": {
+      "last_modified": "2023-06-29T16:20:38Z",
+      "resolved": "github:NixOS/nixpkgs/3c614fbc76fc152f3e1bc4b2263da6d90adf80fb#pulumictl",
+      "version": "0.0.43"
+    },
+    "python3@latest": {
+      "last_modified": "2023-06-29T16:20:38Z",
+      "plugin_version": "0.0.1",
+      "resolved": "github:NixOS/nixpkgs/3c614fbc76fc152f3e1bc4b2263da6d90adf80fb#python311",
+      "version": "3.11.4"
+    },
+    "yarn@latest": {
+      "last_modified": "2023-06-29T16:20:38Z",
+      "resolved": "github:NixOS/nixpkgs/3c614fbc76fc152f3e1bc4b2263da6d90adf80fb#yarn",
+      "version": "1.22.19"
+    }
+  }
+}

@@ -130,10 +130,11 @@ func programTestAsBenchmark(
 	t.Run("benchmark", func(t *testing.T) {
 		finalOptions := test.With(bench.ProgramTestOptions()).With(
 			integration.ProgramTestOptions{
-				Quick:         true,
-				Config:        map[string]string{"gcp:project": "pulumi-development"},
-				Verbose:       true,
-				DebugLogLevel: 5,
+				SkipUpdate:               true,
+				AllowEmptyPreviewChanges: true,
+				Config:                   map[string]string{"gcp:project": "pulumi-development"},
+				Verbose:                  true,
+				DebugLogLevel:            5,
 			},
 		)
 		integration.ProgramTest(t, &finalOptions)
@@ -150,9 +151,9 @@ func getCwd(t *testing.T) string {
 }
 
 func TestInitTime(t *testing.T) {
-	benchmark := bench("bucket-example", "gcp", "go", "go")
+	benchmark := bench("bucket-example", "gcp", "yaml", "yaml")
 	opts := integration.ProgramTestOptions{
-		Dir: path.Join(getCwd(t), "..", "examples", "bucket-go"),
+		Dir: path.Join(getCwd(t), "test-programs", "storage-bucket"),
 	}
 	programTestAsBenchmark(t, benchmark, opts)
 }
