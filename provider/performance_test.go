@@ -44,6 +44,7 @@ func programTestAsSpanBenchmark(
 			SkipUpdate:               true,
 			AllowEmptyPreviewChanges: true,
 			AllowEmptyUpdateChanges:  true,
+			Config:                   map[string]string{"gcp:project": "pulumi-development"},
 		})
 		prewarmOptions.ExtraRuntimeValidation = nil
 		integration.ProgramTest(t, &prewarmOptions)
@@ -59,6 +60,7 @@ func programTestAsSpanBenchmark(
 				SkipExportImport:         true,
 				SkipEmptyPreviewUpdate:   true,
 				AllowEmptyPreviewChanges: true,
+				Config:                   map[string]string{"gcp:project": "pulumi-development"},
 				Verbose:                  true,
 				DebugLogLevel:            5,
 			},
@@ -96,8 +98,14 @@ func TestInitTime(t *testing.T) {
 }
 
 func parseDate(dateString string) time.Time {
-	timeLayout := "2006-01-02T15:04:05-07:00"
+	timeLayout := "2006-01-02T15:04:05.000000-07:00"
 	date, err := time.Parse(timeLayout, dateString)
+	if err == nil {
+		return date
+	}
+	// UTC Dates are in 2023-10-27T11:28:31.642225Z format...
+	altTimeLayout := "2006-01-02T15:04:05.000000Z07:00"
+	date, err = time.Parse(altTimeLayout, dateString)
 	if err != nil {
 		log.Fatal(err)
 	}
