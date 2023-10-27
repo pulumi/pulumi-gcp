@@ -1,5 +1,7 @@
 // Copyright 2016-2023, Pulumi Corporation.  All rights reserved.
 
+//go:build Performance || all
+
 package gcp
 
 import (
