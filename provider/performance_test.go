@@ -59,8 +59,6 @@ func programTestAsSpanBenchmark(
 				SkipExportImport:         true,
 				SkipEmptyPreviewUpdate:   true,
 				AllowEmptyPreviewChanges: true,
-				Verbose:                  true,
-				DebugLogLevel:            5,
 			},
 		)
 		integration.ProgramTest(t, &finalOptions)
@@ -102,7 +100,7 @@ func parseDate(dateString string) time.Time {
 		return date
 	}
 	// UTC Dates are in 2023-10-27T11:28:31.642225Z format...
-	altTimeLayout := "2006-01-02T15:04:05.000000Z07:00"
+	altTimeLayout := time.RFC3339Nano
 	date, err = time.Parse(altTimeLayout, dateString)
 	if err != nil {
 		log.Fatal(err)
